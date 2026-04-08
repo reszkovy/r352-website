@@ -55,29 +55,23 @@ export function PageTransition({ children, className }: PageTransitionProps) {
           transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.1 }
         }}
       >
-        {/* Branding watermark during transition */}
+        {/* Branding watermark during transition — clean reveal/conceal */}
         <motion.div
-          className="flex flex-col items-center gap-4"
-          initial={{ opacity: 0, scale: 0.85, filter: "blur(8px)" }}
-          animate={{
-            opacity: 0,
-            scale: 0.85,
-            filter: "blur(8px)",
-            transition: { duration: 0.3, delay: 0.5 }
-          }}
+          className="flex flex-col items-center gap-5"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0, transition: { duration: 0.1 } }}
           exit={{
             opacity: [0, 1, 1, 0],
-            scale: [0.85, 1, 1, 0.95],
-            filter: ["blur(8px)", "blur(0px)", "blur(0px)", "blur(4px)"],
+            y: [8, 0, 0, -8],
             transition: {
               duration: 1.4,
-              times: [0, 0.2, 0.7, 1],
+              times: [0, 0.15, 0.7, 1],
               ease: [0.22, 1, 0.36, 1]
             }
           }}
         >
-          <R352Symbol className="w-6 h-6 md:w-8 md:h-8" color="#D4FF00" />
-          <span className="text-[10px] md:text-xs font-display uppercase tracking-[0.3em] text-[#D4FF00]/70">
+          <R352Symbol className="w-7 h-7 md:w-9 md:h-9" color="#D4FF00" />
+          <span className="text-[11px] md:text-sm font-display uppercase tracking-[0.3em] text-[#D4FF00]/80">
             your design partner
           </span>
         </motion.div>
