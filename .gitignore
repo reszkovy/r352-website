@@ -1,0 +1,13 @@
+node_modules
+dist
+.DS_Store
+*.local
+.env
+.env.*
+.claude/
+.codex/
+.cowork-lib/
+.cowork-perm-req/
+.cowork-perm-resp/
+.local-plugins/
+tmp/

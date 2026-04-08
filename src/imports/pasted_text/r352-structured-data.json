@@ -1,0 +1,132 @@
+Dodaj structured data (JSON-LD) do sekcji <head> na stronie głównej (homepage). Dodaj 3 osobne bloki <script type="application/ld+json">. Nie zmieniaj nic innego na stronie — żadnych zmian wizualnych, tylko niewidoczny kod w <head>.
+
+WAŻNE: Jeśli na stronie istnieje plik logo (np. logo.png, logo.svg, favicon), użyj jego prawdziwego URL-a w polu "logo" poniżej. Jeśli nie jesteś pewien ścieżki, użyj "https://r352.com/logo.png" jako placeholder.
+
+WAŻNE: Zweryfikuj prawdziwe URL-e social media r352 (Instagram, LinkedIn, YouTube) i użyj ich w polu "sameAs". Poniższe URL-e mogą wymagać korekty.
+
+=== BLOK 1: Organization ===
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "r352",
+  "url": "https://r352.com",
+  "logo": "https://r352.com/logo.png",
+  "email": "hello@r352.com",
+  "sameAs": [
+    "https://www.instagram.com/r352agency",
+    "https://www.linkedin.com/company/r352",
+    "https://www.youtube.com/@r352agency"
+  ]
+}
+</script>
+
+=== BLOK 2: ProfessionalService ===
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "r352",
+  "description": "Design partner for multi-location brands. We diagnose delivery bottlenecks, build operating systems for brand and campaign production, and hand off self-running systems that scale.",
+  "url": "https://r352.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Palma de Mallorca",
+    "addressRegion": "Balearic Islands",
+    "addressCountry": "ES"
+  },
+  "areaServed": "Europe",
+  "serviceType": [
+    "Brand Systems",
+    "Campaign Toolkits",
+    "Design Operations",
+    "Product UX/UI",
+    "Delivery Process Consulting"
+  ],
+  "priceRange": "$$$$"
+}
+</script>
+
+=== BLOK 3: Reviews ===
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "r352",
+  "url": "https://r352.com",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": "5"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Magdalena Rodak"
+      },
+      "reviewBody": "The communication is seamless, and their commitment to quality translates directly into our business results.",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      }
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Filip Mazurkiewicz"
+      },
+      "reviewBody": "They understand the business context and deliver work that actually moves the needle.",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      }
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Lidia Kolucka"
+      },
+      "reviewBody": "It feels like they are part of our internal team. Flexible, responsive, and always focused on delivering the best possible impact.",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      }
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Alina Sztoch"
+      },
+      "reviewBody": "They are proactive, transparent, and truly care about the outcome. A reliable partner for any scale.",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      }
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Marek Morisson"
+      },
+      "reviewBody": "They don't just execute tasks; they think along with us and bring solutions that drive real value.",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      }
+    }
+  ]
+}
+</script>
+
+=== KONIEC ===
+
+Umieść wszystkie 3 bloki w <head> na stronie głównej, najlepiej przed zamknięciem </head>. Nie zmieniaj nic innego.
