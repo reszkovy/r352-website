@@ -7,6 +7,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { projects } from "@/app/data/projects";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { useLenis } from "lenis/react";
+import { ImageHover } from "@/app/components/ui/ImageHover";
 
 export function ProjectDetails({ params }: { params?: { id: string } }) {
   const project = projects.find(p => p.id === params?.id);
@@ -63,22 +64,28 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
 
         {/* Cover Image */}
         <Reveal width="100%" className="mb-32">
-          <div className="w-full aspect-[16/9] md:aspect-[21/9] bg-neutral-900 overflow-hidden rounded-sm relative group">
-            {/* @ts-ignore */}
-            {project.coverComponent ? (
-              <div className="w-full h-full group-hover:scale-105 transition-transform duration-[2s] ease-in-out">
-                {/* @ts-ignore */}
-                {project.coverComponent}
-              </div>
-            ) : (
-              <ImageWithFallback
-                src={project.coverImage}
-                alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-[2s] ease-in-out group-hover:scale-105"
-              />
-            )}
-            <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
-          </div>
+          <ImageHover
+            className="w-full aspect-[16/9] md:aspect-[21/9] bg-neutral-900 rounded-sm"
+            tiltMax={2}
+            glowIntensity={0.1}
+          >
+            <div className="w-full h-full group">
+              {/* @ts-ignore */}
+              {project.coverComponent ? (
+                <div className="w-full h-full group-hover:scale-105 transition-transform duration-[2s] ease-in-out">
+                  {/* @ts-ignore */}
+                  {project.coverComponent}
+                </div>
+              ) : (
+                <ImageWithFallback
+                  src={project.coverImage}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-[2s] ease-in-out group-hover:scale-105"
+                />
+              )}
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
+            </div>
+          </ImageHover>
         </Reveal>
 
         {/* Main Content Layout */}
@@ -250,27 +257,27 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                            <div className="absolute -inset-4 bg-gradient-to-r from-[#D4FF00]/20 to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                         )}
 
-                        <div className={`
-                           w-full bg-[#0A0A0A] border border-white/5 overflow-hidden relative rounded-sm
-                           ${isFullWidth ? 'aspect-[16/9]' : 'aspect-[4/3]'}
-                           transition-all duration-700 hover:border-white/20
-                        `}>
+                        <ImageHover
+                           className={`
+                              w-full bg-[#0A0A0A] border border-white/5 rounded-sm
+                              ${isFullWidth ? 'aspect-[16/9]' : 'aspect-[4/3]'}
+                              transition-all duration-700 hover:border-white/20
+                           `}
+                           tiltMax={isCentered ? 3 : 5}
+                           glowIntensity={0.12}
+                        >
                            {/* Glassmorphism Background for translucent UI */}
                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent opacity-50" />
-                           
-                           {/* Image Container with subtle parallax/motion on hover */}
-                           <motion.div 
-                              className="w-full h-full p-6 md:p-12 flex items-center justify-center"
-                              whileHover={{ scale: 1.02 }}
-                              transition={{ duration: 0.5, ease: "easeOut" }}
-                           >
-                              <img 
-                                src={image} 
+
+                           {/* Image Container */}
+                           <div className="w-full h-full p-6 md:p-12 flex items-center justify-center">
+                              <img
+                                src={image}
                                 alt={`${project.client} visual ${i + 1}`}
                                 className="w-full h-full object-contain drop-shadow-2xl"
                               />
-                           </motion.div>
-                        </div>
+                           </div>
+                        </ImageHover>
 
                         {/* Caption */}
                         <div className="mt-4 flex justify-between items-center opacity-50 group-hover:opacity-100 transition-opacity duration-500">

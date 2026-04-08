@@ -1,20 +1,23 @@
 import { motion } from "motion/react";
+import { ImageHover } from "@/app/components/ui/ImageHover";
 
 export function HowWeWork() {
   return (
     <section className="py-32 px-8 md:px-12 max-w-[1800px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-       <motion.div 
+       <motion.div
          initial={{ opacity: 0, scale: 0.98 }}
          whileInView={{ opacity: 1, scale: 1 }}
          viewport={{ once: true }}
          transition={{ duration: 0.8 }}
-         className="relative aspect-[4/5] overflow-hidden bg-neutral-900"
+         className="relative aspect-[4/5] bg-neutral-900"
        >
-          <img 
-            src="https://images.unsplash.com/photo-1762952777439-2fffee8ce13f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaW5pbWFsaXN0JTIwYXJjaGl0ZWN0dXJlJTIwZ2VvbWV0cmljJTIwZGFyayUyMGxpZ2h0JTIwYWJzdHJhY3R8ZW58MXx8fHwxNzY4OTU4NDc2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-            alt="Minimalist Architecture"
-            className="w-full h-full object-cover opacity-80 grayscale hover:grayscale-0 transition-all duration-[1.5s]"
-          />
+          <ImageHover className="w-full h-full" tiltMax={5} glowIntensity={0.18}>
+            <img
+              src="https://images.unsplash.com/photo-1762952777439-2fffee8ce13f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaW5pbWFsaXN0JTIwYXJjaGl0ZWN0dXJlJTIwZ2VvbWV0cmljJTIwZGFyayUyMGxpZ2h0JTIwYWJzdHJhY3R8ZW58MXx8fHwxNzY4OTU4NDc2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+              alt="Minimalist Architecture"
+              className="w-full h-full object-cover opacity-80 grayscale hover:grayscale-0 transition-all duration-[1.5s]"
+            />
+          </ImageHover>
        </motion.div>
 
        <div className="space-y-16">

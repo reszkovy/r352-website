@@ -1,5 +1,6 @@
 import { Reveal } from "@/app/components/ui/Reveal";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
+import { ImageHover } from "@/app/components/ui/ImageHover";
 import { useLanguage } from "@/app/context/LanguageContext";
 
 import imgGreen from "../../../imports/0_2.jpeg";
@@ -35,13 +36,13 @@ export function HomePrinciples() {
             <Reveal key={i} delay={i * 0.1}>
               <div className="flex flex-col h-full gap-8">
                 {/* Image Placeholder */}
-                <div className="aspect-[4/3] bg-white/5 overflow-hidden">
-                  <ImageWithFallback 
-                    src={item.image} 
+                <ImageHover className="aspect-[4/3] bg-white/5" tiltMax={6} glowIntensity={0.15}>
+                  <ImageWithFallback
+                    src={item.image}
                     alt={item.title}
                     className="w-full h-full object-cover"
                   />
-                </div>
+                </ImageHover>
                 
                 {/* Content */}
                 <div className="flex flex-col gap-4">
