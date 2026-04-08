@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { R352Symbol } from '@/app/components/agency/R352Logo';
 
 type ThemeMode = 'dark' | 'light';
 
@@ -66,19 +67,46 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
               }}
             />
             
-            {/* Cinematic Transition Overlay - Main Background Sweep */}
+            {/* Cinematic Transition Overlay - Main Background Sweep with Branding */}
             <motion.div
-              className={`fixed top-0 left-0 w-full h-[100vh] ${targetTheme === 'dark' ? 'bg-[#0A0A0A]/90' : 'bg-[#D0DBE1]/90'} backdrop-blur-3xl z-[99999] pointer-events-none`}
+              className={`fixed top-0 left-0 w-full h-[100vh] ${targetTheme === 'dark' ? 'bg-[#0A0A0A]/90' : 'bg-[#D0DBE1]/90'} backdrop-blur-3xl z-[99999] pointer-events-none flex items-center justify-center`}
               initial={{ y: "100%" }}
-              animate={{ 
-                y: "0%", 
-                transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.1 } 
+              animate={{
+                y: "0%",
+                transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.1 }
               }}
-              exit={{ 
-                y: "-100%", 
-                transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.05 } 
+              exit={{
+                y: "-100%",
+                transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.05 }
               }}
-            />
+            >
+              {/* Branding watermark during theme transition */}
+              <motion.div
+                className="flex flex-col items-center gap-4"
+                initial={{ opacity: 0, scale: 0.85, filter: "blur(8px)" }}
+                animate={{
+                  opacity: [0, 1, 1, 0.8],
+                  scale: [0.85, 1, 1, 1],
+                  filter: ["blur(8px)", "blur(0px)", "blur(0px)", "blur(0px)"],
+                  transition: {
+                    duration: 1.2,
+                    times: [0, 0.25, 0.75, 1],
+                    ease: [0.22, 1, 0.36, 1]
+                  }
+                }}
+                exit={{
+                  opacity: 0,
+                  scale: 0.95,
+                  filter: "blur(4px)",
+                  transition: { duration: 0.4, ease: [0.76, 0, 0.24, 1] }
+                }}
+              >
+                <R352Symbol className="w-6 h-6 md:w-8 md:h-8" color="#D4FF00" />
+                <span className={`text-[10px] md:text-xs font-display uppercase tracking-[0.3em] ${targetTheme === 'dark' ? 'text-[#D4FF00]/70' : 'text-[#000000]/40'}`}>
+                  your design partner
+                </span>
+              </motion.div>
+            </motion.div>
           </>
         )}
       </AnimatePresence>
