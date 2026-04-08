@@ -310,12 +310,35 @@ body.theme-transitioning *::after {
 }
 
 /* Light mode text overrides */
-body:is(.lime-theme, .global-light-mode) .text-white,
-body:is(.lime-theme, .global-light-mode) .text-neutral-300,
-body:is(.lime-theme, .global-light-mode) .text-neutral-200,
-body:is(.lime-theme, .global-light-mode) .text-neutral-400,
+body:is(.lime-theme, .global-light-mode) .text-white {
+  color: #111111 !important;
+}
+
+body:is(.lime-theme, .global-light-mode) .text-neutral-200 {
+  color: #222222 !important;
+}
+
+body:is(.lime-theme, .global-light-mode) .text-neutral-300 {
+  color: #333333 !important;
+}
+
+body:is(.lime-theme, .global-light-mode) .text-neutral-400 {
+  color: #555555 !important;
+}
+
 body:is(.lime-theme, .global-light-mode) .text-neutral-500 {
-  color: #000000 !important;
+  color: #666666 !important;
+}
+
+body:is(.lime-theme, .global-light-mode) .text-neutral-600 {
+  color: #777777 !important;
+}
+
+body:is(.lime-theme, .global-light-mode) .text-white\/20,
+body:is(.lime-theme, .global-light-mode) .text-white\/40,
+body:is(.lime-theme, .global-light-mode) .text-white\/50,
+body:is(.lime-theme, .global-light-mode) .text-white\/90 {
+  color: rgba(0, 0, 0, 0.5) !important;
 }
 
 body:is(.lime-theme, .global-light-mode) .text-\[\#D4FF00\], 
@@ -392,6 +415,20 @@ body:is(.lime-theme, .global-light-mode) .bg-\[\#111\] {
   background-color: #FFFFFF !important;
 }
 
+body:is(.lime-theme, .global-light-mode) .hover\:bg-\[\#0a0a0a\]:hover,
+body:is(.lime-theme, .global-light-mode) .hover\:bg-\[\#222\]:hover {
+  background-color: #EEEEEE !important;
+}
+
+body:is(.lime-theme, .global-light-mode) .hover\:text-white:hover {
+  color: #000000 !important;
+}
+
+body:is(.lime-theme, .global-light-mode) .hover\:bg-white:hover {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+
 body:is(.lime-theme, .global-light-mode) .bg-neutral-900\/50,
 body:is(.lime-theme, .global-light-mode) .bg-neutral-900,
 body:is(.lime-theme, .global-light-mode) .bg-black\/40,
@@ -400,7 +437,8 @@ body:is(.lime-theme, .global-light-mode) .bg-black\/20 {
 }
 
 body:is(.lime-theme, .global-light-mode) .bg-black {
-  background-color: #000000 !important;
+  background-color: #F5F5F5 !important;
+  color: #111111 !important;
 }
 
 body:is(.lime-theme, .global-light-mode) .border-neutral-700 {
@@ -442,6 +480,7 @@ body:is(.lime-theme, .global-light-mode) .type-sub-lg {
   color: #000000 !important;
 }
 
+body:is(.lime-theme, .global-light-mode) .type-h1,
 body:is(.lime-theme, .global-light-mode) .type-h2,
 body:is(.lime-theme, .global-light-mode) .type-h3 {
   color: #000000 !important;
@@ -472,6 +511,12 @@ body:is(.lime-theme, .global-light-mode) .font-mono {
   color: #1a1a1a !important;
 }
 
+/* Light mode: bg-black/40, bg-black/20 text should be visible */
+body:is(.lime-theme, .global-light-mode) .bg-black\/40,
+body:is(.lime-theme, .global-light-mode) .bg-black\/20 {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
 body.lime-theme .from-\[\#151515\] {
   --tw-gradient-from: #D0DBE1 !important;
 }
@@ -480,14 +525,34 @@ body.global-light-mode:not(.lime-theme) .from-\[\#151515\] {
   --tw-gradient-from: #FFFFFF !important;
 }
 
-body:is(.lime-theme, .global-light-mode) .bg-gradient-to-b,
-body:is(.lime-theme, .global-light-mode) .bg-gradient-to-r {
-  background-image: none !important;
+body.global-light-mode:not(.lime-theme) .bg-gradient-to-b {
+  --tw-gradient-from: #FFFFFF !important;
+  --tw-gradient-to: #FFFFFF !important;
+}
+
+body.global-light-mode:not(.lime-theme) .bg-gradient-to-r {
+  --tw-gradient-from: #FFFFFF !important;
+  --tw-gradient-to: #FFFFFF !important;
+}
+
+body.lime-theme .bg-gradient-to-b {
+  --tw-gradient-from: #D0DBE1 !important;
+  --tw-gradient-to: #D0DBE1 !important;
+}
+
+body.lime-theme .bg-gradient-to-r {
+  --tw-gradient-from: #D0DBE1 !important;
+  --tw-gradient-to: #D0DBE1 !important;
 }
 
 body:is(.lime-theme, .global-light-mode) ::selection {
   background-color: #000000;
-  color: #D0DBE1;
+  color: #FFFFFF;
+}
+
+body.global-light-mode:not(.lime-theme) ::selection {
+  background-color: #000000;
+  color: #FFFFFF;
 }
 
 /* Image Highlights in Light Mode (replaces shadows) */
@@ -501,11 +566,11 @@ body.global-light-mode .shadow-xl,
 body.global-light-mode .shadow-md,
 body.global-light-mode [class*="shadow-"] img,
 body.global-light-mode img[class*="shadow-"] {
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 50px rgba(212, 255, 0, 0.2) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 6px rgba(0, 0, 0, 0.04) !important;
 }
 
 body.global-light-mode .ref-card:hover {
-  box-shadow: 0 0 30px rgba(212, 255, 0, 0.4) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.12) !important;
 }
 
 /* Make sure footer becomes light too by overriding the footer static colors */
@@ -536,6 +601,48 @@ body:is(.lime-theme, .global-light-mode) footer .border-white\/20 {
   border-color: rgba(0,0,0,0.1) !important;
 }
 
+/* Footer nav and social links: dark text base, green hover */
+body:is(.lime-theme, .global-light-mode) footer a.text-neutral-300,
+body:is(.lime-theme, .global-light-mode) footer a .text-neutral-300,
+body:is(.lime-theme, .global-light-mode) footer .hover\:text-\[\#D4FF00\] {
+  color: #333333 !important;
+}
+
+body:is(.lime-theme, .global-light-mode) footer .hover\:text-\[\#D4FF00\]:hover,
+body:is(.lime-theme, .global-light-mode) footer a:hover {
+  color: #6B8F00 !important;
+}
+
+/* Footer CTA large text */
+body:is(.lime-theme, .global-light-mode) footer .group-hover\:text-white\/50 {
+  color: #333333 !important;
+}
+
+body:is(.lime-theme, .global-light-mode) footer .group:hover .group-hover\:text-white\/50 {
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+
+body:is(.lime-theme, .global-light-mode) footer .group:hover .group-hover\:text-\[\#D4FF00\] {
+  color: #6B8F00 !important;
+}
+
+/* Footer schedule button (border outline) */
+body:is(.lime-theme, .global-light-mode) footer .border-white\/20 {
+  border-color: rgba(0,0,0,0.2) !important;
+  color: #111111 !important;
+}
+
+/* Footer "back to top" and copyright */
+body:is(.lime-theme, .global-light-mode) footer .hover\:text-\[\#D4FF00\]:hover {
+  color: #6B8F00 !important;
+}
+
+/* Footer MagnetGrid fill */
+body:is(.lime-theme, .global-light-mode) footer svg rect[fill="#000000"],
+body:is(.lime-theme, .global-light-mode) footer svg circle[fill="#000000"] {
+  fill: rgba(0,0,0,0.05) !important;
+}
+
 body:is(.lime-theme, .global-light-mode) .explore-work-btn {
   background-color: transparent !important;
   color: #000000 !important;
@@ -549,6 +656,22 @@ body:is(.lime-theme, .global-light-mode) .explore-work-btn:hover {
 
 body:is(.lime-theme, .global-light-mode) .magnet-shape-svg {
   fill: #f3f3f3 !important;
+}
+
+/* Preloader: keep it dark even in light mode for visual impact */
+body:is(.lime-theme, .global-light-mode) .fixed.z-\[10000\].bg-black {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+
+/* Contact page email links */
+body:is(.lime-theme, .global-light-mode) a.text-white,
+body:is(.lime-theme, .global-light-mode) a.text-white:visited {
+  color: #111111 !important;
+}
+
+body:is(.lime-theme, .global-light-mode) a.text-white:hover {
+  color: #6B8F00 !important;
 }
 
 @theme {

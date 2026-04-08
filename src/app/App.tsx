@@ -158,7 +158,7 @@ function AppContent() {
       <Preloader />
       <SEO path={location} title={getPageSEO(location).title} description={getPageSEO(location).description} />
       <SmoothScroll>
-      <div className="dark bg-background min-h-screen w-full overflow-x-hidden text-foreground font-sans selection:bg-white selection:text-black relative transition-colors duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)]">
+      <div className={`${theme === 'dark' ? 'dark' : ''} bg-background min-h-screen w-full overflow-x-hidden text-foreground font-sans selection:bg-white selection:text-black relative transition-colors duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)]`}>
       <NoiseBackground />
       <PersistentBackground />
       <CursorGlow />
@@ -197,13 +197,17 @@ function AppContent() {
       <Chatbot />
     </div>
     <Toaster
-      theme="dark"
+      theme={theme === 'dark' ? 'dark' : 'light'}
       position="bottom-right"
       toastOptions={{
-        style: {
+        style: theme === 'dark' ? {
           background: '#1a1a1a',
           border: '1px solid rgba(255,255,255,0.1)',
           color: '#fff',
+        } : {
+          background: '#ffffff',
+          border: '1px solid rgba(0,0,0,0.1)',
+          color: '#111',
         },
       }}
     />
