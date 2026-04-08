@@ -79,7 +79,7 @@ function useFavicon() {
     link.type = "image/svg+xml";
     link.href = url;
 
-    document.title = "Design-first partner for teams that ship.";
+    document.title = "r352 — Design-first partner for teams that ship.";
     return () => URL.revokeObjectURL(url);
   }, []);
 }
@@ -94,9 +94,55 @@ function AppContent() {
     return path;
   };
 
-  const getPageTitle = (path: string) => {
-    if (path === "/contact") return "Contact — r352 | Let's shape the path forward";
-    return "Design-first partner for teams that ship.";
+  const getPageSEO = (path: string): { title: string; description: string } => {
+    if (path === "/work") return {
+      title: "Work — r352 | Selected projects & case studies",
+      description: "See how we help multi-location brands like Sonova, Benefit Systems, and Kubota ship faster with scalable design systems and delivery workflows."
+    };
+    if (path.startsWith("/work/")) return {
+      title: "Case Study — r352 | Project Details",
+      description: "Deep dive into how r352 solved delivery bottlenecks and built scalable brand systems for this client."
+    };
+    if (path === "/services") return {
+      title: "Services — r352 | Design Operations & Delivery Systems",
+      description: "From brand operating systems to design production and optimization — we build the infrastructure that lets multi-location teams ship consistently."
+    };
+    if (path === "/services/operating-system") return {
+      title: "Operating System — r352 | Brand Standards & Delivery Infrastructure",
+      description: "We audit your delivery workflow, define brand standards, and build intake processes that eliminate chaos and scale across locations."
+    };
+    if (path === "/services/design-production") return {
+      title: "Design Production — r352 | Campaign Toolkits & Assets at Scale",
+      description: "Scalable campaign toolkits, templates, and production workflows that maintain brand consistency across every touchpoint."
+    };
+    if (path === "/services/build-optimize") return {
+      title: "Build & Optimize — r352 | UX/UI & Digital Products",
+      description: "We design and build digital products, landing pages, and interfaces that convert — grounded in data and user research."
+    };
+    if (path === "/philosophy") return {
+      title: "Philosophy — r352 | How we think about design & delivery",
+      description: "Process over aesthetics. Systems over one-offs. Learn how r352 approaches design as a delivery discipline, not a creative exercise."
+    };
+    if (path === "/deliverables") return {
+      title: "Deliverables — r352 | What you actually get",
+      description: "Brand guidelines, campaign toolkits, QA checklists, production templates — concrete deliverables that your team can use from day one."
+    };
+    if (path === "/journal") return {
+      title: "Journal — r352 | Insights on design operations & delivery",
+      description: "Articles on design operations, delivery workflows, brand systems, and how multi-location organizations can scale their creative output."
+    };
+    if (path.startsWith("/journal/")) return {
+      title: "Article — r352 Journal",
+      description: "Read this article on design operations, delivery systems, and scaling creative output for multi-location organizations."
+    };
+    if (path === "/contact") return {
+      title: "Contact — r352 | Let's shape the path forward",
+      description: "Ready to fix your delivery bottlenecks? Get in touch — we work with teams that are serious about scaling their design operations."
+    };
+    return {
+      title: "r352 — Design-first partner for teams that ship.",
+      description: "Design-first strategic partner for multi-location organizations. We diagnose delivery bottlenecks, build scalable design systems, and help teams ship faster."
+    };
   };
 
   useEffect(() => {
@@ -110,7 +156,7 @@ function AppContent() {
     <>
       <GTM />
       <Preloader />
-      <SEO path={location} title={getPageTitle(location)} />
+      <SEO path={location} title={getPageSEO(location).title} description={getPageSEO(location).description} />
       <SmoothScroll>
       <div className="dark bg-background min-h-screen w-full overflow-x-hidden text-foreground font-sans selection:bg-white selection:text-black relative transition-colors duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)]">
       <NoiseBackground />
