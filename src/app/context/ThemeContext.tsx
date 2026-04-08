@@ -67,9 +67,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
               }}
             />
             
-            {/* Cinematic Transition Overlay - Main Background Sweep with Branding */}
+            {/* Cinematic Transition Overlay - Main Background Sweep */}
             <motion.div
-              className={`fixed top-0 left-0 w-full h-[100vh] ${targetTheme === 'dark' ? 'bg-[#0A0A0A]/90' : 'bg-[#D0DBE1]/90'} backdrop-blur-3xl z-[99999] pointer-events-none flex items-center justify-center`}
+              className={`fixed top-0 left-0 w-full h-[100vh] ${targetTheme === 'dark' ? 'bg-[#0A0A0A]/90' : 'bg-[#D0DBE1]/90'} backdrop-blur-3xl z-[99999] pointer-events-none`}
               initial={{ y: "100%" }}
               animate={{
                 y: "0%",
@@ -79,31 +79,27 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
                 y: "-100%",
                 transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.05 }
               }}
+            />
+
+            {/* Static branding — revealed/concealed by sweep via clipPath */}
+            <motion.div
+              className="fixed inset-0 z-[100000] pointer-events-none flex items-center justify-center"
+              initial={{ clipPath: "inset(100% 0 0 0)" }}
+              animate={{
+                clipPath: "inset(0 0 0 0)",
+                transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.1 }
+              }}
+              exit={{
+                clipPath: "inset(0 0 100% 0)",
+                transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.05 }
+              }}
             >
-              {/* Branding watermark during theme transition — clean reveal/conceal */}
-              <motion.div
-                className="flex flex-col items-center gap-5"
-                initial={{ opacity: 0, y: 8 }}
-                animate={{
-                  opacity: [0, 1, 1, 0.8],
-                  y: [8, 0, 0, 0],
-                  transition: {
-                    duration: 1.2,
-                    times: [0, 0.2, 0.75, 1],
-                    ease: [0.22, 1, 0.36, 1]
-                  }
-                }}
-                exit={{
-                  opacity: 0,
-                  y: -8,
-                  transition: { duration: 0.4, ease: [0.76, 0, 0.24, 1] }
-                }}
-              >
+              <div className="flex flex-col items-center gap-5">
                 <R352Symbol className="w-7 h-7 md:w-9 md:h-9" color="#D4FF00" />
                 <span className={`text-[11px] md:text-sm font-display uppercase tracking-[0.3em] ${targetTheme === 'dark' ? 'text-[#D4FF00]/80' : 'text-[#000000]/50'}`}>
                   your design partner
                 </span>
-              </motion.div>
+              </div>
             </motion.div>
           </>
         )}
