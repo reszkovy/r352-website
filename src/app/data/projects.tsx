@@ -90,8 +90,8 @@ export const projects = [
       pl: "Niezawodność to ostateczna cecha designu. Gdy prowadzisz wiele wątków równolegle, proces staje się tak samo ważny jak piksele."
     },
     stats: [
-        { value: "5+", label: { en: "PMs Coordinated", pl: "Koordynowanych PM-ów" } },
-        { value: "100+", label: { en: "Clubs Supported", pl: "Wspieranych Klubów" } }
+        { value: "15+", label: { en: "PMs Coordinated", pl: "Koordynowanych PM-ów" } },
+        { value: "300+", label: { en: "Clubs Supported", pl: "Wspieranych Klubów" } }
     ]
   },
   {
@@ -140,7 +140,7 @@ export const projects = [
       pl: "Przy każdym projekcie skupiamy się na upraszczaniu złożoności, budowaniu ludzkich relacji i pomaganiu ludziom usłyszeć świat na nowo."
     },
     stats: [
-        { value: "100+", label: { en: "Clinics Supported", pl: "Obsłużone Kliniki" } },
+        { value: "250+", label: { en: "Locations Supported", pl: "Obsłużonych Lokalizacji" } },
         { value: "Daily", label: { en: "Asset Production", pl: "Produkcja Zasobów" } }
     ]
   },
@@ -202,7 +202,7 @@ export const projects = [
     },
     stats: [
         { value: "300k+", label: { en: "Tickets Sold", pl: "Sprzedane Bilety" } },
-        { value: "0", label: { en: "Server Crashes", pl: "Awarie Serwera" } }
+        { value: "10", label: { en: "Concerts", pl: "Koncertów" } }
     ]
   },
   {
