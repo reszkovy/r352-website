@@ -26,10 +26,10 @@ export function Philosophy() {
               <span className="block text-xs font-display uppercase tracking-[0.2em] text-[#D4FF00] mb-8">
                 {t("philosophy_page.label")}
               </span>
-              <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-white mb-16 leading-[0.9] max-w-4xl text-balance">
+              <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-white mb-16 leading-[0.9] max-w-4xl text-balance">
                 {t("philosophy_page.title_line1")} <br className="hidden md:block" />
                 {t("philosophy_page.title_line2")}
-              </h2>
+              </h1>
               <div className="w-3/4 grid grid-cols-1 md:grid-cols-2 gap-12 text-xl md:text-2xl text-neutral-400 leading-relaxed">
                 <div>
                   <p className="whitespace-pre-line">
