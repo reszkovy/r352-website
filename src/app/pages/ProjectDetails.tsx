@@ -4,24 +4,22 @@ import { Reveal } from "@/app/components/ui/Reveal";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
-import { useProject, useProjects, resolveImage } from "@/app/hooks/useSanity";
+import { projects } from "@/app/data/projects";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { useLenis } from "lenis/react";
 import { ImageHover } from "@/app/components/ui/ImageHover";
 
 export function ProjectDetails({ params }: { params?: { id: string } }) {
-  const slug = params?.id || '';
-  const { data: project, loading } = useProject(slug);
-  const { data: allProjects } = useProjects();
+  const project = projects.find(p => p.id === params?.id);
   const containerRef = useRef<HTMLDivElement>(null);
   const { t, language } = useLanguage();
   const lenis = useLenis();
   const [, setLocation] = useLocation();
 
   // Determine next project for the footer link
-  const currentIndex = allProjects.findIndex(p => p.slug === slug || p._id === slug);
-  const nextProjectIndex = allProjects.length > 0 && currentIndex !== -1 ? (currentIndex + 1) % allProjects.length : 0;
-  const nextProject = allProjects[nextProjectIndex];
+  const currentIndex = projects.findIndex(p => p.id === params?.id);
+  const nextProjectIndex = currentIndex !== -1 ? (currentIndex + 1) % projects.length : 0;
+  const nextProject = projects[nextProjectIndex];
 
   // Scroll to top on mount
   useEffect(() => {
@@ -30,18 +28,7 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
     }
   }, [params?.id, lenis]);
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-background">
-        <div className="w-8 h-8 border-2 border-[#D4FF00] border-t-transparent rounded-full animate-spin" />
-      </div>
-    );
-  }
-
   if (!project) return null;
-
-  // Resolve images — works for both Sanity CDN and static paths
-  const coverImageUrl = resolveImage(project.coverImage, project._staticCoverImage || project.coverImage, { width: 1920, quality: 85 });
 
   return (
     <PageTransition className="min-h-screen bg-background text-white selection:bg-[#D4FF00] selection:text-black">
@@ -69,7 +56,7 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                 </h2>
                 <span className="text-xs font-display uppercase tracking-widest text-[#D4FF00]">
                    {/* @ts-ignore */}
-                   {project.year} - {typeof project.category === 'string' ? project.category : project.category?.[language]}
+                   {project.year} - {project.category[language]}
                 </span>
              </div>
           </Reveal>
@@ -91,7 +78,7 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                 </div>
               ) : (
                 <ImageWithFallback
-                  src={coverImageUrl}
+                  src={project.coverImage}
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-[2s] ease-in-out group-hover:scale-105"
                 />
@@ -249,10 +236,7 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
            </div>
 
            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-y-32">
-             {(project.gallery || project.images || []).map((image: any, i: number) => {
-               // Resolve image: Sanity gallery items have asset, static are strings
-               const imageUrl = typeof image === 'string' ? image : resolveImage(image, undefined, { width: 1200, quality: 80 });
-               const imageAlt = (typeof image === 'object' && image?.alt) || `${project.client} visual ${i + 1}`;
+             {project.images.map((image, i) => {
                // Layout Logic
                const isFullWidth = i % 4 === 0;
                const isLeft = i % 4 === 1;
@@ -288,8 +272,8 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                            {/* Image Container */}
                            <div className="w-full h-full p-6 md:p-12 flex items-center justify-center">
                               <img
-                                src={imageUrl}
-                                alt={imageAlt}
+                                src={image}
+                                alt={`${project.client} visual ${i + 1}`}
                                 className="w-full h-full object-contain drop-shadow-2xl"
                               />
                            </div>
@@ -315,22 +299,22 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
            <Reveal>
              <div className="flex flex-col items-center justify-center text-center gap-8">
                <span className="text-xs font-display uppercase tracking-widest text-neutral-500">{t("work.ready")}</span>
-               <a
+               <a 
                   onClick={(e) => {
                      e.preventDefault();
-                     setLocation(`/work/${nextProject?.slug || nextProject?._id}`);
+                     setLocation(`/work/${nextProject.id}`);
                   }}
-                  href={`/work/${nextProject?.slug || nextProject?._id}`}
+                  href={`/work/${nextProject.id}`}
                   className="group relative inline-block cursor-pointer pointer-events-auto"
                >
                   <span className="text-5xl md:text-8xl font-bold tracking-tighter text-black dark:text-white transition-colors duration-300 group-hover:text-transparent group-hover:text-stroke-black dark:group-hover:text-stroke-white group-hover:text-stroke-1">
-                     {nextProject?.client}
+                     {nextProject.client}
                   </span>
                   <span className="absolute inset-0 text-5xl md:text-8xl font-bold tracking-tighter text-[#D4FF00] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none blur-sm">
-                     {nextProject?.client}
+                     {nextProject.client}
                   </span>
                   <span className="absolute inset-0 text-5xl md:text-8xl font-bold tracking-tighter text-[#D4FF00] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                     {nextProject?.client}
+                     {nextProject.client}
                   </span>
                </a>
              </div>

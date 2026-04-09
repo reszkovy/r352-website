@@ -3,11 +3,10 @@ import { Reveal } from "@/app/components/ui/Reveal";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { motion } from "motion/react";
 import { Link } from "wouter";
-import { useArticles, resolveImage } from "@/app/hooks/useSanity";
+import { journalArticles } from "@/app/data/journalArticles";
 
 export function Journal() {
   const { t, language } = useLanguage();
-  const { data: articles, loading } = useArticles();
 
   return (
     <PageTransition className="pt-20 min-h-screen bg-background">
@@ -31,15 +30,13 @@ export function Journal() {
 
       <div className="px-8 md:px-12 py-24 md:py-32 max-w-[1800px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
-          {articles.map((article, i) => {
-            const imageUrl = resolveImage(article.image, article._staticImage, { width: 800, quality: 80 });
-            return (
-            <Reveal key={article._id} delay={i * 0.1}>
-              <Link href={`/journal/${article.slug}`} className="group block cursor-pointer">
+          {journalArticles.map((article, i) => (
+            <Reveal key={article.id} delay={i * 0.1}>
+              <Link href={`/journal/${article.id}`} className="group block cursor-pointer">
                 <div className="relative aspect-[4/3] overflow-hidden bg-neutral-900 mb-8 rounded-sm">
                   <div className="absolute inset-0 bg-neutral-800 animate-pulse" />
-                  <motion.img
-                    src={imageUrl}
+                  <motion.img 
+                    src={article.image} 
                     alt={article.title}
                     className="w-full h-full object-cover relative z-10 transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
                   />
@@ -63,14 +60,13 @@ export function Journal() {
                   </span>
                 </div>
 
-                <h3 
+                <h3
                   className="text-2xl md:text-3xl font-bold tracking-tight text-white leading-tight group-hover:text-[#D4FF00] transition-colors duration-300 break-words [word-break:break-word] hyphens-auto text-balance"
-                  dangerouslySetInnerHTML={{ __html: article.title }}
+                  dangerouslySetInnerHTML={{ __html: (language === 'pl' && article.title_pl) ? article.title_pl : article.title }}
                 />
               </Link>
             </Reveal>
-          );
-          })}
+          ))}
         </div>
 
         {/* Cross-Link CTA */}
