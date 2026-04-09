@@ -73,7 +73,7 @@ export function AgencyHeader() {
     setLanguage(language === 'en' ? 'pl' : 'en');
   };
 
-  const tagline = "YOUR AGILE DESIGN PARTNER";
+  const tagline = t("nav.tagline");
   const taglineWords = tagline.split(" ");
 
   return (
@@ -233,8 +233,9 @@ export function AgencyHeader() {
           </div>
           
           {/* Language Switcher */}
-          <button 
+          <button
             onClick={toggleLanguage}
+            aria-label={language === 'en' ? 'Switch to Polish' : 'Przełącz na angielski'}
             className="ml-4 text-sm font-display uppercase tracking-widest text-neutral-500 hover:text-white transition-colors"
           >
             <span className={cn(language === 'en' && "text-[#D4FF00]")}>EN</span>
@@ -346,8 +347,9 @@ export function AgencyHeader() {
                     transition={{ delay: 0.8, duration: 1 }}
                     className="mt-12 flex gap-8 items-center"
                 >
-                     <button 
+                     <button
                         onClick={toggleLanguage}
+                        aria-label={language === 'en' ? 'Switch to Polish' : 'Przełącz na angielski'}
                         className="text-lg font-display uppercase tracking-widest text-neutral-500 hover:text-white transition-colors"
                       >
                         <span className={cn(language === 'en' && "text-[#D4FF00]")}>EN</span>
@@ -355,8 +357,9 @@ export function AgencyHeader() {
                         <span className={cn(language === 'pl' && "text-[#D4FF00]")}>PL</span>
                       </button>
 
-                      <button 
+                      <button
                         onClick={toggleTheme}
+                        aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
                         className="text-lg font-display uppercase tracking-widest text-neutral-500 hover:text-white transition-colors"
                       >
                         <span className={cn(theme === 'light' && "text-[#D4FF00]")}>LIGHT</span>

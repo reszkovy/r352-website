@@ -8,7 +8,8 @@ export const translations = {
       schedule: "Schedule a call",
       journal: "Journal",
       detailed_brief: "Detailed Brief",
-      pricing: "Limited Access"
+      pricing: "Limited Access",
+      tagline: "YOUR AGILE DESIGN PARTNER"
     },
     hero: {
       title: "Design-first partner<br/>for teams that ship.",
@@ -490,7 +491,8 @@ export const translations = {
       schedule: "Umów rozmowę",
       journal: "Dziennik",
       detailed_brief: "Szczegółowy Brief",
-      pricing: "Dostęp ograniczony"
+      pricing: "Dostęp ograniczony",
+      tagline: "TWÓJ SPRAWNY PARTNER DESIGNOWY"
     },
     hero: {
       title: "Twój sprawny<br/>partner w designie",
@@ -758,7 +760,7 @@ export const translations = {
       engagement: {
         label: "Współpraca",
         heading: "Modele współpracy",
-        cta: "Let’s build your delivery system — and ship.",
+        cta: "Zbudujmy Twój system dostarczania — i zacznijmy wysyłać.",
         models: {
           sprint: {
             type: "Stały zakres",
@@ -935,9 +937,9 @@ export const translations = {
       cta_work: "Zobacz prace"
     },
     footer: {
-      idea: "Let's build your delivery system — and ship.",
-      bold_ideas: "Bold ideas",
-      shaped: "shaped with care.",
+      idea: "Zbudujmy Twój system dostarczania — i zacznijmy wysyłać.",
+      bold_ideas: "Odważne pomysły",
+      shaped: "z precyzją i troską.",
       cta: "Rozpocznij projekt",
       studio: "Studio",
       sitemap: "Mapa strony",
@@ -957,7 +959,7 @@ export const translations = {
       }
     },
     marquee: {
-      text: "DIAGNOSE · BUILD · SCALE"
+      text: "DIAGNOZA · BUDOWA · SKALA"
     }
   }
 };

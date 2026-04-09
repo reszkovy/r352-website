@@ -20,35 +20,69 @@ type FormData = {
   timeline: string;
 };
 
-const stages = [
-  "Early idea / exploration",
-  "Growing and feeling the need for structure",
-  "Scaling and trying to maintain quality",
-  "Something else"
-];
+const stagesMap = {
+  en: [
+    "Early idea / exploration",
+    "Growing and feeling the need for structure",
+    "Scaling and trying to maintain quality",
+    "Something else"
+  ],
+  pl: [
+    "Wczesny pomysł / eksploracja",
+    "Rozwój i potrzeba struktury",
+    "Skalowanie z zachowaniem jakości",
+    "Coś innego"
+  ]
+};
 
-const supportOptions = [
-  "Direction & strategy",
-  "Digital product or platform",
-  "Design system / visual direction",
-  "Ongoing partnership",
-  "Not sure yet"
-];
+const supportOptionsMap = {
+  en: [
+    "Direction & strategy",
+    "Digital product or platform",
+    "Design system / visual direction",
+    "Ongoing partnership",
+    "Not sure yet"
+  ],
+  pl: [
+    "Kierunek i strategia",
+    "Produkt cyfrowy lub platforma",
+    "System designu / kierunek wizualny",
+    "Stała współpraca",
+    "Jeszcze nie wiem"
+  ]
+};
 
-const budgetRanges = [
-  "5k–10k (Design Sprint / Brand Audit, 2 weeks)",
-  "10k–25k",
-  "25k–50k",
-  "50k+",
-  "Not defined yet"
-];
+const budgetRangesMap = {
+  en: [
+    "5k–10k (Design Sprint / Brand Audit, 2 weeks)",
+    "10k–25k",
+    "25k–50k",
+    "50k+",
+    "Not defined yet"
+  ],
+  pl: [
+    "5k–10k (Design Sprint / Audyt Marki, 2 tygodnie)",
+    "10k–25k",
+    "25k–50k",
+    "50k+",
+    "Jeszcze nie określony"
+  ]
+};
 
-const timings = [
-  "As soon as possible",
-  "In the next 1–2 months",
-  "Later this year",
-  "Just exploring"
-];
+const timingsMap = {
+  en: [
+    "As soon as possible",
+    "In the next 1–2 months",
+    "Later this year",
+    "Just exploring"
+  ],
+  pl: [
+    "Jak najszybciej",
+    "W ciągu 1–2 miesięcy",
+    "Później w tym roku",
+    "Na razie eksploruję"
+  ]
+};
 
 export function Contact() {
   const { register, handleSubmit, watch, setValue, formState: { errors, isSubmitting } } = useForm<FormData>({
@@ -61,6 +95,11 @@ export function Contact() {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const selectedSupport = watch("support");
   const { t, language } = useLanguage();
+  const lang = language === 'pl' ? 'pl' : 'en';
+  const stages = stagesMap[lang];
+  const supportOptions = supportOptionsMap[lang];
+  const budgetRanges = budgetRangesMap[lang];
+  const timings = timingsMap[lang];
 
   const onSubmit = async (data: FormData) => {
     setSubmitError(null);
@@ -85,7 +124,7 @@ ${data.context}
 
     // 1. Send via FormSubmit
     try {
-      const formSubmitUrl = `https://formsubmit.co/ajax/p.reszkovy@gmail.com`;
+      const formSubmitUrl = `https://formsubmit.co/ajax/hello@r352.com`;
       console.log("[Contact Form] Sending to:", formSubmitUrl);
       
       const response = await fetch(formSubmitUrl, {
@@ -122,7 +161,7 @@ ${data.context}
       
       // 2. Try opening email client as backup if fetch fails
       try {
-        const mailtoUrl = `mailto:p.reszkovy@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        const mailtoUrl = `mailto:hello@r352.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         const link = document.createElement('a');
         link.href = mailtoUrl;
         link.style.display = 'none';
@@ -158,12 +197,28 @@ ${data.context}
             <div className="w-16 h-16 bg-[#D4FF00] rounded-full flex items-center justify-center mx-auto mb-8 text-black">
               <Check size={32} />
             </div>
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-white">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-white">
               {t("contact.success.title")}
-            </h2>
+            </h1>
             <p className="text-xl text-neutral-400 leading-relaxed">
               {t("contact.success.body")}
             </p>
+            <div className="pt-8 flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://calendly.com/p-reszkovy/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-8 py-4 bg-[#D4FF00] text-black font-display uppercase tracking-widest text-sm hover:bg-white transition-colors duration-300"
+              >
+                {language === 'pl' ? 'Umów rozmowę' : 'Schedule a call'}
+              </a>
+              <a
+                href="/"
+                className="inline-flex items-center justify-center px-8 py-4 border border-white/20 text-white font-display uppercase tracking-widest text-sm hover:bg-white hover:text-black transition-colors duration-300"
+              >
+                {language === 'pl' ? 'Strona główna' : 'Back to homepage'}
+              </a>
+            </div>
           </div>
         </Reveal>
       </PageTransition>

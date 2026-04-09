@@ -214,7 +214,17 @@ function AppContent() {
               <Route path="/limitedaccess5" component={LimitedAccess5} />
               <Route path="/limitedaccess5/spotkanie" component={LimitedAccess5Meeting} />
               <Route path="/limitedaccess5/wycena" component={LimitedAccess5Pricing} />
-              <Route>404: No such page!</Route>
+              <Route>{() => (
+                <div className="pt-32 min-h-screen flex flex-col items-center justify-center text-center px-6">
+                  <div className="max-w-xl mx-auto space-y-8">
+                    <h1 className="text-8xl md:text-[12rem] font-bold tracking-tighter text-white leading-none">404</h1>
+                    <p className="text-xl text-neutral-400">This page doesn't exist.</p>
+                    <a href="/" className="inline-flex items-center justify-center px-8 py-4 bg-[#D4FF00] text-black font-display uppercase tracking-widest text-sm hover:bg-white transition-colors duration-300">
+                      Back to homepage
+                    </a>
+                  </div>
+                </div>
+              )}</Route>
             </Switch>
           </AnimatePresence>
         </Suspense>
