@@ -2,32 +2,34 @@ import { Route, Switch, useLocation } from "wouter";
 import { AgencyHeader } from "@/app/components/agency/AgencyHeader";
 import { Footer } from "@/app/components/Footer";
 import { AnimatePresence } from "motion/react";
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import { SmoothScroll } from "@/app/components/ui/SmoothScroll";
 import { HelmetProvider } from "react-helmet-async";
 import { SEO } from "@/app/components/SEO";
 import { GTM } from "@/app/components/GTM";
 
-// Pages
+// Non-lazy (always needed)
 import { NoiseBackground } from "@/app/components/ui/NoiseBackground";
 import { PersistentBackground } from "@/app/components/ui/PersistentBackground";
-import { Home } from "@/app/pages/Home";
-import { Work } from "@/app/pages/Work";
-import { ProjectDetails } from "@/app/pages/ProjectDetails";
-import { Philosophy } from "@/app/pages/Philosophy";
-import { Services } from "@/app/pages/Services";
-import { ServiceDetail } from "@/app/pages/ServiceDetail";
-import { Deliverables } from "@/app/pages/Deliverables";
-import { Contact } from "@/app/pages/Contact";
-import { Journal } from "@/app/pages/Journal";
-import { JournalArticle } from "@/app/pages/JournalArticle";
-import { BriefAccess } from "@/app/pages/BriefAccess";
-import { Pricing } from "@/app/pages/Pricing";
-import { LimitedAccess2 } from "@/app/pages/LimitedAccess2";
-import { LimitedAccess3 } from "@/app/pages/LimitedAccess3";
-import { LimitedAccess5 } from "@/app/pages/LimitedAccess5";
-import { LimitedAccess5Meeting } from "@/app/pages/LimitedAccess5Meeting";
-import { LimitedAccess5Pricing } from "@/app/pages/LimitedAccess5Pricing";
+
+// Lazy-loaded pages (code splitting)
+const Home = lazy(() => import("@/app/pages/Home").then(m => ({ default: m.Home })));
+const Work = lazy(() => import("@/app/pages/Work").then(m => ({ default: m.Work })));
+const ProjectDetails = lazy(() => import("@/app/pages/ProjectDetails").then(m => ({ default: m.ProjectDetails })));
+const Philosophy = lazy(() => import("@/app/pages/Philosophy").then(m => ({ default: m.Philosophy })));
+const Services = lazy(() => import("@/app/pages/Services").then(m => ({ default: m.Services })));
+const ServiceDetail = lazy(() => import("@/app/pages/ServiceDetail").then(m => ({ default: m.ServiceDetail })));
+const Deliverables = lazy(() => import("@/app/pages/Deliverables").then(m => ({ default: m.Deliverables })));
+const Contact = lazy(() => import("@/app/pages/Contact").then(m => ({ default: m.Contact })));
+const Journal = lazy(() => import("@/app/pages/Journal").then(m => ({ default: m.Journal })));
+const JournalArticle = lazy(() => import("@/app/pages/JournalArticle").then(m => ({ default: m.JournalArticle })));
+const BriefAccess = lazy(() => import("@/app/pages/BriefAccess").then(m => ({ default: m.BriefAccess })));
+const Pricing = lazy(() => import("@/app/pages/Pricing").then(m => ({ default: m.Pricing })));
+const LimitedAccess2 = lazy(() => import("@/app/pages/LimitedAccess2").then(m => ({ default: m.LimitedAccess2 })));
+const LimitedAccess3 = lazy(() => import("@/app/pages/LimitedAccess3").then(m => ({ default: m.LimitedAccess3 })));
+const LimitedAccess5 = lazy(() => import("@/app/pages/LimitedAccess5").then(m => ({ default: m.LimitedAccess5 })));
+const LimitedAccess5Meeting = lazy(() => import("@/app/pages/LimitedAccess5Meeting").then(m => ({ default: m.LimitedAccess5Meeting })));
+const LimitedAccess5Pricing = lazy(() => import("@/app/pages/LimitedAccess5Pricing").then(m => ({ default: m.LimitedAccess5Pricing })));
 import { useLenis } from "lenis/react";
 
 function ScrollToTop() {
@@ -169,28 +171,30 @@ function AppContent() {
       <AgencyHeader />
       
       <main className="relative min-h-screen">
-        <AnimatePresence mode="wait">
-          <Switch location={location} key={getPageKey(location)}>
-            <Route path="/" component={Home} />
-            <Route path="/work" component={Work} />
-            <Route path="/work/:id" component={ProjectDetails} />
-            <Route path="/philosophy" component={Philosophy} />
-            <Route path="/services" component={Services} />
-            <Route path="/services/:slug" component={ServiceDetail} />
-            <Route path="/deliverables" component={Deliverables} />
-            <Route path="/journal" component={Journal} />
-            <Route path="/journal/:id" component={JournalArticle} />
-            <Route path="/contact" component={Contact} />
-            <Route path="/brief-access" component={BriefAccess} />
-            <Route path="/limitedaccess" component={Pricing} />
-            <Route path="/limitedaccess2" component={LimitedAccess2} />
-            <Route path="/limitedaccess3" component={LimitedAccess3} />
-            <Route path="/limitedaccess5" component={LimitedAccess5} />
-            <Route path="/limitedaccess5/spotkanie" component={LimitedAccess5Meeting} />
-            <Route path="/limitedaccess5/wycena" component={LimitedAccess5Pricing} />
-            <Route>404: No such page!</Route>
-          </Switch>
-        </AnimatePresence>
+        <Suspense fallback={null}>
+          <AnimatePresence mode="wait">
+            <Switch location={location} key={getPageKey(location)}>
+              <Route path="/" component={Home} />
+              <Route path="/work" component={Work} />
+              <Route path="/work/:id" component={ProjectDetails} />
+              <Route path="/philosophy" component={Philosophy} />
+              <Route path="/services" component={Services} />
+              <Route path="/services/:slug" component={ServiceDetail} />
+              <Route path="/deliverables" component={Deliverables} />
+              <Route path="/journal" component={Journal} />
+              <Route path="/journal/:id" component={JournalArticle} />
+              <Route path="/contact" component={Contact} />
+              <Route path="/brief-access" component={BriefAccess} />
+              <Route path="/limitedaccess" component={Pricing} />
+              <Route path="/limitedaccess2" component={LimitedAccess2} />
+              <Route path="/limitedaccess3" component={LimitedAccess3} />
+              <Route path="/limitedaccess5" component={LimitedAccess5} />
+              <Route path="/limitedaccess5/spotkanie" component={LimitedAccess5Meeting} />
+              <Route path="/limitedaccess5/wycena" component={LimitedAccess5Pricing} />
+              <Route>404: No such page!</Route>
+            </Switch>
+          </AnimatePresence>
+        </Suspense>
       </main>
       
       <Footer />
