@@ -19,17 +19,19 @@ export function AgencyHero() {
       <div className="flex-grow flex flex-col justify-end w-full max-w-[1800px] mx-auto px-8 md:px-12 pb-32 pt-40 relative z-10 pointer-events-none">
         <div className="pointer-events-auto">
           <div className="hidden md:block">
-            <CinematicText 
-              text={t("hero.title")} 
-              className="type-h1 mb-16 md:mb-24 text-balance max-w-[95%] cursor-default" 
+            <CinematicText
+              text={t("hero.title")}
+              as="h1"
+              className="type-h1 mb-16 md:mb-24 text-balance max-w-[95%] cursor-default"
               delay={0.1}
               glowEffect={true}
             />
           </div>
           <div className="block md:hidden">
-            <CinematicText 
-              text={t("hero.title_mobile")} 
-              className="type-h1 mb-16 md:mb-24 text-balance max-w-[95%] cursor-default" 
+            <CinematicText
+              text={t("hero.title_mobile")}
+              as="h1"
+              className="type-h1 mb-16 md:mb-24 text-balance max-w-[95%] cursor-default"
               delay={0.1}
               glowEffect={true}
             />
@@ -42,7 +44,7 @@ export function AgencyHero() {
               
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-16 md:gap-12 pt-12 md:pt-16">
                 <div className="w-full max-w-3xl">
-                <h2 className="type-body-lg leading-relaxed text-balance text-neutral-400" dangerouslySetInnerHTML={{ __html: t("hero.description_title") }} />
+                <p className="type-body-lg leading-relaxed text-balance text-neutral-400" dangerouslySetInnerHTML={{ __html: t("hero.description_title") }} />
               </div>
               
               <div className="flex flex-col gap-8 md:items-end shrink-0">

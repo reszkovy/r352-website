@@ -11,6 +11,7 @@ interface CinematicTextProps {
   glowEffect?: boolean;
   baseColor?: string;
   glowColor?: string;
+  as?: 'h1' | 'h2' | 'h3' | 'div';
 }
 
 export function CinematicText({ 
@@ -21,7 +22,8 @@ export function CinematicText({
   splitByChar = true,
   glowEffect = false,
   baseColor = "#ffffff",
-  glowColor = "#D4FF00"
+  glowColor = "#D4FF00",
+  as: Tag = "div"
 }: CinematicTextProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-10% 0px -10% 0px" });
@@ -60,7 +62,7 @@ export function CinematicText({
   const lines = text.split(/<br\s*\/?>/i);
 
   return (
-    <div ref={ref} className={cn("flex flex-col", className)}>
+    <Tag ref={ref} className={cn("flex flex-col", className)}>
       {lines.map((line, lineIndex) => (
         <div key={lineIndex} className="overflow-hidden leading-[1.05] pb-2 flex flex-wrap">
           {splitByChar ? (
@@ -101,7 +103,7 @@ export function CinematicText({
           )}
         </div>
       ))}
-    </div>
+    </Tag>
   );
 }
 
