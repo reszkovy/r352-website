@@ -88,6 +88,25 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
           </ImageHover>
         </Reveal>
 
+        {/* Impact Metrics Banner */}
+        {project.stats && (
+          <Reveal>
+            <div className="mb-32 py-16 border-y border-white/10">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+                {project.stats.map((stat, i) => (
+                  <div key={typeof stat.label === 'string' ? stat.label : stat.label['en']} className="text-center md:text-left">
+                    <div className="text-4xl md:text-6xl font-bold text-[#D4FF00] tracking-tighter mb-2">{stat.value}</div>
+                    <div className="text-xs text-neutral-500 uppercase tracking-widest">
+                      {/* @ts-ignore */}
+                      {typeof stat.label === 'string' ? stat.label : stat.label[language]}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        )}
+
         {/* Main Content Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 mb-32">
           
@@ -293,6 +312,23 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
              })}
            </div>
         </section>
+
+        {/* Contact CTA */}
+        <Reveal>
+          <div className="mb-24 py-16 px-8 md:px-12 bg-white/[0.03] border border-white/10 text-center relative z-50 pointer-events-auto">
+            <span className="block text-xs font-display uppercase tracking-widest text-neutral-500 mb-6">
+              {language === 'pl' ? "Potrzebujesz podobnych rezultatów?" : "Need results like these?"}
+            </span>
+            <Link
+              href="/contact"
+              className="group relative inline-block cursor-pointer pointer-events-auto"
+            >
+              <span className="text-3xl md:text-5xl font-bold tracking-tighter text-white transition-colors duration-300 group-hover:text-[#D4FF00]">
+                {language === 'pl' ? "Porozmawiajmy" : "Let's talk"}
+              </span>
+            </Link>
+          </div>
+        </Reveal>
 
         {/* Next Project Footer */}
         <div className="border-t border-black/10 dark:border-white/10 pt-24 pb-12 relative z-50 pointer-events-auto">

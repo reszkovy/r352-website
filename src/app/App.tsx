@@ -7,6 +7,8 @@ import { SmoothScroll } from "@/app/components/ui/SmoothScroll";
 import { HelmetProvider } from "react-helmet-async";
 import { SEO } from "@/app/components/SEO";
 import { GTM } from "@/app/components/GTM";
+import { journalArticles } from "@/app/data/journalArticles";
+import { projects } from "@/app/data/projects";
 
 // Non-lazy (always needed)
 import { NoiseBackground } from "@/app/components/ui/NoiseBackground";
@@ -95,15 +97,23 @@ function AppContent() {
     return path;
   };
 
-  const getPageSEO = (path: string): { title: string; description: string } => {
+  const getPageSEO = (path: string): { title: string; description: string; article?: { title: string; date: string; category: string } } => {
     if (path === "/work") return {
       title: "Work — r352 | Selected projects & case studies",
       description: "See how we help multi-location brands like Sonova, Benefit Systems, and Kubota ship faster with scalable design systems and delivery workflows."
     };
-    if (path.startsWith("/work/")) return {
-      title: "Case Study — r352 | Project Details",
-      description: "Deep dive into how r352 solved delivery bottlenecks and built scalable brand systems for this client."
-    };
+    if (path.startsWith("/work/")) {
+      const projectId = path.replace("/work/", "");
+      const project = projects.find(p => p.id === projectId);
+      if (project) return {
+        title: `${project.client}: ${project.title} — r352 Case Study`,
+        description: project.description?.en?.substring(0, 155) || `How r352 helped ${project.client} build scalable design systems and delivery workflows.`
+      };
+      return {
+        title: "Case Study — r352 | Project Details",
+        description: "Deep dive into how r352 solved delivery bottlenecks and built scalable brand systems for this client."
+      };
+    }
     if (path === "/services") return {
       title: "Services — r352 | Design Operations & Delivery Systems",
       description: "From brand operating systems to design production and optimization — we build the infrastructure that lets multi-location teams ship consistently."
@@ -132,10 +142,22 @@ function AppContent() {
       title: "Journal — r352 | Insights on design operations & delivery",
       description: "Articles on design operations, delivery workflows, brand systems, and how multi-location organizations can scale their creative output."
     };
-    if (path.startsWith("/journal/")) return {
-      title: "Article — r352 Journal",
-      description: "Read this article on design operations, delivery systems, and scaling creative output for multi-location organizations."
-    };
+    if (path.startsWith("/journal/")) {
+      const articleId = parseInt(path.replace("/journal/", ""));
+      const article = journalArticles.find(a => a.id === articleId);
+      if (article) {
+        const cleanTitle = article.title.replace(/<br\s*\/?>/g, ' ');
+        return {
+          title: `${cleanTitle} — r352 Journal`,
+          description: `r352 Journal: ${cleanTitle}. Insights on design operations, delivery systems, and scaling creative output for multi-location organizations.`,
+          article: { title: article.title, date: article.date, category: article.category }
+        };
+      }
+      return {
+        title: "Article — r352 Journal",
+        description: "Read this article on design operations, delivery systems, and scaling creative output for multi-location organizations."
+      };
+    }
     if (path === "/contact") return {
       title: "Contact — r352 | Let's shape the path forward",
       description: "Ready to fix your delivery bottlenecks? Get in touch — we work with teams that are serious about scaling their design operations."
@@ -157,7 +179,7 @@ function AppContent() {
     <>
       <GTM />
       <Preloader />
-      <SEO path={location} title={getPageSEO(location).title} description={getPageSEO(location).description} />
+      <SEO path={location} title={getPageSEO(location).title} description={getPageSEO(location).description} article={getPageSEO(location).article} />
       <SmoothScroll>
       <div className={`${theme === 'dark' ? 'dark' : ''} bg-background min-h-screen w-full overflow-x-hidden text-foreground font-sans selection:bg-white selection:text-black relative transition-colors duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)]`}>
       <NoiseBackground />

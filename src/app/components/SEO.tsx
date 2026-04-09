@@ -6,6 +6,7 @@ interface SEOProps {
   description?: string;
   path?: string;
   ogImage?: string;
+  article?: { title: string; date: string; category: string };
 }
 
 export function SEO({
@@ -114,6 +115,37 @@ export function SEO({
     ]
   };
 
+  const isArticle = !!article;
+
+  const blogPostingSchema = article ? {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": article.title.replace(/<br\s*\/?>/g, ' '),
+    "datePublished": article.date,
+    "dateModified": article.date,
+    "author": {
+      "@type": "Organization",
+      "name": "r352",
+      "url": "https://r352.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "r352",
+      "url": "https://r352.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://r352.com/og-image.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": canonicalUrl
+    },
+    "articleSection": article.category,
+    "image": ogImage,
+    "url": canonicalUrl
+  } : null;
+
   return (
     <Helmet>
       <title>{title}</title>
@@ -127,7 +159,7 @@ export function SEO({
       <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />
 
       {/* Open Graph */}
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content={isArticle ? "article" : "website"} />
       <meta property="og:site_name" content="r352" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
@@ -154,6 +186,15 @@ export function SEO({
           </script>
           <script type="application/ld+json">
             {JSON.stringify(reviewsSchema)}
+          </script>
+        </>
+      ) : isArticle && blogPostingSchema ? (
+        <>
+          <script type="application/ld+json">
+            {JSON.stringify(organizationSchema)}
+          </script>
+          <script type="application/ld+json">
+            {JSON.stringify(blogPostingSchema)}
           </script>
         </>
       ) : (
