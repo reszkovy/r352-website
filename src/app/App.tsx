@@ -97,7 +97,7 @@ function AppContent() {
     return path;
   };
 
-  const getPageSEO = (path: string): { title: string; description: string; article?: { title: string; date: string; category: string } } => {
+  const getPageSEO = (path: string): { title: string; description: string; ogImage?: string; article?: { title: string; date: string; category: string } } => {
     if (path === "/work") return {
       title: "Work — r352 | Selected projects & case studies",
       description: "See how we help multi-location brands like Sonova, Benefit Systems, and Kubota ship faster with scalable design systems and delivery workflows."
@@ -107,7 +107,8 @@ function AppContent() {
       const project = projects.find(p => p.id === projectId);
       if (project) return {
         title: `${project.client}: ${project.title} — r352 Case Study`,
-        description: project.description?.en?.substring(0, 155) || `How r352 helped ${project.client} build scalable design systems and delivery workflows.`
+        description: project.description?.en?.substring(0, 155) || `How r352 helped ${project.client} build scalable design systems and delivery workflows.`,
+        ogImage: project.coverImage?.startsWith('http') ? project.coverImage : `https://r352.com${project.coverImage}`
       };
       return {
         title: "Case Study — r352 | Project Details",
@@ -150,6 +151,7 @@ function AppContent() {
         return {
           title: `${cleanTitle} — r352 Journal`,
           description: `r352 Journal: ${cleanTitle}. Insights on design operations, delivery systems, and scaling creative output for multi-location organizations.`,
+          ogImage: article.image.startsWith('http') ? article.image : `https://r352.com${article.image}`,
           article: { title: article.title, date: article.date, category: article.category }
         };
       }
@@ -179,7 +181,7 @@ function AppContent() {
     <>
       <GTM />
       <Preloader />
-      <SEO path={location} title={getPageSEO(location).title} description={getPageSEO(location).description} article={getPageSEO(location).article} />
+      {(() => { const seo = getPageSEO(location); return <SEO path={location} title={seo.title} description={seo.description} ogImage={seo.ogImage} article={seo.article} />; })()}
       <SmoothScroll>
       <div className={`${theme === 'dark' ? 'dark' : ''} bg-background min-h-screen w-full overflow-x-hidden text-foreground font-sans selection:bg-white selection:text-black relative transition-colors duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)]`}>
       <NoiseBackground />

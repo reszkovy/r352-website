@@ -38,9 +38,9 @@ export function Footer() {
   ];
 
   const socialLinks = [
-    { label: "Instagram", href: "#" },
+    { label: "Instagram", href: "https://www.instagram.com/r352.studio/" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/przemyslawreszka/" },
-    { label: "YouTube", href: "https://www.youtube.com/@r35z" }
+    { label: "YouTube", href: "https://www.youtube.com/@r352studio" }
   ];
 
   return (

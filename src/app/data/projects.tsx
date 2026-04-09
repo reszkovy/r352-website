@@ -141,7 +141,7 @@ export const projects = [
     },
     stats: [
         { value: "250+", label: { en: "Locations Supported", pl: "Obsłużonych Lokalizacji" } },
-        { value: "Daily", label: { en: "Asset Production", pl: "Produkcja Zasobów" } }
+        { value: "500+", label: { en: "Assets / Year", pl: "Zasobów / Rok" } }
     ]
   },
   {
@@ -255,8 +255,8 @@ export const projects = [
       pl: "Najważniejsze punkty: Bieżąca produkcja treści i materiały kampanijne, Modułowe formaty i reużywalne komponenty, Spójność we wszystkich kanałach (digital / social / print), Pakiet materiałów na debiut IPO."
     },
     stats: [
-        { value: "IPO", label: { en: "Key milestone", pl: "Kluczowy etap" } },
-        { value: "Fast", label: { en: "Turnaround", pl: "Czas realizacji" } }
+        { value: "3+", label: { en: "Years of Partnership", pl: "Lata Współpracy" } },
+        { value: "200+", label: { en: "Deliverables Shipped", pl: "Dostarczonych Materiałów" } }
     ]
   }
 ];
