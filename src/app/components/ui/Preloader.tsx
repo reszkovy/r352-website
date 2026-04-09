@@ -33,6 +33,11 @@ export function Preloader() {
         <motion.div
           key="preloader-wrapper"
           className="fixed inset-0 z-[9998] pointer-events-none"
+          initial={{ opacity: 1 }}
+          exit={{
+            opacity: 0,
+            transition: { duration: 0.1, delay: 0.85 }
+          }}
         >
           {/* Cinematic Transition Overlay - Lime Accent */}
           <motion.div

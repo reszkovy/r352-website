@@ -81,7 +81,6 @@ function useFavicon() {
     link.type = "image/svg+xml";
     link.href = url;
 
-    document.title = "r352 — Design-first partner for teams that ship.";
     return () => URL.revokeObjectURL(url);
   }, []);
 }
