@@ -1,12 +1,13 @@
 import { PageTransition } from "@/app/components/ui/PageTransition";
 import { Reveal } from "@/app/components/ui/Reveal";
 import { Link } from "wouter";
-import { projects } from "@/app/data/projects";
+import { useProjects, resolveImage } from "@/app/hooks/useSanity";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { useLanguage } from "@/app/context/LanguageContext";
 
 export function Work() {
   const { t, language } = useLanguage();
+  const { data: projects, loading } = useProjects();
   
   return (
     <PageTransition className="pt-20 min-h-screen">
@@ -35,14 +36,16 @@ export function Work() {
       {/* Projects Grid */}
       <div className="px-8 md:px-12 py-24 md:py-32 max-w-[1800px] mx-auto">
         <div className="space-y-32">
-          {projects.map((project) => (
-            <Reveal key={project.id} className="group cursor-pointer">
-              <Link href={`/work/${project.id}`} className="block">
+          {projects.map((project) => {
+            const coverUrl = resolveImage(project.coverImage, project._staticCoverImage, { width: 1600, quality: 80 });
+            return (
+            <Reveal key={project._id || project.slug} className="group cursor-pointer">
+              <Link href={`/work/${project.slug}`} className="block">
                   <div className="w-full aspect-[16/9] bg-neutral-100 dark:bg-neutral-900 overflow-hidden mb-8 relative">
                     <div className="absolute inset-0 bg-black/0 dark:bg-white/0 group-hover:bg-black/5 dark:group-hover:bg-white/5 transition-colors z-10 duration-500" />
-                    <ImageWithFallback 
-                      src={project.coverImage} 
-                      alt={project.client} 
+                    <ImageWithFallback
+                      src={coverUrl}
+                      alt={project.client}
                       className="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-[1.5s] ease-out"
                     />
                   </div>
@@ -54,7 +57,7 @@ export function Work() {
                       </h2>
                       <span className="text-xs font-display uppercase tracking-widest text-[#D4FF00]">
                         {/* @ts-ignore - Localized data */}
-                        {project.category[language]}
+                        {typeof project.category === 'string' ? project.category : project.category?.[language]}
                       </span>
                     </div>
                     <span className="text-xs font-display uppercase tracking-widest text-neutral-600">
@@ -63,7 +66,8 @@ export function Work() {
                   </div>
               </Link>
             </Reveal>
-          ))}
+          );
+          })}
         </div>
 
         {/* Cross-Link CTA */}

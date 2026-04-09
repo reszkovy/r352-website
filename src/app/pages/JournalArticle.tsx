@@ -1,19 +1,21 @@
 import { PageTransition } from "@/app/components/ui/PageTransition";
 import { Reveal } from "@/app/components/ui/Reveal";
 import { Link } from "wouter";
-import { journalArticles } from "@/app/data/journalArticles";
+import { useArticle, useArticles, resolveImage } from "@/app/hooks/useSanity";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import { useLanguage } from "@/app/context/LanguageContext";
 
 export function JournalArticle({ params }: { params?: { id: string } }) {
   const { language } = useLanguage();
-  const id = params?.id ? parseInt(params.id) : null;
-  const articleIndex = journalArticles.findIndex((a) => a.id === id);
-  const article = journalArticles[articleIndex];
-  
-  const nextArticleIndex = (articleIndex + 1) % journalArticles.length;
-  const nextArticle = journalArticles[nextArticleIndex];
+  const slug = params?.id || '';
+  const { data: article, loading } = useArticle(slug);
+  const { data: allArticles } = useArticles();
+
+  // Find next article
+  const articleIndex = allArticles.findIndex((a) => a.slug === slug || a._id === slug);
+  const nextArticleIndex = allArticles.length > 0 ? (articleIndex + 1) % allArticles.length : 0;
+  const nextArticle = allArticles[nextArticleIndex];
 
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -23,14 +25,22 @@ export function JournalArticle({ params }: { params?: { id: string } }) {
 
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
-  if (!article) {
+  const heroImage = article ? resolveImage(article.image, article._staticImage, { width: 1920, quality: 80 }) : '';
+
+  if (!article || loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background text-black dark:text-white">
         <div className="text-center">
-          <h1 className="text-4xl font-display mb-4">Article Not Found</h1>
-          <Link href="/journal" className="text-[#D4FF00] hover:underline uppercase tracking-widest font-display text-sm">
-            Back to Journal
-          </Link>
+          {loading ? (
+            <div className="w-8 h-8 border-2 border-[#D4FF00] border-t-transparent rounded-full animate-spin" />
+          ) : (
+            <>
+              <h1 className="text-4xl font-display mb-4">Article Not Found</h1>
+              <Link href="/journal" className="text-[#D4FF00] hover:underline uppercase tracking-widest font-display text-sm">
+                Back to Journal
+              </Link>
+            </>
+          )}
         </div>
       </div>
     );
@@ -41,9 +51,9 @@ export function JournalArticle({ params }: { params?: { id: string } }) {
       {/* Hero Section */}
       <div className="relative min-h-[85vh] md:min-h-[70vh] w-full overflow-hidden flex-shrink-0" ref={containerRef}>
         <motion.div style={{ y }} className="absolute inset-0">
-             <img 
-                src={article.image} 
-                alt={article.title} 
+             <img
+                src={heroImage}
+                alt={article.title}
                 className="w-full h-full object-cover opacity-50"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
@@ -82,9 +92,9 @@ export function JournalArticle({ params }: { params?: { id: string } }) {
       <div className="px-8 md:px-12 py-20 bg-background relative z-20">
         <div className="max-w-[800px] mx-auto">
              <Reveal delay={0.2}>
-                <div 
+                <div
                     className="prose prose-invert prose-lg md:prose-xl max-w-none"
-                    dangerouslySetInnerHTML={{ __html: article.content }} 
+                    dangerouslySetInnerHTML={{ __html: article.legacyHtml || article.content || '' }}
                 />
              </Reveal>
 
@@ -119,11 +129,11 @@ export function JournalArticle({ params }: { params?: { id: string } }) {
                         </Link>
                     </div>
 
-                    <Link href={`/journal/${nextArticle.id}`} className="group block relative aspect-[21/9] overflow-hidden w-full">
+                    <Link href={`/journal/${nextArticle?.slug || nextArticle?._id}`} className="group block relative aspect-[21/9] overflow-hidden w-full">
                          <div className="absolute inset-0 bg-neutral-900">
-                           <img 
-                             src={nextArticle.image} 
-                             alt={nextArticle.title} 
+                           <img
+                             src={nextArticle ? resolveImage(nextArticle.image, nextArticle._staticImage, { width: 1200, quality: 75 }) : ''}
+                             alt={nextArticle?.title || ''}
                              className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000 ease-out"
                            />
                            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors duration-500" />
@@ -133,14 +143,14 @@ export function JournalArticle({ params }: { params?: { id: string } }) {
                             <span className="text-sm font-display uppercase tracking-widest text-[#D4FF00] mb-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                                 Read Next
                             </span>
-                            <h2 
+                            <h2
                                 className="text-3xl md:text-5xl font-bold tracking-tighter text-white max-w-4xl leading-tight group-hover:-translate-y-2 transition-transform duration-500 break-words [word-break:break-word] hyphens-auto text-balance"
-                                dangerouslySetInnerHTML={{ __html: nextArticle.title }}
+                                dangerouslySetInnerHTML={{ __html: nextArticle?.title || '' }}
                             />
                             <div className="mt-8 flex items-center gap-2 text-sm font-mono text-neutral-400 opacity-60 group-hover:opacity-100 transition-opacity duration-500">
-                                <span>{nextArticle.category}</span>
+                                <span>{nextArticle?.category}</span>
                                 <span className="w-1 h-1 bg-current rounded-full" />
-                                <span>{nextArticle.date}</span>
+                                <span>{nextArticle?.date}</span>
                             </div>
                          </div>
                     </Link>
