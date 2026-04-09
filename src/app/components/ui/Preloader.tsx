@@ -4,18 +4,14 @@ import { R352Symbol } from "@/app/components/agency/R352Logo";
 
 export function Preloader() {
   const [isLoading, setIsLoading] = useState(true);
+  const [isDone, setIsDone] = useState(false);
 
   useEffect(() => {
-    // Prevent scrolling while loading
     document.body.style.overflow = "hidden";
 
-    // Short hold — just enough to see the branding, then sweep away
     const timer = setTimeout(() => {
       setIsLoading(false);
-      setTimeout(() => {
-        document.body.style.overflow = "";
-      }, 1200); // Wait for exit animation to complete
-    }, 1400);
+    }, 800);
 
     return () => {
       clearTimeout(timer);
@@ -23,40 +19,48 @@ export function Preloader() {
     };
   }, []);
 
+  // Once AnimatePresence finishes all exit animations, fully remove from DOM
+  const handleExitComplete = () => {
+    setIsDone(true);
+    document.body.style.overflow = "";
+  };
+
+  if (isDone) return null;
+
   return (
-    <AnimatePresence>
+    <AnimatePresence onExitComplete={handleExitComplete}>
       {isLoading && (
-        <>
+        <motion.div
+          key="preloader-wrapper"
+          className="fixed inset-0 z-[9998] pointer-events-none"
+        >
           {/* Cinematic Transition Overlay - Lime Accent */}
           <motion.div
-            key="preloader-lime"
-            className="fixed top-0 left-0 w-full h-[100vh] bg-[#D4FF00]/90 backdrop-blur-2xl z-[9998] pointer-events-none"
+            className="absolute inset-0 bg-[#D4FF00]/90 backdrop-blur-2xl z-[1]"
             initial={{ y: "0%" }}
             exit={{
               y: "-100%",
-              transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.15 }
+              transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.12 }
             }}
           />
 
           {/* Cinematic Transition Overlay - Main Dark Sweep */}
           <motion.div
-            key="preloader-dark"
-            className="fixed top-0 left-0 w-full h-[100vh] bg-[#0A0A0A]/90 backdrop-blur-3xl z-[9999] pointer-events-none"
+            className="absolute inset-0 bg-[#0A0A0A]/90 backdrop-blur-3xl z-[2]"
             initial={{ y: "0%" }}
             exit={{
               y: "-100%",
-              transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.05 }
+              transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.04 }
             }}
           />
 
           {/* Static branding — revealed/concealed by sweep via clipPath */}
           <motion.div
-            key="preloader-branding"
-            className="fixed inset-0 z-[10000] pointer-events-none flex items-center justify-center"
+            className="absolute inset-0 z-[3] flex items-center justify-center"
             initial={{ clipPath: "inset(0 0 0 0)" }}
             exit={{
               clipPath: "inset(0 0 100% 0)",
-              transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.05 }
+              transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.04 }
             }}
           >
             <div className="flex flex-col items-center gap-5">
@@ -66,7 +70,7 @@ export function Preloader() {
               </span>
             </div>
           </motion.div>
-        </>
+        </motion.div>
       )}
     </AnimatePresence>
   );

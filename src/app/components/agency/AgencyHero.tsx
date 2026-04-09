@@ -27,10 +27,10 @@ export function AgencyHero() {
               glowEffect={true}
             />
           </div>
-          <div className="block md:hidden">
+          <div className="block md:hidden" aria-hidden="true">
             <CinematicText
               text={t("hero.title_mobile")}
-              as="h1"
+              as="div"
               className="type-h1 mb-16 md:mb-24 text-balance max-w-[95%] cursor-default"
               delay={0.1}
               glowEffect={true}
