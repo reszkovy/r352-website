@@ -13,7 +13,8 @@ export function SEO({
   title = "r352 — Design-first partner for teams that ship.",
   description = "Design-first strategic partner for multi-location organizations. We diagnose delivery bottlenecks, build scalable design systems, and help teams ship faster.",
   path = "/",
-  ogImage = "https://r352.com/og-image.png"
+  ogImage = "https://r352.com/og-image.png",
+  article
 }: SEOProps) {
   const baseUrl = "https://r352.com";
   const canonicalUrl = `${baseUrl}${path === "/" ? "" : path}`;
