@@ -58,10 +58,6 @@ export function SelectedWork() {
                           <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]">
                             <div className="overflow-hidden">
                               <div className="pt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100 ease-out flex flex-col items-start gap-4">
-                                <p className="type-sub-sm text-[#D4FF00] inline-block px-3 py-1 border border-[#D4FF00]/30 rounded-none bg-black/50 backdrop-blur-sm">
-                                  {/* @ts-ignore - Localized data */}
-                                  {project.category[language]}
-                                </p>
                                 <span className="block text-sm text-neutral-300 max-w-lg leading-relaxed line-clamp-2">
                                   {/* @ts-ignore - Localized data */}
                                   {project.description[language]}

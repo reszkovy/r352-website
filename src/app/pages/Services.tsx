@@ -19,7 +19,9 @@ export function Services() {
   
   // Cast to specific types to avoid TS errors
   const cards = (t('services_page.cards') || []) as ServiceCard[];
-  const howWeDeliver = (t('services_page.how_we_deliver') || { title: "", items: [] }) as { title: string, items: string[] };
+  const deliveryOS = (t('services_page.delivery_os') || { title: "", subtitle: "", phases: [] }) as {
+    title: string; subtitle: string; phases: { label: string; title: string; docs: { name: string; desc: string }[] }[]
+  };
   const bestFit = (t('services_page.best_fit') || { title: "", items: [] }) as { title: string, items: string[] };
 
   // Active state for the accordion
@@ -169,45 +171,57 @@ export function Services() {
       {/* NEW: Engagement Models Section */}
       <EngagementModels />
 
-      {/* 3. How We Deliver & Best Fit */}
+      {/* 3. Delivery Operating System */}
       <section className="border-t border-neutral-200 dark:border-white/10 pt-24 md:pt-32">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
-            
-            {/* How We Deliver */}
-            <div className="lg:col-span-7">
-              <Reveal>
-                <h3 className="text-[11px] font-display uppercase tracking-widest text-neutral-800 dark:text-[#D4FF00] mb-12 flex items-center gap-4">
-                   <span className="w-8 h-px bg-neutral-300 dark:bg-[#D4FF00]"></span>
-                   {howWeDeliver.title}
-                </h3>
-                <ul className="space-y-8">
-                  {howWeDeliver.items.map((item, i) => (
-                    <li key={i} className="flex items-baseline gap-6 group">
-                      <span className="text-neutral-600 dark:text-neutral-700 text-[13px] font-mono mt-1 group-hover:text-neutral-900 dark:group-hover:text-[#D4FF00] transition-colors">0{i + 1}</span>
-                      <span className="text-2xl md:text-3xl text-neutral-900 dark:text-[#e5e5e5] font-medium tracking-tight leading-tight">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </Reveal>
-            </div>
+        <Reveal>
+          <h2 className="text-[11px] font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-4 flex items-center gap-4">
+            <span className="w-8 h-px bg-neutral-300 dark:bg-[#D4FF00]"></span>
+            {deliveryOS.title}
+          </h2>
+          <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mb-16">
+            {deliveryOS.subtitle}
+          </p>
+        </Reveal>
 
-            {/* Best Fit */}
-            <div className="lg:col-span-5 lg:border-l lg:border-neutral-200 lg:dark:border-white/10 lg:pl-16">
-               <Reveal delay={0.2}>
-                <h3 className="text-[11px] font-display uppercase tracking-widest text-neutral-800 dark:text-[#888888] mb-12">
-                  {bestFit.title}
-                </h3>
-                <ul className="space-y-6">
-                  {bestFit.items.map((item, i) => (
-                    <li key={i} className="flex items-start gap-4 text-neutral-800 dark:text-[#888888]">
-                      <span className="text-neutral-900 dark:text-[#D4FF00] mt-1.5 text-[8px]">•</span>
-                      <span className="text-[15px] leading-relaxed">{item}</span>
-                    </li>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
+          {deliveryOS.phases.map((phase, pi) => (
+            <Reveal key={pi} delay={pi * 0.1}>
+              <div className={`p-8 md:p-10 border border-neutral-200 dark:border-white/10 ${pi > 0 ? 'md:-ml-px' : ''} -mt-px md:mt-0 h-full`}>
+                <span className="block text-[11px] font-display uppercase tracking-widest text-neutral-400 dark:text-[#D4FF00] mb-6">
+                  {phase.label}
+                </span>
+                <div className="space-y-6">
+                  {phase.docs.map((doc, di) => (
+                    <div key={di} className="group">
+                      <div className="flex items-start gap-3">
+                        <span className="text-neutral-400 dark:text-[#D4FF00] text-xs mt-1.5 shrink-0">●</span>
+                        <div>
+                          <h4 className="text-base font-semibold text-neutral-900 dark:text-white mb-1">{doc.name}</h4>
+                          <p className="text-sm text-neutral-500 dark:text-neutral-500 leading-relaxed">{doc.desc}</p>
+                        </div>
+                      </div>
+                    </div>
                   ))}
-                </ul>
-              </Reveal>
-            </div>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
 
+        {/* Best Fit — below Delivery OS */}
+        <div className="mt-16 md:mt-24">
+          <Reveal>
+            <h3 className="text-[11px] font-display uppercase tracking-widest text-neutral-800 dark:text-[#888888] mb-8">
+              {bestFit.title}
+            </h3>
+            <div className="flex flex-wrap gap-4">
+              {bestFit.items.map((item, i) => (
+                <span key={i} className="px-5 py-3 border border-neutral-200 dark:border-white/10 text-sm text-neutral-700 dark:text-neutral-400 hover:border-neutral-400 dark:hover:border-white/30 transition-colors">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
       

@@ -2,7 +2,7 @@ export const translations = {
   en: {
     nav: {
       work: "Work",
-      philosophy: "Philosophy",
+      philosophy: "Manifesto",
       services: "Services",
       contact: "Contact",
       schedule: "Schedule a call",
@@ -258,12 +258,35 @@ export const translations = {
           ]
         }
       ],
-      how_we_deliver: {
-        title: "How we deliver",
-        items: [
-          "Clear intake + one decision owner (fewer loops)",
-          "QA + publish-ready handoff (consistent quality)",
-          "Steady cadence (predictable delivery)"
+      delivery_os: {
+        title: "Your Delivery Operating System",
+        subtitle: "Every engagement follows the same proven structure — so quality, speed, and sanity scale together.",
+        phases: [
+          {
+            label: "01 — Diagnose",
+            title: "Diagnose",
+            docs: [
+              { name: "Diagnostic Report", desc: "We map your current delivery flow, find bottlenecks, and define what to fix first." },
+              { name: "Operating Agreement", desc: "Rules of engagement: cadence, decision owners, feedback protocol, definition of done." }
+            ]
+          },
+          {
+            label: "02 — Deliver",
+            title: "Deliver",
+            docs: [
+              { name: "Brief Template", desc: "Standardized format: goal, audience, constraints, examples, done criteria. One path. Always." },
+              { name: "Weekly Delivery Pack", desc: "Publish-ready output every week: files, naming, variants, specs, handoff notes." },
+              { name: "Decision Log", desc: "What was decided, when, by whom. Closes loops. Kills 'but I thought we agreed…'" }
+            ]
+          },
+          {
+            label: "03 — Scale",
+            title: "Scale",
+            docs: [
+              { name: "System Documentation", desc: "Templates, components, checklists, QA gates, naming rules — everything your team needs to run without us." },
+              { name: "Impact Summary", desc: "Before vs after: what changed, what improved, what's next. Your case for continuing or scaling." }
+            ]
+          }
         ]
       },
       best_fit: {
@@ -277,7 +300,7 @@ export const translations = {
       engagement: {
         label: "Engagement",
         heading: "How we work",
-        cta: "Let’s build your delivery system ��� and ship.",
+        cta: "Let's build your delivery system ��� and ship.",
         models: {
           sprint: {
             type: "Fixed scope",
@@ -314,54 +337,63 @@ export const translations = {
     },
     philosophy: {
       teaser: {
-        title: "Design begins with a decision, not a tool.",
-        description: "We replace guesswork with standards, bottlenecks with flow, and one-off fixes with systems your team can run without us.",
-        cta: "Read our philosophy"
+        title: "Beautiful work is the baseline. The system behind it is the advantage.",
+        description: "We craft premium design. But craft alone doesn't scale across 50, 100, or 300 locations. A delivery system does.",
+        cta: "Read our manifesto"
       }
     },
     philosophy_page: {
-      label: "Philosophy",
-      title_line1: "A calmer way to build",
-      title_line2: "digital things.",
-      intro_col1: "Premium output.\nSystemized execution.\nPredictable delivery.\n\nWe remove what's unnecessary — less noise, fewer loops, clearer decisions.",
-      intro_col2: "Not just design systems — delivery systems.\nBrief, decision, production, publish-ready output.\n\nAs scale increases, consistency stays intact.",
-      principles: {
+      label: "Manifesto",
+      title_line1: "Beautiful work is the",
+      title_line2: "baseline.",
+      subtitle: "The system behind it is the advantage.",
+      intro_col1: "We craft premium design. But craft alone doesn't scale across 50, 100, or 300 locations. A delivery system does.",
+      intro_col2: "This is what we believe, how we operate, and why it matters for every team we work with.",
+      beliefs: {
         "01": {
-          title: "Clarity over cleverness",
-          content: [
-            "Clarity beats cleverness.",
-            "Clear briefs.\nOne decision owner.\nDefined approval path.",
-            "Work moves when responsibility is visible.",
-            "No noise.\nNo aesthetic experiments without purpose.\nJust structured decisions that reduce friction."
-          ]
+          title: "Craft is the foundation. System is the multiplier.",
+          description: "We obsess over every pixel — that's non-negotiable. But pixels alone don't scale. We build operating systems for design delivery — intake paths, brief standards, feedback protocols, packaging rules, shipping cadence — so that premium quality repeats itself without heroics."
         },
         "02": {
-          title: "Systems thinking",
-          content: [
-            "We don’t “do projects.”\nWe design delivery systems.",
-            "Standards. Templates. QA. Capacity visibility.\nA clear path from brief to publish.",
-            "Quality should not depend on who is on the call.\nIt should be built into the system.",
-            "As scale increases, consistency stays intact."
-          ]
+          title: "Cadence beats urgency. Every time.",
+          description: "\"ASAP\" is a signal there's no system. We replace fire drills with weekly rhythm — predictable load, predictable output, predictable quality. When there's cadence, \"urgent\" goes back to being an exception."
         },
         "03": {
-          title: "Performance as a feature",
-          content: [
-            "Performance is not an afterthought.",
-            "Fast load times. Clean structure. Efficient production.\nEvery asset should be ready to ship without chaos.",
-            "Speed is a byproduct of clean systems.\nWhen the process is clear, execution accelerates."
-          ]
+          title: "Premium is a standard, not a personality trait.",
+          description: "Quality doesn't drop because people lack skill. It drops because everything becomes ad hoc. We build the templates, checklists, components, and handoff packs that make premium repeatable — across 5 or 500 locations."
         },
         "04": {
-          title: "Strategic partnership",
-          content: [
-            "We are not order-takers.",
-            "We challenge the brief.\nWe define criteria.\nWe protect the quality bar.",
-            "Then we deliver — end to end.\nFrom strategy to final asset.\nAcross digital, print, and physical environments.",
-            "One partner. One system. No fragmentation."
-          ]
+          title: "Calm execution is the real competitive advantage.",
+          description: "Teams don't want \"fast\". They want fast without chaos — where approvals don't turn into drama, standards stay consistent, and nothing depends on panic and heroics. Calm is engineered, not wished for."
+        },
+        "05": {
+          title: "Close loops. Early. Every time.",
+          description: "Open loops are the hidden tax of modern work: briefs without success criteria, feedback that's just a feeling, \"final\" that never becomes final. Speed without burnout comes from closing loops — on purpose, every time."
+        },
+        "06": {
+          title: "Structure creates freedom. Not the other way around.",
+          description: "Remote work isn't the problem. Lack of structure is. When intake, decisions, feedback, and shipping have clear rules, creative energy goes into the work — not into coordination overhead."
         }
       },
+      contrasts: [
+        { old: "\"We'll make it look good this time.\"", new: "\"We'll build the system that makes it look good every time — across every location, every launch.\"" },
+        { old: "\"Send me the brief whenever.\"", new: "\"One intake path. One brief format. One decision owner. Always.\"" },
+        { old: "\"We're flexible and available.\"", new: "\"We ship every week. Feedback has windows. Cadence is non-negotiable.\"" },
+        { old: "\"We'll handle whatever you need.\"", new: "\"We diagnose your delivery bottleneck first, then build the system that removes it.\"" },
+        { old: "\"We move fast and break things.\"", new: "\"We move at a sustainable rhythm and ship things that hold.\"" },
+        { old: "\"Here's a beautiful deck. Good luck scaling it.\"", new: "\"Here's the design and the operating system — so it scales itself.\"" }
+      ],
+      nonneg_label: "Non-Negotiables",
+      nonneg: [
+        { title: "Every engagement starts with a diagnostic.", desc: "We don't guess. We map your current delivery flow, find the bottleneck, and build from there." },
+        { title: "One decision owner per workstream.", desc: "If nobody can say yes or no, feedback never ends. We require clarity before we start." },
+        { title: "Weekly shipping cadence.", desc: "Every week, something real goes out. Not \"progress\". Output. Publish-ready, packaged, named, spec'd." },
+        { title: "Feedback has structure.", desc: "Feedback happens in windows, with criteria, in a format. Not as a constant stream of feelings across DMs." },
+        { title: "We build systems, not dependencies.", desc: "When we leave, the operating model stays. Templates, components, checklists, quality rules — all yours." },
+        { title: "Responsiveness ≠ availability.", desc: "We clarify fast, align decisions fast, deliver the next usable step fast. We don't sit online 12 hours." }
+      ],
+      promise: "Your design pipeline should run like infrastructure — not depend on heroics.",
+      promise_sub: "We work with multi-location organizations in fitness, wellness, health, and retail who need design delivery that scales without losing quality, speed, or sanity.",
       note: {
         title: "A note on craft",
         p1: "In the era of AI output, craft matters more.",
@@ -369,7 +401,7 @@ export const translations = {
         p3: "Systems create structure.\nCraft protects standards."
       },
       cta: {
-        title: "Let’s build your delivery system — and ship.",
+        title: "Let's build your delivery system — and ship.",
         body: "Not just a campaign.\nNot just a redesign.\nA repeatable way to produce high-quality work at scale.",
         start: "Start a project",
         explore: "Schedule a call"
@@ -485,7 +517,7 @@ export const translations = {
   pl: {
     nav: {
       work: "Prace",
-      philosophy: "Filozofia",
+      philosophy: "Manifest",
       services: "Usługi",
       contact: "Kontakt",
       schedule: "Umów rozmowę",
@@ -741,12 +773,35 @@ export const translations = {
           ]
         }
       ],
-      how_we_deliver: {
-        title: "Jak dostarczamy",
-        items: [
-          "Jasny intake + jeden decydent (mniej pętli)",
-          "QA + gotowe do publikacji przekazanie (spójna jakość)",
-          "Stały rytm (przewidywalne dostarczanie)"
+      delivery_os: {
+        title: "Twój System Operacyjny Dostarczania",
+        subtitle: "Każdy engagement przebiega według tej samej sprawdzonej struktury — tak, by jakość, szybkość i zdrowie psychiczne skalowały się razem.",
+        phases: [
+          {
+            label: "01 — Diagnoza",
+            title: "Diagnoza",
+            docs: [
+              { name: "Raport Diagnostyczny", desc: "Mapujemy obecny flow dostarczania, znajdujemy bottlenecki i definiujemy co naprawić najpierw." },
+              { name: "Umowa Operacyjna", desc: "Reguły gry: kadencja, decydenci, protokół feedbacku, definicja gotowości." }
+            ]
+          },
+          {
+            label: "02 — Dostarczanie",
+            title: "Dostarczanie",
+            docs: [
+              { name: "Szablon Briefu", desc: "Standaryzowany format: cel, audience, ograniczenia, przykłady, kryteria done. Jedna ścieżka. Zawsze." },
+              { name: "Cotygodniowa Paczka", desc: "Gotowy do publikacji output co tydzień: pliki, nazewnictwo, warianty, specyfikacje, notatki handoff." },
+              { name: "Log Decyzji", desc: "Co zostało zdecydowane, kiedy, przez kogo. Zamyka pętle. Zabija 'ale myślałem, że się zgodziliśmy…'" }
+            ]
+          },
+          {
+            label: "03 — Skala",
+            title: "Skala",
+            docs: [
+              { name: "Dokumentacja Systemu", desc: "Szablony, komponenty, checklisty, bramki QA, reguły nazewnictwa — wszystko, czego Twój zespół potrzebuje, by działać bez nas." },
+              { name: "Podsumowanie Wpływu", desc: "Przed vs po: co się zmieniło, co się poprawiło, co dalej. Twój argument za kontynuacją lub skalowaniem." }
+            ]
+          }
         ]
       },
       best_fit: {
@@ -796,56 +851,68 @@ export const translations = {
       cta_work: "Zobacz wybrane prace"
     },
     philosophy_page: {
-      label: "Filozofia",
-      title_line1: "Spokojniejszy sposób budowania",
-      title_line2: "rzeczy cyfrowych.",
-      intro_col1: "Najwyższa jakość.\nSystemowe wykonanie.\nPrzewidywalne dostarczanie.\n\nUsuwamy to, co zbędne — mniej hałasu, mniej pętli, jaśniejsze decyzje.",
-      intro_col2: "Nie tylko systemy designu — systemy dostarczania.\nBrief, decyzja, produkcja, gotowy efekt.\n\nGdy skala rośnie, spójność pozostaje.",
-      principles: {
+      label: "Manifest",
+      title_line1: "Piękna praca to",
+      title_line2: "baseline.",
+      subtitle: "System za nią to przewaga.",
+      intro_col1: "Tworzymy premium design. Ale sam craft nie skaluje się na 50, 100 czy 300 lokalizacji. System dostarczania — tak.",
+      intro_col2: "To jest to, w co wierzymy, jak działamy i dlaczego to ma znaczenie dla każdego zespołu, z którym pracujemy.",
+      beliefs: {
         "01": {
-          title: "Jasność ponad spryt",
-          content: [
-            "Jasność wygrywa ze sprytem.",
-            "Dobre briefy, jasne priorytety, jeden decydent.",
-            "Tak praca posuwa się do przodu - bez tarć."
-          ]
+          title: "Craft to fundament. System to mnożnik.",
+          description: "Dbamy o każdy piksel — to nienegocjowalne. Ale piksele same się nie skalują. Budujemy systemy operacyjne dostarczania designu — ścieżki intake, standardy briefów, protokoły feedbacku, reguły pakowania, kadencja wysyłki — tak, by premium jakość powtarzała się bez heroizmu."
         },
         "02": {
-          title: "Myślenie systemowe",
-          content: [
-            "Nie „robimy projektów”. Budujemy powtarzalny sposób dostarczania.",
-            "Standardy, szablony, QA, rytm.",
-            "Jakość pozostaje stała, gdy skala rośnie."
-          ]
+          title: "Kadencja bije pilność. Za każdym razem.",
+          description: "\"ASAP\" to sygnał, że nie ma systemu. Zastępujemy gaszenie pożarów cotygodniowym rytmem — przewidywalne obciążenie, przewidywalny output, przewidywalna jakość."
         },
         "03": {
-          title: "Wydajność jako funkcja",
-          content: [
-            "Wydajność jest częścią rzemiosła.",
-            "Tworzymy prace, które są responsywne i ładują się szybko - na każdym urządzeniu.",
-            "Szybkość jest produktem ubocznym czystych systemów."
-          ]
+          title: "Premium to standard, nie cecha osobowości.",
+          description: "Jakość nie spada, bo ludziom brakuje umiejętności. Spada, bo wszystko staje się ad hoc. Budujemy szablony, checklisty, komponenty i paczki handoff, które czynią premium powtarzalnym."
         },
         "04": {
-          title: "Partnerstwo strategiczne",
-          content: [
-            "Nie jesteśmy wykonawcami poleceń.",
-            "Podważamy brief, definiujemy kryteria, chronimy poprzeczkę jakości.",
-            "Potem dostarczamy - od pocz��tku do końca."
-          ]
+          title: "Spokojna realizacja to prawdziwa przewaga.",
+          description: "Zespoły nie chcą tylko \"szybko\". Chcą szybko bez chaosu — gdzie zatwierdzenia nie zamieniają się w dramat, standardy pozostają spójne, i nic nie zależy od paniki i heroizmu."
+        },
+        "05": {
+          title: "Zamykaj pętle. Wcześnie. Za każdym razem.",
+          description: "Otwarte pętle to ukryty podatek nowoczesnej pracy: briefy bez kryteriów sukcesu, feedback który jest tylko uczuciem, \"finalne\" które nigdy nie staje się finalne."
+        },
+        "06": {
+          title: "Struktura tworzy wolność. Nie odwrotnie.",
+          description: "Praca zdalna nie jest problemem. Brak struktury jest. Gdy intake, decyzje, feedback i wysyłka mają jasne reguły, energia kreatywna idzie w pracę — nie w koordynację."
         }
       },
+      contrasts: [
+        { old: "\"Zrobimy, żeby ładnie wyglądało tym razem.\"", new: "\"Zbudujemy system, w którym wygląda ładnie za każdym razem — w każdej lokalizacji, przy każdym launchu.\"" },
+        { old: "\"Przyślij brief kiedy chcesz.\"", new: "\"Jedna ścieżka intake. Jeden format briefu. Jeden decydent. Zawsze.\"" },
+        { old: "\"Jesteśmy elastyczni i dostępni.\"", new: "\"Wysyłamy co tydzień. Feedback ma okna. Kadencja jest nienegocjowalna.\"" },
+        { old: "\"Zajmiemy się czymkolwiek potrzebujesz.\"", new: "\"Najpierw diagnozujemy bottleneck, potem budujemy system, który go usuwa.\"" },
+        { old: "\"Działamy szybko i łamiemy rzeczy.\"", new: "\"Działamy w zrównoważonym rytmie i wysyłamy rzeczy, które się trzymają.\"" },
+        { old: "\"Oto piękny deck. Powodzenia w skalowaniu.\"", new: "\"Oto design i system operacyjny — żeby skalował się sam.\"" }
+      ],
+      nonneg_label: "Nienegocjowalne",
+      nonneg: [
+        { title: "Każdy engagement zaczyna się od diagnostyki.", desc: "Nie zgadujemy. Mapujemy obecny flow dostarczania, znajdujemy bottleneck i budujemy od tego miejsca." },
+        { title: "Jeden decydent na workstream.", desc: "Jeśli nikt nie może powiedzieć tak lub nie, feedback nigdy się nie kończy. Wymagamy jasności przed startem." },
+        { title: "Cotygodniowa kadencja wysyłki.", desc: "Co tydzień wychodzi coś rzeczywistego. Nie \"postęp\". Output. Gotowy do publikacji, spakowany, nazwany, wyspecyfikowany." },
+        { title: "Feedback ma strukturę.", desc: "Feedback dzieje się w oknach, z kryteriami, w formacie. Nie jako ciągły strumień odczuć na DM-ach." },
+        { title: "Budujemy systemy, nie zależności.", desc: "Gdy odchodzimy, model operacyjny zostaje. Szablony, komponenty, checklisty, reguły jakości — wszystko Twoje." },
+        { title: "Responsywność ≠ dostępność.", desc: "Wyjaśniamy szybko, wyrównujemy decyzje szybko, dostarczamy następny krok szybko. Nie siedzimy online 12 godzin." }
+      ],
+      promise: "Twój pipeline designu powinien działać jak infrastruktura — nie zależeć od heroizmu.",
+      promise_sub: "Pracujemy z organizacjami wielolokalizacyjnymi w fitness, wellness, health i retail, które potrzebują dostarczania designu skalującego się bez utraty jakości, szybkości i zdrowia psychicznego.",
       note: {
         title: "Notatka o rzemiośle",
-        p1: "W erze efektów AI, rzemiosło liczy się bardziej. Typografia, odstępy, hierarchia, mikro-detale.",
-        p2: "Gotowa praca - nie koncepty.",
-        p3: "To jest standard."
+        p1: "W erze efektów AI, rzemiosło liczy się bardziej.",
+        p2: "Typografia. Odstępy. Hierarchia. Mikro-decyzje.\nDetale nie są dekoracją.\nSą sygnałami dyscypliny.",
+        p3: "Systemy tworzą strukturę.\nRzemiosło chroni standardy."
       },
       cta: {
-        title: "Gotowy zbudować coś znaczącego?",
-        body: "Porozmawiajmy o tym, jak możemy wnieść jasność i rzemiosło do Twojego następnego projektu.",
-        start: "Rozpocznij rozmowę",
-        explore: "Zobacz prace"
+        title: "Zbudujmy Twój system dostarczania — i zacznijmy wysyłać.",
+        body: "Nie tylko kampania.\nNie tylko redesign.\nPowtarzalny sposób na wysoką jakość na skalę.",
+        start: "Rozpocznij projekt",
+        explore: "Umów rozmowę"
       }
     },
     contact: {
@@ -953,9 +1020,9 @@ export const translations = {
     index: "Index",
     philosophy: {
       teaser: {
-        title: "Design zaczyna się od decyzji, nie od narzędzia.",
-        description: "Odrzucamy to, co zbędne, aby odkryć sedno. W świecie hałasu oferujemy jasność, precyzję i systemy, które się skalują.",
-        cta: "Przeczytaj naszą filozofię"
+        title: "Piękna praca to baseline. System za nią to przewaga.",
+        description: "Tworzymy premium design. Ale sam craft nie skaluje się na 50, 100 czy 300 lokalizacji. System dostarczania — tak.",
+        cta: "Przeczytaj nasz manifest"
       }
     },
     marquee: {
