@@ -337,8 +337,8 @@ export const translations = {
     },
     philosophy: {
       teaser: {
-        title: "Beautiful work is the baseline. The system behind it is the advantage.",
-        description: "We craft premium design. But craft alone doesn't scale. A delivery system does.",
+        title: "Beautiful work is the baseline.<br />The system behind it is the advantage.",
+        description: "We craft premium design. But craft alone doesn't scale.\nA delivery system does.",
         cta: "Read our philosophy"
       }
     },
@@ -1020,8 +1020,8 @@ export const translations = {
     index: "Index",
     philosophy: {
       teaser: {
-        title: "Piękna praca to baseline. System za nią to przewaga.",
-        description: "Tworzymy premium design. Ale sam craft się nie skaluje. System dostarczania — tak.",
+        title: "Piękna praca to baseline.<br />System za nią to przewaga.",
+        description: "Tworzymy premium design. Ale sam craft się nie skaluje.\nSystem dostarczania — tak.",
         cta: "Poznaj naszą filozofię"
       }
     },

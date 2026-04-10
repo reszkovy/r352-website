@@ -83,7 +83,7 @@ export function Home() {
            {/* Description + CTA — right-aligned below */}
            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mt-12">
              <Reveal delay={0.2}>
-               <p className="text-lg text-neutral-400 leading-relaxed max-w-lg">
+               <p className="text-lg text-neutral-400 leading-relaxed max-w-lg whitespace-pre-line">
                  {t("philosophy.teaser.description")}
                </p>
              </Reveal>
