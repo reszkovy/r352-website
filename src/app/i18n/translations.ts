@@ -2,7 +2,7 @@ export const translations = {
   en: {
     nav: {
       work: "Work",
-      philosophy: "Manifesto",
+      philosophy: "Philosophy",
       services: "Services",
       contact: "Contact",
       schedule: "Schedule a call",
@@ -338,16 +338,16 @@ export const translations = {
     philosophy: {
       teaser: {
         title: "Beautiful work is the baseline. The system behind it is the advantage.",
-        description: "We craft premium design. But craft alone doesn't scale across 50, 100, or 300 locations. A delivery system does.",
-        cta: "Read our manifesto"
+        description: "We craft premium design. But craft alone doesn't scale. A delivery system does.",
+        cta: "Read our philosophy"
       }
     },
     philosophy_page: {
-      label: "Manifesto",
+      label: "Philosophy",
       title_line1: "Beautiful work is the",
       title_line2: "baseline.",
       subtitle: "The system behind it is the advantage.",
-      intro_col1: "We craft premium design. But craft alone doesn't scale across 50, 100, or 300 locations. A delivery system does.",
+      intro_col1: "We craft premium design. But craft alone doesn't scale. A delivery system does.",
       intro_col2: "This is what we believe, how we operate, and why it matters for every team we work with.",
       beliefs: {
         "01": {
@@ -360,7 +360,7 @@ export const translations = {
         },
         "03": {
           title: "Premium is a standard, not a personality trait.",
-          description: "Quality doesn't drop because people lack skill. It drops because everything becomes ad hoc. We build the templates, checklists, components, and handoff packs that make premium repeatable — across 5 or 500 locations."
+          description: "Quality doesn't drop because people lack skill. It drops because everything becomes ad hoc. We build the templates, checklists, components, and handoff packs that make premium repeatable — across every team, every project."
         },
         "04": {
           title: "Calm execution is the real competitive advantage.",
@@ -376,7 +376,7 @@ export const translations = {
         }
       },
       contrasts: [
-        { old: "\"We'll make it look good this time.\"", new: "\"We'll build the system that makes it look good every time — across every location, every launch.\"" },
+        { old: "\"We'll make it look good this time.\"", new: "\"We'll build the system that makes it look good every time — across every team, every launch.\"" },
         { old: "\"Send me the brief whenever.\"", new: "\"One intake path. One brief format. One decision owner. Always.\"" },
         { old: "\"We're flexible and available.\"", new: "\"We ship every week. Feedback has windows. Cadence is non-negotiable.\"" },
         { old: "\"We'll handle whatever you need.\"", new: "\"We diagnose your delivery bottleneck first, then build the system that removes it.\"" },
@@ -393,7 +393,7 @@ export const translations = {
         { title: "Responsiveness ≠ availability.", desc: "We clarify fast, align decisions fast, deliver the next usable step fast. We don't sit online 12 hours." }
       ],
       promise: "Your design pipeline should run like infrastructure — not depend on heroics.",
-      promise_sub: "We work with multi-location organizations in fitness, wellness, health, and retail who need design delivery that scales without losing quality, speed, or sanity.",
+      promise_sub: "We work with organizations that need design delivery which scales without losing quality, speed, or sanity.",
       note: {
         title: "A note on craft",
         p1: "In the era of AI output, craft matters more.",
@@ -517,7 +517,7 @@ export const translations = {
   pl: {
     nav: {
       work: "Prace",
-      philosophy: "Manifest",
+      philosophy: "Filozofia",
       services: "Usługi",
       contact: "Kontakt",
       schedule: "Umów rozmowę",
@@ -851,11 +851,11 @@ export const translations = {
       cta_work: "Zobacz wybrane prace"
     },
     philosophy_page: {
-      label: "Manifest",
+      label: "Filozofia",
       title_line1: "Piękna praca to",
       title_line2: "baseline.",
       subtitle: "System za nią to przewaga.",
-      intro_col1: "Tworzymy premium design. Ale sam craft nie skaluje się na 50, 100 czy 300 lokalizacji. System dostarczania — tak.",
+      intro_col1: "Tworzymy premium design. Ale sam craft się nie skaluje. System dostarczania — tak.",
       intro_col2: "To jest to, w co wierzymy, jak działamy i dlaczego to ma znaczenie dla każdego zespołu, z którym pracujemy.",
       beliefs: {
         "01": {
@@ -884,7 +884,7 @@ export const translations = {
         }
       },
       contrasts: [
-        { old: "\"Zrobimy, żeby ładnie wyglądało tym razem.\"", new: "\"Zbudujemy system, w którym wygląda ładnie za każdym razem — w każdej lokalizacji, przy każdym launchu.\"" },
+        { old: "\"Zrobimy, żeby ładnie wyglądało tym razem.\"", new: "\"Zbudujemy system, w którym wygląda ładnie za każdym razem — w każdym zespole, przy każdym launchu.\"" },
         { old: "\"Przyślij brief kiedy chcesz.\"", new: "\"Jedna ścieżka intake. Jeden format briefu. Jeden decydent. Zawsze.\"" },
         { old: "\"Jesteśmy elastyczni i dostępni.\"", new: "\"Wysyłamy co tydzień. Feedback ma okna. Kadencja jest nienegocjowalna.\"" },
         { old: "\"Zajmiemy się czymkolwiek potrzebujesz.\"", new: "\"Najpierw diagnozujemy bottleneck, potem budujemy system, który go usuwa.\"" },
@@ -901,7 +901,7 @@ export const translations = {
         { title: "Responsywność ≠ dostępność.", desc: "Wyjaśniamy szybko, wyrównujemy decyzje szybko, dostarczamy następny krok szybko. Nie siedzimy online 12 godzin." }
       ],
       promise: "Twój pipeline designu powinien działać jak infrastruktura — nie zależeć od heroizmu.",
-      promise_sub: "Pracujemy z organizacjami wielolokalizacyjnymi w fitness, wellness, health i retail, które potrzebują dostarczania designu skalującego się bez utraty jakości, szybkości i zdrowia psychicznego.",
+      promise_sub: "Pracujemy z organizacjami, które potrzebują dostarczania designu skalującego się bez utraty jakości, szybkości i zdrowia psychicznego.",
       note: {
         title: "Notatka o rzemiośle",
         p1: "W erze efektów AI, rzemiosło liczy się bardziej.",
@@ -1021,8 +1021,8 @@ export const translations = {
     philosophy: {
       teaser: {
         title: "Piękna praca to baseline. System za nią to przewaga.",
-        description: "Tworzymy premium design. Ale sam craft nie skaluje się na 50, 100 czy 300 lokalizacji. System dostarczania — tak.",
-        cta: "Przeczytaj nasz manifest"
+        description: "Tworzymy premium design. Ale sam craft się nie skaluje. System dostarczania — tak.",
+        cta: "Poznaj naszą filozofię"
       }
     },
     marquee: {
