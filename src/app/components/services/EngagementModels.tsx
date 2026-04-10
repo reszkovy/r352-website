@@ -32,7 +32,7 @@ export function EngagementModels() {
         "You have a launch date and need to ship on time",
         "You want to test working with us before committing long-term"
       ],
-      pricing: language === "pl" ? "od 8 000 €" : "from 8 000 €",
+      pricing: language === "pl" ? "od 4 000 €" : "from 4 000 €",
       startsWith: language === "pl"
         ? "Rozmowa określająca zakres, harmonogram i osoby decyzyjne."
         : "A scoping call where we define deliverables, timeline, and decision owners.",
@@ -67,7 +67,7 @@ export function EngagementModels() {
         "You want a design partner embedded in your rhythm, not a vendor you re-onboard every quarter",
         "You need consistency and speed without hiring a full in-house team"
       ],
-      pricing: language === "pl" ? "od 4 000 € / msc" : "from 4 000 € / mo",
+      pricing: language === "pl" ? "od 2 000 € / msc" : "from 2 000 € / mo",
       startsWith: language === "pl"
         ? "Sprint diagnostyczny (1-2 tygodnie), podczas którego sprawdzamy obecny obieg pracy, proces zgłoszeń i ustalamy rytm dostaw."
         : "A diagnostic sprint (1-2 weeks) where we audit your current workflow, set up intake, and define the delivery cadence.",
@@ -102,7 +102,7 @@ export function EngagementModels() {
         "You're about to scale (new markets, more locations, bigger team) and want to fix the system before it breaks",
         "You want data before making a decision about hiring, tooling, or outsourcing"
       ],
-      pricing: language === "pl" ? "od 3 500 €" : "from 3 500 €",
+      pricing: language === "pl" ? "od 2 500 €" : "from 2 500 €",
       startsWith: language === "pl"
         ? "60-minutowe spotkanie inicjujące, podczas którego przeprowadzamy wywiady z kluczowymi osobami i prosimy o dostęp do waszych narzędzi."
         : "A 60-minute kickoff where we interview key stakeholders and request access to your current workflows.",
@@ -250,9 +250,9 @@ export function EngagementModels() {
             <tbody className="text-[13px] text-neutral-600 dark:text-[#888888]">
               <tr className="border-b border-neutral-100 dark:border-white/5">
                 <td className="py-3 pr-4 font-medium text-neutral-500 dark:text-neutral-500">{language === "pl" ? "Cena" : "Pricing"}</td>
-                <td className="py-3 px-4 font-semibold text-neutral-900 dark:text-[#D4FF00]">{language === "pl" ? "od 8 000 €" : "from 8 000 €"}</td>
-                <td className="py-3 px-4 font-semibold text-neutral-900 dark:text-[#D4FF00]">{language === "pl" ? "od 4 000 € / msc" : "from 4 000 € / mo"}</td>
-                <td className="py-3 pl-4 font-semibold text-neutral-900 dark:text-[#D4FF00]">{language === "pl" ? "od 3 500 €" : "from 3 500 €"}</td>
+                <td className="py-3 px-4 font-semibold text-neutral-900 dark:text-[#D4FF00]">{language === "pl" ? "od 4 000 €" : "from 4 000 €"}</td>
+                <td className="py-3 px-4 font-semibold text-neutral-900 dark:text-[#D4FF00]">{language === "pl" ? "od 2 000 € / msc" : "from 2 000 € / mo"}</td>
+                <td className="py-3 pl-4 font-semibold text-neutral-900 dark:text-[#D4FF00]">{language === "pl" ? "od 2 500 €" : "from 2 500 €"}</td>
               </tr>
               <tr className="border-b border-neutral-100 dark:border-white/5">
                 <td className="py-3 pr-4 font-medium text-neutral-500 dark:text-neutral-500">{language === "pl" ? "Harmonogram" : "Timeline"}</td>
