@@ -376,12 +376,12 @@ export const translations = {
         }
       },
       contrasts: [
-        { old: "\"We'll make it look good this time.\"", new: "\"We'll build the system that makes it look good every time — across every team, every launch.\"" },
-        { old: "\"Send me the brief whenever.\"", new: "\"One intake path. One brief format. One decision owner. Always.\"" },
-        { old: "\"We're flexible and available.\"", new: "\"We ship every week. Feedback has windows. Cadence is non-negotiable.\"" },
-        { old: "\"We'll handle whatever you need.\"", new: "\"We diagnose your delivery bottleneck first, then build the system that removes it.\"" },
-        { old: "\"We move fast and break things.\"", new: "\"We move at a sustainable rhythm and ship things that hold.\"" },
-        { old: "\"Here's a beautiful deck. Good luck scaling it.\"", new: "\"Here's the design and the operating system — so it scales itself.\"" }
+        { old: "We'll make it look good this time.", new: "We'll build the system that makes it look good every time — across every team, every launch." },
+        { old: "Send me the brief whenever.", new: "One intake path. One brief format. One decision owner. Always." },
+        { old: "We're flexible and available.", new: "We ship every week. Feedback has windows. Cadence is non-negotiable." },
+        { old: "We'll handle whatever you need.", new: "We diagnose your delivery bottleneck first, then build the system that removes it." },
+        { old: "We move fast and break things.", new: "We move at a sustainable rhythm and ship things that hold." },
+        { old: "Here's a beautiful deck. Good luck scaling it.", new: "Here's the design and the operating system — so it scales itself." }
       ],
       nonneg_label: "Non-Negotiables",
       nonneg: [
@@ -884,12 +884,12 @@ export const translations = {
         }
       },
       contrasts: [
-        { old: "\"Zrobimy, żeby ładnie wyglądało tym razem.\"", new: "\"Zbudujemy system, w którym wygląda ładnie za każdym razem — w każdym zespole, przy każdym launchu.\"" },
-        { old: "\"Przyślij brief kiedy chcesz.\"", new: "\"Jedna ścieżka intake. Jeden format briefu. Jeden decydent. Zawsze.\"" },
-        { old: "\"Jesteśmy elastyczni i dostępni.\"", new: "\"Wysyłamy co tydzień. Feedback ma okna. Kadencja jest nienegocjowalna.\"" },
-        { old: "\"Zajmiemy się czymkolwiek potrzebujesz.\"", new: "\"Najpierw diagnozujemy bottleneck, potem budujemy system, który go usuwa.\"" },
-        { old: "\"Działamy szybko i łamiemy rzeczy.\"", new: "\"Działamy w zrównoważonym rytmie i wysyłamy rzeczy, które się trzymają.\"" },
-        { old: "\"Oto piękny deck. Powodzenia w skalowaniu.\"", new: "\"Oto design i system operacyjny — żeby skalował się sam.\"" }
+        { old: "Zrobimy, żeby ładnie wyglądało tym razem.", new: "Zbudujemy system, w którym wygląda ładnie za każdym razem — w każdym zespole, przy każdym launchu." },
+        { old: "Przyślij brief kiedy chcesz.", new: "Jedna ścieżka intake. Jeden format briefu. Jeden decydent. Zawsze." },
+        { old: "Jesteśmy elastyczni i dostępni.", new: "Wysyłamy co tydzień. Feedback ma okna. Kadencja jest nienegocjowalna." },
+        { old: "Zajmiemy się czymkolwiek potrzebujesz.", new: "Najpierw diagnozujemy bottleneck, potem budujemy system, który go usuwa." },
+        { old: "Działamy szybko i łamiemy rzeczy.", new: "Działamy w zrównoważonym rytmie i wysyłamy rzeczy, które się trzymają." },
+        { old: "Oto piękny deck. Powodzenia w skalowaniu.", new: "Oto design i system operacyjny — żeby skalował się sam." }
       ],
       nonneg_label: "Nienegocjowalne",
       nonneg: [

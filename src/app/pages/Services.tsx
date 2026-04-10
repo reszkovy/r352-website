@@ -186,22 +186,51 @@ export function Services() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
           {deliveryOS.phases.map((phase, pi) => (
             <Reveal key={pi} delay={pi * 0.1}>
-              <div className={`p-8 md:p-10 border border-neutral-200 dark:border-white/10 ${pi > 0 ? 'md:-ml-px' : ''} -mt-px md:mt-0 h-full`}>
-                <span className="block text-[11px] font-display uppercase tracking-widest text-neutral-400 dark:text-[#D4FF00] mb-6">
-                  {phase.label}
-                </span>
-                <div className="space-y-6">
-                  {phase.docs.map((doc, di) => (
-                    <div key={di} className="group">
-                      <div className="flex items-start gap-3">
-                        <span className="text-neutral-400 dark:text-[#D4FF00] text-xs mt-1.5 shrink-0">●</span>
-                        <div>
-                          <h4 className="text-base font-semibold text-neutral-900 dark:text-white mb-1">{doc.name}</h4>
-                          <p className="text-sm text-neutral-500 dark:text-neutral-500 leading-relaxed">{doc.desc}</p>
+              <div className={`border border-neutral-200 dark:border-white/10 ${pi > 0 ? 'md:-ml-px' : ''} -mt-px md:mt-0 h-full flex flex-col`}>
+                {/* Phase label — fixed height */}
+                <div className="px-8 md:px-10 pt-8 md:pt-10 pb-6">
+                  <span className="block text-[11px] font-display uppercase tracking-widest text-neutral-400 dark:text-[#D4FF00]">
+                    {phase.label}
+                  </span>
+                </div>
+
+                {/* Divider */}
+                <div className="mx-8 md:mx-10 border-t border-neutral-200 dark:border-white/10" />
+
+                {/* How it works — docs list */}
+                <div className="px-8 md:px-10 pt-6 pb-4">
+                  <span className="block text-[10px] font-display uppercase tracking-[0.15em] text-neutral-400 dark:text-neutral-600 mb-5">
+                    {language === 'pl' ? 'Jak to działa' : 'How it works'}
+                  </span>
+                  <div className="space-y-5">
+                    {phase.docs.map((doc, di) => (
+                      <div key={di} className="group">
+                        <div className="flex items-start gap-3">
+                          <span className="text-neutral-400 dark:text-[#D4FF00] text-xs mt-1.5 shrink-0">●</span>
+                          <div>
+                            <h4 className="text-base font-semibold text-neutral-900 dark:text-white mb-1">{doc.name}</h4>
+                            <p className="text-sm text-neutral-500 dark:text-neutral-500 leading-relaxed">{doc.desc}</p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
+                </div>
+
+                {/* Spacer to push timeline to bottom */}
+                <div className="flex-grow" />
+
+                {/* Divider */}
+                <div className="mx-8 md:mx-10 border-t border-neutral-200 dark:border-white/10" />
+
+                {/* Timeline — fixed at bottom */}
+                <div className="px-8 md:px-10 py-6">
+                  <span className="block text-[10px] font-display uppercase tracking-[0.15em] text-neutral-400 dark:text-neutral-600 mb-2">
+                    {language === 'pl' ? 'Czas trwania' : 'Timeline'}
+                  </span>
+                  <span className="text-sm font-medium text-neutral-900 dark:text-white">
+                    {pi === 0 ? (language === 'pl' ? '1-2 tygodnie' : '1-2 weeks') : pi === 1 ? (language === 'pl' ? 'W toku' : 'Ongoing') : (language === 'pl' ? '1 tydzień' : '1 week')}
+                  </span>
                 </div>
               </div>
             </Reveal>
