@@ -83,7 +83,7 @@ export function Philosophy() {
                     <span className="font-display text-neutral-400 dark:text-[#D4FF00] text-sm tracking-widest">
                       {key}
                     </span>
-                    <h3 className="text-2xl md:text-3xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-tight">
+                    <h3 className="text-2xl md:text-3xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-tight whitespace-pre-line">
                       {belief?.title}
                     </h3>
                     <p className="text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">

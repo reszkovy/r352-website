@@ -351,27 +351,27 @@ export const translations = {
       intro_col2: "This is what we believe, how we operate, and why it matters for every team we work with.",
       beliefs: {
         "01": {
-          title: "Craft is the foundation. System is the multiplier.",
+          title: "Craft is the foundation.\nSystem is the multiplier.",
           description: "We obsess over every pixel — that's non-negotiable. But pixels alone don't scale. We build operating systems for design delivery — intake paths, brief standards, feedback protocols, packaging rules, shipping cadence — so that premium quality repeats itself without heroics."
         },
         "02": {
-          title: "Cadence beats urgency. Every time.",
+          title: "Cadence beats urgency.\nEvery time.",
           description: "\"ASAP\" is a signal there's no system. We replace fire drills with weekly rhythm — predictable load, predictable output, predictable quality. When there's cadence, \"urgent\" goes back to being an exception."
         },
         "03": {
-          title: "Premium is a standard, not a personality trait.",
+          title: "Premium is a standard,\nnot a personality trait.",
           description: "Quality doesn't drop because people lack skill. It drops because everything becomes ad hoc. We build the templates, checklists, components, and handoff packs that make premium repeatable — across every team, every project."
         },
         "04": {
-          title: "Calm execution is the real competitive advantage.",
+          title: "Calm execution is\nthe real competitive advantage.",
           description: "Teams don't want \"fast\". They want fast without chaos — where approvals don't turn into drama, standards stay consistent, and nothing depends on panic and heroics. Calm is engineered, not wished for."
         },
         "05": {
-          title: "Close loops. Early. Every time.",
+          title: "Close loops. Early.\nEvery time.",
           description: "Open loops are the hidden tax of modern work: briefs without success criteria, feedback that's just a feeling, \"final\" that never becomes final. Speed without burnout comes from closing loops — on purpose, every time."
         },
         "06": {
-          title: "Structure creates freedom. Not the other way around.",
+          title: "Structure creates freedom.\nNot the other way around.",
           description: "Remote work isn't the problem. Lack of structure is. When intake, decisions, feedback, and shipping have clear rules, creative energy goes into the work — not into coordination overhead."
         }
       },
@@ -859,27 +859,27 @@ export const translations = {
       intro_col2: "To jest to, w co wierzymy, jak działamy i dlaczego to ma znaczenie dla każdego zespołu, z którym pracujemy.",
       beliefs: {
         "01": {
-          title: "Craft to fundament. System to mnożnik.",
+          title: "Craft to fundament.\nSystem to mnożnik.",
           description: "Dbamy o każdy piksel — to nienegocjowalne. Ale piksele same się nie skalują. Budujemy systemy operacyjne dostarczania designu — ścieżki intake, standardy briefów, protokoły feedbacku, reguły pakowania, kadencja wysyłki — tak, by premium jakość powtarzała się bez heroizmu."
         },
         "02": {
-          title: "Kadencja bije pilność. Za każdym razem.",
+          title: "Kadencja bije pilność.\nZa każdym razem.",
           description: "\"ASAP\" to sygnał, że nie ma systemu. Zastępujemy gaszenie pożarów cotygodniowym rytmem — przewidywalne obciążenie, przewidywalny output, przewidywalna jakość."
         },
         "03": {
-          title: "Premium to standard, nie cecha osobowości.",
+          title: "Premium to standard,\nnie cecha osobowości.",
           description: "Jakość nie spada, bo ludziom brakuje umiejętności. Spada, bo wszystko staje się ad hoc. Budujemy szablony, checklisty, komponenty i paczki handoff, które czynią premium powtarzalnym."
         },
         "04": {
-          title: "Spokojna realizacja to prawdziwa przewaga.",
+          title: "Spokojna realizacja to\nprawdziwa przewaga.",
           description: "Zespoły nie chcą tylko \"szybko\". Chcą szybko bez chaosu — gdzie zatwierdzenia nie zamieniają się w dramat, standardy pozostają spójne, i nic nie zależy od paniki i heroizmu."
         },
         "05": {
-          title: "Zamykaj pętle. Wcześnie. Za każdym razem.",
+          title: "Zamykaj pętle. Wcześnie.\nZa każdym razem.",
           description: "Otwarte pętle to ukryty podatek nowoczesnej pracy: briefy bez kryteriów sukcesu, feedback który jest tylko uczuciem, \"finalne\" które nigdy nie staje się finalne."
         },
         "06": {
-          title: "Struktura tworzy wolność. Nie odwrotnie.",
+          title: "Struktura tworzy wolność.\nNie odwrotnie.",
           description: "Praca zdalna nie jest problemem. Brak struktury jest. Gdy intake, decyzje, feedback i wysyłka mają jasne reguły, energia kreatywna idzie w pracę — nie w koordynację."
         }
       },
