@@ -74,21 +74,23 @@ export function Home() {
       
       {/* Philosophy Teaser */}
       <section className="py-32 border-t border-white/10">
-        <div className="max-w-[1800px] mx-auto px-8 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
-           <CinematicText 
-             text={t("philosophy.teaser.title").replace("begins ", "begins<br />").replace("decision, ", "decision,<br />")}
-             className="text-4xl md:text-6xl lg:text-7xl font-sans tracking-tight leading-[0.9] text-white" 
+        <div className="max-w-[1800px] mx-auto px-8 md:px-12">
+           {/* Title — full width */}
+           <CinematicText
+             text={t("philosophy.teaser.title")}
+             className="text-4xl md:text-5xl lg:text-6xl font-sans tracking-tight leading-[1.0] text-white max-w-4xl"
            />
-           <div className="max-w-md space-y-8 md:ml-auto w-full">
+           {/* Description + CTA — right-aligned below */}
+           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mt-12">
              <Reveal delay={0.2}>
-               <p className="text-lg text-neutral-400 leading-relaxed">
+               <p className="text-lg text-neutral-400 leading-relaxed max-w-lg">
                  {t("philosophy.teaser.description")}
                </p>
              </Reveal>
              <Reveal delay={0.3}>
-               <MagneticButton 
+               <MagneticButton
                  onClick={() => setLocation("/philosophy")}
-                 className="bg-transparent border-white/20 text-white hover:bg-white hover:text-black w-full max-w-[280px] sm:max-w-none sm:w-auto mx-auto md:mx-0 mt-4"
+                 className="bg-transparent border-white/20 text-white hover:bg-white hover:text-black w-full max-w-[280px] sm:max-w-none sm:w-auto mx-auto md:mx-0 shrink-0"
                  glowColor="rgba(255, 255, 255, 0.2)"
                >
                    <span className="invisible text-xs font-display uppercase tracking-widest absolute">{t("philosophy.teaser.cta")}</span>
