@@ -16,7 +16,7 @@ import { MagneticButton } from "@/app/components/ui/MagneticButton";
 import { Marquee } from "@/app/components/ui/Marquee";
 
 import { useTheme } from "@/app/context/ThemeContext";
-import presentationImg from "../../imports/Background.png";
+import presentationImg from "../../imports/Background.webp";
 
 export function Home() {
   const { t } = useLanguage();
@@ -122,9 +122,10 @@ export function Home() {
           style={{ y }}
           className="absolute inset-[-20%] w-[140%] h-[140%]"
         >
-          <img 
-            src={presentationImg} 
-            alt="r352 background" 
+          <img
+            src={presentationImg}
+            alt="r352 background"
+            loading="lazy"
             className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-700"
           />
         </motion.div>

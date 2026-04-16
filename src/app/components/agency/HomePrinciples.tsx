@@ -4,8 +4,8 @@ import { ImageHover } from "@/app/components/ui/ImageHover";
 import { useLanguage } from "@/app/context/LanguageContext";
 
 import imgGreen from "../../../imports/0_2.jpeg";
-import imgGray from "../../../imports/0_3.png";
-import imgBlack from "../../../imports/0_2.png";
+import imgGray from "../../../imports/0_3.webp";
+import imgBlack from "../../../imports/0_2.webp";
 
 export function HomePrinciples() {
   const { t, language } = useLanguage();
