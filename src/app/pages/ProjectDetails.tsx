@@ -41,7 +41,7 @@ function NdaGate({ project, language, onUnlock }: { project: any; language: stri
   }, []);
 
   return (
-    <div className="min-h-[80vh] flex flex-col items-center justify-center px-6 -mt-32">
+    <div className="min-h-screen flex flex-col items-center justify-center px-6 -mt-16">
       <Reveal>
         <div className="flex flex-col items-center gap-8 max-w-md text-center">
           <div className="text-neutral-500">
