@@ -100,12 +100,12 @@ export function Work() {
                       ) : (
                         <div className="w-full h-full bg-gradient-to-br from-neutral-800 to-neutral-900" />
                       )}
-                      {/* NDA overlay */}
-                      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-3 bg-black/30">
-                        <div className="text-white/40 group-hover:text-white/60 transition-colors duration-500">
+                      {/* NDA overlay — lock pinned to bottom */}
+                      <div className="absolute inset-0 z-20 flex flex-col items-center justify-end pb-6 md:pb-8 gap-2 bg-transparent">
+                        <div className="text-white/30 group-hover:text-white/50 transition-colors duration-500">
                           <LockIcon />
                         </div>
-                        <span className="text-[10px] font-display uppercase tracking-[0.3em] text-white/40 group-hover:text-white/60 transition-colors duration-500">
+                        <span className="text-[9px] font-display uppercase tracking-[0.3em] text-white/30 group-hover:text-white/50 transition-colors duration-500">
                           {language === 'pl' ? 'Pod NDA' : 'Under NDA'}
                         </span>
                       </div>

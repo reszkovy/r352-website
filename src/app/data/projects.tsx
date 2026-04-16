@@ -37,8 +37,11 @@ import kubotaAsset1 from "figma:asset/d7d8b655b0c0a00ac55aefb2c11480f6ada173de.p
 import kubotaAsset2 from "figma:asset/eb31f0fd6023ee1b0a1d37d3abadc6b5c9b719ef.png";
 import kubotaAsset3 from "figma:asset/51f00fe90a9650cf992b64f1a354e63e83efdfe5.png";
 
-// NDA placeholder cover component — CSS gradient, no external assets
-function NdaPlaceholder({ brand, colors }: { brand: string; colors: [string, string] }) {
+import uniqaLogo from "figma:asset/590f188d1475875fa3221bb4f86c99f935f70cbe.png";
+import fifaLogo from "figma:asset/51e11441d7c02bfa2791df691e15dbf208a105e4.png";
+
+// NDA placeholder cover component — blurred logo on gradient
+function NdaPlaceholder({ logo, colors }: { logo: string; colors: [string, string] }) {
   return (
     <div
       className="w-full h-full flex items-center justify-center relative overflow-hidden"
@@ -48,10 +51,12 @@ function NdaPlaceholder({ brand, colors }: { brand: string; colors: [string, str
       <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")', backgroundSize: '128px 128px' }} />
       {/* Geometric accent */}
       <div className="absolute inset-0 opacity-10" style={{ background: `radial-gradient(ellipse at 30% 70%, ${colors[0]}80 0%, transparent 60%), radial-gradient(ellipse at 70% 30%, ${colors[1]}80 0%, transparent 60%)` }} />
-      {/* Brand initial */}
-      <span className="text-[20vw] md:text-[12vw] font-bold tracking-tighter text-white/[0.06] select-none leading-none">
-        {brand}
-      </span>
+      {/* Blurred logo */}
+      <img
+        src={logo}
+        alt=""
+        className="h-12 md:h-20 w-auto object-contain brightness-0 invert opacity-15 blur-[3px] select-none pointer-events-none"
+      />
     </div>
   );
 }
@@ -283,24 +288,24 @@ export const projects = [
     client: "UNIQA",
     title: "Insurance Reimagined",
     category: {
-      en: "Brand & Campaign System",
-      pl: "System Marki i Kampanii"
+      en: "Product UX/UI",
+      pl: "Product UX/UI"
     },
     year: "2025",
     image: "",
     coverImage: "",
-    coverComponent: <NdaPlaceholder brand="U" colors={["#1a1a2e", "#16213e"]} />,
+    coverComponent: <NdaPlaceholder logo={uniqaLogo} colors={["#1a1a2e", "#16213e"]} />,
     images: [],
     isInternal: false,
     isNDA: true,
     ndaPassword: "uniqa2025",
     description: {
-      en: "End-to-end brand communication system for one of Europe's leading insurance groups. From campaign architecture to multi-channel asset production — built to scale across markets.",
-      pl: "Kompleksowy system komunikacji marki dla jednej z wiodących europejskich grup ubezpieczeniowych. Od architektury kampanii po produkcję zasobów wielokanałowych — zbudowany do skalowania na wielu rynkach."
+      en: "Product UX/UI and design system for one of Europe's leading insurance groups. End-to-end digital product design — from user research through interface design to a scalable component library.",
+      pl: "Product UX/UI i design system dla jednej z wiodących europejskich grup ubezpieczeniowych. Kompleksowy design produktu cyfrowego — od badań użytkowników przez projektowanie interfejsu po skalowalną bibliotekę komponentów."
     },
     services: {
-      en: ["Brand System", "Campaign Toolkits", "Multi-channel Production", "Digital Assets"],
-      pl: ["System Marki", "Toolkity Kampanijne", "Produkcja Wielokanałowa", "Zasoby Cyfrowe"]
+      en: ["Product UX/UI", "Design System", "User Research", "Digital Assets"],
+      pl: ["Product UX/UI", "Design System", "Badania Użytkowników", "Zasoby Cyfrowe"]
     },
     challenge: {
       en: "Scaling brand consistency across multiple markets while maintaining the speed and flexibility that regional teams need to execute locally.",
@@ -336,24 +341,24 @@ export const projects = [
     client: "FIFA",
     title: "Global Tournament Experience",
     category: {
-      en: "Digital Product / Campaign",
-      pl: "Produkt Cyfrowy / Kampania"
+      en: "Product UX/UI",
+      pl: "Product UX/UI"
     },
     year: "2025",
     image: "",
     coverImage: "",
-    coverComponent: <NdaPlaceholder brand="F" colors={["#0a1628", "#1b2838"]} />,
+    coverComponent: <NdaPlaceholder logo={fifaLogo} colors={["#0a1628", "#1b2838"]} />,
     images: [],
     isInternal: false,
     isNDA: true,
     ndaPassword: "fifa2025",
     description: {
-      en: "Design and production support for a global tournament digital experience. Campaign assets, UI components, and real-time content systems built for millions of concurrent users.",
-      pl: "Wsparcie designu i produkcji dla globalnego cyfrowego doświadczenia turniejowego. Zasoby kampanijne, komponenty UI i systemy treści w czasie rzeczywistym zbudowane dla milionów jednoczesnych użytkowników."
+      en: "Product UX/UI for a global tournament digital experience. Interface design, component systems, and real-time content architecture built for millions of concurrent users.",
+      pl: "Product UX/UI dla globalnego cyfrowego doświadczenia turniejowego. Projektowanie interfejsu, systemy komponentów i architektura treści real-time zbudowana dla milionów jednoczesnych użytkowników."
     },
     services: {
-      en: ["Digital Product Design", "Campaign Assets", "Real-time Content", "UI System"],
-      pl: ["Design Produktu Cyfrowego", "Zasoby Kampanijne", "Treści Real-time", "System UI"]
+      en: ["Product UX/UI", "UI System", "Real-time Content", "Campaign Assets"],
+      pl: ["Product UX/UI", "System UI", "Treści Real-time", "Zasoby Kampanijne"]
     },
     challenge: {
       en: "Delivering design at global scale under extreme time pressure, with zero tolerance for inconsistency across dozens of touchpoints and formats.",
