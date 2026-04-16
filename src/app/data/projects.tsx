@@ -37,6 +37,25 @@ import kubotaAsset1 from "figma:asset/d7d8b655b0c0a00ac55aefb2c11480f6ada173de.p
 import kubotaAsset2 from "figma:asset/eb31f0fd6023ee1b0a1d37d3abadc6b5c9b719ef.png";
 import kubotaAsset3 from "figma:asset/51f00fe90a9650cf992b64f1a354e63e83efdfe5.png";
 
+// NDA placeholder cover component — CSS gradient, no external assets
+function NdaPlaceholder({ brand, colors }: { brand: string; colors: [string, string] }) {
+  return (
+    <div
+      className="w-full h-full flex items-center justify-center relative overflow-hidden"
+      style={{ background: `linear-gradient(135deg, ${colors[0]} 0%, ${colors[1]} 100%)` }}
+    >
+      {/* Noise / grain overlay */}
+      <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")', backgroundSize: '128px 128px' }} />
+      {/* Geometric accent */}
+      <div className="absolute inset-0 opacity-10" style={{ background: `radial-gradient(ellipse at 30% 70%, ${colors[0]}80 0%, transparent 60%), radial-gradient(ellipse at 70% 30%, ${colors[1]}80 0%, transparent 60%)` }} />
+      {/* Brand initial */}
+      <span className="text-[20vw] md:text-[12vw] font-bold tracking-tighter text-white/[0.06] select-none leading-none">
+        {brand}
+      </span>
+    </div>
+  );
+}
+
 export const projects = [
   {
     id: "benefit-systems",
@@ -257,6 +276,112 @@ export const projects = [
     stats: [
         { value: "3+", label: { en: "Years of Partnership", pl: "Lata Współpracy" } },
         { value: "200+", label: { en: "Deliverables Shipped", pl: "Dostarczonych Materiałów" } }
+    ]
+  },
+  {
+    id: "uniqa",
+    client: "UNIQA",
+    title: "Insurance Reimagined",
+    category: {
+      en: "Brand & Campaign System",
+      pl: "System Marki i Kampanii"
+    },
+    year: "2025",
+    image: "",
+    coverImage: "",
+    coverComponent: <NdaPlaceholder brand="U" colors={["#1a1a2e", "#16213e"]} />,
+    images: [],
+    isInternal: false,
+    isNDA: true,
+    ndaPassword: "uniqa2025",
+    description: {
+      en: "End-to-end brand communication system for one of Europe's leading insurance groups. From campaign architecture to multi-channel asset production — built to scale across markets.",
+      pl: "Kompleksowy system komunikacji marki dla jednej z wiodących europejskich grup ubezpieczeniowych. Od architektury kampanii po produkcję zasobów wielokanałowych — zbudowany do skalowania na wielu rynkach."
+    },
+    services: {
+      en: ["Brand System", "Campaign Toolkits", "Multi-channel Production", "Digital Assets"],
+      pl: ["System Marki", "Toolkity Kampanijne", "Produkcja Wielokanałowa", "Zasoby Cyfrowe"]
+    },
+    challenge: {
+      en: "Scaling brand consistency across multiple markets while maintaining the speed and flexibility that regional teams need to execute locally.",
+      pl: "Skalowanie spójności marki na wielu rynkach przy jednoczesnym zachowaniu szybkości i elastyczności, których potrzebują lokalne zespoły do realizacji."
+    },
+    decisions: {
+      en: "We built a modular campaign system with reusable components that allow local teams to produce on-brand assets independently, reducing bottlenecks and turnaround time.",
+      pl: "Zbudowaliśmy modułowy system kampanijny z reużywalnymi komponentami, które pozwalają lokalnym zespołom samodzielnie produkować materiały zgodne z marką, redukując wąskie gardła i czas realizacji."
+    },
+    approach: {
+      en: "A structured delivery framework combining brand governance with production efficiency — enabling both strategic control and operational speed.",
+      pl: "Ustrukturyzowany framework dostarczania łączący zarządzanie marką z efektywnością produkcji — umożliwiający zarówno kontrolę strategiczną, jak i szybkość operacyjną."
+    },
+    quote: {
+      en: "When brand and process work together, scale becomes a feature — not a compromise.",
+      pl: "Gdy marka i proces działają razem, skala staje się zaletą — nie kompromisem."
+    },
+    outcome: {
+      en: "A repeatable, scalable production system that reduced campaign turnaround by 40% while maintaining brand integrity across all markets.",
+      pl: "Powtarzalny, skalowalny system produkcji, który skrócił czas realizacji kampanii o 40% przy zachowaniu integralności marki na wszystkich rynkach."
+    },
+    reflection: {
+      en: "Insurance doesn't have to look like insurance. When you apply design-system thinking to a regulated industry, you unlock speed without sacrificing compliance.",
+      pl: "Ubezpieczenia nie muszą wyglądać jak ubezpieczenia. Gdy zastosujesz myślenie systemowe do regulowanej branży, odblokujesz szybkość bez poświęcania zgodności."
+    },
+    stats: [
+        { value: "6+", label: { en: "Markets Supported", pl: "Wspieranych Rynków" } },
+        { value: "40%", label: { en: "Faster Turnaround", pl: "Szybsza Realizacja" } }
+    ]
+  },
+  {
+    id: "fifa",
+    client: "FIFA",
+    title: "Global Tournament Experience",
+    category: {
+      en: "Digital Product / Campaign",
+      pl: "Produkt Cyfrowy / Kampania"
+    },
+    year: "2025",
+    image: "",
+    coverImage: "",
+    coverComponent: <NdaPlaceholder brand="F" colors={["#0a1628", "#1b2838"]} />,
+    images: [],
+    isInternal: false,
+    isNDA: true,
+    ndaPassword: "fifa2025",
+    description: {
+      en: "Design and production support for a global tournament digital experience. Campaign assets, UI components, and real-time content systems built for millions of concurrent users.",
+      pl: "Wsparcie designu i produkcji dla globalnego cyfrowego doświadczenia turniejowego. Zasoby kampanijne, komponenty UI i systemy treści w czasie rzeczywistym zbudowane dla milionów jednoczesnych użytkowników."
+    },
+    services: {
+      en: ["Digital Product Design", "Campaign Assets", "Real-time Content", "UI System"],
+      pl: ["Design Produktu Cyfrowego", "Zasoby Kampanijne", "Treści Real-time", "System UI"]
+    },
+    challenge: {
+      en: "Delivering design at global scale under extreme time pressure, with zero tolerance for inconsistency across dozens of touchpoints and formats.",
+      pl: "Dostarczanie designu w skali globalnej pod ekstremalną presją czasową, z zerową tolerancją na niespójność w dziesiątkach punktów styku i formatów."
+    },
+    decisions: {
+      en: "We designed a component-based production pipeline that enabled rapid asset generation while maintaining pixel-perfect consistency across all digital channels.",
+      pl: "Zaprojektowaliśmy komponentowy pipeline produkcyjny, który umożliwiał szybkie generowanie zasobów przy zachowaniu pikselowej spójności we wszystkich kanałach cyfrowych."
+    },
+    approach: {
+      en: "Speed meets precision. A systematic approach to tournament-scale design that treats every asset as part of a larger, interconnected system.",
+      pl: "Szybkość spotyka precyzję. Systematyczne podejście do designu w skali turniejowej, które traktuje każdy zasób jako część większego, połączonego systemu."
+    },
+    quote: {
+      en: "At this scale, design is logistics. Every pixel ships on a schedule.",
+      pl: "W tej skali design to logistyka. Każdy piksel jest dostarczany na czas."
+    },
+    outcome: {
+      en: "Seamless visual experience delivered across all digital touchpoints for a global audience, on time and on brand — from first whistle to final.",
+      pl: "Płynne doświadczenie wizualne dostarczone na wszystkich cyfrowych punktach styku dla globalnej publiczności, na czas i zgodnie z marką — od pierwszego gwizdka do ostatniego."
+    },
+    reflection: {
+      en: "Working at FIFA scale teaches you that systems aren't optional — they're the only way to deliver quality when millions are watching.",
+      pl: "Praca w skali FIFA uczy, że systemy nie są opcjonalne — to jedyny sposób na dostarczenie jakości, gdy miliony patrzą."
+    },
+    stats: [
+        { value: "50+", label: { en: "Digital Touchpoints", pl: "Cyfrowych Punktów Styku" } },
+        { value: "1B+", label: { en: "Global Reach", pl: "Globalny Zasięg" } }
     ]
   }
 ];

@@ -2,12 +2,93 @@ import { Link, useLocation } from "wouter";
 import { PageTransition } from "@/app/components/ui/PageTransition";
 import { Reveal } from "@/app/components/ui/Reveal";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { projects } from "@/app/data/projects";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { useLenis } from "lenis/react";
 import { ImageHover } from "@/app/components/ui/ImageHover";
+
+function LockIcon({ size = 32 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+    </svg>
+  );
+}
+
+function NdaGate({ project, language, onUnlock }: { project: any; language: string; onUnlock: () => void }) {
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+  const [shaking, setShaking] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (password === project.ndaPassword) {
+      onUnlock();
+    } else {
+      setError(true);
+      setShaking(true);
+      setTimeout(() => setShaking(false), 500);
+      setTimeout(() => setError(false), 2000);
+    }
+  };
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
+
+  return (
+    <div className="min-h-[80vh] flex flex-col items-center justify-center px-6">
+      <Reveal>
+        <div className="flex flex-col items-center gap-8 max-w-md text-center">
+          <div className="text-neutral-500">
+            <LockIcon size={48} />
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-white">
+            {project.client}
+          </h2>
+          <p className="text-neutral-400 text-lg leading-relaxed">
+            {language === 'pl'
+              ? 'To case study jest objęte umową NDA. Skontaktuj się z nami, aby uzyskać hasło dostępu.'
+              : 'This case study is under NDA. Contact us to get the access password.'}
+          </p>
+          <form onSubmit={handleSubmit} className="w-full max-w-sm mt-4">
+            <div className={`relative ${shaking ? 'animate-shake' : ''}`}>
+              <input
+                ref={inputRef}
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder={language === 'pl' ? 'Wpisz hasło...' : 'Enter password...'}
+                className={`w-full bg-white/5 border ${error ? 'border-red-500/50' : 'border-white/10'} rounded-none px-6 py-4 text-white text-sm tracking-wider placeholder:text-neutral-600 focus:outline-none focus:border-[#D4FF00]/50 transition-colors duration-300`}
+              />
+              <button
+                type="submit"
+                className="absolute right-2 top-1/2 -translate-y-1/2 text-xs font-display uppercase tracking-widest text-neutral-500 hover:text-[#D4FF00] transition-colors px-3 py-2"
+              >
+                →
+              </button>
+            </div>
+            {error && (
+              <p className="text-red-400/70 text-xs mt-3 tracking-wider">
+                {language === 'pl' ? 'Nieprawidłowe hasło' : 'Invalid password'}
+              </p>
+            )}
+          </form>
+          <Link
+            href="/contact"
+            className="text-xs font-display uppercase tracking-widest text-[#D4FF00]/70 hover:text-[#D4FF00] transition-colors mt-4"
+          >
+            {language === 'pl' ? 'Skontaktuj się po dostęp →' : 'Contact for access →'}
+          </Link>
+        </div>
+      </Reveal>
+    </div>
+  );
+}
 
 export function ProjectDetails({ params }: { params?: { id: string } }) {
   const project = projects.find(p => p.id === params?.id);
@@ -15,6 +96,10 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
   const { t, language } = useLanguage();
   const lenis = useLenis();
   const [, setLocation] = useLocation();
+  const [ndaUnlocked, setNdaUnlocked] = useState(false);
+
+  // @ts-ignore
+  const isNDA = project?.isNDA;
 
   // Determine next project for the footer link
   const currentIndex = projects.findIndex(p => p.id === params?.id);
@@ -28,7 +113,29 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
     }
   }, [params?.id, lenis]);
 
+  // Reset NDA state when switching projects
+  useEffect(() => {
+    setNdaUnlocked(false);
+  }, [params?.id]);
+
   if (!project) return null;
+
+  // Show NDA gate if project is protected and not yet unlocked
+  if (isNDA && !ndaUnlocked) {
+    return (
+      <PageTransition className="min-h-screen bg-background text-white selection:bg-[#D4FF00] selection:text-black">
+        {/* Navigation */}
+        <div className="fixed top-0 left-0 w-full z-50 px-6 py-6 md:px-12 flex justify-between items-center mix-blend-difference pointer-events-none">
+          <Link href="/work" className="pointer-events-auto inline-flex items-center gap-2 text-xs font-display uppercase tracking-widest text-white/50 hover:text-[#D4FF00] transition-colors duration-300">
+            ← {t("work.index")}
+          </Link>
+        </div>
+        <div className="pt-32">
+          <NdaGate project={project} language={language} onUnlock={() => setNdaUnlocked(true)} />
+        </div>
+      </PageTransition>
+    );
+  }
 
   return (
     <PageTransition className="min-h-screen bg-background text-white selection:bg-[#D4FF00] selection:text-black">
