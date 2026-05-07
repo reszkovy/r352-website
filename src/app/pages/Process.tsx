@@ -1,13 +1,11 @@
-import { useState, useCallback, useRef } from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
+import { useState, useCallback } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { PageTransition } from "@/app/components/ui/PageTransition";
 import { Reveal } from "@/app/components/ui/Reveal";
-import { CinematicText } from "@/app/components/ui/CinematicText";
 import { MagneticButton } from "@/app/components/ui/MagneticButton";
 import { Marquee } from "@/app/components/ui/Marquee";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { useLocation } from "wouter";
-import presentationImg from "../../imports/Background.webp";
 
 // ─── 8-step methodology ──────────────────────────────────
 interface Step {
@@ -195,7 +193,6 @@ export function Process() {
   const { language } = useLanguage();
   const [, setLocation] = useLocation();
   const [activeStep, setActiveStep] = useState(0);
-  const parallaxRef = useRef<HTMLDivElement>(null);
 
   const lang = language as "en" | "pl";
 
@@ -203,68 +200,13 @@ export function Process() {
     setActiveStep(Math.max(0, Math.min(TOTAL - 1, idx)));
   }, []);
 
-  const { scrollYProgress } = useScroll({ target: parallaxRef, offset: ["start end", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
-
   const step = steps[activeStep];
   const progressPct = ((activeStep + 1) / TOTAL) * 100;
 
   return (
     <PageTransition>
-      {/* ─── Hero — matching Philosophy/Services style ─── */}
-      <div className="py-32 px-8 md:px-12 border-b border-neutral-200 dark:border-white/10">
-        <div className="max-w-[1800px] mx-auto">
-          <Reveal>
-            <div>
-              <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-8">
-                Process
-              </span>
-              <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tighter text-neutral-900 dark:text-white mb-6 leading-[0.9] max-w-5xl">
-                {lang === "pl" ? (
-                  <>System, nie projekt. <br className="hidden md:block" /><span className="text-neutral-400 dark:text-[#D4FF00]">8 kroków do rezultatu.</span></>
-                ) : (
-                  <>A system, not a project. <br className="hidden md:block" /><span className="text-neutral-400 dark:text-[#D4FF00]">8 steps to results.</span></>
-                )}
-              </h1>
-              <p className="text-2xl md:text-3xl text-neutral-600 dark:text-neutral-400 tracking-tight font-medium mb-16 max-w-3xl">
-                {lang === "pl"
-                  ? "Każdy projekt przechodzi ten sam framework. Modyfikujemy głębokość, nie strukturę."
-                  : "Every project follows the same framework. We modify depth, not structure."}
-              </p>
-              <div className="w-3/4 grid grid-cols-1 md:grid-cols-2 gap-12 text-xl md:text-2xl text-neutral-700 dark:text-neutral-400 leading-relaxed">
-                <p>
-                  {lang === "pl"
-                    ? "Od landing page'a po pełne wdrożenie Creative Ops — zawsze zaczynamy od diagnozy, nie od designu. Rezultat: powtarzalna jakość, przejrzyste decyzje, deliverables, które działają."
-                    : "From a landing page to a full Creative Ops implementation — we always start from diagnosis, not design. The result: repeatable quality, transparent decisions, deliverables that work."}
-                </p>
-                <p>
-                  {lang === "pl"
-                    ? "Nie zostawiamy rekomendacji. Zostawiamy system — artefakty operacyjne, których Twój zespół używa codziennie. I kadencję, która utrzymuje ten system przy życiu."
-                    : "We don't leave recommendations. We leave a system — operational artifacts your team uses daily. And a cadence that keeps the system alive."}
-                </p>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </div>
-
-      {/* ─── Parallax Image Strip ─── */}
-      <section
-        ref={parallaxRef}
-        className="w-full h-[30vh] md:h-[45vh] bg-[#050505] border-b border-white/10 relative overflow-hidden"
-      >
-        <motion.div style={{ y }} className="absolute inset-[-20%] w-[140%] h-[140%]">
-          <img
-            src={presentationImg}
-            alt="r352 process"
-            loading="lazy"
-            className="w-full h-full object-cover opacity-70"
-          />
-        </motion.div>
-      </section>
-
-      {/* ─── 8-Step Tabs ─── */}
-      <section className="py-20 md:py-32 border-b border-white/10">
+      {/* ─── 8-Step Tabs — page opener ─── */}
+      <section className="pt-32 pb-20 md:pt-40 md:pb-32 border-b border-white/10">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
           <Reveal>
             <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-4">
@@ -355,29 +297,37 @@ export function Process() {
                       </div>
                     </div>
 
-                    {/* 2×2 cards */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
+                    {/* Detail grid — editorial layout, no boxy cards */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-0 mb-10">
                       {step.cards.map((card, ci) => (
                         <div
                           key={ci}
-                          className="bg-white dark:bg-white/[0.03] border border-neutral-200 dark:border-white/[0.06] rounded-md px-6 py-5 transition-all duration-500 hover:border-neutral-300 dark:hover:border-white/[0.12] hover:bg-neutral-50 dark:hover:bg-white/[0.05] group"
+                          className={`
+                            relative py-8 md:py-10 transition-all duration-500 group
+                            ${ci % 2 === 0 ? "md:pr-12" : "md:pl-12"}
+                            ${ci % 2 === 1 ? "md:border-l border-neutral-100 dark:border-white/[0.06]" : ""}
+                            ${ci < 2 ? "border-b border-neutral-100 dark:border-white/[0.06]" : ""}
+                          `}
                         >
-                          <div className="font-mono text-[10px] text-[#9abb00] dark:text-[#D4FF00] uppercase tracking-widest mb-3 group-hover:tracking-[0.2em] transition-all duration-500">
-                            {card.label[lang]}
+                          <div className="flex items-center gap-3 mb-4">
+                            <span className="w-6 h-px bg-[#9abb00] dark:bg-[#D4FF00] group-hover:w-10 transition-all duration-500" />
+                            <span className="font-display text-[10px] text-[#9abb00] dark:text-[#D4FF00] uppercase tracking-[0.2em]">
+                              {card.label[lang]}
+                            </span>
                           </div>
-                          <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
+                          <p className="text-[15px] text-neutral-600 dark:text-neutral-300 leading-[1.7] max-w-[48ch]">
                             {card.text[lang]}
                           </p>
                         </div>
                       ))}
                     </div>
 
-                    {/* Metric */}
-                    <div className="bg-[#D4FF00]/10 dark:bg-[#D4FF00]/[0.08] border border-[#D4FF00]/20 rounded-md px-6 py-4 flex items-center flex-wrap gap-4">
-                      <span className="font-mono text-[10px] text-[#D4FF00] uppercase tracking-wide px-3 py-1 border border-[#D4FF00]/25 rounded-sm shrink-0 font-semibold">
-                        Metric
+                    {/* Metric — minimal accent line */}
+                    <div className="flex items-start gap-5 pt-8 border-t border-neutral-100 dark:border-white/[0.06]">
+                      <span className="font-mono text-[10px] text-[#9abb00] dark:text-[#D4FF00] uppercase tracking-[0.15em] mt-[3px] shrink-0">
+                        KPI
                       </span>
-                      <span className="text-sm text-neutral-600 dark:text-neutral-300 leading-snug">
+                      <span className="text-[15px] text-neutral-500 dark:text-neutral-400 leading-relaxed">
                         {step.metric[lang]}
                       </span>
                     </div>
