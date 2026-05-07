@@ -32,6 +32,7 @@ const LimitedAccess3 = lazy(() => import("@/app/pages/LimitedAccess3").then(m =>
 const LimitedAccess5 = lazy(() => import("@/app/pages/LimitedAccess5").then(m => ({ default: m.LimitedAccess5 })));
 const LimitedAccess5Meeting = lazy(() => import("@/app/pages/LimitedAccess5Meeting").then(m => ({ default: m.LimitedAccess5Meeting })));
 const LimitedAccess5Pricing = lazy(() => import("@/app/pages/LimitedAccess5Pricing").then(m => ({ default: m.LimitedAccess5Pricing })));
+const Process = lazy(() => import("@/app/pages/Process").then(m => ({ default: m.Process })));
 import { useLenis } from "lenis/react";
 
 function ScrollToTop() {
@@ -131,6 +132,10 @@ function AppContent() {
       title: "Build & Optimize — r352 | UX/UI & Digital Products",
       description: "We design and build digital products, landing pages, and interfaces that convert — grounded in data and user research."
     };
+    if (path === "/process") return {
+      title: "Process — r352 | Creative Operating System in 8 Steps",
+      description: "How we build an operational creative delivery system for multi-location brands — step by step, from operational diagnosis to measurement and iteration."
+    };
     if (path === "/philosophy") return {
       title: "Philosophy — r352 | How we think about design & delivery",
       description: "Process over aesthetics. Systems over one-offs. Learn how r352 approaches design as a delivery discipline, not a creative exercise."
@@ -203,6 +208,7 @@ function AppContent() {
               <Route path="/philosophy" component={Philosophy} />
               <Route path="/services" component={Services} />
               <Route path="/services/:slug" component={ServiceDetail} />
+              <Route path="/process" component={Process} />
               <Route path="/deliverables" component={Deliverables} />
               <Route path="/journal" component={Journal} />
               <Route path="/journal/:id" component={JournalArticle} />

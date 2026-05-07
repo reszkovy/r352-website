@@ -61,6 +61,7 @@ export function AgencyHeader() {
 
   const navItems = [
     { href: "/work", label: t("nav.work") },
+    { href: "/process", label: t("nav.process") },
     { href: "/philosophy", label: t("nav.philosophy") },
     { href: "/services", label: t("nav.services") },
     { href: "/journal", label: t("nav.journal") },
