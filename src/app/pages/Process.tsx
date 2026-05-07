@@ -209,17 +209,6 @@ export function Process() {
       <section className="pt-32 pb-20 md:pt-40 md:pb-32 border-b border-white/10">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
           <Reveal>
-            <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-4">
-              {lang === "pl" ? "Framework" : "Framework"}
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-neutral-900 dark:text-white mb-16 leading-[0.95]">
-              {lang === "pl"
-                ? "Diagnose → Map → Standardize → Build → Govern → Ship → Measure → Iterate"
-                : "Diagnose → Map → Standardize → Build → Govern → Ship → Measure → Iterate"}
-            </h2>
-          </Reveal>
-
-          <Reveal delay={0.1}>
             <div className="border border-neutral-200 dark:border-white/[0.12] rounded-lg overflow-hidden bg-neutral-50 dark:bg-[#141414]">
               {/* Progress bar */}
               <div className="h-[2px] bg-neutral-200 dark:bg-white/[0.06] relative">
