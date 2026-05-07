@@ -26,23 +26,28 @@ export function urlFor(source: SanityImageSource) {
 export const ARTICLES_QUERY = `*[_type == "article"] | order(date desc) {
   _id,
   title,
+  title_pl,
   "slug": slug.current,
   date,
   category,
   image,
   excerpt,
+  excerpt_pl,
   "hasLegacyHtml": defined(legacyHtml)
 }`
 
 export const ARTICLE_BY_SLUG_QUERY = `*[_type == "article" && slug.current == $slug][0] {
   _id,
   title,
+  title_pl,
   "slug": slug.current,
   date,
   category,
   image,
   excerpt,
+  excerpt_pl,
   content,
+  content_pl,
   legacyHtml
 }`
 

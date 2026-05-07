@@ -7,10 +7,16 @@ export const article = defineType({
   fields: [
     defineField({
       name: 'title',
-      title: 'Title',
+      title: 'Title (EN)',
       type: 'string',
-      description: 'Article title (supports <br/> for line breaks in display)',
+      description: 'Article title in English (supports <br/> for line breaks in display)',
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'title_pl',
+      title: 'Title (PL)',
+      type: 'string',
+      description: 'Article title in Polish (supports <br/> for line breaks in display)',
     }),
     defineField({
       name: 'slug',
@@ -49,14 +55,79 @@ export const article = defineType({
     }),
     defineField({
       name: 'excerpt',
-      title: 'Excerpt',
+      title: 'Excerpt (EN)',
       type: 'text',
       rows: 3,
-      description: 'Short description for SEO and listing cards',
+      description: 'Short description for SEO and listing cards (English)',
+    }),
+    defineField({
+      name: 'excerpt_pl',
+      title: 'Excerpt (PL)',
+      type: 'text',
+      rows: 3,
+      description: 'Short description for SEO and listing cards (Polish)',
     }),
     defineField({
       name: 'content',
-      title: 'Content',
+      title: 'Content (EN)',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [
+            { title: 'Normal', value: 'normal' },
+            { title: 'H2', value: 'h2' },
+            { title: 'H3', value: 'h3' },
+            { title: 'Quote', value: 'blockquote' },
+          ],
+          marks: {
+            decorators: [
+              { title: 'Bold', value: 'strong' },
+              { title: 'Italic', value: 'em' },
+              { title: 'Highlight', value: 'highlight' },
+            ],
+            annotations: [
+              {
+                name: 'link',
+                type: 'object',
+                title: 'Link',
+                fields: [
+                  { name: 'href', type: 'url', title: 'URL' },
+                ],
+              },
+            ],
+          },
+        },
+        {
+          type: 'image',
+          options: { hotspot: true },
+          fields: [
+            {
+              name: 'caption',
+              type: 'string',
+              title: 'Caption',
+            },
+          ],
+        },
+        {
+          name: 'callout',
+          title: 'Callout Block',
+          type: 'object',
+          fields: [
+            { name: 'text', type: 'text', title: 'Callout Text' },
+          ],
+          preview: {
+            select: { title: 'text' },
+            prepare({ title }) {
+              return { title: `Callout: ${title}` }
+            },
+          },
+        },
+      ],
+    }),
+    defineField({
+      name: 'content_pl',
+      title: 'Content (PL)',
       type: 'array',
       of: [
         {
