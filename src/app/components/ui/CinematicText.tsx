@@ -14,6 +14,17 @@ interface CinematicTextProps {
   as?: 'h1' | 'h2' | 'h3' | 'div';
 }
 
+// ─── Spark sound (singleton, reused across all glowEffect instances) ──
+// Triggers once when cursor enters the glow proximity zone (~280px around
+// the text bounding box) and resets after cursor leaves — so re-entry plays
+// it again. .catch() swallows the autoplay-policy rejection on first load.
+let sparkAudio: HTMLAudioElement | null = null;
+if (typeof window !== "undefined") {
+  sparkAudio = new Audio("/sounds/spark.wav");
+  sparkAudio.volume = 0.35;
+  sparkAudio.preload = "auto";
+}
+
 export function CinematicText({ 
   text, 
   className, 
@@ -25,12 +36,15 @@ export function CinematicText({
   glowColor = "#D4FF00",
   as: Tag = "div"
 }: CinematicTextProps) {
-  const ref = useRef(null);
+  const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-10% 0px -10% 0px" });
   const controls = useAnimation();
-  
+
   // Track mouse position globally for the proximity effect
   const mousePosition = useRef({ x: -1000, y: -1000, isHovering: false });
+  // Guard: true while cursor is inside the spark proximity zone — prevents
+  // re-triggering the sound while the user lingers; resets when cursor leaves.
+  const inSparkZone = useRef(false);
 
   useEffect(() => {
     if (isInView) {
@@ -41,17 +55,41 @@ export function CinematicText({
   useEffect(() => {
     if (!glowEffect) return;
 
+    // Match the glow proximity radius used in InteractiveChar (280px)
+    const SPARK_RADIUS = 280;
+
     const handlePointerMove = (e: PointerEvent) => {
       mousePosition.current = { x: e.clientX, y: e.clientY, isHovering: true };
+
+      // Spark sound — proximity check against the whole text bounding box
+      if (ref.current && sparkAudio) {
+        const rect = ref.current.getBoundingClientRect();
+        const inProximity =
+          e.clientX >= rect.left - SPARK_RADIUS &&
+          e.clientX <= rect.right + SPARK_RADIUS &&
+          e.clientY >= rect.top - SPARK_RADIUS &&
+          e.clientY <= rect.bottom + SPARK_RADIUS;
+
+        if (inProximity && !inSparkZone.current) {
+          inSparkZone.current = true;
+          sparkAudio.currentTime = 0;
+          sparkAudio.play().catch(() => {
+            // Ignore autoplay-policy rejection on first load
+          });
+        } else if (!inProximity && inSparkZone.current) {
+          inSparkZone.current = false;
+        }
+      }
     };
-    
+
     const handlePointerLeave = () => {
       mousePosition.current.isHovering = false;
+      inSparkZone.current = false;
     };
 
     window.addEventListener('pointermove', handlePointerMove);
     document.documentElement.addEventListener('pointerleave', handlePointerLeave);
-    
+
     return () => {
       window.removeEventListener('pointermove', handlePointerMove);
       document.documentElement.removeEventListener('pointerleave', handlePointerLeave);

@@ -9,9 +9,30 @@ interface PageTransitionProps {
   className?: string;
 }
 
+// ─── Transition sound (singleton, reused across mounts) ──────────────
+// Browsers block autoplay before any user gesture, so the very first
+// page load is silent — every subsequent navigation (which IS a gesture)
+// triggers the sound. .catch() swallows the autoplay-policy rejection.
+let transitionAudio: HTMLAudioElement | null = null;
+if (typeof window !== "undefined") {
+  transitionAudio = new Audio("/sounds/transition-ltr.wav");
+  transitionAudio.volume = 0.4;
+  transitionAudio.preload = "auto";
+}
+
 export function PageTransition({ children, className }: PageTransitionProps) {
   const lenis = useLenis();
   const { theme } = useTheme();
+
+  // Trigger transition sound on every page mount
+  useEffect(() => {
+    if (transitionAudio) {
+      transitionAudio.currentTime = 0;
+      transitionAudio.play().catch(() => {
+        // Ignore autoplay-policy rejection on first load
+      });
+    }
+  }, []);
 
   // After the page transition animation completes, force Lenis to recalculate
   useEffect(() => {
