@@ -238,18 +238,28 @@ export function Process() {
                     aria-selected={i === activeStep}
                     onClick={() => goToStep(i)}
                     className={`
+                      relative isolate
                       border-r border-neutral-200 dark:border-white/[0.06] last:border-r-0 px-4 py-5 text-left
-                      flex flex-col gap-2 min-h-[90px] transition-all duration-300 cursor-pointer
+                      flex flex-col gap-2 min-h-[90px] cursor-pointer
+                      transition-colors duration-500 ease-out
                       ${i === activeStep
-                        ? "bg-[#D4FF00] text-[#0A0A0A]"
-                        : "bg-transparent text-neutral-400 dark:text-neutral-600 hover:bg-neutral-100 dark:hover:bg-white/[0.03] hover:text-neutral-900 dark:hover:text-white"
+                        ? "text-[#0A0A0A]"
+                        : "text-neutral-400 dark:text-neutral-600 hover:bg-neutral-100 dark:hover:bg-white/[0.03] hover:text-neutral-900 dark:hover:text-white"
                       }
                     `}
                   >
-                    <span className={`font-mono text-[11px] tracking-wide ${i === activeStep ? "text-[#0A0A0A]/40" : ""}`}>
+                    {/* Sliding active background — Framer animates between tabs via shared layoutId */}
+                    {i === activeStep && (
+                      <motion.div
+                        layoutId="processActiveTab"
+                        className="absolute inset-0 bg-[#D4FF00] -z-10"
+                        transition={{ type: "spring", stiffness: 380, damping: 34, mass: 0.9 }}
+                      />
+                    )}
+                    <span className={`font-mono text-[11px] tracking-wide transition-colors duration-500 ${i === activeStep ? "text-[#0A0A0A]/40" : ""}`}>
                       {s.num}
                     </span>
-                    <span className={`text-[11px] md:text-xs font-medium leading-snug mt-auto ${i === activeStep ? "font-semibold text-[#0A0A0A]" : ""}`}>
+                    <span className={`text-[11px] md:text-xs font-medium leading-snug mt-auto transition-colors duration-500 ${i === activeStep ? "font-semibold text-[#0A0A0A]" : ""}`}>
                       {s.title[lang]}
                     </span>
                   </button>
@@ -261,17 +271,22 @@ export function Process() {
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeStep}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                    initial={{ opacity: 0, y: 18, filter: "blur(8px)" }}
+                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    exit={{ opacity: 0, y: -10, filter: "blur(6px)" }}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                     className="p-8 md:p-12 lg:px-16"
                     role="tabpanel"
                   >
-                    {/* Header — subtitle only */}
-                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight text-neutral-900 dark:text-white leading-snug max-w-[28ch] mb-10">
+                    {/* Header — subtitle, single line on md+ */}
+                    <motion.h3
+                      initial={{ opacity: 0, y: 14 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.55, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+                      className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold tracking-tight text-neutral-900 dark:text-white leading-snug md:whitespace-nowrap mb-10"
+                    >
                       {step.subtitle[lang]}
-                    </h3>
+                    </motion.h3>
 
                     {/* Detail grid — editorial layout, no boxy cards */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-0 mb-10">
