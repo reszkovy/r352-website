@@ -43,35 +43,11 @@ export function Services() {
   };
 
   return (
-    <PageTransition className="pt-32 pb-32 px-6 md:px-12 max-w-[1200px] mx-auto min-h-screen">
-      
-      {/* 1. Header Section */}
-      <div className="py-32 border-b border-neutral-200 dark:border-white/10 mb-24">
-        <Reveal>
-          <div className="max-w-4xl">
-            <span className="block text-[11px] font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-8">
-              {t('services_page.title')}
-            </span>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-white mb-12 leading-[0.9]">
-              {t('services_page.hero_title')}
-            </h1>
-            <div className="text-xl md:text-2xl text-neutral-800 dark:text-neutral-400 leading-relaxed max-w-2xl">
-              <p>
-                {t('services_page.hero_subtitle')}
-              </p>
-            </div>
-          </div>
-        </Reveal>
-      </div>
+    <PageTransition className="pb-32 px-6 md:px-12 max-w-[1200px] mx-auto min-h-screen">
 
-      {/* 2. Products Section (Accordion) */}
-      <section className="mb-40 min-h-[600px]">
-        <Reveal>
-           <h2 className="text-[11px] font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-12">
-             {language === 'pl' ? "Produkty" : "Products"}
-           </h2>
-        </Reveal>
-        
+      {/* Products Section (Accordion) — page opener, spacing matched to Process */}
+      <section className="pt-32 md:pt-40 mb-40 min-h-[600px]">
+
         <div className="flex flex-col border-t border-neutral-200 dark:border-white/10">
           {cards.map((card, index) => {
              const isActive = index === activeIndex;

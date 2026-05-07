@@ -3,7 +3,7 @@ import { PageTransition } from "@/app/components/ui/PageTransition";
 
 export function Philosophy() {
   return (
-    <PageTransition className="pt-20">
+    <PageTransition>
       <PhilosophySection />
     </PageTransition>
   );

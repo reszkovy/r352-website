@@ -30,8 +30,8 @@ export function Philosophy() {
   return (
     <section ref={containerRef} className="relative overflow-hidden">
 
-      {/* Hero Header */}
-      <div className="py-32 px-8 md:px-12 border-b border-neutral-200 dark:border-white/10">
+      {/* Hero Header — matched to Process page spacing (pt-32 md:pt-40) */}
+      <div className="pt-32 pb-20 md:pt-40 md:pb-32 px-8 md:px-12 border-b border-neutral-200 dark:border-white/10">
         <div className="max-w-[1800px] mx-auto">
           <Reveal>
             <div>
@@ -42,13 +42,9 @@ export function Philosophy() {
                 {t("philosophy_page.title_line1")} <br className="hidden md:block" />
                 <span className="text-neutral-400 dark:text-[#D4FF00]">{t("philosophy_page.title_line2")}</span>
               </h1>
-              <p className="text-2xl md:text-3xl text-neutral-600 dark:text-neutral-400 tracking-tight font-medium mb-16">
+              <p className="text-xl md:text-2xl text-neutral-600 dark:text-neutral-400 tracking-tight font-light leading-snug max-w-3xl">
                 {t("philosophy_page.subtitle")}
               </p>
-              <div className="w-3/4 grid grid-cols-1 md:grid-cols-2 gap-12 text-xl md:text-2xl text-neutral-700 dark:text-neutral-400 leading-relaxed">
-                <p>{t("philosophy_page.intro_col1")}</p>
-                <p>{t("philosophy_page.intro_col2")}</p>
-              </div>
             </div>
           </Reveal>
         </div>
