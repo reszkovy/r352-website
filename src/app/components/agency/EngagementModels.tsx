@@ -48,7 +48,7 @@ export function EngagementModels() {
                   <div className="mb-8">
                     {/* Number badge with lime bg */}
                     <div className="flex items-start justify-between mb-6">
-                      <span className="lime-accent-bg inline-flex items-center justify-center w-10 h-10 bg-[#D4FF00] text-black text-sm font-bold font-mono tracking-wider">
+                      <span className="lime-accent-bg inline-flex items-center justify-center w-10 h-10 bg-[#D4FF00] text-black text-base font-display tracking-wider">
                         {model.number}
                       </span>
                       <span className="lime-accent text-base font-display uppercase tracking-wide text-[#D4FF00] mt-2">
