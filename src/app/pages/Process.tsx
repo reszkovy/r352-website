@@ -268,23 +268,10 @@ export function Process() {
                     className="p-8 md:p-12 lg:px-16"
                     role="tabpanel"
                   >
-                    {/* Header */}
-                    <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-10 mb-10">
-                      <div className="text-7xl md:text-[7rem] font-extralight tracking-[-0.06em] leading-none text-neutral-200 dark:text-white/[0.08] min-w-[100px] select-none">
-                        {step.num}
-                      </div>
-                      <div>
-                        <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-neutral-900 dark:text-white mb-3">
-                          {step.title[lang]}
-                        </h3>
-                        <p className="text-lg text-neutral-500 dark:text-neutral-500 italic mb-4">
-                          {step.subtitle[lang]}
-                        </p>
-                        <p className="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-[60ch]">
-                          {step.goal[lang]}
-                        </p>
-                      </div>
-                    </div>
+                    {/* Header — subtitle only */}
+                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight text-neutral-900 dark:text-white leading-snug max-w-[28ch] mb-10">
+                      {step.subtitle[lang]}
+                    </h3>
 
                     {/* Detail grid — editorial layout, no boxy cards */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-0 mb-10">
