@@ -24,8 +24,8 @@ export function Services() {
   };
   const bestFit = (t('services_page.best_fit') || { title: "", items: [] }) as { title: string, items: string[] };
 
-  // Active state for the accordion
-  const [activeIndex, setActiveIndex] = useState(0);
+  // Active state for the accordion — null = all collapsed by default
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   // If cards are not loaded yet, don't crash
   if (!cards.length) return null;
@@ -45,7 +45,7 @@ export function Services() {
   return (
     <PageTransition className="pb-32 px-6 md:px-12 max-w-[1200px] mx-auto min-h-screen">
 
-      {/* Products Section (Accordion) — page opener, spacing matched to Process */}
+      {/* Products Section (Accordion) — page opener, editorial style matched to Home */}
       <section className="pt-32 md:pt-40 mb-40 min-h-[600px]">
 
         <div className="flex flex-col border-t border-neutral-200 dark:border-white/10">
@@ -53,86 +53,186 @@ export function Services() {
              const isActive = index === activeIndex;
              return (
                <Reveal key={index} delay={index * 0.05}>
-                 <div className="flex flex-col border-b border-neutral-200 dark:border-white/10">
-                   <button 
-                     onClick={() => setActiveIndex(isActive ? -1 : index)}
-                     className={`w-full group cursor-pointer py-8 text-left outline-none transition-colors duration-300 hover:bg-neutral-50 dark:hover:bg-white/[0.02] focus-visible:bg-neutral-50 dark:focus-visible:bg-white/[0.02] ${isActive ? 'bg-neutral-50 dark:bg-white/[0.02]' : ''}`}
+                 <div className="relative flex flex-col border-b border-neutral-200 dark:border-white/10">
+                   {/* Lime accent bar — slides in when active */}
+                   <AnimatePresence>
+                     {isActive && (
+                       <motion.div
+                         layoutId="servicesActiveAccent"
+                         className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#D4FF00] z-10"
+                         initial={{ opacity: 0 }}
+                         animate={{ opacity: 1 }}
+                         exit={{ opacity: 0 }}
+                         transition={{ type: "spring", stiffness: 380, damping: 34, mass: 0.9 }}
+                       />
+                     )}
+                   </AnimatePresence>
+
+                   <button
+                     onClick={() => setActiveIndex(isActive ? null : index)}
+                     className={`
+                       w-full group cursor-pointer py-10 md:py-12 text-left outline-none
+                       transition-colors duration-500 ease-out
+                       hover:bg-neutral-50 dark:hover:bg-white/[0.02]
+                       focus-visible:bg-neutral-50 dark:focus-visible:bg-white/[0.02]
+                       ${isActive ? 'bg-neutral-50 dark:bg-white/[0.02]' : ''}
+                     `}
                    >
-                     <div className="flex flex-col gap-4 px-4 sm:px-6">
-                        
-                        {/* Header Row: Title, Badges, Number */}
-                        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 w-full">
-                           <span className={`text-[24px] font-semibold transition-colors duration-300 shrink-0 ${isActive ? 'text-neutral-900 dark:text-[#e5e5e5]' : 'text-neutral-800 dark:text-[#e5e5e5] group-hover:text-neutral-900 dark:group-hover:text-white'}`}>
-                             {card.title}
-                           </span>
-                           
-                           <div className="flex flex-row items-start sm:items-center justify-between sm:justify-end gap-6 w-full sm:w-auto">
-                             <div className="flex flex-wrap sm:justify-end items-center gap-2">
-                               {getPillarTags(index).map((tag, i) => (
-                                 <span key={i} className="px-2 py-0.5 rounded-none border border-neutral-200 dark:border-white/15 text-[11px] text-neutral-800 dark:text-[#888888] uppercase tracking-[0.5px] transition-colors group-hover:border-neutral-400 dark:group-hover:border-white/30">
-                                   {tag}
-                                 </span>
-                               ))}
-                             </div>
-                             <span className={`text-[13px] font-mono transition-colors duration-300 shrink-0 ${isActive ? 'text-neutral-900 dark:text-[#D4FF00]' : 'text-neutral-600 dark:text-[#D4FF00] group-hover:text-neutral-900 dark:group-hover:text-[#D4FF00]'}`}>
-                               0{index + 1}
-                             </span>
-                           </div>
+                     <div className="flex items-baseline gap-6 md:gap-10 px-4 sm:px-8 md:px-10">
+
+                        {/* Mono number — big, lime when active */}
+                        <span
+                          className={`
+                            font-mono text-[13px] md:text-[15px] tracking-wide shrink-0
+                            transition-colors duration-500 mt-3 md:mt-4 self-start
+                            ${isActive
+                              ? 'text-[#D4FF00]'
+                              : 'text-neutral-400 dark:text-neutral-600 group-hover:text-[#D4FF00]'
+                            }
+                          `}
+                        >
+                          0{index + 1}
+                        </span>
+
+                        {/* Title block + tags + arrow */}
+                        <div className="flex-1 flex flex-col md:flex-row md:items-baseline md:justify-between gap-3 md:gap-8">
+                          <h2
+                            className={`
+                              text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter leading-[1.05]
+                              transition-all duration-500 ease-out
+                              ${isActive
+                                ? 'text-neutral-900 dark:text-white'
+                                : 'text-neutral-700 dark:text-neutral-300 group-hover:text-neutral-900 dark:group-hover:text-white group-hover:tracking-tight'
+                              }
+                            `}
+                          >
+                            {card.title}
+                          </h2>
+
+                          <div className="flex items-center gap-4 shrink-0 self-end md:self-auto">
+                            <div className="flex flex-wrap items-center gap-2">
+                              {getPillarTags(index).map((tag, i) => (
+                                <span
+                                  key={i}
+                                  className={`
+                                    px-2.5 py-1 text-[10px] uppercase tracking-[0.15em] font-display
+                                    transition-colors duration-500
+                                    ${isActive
+                                      ? 'border border-[#D4FF00]/40 text-[#D4FF00]'
+                                      : 'border border-neutral-200 dark:border-white/15 text-neutral-500 dark:text-neutral-500 group-hover:border-[#D4FF00]/40 group-hover:text-[#D4FF00]'
+                                    }
+                                  `}
+                                >
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+
+                            {/* Plus → cross indicator */}
+                            <motion.span
+                              animate={{ rotate: isActive ? 45 : 0 }}
+                              transition={{ type: "spring", stiffness: 280, damping: 22 }}
+                              className={`
+                                w-9 h-9 flex items-center justify-center text-2xl font-light shrink-0
+                                transition-colors duration-500
+                                ${isActive
+                                  ? 'text-[#D4FF00]'
+                                  : 'text-neutral-400 dark:text-neutral-600 group-hover:text-[#D4FF00]'
+                                }
+                              `}
+                              aria-hidden="true"
+                            >
+                              +
+                            </motion.span>
+                          </div>
                         </div>
-                        
-                        {/* Description (visible even when closed) */}
-                        <p className="text-[14px] text-neutral-800 dark:text-[#888888] max-w-[500px] mt-1 leading-relaxed text-left">
-                          {card.description}
-                        </p>
                      </div>
                    </button>
 
-                   <AnimatePresence>
+                   <AnimatePresence initial={false}>
                      {isActive && (
                        <motion.div
                          initial={{ height: 0, opacity: 0 }}
                          animate={{ height: "auto", opacity: 1 }}
                          exit={{ height: 0, opacity: 0 }}
-                         transition={{ duration: 0.3 }}
+                         transition={{
+                           height: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
+                           opacity: { duration: 0.4, ease: [0.16, 1, 0.3, 1] }
+                         }}
                          className="overflow-hidden"
                        >
-                         <div className="pt-4 pb-10 px-4 sm:px-6">
-                           {/* Includes List */}
+                         <div className="pb-16 px-4 sm:px-8 md:px-10 ml-0 md:ml-[60px]">
+                           {/* Description — large, editorial */}
+                           <motion.p
+                             initial={{ opacity: 0, y: 12 }}
+                             animate={{ opacity: 1, y: 0 }}
+                             transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                             className="text-xl md:text-2xl text-neutral-700 dark:text-neutral-400 leading-relaxed font-light max-w-3xl mb-12 tracking-tight"
+                           >
+                             {card.description}
+                           </motion.p>
+
+                           {/* Includes — editorial 2-col with lime accent lines */}
                            {card.includes && card.includes.length > 0 && (
-                             <div className="mb-10 mt-4 space-y-5">
-                               <h3 className="text-[11px] font-display uppercase tracking-[1.5px] text-neutral-800 dark:text-[#888888]">
-                                 {language === 'pl' ? "Obejmuje" : "Includes"}
-                               </h3>
-                               <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-12 max-w-4xl">
+                             <motion.div
+                               initial={{ opacity: 0, y: 12 }}
+                               animate={{ opacity: 1, y: 0 }}
+                               transition={{ duration: 0.6, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
+                               className="mb-12"
+                             >
+                               <div className="flex items-center gap-4 mb-8">
+                                 <span className="w-8 h-px bg-[#D4FF00]" />
+                                 <h3 className="text-[11px] font-display uppercase tracking-[0.2em] text-[#D4FF00]">
+                                   {language === 'pl' ? "Obejmuje" : "Includes"}
+                                 </h3>
+                               </div>
+                               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-4 max-w-5xl">
                                  {card.includes.map((item, idx) => (
-                                   <div key={idx} className="flex items-start gap-3 group">
-                                     <div className="mt-2 w-1 h-1 rounded-none bg-neutral-900 dark:bg-[#D4FF00] shrink-0" />
-                                     <span className="text-[14px] text-neutral-900 dark:text-[#e5e5e5] leading-relaxed group-hover:text-neutral-900 dark:group-hover:text-white transition-colors">
+                                   <div key={idx} className="flex items-baseline gap-3 group/item">
+                                     <span className="text-[#D4FF00] text-[13px] font-mono shrink-0 mt-1">
+                                       {String(idx + 1).padStart(2, '0')}
+                                     </span>
+                                     <span className="text-[15px] md:text-base text-neutral-800 dark:text-neutral-300 leading-relaxed group-hover/item:text-neutral-900 dark:group-hover/item:text-white transition-colors">
                                        {item}
                                      </span>
                                    </div>
                                  ))}
                                </div>
-                             </div>
+                             </motion.div>
                            )}
 
-                           {/* Output Box */}
-                           <div className="bg-neutral-100 dark:bg-[#141414] border border-neutral-200 dark:border-white/10 rounded-none px-[28px] py-[24px] flex flex-col md:flex-row md:items-center gap-6 mt-6 max-w-4xl">
-                              <span className="text-neutral-800 dark:text-[#888888] text-[11px] font-display uppercase tracking-[1.5px] shrink-0">
-                                {language === 'pl' ? "Wynik" : "Output"}
-                              </span>
-                              <span className="text-neutral-900 dark:text-[#e5e5e5] font-mono text-[15px] font-medium leading-snug">
-                                {card.output}
-                              </span>
-                           </div>
+                           {/* Output — inline editorial, no boxy frame */}
+                           <motion.div
+                             initial={{ opacity: 0, y: 12 }}
+                             animate={{ opacity: 1, y: 0 }}
+                             transition={{ duration: 0.6, delay: 0.26, ease: [0.16, 1, 0.3, 1] }}
+                             className="border-t border-neutral-200 dark:border-white/10 pt-6 mb-8 max-w-5xl"
+                           >
+                             <div className="flex items-center gap-4 mb-3">
+                               <span className="w-8 h-px bg-[#D4FF00]" />
+                               <span className="text-[11px] font-display uppercase tracking-[0.2em] text-[#D4FF00]">
+                                 {language === 'pl' ? "Wynik" : "Output"}
+                               </span>
+                             </div>
+                             <span className="block text-lg md:text-xl text-neutral-900 dark:text-white font-mono leading-snug">
+                               {card.output}
+                             </span>
+                           </motion.div>
 
-                           {/* Cross-Link to Deliverables */}
-                           <div className="mt-[12px]">
-                             <Link href={`/deliverables#${card.title.toLowerCase().replace(/\s+/g, '-')}`} className="group/link inline-flex items-center text-[13px] text-neutral-800 dark:text-[#D4FF00] hover:text-black dark:hover:text-[#bce600] transition-colors border-b border-neutral-300 dark:border-[#D4FF00]/30 hover:border-black dark:hover:border-[#D4FF00] pb-[1px]">
-                               {language === 'pl' ? "Zobacz pełną listę zasobów" : "See full deliverable list"}
-                               <span className="ml-1 inline-block transition-transform duration-200 group-hover/link:translate-x-[4px]">→</span>
+                           {/* CTA Link */}
+                           <motion.div
+                             initial={{ opacity: 0, y: 12 }}
+                             animate={{ opacity: 1, y: 0 }}
+                             transition={{ duration: 0.6, delay: 0.34, ease: [0.16, 1, 0.3, 1] }}
+                           >
+                             <Link
+                               href={`/deliverables#${card.title.toLowerCase().replace(/\s+/g, '-')}`}
+                               className="group/link inline-flex items-center gap-3 text-sm font-display uppercase tracking-[0.2em] text-neutral-900 dark:text-white border-b border-neutral-300 dark:border-white/20 hover:border-[#D4FF00] dark:hover:border-[#D4FF00] hover:text-[#D4FF00] dark:hover:text-[#D4FF00] pb-2 transition-all duration-500"
+                             >
+                               {language === 'pl' ? "Pełna lista zasobów" : "Full deliverable list"}
+                               <span className="inline-block transition-transform duration-500 group-hover/link:translate-x-2">→</span>
                              </Link>
-                           </div>
+                           </motion.div>
                          </div>
                        </motion.div>
                      )}
