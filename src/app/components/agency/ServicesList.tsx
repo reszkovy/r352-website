@@ -66,7 +66,7 @@ export function ServicesList() {
                 <Reveal delay={index * 0.1} width="100%">
                   <Link href={`/services/${service.slug}`}>
                     <div className="group py-12 md:py-16 flex flex-col md:flex-row gap-8 md:items-start transition-colors duration-500 hover:bg-white/[0.02] -mx-4 px-4 md:-mx-8 md:px-8 cursor-pointer">
-                      <span className="text-xs font-mono text-[#D4FF00] pt-2">{service.id}</span>
+                      <span className="font-display text-sm text-[#D4FF00] pt-2">{service.id}</span>
                       <div className="flex-1">
                         <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-[#D4FF00] transition-colors flex items-center gap-3 break-words [word-break:break-word] hyphens-auto text-balance">
                           {t(`services_list.items.${service.key}.title`)}

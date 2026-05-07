@@ -80,14 +80,14 @@ export function Services() {
                    >
                      <div className="flex items-baseline gap-6 md:gap-10 px-4 sm:px-8 md:px-10">
 
-                        {/* Big Tanker number — bold visual anchor */}
+                        {/* Tanker number — small editorial accent */}
                         <span
                           className={`
-                            font-display text-4xl md:text-5xl lg:text-6xl shrink-0 leading-none
-                            transition-colors duration-500 self-start mt-1
+                            font-display text-base md:text-lg lg:text-xl shrink-0 leading-none
+                            transition-colors duration-500 self-start mt-3 md:mt-4
                             ${isActive
                               ? 'text-[#D4FF00]'
-                              : 'text-neutral-300 dark:text-neutral-700 group-hover:text-[#D4FF00]'
+                              : 'text-neutral-400 dark:text-neutral-600 group-hover:text-[#D4FF00]'
                             }
                           `}
                         >
@@ -141,7 +141,7 @@ export function Services() {
                          }}
                          className="overflow-hidden"
                        >
-                         <div className="pb-20 px-4 sm:px-8 md:px-10 ml-0 md:ml-[100px] lg:ml-[120px]">
+                         <div className="pb-20 px-4 sm:px-8 md:px-10 ml-0 md:ml-[40px] lg:ml-[50px]">
                            {/* Description — bold editorial lead */}
                            <motion.p
                              initial={{ opacity: 0, y: 12 }}
@@ -167,7 +167,7 @@ export function Services() {
                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-6 max-w-5xl">
                                  {card.includes.map((item, idx) => (
                                    <div key={idx} className="flex items-baseline gap-5 group/item">
-                                     <span className="font-display text-2xl md:text-3xl text-[#D4FF00] shrink-0 leading-none w-10">
+                                     <span className="font-display text-sm md:text-base text-[#D4FF00] shrink-0 leading-none w-8">
                                        {String(idx + 1).padStart(2, '0')}
                                      </span>
                                      <span className="text-base md:text-lg text-neutral-800 dark:text-neutral-200 leading-snug font-medium group-hover/item:text-neutral-900 dark:group-hover/item:text-white transition-colors">
@@ -238,10 +238,10 @@ export function Services() {
           </p>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
+        <div className="grid grid-cols-1 md:grid-cols-3 border-t border-b border-neutral-200 dark:border-white/10">
           {deliveryOS.phases.map((phase, pi) => (
             <Reveal key={pi} delay={pi * 0.1}>
-              <div className={`border border-neutral-200 dark:border-white/10 ${pi > 0 ? 'md:-ml-px' : ''} -mt-px md:mt-0 h-full flex flex-col`}>
+              <div className={`h-full flex flex-col ${pi > 0 ? 'border-t md:border-t-0 md:border-l border-neutral-200 dark:border-white/10' : ''}`}>
                 {/* Phase label — fixed height */}
                 <div className="px-8 md:px-10 pt-8 md:pt-10 pb-6">
                   <span className="block text-[11px] font-display uppercase tracking-widest text-neutral-400 dark:text-[#D4FF00]">
@@ -292,19 +292,19 @@ export function Services() {
           ))}
         </div>
 
-        {/* Best Fit — below Delivery OS */}
-        <div className="mt-16 md:mt-24">
+        {/* Best Fit — below Delivery OS, divider list */}
+        <div className="mt-16 md:mt-24 border-t border-neutral-200 dark:border-white/10 pt-12">
           <Reveal>
             <h3 className="text-[11px] font-display uppercase tracking-widest text-neutral-800 dark:text-[#888888] mb-8">
               {bestFit.title}
             </h3>
-            <div className="flex flex-wrap gap-4">
+            <ul className="flex flex-col divide-y divide-neutral-200 dark:divide-white/10 max-w-3xl">
               {bestFit.items.map((item, i) => (
-                <span key={i} className="px-5 py-3 border border-neutral-200 dark:border-white/10 text-sm text-neutral-700 dark:text-neutral-400 hover:border-neutral-400 dark:hover:border-white/30 transition-colors">
+                <li key={i} className="py-4 text-base md:text-lg text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
                   {item}
-                </span>
+                </li>
               ))}
-            </div>
+            </ul>
           </Reveal>
         </div>
       </section>

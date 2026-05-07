@@ -130,14 +130,14 @@ export function EngagementModels() {
         </Reveal>
       </div>
 
-      {/* Cards Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16">
+      {/* Cards Grid — divider-only layout, no boxy frames */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 border-t border-b border-neutral-200 dark:border-white/10 mb-16">
         {models.map((model, i) => (
           <Reveal key={i} delay={i * 0.1}>
-            <div className="bg-white dark:bg-[#141414] border border-neutral-200 dark:border-white/10 rounded-none p-8 h-full hover:border-black/20 dark:hover:border-[#D4FF00]/30 transition-colors flex flex-col group">
+            <div className={`p-8 lg:p-10 h-full flex flex-col group ${i > 0 ? 'border-t lg:border-t-0 lg:border-l border-neutral-200 dark:border-white/10' : ''}`}>
               {/* Header */}
               <div className="mb-6">
-                <span className="text-[13px] font-mono text-neutral-400 group-hover:text-neutral-900 dark:text-[#D4FF00] transition-colors mb-2 block">
+                <span className="font-display text-sm text-neutral-400 group-hover:text-neutral-900 dark:text-[#D4FF00] transition-colors mb-2 block">
                   {model.number}
                 </span>
                 <h3 className="text-[22px] font-semibold text-neutral-900 dark:text-[#e5e5e5] mb-1">
@@ -283,17 +283,17 @@ export function EngagementModels() {
         </div>
       </Reveal>
 
-      {/* CTA */}
+      {/* CTA — flat, divider-only */}
       <Reveal>
-        <div className="mt-16 flex flex-col sm:flex-row items-center justify-between gap-6 bg-neutral-50 dark:bg-white/5 p-8 border border-neutral-200 dark:border-white/10 rounded-none">
-          <p className="text-[15px] text-neutral-900 dark:text-white font-medium text-center sm:text-left m-0">
-            {language === "pl" 
-              ? "Nie jesteście pewni, który model pasuje? Zacznijcie od rozmowy - pomożemy wam to ustalić." 
-              : "Not sure which model fits? Start with a conversation - we'll help you figure it out."}
+        <div className="mt-16 flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-neutral-200 dark:border-white/10 pt-12">
+          <p className="text-lg md:text-xl text-neutral-900 dark:text-white font-medium tracking-tight text-center sm:text-left m-0 max-w-2xl">
+            {language === "pl"
+              ? "Nie jesteście pewni, który model pasuje? Zacznijcie od rozmowy — pomożemy wam to ustalić."
+              : "Not sure which model fits? Start with a conversation — we'll help you figure it out."}
           </p>
-          <a 
-            href="mailto:hello@r352.com" 
-            className="inline-block shrink-0 bg-neutral-200 dark:bg-[#D4FF00] hover:bg-neutral-300 dark:hover:bg-[#bce600] text-neutral-900 dark:text-black font-display uppercase tracking-widest text-xs px-8 py-4 rounded-none transition-colors outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-neutral-900 dark:focus-visible:ring-[#D4FF00] focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#141414]"
+          <a
+            href="mailto:hello@r352.com"
+            className="inline-block shrink-0 bg-neutral-900 dark:bg-[#D4FF00] hover:bg-black dark:hover:bg-[#bce600] text-white dark:text-black font-display uppercase tracking-widest text-xs px-8 py-4 rounded-none transition-colors outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-neutral-900 dark:focus-visible:ring-[#D4FF00] focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#141414]"
           >
             {language === "pl" ? "Umów spotkanie" : "Schedule a call"}
           </a>

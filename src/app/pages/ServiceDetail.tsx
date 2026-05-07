@@ -135,7 +135,7 @@ export function ServiceDetail({ params }: { params?: { slug: string } }) {
                        <span className={`text-xl font-medium transition-colors duration-300 ${isActive ? 'text-white' : 'text-neutral-500 group-hover:text-white'}`}>
                          {item.label}
                        </span>
-                       <span className={`text-xs font-mono transition-colors duration-300 ${isActive ? 'text-[#D4FF00]' : 'text-neutral-600 group-hover:text-[#D4FF00]'}`}>
+                       <span className={`font-display text-xs transition-colors duration-300 ${isActive ? 'text-[#D4FF00]' : 'text-neutral-600 group-hover:text-[#D4FF00]'}`}>
                          {item.id}
                        </span>
                      </div>

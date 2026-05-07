@@ -54,12 +54,12 @@ export function Deliverables() {
                     </div>
                     
                     {/* Number Label over the Node (visible md) */}
-                    <span className="absolute top-[10px] -left-[80px] w-auto whitespace-nowrap transform -translate-x-full pr-8 font-mono text-[13px] text-neutral-400 group-hover:text-neutral-900 dark:group-hover:text-[#D4FF00] transition-colors hidden md:block">
+                    <span className="absolute top-[10px] -left-[80px] w-auto whitespace-nowrap transform -translate-x-full pr-8 font-display text-base text-neutral-400 group-hover:text-neutral-900 dark:group-hover:text-[#D4FF00] transition-colors hidden md:block">
                       0{i + 1}
                     </span>
 
                     {/* Mobile Number Label */}
-                    <span className="block md:hidden font-mono text-[12px] text-neutral-900 dark:text-[#D4FF00] mb-6">
+                    <span className="block md:hidden font-display text-base text-neutral-900 dark:text-[#D4FF00] mb-6">
                       0{i + 1}
                     </span>
 
@@ -79,7 +79,7 @@ export function Deliverables() {
                           {/* Left: Includes */}
                           <div>
                              <span className="flex items-center gap-3 text-[11px] font-display uppercase tracking-[1.5px] text-neutral-500 mb-6">
-                                <div className="w-5 h-5 bg-neutral-50 dark:bg-white/5 border border-neutral-200 dark:border-white/10 flex items-center justify-center font-mono text-[9px] text-neutral-900 dark:text-white rounded-none">1</div>
+                                <div className="w-5 h-5 bg-neutral-50 dark:bg-white/5 border border-neutral-200 dark:border-white/10 flex items-center justify-center font-display text-[10px] text-neutral-900 dark:text-white rounded-none">1</div>
                                 {t("services_page.deliverables.includes_label")}
                              </span>
                              <ul className="space-y-4">
@@ -95,7 +95,7 @@ export function Deliverables() {
                           {/* Right: What's inside (Accordion) */}
                           <div>
                              <span className="flex items-center gap-3 text-[11px] font-display uppercase tracking-[1.5px] text-neutral-500 mb-6">
-                                <div className="w-5 h-5 bg-neutral-50 dark:bg-white/5 border border-neutral-200 dark:border-white/10 flex items-center justify-center font-mono text-[9px] text-neutral-900 dark:text-white rounded-none">2</div>
+                                <div className="w-5 h-5 bg-neutral-50 dark:bg-white/5 border border-neutral-200 dark:border-white/10 flex items-center justify-center font-display text-[10px] text-neutral-900 dark:text-white rounded-none">2</div>
                                 {language === 'pl' ? "Zasoby" : "Assets"}
                              </span>
                              
@@ -153,7 +153,7 @@ export function Deliverables() {
                        {/* Internal Step 3: Output */}
                        <div className="bg-white dark:bg-[#141414] border border-neutral-200 dark:border-[#D4FF00]/20 rounded-none py-6 px-6 md:px-8 relative group-hover:border-neutral-400 dark:group-hover:border-[#D4FF00]/40 transition-colors">
                            <span className="flex items-center gap-3 text-[11px] font-display uppercase tracking-[1.5px] text-neutral-900 dark:text-[#D4FF00] mb-5">
-                              <div className="w-5 h-5 bg-neutral-100 dark:bg-[#D4FF00]/10 border border-neutral-200 dark:border-[#D4FF00]/30 flex items-center justify-center font-mono text-[9px] text-neutral-900 dark:text-[#D4FF00] rounded-none">3</div>
+                              <div className="w-5 h-5 bg-neutral-100 dark:bg-[#D4FF00]/10 border border-neutral-200 dark:border-[#D4FF00]/30 flex items-center justify-center font-display text-[10px] text-neutral-900 dark:text-[#D4FF00] rounded-none">3</div>
                               {t("services_page.deliverables.output_label")}
                            </span>
                            <p className="text-[15px] md:text-[16px] text-neutral-900 dark:text-white font-medium leading-relaxed max-w-3xl">{item.output}</p>

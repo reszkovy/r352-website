@@ -76,7 +76,7 @@ export function SystemizedCapabilities() {
               <Reveal key={item.id} delay={0.3 + (index * 0.1)} width="100%">
                 <div className={`py-12 border-b border-white/10 ${index === 0 ? 'border-t lg:border-t-0' : ''}`}>
                   <div className="flex flex-col md:flex-row gap-6 md:gap-12">
-                    <span className="text-[#D4FF00] font-mono text-sm shrink-0 mt-2">
+                    <span className="text-[#D4FF00] font-display text-sm shrink-0 mt-1">
                       {item.id}
                     </span>
                     <div className="flex-1">
