@@ -80,22 +80,22 @@ export function Services() {
                    >
                      <div className="flex items-baseline gap-6 md:gap-10 px-4 sm:px-8 md:px-10">
 
-                        {/* Mono number — big, lime when active */}
+                        {/* Big Tanker number — bold visual anchor */}
                         <span
                           className={`
-                            font-mono text-[13px] md:text-[15px] tracking-wide shrink-0
-                            transition-colors duration-500 mt-3 md:mt-4 self-start
+                            font-display text-4xl md:text-5xl lg:text-6xl shrink-0 leading-none
+                            transition-colors duration-500 self-start mt-1
                             ${isActive
                               ? 'text-[#D4FF00]'
-                              : 'text-neutral-400 dark:text-neutral-600 group-hover:text-[#D4FF00]'
+                              : 'text-neutral-300 dark:text-neutral-700 group-hover:text-[#D4FF00]'
                             }
                           `}
                         >
-                          0{index + 1}
+                          {String(index + 1).padStart(2, '0')}
                         </span>
 
-                        {/* Title block + tags + arrow */}
-                        <div className="flex-1 flex flex-col md:flex-row md:items-baseline md:justify-between gap-3 md:gap-8">
+                        {/* Title + plus indicator */}
+                        <div className="flex-1 flex items-baseline justify-between gap-6 md:gap-8">
                           <h2
                             className={`
                               text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter leading-[1.05]
@@ -109,42 +109,22 @@ export function Services() {
                             {card.title}
                           </h2>
 
-                          <div className="flex items-center gap-4 shrink-0 self-end md:self-auto">
-                            <div className="flex flex-wrap items-center gap-2">
-                              {getPillarTags(index).map((tag, i) => (
-                                <span
-                                  key={i}
-                                  className={`
-                                    px-2.5 py-1 text-[10px] uppercase tracking-[0.15em] font-display
-                                    transition-colors duration-500
-                                    ${isActive
-                                      ? 'border border-[#D4FF00]/40 text-[#D4FF00]'
-                                      : 'border border-neutral-200 dark:border-white/15 text-neutral-500 dark:text-neutral-500 group-hover:border-[#D4FF00]/40 group-hover:text-[#D4FF00]'
-                                    }
-                                  `}
-                                >
-                                  {tag}
-                                </span>
-                              ))}
-                            </div>
-
-                            {/* Plus → cross indicator */}
-                            <motion.span
-                              animate={{ rotate: isActive ? 45 : 0 }}
-                              transition={{ type: "spring", stiffness: 280, damping: 22 }}
-                              className={`
-                                w-9 h-9 flex items-center justify-center text-2xl font-light shrink-0
-                                transition-colors duration-500
-                                ${isActive
-                                  ? 'text-[#D4FF00]'
-                                  : 'text-neutral-400 dark:text-neutral-600 group-hover:text-[#D4FF00]'
-                                }
-                              `}
-                              aria-hidden="true"
-                            >
-                              +
-                            </motion.span>
-                          </div>
+                          {/* Plus → cross indicator */}
+                          <motion.span
+                            animate={{ rotate: isActive ? 45 : 0 }}
+                            transition={{ type: "spring", stiffness: 280, damping: 22 }}
+                            className={`
+                              w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-3xl md:text-4xl font-normal shrink-0
+                              transition-colors duration-500
+                              ${isActive
+                                ? 'text-[#D4FF00]'
+                                : 'text-neutral-400 dark:text-neutral-600 group-hover:text-[#D4FF00]'
+                              }
+                            `}
+                            aria-hidden="true"
+                          >
+                            +
+                          </motion.span>
                         </div>
                      </div>
                    </button>
@@ -161,38 +141,36 @@ export function Services() {
                          }}
                          className="overflow-hidden"
                        >
-                         <div className="pb-16 px-4 sm:px-8 md:px-10 ml-0 md:ml-[60px]">
-                           {/* Description — large, editorial */}
+                         <div className="pb-20 px-4 sm:px-8 md:px-10 ml-0 md:ml-[100px] lg:ml-[120px]">
+                           {/* Description — bold editorial lead */}
                            <motion.p
                              initial={{ opacity: 0, y: 12 }}
                              animate={{ opacity: 1, y: 0 }}
                              transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                             className="text-xl md:text-2xl text-neutral-700 dark:text-neutral-400 leading-relaxed font-light max-w-3xl mb-12 tracking-tight"
+                             className="text-2xl md:text-3xl text-neutral-800 dark:text-neutral-200 leading-[1.25] font-medium max-w-4xl mb-16 tracking-tight"
                            >
                              {card.description}
                            </motion.p>
 
-                           {/* Includes — editorial 2-col with lime accent lines */}
+                           {/* Includes — bold section header + Tanker numbers */}
                            {card.includes && card.includes.length > 0 && (
                              <motion.div
                                initial={{ opacity: 0, y: 12 }}
                                animate={{ opacity: 1, y: 0 }}
                                transition={{ duration: 0.6, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                               className="mb-12"
+                               className="mb-16 border-t border-neutral-200 dark:border-white/10 pt-10"
                              >
-                               <div className="flex items-center gap-4 mb-8">
-                                 <span className="w-8 h-px bg-[#D4FF00]" />
-                                 <h3 className="text-[11px] font-display uppercase tracking-[0.2em] text-[#D4FF00]">
-                                   {language === 'pl' ? "Obejmuje" : "Includes"}
-                                 </h3>
-                               </div>
-                               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-4 max-w-5xl">
+                               <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-neutral-900 dark:text-white mb-10">
+                                 {language === 'pl' ? "Obejmuje" : "Includes"}
+                                 <span className="text-[#D4FF00] ml-2">.</span>
+                               </h3>
+                               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-6 max-w-5xl">
                                  {card.includes.map((item, idx) => (
-                                   <div key={idx} className="flex items-baseline gap-3 group/item">
-                                     <span className="text-[#D4FF00] text-[13px] font-mono shrink-0 mt-1">
+                                   <div key={idx} className="flex items-baseline gap-5 group/item">
+                                     <span className="font-display text-2xl md:text-3xl text-[#D4FF00] shrink-0 leading-none w-10">
                                        {String(idx + 1).padStart(2, '0')}
                                      </span>
-                                     <span className="text-[15px] md:text-base text-neutral-800 dark:text-neutral-300 leading-relaxed group-hover/item:text-neutral-900 dark:group-hover/item:text-white transition-colors">
+                                     <span className="text-base md:text-lg text-neutral-800 dark:text-neutral-200 leading-snug font-medium group-hover/item:text-neutral-900 dark:group-hover/item:text-white transition-colors">
                                        {item}
                                      </span>
                                    </div>
@@ -201,36 +179,37 @@ export function Services() {
                              </motion.div>
                            )}
 
-                           {/* Output — inline editorial, no boxy frame */}
+                           {/* Output — bold statement, no frame */}
                            <motion.div
                              initial={{ opacity: 0, y: 12 }}
                              animate={{ opacity: 1, y: 0 }}
                              transition={{ duration: 0.6, delay: 0.26, ease: [0.16, 1, 0.3, 1] }}
-                             className="border-t border-neutral-200 dark:border-white/10 pt-6 mb-8 max-w-5xl"
+                             className="border-t border-neutral-200 dark:border-white/10 pt-10 mb-16 max-w-5xl"
                            >
-                             <div className="flex items-center gap-4 mb-3">
-                               <span className="w-8 h-px bg-[#D4FF00]" />
-                               <span className="text-[11px] font-display uppercase tracking-[0.2em] text-[#D4FF00]">
-                                 {language === 'pl' ? "Wynik" : "Output"}
-                               </span>
-                             </div>
-                             <span className="block text-lg md:text-xl text-neutral-900 dark:text-white font-mono leading-snug">
+                             <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-neutral-900 dark:text-white mb-6">
+                               {language === 'pl' ? "Wynik" : "Output"}
+                               <span className="text-[#D4FF00] ml-2">.</span>
+                             </h3>
+                             <p className="text-xl md:text-2xl lg:text-3xl text-neutral-900 dark:text-white font-bold tracking-tight leading-[1.2]">
                                {card.output}
-                             </span>
+                             </p>
                            </motion.div>
 
-                           {/* CTA Link */}
+                           {/* CTA — bold magnetic-style link */}
                            <motion.div
                              initial={{ opacity: 0, y: 12 }}
                              animate={{ opacity: 1, y: 0 }}
                              transition={{ duration: 0.6, delay: 0.34, ease: [0.16, 1, 0.3, 1] }}
+                             className="border-t border-neutral-200 dark:border-white/10 pt-10"
                            >
                              <Link
                                href={`/deliverables#${card.title.toLowerCase().replace(/\s+/g, '-')}`}
-                               className="group/link inline-flex items-center gap-3 text-sm font-display uppercase tracking-[0.2em] text-neutral-900 dark:text-white border-b border-neutral-300 dark:border-white/20 hover:border-[#D4FF00] dark:hover:border-[#D4FF00] hover:text-[#D4FF00] dark:hover:text-[#D4FF00] pb-2 transition-all duration-500"
+                               className="group/link inline-flex items-center gap-4 text-lg md:text-xl font-bold tracking-tight text-neutral-900 dark:text-white hover:text-[#D4FF00] dark:hover:text-[#D4FF00] transition-colors duration-500"
                              >
-                               {language === 'pl' ? "Pełna lista zasobów" : "Full deliverable list"}
-                               <span className="inline-block transition-transform duration-500 group-hover/link:translate-x-2">→</span>
+                               <span className="border-b-2 border-neutral-900 dark:border-white group-hover/link:border-[#D4FF00] transition-colors duration-500 pb-1">
+                                 {language === 'pl' ? "Pełna lista zasobów" : "Full deliverable list"}
+                               </span>
+                               <span className="inline-block transition-transform duration-500 group-hover/link:translate-x-2 text-2xl">→</span>
                              </Link>
                            </motion.div>
                          </div>

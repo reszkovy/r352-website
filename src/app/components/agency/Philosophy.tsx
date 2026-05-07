@@ -42,7 +42,7 @@ export function Philosophy() {
                 {t("philosophy_page.title_line1")} <br className="hidden md:block" />
                 <span className="text-neutral-400 dark:text-[#D4FF00]">{t("philosophy_page.title_line2")}</span>
               </h1>
-              <p className="text-xl md:text-2xl text-neutral-600 dark:text-neutral-400 tracking-tight font-light leading-snug max-w-3xl">
+              <p className="text-xl md:text-2xl text-neutral-600 dark:text-neutral-400 tracking-tight font-normal leading-snug max-w-3xl">
                 {t("philosophy_page.subtitle")}
               </p>
             </div>
