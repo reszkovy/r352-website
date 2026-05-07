@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>r352 — Manifesto</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --accent: #D4FF00;
+    --bg: #0A0A0A;
+    --text: #e5e5e5;
+    --muted: #737373;
+    --border: rgba(255,255,255,0.08);
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 48px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero::before {
+    content: 'MANIFESTO';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(80px, 18vw, 280px);
+    font-weight: 900;
+    letter-spacing: -0.06em;
+    color: rgba(212,255,0,0.03);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+  }
+  .hero-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 48px;
+  }
+  .hero h1 {
+    font-size: clamp(42px, 7vw, 96px);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 0.92;
+    max-width: 900px;
+    margin-bottom: 40px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .hero-sub {
+    font-size: clamp(18px, 2.2vw, 24px);
+    color: var(--muted);
+    max-width: 600px;
+    line-height: 1.5;
+  }
+
+  /* ── BELIEFS ── */
+  .beliefs {
+    padding: 120px 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .beliefs-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 64px;
+  }
+  .belief-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr));
+    gap: 0;
+  }
+  .belief {
+    padding: 48px 40px;
+    border: 1px solid var(--border);
+    margin: -1px 0 0 -1px;
+    position: relative;
+    transition: background 0.4s;
+  }
+  .belief:hover {
+    background: rgba(212,255,0,0.02);
+  }
+  .belief-num {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    margin-bottom: 24px;
+    font-variant-numeric: tabular-nums;
+  }
+  .belief h3 {
+    font-size: clamp(22px, 2.8vw, 32px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    color: #fff;
+  }
+  .belief p {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--muted);
+    max-width: 420px;
+  }
+
+  /* ── MANIFESTO STATEMENTS ── */
+  .statements {
+    padding: 120px 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .statements-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 64px;
+  }
+  .statement {
+    padding: 40px 0;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: baseline;
+  }
+  .statement:last-child { border-bottom: none; }
+  .statement-old {
+    font-size: clamp(18px, 2vw, 24px);
+    color: #525252;
+    text-decoration: line-through;
+    text-decoration-color: rgba(255,255,255,0.15);
+    line-height: 1.4;
+  }
+  .statement-new {
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.4;
+  }
+  .statement-new em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  /* ── PROMISE ── */
+  .promise {
+    padding: 160px 48px;
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+  }
+  .promise::before {
+    content: 'r352';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(120px, 25vw, 400px);
+    font-weight: 900;
+    letter-spacing: -0.06em;
+    color: rgba(212,255,0,0.03);
+    pointer-events: none;
+    user-select: none;
+  }
+  .promise-text {
+    font-size: clamp(28px, 5vw, 64px);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1.0;
+    max-width: 900px;
+    margin: 0 auto 48px;
+    position: relative;
+  }
+  .promise-text em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .promise-sub {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ── NON-NEGOTIABLES ── */
+  .nonneg {
+    padding: 120px 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .nonneg-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 64px;
+  }
+  .nonneg-list {
+    list-style: none;
+    max-width: 720px;
+  }
+  .nonneg-list li {
+    font-size: clamp(20px, 2.5vw, 30px);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.02em;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    line-height: 1.3;
+  }
+  .nonneg-list li::before {
+    content: '→';
+    color: var(--accent);
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .nonneg-list li span {
+    color: var(--muted);
+    font-weight: 400;
+    font-size: 16px;
+    display: block;
+    margin-top: 8px;
+  }
+
+  /* ── CLOSING ── */
+  .closing {
+    padding: 160px 48px;
+    text-align: center;
+  }
+  .closing-line {
+    font-size: clamp(14px, 1.8vw, 20px);
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .closing-sig {
+    font-size: clamp(48px, 8vw, 120px);
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    color: #fff;
+    line-height: 0.9;
+  }
+  .closing-sig em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero, .beliefs, .statements, .promise, .nonneg, .closing {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+    .statement {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .belief {
+      padding: 32px 24px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero">
+  <div class="hero-label">r352 Manifesto</div>
+  <h1>Beautiful work is the <em>baseline.</em><br>The system behind it is the <em>advantage.</em></h1>
+  <p class="hero-sub">
+    We craft premium design. But craft alone doesn't scale across 50, 100, or 300 locations. A delivery system does. This is what we believe.
+  </p>
+</section>
+
+<!-- ═══════════════ CORE BELIEFS ═══════════════ -->
+<section class="beliefs">
+  <div class="beliefs-label">What We Believe</div>
+  <div class="belief-grid">
+
+    <div class="belief">
+      <div class="belief-num">01</div>
+      <h3>Craft is the foundation. System is the multiplier.</h3>
+      <p>We obsess over every pixel — that's non-negotiable. But pixels alone don't scale. We build operating systems for design delivery — intake paths, brief standards, feedback protocols, packaging rules, shipping cadence — so that premium quality repeats itself without heroics.</p>
+    </div>
+
+    <div class="belief">
+      <div class="belief-num">02</div>
+      <h3>Cadence beats urgency. Every time.</h3>
+      <p>"ASAP" is a signal there's no system. We replace fire drills with weekly rhythm — predictable load, predictable output, predictable quality. When there's cadence, "urgent" goes back to being an exception.</p>
+    </div>
+
+    <div class="belief">
+      <div class="belief-num">03</div>
+      <h3>Premium is a standard, not a personality trait.</h3>
+      <p>Quality doesn't drop because people lack skill. It drops because everything becomes ad hoc. We build the templates, checklists, components, and handoff packs that make premium repeatable — across 5 or 500 locations.</p>
+    </div>
+
+    <div class="belief">
+      <div class="belief-num">04</div>
+      <h3>Calm execution is the real competitive advantage.</h3>
+      <p>Teams don't want "fast". They want fast without chaos — where approvals don't turn into drama, standards stay consistent, and nothing depends on panic and heroics. Calm is engineered, not wished for.</p>
+    </div>
+
+    <div class="belief">
+      <div class="belief-num">05</div>
+      <h3>Close loops. Early. Every time.</h3>
+      <p>Open loops are the hidden tax of modern work: briefs without success criteria, feedback that's just a feeling, "final" that never becomes final. Speed without burnout comes from closing loops — on purpose, every time.</p>
+    </div>
+
+    <div class="belief">
+      <div class="belief-num">06</div>
+      <h3>Structure creates freedom. Not the other way around.</h3>
+      <p>Remote work isn't the problem. Lack of structure is. When intake, decisions, feedback, and shipping have clear rules, creative energy goes into the work — not into coordination overhead.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ NOT THIS → THIS ═══════════════ -->
+<section class="statements">
+  <div class="statements-label">We Don't Do This → We Do This</div>
+
+  <div class="statement">
+    <div class="statement-old">"We'll make it look good this time."</div>
+    <div class="statement-new">"We'll build the system that makes it look good <em>every time</em> — across every location, every launch."</div>
+  </div>
+
+  <div class="statement">
+    <div class="statement-old">"Send me the brief whenever."</div>
+    <div class="statement-new">"One intake path. One brief format. One decision owner. <em>Always.</em>"</div>
+  </div>
+
+  <div class="statement">
+    <div class="statement-old">"We're flexible and available."</div>
+    <div class="statement-new">"We ship every week. Feedback has windows. <em>Cadence is non-negotiable.</em>"</div>
+  </div>
+
+  <div class="statement">
+    <div class="statement-old">"We'll handle whatever you need."</div>
+    <div class="statement-new">"We diagnose your delivery bottleneck first, then <em>build the system</em> that removes it."</div>
+  </div>
+
+  <div class="statement">
+    <div class="statement-old">"We move fast and break things."</div>
+    <div class="statement-new">"We move at a <em>sustainable rhythm</em> and ship things that hold."</div>
+  </div>
+
+  <div class="statement">
+    <div class="statement-old">"Here's a beautiful deck. Good luck scaling it."</div>
+    <div class="statement-new">"Here's the design <em>and</em> the operating system — templates, QA gates, and publish-ready standards — so it <em>scales itself.</em>"</div>
+  </div>
+
+</section>
+
+<!-- ═══════════════ PROMISE ═══════════════ -->
+<section class="promise">
+  <div class="promise-text">
+    Your design pipeline should run like <em>infrastructure</em> — not depend on <em>heroics.</em>
+  </div>
+  <p class="promise-sub">
+    We work with multi-location organizations in fitness, wellness, health, and retail who need design delivery that scales without losing quality, speed, or sanity.
+  </p>
+</section>
+
+<!-- ═══════════════ NON-NEGOTIABLES ═══════════════ -->
+<section class="nonneg">
+  <div class="nonneg-label">Non-Negotiables</div>
+  <ul class="nonneg-list">
+    <li>
+      Every engagement starts with a diagnostic.
+      <span>We don't guess. We map your current delivery flow, find the bottleneck, and build from there.</span>
+    </li>
+    <li>
+      One decision owner per workstream.
+      <span>If nobody can say yes or no, feedback never ends. We require clarity before we start.</span>
+    </li>
+    <li>
+      Weekly shipping cadence.
+      <span>Every week, something real goes out. Not "progress". Output. Publish-ready, packaged, named, spec'd.</span>
+    </li>
+    <li>
+      Feedback has structure.
+      <span>Feedback happens in windows, with criteria, in a format. Not as a constant stream of feelings across DMs.</span>
+    </li>
+    <li>
+      We build systems, not dependencies.
+      <span>When we leave, the operating model stays. Templates, components, checklists, quality rules — all yours.</span>
+    </li>
+    <li>
+      Responsiveness ≠ availability.
+      <span>We clarify fast, align decisions fast, deliver the next usable step fast. We don't sit online 12 hours.</span>
+    </li>
+  </ul>
+</section>
+
+<!-- ═══════════════ CLOSING ═══════════════ -->
+<section class="closing">
+  <div class="closing-line">Design-First Strategic Partner</div>
+  <div class="closing-sig">r<em>352</em></div>
+</section>
+
+</body>
+</html>

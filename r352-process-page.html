@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Process — r352 | Creative Operating System in 8 Steps</title>
+<meta name="description" content="How we build an operational creative delivery system for multi-location brands — step by step, from operational diagnosis to measurement and iteration.">
+<meta property="og:title" content="Process — r352 | Creative Operating System in 8 Steps">
+<meta property="og:description" content="How we build an operational creative delivery system for multi-location brands — step by step.">
+<meta property="og:url" content="https://r352.com/process">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://r352.com/process">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #151515;
+    --bg-deep: #0A0A0A;
+    --bg-card: #1A1A1A;
+    --bg-subtle: #1E1E1E;
+    --bg-hover: #222222;
+    --ink: #FFFFFF;
+    --ink-body: #CCCCCC;
+    --ink-muted: #888888;
+    --ink-soft: #555555;
+    --accent: #D4FF00;
+    --accent-dim: rgba(212, 255, 0, 0.15);
+    --accent-glow: rgba(212, 255, 0, 0.08);
+    --hairline: rgba(255, 255, 255, 0.08);
+    --hairline-strong: rgba(255, 255, 255, 0.15);
+    --max: 1280px;
+    --pad: clamp(20px, 4vw, 64px);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--ink-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .container { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+
+  /* ═══ NAV — matching r352.com ═══ */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    padding: 24px 0;
+    mix-blend-mode: difference;
+    pointer-events: none;
+  }
+  .nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-logo {
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .nav-logo-icon {
+    width: 36px;
+    height: 36px;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 14px;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .nav-logo-text {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    pointer-events: auto;
+  }
+  .nav-links a {
+    font-size: 14px;
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.3s, letter-spacing 0.3s;
+    position: relative;
+  }
+  .nav-links a:hover {
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    font-weight: 500;
+  }
+  .nav-links a.nav-cta {
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .nav-links a.nav-cta:hover {
+    letter-spacing: 0.15em;
+  }
+  .nav-lang {
+    font-size: 13px;
+    color: var(--ink-muted);
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+  .nav-lang a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  .nav-lang span { color: var(--ink-soft); }
+
+  @media (max-width: 900px) {
+    .nav-links .nav-hide-mobile { display: none; }
+    .nav-links { gap: 20px; }
+  }
+
+  /* ═══ HERO ═══ */
+  .hero {
+    min-height: 70vh;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 0 clamp(60px, 8vw, 100px);
+    position: relative;
+  }
+  .hero-content {
+    padding-top: 160px;
+  }
+  .hero-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .hero-label::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--accent);
+  }
+  .hero h1 {
+    font-size: clamp(40px, 7vw, 80px);
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    font-weight: 700;
+    color: var(--ink);
+    max-width: 14ch;
+    margin-bottom: 32px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .hero .lead {
+    font-size: clamp(16px, 1.4vw, 19px);
+    color: var(--ink-muted);
+    max-width: 56ch;
+    line-height: 1.65;
+  }
+
+  /* ═══ SECTION BASE ═══ */
+  section {
+    padding: clamp(60px, 8vw, 100px) 0;
+    border-top: 1px solid var(--hairline);
+  }
+
+  /* ═══ INTRO ═══ */
+  .intro-block { max-width: 68ch; }
+  .intro-block p {
+    font-size: clamp(16px, 1.3vw, 18px);
+    line-height: 1.7;
+    color: var(--ink-body);
+    margin-bottom: 16px;
+  }
+  .intro-block strong { color: var(--ink); font-weight: 600; }
+
+  /* ═══ PHASE TABS — dark r352 style ═══ */
+  .system-section { padding: clamp(50px, 7vw, 80px) 0 clamp(80px, 10vw, 120px); }
+
+  .phase-tabs-wrap {
+    border: 1px solid var(--hairline-strong);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--bg-card);
+  }
+
+  .phase-progress {
+    height: 2px;
+    background: var(--hairline);
+    position: relative;
+  }
+  .phase-progress::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    height: 100%;
+    background: var(--accent);
+    width: var(--progress, 12.5%);
+    transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .phase-tabs {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .phase-tab {
+    background: transparent;
+    border: none;
+    border-right: 1px solid var(--hairline);
+    padding: 20px 16px 18px;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    color: var(--ink-muted);
+    transition: all 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 100px;
+    position: relative;
+  }
+  .phase-tab:last-child { border-right: none; }
+  .phase-tab:hover { background: var(--bg-hover); color: var(--ink); }
+
+  .phase-tab .pn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+    letter-spacing: 0.05em;
+    transition: color 0.25s;
+  }
+  .phase-tab .pname {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.35;
+    margin-top: auto;
+    letter-spacing: 0.01em;
+  }
+
+  .phase-tab.active {
+    background: var(--accent);
+    color: var(--bg-deep);
+  }
+  .phase-tab.active .pn { color: rgba(10, 10, 10, 0.5); }
+  .phase-tab.active .pname { color: var(--bg-deep); font-weight: 600; }
+
+  @media (max-width: 900px) {
+    .phase-tabs {
+      grid-template-columns: repeat(8, minmax(130px, 1fr));
+      overflow-x: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--ink-soft) transparent;
+    }
+  }
+
+  /* ═══ PANELS ═══ */
+  .phase-panels { position: relative; }
+  .phase-panel {
+    display: none;
+    padding: 40px clamp(28px, 4vw, 52px) 36px;
+  }
+  .phase-panel.active {
+    display: block;
+    animation: panelIn 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  @keyframes panelIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .panel-header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 32px;
+    margin-bottom: 32px;
+    align-items: start;
+  }
+  .panel-num {
+    font-size: clamp(56px, 7vw, 96px);
+    font-weight: 200;
+    letter-spacing: -0.04em;
+    line-height: 0.85;
+    color: var(--ink);
+    font-feature-settings: 'tnum';
+    min-width: 96px;
+    opacity: 0.3;
+  }
+  .panel-title h3 {
+    font-size: clamp(22px, 2.8vw, 32px);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .panel-title .panel-goal {
+    font-size: 15px;
+    color: var(--ink-muted);
+    line-height: 1.6;
+    max-width: 60ch;
+  }
+
+  @media (max-width: 700px) {
+    .panel-header { grid-template-columns: 1fr; gap: 12px; }
+    .panel-num { font-size: 48px; }
+  }
+
+  .panel-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .panel-mini {
+    background: var(--bg-subtle);
+    border: 1px solid var(--hairline);
+    border-radius: 6px;
+    padding: 20px 24px;
+    transition: border-color 0.25s;
+  }
+  .panel-mini:hover { border-color: var(--hairline-strong); }
+  .panel-mini .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+  }
+  .panel-mini p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-body);
+  }
+
+  @media (max-width: 700px) {
+    .panel-2x2 { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  .panel-metric {
+    background: var(--accent-dim);
+    border: 1px solid rgba(212, 255, 0, 0.12);
+    border-radius: 6px;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .panel-metric .label-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+    padding: 3px 10px;
+    border: 1px solid rgba(212, 255, 0, 0.25);
+    border-radius: 3px;
+  }
+  .panel-metric .text {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-body);
+  }
+
+  /* ═══ PANEL NAV ═══ */
+  .panel-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+    margin-top: 28px;
+    border-top: 1px solid var(--hairline);
+    gap: 12px;
+  }
+  .panel-nav-btn {
+    background: transparent;
+    border: 1px solid var(--hairline-strong);
+    border-radius: 4px;
+    padding: 10px 18px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    color: var(--ink-body);
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .panel-nav-btn:hover:not(:disabled) {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-glow);
+  }
+  .panel-nav-btn:disabled { opacity: 0.25; cursor: not-allowed; }
+  .panel-nav-status {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* ═══ CLOSING ═══ */
+  .closing-block { max-width: 68ch; margin-bottom: 40px; }
+  .closing-block p {
+    font-size: clamp(16px, 1.3vw, 18px);
+    line-height: 1.7;
+    color: var(--ink-body);
+    margin-bottom: 16px;
+  }
+  .closing-block strong { color: var(--ink); font-weight: 600; }
+
+  .closing-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  /* ═══ BUTTONS — r352 style ═══ */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 28px;
+    border-radius: 0;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    border: 1px solid transparent;
+    cursor: pointer;
+    line-height: 1;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--bg-deep);
+    font-weight: 600;
+  }
+  .btn-primary:hover {
+    background: var(--ink);
+    color: var(--bg-deep);
+    letter-spacing: 0.15em;
+  }
+  .btn-primary .arrow { transition: transform 0.3s; }
+  .btn-primary:hover .arrow { transform: translateX(4px); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--hairline-strong);
+  }
+  .btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .btn-lg { padding: 20px 36px; font-size: 14px; }
+
+  /* ═══ FOOTER — r352 style ═══ */
+  footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--hairline);
+  }
+  footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .footer-brand {
+    font-size: 13px;
+    color: var(--ink-muted);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .footer-brand .accent { color: var(--accent); }
+  .footer-links {
+    display: flex;
+    gap: 28px;
+  }
+  .footer-links a {
+    font-size: 13px;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--accent); }
+  .footer-location {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+    letter-spacing: 0.05em;
+  }
+
+  /* ═══ REVEAL ANIMATIONS ═══ */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      filter: blur(4px);
+      transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                  filter 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+  }
+
+  /* ═══ CANVAS TEXTURE (subtle) ═══ */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+  body > * { position: relative; z-index: 1; }
+
+  @media print {
+    .nav, footer { display: none; }
+    .phase-panel { display: block !important; page-break-inside: avoid; }
+    body::before { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<header class="nav">
+  <div class="container">
+    <a href="/" class="nav-logo">
+      <div class="nav-logo-icon">R</div>
+      <span class="nav-logo-text">352</span>
+    </a>
+    <nav class="nav-links">
+      <a href="/work" class="nav-hide-mobile">work</a>
+      <a href="/philosophy" class="nav-hide-mobile">philosophy</a>
+      <a href="/services" class="nav-hide-mobile">services</a>
+      <a href="/journal" class="nav-hide-mobile">journal</a>
+      <a href="https://calendly.com/p-reszkovy/30min" class="nav-cta">schedule a call</a>
+      <a href="/contact">contact</a>
+      <div class="nav-lang"><a href="#">EN</a> <span>/</span> <a href="#" style="color: var(--ink-soft); font-weight: 400;">PL</a></div>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" style="border-top: none;">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-label reveal">Process</div>
+      <h1 class="reveal reveal-delay-1">Creative Operating System in <em>8 steps</em></h1>
+      <p class="lead reveal reveal-delay-2">How we build an operational creative delivery system for multi-location brands — step by step, from operational diagnosis to measurement and iteration.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ INTRO ═══ -->
+<section id="intro" class="reveal">
+  <div class="container">
+    <div class="intro-block">
+      <p>Every creative operations project goes through the same <strong>8 phases</strong>. We modify depth, not structure. Each phase has a clear contract: <strong>what we diagnose, what we design, what you get, what changes operationally, and which metric we improve</strong>.</p>
+      <p>Click through the phases from left to right to see how the system grows step by step — from diagnosing the current state to a steady rhythm of measurement and iteration.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SYSTEM TABS ═══ -->
+<section id="system" class="system-section reveal">
+  <div class="container">
+    <div class="phase-tabs-wrap">
+      <div class="phase-progress" id="phaseProgress" style="--progress: 12.5%;"></div>
+
+      <div class="phase-tabs" role="tablist" aria-label="Creative Operating System phases">
+        <button class="phase-tab active" role="tab" aria-selected="true" data-phase="0">
+          <span class="pn">00</span><span class="pname">Operational Discovery</span>
+        </button>
+        <button class="phase-tab" role="tab" aria-selected="false" data-phase="1">
+          <span class="pn">01</span><span class="pname">Demand Mapping</span>
+        </button>
+        <button class="phase-tab" role="tab" aria-selected="false" data-phase="2">
+          <span class="pn">02</span><span class="pname">Briefing System</span>
+        </button>
+        <button class="phase-tab" role="tab" aria-selected="false" data-phase="3">
+          <span class="pn">03</span><span class="pname">Prioritization Logic</span>
+        </button>
+        <button class="phase-tab" role="tab" aria-selected="false" data-phase="4">
+          <span class="pn">04</span><span class="pname">Quality System</span>
+        </button>
+        <button class="phase-tab" role="tab" aria-selected="false" data-phase="5">
+          <span class="pn">05</span><span class="pname">Production Workflow</span>
+        </button>
+        <button class="phase-tab" role="tab" aria-selected="false" data-phase="6">
+          <span class="pn">06</span><span class="pname">Approval & Governance</span>
+        </button>
+        <button class="phase-tab" role="tab" aria-selected="false" data-phase="7">
+          <span class="pn">07</span><span class="pname">Rollout & Optimization</span>
+        </button>
+      </div>
+
+      <div class="phase-panels">
+
+        <!-- 00 -->
+        <div class="phase-panel active" role="tabpanel" data-phase="0">
+          <div class="panel-header">
+            <div class="panel-num">00</div>
+            <div class="panel-title">
+              <h3>Operational Discovery</h3>
+              <p class="panel-goal">We diagnose where requests, decisions, feedback, and production create friction — before we design anything.</p>
+            </div>
+          </div>
+          <div class="panel-2x2">
+            <div class="panel-mini">
+              <div class="label">What we diagnose</div>
+              <p>Request sources, their format, time from first email to finished asset, most common reasons for revisions.</p>
+            </div>
+            <div class="panel-mini">
+              <div class="label">What we design</div>
+              <p>A current-state map with 5–7 bottlenecks and their cost in hours per week.</p>
+            </div>
+            <div class="panel-mini">
+              <div class="label">What you get</div>
+              <p>A 1-page operational diagnosis with evidence and a recommended action sequence for the next 60 days.</p>
+            </div>
+            <div class="panel-mini">
+              <div class="label">What changes</div>
+              <p>Leadership sees the real bottlenecks, not their symptoms. Decisions stop being based solely on intuition.</p>
+            </div>
+          </div>
+          <div class="panel-metric">
+            <span class="label-tag">Metric</span>
+            <span class="text">Time-to-cause for every recurring operational problem.</span>
+          </div>
+        </div>
+
+        <!-- 01 -->
+        <div class="phase-panel" role="tabpanel" data-phase="1" hidden>
+          <div class="panel-header">
+            <div class="panel-num">01</div>
+            <div class="panel-title">
+              <h3>Demand Mapping</h3>
+              <p class="panel-goal">We map creative demand sources — who, what, how much, how often, in what format.</p>
+            </div>
+          </div>
+          <div class="panel-2x2">
+            <div class="panel-mini">
+              <div class="label">What we diagnose</div>
+              <p>Stakeholders, intake channels, request types, cyclicality, seasonality, local vs. central needs.</p>
+            </div>
+            <div class="panel-mini">
+              <div class="label">What we design</div>
+              <p>A request typology: strategic / urgent / local / cyclical / low-value — with clear definitions.</p>
+            </div>
+            <div class="panel-mini">
+              <div class="label">What you get</div>
+              <p>A demand map with volumes per stakeholder, a seasonal heatmap, and a list of requests to reject or defer.</p>
+            </div>
+            <div class="panel-mini">
+              <div class="label">What changes</div>
+              <p>Every new request can be classified in seconds, not hours. The backlog stops being an infinite list without priorities.</p>
+            </div>
+          </div>
+          <div class="panel-metric">
+            <span class="label-tag">Metric</span>
+            <span class="text">% of requests with clear classification on intake (target 95%+).</span>
+          </div>
+        </div>
+
+        <!-- 02 -->
+        <div class="phase-panel" role="tabpanel" data-phase="2" hidden>
+          <div class="panel-header">
+            <div class="panel-num">02</div>
+            <div class="panel-title">
+              <h3>Briefing System</h3>
+              <p class="panel-goal">We introduce briefing standards, Definition of Ready, and intake templates for every request type.</p>
+            </div>
+          </div>
+          <div class="panel-2x2">
+            <div class="panel-mini">
+              <div class="label">What we diagnose</div>
+              <p>The gap between what stakeholders write and what production needs. Most common reasons for follow-up questions.</p>
+            </div>
+            <div class="panel-mini">
+              <div class="label">What we design</div>
+              <p>Brief templates (3 variants: standard / local / express), Definition of Ready, intake form, AI brief assistant.</p>
+            </div>
+            <div class="panel-mini">
+              <div class="label">What you get</div>
+              <p>A template library, AI assistant with custom prompts, team training session, and a 90-day adoption playbook. AI supports input standardization, but decisions remain with people.</p>
+            </div>
+            <div class="panel-mini">
+              <div class="label">What changes</div>
+              <p>Briefs arrive complete on the first attempt. Most gaps surface before production starts, not during the second iteration.</p>
+            </div>
+          </div>
+          <div class="panel-metric">
+            <span class="label-tag">Metric</span>
+            <span class="text">% of briefs meeting Definition of Ready on first submission (target 80%+).</span>
+          </div>
+        </div>
+
+        <!-- 03 -->
+        <div class="phase-panel" role="tabpanel" data-phase="3" hidden>
+          <div class="panel-header">
+            <div class="panel-num">03</div>
+            <div class="panel-title">
+              <h3>Prioritization Logic</h3>
+              <p class="panel-goal">We define which requests go to production, which are deferred, and which are rejected — with clear rationale.</p>
+            </div>
+          </div>
+          <div class="panel-2x2">
+            <div class="panel-mini">
+              <div class="label">What we diagnose</div>
+              <p>Why "everything is ASAP" and what should actually be. Conflicts between strategy and operational pressure.</p>
+            </div>
+            <div class="panel-mini">
+              <div class="label">What we design</div>
+              <p>A 4-axis scoring rubric (urgency × strategic value × scope × dependencies) and a weekly triage cadence.</p>
+            </div>
+            <div class="panel-mini">
+              <div class="label">What you get</div>
+              <p>Prioritization rubric, decision rights map, weekly triage protocol, and a decision log for repeatability.</p>
+            </div>
+            <div class="panel-mini">
+              <div class="label">What changes</div>
+              <p>Only the right things go to production. Everything else gets a clear "defer" or "no" with rationale.</p>
+            </div>
+          </div>
+          <div class="panel-metric">
+            <span class="label-tag">Metric</span>
+            <span class="text">% of requests with a "yes / defer / no" decision within 24h of intake.</span>
+          </div>
+        </div>
+
+        <!-- 04 -->
+        <div class="phase-panel" role="tabpanel" data-phase="4" hidden>
+          <div class="panel-header">
+            <div class="panel-num">04</div>
+            <div class="panel-title">
+              <h3>Quality System</h3>
+              <p class="panel-goal">We turn subjective taste into benchmarks, QA rubrics, and production standards that can be delegated.</p>
+            </div>
+          </div>
+          <div class="panel-2x2">
+            <div class="panel-mini">
+              <div class="label">What we diagnose</div>
+              <p>Where quality depends on one person instead of a system. Recurring errors that seniors no longer consciously see.</p>
+            </div>
+            <div class="panel-mini">
+              <div class="label">What we design</div>
+              <p>A Creative Quality Playbook — senior judgment turned into rules. QA checklists per asset type, review workflow with RACI.</p>
+            </div>
+            <div class="panel-mini">
+              <div class="label">What you get</div>
+              <p>Creative Quality Playbook (50+ entries), QA checklists, review workflow, delegation training for mid+senior.</p>
+            </div>
+            <div class="panel-mini">
+              <div class="label">What changes</div>
+              <p>The team shares quality criteria. Seniors no longer need to be the only filter on every decision.</p>
+            </div>
+          </div>
+          <div class="panel-metric">
+            <span class="label-tag">Metric</span>
+            <span class="text">% of work passing QA on first review (target 70%+).</span>
+          </div>
+        </div>
+
+        <!-- 05 -->
+        <div class="phase-panel" role="tabpanel" data-phase="5" hidden>
+          <div class="panel-header">
+            <div class="panel-num">05</div>
+            <div class="panel-title">
+              <h3>Production Workflow</h3>
+              <p class="panel-goal">We define end-to-end workflows per asset type — who, when, on what input, with what handoff.</p>
+            </div>
+          </div>
+          <div class="panel-2x2">
+            <div class="panel-mini">
+              <div class="label">What we diagnose</div>
+              <p>Where handoffs lose context, time, and quality. Invisible micro-revisions that stretch cycles by weeks.</p>
+            </div>
+            <div class="panel-mini">
+              <div class="label">What we design</div>
+              <p>Workflow diagrams per asset type, RACI, handoff specs, integration with the team's existing tools.</p>
+            </div>
+            <div class="panel-mini">
+              <div class="label">What you get</div>
+              <p>Service blueprint, RACI per asset type, handoff specs, integration map with Asana / Notion / Figma / Slack.</p>
+            </div>
+            <div class="panel-mini">
+              <div class="label">What changes</div>
+              <p>Every project follows a known path. Ad-hoc stops being the default mode. A new team member understands the process in 1 day, not 2 months.</p>
+            </div>
+          </div>
+          <div class="panel-metric">
+            <span class="label-tag">Metric</span>
+            <span class="text">Cycle time from brief in DoR to delivered, approved asset.</span>
+          </div>
+        </div>
+
+        <!-- 06 -->
+        <div class="phase-panel" role="tabpanel" data-phase="6" hidden>
+          <div class="panel-header">
+            <div class="panel-num">06</div>
+            <div class="panel-title">
+              <h3>Approval & Governance</h3>
+              <p class="panel-goal">We define ownership, review paths, change request rules, and decision logs — so decisions are traceable, not political.</p>
+            </div>
+          </div>
+          <div class="panel-2x2">
+            <div class="panel-mini">
+              <div class="label">What we diagnose</div>
+              <p>Decision bottlenecks, unclear ownership, feedback loops that run the same content through three times.</p>
+            </div>
+            <div class="panel-mini">
+              <div class="label">What we design</div>
+              <p>Governance model, decision rights, escalation paths, change request process, decision log structure.</p>
+            </div>
+            <div class="panel-mini">
+              <div class="label">What you get</div>
+              <p>Governance playbook, RACI for approvals, decision log template, escalation protocol, conflict resolution path.</p>
+            </div>
+            <div class="panel-mini">
+              <div class="label">What changes</div>
+              <p>Decisions are owned, traceable, and don't bottleneck on one person. The system reduces dependency on individuals.</p>
+            </div>
+          </div>
+          <div class="panel-metric">
+            <span class="label-tag">Metric</span>
+            <span class="text">Average decision time + decision reversal rate (both trending down).</span>
+          </div>
+        </div>
+
+        <!-- 07 -->
+        <div class="phase-panel" role="tabpanel" data-phase="7" hidden>
+          <div class="panel-header">
+            <div class="panel-num">07</div>
+            <div class="panel-title">
+              <h3>Rollout & Optimization</h3>
+              <p class="panel-goal">We measure cycle time, revisions, brief quality, bottlenecks, and iterate the process — so the system stays current in a changing organization.</p>
+            </div>
+          </div>
+          <div class="panel-2x2">
+            <div class="panel-mini">
+              <div class="label">What we diagnose</div>
+              <p>Where the system starts leaking after rollout. Where the team reverts to old habits despite new rules.</p>
+            </div>
+            <div class="panel-mini">
+              <div class="label">What we design</div>
+              <p>Measurement system, iteration cadence, monthly review rituals, optimization playbook, AI ops layer.</p>
+            </div>
+            <div class="panel-mini">
+              <div class="label">What you get</div>
+              <p>KPI dashboard, monthly review structure, optimization playbook, quarterly governance review, and AI assistance setup.</p>
+            </div>
+            <div class="panel-mini">
+              <div class="label">What changes</div>
+              <p>The process stops being a one-time implementation — it has a rhythm of measurement, review, and iteration. Bottlenecks surface and get addressed in cadence, not after a breakdown.</p>
+            </div>
+          </div>
+          <div class="panel-metric">
+            <span class="label-tag">Metric</span>
+            <span class="text">Trend of all metrics from phases 02–06 quarter-over-quarter.</span>
+          </div>
+        </div>
+
+        <div class="panel-nav" style="padding: 24px clamp(28px, 4vw, 52px) 32px;">
+          <button class="panel-nav-btn" id="prevPhase" disabled>
+            ← <span>Previous phase</span>
+          </button>
+          <span class="panel-nav-status" id="phaseStatus">Phase 01 of 08</span>
+          <button class="panel-nav-btn" id="nextPhase">
+            <span>Next phase</span> →
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CLOSING ═══ -->
+<section id="closing" class="reveal">
+  <div class="container">
+    <div class="closing-block">
+      <p>After going through all 8 phases, the client's team receives <strong>operational artifacts</strong> they actually use in daily work: brief templates, Definition of Ready, prioritization rubric, Creative Quality Playbook, QA checklists, RACI, decision logs, production workflows, and a measurement dashboard.</p>
+      <p>What stays isn't a recommendation — it's a system.</p>
+    </div>
+    <div class="closing-cta">
+      <a href="/contact" class="btn btn-primary btn-lg">
+        Book a 30-min diagnosis
+        <span class="arrow">→</span>
+      </a>
+      <a href="/services" class="btn btn-secondary btn-lg">Explore services</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container">
+    <div class="footer-brand">
+      <span class="accent">r352</span>
+      <span>·</span>
+      <span>Your Design Partner</span>
+    </div>
+    <div class="footer-links">
+      <a href="/work">Work</a>
+      <a href="/services">Services</a>
+      <a href="/philosophy">Philosophy</a>
+      <a href="/journal">Journal</a>
+      <a href="/contact">Contact</a>
+    </div>
+    <div class="footer-location">Mallorca, Baleares · Remote</div>
+  </div>
+</footer>
+
+<script>
+  // ─── Phase tabs ───
+  const tabs = document.querySelectorAll('.phase-tab');
+  const panels = document.querySelectorAll('.phase-panel');
+  const progressBar = document.getElementById('phaseProgress');
+  const phaseStatus = document.getElementById('phaseStatus');
+  const prevBtn = document.getElementById('prevPhase');
+  const nextBtn = document.getElementById('nextPhase');
+  const TOTAL = tabs.length;
+
+  function setPhase(idx) {
+    idx = Math.max(0, Math.min(TOTAL - 1, idx));
+    tabs.forEach((t, i) => {
+      const isActive = i === idx;
+      t.classList.toggle('active', isActive);
+      t.setAttribute('aria-selected', isActive);
+    });
+    panels.forEach((p, i) => {
+      const isActive = i === idx;
+      p.classList.toggle('active', isActive);
+      if (isActive) p.removeAttribute('hidden');
+      else p.setAttribute('hidden', '');
+    });
+    const pct = ((idx + 1) / TOTAL) * 100;
+    progressBar.style.setProperty('--progress', pct + '%');
+    const phaseLabel = String(idx + 1).padStart(2, '0');
+    phaseStatus.textContent = `Phase ${phaseLabel} of ${String(TOTAL).padStart(2, '0')}`;
+    prevBtn.disabled = idx === 0;
+    nextBtn.disabled = idx === TOTAL - 1;
+
+    // Scroll active tab into view on mobile
+    const activeTab = document.querySelector('.phase-tab.active');
+    if (activeTab) activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+
+    return idx;
+  }
+
+  let currentPhase = 0;
+  tabs.forEach((tab, i) => tab.addEventListener('click', () => { currentPhase = setPhase(i); }));
+  prevBtn.addEventListener('click', () => { currentPhase = setPhase(currentPhase - 1); });
+  nextBtn.addEventListener('click', () => { currentPhase = setPhase(currentPhase + 1); });
+
+  // Keyboard navigation
+  document.querySelector('.phase-tabs').addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') { e.preventDefault(); currentPhase = setPhase(currentPhase + 1); document.querySelector('.phase-tab.active').focus(); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); currentPhase = setPhase(currentPhase - 1); document.querySelector('.phase-tab.active').focus(); }
+    else if (e.key === 'Home') { e.preventDefault(); currentPhase = setPhase(0); document.querySelector('.phase-tab.active').focus(); }
+    else if (e.key === 'End') { e.preventDefault(); currentPhase = setPhase(TOTAL - 1); document.querySelector('.phase-tab.active').focus(); }
+  });
+
+  setPhase(0);
+
+  // ─── Reveal animations (IntersectionObserver) ───
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => observer.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>

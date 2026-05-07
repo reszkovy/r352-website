@@ -11,3 +11,5 @@ dist
 .cowork-perm-resp/
 .local-plugins/
 tmp/
+.vercel
+.env*.local

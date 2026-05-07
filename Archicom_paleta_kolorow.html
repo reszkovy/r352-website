@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Archicom — Paleta kolorów</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#fff;color:#1a1a1a;padding:3rem 2rem;max-width:960px;margin:0 auto}
+.header{margin-bottom:2.5rem}
+.header h1{font-size:28px;font-weight:500;margin-bottom:4px}
+.header p{font-size:15px;color:#666}
+.gradient-bar{width:100%;height:64px;border-radius:12px;margin-bottom:2.5rem}
+.section{margin-bottom:2.5rem}
+.section-title{font-size:13px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:14px}
+.grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.card{background:#fff;border:1px solid #e8e8e8;border-radius:12px;overflow:hidden}
+.card-swatch{width:100%;height:100px}
+.card-body{padding:12px 14px}
+.card-name{font-size:14px;font-weight:500;margin-bottom:8px}
+.card-vals{display:flex;flex-direction:column;gap:3px}
+.card-val{font-size:12px;color:#777;font-family:'SF Mono',Menlo,Consolas,monospace}
+.card-use{font-size:12px;color:#999;margin-top:6px;line-height:1.4}
+.preview-box{border-radius:12px 12px 0 0;display:flex;align-items:center;justify-content:center;height:100px;font-size:18px;font-weight:400;letter-spacing:0.3px}
+.divider{height:1px;background:#eee;margin:2.5rem 0}
+.footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid #eee;font-size:12px;color:#aaa;display:flex;justify-content:space-between}
+@media(max-width:700px){
+.grid5{grid-template-columns:repeat(2,1fr)}
+.grid3{grid-template-columns:repeat(2,1fr)}
+.grid2{grid-template-columns:1fr}
+}
+@media print{
+body{padding:1.5rem}
+.card{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+<h1>Archicom — paleta kolorów</h1>
+<p>Wytyczne kolorystyczne RGB / HEX / CMYK</p>
+</div>
+
+<div class="gradient-bar" style="background:linear-gradient(to right, #091C38, #0A3260, #0E5A8F, #2E8DB8, #6AD2E4)"></div>
+
+<div class="section">
+<div class="section-title">Kolory główne — gradient</div>
+<div class="grid5">
+
+<div class="card">
+<div class="card-swatch" style="background:#091C38"></div>
+<div class="card-body">
+<div class="card-name">Dark navy</div>
+<div class="card-vals">
+<span class="card-val">#091C38</span>
+<span class="card-val">R9 G28 B56</span>
+<span class="card-val">C84 M50 Y0 K78</span>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-swatch" style="background:#0A3260"></div>
+<div class="card-body">
+<div class="card-name">Deep blue</div>
+<div class="card-vals">
+<span class="card-val">#0A3260</span>
+<span class="card-val">R10 G50 B96</span>
+<span class="card-val">C90 M48 Y0 K62</span>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-swatch" style="background:#0E5A8F"></div>
+<div class="card-body">
+<div class="card-name">Medium blue</div>
+<div class="card-vals">
+<span class="card-val">#0E5A8F</span>
+<span class="card-val">R14 G90 B143</span>
+<span class="card-val">C90 M37 Y0 K44</span>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-swatch" style="background:#2E8DB8"></div>
+<div class="card-body">
+<div class="card-name">Ocean blue</div>
+<div class="card-vals">
+<span class="card-val">#2E8DB8</span>
+<span class="card-val">R46 G141 B184</span>
+<span class="card-val">C75 M23 Y0 K28</span>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-swatch" style="background:#6AD2E4"></div>
+<div class="card-body">
+<div class="card-name">Light cyan</div>
+<div class="card-vals">
+<span class="card-val">#6AD2E4</span>
+<span class="card-val">R106 G210 B228</span>
+<span class="card-val">C54 M8 Y0 K11</span>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+<div class="section-title">Kolor akcentowy — subheadery, strzałki kierunkowe</div>
+<div class="grid2">
+
+<div class="card">
+<div class="preview-box" style="background:#091C38;color:#7DD4E4">Salon sprzedaży mieszkań</div>
+<div class="card-body">
+<div class="card-name">Cyan accent</div>
+<div class="card-vals">
+<span class="card-val">#7DD4E4</span>
+<span class="card-val">R125 G212 B228</span>
+<span class="card-val">C45 M7 Y0 K11</span>
+</div>
+<div class="card-use">Subheadery, strzałki kierunkowe, CTA na ciemnym tle</div>
+</div>
+</div>
+
+<div class="card">
+<div class="preview-box" style="background:#091C38;color:#7DD4E4;gap:12px">
+<span style="font-size:28px">→</span> Lokalizacja
+</div>
+<div class="card-body">
+<div class="card-name">Zastosowanie na signage</div>
+<div class="card-vals">
+<span class="card-val">Kontrast: AAA</span>
+<span class="card-val">Na tle: Dark navy #091C38</span>
+</div>
+<div class="card-use">Billboardy kierunkowe, oznaczenia lokalizacji</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+<div class="section-title">Kolor wspierający — silver</div>
+<div class="grid3">
+
+<div class="card">
+<div class="card-swatch" style="background:#D6D6D8"></div>
+<div class="card-body">
+<div class="card-name">Silver jasny</div>
+<div class="card-vals">
+<span class="card-val">#D6D6D8</span>
+<span class="card-val">R214 G214 B216</span>
+<span class="card-val">C1 M1 Y0 K15</span>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-swatch" style="background:#B0B0B4"></div>
+<div class="card-body">
+<div class="card-name">Silver środek</div>
+<div class="card-vals">
+<span class="card-val">#B0B0B4</span>
+<span class="card-val">R176 G176 B180</span>
+<span class="card-val">C2 M2 Y0 K29</span>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-swatch" style="background:#8A8A8F"></div>
+<div class="card-body">
+<div class="card-name">Silver ciemny</div>
+<div class="card-vals">
+<span class="card-val">#8A8A8F</span>
+<span class="card-val">R138 G138 B143</span>
+<span class="card-val">C3 M3 Y0 K44</span>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="footer">
+<span>Archicom — Brand Color Guide</span>
+<span>Kwiecień 2026</span>
+</div>
+
+</body>
+</html>
