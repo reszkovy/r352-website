@@ -236,7 +236,7 @@ export function Process() {
       <section id="process-tabs" className="pb-20 md:pb-32 border-b border-white/10 scroll-mt-24">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
           <Reveal>
-            <div className="border border-neutral-200 dark:border-white/[0.12] rounded-lg overflow-hidden bg-neutral-50 dark:bg-[#141414]">
+            <div className="border-t border-neutral-200 dark:border-white/[0.12]">
               {/* Progress bar */}
               <div className="h-[2px] bg-neutral-200 dark:bg-white/[0.06] relative">
                 <motion.div
