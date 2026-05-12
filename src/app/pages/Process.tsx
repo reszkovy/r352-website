@@ -203,13 +203,6 @@ export function Process() {
   const step = steps[activeStep];
   const progressPct = ((activeStep + 1) / TOTAL) * 100;
 
-  const scrollToTabs = useCallback((idx: number) => {
-    setActiveStep(idx);
-    setTimeout(() => {
-      document.getElementById("process-tabs")?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 50);
-  }, []);
-
   return (
     <PageTransition>
       {/* ─── Intro Hook — repositioning statement ─── */}
@@ -239,38 +232,8 @@ export function Process() {
         </div>
       </section>
 
-      {/* ─── Process Map — 8-box scannable overview ─── */}
-      <section className="pb-20 md:pb-28 px-8 md:px-12 border-b border-neutral-200 dark:border-white/10">
-        <div className="max-w-[1800px] mx-auto">
-          <Reveal>
-            <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-8">
-              {lang === "pl" ? "Mapa procesu" : "Process map"}
-            </span>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-l border-neutral-200 dark:border-white/10">
-              {steps.map((s, i) => (
-                <button
-                  key={s.num}
-                  onClick={() => scrollToTabs(i)}
-                  className="text-left p-6 md:p-8 border-r border-b border-neutral-200 dark:border-white/10 group hover:bg-neutral-50 dark:hover:bg-white/[0.02] transition-colors duration-500 cursor-pointer"
-                >
-                  <span className="block font-display text-base text-neutral-400 dark:text-neutral-600 mb-3 group-hover:text-[#D4FF00] transition-colors duration-500">
-                    {s.num}
-                  </span>
-                  <h3 className="text-base md:text-lg font-bold text-neutral-900 dark:text-white mb-2 leading-tight tracking-tight">
-                    {s.title[lang]}
-                  </h3>
-                  <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-snug">
-                    {s.subtitle[lang]}
-                  </p>
-                </button>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ─── 8-Step Tabs — interactive deep-dive ─── */}
-      <section id="process-tabs" className="py-20 md:py-32 border-b border-white/10 scroll-mt-24">
+      {/* ─── 8-Step Tabs — interactive deep-dive (is the process map) ─── */}
+      <section id="process-tabs" className="pb-20 md:pb-32 border-b border-white/10 scroll-mt-24">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
           <Reveal>
             <div className="border border-neutral-200 dark:border-white/[0.12] rounded-lg overflow-hidden bg-neutral-50 dark:bg-[#141414]">
