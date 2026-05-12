@@ -283,10 +283,10 @@ export function Process() {
                         transition={{ type: "spring", stiffness: 380, damping: 34, mass: 0.9 }}
                       />
                     )}
-                    <span className={`font-display text-lg md:text-xl leading-none tracking-wide transition-colors duration-500 ${i === activeStep ? "text-[#0A0A0A]/70" : ""}`}>
+                    <span className={`font-display text-xs leading-none tracking-wide transition-colors duration-500 ${i === activeStep ? "text-[#0A0A0A]/60" : ""}`}>
                       {s.num}
                     </span>
-                    <span className={`text-[11px] md:text-xs font-medium leading-snug mt-auto transition-colors duration-500 ${i === activeStep ? "font-semibold text-[#0A0A0A]" : ""}`}>
+                    <span className={`text-base md:text-lg font-semibold tracking-tight leading-tight mt-auto transition-colors duration-500 ${i === activeStep ? "font-bold text-[#0A0A0A]" : ""}`}>
                       {s.title[lang]}
                     </span>
                   </button>
