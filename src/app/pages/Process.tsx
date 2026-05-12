@@ -27,28 +27,28 @@ const steps: Step[] = [
       pl: "Audytujemy stan obecny — workflow, wąskie gardła, stakeholderzy, narzędzia i ścieżki decyzyjne. Bez założeń, tylko dowody z danymi o kosztach czasowych.",
     },
     cards: [
-      { label: { en: "What we do", pl: "Co robimy" }, text: { en: "Stakeholder interviews, workflow audits, request-source analysis, tool stack review, pain-point mapping with hours-per-week cost evidence.", pl: "Wywiady ze stakeholderami, audyty workflow, analiza źródeł requestów, review stack narzędzi, mapowanie pain-pointów z dowodami kosztowymi w godzinach/tydzień." } },
+      { label: { en: "What we do", pl: "Co robimy" }, text: { en: "Stakeholder interviews, workflow audit, request source analysis, tool review and pain-point mapping with estimated time cost.", pl: "Wywiady ze stakeholderami, audyt workflow, analiza źródeł requestów, przegląd narzędzi i mapowanie pain-pointów z szacowanym kosztem czasowym." } },
       { label: { en: "What you get", pl: "Co dostajesz" }, text: { en: "A 1-page operational diagnosis with 5–7 prioritized bottlenecks and a recommended action sequence for the next 60 days.", pl: "Jednostronicowa diagnoza operacyjna z 5–7 priorytetyzowanymi wąskimi gardłami i zalecaną sekwencją działań na 60 dni." } },
-      { label: { en: "Why it matters", pl: "Dlaczego to ważne" }, text: { en: "Without diagnosis, every solution is a guess. Whether it's a landing page or a full system — we start from evidence, not intuition.", pl: "Bez diagnozy każde rozwiązanie to zgadywanka. Niezależnie czy to landing page czy pełny system — zaczynamy od dowodów, nie intuicji." } },
+      { label: { en: "Why it matters", pl: "Dlaczego to ważne" }, text: { en: "Without diagnosis, every solution is a guess — even if it looks good.", pl: "Bez diagnozy każde rozwiązanie to zgadywanka — nawet jeśli wygląda dobrze." } },
       { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "3–5 days for focused projects, 1–2 weeks for organization-wide engagements.", pl: "3–5 dni dla fokusowanych projektów, 1–2 tygodnie dla zaangażowań organizacyjnych." } },
     ],
-    metric: { en: "Time-to-cause for every recurring problem identified.", pl: "Czas do zidentyfikowania przyczyny każdego zidentyfikowanego problemu." },
+    metric: { en: "Time to root cause for every recurring problem.", pl: "Czas do zidentyfikowania przyczyny każdego powtarzającego się problemu." },
   },
   {
     num: "02",
     title: { en: "Map", pl: "Mapowanie" },
-    subtitle: { en: "Understand the demand landscape", pl: "Zrozumieć krajobraz zapotrzebowania" },
+    subtitle: { en: "Understand the demand landscape", pl: "Zrozumieć krajobraz popytu" },
     goal: {
       en: "We map what's coming in — who requests what, how often, in what format, with what urgency. This turns an infinite backlog into a classified, manageable system.",
       pl: "Mapujemy co przychodzi — kto, co, jak często, w jakim formacie, z jaką pilnością. To zamienia nieskończony backlog w sklasyfikowany, zarządzalny system.",
     },
     cards: [
-      { label: { en: "What we do", pl: "Co robimy" }, text: { en: "Intake channel audit, request typology (strategic / urgent / local / cyclical / low-value), stakeholder volume analysis, seasonality mapping.", pl: "Audyt kanałów intake, typologia requestów (strategiczne / pilne / lokalne / cykliczne / niskowartościowe), analiza wolumenu per stakeholder, mapowanie sezonowości." } },
-      { label: { en: "What you get", pl: "Co dostajesz" }, text: { en: "A demand map with volumes per stakeholder, a seasonal heatmap, request typology with clear definitions, and a list of requests to reject or defer.", pl: "Mapa popytu z wolumenami per stakeholder, heatmapa sezonowa, typologia requestów z definicjami i lista requestów do odrzucenia lub odroczenia." } },
-      { label: { en: "Why it matters", pl: "Dlaczego to ważne" }, text: { en: "You can't prioritize what you haven't classified. Mapping turns 'everything is ASAP' into a system where every request has a clear category on intake.", pl: "Nie priorytetyzujesz tego, czego nie sklasyfikowałeś. Mapowanie zamienia 'wszystko jest ASAP' w system, gdzie każdy request ma jasną kategorię na wejściu." } },
-      { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "1 week. Often runs in parallel with Diagnose for larger engagements.", pl: "1 tydzień. Często przebiega równolegle z Diagnozą przy większych zaangażowaniach." } },
+      { label: { en: "What we do", pl: "Co robimy" }, text: { en: "Audit of where requests come from, classification of request types, stakeholder volume analysis and seasonality mapping.", pl: "Audyt skąd przychodzą requesty, klasyfikacja typów requestów, analiza wolumenu per stakeholder i mapowanie sezonowości." } },
+      { label: { en: "What you get", pl: "Co dostajesz" }, text: { en: "A demand map showing request volume by stakeholder, recurring seasonal patterns, clear request categories and a list of requests to accept, reject or defer.", pl: "Mapa popytu pokazująca wolumen requestów per stakeholder, powtarzające się wzorce sezonowe, jasne kategorie requestów i listę requestów do zaakceptowania, odrzucenia lub odłożenia." } },
+      { label: { en: "Why it matters", pl: "Dlaczego to ważne" }, text: { en: "You cannot prioritize what you have not classified. Mapping turns 'everything is urgent' into a system where every request has a clear place.", pl: "Nie priorytetyzujesz tego, czego nie sklasyfikowałeś. Mapowanie zamienia 'wszystko jest pilne' w system, gdzie każdy request ma jasne miejsce." } },
+      { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "1 week. Often runs in parallel with diagnosis for larger engagements.", pl: "1 tydzień. Często przebiega równolegle z diagnozą przy większych zaangażowaniach." } },
     ],
-    metric: { en: "% of requests with clear classification on intake (target 95%+).", pl: "% requestów z jasną klasyfikacją na wejściu (cel 95%+)." },
+    metric: { en: "% of requests with a clear category at intake (target 95%+).", pl: "% requestów z jasną kategorią na wejściu (cel 95%+)." },
   },
   {
     num: "03",
@@ -59,12 +59,12 @@ const steps: Step[] = [
       pl: "Wprowadzamy standardy briefingu, Definition of Ready, logikę priorytetyzacji i benchmarki jakości. To jest kontrakt między stakeholderami a produkcją.",
     },
     cards: [
-      { label: { en: "What we do", pl: "Co robimy" }, text: { en: "Brief templates (standard / local / express), Definition of Ready, 4-axis scoring rubric, weekly triage cadence, Creative Quality Playbook, QA checklists per asset type.", pl: "Szablony briefów (standard / local / express), Definition of Ready, 4-osiowa matryca scoringowa, tygodniowy triage, Creative Quality Playbook, QA checklisty per typ assetu." } },
-      { label: { en: "What you get", pl: "Co dostajesz" }, text: { en: "Template library, prioritization rubric, quality playbook (50+ entries), QA checklists, AI brief assistant with custom prompts, and a 90-day adoption playbook.", pl: "Biblioteka szablonów, matryca priorytetyzacji, quality playbook (50+ pozycji), QA checklisty, AI asystent briefu z promptami i 90-dniowy playbook adopcji." } },
-      { label: { en: "Why it matters", pl: "Dlaczego to ważne" }, text: { en: "Standards eliminate revision loops. When the brief is complete on first submission and quality criteria are shared, feedback becomes precise — not political.", pl: "Standardy eliminują pętle poprawek. Kiedy brief jest kompletny przy pierwszym złożeniu a kryteria jakości są wspólne, feedback staje się precyzyjny — nie polityczny." } },
-      { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "2–3 weeks. The heaviest intellectual phase — this is where the system's DNA gets written.", pl: "2–3 tygodnie. Najcięższa faza intelektualnie — tu pisze się DNA systemu." } },
+      { label: { en: "What we do", pl: "Co robimy" }, text: { en: "Brief templates for standard, local and express requests, a readiness checklist before production starts, a simple scoring system for priority, urgency, business value and production effort, weekly request reviews, creative quality standards and quality review checklists for each asset type.", pl: "Szablony briefów dla standardowych, lokalnych i ekspresowych requestów, lista gotowości zanim ruszy produkcja, prosty system scoringowy dla priorytetu, pilności, wartości biznesowej i nakładu produkcyjnego, cotygodniowe review requestów, standardy jakości kreatywnej i quality review checklisty per typ assetu." } },
+      { label: { en: "What you get", pl: "Co dostajesz" }, text: { en: "A template library, prioritization system, creative quality standards, quality review checklists, AI brief assistant prompts and a 90-day adoption plan.", pl: "Biblioteka szablonów, system priorytetyzacji, standardy jakości kreatywnej, quality review checklisty, prompty AI asystenta briefu i 90-dniowy plan adopcji." } },
+      { label: { en: "Why it matters", pl: "Dlaczego to ważne" }, text: { en: "Standards eliminate revision loops before they start. When the brief is complete and quality criteria are clear, feedback becomes precise instead of political.", pl: "Standardy eliminują pętle poprawek zanim się zaczną. Kiedy brief jest kompletny a kryteria jakości są jasne, feedback staje się precyzyjny zamiast polityczny." } },
+      { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "2–3 weeks. This is the heaviest intellectual phase — where the system's operating logic gets written.", pl: "2–3 tygodnie. Najcięższa faza intelektualnie — tutaj pisze się operacyjna logika systemu." } },
     ],
-    metric: { en: "% of briefs meeting Definition of Ready on first submission (target 80%+).", pl: "% briefów spełniających Definition of Ready przy pierwszym złożeniu (cel 80%+)." },
+    metric: { en: "% of briefs meeting the readiness checklist on first submission (target 80%+).", pl: "% briefów spełniających listę gotowości przy pierwszym złożeniu (cel 80%+)." },
   },
   {
     num: "04",
@@ -75,12 +75,12 @@ const steps: Step[] = [
       pl: "Egzekucja na seniorskim poziomie zgodnie ze standardami z Fazy 03. Niezależnie czy to UX/UI, system marki, toolkit kampanijny czy playbook operacyjny — budujemy gotowe do produkcji deliverables, nie koncepty.",
     },
     cards: [
-      { label: { en: "What we do", pl: "Co robimy" }, text: { en: "UX/UI design, brand systems, campaign assets, component libraries, production workflows, RACI per asset type, handoff specs, tool integrations (Asana / Notion / Figma / Slack).", pl: "Design UX/UI, systemy marki, assety kampanijne, biblioteki komponentów, workflow produkcji, RACI per typ assetu, specyfikacje handoffu, integracje narzędzi (Asana / Notion / Figma / Slack)." } },
-      { label: { en: "What you get", pl: "Co dostajesz" }, text: { en: "Production-ready files, systems, and documentation. Service blueprints, workflow diagrams, component libraries — whatever the project demands. Your team uses it from day one.", pl: "Gotowe do produkcji pliki, systemy i dokumentacja. Service blueprinty, diagramy workflow, biblioteki komponentów — cokolwiek wymaga projekt. Twój zespół używa tego od dnia pierwszego." } },
-      { label: { en: "Why it matters", pl: "Dlaczego to ważne" }, text: { en: "Craft without structure dies on delivery. We combine senior execution with the standards from Phase 03, so quality is consistent — not heroic.", pl: "Rzemiosło bez struktury umiera na dostarczeniu. Łączymy seniorską egzekucję ze standardami z Fazy 03, więc jakość jest powtarzalna — nie heroiczna." } },
+      { label: { en: "What we do", pl: "Co robimy" }, text: { en: "UX and interface design, brand systems, campaign assets, component libraries, production workflows, approval ownership by asset type, handoff instructions and tool integrations.", pl: "Design UX i interfejsów, systemy marki, assety kampanijne, biblioteki komponentów, workflow produkcji, mapa ownership akceptacji per typ assetu, instrukcje handoffu i integracje narzędzi." } },
+      { label: { en: "What you get", pl: "Co dostajesz" }, text: { en: "Production-ready files, systems and documentation. This can include service blueprints, workflow diagrams, component libraries, campaign assets or interfaces — depending on what the project needs.", pl: "Gotowe do produkcji pliki, systemy i dokumentacja. To może obejmować service blueprinty, diagramy workflow, biblioteki komponentów, assety kampanijne lub interfejsy — w zależności od potrzeb projektu." } },
+      { label: { en: "Why it matters", pl: "Dlaczego to ważne" }, text: { en: "Craft without structure breaks during delivery. We combine senior execution with clear standards, so quality becomes repeatable instead of heroic.", pl: "Rzemiosło bez struktury łamie się przy dostawie. Łączymy seniorską egzekucję z jasnymi standardami, więc jakość staje się powtarzalna zamiast heroiczna." } },
       { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "2–12 weeks depending on scope. Delivered in weekly sprints with visible progress at every checkpoint.", pl: "2–12 tygodni w zależności od zakresu. Dostarczane w tygodniowych sprintach z widocznym postępem na każdym checkpoincie." } },
     ],
-    metric: { en: "Cycle time from brief in DoR to delivered asset.", pl: "Cycle time od briefu w DoR do dostarczonego assetu." },
+    metric: { en: "Cycle time from approved brief to delivered asset.", pl: "Cycle time od zatwierdzonego briefu do dostarczonego assetu." },
   },
   {
     num: "05",
@@ -91,12 +91,12 @@ const steps: Step[] = [
       pl: "Definiujemy ownership, ścieżki akceptacji, zasady change requestów i logi decyzji — żeby decyzje były śledzalne i nie blokowały się na jednej osobie.",
     },
     cards: [
-      { label: { en: "What we do", pl: "Co robimy" }, text: { en: "Governance model, decision rights map, escalation paths, change request process, conflict resolution protocol, decision log structure.", pl: "Model governance, mapa praw decyzyjnych, ścieżki eskalacji, proces change requestów, protokół rozwiązywania konfliktów, struktura logu decyzji." } },
-      { label: { en: "What you get", pl: "Co dostajesz" }, text: { en: "Governance playbook, RACI for approvals, decision log template, escalation protocol. Every decision has an owner and a paper trail.", pl: "Governance playbook, RACI dla akceptacji, szablon logu decyzji, protokół eskalacji. Każda decyzja ma ownera i ślad." } },
-      { label: { en: "Why it matters", pl: "Dlaczego to ważne" }, text: { en: "Most revision loops aren't about quality — they're about unclear ownership. When everyone knows who decides what, cycles shrink dramatically.", pl: "Większość pętli poprawek nie dotyczy jakości — dotyczy niejasnego ownershipa. Kiedy wszyscy wiedzą kto decyduje o czym, cykle drastycznie się skracają." } },
+      { label: { en: "What we do", pl: "Co robimy" }, text: { en: "Decision ownership model, approval rules, escalation paths, change request process, conflict resolution rules and decision log structure.", pl: "Model ownership decyzji, zasady akceptacji, ścieżki eskalacji, proces change requestów, zasady rozwiązywania konfliktów i struktura logu decyzji." } },
+      { label: { en: "What you get", pl: "Co dostajesz" }, text: { en: "A clear decision playbook. Everyone knows who approves what, how changes are handled and where important decisions are documented.", pl: "Jasny decision playbook. Każdy wie kto akceptuje co, jak obsługiwane są zmiany i gdzie dokumentowane są ważne decyzje." } },
+      { label: { en: "Why it matters", pl: "Dlaczego to ważne" }, text: { en: "Most revision loops are not about quality. They happen because ownership is unclear. When everyone knows who decides what, projects move faster.", pl: "Większość pętli poprawek nie dotyczy jakości. Pojawiają się bo ownership jest niejasny. Kiedy wszyscy wiedzą kto decyduje o czym, projekty idą szybciej." } },
       { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "1–2 weeks. Defined in parallel with Build, enforced from first delivery.", pl: "1–2 tygodnie. Definiowane równolegle z Budową, egzekwowane od pierwszej dostawy." } },
     ],
-    metric: { en: "Average decision time + decision reversal rate (both trending down).", pl: "Średni czas decyzji + wskaźnik cofania decyzji (oba w trendzie spadkowym)." },
+    metric: { en: "Average decision time and decision reversal rate (both trending down).", pl: "Średni czas decyzji i wskaźnik cofania decyzji (oba w trendzie spadkowym)." },
   },
   {
     num: "06",
@@ -107,12 +107,12 @@ const steps: Step[] = [
       pl: "Każdy deliverable przechodzi przez ustrukturyzowane QA i akceptację przed handoffem. Nic nie wychodzi niedopieczone. Nic nie wychodzi bez sign-offu od właściwej osoby.",
     },
     cards: [
-      { label: { en: "What we do", pl: "Co robimy" }, text: { en: "QA checklists per asset type, structured review rounds, stakeholder sign-off against governance rules, handoff documentation, developer specs where applicable.", pl: "QA checklisty per typ assetu, ustrukturyzowane rundy review, sign-off stakeholderów zgodnie z governance, dokumentacja handoffu, specyfikacje deweloperskie tam, gdzie potrzebne." } },
-      { label: { en: "What you get", pl: "Co dostajesz" }, text: { en: "Approved, production-ready files with clear handoff specs. Your team knows exactly what was delivered, why, and how to implement it.", pl: "Zatwierdzone, gotowe do produkcji pliki z jasnymi specyfikacjami handoffu. Twój zespół wie dokładnie co dostarczono, dlaczego i jak to wdrożyć." } },
-      { label: { en: "Why it matters", pl: "Dlaczego to ważne" }, text: { en: "Shipping is where most processes break. We replace 'looks good I guess' with structured QA that anyone on the team can apply consistently.", pl: "Dostawa to moment, w którym większość procesów się łamie. Zastępujemy 'wygląda ok chyba' ustrukturyzowanym QA, które każdy w zespole może stosować spójnie." } },
-      { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "Built into each sprint — not a separate phase. QA happens continuously, not as a last-minute gate.", pl: "Wbudowane w każdy sprint — nie osobna faza. QA dzieje się ciągle, nie jako bramka na ostatnią chwilę." } },
+      { label: { en: "What we do", pl: "Co robimy" }, text: { en: "Quality review checklists for each asset type, structured review rounds, stakeholder approval rules, handoff documentation and developer specifications where needed.", pl: "Quality review checklisty dla każdego typu assetu, ustrukturyzowane rundy review, zasady akceptacji stakeholderów, dokumentacja handoffu i specyfikacje dla developerów tam gdzie potrzebne." } },
+      { label: { en: "What you get", pl: "Co dostajesz" }, text: { en: "Approved, production-ready files with clear handoff instructions. Your team knows what was delivered, why it was created and how to use or implement it.", pl: "Zatwierdzone, gotowe do produkcji pliki z jasnymi instrukcjami handoffu. Twój zespół wie co zostało dostarczone, dlaczego powstało i jak tego użyć lub wdrożyć." } },
+      { label: { en: "Why it matters", pl: "Dlaczego to ważne" }, text: { en: "Shipping is where most processes break. We replace 'looks good, I guess' with structured quality review that anyone on the team can apply consistently.", pl: "Dostawa to moment w którym większość procesów się łamie. Zastępujemy 'wygląda ok chyba' ustrukturyzowanym quality review, które każdy w zespole może stosować spójnie." } },
+      { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "Built into each sprint. Quality review happens continuously, not only at the end.", pl: "Wbudowane w każdy sprint. Quality review dzieje się ciągle, nie tylko na końcu." } },
     ],
-    metric: { en: "% of work passing QA on first review (target 70%+).", pl: "% prac przechodzących QA przy pierwszym review (cel 70%+)." },
+    metric: { en: "% of work passing quality review on first round (target 70%+).", pl: "% prac przechodzących quality review w pierwszej rundzie (cel 70%+)." },
   },
   {
     num: "07",
@@ -123,9 +123,9 @@ const steps: Step[] = [
       pl: "Stawiamy infrastrukturę pomiarową — dashboardy KPI, kadencje review, tracking adopcji. Bez danych nie udowodnisz że system działa ani nie znajdziesz gdzie przecieka.",
     },
     cards: [
-      { label: { en: "What we do", pl: "Co robimy" }, text: { en: "KPI dashboard setup, baseline measurement, monthly review structure, adoption tracking per team/stakeholder, AI ops integration where applicable.", pl: "Setup dashboardu KPI, pomiar bazowy, struktura monthly review, tracking adopcji per zespół/stakeholder, integracja AI ops tam, gdzie to ma sens." } },
-      { label: { en: "What you get", pl: "Co dostajesz" }, text: { en: "A measurement framework your team owns — cycle time, revision rates, brief quality scores, bottleneck frequency. Not a one-time report, a living system.", pl: "Framework pomiarowy, który Twój zespół posiada — cycle time, wskaźniki poprawek, scoring jakości briefów, częstotliwość wąskich gardeł. Nie jednorazowy raport, żywy system." } },
-      { label: { en: "Why it matters", pl: "Dlaczego to ważne" }, text: { en: "What gets measured gets managed. Without a dashboard, teams revert to old habits within 90 days and you lose everything you built.", pl: "Co jest mierzone, jest zarządzane. Bez dashboardu zespoły wracają do starych nawyków w 90 dni i tracisz wszystko co zbudowałeś." } },
+      { label: { en: "What we do", pl: "Co robimy" }, text: { en: "Workflow performance dashboard setup, baseline measurement, monthly review structure, adoption tracking by team and AI workflow integration where useful.", pl: "Setup dashboardu workflow performance, pomiar bazowy, struktura miesięcznego review, tracking adopcji per zespół i integracja AI workflow tam gdzie to ma sens." } },
+      { label: { en: "What you get", pl: "Co dostajesz" }, text: { en: "A measurement framework your team can use to track cycle time, revision rates, brief quality, recurring bottlenecks and adoption of the new process.", pl: "Framework pomiarowy, którego Twój zespół może używać do śledzenia cycle time, wskaźników poprawek, jakości briefów, powtarzających się wąskich gardeł i adopcji nowego procesu." } },
+      { label: { en: "Why it matters", pl: "Dlaczego to ważne" }, text: { en: "If you do not measure the workflow, you end up managing opinions instead of real problems.", pl: "Jeśli nie mierzysz workflow, kończysz zarządzając opiniami zamiast realnymi problemami." } },
       { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "1–2 weeks for setup. Then it runs continuously as part of the operating rhythm.", pl: "1–2 tygodnie na setup. Potem działa ciągle jako część rytmu operacyjnego." } },
     ],
     metric: { en: "Dashboard live + first baseline captured within 2 weeks of system launch.", pl: "Dashboard live + pierwszy baseline uchwycony w ciągu 2 tygodni od launchu systemu." },
@@ -139,10 +139,10 @@ const steps: Step[] = [
       pl: "Prowadzimy monthly review, kwartalne governance checks i cykle optymalizacji procesu. System adaptuje się do zmieniającej się organizacji — nie staje się półkowym dokumentem.",
     },
     cards: [
-      { label: { en: "What we do", pl: "Co robimy" }, text: { en: "Monthly review rituals, quarterly governance reviews, process optimization sprints, habit-reversion detection, AI ops layer updates, team coaching.", pl: "Miesięczne rytuały review, kwartalne governance reviews, sprinty optymalizacji procesu, wykrywanie powrotu do starych nawyków, aktualizacje warstwy AI ops, coaching zespołu." } },
-      { label: { en: "What you get", pl: "Co dostajesz" }, text: { en: "An evolving system with a built-in improvement rhythm. Optimization playbook, quarterly trend reports, updated playbooks and templates as the org changes.", pl: "Ewoluujący system z wbudowanym rytmem poprawy. Optimization playbook, kwartalne raporty trendów, zaktualizowane playbooki i szablony w miarę zmian w organizacji." } },
-      { label: { en: "Why it matters", pl: "Dlaczego to ważne" }, text: { en: "Every process decays. Teams change, tools change, priorities shift. Without iteration cadence, you'll rebuild from scratch in 12 months.", pl: "Każdy proces się degraduje. Zespoły się zmieniają, narzędzia się zmieniają, priorytety się przesuwają. Bez kadencji iteracji, za 12 miesięcy budujesz od zera." } },
-      { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "Ongoing — typically 1 session/month. Can be part of a retainer or fully handed off to your team.", pl: "Ciągłe — typowo 1 sesja/miesiąc. Może być częścią retainera lub w pełni przekazane Twojemu zespołowi." } },
+      { label: { en: "What we do", pl: "Co robimy" }, text: { en: "Monthly review sessions, quarterly process reviews, optimization sprints, checks for old workflow habits, AI workflow updates and team coaching.", pl: "Miesięczne sesje review, kwartalne review procesu, sprinty optymalizacji, sprawdzanie powrotu do starych nawyków workflow, aktualizacje AI workflow i coaching zespołu." } },
+      { label: { en: "What you get", pl: "Co dostajesz" }, text: { en: "A system that keeps improving instead of becoming outdated. Your team gets updated templates, process recommendations, quarterly trend reviews and a clear rhythm for improving how work gets done.", pl: "System, który ciągle się poprawia zamiast stawać się przestarzały. Twój zespół dostaje zaktualizowane szablony, rekomendacje procesowe, kwartalne review trendów i jasny rytm poprawy tego jak praca jest wykonywana." } },
+      { label: { en: "Why it matters", pl: "Dlaczego to ważne" }, text: { en: "Every process decays. Teams change, tools change and priorities shift. Without a review rhythm, the system slowly stops working and the team returns to old habits.", pl: "Każdy proces się degraduje. Zespoły się zmieniają, narzędzia się zmieniają i priorytety się przesuwają. Bez rytmu review system powoli przestaje działać a zespół wraca do starych nawyków." } },
+      { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "Ongoing — typically 1 session per month. Can be part of a retainer or fully handed off to your team.", pl: "Ciągłe — typowo 1 sesja miesięcznie. Może być częścią retainera lub w pełni przekazane Twojemu zespołowi." } },
     ],
     metric: { en: "Quarter-over-quarter trend of all metrics from phases 03–06.", pl: "Trend kwartał-do-kwartału wszystkich metryk z faz 03–06." },
   },
@@ -160,31 +160,31 @@ const timelinePhases = [
 
 const deliverables = {
   en: [
-    "Operational diagnosis with cost evidence",
-    "Demand map & request typology",
-    "Brief templates & Definition of Ready",
-    "Prioritization rubric & triage protocol",
-    "Creative Quality Playbook (50+ entries)",
-    "QA checklists per asset type",
-    "Production workflows & RACI",
-    "Service blueprints & handoff specs",
-    "Governance playbook & decision log",
-    "KPI dashboard & measurement framework",
-    "Optimization playbook & review cadence",
+    "Operational diagnosis with time-cost evidence",
+    "Demand map with clear request categories",
+    "Brief templates and readiness checklist",
+    "Priority scoring system and request review protocol",
+    "Creative quality standards (50+ entries)",
+    "Quality review checklists per asset type",
+    "Production workflows and approval ownership map",
+    "Service blueprints and handoff instructions",
+    "Decision playbook and approval rules",
+    "Workflow performance dashboard and measurement framework",
+    "Optimization playbook and monthly review rhythm",
     "AI brief assistant with custom prompts",
   ],
   pl: [
     "Diagnoza operacyjna z dowodami kosztowymi",
-    "Mapa popytu i typologia requestów",
-    "Szablony briefów i Definition of Ready",
-    "Matryca priorytetyzacji i protokół triage",
-    "Creative Quality Playbook (50+ pozycji)",
-    "QA checklisty per typ assetu",
-    "Workflow produkcji i RACI",
-    "Service blueprinty i specyfikacje handoffu",
-    "Governance playbook i log decyzji",
-    "Dashboard KPI i framework pomiarowy",
-    "Optimization playbook i kadencja review",
+    "Mapa popytu z jasnymi kategoriami requestów",
+    "Szablony briefów i lista gotowości",
+    "System scoringowy priorytetów i protokół review requestów",
+    "Standardy jakości kreatywnej (50+ pozycji)",
+    "Quality review checklisty per typ assetu",
+    "Workflow produkcji i mapa ownership akceptacji",
+    "Service blueprinty i instrukcje handoffu",
+    "Decision playbook i zasady akceptacji",
+    "Dashboard workflow performance i framework pomiarowy",
+    "Optimization playbook i miesięczny rytm review",
     "AI asystent briefu z promptami",
   ],
 };
@@ -203,10 +203,74 @@ export function Process() {
   const step = steps[activeStep];
   const progressPct = ((activeStep + 1) / TOTAL) * 100;
 
+  const scrollToTabs = useCallback((idx: number) => {
+    setActiveStep(idx);
+    setTimeout(() => {
+      document.getElementById("process-tabs")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
+  }, []);
+
   return (
     <PageTransition>
-      {/* ─── 8-Step Tabs — page opener ─── */}
-      <section className="pt-32 pb-20 md:pt-40 md:pb-32 border-b border-white/10">
+      {/* ─── Intro Hook — repositioning statement ─── */}
+      <section className="pt-32 pb-16 md:pt-40 md:pb-20 px-8 md:px-12">
+        <div className="max-w-[1800px] mx-auto">
+          <Reveal>
+            <div className="max-w-5xl">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[0.95] mb-10">
+                {lang === "pl" ? (
+                  <>Większość problemów z designem<br className="hidden md:block"/> to nie problemy z designem.</>
+                ) : (
+                  <>Most design problems<br className="hidden md:block"/> are not design problems.</>
+                )}
+              </h1>
+              <p className="text-xl md:text-2xl text-neutral-700 dark:text-neutral-300 leading-relaxed font-medium tracking-tight max-w-3xl mb-6">
+                {lang === "pl"
+                  ? "Wynikają z niejasnych briefów, rozproszonych requestów, wolnych decyzji, słabego ownership'u i brakujących standardów jakości."
+                  : "They come from unclear briefs, scattered requests, slow decisions, weak ownership and missing quality standards."}
+              </p>
+              <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-3xl">
+                {lang === "pl"
+                  ? "Ten proces zamienia chaos w działający system — od diagnozy, przez produkcję i pomiar, po ciągłe usprawnianie."
+                  : "This process turns that chaos into a working system — from diagnosis to production, measurement and continuous improvement."}
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ─── Process Map — 8-box scannable overview ─── */}
+      <section className="pb-20 md:pb-28 px-8 md:px-12 border-b border-neutral-200 dark:border-white/10">
+        <div className="max-w-[1800px] mx-auto">
+          <Reveal>
+            <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-8">
+              {lang === "pl" ? "Mapa procesu" : "Process map"}
+            </span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-l border-neutral-200 dark:border-white/10">
+              {steps.map((s, i) => (
+                <button
+                  key={s.num}
+                  onClick={() => scrollToTabs(i)}
+                  className="text-left p-6 md:p-8 border-r border-b border-neutral-200 dark:border-white/10 group hover:bg-neutral-50 dark:hover:bg-white/[0.02] transition-colors duration-500 cursor-pointer"
+                >
+                  <span className="block font-display text-base text-neutral-400 dark:text-neutral-600 mb-3 group-hover:text-[#D4FF00] transition-colors duration-500">
+                    {s.num}
+                  </span>
+                  <h3 className="text-base md:text-lg font-bold text-neutral-900 dark:text-white mb-2 leading-tight tracking-tight">
+                    {s.title[lang]}
+                  </h3>
+                  <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-snug">
+                    {s.subtitle[lang]}
+                  </p>
+                </button>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ─── 8-Step Tabs — interactive deep-dive ─── */}
+      <section id="process-tabs" className="py-20 md:py-32 border-b border-white/10 scroll-mt-24">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
           <Reveal>
             <div className="border border-neutral-200 dark:border-white/[0.12] rounded-lg overflow-hidden bg-neutral-50 dark:bg-[#141414]">
@@ -429,20 +493,140 @@ export function Process() {
         </div>
       </section>
 
+      {/* ─── Who this is for ─── */}
+      <section className="py-24 md:py-32 border-b border-neutral-200 dark:border-white/10">
+        <div className="max-w-[1800px] mx-auto px-8 md:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-16 md:gap-24">
+            <Reveal>
+              <div>
+                <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-4">
+                  {lang === "pl" ? "Dla kogo" : "Who this is for"}
+                </span>
+                <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-neutral-900 dark:text-white mb-8 leading-[0.95]">
+                  {lang === "pl"
+                    ? "Dla zespołów, gdzie design to nie pojedyncze zadanie."
+                    : "Built for teams where design work is no longer a single task."}
+                </h2>
+                <p className="text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                  {lang === "pl"
+                    ? "Dla organizacji zarządzających wieloma stakeholderami, lokalizacjami, markami, kampaniami, produktami lub powtarzającymi się requestami — gdzie jakość, szybkość i ownership trzeba zsystemizować."
+                    : "For organizations managing multiple stakeholders, locations, brands, campaigns, product surfaces or recurring asset requests — where quality, speed and ownership need to be systemized."}
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <ul className="flex flex-col divide-y divide-neutral-200 dark:divide-white/10">
+                {(lang === "pl" ? [
+                  "Zespoły marketingu z powtarzającymi się requestami na assety",
+                  "Marki wielolokalizacyjne",
+                  "Zespoły brand i growth",
+                  "Zespoły produktowe",
+                  "Organizacje z wieloma stakeholderami",
+                  "Zespoły utknięte w niejasnych pętlach feedbacku",
+                  "Zespoły gdzie zbyt wiele pracy idzie przez email, chat i last-minute requesty",
+                ] : [
+                  "Marketing teams with recurring asset requests",
+                  "Multi-location brands",
+                  "Brand and growth teams",
+                  "Product teams",
+                  "Organizations with many stakeholders",
+                  "Teams stuck in unclear feedback loops",
+                  "Teams where too much work happens through email, chat and last-minute requests",
+                ]).map((item, i) => (
+                  <li key={i} className="py-4 text-base md:text-lg text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── When this is too much — qualifier ─── */}
+      <section className="py-20 md:py-24 border-b border-neutral-200 dark:border-white/10">
+        <div className="max-w-[1800px] mx-auto px-8 md:px-12">
+          <Reveal>
+            <div className="max-w-4xl">
+              <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-500 mb-6">
+                {lang === "pl" ? "Kiedy to za dużo" : "When this is probably too much"}
+              </span>
+              <p className="text-2xl md:text-3xl font-bold tracking-tight text-neutral-700 dark:text-neutral-400 leading-snug mb-6">
+                {lang === "pl"
+                  ? "Ten proces jest prawdopodobnie za duży, jeśli potrzebujesz jednorazowego banera, szybkiego visual refresha lub pojedynczego landing page'a bez powtarzającego się workflow."
+                  : "This is probably too much if you only need a one-off banner, a quick visual refresh or a single landing page with no recurring workflow behind it."}
+              </p>
+              <p className="text-lg text-neutral-500 dark:text-neutral-500 leading-relaxed max-w-3xl">
+                {lang === "pl"
+                  ? "Działa najlepiej kiedy design, komunikacja lub produkcja stały się powtarzającym się operacyjnym wyzwaniem."
+                  : "It works best when design, communication or production has become a repeated operational challenge."}
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ─── Example use case — concrete proof ─── */}
+      <section className="py-24 md:py-32 border-b border-neutral-200 dark:border-white/10">
+        <div className="max-w-[1800px] mx-auto px-8 md:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-16 md:gap-24">
+            <Reveal>
+              <div>
+                <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-4">
+                  {lang === "pl" ? "Przykład zastosowania" : "Example use case"}
+                </span>
+                <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-neutral-900 dark:text-white mb-8 leading-[0.95]">
+                  {lang === "pl"
+                    ? "Multi-location marketing team."
+                    : "Multi-location marketing team."}
+                </h2>
+              </div>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <div className="space-y-8">
+                <p className="text-xl md:text-2xl text-neutral-700 dark:text-neutral-300 leading-relaxed font-medium tracking-tight">
+                  {lang === "pl"
+                    ? "Wielolokalizacyjny zespół marketingu otrzymuje dziesiątki lokalnych requestów miesięcznie przez email, chat i ad-hoc rozmowy."
+                    : "A multi-location marketing team receives dozens of local requests every month through email, chat and ad hoc calls."}
+                </p>
+                <p className="text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                  {lang === "pl"
+                    ? "Klasyfikujemy typy requestów, definiujemy reguły intake, tworzymy szablony briefów, ustalamy ownership akceptacji, wprowadzamy quality review checklisty i budujemy miesięczny rytm review."
+                    : "We classify request types, define intake rules, create brief templates, set approval ownership, introduce quality review checklists and build a monthly review rhythm."}
+                </p>
+                <div className="border-t border-neutral-200 dark:border-white/10 pt-8">
+                  <span className="block text-xs font-display uppercase tracking-[0.2em] text-[#D4FF00] mb-4">
+                    {lang === "pl" ? "Rezultat" : "Result"}
+                  </span>
+                  <p className="text-xl md:text-2xl text-neutral-900 dark:text-white font-bold tracking-tight leading-tight">
+                    {lang === "pl"
+                      ? "Mniej niejasnych requestów, szybsze akceptacje, reużywalne szablony i lepsza widoczność dla leadership'u."
+                      : "Fewer unclear requests, faster approvals, reusable templates and better visibility for leadership."}
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       {/* ─── Closing CTA ─── */}
       <section className="py-24 md:py-32">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
           <Reveal>
             <div className="max-w-3xl mb-12">
+              <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-6">
+                {lang === "pl" ? "Niepewny gdzie wąskie gardło?" : "Not sure where the bottleneck is?"}
+              </span>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-neutral-900 dark:text-white mb-8 leading-[0.95]">
                 {lang === "pl"
-                  ? "Każdy projekt zaczyna się od diagnozy."
-                  : "Every project starts with a diagnosis."}
+                  ? "Zacznij od sprintu diagnostycznego."
+                  : "Start with a diagnostic sprint."}
               </h2>
               <p className="text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed">
                 {lang === "pl"
-                  ? "30 minut wystarczy, żeby zrozumieć gdzie Twój zespół traci czas, pieniądze i jakość. Bez zobowiązań — porozmawiajmy o tym, co można naprawić."
-                  : "30 minutes is enough to understand where your team is losing time, money, and quality. No commitment — let's talk about what can be fixed."}
+                  ? "Zmapujemy obecny workflow, zidentyfikujemy realne ograniczenia i zdefiniujemy pierwsze usprawnienia systemu. Bez zobowiązań."
+                  : "We will map the current workflow, identify the real constraints and define the first system improvements. No commitment."}
               </p>
             </div>
           </Reveal>
@@ -454,17 +638,17 @@ export function Process() {
                 glowColor="rgba(212, 255, 0, 0.3)"
               >
                 <span className="text-xs font-display uppercase tracking-widest">
-                  {lang === "pl" ? "Umów diagnozę" : "Book a diagnosis"}
+                  {lang === "pl" ? "Umów rozmowę diagnostyczną" : "Book a diagnostic call"}
                 </span>
                 <span className="ml-2 inline-block group-hover:translate-x-1 transition-transform">→</span>
               </MagneticButton>
               <MagneticButton
-                onClick={() => setLocation("/work")}
+                onClick={() => setLocation("/services#engagement-models")}
                 className="bg-transparent border-white/20 text-white hover:bg-white hover:text-black"
                 glowColor="rgba(255, 255, 255, 0.15)"
               >
                 <span className="text-xs font-display uppercase tracking-widest">
-                  {lang === "pl" ? "Zobacz efekty" : "See results"}
+                  {lang === "pl" ? "Zobacz modele współpracy" : "See ways to work"}
                 </span>
               </MagneticButton>
             </div>
