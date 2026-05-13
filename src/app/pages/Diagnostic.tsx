@@ -64,31 +64,71 @@ export function Brief() {
       intake_branding: INTAKE_BRANDING,
     };
 
-    try {
+    // Helper: attempt POST with given payload, return parsed result
+    const attemptIntake = async (body: object): Promise<{ ok: boolean; status: number; data: any; raw: string }> => {
       const res = await fetch(BRIEFLY_INTAKE_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(body),
       });
+      const raw = await res.text();
+      let data: any = null;
+      try { data = JSON.parse(raw); } catch { /* not JSON */ }
+      return { ok: res.ok, status: res.status, data, raw };
+    };
 
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    try {
+      // First attempt — full payload
+      let result = await attemptIntake(payload);
 
-      const data = (await res.json()) as { wizard_url?: string };
-      if (!data.wizard_url) throw new Error("Missing wizard_url in response");
+      // Fallback retry — drop intake_branding (in case logo_url 404 trips validation)
+      if (!result.ok) {
+        console.warn("[brief] First attempt failed, retrying without intake_branding", result);
+        const { intake_branding: _drop, ...minimal } = payload;
+        result = await attemptIntake(minimal);
+      }
+
+      // Second fallback — drop context too
+      if (!result.ok) {
+        console.warn("[brief] Second attempt failed, retrying minimal", result);
+        const minimal = {
+          name: payload.name,
+          company: payload.company,
+          email: payload.email,
+          ...ROUTING_DEFAULTS,
+          lang,
+          source: "r352_brief",
+        };
+        result = await attemptIntake(minimal);
+      }
+
+      if (!result.ok) {
+        // All retries failed — surface actual API error to user + console
+        console.error("[brief] All intake attempts failed", result);
+        const apiErr = result.data?.error || result.data?.message || result.raw?.slice(0, 200) || `HTTP ${result.status}`;
+        throw new Error(`API ${result.status}: ${apiErr}`);
+      }
+
+      const wizardUrl = result.data?.wizard_url;
+      if (!wizardUrl) {
+        console.error("[brief] Missing wizard_url in response", result);
+        throw new Error(`Server response missing wizard_url. Raw: ${result.raw?.slice(0, 200)}`);
+      }
 
       try {
         (window as any).plausible?.("brief_submitted");
       } catch { /* noop */ }
 
-      window.location.href = data.wizard_url;
-    } catch (err) {
-      console.error("Briefly intake failed", err);
+      window.location.href = wizardUrl;
+    } catch (err: any) {
+      console.error("[brief] Submit error:", err);
       setSubmitting(false);
-      setError(
+      // Show actual error message to user — they can screenshot and send
+      const userMsg =
         lang === "pl"
-          ? "Coś poszło nie tak po naszej stronie. Napisz na hello@r352.com — odezwiemy się w 24h."
-          : "Something failed on our side. Email hello@r352.com — we'll respond within 24h."
-      );
+          ? `Błąd: ${err?.message || "nieznany"}. Spróbuj jeszcze raz lub napisz na hello@r352.com`
+          : `Error: ${err?.message || "unknown"}. Try again or email hello@r352.com`;
+      setError(userMsg);
     }
   };
 
