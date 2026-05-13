@@ -236,26 +236,26 @@ export const translations = {
           ]
         },
         {
-          title: "Multi-Location Asset System",
-          description: "A scalable kit for brands with many locations and constant asset requests.",
-          output: "Central standards + local templates. 50 locations ship on-brand without 50 briefs hitting your desk.",
-          best_for: "Franchise networks, retail chains, and multi-location brands that need consistency at scale without a central bottleneck.",
+          title: "Implementation & Automation (AI-supported)",
+          description: "We take the system we've built and operationalize it — wired into your existing tools, accelerated by AI workflows.",
+          output: "Brief intake, scoring, quality review and asset routing running as a live system — not a deck. Your team brief, we triage, AI accelerates, output ships.",
+          best_for: "Teams that already have standards but execution still depends on heroics — intake by email, manual scoring, QA in DMs. Ready to ship the operating layer that turns standards into automated workflow.",
           includes: [
-            "Central vs. local rules",
-            "Reusable templates + variants",
-            "Handoff packs for local teams",
-            "Asset request workflow",
-            "Quality control protocol"
+            "AI brief assistant tailored to your standards",
+            "Workflow integration (Asana / Notion / Figma / Slack)",
+            "Quality review automation per asset type",
+            "Routing & ownership engine",
+            "Operating dashboards + monthly review rhythm"
           ],
           whats_inside: [
-            "Central vs. local rules document — what's locked, what's editable",
-            "Master template set with editable zones per format",
-            "Location variant guide — how locals adapt (photos, copy, prices, addresses)",
-            "Asset request flow — form, approval path, timeline",
-            "Self-service template library (Canva / Figma / custom tool)",
-            "Quality control protocol — how HQ monitors local output",
-            "Rollout pack per location — starter kit for every new site",
-            "Training materials — video/PDF on how to use the template system"
+            "AI brief assistant — custom prompts trained on your readiness checklist and brand voice",
+            "Tool integrations — intake, scoring and routing wired into your existing stack (Asana, Notion, Figma, Slack, email)",
+            "Quality review automation — checklists run automatically per asset type, surfacing exceptions to humans",
+            "Approval ownership engine — who decides what, escalation paths, conflict resolution rules in the system, not in DMs",
+            "Workflow performance dashboard — cycle time, revision rates, brief quality, recurring bottlenecks",
+            "Monthly review rhythm — operating cadence with the team, not just a one-off launch",
+            "Team coaching — how to operate the system, when to override, when to trust automation",
+            "90-day adoption plan with checkpoint reviews"
           ]
         }
       ],
@@ -752,26 +752,26 @@ export const translations = {
           ]
         },
         {
-          title: "System Zasobów Multi-Location",
-          description: "Skalowalny zestaw dla marek z wieloma lokalizacjami i ciągłymi potrzebami.",
-          output: "Standard centralny + szablony lokalne. 50 punktów dostarcza w marce, 0 briefów na biurku centrali.",
-          best_for: "Sieci franczyzowe, retail i organizacje, które muszą skalować komunikację bez tworzenia centralnego wąskiego gardła.",
+          title: "Wdrożenie i Automatyzacja (AI-supported)",
+          description: "Bierzemy system który zbudowaliśmy i operacjonalizujemy go — wpięty w Wasze istniejące narzędzia, przyspieszony przez workflow AI.",
+          output: "Brief intake, scoring, quality review i routing assetów działają jako żywy system — nie deck. Zespół briefuje, my triagujemy, AI przyspiesza, output idzie.",
+          best_for: "Zespoły które mają już standardy ale egzekucja wciąż zależy od heroizmu — intake przez email, manualny scoring, QA w DM-ach. Gotowe wdrożyć warstwę operacyjną, która zamienia standardy w zautomatyzowany workflow.",
           includes: [
-            "Zasady lokalne vs centralne",
-            "Szablony wielokrotnego użytku",
-            "Paczki dla lokalnych zespołów",
-            "Workflow zamawiania assetów",
-            "Protokół kontroli jakości"
+            "AI brief assistant dopasowany do Waszych standardów",
+            "Integracja workflow (Asana / Notion / Figma / Slack)",
+            "Automatyzacja quality review per typ assetu",
+            "Engine routingu i ownership decyzji",
+            "Dashboardy operacyjne + miesięczny rytm review"
           ],
           whats_inside: [
-            "Dokument z zasadami centrala/lokalne — co edytowalne",
-            "Główny zestaw szablonów ze strefami do edycji",
-            "Przewodnik wariantów lokalnych (zdjęcia, teksty, ceny, adresy)",
-            "Flow zamawiania — formularz, ścieżka akceptacji",
-            "Samoobsługowa biblioteka szablonów (Canva / Figma)",
-            "Protokół kontroli jakości — jak centrala monitoruje materiały",
-            "Paczka wdrożeniowa — zestaw startowy dla nowych punktów",
-            "Materiały szkoleniowe — wideo/PDF jak używać systemu"
+            "AI brief assistant — custom prompty trenowane na Waszej liście gotowości i tone of voice",
+            "Integracje narzędziowe — intake, scoring i routing wpięte w istniejący stack (Asana, Notion, Figma, Slack, email)",
+            "Automatyzacja quality review — checklisty uruchamiają się automatycznie per typ assetu, eskalując wyjątki do ludzi",
+            "Engine ownership akceptacji — kto decyduje o czym, ścieżki eskalacji, zasady rozwiązywania konfliktów w systemie, nie w DM-ach",
+            "Workflow performance dashboard — cycle time, wskaźniki poprawek, jakość briefów, powtarzające się wąskie gardła",
+            "Miesięczny rytm review — kadencja operacyjna z zespołem, nie jednorazowy launch",
+            "Coaching zespołu — jak operować systemem, kiedy nadpisać, kiedy zaufać automatyzacji",
+            "90-dniowy plan adopcji z checkpoint reviews"
           ]
         }
       ],
