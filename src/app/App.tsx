@@ -33,6 +33,7 @@ const LimitedAccess5 = lazy(() => import("@/app/pages/LimitedAccess5").then(m =>
 const LimitedAccess5Meeting = lazy(() => import("@/app/pages/LimitedAccess5Meeting").then(m => ({ default: m.LimitedAccess5Meeting })));
 const LimitedAccess5Pricing = lazy(() => import("@/app/pages/LimitedAccess5Pricing").then(m => ({ default: m.LimitedAccess5Pricing })));
 const Process = lazy(() => import("@/app/pages/Process").then(m => ({ default: m.Process })));
+const Diagnostic = lazy(() => import("@/app/pages/Diagnostic").then(m => ({ default: m.Diagnostic })));
 import { useLenis } from "lenis/react";
 
 function ScrollToTop() {
@@ -209,6 +210,7 @@ function AppContent() {
               <Route path="/services" component={Services} />
               <Route path="/services/:slug" component={ServiceDetail} />
               <Route path="/process" component={Process} />
+              <Route path="/diagnostic" component={Diagnostic} />
               <Route path="/deliverables" component={Deliverables} />
               <Route path="/journal" component={Journal} />
               <Route path="/journal/:id" component={JournalArticle} />

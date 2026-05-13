@@ -49,24 +49,34 @@ export function AgencyHero() {
               
               <div className="flex flex-col gap-8 md:items-end shrink-0">
                 <div className="flex flex-col sm:flex-row gap-6">
-                   <MagneticButton 
+                   <MagneticButton
                      onClick={() => setLocation("/contact")}
-                     className="bg-[#D4FF00] text-black border-none hover:bg-[#D4FF00]/90 rounded-none" 
+                     className="bg-[#D4FF00] text-black border-none hover:bg-[#D4FF00]/90 rounded-none"
                      glowColor="rgba(0, 0, 0, 0.15)"
                    >
                      <span className="invisible text-lg font-display uppercase tracking-widest absolute">{t("hero.cta_start")}</span>
                      <span className="text-lg font-display uppercase tracking-widest group-hover:tracking-normal transition-all duration-500 ease-out">{t("hero.cta_start")}</span>
                    </MagneticButton>
 
-                   <MagneticButton 
+                   <MagneticButton
                      onClick={() => setLocation("/work")}
-                     className="explore-work-btn bg-black text-white border-white/20 hover:border-white/40 rounded-none" 
+                     className="explore-work-btn bg-black text-white border-white/20 hover:border-white/40 rounded-none"
                      glowColor="rgba(212, 255, 0, 0.2)"
                    >
                      <span className="invisible text-lg font-display uppercase tracking-[0.25em] absolute">{t("hero.cta_work")}</span>
                      <span className="text-lg font-display uppercase tracking-wide group-hover:tracking-[0.25em] transition-all duration-500 ease-out">{t("hero.cta_work")}</span>
                    </MagneticButton>
                 </div>
+
+                {/* Diagnostic CTA — secondary text link, below primary buttons */}
+                <button
+                  onClick={() => setLocation("/diagnostic")}
+                  className="self-start md:self-end group inline-flex items-center gap-3 text-xs font-display uppercase tracking-[0.2em] text-neutral-400 hover:text-[#D4FF00] transition-colors duration-500 cursor-pointer"
+                >
+                  <span className="w-6 h-px bg-neutral-600 group-hover:bg-[#D4FF00] group-hover:w-10 transition-all duration-500" />
+                  <span>Strategic Diagnostic · 48h</span>
+                  <span className="inline-block group-hover:translate-x-1 transition-transform duration-500">→</span>
+                </button>
                 
                 <div className="flex flex-col gap-1 text-sm text-neutral-500 font-mono tracking-tight md:text-right">
                    <p>{t("hero.micro_1")}</p>

@@ -19,7 +19,7 @@ import { useTheme } from "@/app/context/ThemeContext";
 import presentationImg from "../../imports/Background.webp";
 
 export function Home() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { theme } = useTheme();
   const [, setLocation] = useLocation();
   const engagementRef = useRef<HTMLDivElement>(null);
@@ -112,6 +112,43 @@ export function Home() {
       <div ref={engagementRef}>
         <EngagementModels />
       </div>
+
+      {/* ─── Diagnostic CTA — inline filter, between work overview & parallax ─── */}
+      <section className="py-24 md:py-32 border-t border-white/10">
+        <div className="max-w-[1800px] mx-auto px-8 md:px-12">
+          <Reveal>
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-12 md:gap-20 items-end">
+              <div>
+                <span className="block text-xs font-display uppercase tracking-[0.2em] text-[#D4FF00] mb-6">
+                  {language === "pl" ? "Strategic Diagnostic · 48h" : "Strategic Diagnostic · 48h"}
+                </span>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-white leading-[0.95]">
+                  {language === "pl"
+                    ? "Sprawdź czy do siebie pasujemy."
+                    : "Check if we're a fit."}
+                </h2>
+              </div>
+              <div className="md:justify-self-end max-w-md space-y-6">
+                <p className="text-base md:text-lg text-neutral-400 leading-relaxed">
+                  {language === "pl"
+                    ? "60 sekund formularza. 48 godzin na pisemny feedback z pozycjonowaniem, zakresem i trzema ścieżkami. Pełen zwrot kosztów jeśli rekomendacje nie są wdrażalne."
+                    : "60 seconds to fill the form. 48 hours for written feedback with positioning, scope and three strategic paths. Money back if recommendations aren't actionable."}
+                </p>
+                <MagneticButton
+                  onClick={() => setLocation("/diagnostic")}
+                  className="bg-[#D4FF00] text-black border-none hover:bg-white rounded-none"
+                  glowColor="rgba(212, 255, 0, 0.3)"
+                >
+                  <span className="text-sm font-display uppercase tracking-widest">
+                    {language === "pl" ? "Strategic Diagnostic · 48h" : "Strategic Diagnostic · 48h"}
+                  </span>
+                  <span className="ml-2 inline-block group-hover:translate-x-1 transition-transform">→</span>
+                </MagneticButton>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
 
       {/* Full-width Vertical Image with Parallax */}
       <section 
