@@ -58,6 +58,7 @@ function ScrollToTop() {
 }
 
 import { CursorGlow } from "@/app/components/ui/CursorGlow";
+import { VersionLabel } from "@/app/components/ui/VersionLabel";
 import { LanguageProvider } from "@/app/context/LanguageContext";
 import { ThemeProvider, useTheme } from "@/app/context/ThemeContext";
 import { ThemeToggle } from "@/app/components/ui/ThemeToggle";
@@ -267,6 +268,7 @@ export default function App() {
       <LanguageProvider>
         <ThemeProvider>
           <AppContent />
+          <VersionLabel />
         </ThemeProvider>
       </LanguageProvider>
     </HelmetProvider>

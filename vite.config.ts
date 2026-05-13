@@ -35,6 +35,18 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  define: {
+    // Build metadata injected at compile time — visible in microscopic footer label
+    __BUILD_TIME__: JSON.stringify(new Date().toISOString()),
+    __BUILD_COMMIT__: JSON.stringify(
+      process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) ||
+      process.env.GITHUB_SHA?.slice(0, 7) ||
+      'local'
+    ),
+    __BUILD_ENV__: JSON.stringify(
+      process.env.VERCEL_ENV || (process.env.NODE_ENV === 'production' ? 'prod' : 'dev')
+    ),
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
