@@ -2,6 +2,7 @@ import { PageTransition } from "@/app/components/ui/PageTransition";
 import { Reveal } from "@/app/components/ui/Reveal";
 import { EngagementModels } from "@/app/components/services/EngagementModels";
 import { useLanguage } from "@/app/context/LanguageContext";
+import { useCurrency, formatPrice } from "@/app/context/CurrencyContext";
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight } from "lucide-react";
@@ -16,6 +17,9 @@ interface ServiceCard {
 
 export function Services() {
   const { t, language } = useLanguage();
+  const { currency } = useCurrency();
+  const price = (from: number, to: number | null, monthly = false, prefix?: string) =>
+    formatPrice(currency, { from, to, monthly, language, prefix });
   
   // Cast to specific types to avoid TS errors
   const cards = (t('services_page.cards') || []) as ServiceCard[];
@@ -220,6 +224,129 @@ export function Services() {
                </Reveal>
              );
           })}
+        </div>
+      </section>
+
+      {/* ─── AI Brief Assistant — SaaS product section ─── */}
+      <section id="ai-brief-assistant" className="mb-32 border-t border-neutral-200 dark:border-white/10 pt-24 md:pt-32 scroll-mt-24">
+        <Reveal>
+          <div className="flex flex-col mb-16">
+            <span className="text-[11px] uppercase tracking-[2px] text-neutral-500 dark:text-[#D4FF00] font-display mb-4 block">
+              {language === "pl" ? "Produkt · SaaS" : "Product · SaaS"}
+            </span>
+            <h2 className="text-4xl md:text-6xl font-bold text-neutral-900 dark:text-white tracking-tight mb-6 leading-[0.95]">
+              {language === "pl" ? "AI Brief Assistant" : "AI Brief Assistant"}
+            </h2>
+            <p className="text-xl md:text-2xl text-neutral-700 dark:text-neutral-300 tracking-tight font-medium max-w-3xl leading-snug">
+              {language === "pl"
+                ? "Zamień niejasne requesty w gotowe briefy w 5 minut. Trenowane na 500+ realnych briefach z naszych projektów."
+                : "Turn unclear requests into ready briefs in 5 minutes. Trained on 500+ real briefs from our projects."}
+            </p>
+          </div>
+        </Reveal>
+
+        <div className="grid grid-cols-1 md:grid-cols-[1.3fr_1fr] gap-12 md:gap-20">
+          {/* Left: What it does */}
+          <Reveal delay={0.1}>
+            <div className="space-y-10">
+              <div>
+                <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-neutral-900 dark:text-white mb-6">
+                  {language === "pl" ? "Co robi" : "What it does"}
+                  <span className="text-[#D4FF00] ml-1">.</span>
+                </h3>
+                <ul className="space-y-4 max-w-2xl">
+                  {(language === "pl" ? [
+                    "Zadaje właściwe pytania, żeby uzupełnić brakujący kontekst briefa",
+                    "Generuje ustrukturyzowany brief gotowy do produkcji (Definition of Ready)",
+                    "Ocenia jakość briefa według checklist'y gotowości — 0–100 score przed wysyłką",
+                    "Integruje się z Slack, Notion, Asana, email — request → brief w jednym flow",
+                    "Uczy się Twojej organizacji: typologie requestów, stakeholder voice, brand language",
+                  ] : [
+                    "Asks the right questions to fill missing brief context",
+                    "Generates a structured brief ready for production (against the Definition of Ready)",
+                    "Scores brief quality against the readiness checklist — 0–100 before submission",
+                    "Integrates with Slack, Notion, Asana, email — request → brief in one flow",
+                    "Learns your organization: request typologies, stakeholder voice, brand language",
+                  ]).map((item, i) => (
+                    <li key={i} className="flex items-baseline gap-4 group/item">
+                      <span className="font-display text-base text-[#D4FF00] shrink-0 w-8 leading-none">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="text-base md:text-lg text-neutral-800 dark:text-neutral-200 leading-snug font-medium">
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="border-t border-neutral-200 dark:border-white/10 pt-8">
+                <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-neutral-900 dark:text-white mb-4">
+                  {language === "pl" ? "Dla kogo" : "Built for"}
+                  <span className="text-[#D4FF00] ml-1">.</span>
+                </h3>
+                <p className="text-base md:text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed font-medium max-w-2xl">
+                  {language === "pl"
+                    ? "Zespoły marketingu, brand i product, które dostają dziesiątki niejasnych requestów miesięcznie. Działa standalone albo jako warstwa wzmacniająca Twój Retainer / Operating Partner."
+                    : "Marketing, brand and product teams that receive dozens of unclear requests every month. Works standalone or as a layer on top of your Retainer / Operating Partner."}
+                </p>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Right: Pricing options */}
+          <Reveal delay={0.2}>
+            <div className="border-t border-neutral-200 dark:border-white/10 pt-8 space-y-12">
+              <div>
+                <span className="block text-[11px] uppercase tracking-[2px] text-[#D4FF00] font-display mb-6">
+                  {language === "pl" ? "Cennik" : "Pricing"}
+                </span>
+
+                {/* Standalone */}
+                <div className="mb-10">
+                  <h4 className="text-xl md:text-2xl font-bold tracking-tight text-neutral-900 dark:text-white mb-2">
+                    {language === "pl" ? "Standalone" : "Standalone"}
+                  </h4>
+                  <p className="text-3xl md:text-4xl font-bold tracking-tighter text-neutral-900 dark:text-[#D4FF00] mb-3">
+                    {price(500, null, true)}
+                  </p>
+                  <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-sm">
+                    {language === "pl"
+                      ? "Subskrypcja produktu. Bez consultingu. Idealne dla zespołów z istniejącym workflow, które chcą lepszych briefów."
+                      : "Product subscription. No consulting attached. Best for teams with an existing workflow who want better briefs."}
+                  </p>
+                </div>
+
+                {/* Add-on */}
+                <div className="border-t border-neutral-200 dark:border-white/10 pt-8">
+                  <h4 className="text-xl md:text-2xl font-bold tracking-tight text-neutral-900 dark:text-white mb-2">
+                    {language === "pl" ? "Add-on do Retainera / OP" : "Add-on to Retainer / OP"}
+                  </h4>
+                  <p className="text-3xl md:text-4xl font-bold tracking-tighter text-neutral-900 dark:text-[#D4FF00] mb-3">
+                    {price(300, null, true, "+ ")}
+                  </p>
+                  <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-sm">
+                    {language === "pl"
+                      ? "Pełna integracja z Twoim systemem briefów, custom prompty, training organizacyjny. Działa razem z Retainerem albo Operating Partner."
+                      : "Full integration with your brief system, custom prompts, organizational training. Bundled with Retainer or Operating Partner."}
+                  </p>
+                </div>
+              </div>
+
+              {/* CTA */}
+              <div className="border-t border-neutral-200 dark:border-white/10 pt-8">
+                <a
+                  href="mailto:hello@r352.com?subject=AI%20Brief%20Assistant"
+                  className="group/link inline-flex items-center gap-3 text-base md:text-lg font-bold tracking-tight text-neutral-900 dark:text-white hover:text-[#D4FF00] dark:hover:text-[#D4FF00] transition-colors duration-500"
+                >
+                  <span className="border-b-2 border-neutral-900 dark:border-white group-hover/link:border-[#D4FF00] transition-colors duration-500 pb-1">
+                    {language === "pl" ? "Poproś o early access" : "Request early access"}
+                  </span>
+                  <span className="inline-block transition-transform duration-500 group-hover/link:translate-x-2 text-xl">→</span>
+                </a>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 

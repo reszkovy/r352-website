@@ -1,8 +1,12 @@
 import { useLanguage } from "@/app/context/LanguageContext";
+import { useCurrency, formatPrice } from "@/app/context/CurrencyContext";
 import { Reveal } from "@/app/components/ui/Reveal";
 
 export function EngagementModels() {
   const { language } = useLanguage();
+  const { currency } = useCurrency();
+  const price = (from: number, to: number | null, monthly = false) =>
+    formatPrice(currency, { from, to, monthly, language });
 
   const models = [
     {
@@ -32,7 +36,10 @@ export function EngagementModels() {
         "You have a launch date and need to ship on time",
         "You want to test working with us before committing long-term"
       ],
-      pricing: language === "pl" ? "4 000 — 8 000 €" : "4 000 — 8 000 €",
+      pricing: price(4000, 8000),
+      successMetric: language === "pl"
+        ? "Dostawa w 4-6 tygodni vs typowe 12-16 w in-house"
+        : "Delivery in 4-6 weeks vs typical 12-16 in-house",
       startsWith: language === "pl"
         ? "Rozmowa określająca zakres, harmonogram i osoby decyzyjne."
         : "A scoping call where we define deliverables, timeline, and decision owners.",
@@ -67,7 +74,10 @@ export function EngagementModels() {
         "You want a design partner embedded in your rhythm, not a vendor you re-onboard every quarter",
         "You need consistency and speed without hiring a full in-house team"
       ],
-      pricing: language === "pl" ? "od 6 000 € / msc" : "from 6 000 € / mo",
+      pricing: price(6000, 10000, true),
+      successMetric: language === "pl"
+        ? "70% briefów ready przy pierwszym złożeniu, 60% szybsze akceptacje"
+        : "70% of briefs ready on first submission, 60% faster approvals",
       startsWith: language === "pl"
         ? "Sprint diagnostyczny (1-2 tygodnie), podczas którego sprawdzamy obecny obieg pracy, proces zgłoszeń i ustalamy rytm dostaw."
         : "A diagnostic sprint (1-2 weeks) where we audit your current workflow, set up intake, and define the delivery cadence.",
@@ -102,7 +112,10 @@ export function EngagementModels() {
         "You're about to scale (new markets, more locations, bigger team) and want to fix the system before it breaks",
         "You want data before making a decision about hiring, tooling, or outsourcing"
       ],
-      pricing: language === "pl" ? "od 2 500 €" : "from 2 500 €",
+      pricing: price(2500, 4000),
+      successMetric: language === "pl"
+        ? "5-7 priorytetyzowanych wąskich gardeł + 60-dniowy plan działania"
+        : "5-7 prioritized bottlenecks + 60-day action plan",
       startsWith: language === "pl"
         ? "60-minutowe spotkanie inicjujące, podczas którego przeprowadzamy wywiady z kluczowymi osobami i prosimy o dostęp do waszych narzędzi."
         : "A 60-minute kickoff where we interview key stakeholders and request access to your current workflows.",
@@ -140,7 +153,10 @@ export function EngagementModels() {
         "Internal design/marketing team is overloaded but budget and ambition are for transformation, not a patch",
         "Leadership understands the system is a long-term asset — and is willing to fund it accordingly",
       ],
-      pricing: "25 000 — 50 000 €",
+      pricing: price(25000, 50000),
+      successMetric: language === "pl"
+        ? "Pełen Operating System w 12-16 tyg vs typowe in-house 12-18 miesięcy"
+        : "Full Operating System in 12-16 weeks vs typical in-house 12-18 months",
       startsWith: language === "pl"
         ? "Tygodniowy alignment-workshop z C-suite, podczas którego definiujemy zakres, kluczowe metryki sukcesu i punkty decyzyjne."
         : "A 1-week alignment workshop with the C-suite where we define scope, key success metrics, and decision gates.",
@@ -175,7 +191,10 @@ export function EngagementModels() {
         "C-suite wants a strategic design partner at the decision table",
         "Multi-year transformation horizon, including organizational expansion",
       ],
-      pricing: language === "pl" ? "12 000 — 15 000 € / msc" : "12 000 — 15 000 € / mo",
+      pricing: price(12000, 15000, true),
+      successMetric: language === "pl"
+        ? "Spadek revision loops o 50%+ rok-do-roku, system ewoluuje a nie wraca do zera"
+        : "50%+ year-over-year reduction in revision loops, system evolves instead of resetting",
       startsWith: language === "pl"
         ? "Strategic alignment workshop z C-suite, podczas którego mapujemy 12-miesięczny horyzont i punkty kontrolne."
         : "A strategic alignment workshop with the C-suite where we map the 12-month horizon and check-in points.",
@@ -219,6 +238,14 @@ export function EngagementModels() {
                 <span className="block text-[18px] font-bold text-neutral-900 dark:text-[#D4FF00] tracking-tight mb-3">
                   {model.pricing}
                 </span>
+                {(model as any).successMetric && (
+                  <div className="flex items-start gap-3 mb-4 pt-3 border-t border-neutral-100 dark:border-white/[0.06]">
+                    <span className="w-6 h-px bg-[#D4FF00] mt-[10px] shrink-0" />
+                    <p className="text-[13px] text-neutral-900 dark:text-white font-medium leading-snug">
+                      {(model as any).successMetric}
+                    </p>
+                  </div>
+                )}
                 <p className="text-[14px] text-neutral-500 dark:text-[#888888] leading-relaxed">
                   {model.positioning}
                 </p>
@@ -322,10 +349,16 @@ export function EngagementModels() {
             </thead>
             <tbody className="text-[13px] text-neutral-600 dark:text-[#888888]">
               <tr className="border-b border-neutral-100 dark:border-white/5">
-                <td className="py-3 pr-4 font-medium text-neutral-500 dark:text-neutral-500">{language === "pl" ? "Cena" : "Pricing"}</td>
-                <td className="py-3 px-4 font-semibold text-neutral-900 dark:text-[#D4FF00]">{language === "pl" ? "od 4 000 €" : "from 4 000 €"}</td>
-                <td className="py-3 px-4 font-semibold text-neutral-900 dark:text-[#D4FF00]">{language === "pl" ? "od 2 000 € / msc" : "from 2 000 € / mo"}</td>
-                <td className="py-3 pl-4 font-semibold text-neutral-900 dark:text-[#D4FF00]">{language === "pl" ? "od 2 500 €" : "from 2 500 €"}</td>
+                <td className="py-3 pr-4 font-medium text-neutral-500 dark:text-neutral-500">{language === "pl" ? "Najlepsze do" : "Best for"}</td>
+                <td className="py-3 px-4">{language === "pl" ? "Dostarczenie projektu" : "Ship one thing"}</td>
+                <td className="py-3 px-4">{language === "pl" ? "Stała produkcja" : "Ongoing production"}</td>
+                <td className="py-3 pl-4">{language === "pl" ? "Znalezienie problemu" : "Find the problem"}</td>
+              </tr>
+              <tr className="border-b border-neutral-100 dark:border-white/5">
+                <td className="py-3 pr-4 font-medium text-neutral-500 dark:text-neutral-500">{language === "pl" ? "Zaczynamy od" : "Entry point"}</td>
+                <td className="py-3 px-4">{language === "pl" ? "Rozmowa o zakresie" : "Scoping call"}</td>
+                <td className="py-3 px-4">{language === "pl" ? "Sprint diagnostyczny" : "Diagnostic sprint"}</td>
+                <td className="py-3 pl-4">{language === "pl" ? "60-min spotkanie" : "60-min kickoff"}</td>
               </tr>
               <tr className="border-b border-neutral-100 dark:border-white/5">
                 <td className="py-3 pr-4 font-medium text-neutral-500 dark:text-neutral-500">{language === "pl" ? "Harmonogram" : "Timeline"}</td>
@@ -339,17 +372,11 @@ export function EngagementModels() {
                 <td className="py-3 px-4">{language === "pl" ? "Elastyczny" : "Flexible"}</td>
                 <td className="py-3 pl-4">{language === "pl" ? "Stały" : "Fixed"}</td>
               </tr>
-              <tr className="border-b border-neutral-100 dark:border-white/5">
-                <td className="py-3 pr-4 font-medium text-neutral-500 dark:text-neutral-500">{language === "pl" ? "Najlepsze do" : "Best for"}</td>
-                <td className="py-3 px-4">{language === "pl" ? "Dostarczenie projektu" : "Ship one thing"}</td>
-                <td className="py-3 px-4">{language === "pl" ? "Stała produkcja" : "Ongoing production"}</td>
-                <td className="py-3 pl-4">{language === "pl" ? "Znalezienie problemu" : "Find the problem"}</td>
-              </tr>
               <tr>
-                <td className="py-3 pr-4 font-medium text-neutral-500 dark:text-neutral-500">{language === "pl" ? "Zaczynamy od" : "Entry point"}</td>
-                <td className="py-3 px-4">{language === "pl" ? "Rozmowa o zakresie" : "Scoping call"}</td>
-                <td className="py-3 px-4">{language === "pl" ? "Sprint diagnostyczny" : "Diagnostic sprint"}</td>
-                <td className="py-3 pl-4">{language === "pl" ? "60-min spotkanie" : "60-min kickoff"}</td>
+                <td className="py-3 pr-4 font-medium text-neutral-500 dark:text-neutral-500">{language === "pl" ? "Cena" : "Pricing"}</td>
+                <td className="py-3 px-4 font-semibold text-neutral-900 dark:text-[#D4FF00]">{price(4000, 8000)}</td>
+                <td className="py-3 px-4 font-semibold text-neutral-900 dark:text-[#D4FF00]">{price(6000, 10000, true)}</td>
+                <td className="py-3 pl-4 font-semibold text-neutral-900 dark:text-[#D4FF00]">{price(2500, 4000)}</td>
               </tr>
             </tbody>
           </table>
@@ -391,6 +418,14 @@ export function EngagementModels() {
                   <span className="block text-lg md:text-xl font-bold text-neutral-900 dark:text-[#D4FF00] tracking-tight mb-4">
                     {model.pricing}
                   </span>
+                  {(model as any).successMetric && (
+                    <div className="flex items-start gap-3 mb-5 pt-4 border-t border-neutral-100 dark:border-white/[0.06]">
+                      <span className="w-6 h-px bg-[#D4FF00] mt-[10px] shrink-0" />
+                      <p className="text-[14px] text-neutral-900 dark:text-white font-medium leading-snug">
+                        {(model as any).successMetric}
+                      </p>
+                    </div>
+                  )}
                   <p className="text-[15px] text-neutral-600 dark:text-[#888888] leading-relaxed">
                     {model.positioning}
                   </p>

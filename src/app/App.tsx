@@ -58,6 +58,7 @@ function ScrollToTop() {
 
 import { CursorGlow } from "@/app/components/ui/CursorGlow";
 import { LanguageProvider } from "@/app/context/LanguageContext";
+import { CurrencyProvider } from "@/app/context/CurrencyContext";
 import { ThemeProvider, useTheme } from "@/app/context/ThemeContext";
 import { ThemeToggle } from "@/app/components/ui/ThemeToggle";
 import { Toaster } from "sonner";
@@ -263,9 +264,11 @@ export default function App() {
   return (
     <HelmetProvider>
       <LanguageProvider>
-        <ThemeProvider>
-          <AppContent />
-        </ThemeProvider>
+        <CurrencyProvider>
+          <ThemeProvider>
+            <AppContent />
+          </ThemeProvider>
+        </CurrencyProvider>
       </LanguageProvider>
     </HelmetProvider>
   );
