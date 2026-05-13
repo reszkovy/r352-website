@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "motion/react";
 import { PageTransition } from "@/app/components/ui/PageTransition";
 import { Reveal } from "@/app/components/ui/Reveal";
 import { MagneticButton } from "@/app/components/ui/MagneticButton";
-import { Marquee } from "@/app/components/ui/Marquee";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { useLocation } from "wouter";
 
@@ -149,45 +148,6 @@ const steps: Step[] = [
 ];
 
 const TOTAL = steps.length;
-
-const timelinePhases = [
-  { label: { en: "Diagnose & Map", pl: "Diagnoza & Mapowanie" }, weeks: { en: "Week 1–2", pl: "Tydzień 1–2" }, steps: "01–02" },
-  { label: { en: "Standardize", pl: "Standaryzacja" }, weeks: { en: "Week 3–5", pl: "Tydzień 3–5" }, steps: "03" },
-  { label: { en: "Build & Govern", pl: "Budowa & Governance" }, weeks: { en: "Week 6–14", pl: "Tydzień 6–14" }, steps: "04–05" },
-  { label: { en: "Ship & Measure", pl: "Dostawa & Pomiar" }, weeks: { en: "Week 12–16", pl: "Tydzień 12–16" }, steps: "06–07" },
-  { label: { en: "Iterate", pl: "Iteracja" }, weeks: { en: "Ongoing", pl: "Ciągłe" }, steps: "08" },
-];
-
-const deliverables = {
-  en: [
-    "Operational diagnosis with time-cost evidence",
-    "Demand map with clear request categories",
-    "Brief templates and readiness checklist",
-    "Priority scoring system and request review protocol",
-    "Creative quality standards (50+ entries)",
-    "Quality review checklists per asset type",
-    "Production workflows and approval ownership map",
-    "Service blueprints and handoff instructions",
-    "Decision playbook and approval rules",
-    "Workflow performance dashboard and measurement framework",
-    "Optimization playbook and monthly review rhythm",
-    "AI brief assistant with custom prompts",
-  ],
-  pl: [
-    "Diagnoza operacyjna z dowodami kosztowymi",
-    "Mapa popytu z jasnymi kategoriami requestów",
-    "Szablony briefów i lista gotowości",
-    "System scoringowy priorytetów i protokół review requestów",
-    "Standardy jakości kreatywnej (50+ pozycji)",
-    "Quality review checklisty per typ assetu",
-    "Workflow produkcji i mapa ownership akceptacji",
-    "Service blueprinty i instrukcje handoffu",
-    "Decision playbook i zasady akceptacji",
-    "Dashboard workflow performance i framework pomiarowy",
-    "Optimization playbook i miesięczny rytm review",
-    "AI asystent briefu z promptami",
-  ],
-};
 
 export function Process() {
   const { language } = useLanguage();
@@ -375,84 +335,6 @@ export function Process() {
               </div>
             </div>
           </Reveal>
-        </div>
-      </section>
-
-      {/* ─── Marquee break ─── */}
-      <Marquee />
-
-      {/* ─── Timeline ─── */}
-      <section className="py-24 md:py-32 border-b border-white/10">
-        <div className="max-w-[1800px] mx-auto px-8 md:px-12">
-          <Reveal>
-            <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-4">
-              {lang === "pl" ? "Oś czasu" : "Timeline"}
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-neutral-900 dark:text-white mb-16 leading-[0.95] max-w-[24ch]">
-              {lang === "pl"
-                ? "Od diagnozy do działającego systemu w jednym kwartale."
-                : "From diagnosis to a running system in one quarter."}
-            </h2>
-          </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-px bg-neutral-200 dark:bg-white/[0.06] rounded-lg overflow-hidden">
-            {timelinePhases.map((phase, i) => (
-              <Reveal key={i} delay={i * 0.08}>
-                <div className={`bg-white dark:bg-[#141414] p-8 md:p-10 h-full flex flex-col gap-4 transition-colors duration-500 hover:bg-neutral-50 dark:hover:bg-white/[0.03] group ${i === timelinePhases.length - 1 ? "dark:bg-[#D4FF00]/[0.04]" : ""}`}>
-                  <span className="font-mono text-[10px] text-neutral-400 dark:text-neutral-600 uppercase tracking-wide">
-                    {phase.steps}
-                  </span>
-                  <span className="text-base font-semibold text-neutral-900 dark:text-white group-hover:tracking-tight transition-all duration-500">
-                    {phase.label[lang]}
-                  </span>
-                  <span className={`text-sm mt-auto font-medium ${i === timelinePhases.length - 1 ? "text-[#9abb00] dark:text-[#D4FF00]" : "text-neutral-400 dark:text-neutral-600"}`}>
-                    {phase.weeks[lang]}
-                  </span>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-          <Reveal delay={0.3}>
-            <p className="text-sm text-neutral-500 dark:text-neutral-600 mt-8 max-w-[64ch] leading-relaxed">
-              {lang === "pl"
-                ? "Oś czasu zależy od zakresu. Fokusowane projekty (landing page, kampania) przechodzą przez kroki 01–06 w 4–6 tygodni. Pełne wdrożenia Creative Ops: 12–16 tygodni + ongoing."
-                : "Timeline depends on scope. Focused projects (landing page, campaign) go through steps 01–06 in 4–6 weeks. Full Creative Ops implementations: 12–16 weeks + ongoing."}
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ─── Deliverables ─── */}
-      <section className="py-24 md:py-32 border-b border-white/10">
-        <div className="max-w-[1800px] mx-auto px-8 md:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-16 md:gap-24">
-            <Reveal>
-              <div>
-                <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-4">
-                  Deliverables
-                </span>
-                <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-neutral-900 dark:text-white mb-8 leading-[0.95]">
-                  {lang === "pl"
-                    ? "Co zostaje po wdrożeniu."
-                    : "What stays after implementation."}
-                </h2>
-                <p className="text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                  {lang === "pl"
-                    ? "Nie zostawiamy rekomendacji — zostawiamy system. Artefakty operacyjne, których Twój zespół używa codziennie."
-                    : "We don't leave recommendations — we leave a system. Operational artifacts your team uses every day."}
-                </p>
-              </div>
-            </Reveal>
-            <Reveal delay={0.15}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-0">
-                {deliverables[lang].map((item, i) => (
-                  <div key={i} className="flex items-start gap-4 py-4 border-b border-neutral-100 dark:border-white/[0.05] group hover:border-neutral-300 dark:hover:border-white/[0.12] transition-colors duration-500">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#9abb00] dark:bg-[#D4FF00] mt-[7px] shrink-0 group-hover:scale-150 transition-transform duration-500" />
-                    <span className="text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
-          </div>
         </div>
       </section>
 

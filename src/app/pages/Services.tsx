@@ -19,10 +19,6 @@ export function Services() {
   
   // Cast to specific types to avoid TS errors
   const cards = (t('services_page.cards') || []) as ServiceCard[];
-  const deliveryOS = (t('services_page.delivery_os') || { title: "", subtitle: "", phases: [] }) as {
-    title: string; subtitle: string; phases: { label: string; title: string; docs: { name: string; desc: string }[] }[]
-  };
-  const bestFit = (t('services_page.best_fit') || { title: "", items: [] }) as { title: string, items: string[] };
 
   // Active state for the accordion — null = all collapsed by default
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -327,90 +323,7 @@ export function Services() {
       {/* NEW: Engagement Models Section */}
       <EngagementModels />
 
-      {/* 3. Delivery Operating System */}
-      <section className="border-t border-neutral-200 dark:border-white/10 pt-24 md:pt-32">
-        <Reveal>
-          <h2 className="text-[11px] font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-4 flex items-center gap-4">
-            <span className="w-8 h-px bg-neutral-300 dark:bg-[#D4FF00]"></span>
-            {deliveryOS.title}
-          </h2>
-          <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mb-16">
-            {deliveryOS.subtitle}
-          </p>
-        </Reveal>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 border-t border-b border-neutral-200 dark:border-white/10">
-          {deliveryOS.phases.map((phase, pi) => (
-            <Reveal key={pi} delay={pi * 0.1}>
-              <div className={`h-full flex flex-col ${pi > 0 ? 'border-t md:border-t-0 md:border-l border-neutral-200 dark:border-white/10' : ''}`}>
-                {/* Phase label — fixed height */}
-                <div className="px-8 md:px-10 pt-8 md:pt-10 pb-6">
-                  <span className="block text-[11px] font-display uppercase tracking-widest text-neutral-400 dark:text-[#D4FF00]">
-                    {phase.label}
-                  </span>
-                </div>
-
-                {/* Divider */}
-                <div className="mx-8 md:mx-10 border-t border-neutral-200 dark:border-white/10" />
-
-                {/* How it works — docs list */}
-                <div className="px-8 md:px-10 pt-6 pb-4">
-                  <span className="block text-[10px] font-display uppercase tracking-[0.15em] text-neutral-400 dark:text-neutral-600 mb-5">
-                    {language === 'pl' ? 'Jak to działa' : 'How it works'}
-                  </span>
-                  <div className="space-y-5">
-                    {phase.docs.map((doc, di) => (
-                      <div key={di} className="group">
-                        <div className="flex items-start gap-3">
-                          <span className="text-neutral-400 dark:text-[#D4FF00] text-xs mt-1.5 shrink-0">●</span>
-                          <div>
-                            <h4 className="text-base font-semibold text-neutral-900 dark:text-white mb-1">{doc.name}</h4>
-                            <p className="text-sm text-neutral-500 dark:text-neutral-500 leading-relaxed">{doc.desc}</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Spacer to push timeline to bottom */}
-                <div className="flex-grow" />
-
-                {/* Divider */}
-                <div className="mx-8 md:mx-10 border-t border-neutral-200 dark:border-white/10" />
-
-                {/* Timeline — fixed at bottom */}
-                <div className="px-8 md:px-10 py-6">
-                  <span className="block text-[10px] font-display uppercase tracking-[0.15em] text-neutral-400 dark:text-neutral-600 mb-2">
-                    {language === 'pl' ? 'Czas trwania' : 'Timeline'}
-                  </span>
-                  <span className="text-sm font-medium text-neutral-900 dark:text-white">
-                    {pi === 0 ? (language === 'pl' ? '1-2 tygodnie' : '1-2 weeks') : pi === 1 ? (language === 'pl' ? 'W toku' : 'Ongoing') : (language === 'pl' ? '1 tydzień' : '1 week')}
-                  </span>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-
-        {/* Best Fit — below Delivery OS, divider list */}
-        <div className="mt-16 md:mt-24 border-t border-neutral-200 dark:border-white/10 pt-12">
-          <Reveal>
-            <h3 className="text-[11px] font-display uppercase tracking-widest text-neutral-800 dark:text-[#888888] mb-8">
-              {bestFit.title}
-            </h3>
-            <ul className="flex flex-col divide-y divide-neutral-200 dark:divide-white/10 max-w-3xl">
-              {bestFit.items.map((item, i) => (
-                <li key={i} className="py-4 text-base md:text-lg text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-        </div>
-      </section>
-      
-      {/* 4. CTA */}
+      {/* CTA */}
       <section className="mt-32 border-t border-neutral-200 dark:border-white/10 pt-24 pb-32 relative z-50 pointer-events-auto">
         <Reveal>
            <div className="flex flex-col items-center justify-center text-center gap-8">
