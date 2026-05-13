@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { R352Symbol, R352Text } from "./R352Logo";
 import { useLanguage } from "@/app/context/LanguageContext";
-import { useCurrency } from "@/app/context/CurrencyContext";
 import { useLenis } from "lenis/react";
 import { useTheme } from "@/app/context/ThemeContext";
 
@@ -15,7 +14,6 @@ export function AgencyHeader() {
   const [isLogoHovered, setIsLogoHovered] = useState(false);
   const [isLimeTheme, setIsLimeTheme] = useState(false);
   const { language, setLanguage, t } = useLanguage();
-  const { currency, toggleCurrency } = useCurrency();
   const { theme, toggleTheme } = useTheme();
   const lenis = useLenis();
 
@@ -244,17 +242,6 @@ export function AgencyHeader() {
             <span className={cn(language === 'en' && "text-[#D4FF00]")}>EN</span>
             <span className="mx-2">/</span>
             <span className={cn(language === 'pl' && "text-[#D4FF00]")}>PL</span>
-          </button>
-
-          {/* Currency Switcher */}
-          <button
-            onClick={toggleCurrency}
-            aria-label={currency === 'eur' ? 'Switch to PLN' : 'Przełącz na EUR'}
-            className="ml-3 text-sm font-display uppercase tracking-widest text-neutral-500 hover:text-white transition-colors"
-          >
-            <span className={cn(currency === 'eur' && "text-[#D4FF00]")}>EUR</span>
-            <span className="mx-2">/</span>
-            <span className={cn(currency === 'pln' && "text-[#D4FF00]")}>PLN</span>
           </button>
         </nav>
         

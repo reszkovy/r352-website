@@ -2,7 +2,6 @@ import { PageTransition } from "@/app/components/ui/PageTransition";
 import { Reveal } from "@/app/components/ui/Reveal";
 import { EngagementModels } from "@/app/components/services/EngagementModels";
 import { useLanguage } from "@/app/context/LanguageContext";
-import { useCurrency, formatPrice } from "@/app/context/CurrencyContext";
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight } from "lucide-react";
@@ -17,9 +16,6 @@ interface ServiceCard {
 
 export function Services() {
   const { t, language } = useLanguage();
-  const { currency } = useCurrency();
-  const price = (from: number, to: number | null, monthly = false, prefix?: string) =>
-    formatPrice(currency, { from, to, monthly, language, prefix });
   
   // Cast to specific types to avoid TS errors
   const cards = (t('services_page.cards') || []) as ServiceCard[];
@@ -294,43 +290,21 @@ export function Services() {
             </div>
           </Reveal>
 
-          {/* Right: Pricing options */}
+          {/* Right: Availability + access */}
           <Reveal delay={0.2}>
-            <div className="border-t border-neutral-200 dark:border-white/10 pt-8 space-y-12">
+            <div className="border-t border-neutral-200 dark:border-white/10 pt-8 space-y-10">
               <div>
                 <span className="block text-[11px] uppercase tracking-[2px] text-[#D4FF00] font-display mb-6">
-                  {language === "pl" ? "Cennik" : "Pricing"}
+                  {language === "pl" ? "Dostępność" : "Availability"}
                 </span>
-
-                {/* Standalone */}
-                <div className="mb-10">
-                  <h4 className="text-xl md:text-2xl font-bold tracking-tight text-neutral-900 dark:text-white mb-2">
-                    {language === "pl" ? "Standalone" : "Standalone"}
-                  </h4>
-                  <p className="text-3xl md:text-4xl font-bold tracking-tighter text-neutral-900 dark:text-[#D4FF00] mb-3">
-                    {price(500, null, true)}
-                  </p>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-sm">
-                    {language === "pl"
-                      ? "Subskrypcja produktu. Bez consultingu. Idealne dla zespołów z istniejącym workflow, które chcą lepszych briefów."
-                      : "Product subscription. No consulting attached. Best for teams with an existing workflow who want better briefs."}
-                  </p>
-                </div>
-
-                {/* Add-on */}
-                <div className="border-t border-neutral-200 dark:border-white/10 pt-8">
-                  <h4 className="text-xl md:text-2xl font-bold tracking-tight text-neutral-900 dark:text-white mb-2">
-                    {language === "pl" ? "Add-on do Retainera / OP" : "Add-on to Retainer / OP"}
-                  </h4>
-                  <p className="text-3xl md:text-4xl font-bold tracking-tighter text-neutral-900 dark:text-[#D4FF00] mb-3">
-                    {price(300, null, true, "+ ")}
-                  </p>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-sm">
-                    {language === "pl"
-                      ? "Pełna integracja z Twoim systemem briefów, custom prompty, training organizacyjny. Działa razem z Retainerem albo Operating Partner."
-                      : "Full integration with your brief system, custom prompts, organizational training. Bundled with Retainer or Operating Partner."}
-                  </p>
-                </div>
+                <h4 className="text-2xl md:text-3xl font-bold tracking-tight text-neutral-900 dark:text-white mb-4 leading-snug">
+                  {language === "pl" ? "Early access — by invitation." : "Early access — by invitation."}
+                </h4>
+                <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-md">
+                  {language === "pl"
+                    ? "Produkt w trakcie pilotażu z wybranymi organizacjami. Dostępny standalone albo jako warstwa nad Retainerem / Operating Partner."
+                    : "Currently piloting with selected organizations. Available standalone or as a layer on top of Retainer / Operating Partner."}
+                </p>
               </div>
 
               {/* CTA */}
