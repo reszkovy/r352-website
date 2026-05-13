@@ -35,7 +35,7 @@ const initialForm: FormState = {
   budget_signal: "",
 };
 
-export function Diagnostic() {
+export function Brief() {
   const { language } = useLanguage();
   const lang = language as "en" | "pl";
 
@@ -43,21 +43,17 @@ export function Diagnostic() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Determine source from URL hash or default to hero
   const getSource = () => {
-    if (typeof window === "undefined") return "r352_diagnostic_direct";
+    if (typeof window === "undefined") return "r352_brief_direct";
     const hash = window.location.hash.replace("#", "");
-    if (hash === "form") return "r352_diagnostic_hero";
-    const ref = document.referrer || "";
-    if (ref.includes("/")) return "r352_diagnostic_direct";
-    return "r352_diagnostic_direct";
+    if (hash === "form") return "r352_brief_form_anchor";
+    return "r352_brief_direct";
   };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setError(null);
 
-    // Basic client-side validation
     if (!form.name || !form.company || !form.email) {
       setError(lang === "pl" ? "Wypełnij imię, firmę i email." : "Please fill in name, company and email.");
       return;
@@ -88,9 +84,8 @@ export function Diagnostic() {
       const data = (await res.json()) as { wizard_url?: string };
       if (!data.wizard_url) throw new Error("Missing wizard_url in response");
 
-      // Optional analytics (no-op if not present)
       try {
-        (window as any).plausible?.("intake_submitted");
+        (window as any).plausible?.("brief_submitted");
       } catch { /* noop */ }
 
       window.location.href = data.wizard_url;
@@ -105,12 +100,11 @@ export function Diagnostic() {
     }
   };
 
-  // ─── i18n copy ──────────────────────────────────────────────────────
   const copy = lang === "pl" ? COPY_PL : COPY_EN;
 
   return (
     <PageTransition>
-      {/* ─── Hero — Strategic Diagnostic · 48h ─── */}
+      {/* ─── Hero ─── */}
       <section className="pt-32 pb-16 md:pt-40 md:pb-20 px-8 md:px-12">
         <div className="max-w-[1800px] mx-auto">
           <Reveal>
@@ -128,7 +122,7 @@ export function Diagnostic() {
               </div>
               <div className="md:justify-self-end max-w-md">
                 <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                  {copy.hero.fit}
+                  {copy.hero.subline}
                 </p>
               </div>
             </div>
@@ -136,30 +130,38 @@ export function Diagnostic() {
         </div>
       </section>
 
-      {/* ─── What you get ─── */}
+      {/* ─── What you'll cover — 8 brief sections preview ─── */}
       <section className="py-24 md:py-32 border-t border-neutral-200 dark:border-white/10">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-16 md:gap-24">
             <Reveal>
               <div>
                 <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-4">
-                  {copy.whatYouGet.label}
+                  {copy.preview.label}
                 </span>
-                <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[0.95]">
-                  {copy.whatYouGet.title}
+                <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[0.95] mb-6">
+                  {copy.preview.title}
                 </h2>
+                <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-md">
+                  {copy.preview.subtitle}
+                </p>
               </div>
             </Reveal>
             <Reveal delay={0.15}>
               <ul className="flex flex-col divide-y divide-neutral-200 dark:divide-white/10">
-                {copy.whatYouGet.items.map((item, i) => (
+                {copy.preview.sections.map((s, i) => (
                   <li key={i} className="flex items-baseline gap-5 py-5 group/item">
                     <span className="font-display text-base md:text-lg text-[#D4FF00] shrink-0 leading-none w-10">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="text-base md:text-lg text-neutral-800 dark:text-neutral-200 leading-snug font-medium group-hover/item:text-neutral-900 dark:group-hover/item:text-white transition-colors">
-                      {item}
-                    </span>
+                    <div className="flex-1">
+                      <h3 className="text-lg md:text-xl font-bold tracking-tight text-neutral-900 dark:text-white leading-tight mb-1 group-hover/item:text-[#D4FF00] transition-colors">
+                        {s.title}
+                      </h3>
+                      <p className="text-sm md:text-base text-neutral-500 dark:text-neutral-400 leading-snug">
+                        {s.desc}
+                      </p>
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -168,7 +170,7 @@ export function Diagnostic() {
         </div>
       </section>
 
-      {/* ─── How it works — 4 steps ─── */}
+      {/* ─── How it works ─── */}
       <section className="py-24 md:py-32 border-t border-neutral-200 dark:border-white/10">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
           <Reveal>
@@ -179,7 +181,7 @@ export function Diagnostic() {
               {copy.howItWorks.title}
             </h2>
           </Reveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-l border-neutral-200 dark:border-white/10">
+          <div className="grid grid-cols-1 md:grid-cols-3 border-t border-l border-neutral-200 dark:border-white/10">
             {copy.howItWorks.steps.map((step, i) => (
               <Reveal key={i} delay={i * 0.08}>
                 <div className="p-8 md:p-10 border-r border-b border-neutral-200 dark:border-white/10 h-full flex flex-col gap-4">
@@ -196,33 +198,6 @@ export function Diagnostic() {
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ─── Not for everyone — filter ─── */}
-      <section className="py-20 md:py-24 border-t border-neutral-200 dark:border-white/10">
-        <div className="max-w-[1800px] mx-auto px-8 md:px-12">
-          <Reveal>
-            <div className="max-w-4xl">
-              <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-500 mb-6">
-                {copy.notForEveryone.label}
-              </span>
-              <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-neutral-700 dark:text-neutral-400 leading-snug mb-6">
-                {copy.notForEveryone.title}
-              </h2>
-              <ul className="space-y-3 mb-8">
-                {copy.notForEveryone.criteria.map((c, i) => (
-                  <li key={i} className="flex items-baseline gap-4 text-base md:text-lg text-neutral-700 dark:text-neutral-300">
-                    <span className="text-[#D4FF00] shrink-0">·</span>
-                    <span className="leading-snug">{c}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="text-base md:text-lg text-neutral-500 dark:text-neutral-500 leading-relaxed max-w-3xl">
-                {copy.notForEveryone.refer}
-              </p>
-            </div>
-          </Reveal>
         </div>
       </section>
 
@@ -246,7 +221,6 @@ export function Diagnostic() {
 
             <Reveal delay={0.15}>
               <form onSubmit={handleSubmit} className="flex flex-col gap-10" noValidate>
-                {/* Name */}
                 <FormText
                   label={copy.form.fields.name}
                   name="name"
@@ -255,7 +229,6 @@ export function Diagnostic() {
                   required
                   autoComplete="name"
                 />
-                {/* Company */}
                 <FormText
                   label={copy.form.fields.company}
                   name="company"
@@ -264,7 +237,6 @@ export function Diagnostic() {
                   required
                   autoComplete="organization"
                 />
-                {/* Email */}
                 <FormText
                   label={copy.form.fields.email}
                   name="email"
@@ -275,7 +247,6 @@ export function Diagnostic() {
                   autoComplete="email"
                 />
 
-                {/* Vertical */}
                 <RadioGroup
                   legend={copy.form.fields.vertical}
                   name="vertical"
@@ -290,7 +261,6 @@ export function Diagnostic() {
                   ]}
                 />
 
-                {/* Scale */}
                 <RadioGroup
                   legend={copy.form.fields.scale}
                   name="scale"
@@ -305,7 +275,6 @@ export function Diagnostic() {
                   ]}
                 />
 
-                {/* Budget */}
                 <RadioGroup
                   legend={copy.form.fields.budget}
                   name="budget_signal"
@@ -346,7 +315,7 @@ export function Diagnostic() {
   );
 }
 
-// ─── Small primitives ─────────────────────────────────────────────────
+// ─── Primitives ───────────────────────────────────────────────────────
 
 function FormText({
   label,
@@ -436,58 +405,50 @@ function RadioGroup({
 
 const COPY_EN = {
   hero: {
-    label: "Strategic Diagnostic · 48h",
-    title: "A strategic scope read in 48 hours.",
+    label: "Briefing tool",
+    title: "Brief us. Structured starting point.",
     intro:
-      "Initial positioning, scope and pricing read — before any project commitment. Built for multi-location fitness, wellness, health and retail brands.",
-    fit: "For projects above 50 000 PLN with 3+ locations. Money back if recommendations are not actionable within 60 days.",
+      "Every project with r352 starts with a structured brief. Eight sections, around ten minutes, one clean response from us — whatever the scope.",
+    subline:
+      "Whether you need a campaign toolkit or a full operating system implementation, this is the entry. We route every brief to the right engagement model.",
   },
-  whatYouGet: {
-    label: "What you get",
-    title: "Four deliverables. One PDF. 48 hours.",
-    items: [
-      "Competitive positioning analysis tailored to your vertical",
-      "Initial scope with rough cost estimate (range, not quote)",
-      "Three strategic paths with prioritization rationale",
-      "Written feedback in PDF + optional 30-min call",
+  preview: {
+    label: "What you'll cover",
+    title: "8 sections. ~26 questions. ~10 minutes.",
+    subtitle:
+      "The briefing wizard guides you through structured sections — covering everything we need to give you a meaningful first response within 48 hours.",
+    sections: [
+      { title: "Project overview", desc: "Tell us the essentials: what, scope, when." },
+      { title: "Brand & visual identity", desc: "Show us your brand identity." },
+      { title: "Target audience", desc: "Who are your target users?" },
+      { title: "Format & specifications", desc: "Specific formats, sizes, technical requirements." },
+      { title: "Content & message", desc: "What do you want to say to your users?" },
+      { title: "Technical requirements", desc: "What are the technical conditions?" },
+      { title: "Budget & timeline", desc: "When and how much can you spend?" },
+      { title: "Additional notes", desc: "Anything else we should know?" },
     ],
   },
   howItWorks: {
     label: "How it works",
-    title: "Four steps. Defined upfront. Honest finish.",
+    title: "Three steps. Honest finish.",
     steps: [
       {
         title: "Fill the brief",
-        desc: "8–12 minutes through a guided wizard. Strategic context, not technical specs.",
+        desc: "60 seconds to start, ~10 minutes through the wizard. Strategic context, not technical specs.",
       },
       {
-        title: "We analyze",
-        desc: "Senior-level read against your vertical, scale and budget. 24 hours.",
-      },
-      {
-        title: "You receive feedback",
-        desc: "PDF in your inbox with positioning, scope, paths. Optional 30-min call attached.",
+        title: "We respond",
+        desc: "Initial read within 48 hours by email — engagement model, scope direction, next step.",
       },
       {
         title: "We decide together",
-        desc: "Whether we play, refer you in our network, or you take the playbook in-house.",
+        desc: "If we're a fit — discovery call to scope. If not — we'll refer you in our network.",
       },
     ],
   },
-  notForEveryone: {
-    label: "Not for everyone",
-    title: "We say no more often than we say yes. The Diagnostic fits when:",
-    criteria: [
-      "Your organization has 3+ locations, brands or stakeholders",
-      "Project budget is north of 50 000 PLN",
-      "You operate in fitness, wellness, health or retail",
-    ],
-    refer:
-      "If your project doesn't fit — we'll tell you in the feedback and refer you to someone in our network who's better positioned. No upsell pressure.",
-  },
   form: {
-    label: "Begin the diagnostic",
-    title: "60 seconds to start.",
+    label: "Start a brief",
+    title: "60 seconds to begin.",
     subtitle:
       "We need just enough context to route your brief correctly. The wizard that follows is where the real conversation happens.",
     fields: {
@@ -511,66 +472,58 @@ const COPY_EN = {
       mid: "100–250K PLN",
       high: "250K+ PLN",
     },
-    cta: "Begin diagnostic",
+    cta: "Begin the brief",
     submitting: "Submitting…",
     privacy:
-      "We treat every submission as confidential. Your data routes only to Reszek for review and is never shared. By submitting you agree to receive the strategic diagnostic by email within 48 hours.",
+      "We treat every submission as confidential. Your data routes only to Reszek for review and is never shared. By submitting you agree to receive our first response by email within 48 hours.",
   },
 };
 
 const COPY_PL = {
   hero: {
-    label: "Strategic Diagnostic · 48h",
-    title: "Strategiczny scope read w 48 godzin.",
+    label: "Narzędzie briefingowe",
+    title: "Zacznij od briefu. Ustrukturyzowany punkt startu.",
     intro:
-      "Wstępne pozycjonowanie, zakres i widełki cenowe — zanim podejmiesz commitment projektowy. Dla marek wielolokalizacyjnych w fitness, wellness, health i retail.",
-    fit: "Dla projektów powyżej 50 000 PLN z 3+ lokalizacjami. Pełen zwrot kosztów, jeśli rekomendacje nie są wdrażalne w 60 dni.",
+      "Każdy projekt z r352 zaczyna się od ustrukturyzowanego briefu. Osiem sekcji, około dziesięciu minut, jedna czysta odpowiedź od nas — niezależnie od zakresu.",
+    subline:
+      "Czy potrzebujesz pakietu kampanijnego, czy pełnego wdrożenia operating systemu — to jest punkt wejścia. Każdy brief routujemy do właściwego modelu współpracy.",
   },
-  whatYouGet: {
-    label: "Co dostajesz",
-    title: "Cztery deliverables. Jeden PDF. 48 godzin.",
-    items: [
-      "Analiza pozycjonowania konkurencyjnego dla Twojej branży",
-      "Wstępny zakres z widełkową estymacją kosztów (range, nie wycena)",
-      "Trzy strategiczne ścieżki z priorytetyzacją",
-      "Feedback w PDF + opcjonalny call 30 min",
+  preview: {
+    label: "Co przejdziesz",
+    title: "8 sekcji. ~26 pytań. ~10 minut.",
+    subtitle:
+      "Wizard prowadzi Cię przez ustrukturyzowane sekcje — obejmuje wszystko czego potrzebujemy, żeby dać Ci sensowną pierwszą odpowiedź w 48 godzin.",
+    sections: [
+      { title: "Przegląd projektu", desc: "Powiedz nam najważniejsze: co, jaki zakres, kiedy." },
+      { title: "Brand i tożsamość wizualna", desc: "Pokaż nam swoją tożsamość brandową." },
+      { title: "Docelowa publiczność", desc: "Kto to twoi docelowi użytkownicy?" },
+      { title: "Format i specyfikacje", desc: "Konkretne formaty, rozmiary, wymagania techniczne." },
+      { title: "Treść i przesłanie", desc: "Co chcesz powiedzieć swoim użytkownikom?" },
+      { title: "Wymagania techniczne", desc: "Jakie są warunki techniczne?" },
+      { title: "Budżet i harmonogram", desc: "Kiedy i ile możesz wydać?" },
+      { title: "Dodatkowe uwagi", desc: "Czy jest coś jeszcze, co powinniśmy wiedzieć?" },
     ],
   },
   howItWorks: {
     label: "Jak to działa",
-    title: "Cztery kroki. Zdefiniowane z góry. Uczciwe zakończenie.",
+    title: "Trzy kroki. Uczciwe zakończenie.",
     steps: [
       {
         title: "Wypełnij brief",
-        desc: "8–12 minut przez prowadzony wizard. Strategiczny kontekst, nie spec techniczny.",
+        desc: "60 sekund na start, ~10 minut przez wizard. Strategiczny kontekst, nie spec techniczny.",
       },
       {
-        title: "Analizujemy",
-        desc: "Seniorski read pod kątem branży, skali i budżetu. 24 godziny.",
-      },
-      {
-        title: "Dostajesz feedback",
-        desc: "PDF w skrzynce z pozycjonowaniem, zakresem, ścieżkami. Opcjonalny call 30 min w pakiecie.",
+        title: "Odpowiadamy",
+        desc: "Pierwsza odpowiedź mailem w 48 godzin — model współpracy, kierunek zakresu, następny krok.",
       },
       {
         title: "Decydujemy razem",
-        desc: "Czy gramy, kierujemy Cię do kogoś z naszej sieci, czy bierzesz playbook in-house.",
+        desc: "Jeśli pasujemy — discovery call do doprecyzowania zakresu. Jeśli nie — polecimy kogoś z naszej sieci.",
       },
     ],
   },
-  notForEveryone: {
-    label: "Nie dla każdego",
-    title: "Mówimy „nie” częściej niż „tak”. Diagnostic pasuje, gdy:",
-    criteria: [
-      "Organizacja ma 3+ lokalizacji, marek lub stakeholderów",
-      "Budżet projektu powyżej 50 000 PLN",
-      "Działasz w fitness, wellness, health albo retail",
-    ],
-    refer:
-      "Jeśli Twój projekt nie pasuje — powiemy Ci to w feedbacku i polecimy kogoś z naszej sieci kto lepiej odpowiada na Twoją potrzebę. Bez upsell pressure.",
-  },
   form: {
-    label: "Zacznij Diagnostic",
+    label: "Zacznij brief",
     title: "60 sekund na start.",
     subtitle:
       "Potrzebujemy minimum kontekstu, żeby właściwie wyrouterować Twój brief. Prawdziwa rozmowa dzieje się w wizardzie który zaczniesz po wysłaniu.",
@@ -595,9 +548,9 @@ const COPY_PL = {
       mid: "100–250K PLN",
       high: "250K+ PLN",
     },
-    cta: "Zacznij Diagnostic",
+    cta: "Rozpocznij brief",
     submitting: "Wysyłam…",
     privacy:
-      "Każde zgłoszenie traktujemy jako poufne. Twoje dane trafiają wyłącznie do Reszka do review i nie są nigdzie udostępniane. Wysyłając formularz akceptujesz otrzymanie strategicznego diagnostic'a na email w ciągu 48 godzin.",
+      "Każde zgłoszenie traktujemy jako poufne. Twoje dane trafiają wyłącznie do Reszka do review i nie są nigdzie udostępniane. Wysyłając formularz akceptujesz otrzymanie naszej pierwszej odpowiedzi na email w ciągu 48 godzin.",
   },
 };

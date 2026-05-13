@@ -35,7 +35,7 @@ export function Footer() {
     { label: t("nav.journal"), href: "/journal" },
     { label: t("nav.detailed_brief"), href: "/brief-access" },
     { label: t("nav.pricing"), href: "/limitedaccess" },
-    { label: "Strategic Diagnostic — 48h feedback", href: "/diagnostic" },
+    { label: "Start a brief — 48h response", href: "/brief" },
   ];
 
   const socialLinks = [

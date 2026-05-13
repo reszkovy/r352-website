@@ -68,13 +68,13 @@ export function AgencyHero() {
                    </MagneticButton>
                 </div>
 
-                {/* Diagnostic CTA — secondary text link, below primary buttons */}
+                {/* Brief CTA — secondary text link, below primary buttons */}
                 <button
-                  onClick={() => setLocation("/diagnostic")}
+                  onClick={() => setLocation("/brief")}
                   className="self-start md:self-end group inline-flex items-center gap-3 text-xs font-display uppercase tracking-[0.2em] text-neutral-400 hover:text-[#D4FF00] transition-colors duration-500 cursor-pointer"
                 >
                   <span className="w-6 h-px bg-neutral-600 group-hover:bg-[#D4FF00] group-hover:w-10 transition-all duration-500" />
-                  <span>Strategic Diagnostic · 48h</span>
+                  <span>Start a brief · 10 min</span>
                   <span className="inline-block group-hover:translate-x-1 transition-transform duration-500">→</span>
                 </button>
                 
