@@ -4,7 +4,8 @@ import { Reveal } from "@/app/components/ui/Reveal";
 import { useLanguage } from "@/app/context/LanguageContext";
 
 // ─── Briefly intake config ───────────────────────────────────────────
-const BRIEFLY_INTAKE_URL = "https://briefly-five-plum.vercel.app/api/public/intake";
+const BRIEFLY_BASE_URL = "https://briefly-five-plum.vercel.app";
+const BRIEFLY_INTAKE_URL = `${BRIEFLY_BASE_URL}/api/public/intake`;
 
 const INTAKE_BRANDING = {
   logo_url: "https://r352.com/logo.svg",
@@ -115,11 +116,19 @@ export function Brief() {
         throw new Error(`Server response missing wizard_url. Raw: ${result.raw?.slice(0, 200)}`);
       }
 
+      // Defensive: Briefly API may return relative path (/brief/[token]) instead of absolute URL.
+      // Resolve to full URL against Briefly origin so browser doesn't navigate to r352.com/brief/[token] → 404.
+      const finalUrl = /^https?:\/\//i.test(wizardUrl)
+        ? wizardUrl
+        : `${BRIEFLY_BASE_URL}${wizardUrl.startsWith("/") ? "" : "/"}${wizardUrl}`;
+
+      console.log("[brief] Redirecting to wizard:", finalUrl);
+
       try {
         (window as any).plausible?.("brief_submitted");
       } catch { /* noop */ }
 
-      window.location.href = wizardUrl;
+      window.location.href = finalUrl;
     } catch (err: any) {
       console.error("[brief] Submit error:", err);
       setSubmitting(false);
