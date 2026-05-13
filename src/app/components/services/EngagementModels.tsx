@@ -270,39 +270,14 @@ export function EngagementModels() {
                     {language === "pl" ? "Idealne, gdy" : "Ideal when"}
                   </h4>
                   <ul className="space-y-2">
-                    {model.idealWhen.map((item, idx) => (
+                    {model.idealWhen.slice(0, 2).map((item, idx) => (
                       <li key={idx} className="text-[13px] text-neutral-500 dark:text-[#888888] flex items-start gap-2">
-                        <span className="text-neutral-400 dark:text-neutral-600 mt-[-1px]">-</span>
+                        <span className="text-neutral-400 dark:text-neutral-600 mt-[-1px]">—</span>
                         <span className="leading-snug">{item}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
-
-                <div>
-                  <h4 className="text-[11px] uppercase tracking-[1px] text-neutral-500 dark:text-[#D4FF00] mb-1">
-                    {language === "pl" ? "Zaczynamy od" : "Starts with"}
-                  </h4>
-                  <p className="text-[13px] text-neutral-600 dark:text-[#888888] leading-snug">{model.startsWith}</p>
-                </div>
-
-                {model.deliverable && (
-                  <div>
-                    <h4 className="text-[11px] uppercase tracking-[1px] text-neutral-500 dark:text-[#D4FF00] mb-1">
-                      {language === "pl" ? "Rezultat" : "Deliverable"}
-                    </h4>
-                    <p className="text-[13px] text-neutral-600 dark:text-[#888888] leading-snug">{model.deliverable}</p>
-                  </div>
-                )}
-                
-                {model.products && (
-                  <div>
-                    <h4 className="text-[11px] uppercase tracking-[1px] text-neutral-500 dark:text-[#D4FF00] mb-1">
-                      {language === "pl" ? "Modele wspierane przez" : "Products that fit this model"}
-                    </h4>
-                    <p className="text-[13px] text-neutral-600 dark:text-[#888888] leading-snug">{model.products}</p>
-                  </div>
-                )}
 
                 {/* Testimonial Quote */}
                 <div className="mt-8 pt-5 border-t border-black/10 dark:border-white/10">
@@ -447,27 +422,13 @@ export function EngagementModels() {
                       {language === "pl" ? "Idealne, gdy" : "Ideal when"}
                     </h4>
                     <ul className="space-y-2">
-                      {model.idealWhen.map((item, idx) => (
+                      {model.idealWhen.slice(0, 2).map((item, idx) => (
                         <li key={idx} className="text-[13px] text-neutral-500 dark:text-[#888888] flex items-start gap-2">
                           <span className="text-neutral-400 dark:text-neutral-600 mt-[-1px]">—</span>
                           <span className="leading-snug">{item}</span>
                         </li>
                       ))}
                     </ul>
-                  </div>
-
-                  <div>
-                    <h4 className="text-[11px] uppercase tracking-[1px] text-neutral-500 dark:text-[#D4FF00] mb-1">
-                      {language === "pl" ? "Zaczynamy od" : "Starts with"}
-                    </h4>
-                    <p className="text-[13px] text-neutral-600 dark:text-[#888888] leading-snug">{model.startsWith}</p>
-                  </div>
-
-                  <div>
-                    <h4 className="text-[11px] uppercase tracking-[1px] text-neutral-500 dark:text-[#D4FF00] mb-1">
-                      {language === "pl" ? "Co obejmuje" : "What it includes"}
-                    </h4>
-                    <p className="text-[13px] text-neutral-600 dark:text-[#888888] leading-snug">{model.products}</p>
                   </div>
                 </div>
               </div>

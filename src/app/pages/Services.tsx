@@ -148,65 +148,19 @@ export function Services() {
                              {card.description}
                            </motion.p>
 
-                           {/* Includes — bold section header + Tanker numbers */}
-                           {card.includes && card.includes.length > 0 && (
-                             <motion.div
-                               initial={{ opacity: 0, y: 12 }}
-                               animate={{ opacity: 1, y: 0 }}
-                               transition={{ duration: 0.6, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                               className="mb-16 border-t border-neutral-200 dark:border-white/10 pt-10"
-                             >
-                               <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-neutral-900 dark:text-white mb-10">
-                                 {language === 'pl' ? "Obejmuje" : "Includes"}
-                                 <span className="text-[#D4FF00] ml-2">.</span>
-                               </h3>
-                               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-6 max-w-5xl">
-                                 {card.includes.map((item, idx) => (
-                                   <div key={idx} className="flex items-baseline gap-5 group/item">
-                                     <span className="font-display text-sm md:text-base text-[#D4FF00] shrink-0 leading-none w-8">
-                                       {String(idx + 1).padStart(2, '0')}
-                                     </span>
-                                     <span className="text-base md:text-lg text-neutral-800 dark:text-neutral-200 leading-snug font-medium group-hover/item:text-neutral-900 dark:group-hover/item:text-white transition-colors">
-                                       {item}
-                                     </span>
-                                   </div>
-                                 ))}
-                               </div>
-                             </motion.div>
-                           )}
-
-                           {/* Output — bold statement, no frame */}
+                           {/* Output — single bold statement, no Includes detail */}
                            <motion.div
                              initial={{ opacity: 0, y: 12 }}
                              animate={{ opacity: 1, y: 0 }}
-                             transition={{ duration: 0.6, delay: 0.26, ease: [0.16, 1, 0.3, 1] }}
-                             className="border-t border-neutral-200 dark:border-white/10 pt-10 mb-16 max-w-5xl"
+                             transition={{ duration: 0.6, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
+                             className="border-t border-neutral-200 dark:border-white/10 pt-10 max-w-5xl"
                            >
-                             <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-neutral-900 dark:text-white mb-6">
+                             <h3 className="text-xs font-display uppercase tracking-[0.2em] text-[#D4FF00] mb-4">
                                {language === 'pl' ? "Wynik" : "Output"}
-                               <span className="text-[#D4FF00] ml-2">.</span>
                              </h3>
                              <p className="text-xl md:text-2xl lg:text-3xl text-neutral-900 dark:text-white font-bold tracking-tight leading-[1.2]">
                                {card.output}
                              </p>
-                           </motion.div>
-
-                           {/* CTA — bold magnetic-style link */}
-                           <motion.div
-                             initial={{ opacity: 0, y: 12 }}
-                             animate={{ opacity: 1, y: 0 }}
-                             transition={{ duration: 0.6, delay: 0.34, ease: [0.16, 1, 0.3, 1] }}
-                             className="border-t border-neutral-200 dark:border-white/10 pt-10"
-                           >
-                             <Link
-                               href={`/deliverables#${card.title.toLowerCase().replace(/\s+/g, '-')}`}
-                               className="group/link inline-flex items-center gap-4 text-lg md:text-xl font-bold tracking-tight text-neutral-900 dark:text-white hover:text-[#D4FF00] dark:hover:text-[#D4FF00] transition-colors duration-500"
-                             >
-                               <span className="border-b-2 border-neutral-900 dark:border-white group-hover/link:border-[#D4FF00] transition-colors duration-500 pb-1">
-                                 {language === 'pl' ? "Pełna lista zasobów" : "Full deliverable list"}
-                               </span>
-                               <span className="inline-block transition-transform duration-500 group-hover/link:translate-x-2 text-2xl">→</span>
-                             </Link>
                            </motion.div>
                          </div>
                        </motion.div>
