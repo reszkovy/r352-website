@@ -13,26 +13,25 @@ const INTAKE_BRANDING = {
   font_family: "Inter",
 };
 
-type Vertical = "fitness" | "wellness" | "health" | "retail" | "other";
-type Scale = "1" | "2-5" | "5-15" | "15-50" | "50+";
-type Budget = "under_30k" | "30k-100k" | "100k-250k" | "over_250k";
+// Defaults sent to API — real routing values are captured inside the wizard
+const ROUTING_DEFAULTS = {
+  vertical: "other" as const,
+  scale: "1" as const,
+  budget_signal: "under_30k" as const,
+};
 
 interface FormState {
   name: string;
   company: string;
   email: string;
-  vertical: Vertical | "";
-  scale: Scale | "";
-  budget_signal: Budget | "";
+  context: string;
 }
 
 const initialForm: FormState = {
   name: "",
   company: "",
   email: "",
-  vertical: "",
-  scale: "",
-  budget_signal: "",
+  context: "",
 };
 
 export function Brief() {
@@ -43,32 +42,25 @@ export function Brief() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const getSource = () => {
-    if (typeof window === "undefined") return "r352_brief_direct";
-    const hash = window.location.hash.replace("#", "");
-    if (hash === "form") return "r352_brief_form_anchor";
-    return "r352_brief_direct";
-  };
-
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setError(null);
 
-    if (!form.name || !form.company || !form.email) {
+    if (!form.name.trim() || !form.company.trim() || !form.email.trim()) {
       setError(lang === "pl" ? "Wypełnij imię, firmę i email." : "Please fill in name, company and email.");
-      return;
-    }
-    if (!form.vertical || !form.scale || !form.budget_signal) {
-      setError(lang === "pl" ? "Zaznacz odpowiedzi we wszystkich sekcjach." : "Select an option in every section.");
       return;
     }
 
     setSubmitting(true);
 
     const payload = {
-      ...form,
+      name: form.name.trim(),
+      company: form.company.trim(),
+      email: form.email.trim(),
+      ...ROUTING_DEFAULTS,
       lang,
-      source: getSource(),
+      source: "r352_brief",
+      context: form.context.trim() || undefined,
       intake_branding: INTAKE_BRANDING,
     };
 
@@ -94,8 +86,8 @@ export function Brief() {
       setSubmitting(false);
       setError(
         lang === "pl"
-          ? "Coś poszło nie tak. Spróbuj jeszcze raz lub napisz na hello@r352.com"
-          : "Something went wrong. Please try again or email hello@r352.com"
+          ? "Coś poszło nie tak po naszej stronie. Napisz na hello@r352.com — odezwiemy się w 24h."
+          : "Something failed on our side. Email hello@r352.com — we'll respond within 24h."
       );
     }
   };
@@ -201,7 +193,7 @@ export function Brief() {
         </div>
       </section>
 
-      {/* ─── Intake form ─── */}
+      {/* ─── Lead-capture form — minimal 4 fields, premium contact-style ─── */}
       <section id="form" className="py-24 md:py-32 border-t border-neutral-200 dark:border-white/10 scroll-mt-24">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-16 md:gap-24">
@@ -220,7 +212,7 @@ export function Brief() {
             </Reveal>
 
             <Reveal delay={0.15}>
-              <form onSubmit={handleSubmit} className="flex flex-col gap-10" noValidate>
+              <form onSubmit={handleSubmit} className="flex flex-col gap-10 max-w-2xl" noValidate>
                 <FormText
                   label={copy.form.fields.name}
                   name="name"
@@ -246,52 +238,20 @@ export function Brief() {
                   required
                   autoComplete="email"
                 />
-
-                <RadioGroup
-                  legend={copy.form.fields.vertical}
-                  name="vertical"
-                  value={form.vertical}
-                  onChange={(v) => setForm((f) => ({ ...f, vertical: v as Vertical }))}
-                  options={[
-                    { value: "fitness", label: copy.form.verticals.fitness },
-                    { value: "wellness", label: copy.form.verticals.wellness },
-                    { value: "health", label: copy.form.verticals.health },
-                    { value: "retail", label: copy.form.verticals.retail },
-                    { value: "other", label: copy.form.verticals.other },
-                  ]}
-                />
-
-                <RadioGroup
-                  legend={copy.form.fields.scale}
-                  name="scale"
-                  value={form.scale}
-                  onChange={(v) => setForm((f) => ({ ...f, scale: v as Scale }))}
-                  options={[
-                    { value: "1", label: "1" },
-                    { value: "2-5", label: "2–5" },
-                    { value: "5-15", label: "5–15" },
-                    { value: "15-50", label: "15–50" },
-                    { value: "50+", label: "50+" },
-                  ]}
-                />
-
-                <RadioGroup
-                  legend={copy.form.fields.budget}
-                  name="budget_signal"
-                  value={form.budget_signal}
-                  onChange={(v) => setForm((f) => ({ ...f, budget_signal: v as Budget }))}
-                  options={[
-                    { value: "under_30k", label: copy.form.budgets.under },
-                    { value: "30k-100k", label: copy.form.budgets.low },
-                    { value: "100k-250k", label: copy.form.budgets.mid },
-                    { value: "over_250k", label: copy.form.budgets.high },
-                  ]}
+                <FormTextarea
+                  label={copy.form.fields.context}
+                  name="context"
+                  value={form.context}
+                  onChange={(v) => setForm((f) => ({ ...f, context: v }))}
+                  placeholder={copy.form.contextPlaceholder}
                 />
 
                 {error && (
-                  <p className="text-sm md:text-base text-red-400 font-medium" role="alert">
-                    {error}
-                  </p>
+                  <div className="border-l-2 border-red-400 dark:border-red-400 pl-4 py-2">
+                    <p className="text-sm md:text-base text-red-400 dark:text-red-400 font-medium leading-snug" role="alert">
+                      {error}
+                    </p>
+                  </div>
                 )}
 
                 <button
@@ -353,51 +313,33 @@ function FormText({
   );
 }
 
-function RadioGroup({
-  legend,
+function FormTextarea({
+  label,
   name,
   value,
   onChange,
-  options,
+  placeholder,
 }: {
-  legend: string;
+  label: string;
   name: string;
   value: string;
   onChange: (v: string) => void;
-  options: { value: string; label: string }[];
+  placeholder?: string;
 }) {
   return (
-    <fieldset className="flex flex-col gap-3">
-      <legend className="text-xs font-display uppercase tracking-[0.2em] text-neutral-500 dark:text-[#D4FF00] mb-2">
-        {legend}
-        <span className="ml-1 text-[#D4FF00] dark:text-[#D4FF00]/70">*</span>
-      </legend>
-      <div className="flex flex-wrap gap-2">
-        {options.map((opt) => (
-          <label
-            key={opt.value}
-            className={`
-              cursor-pointer px-5 py-3 border text-sm md:text-base font-medium tracking-tight
-              transition-all duration-300
-              ${value === opt.value
-                ? "border-[#D4FF00] bg-[#D4FF00] text-black"
-                : "border-neutral-300 dark:border-white/20 text-neutral-700 dark:text-neutral-300 hover:border-[#D4FF00] dark:hover:border-[#D4FF00] hover:text-neutral-900 dark:hover:text-white"
-              }
-            `}
-          >
-            <input
-              type="radio"
-              name={name}
-              value={opt.value}
-              checked={value === opt.value}
-              onChange={() => onChange(opt.value)}
-              className="sr-only"
-            />
-            {opt.label}
-          </label>
-        ))}
-      </div>
-    </fieldset>
+    <label className="flex flex-col gap-2">
+      <span className="text-xs font-display uppercase tracking-[0.2em] text-neutral-500 dark:text-[#D4FF00]">
+        {label}
+      </span>
+      <textarea
+        name={name}
+        value={value}
+        rows={3}
+        placeholder={placeholder}
+        onChange={(e) => onChange(e.target.value)}
+        className="bg-transparent border-b border-neutral-300 dark:border-white/20 pb-3 text-base md:text-lg text-neutral-900 dark:text-white font-medium tracking-tight outline-none focus:border-[#D4FF00] dark:focus:border-[#D4FF00] transition-colors placeholder:text-neutral-500 resize-none"
+      />
+    </label>
   );
 }
 
@@ -434,7 +376,7 @@ const COPY_EN = {
     steps: [
       {
         title: "Fill the brief",
-        desc: "60 seconds to start, ~10 minutes through the wizard. Strategic context, not technical specs.",
+        desc: "Four fields here to start, then ~10 minutes through the wizard. Strategic context, not technical specs.",
       },
       {
         title: "We respond",
@@ -448,30 +390,16 @@ const COPY_EN = {
   },
   form: {
     label: "Start a brief",
-    title: "60 seconds to begin.",
+    title: "Four fields. ~30 seconds.",
     subtitle:
-      "We need just enough context to route your brief correctly. The wizard that follows is where the real conversation happens.",
+      "We only need contact and one line of context here. The structured wizard that follows is where the real conversation happens.",
     fields: {
       name: "Your name",
       company: "Company",
       email: "Work email",
-      vertical: "Vertical",
-      scale: "Number of locations",
-      budget: "Budget range",
+      context: "What's bringing you here? (optional)",
     },
-    verticals: {
-      fitness: "Fitness",
-      wellness: "Wellness / Spa",
-      health: "Health / Medical",
-      retail: "Retail",
-      other: "Other",
-    },
-    budgets: {
-      under: "Under 30K PLN",
-      low: "30–100K PLN",
-      mid: "100–250K PLN",
-      high: "250K+ PLN",
-    },
+    contextPlaceholder: "One line — campaign, brand system, audit, full transformation…",
     cta: "Begin the brief",
     submitting: "Submitting…",
     privacy:
@@ -510,7 +438,7 @@ const COPY_PL = {
     steps: [
       {
         title: "Wypełnij brief",
-        desc: "60 sekund na start, ~10 minut przez wizard. Strategiczny kontekst, nie spec techniczny.",
+        desc: "Cztery pola na start, potem ~10 minut przez wizard. Strategiczny kontekst, nie spec techniczny.",
       },
       {
         title: "Odpowiadamy",
@@ -524,30 +452,16 @@ const COPY_PL = {
   },
   form: {
     label: "Zacznij brief",
-    title: "60 sekund na start.",
+    title: "Cztery pola. ~30 sekund.",
     subtitle:
-      "Potrzebujemy minimum kontekstu, żeby właściwie wyrouterować Twój brief. Prawdziwa rozmowa dzieje się w wizardzie który zaczniesz po wysłaniu.",
+      "Potrzebujemy tylko kontaktu i jednej linijki kontekstu. Ustrukturyzowany wizard, który zaczyna się po wysłaniu, to miejsce prawdziwej rozmowy.",
     fields: {
       name: "Imię i nazwisko",
       company: "Firma",
       email: "Email służbowy",
-      vertical: "Branża",
-      scale: "Liczba lokalizacji",
-      budget: "Budżet",
+      context: "Z czym przychodzisz? (opcjonalnie)",
     },
-    verticals: {
-      fitness: "Fitness",
-      wellness: "Wellness / Spa",
-      health: "Health / Medical",
-      retail: "Retail",
-      other: "Inne",
-    },
-    budgets: {
-      under: "Poniżej 30K PLN",
-      low: "30–100K PLN",
-      mid: "100–250K PLN",
-      high: "250K+ PLN",
-    },
+    contextPlaceholder: "Jedna linijka — kampania, system marki, audyt, pełna transformacja…",
     cta: "Rozpocznij brief",
     submitting: "Wysyłam…",
     privacy:
