@@ -236,7 +236,7 @@ export const translations = {
           ]
         },
         {
-          title: "Implementation & Automation (AI-supported)",
+          title: "AI Development & Automation",
           description: "We take the system we've built and operationalize it — wired into your existing tools, accelerated by AI workflows.",
           output: "Brief intake, scoring, quality review and asset routing running as a live system — not a deck. Your team brief, we triage, AI accelerates, output ships.",
           best_for: "Teams that already have standards but execution still depends on heroics — intake by email, manual scoring, QA in DMs. Ready to ship the operating layer that turns standards into automated workflow.",
@@ -752,7 +752,7 @@ export const translations = {
           ]
         },
         {
-          title: "Wdrożenie i Automatyzacja (AI-supported)",
+          title: "AI Development & Automation",
           description: "Bierzemy system który zbudowaliśmy i operacjonalizujemy go — wpięty w Wasze istniejące narzędzia, przyspieszony przez workflow AI.",
           output: "Brief intake, scoring, quality review i routing assetów działają jako żywy system — nie deck. Zespół briefuje, my triagujemy, AI przyspiesza, output idzie.",
           best_for: "Zespoły które mają już standardy ale egzekucja wciąż zależy od heroizmu — intake przez email, manualny scoring, QA w DM-ach. Gotowe wdrożyć warstwę operacyjną, która zamienia standardy w zautomatyzowany workflow.",
