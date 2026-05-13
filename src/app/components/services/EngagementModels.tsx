@@ -32,7 +32,7 @@ export function EngagementModels() {
         "You have a launch date and need to ship on time",
         "You want to test working with us before committing long-term"
       ],
-      pricing: language === "pl" ? "od 4 000 €" : "from 4 000 €",
+      pricing: language === "pl" ? "4 000 — 8 000 €" : "4 000 — 8 000 €",
       startsWith: language === "pl"
         ? "Rozmowa określająca zakres, harmonogram i osoby decyzyjne."
         : "A scoping call where we define deliverables, timeline, and decision owners.",
@@ -67,7 +67,7 @@ export function EngagementModels() {
         "You want a design partner embedded in your rhythm, not a vendor you re-onboard every quarter",
         "You need consistency and speed without hiring a full in-house team"
       ],
-      pricing: language === "pl" ? "od 2 000 € / msc" : "from 2 000 € / mo",
+      pricing: language === "pl" ? "od 6 000 € / msc" : "from 6 000 € / mo",
       startsWith: language === "pl"
         ? "Sprint diagnostyczny (1-2 tygodnie), podczas którego sprawdzamy obecny obieg pracy, proces zgłoszeń i ustalamy rytm dostaw."
         : "A diagnostic sprint (1-2 weeks) where we audit your current workflow, set up intake, and define the delivery cadence.",
@@ -79,8 +79,8 @@ export function EngagementModels() {
       number: "03",
       title: language === "pl" ? "Diagnostyka" : "Diagnostic",
       positioning: language === "pl"
-        ? "Krótki, ustrukturyzowany audyt, który pokazuje dokładnie, gdzie zawodzi proces - zanim zaangażujecie się w budowanie czegokolwiek."
-        : "A short, structured audit that shows you exactly where delivery breaks down - before you commit to building anything.",
+        ? "Krótki, ustrukturyzowany audyt, który pokazuje dokładnie, gdzie zawodzi proces — zanim zaangażujecie się w budowanie czegokolwiek. Pełen zwrot kosztów, jeśli rekomendacje nie są wdrażalne w ciągu 60 dni."
+        : "A short, structured audit that shows you exactly where delivery breaks down — before you commit to building anything. Money back if the recommendations are not actionable within 60 days.",
       howItWorks: language === "pl" ? [
         "Mapujemy obecny proces dostarczania od początku do końca: brief → akceptacja → produkcja → publikacja",
         "Identyfikujemy wąskie gardła, niejasne kompetencje, braki w kontroli jakości i zbędne iteracje",
@@ -107,8 +107,81 @@ export function EngagementModels() {
         ? "60-minutowe spotkanie inicjujące, podczas którego przeprowadzamy wywiady z kluczowymi osobami i prosimy o dostęp do waszych narzędzi."
         : "A 60-minute kickoff where we interview key stakeholders and request access to your current workflows.",
       deliverable: language === "pl"
-        ? "Audyt procesu dostarczania - mapa wąskich gardeł, analiza przyczyn i priorytetowe rekomendacje."
-        : "Delivery Workflow Audit - bottleneck map, root cause analysis, and prioritized recommendations."
+        ? "Audyt procesu dostarczania — mapa wąskich gardeł, analiza przyczyn i priorytetowe rekomendacje."
+        : "Delivery Workflow Audit — bottleneck map, root cause analysis, and prioritized recommendations."
+    }
+  ];
+
+  const enterpriseModels = [
+    {
+      number: "04",
+      title: language === "pl" ? "Wdrożenie Enterprise" : "Enterprise Sprint",
+      positioning: language === "pl"
+        ? "Pełne wdrożenie Creative Operating System dla organizacji wielolokalizacyjnej — od diagnozy po działający system z wytrenowanym zespołem."
+        : "Full Creative Operating System implementation for a multi-location organization — from diagnosis to a running system with a trained team.",
+      howItWorks: language === "pl" ? [
+        "Pełny cykl: diagnoza, mapa popytu, standardy, ownership decyzji, budowa systemu, miary i rytm review",
+        "Seniorski zespół osadzony w organizacji przez 12-16 tygodni",
+        "Cotygodniowe checkpointy z leadership + warsztaty z zespołami operacyjnymi",
+        "Przekazanie obejmuje pełną dokumentację systemu, training i 90-dniowy hand-over",
+      ] : [
+        "Full cycle: diagnosis, demand mapping, standards, decision ownership, system build, measurement and review rhythm",
+        "Senior team embedded in the organization for 12-16 weeks",
+        "Weekly checkpoints with leadership + workshops with operational teams",
+        "Handoff includes complete system documentation, training, and a 90-day transition plan",
+      ],
+      timeline: language === "pl" ? "12-16 tygodni + 90 dni hand-over" : "12-16 weeks + 90-day handover",
+      idealWhen: language === "pl" ? [
+        "Wielolokalizacyjna organizacja (5+ lokalizacji lub marek) potrzebująca pełnej transformacji operacyjnej",
+        "Wewnętrzny zespół designu/marketingu jest przeciążony, ale budżet i ambicja są na transformację, nie patch",
+        "Leadership rozumie, że system jest aktywem długoterminowym — i jest gotowy go finansować",
+      ] : [
+        "A multi-location organization (5+ locations or brands) needing full operational transformation",
+        "Internal design/marketing team is overloaded but budget and ambition are for transformation, not a patch",
+        "Leadership understands the system is a long-term asset — and is willing to fund it accordingly",
+      ],
+      pricing: "25 000 — 50 000 €",
+      startsWith: language === "pl"
+        ? "Tygodniowy alignment-workshop z C-suite, podczas którego definiujemy zakres, kluczowe metryki sukcesu i punkty decyzyjne."
+        : "A 1-week alignment workshop with the C-suite where we define scope, key success metrics, and decision gates.",
+      products: language === "pl"
+        ? "Pełen Creative Operating System: standardy briefów, scoring, governance, biblioteki, dashboard, AI workflow, training"
+        : "Full Creative Operating System: brief standards, scoring, governance, libraries, dashboard, AI workflow, training"
+    },
+    {
+      number: "05",
+      title: language === "pl" ? "Partner Operacyjny" : "Operating Partner",
+      positioning: language === "pl"
+        ? "Strategiczna rola partnera operacyjnego — opiekun ewolucji systemu, doradca przy strategicznych decyzjach designu i komunikacji, obecność przy stole leadership."
+        : "Strategic operating partner role — custodian of system evolution, advisor on strategic design and communication decisions, present at the leadership table.",
+      howItWorks: language === "pl" ? [
+        "Miesięczny executive review z leadership — kondycja systemu, trendy, decyzje strategiczne",
+        "Kwartalne planowanie strategiczne + roadmapa ewolucji systemu",
+        "Continuous coaching wewnętrznych zespołów + on-call dla kluczowych decyzji",
+        "Rozszerzenia systemu (nowe lokalizacje, marki, kanały) — projektowane razem",
+      ] : [
+        "Monthly executive review with leadership — system health, trends, strategic decisions",
+        "Quarterly strategic planning + roadmap for system evolution",
+        "Continuous coaching for internal teams + on-call for major decisions",
+        "System extensions (new locations, brands, channels) — designed together",
+      ],
+      timeline: language === "pl" ? "Kontrakt roczny, rytm miesięczny" : "Annual contract, monthly cadence",
+      idealWhen: language === "pl" ? [
+        "System jest zbudowany — potrzebuje opiekuna, który go rozwija i broni przed degradacją",
+        "C-suite chce mieć strategicznego partnera designu przy stole decyzyjnym",
+        "Horyzont transformacji jest wieloletni i obejmuje ekspansję organizacji",
+      ] : [
+        "The system is built — it needs a custodian to evolve it and protect it from decay",
+        "C-suite wants a strategic design partner at the decision table",
+        "Multi-year transformation horizon, including organizational expansion",
+      ],
+      pricing: language === "pl" ? "12 000 — 15 000 € / msc" : "12 000 — 15 000 € / mo",
+      startsWith: language === "pl"
+        ? "Strategic alignment workshop z C-suite, podczas którego mapujemy 12-miesięczny horyzont i punkty kontrolne."
+        : "A strategic alignment workshop with the C-suite where we map the 12-month horizon and check-in points.",
+      products: language === "pl"
+        ? "Opieka strategiczna nad całym Operating System: ewolucja, ekspansja, coaching, rozszerzenia"
+        : "Strategic stewardship of the full Operating System: evolution, expansion, coaching, extensions"
     }
   ];
 
@@ -123,9 +196,9 @@ export function EngagementModels() {
             {language === "pl" ? "Jak pracujemy" : "How we work together"}
           </h2>
           <p className="text-[15px] text-neutral-600 dark:text-[#888888] max-w-[600px] leading-relaxed">
-            {language === "pl" 
-              ? "Trzy sposoby na współpracę - w zależności od tego, gdzie jesteście i czego potrzebujecie." 
-              : "Three ways to engage - depending on where you are and what you need."}
+            {language === "pl"
+              ? "Pięć modeli — od krótkiej diagnozy po wieloletnie partnerstwo operacyjne. Wybierz w zależności od dojrzałości problemu i ambicji transformacji."
+              : "Five models — from a short diagnosis to a multi-year operating partnership. Choose based on the maturity of the problem and the ambition of the transformation."}
           </p>
         </Reveal>
       </div>
@@ -282,6 +355,106 @@ export function EngagementModels() {
           </table>
         </div>
       </Reveal>
+
+      {/* ─── Enterprise tier — for multi-location organizations ─── */}
+      <div className="mt-24 md:mt-32">
+        <Reveal>
+          <div className="border-t border-neutral-200 dark:border-white/10 pt-16 mb-12">
+            <span className="block text-[11px] uppercase tracking-[2px] text-neutral-500 dark:text-[#D4FF00] font-display mb-4">
+              {language === "pl" ? "Tier Enterprise" : "Enterprise tier"}
+            </span>
+            <h3 className="text-3xl md:text-5xl font-bold text-neutral-900 dark:text-white tracking-tight mb-6">
+              {language === "pl"
+                ? "Dla organizacji wielolokalizacyjnych."
+                : "For multi-location organizations."}
+            </h3>
+            <p className="text-[15px] text-neutral-600 dark:text-[#888888] max-w-[640px] leading-relaxed">
+              {language === "pl"
+                ? "Gdy budżet i ambicja są na pełną transformację operacyjną — a nie kosmetyczny patch. Pełne wdrożenie systemu lub strategiczne partnerstwo na lata."
+                : "When budget and ambition are for full operational transformation — not a cosmetic patch. Full system implementation or multi-year strategic partnership."}
+            </p>
+          </div>
+        </Reveal>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 border-t border-b border-neutral-200 dark:border-white/10 mb-12">
+          {enterpriseModels.map((model, i) => (
+            <Reveal key={i} delay={i * 0.1}>
+              <div className={`p-8 lg:p-10 h-full flex flex-col group ${i > 0 ? 'border-t lg:border-t-0 lg:border-l border-neutral-200 dark:border-white/10' : ''}`}>
+                {/* Header */}
+                <div className="mb-6">
+                  <span className="font-display text-sm text-neutral-400 group-hover:text-neutral-900 dark:text-[#D4FF00] transition-colors mb-2 block">
+                    {model.number}
+                  </span>
+                  <h3 className="text-2xl md:text-[28px] font-semibold tracking-tight text-neutral-900 dark:text-[#e5e5e5] mb-2">
+                    {model.title}
+                  </h3>
+                  <span className="block text-lg md:text-xl font-bold text-neutral-900 dark:text-[#D4FF00] tracking-tight mb-4">
+                    {model.pricing}
+                  </span>
+                  <p className="text-[15px] text-neutral-600 dark:text-[#888888] leading-relaxed">
+                    {model.positioning}
+                  </p>
+                </div>
+
+                {/* How it works */}
+                <div className="mb-6 flex-1">
+                  <h4 className="text-[11px] uppercase tracking-[1px] text-neutral-500 dark:text-[#D4FF00] mb-3">
+                    {language === "pl" ? "Jak to działa" : "How it works"}
+                  </h4>
+                  <ul className="space-y-3">
+                    {model.howItWorks.map((item, idx) => (
+                      <li key={idx} className="text-[14px] text-neutral-700 dark:text-[#e5e5e5] flex items-start gap-3">
+                        <span className="w-1 h-1 rounded-none bg-neutral-900 dark:bg-[#D4FF00] mt-[8px] shrink-0" />
+                        <span className="leading-snug">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <hr className="border-neutral-200 dark:border-white/10 mb-6" />
+
+                {/* Details */}
+                <div className="space-y-5">
+                  <div>
+                    <h4 className="text-[11px] uppercase tracking-[1px] text-neutral-500 dark:text-[#D4FF00] mb-1">
+                      {language === "pl" ? "Harmonogram" : "Timeline"}
+                    </h4>
+                    <p className="text-[14px] text-neutral-700 dark:text-[#e5e5e5]">{model.timeline}</p>
+                  </div>
+
+                  <div>
+                    <h4 className="text-[11px] uppercase tracking-[1px] text-neutral-500 dark:text-[#D4FF00] mb-2">
+                      {language === "pl" ? "Idealne, gdy" : "Ideal when"}
+                    </h4>
+                    <ul className="space-y-2">
+                      {model.idealWhen.map((item, idx) => (
+                        <li key={idx} className="text-[13px] text-neutral-500 dark:text-[#888888] flex items-start gap-2">
+                          <span className="text-neutral-400 dark:text-neutral-600 mt-[-1px]">—</span>
+                          <span className="leading-snug">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 className="text-[11px] uppercase tracking-[1px] text-neutral-500 dark:text-[#D4FF00] mb-1">
+                      {language === "pl" ? "Zaczynamy od" : "Starts with"}
+                    </h4>
+                    <p className="text-[13px] text-neutral-600 dark:text-[#888888] leading-snug">{model.startsWith}</p>
+                  </div>
+
+                  <div>
+                    <h4 className="text-[11px] uppercase tracking-[1px] text-neutral-500 dark:text-[#D4FF00] mb-1">
+                      {language === "pl" ? "Co obejmuje" : "What it includes"}
+                    </h4>
+                    <p className="text-[13px] text-neutral-600 dark:text-[#888888] leading-snug">{model.products}</p>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
 
       {/* CTA — flat, divider-only */}
       <Reveal>
