@@ -14,6 +14,7 @@ import { useEffect, useRef } from "react";
 import { useInView, motion, useScroll, useTransform } from "motion/react";
 import { MagneticButton } from "@/app/components/ui/MagneticButton";
 import { Marquee } from "@/app/components/ui/Marquee";
+import { ArrowRight } from "lucide-react";
 
 import { useTheme } from "@/app/context/ThemeContext";
 import presentationImg from "../../imports/Background.webp";
@@ -72,19 +73,21 @@ export function Home() {
       <AgencyHero />
       <ClientLogos />
       
-      {/* Philosophy Teaser — Process master-head pattern: H1 left, caption + CTA right */}
+      {/* Philosophy Teaser — 12-col grid: title col-7, caption+CTA col-5 (7+5 asymmetric) */}
       <section className="pt-32 pb-32 md:pt-40 md:pb-40 border-t border-white/10">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
           <Reveal>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-end">
-              {/* LEFT: title */}
-              <CinematicText
-                text={t("philosophy.teaser.title")}
-                className="text-5xl md:text-5xl lg:text-7xl font-bold tracking-tighter leading-[0.95] text-white"
-              />
+            <div className="grid grid-cols-12 gap-6 md:gap-8 items-end">
+              {/* LEFT col-7: title */}
+              <div className="col-span-12 md:col-span-7">
+                <CinematicText
+                  text={t("philosophy.teaser.title")}
+                  className="text-5xl md:text-5xl lg:text-7xl font-bold tracking-tighter leading-[0.95] text-white"
+                />
+              </div>
 
-              {/* RIGHT: caption + CTA stacked, right-aligned column */}
-              <div className="max-w-xl md:justify-self-end space-y-8">
+              {/* RIGHT col-5: caption + CTA stacked */}
+              <div className="col-span-12 md:col-span-5 md:justify-self-end max-w-xl space-y-8">
                 <p className="text-base md:text-lg text-neutral-400 leading-relaxed whitespace-pre-line">
                   {t("philosophy.teaser.description")}
                 </p>
@@ -114,12 +117,12 @@ export function Home() {
         <EngagementModels />
       </div>
 
-      {/* ─── Brief CTA — universal briefing entry, between engagement & parallax ─── */}
+      {/* ─── Brief CTA — 12-col 7+5 asymmetric ─── */}
       <section className="py-24 md:py-32 border-t border-white/10">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
           <Reveal>
-            <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-12 md:gap-20 items-end">
-              <div>
+            <div className="grid grid-cols-12 gap-6 md:gap-8 items-end">
+              <div className="col-span-12 md:col-span-7">
                 <span className="block text-xs font-display uppercase tracking-[0.2em] text-[#D4FF00] mb-6">
                   {language === "pl" ? "Narzędzie briefingowe" : "Briefing tool"}
                 </span>
@@ -129,7 +132,7 @@ export function Home() {
                     : "Every project starts with a brief."}
                 </h2>
               </div>
-              <div className="md:justify-self-end max-w-md space-y-6">
+              <div className="col-span-12 md:col-span-5 md:justify-self-end max-w-md space-y-6">
                 <p className="text-base md:text-lg text-neutral-400 leading-relaxed">
                   {language === "pl"
                     ? "8 sekcji, ~26 pytań, ~10 minut. Pierwsza odpowiedź w 48 godzin — model współpracy, kierunek zakresu, następny krok."
@@ -143,7 +146,7 @@ export function Home() {
                   <span className="text-sm font-display uppercase tracking-widest">
                     {language === "pl" ? "Zacznij brief" : "Start a brief"}
                   </span>
-                  <span className="ml-2 inline-block group-hover:translate-x-1 transition-transform">→</span>
+                  <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.5} />
                 </MagneticButton>
               </div>
             </div>

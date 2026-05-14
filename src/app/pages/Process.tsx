@@ -166,17 +166,17 @@ export function Process() {
 
   return (
     <PageTransition>
-      {/* ─── Intro Hook — editorial 2-col split, H1 left / supporting copy right ─── */}
+      {/* ─── Intro Hook — 12-col 7+5 (H1 left, supporting right) ─── */}
       <section className="pt-32 pb-16 md:pt-40 md:pb-20 px-8 md:px-12">
         <div className="max-w-[1800px] mx-auto">
           <Reveal>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-end">
-              <h1 className="text-5xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[0.95]">
+            <div className="grid grid-cols-12 gap-6 md:gap-8 items-end">
+              <h1 className="col-span-12 md:col-span-7 text-5xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[0.95]">
                 {lang === "pl"
                   ? "Większość problemów z designem to nie problemy z designem."
                   : "Most design problems are not design problems."}
               </h1>
-              <div className="max-w-xl md:justify-self-end space-y-6">
+              <div className="col-span-12 md:col-span-5 md:justify-self-end max-w-xl space-y-6">
                 <p className="text-xl md:text-2xl text-neutral-700 dark:text-neutral-300 leading-snug font-medium tracking-tight">
                   {lang === "pl"
                     ? "Wynikają z niejasnych briefów, rozproszonych requestów, wolnych decyzji, słabego ownership'u i brakujących standardów jakości."

@@ -31,9 +31,10 @@ export function HomePrinciples() {
   return (
     <section className="py-24 md:py-32 bg-background text-white border-t border-white/10">
       <div className="max-w-[1800px] mx-auto px-8 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
+        {/* 3 cards — 12-col 4+4+4 */}
+        <div className="grid grid-cols-12 gap-6 md:gap-8">
           {principles.map((item, i) => (
-            <Reveal key={i} delay={i * 0.1}>
+            <Reveal key={i} delay={i * 0.1} className="col-span-12 md:col-span-4">
               <div className="flex flex-col h-full gap-8">
                 {/* Image Placeholder */}
                 <ImageHover className="aspect-[4/3] bg-white/5" tiltMax={6} glowIntensity={0.15}>

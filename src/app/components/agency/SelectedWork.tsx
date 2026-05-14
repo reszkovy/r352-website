@@ -15,8 +15,9 @@ export function SelectedWork() {
   return (
     <section className="py-32 bg-transparent relative z-10">
       <div className="max-w-[1800px] mx-auto px-8 md:px-12">
-        <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-16 gap-8 text-center md:text-left">
-           <Reveal width="fit-content" className="mx-auto md:mx-0">
+        {/* Header — 12-col 9+3 (title left dominant, view-all right) */}
+        <div className="grid grid-cols-12 gap-6 md:gap-8 items-end mb-16">
+           <Reveal className="col-span-12 md:col-span-9">
              <div>
                <span className="type-sub-base mb-4 block">
                  {t("work.proof")}
@@ -24,9 +25,9 @@ export function SelectedWork() {
                <h2 className="type-h2">{t("work.selected_work")}</h2>
              </div>
            </Reveal>
-           <Reveal delay={0.2} width="fit-content" className="mx-auto md:mx-0">
-             <div className="text-center md:text-right max-w-md">
-               <MagneticButton 
+           <Reveal delay={0.2} className="col-span-12 md:col-span-3 md:justify-self-end">
+             <div className="md:text-right">
+               <MagneticButton
                  onClick={() => setLocation("/work")}
                  className="bg-transparent border-[#D4FF00]/20 text-[#D4FF00] hover:bg-[#D4FF00] hover:text-black"
                  glowColor="rgba(212, 255, 0, 0.2)"
@@ -38,9 +39,10 @@ export function SelectedWork() {
            </Reveal>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+        {/* Project cards — 12-col 6+6, third project full-width col-12 */}
+        <div className="grid grid-cols-12 gap-6 md:gap-8">
           {selectedProjects.map((project, index) => (
-            <Reveal key={project.id} delay={0.3 + (index * 0.1)} className={index === 2 ? "md:col-span-2" : ""}>
+            <Reveal key={project.id} delay={0.3 + (index * 0.1)} className={index === 2 ? "col-span-12" : "col-span-12 md:col-span-6"}>
               <Link href={`/work/${project.id}`} className="block group cursor-pointer relative">
                    <div className="aspect-[16/9] w-full bg-[#111] relative overflow-hidden transition-all duration-[1.5s]">
                      <ParallaxImage 

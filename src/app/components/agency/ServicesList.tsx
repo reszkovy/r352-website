@@ -85,10 +85,10 @@ export function ServicesList() {
     <section className="py-32 md:py-40 border-t border-white/5">
       <div className="max-w-[1800px] mx-auto px-8 md:px-12">
 
-        {/* ─── HEADER ─── */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-20 mb-20 md:mb-24">
+        {/* ─── HEADER — 12-col 5+7 asymmetric (title left, copy right) ─── */}
+        <div className="grid grid-cols-12 gap-6 md:gap-8 mb-20 md:mb-24">
           <Reveal>
-            <div>
+            <div className="col-span-12 lg:col-span-5">
               <span className="text-[11px] uppercase tracking-[2px] text-[#D4FF00] font-display mb-4 block">
                 {lang === "pl" ? "System" : "System"}
               </span>
@@ -99,7 +99,7 @@ export function ServicesList() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <div className="flex flex-col gap-6">
+            <div className="col-span-12 lg:col-span-7 flex flex-col gap-6">
               <p className="text-xl md:text-2xl text-neutral-300 font-medium tracking-tight leading-snug max-w-2xl">
                 {lang === "pl"
                   ? "Strategia decyduje co dostarczamy. Operating system robi pracę przewidywalną. Design & Production dostarcza assety. Build & Optimize obsługuje wdrożenie."
@@ -114,10 +114,10 @@ export function ServicesList() {
           </Reveal>
         </div>
 
-        {/* ─── 4 PILLARS GRID — gap-px on a slightly lighter parent creates hair-line dividers without chunky borders ─── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.06] mb-24 md:mb-28">
+        {/* ─── 4 PILLARS GRID — 12-col, each col-span-3 on lg+ (3+3+3+3); gap-px creates hair-line dividers ─── */}
+        <div className="grid grid-cols-12 gap-px bg-white/[0.06] mb-24 md:mb-28">
           {PILLARS.map((p, i) => (
-            <Reveal key={p.num} delay={i * 0.08}>
+            <Reveal key={p.num} delay={i * 0.08} className="col-span-12 md:col-span-6 lg:col-span-3">
               <div className="p-8 md:p-10 h-full flex flex-col gap-4 group bg-[#0a0a0a] hover:bg-[#0f0f0f] transition-colors duration-500">
                 <div className="flex items-baseline justify-between">
                   <span className="font-display text-sm text-[#D4FF00]">{p.num}</span>
@@ -144,12 +144,13 @@ export function ServicesList() {
         {/* ─── 8-STEP PROCESS STRIP ─── */}
         <Reveal>
           <div className="border-t border-white/10 pt-12 md:pt-16 mb-16">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-              <div>
+            {/* 8-step strip header — 12-col 8+4 asymmetric */}
+            <div className="grid grid-cols-12 gap-6 md:gap-8 items-end mb-12">
+              <div className="col-span-12 md:col-span-8">
                 <span className="text-[11px] uppercase tracking-[2px] text-[#D4FF00] font-display mb-3 block">
                   {lang === "pl" ? "Proces · 8 kroków" : "Process · 8 steps"}
                 </span>
-                <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-white leading-tight max-w-2xl [text-wrap:balance]">
+                <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-white leading-tight [text-wrap:balance]">
                   {lang === "pl" ? (
                     <>
                       Jak system przepływa w praktyce
@@ -165,7 +166,7 @@ export function ServicesList() {
                   )}
                 </h3>
               </div>
-              <p className="text-sm text-neutral-500 leading-relaxed font-mono max-w-md [text-wrap:balance]">
+              <p className="col-span-12 md:col-span-4 text-sm text-neutral-500 leading-relaxed font-mono [text-wrap:balance]">
                 {lang === "pl" ? (
                   <>
                     Każdy krok ma cel, deliverable i metrykę.

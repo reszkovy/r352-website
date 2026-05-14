@@ -61,8 +61,9 @@ export function Services() {
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 border-t border-neutral-200 dark:border-white/10 pt-12 md:pt-16">
-          <Reveal delay={0.05}>
+        {/* 3 strategic areas — 12-col 4+4+4 */}
+        <div className="grid grid-cols-12 gap-6 md:gap-8 border-t border-neutral-200 dark:border-white/10 pt-12 md:pt-16">
+          <Reveal delay={0.05} className="col-span-12 md:col-span-4">
             <div>
               <span className="font-display text-sm text-[#D4FF00] mb-4 block">01</span>
               <h3 className="text-xl md:text-2xl font-bold tracking-tight text-neutral-900 dark:text-white mb-4 leading-tight">
@@ -76,7 +77,7 @@ export function Services() {
             </div>
           </Reveal>
 
-          <Reveal delay={0.12}>
+          <Reveal delay={0.12} className="col-span-12 md:col-span-4">
             <div>
               <span className="font-display text-sm text-[#D4FF00] mb-4 block">02</span>
               <h3 className="text-xl md:text-2xl font-bold tracking-tight text-neutral-900 dark:text-white mb-4 leading-tight">
@@ -90,7 +91,7 @@ export function Services() {
             </div>
           </Reveal>
 
-          <Reveal delay={0.19}>
+          <Reveal delay={0.19} className="col-span-12 md:col-span-4">
             <div>
               <span className="font-display text-sm text-[#D4FF00] mb-4 block">03</span>
               <h3 className="text-xl md:text-2xl font-bold tracking-tight text-neutral-900 dark:text-white mb-4 leading-tight">
@@ -105,16 +106,17 @@ export function Services() {
           </Reveal>
         </div>
 
+        {/* Strategy closer — 12-col 7+5 (caption left, CTA right) */}
         <Reveal delay={0.3}>
-          <div className="mt-16 md:mt-20 pt-10 border-t border-neutral-200 dark:border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-            <p className="text-sm text-neutral-500 dark:text-neutral-500 max-w-md leading-relaxed">
+          <div className="mt-16 md:mt-20 pt-10 border-t border-neutral-200 dark:border-white/10 grid grid-cols-12 gap-6 md:gap-8 items-center">
+            <p className="col-span-12 md:col-span-7 text-sm text-neutral-500 dark:text-neutral-500 leading-relaxed">
               {language === "pl"
                 ? "Strategia łączy się z każdym produktem niżej. Bez fundamentu wszystko poniżej to tylko ładne assety."
                 : "Strategy connects to every product below. Without the foundation, everything below is just nice-looking assets."}
             </p>
             <Link
               href="/brief"
-              className="group/link inline-flex items-center gap-2 text-base md:text-lg font-bold tracking-tight text-neutral-900 dark:text-white hover:text-[#D4FF00] dark:hover:text-[#D4FF00] transition-colors duration-300 shrink-0"
+              className="col-span-12 md:col-span-5 md:justify-self-end group/link inline-flex items-center gap-2 text-base md:text-lg font-bold tracking-tight text-neutral-900 dark:text-white hover:text-[#D4FF00] dark:hover:text-[#D4FF00] transition-colors duration-300"
             >
               <span>{language === "pl" ? "Omów potrzebę strategiczną" : "Discuss your strategic need"}</span>
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" strokeWidth={1.5} />
