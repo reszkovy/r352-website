@@ -181,21 +181,17 @@ export function ServicesList() {
           <div className="border-t border-white/10 pt-10 flex flex-col md:flex-row gap-6 md:gap-12 items-start">
             <Link
               href="/process"
-              className="group/link inline-flex items-center gap-3 text-base md:text-lg font-bold tracking-tight text-white hover:text-[#D4FF00] transition-colors duration-500"
+              className="group/link inline-flex items-center gap-2 text-base md:text-lg font-bold tracking-tight text-white hover:text-[#D4FF00] transition-colors duration-300"
             >
-              <span className="border-b-2 border-white group-hover/link:border-[#D4FF00] transition-colors duration-500 pb-1">
-                {lang === "pl" ? "Zobacz cały 8-krokowy proces" : "See the full 8-step process"}
-              </span>
-              <span className="inline-block transition-transform duration-500 group-hover/link:translate-x-2 text-xl">→</span>
+              <span>{lang === "pl" ? "Zobacz cały 8-krokowy proces" : "See the full 8-step process"}</span>
+              <span className="inline-block font-normal transition-transform duration-300 group-hover/link:translate-x-1">→</span>
             </Link>
             <Link
               href="/services"
-              className="group/link inline-flex items-center gap-3 text-base md:text-lg font-bold tracking-tight text-white hover:text-[#D4FF00] transition-colors duration-500"
+              className="group/link inline-flex items-center gap-2 text-base md:text-lg font-bold tracking-tight text-white hover:text-[#D4FF00] transition-colors duration-300"
             >
-              <span className="border-b-2 border-white group-hover/link:border-[#D4FF00] transition-colors duration-500 pb-1">
-                {lang === "pl" ? "Zobacz produkty i modele współpracy" : "See products and engagement models"}
-              </span>
-              <span className="inline-block transition-transform duration-500 group-hover/link:translate-x-2 text-xl">→</span>
+              <span>{lang === "pl" ? "Zobacz produkty i modele współpracy" : "See products and engagement models"}</span>
+              <span className="inline-block font-normal transition-transform duration-300 group-hover/link:translate-x-1">→</span>
             </Link>
           </div>
         </Reveal>

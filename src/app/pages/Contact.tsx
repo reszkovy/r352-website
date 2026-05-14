@@ -94,12 +94,10 @@ export function Contact() {
                   </p>
                   <a
                     href="mailto:hello@r352.com?subject=r352%20—%20hello"
-                    className="group/link inline-flex items-center gap-3 text-base md:text-lg font-bold tracking-tight text-[#D4FF00] hover:text-white transition-colors duration-500"
+                    className="group/link inline-flex items-center gap-2 text-base md:text-lg font-bold tracking-tight text-[#D4FF00] hover:text-white transition-colors duration-300"
                   >
-                    <span className="border-b-2 border-[#D4FF00] group-hover/link:border-white transition-colors duration-500 pb-1">
-                      hello@r352.com
-                    </span>
-                    <span className="inline-block transition-transform duration-500 group-hover/link:translate-x-2 text-lg">→</span>
+                    <span>hello@r352.com</span>
+                    <span className="inline-block font-normal transition-transform duration-300 group-hover/link:translate-x-1">→</span>
                   </a>
                 </div>
               </Reveal>
@@ -120,12 +118,10 @@ export function Contact() {
                     href="https://calendly.com/p-reszkovy/30min"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group/link inline-flex items-center gap-3 text-base md:text-lg font-bold tracking-tight text-[#D4FF00] hover:text-white transition-colors duration-500"
+                    className="group/link inline-flex items-center gap-2 text-base md:text-lg font-bold tracking-tight text-[#D4FF00] hover:text-white transition-colors duration-300"
                   >
-                    <span className="border-b-2 border-[#D4FF00] group-hover/link:border-white transition-colors duration-500 pb-1">
-                      {copy.pathC.cta}
-                    </span>
-                    <span className="inline-block transition-transform duration-500 group-hover/link:translate-x-2 text-lg">→</span>
+                    <span>{copy.pathC.cta}</span>
+                    <span className="inline-block font-normal transition-transform duration-300 group-hover/link:translate-x-1">→</span>
                   </a>
                 </div>
               </Reveal>

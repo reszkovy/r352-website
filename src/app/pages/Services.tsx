@@ -114,12 +114,10 @@ export function Services() {
             </p>
             <Link
               href="/brief"
-              className="group/link inline-flex items-center gap-3 text-base md:text-lg font-bold tracking-tight text-neutral-900 dark:text-white hover:text-[#D4FF00] dark:hover:text-[#D4FF00] transition-colors duration-500 shrink-0"
+              className="group/link inline-flex items-center gap-2 text-base md:text-lg font-bold tracking-tight text-neutral-900 dark:text-white hover:text-[#D4FF00] dark:hover:text-[#D4FF00] transition-colors duration-300 shrink-0"
             >
-              <span className="border-b-2 border-neutral-900 dark:border-white group-hover/link:border-[#D4FF00] transition-colors duration-500 pb-1">
-                {language === "pl" ? "Omów potrzebę strategiczną" : "Discuss your strategic need"}
-              </span>
-              <span className="inline-block transition-transform duration-500 group-hover/link:translate-x-2 text-xl">→</span>
+              <span>{language === "pl" ? "Omów potrzebę strategiczną" : "Discuss your strategic need"}</span>
+              <span className="inline-block font-normal transition-transform duration-300 group-hover/link:translate-x-1">→</span>
             </Link>
           </div>
         </Reveal>
