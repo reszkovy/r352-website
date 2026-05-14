@@ -50,7 +50,7 @@ export function AgencyHero() {
               
               <div className="flex flex-col gap-8 md:items-end shrink-0">
                 <div className="flex flex-col sm:flex-row gap-6">
-                   {/* PRIMARY CTA — Brief (promoted from /contact) */}
+                   {/* PRIMARY CTA — Brief */}
                    <MagneticButton
                      onClick={() => setLocation("/brief")}
                      className="bg-[#D4FF00] text-black border-none hover:bg-[#D4FF00]/90 rounded-none"

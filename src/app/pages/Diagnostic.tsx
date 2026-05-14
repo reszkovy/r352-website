@@ -4,8 +4,12 @@ import { Reveal } from "@/app/components/ui/Reveal";
 import { useLanguage } from "@/app/context/LanguageContext";
 
 // ─── Briefly intake config ───────────────────────────────────────────
+// API endpoint (Briefly backend) — leave on briefly-five-plum.vercel.app
 const BRIEFLY_BASE_URL = "https://briefly-five-plum.vercel.app";
 const BRIEFLY_INTAKE_URL = `${BRIEFLY_BASE_URL}/api/public/intake`;
+
+// Wizard landing — r3loop.app is the productized brand surface where users complete the brief
+const WIZARD_BASE_URL = "https://r3loop.app";
 
 const INTAKE_BRANDING = {
   logo_url: "https://r352.com/logo.svg",
@@ -116,11 +120,21 @@ export function Brief() {
         throw new Error(`Server response missing wizard_url. Raw: ${result.raw?.slice(0, 200)}`);
       }
 
-      // Defensive: Briefly API may return relative path (/brief/[token]) instead of absolute URL.
-      // Resolve to full URL against Briefly origin so browser doesn't navigate to r352.com/brief/[token] → 404.
-      const finalUrl = /^https?:\/\//i.test(wizardUrl)
-        ? wizardUrl
-        : `${BRIEFLY_BASE_URL}${wizardUrl.startsWith("/") ? "" : "/"}${wizardUrl}`;
+      // Defensive: Briefly API may return relative path OR absolute URL on either briefly-vercel or r3loop.app.
+      // Always rewrite host to r3loop.app — that's the productized wizard landing for end users.
+      let finalUrl: string;
+      if (/^https?:\/\//i.test(wizardUrl)) {
+        // Absolute URL — replace host with r3loop.app, preserve path/query/hash
+        try {
+          const parsed = new URL(wizardUrl);
+          finalUrl = `${WIZARD_BASE_URL}${parsed.pathname}${parsed.search}${parsed.hash}`;
+        } catch {
+          finalUrl = wizardUrl; // fallback if URL parsing fails
+        }
+      } else {
+        // Relative path — prefix with r3loop.app
+        finalUrl = `${WIZARD_BASE_URL}${wizardUrl.startsWith("/") ? "" : "/"}${wizardUrl}`;
+      }
 
       console.log("[brief] Redirecting to wizard:", finalUrl);
 
