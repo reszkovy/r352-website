@@ -37,19 +37,18 @@ export function FloatingBriefCTA() {
           aria-label={label}
           className={`
             fixed z-50 group
-            bottom-6 right-6 md:bottom-[45px] md:right-[88px]
-            inline-flex items-center gap-2.5
-            text-neutral-700 dark:text-white
-            font-display uppercase tracking-[0.2em] text-[11px]
-            hover:text-[#D4FF00] dark:hover:text-[#D4FF00]
+            bottom-6 right-6 md:bottom-[42px] md:right-[112px]
+            inline-flex items-center gap-3
+            text-[#D4FF00]
+            font-display uppercase tracking-[0.2em] text-[13px]
+            hover:text-white
             transition-colors duration-300
             cursor-pointer
-            [text-shadow:0_0_12px_rgba(0,0,0,0.4)]
-            dark:[text-shadow:0_0_12px_rgba(0,0,0,0.5)]
+            [text-shadow:0_0_16px_rgba(0,0,0,0.5)]
           `}
         >
+          <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
           <span>{label}</span>
-          <span className="inline-block text-[#D4FF00] group-hover:translate-x-1 transition-transform duration-300">→</span>
         </motion.button>
       )}
     </AnimatePresence>

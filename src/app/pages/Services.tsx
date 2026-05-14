@@ -240,34 +240,41 @@ export function Services() {
             </div>
           </Reveal>
 
-          {/* Right: Availability + access */}
+          {/* Right: Try it now — via /brief */}
           <Reveal delay={0.2}>
             <div className="border-t border-neutral-200 dark:border-white/10 pt-8 space-y-10">
               <div>
                 <span className="block text-[11px] uppercase tracking-[2px] text-[#D4FF00] font-display mb-6">
-                  {language === "pl" ? "Dostępność" : "Availability"}
+                  {language === "pl" ? "Wypróbuj teraz" : "Try it now"}
                 </span>
                 <h4 className="text-2xl md:text-3xl font-bold tracking-tight text-neutral-900 dark:text-white mb-4 leading-snug">
-                  {language === "pl" ? "Early access — by invitation." : "Early access — by invitation."}
+                  {language === "pl"
+                    ? "Wypełnij brief — doświadcz tego sam."
+                    : "Fill a brief — experience it firsthand."}
                 </h4>
                 <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-md">
                   {language === "pl"
-                    ? "Produkt w trakcie pilotażu z wybranymi organizacjami. Dostępny standalone albo jako warstwa nad Retainerem / Operating Partner."
-                    : "Currently piloting with selected organizations. Available standalone or as a layer on top of Retainer / Operating Partner."}
+                    ? "Wizard, który wypełnisz na /brief, działa na tym samym AI Brief Assistant. Zobacz jak zadaje właściwe pytania, ocenia jakość przed wysyłką i generuje strukturalny brief gotowy do produkcji w ~10 minut. Bez zobowiązań."
+                    : "The wizard you'll fill at /brief runs on the same AI Brief Assistant. See how it asks the right questions, scores quality before submission, and generates a production-ready brief in ~10 minutes. No commitment."}
                 </p>
               </div>
 
-              {/* CTA */}
-              <div className="border-t border-neutral-200 dark:border-white/10 pt-8">
-                <a
-                  href="mailto:hello@r352.com?subject=AI%20Brief%20Assistant"
+              {/* CTA — direct to brief */}
+              <div className="border-t border-neutral-200 dark:border-white/10 pt-8 space-y-5">
+                <Link
+                  href="/brief"
                   className="group/link inline-flex items-center gap-3 text-base md:text-lg font-bold tracking-tight text-neutral-900 dark:text-white hover:text-[#D4FF00] dark:hover:text-[#D4FF00] transition-colors duration-500"
                 >
                   <span className="border-b-2 border-neutral-900 dark:border-white group-hover/link:border-[#D4FF00] transition-colors duration-500 pb-1">
-                    {language === "pl" ? "Poproś o early access" : "Request early access"}
+                    {language === "pl" ? "Wypełnij brief" : "Start a brief"}
                   </span>
                   <span className="inline-block transition-transform duration-500 group-hover/link:translate-x-2 text-xl">→</span>
-                </a>
+                </Link>
+                <p className="text-xs text-neutral-500 dark:text-neutral-500 leading-relaxed max-w-md italic">
+                  {language === "pl"
+                    ? "Chcesz wdrożyć assistant'a u siebie? Napisz: hello@r352.com — dla custom prompts, integracji i organizational training."
+                    : "Want to deploy the assistant in your org? Reach out: hello@r352.com — for custom prompts, integrations and team training."}
+                </p>
               </div>
             </div>
           </Reveal>
