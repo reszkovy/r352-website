@@ -105,9 +105,9 @@ export function Home() {
 
       <Marquee />
 
-      <HomePrinciples />
-      
       <ServicesList />
+
+      <HomePrinciples />
 
       <div ref={engagementRef}>
         <EngagementModels />
