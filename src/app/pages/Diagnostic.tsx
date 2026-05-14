@@ -145,29 +145,104 @@ export function Brief() {
 
   return (
     <PageTransition>
-      {/* ─── Hero ─── */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 px-8 md:px-12">
+      {/* ─── Hero with inline form — above-the-fold action ─── */}
+      <section className="pt-32 pb-20 md:pt-40 md:pb-28 px-8 md:px-12">
         <div className="max-w-[1800px] mx-auto">
-          <Reveal>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-end">
-              <div>
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-12 lg:gap-20 items-start">
+
+            {/* LEFT: positioning + intro + warm lead microcopy */}
+            <Reveal>
+              <div className="lg:sticky lg:top-32">
                 <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-8">
                   {copy.hero.label}
                 </span>
-                <h1 className="text-5xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[0.95] mb-8">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[0.95] mb-8">
                   {copy.hero.title}
                 </h1>
-                <p className="text-xl md:text-2xl text-neutral-700 dark:text-neutral-300 leading-snug font-medium tracking-tight max-w-2xl">
+                <p className="text-lg md:text-xl text-neutral-700 dark:text-neutral-300 leading-snug font-medium tracking-tight mb-8 max-w-xl">
                   {copy.hero.intro}
                 </p>
-              </div>
-              <div className="md:justify-self-end max-w-md">
-                <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                <p className="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mb-8 max-w-xl">
                   {copy.hero.subline}
                 </p>
+                {/* Warm-lead microcopy — steers referrals */}
+                <p className="text-sm text-neutral-500 dark:text-neutral-500 leading-relaxed italic border-l-2 border-[#D4FF00]/40 pl-4 max-w-xl">
+                  {copy.form.warmLead}
+                </p>
               </div>
-            </div>
-          </Reveal>
+            </Reveal>
+
+            {/* RIGHT: form — above the fold, no scroll needed */}
+            <Reveal delay={0.15}>
+              <div className="lg:pl-8 lg:border-l border-neutral-200 dark:border-white/10">
+                <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-4">
+                  {copy.form.label}
+                </span>
+                <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-neutral-900 dark:text-white leading-snug mb-3">
+                  {copy.form.title}
+                </h2>
+                <p className="text-sm md:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-md mb-8">
+                  {copy.form.subtitle}
+                </p>
+
+                <form id="form" onSubmit={handleSubmit} className="flex flex-col gap-8 scroll-mt-24" noValidate>
+                  <FormText
+                    label={copy.form.fields.name}
+                    name="name"
+                    value={form.name}
+                    onChange={(v) => setForm((f) => ({ ...f, name: v }))}
+                    required
+                    autoComplete="name"
+                  />
+                  <FormText
+                    label={copy.form.fields.company}
+                    name="company"
+                    value={form.company}
+                    onChange={(v) => setForm((f) => ({ ...f, company: v }))}
+                    required
+                    autoComplete="organization"
+                  />
+                  <FormText
+                    label={copy.form.fields.email}
+                    name="email"
+                    type="email"
+                    value={form.email}
+                    onChange={(v) => setForm((f) => ({ ...f, email: v }))}
+                    required
+                    autoComplete="email"
+                  />
+                  <FormTextarea
+                    label={copy.form.fields.context}
+                    name="context"
+                    value={form.context}
+                    onChange={(v) => setForm((f) => ({ ...f, context: v }))}
+                    placeholder={copy.form.contextPlaceholder}
+                  />
+
+                  {error && (
+                    <div className="border-l-2 border-red-400 dark:border-red-400 pl-4 py-2">
+                      <p className="text-sm md:text-base text-red-400 dark:text-red-400 font-medium leading-snug" role="alert">
+                        {error}
+                      </p>
+                    </div>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    className="self-start inline-flex items-center gap-3 px-8 py-4 bg-[#D4FF00] text-black font-display uppercase tracking-widest text-sm hover:bg-white hover:text-black transition-colors duration-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {submitting ? copy.form.submitting : copy.form.cta}
+                    <span className="inline-block">→</span>
+                  </button>
+
+                  <p className="text-xs text-neutral-500 dark:text-neutral-500 leading-relaxed max-w-md">
+                    {copy.form.privacy}
+                  </p>
+                </form>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
@@ -242,88 +317,6 @@ export function Brief() {
         </div>
       </section>
 
-      {/* ─── Lead-capture form — minimal 4 fields, premium contact-style ─── */}
-      <section id="form" className="py-24 md:py-32 border-t border-neutral-200 dark:border-white/10 scroll-mt-24">
-        <div className="max-w-[1800px] mx-auto px-8 md:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-16 md:gap-24">
-            <Reveal>
-              <div>
-                <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-4">
-                  {copy.form.label}
-                </span>
-                <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[0.95] mb-6">
-                  {copy.form.title}
-                </h2>
-                <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-md mb-6">
-                  {copy.form.subtitle}
-                </p>
-                {/* Warm-lead microcopy — steers referrals to use brief without losing relationship */}
-                <p className="text-sm md:text-base text-neutral-500 dark:text-neutral-500 leading-relaxed max-w-md italic border-l-2 border-[#D4FF00]/40 pl-4">
-                  {copy.form.warmLead}
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.15}>
-              <form onSubmit={handleSubmit} className="flex flex-col gap-10 max-w-2xl" noValidate>
-                <FormText
-                  label={copy.form.fields.name}
-                  name="name"
-                  value={form.name}
-                  onChange={(v) => setForm((f) => ({ ...f, name: v }))}
-                  required
-                  autoComplete="name"
-                />
-                <FormText
-                  label={copy.form.fields.company}
-                  name="company"
-                  value={form.company}
-                  onChange={(v) => setForm((f) => ({ ...f, company: v }))}
-                  required
-                  autoComplete="organization"
-                />
-                <FormText
-                  label={copy.form.fields.email}
-                  name="email"
-                  type="email"
-                  value={form.email}
-                  onChange={(v) => setForm((f) => ({ ...f, email: v }))}
-                  required
-                  autoComplete="email"
-                />
-                <FormTextarea
-                  label={copy.form.fields.context}
-                  name="context"
-                  value={form.context}
-                  onChange={(v) => setForm((f) => ({ ...f, context: v }))}
-                  placeholder={copy.form.contextPlaceholder}
-                />
-
-                {error && (
-                  <div className="border-l-2 border-red-400 dark:border-red-400 pl-4 py-2">
-                    <p className="text-sm md:text-base text-red-400 dark:text-red-400 font-medium leading-snug" role="alert">
-                      {error}
-                    </p>
-                  </div>
-                )}
-
-                <button
-                  type="submit"
-                  disabled={submitting}
-                  className="self-start inline-flex items-center gap-3 px-8 py-4 bg-[#D4FF00] text-black font-display uppercase tracking-widest text-sm hover:bg-white hover:text-black transition-colors duration-500 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {submitting ? copy.form.submitting : copy.form.cta}
-                  <span className="inline-block">→</span>
-                </button>
-
-                <p className="text-xs md:text-sm text-neutral-500 dark:text-neutral-500 leading-relaxed max-w-2xl">
-                  {copy.form.privacy}
-                </p>
-              </form>
-            </Reveal>
-          </div>
-        </div>
-      </section>
     </PageTransition>
   );
 }
