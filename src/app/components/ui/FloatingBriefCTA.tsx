@@ -28,29 +28,27 @@ export function FloatingBriefCTA() {
     <AnimatePresence>
       {!shouldHide && (
         <motion.button
-          initial={{ opacity: 0, y: 20, scale: 0.9 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: 20, scale: 0.9 }}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 12 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           onClick={() => setLocation("/brief")}
           aria-label={label}
           className={`
             fixed z-50 group
             bottom-6 right-6 md:right-[88px]
-            inline-flex items-center gap-3
+            inline-flex items-center gap-2.5
             bg-[#D4FF00] text-black
-            px-5 py-3 md:px-6 md:py-3.5
-            font-display uppercase tracking-widest text-[11px] md:text-xs
-            shadow-[0_8px_24px_-8px_rgba(212,255,0,0.5)]
-            hover:shadow-[0_12px_36px_-8px_rgba(212,255,0,0.7)]
+            px-4 py-2.5
+            font-display uppercase tracking-[0.18em] text-[11px]
+            shadow-[0_4px_12px_-4px_rgba(0,0,0,0.15)]
             hover:bg-white
-            transition-all duration-500 ease-out
+            transition-colors duration-500 ease-out
             cursor-pointer
           `}
         >
-          <span className="block w-1.5 h-1.5 rounded-full bg-black animate-pulse" aria-hidden="true" />
           <span>{label}</span>
-          <span className="inline-block group-hover:translate-x-1 transition-transform duration-500">→</span>
+          <span className="inline-block group-hover:translate-x-0.5 transition-transform duration-500">→</span>
         </motion.button>
       )}
     </AnimatePresence>

@@ -33,8 +33,6 @@ export function Footer() {
     { label: t("nav.services"), href: "/services" },
     { label: t("services_page.deliverables.label"), href: "/deliverables" },
     { label: t("nav.journal"), href: "/journal" },
-    { label: t("nav.detailed_brief"), href: "/brief-access" },
-    { label: t("nav.pricing"), href: "/limitedaccess" },
     { label: "Start a brief — 48h response", href: "/brief" },
     { label: t("nav.contact") || "Kontakt", href: "/contact" },
   ];

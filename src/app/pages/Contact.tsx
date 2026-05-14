@@ -39,10 +39,10 @@ export function Contact() {
         </div>
       </section>
 
-      {/* ─── 2-Path Choice — Brief (primary) vs Direct mail (secondary) ─── */}
+      {/* ─── 3-Path Choice — Brief (primary) | Mail + Call (secondary) ─── */}
       <section className="py-20 md:py-28 border-t border-neutral-200 dark:border-white/10">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-20">
 
             {/* PATH A — PRIMARY: Brief */}
             <Reveal>
@@ -77,32 +77,59 @@ export function Contact() {
               </div>
             </Reveal>
 
-            {/* PATH B — SECONDARY: Direct mail */}
-            <Reveal delay={0.1}>
-              <div className="pt-10 lg:pt-12">
-                <span className="inline-block text-[10px] font-display uppercase tracking-[0.25em] text-neutral-500 dark:text-neutral-500 border border-neutral-300 dark:border-white/20 px-2 py-1 mb-8">
-                  {copy.pathB.badge}
-                </span>
-                <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-neutral-700 dark:text-neutral-300 mb-6 leading-[1.05]">
-                  {copy.pathB.title}
-                </h2>
-                <p className="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mb-8 max-w-xl">
-                  {copy.pathB.body}
-                </p>
-                <a
-                  href="mailto:hello@r352.com?subject=r352%20—%20hello"
-                  className="group/link inline-flex items-center gap-3 text-lg md:text-xl font-bold tracking-tight text-neutral-900 dark:text-white hover:text-[#D4FF00] dark:hover:text-[#D4FF00] transition-colors duration-500"
-                >
-                  <span className="border-b-2 border-neutral-900 dark:border-white group-hover/link:border-[#D4FF00] transition-colors duration-500 pb-1">
-                    hello@r352.com
+            {/* RIGHT col — Mail + Call stacked */}
+            <div className="flex flex-col gap-16">
+
+              {/* PATH B — SECONDARY: Direct mail */}
+              <Reveal delay={0.1}>
+                <div className="pt-10 lg:pt-12">
+                  <span className="inline-block text-[10px] font-display uppercase tracking-[0.25em] text-neutral-500 dark:text-neutral-500 border border-neutral-300 dark:border-white/20 px-2 py-1 mb-6">
+                    {copy.pathB.badge}
                   </span>
-                  <span className="inline-block transition-transform duration-500 group-hover/link:translate-x-2 text-xl">→</span>
-                </a>
-                <p className="text-xs md:text-sm text-neutral-500 dark:text-neutral-500 mt-6 leading-relaxed max-w-xl italic">
-                  {copy.pathB.steer}
-                </p>
-              </div>
-            </Reveal>
+                  <h2 className="text-xl md:text-2xl font-bold tracking-tight text-neutral-700 dark:text-neutral-300 mb-4 leading-[1.1]">
+                    {copy.pathB.title}
+                  </h2>
+                  <p className="text-sm md:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6 max-w-xl">
+                    {copy.pathB.body}
+                  </p>
+                  <a
+                    href="mailto:hello@r352.com?subject=r352%20—%20hello"
+                    className="group/link inline-flex items-center gap-3 text-base md:text-lg font-bold tracking-tight text-neutral-900 dark:text-white hover:text-[#D4FF00] dark:hover:text-[#D4FF00] transition-colors duration-500"
+                  >
+                    <span className="border-b-2 border-neutral-900 dark:border-white group-hover/link:border-[#D4FF00] transition-colors duration-500 pb-1">
+                      hello@r352.com
+                    </span>
+                    <span className="inline-block transition-transform duration-500 group-hover/link:translate-x-2 text-lg">→</span>
+                  </a>
+                </div>
+              </Reveal>
+
+              {/* PATH C — TERTIARY: Schedule a call (Calendly) */}
+              <Reveal delay={0.2}>
+                <div className="border-t border-neutral-200 dark:border-white/10 pt-10">
+                  <span className="inline-block text-[10px] font-display uppercase tracking-[0.25em] text-neutral-500 dark:text-neutral-500 border border-neutral-300 dark:border-white/20 px-2 py-1 mb-6">
+                    {copy.pathC.badge}
+                  </span>
+                  <h2 className="text-xl md:text-2xl font-bold tracking-tight text-neutral-700 dark:text-neutral-300 mb-4 leading-[1.1]">
+                    {copy.pathC.title}
+                  </h2>
+                  <p className="text-sm md:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6 max-w-xl">
+                    {copy.pathC.body}
+                  </p>
+                  <a
+                    href="https://calendly.com/p-reszkovy/30min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group/link inline-flex items-center gap-3 text-base md:text-lg font-bold tracking-tight text-neutral-900 dark:text-white hover:text-[#D4FF00] dark:hover:text-[#D4FF00] transition-colors duration-500"
+                  >
+                    <span className="border-b-2 border-neutral-900 dark:border-white group-hover/link:border-[#D4FF00] transition-colors duration-500 pb-1">
+                      {copy.pathC.cta}
+                    </span>
+                    <span className="inline-block transition-transform duration-500 group-hover/link:translate-x-2 text-lg">→</span>
+                  </a>
+                </div>
+              </Reveal>
+            </div>
 
           </div>
         </div>
@@ -140,6 +167,12 @@ const COPY_EN = {
     body: "For warm referrals, quick chats, or if you'd rather start with a sentence than a form. We read every email within 24 hours.",
     steer: "If you want a precise scope read from us, the brief gives us 10× more context than email — and you'll get a more meaningful first response.",
   },
+  pathC: {
+    badge: "Tertiary · 30 min slot",
+    title: "Or book a call directly.",
+    body: "Reserved time, no prep needed. Best for warm referrals, specific quick questions, or if you'd rather talk first and brief later.",
+    cta: "Book 30 min on Calendly",
+  },
 };
 
 const COPY_PL = {
@@ -167,5 +200,11 @@ const COPY_PL = {
     title: "Albo napisz bezpośrednio.",
     body: "Dla relacji warm, poleconych, quick chat'u, albo gdy wolisz zacząć od jednego zdania niż od formularza. Czytamy każdy mail w ciągu 24 godzin.",
     steer: "Jeśli chcesz precyzyjnej odpowiedzi co do zakresu — brief daje nam 10× więcej kontekstu niż mail, a Ty dostaniesz dużo bardziej trafny first response.",
+  },
+  pathC: {
+    badge: "Trzecia opcja · 30 min slot",
+    title: "Albo zarezerwuj rozmowę.",
+    body: "Rezerwacja terminu, bez przygotowania. Najlepsze dla relacji warm, konkretnych szybkich pytań, lub gdy wolisz najpierw porozmawiać, brief później.",
+    cta: "Zarezerwuj 30 min na Calendly",
   },
 };
