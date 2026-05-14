@@ -64,7 +64,10 @@ export function AgencyHero() {
 
                    {/* SECONDARY CTA — direct Calendly book (no extra hop via /contact) */}
                    <MagneticButton
-                     onClick={() => window.open("https://calendly.com/p-reszkovy/30min", "_blank", "noopener,noreferrer")}
+                     onClick={() => {
+                       try { (window as any).plausible?.("calendly_clicked", { props: { source: "hero" } }); } catch { /* noop */ }
+                       window.open("https://calendly.com/p-reszkovy/30min", "_blank", "noopener,noreferrer");
+                     }}
                      className="explore-work-btn bg-white/[0.04] text-white border-transparent hover:bg-white/[0.08] rounded-none"
                      glowColor="rgba(212, 255, 0, 0.2)"
                    >
@@ -76,6 +79,9 @@ export function AgencyHero() {
                 {/* Secondary text link — direct mail for warm leads */}
                 <a
                   href="mailto:hello@r352.com?subject=r352%20—%20hello"
+                  onClick={() => {
+                    try { (window as any).plausible?.("mail_clicked", { props: { source: "hero" } }); } catch { /* noop */ }
+                  }}
                   className="self-start md:self-end group inline-flex items-center gap-3 text-xs font-display uppercase tracking-[0.2em] text-neutral-400 hover:text-[#D4FF00] transition-colors duration-500 cursor-pointer"
                 >
                   <span className="w-6 h-px bg-neutral-600 group-hover:bg-[#D4FF00] group-hover:w-10 transition-all duration-500" />

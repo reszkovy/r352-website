@@ -95,6 +95,9 @@ export function Contact() {
                   </p>
                   <a
                     href="mailto:hello@r352.com?subject=r352%20—%20hello"
+                    onClick={() => {
+                      try { (window as any).plausible?.("mail_clicked", { props: { source: "contact_path_b" } }); } catch { /* noop */ }
+                    }}
                     className="group/link inline-flex items-center gap-2 text-base md:text-lg font-bold tracking-tight text-[#D4FF00] hover:text-white transition-colors duration-300"
                   >
                     <span>hello@r352.com</span>
@@ -119,6 +122,9 @@ export function Contact() {
                     href="https://calendly.com/p-reszkovy/30min"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => {
+                      try { (window as any).plausible?.("calendly_clicked", { props: { source: "contact_path_c" } }); } catch { /* noop */ }
+                    }}
                     className="group/link inline-flex items-center gap-2 text-base md:text-lg font-bold tracking-tight text-[#D4FF00] hover:text-white transition-colors duration-300"
                   >
                     <span>{copy.pathC.cta}</span>

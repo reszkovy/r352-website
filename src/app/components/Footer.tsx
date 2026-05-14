@@ -97,7 +97,7 @@ export function Footer() {
         <div className="max-w-[1800px] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-16 md:gap-8 border-t border-white/10 pt-16 mb-24">
             
-            {/* Column 1: Address */}
+            {/* Column 1: Address + Personal brand */}
             <div className="md:col-span-1">
                <span className="block text-xs font-display uppercase tracking-widest text-neutral-500 mb-6">{t("footer.studio")}</span>
                <p className="text-lg text-neutral-300 leading-relaxed">
@@ -110,6 +110,15 @@ export function Footer() {
                  className="block text-lg text-neutral-300 mt-6 hover:text-[#D4FF00] transition-colors duration-500 w-fit"
                >
                  hello@r352.com
+               </a>
+               <a
+                 href="https://www.linkedin.com/in/przemyslawreszka/"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="group inline-flex items-center gap-2 text-sm text-neutral-400 mt-3 hover:text-[#D4FF00] transition-colors duration-300 w-fit"
+               >
+                 <span>Founded by Reszek · LinkedIn</span>
+                 <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">↗</span>
                </a>
             </div>
 

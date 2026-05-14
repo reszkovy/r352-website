@@ -34,7 +34,10 @@ export function FloatingBriefCTA() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 8 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          onClick={() => setLocation("/brief")}
+          onClick={() => {
+            try { (window as any).plausible?.("brief_cta_clicked", { props: { source: "floating" } }); } catch { /* noop */ }
+            setLocation("/brief");
+          }}
           aria-label={label}
           className={`
             fixed z-50 group
