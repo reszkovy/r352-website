@@ -47,7 +47,7 @@ export function HomePrinciples() {
                 
                 {/* Content */}
                 <div className="flex flex-col gap-4">
-                  <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-white break-words [word-break:break-word] hyphens-auto text-balance">
+                  <h3 className="text-2xl md:text-3xl font-medium tracking-tight text-white break-words [word-break:break-word] hyphens-auto text-balance">
                     {item.title}
                   </h3>
                   <p className="text-lg text-neutral-400 leading-relaxed">

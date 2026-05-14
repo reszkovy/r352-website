@@ -178,7 +178,7 @@ export function Brief() {
                 <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-4">
                   {copy.form.label}
                 </span>
-                <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-neutral-900 dark:text-white leading-snug mb-3">
+                <h2 className="text-2xl md:text-3xl font-normal tracking-tight text-neutral-900 dark:text-white leading-snug mb-3">
                   {copy.form.title}
                 </h2>
                 <p className="text-sm md:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-md mb-8">
@@ -255,7 +255,7 @@ export function Brief() {
                 <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-4">
                   {copy.preview.label}
                 </span>
-                <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[0.95] mb-6">
+                <h2 className="text-4xl md:text-5xl font-normal tracking-tight text-neutral-900 dark:text-white leading-[1.05] mb-6">
                   {copy.preview.title}
                 </h2>
                 <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-md">
@@ -271,7 +271,7 @@ export function Brief() {
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <div className="flex-1">
-                      <h3 className="text-lg md:text-xl font-bold tracking-tight text-neutral-900 dark:text-white leading-tight mb-1 group-hover/item:text-[#D4FF00] transition-colors">
+                      <h3 className="text-lg md:text-xl font-medium tracking-tight text-neutral-900 dark:text-white leading-tight mb-1 group-hover/item:text-[#D4FF00] transition-colors">
                         {s.title}
                       </h3>
                       <p className="text-sm md:text-base text-neutral-500 dark:text-neutral-400 leading-snug">
@@ -293,7 +293,7 @@ export function Brief() {
             <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-4">
               {copy.howItWorks.label}
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-neutral-900 dark:text-white mb-16 leading-[0.95] max-w-3xl">
+            <h2 className="text-4xl md:text-5xl font-normal tracking-tight text-neutral-900 dark:text-white mb-16 leading-[1.05] max-w-3xl">
               {copy.howItWorks.title}
             </h2>
           </Reveal>
@@ -304,7 +304,7 @@ export function Brief() {
                   <span className="font-display text-base md:text-lg text-[#D4FF00] leading-none">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="text-lg md:text-xl font-bold tracking-tight text-neutral-900 dark:text-white leading-snug">
+                  <h3 className="text-lg md:text-xl font-medium tracking-tight text-neutral-900 dark:text-white leading-snug">
                     {step.title}
                   </h3>
                   <p className="text-sm md:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">

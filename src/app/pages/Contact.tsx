@@ -51,7 +51,7 @@ export function Contact() {
                 <span className="absolute top-0 left-0 inline-block text-[10px] font-display uppercase tracking-[0.25em] text-[#D4FF00] bg-[#D4FF00]/10 dark:bg-[#D4FF00]/10 border border-[#D4FF00]/40 px-2 py-1">
                   {copy.pathA.badge}
                 </span>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter text-neutral-900 dark:text-white mb-6 leading-[1.0]">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight text-neutral-900 dark:text-white mb-6 leading-[1.05]">
                   {copy.pathA.title}
                 </h2>
                 <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed mb-8 max-w-xl">
@@ -87,7 +87,7 @@ export function Contact() {
                   <span className="inline-block text-[10px] font-display uppercase tracking-[0.25em] text-neutral-500 dark:text-neutral-500 border border-neutral-300 dark:border-white/20 px-2 py-1 mb-6">
                     {copy.pathB.badge}
                   </span>
-                  <h2 className="text-xl md:text-2xl font-bold tracking-tight text-neutral-700 dark:text-neutral-300 mb-4 leading-[1.1]">
+                  <h2 className="text-xl md:text-2xl font-medium tracking-tight text-neutral-700 dark:text-neutral-300 mb-4 leading-[1.15]">
                     {copy.pathB.title}
                   </h2>
                   <p className="text-sm md:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6 max-w-xl">
@@ -109,7 +109,7 @@ export function Contact() {
                   <span className="inline-block text-[10px] font-display uppercase tracking-[0.25em] text-neutral-500 dark:text-neutral-500 border border-neutral-300 dark:border-white/20 px-2 py-1 mb-6">
                     {copy.pathC.badge}
                   </span>
-                  <h2 className="text-xl md:text-2xl font-bold tracking-tight text-neutral-700 dark:text-neutral-300 mb-4 leading-[1.1]">
+                  <h2 className="text-xl md:text-2xl font-medium tracking-tight text-neutral-700 dark:text-neutral-300 mb-4 leading-[1.15]">
                     {copy.pathC.title}
                   </h2>
                   <p className="text-sm md:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6 max-w-xl">

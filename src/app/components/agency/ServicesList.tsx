@@ -92,7 +92,7 @@ export function ServicesList() {
               <span className="text-[11px] uppercase tracking-[2px] text-[#D4FF00] font-display mb-4 block">
                 {lang === "pl" ? "System" : "System"}
               </span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-white leading-[0.95]">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.05]">
                 {lang === "pl" ? "Jeden system. Cztery warstwy." : "One system. Four layers."}
               </h2>
             </div>
@@ -127,7 +127,7 @@ export function ServicesList() {
                     </span>
                   )}
                 </div>
-                <h3 className="text-2xl md:text-[28px] font-bold tracking-tight text-white leading-tight group-hover:text-[#D4FF00] transition-colors duration-500">
+                <h3 className="text-2xl md:text-[28px] font-medium tracking-tight text-white leading-tight group-hover:text-[#D4FF00] transition-colors duration-500">
                   {p.title[lang]}
                 </h3>
                 <p className="text-sm text-neutral-400 font-mono tracking-tight leading-relaxed">

@@ -464,7 +464,7 @@ export function Process() {
               <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-6">
                 {lang === "pl" ? "Niepewny gdzie wąskie gardło?" : "Not sure where the bottleneck is?"}
               </span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-neutral-900 dark:text-white mb-8 leading-[0.95]">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-neutral-900 dark:text-white mb-8 leading-[1.05]">
                 {lang === "pl"
                   ? "Zacznij od sprintu diagnostycznego."
                   : "Start with a diagnostic sprint."}
