@@ -5,6 +5,7 @@ import { useLanguage } from "@/app/context/LanguageContext";
 import { AnimeGrid } from "@/app/components/ui/AnimeGrid";
 import { MagneticButton } from "@/app/components/ui/MagneticButton";
 import { ElasticLine } from "@/app/components/ui/ElasticLine";
+import { ArrowRight } from "lucide-react";
 
 export function AgencyHero() {
   const { t, language } = useLanguage();
@@ -79,7 +80,7 @@ export function AgencyHero() {
                 >
                   <span className="w-6 h-px bg-neutral-600 group-hover:bg-[#D4FF00] group-hover:w-10 transition-all duration-500" />
                   <span>{language === "pl" ? "Albo napisz bezpośrednio" : "Or write directly"} · hello@r352.com</span>
-                  <span className="inline-block group-hover:translate-x-1 transition-transform duration-500">→</span>
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.5} />
                 </a>
                 
                 <div className="flex flex-col gap-1 text-sm text-neutral-500 font-mono tracking-tight md:text-right">

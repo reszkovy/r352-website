@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { useRef } from "react";
 import { PhilosophyVisuals } from "./PhilosophyVisuals";
+import { ArrowRight } from "lucide-react";
 
 interface Belief {
   title: string;
@@ -144,7 +145,7 @@ export function Philosophy() {
           {nonneg.map((item, i) => (
             <Reveal key={i} delay={i * 0.05}>
               <div className="py-8 border-b border-neutral-100 dark:border-white/5 flex items-start gap-5">
-                <span className="text-neutral-400 dark:text-[#D4FF00] text-lg mt-0.5 shrink-0">→</span>
+                <ArrowRight className="w-4 h-4 mt-1 shrink-0 text-neutral-400 dark:text-[#D4FF00]" strokeWidth={1.5} />
                 <div>
                   <h4 className="text-xl md:text-2xl font-bold text-neutral-900 dark:text-white tracking-tight leading-tight mb-2">
                     {item.title}

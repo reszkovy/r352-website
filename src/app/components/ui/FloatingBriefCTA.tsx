@@ -1,6 +1,7 @@
 import { useLocation } from "wouter";
 import { motion, AnimatePresence } from "motion/react";
 import { useLanguage } from "@/app/context/LanguageContext";
+import { ArrowRight } from "lucide-react";
 
 /**
  * FloatingBriefCTA — persistent frosted-glass pill linking to /brief.
@@ -47,7 +48,7 @@ export function FloatingBriefCTA() {
             [text-shadow:0_0_16px_rgba(0,0,0,0.5)]
           `}
         >
-          <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
+          <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.5} />
           <span>{label}</span>
         </motion.button>
       )}

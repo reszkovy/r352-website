@@ -3,6 +3,7 @@ import { Reveal } from "@/app/components/ui/Reveal";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { useLocation } from "wouter";
 import { MagneticButton } from "@/app/components/ui/MagneticButton";
+import { ArrowRight } from "lucide-react";
 
 export function Contact() {
   const { language } = useLanguage();
@@ -97,7 +98,7 @@ export function Contact() {
                     className="group/link inline-flex items-center gap-2 text-base md:text-lg font-bold tracking-tight text-[#D4FF00] hover:text-white transition-colors duration-300"
                   >
                     <span>hello@r352.com</span>
-                    <span className="inline-block font-normal transition-transform duration-300 group-hover/link:translate-x-1">→</span>
+                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" strokeWidth={1.5} />
                   </a>
                 </div>
               </Reveal>
@@ -121,7 +122,7 @@ export function Contact() {
                     className="group/link inline-flex items-center gap-2 text-base md:text-lg font-bold tracking-tight text-[#D4FF00] hover:text-white transition-colors duration-300"
                   >
                     <span>{copy.pathC.cta}</span>
-                    <span className="inline-block font-normal transition-transform duration-300 group-hover/link:translate-x-1">→</span>
+                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" strokeWidth={1.5} />
                   </a>
                 </div>
               </Reveal>

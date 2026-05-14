@@ -1,6 +1,7 @@
 import { Reveal } from "@/app/components/ui/Reveal";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { Link } from "wouter";
+import { ArrowRight } from "lucide-react";
 
 /**
  * ServicesList — unified system section on Home.
@@ -148,16 +149,36 @@ export function ServicesList() {
                 <span className="text-[11px] uppercase tracking-[2px] text-[#D4FF00] font-display mb-3 block">
                   {lang === "pl" ? "Proces · 8 kroków" : "Process · 8 steps"}
                 </span>
-                <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-white leading-tight max-w-2xl">
-                  {lang === "pl"
-                    ? "Jak system przepływa w praktyce — od diagnozy po iterację."
-                    : "How the system flows in practice — from diagnosis to iteration."}
+                <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-white leading-tight max-w-2xl [text-wrap:balance]">
+                  {lang === "pl" ? (
+                    <>
+                      Jak system przepływa w praktyce
+                      <br className="hidden md:inline" />
+                      {" "}— od diagnozy po iterację.
+                    </>
+                  ) : (
+                    <>
+                      How the system flows in practice
+                      <br className="hidden md:inline" />
+                      {" "}— from diagnosis to iteration.
+                    </>
+                  )}
                 </h3>
               </div>
-              <p className="text-sm text-neutral-500 leading-relaxed font-mono max-w-md">
-                {lang === "pl"
-                  ? "Każdy krok ma cel, deliverable i metrykę. Nie pętle poprawek — checkpointy."
-                  : "Each step has a goal, a deliverable and a metric. Not revision loops — checkpoints."}
+              <p className="text-sm text-neutral-500 leading-relaxed font-mono max-w-md [text-wrap:balance]">
+                {lang === "pl" ? (
+                  <>
+                    Każdy krok ma cel, deliverable i metrykę.
+                    <br className="hidden md:inline" />
+                    {" "}Nie pętle poprawek — checkpointy.
+                  </>
+                ) : (
+                  <>
+                    Each step has a goal, a deliverable and a metric.
+                    <br className="hidden md:inline" />
+                    {" "}Not revision loops — checkpoints.
+                  </>
+                )}
               </p>
             </div>
 
@@ -184,14 +205,14 @@ export function ServicesList() {
               className="group/link inline-flex items-center gap-2 text-base md:text-lg font-bold tracking-tight text-white hover:text-[#D4FF00] transition-colors duration-300"
             >
               <span>{lang === "pl" ? "Zobacz cały 8-krokowy proces" : "See the full 8-step process"}</span>
-              <span className="inline-block font-normal transition-transform duration-300 group-hover/link:translate-x-1">→</span>
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" strokeWidth={1.5} />
             </Link>
             <Link
               href="/services"
               className="group/link inline-flex items-center gap-2 text-base md:text-lg font-bold tracking-tight text-white hover:text-[#D4FF00] transition-colors duration-300"
             >
               <span>{lang === "pl" ? "Zobacz produkty i modele współpracy" : "See products and engagement models"}</span>
-              <span className="inline-block font-normal transition-transform duration-300 group-hover/link:translate-x-1">→</span>
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" strokeWidth={1.5} />
             </Link>
           </div>
         </Reveal>

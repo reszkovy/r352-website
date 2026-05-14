@@ -117,7 +117,7 @@ export function Services() {
               className="group/link inline-flex items-center gap-2 text-base md:text-lg font-bold tracking-tight text-neutral-900 dark:text-white hover:text-[#D4FF00] dark:hover:text-[#D4FF00] transition-colors duration-300 shrink-0"
             >
               <span>{language === "pl" ? "Omów potrzebę strategiczną" : "Discuss your strategic need"}</span>
-              <span className="inline-block font-normal transition-transform duration-300 group-hover/link:translate-x-1">→</span>
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" strokeWidth={1.5} />
             </Link>
           </div>
         </Reveal>

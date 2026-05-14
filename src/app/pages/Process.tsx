@@ -5,6 +5,7 @@ import { Reveal } from "@/app/components/ui/Reveal";
 import { MagneticButton } from "@/app/components/ui/MagneticButton";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { useLocation } from "wouter";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 // ─── 8-step methodology ──────────────────────────────────
 interface Step {
@@ -319,7 +320,7 @@ export function Process() {
                     disabled={activeStep === 0}
                     className="border border-neutral-300 dark:border-white/[0.12] rounded px-5 py-2.5 text-sm text-neutral-600 dark:text-neutral-400 flex items-center gap-2 transition-all duration-300 hover:border-[#D4FF00] hover:text-[#D4FF00] hover:bg-[#D4FF00]/[0.04] disabled:opacity-15 disabled:cursor-not-allowed disabled:hover:border-neutral-300 disabled:hover:text-neutral-600 disabled:hover:bg-transparent cursor-pointer"
                   >
-                    ← <span className="hidden sm:inline">{lang === "pl" ? "Poprzedni" : "Previous"}</span>
+                    <ArrowLeft className="w-4 h-4" strokeWidth={1.5} /> <span className="hidden sm:inline">{lang === "pl" ? "Poprzedni" : "Previous"}</span>
                   </button>
                   <span className="font-mono text-[11px] text-neutral-400 dark:text-neutral-600 uppercase tracking-wide">
                     {String(activeStep + 1).padStart(2, "0")} / {String(TOTAL).padStart(2, "0")}
@@ -329,7 +330,7 @@ export function Process() {
                     disabled={activeStep === TOTAL - 1}
                     className="border border-neutral-300 dark:border-white/[0.12] rounded px-5 py-2.5 text-sm text-neutral-600 dark:text-neutral-400 flex items-center gap-2 transition-all duration-300 hover:border-[#D4FF00] hover:text-[#D4FF00] hover:bg-[#D4FF00]/[0.04] disabled:opacity-15 disabled:cursor-not-allowed disabled:hover:border-neutral-300 disabled:hover:text-neutral-600 disabled:hover:bg-transparent cursor-pointer"
                   >
-                    <span className="hidden sm:inline">{lang === "pl" ? "Następny" : "Next"}</span> →
+                    <span className="hidden sm:inline">{lang === "pl" ? "Następny" : "Next"}</span> <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
                   </button>
                 </div>
               </div>
@@ -485,7 +486,7 @@ export function Process() {
                 <span className="text-xs font-display uppercase tracking-widest">
                   {lang === "pl" ? "Umów rozmowę diagnostyczną" : "Book a diagnostic call"}
                 </span>
-                <span className="ml-2 inline-block group-hover:translate-x-1 transition-transform">→</span>
+                <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.5} />
               </MagneticButton>
               <MagneticButton
                 onClick={() => setLocation("/services#engagement-models")}
