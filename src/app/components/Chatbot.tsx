@@ -20,59 +20,70 @@ type FAQ = {
 const faqs: FAQ[] = [
   {
     id: "q1",
-    question: { 
-      pl: "Co dokładnie robicie i dla kogo?", 
-      en: "What do you actually do — and who is this for?" 
+    question: {
+      pl: "Co dokładnie sprzedajecie?",
+      en: "What exactly do you sell?",
     },
-    answer: { 
-      pl: "Pomagamy zespołom dostarczać spójny, wysokiej jakości design we wszystkich punktach styku, budując jasne procesy i standardy, a następnie realizując zadania w ramach tego systemu. To idealne rozwiązanie dla dynamicznych zespołów i wielooddziałowych marek, które potrzebują przewidywalnych rezultatów (digital, social media, druk, OOH) bez chaosu.", 
-      en: "We help teams ship consistent, high-quality design across touchpoints by building clear workflows and standards, then delivering through that system. It’s best for fast-moving teams and multi-location brands that need predictable output (digital, social, print, OOH) without chaos." 
+    answer: {
+      pl: "Nie sprzedajemy plików designu. Sprzedajemy operating systems — workflow briefingu, standardy jakości, mapę ownership decyzji, dashboardy performance — wszystko co zamienia chaos operacyjny w powtarzalny system. Plus seniorską egzekucję samej pracy (UX/UI, brand, kampanie). Ale rzemiosło bez struktury łamie się przy dostawie — dlatego budujemy oba.",
+      en: "We don't sell design files. We sell operating systems — briefing workflows, quality standards, decision ownership maps, performance dashboards — everything that turns operational chaos into a repeatable system. Plus senior execution on the design itself (UX/UI, brand, campaigns). But craft without structure breaks at delivery — so we build both.",
     },
   },
   {
     id: "q2",
-    question: { 
-      pl: "Czym jest model design partnership i jak wygląda komunikacja?", 
-      en: "What is the design partnership model and how do we communicate?" 
+    question: {
+      pl: "Czym się różnicie od typowej agencji?",
+      en: "How are you different from a typical agency?",
     },
-    answer: { 
-      pl: "Działamy jako zintegrowany partner design-first (retainer lub stały miesięczny zakres). Zgłoszenia przechodzą przez wspólną tablicę (Trello/Notion), feedback odbywa się w komentarzach w Figmie, a nasza e-komunikacja jest przede wszystkim asynchroniczna. W razie potrzeby robimy krótkie, cotygodniowe statusy, by odblokować decyzje. Zawsze wiesz, co jest w toku, co będzie dalej i kiedy nastąpi wdrożenie.", 
-      en: "We work as an embedded design-first partner (retainer or fixed monthly scope). Requests go through a shared board (Trello/Notion), feedback happens in Figma comments, and we keep communication async-first. If needed, we do a short weekly check-in to unblock decisions. You always know what’s in progress, what’s next, and when it ships." 
+    answer: {
+      pl: "Większość problemów z designem to nie problemy z designem. To problemy z niejasnymi briefami, rozproszonymi requestami, wolnymi decyzjami i brakującymi standardami jakości. Zaczynamy od diagnozy — co realnie zawodzi w Waszym workflow — zanim cokolwiek zaprojektujemy. Typowa agencja zaczyna od „co chcecie, że ładnie wygląda?”. My zaczynamy od „co się złamało w sposobie dostarczania i czemu?”.",
+      en: "Most design problems are not design problems. They're problems of unclear briefs, scattered requests, slow decisions and missing quality standards. We start with diagnosis — what's actually breaking in your workflow — before we design anything. A typical agency starts with 'what do you want to look pretty?'. We start with 'what's broken in how delivery happens and why?'.",
     },
   },
   {
     id: "q3",
-    question: { 
-      pl: "Co dokładnie dostarczacie, a czego NIE robicie?", 
-      en: "What can you deliver — and what do you NOT do?" 
+    question: {
+      pl: "Jakie modele współpracy oferujecie?",
+      en: "What engagement models do you offer?",
     },
-    answer: { 
-      pl: "Zapewniamy kompleksowe wsparcie projektowe: systemy i standardy, key visuale, materiały kampanijne, UI/UX oraz produkcję cross-channel (digital, druk, social media, OOH). Nie działamy jako standardowy wykonawca typu „zróbcie, żeby było ładnie” i nie pracujemy w Adobe InDesign – potrzebujemy jasnych celów i optymalizujemy procesy pod kątem jakości, szybkości oraz powtarzalności.", 
-      en: "We deliver end-to-end design support: systems and standards, key visuals, campaign assets, UI/UX, and cross-channel production (digital/print/social/OOH). We don’t act as a generic “make it pretty” vendor and we do not work in Adobe InDesign — we need clear goals and we optimize for quality, speed, and repeatability." 
+    answer: {
+      pl: "Pięć modeli — wybierasz w zależności od dojrzałości problemu i ambicji transformacji: 1) Diagnostic — audyt workflow + plan działania (entry tier, money-back jeśli rekomendacje nie są wdrażalne). 2) Sprint — focusowany projekt z jasnym zakresem (2-6 tyg). 3) Retainer — ciągła współpraca produkcyjna z systemem (od 3 mies). 4) Enterprise Sprint — pełna transformacja Creative Operating System (12-16 tyg). 5) Operating Partner — strategiczna rola partnera operacyjnego (kontrakt roczny). Plus produkt SaaS: AI Development & Automation. Pełne porównanie na /services.",
+      en: "Five models — chosen by maturity of the problem and ambition of transformation: 1) Diagnostic — workflow audit + action plan (entry tier, money-back if not actionable). 2) Sprint — focused project, clear scope (2-6 weeks). 3) Retainer — ongoing production partnership with a system (from 3 months). 4) Enterprise Sprint — full Creative Operating System transformation (12-16 weeks). 5) Operating Partner — strategic operating partner role (annual contract). Plus our SaaS product: AI Development & Automation. Full comparison on /services.",
     },
   },
   {
     id: "q4",
-    question: { 
-      pl: "Ile czasu zajmuje realizacja i jaki jest typowy czas dostarczenia?", 
-      en: "How long does it take to deliver and what’s the typical turnaround?" 
+    question: {
+      pl: "Jak wygląda Wasz proces?",
+      en: "How does your process work?",
     },
-    answer: { 
-      pl: "Czas realizacji zależy od stopnia złożoności, ale naszym celem są przewidywalne dostawy. Mniejsze zadania często wdrażamy w 24–72 godziny. Większe projekty (key visuale, systemy, projektowanie produktów) są dostarczane etapami z jasnymi punktami kontrolnymi. Z góry ustalamy priorytety, aby uniknąć niekończących się pętli poprawek.", 
-      en: "Turnaround depends on complexity, but the goal is predictable delivery. Small items often ship within 24–72 hours. Larger pieces (key visuals, systems, product design) are delivered in milestones with clear checkpoints. We align priorities upfront so nothing gets stuck in endless loops." 
+    answer: {
+      pl: "8-stepowy framework — ten sam dla każdego projektu, modyfikujemy głębokość, nie strukturę: Diagnose → Map → Standardize → Build → Govern → Ship → Measure → Iterate. Każdy krok ma własne deliverables i KPI. Nie zostawiamy rekomendacji — zostawiamy działający system. Interaktywny breakdown na /process.",
+      en: "An 8-step framework — same for every project, we modify depth not structure: Diagnose → Map → Standardize → Build → Govern → Ship → Measure → Iterate. Each step has its own deliverables and KPI. We don't leave recommendations — we leave a working system. Interactive breakdown on /process.",
     },
   },
   {
     id: "q5",
-    question: { 
-      pl: "Jak wygląda proces startu (kick-off)?", 
-      en: "What does the kickoff process look like?" 
+    question: {
+      pl: "Dla kogo to jest i dla kogo NIE?",
+      en: "Who is this for — and who is it NOT for?",
     },
-    answer: { 
-      pl: "Zaczynamy od krótkiego spotkania ujednolicającego: cele, kontekst, ograniczenia i kryteria sukcesu. Następnie ustalamy proces pracy (tablica + format briefu + zasady akceptacji) oraz uzgadniamy rytm pracy i priorytety. Potem dostawy przebiegają w sposób ciągły w ramach ustalonego systemu.", 
-      en: "We start with a short alignment: goals, context, constraints, and success criteria. Then we set the workflow (board + brief format + approval rules) and agree on cadence and priorities. After that, delivery runs continuously through the system." 
+    answer: {
+      pl: "TAK: marki wielolokalizacyjne (3+ lokalizacji), organizacje w fitness/wellness/health/retail, zespoły utknięte w niejasnych pętlach feedbacku, marketing teams z powtarzającymi się requestami, projekty od 50K+ PLN. NIE: jednorazowy baner, pojedynczy landing page, generic visual refresh bez powtarzającego się workflow. Jeśli nie pasujemy — polecimy kogoś z naszej sieci kto pasuje lepiej.",
+      en: "YES: multi-location brands (3+ locations), organizations in fitness/wellness/health/retail, teams stuck in unclear feedback loops, marketing teams with recurring requests, projects above 50K+ PLN. NO: one-off banners, single landing pages, generic visual refreshes with no recurring workflow. If we don't fit — we'll refer you to someone in our network who fits better.",
     },
-  }
+  },
+  {
+    id: "q6",
+    question: {
+      pl: "Jak zacząć współpracę?",
+      en: "How do I start?",
+    },
+    answer: {
+      pl: "Trzy ścieżki — w zależności od commitment'u: 1) Wypełnij brief (5-18 min, ustrukturyzowany, dopasowuje się do typu projektu) — pisemna odpowiedź w 48h. 2) Napisz bezpośrednio na hello@r352.com — dla warm referrals i quick chat. 3) Zarezerwuj 30-min call na Calendly. Każda opcja prowadzi do tego samego rezultatu — discovery call z pełnym kontekstem. Diagnostic ma money-back — bez ryzyka po Twojej stronie.",
+      en: "Three paths — based on commitment level: 1) Fill the brief (5-18 min, structured, adapts to project type) — written response within 48h. 2) Write directly to hello@r352.com — for warm referrals and quick chat. 3) Book a 30-min call on Calendly. Each option leads to the same outcome — a discovery call with full context. Diagnostic has money-back — zero risk on your side.",
+    },
+  },
 ];
 
 export function Chatbot() {
@@ -87,7 +98,9 @@ export function Chatbot() {
     setMessages([
       {
         id: "welcome",
-        text: language === 'pl' ? "Cześć! Tu wirtualny asystent r352. Szukasz wsparcia projektowego lub chcesz poznać nasz proces?" : "Hi! This is the r352 virtual assistant. Are you looking for design support or want to learn about our process?",
+        text: language === 'pl'
+          ? "Cześć — tu asystent r352. Mogę krótko opowiedzieć co sprzedajemy, jak działa nasz 8-step proces, jakie modele współpracy mamy i jak zacząć. Wybierz pytanie albo zacznij od briefa."
+          : "Hi — r352 assistant here. I can briefly cover what we sell, how our 8-step process works, our engagement models, and how to start. Pick a question or jump straight into the brief.",
         sender: "bot",
       }
     ]);
