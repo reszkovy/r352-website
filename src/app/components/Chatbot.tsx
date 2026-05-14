@@ -25,63 +25,85 @@ const faqs: FAQ[] = [
       en: "What exactly do you sell?",
     },
     answer: {
-      pl: "Nie sprzedajemy plików designu. Sprzedajemy operating systems — workflow briefingu, standardy jakości, mapę ownership decyzji, dashboardy performance — wszystko co zamienia chaos operacyjny w powtarzalny system. Plus seniorską egzekucję samej pracy (UX/UI, brand, kampanie). Ale rzemiosło bez struktury łamie się przy dostawie — dlatego budujemy oba.",
-      en: "We don't sell design files. We sell operating systems — briefing workflows, quality standards, decision ownership maps, performance dashboards — everything that turns operational chaos into a repeatable system. Plus senior execution on the design itself (UX/UI, brand, campaigns). But craft without structure breaks at delivery — so we build both.",
+      pl: "Nie sprzedajemy plików designu. Sprzedajemy operating systems — workflow briefingu, standardy jakości, mapę ownership decyzji i dashboardy performance — wszystko, co zamienia chaos operacyjny w powtarzalny system. Plus seniorską egzekucję samej pracy (UX/UI, brand, kampanie, AI workflows). Ale rzemiosło bez struktury łamie się przy dostawie — dlatego budujemy oba.",
+      en: "We don't sell design files. We sell operating systems — briefing workflows, quality standards, decision ownership maps and performance dashboards — everything that turns operational chaos into a repeatable system. Plus senior execution on the work itself (UX/UI, brand, campaigns, AI workflows). But craft without structure breaks at delivery — so we build both.",
     },
   },
   {
     id: "q2",
     question: {
-      pl: "Czym się różnicie od typowej agencji?",
-      en: "How are you different from a typical agency?",
+      pl: "Czym jest 8-step Process?",
+      en: "What is the 8-step Process?",
     },
     answer: {
-      pl: "Większość problemów z designem to nie problemy z designem. To problemy z niejasnymi briefami, rozproszonymi requestami, wolnymi decyzjami i brakującymi standardami jakości. Zaczynamy od diagnozy — co realnie zawodzi w Waszym workflow — zanim cokolwiek zaprojektujemy. Typowa agencja zaczyna od „co chcecie, że ładnie wygląda?”. My zaczynamy od „co się złamało w sposobie dostarczania i czemu?”.",
-      en: "Most design problems are not design problems. They're problems of unclear briefs, scattered requests, slow decisions and missing quality standards. We start with diagnosis — what's actually breaking in your workflow — before we design anything. A typical agency starts with 'what do you want to look pretty?'. We start with 'what's broken in how delivery happens and why?'.",
+      pl: "Nasz framework — ten sam dla każdego projektu, modyfikujemy głębokość, nie strukturę: 01 Diagnose → 02 Map → 03 Standardize → 04 Build → 05 Govern → 06 Ship → 07 Measure → 08 Iterate. Każdy krok ma własne deliverables i mierzalne KPI (np. „% briefów ready przy pierwszym złożeniu — cel 80%+”). Diagnose to entry point — 3-5 dni dla fokusowanych projektów, 1-2 tygodnie dla organizacji. Pełen interaktywny breakdown z timeline'em per step na /process.",
+      en: "Our framework — same for every project, we modify depth not structure: 01 Diagnose → 02 Map → 03 Standardize → 04 Build → 05 Govern → 06 Ship → 07 Measure → 08 Iterate. Each step has its own deliverables and measurable KPI (e.g. '% of briefs meeting readiness checklist on first submission — target 80%+'). Diagnose is the entry point — 3-5 days for focused projects, 1-2 weeks for organization-wide engagements. Full interactive breakdown with per-step timeline on /process.",
     },
   },
   {
     id: "q3",
     question: {
-      pl: "Jakie modele współpracy oferujecie?",
-      en: "What engagement models do you offer?",
+      pl: "Jakie modele współpracy mam do wyboru?",
+      en: "What engagement models can I choose from?",
     },
     answer: {
-      pl: "Pięć modeli — wybierasz w zależności od dojrzałości problemu i ambicji transformacji: 1) Diagnostic — audyt workflow + plan działania (entry tier, money-back jeśli rekomendacje nie są wdrażalne). 2) Sprint — focusowany projekt z jasnym zakresem (2-6 tyg). 3) Retainer — ciągła współpraca produkcyjna z systemem (od 3 mies). 4) Enterprise Sprint — pełna transformacja Creative Operating System (12-16 tyg). 5) Operating Partner — strategiczna rola partnera operacyjnego (kontrakt roczny). Plus produkt SaaS: AI Development & Automation. Pełne porównanie na /services.",
-      en: "Five models — chosen by maturity of the problem and ambition of transformation: 1) Diagnostic — workflow audit + action plan (entry tier, money-back if not actionable). 2) Sprint — focused project, clear scope (2-6 weeks). 3) Retainer — ongoing production partnership with a system (from 3 months). 4) Enterprise Sprint — full Creative Operating System transformation (12-16 weeks). 5) Operating Partner — strategic operating partner role (annual contract). Plus our SaaS product: AI Development & Automation. Full comparison on /services.",
+      pl: "Pięć modeli — wybierasz w zależności od dojrzałości problemu: 1) Diagnostic — audyt workflow + plan działania (1-2 tyg, entry tier, money-back jeśli rekomendacje nie są wdrażalne w 60 dni). 2) Sprint — focusowany projekt z jasnym zakresem (2-6 tyg). 3) Retainer — ciągła współpraca z systemem (od 3 mies). 4) Enterprise Sprint — pełna transformacja Creative Operating System (12-16 tyg + 90-day handover). 5) Operating Partner — strategiczna rola, opieka nad systemem (kontrakt roczny, monthly cadence). Pełne porównanie + comparison table na /services.",
+      en: "Five models — pick by problem maturity: 1) Diagnostic — workflow audit + action plan (1-2 weeks, entry tier, money-back if recommendations aren't actionable within 60 days). 2) Sprint — focused project with clear scope (2-6 weeks). 3) Retainer — ongoing partnership with a system (from 3 months). 4) Enterprise Sprint — full Creative Operating System transformation (12-16 weeks + 90-day handover). 5) Operating Partner — strategic role, custodian of the system (annual contract, monthly cadence). Full comparison + table on /services.",
     },
   },
   {
     id: "q4",
     question: {
-      pl: "Jak wygląda Wasz proces?",
-      en: "How does your process work?",
+      pl: "Co to jest AI Development & Automation?",
+      en: "What is AI Development & Automation?",
     },
     answer: {
-      pl: "8-stepowy framework — ten sam dla każdego projektu, modyfikujemy głębokość, nie strukturę: Diagnose → Map → Standardize → Build → Govern → Ship → Measure → Iterate. Każdy krok ma własne deliverables i KPI. Nie zostawiamy rekomendacji — zostawiamy działający system. Interaktywny breakdown na /process.",
-      en: "An 8-step framework — same for every project, we modify depth not structure: Diagnose → Map → Standardize → Build → Govern → Ship → Measure → Iterate. Each step has its own deliverables and KPI. We don't leave recommendations — we leave a working system. Interactive breakdown on /process.",
+      pl: "To produkt consultingowy — bierzemy system który zbudowaliśmy w fazie Standardize/Govern i operacjonalizujemy go: AI brief assistant trenowany na Waszych standardach, integracje workflow z Asana/Notion/Figma/Slack, automatyzacja quality review per typ assetu, engine routingu i ownership decyzji, workflow performance dashboard. Dla zespołów, które MAJĄ już standardy, ale egzekucja wciąż zależy od heroizmu — gotowe wdrożyć warstwę operacyjną, która zamienia standardy w automatyczny workflow. 90-day adoption plan z checkpoint reviews. Pełen breakdown na /services (karta 06).",
+      en: "It's a consulting product — we take the system we've built in the Standardize/Govern phase and operationalize it: AI brief assistant trained on your standards, workflow integrations with Asana/Notion/Figma/Slack, quality review automation per asset type, decision ownership & routing engine, workflow performance dashboard. For teams that already HAVE standards but execution still depends on heroics — ready to ship the operating layer that turns standards into automated workflow. 90-day adoption plan with checkpoint reviews. Full breakdown on /services (card 06).",
     },
   },
   {
     id: "q5",
     question: {
-      pl: "Dla kogo to jest i dla kogo NIE?",
-      en: "Who is this for — and who is it NOT for?",
+      pl: "Czym jest AI Brief Assistant?",
+      en: "What is the AI Brief Assistant?",
     },
     answer: {
-      pl: "TAK: marki wielolokalizacyjne (3+ lokalizacji), organizacje w fitness/wellness/health/retail, zespoły utknięte w niejasnych pętlach feedbacku, marketing teams z powtarzającymi się requestami, projekty od 50K+ PLN. NIE: jednorazowy baner, pojedynczy landing page, generic visual refresh bez powtarzającego się workflow. Jeśli nie pasujemy — polecimy kogoś z naszej sieci kto pasuje lepiej.",
-      en: "YES: multi-location brands (3+ locations), organizations in fitness/wellness/health/retail, teams stuck in unclear feedback loops, marketing teams with recurring requests, projects above 50K+ PLN. NO: one-off banners, single landing pages, generic visual refreshes with no recurring workflow. If we don't fit — we'll refer you to someone in our network who fits better.",
+      pl: "Nasz SaaS — produkt subskrypcyjny. Zamienia niejasne requesty w gotowe briefy w 5 minut. Trenowany na 500+ realnych briefach z naszych projektów. Co robi: zadaje właściwe pytania, generuje strukturalne briefy (zgodne z Definition of Ready), ocenia jakość briefa 0–100 przed wysyłką, integruje się ze Slack/Notion/Asana, uczy się Twojej organizacji. Dostępny w early access — by invitation. Działa standalone albo jako warstwa nad Retainerem / Operating Partner. Pełne info na /services (sekcja „Product · SaaS”).",
+      en: "It's our SaaS — subscription product. Turns unclear requests into ready briefs in 5 minutes. Trained on 500+ real briefs from our projects. What it does: asks the right questions, generates structured briefs (against the Definition of Ready), scores brief quality 0–100 before submission, integrates with Slack/Notion/Asana, learns your organization. Available in early access — by invitation. Works standalone or as a layer on top of Retainer / Operating Partner. Full info on /services ('Product · SaaS' section).",
     },
   },
   {
     id: "q6",
     question: {
+      pl: "Czym się różnicie od typowej agencji?",
+      en: "How are you different from a typical agency?",
+    },
+    answer: {
+      pl: "Większość problemów z designem to nie problemy z designem. To problemy z niejasnymi briefami, rozproszonymi requestami, wolnymi decyzjami i brakującymi standardami jakości. Typowa agencja zaczyna od pytania „co ma ładnie wyglądać”. My zaczynamy od diagnozy — co realnie zawodzi w Waszym workflow — zanim cokolwiek zaprojektujemy. Nie zostawiamy decka z rekomendacjami — zostawiamy działający system + zespół, który go używa. Pełen manifest na /philosophy (6 beliefs + 6 non-negotiables).",
+      en: "Most design problems are not design problems. They're problems of unclear briefs, scattered requests, slow decisions and missing quality standards. A typical agency starts with 'what should look pretty?'. We start with diagnosis — what's actually breaking in your workflow — before we design anything. We don't leave a deck of recommendations — we leave a working system + a team that uses it. Full manifesto on /philosophy (6 beliefs + 6 non-negotiables).",
+    },
+  },
+  {
+    id: "q7",
+    question: {
+      pl: "Dla kogo to jest, a dla kogo NIE?",
+      en: "Who is this for — and who is it NOT for?",
+    },
+    answer: {
+      pl: "TAK: marki wielolokalizacyjne (3+ lokalizacji), organizacje w fitness/wellness/health/retail, marketing teams z powtarzającymi się requestami, zespoły utknięte w niejasnych pętlach feedbacku, gdzie jakość/szybkość/ownership trzeba zsystemizować. NIE: jednorazowy baner, pojedynczy landing page, generic visual refresh bez powtarzającego się workflow. Jeśli nie pasujemy — powiemy to w feedbacku i polecimy kogoś z naszej sieci, kto pasuje lepiej. Bez upsell pressure.",
+      en: "YES: multi-location brands (3+ locations), organizations in fitness/wellness/health/retail, marketing teams with recurring asset requests, teams stuck in unclear feedback loops, where quality/speed/ownership need to be systemized. NO: one-off banners, single landing pages, generic visual refreshes with no recurring workflow. If we don't fit — we'll tell you in the feedback and refer you to someone in our network who fits better. No upsell pressure.",
+    },
+  },
+  {
+    id: "q8",
+    question: {
       pl: "Jak zacząć współpracę?",
       en: "How do I start?",
     },
     answer: {
-      pl: "Trzy ścieżki — w zależności od commitment'u: 1) Wypełnij brief (5-18 min, ustrukturyzowany, dopasowuje się do typu projektu) — pisemna odpowiedź w 48h. 2) Napisz bezpośrednio na hello@r352.com — dla warm referrals i quick chat. 3) Zarezerwuj 30-min call na Calendly. Każda opcja prowadzi do tego samego rezultatu — discovery call z pełnym kontekstem. Diagnostic ma money-back — bez ryzyka po Twojej stronie.",
-      en: "Three paths — based on commitment level: 1) Fill the brief (5-18 min, structured, adapts to project type) — written response within 48h. 2) Write directly to hello@r352.com — for warm referrals and quick chat. 3) Book a 30-min call on Calendly. Each option leads to the same outcome — a discovery call with full context. Diagnostic has money-back — zero risk on your side.",
+      pl: "Trzy ścieżki — w zależności od commitment'u: 1) Wypełnij brief (5-18 min, ustrukturyzowany, dopasowuje się do typu projektu) — pisemna odpowiedź w 48h. 2) Napisz bezpośrednio na hello@r352.com — dla warm referrals i quick chat. 3) Zarezerwuj 30-min call na Calendly. Każda opcja prowadzi do tego samego: discovery call z pełnym kontekstem. Diagnostic ma money-back — bez ryzyka po Twojej stronie.",
+      en: "Three paths — by commitment level: 1) Fill the brief (5-18 min, structured, adapts to project type) — written response within 48h. 2) Write directly to hello@r352.com — for warm referrals and quick chat. 3) Book a 30-min call on Calendly. Each option leads to the same outcome: a discovery call with full context. Diagnostic has money-back — zero risk on your side.",
     },
   },
 ];
