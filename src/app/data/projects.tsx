@@ -180,6 +180,68 @@ export const projects = [
     ]
   },
   {
+    id: "archicom",
+    client: "Archicom",
+    title: "Cross-investment communication system",
+    category: {
+      en: "Real Estate / Multi-channel Production",
+      pl: "Real Estate / Produkcja Multi-channel"
+    },
+    year: "2024",
+    image: archicomCover,      // panoramic thumbnail — what shows on /work list
+    coverImage: archicomCover, // same for project detail hero
+    // YouTube anchor video — embedded full-width above image gallery
+    videoUrl: "https://www.youtube.com/watch?v=7f_Qzq6B7kY",
+    // Alternating order RP/BP to show both investments early in gallery
+    images: [
+      archicomRP1,
+      archicomBP1,
+      archicomRP2,
+      archicomBP2,
+      archicomRP3,
+      archicomBP3,
+      archicomRP4,
+      archicomBP4,
+    ],
+    isInternal: false,
+    description: {
+      en: "Archicom — top Polish residential developer — runs multiple investments simultaneously, each requiring a launch campaign that feels distinct (location identity) yet stays anchored to the corporate brand. We built the communication system across two flagship Wrocław investments: River Point and Bulwar Północny — covering print, outdoor, digital, animation and production support.",
+      pl: "Archicom — czołowy polski deweloper mieszkaniowy — prowadzi wiele inwestycji równolegle, każda wymaga kampanii launchowej, która jest rozpoznawalna lokalnie, ale spójna z marką korporacyjną. Zbudowaliśmy system komunikacji dla dwóch flagowych wrocławskich inwestycji: River Point i Bulwary Północne — print, outdoor, digital, animacja i wsparcie produkcyjne."
+    },
+    services: {
+      en: ["Print Materials", "Outdoor Campaigns", "Digital Assets", "Animations & Video", "Production Support"],
+      pl: ["Materiały Drukowane", "Kampanie Outdoor", "Zasoby Digital", "Animacje i Wideo", "Wsparcie Produkcyjne"]
+    },
+    challenge: {
+      en: "Each investment needs its own brand expression — River Point and Bulwar Północny have different audiences, locations and architectural language. But every asset has to feel like Archicom. Add 5+ media channels per investment plus tight launch timelines, and you have a production volume challenge with brand consistency stakes.",
+      pl: "Każda inwestycja potrzebuje własnej ekspresji brandowej — River Point i Bulwary Północne mają różnych odbiorców, lokalizacje i język architektoniczny. Ale każdy asset musi być rozpoznawalny jako Archicom. Dodaj 5+ kanałów mediowych per inwestycja plus napięte launch timeline'y i masz wyzwanie wolumenu produkcji ze stawkami brand consistency."
+    },
+    decisions: {
+      en: "We structured the work around a two-layer brand system: Archicom corporate identity as the foundation, investment-specific micro-brand as the expression layer. Production was built around modular templates per channel — each new asset is an adaptation, not a fresh design. Animation became the anchor asset, with derivatives generated for static formats.",
+      pl: "Zorganizowaliśmy pracę wokół dwuwarstwowego systemu marki: Archicom korporacyjne jako fundament, micro-brand per inwestycja jako warstwa ekspresji. Produkcja oparta o modułowe szablony per kanał — każdy nowy asset to adaptacja, nie projekt od zera. Animacja stała się asset'em flagowym, z derivatywami dla formatów statycznych."
+    },
+    approach: {
+      en: "We handled the full pipeline from concept to delivered assets — not just design files, but the production support that takes work from approved layout to printed billboard, animated ad, social media set. For each investment, we built a content library the marketing team could pull from for ongoing campaigns.",
+      pl: "Obsługiwaliśmy pełen pipeline od koncepcji do dostarczonych assetów — nie tylko pliki designu, ale wsparcie produkcyjne, które przeprowadza pracę od zatwierdzonego layoutu do wydrukowanego billboardu, animowanej reklamy, social media setu. Per inwestycja zbudowaliśmy bibliotekę treści, którą zespół marketingu mógł reużywać do bieżących kampanii."
+    },
+    quote: {
+      en: "Each investment is a launch event. The system makes it routine excellence, not heroic delivery.",
+      pl: "Każda inwestycja to launch event. System sprawia, że to rutynowa doskonałość, nie heroiczna dostawa."
+    },
+    outcome: {
+      en: "Two flagship Wrocław investments launched with full multi-channel campaigns — print, outdoor, digital, animation. Brand consistency across investments AND with Archicom corporate. Production cadence that kept up with sales-driven launch timelines.",
+      pl: "Dwie flagowe wrocławskie inwestycje uruchomione z pełnymi kampaniami multi-channel — print, outdoor, digital, animacja. Brand consistency między inwestycjami ORAZ z marką korporacyjną Archicom. Tempo produkcji nadążające za sales-driven timeline'ami launchu."
+    },
+    reflection: {
+      en: "In real estate communication, every campaign is high-stakes — millions in inventory waiting on launch awareness. Systems aren't a luxury, they're the only way to deliver consistently across multiple investments without burning out the marketing team.",
+      pl: "W komunikacji nieruchomości każda kampania to high-stakes — miliony w ofercie czekają na launch awareness. Systemy to nie luksus, to jedyny sposób na konsekwentne dostarczanie w wielu inwestycjach bez wypalania zespołu marketingu."
+    },
+    stats: [
+      { value: "2", label: { en: "Flagship Investments", pl: "Flagowe Inwestycje" } },
+      { value: "5+", label: { en: "Channels per Investment", pl: "Kanałów per Inwestycja" } }
+    ]
+  },
+  {
     id: "dawid-podsiadlo",
     client: "Dawid Podsiadlo",
     title: "Tour Experience",
@@ -398,68 +460,6 @@ export const projects = [
     stats: [
         { value: "50+", label: { en: "Digital Touchpoints", pl: "Cyfrowych Punktów Styku" } },
         { value: "1B+", label: { en: "Global Reach", pl: "Globalny Zasięg" } }
-    ]
-  },
-  {
-    id: "archicom",
-    client: "Archicom",
-    title: "Cross-investment communication system",
-    category: {
-      en: "Real Estate / Multi-channel Production",
-      pl: "Real Estate / Produkcja Multi-channel"
-    },
-    year: "2024",
-    image: archicomCover,      // panoramic thumbnail — what shows on /work list
-    coverImage: archicomCover, // same for project detail hero
-    // YouTube anchor video — embedded full-width above image gallery
-    videoUrl: "https://www.youtube.com/watch?v=7f_Qzq6B7kY",
-    // Alternating order RP/BP to show both investments early in gallery
-    images: [
-      archicomRP1,
-      archicomBP1,
-      archicomRP2,
-      archicomBP2,
-      archicomRP3,
-      archicomBP3,
-      archicomRP4,
-      archicomBP4,
-    ],
-    isInternal: false,
-    description: {
-      en: "Archicom — top Polish residential developer — runs multiple investments simultaneously, each requiring a launch campaign that feels distinct (location identity) yet stays anchored to the corporate brand. We built the communication system across two flagship Wrocław investments: River Point and Bulwar Północny — covering print, outdoor, digital, animation and production support.",
-      pl: "Archicom — czołowy polski deweloper mieszkaniowy — prowadzi wiele inwestycji równolegle, każda wymaga kampanii launchowej, która jest rozpoznawalna lokalnie, ale spójna z marką korporacyjną. Zbudowaliśmy system komunikacji dla dwóch flagowych wrocławskich inwestycji: River Point i Bulwary Północne — print, outdoor, digital, animacja i wsparcie produkcyjne."
-    },
-    services: {
-      en: ["Print Materials", "Outdoor Campaigns", "Digital Assets", "Animations & Video", "Production Support"],
-      pl: ["Materiały Drukowane", "Kampanie Outdoor", "Zasoby Digital", "Animacje i Wideo", "Wsparcie Produkcyjne"]
-    },
-    challenge: {
-      en: "Each investment needs its own brand expression — River Point and Bulwar Północny have different audiences, locations and architectural language. But every asset has to feel like Archicom. Add 5+ media channels per investment plus tight launch timelines, and you have a production volume challenge with brand consistency stakes.",
-      pl: "Każda inwestycja potrzebuje własnej ekspresji brandowej — River Point i Bulwary Północne mają różnych odbiorców, lokalizacje i język architektoniczny. Ale każdy asset musi być rozpoznawalny jako Archicom. Dodaj 5+ kanałów mediowych per inwestycja plus napięte launch timeline'y i masz wyzwanie wolumenu produkcji ze stawkami brand consistency."
-    },
-    decisions: {
-      en: "We structured the work around a two-layer brand system: Archicom corporate identity as the foundation, investment-specific micro-brand as the expression layer. Production was built around modular templates per channel — each new asset is an adaptation, not a fresh design. Animation became the anchor asset, with derivatives generated for static formats.",
-      pl: "Zorganizowaliśmy pracę wokół dwuwarstwowego systemu marki: Archicom korporacyjne jako fundament, micro-brand per inwestycja jako warstwa ekspresji. Produkcja oparta o modułowe szablony per kanał — każdy nowy asset to adaptacja, nie projekt od zera. Animacja stała się asset'em flagowym, z derivatywami dla formatów statycznych."
-    },
-    approach: {
-      en: "We handled the full pipeline from concept to delivered assets — not just design files, but the production support that takes work from approved layout to printed billboard, animated ad, social media set. For each investment, we built a content library the marketing team could pull from for ongoing campaigns.",
-      pl: "Obsługiwaliśmy pełen pipeline od koncepcji do dostarczonych assetów — nie tylko pliki designu, ale wsparcie produkcyjne, które przeprowadza pracę od zatwierdzonego layoutu do wydrukowanego billboardu, animowanej reklamy, social media setu. Per inwestycja zbudowaliśmy bibliotekę treści, którą zespół marketingu mógł reużywać do bieżących kampanii."
-    },
-    quote: {
-      en: "Each investment is a launch event. The system makes it routine excellence, not heroic delivery.",
-      pl: "Każda inwestycja to launch event. System sprawia, że to rutynowa doskonałość, nie heroiczna dostawa."
-    },
-    outcome: {
-      en: "Two flagship Wrocław investments launched with full multi-channel campaigns — print, outdoor, digital, animation. Brand consistency across investments AND with Archicom corporate. Production cadence that kept up with sales-driven launch timelines.",
-      pl: "Dwie flagowe wrocławskie inwestycje uruchomione z pełnymi kampaniami multi-channel — print, outdoor, digital, animacja. Brand consistency między inwestycjami ORAZ z marką korporacyjną Archicom. Tempo produkcji nadążające za sales-driven timeline'ami launchu."
-    },
-    reflection: {
-      en: "In real estate communication, every campaign is high-stakes — millions in inventory waiting on launch awareness. Systems aren't a luxury, they're the only way to deliver consistently across multiple investments without burning out the marketing team.",
-      pl: "W komunikacji nieruchomości każda kampania to high-stakes — miliony w ofercie czekają na launch awareness. Systemy to nie luksus, to jedyny sposób na konsekwentne dostarczanie w wielu inwestycjach bez wypalania zespołu marketingu."
-    },
-    stats: [
-      { value: "2", label: { en: "Flagship Investments", pl: "Flagowe Inwestycje" } },
-      { value: "5+", label: { en: "Channels per Investment", pl: "Kanałów per Inwestycja" } }
     ]
   }
 ];

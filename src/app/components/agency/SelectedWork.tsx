@@ -9,8 +9,11 @@ import { MagneticButton } from "@/app/components/ui/MagneticButton";
 export function SelectedWork() {
   const { t, language } = useLanguage();
   const [, setLocation] = useLocation();
-  // Use first 3 projects
-  const selectedProjects = projects.slice(0, 3);
+  // Explicit IDs — full control over which 3 cases appear on Home (rest visible on /work only)
+  const HOMEPAGE_PROJECT_IDS = ["benefit-systems", "sonova", "dawid-podsiadlo"];
+  const selectedProjects = HOMEPAGE_PROJECT_IDS
+    .map((id) => projects.find((p) => p.id === id))
+    .filter((p): p is NonNullable<typeof p> => p !== undefined);
 
   return (
     <section className="py-32 bg-transparent relative z-10">
