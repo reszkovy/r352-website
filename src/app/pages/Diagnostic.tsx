@@ -297,10 +297,11 @@ export function Brief() {
               {copy.howItWorks.title}
             </h2>
           </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 border-t border-l border-neutral-200 dark:border-white/10">
+          {/* 3 steps — gap-px on a lighter parent creates hair-line dividers without chunky borders */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-neutral-200 dark:bg-white/[0.06]">
             {copy.howItWorks.steps.map((step, i) => (
               <Reveal key={i} delay={i * 0.08}>
-                <div className="p-8 md:p-10 border-r border-b border-neutral-200 dark:border-white/10 h-full flex flex-col gap-4">
+                <div className="p-8 md:p-10 h-full flex flex-col gap-4 bg-white dark:bg-[#0a0a0a]">
                   <span className="font-display text-base md:text-lg text-[#D4FF00] leading-none">
                     {String(i + 1).padStart(2, "0")}
                   </span>
