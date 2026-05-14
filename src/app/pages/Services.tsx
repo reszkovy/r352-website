@@ -267,112 +267,81 @@ export function Services() {
         </div>
       </section>
 
-      {/* ─── AI Brief Assistant — SaaS product section ─── */}
+      {/* ─── Funnel CTA — entry to brief wizard, AI Brief Assistant as engine ─── */}
       <section id="ai-brief-assistant" className="mb-32 border-t border-neutral-200 dark:border-white/10 pt-24 md:pt-32 scroll-mt-24">
         <Reveal>
-          <div className="flex flex-col mb-16">
+          <div className="flex flex-col mb-12">
             <span className="text-[11px] uppercase tracking-[2px] text-neutral-500 dark:text-[#D4FF00] font-display mb-4 block">
-              {language === "pl" ? "Produkt · SaaS" : "Product · SaaS"}
+              {language === "pl" ? "Wypełnij teraz · 5–18 min" : "Try it now · 5–18 min"}
             </span>
-            <h2 className="text-4xl md:text-6xl font-bold text-neutral-900 dark:text-white tracking-tight mb-6 leading-[0.95]">
-              {language === "pl" ? "AI Brief Assistant" : "AI Brief Assistant"}
+            <h2 className="text-4xl md:text-6xl font-bold text-neutral-900 dark:text-white tracking-tight mb-8 leading-[0.95]">
+              {language === "pl"
+                ? "Wypełnij brief. Wizard zrobi resztę."
+                : "Fill a brief. The wizard does the rest."}
             </h2>
             <p className="text-xl md:text-2xl text-neutral-700 dark:text-neutral-300 tracking-tight font-medium max-w-3xl leading-snug">
               {language === "pl"
-                ? "Zamień niejasne requesty w gotowe briefy w 5 minut. Trenowane na 500+ realnych briefach z naszych projektów."
-                : "Turn unclear requests into ready briefs in 5 minutes. Trained on 500+ real briefs from our projects."}
+                ? "Bez formularza-portfela. Wizard zadaje tylko właściwe pytania pasujące do Twojego case'u, ocenia gotowość przed wysyłką, generuje ustrukturyzowany brief gotowy do produkcji."
+                : "No portfolio form. The wizard asks only the questions that fit your case, scores readiness before submission, and generates a production-ready brief."}
             </p>
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-[1.3fr_1fr] gap-12 md:gap-20">
-          {/* Left: What it does */}
-          <Reveal delay={0.1}>
-            <div className="space-y-10">
+        {/* Massive in-section CTA */}
+        <Reveal delay={0.1}>
+          <div className="border-t border-b border-neutral-200 dark:border-white/10 py-14 md:py-20 mb-16 text-center">
+            <Link
+              href="/brief"
+              className="group inline-flex items-baseline gap-4 md:gap-6 cursor-pointer"
+            >
+              <span className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-neutral-900 dark:text-white group-hover:text-[#D4FF00] transition-colors duration-500 leading-none">
+                {language === "pl" ? "Wypełnij brief" : "Start a brief"}
+              </span>
+              <span className="text-3xl md:text-5xl text-[#D4FF00] group-hover:translate-x-3 transition-transform duration-500 leading-none">→</span>
+            </Link>
+            <p className="mt-6 text-xs md:text-sm font-display uppercase tracking-[0.25em] text-neutral-500 dark:text-neutral-500">
+              {language === "pl" ? "Pisemna odpowiedź w 48 godzin" : "Written response within 48 hours"}
+            </p>
+          </div>
+        </Reveal>
+
+        {/* How it works — 4 steps */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-10 mb-12">
+          {(language === "pl" ? [
+            "Wybierasz typ zaangażowania — wizard dopasowuje pytania",
+            "Odpowiadasz tylko na pytania pasujące do Twojego case'u",
+            "Pisemna odpowiedź w 48h: pozycjonowanie, scope, next step",
+            "Bez zobowiązań — polecimy kogoś z sieci jeśli nie pasujemy",
+          ] : [
+            "Choose engagement type — the wizard adapts its questions",
+            "Answer only the questions that fit your case",
+            "Written response in 48h: positioning, scope, next step",
+            "No commitment — referred out if we're not the right fit",
+          ]).map((step, i) => (
+            <Reveal key={i} delay={0.15 + i * 0.05}>
               <div>
-                <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-neutral-900 dark:text-white mb-6">
-                  {language === "pl" ? "Co robi" : "What it does"}
-                  <span className="text-[#D4FF00] ml-1">.</span>
-                </h3>
-                <ul className="space-y-4 max-w-2xl">
-                  {(language === "pl" ? [
-                    "Zadaje właściwe pytania, żeby uzupełnić brakujący kontekst briefa",
-                    "Generuje ustrukturyzowany brief gotowy do produkcji (Definition of Ready)",
-                    "Ocenia jakość briefa według checklist'y gotowości — 0–100 score przed wysyłką",
-                    "Integruje się z Slack, Notion, Asana, email — request → brief w jednym flow",
-                    "Uczy się Twojej organizacji: typologie requestów, stakeholder voice, brand language",
-                  ] : [
-                    "Asks the right questions to fill missing brief context",
-                    "Generates a structured brief ready for production (against the Definition of Ready)",
-                    "Scores brief quality against the readiness checklist — 0–100 before submission",
-                    "Integrates with Slack, Notion, Asana, email — request → brief in one flow",
-                    "Learns your organization: request typologies, stakeholder voice, brand language",
-                  ]).map((item, i) => (
-                    <li key={i} className="flex items-baseline gap-4 group/item">
-                      <span className="font-display text-base text-[#D4FF00] shrink-0 w-8 leading-none">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <span className="text-base md:text-lg text-neutral-800 dark:text-neutral-200 leading-snug font-medium">
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                <span className="font-display text-sm text-[#D4FF00] mb-3 block">{String(i + 1).padStart(2, "0")}</span>
+                <p className="text-sm md:text-base text-neutral-700 dark:text-neutral-300 leading-snug">{step}</p>
               </div>
-
-              <div className="border-t border-neutral-200 dark:border-white/10 pt-8">
-                <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-neutral-900 dark:text-white mb-4">
-                  {language === "pl" ? "Dla kogo" : "Built for"}
-                  <span className="text-[#D4FF00] ml-1">.</span>
-                </h3>
-                <p className="text-base md:text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed font-medium max-w-2xl">
-                  {language === "pl"
-                    ? "Zespoły marketingu, brand i product, które dostają dziesiątki niejasnych requestów miesięcznie. Działa standalone albo jako warstwa wzmacniająca Twój Retainer / Operating Partner."
-                    : "Marketing, brand and product teams that receive dozens of unclear requests every month. Works standalone or as a layer on top of your Retainer / Operating Partner."}
-                </p>
-              </div>
-            </div>
-          </Reveal>
-
-          {/* Right: Try it now — via /brief */}
-          <Reveal delay={0.2}>
-            <div className="border-t border-neutral-200 dark:border-white/10 pt-8 space-y-10">
-              <div>
-                <span className="block text-[11px] uppercase tracking-[2px] text-[#D4FF00] font-display mb-6">
-                  {language === "pl" ? "Wypróbuj teraz" : "Try it now"}
-                </span>
-                <h4 className="text-2xl md:text-3xl font-bold tracking-tight text-neutral-900 dark:text-white mb-4 leading-snug">
-                  {language === "pl"
-                    ? "Wypełnij brief — doświadcz tego sam."
-                    : "Fill a brief — experience it firsthand."}
-                </h4>
-                <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-md">
-                  {language === "pl"
-                    ? "Wizard, który wypełnisz na /brief, działa na tym samym AI Brief Assistant. Zobacz jak zadaje właściwe pytania, ocenia jakość przed wysyłką i generuje strukturalny brief gotowy do produkcji w ~10 minut. Bez zobowiązań."
-                    : "The wizard you'll fill at /brief runs on the same AI Brief Assistant. See how it asks the right questions, scores quality before submission, and generates a production-ready brief in ~10 minutes. No commitment."}
-                </p>
-              </div>
-
-              {/* CTA — direct to brief */}
-              <div className="border-t border-neutral-200 dark:border-white/10 pt-8 space-y-5">
-                <Link
-                  href="/brief"
-                  className="group/link inline-flex items-center gap-3 text-base md:text-lg font-bold tracking-tight text-neutral-900 dark:text-white hover:text-[#D4FF00] dark:hover:text-[#D4FF00] transition-colors duration-500"
-                >
-                  <span className="border-b-2 border-neutral-900 dark:border-white group-hover/link:border-[#D4FF00] transition-colors duration-500 pb-1">
-                    {language === "pl" ? "Wypełnij brief" : "Start a brief"}
-                  </span>
-                  <span className="inline-block transition-transform duration-500 group-hover/link:translate-x-2 text-xl">→</span>
-                </Link>
-                <p className="text-xs text-neutral-500 dark:text-neutral-500 leading-relaxed max-w-md italic">
-                  {language === "pl"
-                    ? "Chcesz wdrożyć assistant'a u siebie? Napisz: hello@r352.com — dla custom prompts, integracji i organizational training."
-                    : "Want to deploy the assistant in your org? Reach out: hello@r352.com — for custom prompts, integrations and team training."}
-                </p>
-              </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          ))}
         </div>
+
+        {/* Tiny credibility + SaaS deploy hook footer */}
+        <Reveal delay={0.4}>
+          <div className="border-t border-neutral-200 dark:border-white/10 pt-8 flex flex-col md:flex-row justify-between gap-4">
+            <p className="text-xs text-neutral-500 dark:text-neutral-500 max-w-md leading-relaxed italic">
+              {language === "pl"
+                ? "Powered by AI Brief Assistant — trenowany na 500+ realnych briefach z naszych projektów."
+                : "Powered by AI Brief Assistant — trained on 500+ real briefs from our projects."}
+            </p>
+            <p className="text-xs text-neutral-500 dark:text-neutral-500 max-w-md leading-relaxed italic md:text-right">
+              {language === "pl"
+                ? "Chcesz wdrożyć u siebie? hello@r352.com — custom prompts, integracje, training."
+                : "Want to deploy this in your org? hello@r352.com — custom prompts, integrations, training."}
+            </p>
+          </div>
+        </Reveal>
       </section>
 
       {/* NEW: Engagement Models Section */}
