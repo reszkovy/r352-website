@@ -8,7 +8,6 @@ import { References } from "@/app/components/agency/References";
 import { Link, useLocation } from "wouter";
 import { PageTransition } from "@/app/components/ui/PageTransition";
 import { Reveal } from "@/app/components/ui/Reveal";
-import { CinematicText } from "@/app/components/ui/CinematicText";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { useEffect, useRef } from "react";
 import { useInView, motion, useScroll, useTransform } from "motion/react";
@@ -78,13 +77,11 @@ export function Home() {
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
           <Reveal>
             <div className="grid grid-cols-12 gap-6 md:gap-8 items-end">
-              {/* LEFT col-7: title */}
-              <div className="col-span-12 md:col-span-7">
-                <CinematicText
-                  text={t("philosophy.teaser.title")}
-                  className="text-5xl md:text-5xl lg:text-7xl font-bold tracking-tighter leading-[0.95] text-white"
-                />
-              </div>
+              {/* LEFT col-7: title — plain h2, smaller size to fit col-7 cleanly, break-keep to prevent mid-word split */}
+              <h2
+                className="col-span-12 md:col-span-7 text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight leading-[1.2] text-white break-keep"
+                dangerouslySetInnerHTML={{ __html: t("philosophy.teaser.title") }}
+              />
 
               {/* RIGHT col-5: caption + CTA stacked */}
               <div className="col-span-12 md:col-span-5 md:justify-self-end max-w-xl space-y-8">
