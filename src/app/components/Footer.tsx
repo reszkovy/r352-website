@@ -173,30 +173,24 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Footer Bottom */}
-          <div className="flex flex-col md:flex-row justify-between items-end gap-8 border-t border-white/10 pt-12">
-             <div className="flex flex-col gap-2 w-full md:w-auto overflow-hidden">
-               
-             </div>
-             
-             <div className="flex justify-between w-full md:w-auto items-center gap-12 pb-4">
-               <div className="flex items-center gap-4">
-                 <R352Symbol className="w-8 h-8 opacity-50" />
-                 <p className="text-xs font-display uppercase tracking-widest text-neutral-600">
-                   © 2026 r352
-                 </p>
-                 <Link href="/process" className="opacity-70 hover:opacity-100 transition-opacity duration-300">
-                   <R3LoopBadge size="sm" />
-                 </Link>
-               </div>
-               
-               <button 
-                 onClick={scrollToTop}
-                 className="group flex items-center gap-2 text-xs font-display uppercase tracking-widest hover:tracking-[0.25em] text-neutral-500 hover:text-[#D4FF00] transition-all duration-500 ease-out"
-               >
-                 {t("footer.back_to_top")}
-               </button>
-             </div>
+          {/* Footer Bottom — all elements aligned LEFT so they don't collide with floating Brief CTA + chat (which live bottom-right) */}
+          <div className="flex flex-wrap items-center gap-6 md:gap-8 border-t border-white/10 pt-12 pb-4">
+            <div className="flex items-center gap-4">
+              <R352Symbol className="w-8 h-8 opacity-50" />
+              <p className="text-xs font-display uppercase tracking-widest text-neutral-600">
+                © 2026 r352
+              </p>
+              <Link href="/process" className="opacity-70 hover:opacity-100 transition-opacity duration-300">
+                <R3LoopBadge size="sm" />
+              </Link>
+            </div>
+
+            <button
+              onClick={scrollToTop}
+              className="group flex items-center gap-2 text-xs font-display uppercase tracking-widest hover:tracking-[0.25em] text-neutral-500 hover:text-[#D4FF00] transition-all duration-500 ease-out"
+            >
+              {t("footer.back_to_top")}
+            </button>
           </div>
         </div>
       </div>
