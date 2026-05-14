@@ -67,7 +67,9 @@ export function AgencyHeader() {
     { href: "/journal", label: t("nav.journal") },
   ];
 
-  const contactButton = { href: "/contact", label: t("nav.contact") };
+  // Primary CTA in nav — promoted from "Kontakt" to "Brief" for premium positioning consistency.
+  // Brief is now the primary entry point; /contact remains as hybrid landing accessible from footer.
+  const contactButton = { href: "/brief", label: language === "pl" ? "Brief" : "Brief" };
   const scheduleButton = { href: "https://calendly.com/p-reszkovy/30min", label: t("nav.schedule") };
 
   const toggleLanguage = () => {

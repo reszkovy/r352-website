@@ -36,6 +36,7 @@ export function Footer() {
     { label: t("nav.detailed_brief"), href: "/brief-access" },
     { label: t("nav.pricing"), href: "/limitedaccess" },
     { label: "Start a brief — 48h response", href: "/brief" },
+    { label: t("nav.contact") || "Kontakt", href: "/contact" },
   ];
 
   const socialLinks = [
@@ -105,9 +106,12 @@ export function Footer() {
                  Santa Catalina<br/>
                  (remote)
                </p>
-               <p className="text-lg text-neutral-300 mt-6">
+               <a
+                 href="mailto:hello@r352.com?subject=r352%20—%20hello"
+                 className="block text-lg text-neutral-300 mt-6 hover:text-[#D4FF00] transition-colors duration-500 w-fit"
+               >
                  hello@r352.com
-               </p>
+               </a>
             </div>
 
             {/* Column 2: Sitemap */}

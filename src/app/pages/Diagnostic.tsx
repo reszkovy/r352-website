@@ -254,8 +254,12 @@ export function Brief() {
                 <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[0.95] mb-6">
                   {copy.form.title}
                 </h2>
-                <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-md">
+                <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-md mb-6">
                   {copy.form.subtitle}
+                </p>
+                {/* Warm-lead microcopy — steers referrals to use brief without losing relationship */}
+                <p className="text-sm md:text-base text-neutral-500 dark:text-neutral-500 leading-relaxed max-w-md italic border-l-2 border-[#D4FF00]/40 pl-4">
+                  {copy.form.warmLead}
                 </p>
               </div>
             </Reveal>
@@ -442,6 +446,8 @@ const COPY_EN = {
     title: "Four fields. ~30 seconds.",
     subtitle:
       "We only need contact and one line of context here. The structured wizard that follows is where the real conversation happens.",
+    warmLead:
+      "Were you referred by someone? Mention their name in the first wizard question — we'll fast-track your read.",
     fields: {
       name: "Your name",
       company: "Company",
@@ -504,6 +510,8 @@ const COPY_PL = {
     title: "Cztery pola. ~30 sekund.",
     subtitle:
       "Potrzebujemy tylko kontaktu i jednej linijki kontekstu. Ustrukturyzowany wizard, który zaczyna się po wysłaniu, to miejsce prawdziwej rozmowy.",
+    warmLead:
+      "Polecił Cię ktoś? Wpisz nazwisko w pierwszym pytaniu wizarda — przyspieszymy Twój feedback.",
     fields: {
       name: "Imię i nazwisko",
       company: "Firma",
