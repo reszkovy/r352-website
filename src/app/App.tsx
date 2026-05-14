@@ -120,8 +120,8 @@ function AppContent() {
       };
     }
     if (path === "/services") return {
-      title: "Services — r352 | Design Operations & Delivery Systems",
-      description: "From brand operating systems to design production and optimization — we build the infrastructure that lets multi-location teams ship consistently."
+      title: "Services — r352 | Strategy, Operating System, Design & Build",
+      description: "Four layers, one system. Strategy decides what to ship. Operating System makes work predictable. Design & Production ships the assets. Build & Optimize handles implementation. Delivered through r3loop."
     };
     if (path === "/services/operating-system") return {
       title: "Operating System — r352 | Brand Standards & Delivery Infrastructure",
@@ -136,8 +136,8 @@ function AppContent() {
       description: "We design and build digital products, landing pages, and interfaces that convert — grounded in data and user research."
     };
     if (path === "/process") return {
-      title: "Process — r352 | Creative Operating System in 8 Steps",
-      description: "How we build an operational creative delivery system for multi-location brands — step by step, from operational diagnosis to measurement and iteration."
+      title: "r3loop — r352's 8-step methodology for operational design systems",
+      description: "r3loop is r352's branded methodology — 8 steps that turn operational chaos into a working system. Diagnose, Map, Standardize, Build, Govern, Ship, Measure, Iterate. Same framework for every project, modified depth not structure."
     };
     if (path === "/philosophy") return {
       title: "Philosophy — r352 | How we think about design & delivery",
@@ -169,12 +169,12 @@ function AppContent() {
       };
     }
     if (path === "/contact") return {
-      title: "Contact — r352 | Let's shape the path forward",
-      description: "Ready to fix your delivery bottlenecks? Get in touch — we work with teams that are serious about scaling their design operations."
+      title: "Contact — r352 | Brief, call, or write directly",
+      description: "Three paths to start: structured brief (5–18 min, 48h response), book a 30-min call, or write to hello@r352.com. For multi-location organizations ready to systemize their design operations."
     };
     return {
-      title: "r352 — Design-first partner for teams that ship.",
-      description: "Design-first strategic partner for multi-location organizations. We diagnose delivery bottlenecks, build scalable design systems, and help teams ship faster."
+      title: "r352 — We build the system behind great design.",
+      description: "Strategic design partner for multi-location organizations. From strategy to rollout-ready delivery, powered by the r3loop methodology — predictable quality and speed at scale."
     };
   };
 

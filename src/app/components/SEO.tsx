@@ -10,8 +10,8 @@ interface SEOProps {
 }
 
 export function SEO({
-  title = "r352 — Design-first partner for teams that ship.",
-  description = "Design-first strategic partner for multi-location organizations. We diagnose delivery bottlenecks, build scalable design systems, and help teams ship faster.",
+  title = "r352 — We build the system behind great design.",
+  description = "Strategic design partner for multi-location organizations. From strategy to rollout-ready delivery, powered by the r3loop methodology — predictable quality and speed at scale.",
   path = "/",
   ogImage = "https://r352.com/og-image.png",
   article
@@ -34,7 +34,7 @@ export function SEO({
     "name": "r352",
     "url": "https://r352.com",
     "logo": "https://r352.com/og-image.png",
-    "description": "Design-first strategic partner for multi-location organizations. We diagnose delivery bottlenecks, build scalable design systems, and help teams ship faster.",
+    "description": "Strategic design partner for multi-location organizations. We build the operating system behind great design — from strategy to rollout-ready delivery, powered by the r3loop methodology.",
     "email": "hello@r352.com",
     "address": {
       "@type": "PostalAddress",
@@ -54,20 +54,23 @@ export function SEO({
     "@type": "ProfessionalService",
     "name": "r352",
     "url": "https://r352.com",
-    "description": "Delivery system consulting for design teams: workflow audits, brand standards, intake processes, and QA frameworks for multi-location organizations.",
+    "description": "Strategic design + operations consulting for multi-location organizations. We build operating systems behind great design — brand strategy, workflow architecture, QA standards, AI-first execution. Delivered through the r3loop methodology (8-step framework).",
     "priceRange": "€€€",
     "areaServed": "Worldwide",
     "serviceType": [
-      "Design Consulting",
-      "Delivery System Design",
-      "Brand Standards",
-      "Workflow Optimization"
+      "Strategic Design Consulting",
+      "Brand Strategy",
+      "Creative Operating System",
+      "Workflow Architecture",
+      "AI-First Execution"
     ],
     "knowsAbout": [
       "Design Operations",
       "Brand Systems",
-      "Campaign Toolkits",
-      "Delivery Workflow Optimization"
+      "Multi-location Brand Management",
+      "Creative Workflow Optimization",
+      "r3loop Methodology",
+      "AI Brief Automation"
     ]
   };
 

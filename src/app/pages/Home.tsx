@@ -3,69 +3,31 @@ import { ClientLogos } from "@/app/components/agency/ClientLogos";
 import { SelectedWork } from "@/app/components/agency/SelectedWork";
 import { ServicesList } from "@/app/components/agency/ServicesList";
 import { HomePrinciples } from "@/app/components/agency/HomePrinciples";
-import { EngagementModels } from "@/app/components/agency/EngagementModels";
 import { References } from "@/app/components/agency/References";
-import { Link, useLocation } from "wouter";
+import { useLocation } from "wouter";
 import { PageTransition } from "@/app/components/ui/PageTransition";
 import { Reveal } from "@/app/components/ui/Reveal";
 import { useLanguage } from "@/app/context/LanguageContext";
-import { useEffect, useRef } from "react";
-import { useInView, motion, useScroll, useTransform } from "motion/react";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { MagneticButton } from "@/app/components/ui/MagneticButton";
 import { Marquee } from "@/app/components/ui/Marquee";
 import { ArrowRight } from "lucide-react";
 
-import { useTheme } from "@/app/context/ThemeContext";
 import presentationImg from "../../imports/Background.webp";
 
 export function Home() {
   const { t, language } = useLanguage();
-  const { theme } = useTheme();
   const [, setLocation] = useLocation();
-  const engagementRef = useRef<HTMLDivElement>(null);
   const parallaxContainerRef = useRef<HTMLDivElement>(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: parallaxContainerRef,
     offset: ["start end", "end start"]
   });
-  
-  // Przesunięcie od -15% do +15% z zapasem na skali
+
+  // Parallax offset for background image
   const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
-
-  // Top margin: activate when section is ~1000px into viewport
-  // Bottom margin: deactivate early (40% from bottom) so lime exits well before References
-  const isInView = useInView(engagementRef, { margin: "-1000px 0px -40% 0px" });
-
-  useEffect(() => {
-    const body = document.body;
-    body.classList.add("theme-transitioning");
-
-    // In 'dark' theme mode (default): starts dark, becomes lime on scroll (isInView = true).
-    // In 'light' theme mode: starts lime, becomes dark on scroll (isInView = true).
-    const shouldBeLime = theme === 'dark' ? isInView : !isInView;
-
-    if (shouldBeLime) {
-      body.classList.add("lime-theme");
-    } else {
-      body.classList.remove("lime-theme");
-    }
-
-    // Keep transitioning class longer for smooth exit animation
-    const timer = setTimeout(() => {
-      body.classList.remove("theme-transitioning");
-    }, 1200);
-
-    return () => clearTimeout(timer);
-  }, [isInView, theme]);
-
-  // Rest of cleanup on unmount
-  useEffect(() => {
-    return () => {
-      document.body.classList.remove("lime-theme");
-      document.body.classList.remove("theme-transitioning");
-    };
-  }, []);
 
   return (
     <PageTransition className="">
@@ -109,10 +71,6 @@ export function Home() {
       <ServicesList />
 
       <HomePrinciples />
-
-      <div ref={engagementRef}>
-        <EngagementModels />
-      </div>
 
       {/* ─── Brief CTA — 12-col 7+5 asymmetric ─── */}
       <section className="py-24 md:py-32 border-t border-white/10">
