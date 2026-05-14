@@ -14,6 +14,93 @@ interface ServiceCard {
   includes?: string[];
 }
 
+// ─── Strategy offerings — start of end-to-end journey, 3 cards ──────
+interface StrategyOffering {
+  title: string;
+  description: string;
+  covers: string[];
+  output: string;
+  bestFor: string;
+}
+
+const STRATEGY_OFFERINGS_EN: StrategyOffering[] = [
+  {
+    title: "Brand Strategy & Positioning",
+    description: "Define what you stand for, who you serve, and how you'll be remembered in your category — before any visual work begins.",
+    covers: [
+      "Competitive positioning vs 3-5 closest peers",
+      "Brand narrative & messaging architecture",
+      "Audience segmentation by stakeholder & vertical",
+      "12-month brand activation roadmap",
+    ],
+    output: "One-page positioning doc + audience map + 12-month brand activation roadmap.",
+    bestFor: "Multi-location brands rebranding, entering new markets, or repositioning after M&A.",
+  },
+  {
+    title: "Operating Strategy",
+    description: "Design the system before designing the assets — how creative ops scale across locations, teams, seasons and budgets.",
+    covers: [
+      "Workflow architecture (intake → approval → production → shipping)",
+      "Governance & decision ownership across HQ vs local",
+      "Capacity planning per location and per season",
+      "Vendor & internal-team strategy",
+    ],
+    output: "Operating playbook + governance map + 90-day implementation roadmap.",
+    bestFor: "Organizations scaling beyond single-location creative teams to 5-50+ locations.",
+  },
+  {
+    title: "AI Strategy & Roadmap",
+    description: "Decide where AI fits in your design and marketing operations — build vs buy, automation vs augmentation, risk vs reward.",
+    covers: [
+      "AI use case audit across current workflow",
+      "Build / buy / partner decision framework",
+      "Automation prioritization (which workflows first)",
+      "Governance & risk model for AI-touched decisions",
+    ],
+    output: "AI strategy doc + phased 12-month roadmap + first 90-day pilot recommendation.",
+    bestFor: "Teams considering AI workflow integration but unsure where to start or what's worth automating.",
+  },
+];
+
+const STRATEGY_OFFERINGS_PL: StrategyOffering[] = [
+  {
+    title: "Strategia Marki & Pozycjonowanie",
+    description: "Zdefiniuj za czym stoisz, dla kogo jesteś i jak chcesz być zapamiętany w swojej kategorii — zanim ruszą prace wizualne.",
+    covers: [
+      "Pozycjonowanie konkurencyjne vs 3-5 najbliższych graczy",
+      "Brand narrative i architektura komunikatów",
+      "Segmentacja audiencji per stakeholder i wertykał",
+      "12-miesięczny roadmap aktywacji marki",
+    ],
+    output: "Jednostronicowy positioning doc + mapa audience + 12-miesięczny roadmap aktywacji marki.",
+    bestFor: "Marki wielolokalizacyjne podczas rebranding'u, wejścia na nowe rynki lub repozycjonowania po M&A.",
+  },
+  {
+    title: "Strategia Operacyjna",
+    description: "Zaprojektuj system zanim zaprojektujesz assety — jak creative ops skalują się przez lokalizacje, zespoły, sezony i budżety.",
+    covers: [
+      "Architektura workflow (intake → akceptacja → produkcja → wysyłka)",
+      "Governance i ownership decyzji HQ vs local",
+      "Capacity planning per lokalizacja i per sezon",
+      "Strategia dla vendor'ów i wewnętrznych zespołów",
+    ],
+    output: "Operating playbook + mapa governance + 90-dniowy roadmap wdrożenia.",
+    bestFor: "Organizacje skalujące się z single-location creative team do 5-50+ lokalizacji.",
+  },
+  {
+    title: "Strategia AI & Roadmap",
+    description: "Zdecyduj gdzie AI pasuje w Waszych design/marketing ops — build vs buy, automation vs augmentation, ryzyko vs zwrot.",
+    covers: [
+      "Audyt use case'ów AI w obecnym workflow",
+      "Framework decyzji build / buy / partner",
+      "Priorytetyzacja automatyzacji (które workflow pierwsze)",
+      "Governance i model risk dla decyzji AI-touched",
+    ],
+    output: "Dokument strategii AI + fazowany 12-miesięczny roadmap + rekomendacja pierwszego 90-day pilota.",
+    bestFor: "Zespoły rozważające integrację AI workflow ale niepewne od czego zacząć lub co warto automatyzować.",
+  },
+];
+
 export function Services() {
   const { t, language } = useLanguage();
   
@@ -42,7 +129,99 @@ export function Services() {
     <PageTransition className="pb-32 px-6 md:px-12 max-w-[1200px] mx-auto min-h-screen">
 
       {/* Products Section (Accordion) — page opener, editorial style matched to Home */}
-      <section className="pt-32 md:pt-40 mb-40 min-h-[600px]">
+      {/* ─── Strategy — start of end-to-end customer journey ─── */}
+      <section className="pt-32 md:pt-40 mb-32 md:mb-40">
+        <Reveal>
+          <div className="flex flex-col mb-16">
+            <span className="text-[11px] uppercase tracking-[2px] text-neutral-500 dark:text-[#D4FF00] font-display mb-4 block">
+              {language === "pl" ? "01 · Strategia" : "01 · Strategy"}
+            </span>
+            <h2 className="text-4xl md:text-6xl font-bold text-neutral-900 dark:text-white tracking-tight mb-6 leading-[0.95]">
+              {language === "pl"
+                ? "Najpierw decyzja. Potem dostawa."
+                : "Decide first. Deliver second."}
+            </h2>
+            <p className="text-[15px] text-neutral-600 dark:text-[#888888] max-w-[640px] leading-relaxed">
+              {language === "pl"
+                ? "Strategia to fundament każdej współpracy — zanim coś zbudujemy, zrozumiemy CO ma być zbudowane i CZEMU. Trzy obszary strategiczne dla wielolokalizacyjnych organizacji."
+                : "Strategy is the foundation of every engagement — before we build anything, we understand WHAT to build and WHY. Three strategic areas for multi-location organizations."}
+            </p>
+          </div>
+        </Reveal>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 border-t border-b border-neutral-200 dark:border-white/10">
+          {(language === "pl" ? STRATEGY_OFFERINGS_PL : STRATEGY_OFFERINGS_EN).map((item, i) => (
+            <Reveal key={i} delay={i * 0.1}>
+              <div className={`p-8 lg:p-10 h-full flex flex-col group ${i > 0 ? "border-t md:border-t-0 md:border-l border-neutral-200 dark:border-white/10" : ""}`}>
+                {/* Number anchor */}
+                <span className="font-display text-sm text-neutral-400 group-hover:text-[#D4FF00] dark:text-[#D4FF00] transition-colors mb-3 block">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+
+                {/* Title */}
+                <h3 className="text-2xl md:text-[28px] font-bold tracking-tight text-neutral-900 dark:text-white mb-4 leading-tight">
+                  {item.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-[14px] text-neutral-600 dark:text-[#888888] leading-relaxed mb-6">
+                  {item.description}
+                </p>
+
+                {/* What it covers */}
+                <div className="mb-6 flex-1">
+                  <h4 className="text-[11px] uppercase tracking-[1px] text-neutral-500 dark:text-[#D4FF00] mb-3">
+                    {language === "pl" ? "Co obejmuje" : "What it covers"}
+                  </h4>
+                  <ul className="space-y-3">
+                    {item.covers.map((c, idx) => (
+                      <li key={idx} className="text-[14px] text-neutral-700 dark:text-[#e5e5e5] flex items-start gap-3">
+                        <span className="w-1 h-1 rounded-none bg-neutral-900 dark:bg-[#D4FF00] mt-[8px] shrink-0" />
+                        <span className="leading-snug">{c}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <hr className="border-neutral-200 dark:border-white/10 mb-6" />
+
+                {/* Output */}
+                <div className="mb-4">
+                  <h4 className="text-[11px] uppercase tracking-[1px] text-neutral-500 dark:text-[#D4FF00] mb-2">
+                    {language === "pl" ? "Wynik" : "Output"}
+                  </h4>
+                  <p className="text-[14px] text-neutral-900 dark:text-white font-medium leading-snug">
+                    {item.output}
+                  </p>
+                </div>
+
+                {/* Best for */}
+                <div>
+                  <h4 className="text-[11px] uppercase tracking-[1px] text-neutral-500 dark:text-[#D4FF00] mb-2">
+                    {language === "pl" ? "Idealne dla" : "Best for"}
+                  </h4>
+                  <p className="text-[13px] text-neutral-600 dark:text-[#888888] leading-snug">
+                    {item.bestFor}
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* ─── Products — execution layer ─── */}
+      <section className="mb-40 min-h-[600px]">
+        <Reveal>
+          <div className="flex flex-col mb-12">
+            <span className="text-[11px] uppercase tracking-[2px] text-neutral-500 dark:text-[#D4FF00] font-display mb-4 block">
+              {language === "pl" ? "02 · Produkty" : "02 · Products"}
+            </span>
+            <h2 className="text-4xl md:text-6xl font-bold text-neutral-900 dark:text-white tracking-tight mb-6 leading-[0.95]">
+              {language === "pl" ? "To co dostajesz." : "What you ship."}
+            </h2>
+          </div>
+        </Reveal>
 
         <div className="flex flex-col border-t border-neutral-200 dark:border-white/10">
           {cards.map((card, index) => {
