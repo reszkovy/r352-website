@@ -1,36 +1,20 @@
 import { useTheme } from "@/app/context/ThemeContext";
 import { Sun, Moon } from "lucide-react";
-import { motion } from "motion/react";
-import { cn } from "@/lib/utils";
 
+/**
+ * Small inline theme toggle — designed to sit in nav header next to the language switcher.
+ * Matches the visual weight of the lang toggle (EN/PL): small, low-contrast in resting state, hover lime accent.
+ */
 export function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <motion.button
-      whileHover={{ 
-        scale: 1.05,
-        boxShadow: theme === 'dark' 
-          ? "0 0 25px rgba(255,255,255,0.2)" 
-          : "0 0 25px rgba(0,0,0,0.2)"
-      }}
-      whileTap={{ scale: 0.95 }}
+    <button
       onClick={toggleTheme}
-      className={cn(
-        "fixed right-6 z-40 w-14 h-14 rounded-full hidden md:flex items-center justify-center transition-colors duration-300 shadow-lg border",
-        "bottom-6 md:bottom-[96px]", // Bottom on mobile, above chat on desktop
-        theme === 'dark' 
-          ? "bg-[#111] text-white border-white/10 hover:bg-[#222]" 
-          : "bg-[#D0DBE1] text-black border-black/10 hover:bg-[#c2ced5]"
-      )}
-      aria-label="Toggle Theme"
-      data-no-cursor-fx="true"
+      aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+      className="ml-3 inline-flex items-center justify-center w-7 h-7 text-neutral-500 hover:text-[#D4FF00] transition-colors duration-300"
     >
-      {theme === 'dark' ? (
-        <Sun className="w-6 h-6 text-white" />
-      ) : (
-        <Moon className="w-6 h-6 text-black" />
-      )}
-    </motion.button>
+      {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+    </button>
   );
 }

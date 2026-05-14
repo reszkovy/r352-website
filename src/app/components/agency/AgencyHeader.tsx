@@ -6,6 +6,7 @@ import { R352Symbol, R352Text } from "./R352Logo";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { useLenis } from "lenis/react";
 import { useTheme } from "@/app/context/ThemeContext";
+import { ThemeToggle } from "@/app/components/ui/ThemeToggle";
 
 export function AgencyHeader() {
   const [location] = useLocation();
@@ -245,6 +246,9 @@ export function AgencyHeader() {
             <span className="mx-2">/</span>
             <span className={cn(language === 'pl' && "text-[#D4FF00]")}>PL</span>
           </button>
+
+          {/* Theme Switcher — moved from floating bottom-right corner */}
+          <ThemeToggle />
         </nav>
         
         {/* Mobile Hamburger */}
