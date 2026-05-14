@@ -377,8 +377,8 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
 
            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-y-24">
              {project.images.map((image, i) => {
-               // Per-project layout override — Kubota + Archicom use uniform large (full-width 16:9 slabs)
-               const useUniformLarge = ["kubota", "archicom"].includes(project.id);
+               // Per-project layout override — uniform large (full-width 16:9 slabs) for these projects
+               const useUniformLarge = ["kubota", "archicom", "discobowl"].includes(project.id);
 
                // Default editorial rhythm (full / left / right / centered) for other projects
                const isFullWidth = i % 4 === 0;
