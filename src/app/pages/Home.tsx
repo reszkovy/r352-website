@@ -72,32 +72,33 @@ export function Home() {
       <AgencyHero />
       <ClientLogos />
       
-      {/* Philosophy Teaser */}
-      <section className="py-32 border-t border-white/10">
+      {/* Philosophy Teaser — Process master-head pattern: H1 left, caption + CTA right */}
+      <section className="pt-32 pb-32 md:pt-40 md:pb-40 border-t border-white/10">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
-           {/* Title — full width */}
-           <CinematicText
-             text={t("philosophy.teaser.title")}
-             className="text-4xl md:text-5xl lg:text-6xl font-sans tracking-tight leading-[1.0] text-white max-w-4xl"
-           />
-           {/* Description + CTA — right-aligned below */}
-           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mt-12">
-             <Reveal delay={0.2}>
-               <p className="text-lg text-neutral-400 leading-relaxed max-w-lg whitespace-pre-line">
-                 {t("philosophy.teaser.description")}
-               </p>
-             </Reveal>
-             <Reveal delay={0.3}>
-               <MagneticButton
-                 onClick={() => setLocation("/philosophy")}
-                 className="bg-transparent border-white/20 text-white hover:bg-white hover:text-black w-full max-w-[280px] sm:max-w-none sm:w-auto mx-auto md:mx-0 shrink-0"
-                 glowColor="rgba(255, 255, 255, 0.2)"
-               >
-                   <span className="invisible text-xs font-display uppercase tracking-widest absolute">{t("philosophy.teaser.cta")}</span>
-                   <span className="text-xs font-display uppercase tracking-widest group-hover:tracking-[0.25em] transition-all duration-500 ease-out">{t("philosophy.teaser.cta")}</span>
-               </MagneticButton>
-             </Reveal>
-           </div>
+          <Reveal>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-end">
+              {/* LEFT: title */}
+              <CinematicText
+                text={t("philosophy.teaser.title")}
+                className="text-5xl md:text-5xl lg:text-7xl font-bold tracking-tighter leading-[0.95] text-white"
+              />
+
+              {/* RIGHT: caption + CTA stacked, right-aligned column */}
+              <div className="max-w-xl md:justify-self-end space-y-8">
+                <p className="text-base md:text-lg text-neutral-400 leading-relaxed whitespace-pre-line">
+                  {t("philosophy.teaser.description")}
+                </p>
+                <MagneticButton
+                  onClick={() => setLocation("/philosophy")}
+                  className="bg-transparent border-white/20 text-white hover:bg-white hover:text-black w-full max-w-[280px] sm:max-w-none sm:w-auto shrink-0"
+                  glowColor="rgba(255, 255, 255, 0.2)"
+                >
+                  <span className="invisible text-xs font-display uppercase tracking-widest absolute">{t("philosophy.teaser.cta")}</span>
+                  <span className="text-xs font-display uppercase tracking-widest group-hover:tracking-[0.25em] transition-all duration-500 ease-out">{t("philosophy.teaser.cta")}</span>
+                </MagneticButton>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
