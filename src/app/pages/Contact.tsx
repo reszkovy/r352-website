@@ -108,76 +108,6 @@ export function Contact() {
         </div>
       </section>
 
-      {/* ─── Brief preview — first 2 questions as taster ─── */}
-      <section className="py-20 md:py-28 border-t border-neutral-200 dark:border-white/10">
-        <div className="max-w-[1800px] mx-auto px-8 md:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-16 md:gap-24">
-            <Reveal>
-              <div>
-                <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-4">
-                  {copy.preview.label}
-                </span>
-                <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[0.95] mb-6">
-                  {copy.preview.title}
-                </h2>
-                <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-md">
-                  {copy.preview.subtitle}
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.15}>
-              <div className="border-t border-neutral-200 dark:border-white/10">
-                {/* Question 1 — sample */}
-                <div className="py-8 border-b border-neutral-200 dark:border-white/10">
-                  <div className="flex items-baseline gap-5 mb-4">
-                    <span className="font-display text-base md:text-lg text-[#D4FF00] shrink-0 leading-none w-10">01</span>
-                    <h3 className="text-lg md:text-xl font-bold tracking-tight text-neutral-900 dark:text-white leading-snug">
-                      {copy.preview.q1.title}
-                    </h3>
-                  </div>
-                  <p className="text-sm md:text-base text-neutral-500 dark:text-neutral-400 leading-snug ml-[60px]">
-                    {copy.preview.q1.hint}
-                  </p>
-                </div>
-
-                {/* Question 2 — sample */}
-                <div className="py-8 border-b border-neutral-200 dark:border-white/10">
-                  <div className="flex items-baseline gap-5 mb-4">
-                    <span className="font-display text-base md:text-lg text-[#D4FF00] shrink-0 leading-none w-10">02</span>
-                    <h3 className="text-lg md:text-xl font-bold tracking-tight text-neutral-900 dark:text-white leading-snug">
-                      {copy.preview.q2.title}
-                    </h3>
-                  </div>
-                  <p className="text-sm md:text-base text-neutral-500 dark:text-neutral-400 leading-snug ml-[60px]">
-                    {copy.preview.q2.hint}
-                  </p>
-                </div>
-
-                {/* Plus indicator */}
-                <div className="py-8 flex items-baseline gap-5">
-                  <span className="font-display text-base md:text-lg text-neutral-400 dark:text-neutral-600 shrink-0 leading-none w-10">+</span>
-                  <p className="text-sm md:text-base text-neutral-500 dark:text-neutral-500 leading-snug italic">
-                    {copy.preview.more}
-                  </p>
-                </div>
-
-                <div className="pt-8">
-                  <button
-                    onClick={() => setLocation("/brief")}
-                    className="group/link inline-flex items-center gap-3 text-base md:text-lg font-bold tracking-tight text-neutral-900 dark:text-white hover:text-[#D4FF00] dark:hover:text-[#D4FF00] transition-colors duration-500"
-                  >
-                    <span className="border-b-2 border-neutral-900 dark:border-white group-hover/link:border-[#D4FF00] transition-colors duration-500 pb-1">
-                      {copy.preview.cta}
-                    </span>
-                    <span className="inline-block transition-transform duration-500 group-hover/link:translate-x-2 text-xl">→</span>
-                  </button>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
     </PageTransition>
   );
 }
@@ -210,22 +140,6 @@ const COPY_EN = {
     body: "For warm referrals, quick chats, or if you'd rather start with a sentence than a form. We read every email within 24 hours.",
     steer: "If you want a precise scope read from us, the brief gives us 10× more context than email — and you'll get a more meaningful first response.",
   },
-  preview: {
-    label: "What the brief asks",
-    title: "A taste of what's inside.",
-    subtitle:
-      "Two sample questions from the wizard. The full brief routes to 5–18 minutes depending on your engagement type — never more than needed.",
-    q1: {
-      title: "What's bringing you here right now?",
-      hint: "Project trigger — what changed in your business that makes this the right moment.",
-    },
-    q2: {
-      title: "What does 'win' look like in 6 months?",
-      hint: "Success criteria in concrete numbers, not adjectives.",
-    },
-    more: "+ 24 more questions across 8 sections — adapted to your engagement type.",
-    cta: "See the full brief",
-  },
 };
 
 const COPY_PL = {
@@ -253,21 +167,5 @@ const COPY_PL = {
     title: "Albo napisz bezpośrednio.",
     body: "Dla relacji warm, poleconych, quick chat'u, albo gdy wolisz zacząć od jednego zdania niż od formularza. Czytamy każdy mail w ciągu 24 godzin.",
     steer: "Jeśli chcesz precyzyjnej odpowiedzi co do zakresu — brief daje nam 10× więcej kontekstu niż mail, a Ty dostaniesz dużo bardziej trafny first response.",
-  },
-  preview: {
-    label: "O co pyta brief",
-    title: "Podgląd tego co w środku.",
-    subtitle:
-      "Dwa przykładowe pytania z wizarda. Pełen brief trwa 5–18 minut w zależności od typu współpracy — nigdy więcej niż potrzeba.",
-    q1: {
-      title: "Z czym przychodzisz właśnie teraz?",
-      hint: "Trigger projektu — co się zmieniło w Twoim biznesie, że to jest właściwy moment.",
-    },
-    q2: {
-      title: "Jak wygląda 'sukces' za 6 miesięcy?",
-      hint: "Kryteria sukcesu w konkretnych liczbach, nie w przymiotnikach.",
-    },
-    more: "+ 24 kolejne pytania w 8 sekcjach — dopasowane do typu Twojej współpracy.",
-    cta: "Zobacz pełen brief",
   },
 };

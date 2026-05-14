@@ -447,7 +447,7 @@ const COPY_EN = {
     subtitle:
       "We only need contact and one line of context here. The structured wizard that follows is where the real conversation happens.",
     warmLead:
-      "Were you referred by someone? Mention their name in the first wizard question — we'll fast-track your read.",
+      "Were you referred by someone? Mention them in the 'What's bringing you here?' field below — we'll fast-track your read.",
     fields: {
       name: "Your name",
       company: "Company",
@@ -511,7 +511,7 @@ const COPY_PL = {
     subtitle:
       "Potrzebujemy tylko kontaktu i jednej linijki kontekstu. Ustrukturyzowany wizard, który zaczyna się po wysłaniu, to miejsce prawdziwej rozmowy.",
     warmLead:
-      "Polecił Cię ktoś? Wpisz nazwisko w pierwszym pytaniu wizarda — przyspieszymy Twój feedback.",
+      "Polecił Cię ktoś? Wpisz to w polu 'Z czym przychodzisz?' poniżej — przyspieszymy Twój feedback.",
     fields: {
       name: "Imię i nazwisko",
       company: "Firma",
