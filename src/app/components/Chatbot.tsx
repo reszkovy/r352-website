@@ -32,12 +32,12 @@ const faqs: FAQ[] = [
   {
     id: "q2",
     question: {
-      pl: "Czym jest 8-step Process?",
-      en: "What is the 8-step Process?",
+      pl: "Czym jest r3loop?",
+      en: "What is r3loop?",
     },
     answer: {
-      pl: "Nasz framework — ten sam dla każdego projektu, modyfikujemy głębokość, nie strukturę: 01 Diagnose → 02 Map → 03 Standardize → 04 Build → 05 Govern → 06 Ship → 07 Measure → 08 Iterate. Każdy krok ma własne deliverables i mierzalne KPI (np. „% briefów ready przy pierwszym złożeniu — cel 80%+”). Diagnose to entry point — 3-5 dni dla fokusowanych projektów, 1-2 tygodnie dla organizacji. Pełen interaktywny breakdown z timeline'em per step na /process.",
-      en: "Our framework — same for every project, we modify depth not structure: 01 Diagnose → 02 Map → 03 Standardize → 04 Build → 05 Govern → 06 Ship → 07 Measure → 08 Iterate. Each step has its own deliverables and measurable KPI (e.g. '% of briefs meeting readiness checklist on first submission — target 80%+'). Diagnose is the entry point — 3-5 days for focused projects, 1-2 weeks for organization-wide engagements. Full interactive breakdown with per-step timeline on /process.",
+      pl: "r3loop to nasza 8-krokowa metodologia operacyjna — ten sam framework dla każdego projektu, modyfikujemy głębokość, nie strukturę: 01 Diagnose → 02 Map → 03 Standardize → 04 Build → 05 Govern → 06 Ship → 07 Measure → 08 Iterate. Każdy krok ma własne deliverables i mierzalne KPI (np. „% briefów ready przy pierwszym złożeniu — cel 80%+”). Diagnose to entry point — 3-5 dni dla fokusowanych projektów, 1-2 tygodnie dla organizacji. Pełen interaktywny breakdown z timeline'em per step na /process.",
+      en: "r3loop is our 8-step operating methodology — same framework for every project, we modify depth not structure: 01 Diagnose → 02 Map → 03 Standardize → 04 Build → 05 Govern → 06 Ship → 07 Measure → 08 Iterate. Each step has its own deliverables and measurable KPI (e.g. '% of briefs meeting readiness checklist on first submission — target 80%+'). Diagnose is the entry point — 3-5 days for focused projects, 1-2 weeks for organization-wide engagements. Full interactive breakdown with per-step timeline on /process.",
     },
   },
   {
@@ -168,27 +168,7 @@ export function Chatbot() {
             transition={{ duration: 0.2 }}
             className="absolute bottom-20 right-0 w-[320px] sm:w-[420px] md:w-[560px] bg-[#111111] border border-[#222222] rounded-none shadow-2xl flex flex-col overflow-hidden max-h-[85vh]"
           >
-            {/* Header */}
-            <div className="px-6 py-4 border-b border-[#222222] flex items-center justify-between bg-[#0A0A0A]">
-              <div className="flex items-center gap-3">
-                <div className="relative">
-                  <img src={botAvatar} alt="Agent" className="w-8 h-8 rounded-full border border-[#D4FF00]/30 object-cover" />
-                  <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-[#D4FF00] border-2 border-[#0A0A0A]" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-medium text-white tracking-wide">Asystent r352</h3>
-                  <p className="text-[10px] text-zinc-500 font-mono">Zawsze do Waszej dyspozycji</p>
-                </div>
-              </div>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="text-zinc-500 hover:text-white transition-colors"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* Chat Area */}
+            {/* Chat Area — no top header, close button moved next to FAQ label below */}
             <div className="flex-1 overflow-y-auto p-4 space-y-4 min-h-[300px] max-h-[480px] scrollbar-thin">
               {messages.map((msg) => (
                 <div
@@ -214,9 +194,18 @@ export function Chatbot() {
 
             {/* Options */}
             <div className="p-4 bg-[#0A0A0A] border-t border-[#222222]">
-              <p className="text-[11px] uppercase tracking-wider text-zinc-600 mb-3 px-1">
-                {language === 'pl' ? "Wybierz pytanie" : "Choose a question"}
-              </p>
+              <div className="flex items-center justify-between mb-3 px-1">
+                <p className="text-[11px] uppercase tracking-wider text-zinc-600">
+                  {language === 'pl' ? "Wybierz pytanie" : "Choose a question"}
+                </p>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="text-zinc-500 hover:text-white transition-colors -mr-1 p-1"
+                  aria-label={language === 'pl' ? "Zamknij" : "Close"}
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
               {/* 2-col grid on md+ — saves vertical space so chat answer stays readable */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                 {faqs.map((faq) => (

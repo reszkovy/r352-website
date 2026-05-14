@@ -171,11 +171,16 @@ export function Process() {
         <div className="max-w-[1800px] mx-auto">
           <Reveal>
             <div className="grid grid-cols-12 gap-6 md:gap-8 items-end">
-              <h1 className="col-span-12 md:col-span-7 text-5xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[0.95]">
-                {lang === "pl"
-                  ? "Większość problemów z designem to nie problemy z designem."
-                  : "Most design problems are not design problems."}
-              </h1>
+              <div className="col-span-12 md:col-span-7">
+                <span className="block text-[11px] uppercase tracking-[2px] text-[#D4FF00] font-display mb-6">
+                  R3LOOP™ · {lang === "pl" ? "Metodologia r352" : "r352 Methodology"}
+                </span>
+                <h1 className="text-5xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[0.95]">
+                  {lang === "pl"
+                    ? "Większość problemów z designem to nie problemy z designem."
+                    : "Most design problems are not design problems."}
+                </h1>
+              </div>
               <div className="col-span-12 md:col-span-5 md:justify-self-end max-w-xl space-y-6">
                 <p className="text-xl md:text-2xl text-neutral-700 dark:text-neutral-300 leading-snug font-medium tracking-tight">
                   {lang === "pl"
@@ -184,8 +189,8 @@ export function Process() {
                 </p>
                 <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
                   {lang === "pl"
-                    ? "Ten proces zamienia chaos w działający system — od diagnozy, przez produkcję i pomiar, po ciągłe usprawnianie."
-                    : "This process turns that chaos into a working system — from diagnosis to production, measurement and continuous improvement."}
+                    ? "r3loop to nasza 8-krokowa metodologia, która zamienia chaos operacyjny w działający system — od diagnozy, przez produkcję i pomiar, po ciągłe usprawnianie."
+                    : "r3loop is our 8-step methodology that turns operational chaos into a working system — from diagnosis to production, measurement and continuous improvement."}
                 </p>
               </div>
             </div>

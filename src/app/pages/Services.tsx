@@ -111,8 +111,8 @@ export function Services() {
           <div className="mt-16 md:mt-20 pt-10 border-t border-neutral-200 dark:border-white/10 grid grid-cols-12 gap-6 md:gap-8 items-center">
             <p className="col-span-12 md:col-span-7 text-sm text-neutral-500 dark:text-neutral-500 leading-relaxed">
               {language === "pl"
-                ? "Strategia łączy się z każdym produktem niżej. Bez fundamentu wszystko poniżej to tylko ładne assety."
-                : "Strategy connects to every product below. Without the foundation, everything below is just nice-looking assets."}
+                ? "Strategia łączy się z każdym produktem niżej i jest dostarczana przez r3loop — naszą 8-krokową metodologię. Bez fundamentu wszystko poniżej to tylko ładne assety."
+                : "Strategy connects to every product below, delivered through r3loop — our 8-step methodology. Without the foundation, everything below is just nice-looking assets."}
             </p>
             <Link
               href="/brief"
