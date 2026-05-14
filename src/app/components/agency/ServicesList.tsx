@@ -85,10 +85,10 @@ export function ServicesList() {
     <section className="py-32 md:py-40 border-t border-white/5">
       <div className="max-w-[1800px] mx-auto px-8 md:px-12">
 
-        {/* ─── HEADER — 12-col 5+7 asymmetric (title left, copy right) ─── */}
+        {/* ─── HEADER — 12-col 5+7 asymmetric (title left, copy right). col-span on Reveal (direct grid child) ─── */}
         <div className="grid grid-cols-12 gap-6 md:gap-8 mb-20 md:mb-24">
-          <Reveal>
-            <div className="col-span-12 lg:col-span-5">
+          <Reveal className="col-span-12 lg:col-span-5">
+            <div>
               <span className="text-[11px] uppercase tracking-[2px] text-[#D4FF00] font-display mb-4 block">
                 {lang === "pl" ? "System" : "System"}
               </span>
@@ -98,8 +98,8 @@ export function ServicesList() {
             </div>
           </Reveal>
 
-          <Reveal delay={0.1}>
-            <div className="col-span-12 lg:col-span-7 flex flex-col gap-6">
+          <Reveal delay={0.1} className="col-span-12 lg:col-span-7">
+            <div className="flex flex-col gap-6">
               <p className="text-xl md:text-2xl text-neutral-300 font-medium tracking-tight leading-snug max-w-2xl">
                 {lang === "pl"
                   ? "Strategia decyduje co dostarczamy. Operating system robi pracę przewidywalną. Design & Production dostarcza assety. Build & Optimize obsługuje wdrożenie."
@@ -150,7 +150,7 @@ export function ServicesList() {
                 <span className="text-[11px] uppercase tracking-[2px] text-[#D4FF00] font-display mb-3 block">
                   {lang === "pl" ? "Proces · 8 kroków" : "Process · 8 steps"}
                 </span>
-                <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-white leading-tight [text-wrap:balance]">
+                <h3 className="text-2xl md:text-3xl font-medium tracking-tight text-white leading-tight [text-wrap:balance]">
                   {lang === "pl" ? (
                     <>
                       Jak system przepływa w praktyce
