@@ -8,6 +8,7 @@ import { projects } from "@/app/data/projects";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { useLenis } from "lenis/react";
 import { ImageHover } from "@/app/components/ui/ImageHover";
+import { YouTubeEmbed } from "@/app/components/ui/YouTubeEmbed";
 
 function LockIcon({ size = 32 }: { size?: number }) {
   return (
@@ -346,28 +347,17 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
           </div>
         </div>
 
-        {/* Video Section — full-width YouTube embed (if project has videoUrl) */}
-        {(project as any).videoUrl && (() => {
-          const url: string = (project as any).videoUrl;
-          const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/);
-          const videoId = match ? match[1] : null;
-          if (!videoId) return null;
-          return (
-            <section className="mb-40">
-              <Reveal>
-                <div className="w-full aspect-video bg-[#0A0A0A] overflow-hidden border border-white/5 rounded-sm">
-                  <iframe
-                    src={`https://www.youtube.com/embed/${videoId}?rel=0`}
-                    title={`${project.client} — video`}
-                    className="w-full h-full"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                  />
-                </div>
-              </Reveal>
-            </section>
-          );
-        })()}
+        {/* Video Section — premium click-to-play YouTube embed (if project has videoUrl) */}
+        {(project as any).videoUrl && (
+          <section className="mb-40">
+            <Reveal>
+              <YouTubeEmbed
+                url={(project as any).videoUrl}
+                title={`${project.client} — case study video`}
+              />
+            </Reveal>
+          </section>
+        )}
 
         {/* Gallery Section - Editorial Grid (only renders if project has images) */}
         {project.images.length > 0 && (
