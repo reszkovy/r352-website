@@ -346,7 +346,31 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
           </div>
         </div>
 
-        {/* Gallery Section - Editorial Grid */}
+        {/* Video Section — full-width YouTube embed (if project has videoUrl) */}
+        {(project as any).videoUrl && (() => {
+          const url: string = (project as any).videoUrl;
+          const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/);
+          const videoId = match ? match[1] : null;
+          if (!videoId) return null;
+          return (
+            <section className="mb-40">
+              <Reveal>
+                <div className="w-full aspect-video bg-[#0A0A0A] overflow-hidden border border-white/5 rounded-sm">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${videoId}?rel=0`}
+                    title={`${project.client} — video`}
+                    className="w-full h-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  />
+                </div>
+              </Reveal>
+            </section>
+          );
+        })()}
+
+        {/* Gallery Section - Editorial Grid (only renders if project has images) */}
+        {project.images.length > 0 && (
         <section className="mb-40" ref={containerRef}>
            <div className="flex items-end justify-between mb-24 px-4">
               <Reveal>
@@ -361,36 +385,48 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
               </Reveal>
            </div>
 
-           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-y-32">
+           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-y-24">
              {project.images.map((image, i) => {
-               // Layout Logic
+               // Per-project layout override — Kubota + Archicom use uniform large (full-width 16:9 slabs)
+               const useUniformLarge = ["kubota", "archicom"].includes(project.id);
+
+               // Default editorial rhythm (full / left / right / centered) for other projects
                const isFullWidth = i % 4 === 0;
                const isLeft = i % 4 === 1;
                const isRight = i % 4 === 2;
                const isCentered = i % 4 === 3;
-               
+
                let gridClass = "md:col-span-12";
-               if (isLeft) gridClass = "md:col-span-5 md:col-start-1";
-               if (isRight) gridClass = "md:col-span-6 md:col-start-7 md:mt-32"; // Offset right column
-               if (isCentered) gridClass = "md:col-span-8 md:col-start-3";
+               if (useUniformLarge) {
+                 gridClass = "md:col-span-12";
+               } else if (isLeft) {
+                 gridClass = "md:col-span-5 md:col-start-1";
+               } else if (isRight) {
+                 gridClass = "md:col-span-6 md:col-start-7 md:mt-32";
+               } else if (isCentered) {
+                 gridClass = "md:col-span-8 md:col-start-3";
+               }
+
+               // For uniform-large layout: always 16:9, no decorative glows, lighter tilt
+               const useLargeAspect = useUniformLarge || isFullWidth;
 
                return (
                  <div key={i} className={`${gridClass} relative group`}>
                    <Reveal width="100%" delay={i * 0.1}>
                      <div className="relative">
-                        {/* Decorative elements for specific items */}
-                        {isCentered && (
+                        {/* Decorative elements for specific items (skip for uniform-large mode) */}
+                        {isCentered && !useUniformLarge && (
                            <div className="absolute -inset-4 bg-gradient-to-r from-[#D4FF00]/20 to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                         )}
 
                         <ImageHover
                            className={`
                               w-full bg-[#0A0A0A] border border-white/5 rounded-sm
-                              ${isFullWidth ? 'aspect-[16/9]' : 'aspect-[4/3]'}
+                              ${useLargeAspect ? 'aspect-[16/9]' : 'aspect-[4/3]'}
                               transition-all duration-700 hover:border-white/20
                            `}
-                           tiltMax={isCentered ? 3 : 5}
-                           glowIntensity={0.12}
+                           tiltMax={useUniformLarge ? 3 : (isCentered ? 3 : 5)}
+                           glowIntensity={useUniformLarge ? 0.08 : 0.12}
                         >
                            {/* Glassmorphism Background for translucent UI */}
                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent opacity-50" />
@@ -419,6 +455,7 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
              })}
            </div>
         </section>
+        )}
 
         {/* Contact CTA */}
         <Reveal>
