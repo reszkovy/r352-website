@@ -41,6 +41,7 @@ import uniqaLogo from "figma:asset/590f188d1475875fa3221bb4f86c99f935f70cbe.png"
 import fifaLogo from "figma:asset/51e11441d7c02bfa2791df691e15dbf208a105e4.png";
 
 // Archicom Project Assets (River Point + Bulwar Północny investments)
+import archicomCover from "../../imports/archicom/bkg1 2.png"; // Panoramic thumbnail — used on /work list + cover
 import archicomRP1 from "../../imports/archicom/RP1.png";
 import archicomRP2 from "../../imports/archicom/RP2.png";
 import archicomRP3 from "../../imports/archicom/RP3.png";
@@ -408,8 +409,8 @@ export const projects = [
       pl: "Real Estate / Produkcja Multi-channel"
     },
     year: "2024",
-    image: archicomRP1,
-    coverImage: archicomRP1,
+    image: archicomCover,      // panoramic thumbnail — what shows on /work list
+    coverImage: archicomCover, // same for project detail hero
     // YouTube anchor video — embedded full-width above image gallery
     videoUrl: "https://www.youtube.com/watch?v=7f_Qzq6B7kY",
     // Alternating order RP/BP to show both investments early in gallery
