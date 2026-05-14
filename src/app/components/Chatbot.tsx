@@ -166,7 +166,7 @@ export function Chatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="absolute bottom-20 right-0 w-[320px] sm:w-[420px] bg-[#111111] border border-[#222222] rounded-none shadow-2xl flex flex-col overflow-hidden max-h-[85vh]"
+            className="absolute bottom-20 right-0 w-[320px] sm:w-[420px] md:w-[560px] bg-[#111111] border border-[#222222] rounded-none shadow-2xl flex flex-col overflow-hidden max-h-[85vh]"
           >
             {/* Header */}
             <div className="px-6 py-4 border-b border-[#222222] flex items-center justify-between bg-[#0A0A0A]">
@@ -189,7 +189,7 @@ export function Chatbot() {
             </div>
 
             {/* Chat Area */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 min-h-[300px] max-h-[400px] scrollbar-thin">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 min-h-[300px] max-h-[480px] scrollbar-thin">
               {messages.map((msg) => (
                 <div
                   key={msg.id}
@@ -217,7 +217,8 @@ export function Chatbot() {
               <p className="text-[11px] uppercase tracking-wider text-zinc-600 mb-3 px-1">
                 {language === 'pl' ? "Wybierz pytanie" : "Choose a question"}
               </p>
-              <div className="flex flex-col gap-2">
+              {/* 2-col grid on md+ — saves vertical space so chat answer stays readable */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                 {faqs.map((faq) => (
                   <button
                     key={faq.id}
@@ -227,18 +228,18 @@ export function Chatbot() {
                     {faq.question[language as keyof typeof faq.question] || faq.question.en}
                   </button>
                 ))}
-                
-                <button
-                  onClick={() => {
-                    setIsOpen(false);
-                    setLocation("/contact");
-                    window.scrollTo(0, 0);
-                  }}
-                  className="mt-2 w-full text-center text-[12px] font-medium leading-snug text-black bg-[#D4FF00] hover:bg-[#bce600] rounded-lg px-3 py-2.5 transition-colors duration-200"
-                >
-                  {language === 'pl' ? "Przejdź do kontaktu" : "Go to contact"}
-                </button>
               </div>
+
+              <button
+                onClick={() => {
+                  setIsOpen(false);
+                  setLocation("/contact");
+                  window.scrollTo(0, 0);
+                }}
+                className="mt-3 w-full text-center text-[12px] font-medium leading-snug text-black bg-[#D4FF00] hover:bg-[#bce600] rounded-lg px-3 py-2.5 transition-colors duration-200"
+              >
+                {language === 'pl' ? "Przejdź do kontaktu" : "Go to contact"}
+              </button>
             </div>
           </motion.div>
         )}
