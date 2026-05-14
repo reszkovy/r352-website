@@ -4,6 +4,7 @@ import { R352Symbol } from "@/app/components/agency/R352Logo";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { useLenis } from "lenis/react";
 import { MagnetGrid } from "@/app/components/ui/MagnetGrid";
+import { R3LoopBadge } from "@/app/components/ui/R3LoopBadge";
 
 export function Footer() {
   const { t } = useLanguage();
@@ -184,6 +185,9 @@ export function Footer() {
                  <p className="text-xs font-display uppercase tracking-widest text-neutral-600">
                    © 2026 r352
                  </p>
+                 <Link href="/process" className="opacity-70 hover:opacity-100 transition-opacity duration-300">
+                   <R3LoopBadge size="sm" />
+                 </Link>
                </div>
                
                <button 

@@ -6,6 +6,7 @@ import { MagneticButton } from "@/app/components/ui/MagneticButton";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { useLocation } from "wouter";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { R3LoopBadge } from "@/app/components/ui/R3LoopBadge";
 
 // ─── 8-step methodology ──────────────────────────────────
 interface Step {
@@ -172,9 +173,12 @@ export function Process() {
           <Reveal>
             <div className="grid grid-cols-12 gap-6 md:gap-8 items-end">
               <div className="col-span-12 md:col-span-7">
-                <span className="block text-[11px] uppercase tracking-[2px] text-[#D4FF00] font-display mb-6">
-                  R3LOOP™ · {lang === "pl" ? "Metodologia r352" : "r352 Methodology"}
-                </span>
+                <div className="flex items-center gap-3 mb-6">
+                  <R3LoopBadge size="md" />
+                  <span className="text-[11px] uppercase tracking-[2px] text-neutral-500 font-display">
+                    {lang === "pl" ? "Metodologia r352" : "r352 Methodology"}
+                  </span>
+                </div>
                 <h1 className="text-5xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[0.95]">
                   {lang === "pl"
                     ? "Większość problemów z designem to nie problemy z designem."

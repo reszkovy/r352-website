@@ -2,6 +2,7 @@ import { Reveal } from "@/app/components/ui/Reveal";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
+import { R3LoopBadge } from "@/app/components/ui/R3LoopBadge";
 
 /**
  * ServicesList — unified system section on Home.
@@ -147,9 +148,12 @@ export function ServicesList() {
             {/* 8-step strip header — 12-col 8+4 asymmetric */}
             <div className="grid grid-cols-12 gap-6 md:gap-8 items-end mb-12">
               <div className="col-span-12 md:col-span-8">
-                <span className="text-[11px] uppercase tracking-[2px] text-[#D4FF00] font-display mb-3 block">
-                  R3LOOP™ · {lang === "pl" ? "8 kroków" : "8 steps"}
-                </span>
+                <div className="flex items-center gap-3 mb-3">
+                  <R3LoopBadge size="sm" />
+                  <span className="text-[11px] uppercase tracking-[2px] text-neutral-500 font-display">
+                    {lang === "pl" ? "8 kroków" : "8 steps"}
+                  </span>
+                </div>
                 <h3 className="text-2xl md:text-3xl font-medium tracking-tight text-white leading-tight [text-wrap:balance]">
                   {lang === "pl" ? (
                     <>
