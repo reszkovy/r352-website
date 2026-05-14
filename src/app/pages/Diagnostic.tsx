@@ -157,7 +157,11 @@ export function Brief() {
                   {copy.hero.label}
                 </span>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[0.95] mb-8">
-                  {copy.hero.title}
+                  {lang === "pl" ? (
+                    <>Zacznij od briefu.<br className="hidden md:inline" /> Ustrukturyzowany punkt startu.</>
+                  ) : (
+                    <>Brief us.<br className="hidden md:inline" /> Structured starting point.</>
+                  )}
                 </h1>
                 <p className="text-lg md:text-xl text-neutral-700 dark:text-neutral-300 leading-snug font-medium tracking-tight mb-8 max-w-xl">
                   {copy.hero.intro}
@@ -294,7 +298,11 @@ export function Brief() {
               {copy.howItWorks.label}
             </span>
             <h2 className="text-4xl md:text-5xl font-normal tracking-tight text-neutral-900 dark:text-white mb-16 leading-[1.05] max-w-3xl">
-              {copy.howItWorks.title}
+              {lang === "pl" ? (
+                <>Trzy kroki.<br className="hidden md:inline" /> Uczciwe zakończenie.</>
+              ) : (
+                <>Three steps.<br className="hidden md:inline" /> Honest finish.</>
+              )}
             </h2>
           </Reveal>
           {/* 3 steps — gap-px on a lighter parent creates hair-line dividers without chunky borders */}

@@ -49,9 +49,19 @@ export function Services() {
               {language === "pl" ? "01 · Strategia" : "01 · Strategy"}
             </span>
             <h2 className="text-4xl md:text-6xl font-normal text-neutral-900 dark:text-white tracking-tight mb-8 leading-[1.05]">
-              {language === "pl"
-                ? "Strategia. Egzekucja. Operacjonalizacja."
-                : "Strategy. Execution. Operationalization."}
+              {language === "pl" ? (
+                <>
+                  Strategia.<br className="hidden md:inline" />
+                  {" "}Egzekucja.<br className="hidden md:inline" />
+                  {" "}Operacjonalizacja.
+                </>
+              ) : (
+                <>
+                  Strategy.<br className="hidden md:inline" />
+                  {" "}Execution.<br className="hidden md:inline" />
+                  {" "}Operationalization.
+                </>
+              )}
             </h2>
             <p className="text-xl md:text-2xl text-neutral-700 dark:text-neutral-300 tracking-tight font-medium max-w-3xl leading-snug">
               {language === "pl"

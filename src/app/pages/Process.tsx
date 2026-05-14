@@ -431,9 +431,11 @@ export function Process() {
                   {lang === "pl" ? "Przykład zastosowania" : "Example use case"}
                 </span>
                 <h2 className="text-4xl md:text-5xl font-normal tracking-tight text-neutral-900 dark:text-white mb-8 leading-[1.05]">
-                  {lang === "pl"
-                    ? "Multi-location marketing team."
-                    : "Multi-location marketing team."}
+                  {lang === "pl" ? (
+                    <>Multi-location<br className="hidden md:inline" /> marketing team.</>
+                  ) : (
+                    <>Multi-location<br className="hidden md:inline" /> marketing team.</>
+                  )}
                 </h2>
               </div>
             </Reveal>

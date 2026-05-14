@@ -94,7 +94,11 @@ export function ServicesList() {
                 {lang === "pl" ? "System" : "System"}
               </span>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.05]">
-                {lang === "pl" ? "Jeden system. Cztery warstwy." : "One system. Four layers."}
+                {lang === "pl" ? (
+                  <>Jeden system.<br className="hidden md:inline" /> Cztery warstwy.</>
+                ) : (
+                  <>One system.<br className="hidden md:inline" /> Four layers.</>
+                )}
               </h2>
             </div>
           </Reveal>
