@@ -271,7 +271,7 @@ export function Process() {
                       initial={{ opacity: 0, y: 14 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.55, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-                      className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold tracking-tight text-neutral-900 dark:text-white leading-snug md:whitespace-nowrap mb-10"
+                      className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-medium tracking-tight text-neutral-900 dark:text-white leading-snug md:whitespace-nowrap mb-10"
                     >
                       {step.subtitle[lang]}
                     </motion.h3>
@@ -348,7 +348,7 @@ export function Process() {
                 <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-4">
                   {lang === "pl" ? "Dla kogo" : "Who this is for"}
                 </span>
-                <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-neutral-900 dark:text-white mb-8 leading-[0.95]">
+                <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-neutral-900 dark:text-white mb-8 leading-[1.1]">
                   {lang === "pl"
                     ? "Dla zespołów, gdzie design to nie pojedyncze zadanie."
                     : "Built for teams where design work is no longer a single task."}
@@ -421,7 +421,7 @@ export function Process() {
                 <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-4">
                   {lang === "pl" ? "Przykład zastosowania" : "Example use case"}
                 </span>
-                <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-neutral-900 dark:text-white mb-8 leading-[0.95]">
+                <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-neutral-900 dark:text-white mb-8 leading-[1.0]">
                   {lang === "pl"
                     ? "Multi-location marketing team."
                     : "Multi-location marketing team."}

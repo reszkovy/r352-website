@@ -48,7 +48,7 @@ export function Services() {
             <span className="text-[11px] uppercase tracking-[2px] text-neutral-500 dark:text-[#D4FF00] font-display mb-4 block">
               {language === "pl" ? "01 · Strategia" : "01 · Strategy"}
             </span>
-            <h2 className="text-4xl md:text-6xl font-bold text-neutral-900 dark:text-white tracking-tight mb-8 leading-[0.95]">
+            <h2 className="text-4xl md:text-6xl font-medium text-neutral-900 dark:text-white tracking-tight mb-8 leading-[1.0]">
               {language === "pl"
                 ? "Strategia. Egzekucja. Operacjonalizacja."
                 : "Strategy. Execution. Operationalization."}
