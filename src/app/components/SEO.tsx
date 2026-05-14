@@ -82,7 +82,7 @@ export function SEO({
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "5",
-      "reviewCount": "5",
+      "reviewCount": "6",
       "bestRating": "5"
     },
     "review": [
@@ -114,6 +114,12 @@ export function SEO({
         "@type": "Review",
         "author": { "@type": "Person", "name": "Marek Morisson" },
         "reviewBody": "They don't just execute tasks; they think along with us and bring solutions that drive real value.",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Michalina Piątkowska" },
+        "reviewBody": "Consistent quality across every investment we launch. Communication is precise, deadlines hold — exactly what real estate campaigns need.",
         "reviewRating": { "@type": "Rating", "ratingValue": "5" }
       }
     ]

@@ -205,8 +205,8 @@ export const projects = [
     ],
     isInternal: false,
     description: {
-      en: "Archicom — top Polish residential developer — runs multiple investments simultaneously, each requiring a launch campaign that feels distinct (location identity) yet stays anchored to the corporate brand. We built the communication system across two flagship Wrocław investments: River Point and Bulwar Północny — covering print, outdoor, digital, animation and production support.",
-      pl: "Archicom — czołowy polski deweloper mieszkaniowy — prowadzi wiele inwestycji równolegle, każda wymaga kampanii launchowej, która jest rozpoznawalna lokalnie, ale spójna z marką korporacyjną. Zbudowaliśmy system komunikacji dla dwóch flagowych wrocławskich inwestycji: River Point i Bulwary Północne — print, outdoor, digital, animacja i wsparcie produkcyjne."
+      en: "Archicom is one of Poland's largest residential developers, running multiple investments simultaneously across major cities — each requiring a launch campaign that feels distinct (location identity) yet stays anchored to the corporate brand. We've supported their marketing operations broadly; River Point and Bulwar Północny shown here are flagship Wrocław examples of the system in action — print, outdoor, digital, animation and production support.",
+      pl: "Archicom to jeden z największych deweloperów mieszkaniowych w Polsce, prowadzący wiele inwestycji równolegle w głównych miastach — każda wymaga kampanii launchowej, która jest rozpoznawalna lokalnie, ale spójna z marką korporacyjną. Wspieraliśmy ich operacje marketingowe szeroko; River Point i Bulwary Północne pokazane tutaj to flagowe wrocławskie przykłady systemu w działaniu — print, outdoor, digital, animacja i wsparcie produkcyjne."
     },
     services: {
       en: ["Print Materials", "Outdoor Campaigns", "Digital Assets", "Animations & Video", "Production Support"],

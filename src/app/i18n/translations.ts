@@ -57,6 +57,12 @@ export const translations = {
           author: "Lidia Kołucka",
           role: "Marketing Director",
           company: "Orlen / ex. Pelion"
+        },
+        {
+          quote: "Consistent quality across every investment we launch. Communication is precise, deadlines hold — exactly what real estate campaigns need.",
+          author: "Michalina Piątkowska",
+          role: "Marketing Coordinator",
+          company: "Archicom"
         }
       ]
     },
@@ -573,6 +579,12 @@ export const translations = {
           author: "Lidia Kołucka",
           role: "Marketing Director",
           company: "Orlen / ex. Pelion"
+        },
+        {
+          quote: "Spójna jakość przy każdej inwestycji, którą uruchamiamy. Komunikacja precyzyjna, deadliny dotrzymywane — dokładnie tego potrzebują kampanie w real estate.",
+          author: "Michalina Piątkowska",
+          role: "Marketing Coordinator",
+          company: "Archicom"
         }
       ]
     },
