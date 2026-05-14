@@ -158,7 +158,7 @@ export function Chatbot() {
   };
 
   return (
-    <div className="hidden md:block fixed bottom-6 right-6 z-50" data-no-cursor-fx="true">
+    <div className="hidden md:block fixed bottom-6 right-6 z-[1001]" data-no-cursor-fx="true">
       <AnimatePresence>
         {isOpen && (
           <motion.div
