@@ -63,7 +63,7 @@ export function AgencyHero() {
 
                    <MagneticButton
                      onClick={() => setLocation("/work")}
-                     className="explore-work-btn bg-black text-white border-white/20 hover:border-white/40 rounded-none"
+                     className="explore-work-btn bg-white/[0.04] text-white border-transparent hover:bg-white/[0.08] rounded-none"
                      glowColor="rgba(212, 255, 0, 0.2)"
                    >
                      <span className="invisible text-lg font-display uppercase tracking-[0.25em] absolute">{t("hero.cta_work")}</span>

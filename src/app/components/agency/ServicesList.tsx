@@ -113,15 +113,15 @@ export function ServicesList() {
           </Reveal>
         </div>
 
-        {/* ─── 4 PILLARS GRID ─── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t border-l border-white/10 mb-24 md:mb-28">
+        {/* ─── 4 PILLARS GRID — gap-px on a slightly lighter parent creates hair-line dividers without chunky borders ─── */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.06] mb-24 md:mb-28">
           {PILLARS.map((p, i) => (
             <Reveal key={p.num} delay={i * 0.08}>
-              <div className="p-8 md:p-10 border-r border-b border-white/10 h-full flex flex-col gap-4 group hover:bg-white/[0.02] transition-colors duration-500">
+              <div className="p-8 md:p-10 h-full flex flex-col gap-4 group bg-[#0a0a0a] hover:bg-[#0f0f0f] transition-colors duration-500">
                 <div className="flex items-baseline justify-between">
                   <span className="font-display text-sm text-[#D4FF00]">{p.num}</span>
                   {p.optional && (
-                    <span className="text-[10px] uppercase tracking-widest border border-white/10 text-neutral-500 px-2 py-1 font-display">
+                    <span className="text-[10px] uppercase tracking-widest bg-white/[0.06] text-neutral-400 px-2 py-1 font-display">
                       {lang === "pl" ? "Opcjonalne" : "Optional"}
                     </span>
                   )}
