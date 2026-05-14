@@ -61,8 +61,9 @@ export function AgencyHero() {
                      </span>
                    </MagneticButton>
 
+                   {/* SECONDARY CTA — direct Calendly book (no extra hop via /contact) */}
                    <MagneticButton
-                     onClick={() => setLocation("/work")}
+                     onClick={() => window.open("https://calendly.com/p-reszkovy/30min", "_blank", "noopener,noreferrer")}
                      className="explore-work-btn bg-white/[0.04] text-white border-transparent hover:bg-white/[0.08] rounded-none"
                      glowColor="rgba(212, 255, 0, 0.2)"
                    >

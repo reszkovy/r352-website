@@ -13,16 +13,16 @@ export const translations = {
       tagline: "YOUR AGILE DESIGN PARTNER"
     },
     hero: {
-      title: "Design-first partner<br/>for teams that ship.",
-      title_mobile: "Design-first<br/>partner<br/>for teams<br/>that ship.",
-      description_title: "We help teams reduce delivery friction and ship quality design across channels by improving briefs, approvals, standards, and execution.",
+      title: "We build the system<br/>behind great design.",
+      title_mobile: "We build<br/>the system<br/>behind<br/>great design.",
+      description_title: "From strategy to rollout-ready design — with predictable quality and speed.",
       description_body: "Quality is a standard. Speed is a habit. The system makes both predictable.",
       quote: "Design begins with a decision, not a tool.",
-      micro_1: "Clarity first. Fewer loops, faster decisions.",
-      micro_2: "Systems over one-offs. Standards that scale.",
-      micro_3: "End-to-end delivery across digital, print, and physical touchpoints.",
-      cta_start: "Start a project",
-      cta_work: "Explore Work"
+      micro_1: "Clear briefs.",
+      micro_2: "Fast approvals.",
+      micro_3: "Consistent output.",
+      cta_start: "Start a brief",
+      cta_work: "Book a call"
     },
     references: {
       title: "References",
@@ -529,16 +529,16 @@ export const translations = {
       tagline: "TWÓJ SPRAWNY PARTNER DESIGNOWY"
     },
     hero: {
-      title: "Twój sprawny<br/>partner w designie",
-      title_mobile: "Twój sprawny<br/>partner<br/>w designie",
-      description_title: "Design zaczyna się od decyzji nie od narzędzia.",
+      title: "Budujemy system<br/>za świetnym designem.",
+      title_mobile: "Budujemy<br/>system<br/>za świetnym<br/>designem.",
+      description_title: "Od strategii do gotowego do wdrożenia designu — z przewidywalną jakością i tempem.",
       description_body: "Jakość to nasz standard. Szybkość to nasz nawyk. System czyni obie te rzeczy przewidywalnymi.",
       quote: "Projektowanie zaczyna się od decyzji, nie od narzędzia.",
-      micro_1: "Najpierw jasność. Mniej poprawek, szybsze decyzje.",
-      micro_2: "Systemy zamiast jednorazowych rozwiązań. Standardy, które rosną z Wami.",
-      micro_3: "Kompleksowa obsługa: cyfrowa, druk i punkty styku na żywo.",
-      cta_start: "Rozpocznijcie rozmowę",
-      cta_work: "Zobaczcie prace"
+      micro_1: "Jasne briefy.",
+      micro_2: "Szybkie akceptacje.",
+      micro_3: "Spójna dostawa.",
+      cta_start: "Wypełnij brief",
+      cta_work: "Umów rozmowę"
     },
     references: {
       title: "Referencje",
