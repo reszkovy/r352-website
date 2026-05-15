@@ -52,7 +52,8 @@ import archicomBP3 from "../../imports/archicom/BP3.png";
 import archicomBP4 from "../../imports/archicom/BP4.png";
 
 // DiscoBowl Project Assets (20 UK venues + booking system)
-import discobowlCover from "../../imports/discobowl/1 9.png"; // Panoramic cover — /work thumbnail + hero
+import discobowlCover from "../../imports/discobowl/27.png"; // Panoramic cover — /work thumbnail + hero
+import discobowlPanorama from "../../imports/discobowl/1 9.png"; // Originally cover, moved to gallery
 import discobowlAsset1 from "../../imports/discobowl/2 2.png";
 import discobowlAsset2 from "../../imports/discobowl/3 2.png";
 import discobowlAsset3 from "../../imports/discobowl/4 2.png";
@@ -260,16 +261,17 @@ export const projects = [
       pl: "Entertainment / Produkt Rezerwacyjny"
     },
     year: "2024",
-    image: discobowlCover,      // panoramic cover for /work list thumbnail
+    image: discobowlCover,      // 27.png — panoramic cover for /work list thumbnail
     coverImage: discobowlCover, // same for project detail hero
     images: [
-      discobowlFrame,    // Frame composition (likely brand+system showcase)
+      discobowlFrame,     // Frame composition (likely brand+system showcase)
+      discobowlPanorama,  // 1 9.png — moved here from cover slot
       discobowlAsset1,
       discobowlAsset2,
       discobowlAsset3,
       discobowlAsset4,
       discobowlAsset5,
-      discobowlGroup,    // Group composition
+      discobowlGroup,     // Group composition
     ],
     isInternal: false,
     description: {
