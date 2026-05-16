@@ -1,6 +1,7 @@
 import { Reveal } from "@/app/components/ui/Reveal";
 import { Link } from "wouter";
 import { useLanguage } from "@/app/context/LanguageContext";
+import { useTheme } from "@/app/context/ThemeContext";
 import { useRef } from "react";
 import { PhilosophyVisuals } from "./PhilosophyVisuals";
 import { ScrollSequence } from "@/app/components/ui/ScrollSequence";
@@ -23,11 +24,17 @@ interface NonNeg {
 
 export function Philosophy() {
   const { t, language } = useLanguage();
+  const { theme } = useTheme();
   const containerRef = useRef(null);
 
   const beliefKeys = ["01", "02", "03", "04", "05", "06"];
   const contrasts = (t("philosophy_page.contrasts") || []) as Contrast[];
   const nonneg = (t("philosophy_page.nonneg") || []) as NonNeg[];
+
+  // Theme-aware scroll sequence — dark frames for dark mode, light frames for light mode
+  const isDark = theme === "dark";
+  const framePath = isDark ? "/scroll-frames/frame" : "/scroll-frames-light/frame";
+  const sequenceBg = isDark ? "#0a0a0a" : "#FFFFFF";
 
   return (
     <section ref={containerRef} className="relative overflow-x-hidden">
@@ -36,14 +43,17 @@ export function Philosophy() {
           below the video. overflow-x-hidden preserves horizontal clipping
           (safety against animation overshoot) without breaking vertical sticky. */}
 
-      {/* Hero + Scroll-driven sequence — header overlaid on R3 video, fades as scroll progresses */}
+      {/* Hero + Scroll-driven sequence — header overlaid on R3 video, fades as scroll progresses.
+          Theme-aware: dark frames (#0a0a0a bg) for dark mode, light frames (white bg) for light mode.
+          key={theme} forces re-mount so canvas + image cache rebind cleanly on toggle. */}
       <div className="border-b border-neutral-200 dark:border-white/10 relative">
         <ScrollSequence
+          key={theme}
           frameCount={120}
-          framePath="/scroll-frames/frame"
+          framePath={framePath}
           padDigits={3}
           pinHeight="200vh"
-          backgroundColor="#0a0a0a"
+          backgroundColor={sequenceBg}
           fadeChildrenAt={[0.08, 0.22]}
         >
           {/* Overlay: hero copy positioned at top of viewport, fades out as video takes over.

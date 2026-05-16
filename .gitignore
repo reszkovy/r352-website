@@ -19,3 +19,6 @@ ANIMACJA_scrool/
 
 # R3 brand internal docs
 r3-*.md
+
+# Source light frames (optimized to public/scroll-frames-light)
+Animacja_scrool jasna/
