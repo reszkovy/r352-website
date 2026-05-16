@@ -235,18 +235,21 @@ export function ScrollSequence({
               </div>
             )}
 
-            {/* OVERLAY LAYER — Framer Motion entry matching PageTransition timing exactly.
-                Typography (children) animates IDENTICALLY to other subpage content
-                so the overlay reads as part of the natural page transition. */}
+            {/* OVERLAY LAYER — Framer Motion entry matching PageTransition timing.
+                Typography (children) animates with opacity + translateY for an
+                editorial "fade-in + rise" feel, synced to PageTransition timing.
+                NOTE: filter: blur removed (kept opacity + y only) — blur filter
+                is GPU-expensive on mobile and was causing jank during the
+                concurrent scroll-driven wrapper translate. Net visual difference
+                is subtle; perf benefit is significant on mid-tier phones. */}
             {children && (
               <motion.div
                 ref={overlayRef}
                 className={`absolute inset-0 ${overlayClassName}`}
-                initial={{ opacity: 0, y: 30, filter: "blur(24px)" }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{
                   opacity: 1,
                   y: 0,
-                  filter: "blur(0px)",
                   transition: {
                     duration: 0.9,
                     delay: 0.3,
@@ -254,12 +257,11 @@ export function ScrollSequence({
                   },
                 }}
                 onAnimationComplete={() => {
-                  // Clear inline transform/filter after entry — consistent with
-                  // PageTransition pattern, prevents stale containing block.
+                  // Clear inline transform after entry — prevents stale
+                  // containing block from y transform sticking around.
                   const el = overlayRef.current;
                   if (el) {
                     el.style.transform = "";
-                    el.style.filter = "";
                     el.style.willChange = "";
                   }
                 }}

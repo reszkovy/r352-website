@@ -180,9 +180,19 @@ export function Process() {
                   </span>
                 </div>
                 <h1 className="text-5xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[0.95]">
-                  {lang === "pl"
-                    ? "Większość problemów z designem to nie problemy z designem."
-                    : "Most design problems are not design problems."}
+                  {lang === "pl" ? (
+                    <>
+                      Większość problemów<br className="hidden md:block" />
+                      {" "}z designem to nie<br className="hidden md:block" />
+                      {" "}problemy z designem.
+                    </>
+                  ) : (
+                    <>
+                      Most design<br className="hidden md:block" />
+                      {" "}problems are not<br className="hidden md:block" />
+                      {" "}design problems.
+                    </>
+                  )}
                 </h1>
               </div>
               <div className="col-span-12 md:col-span-5 md:justify-self-end max-w-xl space-y-6">
