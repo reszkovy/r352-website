@@ -32,27 +32,7 @@ export function Philosophy() {
   return (
     <section ref={containerRef} className="relative overflow-hidden">
 
-      {/* Hero Header — matched to Process page spacing (pt-32 md:pt-40) */}
-      <div className="pt-32 pb-20 md:pt-40 md:pb-32 px-8 md:px-12 border-b border-neutral-200 dark:border-white/10">
-        <div className="max-w-[1800px] mx-auto">
-          <Reveal>
-            <div>
-              <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-8">
-                {t("philosophy_page.label")}
-              </span>
-              <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tighter text-neutral-900 dark:text-white mb-6 leading-[0.9] max-w-5xl">
-                {t("philosophy_page.title_line1")} <br className="hidden md:block" />
-                <span className="text-neutral-400 dark:text-[#D4FF00]">{t("philosophy_page.title_line2")}</span>
-              </h1>
-              <p className="text-xl md:text-2xl text-neutral-600 dark:text-neutral-400 tracking-tight font-normal leading-snug max-w-3xl">
-                {t("philosophy_page.subtitle")}
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </div>
-
-      {/* Scroll-driven sequence — R3 cinematic intro reacting to scroll */}
+      {/* Hero + Scroll-driven sequence — header overlaid on R3 video, fades as scroll progresses */}
       <div className="border-b border-neutral-200 dark:border-white/10 relative">
         <ScrollSequence
           frameCount={120}
@@ -60,10 +40,27 @@ export function Philosophy() {
           padDigits={3}
           pinHeight="300vh"
           backgroundColor="#0a0a0a"
-        />
+          fadeChildrenAt={[0.08, 0.22]}
+        >
+          {/* Overlay: hero copy positioned at top of viewport, fades out as video takes over */}
+          <div className="absolute inset-x-0 top-0 px-8 md:px-12 pt-32 md:pt-40">
+            <div className="max-w-[1800px] mx-auto">
+              <span className="block text-xs font-display uppercase tracking-[0.2em] text-[#D4FF00] mb-8">
+                {t("philosophy_page.label")}
+              </span>
+              <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tighter text-white mb-6 leading-[0.9] max-w-5xl drop-shadow-[0_2px_24px_rgba(0,0,0,0.5)]">
+                {t("philosophy_page.title_line1")} <br className="hidden md:block" />
+                <span className="text-[#D4FF00]">{t("philosophy_page.title_line2")}</span>
+              </h1>
+              <p className="text-xl md:text-2xl text-neutral-300 tracking-tight font-normal leading-snug max-w-3xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
+                {t("philosophy_page.subtitle")}
+              </p>
+            </div>
+          </div>
+        </ScrollSequence>
       </div>
 
-      {/* Static visuals strip — kept as secondary editorial element below sequence */}
+      {/* Static visuals strip — kept as fallback/secondary editorial element (hidden by default) */}
       <div className="border-b border-neutral-200 dark:border-white/10 bg-[#D0DBE1] md:bg-transparent hidden">
         <PhilosophyVisuals />
       </div>

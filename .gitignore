@@ -13,3 +13,9 @@ dist
 tmp/
 .vercel
 .env*.local
+
+# Source frames (already optimized to public/scroll-frames)
+ANIMACJA_scrool/
+
+# R3 brand internal docs
+r3-*.md

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useScroll } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 
 interface ScrollSequenceProps {
   /** Number of frames in the sequence */
@@ -17,6 +17,11 @@ interface ScrollSequenceProps {
   backgroundColor?: string;
   /** Optional children rendered as overlay (text manifest, captions, etc.) inside sticky frame */
   children?: React.ReactNode;
+  /** Fade children out over scroll progress range — [startProgress, endProgress] in 0..1.
+   *  Example: [0.1, 0.25] = fully visible until 10% scroll, fades out by 25%. */
+  fadeChildrenAt?: [number, number];
+  /** Optional className for children wrapper (overlay container) — useful for custom positioning */
+  overlayClassName?: string;
 }
 
 /**
@@ -41,6 +46,8 @@ export function ScrollSequence({
   className = "",
   backgroundColor = "#0a0a0a",
   children,
+  fadeChildrenAt,
+  overlayClassName = "",
 }: ScrollSequenceProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -52,6 +59,15 @@ export function ScrollSequence({
     target: containerRef,
     offset: ["start start", "end end"],
   });
+
+  // Optional fade for overlay children — keeps hooks order stable by always computing
+  const fadeStart = fadeChildrenAt?.[0] ?? 0;
+  const fadeEnd = fadeChildrenAt?.[1] ?? 1;
+  const overlayOpacity = useTransform(
+    scrollYProgress,
+    [0, fadeStart, fadeEnd, 1],
+    [1, 1, 0, 0],
+  );
 
   // ─── Preload all frames ───────────────────────────────────────────────
   useEffect(() => {
@@ -140,9 +156,14 @@ export function ScrollSequence({
           </div>
         )}
 
-        {/* Optional overlay children — captions, text manifest */}
+        {/* Optional overlay children — captions, text manifest. Fades on scroll if fadeChildrenAt provided */}
         {children && (
-          <div className="absolute inset-0 pointer-events-none">{children}</div>
+          <motion.div
+            className={`absolute inset-0 pointer-events-none ${overlayClassName}`}
+            style={fadeChildrenAt ? { opacity: overlayOpacity } : undefined}
+          >
+            {children}
+          </motion.div>
         )}
       </div>
     </div>
