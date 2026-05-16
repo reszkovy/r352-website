@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { useRef } from "react";
 import { PhilosophyVisuals } from "./PhilosophyVisuals";
+import { ScrollSequence } from "@/app/components/ui/ScrollSequence";
 import { ArrowRight } from "lucide-react";
 
 interface Belief {
@@ -51,8 +52,19 @@ export function Philosophy() {
         </div>
       </div>
 
-      {/* Visuals Strip */}
-      <div className="border-b border-neutral-200 dark:border-white/10 bg-[#D0DBE1] md:bg-transparent">
+      {/* Scroll-driven sequence — R3 cinematic intro reacting to scroll */}
+      <div className="border-b border-neutral-200 dark:border-white/10 relative">
+        <ScrollSequence
+          frameCount={120}
+          framePath="/scroll-frames/frame"
+          padDigits={3}
+          pinHeight="300vh"
+          backgroundColor="#0a0a0a"
+        />
+      </div>
+
+      {/* Static visuals strip — kept as secondary editorial element below sequence */}
+      <div className="border-b border-neutral-200 dark:border-white/10 bg-[#D0DBE1] md:bg-transparent hidden">
         <PhilosophyVisuals />
       </div>
 
