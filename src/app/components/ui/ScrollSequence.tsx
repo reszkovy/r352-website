@@ -141,10 +141,11 @@ export function ScrollSequence({
         canvasTopPx = -vh;
       }
 
-      // Apply to wrapper (imperative, no React re-render per frame)
+      // Apply to wrapper (imperative, no React re-render per frame).
+      // Transform updates immediately (synced to scroll). Opacity changes are
+      // CSS-transitioned via inline style for smooth fade-in/out.
       wrapper.style.transform = `translate3d(0, ${canvasTopPx}px, 0)`;
       wrapper.style.opacity = visible ? "1" : "0";
-      wrapper.style.visibility = visible ? "visible" : "hidden";
 
       // Apply optional overlay fade
       if (overlayRef.current && fadeChildrenAt) {
@@ -233,9 +234,12 @@ export function ScrollSequence({
             style={{
               backgroundColor,
               opacity: 0,
-              visibility: "hidden",
               willChange: "transform, opacity",
               transform: "translate3d(0, 0, 0)",
+              // Smooth fade-in for first appearance + fade-out when scrolling past.
+              // Apple-style decel curve. Only opacity transitions — transform stays
+              // synced to scroll (no easing on position, must be instant per frame).
+              transition: "opacity 900ms cubic-bezier(0.22, 1, 0.36, 1)",
             }}
             aria-hidden="true"
           >
@@ -244,7 +248,7 @@ export function ScrollSequence({
               className="absolute inset-0 w-full h-full object-contain md:object-cover object-bottom md:object-center"
               style={{
                 opacity: firstFrameReady ? 1 : 0,
-                transition: "opacity 600ms ease-out",
+                transition: "opacity 900ms cubic-bezier(0.22, 1, 0.36, 1)",
               }}
             />
 
