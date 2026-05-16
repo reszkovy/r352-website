@@ -57,12 +57,13 @@ export function Philosophy() {
           pinHeight="300vh"
           backgroundColor={sequenceBg}
         >
-          {/* Overlay: hero copy positioned at top of viewport, fades out as video takes over.
-              Mobile: smaller, tighter — image is contained at bottom, header has full top area.
-              Desktop: full editorial scale.
-              All children align on the same left edge (text-left + same container padding). */}
-          <div className="absolute inset-x-0 top-0 px-6 md:px-12 pt-24 md:pt-40 text-left">
-            <div className="max-w-[1800px] mx-auto">
+          {/* Overlay: hero copy positioning.
+              Mobile: starts BELOW the 100vw square video (top-[100vw]), occupies
+              remaining viewport space with flex-col + vertical centering, padded.
+              Desktop md+: overlaid at top of viewport like before (top-0, pt-40).
+              All children align on the same left edge. */}
+          <div className="absolute inset-x-0 top-[100vw] bottom-0 md:top-0 md:bottom-auto px-6 md:px-12 pt-8 md:pt-40 text-left flex flex-col justify-center md:block">
+            <div className="max-w-[1800px] mx-auto w-full">
               <span className="block text-[10px] md:text-xs font-display uppercase tracking-[0.2em] text-[#D4FF00] mb-5 md:mb-8">
                 {t("philosophy_page.label")}
               </span>

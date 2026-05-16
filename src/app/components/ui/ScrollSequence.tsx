@@ -213,10 +213,13 @@ export function ScrollSequence({
             }}
             aria-hidden="true"
           >
-            {/* CANVAS LAYER — smooth fade-in once first frame loads (900ms cubic decel) */}
+            {/* CANVAS LAYER — smooth fade-in once first frame loads (900ms cubic decel).
+                Mobile: 100vw × 100vw square at top of viewport (object-cover object-right
+                keeps the character subject in frame since they're in right third of source).
+                Desktop md+: fills viewport (inset-0 + cover + center, unchanged). */}
             <canvas
               ref={canvasRef}
-              className="absolute inset-0 w-full h-full object-contain md:object-cover object-bottom md:object-center"
+              className="absolute left-0 right-0 top-0 w-screen aspect-square md:inset-0 md:w-full md:h-full md:aspect-auto object-cover object-right md:object-center"
               style={{
                 opacity: firstFrameReady ? 1 : 0,
                 transition: "opacity 900ms cubic-bezier(0.22, 1, 0.36, 1)",
