@@ -133,14 +133,15 @@ export function ScrollSequence({
       style={{ height: pinHeight }}
     >
       <div
-        className="sticky top-0 w-full h-screen flex items-center justify-center overflow-hidden"
+        className="sticky top-0 w-full h-screen overflow-hidden"
         style={{ backgroundColor }}
       >
         <canvas
           ref={canvasRef}
-          className="max-w-full max-h-full w-auto h-auto"
+          className="absolute inset-0 w-full h-full"
           style={{
-            objectFit: "contain",
+            objectFit: "cover",
+            objectPosition: "center",
             opacity: firstFrameReady ? 1 : 0,
             transition: "opacity 600ms ease-out",
           }}

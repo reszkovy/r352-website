@@ -351,8 +351,8 @@ export const translations = {
     },
     philosophy_page: {
       label: "Philosophy",
-      title_line1: "Beautiful work is the",
-      title_line2: "baseline.",
+      title_line1: "Beautiful work",
+      title_line2: "is the baseline.",
       subtitle: "The system behind it is the advantage.",
       intro_col1: "We craft premium design. But craft alone doesn't scale. A delivery system does.",
       intro_col2: "This is what we believe, how we operate, and why it matters for every team we work with.",
@@ -866,8 +866,8 @@ export const translations = {
     },
     philosophy_page: {
       label: "Filozofia",
-      title_line1: "Piękna praca to",
-      title_line2: "baseline.",
+      title_line1: "Piękna praca",
+      title_line2: "to baseline.",
       subtitle: "System za nią to przewaga.",
       intro_col1: "Tworzymy premium design. Ale sam craft się nie skaluje. System dostarczania — tak.",
       intro_col2: "To jest to, w co wierzymy, jak działamy i dlaczego to ma znaczenie dla każdego zespołu, z którym pracujemy.",

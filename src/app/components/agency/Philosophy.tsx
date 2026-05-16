@@ -45,14 +45,14 @@ export function Philosophy() {
           {/* Overlay: hero copy positioned at top of viewport, fades out as video takes over */}
           <div className="absolute inset-x-0 top-0 px-8 md:px-12 pt-32 md:pt-40">
             <div className="max-w-[1800px] mx-auto">
-              <span className="block text-xs font-display uppercase tracking-[0.2em] text-[#D4FF00] mb-8">
+              <span className="block text-xs font-display uppercase tracking-[0.2em] text-white mb-8">
                 {t("philosophy_page.label")}
               </span>
               <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tighter text-white mb-6 leading-[0.9] max-w-5xl drop-shadow-[0_2px_24px_rgba(0,0,0,0.5)]">
                 {t("philosophy_page.title_line1")} <br className="hidden md:block" />
-                <span className="text-[#D4FF00]">{t("philosophy_page.title_line2")}</span>
+                {t("philosophy_page.title_line2")}
               </h1>
-              <p className="text-xl md:text-2xl text-neutral-300 tracking-tight font-normal leading-snug max-w-3xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
+              <p className="text-xl md:text-2xl text-white tracking-tight font-normal leading-snug max-w-3xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
                 {t("philosophy_page.subtitle")}
               </p>
             </div>
