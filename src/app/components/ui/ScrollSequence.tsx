@@ -184,6 +184,21 @@ export function ScrollSequence({
 
     // Initial paint
     update();
+
+    // Schedule deferred updates to catch post-page-transition layout settle.
+    // Page nav from another route triggers PageTransition (delay 0.3s + duration 0.9s = 1.2s
+    // of motion.div translateY/scale/filter). During the animation, getBoundingClientRect
+    // returns the pre-settled position, making the trigger appear "before" its true location.
+    // After animation completes, no scroll/resize event fires — so without these deferred
+    // updates the canvas stays hidden until the user manually scrolls.
+    const timers: ReturnType<typeof setTimeout>[] = [
+      setTimeout(update, 100),
+      setTimeout(update, 400),
+      setTimeout(update, 800),
+      setTimeout(update, 1300),
+      setTimeout(update, 1800),
+    ];
+
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", update);
 
@@ -191,6 +206,7 @@ export function ScrollSequence({
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", update);
       cancelAnimationFrame(rafId);
+      timers.forEach(clearTimeout);
     };
   }, [frameCount, firstFrameReady, fadeChildrenAt]);
 
