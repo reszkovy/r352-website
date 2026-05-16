@@ -38,14 +38,15 @@ export function Philosophy() {
           frameCount={120}
           framePath="/scroll-frames/frame"
           padDigits={3}
-          pinHeight="300vh"
+          pinHeight="200vh"
           backgroundColor="#0a0a0a"
           fadeChildrenAt={[0.08, 0.22]}
         >
-          {/* Overlay: hero copy positioned at top of viewport, fades out as video takes over */}
-          <div className="absolute inset-x-0 top-0 px-8 md:px-12 pt-32 md:pt-40">
+          {/* Overlay: hero copy positioned at top of viewport, fades out as video takes over.
+              All children align on the same left edge (text-left + same container padding). */}
+          <div className="absolute inset-x-0 top-0 px-8 md:px-12 pt-32 md:pt-40 text-left">
             <div className="max-w-[1800px] mx-auto">
-              <span className="block text-xs font-display uppercase tracking-[0.2em] text-white mb-8">
+              <span className="block text-xs font-display uppercase tracking-[0.2em] text-[#D4FF00] mb-8">
                 {t("philosophy_page.label")}
               </span>
               <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tighter text-white mb-6 leading-[0.9] max-w-5xl drop-shadow-[0_2px_24px_rgba(0,0,0,0.5)]">
@@ -65,9 +66,9 @@ export function Philosophy() {
         <PhilosophyVisuals />
       </div>
 
-      {/* Beliefs Grid — 6 beliefs, 2 cols */}
+      {/* Beliefs Grid — 6 beliefs, 2 cols — tighter transition from scroll-sequence above */}
       <div className="max-w-[1800px] mx-auto border-b border-neutral-200 dark:border-white/10 relative">
-        <div className="px-8 md:px-12 pt-24 pb-8">
+        <div className="px-8 md:px-12 pt-12 md:pt-16 pb-8">
           <Reveal>
             <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-4">
               {language === 'pl' ? 'W co wierzymy' : 'What We Believe'}

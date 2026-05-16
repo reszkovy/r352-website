@@ -55,9 +55,12 @@ export function ScrollSequence({
   const [loadedCount, setLoadedCount] = useState(0);
   const [firstFrameReady, setFirstFrameReady] = useState(false);
 
+  // offset "end start" maps progress over the FULL container scroll (including the
+  // sticky slide-out tail). This eliminates the "frozen on last frame" gap that
+  // appears when sticky child slides out while progress is already capped at 1.
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end end"],
+    offset: ["start start", "end start"],
   });
 
   // Optional fade for overlay children — keeps hooks order stable by always computing
