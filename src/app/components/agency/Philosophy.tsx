@@ -30,7 +30,11 @@ export function Philosophy() {
   const nonneg = (t("philosophy_page.nonneg") || []) as NonNeg[];
 
   return (
-    <section ref={containerRef} className="relative overflow-hidden">
+    <section ref={containerRef} className="relative overflow-x-hidden">
+      {/* NOTE: overflow-x-hidden (not overflow-hidden) — overflow:hidden breaks
+          position: sticky on the ScrollSequence inner div, causing a 100vh gap
+          below the video. overflow-x-hidden preserves horizontal clipping
+          (safety against animation overshoot) without breaking vertical sticky. */}
 
       {/* Hero + Scroll-driven sequence — header overlaid on R3 video, fades as scroll progresses */}
       <div className="border-b border-neutral-200 dark:border-white/10 relative">
