@@ -2,6 +2,7 @@ import { Reveal } from "@/app/components/ui/Reveal";
 import { CinematicText } from "@/app/components/ui/CinematicText";
 import { useLocation } from "wouter";
 import { useLanguage } from "@/app/context/LanguageContext";
+import { useTheme } from "@/app/context/ThemeContext";
 import { AnimeGrid } from "@/app/components/ui/AnimeGrid";
 import { MagneticButton } from "@/app/components/ui/MagneticButton";
 import { ElasticLine } from "@/app/components/ui/ElasticLine";
@@ -10,6 +11,13 @@ import { ArrowRight } from "lucide-react";
 export function AgencyHero() {
   const { t, language } = useLanguage();
   const [, setLocation] = useLocation();
+  const { theme } = useTheme();
+
+  // Theme-aware text colors — fixes white-on-white in light mode.
+  // useTransform inside CinematicText binds [baseColor, glowColor] at mount,
+  // so we key the component on theme to force re-bind when toggling.
+  const baseColor = theme === "light" ? "#0A0A0A" : "#ffffff";
+  const glowColor = theme === "light" ? "#6B8F00" : "#D4FF00";
 
   return (
     <section className="relative w-full min-h-screen flex flex-col overflow-hidden bg-background">
@@ -21,20 +29,26 @@ export function AgencyHero() {
         <div className="pointer-events-auto">
           <div className="hidden md:block">
             <CinematicText
+              key={`hero-title-${theme}`}
               text={t("hero.title")}
               as="h1"
               className="type-h1 mb-16 md:mb-24 text-balance max-w-[95%] cursor-default"
               delay={0.1}
               glowEffect={true}
+              baseColor={baseColor}
+              glowColor={glowColor}
             />
           </div>
           <div className="block md:hidden" aria-hidden="true">
             <CinematicText
+              key={`hero-title-mobile-${theme}`}
               text={t("hero.title_mobile")}
               as="div"
               className="type-h1 mb-16 md:mb-24 text-balance max-w-[95%] cursor-default"
               delay={0.1}
               glowEffect={true}
+              baseColor={baseColor}
+              glowColor={glowColor}
             />
           </div>
           

@@ -15,6 +15,314 @@ export interface Article {
 
 export const journalArticles: Article[] = [
   {
+    id: 6,
+    title: "Why most design problems<br/>are not design problems",
+    title_pl: "Dlaczego większość problemów<br/>z designem to nie problemy<br/>z designem",
+    date: "May 2026",
+    category: "Insights",
+    image: deliveryOSImage,
+    content_pl: `
+      <p class="mb-6 text-xl leading-relaxed text-neutral-300">
+        CMO multi-location chain dzwoni: <span class="text-white font-medium">"Nasi designerzy nie umieją robić ładnych materiałów."</span>
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Dwa tygodnie audytu workflow później wiadomo: nie chodziło o talent. Chodziło o pięć ukrytych pułapek operacyjnych, które każdy pojedynczy designer rozbiłby się o nie, niezależnie od umiejętności.
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Najczęstsza pomyłka w design ops: <span class="text-white border-b border-[#D4FF00]/50">leczenie objawów, nie przyczyn.</span>
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Po dekadzie pracy z multi-location markami (fitness, wellness, retail, real estate) widzę te same pięć wzorców powtarzanych w 90% przypadków. Każdy z nich wygląda jak "design problem" na powierzchni. Żaden nim nie jest.
+      </p>
+
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 01 — Niejasne briefy<br/>to workflow problem, nie creative problem</h2>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Sygnał: "Nasi designerzy nie rozumieją czego chcemy. Robią coś innego niż prosimy."
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Rzeczywistość: briefy wpadają do zespołu przez 4 różne kanały (mail, Slack, Notion, telefon). Brak template'a. Brak Definition of Ready. Designer dostaje zlecenie, które kompletny jest w 40% — reszta to założenia.
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Nie zatrudnisz tu lepszego designera. Naprawisz to <span class="text-white">strukturą briefu + jednym intake channel</span>.
+      </p>
+      <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Jedna ścieżka intake. Wszystko inne wraca do nadawcy.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Brief template z 6-8 polami (cel, audience, ograniczenia, deadline, ownership, definicja done).</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Definition of Ready: brief nie zaczyna produkcji dopóki nie spełnia checklist'y.</span></li>
+      </ul>
+
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 02 — Pętle poprawek<br/>to governance problem, nie quality problem</h2>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Sygnał: "Projekty robimy po 5 rund. Każdy ma uwagi. Nic nie idzie do produkcji."
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Rzeczywistość: nikt nie ma final say. Marketing direktor mówi "mam uwagi", brand manager mówi "mam uwagi", CMO mówi "mam uwagi". Każda runda to nowy stakeholder z nowym opinion. Feedback staje się polityczny zamiast precyzyjny.
+      </p>
+
+      <div class="my-16 border-l-2 border-[#D4FF00] pl-6 md:pl-8">
+        <h3 class="font-display text-[#D4FF00] text-3xl md:text-5xl uppercase tracking-tighter leading-[0.9]">
+          Jeden owner decyzji<br/>per workstream.<br/>Reszta to noise.
+        </h3>
+      </div>
+
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Fix nie jest w "lepszym designie". Fix jest w jasnej mapie ownership: kto akceptuje WHAT, kiedy, w jakim trybie. Bez tego każda projekt to negotiation, nie production.
+      </p>
+      <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Jedna osoba per workstream może powiedzieć tak/nie. Wszyscy inni: input, nie veto.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Feedback windows zamiast continuous stream. Slack o 14:30, nie kapie cały dzień.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Kryteria feedbacku z góry. "Nie pasuje" nie jest feedback. "Nie pasuje, bo X" jest.</span></li>
+      </ul>
+
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 03 — Inconsistency across locations<br/>to standards problem, nie aesthetic problem</h2>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Sygnał: "Każda lokalizacja robi swoje. Materiały wyglądają jak z 5 różnych firm."
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Rzeczywistość: brand guidelines istnieją (jako PDF). Nikt ich nie używa. Każdy local marketing manager robi po swojemu, bo PDF nie odpowiada na pytanie "jak konkretnie zrobić ad pod ten lokalny event w tym formacie".
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Brand guidelines są niewystarczające. Potrzebujesz <span class="text-white">templates + asset library + clear rules per format</span>. PDF mówi "nasz kolor to #D4FF00". Template mówi "Twoja kampania Q3 — tutaj klikasz, podmieniasz tekst, ekspport, gotowe".
+      </p>
+      <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Templates per format (social, print, outdoor, digital ads, email). Nie generic.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Reusable component library. Block-based, nie szablonowe full-page.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>QA checklist before publish. 5-7 punktów, nie 50.</span></li>
+      </ul>
+
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 04 — Slow delivery<br/>to cadence problem, nie capacity problem</h2>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Sygnał: "Wszystko trwa za długo. Zatrudniamy więcej, ale szybciej nie jest."
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Rzeczywistość: praca przychodzi w spikach. Tydzień nic, potem 12 rzeczy na piątek o 16:00. Designer kończy projekt, nie ma następnego brief'a gotowego, czeka. Dochodzi kolejny brief — wszystko ASAP, wszystko ważne.
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Dodanie kolejnego designera nie rozwiązuje tego. Spike pattern się powieksza. Rozwiązaniem jest <span class="text-white">stały cotygodniowy rytm</span> — predictable cadence, nie reactive sprints.
+      </p>
+      <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Tydzień zawsze ma deliverable. Output, nie progress.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Brief'y planowane 2 tygodnie z góry. Nowe wpadają do backlog, nie do tygodnia.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>"Pilne" to wyjątek wymagający uzasadnienia, nie default mode.</span></li>
+      </ul>
+
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 05 — Brand drift<br/>to ownership problem, nie discipline problem</h2>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Sygnał: "Marka rozjeżdża się przez czas. Każdy projekt wygląda trochę inaczej."
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Rzeczywistość: nikt nie jest właścicielem brand consistency. Marketing dir myśli że to brand manager. Brand manager myśli że to design lead. Design lead myśli że to "wspólna sprawa". Każdy myśli że ktoś inny pilnuje. Nikt nie pilnuje.
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Brand consistency potrzebuje <span class="text-white">jednego custodian</span> — osoby z explicit mandate "to jest moja praca". Bez tego każde indywidualne decision drifts, kumulują się przez 18 miesięcy, marka wygląda jak po rebrandzie którego nie było.
+      </p>
+
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Co się zmienia, kiedy to naprawisz</h2>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Nie obiecuję rewolucji. Obiecuję boring excellence:
+      </p>
+      <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>80%+ briefów ready first round (zamiast 30%).</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Cykle akceptacji 3× szybsze (z 14 dni do 3-5 dni).</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Tygodniowy rytm publishingu (zamiast "kiedy będzie gotowe").</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Brand consistency cross-locations bez QA gymnastics.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Marketing team przestaje gasić pożary i zaczyna planować.</span></li>
+      </ul>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Nic z tego nie wymaga lepszego designera. Wszystko wymaga lepszego systemu.
+      </p>
+
+      <div class="my-16 bg-neutral-900/50 p-8 md:p-12 border border-white/5 relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-4 opacity-10 font-display text-9xl leading-none text-[#D4FF00] pointer-events-none select-none">SYSTEM</div>
+        <h3 class="relative z-10 font-display text-white text-2xl uppercase tracking-widest mb-8">Robimy to przez 8-krokowy framework</h3>
+        <p class="relative z-10 text-neutral-400 text-base mb-4">
+          W r352 codifyowaliśmy te 5 patterns w sekwencyjny framework — nazywamy go r3loop. Nic radykalnego, każdy z 8 kroków adresuje konkretną pułapkę operacyjną w odpowiedniej kolejności.
+        </p>
+        <p class="relative z-10 text-neutral-400 text-base">
+          Jeśli ciekawi Cię szczegół — pełen breakdown na <a href="/process" class="text-[#D4FF00] hover:text-white transition-colors border-b border-[#D4FF00]/40">/process</a>. Ale ważniejsze niż framework jest to, że te 5 patterns istnieje w 90% multi-location organizacji. Najpierw je rozpoznaj. Potem zdecyduj jak je rozwiązać.
+        </p>
+      </div>
+
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Jak rozpoznać czy masz<br/>"design problem" czy operations problem</h2>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Test prostszy niż audyt:
+      </p>
+      <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Czy zmiana designera rozwiązuje problem? Jeśli tak — design problem. Jeśli nie — system problem.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Czy problem powtarza się across różnych projektów? Jeśli tak — system, nie indywidualne.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Czy "good" project happens przez heroizm pojedynczej osoby? Jeśli tak — masz heroizm, nie system.</span></li>
+      </ul>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        90% "design problems" w multi-location organizacjach to operations problems. To dobra wiadomość — operations problems są solvable. Design talent gaps trudno rozwiązać. Workflow gaps można rozwiązać w 6-12 tygodni.
+      </p>
+
+      <p class="font-display text-white text-2xl uppercase tracking-wider my-8">
+        Najpierw zdiagnozuj. Potem decyduj. Nie odwrotnie.
+      </p>
+
+      <hr class="my-16 border-white/10" />
+
+      <div class="bg-neutral-900 border border-white/5 p-8 md:p-12 text-center">
+         <p class="text-lg text-neutral-400 max-w-2xl mx-auto mb-4">
+            Jeśli rozpoznajesz którykolwiek z tych 5 patterns w swoim zespole — najprawdopodobniej nie potrzebujesz lepszego designera.
+         </p>
+         <p class="font-display text-[#D4FF00] text-4xl md:text-5xl uppercase tracking-tighter leading-none">
+            Potrzebujesz lepszego<br/>systemu.
+         </p>
+      </div>
+`,
+    content: `
+      <p class="mb-6 text-xl leading-relaxed text-neutral-300">
+        A CMO at a multi-location chain calls: <span class="text-white font-medium">"Our designers can't produce work that feels right."</span>
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Two weeks of workflow audit later, the answer is clear: it wasn't a talent problem. It was five hidden operational traps that any individual designer would crash against, regardless of skill.
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        The most common mistake in design ops: <span class="text-white border-b border-[#D4FF00]/50">treating symptoms, not causes.</span>
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        After a decade working with multi-location brands (fitness, wellness, retail, real estate), I see the same five patterns repeat in 90% of cases. Each looks like a "design problem" on the surface. None of them are.
+      </p>
+
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 01 — Unclear briefs<br/>are a workflow problem, not a creative problem</h2>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Signal: "Our designers don't understand what we want. They deliver something different from what we asked for."
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Reality: briefs arrive through 4 different channels (email, Slack, Notion, phone calls). No template. No Definition of Ready. The designer receives a request that's 40% complete — the rest is assumptions.
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        You won't fix this by hiring a better designer. You fix it with <span class="text-white">brief structure + a single intake channel</span>.
+      </p>
+      <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>One intake path. Everything else gets returned to the sender.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Brief template with 6-8 fields (goal, audience, constraints, deadline, ownership, definition of done).</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Definition of Ready: production doesn't start until the brief passes a checklist.</span></li>
+      </ul>
+
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 02 — Revision loops<br/>are a governance problem, not a quality problem</h2>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Signal: "Projects take 5 rounds. Everyone has comments. Nothing ships."
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Reality: nobody has final say. Marketing director says "I have comments", brand manager says "I have comments", CMO says "I have comments". Each round brings a new stakeholder with new opinions. Feedback becomes political instead of precise.
+      </p>
+
+      <div class="my-16 border-l-2 border-[#D4FF00] pl-6 md:pl-8">
+        <h3 class="font-display text-[#D4FF00] text-3xl md:text-5xl uppercase tracking-tighter leading-[0.9]">
+          One decision owner<br/>per workstream.<br/>The rest is noise.
+        </h3>
+      </div>
+
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        The fix isn't "better design". It's a clear ownership map: who approves WHAT, when, in what format. Without this, every project is a negotiation, not production.
+      </p>
+      <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>One person per workstream can say yes/no. Everyone else: input, not veto.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Feedback windows, not continuous stream. Slack at 14:30, not dripping all day.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Feedback criteria upfront. "Doesn't fit" isn't feedback. "Doesn't fit because X" is.</span></li>
+      </ul>
+
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 03 — Inconsistency across locations<br/>is a standards problem, not an aesthetic problem</h2>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Signal: "Every location does its own thing. Materials look like they came from 5 different companies."
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Reality: brand guidelines exist (as a PDF). Nobody uses them. Each local marketing manager does it their way, because the PDF doesn't answer "how exactly do I make an ad for this local event in this format".
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Brand guidelines aren't enough. You need <span class="text-white">templates + asset library + clear rules per format</span>. The PDF says "our color is #D4FF00". The template says "Your Q3 campaign — click here, swap the text, export, done".
+      </p>
+      <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Templates per format (social, print, outdoor, digital ads, email). Not generic.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Reusable component library. Block-based, not full-page templates.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>QA checklist before publish. 5-7 points, not 50.</span></li>
+      </ul>
+
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 04 — Slow delivery<br/>is a cadence problem, not a capacity problem</h2>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Signal: "Everything takes too long. We hire more people, but it's not faster."
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Reality: work arrives in spikes. A quiet week, then 12 things due Friday at 4pm. The designer finishes one project, has no next brief ready, waits. Then another brief arrives — all ASAP, all important.
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Adding another designer doesn't fix this. The spike pattern just gets bigger. The fix is <span class="text-white">a steady weekly rhythm</span> — predictable cadence, not reactive sprints.
+      </p>
+      <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Every week ships a deliverable. Output, not progress.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Briefs planned 2 weeks ahead. New ones go into backlog, not into this week.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>"Urgent" is an exception that needs justification, not a default mode.</span></li>
+      </ul>
+
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 05 — Brand drift<br/>is an ownership problem, not a discipline problem</h2>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Signal: "The brand is drifting over time. Each project looks a little different."
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Reality: nobody owns brand consistency. Marketing director thinks it's the brand manager. Brand manager thinks it's the design lead. Design lead thinks it's "everyone's job". Everyone thinks someone else is watching. Nobody is.
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Brand consistency needs <span class="text-white">one custodian</span> — a person with an explicit mandate "this is my job". Without that, every individual decision drifts, compounds over 18 months, and the brand looks like it went through a rebrand that never happened.
+      </p>
+
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">What changes when you fix this</h2>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        I don't promise revolution. I promise boring excellence:
+      </p>
+      <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>80%+ briefs ready first round (instead of 30%).</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Approval cycles 3× faster (from 14 days to 3-5 days).</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Weekly publishing rhythm (instead of "when it's ready").</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Brand consistency across locations without QA gymnastics.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Marketing team stops firefighting and starts planning.</span></li>
+      </ul>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        None of this requires a better designer. All of it requires a better system.
+      </p>
+
+      <div class="my-16 bg-neutral-900/50 p-8 md:p-12 border border-white/5 relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-4 opacity-10 font-display text-9xl leading-none text-[#D4FF00] pointer-events-none select-none">SYSTEM</div>
+        <h3 class="relative z-10 font-display text-white text-2xl uppercase tracking-widest mb-8">We do this through an 8-step framework</h3>
+        <p class="relative z-10 text-neutral-400 text-base mb-4">
+          At r352 we codified these 5 patterns into a sequential framework — we call it r3loop. Nothing radical, each of the 8 steps addresses a specific operational trap in the right order.
+        </p>
+        <p class="relative z-10 text-neutral-400 text-base">
+          If you're curious about the detail — full breakdown at <a href="/process" class="text-[#D4FF00] hover:text-white transition-colors border-b border-[#D4FF00]/40">/process</a>. But more important than the framework is the fact that these 5 patterns exist in 90% of multi-location organizations. Recognize them first. Then decide how to solve them.
+        </p>
+      </div>
+
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">How to tell if you have<br/>a "design problem" or an operations problem</h2>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Simpler than an audit:
+      </p>
+      <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Does swapping the designer solve the problem? If yes — design problem. If not — system problem.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Does the problem repeat across different projects? If yes — it's systemic, not individual.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Do "good" projects happen because of one person's heroics? If yes — you have heroics, not a system.</span></li>
+      </ul>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        90% of "design problems" in multi-location organizations are operations problems. That's good news — operations problems are solvable. Design talent gaps are hard to close. Workflow gaps can be closed in 6-12 weeks.
+      </p>
+
+      <p class="font-display text-white text-2xl uppercase tracking-wider my-8">
+        Diagnose first. Decide second. Not the other way around.
+      </p>
+
+      <hr class="my-16 border-white/10" />
+
+      <div class="bg-neutral-900 border border-white/5 p-8 md:p-12 text-center">
+         <p class="text-lg text-neutral-400 max-w-2xl mx-auto mb-4">
+            If you recognize any of these 5 patterns in your team — you probably don't need a better designer.
+         </p>
+         <p class="font-display text-[#D4FF00] text-4xl md:text-5xl uppercase tracking-tighter leading-none">
+            You need a better<br/>system.
+         </p>
+      </div>
+`
+  },
+  {
     id: 5,
     title: "The Cadence<br/>Advantage:<br/>Rhythm is Speed",
     title_pl: "Przewaga Kadencji:<br/>Rytm to Szybkość",

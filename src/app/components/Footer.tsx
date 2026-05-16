@@ -79,7 +79,7 @@ export function Footer() {
                          </span>
                    </Link>
 
-                   <a href="https://calendly.com/p-reszkovy/30min" target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center justify-center px-12 py-4 bg-transparent border border-white/20 text-white transition-all duration-500 ease-out cursor-pointer overflow-hidden whitespace-nowrap w-full sm:w-auto hover:bg-white hover:text-black">
+                   <a href="https://calendly.com/p-reszkovy/30min" target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center justify-center px-12 py-4 bg-black/[0.05] dark:bg-white/[0.06] text-white transition-all duration-500 ease-out cursor-pointer overflow-hidden whitespace-nowrap w-full sm:w-auto hover:bg-white hover:text-black">
                          <span className="flex items-center justify-center relative">
                            <span className="invisible text-lg font-display uppercase tracking-widest">{t("nav.schedule")}</span>
                            <span className="absolute text-lg font-display uppercase tracking-widest group-hover:tracking-normal transition-all duration-500 ease-out">{t("nav.schedule")}</span>

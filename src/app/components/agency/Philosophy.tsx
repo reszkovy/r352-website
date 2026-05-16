@@ -160,11 +160,11 @@ export function Philosophy() {
         </div>
       </div>
 
-      {/* Personal Note */}
-      <div className="py-32 px-8 md:px-12">
+      {/* Personal Note — shade-based elevation, no border outline */}
+      <div className="py-32 px-8 md:px-12 bg-neutral-50/40 dark:bg-[#0a0a0a]">
         <div className="max-w-4xl mx-auto">
           <Reveal>
-            <div className="bg-neutral-50 dark:bg-white/[0.03] p-12 md:p-16 border border-neutral-100 dark:border-white/5">
+            <div className="bg-white dark:bg-white/[0.025] p-12 md:p-16">
               <h3 className="text-2xl font-bold text-neutral-900 dark:text-white mb-8 tracking-tight">{t("philosophy_page.note.title")}</h3>
               <div className="space-y-4 text-xl text-neutral-700 dark:text-neutral-300 leading-relaxed">
                 <p>{t("philosophy_page.note.p1")}</p>
