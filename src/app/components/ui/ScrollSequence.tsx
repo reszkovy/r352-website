@@ -141,10 +141,8 @@ export function ScrollSequence({
       >
         <canvas
           ref={canvasRef}
-          className="absolute inset-0 w-full h-full"
+          className="absolute inset-0 w-full h-full object-contain md:object-cover object-bottom md:object-center"
           style={{
-            objectFit: "cover",
-            objectPosition: "center",
             opacity: firstFrameReady ? 1 : 0,
             transition: "opacity 600ms ease-out",
           }}
