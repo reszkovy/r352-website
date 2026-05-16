@@ -43,18 +43,19 @@ export function Philosophy() {
           below the video. overflow-x-hidden preserves horizontal clipping
           (safety against animation overshoot) without breaking vertical sticky. */}
 
-      {/* Hero + Scroll-driven sequence — header overlaid on R3 video, fades as scroll progresses.
+      {/* Hero + Scroll-driven sequence — header overlaid on R3 video.
           Theme-aware: dark frames (#0a0a0a bg) for dark mode, light frames (white bg) for light mode.
-          key={theme} forces re-mount so canvas + image cache rebind cleanly on toggle. */}
+          key={theme} forces re-mount so canvas + image cache rebind cleanly on toggle.
+          pinHeight 300vh: 200vh PLAY (frames advance) + 100vh EXIT (slide-out for smooth handoff).
+          No fadeChildrenAt — header copy stays visible through entire sequence, slides up with canvas. */}
       <div className="border-b border-neutral-200 dark:border-white/10 relative">
         <ScrollSequence
           key={theme}
           frameCount={120}
           framePath={framePath}
           padDigits={3}
-          pinHeight="200vh"
+          pinHeight="300vh"
           backgroundColor={sequenceBg}
-          fadeChildrenAt={[0.08, 0.22]}
         >
           {/* Overlay: hero copy positioned at top of viewport, fades out as video takes over.
               Mobile: smaller, tighter — image is contained at bottom, header has full top area.

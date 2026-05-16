@@ -9,7 +9,7 @@ interface ScrollSequenceProps {
   /** Zero-pad width for frame index (e.g. 3 → frame-000 ... frame-119) */
   padDigits?: number;
   /** Total scrollable height (drives how long the scroll-driven animation lasts).
-   *  Higher = slower playback. 200vh = 2 viewport heights of scroll. */
+   *  Higher = slower playback. 300vh = 3 viewport heights of scroll. */
   pinHeight?: string;
   /** Optional className for the outer scroll-trigger container */
   className?: string;
@@ -18,7 +18,7 @@ interface ScrollSequenceProps {
   /** Optional children rendered as overlay (text manifest, captions, etc.) on top of canvas */
   children?: React.ReactNode;
   /** Fade children out over scroll progress range — [startProgress, endProgress] in 0..1.
-   *  Example: [0.1, 0.25] = fully visible until 10% scroll, fades out by 25%. */
+   *  If omitted, overlay stays fully visible throughout the sequence. */
   fadeChildrenAt?: [number, number];
   /** Optional className for the overlay wrapper inside the fixed canvas layer */
   overlayClassName?: string;
@@ -27,23 +27,35 @@ interface ScrollSequenceProps {
 /**
  * ScrollSequence — Apple-style scroll-driven frame sequence.
  *
- * IMPORTANT IMPLEMENTATION NOTE:
- * This component does NOT use CSS `position: sticky`. Sticky is fragile —
- * any ancestor with `transform`, `filter`, `perspective`, or
- * `overflow-x: hidden` (which browsers coerce to `overflow: hidden auto`,
- * making the element a scroll container) breaks sticky for descendants.
+ * Architecture:
+ *   1. INVISIBLE TRIGGER SPACER in normal document flow (height = pinHeight)
+ *      — adds scrollable space to the page. User scrolls "through" it.
  *
- * Instead, the canvas + overlay are rendered via React Portal to document.body
- * with `position: fixed`. This escapes ALL ancestor styles. JS tracks
- * the scroll trigger container's bounding box to determine visibility and
- * compute scroll progress. The trigger container is just an invisible
- * height spacer that adds scrollable room to the page.
+ *   2. FIXED CANVAS LAYER rendered via React Portal to document.body
+ *      — escapes ALL ancestor CSS that would break position:sticky/fixed
+ *      (transform, filter, overflow-x:hidden, etc.). The canvas is
+ *      position: fixed at viewport top, controlled by JS scroll listener.
+ *
+ *   3. THREE SCROLL PHASES tracked via getBoundingClientRect:
+ *      - BEFORE: trigger not yet reached. Canvas hidden.
+ *      - PLAY: scrolled into trigger. Canvas pinned at viewport top.
+ *              Progress maps 0→1 over (triggerHeight - viewportHeight).
+ *      - EXIT: scrolled past play distance. Canvas SLIDES UP (top → negative)
+ *              while progress stays at 1. Last viewportHeight worth of
+ *              trigger scroll = canvas exit animation.
+ *      - AFTER: trigger fully scrolled past. Canvas hidden.
+ *
+ *   This produces a smooth, continuous scroll: video plays → slides up
+ *   off screen → next section follows naturally underneath. No jump cut.
+ *
+ *   DOM mutations (canvas position, opacity) are applied IMPERATIVELY via
+ *   refs, NOT React state, to avoid re-rendering per scroll frame.
  */
 export function ScrollSequence({
   frameCount = 120,
   framePath = "/scroll-frames/frame",
   padDigits = 3,
-  pinHeight = "200vh",
+  pinHeight = "300vh",
   className = "",
   backgroundColor = "#0a0a0a",
   children,
@@ -51,12 +63,12 @@ export function ScrollSequence({
   overlayClassName = "",
 }: ScrollSequenceProps) {
   const triggerRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imagesRef = useRef<HTMLImageElement[]>([]);
   const [loadedCount, setLoadedCount] = useState(0);
   const [firstFrameReady, setFirstFrameReady] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [inView, setInView] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   // SSR guard for portal
@@ -87,49 +99,79 @@ export function ScrollSequence({
     };
   }, [frameCount, framePath, padDigits]);
 
-  // ─── Track scroll + draw current frame ────────────────────────────────
+  // ─── Scroll listener: position canvas + draw current frame ────────────
   useEffect(() => {
     const trigger = triggerRef.current;
-    if (!trigger) return;
+    const wrapper = wrapperRef.current;
+    if (!trigger || !wrapper) return;
 
     let rafId = 0;
 
     const update = () => {
-      const rect = trigger.getBoundingClientRect();
+      const triggerRect = trigger.getBoundingClientRect();
       const vh = window.innerHeight;
-      const triggerHeight = rect.height;
+      const triggerHeight = triggerRect.height;
 
-      // Container in view if ANY portion is visible (intersects viewport)
-      const visible = rect.top < vh && rect.bottom > 0;
-      setInView(visible);
+      // PLAY phase distance = triggerHeight - vh (last vh reserved for EXIT slide-out)
+      const playDistance = Math.max(1, triggerHeight - vh);
+      // How far we've scrolled past the trigger top (in document coords)
+      const scrolled = -triggerRect.top;
 
-      if (visible) {
-        // Scroll progress within the trigger container:
-        // - rect.top = 0 when top of trigger meets top of viewport (progress 0)
-        // - rect.bottom = 0 when bottom of trigger meets top of viewport (progress 1)
-        // - scrolled = how far past the top we are (in px)
-        const scrolled = Math.max(0, -rect.top);
-        const maxScroll = triggerHeight;
-        const p = Math.max(0, Math.min(1, scrolled / maxScroll));
-        setProgress(p);
+      let canvasTopPx = 0;
+      let progress = 0;
+      let visible = false;
 
-        // Draw frame
-        const canvas = canvasRef.current;
-        if (canvas) {
-          const ctx = canvas.getContext("2d");
-          if (ctx) {
-            const idx = Math.min(
-              frameCount - 1,
-              Math.max(0, Math.floor(p * frameCount)),
-            );
-            const img = imagesRef.current[idx];
-            if (img && img.complete && img.naturalWidth > 0) {
-              if (canvas.width !== img.naturalWidth) {
-                canvas.width = img.naturalWidth;
-                canvas.height = img.naturalHeight;
-              }
-              ctx.drawImage(img, 0, 0);
+      if (scrolled < 0) {
+        // BEFORE — trigger not yet entered
+        visible = false;
+      } else if (scrolled < playDistance) {
+        // PLAY — canvas pinned at viewport top, progress maps to frames
+        visible = true;
+        progress = scrolled / playDistance;
+        canvasTopPx = 0;
+      } else if (scrolled < triggerHeight) {
+        // EXIT — canvas anchors at last position and slides up as scroll continues
+        visible = true;
+        progress = 1;
+        canvasTopPx = -(scrolled - playDistance);
+      } else {
+        // AFTER — trigger fully scrolled past
+        visible = false;
+        progress = 1;
+        canvasTopPx = -vh;
+      }
+
+      // Apply to wrapper (imperative, no React re-render per frame)
+      wrapper.style.transform = `translate3d(0, ${canvasTopPx}px, 0)`;
+      wrapper.style.opacity = visible ? "1" : "0";
+      wrapper.style.visibility = visible ? "visible" : "hidden";
+
+      // Apply optional overlay fade
+      if (overlayRef.current && fadeChildrenAt) {
+        const [start, end] = fadeChildrenAt;
+        let overlayOpacity = 1;
+        if (progress <= start) overlayOpacity = 1;
+        else if (progress >= end) overlayOpacity = 0;
+        else overlayOpacity = 1 - (progress - start) / (end - start);
+        overlayRef.current.style.opacity = `${overlayOpacity}`;
+      }
+
+      // Draw current frame
+      const canvas = canvasRef.current;
+      if (canvas && visible) {
+        const ctx = canvas.getContext("2d");
+        if (ctx) {
+          const idx = Math.min(
+            frameCount - 1,
+            Math.max(0, Math.floor(progress * frameCount)),
+          );
+          const img = imagesRef.current[idx];
+          if (img && img.complete && img.naturalWidth > 0) {
+            if (canvas.width !== img.naturalWidth) {
+              canvas.width = img.naturalWidth;
+              canvas.height = img.naturalHeight;
             }
+            ctx.drawImage(img, 0, 0);
           }
         }
       }
@@ -140,7 +182,7 @@ export function ScrollSequence({
       rafId = requestAnimationFrame(update);
     };
 
-    // Initial draw
+    // Initial paint
     update();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", update);
@@ -150,22 +192,13 @@ export function ScrollSequence({
       window.removeEventListener("resize", update);
       cancelAnimationFrame(rafId);
     };
-  }, [frameCount, firstFrameReady]);
-
-  // ─── Overlay opacity (scroll-tied fade) ───────────────────────────────
-  let overlayOpacity = 1;
-  if (fadeChildrenAt) {
-    const [start, end] = fadeChildrenAt;
-    if (progress <= start) overlayOpacity = 1;
-    else if (progress >= end) overlayOpacity = 0;
-    else overlayOpacity = 1 - (progress - start) / (end - start);
-  }
+  }, [frameCount, firstFrameReady, fadeChildrenAt]);
 
   const loadingProgress = Math.round((loadedCount / frameCount) * 100);
 
   return (
     <>
-      {/* Scroll trigger container — invisible, adds scrollable height to page */}
+      {/* Scroll trigger spacer — invisible, adds scrollable height to page */}
       <div
         ref={triggerRef}
         className={`relative ${className}`}
@@ -173,18 +206,20 @@ export function ScrollSequence({
         aria-hidden="true"
       />
 
-      {/* Fixed canvas layer — rendered via portal to document.body to escape
-          ALL ancestor styles (transform, filter, overflow-x:hidden, etc.)
-          which would otherwise break position:fixed/sticky. */}
+      {/* Fixed canvas layer — portal'd to document.body to escape all
+          ancestor styles (transform, filter, overflow-x:hidden, etc.)
+          which would otherwise break fixed/sticky positioning. */}
       {mounted &&
         createPortal(
           <div
+            ref={wrapperRef}
             className="fixed top-0 left-0 w-screen h-screen overflow-hidden z-0 pointer-events-none"
             style={{
               backgroundColor,
-              opacity: inView ? 1 : 0,
-              visibility: inView ? "visible" : "hidden",
-              transition: "opacity 200ms ease-out",
+              opacity: 0,
+              visibility: "hidden",
+              willChange: "transform, opacity",
+              transform: "translate3d(0, 0, 0)",
             }}
             aria-hidden="true"
           >
@@ -207,11 +242,11 @@ export function ScrollSequence({
             )}
 
             {/* Optional overlay children — captions, text manifest.
-                Fades on scroll if fadeChildrenAt provided. */}
+                Fades on scroll only if fadeChildrenAt is provided. */}
             {children && (
               <div
+                ref={overlayRef}
                 className={`absolute inset-0 ${overlayClassName}`}
-                style={fadeChildrenAt ? { opacity: overlayOpacity } : undefined}
               >
                 {children}
               </div>
