@@ -4,7 +4,7 @@ import sonovaAsset3 from "figma:asset/5560d70ae6cb2aae698382d474abd8298c9b4c98.p
 import sonovaAsset4 from "figma:asset/70ffa00b6de8a7019dca4820d3f27c34ceb12f29.png";
 import sonovaAsset5 from "figma:asset/ff5c7b5d6db2610ec21e962e7ac6e1eec5c9b1ef.png";
 
-import benefitImg from "figma:asset/392dd9058b83c94247f5bff0c77a81c590ddd6b3.png";
+import benefitImg from "../../imports/benefit-master.webp";
 import benefitCoverImg from "figma:asset/eb490e9a1afd74719bc7f9923aba70eab1890d8f.png";
 
 // Restore home page photo for Benefit Systems
