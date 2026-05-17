@@ -53,6 +53,17 @@ import archicomBP2 from "../../imports/archicom/BP2.png";
 import archicomBP3 from "../../imports/archicom/BP3.png";
 import archicomBP4 from "../../imports/archicom/BP4.png";
 
+// Caterelo (R3 × R3 self-built proof) — flat-color illustration cover + hover animation
+import cathereloCover from "../../imports/caterelo/caterelo-cover.webp";
+
+// Caterelo gallery — full product narrative: Europe overview → region map → compare → detail → chart → calculator
+import cathereloShot1 from "../../imports/caterelo/01-europe-overview.webp";
+import cathereloShot2 from "../../imports/caterelo/02-region-map.webp";
+import cathereloShot3 from "../../imports/caterelo/03-compare.webp";
+import cathereloShot4 from "../../imports/caterelo/04-region-detail.webp";
+import cathereloShot5 from "../../imports/caterelo/05-price-chart.webp";
+import cathereloShot6 from "../../imports/caterelo/06-renovation-calc.webp";
+
 // DiscoBowl Project Assets (20 UK venues + booking system)
 import discobowlCover from "../../imports/discobowl/27.png"; // Panoramic cover — /work thumbnail + hero
 import discobowlPanorama from "../../imports/discobowl/1 9.png"; // Originally cover, moved to gallery
@@ -538,10 +549,18 @@ export const projects = [
       pl: "Produkt Własny / Platforma AI"
     },
     year: "2026 — current",
-    image: "",
-    coverImage: "",
-    coverComponent: <InternalPlaceholder title="Caterelo" tagline="Our own SaaS — built with the same r3loop we run for clients. Live at caterelo.com" accent="#D4FF00" />,
-    images: [],
+    image: cathereloCover,
+    coverImage: cathereloCover,
+    hoverVideo: "/videos/caterelo-hover.mp4",
+    // Gallery — narrative flow: Europe overview → drill into regions → compare → deep dive → chart → calculator
+    images: [
+      cathereloShot1, // Europe-level interactive map with country price changes
+      cathereloShot2, // Region drill-down — Spain's 17 regions color-coded by trend
+      cathereloShot3, // Side-by-side comparison — Thessaly vs Centro with LifeTrend™ scores
+      cathereloShot4, // Single region deep dive — Castilla-La Mancha full data sheet
+      cathereloShot5, // Editorial price chart — clean €/m² visualization with 1Y/5Y/10Y deltas
+      cathereloShot6, // Renovation calculator — total ownership math with reality check
+    ],
     isInternal: false,
     // External link to the live product — shown on detail page
     externalUrl: "https://caterelo.com",
