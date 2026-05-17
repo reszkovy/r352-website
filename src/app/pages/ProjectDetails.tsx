@@ -43,71 +43,85 @@ function NdaGate({ project, language, onUnlock }: { project: any; language: stri
   }, []);
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center px-6 md:px-12 py-32">
-      <Reveal>
-        <div className="flex flex-col items-center gap-8 md:gap-10 max-w-lg w-full text-center">
-          {/* Lime label — same pattern as Philosophy / Process / Brief section headers */}
-          <span className="block text-xs font-display uppercase tracking-[0.25em] text-[#D4FF00]">
-            {language === 'pl' ? 'Pod NDA' : 'Under NDA'}
-          </span>
+    <div className="min-h-[calc(100vh-8rem)] w-full flex items-center justify-center px-6 md:px-12 py-20">
+      <div className="w-full max-w-lg mx-auto">
+        <Reveal>
+          <div className="flex flex-col items-center gap-8 md:gap-10 w-full text-center">
+            {/* Lime label — same pattern as Philosophy / Process / Brief section headers */}
+            <span className="block text-xs font-display uppercase tracking-[0.25em] text-[#D4FF00]">
+              {language === 'pl' ? 'Pod NDA' : 'Under NDA'}
+            </span>
 
-          {/* Client name as hero — editorial scale matching site h1 pattern */}
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[0.95]">
-            {project.client}
-          </h1>
+            {/* Client name as hero — editorial scale matching site h1 pattern */}
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[0.95]">
+              {project.client}
+            </h1>
 
-          {/* Lock icon — smaller, subtle, between title and copy */}
-          <div className="text-neutral-400 dark:text-neutral-600 opacity-60">
-            <LockIcon size={28} />
-          </div>
-
-          {/* Description — editorial body weight, lighter color */}
-          <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal max-w-md">
-            {language === 'pl'
-              ? 'To case study jest objęte umową NDA. Skontaktuj się z nami, aby uzyskać hasło dostępu.'
-              : 'This case study is under NDA. Contact us to get the access password.'}
-          </p>
-
-          {/* Password input + submit — shade-based elevation, no cheap border */}
-          <form onSubmit={handleSubmit} className="w-full max-w-sm">
-            <div className={`relative ${shaking ? 'animate-shake' : ''}`}>
-              <input
-                ref={inputRef}
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder={language === 'pl' ? 'Wpisz hasło' : 'Enter password'}
-                className={`w-full bg-neutral-100 dark:bg-white/[0.04] rounded-none px-5 py-4 pr-14 text-neutral-900 dark:text-white text-sm tracking-wide placeholder:text-neutral-500 dark:placeholder:text-neutral-600 focus:outline-none transition-all duration-300 ${
-                  error
-                    ? 'ring-1 ring-red-500/40'
-                    : 'focus:bg-neutral-200 dark:focus:bg-white/[0.07]'
-                }`}
-              />
-              <button
-                type="submit"
-                aria-label={language === 'pl' ? 'Zatwierdź hasło' : 'Submit password'}
-                className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center text-neutral-500 hover:text-[#D4FF00] transition-colors duration-300 group"
-              >
-                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.5} />
-              </button>
+            {/* Lock icon — smaller, subtle, between title and copy */}
+            <div className="text-neutral-400 dark:text-neutral-600 opacity-60">
+              <LockIcon size={28} />
             </div>
-            {error && (
-              <p className="text-red-500/80 dark:text-red-400/70 text-xs mt-3 tracking-wider text-left">
-                {language === 'pl' ? 'Nieprawidłowe hasło' : 'Invalid password'}
-              </p>
-            )}
-          </form>
 
-          {/* Secondary CTA — matches site arrow-link pattern (lime + arrow translate on hover) */}
-          <Link
-            href="/contact"
-            className="group inline-flex items-center gap-2 text-xs font-display uppercase tracking-[0.2em] text-[#D4FF00] hover:text-neutral-900 dark:hover:text-white transition-colors duration-300 mt-2"
-          >
-            <span>{language === 'pl' ? 'Skontaktuj się po dostęp' : 'Contact for access'}</span>
-            <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.5} />
-          </Link>
-        </div>
-      </Reveal>
+            {/* Description — editorial body weight, lighter color */}
+            <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal max-w-md mx-auto">
+              {language === 'pl'
+                ? 'To case study jest objęte umową NDA. Skontaktuj się z nami, aby uzyskać hasło dostępu.'
+                : 'This case study is under NDA. Contact us to get the access password.'}
+            </p>
+
+            {/* Password input + submit — shade-based elevation, no cheap border */}
+            <form onSubmit={handleSubmit} className="w-full max-w-sm mx-auto">
+              <div className={`relative ${shaking ? 'animate-shake' : ''}`}>
+                <input
+                  ref={inputRef}
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder={language === 'pl' ? 'Wpisz hasło' : 'Enter password'}
+                  className={`w-full bg-neutral-100 dark:bg-white/[0.04] rounded-none px-5 py-4 pr-14 text-neutral-900 dark:text-white text-sm tracking-wide placeholder:text-neutral-500 dark:placeholder:text-neutral-600 focus:outline-none transition-all duration-300 text-center ${
+                    error
+                      ? 'ring-1 ring-red-500/40'
+                      : 'focus:bg-neutral-200 dark:focus:bg-white/[0.07]'
+                  }`}
+                />
+                <button
+                  type="submit"
+                  aria-label={language === 'pl' ? 'Zatwierdź hasło' : 'Submit password'}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center text-neutral-500 hover:text-[#D4FF00] transition-colors duration-300 group"
+                >
+                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.5} />
+                </button>
+              </div>
+              {error && (
+                <p className="text-red-500/80 dark:text-red-400/70 text-xs mt-3 tracking-wider text-center">
+                  {language === 'pl' ? 'Nieprawidłowe hasło' : 'Invalid password'}
+                </p>
+              )}
+            </form>
+
+            {/* CTA stack — two arrow-links, stacked, centered */}
+            <div className="flex flex-col items-center gap-4 mt-2">
+              {/* Primary — Contact for access */}
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-2 text-xs font-display uppercase tracking-[0.2em] text-[#D4FF00] hover:text-neutral-900 dark:hover:text-white transition-colors duration-300"
+              >
+                <span>{language === 'pl' ? 'Skontaktuj się po dostęp' : 'Contact for access'}</span>
+                <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.5} />
+              </Link>
+
+              {/* Secondary — Continue exploring (back to /work) */}
+              <Link
+                href="/work"
+                className="group inline-flex items-center gap-2 text-xs font-display uppercase tracking-[0.2em] text-neutral-500 hover:text-[#D4FF00] transition-colors duration-300"
+              >
+                <ArrowRight className="w-3.5 h-3.5 rotate-180 transition-transform duration-300 group-hover:-translate-x-1" strokeWidth={1.5} />
+                <span>{language === 'pl' ? 'Wróć do projektów' : 'Continue exploring'}</span>
+              </Link>
+            </div>
+          </div>
+        </Reveal>
+      </div>
     </div>
   );
 }
@@ -152,9 +166,7 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
             ← {t("work.index")}
           </Link>
         </div>
-        <div className="pt-32">
-          <NdaGate project={project} language={language} onUnlock={() => setNdaUnlocked(true)} />
-        </div>
+        <NdaGate project={project} language={language} onUnlock={() => setNdaUnlocked(true)} />
       </PageTransition>
     );
   }
