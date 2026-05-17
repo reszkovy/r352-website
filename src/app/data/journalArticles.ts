@@ -1,6 +1,7 @@
 import deliveryOSImage from "figma:asset/f5bde9dbf97a6173262b508893d89c9f53e04258.png";
 import calmExecutionImage from "figma:asset/04b8212c348ba87b31f3fb0fdf4b1e2cf2d7e8f3.png";
 import cadenceImage from "figma:asset/00ba10d702fb047d9a6ba4780de74db73f7e5403.png";
+import journal6Cover from "../../imports/journal-6-cover.webp";
 
 export interface Article {
   id: number;
@@ -20,7 +21,7 @@ export const journalArticles: Article[] = [
     title_pl: "Dlaczego większość problemów<br/>z designem to nie problemy<br/>z designem",
     date: "May 2026",
     category: "Insights",
-    image: deliveryOSImage,
+    image: journal6Cover,
     content_pl: `
       <p class="mb-6 text-xl leading-relaxed text-neutral-300">
         CMO multi-location chain dzwoni: <span class="text-white font-medium">"Nasi designerzy nie umieją robić ładnych materiałów."</span>
