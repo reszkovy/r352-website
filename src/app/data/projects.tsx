@@ -501,6 +501,7 @@ export const projects = [
       pl: "Framework Operacyjny / Transparentne Ops"
     },
     year: "2025 — current",
+    isProduct: true, // Products & Systems section on /work — operator-built framework, not classic agency design work
     // Cover = wider Warsaw map showing 11+ locations + overlap circles.
     // Reads "multi-location operations" in the first 0.5 sec. Same image used for /work tile + detail hero.
     image: benefitOpeningEngineCover,
@@ -516,8 +517,8 @@ export const projects = [
     ],
     isInternal: false,
     description: {
-      en: "An internal framework we built for Zdrofit's expansion team. Cuts request-to-launch ops time and gives every level — local club managers, middle management, brand directors, C-level — one transparent view of what's happening, what's late, and who owns it. Middle management stops chasing status in DMs and starts running operations from a screen.",
-      pl: "Wewnętrzny framework który zbudowaliśmy dla zespołu ekspansji Zdrofit. Skraca czas operacyjny od requestu do launcha i daje każdemu poziomowi — lokalnym managerom klubów, middle management, brand directorom, C-level — jeden transparentny widok co się dzieje, co jest opóźnione i kto ma własność. Middle management przestaje gonić status w DM-ach, a zaczyna prowadzić operacje z ekranu."
+      en: "An internal framework we built end-to-end — solo, with AI as the multiplier, zero subcontractors — for Zdrofit's expansion team. Cuts request-to-launch ops time and gives every level — local club managers, middle management, brand directors, C-level — one transparent view of what's happening, what's late, and who owns it. Middle management stops chasing status in DMs and starts running operations from a screen.",
+      pl: "Wewnętrzny framework który zbudowaliśmy end-to-end — solo, z AI jako multiplikatorem, zero podwykonawców — dla zespołu ekspansji Zdrofit. Skraca czas operacyjny od requestu do launcha i daje każdemu poziomowi — lokalnym managerom klubów, middle management, brand directorom, C-level — jeden transparentny widok co się dzieje, co jest opóźnione i kto ma własność. Middle management przestaje gonić status w DM-ach, a zaczyna prowadzić operacje z ekranu."
     },
     services: {
       en: ["Operations Framework", "Request Flow Design", "Multi-Level Transparency", "Middle Management Tools", "Status Reporting"],
@@ -567,6 +568,7 @@ export const projects = [
       pl: "Produkt Własny / Platforma AI"
     },
     year: "2026 — current",
+    isProduct: true, // Products & Systems section on /work — R3×R3 self-built SaaS proof
     image: cathereloCover,
     coverImage: cathereloCover,
     hoverVideo: "/videos/caterelo-hover.mp4",
@@ -591,8 +593,8 @@ export const projects = [
       pl: ["Design Produktu", "Architektura AI", "Pipeline Danych", "REST API", "Frontend Build", "Walidacja Metodologii"]
     },
     challenge: {
-      en: "Most consultancies talk about methodology — few apply it to their own work. We wanted to prove r3loop isn't theory by shipping a production product built with it. Constraint: zero outside investment, no team to delegate to. The methodology had to hold up under solo-operator conditions or it wasn't real.",
-      pl: "Większość firm konsultingowych mówi o metodologii — niewielu ją stosuje do własnej pracy. Chcieliśmy udowodnić że r3loop to nie teoria poprzez wyshippowanie produktu produkcyjnego zbudowanego nim. Ograniczenie: zero zewnętrznych inwestycji, brak zespołu do delegowania. Metodologia musiała sprawdzić się w warunkach solo-operatora albo nie była realna."
+      en: "Most consultancies talk about methodology — few apply it to their own work. We wanted to prove r3loop isn't theory by shipping a production product built with it. Constraint: zero outside investment, no team, no subcontractors. End-to-end build by one operator with AI as the multiplier. The methodology had to hold up under solo-operator conditions or it wasn't real.",
+      pl: "Większość firm konsultingowych mówi o metodologii — niewielu ją stosuje do własnej pracy. Chcieliśmy udowodnić że r3loop to nie teoria poprzez wyshippowanie produktu produkcyjnego zbudowanego nim. Ograniczenie: zero zewnętrznych inwestycji, zero zespołu, zero podwykonawców. End-to-end build przez jednego operatora z AI jako multiplikatorem. Metodologia musiała sprawdzić się w warunkach solo-operatora albo nie była realna."
     },
     decisions: {
       en: "We applied r3loop 1:1 to caterelo's architecture: Diagnose became the 15-question relocation quiz. Map became 90 regions × 13 signals. Standardize became the LifeTrend™ composite score. Build became the REST API + AI advisor + interactive map. Govern became 60+ official sources with quarterly refresh. Ship became live free + Pro tiers. Measure became momentum scoring + Hidden Gem detector. Iterate is the AI advisor learning + Climate 2050 projections.",

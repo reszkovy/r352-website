@@ -43,11 +43,10 @@ export function Work() {
 
       {/* Projects Grid */}
       <div className="px-8 md:px-12 py-24 md:py-32 max-w-[1800px] mx-auto">
-        {/* Regular projects — 2-column grid matching NDA section styling
-            (same aspect, gap, typography) for visual consistency across the page.
-            Asymmetric row stagger via index-based delay for editorial reveal. */}
+        {/* ─── REGULAR CASE STUDIES — classic agency design work.
+             Filters: not NDA + not Product. Caterelo + Zdrofit Opening Engine moved to Products & Systems below. ─── */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-          {projects.filter((p: any) => !p.isNDA).map((project, index) => (
+          {projects.filter((p: any) => !p.isNDA && !p.isProduct).map((project, index) => (
             <Reveal
               key={project.id}
               delay={(index % 2) * 0.1}
@@ -82,6 +81,75 @@ export function Work() {
             </Reveal>
           ))}
         </div>
+
+        {/* ─── PRODUCTS & SYSTEMS — operator-built tools, frameworks, self-shipped products.
+             Differentiates "agency design work" from "operator-level systems work". ─── */}
+        {projects.some((p: any) => p.isProduct) && (
+          <div className="mt-32">
+            <Reveal>
+              <div className="border-t border-black/10 dark:border-white/10 pt-12 mb-12 grid grid-cols-12 gap-6 md:gap-8 items-end">
+                <div className="col-span-12 md:col-span-7">
+                  <span className="block text-xs font-display uppercase tracking-[0.2em] text-[#D4FF00] mb-3">
+                    {language === 'pl' ? 'Products & Systems' : 'Products & Systems'}
+                  </span>
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter text-black dark:text-white leading-[0.95]">
+                    {language === 'pl' ? (
+                      <>Frameworki i produkty,<br className="hidden md:inline" />{" "}które shippnęliśmy.</>
+                    ) : (
+                      <>Frameworks and products<br className="hidden md:inline" />{" "}we shipped.</>
+                    )}
+                  </h2>
+                </div>
+                <p className="col-span-12 md:col-span-5 md:justify-self-end text-sm md:text-base text-neutral-500 leading-relaxed max-w-md">
+                  {language === 'pl'
+                    ? 'End-to-end. Solo, z AI jako multiplikatorem. Zero podwykonawców. To samo r3loop, które prowadzimy u klientów — zastosowane do własnych produktów najpierw.'
+                    : 'End-to-end. Solo, with AI as a multiplier. Zero subcontractors. Same r3loop we run for clients — applied to our own products first.'}
+                </p>
+              </div>
+            </Reveal>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+              {projects.filter((p: any) => p.isProduct).map((project, index) => (
+                <Reveal
+                  key={project.id}
+                  delay={(index % 2) * 0.1}
+                  className="group cursor-pointer"
+                >
+                  <Link href={`/work/${project.id}`} className="block">
+                      <div className="w-full aspect-[16/9] bg-neutral-100 dark:bg-neutral-900 overflow-hidden mb-6 relative">
+                        <div className="absolute inset-0 bg-black/0 dark:bg-white/0 group-hover:bg-black/5 dark:group-hover:bg-white/5 transition-colors z-10 duration-500 pointer-events-none" />
+                        <HoverVideoImage
+                          src={project.coverImage}
+                          videoSrc={(project as any).hoverVideo}
+                          alt={project.client}
+                          className="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-[1.5s] ease-out"
+                        />
+                      </div>
+
+                      <div className="flex justify-between items-start border-t border-black/10 dark:border-white/10 pt-4">
+                        <div>
+                          <h2 className="text-2xl md:text-3xl font-semibold tracking-tighter text-black dark:text-white mb-1 group-hover:text-black/80 dark:group-hover:text-white/80 transition-colors">
+                            {project.client}
+                          </h2>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[10px] font-display uppercase tracking-widest text-[#D4FF00]">
+                              {/* @ts-ignore - Localized data */}
+                              {project.category[language]}
+                            </span>
+                            <span className="text-[9px] font-display uppercase tracking-widest text-neutral-500 border border-neutral-400 dark:border-neutral-700 px-2 py-0.5 rounded-full">
+                              {language === 'pl' ? 'Produkt' : 'Product'}
+                            </span>
+                          </div>
+                        </div>
+                        <span className="text-[10px] font-display uppercase tracking-widest text-neutral-600 shrink-0">
+                          {project.year}
+                        </span>
+                      </div>
+                  </Link>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* NDA projects — 2 columns, smaller */}
         {projects.some((p: any) => p.isNDA) && (
