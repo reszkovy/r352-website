@@ -2,7 +2,7 @@ import { PageTransition } from "@/app/components/ui/PageTransition";
 import { Reveal } from "@/app/components/ui/Reveal";
 import { Link } from "wouter";
 import { projects } from "@/app/data/projects";
-import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
+import { HoverVideoImage } from "@/app/components/ui/HoverVideoImage";
 import { useLanguage } from "@/app/context/LanguageContext";
 
 function LockIcon() {
@@ -56,8 +56,9 @@ export function Work() {
               <Link href={`/work/${project.id}`} className="block">
                   <div className="w-full aspect-[16/9] bg-neutral-100 dark:bg-neutral-900 overflow-hidden mb-6 relative">
                     <div className="absolute inset-0 bg-black/0 dark:bg-white/0 group-hover:bg-black/5 dark:group-hover:bg-white/5 transition-colors z-10 duration-500" />
-                    <ImageWithFallback
+                    <HoverVideoImage
                       src={project.coverImage}
+                      videoSrc={(project as any).hoverVideo}
                       alt={project.client}
                       className="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-[1.5s] ease-out"
                     />

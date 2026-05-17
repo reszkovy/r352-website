@@ -28,3 +28,6 @@ src/assets/Frame*.png
 src/assets/highgaz_*.png
 src/imports/highgaz_*.png
 src/assets/sonov_1.png
+
+# MJ source MP4s (optimized to public/videos)
+src/assets/highgaz_httpss.mj.*.mp4

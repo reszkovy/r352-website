@@ -2,7 +2,7 @@ import { Link, useLocation } from "wouter";
 import { Reveal } from "@/app/components/ui/Reveal";
 import { PlaceholderArt } from "@/app/components/agency/PlaceholderArt";
 import { projects } from "@/app/data/projects";
-import { ParallaxImage } from "@/app/components/ui/ParallaxImage";
+import { HoverVideoImage } from "@/app/components/ui/HoverVideoImage";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { MagneticButton } from "@/app/components/ui/MagneticButton";
 
@@ -48,11 +48,11 @@ export function SelectedWork() {
             <Reveal key={project.id} delay={0.3 + (index * 0.1)} className={index === 2 ? "col-span-12" : "col-span-12 md:col-span-6"}>
               <Link href={`/work/${project.id}`} className="block group cursor-pointer relative">
                    <div className="aspect-[16/9] w-full bg-[#111] relative overflow-hidden transition-all duration-[1.5s]">
-                     <ParallaxImage 
-                        src={project.coverImage} 
+                     <HoverVideoImage
+                        src={project.coverImage}
+                        videoSrc={(project as any).hoverVideo}
                         alt={project.title}
-                        className="w-full h-full opacity-70 group-hover:opacity-100 transition-opacity duration-1000"
-                        speed={0.15}
+                        className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-1000"
                      />
                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-1000 z-10 pointer-events-none" />
                      

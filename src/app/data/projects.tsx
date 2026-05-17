@@ -97,6 +97,7 @@ export const projects = [
     year: "2019 — current",
     image: benefitImg,
     coverImage: benefitCoverImg,
+    hoverVideo: "/videos/benefit-hover.mp4",
     images: [
         benefitImg,
         benefitAsset1,
@@ -143,53 +144,64 @@ export const projects = [
     ]
   },
   {
-    id: "sonova",
-    client: "Sonova",
-    title: "Market Communication",
+    id: "dawid-podsiadlo",
+    client: "Dawid Podsiadlo",
+    title: "Tour Experience",
     category: {
-      en: "Brand Support",
-      pl: "Wsparcie Marki"
+      en: "Digital Products",
+      pl: "Produkty Cyfrowe"
     },
-    year: "2023 — current",
-    image: sonovaCoverImg,
-    coverImage: sonovaCoverImg,
-    images: [sonovaAsset4, sonovaAsset1, sonovaAsset2, sonovaAsset3, sonovaAsset5],
+    year: "2024",
+    image: dawidImg,
+    coverImage: dawidImg,
+    images: [
+        dawidDesktopImg,
+        dawidPhone1,
+        dawidPhone2,
+        dawidAsset1,
+        dawidAsset2,
+        dawidAsset3,
+        dawidAsset4,
+        dawidAsset5,
+        dawidPhone3,
+        dawidCdImg
+    ],
     isInternal: false,
     description: {
-      en: "We help Sonova communicate clearly and confidently across their Polish market, delivering campaigns, print materials and digital assets that connect with diverse audiences.",
-      pl: "Pomagamy firmie Sonova komunikować się w sposób jasny i pewny na polskim rynku, dostarczając kampanie, materiały drukowane i zasoby cyfrowe, które łączą się z różnorodnymi odbiorcami."
+      en: "Long-term 360° support for one of Poland's biggest artists. We provide comprehensive development of digital products - from advanced e-commerce platforms handling massive traffic to dedicated concert apps and asset production for stadium tours.",
+      pl: "Długoterminowe wsparcie 360° dla jednego z największych polskich artystów. Zapewniamy kompleksową realizację produktów cyfrowych - od zaawansowanych sklepów WWW obsługujących ogromny ruch, po dedykowane aplikacje koncertowe i produkcję zasobów na trasy stadionowe."
     },
     services: {
-      en: ["Retail Campaigns", "Print Design", "Digital Assets"],
-      pl: ["Kampanie Retail", "Projekty Drukowane", "Zasoby Cyfrowe"]
+      en: ["Concert Apps", "E-commerce", "Digital & Print"],
+      pl: ["Aplikacje Koncertowe", "Sklepy WWW", "Digital i Druk"]
     },
     challenge: {
-      en: "We provide continuous creative and production support for Sonova’s Polish operations. The challenge is to maintain global brand precision while localizing communication for hundreds of clinics and diverse audiences.",
-      pl: "Zapewniamy ciągłe wsparcie kreatywne i produkcyjne dla polskich operacji Sonova. Wyzwaniem jest zachowanie globalnej precyzji marki przy jednoczesnej lokalizacji komunikacji dla setek klinik i zróżnicowanych odbiorców."
+      en: "The scale of stadium tours required reliable technological solutions. Our main challenge was building scalable digital products, such as an e-commerce platform and concert apps, capable of withstanding massive traffic spikes during drops.",
+      pl: "Skala stadionowych tras koncertowych wymagała niezawodnych rozwiązań technologicznych. Naszym głównym wyzwaniem było stworzenie skalowalnych produktów cyfrowych, takich jak sklep WWW i aplikacje koncertowe, które wytrzymają ogromne obciążenie ruchem podczas premier."
     },
     decisions: {
-      en: "We established a modular system allowing fast and consistent rollout across all clinics. We closely coordinate with local marketing to ensure visuals are on-brand, compliant, and conversion-ready.",
-      pl: "Stworzyliśmy modułowy system umożliwiający szybkie i spójne wdrożenia we wszystkich klinikach. Ściśle współpracujemy z lokalnym marketingiem, aby wizualizacje były zgodne z marką, przepisami i nastawione na konwersję."
+      en: "We designed a high-performance architecture for the online store and created intuitive apps to streamline logistics and fan experience during concerts. In parallel, we managed the production of physical materials for the events.",
+      pl: "Zaprojektowaliśmy wydajną architekturę dla sklepu internetowego oraz stworzyliśmy intuicyjne aplikacje ułatwiające logistykę i doświadczenie fanów podczas koncertów. Równolegle zarządzaliśmy produkcją materiałów fizycznych na wydarzenia."
     },
     approach: {
-      en: "We support both brand-level messaging and conversion-driven communication. For each campaign, we refine templates to better serve patients, sales teams, and the organization's goals.",
-      pl: "Wspieramy zarówno komunikację wizerunkową, jak i sprzedażową. Przy każdej kampanii udoskonalamy szablony, aby lepiej służyły pacjentom, zespołom sprzedaży i celom organizacji."
+      en: "We combined technological and production expertise. We designed and deployed reliability-focused digital products while maintaining strict visual consistency with promotional materials.",
+      pl: "Połączyliśmy kompetencje technologiczne z produkcyjnymi. Zaprojektowaliśmy i wdrożyliśmy produkty cyfrowe zorientowane na niezawodność, dbając jednocześnie o spójność z materiałami promocyjnymi."
     },
     quote: {
-      en: "Sonova’s mission is about restoring hearing - our role is to make that promise feel accessible, trustworthy and clear.",
-      pl: "Misją Sonova jest przywracanie słuchu - naszą rolą jest sprawienie, by ta obietnica była dostępna, wiarygodna i jasna."
+      en: "Digital products at this scale don't forgive errors - the e-commerce store and apps must work flawlessly.",
+      pl: "Produkty cyfrowe przy tej skali nie wybaczą błędów - sklep WWW i aplikacje muszą działać bezbłędnie."
     },
     outcome: {
-      en: "We successfully localize communication without losing quality. Deliverables include print-ready materials, web banners, and tailored messaging that resonates with senior and multi-generational audiences.",
-      pl: "Skutecznie lokalizujemy komunikację bez utraty jakości. Dostarczamy gotowe materiały do druku, banery i dopasowane komunikaty, które rezonują z odbiorcami senioralnymi i wielopokoleniowymi."
+      en: "Seamless delivery of robust digital products, enabling the artist's team to focus on the performance while we handled both the e-commerce ecosystem and the 360° production pipeline.",
+      pl: "Płynne dostarczanie niezawodnych produktów cyfrowych, co pozwoliło zespołowi artysty skupić się na występie, podczas gdy my zarządzaliśmy ekosystemem e-commerce i procesem produkcji 360°."
     },
     reflection: {
-      en: "With each project, we focus on simplifying complexity, building human connections and helping people hear the world again.",
-      pl: "Przy każdym projekcie skupiamy się na upraszczaniu złożoności, budowaniu ludzkich relacji i pomaganiu ludziom usłyszeć świat na nowo."
+      en: "Consistency and reliability in high-stakes environments build trust. Scalable tech architecture isn't just about code; it's about peace of mind for the artist.",
+      pl: "Spójność i niezawodność w środowiskach o wysoką stawkę budują zaufanie. Skalowalna architektura technologiczna to nie tylko kod, to także spokój ducha dla artysty."
     },
     stats: [
-        { value: "250+", label: { en: "Locations Supported", pl: "Obsłużonych Lokalizacji" } },
-        { value: "500+", label: { en: "Assets / Year", pl: "Zasobów / Rok" } }
+        { value: "300k+", label: { en: "Tickets Sold", pl: "Sprzedane Bilety" } },
+        { value: "10", label: { en: "Concerts", pl: "Koncertów" } }
     ]
   },
   {
@@ -255,6 +267,111 @@ export const projects = [
     ]
   },
   {
+    id: "sonova",
+    client: "Sonova",
+    title: "Market Communication",
+    category: {
+      en: "Brand Support",
+      pl: "Wsparcie Marki"
+    },
+    year: "2023 — current",
+    image: sonovaCoverImg,
+    coverImage: sonovaCoverImg,
+    hoverVideo: "/videos/sonova-hover.mp4",
+    images: [sonovaAsset4, sonovaAsset1, sonovaAsset2, sonovaAsset3, sonovaAsset5],
+    isInternal: false,
+    description: {
+      en: "We help Sonova communicate clearly and confidently across their Polish market, delivering campaigns, print materials and digital assets that connect with diverse audiences.",
+      pl: "Pomagamy firmie Sonova komunikować się w sposób jasny i pewny na polskim rynku, dostarczając kampanie, materiały drukowane i zasoby cyfrowe, które łączą się z różnorodnymi odbiorcami."
+    },
+    services: {
+      en: ["Retail Campaigns", "Print Design", "Digital Assets"],
+      pl: ["Kampanie Retail", "Projekty Drukowane", "Zasoby Cyfrowe"]
+    },
+    challenge: {
+      en: "We provide continuous creative and production support for Sonova’s Polish operations. The challenge is to maintain global brand precision while localizing communication for hundreds of clinics and diverse audiences.",
+      pl: "Zapewniamy ciągłe wsparcie kreatywne i produkcyjne dla polskich operacji Sonova. Wyzwaniem jest zachowanie globalnej precyzji marki przy jednoczesnej lokalizacji komunikacji dla setek klinik i zróżnicowanych odbiorców."
+    },
+    decisions: {
+      en: "We established a modular system allowing fast and consistent rollout across all clinics. We closely coordinate with local marketing to ensure visuals are on-brand, compliant, and conversion-ready.",
+      pl: "Stworzyliśmy modułowy system umożliwiający szybkie i spójne wdrożenia we wszystkich klinikach. Ściśle współpracujemy z lokalnym marketingiem, aby wizualizacje były zgodne z marką, przepisami i nastawione na konwersję."
+    },
+    approach: {
+      en: "We support both brand-level messaging and conversion-driven communication. For each campaign, we refine templates to better serve patients, sales teams, and the organization's goals.",
+      pl: "Wspieramy zarówno komunikację wizerunkową, jak i sprzedażową. Przy każdej kampanii udoskonalamy szablony, aby lepiej służyły pacjentom, zespołom sprzedaży i celom organizacji."
+    },
+    quote: {
+      en: "Sonova’s mission is about restoring hearing - our role is to make that promise feel accessible, trustworthy and clear.",
+      pl: "Misją Sonova jest przywracanie słuchu - naszą rolą jest sprawienie, by ta obietnica była dostępna, wiarygodna i jasna."
+    },
+    outcome: {
+      en: "We successfully localize communication without losing quality. Deliverables include print-ready materials, web banners, and tailored messaging that resonates with senior and multi-generational audiences.",
+      pl: "Skutecznie lokalizujemy komunikację bez utraty jakości. Dostarczamy gotowe materiały do druku, banery i dopasowane komunikaty, które rezonują z odbiorcami senioralnymi i wielopokoleniowymi."
+    },
+    reflection: {
+      en: "With each project, we focus on simplifying complexity, building human connections and helping people hear the world again.",
+      pl: "Przy każdym projekcie skupiamy się na upraszczaniu złożoności, budowaniu ludzkich relacji i pomaganiu ludziom usłyszeć świat na nowo."
+    },
+    stats: [
+        { value: "250+", label: { en: "Locations Supported", pl: "Obsłużonych Lokalizacji" } },
+        { value: "500+", label: { en: "Assets / Year", pl: "Zasobów / Rok" } }
+    ]
+  },
+  {
+    id: "kubota",
+    client: "Kubota",
+    title: "Long-term creative partnership",
+    category: {
+      en: "Design-first partner",
+      pl: "Zintegrowany partner projektowy"
+    },
+    year: "2023",
+    image: kubotaImg,
+    coverImage: kubotaImg,
+    images: [
+        kubotaAsset3,
+        kubotaAsset1,
+        kubotaAsset2
+    ],
+    isInternal: false,
+    description: {
+      en: "Kubota’s growth required more than one-off campaigns. We supported the brand from early-stage momentum to large-scale communication by building a consistent visual language and a repeatable content production system. This helped the marketing team move faster, stay coherent across channels, and ship reliably during key moments, including a dedicated IPO debut materials package.",
+      pl: "Rozwój marki Kubota wymagał czegoś więcej niż jednorazowych kampanii. Wspieraliśmy markę od wczesnego etapu wzrostu do komunikacji na dużą skalę, budując spójny język wizualny i powtarzalny system produkcji treści. Pomogło to zespołowi marketingu działać szybciej, zachować spójność we wszystkich kanałach i niezawodnie dostarczać materiały w kluczowych momentach, w tym dedykowany pakiet na debiut giełdowy."
+    },
+    services: {
+      en: ["Always-on content", "Campaign assets", "Modular formats", "IPO materials"],
+      pl: ["Bieżąca obsługa", "Materiały kampanijne", "Formaty modułowe", "Materiały IPO"]
+    },
+    challenge: {
+      en: "Kubota needed continuous, high-quality creative output while scaling fast. The core challenge wasn’t a single project, it was maintaining consistency across touchpoints, reducing approval friction, and keeping speed high without compromising detail.",
+      pl: "Kubota potrzebowała ciągłych, wysokiej jakości materiałów kreatywnych w trakcie szybkiego skalowania. Głównym wyzwaniem nie był pojedynczy projekt, ale utrzymanie spójności we wszystkich punktach styku, redukcja tarć decyzyjnych i utrzymanie tempa bez kompromisów w detalach."
+    },
+    decisions: {
+      en: "We acted as an embedded design-first partner, delivering campaign assets and always-on content across digital, social, and print. In parallel, we built a modular system of formats and reusable components that made production predictable, reduced back-and-forth, and kept the brand visually coherent even as volume increased.",
+      pl: "Działaliśmy jako zintegrowany partner projektowy, dostarczając materiały do kampanii i bieżącej komunikacji w kanałach digital, social i druku. Równolegle zbudowaliśmy modułowy system formatów i reużywalnych komponentów, który uczynił produkcję przewidywalną, zmniejszył liczbę poprawek i utrzymał spójność wizualną marki nawet przy rosnącym wolumenie."
+    },
+    approach: {
+      en: "At a key milestone, we delivered a dedicated set of communication materials supporting Kubota’s IPO debut process. The focus was clarity, consistency, and execution readiness under high visibility, while protecting the brand’s tone and quality on both the “big picture” and detail level.",
+      pl: "W kluczowym momencie dostarczyliśmy dedykowany zestaw materiałów komunikacyjnych wspierających proces debiutu giełdowego marki Kubota. Skupiliśmy się na jasności, spójności i gotowości egzekucyjnej przy dużej widoczności, chroniąc jednocześnie ton i jakość marki zarówno na poziomie strategicznym, jak i w detalach."
+    },
+    quote: {
+      en: "Systemizing content delivery. Keeping brand quality consistent during growth.",
+      pl: "Systematyzacja dostarczania treści. Utrzymanie spójnej jakości marki podczas wzrostu."
+    },
+    outcome: {
+      en: "A scalable creative workflow that helped Kubota ship faster with fewer iterations, clearer standards, and consistent output across channels during growth and high-stakes moments.",
+      pl: "Skalowalny proces kreatywny, który pomógł marce Kubota działać szybciej z mniejszą liczbą iteracji, jaśniejszymi standardami i spójnymi materiałami we wszystkich kanałach podczas wzrostu i kluczowych momentów."
+    },
+    reflection: {
+      en: "Highlights: Always-on content production and campaign assets, Modular formats and reusable components, Cross-channel consistency (digital / social / print), IPO debut communication materials package.",
+      pl: "Najważniejsze punkty: Bieżąca produkcja treści i materiały kampanijne, Modułowe formaty i reużywalne komponenty, Spójność we wszystkich kanałach (digital / social / print), Pakiet materiałów na debiut IPO."
+    },
+    stats: [
+        { value: "3+", label: { en: "Years of Partnership", pl: "Lata Współpracy" } },
+        { value: "200+", label: { en: "Deliverables Shipped", pl: "Dostarczonych Materiałów" } }
+    ]
+  },
+  {
     id: "discobowl",
     client: "DiscoBowl",
     title: "Multi-venue booking system",
@@ -311,121 +428,6 @@ export const projects = [
     stats: [
       { value: "20", label: { en: "UK Venues Served", pl: "Kręgielni UK" } },
       { value: "2+", label: { en: "Sites + Booking System", pl: "Strony + System Rezerwacji" } }
-    ]
-  },
-  {
-    id: "dawid-podsiadlo",
-    client: "Dawid Podsiadlo",
-    title: "Tour Experience",
-    category: {
-      en: "Digital Products",
-      pl: "Produkty Cyfrowe"
-    },
-    year: "2024",
-    image: dawidImg,
-    coverImage: dawidImg,
-    images: [
-        dawidDesktopImg,
-        dawidPhone1,
-        dawidPhone2,
-        dawidAsset1,
-        dawidAsset2,
-        dawidAsset3,
-        dawidAsset4,
-        dawidAsset5,
-        dawidPhone3,
-        dawidCdImg
-    ],
-    isInternal: false,
-    description: {
-      en: "Long-term 360° support for one of Poland's biggest artists. We provide comprehensive development of digital products - from advanced e-commerce platforms handling massive traffic to dedicated concert apps and asset production for stadium tours.",
-      pl: "Długoterminowe wsparcie 360° dla jednego z największych polskich artystów. Zapewniamy kompleksową realizację produktów cyfrowych - od zaawansowanych sklepów WWW obsługujących ogromny ruch, po dedykowane aplikacje koncertowe i produkcję zasobów na trasy stadionowe."
-    },
-    services: {
-      en: ["Concert Apps", "E-commerce", "Digital & Print"],
-      pl: ["Aplikacje Koncertowe", "Sklepy WWW", "Digital i Druk"]
-    },
-    challenge: {
-      en: "The scale of stadium tours required reliable technological solutions. Our main challenge was building scalable digital products, such as an e-commerce platform and concert apps, capable of withstanding massive traffic spikes during drops.",
-      pl: "Skala stadionowych tras koncertowych wymagała niezawodnych rozwiązań technologicznych. Naszym głównym wyzwaniem było stworzenie skalowalnych produktów cyfrowych, takich jak sklep WWW i aplikacje koncertowe, które wytrzymają ogromne obciążenie ruchem podczas premier."
-    },
-    decisions: {
-      en: "We designed a high-performance architecture for the online store and created intuitive apps to streamline logistics and fan experience during concerts. In parallel, we managed the production of physical materials for the events.",
-      pl: "Zaprojektowaliśmy wydajną architekturę dla sklepu internetowego oraz stworzyliśmy intuicyjne aplikacje ułatwiające logistykę i doświadczenie fanów podczas koncertów. Równolegle zarządzaliśmy produkcją materiałów fizycznych na wydarzenia."
-    },
-    approach: {
-      en: "We combined technological and production expertise. We designed and deployed reliability-focused digital products while maintaining strict visual consistency with promotional materials.",
-      pl: "Połączyliśmy kompetencje technologiczne z produkcyjnymi. Zaprojektowaliśmy i wdrożyliśmy produkty cyfrowe zorientowane na niezawodność, dbając jednocześnie o spójność z materiałami promocyjnymi."
-    },
-    quote: {
-      en: "Digital products at this scale don't forgive errors - the e-commerce store and apps must work flawlessly.",
-      pl: "Produkty cyfrowe przy tej skali nie wybaczą błędów - sklep WWW i aplikacje muszą działać bezbłędnie."
-    },
-    outcome: {
-      en: "Seamless delivery of robust digital products, enabling the artist's team to focus on the performance while we handled both the e-commerce ecosystem and the 360° production pipeline.",
-      pl: "Płynne dostarczanie niezawodnych produktów cyfrowych, co pozwoliło zespołowi artysty skupić się na występie, podczas gdy my zarządzaliśmy ekosystemem e-commerce i procesem produkcji 360°."
-    },
-    reflection: {
-      en: "Consistency and reliability in high-stakes environments build trust. Scalable tech architecture isn't just about code; it's about peace of mind for the artist.",
-      pl: "Spójność i niezawodność w środowiskach o wysoką stawkę budują zaufanie. Skalowalna architektura technologiczna to nie tylko kod, to także spokój ducha dla artysty."
-    },
-    stats: [
-        { value: "300k+", label: { en: "Tickets Sold", pl: "Sprzedane Bilety" } },
-        { value: "10", label: { en: "Concerts", pl: "Koncertów" } }
-    ]
-  },
-  {
-    id: "kubota",
-    client: "Kubota",
-    title: "Long-term creative partnership",
-    category: {
-      en: "Design-first partner",
-      pl: "Zintegrowany partner projektowy"
-    },
-    year: "2023",
-    image: kubotaImg,
-    coverImage: kubotaImg,
-    images: [
-        kubotaAsset3,
-        kubotaAsset1,
-        kubotaAsset2
-    ],
-    isInternal: false,
-    description: {
-      en: "Kubota’s growth required more than one-off campaigns. We supported the brand from early-stage momentum to large-scale communication by building a consistent visual language and a repeatable content production system. This helped the marketing team move faster, stay coherent across channels, and ship reliably during key moments, including a dedicated IPO debut materials package.",
-      pl: "Rozwój marki Kubota wymagał czegoś więcej niż jednorazowych kampanii. Wspieraliśmy markę od wczesnego etapu wzrostu do komunikacji na dużą skalę, budując spójny język wizualny i powtarzalny system produkcji treści. Pomogło to zespołowi marketingu działać szybciej, zachować spójność we wszystkich kanałach i niezawodnie dostarczać materiały w kluczowych momentach, w tym dedykowany pakiet na debiut giełdowy."
-    },
-    services: {
-      en: ["Always-on content", "Campaign assets", "Modular formats", "IPO materials"],
-      pl: ["Bieżąca obsługa", "Materiały kampanijne", "Formaty modułowe", "Materiały IPO"]
-    },
-    challenge: {
-      en: "Kubota needed continuous, high-quality creative output while scaling fast. The core challenge wasn’t a single project, it was maintaining consistency across touchpoints, reducing approval friction, and keeping speed high without compromising detail.",
-      pl: "Kubota potrzebowała ciągłych, wysokiej jakości materiałów kreatywnych w trakcie szybkiego skalowania. Głównym wyzwaniem nie był pojedynczy projekt, ale utrzymanie spójności we wszystkich punktach styku, redukcja tarć decyzyjnych i utrzymanie tempa bez kompromisów w detalach."
-    },
-    decisions: {
-      en: "We acted as an embedded design-first partner, delivering campaign assets and always-on content across digital, social, and print. In parallel, we built a modular system of formats and reusable components that made production predictable, reduced back-and-forth, and kept the brand visually coherent even as volume increased.",
-      pl: "Działaliśmy jako zintegrowany partner projektowy, dostarczając materiały do kampanii i bieżącej komunikacji w kanałach digital, social i druku. Równolegle zbudowaliśmy modułowy system formatów i reużywalnych komponentów, który uczynił produkcję przewidywalną, zmniejszył liczbę poprawek i utrzymał spójność wizualną marki nawet przy rosnącym wolumenie."
-    },
-    approach: {
-      en: "At a key milestone, we delivered a dedicated set of communication materials supporting Kubota’s IPO debut process. The focus was clarity, consistency, and execution readiness under high visibility, while protecting the brand’s tone and quality on both the “big picture” and detail level.",
-      pl: "W kluczowym momencie dostarczyliśmy dedykowany zestaw materiałów komunikacyjnych wspierających proces debiutu giełdowego marki Kubota. Skupiliśmy się na jasności, spójności i gotowości egzekucyjnej przy dużej widoczności, chroniąc jednocześnie ton i jakość marki zarówno na poziomie strategicznym, jak i w detalach."
-    },
-    quote: {
-      en: "Systemizing content delivery. Keeping brand quality consistent during growth.",
-      pl: "Systematyzacja dostarczania treści. Utrzymanie spójnej jakości marki podczas wzrostu."
-    },
-    outcome: {
-      en: "A scalable creative workflow that helped Kubota ship faster with fewer iterations, clearer standards, and consistent output across channels during growth and high-stakes moments.",
-      pl: "Skalowalny proces kreatywny, który pomógł marce Kubota działać szybciej z mniejszą liczbą iteracji, jaśniejszymi standardami i spójnymi materiałami we wszystkich kanałach podczas wzrostu i kluczowych momentów."
-    },
-    reflection: {
-      en: "Highlights: Always-on content production and campaign assets, Modular formats and reusable components, Cross-channel consistency (digital / social / print), IPO debut communication materials package.",
-      pl: "Najważniejsze punkty: Bieżąca produkcja treści i materiały kampanijne, Modułowe formaty i reużywalne komponenty, Spójność we wszystkich kanałach (digital / social / print), Pakiet materiałów na debiut IPO."
-    },
-    stats: [
-        { value: "3+", label: { en: "Years of Partnership", pl: "Lata Współpracy" } },
-        { value: "200+", label: { en: "Deliverables Shipped", pl: "Dostarczonych Materiałów" } }
     ]
   },
   {
