@@ -264,7 +264,7 @@ export function Services() {
                              <h3 className="text-xs font-display uppercase tracking-[0.2em] text-[#D4FF00] mb-5">
                                {language === 'pl' ? "Wynik" : "Output"}
                              </h3>
-                             <p className="text-3xl md:text-4xl lg:text-5xl text-neutral-900 dark:text-white font-bold tracking-tighter leading-[1.05]">
+                             <p className="text-2xl md:text-3xl lg:text-4xl text-neutral-900 dark:text-white font-normal tracking-tight leading-[1.2]">
                                {card.output}
                              </p>
                            </motion.div>
