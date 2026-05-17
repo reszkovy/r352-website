@@ -9,11 +9,13 @@ import { useLanguage } from "@/app/context/LanguageContext";
 export function JournalArticle({ params }: { params?: { id: string } }) {
   const { language } = useLanguage();
   const id = params?.id ? parseInt(params.id) : null;
-  const articleIndex = journalArticles.findIndex((a) => a.id === id);
-  const article = journalArticles[articleIndex];
-  
-  const nextArticleIndex = (articleIndex + 1) % journalArticles.length;
-  const nextArticle = journalArticles[nextArticleIndex];
+  // Only published articles are routable — unpublished (published: false) return "Article Not Found"
+  const publishedArticles = journalArticles.filter(a => a.published !== false);
+  const articleIndex = publishedArticles.findIndex((a) => a.id === id);
+  const article = publishedArticles[articleIndex];
+
+  const nextArticleIndex = articleIndex >= 0 ? (articleIndex + 1) % publishedArticles.length : 0;
+  const nextArticle = publishedArticles[nextArticleIndex];
 
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({

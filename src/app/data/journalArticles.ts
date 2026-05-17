@@ -17,11 +17,15 @@ export interface Article {
   image: string;
   content: string; // HTML or Markdown content
   content_pl?: string;
+  /** Optional publishing flag — if false, article is hidden from index + detail routes. Defaults to true. */
+  published?: boolean;
 }
 
 export const journalArticles: Article[] = [
   {
     id: 9,
+    // DISABLED — turn on later by flipping `published: true` or removing the line
+    published: false,
     title: "Building Caterelo:<br/>r3loop applied",
     title_pl: "Jak zbudowaliśmy<br/>Caterelo z r3loop",
     date: "May 2026",

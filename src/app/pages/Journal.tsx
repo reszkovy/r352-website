@@ -30,7 +30,7 @@ export function Journal() {
 
       <div className="px-8 md:px-12 py-24 md:py-32 max-w-[1800px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
-          {journalArticles.map((article, i) => (
+          {journalArticles.filter(a => a.published !== false).map((article, i) => (
             <Reveal key={article.id} delay={i * 0.1}>
               <Link href={`/journal/${article.id}`} className="group block cursor-pointer">
                 <div className="relative aspect-[4/3] overflow-hidden bg-neutral-900 mb-8 rounded-sm">
