@@ -1,7 +1,6 @@
 import { AgencyHero } from "@/app/components/agency/AgencyHero";
 import { ClientLogos } from "@/app/components/agency/ClientLogos";
 import { SelectedWork } from "@/app/components/agency/SelectedWork";
-import { Products } from "@/app/components/agency/Products";
 import { ServicesList } from "@/app/components/agency/ServicesList";
 import { HomePrinciples } from "@/app/components/agency/HomePrinciples";
 import { References } from "@/app/components/agency/References";
@@ -68,9 +67,6 @@ export function Home() {
       <SelectedWork />
 
       <Marquee />
-
-      {/* Products — operator proof: r3loop applied to my own products. Sales tool, not decoration. */}
-      <Products />
 
       <ServicesList />
 

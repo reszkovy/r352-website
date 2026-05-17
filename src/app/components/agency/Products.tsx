@@ -165,8 +165,8 @@ export function Products() {
           <Reveal delay={0.1} className="col-span-12 lg:col-span-5 lg:justify-self-end max-w-xl space-y-4">
             <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
               {lang === "pl"
-                ? "r3loop nie jest teorią — jest stosowanym frameworkiem. Każdy produkt poniżej został zbudowany dokładnie tą samą metodologią, którą stosuję u klientów."
-                : "r3loop isn't theory — it's an applied framework. Every product below was built with the exact same methodology I run for clients."}
+                ? "r3loop nie jest teorią — jest stosowanym frameworkiem. Każdy produkt poniżej został zbudowany dokładnie tą samą metodologią, którą stosujemy u klientów."
+                : "r3loop isn't theory — it's an applied framework. Every product below was built with the exact same methodology we run for clients."}
             </p>
             <p className="text-sm text-neutral-500 dark:text-neutral-500 font-mono leading-relaxed">
               {lang === "pl"
@@ -302,9 +302,9 @@ export function Products() {
                 </span>
                 <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[0.95] max-w-3xl">
                   {lang === "pl" ? (
-                    <>Chcesz to samo dla swojej firmy?<br className="hidden md:inline" />{" "}Powiedz mi co budujesz.</>
+                    <>Chcesz to samo dla swojej firmy?<br className="hidden md:inline" />{" "}Powiedz nam co budujesz.</>
                   ) : (
-                    <>Want this for your business?<br className="hidden md:inline" />{" "}Tell me what you're building.</>
+                    <>Want this for your business?<br className="hidden md:inline" />{" "}Tell us what you're building.</>
                   )}
                 </h3>
               </div>

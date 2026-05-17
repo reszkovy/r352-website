@@ -277,9 +277,9 @@ export function Brief() {
                 </span>
                 <h2 className="text-4xl md:text-5xl font-normal tracking-tight text-neutral-900 dark:text-white leading-[1.05] mb-6">
                   {lang === "pl" ? (
-                    <>Biorę projekty,<br className="hidden md:inline" /> które...</>
+                    <>Bierzemy projekty,<br className="hidden md:inline" /> które...</>
                   ) : (
-                    <>I take projects<br className="hidden md:inline" /> that...</>
+                    <>We take projects<br className="hidden md:inline" /> that...</>
                   )}
                 </h2>
                 <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-md">
@@ -294,8 +294,8 @@ export function Brief() {
                 {[
                   {
                     num: "01",
-                    en: { title: "Are systemic, not aesthetic-only.", desc: "If the brief reads \"make it look nicer\" with no metric or system thinking behind it — I'm the wrong person." },
-                    pl: { title: "Są systemowe, nie tylko wizualne.", desc: "Jeśli brief brzmi „zróbmy żeby ładniej wyglądało\" bez metryki i myślenia systemowego — nie jestem właściwą osobą." },
+                    en: { title: "Are systemic, not aesthetic-only.", desc: "If the brief reads \"make it look nicer\" with no metric or system thinking behind it — we're the wrong fit." },
+                    pl: { title: "Są systemowe, nie tylko wizualne.", desc: "Jeśli brief brzmi „zróbmy żeby ładniej wyglądało\" bez metryki i myślenia systemowego — to nie nasza działka." },
                   },
                   {
                     num: "02",
@@ -309,8 +309,8 @@ export function Brief() {
                   },
                   {
                     num: "04",
-                    en: { title: "Are interesting enough to take at half-price.", desc: "Energy currency matters. If the work is dull, my best work isn't in it — and you'd feel it. Better we don't start." },
-                    pl: { title: "Są interesujące na tyle, żeby wziąć je za pół ceny.", desc: "Walute energii też się liczy. Jeśli praca jest nudna, najlepsze rzeczy nie wpadną — i to widać. Lepiej żebyśmy nie zaczynali." },
+                    en: { title: "Are interesting enough to take at half-price.", desc: "Energy currency matters. If the work is dull, our best work isn't in it — and you'd feel it. Better we don't start." },
+                    pl: { title: "Są interesujące na tyle, żeby wziąć je za pół ceny.", desc: "Waluta energii też się liczy. Jeśli praca jest nudna, nasze najlepsze rzeczy nie wpadną — i to widać. Lepiej żebyśmy nie zaczynali." },
                   },
                 ].map((c, i) => (
                   <li key={c.num} className="flex items-baseline gap-5 py-5 group/item">

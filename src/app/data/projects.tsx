@@ -64,6 +64,38 @@ import discobowlAsset5 from "../../imports/discobowl/6 2.png";
 import discobowlFrame from "../../imports/discobowl/Frame 636509 2.png";
 import discobowlGroup from "../../imports/discobowl/Group 636667.png";
 
+// Internal placeholder cover — typographic block for case studies awaiting final assets.
+// Used while the real cover image is being prepared. On-brand: dark void + lime + grey grain.
+function InternalPlaceholder({ title, tagline, accent = "#D4FF00", background = "#181D1F" }: { title: string; tagline?: string; accent?: string; background?: string }) {
+  return (
+    <div
+      className="w-full h-full flex flex-col items-start justify-end p-10 md:p-16 relative overflow-hidden"
+      style={{ background }}
+    >
+      {/* Noise / grain overlay */}
+      <div className="absolute inset-0 opacity-[0.10]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")', backgroundSize: '128px 128px' }} />
+      {/* Diagonal lime accent — vertical line on left edge */}
+      <div className="absolute top-0 bottom-0 left-0 w-[3px]" style={{ background: accent }} />
+      {/* Faint radial glow */}
+      <div className="absolute inset-0 opacity-[0.18]" style={{ background: `radial-gradient(ellipse at 20% 90%, ${accent}40 0%, transparent 50%)` }} />
+      {/* Content */}
+      <div className="relative z-10">
+        <span className="block text-[10px] md:text-xs font-display uppercase tracking-[0.3em] mb-4" style={{ color: accent }}>
+          Case study · assets pending
+        </span>
+        <h3 className="text-3xl md:text-6xl font-bold tracking-tighter text-white leading-[0.95] mb-3">
+          {title}
+        </h3>
+        {tagline && (
+          <p className="text-sm md:text-base text-neutral-400 font-mono leading-snug max-w-md">
+            {tagline}
+          </p>
+        )}
+      </div>
+    </div>
+  );
+}
+
 // NDA placeholder cover component — blurred logo on gradient
 function NdaPlaceholder({ logo, colors }: { logo: string; colors: [string, string] }) {
   return (
@@ -432,6 +464,124 @@ export const projects = [
     stats: [
       { value: "20", label: { en: "UK Venues Served", pl: "Kręgielni UK" } },
       { value: "2+", label: { en: "Sites + Booking System", pl: "Strony + System Rezerwacji" } }
+    ]
+  },
+  // ─────────────────────────────────────────────────────────────────────────
+  // Benefit Opening Engine — AI/automation tool for new gym openings.
+  // Companion case to benefit-systems above. Shows depth of partnership +
+  // builder/AI capability inside a single enterprise relationship.
+  // Skeleton copy — user to fill metrics + assets.
+  // ─────────────────────────────────────────────────────────────────────────
+  {
+    id: "benefit-opening-engine",
+    client: "Benefit Systems",
+    title: "Opening Engine — AI for new gym launches",
+    category: {
+      en: "AI Tooling / Operations Automation",
+      pl: "Narzędzie AI / Automatyzacja Operacji"
+    },
+    year: "2025 — current",
+    image: "",
+    coverImage: "",
+    coverComponent: <InternalPlaceholder title="Opening Engine" tagline="AI-first pipeline for launching new gym locations — assets, briefs, checklists, governance." />,
+    images: [],
+    isInternal: false,
+    description: {
+      en: "An internal AI-first tool we built to automate the creative ops behind launching a new gym location. From intake briefs to launch checklists, from asset packs to local-market adaptation — the pipeline that previously took weeks of coordinated PM work now runs as a guided workflow.",
+      pl: "Wewnętrzne narzędzie AI-first które zbudowaliśmy do automatyzacji creative ops przy uruchamianiu nowej lokalizacji siłowni. Od briefów intake przez launch checklists, po asset packi i adaptację pod lokalny rynek — pipeline który wcześniej zajmował tygodnie skoordynowanej pracy PM-ów teraz działa jako guided workflow."
+    },
+    services: {
+      en: ["AI Workflow Design", "Operations Automation", "Internal Tooling", "Brief Standardization", "Asset Pipeline"],
+      pl: ["Projektowanie AI Workflow", "Automatyzacja Operacji", "Narzędzia Wewnętrzne", "Standaryzacja Briefów", "Pipeline Assetów"]
+    },
+    challenge: {
+      en: "Benefit Systems opens new locations at a steady cadence — each launch requiring coordinated work across 5+ PMs, brand team, local marketing, ops and external production. The bottleneck wasn't talent or budget — it was orchestration: scattered briefs, manual asset versioning, locality decisions made over Slack, governance done in spreadsheets.",
+      pl: "Benefit Systems otwiera nowe lokalizacje w stałym rytmie — każde otwarcie wymaga skoordynowanej pracy 5+ PM-ów, brand teamu, lokalnego marketingu, ops i produkcji zewnętrznej. Bottleneck nie był w talencie ani budżecie — był w orkiestracji: rozproszone briefy, manualne wersjonowanie assetów, decyzje lokalne podejmowane na Slacku, governance w spreadsheetach."
+    },
+    decisions: {
+      en: "We treated the opening process as a productizable system, not a service. Mapped the full r3loop across a real launch — Diagnose to Iterate — identified every decision point, every artifact, every handoff. Then we automated the predictable parts and structured the human-decision parts as guided steps.",
+      pl: "Potraktowaliśmy proces otwarcia jako system do sproduktyzowania, nie usługę. Zmapowaliśmy pełen r3loop na realnym otwarciu — od Diagnose do Iterate — zidentyfikowaliśmy każdy decision point, każdy artefakt, każdy handoff. Potem zautomatyzowaliśmy przewidywalne części, a części z decyzją człowieka ustrukturyzowaliśmy jako guided steps."
+    },
+    approach: {
+      en: "AI-first architecture: structured intake with smart defaults, automated brief generation, AI-assisted local-market research, generated asset specs, governance dashboard for the brand team. Built to plug into existing Benefit tooling — no rip-and-replace.",
+      pl: "Architektura AI-first: ustrukturyzowany intake ze smart defaults, automatyczne generowanie briefów, AI-assisted research lokalnego rynku, generowane specy assetów, governance dashboard dla brand teamu. Zbudowane żeby wpiąć się w istniejące tooling Benefit — bez rip-and-replace."
+    },
+    quote: {
+      en: "When the pipeline becomes a product, every new launch gets faster — not because we work harder, but because the system carries the weight.",
+      pl: "Gdy pipeline staje się produktem, każde nowe otwarcie idzie szybciej — nie dlatego że pracujemy ciężej, tylko dlatego że system niesie ciężar."
+    },
+    outcome: {
+      en: "TBD — production metrics being collected. Will be filled with brief-to-launch cycle time, asset versioning reduction, PM hours freed.",
+      pl: "TBD — metryki produkcyjne są zbierane. Wypełnimy: brief-to-launch cycle time, redukcja wersjonowania assetów, godziny PM-ów uwolnione."
+    },
+    reflection: {
+      en: "Internal tooling is where r3loop earns its keep. Methodologies are easy to write — the proof is whether you ship them as systems your client can run without you.",
+      pl: "Narzędzia wewnętrzne to gdzie r3loop udowadnia swoją wartość. Metodologie łatwo opisać — dowodem jest czy potrafisz wyshippować je jako systemy, które klient może uruchomić bez ciebie."
+    },
+    stats: [
+      { value: "TBD", label: { en: "Cycle Time Reduction", pl: "Skrócenie Cyklu" } },
+      { value: "TBD", label: { en: "PM Hours Freed / Launch", pl: "Godziny PM / Otwarcie" } }
+    ]
+  },
+  // ─────────────────────────────────────────────────────────────────────────
+  // Caterelo — R3 × R3 self-built proof.
+  // Operator's case: we built our own SaaS to prove the methodology works
+  // outside the consulting context. Relocation intelligence for Southern Europe.
+  // Live at caterelo.com.
+  // ─────────────────────────────────────────────────────────────────────────
+  {
+    id: "caterelo",
+    client: "Caterelo",
+    title: "Relocation intelligence for Southern Europe",
+    category: {
+      en: "Self-Built Product / AI Platform",
+      pl: "Produkt Własny / Platforma AI"
+    },
+    year: "2026 — current",
+    image: "",
+    coverImage: "",
+    coverComponent: <InternalPlaceholder title="Caterelo" tagline="Our own SaaS — built with the same r3loop we run for clients. Live at caterelo.com" accent="#D4FF00" />,
+    images: [],
+    isInternal: false,
+    // External link to the live product — shown on detail page
+    externalUrl: "https://caterelo.com",
+    description: {
+      en: "Caterelo is our own product — a relocation intelligence platform for Southern Europe. 90 regions across 6 countries scored against 13 data signals and 7 decision dimensions. We built it to prove the methodology we sell: r3loop applied end-to-end, from quiz intake through scoring engine to AI advisor and live data feeds.",
+      pl: "Caterelo to nasz własny produkt — platforma relocation intelligence dla Europy Południowej. 90 regionów w 6 krajach ocenianych przez 13 sygnałów danych i 7 wymiarów decyzyjnych. Zbudowaliśmy to żeby udowodnić metodologię którą sprzedajemy: r3loop zastosowane end-to-end, od quiz intake przez engine scoringowy po AI advisor i live data feeds."
+    },
+    services: {
+      en: ["Product Design", "AI Architecture", "Data Pipeline", "REST API", "Frontend Build", "Methodology Validation"],
+      pl: ["Design Produktu", "Architektura AI", "Pipeline Danych", "REST API", "Frontend Build", "Walidacja Metodologii"]
+    },
+    challenge: {
+      en: "Most consultancies talk about methodology — few apply it to their own work. We wanted to prove r3loop isn't theory by shipping a production product built with it. Constraint: zero outside investment, no team to delegate to. The methodology had to hold up under solo-operator conditions or it wasn't real.",
+      pl: "Większość firm konsultingowych mówi o metodologii — niewielu ją stosuje do własnej pracy. Chcieliśmy udowodnić że r3loop to nie teoria poprzez wyshippowanie produktu produkcyjnego zbudowanego nim. Ograniczenie: zero zewnętrznych inwestycji, brak zespołu do delegowania. Metodologia musiała sprawdzić się w warunkach solo-operatora albo nie była realna."
+    },
+    decisions: {
+      en: "We applied r3loop 1:1 to caterelo's architecture: Diagnose became the 15-question relocation quiz. Map became 90 regions × 13 signals. Standardize became the LifeTrend™ composite score. Build became the REST API + AI advisor + interactive map. Govern became 60+ official sources with quarterly refresh. Ship became live free + Pro tiers. Measure became momentum scoring + Hidden Gem detector. Iterate is the AI advisor learning + Climate 2050 projections.",
+      pl: "Zastosowaliśmy r3loop 1:1 do architektury caterelo: Diagnose to 15-pytaniowy quiz relokacji. Map to 90 regionów × 13 sygnałów. Standardize to LifeTrend™ — kompozyt score. Build to REST API + AI advisor + interactive map. Govern to 60+ oficjalnych źródeł z quarterly refresh. Ship to live free + Pro tiers. Measure to momentum scoring + Hidden Gem detector. Iterate to AI advisor który się uczy + projekcje Climate 2050."
+    },
+    approach: {
+      en: "Solo-operator AI-first stack. Data layer built on official sources (Eurostat, IPCC, INE, ISTAT, INSEE) with traceable provenance. Scoring engine normalizes 13 raw signals into one LifeTrend™ composite. AI advisor trained on the full dataset — answers user questions in natural language. Live feeds (weather, AQI, currency) keep the model fresh. REST API opens the data layer to other developers.",
+      pl: "Stack AI-first dla solo-operatora. Warstwa danych zbudowana na oficjalnych źródłach (Eurostat, IPCC, INE, ISTAT, INSEE) z traceable provenance. Scoring engine normalizuje 13 surowych sygnałów do jednego kompozytu LifeTrend™. AI advisor wytrenowany na pełnym datasecie — odpowiada na pytania w naturalnym języku. Live feeds (pogoda, AQI, kursy) utrzymują model w aktualności. REST API otwiera warstwę danych dla innych developerów."
+    },
+    quote: {
+      en: "We sell methodology. The strongest way to prove it works — apply it to our own work and ship.",
+      pl: "Sprzedajemy metodologię. Najmocniejszy sposób udowodnienia że działa — zastosować ją do własnej pracy i wyshippować."
+    },
+    outcome: {
+      en: "Live product at caterelo.com — free tier + Founding Access €29/3 months. 90 regions scored. 60+ official sources integrated. AI advisor in production. r3loop methodology validated end-to-end under solo-operator constraints.",
+      pl: "Produkt live na caterelo.com — free tier + Founding Access €29/3 miesiące. 90 regionów ocenionych. 60+ oficjalnych źródeł zintegrowanych. AI advisor w produkcji. Metodologia r3loop zwalidowana end-to-end w warunkach solo-operatora."
+    },
+    reflection: {
+      en: "Building your own product changes how you consult. You stop selling promises — you start selling work you've already done on yourself. The credibility shift compounds across every client conversation that follows.",
+      pl: "Budowanie własnego produktu zmienia sposób w jaki konsultujesz. Przestajesz sprzedawać obietnice — zaczynasz sprzedawać pracę którą zrobiłeś już na sobie. Przesunięcie wiarygodności kumuluje się w każdej kolejnej rozmowie z klientem."
+    },
+    stats: [
+      { value: "90", label: { en: "Regions Tracked", pl: "Regionów" } },
+      { value: "13", label: { en: "Data Signals", pl: "Sygnałów Danych" } },
+      { value: "60+", label: { en: "Official Sources", pl: "Oficjalnych Źródeł" } },
+      { value: "Live", label: { en: "Free + Pro Tier", pl: "Free + Pro" } }
     ]
   },
   {
