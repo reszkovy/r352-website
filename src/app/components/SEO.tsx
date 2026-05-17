@@ -10,7 +10,7 @@ interface SEOProps {
 }
 
 export function SEO({
-  title = "r352 — We build the system behind great design.",
+  title = "r352 — The system behind great design.",
   description = "Strategic design partner for multi-location organizations. From strategy to rollout-ready delivery, powered by the r3loop methodology — predictable quality and speed at scale.",
   path = "/",
   ogImage = "https://r352.com/og-image.png",

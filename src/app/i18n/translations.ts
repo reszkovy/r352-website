@@ -13,8 +13,8 @@ export const translations = {
       tagline: "YOUR AGILE DESIGN PARTNER"
     },
     hero: {
-      title: "We build the system<br/>behind great design.",
-      title_mobile: "We build<br/>the system<br/>behind<br/>great design.",
+      title: "The system<br/>behind great design.",
+      title_mobile: "The system<br/>behind<br/>great design.",
       description_title: "Strategic design partner for those who scale — operator for those who build.",
       description_body: "Retainer for the steady. Project for the sharp. Same r3loop — applied to both, and to our own products in production.",
       quote: "Design begins with a decision, not a tool.",
@@ -535,8 +535,8 @@ export const translations = {
       tagline: "TWÓJ SPRAWNY PARTNER DESIGNOWY"
     },
     hero: {
-      title: "Budujemy system<br/>za świetnym designem.",
-      title_mobile: "Budujemy<br/>system<br/>za świetnym<br/>designem.",
+      title: "System<br/>za świetnym designem.",
+      title_mobile: "System<br/>za świetnym<br/>designem.",
       description_title: "Strategiczny design partner dla tych, którzy skalują — operator dla tych, którzy budują.",
       description_body: "Retainer dla stabilnych. Projekt dla ostrych. To samo r3loop — zastosowane do obu, i do naszych własnych produktów w produkcji.",
       quote: "Projektowanie zaczyna się od decyzji, nie od narzędzia.",
