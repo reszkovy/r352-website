@@ -30,11 +30,13 @@
     <meta name="twitter:description" content="Strategic design partner for multi-location organizations. From strategy to rollout-ready delivery, powered by the r3loop methodology." />
     <meta name="twitter:image" content="https://r352.com/og-image.png" />
 
-    <!-- Font preloading (eliminates render-blocking @import) -->
+    <!-- Font loading — Safari-safe: explicit stylesheet links (NOT preload-only, which doesn't apply on Safari).
+         Preconnect speeds up DNS, stylesheet link guarantees the @font-face declarations load on every browser.
+         Removed @import from fonts.css to prevent double-loading. -->
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
     <link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin />
-    <link rel="preload" href="https://api.fontshare.com/v2/css?f%5B%5D=tanker@400&display=swap" as="style" />
-    <link rel="preload" href="https://fonts.cdnfonts.com/css/bw-haas-head" as="style" />
+    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=tanker@400&display=swap" />
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/bw-haas-head" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

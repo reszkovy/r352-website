@@ -11,24 +11,24 @@ export function Journal() {
   return (
     <PageTransition className="pt-20 min-h-screen bg-background">
       
-      {/* Header */}
-      <div className="py-32 px-8 md:px-12 border-b border-white/10">
+      {/* Header — exceptionally compact for /journal: one-line title + tight padding,
+          so article tiles surface ABOVE THE FOLD (different from other pages where header is full-height). */}
+      <div className="pt-12 pb-8 md:pt-16 md:pb-10 px-8 md:px-12 border-b border-white/10">
         <div className="max-w-[1800px] mx-auto">
           <Reveal>
-            <div className="max-w-4xl">
-              <span className="block text-xs font-display uppercase tracking-[0.2em] text-[#D4FF00] mb-8">
+            <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-3 md:gap-8">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter text-white leading-[0.95] whitespace-nowrap">
+                Insights from the studio.
+              </h1>
+              <span className="text-xs font-display uppercase tracking-[0.2em] text-[#D4FF00] md:shrink-0">
                 {t('nav.journal')}
               </span>
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-white mb-12 leading-[0.9]">
-                Insights from<br className="hidden md:block" /> the studio.
-              </h1>
-              {/* Optional Intro Text - Empty for now as original had none, but kept structure */}
             </div>
           </Reveal>
         </div>
       </div>
 
-      <div className="px-8 md:px-12 py-24 md:py-32 max-w-[1800px] mx-auto">
+      <div className="px-8 md:px-12 py-12 md:py-16 max-w-[1800px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
           {journalArticles.filter(a => a.published !== false).map((article, i) => (
             <Reveal key={article.id} delay={i * 0.1}>

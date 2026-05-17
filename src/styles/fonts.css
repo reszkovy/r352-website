@@ -1,2 +1,4 @@
-@import url('https://api.fontshare.com/v2/css?f%5B%5D=tanker@400&display=swap');
-@import url('https://fonts.cdnfonts.com/css/bw-haas-head');
+/* Font loading moved to index.html as explicit <link rel="stylesheet"> tags —
+   Safari + iOS Safari sometimes fail to load @import-chained external font CSS
+   when bundled through Vite (CORS + chain depth issue). Keeping this file
+   in case we need locally-defined @font-face declarations later. */

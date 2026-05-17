@@ -39,7 +39,7 @@ export function Services() {
   };
 
   return (
-    <PageTransition className="pb-32 px-6 md:px-12 max-w-[1200px] mx-auto min-h-screen">
+    <PageTransition className="pb-32 px-8 md:px-12 max-w-[1800px] mx-auto min-h-screen">
 
       {/* ─── Strategy — editorial opener, sets the WHY before WHAT ─── */}
       <section className="pt-32 md:pt-40 mb-32 md:mb-40">
