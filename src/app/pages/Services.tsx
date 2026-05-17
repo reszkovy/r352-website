@@ -242,27 +242,27 @@ export function Services() {
                          className="overflow-hidden"
                        >
                          <div className="pb-20 px-4 sm:px-8 md:px-10 ml-0 md:ml-[40px] lg:ml-[50px]">
-                           {/* Description — bold editorial lead */}
+                           {/* Description — supporting context, lighter weight, smaller scale */}
                            <motion.p
                              initial={{ opacity: 0, y: 12 }}
                              animate={{ opacity: 1, y: 0 }}
                              transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                             className="text-2xl md:text-3xl text-neutral-800 dark:text-neutral-200 leading-[1.25] font-medium max-w-4xl mb-16 tracking-tight"
+                             className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal max-w-4xl mb-16"
                            >
                              {card.description}
                            </motion.p>
 
-                           {/* Output — single bold statement, no Includes detail */}
+                           {/* Output — the headline. Larger + heavier than description = clear hierarchy */}
                            <motion.div
                              initial={{ opacity: 0, y: 12 }}
                              animate={{ opacity: 1, y: 0 }}
                              transition={{ duration: 0.6, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
                              className="border-t border-neutral-200 dark:border-white/10 pt-10 max-w-5xl"
                            >
-                             <h3 className="text-xs font-display uppercase tracking-[0.2em] text-[#D4FF00] mb-4">
+                             <h3 className="text-xs font-display uppercase tracking-[0.2em] text-[#D4FF00] mb-5">
                                {language === 'pl' ? "Wynik" : "Output"}
                              </h3>
-                             <p className="text-xl md:text-2xl lg:text-3xl text-neutral-900 dark:text-white font-bold tracking-tight leading-[1.2]">
+                             <p className="text-3xl md:text-4xl lg:text-5xl text-neutral-900 dark:text-white font-bold tracking-tighter leading-[1.05]">
                                {card.output}
                              </p>
                            </motion.div>
