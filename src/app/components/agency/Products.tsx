@@ -131,6 +131,19 @@ export function Products() {
     <section className="py-32 md:py-40 border-t border-black/10 dark:border-white/5">
       <div className="max-w-[1800px] mx-auto px-8 md:px-12">
 
+        {/* ─── FRAMING LINE — dual-track positioning lock-in (Phase 1.1).
+             Sits above the section header to neutralize "why is caterelo here?"
+             in 0.5 seconds — signals operator-mindset benefits BOTH tracks. ─── */}
+        <Reveal>
+          <p className="text-sm md:text-base font-mono text-neutral-500 dark:text-neutral-500 leading-relaxed mb-10 md:mb-12 max-w-2xl">
+            {lang === "pl" ? (
+              <>Operator's lab. <span className="text-neutral-700 dark:text-neutral-300">To samo r3loop, niezależnie czy lecimy retainer, czy projekt.</span></>
+            ) : (
+              <>Operator's lab. <span className="text-neutral-700 dark:text-neutral-300">Same r3loop whether we run a retainer or a project.</span></>
+            )}
+          </p>
+        </Reveal>
+
         {/* ─── HEADER — 12-col 7+5 asymmetric (matches Brief CTA / Process pattern).
              This is a SALES SECTION: the hook is "want me to do this for you? here's the proof I can." ─── */}
         <div className="grid grid-cols-12 gap-6 md:gap-8 items-end mb-20 md:mb-24">

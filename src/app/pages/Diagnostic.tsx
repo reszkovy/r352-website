@@ -264,6 +264,75 @@ export function Brief() {
         </div>
       </section>
 
+      {/* ─── Selection Criteria — Phase 1.2.
+           Filter toxic leads + signal premium selectivity. Paradoxically raises conversion.
+           "I take projects that..." — sets the bar publicly. ─── */}
+      <section className="py-24 md:py-32 border-t border-neutral-200 dark:border-white/10">
+        <div className="max-w-[1800px] mx-auto px-8 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-16 md:gap-24">
+            <Reveal>
+              <div>
+                <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-4">
+                  {lang === "pl" ? "Filtr" : "Filter"}
+                </span>
+                <h2 className="text-4xl md:text-5xl font-normal tracking-tight text-neutral-900 dark:text-white leading-[1.05] mb-6">
+                  {lang === "pl" ? (
+                    <>Biorę projekty,<br className="hidden md:inline" /> które...</>
+                  ) : (
+                    <>I take projects<br className="hidden md:inline" /> that...</>
+                  )}
+                </h2>
+                <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-md">
+                  {lang === "pl"
+                    ? "Premium pricing wymaga premium ścieżki. Cztery filtry — dla tych, którzy chcą wiedzieć z góry, czy to dopasowanie."
+                    : "Premium pricing requires a premium fit. Four filters — for those who want to know up-front whether this is a match."}
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <ul className="flex flex-col divide-y divide-neutral-200 dark:divide-white/10">
+                {[
+                  {
+                    num: "01",
+                    en: { title: "Are systemic, not aesthetic-only.", desc: "If the brief reads \"make it look nicer\" with no metric or system thinking behind it — I'm the wrong person." },
+                    pl: { title: "Są systemowe, nie tylko wizualne.", desc: "Jeśli brief brzmi „zróbmy żeby ładniej wyglądało\" bez metryki i myślenia systemowego — nie jestem właściwą osobą." },
+                  },
+                  {
+                    num: "02",
+                    en: { title: "Move real metrics, not vanity.", desc: "Conversion, retention, ops throughput, cost-per-asset, brief-to-ship time. Not impressions or \"engagement\"." },
+                    pl: { title: "Poprawiają realne metryki, nie vanity.", desc: "Konwersja, retention, ops throughput, cost-per-asset, brief-to-ship time. Nie impressions czy „engagement\"." },
+                  },
+                  {
+                    num: "03",
+                    en: { title: "Have a decision owner who'll decide.", desc: "One person on your side who can say yes or no in 48 hours. No \"let me check with five people\" loops." },
+                    pl: { title: "Mają decision ownera, który decyduje.", desc: "Jedna osoba po waszej stronie, która powie tak lub nie w 48 godzin. Bez pętli „muszę sprawdzić z pięcioma osobami\"." },
+                  },
+                  {
+                    num: "04",
+                    en: { title: "Are interesting enough to take at half-price.", desc: "Energy currency matters. If the work is dull, my best work isn't in it — and you'd feel it. Better we don't start." },
+                    pl: { title: "Są interesujące na tyle, żeby wziąć je za pół ceny.", desc: "Walute energii też się liczy. Jeśli praca jest nudna, najlepsze rzeczy nie wpadną — i to widać. Lepiej żebyśmy nie zaczynali." },
+                  },
+                ].map((c, i) => (
+                  <li key={c.num} className="flex items-baseline gap-5 py-5 group/item">
+                    <span className="font-display text-base md:text-lg text-[#D4FF00] shrink-0 leading-none w-10">
+                      {c.num}
+                    </span>
+                    <div className="flex-1">
+                      <h3 className="text-lg md:text-xl font-medium tracking-tight text-neutral-900 dark:text-white leading-tight mb-1.5 group-hover/item:text-[#D4FF00] transition-colors">
+                        {lang === "pl" ? c.pl.title : c.en.title}
+                      </h3>
+                      <p className="text-sm md:text-base text-neutral-500 dark:text-neutral-400 leading-snug">
+                        {lang === "pl" ? c.pl.desc : c.en.desc}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       {/* ─── What you'll cover — 8 brief sections preview ─── */}
       <section className="py-24 md:py-32 border-t border-neutral-200 dark:border-white/10">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
