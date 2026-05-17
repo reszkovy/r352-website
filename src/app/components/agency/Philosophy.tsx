@@ -3,9 +3,18 @@ import { Link } from "wouter";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { useTheme } from "@/app/context/ThemeContext";
 import { useRef } from "react";
+import { motion } from "motion/react";
 import { PhilosophyVisuals } from "./PhilosophyVisuals";
 import { ScrollSequence } from "@/app/components/ui/ScrollSequence";
 import { ArrowRight } from "lucide-react";
+
+// Hero motion preset — gentle slide + fade + blur on mount, matches Journal page pattern.
+// Bypasses Reveal because hero copy is overlay'd on ScrollSequence (no in-view trigger fires).
+const heroMotion = {
+  initial: { opacity: 0, y: 30, filter: "blur(10px)" },
+  animate: { opacity: 1, y: 0, filter: "blur(0px)" },
+  transition: { duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] as const },
+};
 
 interface Belief {
   title: string;
@@ -63,7 +72,10 @@ export function Philosophy() {
               Desktop md+: overlaid at top of viewport like before (top-0, pt-40).
               All children align on the same left edge. */}
           <div className="absolute inset-x-0 top-[100vw] bottom-0 md:top-0 md:bottom-auto px-6 md:px-12 pt-8 md:pt-40 text-left flex flex-col justify-center md:block">
-            <div className="max-w-[1800px] mx-auto w-full">
+            {/* Motion wrapper — applies entrance animation (fade + slide + blur) matching other subpages.
+                Direct motion.div used (not Reveal) because hero sits as overlay on ScrollSequence —
+                Reveal's useInView margin "-10% 0px -10% 0px" doesn't fire reliably for overlay elements. */}
+            <motion.div {...heroMotion} className="max-w-[1800px] mx-auto w-full">
               <span className="block text-[10px] md:text-xs font-display uppercase tracking-[0.2em] text-[#D4FF00] mb-5 md:mb-8">
                 {t("philosophy_page.label")}
               </span>
@@ -74,7 +86,7 @@ export function Philosophy() {
               <p className="text-base md:text-2xl text-white tracking-tight font-normal leading-snug max-w-3xl dark:drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
                 {t("philosophy_page.subtitle")}
               </p>
-            </div>
+            </motion.div>
           </div>
         </ScrollSequence>
       </div>
