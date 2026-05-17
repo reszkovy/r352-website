@@ -30,13 +30,15 @@
     <meta name="twitter:description" content="Strategic design partner for multi-location organizations. From strategy to rollout-ready delivery, powered by the r3loop methodology." />
     <meta name="twitter:image" content="https://r352.com/og-image.png" />
 
-    <!-- Font loading — Safari-safe: explicit stylesheet links (NOT preload-only, which doesn't apply on Safari).
-         Preconnect speeds up DNS, stylesheet link guarantees the @font-face declarations load on every browser.
-         Removed @import from fonts.css to prevent double-loading. -->
-    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin />
-    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=tanker@400&display=swap" />
-    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/bw-haas-head" />
+    <!-- Font loading — Safari-safe: explicit stylesheet links with crossorigin.
+         Preconnect speeds up DNS. Stylesheet links with crossorigin="anonymous" ensures Safari
+         loads @font-face from CDN without security warnings.
+         Preconnect to cdn.fontshare.com — the actual .woff2 host (separate from the CSS host). -->
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=tanker@400&display=swap" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/bw-haas-head" crossorigin="anonymous" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

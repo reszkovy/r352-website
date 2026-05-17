@@ -5,6 +5,14 @@ import { motion } from "motion/react";
 import { Link } from "wouter";
 import { journalArticles } from "@/app/data/journalArticles";
 
+// Header motion preset — gentle slide + fade + blur on mount (bypasses useInView
+// because header sits in top 10% of viewport which is OUTSIDE Reveal's trigger zone).
+const headerMotion = {
+  initial: { opacity: 0, y: 30, filter: "blur(10px)" },
+  animate: { opacity: 1, y: 0, filter: "blur(0px)" },
+  transition: { duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] as const },
+};
+
 export function Journal() {
   const { t, language } = useLanguage();
 
@@ -12,19 +20,23 @@ export function Journal() {
     <PageTransition className="pt-20 min-h-screen bg-background">
       
       {/* Header — exceptionally compact for /journal: one-line title + tight padding,
-          so article tiles surface ABOVE THE FOLD (different from other pages where header is full-height). */}
+          so article tiles surface ABOVE THE FOLD (different from other pages where header is full-height).
+          Motion: direct motion.div with mount-triggered animation because the header sits in top 10%
+          of viewport — OUTSIDE Reveal's useInView trigger zone (margin: "-10% 0px -10% 0px").
+          Without this, the blur+y entrance was silently failing. */}
       <div className="pt-12 pb-8 md:pt-16 md:pb-10 px-8 md:px-12 border-b border-white/10">
         <div className="max-w-[1800px] mx-auto">
-          <Reveal>
-            <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-3 md:gap-8">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter text-white leading-[0.95] whitespace-nowrap">
-                Insights from the studio.
-              </h1>
-              <span className="text-xs font-display uppercase tracking-[0.2em] text-[#D4FF00] md:shrink-0">
-                {t('nav.journal')}
-              </span>
-            </div>
-          </Reveal>
+          <motion.div
+            {...headerMotion}
+            className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-3 md:gap-8"
+          >
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter text-white leading-[0.95] whitespace-nowrap">
+              Insights from the studio.
+            </h1>
+            <span className="text-xs font-display uppercase tracking-[0.2em] text-[#D4FF00] md:shrink-0">
+              {t('nav.journal')}
+            </span>
+          </motion.div>
         </div>
       </div>
 
