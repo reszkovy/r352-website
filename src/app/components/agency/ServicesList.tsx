@@ -42,8 +42,8 @@ const PILLARS: Pillar[] = [
     title: { en: "Operating System", pl: "Operating System" },
     scope: { en: "Intake · QA · Governance · Workflow", pl: "Intake · QA · Governance · Workflow" },
     sub: {
-      en: "Make quality and speed predictable — at multi-location scale.",
-      pl: "Jakość i szybkość przewidywalne — w skali wielu lokalizacji.",
+      en: "Make quality and speed predictable — at any scale.",
+      pl: "Jakość i szybkość przewidywalne — w każdej skali.",
     },
   },
   {
