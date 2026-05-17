@@ -5,7 +5,9 @@ import sonovaAsset4 from "figma:asset/70ffa00b6de8a7019dca4820d3f27c34ceb12f29.p
 import sonovaAsset5 from "figma:asset/ff5c7b5d6db2610ec21e962e7ac6e1eec5c9b1ef.png";
 
 import benefitImg from "../../imports/benefit-master.webp";
-import benefitCoverImg from "figma:asset/eb490e9a1afd74719bc7f9923aba70eab1890d8f.png";
+// Cover image (used on /work tile + home SelectedWork) now points to the
+// same new master asset so the new photo actually shows up everywhere.
+const benefitCoverImg = benefitImg;
 
 // Restore home page photo for Benefit Systems
 const benefitHomeImg = "https://images.unsplash.com/photo-1637870473618-8c9fa7d11f0a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBneW0lMjBpbnRlcmlvciUyMGRhcmslMjBuZW9ufGVufDF8fHx8MTc3MzU1Nzk5NHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
@@ -92,7 +94,7 @@ export const projects = [
       en: "Product Design / System",
       pl: "Design Produktu / System"
     },
-    year: "2024",
+    year: "2019 — current",
     image: benefitImg,
     coverImage: benefitCoverImg,
     images: [
@@ -148,7 +150,7 @@ export const projects = [
       en: "Brand Support",
       pl: "Wsparcie Marki"
     },
-    year: "2024",
+    year: "2023 — current",
     image: sonovaCoverImg,
     coverImage: sonovaCoverImg,
     images: [sonovaAsset4, sonovaAsset1, sonovaAsset2, sonovaAsset3, sonovaAsset5],
@@ -198,7 +200,7 @@ export const projects = [
       en: "Real Estate / Multi-channel Production",
       pl: "Real Estate / Produkcja Multi-channel"
     },
-    year: "2024",
+    year: "2026 — current",
     image: archicomCover,      // panoramic thumbnail — what shows on /work list
     coverImage: archicomCover, // same for project detail hero
     // YouTube anchor video — embedded full-width above image gallery
