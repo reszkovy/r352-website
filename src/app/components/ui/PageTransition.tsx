@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect, useRef } from "react";
 import { useLenis } from "lenis/react";
 import { useTheme } from "@/app/context/ThemeContext";
 import { R352Symbol } from "@/app/components/agency/R352Logo";
@@ -23,6 +23,7 @@ if (typeof window !== "undefined") {
 export function PageTransition({ children, className }: PageTransitionProps) {
   const lenis = useLenis();
   const { theme } = useTheme();
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   // Trigger transition sound on every page mount
   useEffect(() => {
@@ -99,11 +100,12 @@ export function PageTransition({ children, className }: PageTransitionProps) {
       </motion.div>
 
       <motion.div
+        ref={wrapperRef}
         initial={{ opacity: 0, y: 30, scale: 0.98, filter: "blur(24px)" }}
-        animate={{ 
-          opacity: 1, 
-          y: 0, 
-          scale: 1, 
+        animate={{
+          opacity: 1,
+          y: 0,
+          scale: 1,
           filter: "blur(0px)",
           transition: {
             duration: 0.9,
@@ -111,14 +113,29 @@ export function PageTransition({ children, className }: PageTransitionProps) {
             ease: [0.22, 1, 0.36, 1] // Apple-like smooth decel
           }
         }}
-        exit={{ 
-          opacity: 0.3, 
-          y: -20, 
-          scale: 0.95, 
+        exit={{
+          opacity: 0.3,
+          y: -20,
+          scale: 0.95,
           filter: "blur(20px)",
           transition: {
             duration: 0.8,
             ease: [0.76, 0, 0.24, 1] // Synced with sweep
+          }
+        }}
+        onAnimationComplete={(definition) => {
+          // After entry animation completes, clear inline transform/filter from this wrapper.
+          // Framer keeps "transform: scale(1) translateY(0); filter: blur(0px)" applied inline,
+          // which creates a new CSS containing block and BREAKS position: sticky on descendants
+          // (sticky binds to this wrapper instead of viewport → no pin → 100vh gap below video).
+          // Clearing the inline styles restores viewport-relative sticky for descendants.
+          if (typeof definition === "object" && definition !== null && "opacity" in definition && (definition as { opacity?: number }).opacity === 1) {
+            const el = wrapperRef.current;
+            if (el) {
+              el.style.transform = "";
+              el.style.filter = "";
+              el.style.willChange = "";
+            }
           }
         }}
         className={className}

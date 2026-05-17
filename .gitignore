@@ -22,3 +22,8 @@ r3-*.md
 
 # Source light frames (optimized to public/scroll-frames-light)
 Animacja_scrool jasna/
+
+# MJ source PNGs (optimized to WebP variants in imports/)
+src/assets/Frame*.png
+src/assets/highgaz_*.png
+src/imports/highgaz_*.png
