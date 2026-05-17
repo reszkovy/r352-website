@@ -2,9 +2,9 @@ import deliveryOSImage from "figma:asset/f5bde9dbf97a6173262b508893d89c9f53e0425
 import calmExecutionImage from "figma:asset/04b8212c348ba87b31f3fb0fdf4b1e2cf2d7e8f3.png";
 import cadenceImage from "figma:asset/00ba10d702fb047d9a6ba4780de74db73f7e5403.png";
 import journal6Cover from "../../imports/journal-6-cover.webp";
-// TEMP placeholders for articles 7 + 8 — replace with MJ-generated covers when ready
-const journal7Cover = deliveryOSImage;
-const journal8Cover = calmExecutionImage;
+// Typographic covers (minio set) — abstract on-brand alternatives to character-heavy MJ shots
+import journal7Cover from "../../imports/journal-7-cover.webp"; // organic field + R mark — "Brand at 250 locations"
+import journal8Cover from "../../imports/journal-8-cover.webp"; // bold typographic chaos + contained R — "What we refuse to ship"
 
 export interface Article {
   id: number;
