@@ -173,7 +173,7 @@ function AppContent() {
       description: "Three paths to start: structured brief (5–18 min, 48h response), book a 30-min call, or write to hello@r352.com. For multi-location organizations ready to systemize their design operations."
     };
     return {
-      title: "r352 — The system behind great design.",
+      title: "r352 — Move fast, steady cadence.",
       description: "Strategic design partner for multi-location organizations. From strategy to rollout-ready delivery, powered by the r3loop methodology — predictable quality and speed at scale."
     };
   };

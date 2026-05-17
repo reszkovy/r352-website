@@ -24,15 +24,17 @@ export function AgencyHero() {
       {/* Background Elements - Full Width */}
       <AnimeGrid />
       
-      {/* Content Container - Centered and Max Width */}
-      <div className="flex-grow flex flex-col justify-end w-full max-w-[1800px] mx-auto px-8 md:px-12 pb-32 pt-40 relative z-10 pointer-events-none">
+      {/* Content Container - Centered and Max Width.
+          Tightened pb-32 → pb-20 and mb-16/24 → mb-8/12 to lift the subtitle + CTAs
+          higher in viewport — guarantees they're visible above-the-fold on 1366×768 and up. */}
+      <div className="flex-grow flex flex-col justify-end w-full max-w-[1800px] mx-auto px-8 md:px-12 pb-20 md:pb-24 pt-40 relative z-10 pointer-events-none">
         <div className="pointer-events-auto">
           <div className="hidden md:block">
             <CinematicText
               key={`hero-title-${theme}`}
               text={t("hero.title")}
               as="h1"
-              className="type-h1 mb-16 md:mb-24 text-balance max-w-[95%] cursor-default"
+              className="type-h1 mb-8 md:mb-12 text-balance max-w-[95%] cursor-default"
               delay={0.1}
               glowEffect={true}
               baseColor={baseColor}
@@ -44,53 +46,57 @@ export function AgencyHero() {
               key={`hero-title-mobile-${theme}`}
               text={t("hero.title_mobile")}
               as="div"
-              className="type-h1 mb-16 md:mb-24 text-balance max-w-[95%] cursor-default"
+              className="type-h1 mb-8 md:mb-12 text-balance max-w-[95%] cursor-default"
               delay={0.1}
               glowEffect={true}
               baseColor={baseColor}
               glowColor={glowColor}
             />
           </div>
-          
+
           <Reveal delay={0.6}>
-            <div className="relative w-full">
-              {/* Elastic line replaces the static border-t */}
-              <ElasticLine className="absolute -top-[30px] left-0 w-full h-[60px]" />
-              
-              <div className="flex flex-col md:flex-row md:items-end justify-between gap-16 md:gap-12 pt-12 md:pt-16">
-                <div className="w-full max-w-3xl">
+            {/* Hero content restructure:
+                — Subtitle + CTAs + "write directly" link sit ABOVE the ElasticLine divider
+                — Divider sits below the action block as a separator
+                — Micro lines (proof points) sit BELOW divider on LEFT in ONE row
+                This pushes subtitle + CTAs higher in viewport (ATF) and uses divider as a logical
+                separator between "decide → act" zone and "proof signals" zone. */}
+
+            {/* Action block: subtitle (left) + CTAs (right) + write-directly stacked below CTAs */}
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-10 md:gap-12">
+              <div className="w-full max-w-3xl">
                 <p className="type-body-lg leading-relaxed text-balance text-neutral-400" dangerouslySetInnerHTML={{ __html: t("hero.description_title") }} />
               </div>
-              
-              <div className="flex flex-col gap-8 md:items-end shrink-0">
-                <div className="flex flex-col sm:flex-row gap-6">
-                   {/* PRIMARY CTA — Brief */}
-                   <MagneticButton
-                     onClick={() => setLocation("/brief")}
-                     className="bg-[#D4FF00] text-black border-none hover:bg-[#D4FF00]/90 rounded-none"
-                     glowColor="rgba(0, 0, 0, 0.15)"
-                   >
-                     <span className="invisible text-lg font-display uppercase tracking-widest absolute">Start a brief</span>
-                     <span className="text-lg font-display uppercase tracking-widest group-hover:tracking-normal transition-all duration-500 ease-out">
-                       {language === "pl" ? "Wypełnij brief" : "Start a brief"}
-                     </span>
-                   </MagneticButton>
 
-                   {/* SECONDARY CTA — direct Calendly book (no extra hop via /contact) */}
-                   <MagneticButton
-                     onClick={() => {
-                       try { (window as any).plausible?.("calendly_clicked", { props: { source: "hero" } }); } catch { /* noop */ }
-                       window.open("https://calendly.com/p-reszkovy/30min", "_blank", "noopener,noreferrer");
-                     }}
-                     className="explore-work-btn bg-white/[0.04] text-white border-transparent hover:bg-white/[0.08] rounded-none"
-                     glowColor="rgba(212, 255, 0, 0.2)"
-                   >
-                     <span className="invisible text-lg font-display uppercase tracking-[0.25em] absolute">{t("hero.cta_work")}</span>
-                     <span className="text-lg font-display uppercase tracking-wide group-hover:tracking-[0.25em] transition-all duration-500 ease-out">{t("hero.cta_work")}</span>
-                   </MagneticButton>
+              <div className="flex flex-col gap-6 md:items-end shrink-0">
+                <div className="flex flex-col sm:flex-row gap-6">
+                  {/* PRIMARY CTA — Brief */}
+                  <MagneticButton
+                    onClick={() => setLocation("/brief")}
+                    className="bg-[#D4FF00] text-black border-none hover:bg-[#D4FF00]/90 rounded-none"
+                    glowColor="rgba(0, 0, 0, 0.15)"
+                  >
+                    <span className="invisible text-lg font-display uppercase tracking-widest absolute">Start a brief</span>
+                    <span className="text-lg font-display uppercase tracking-widest group-hover:tracking-normal transition-all duration-500 ease-out">
+                      {language === "pl" ? "Wypełnij brief" : "Start a brief"}
+                    </span>
+                  </MagneticButton>
+
+                  {/* SECONDARY CTA — direct Calendly book (no extra hop via /contact) */}
+                  <MagneticButton
+                    onClick={() => {
+                      try { (window as any).plausible?.("calendly_clicked", { props: { source: "hero" } }); } catch { /* noop */ }
+                      window.open("https://calendly.com/p-reszkovy/30min", "_blank", "noopener,noreferrer");
+                    }}
+                    className="explore-work-btn bg-white/[0.04] text-white border-transparent hover:bg-white/[0.08] rounded-none"
+                    glowColor="rgba(212, 255, 0, 0.2)"
+                  >
+                    <span className="invisible text-lg font-display uppercase tracking-[0.25em] absolute">{t("hero.cta_work")}</span>
+                    <span className="text-lg font-display uppercase tracking-wide group-hover:tracking-[0.25em] transition-all duration-500 ease-out">{t("hero.cta_work")}</span>
+                  </MagneticButton>
                 </div>
 
-                {/* Secondary text link — direct mail for warm leads */}
+                {/* Secondary text link — direct mail for warm leads, sits below CTAs */}
                 <a
                   href="mailto:hello@r352.com?subject=r352%20—%20hello"
                   onClick={() => {
@@ -102,14 +108,18 @@ export function AgencyHero() {
                   <span>{language === "pl" ? "Albo napisz bezpośrednio" : "Or write directly"} · hello@r352.com</span>
                   <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.5} />
                 </a>
-                
-                <div className="flex flex-col gap-1 text-sm text-neutral-500 font-mono tracking-tight md:text-right">
-                   <p>{t("hero.micro_1")}</p>
-                   <p>{t("hero.micro_2")}</p>
-                   <p>{t("hero.micro_3")}</p>
-                </div>
               </div>
             </div>
+
+            {/* Divider + Proof points below it — single horizontal row on the LEFT */}
+            <div className="relative w-full pt-10 md:pt-14 mt-10 md:mt-12">
+              <ElasticLine className="absolute -top-[30px] left-0 w-full h-[60px]" />
+
+              <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-8 text-sm text-neutral-500 font-mono tracking-tight">
+                <p>{t("hero.micro_1")}</p>
+                <p>{t("hero.micro_2")}</p>
+                <p>{t("hero.micro_3")}</p>
+              </div>
             </div>
           </Reveal>
         </div>

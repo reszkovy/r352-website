@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>r352 — We build the system behind great design.</title>
+    <meta name="description" content="Strategic design partner for multi-location organizations. r352 builds the operating system behind great design — from strategy to rollout-ready delivery, powered by the r3loop methodology." />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://r352.com" />
+
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="en" href="https://r352.com" />
+    <link rel="alternate" hreflang="pl" href="https://r352.com/pl" />
+    <link rel="alternate" hreflang="x-default" href="https://r352.com" />
+
+    <!-- Open Graph (fallback — overridden per route by react-helmet-async) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="r352" />
+    <meta property="og:title" content="r352 — We build the system behind great design." />
+    <meta property="og:description" content="Strategic design partner for multi-location organizations. From strategy to rollout-ready delivery, powered by the r3loop methodology — predictable quality and speed at scale." />
+    <meta property="og:url" content="https://r352.com" />
+    <meta property="og:image" content="https://r352.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="r352 — We build the system behind great design." />
+    <meta name="twitter:description" content="Strategic design partner for multi-location organizations. From strategy to rollout-ready delivery, powered by the r3loop methodology." />
+    <meta name="twitter:image" content="https://r352.com/og-image.png" />
+
+    <!-- Font loading — Safari-safe: explicit stylesheet links with crossorigin.
+         Preconnect speeds up DNS. Stylesheet links with crossorigin="anonymous" ensures Safari
+         loads @font-face from CDN without security warnings.
+         Preconnect to cdn.fontshare.com — the actual .woff2 host (separate from the CSS host). -->
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=tanker@400&display=swap" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/bw-haas-head" crossorigin="anonymous" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#0A0A0A" />
+
+    <style>html, body { height: 100%; margin: 0; } #root { height: 100%; }</style>
+
+    <!-- Safari font fallback — Fontshare/cdnfonts.com don't load reliably on Safari/iOS Safari.
+         Instead of fighting CDN issues, we detect Safari and swap to native system font stack (SF Pro Display).
+         Zero external load, instant render, looks native on Apple devices. -->
+    <script>
+      (function() {
+        try {
+          var ua = navigator.userAgent || "";
+          var isSafari = /Safari/.test(ua) && !/Chrome|Chromium|Edg|OPR|CriOS|FxiOS/.test(ua);
+          if (isSafari) {
+            document.documentElement.classList.add("safari");
+          }
+        } catch (e) { /* noop */ }
+      })();
+    </script>
+    <script type="module" crossorigin src="/assets/index-DZ26eVC8.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/vendor-motion-LQBLsruA.js">
+    <link rel="modulepreload" crossorigin href="/assets/vendor-react-C0Qg7kAU.js">
+    <link rel="modulepreload" crossorigin href="/assets/vendor-lenis-C3aE2Jwu.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-rvdzvSik.css">
+  </head>
+
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
