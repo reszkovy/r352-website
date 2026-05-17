@@ -53,6 +53,13 @@ import archicomBP2 from "../../imports/archicom/BP2.png";
 import archicomBP3 from "../../imports/archicom/BP3.png";
 import archicomBP4 from "../../imports/archicom/BP4.png";
 
+// Benefit Opening Engine — AI tooling for new gym launches (5 production screenshots)
+import benefitOpeningEngineShot1 from "../../imports/benefit-opening-engine/01-master-dashboard.webp";
+import benefitOpeningEngineShot2 from "../../imports/benefit-opening-engine/02-club-cards.webp";
+import benefitOpeningEngineShot3 from "../../imports/benefit-opening-engine/03-map-overlap.webp";
+import benefitOpeningEngineShot4 from "../../imports/benefit-opening-engine/04-intake-form.webp";
+import benefitOpeningEngineShot5 from "../../imports/benefit-opening-engine/05-club-detail.webp";
+
 // Caterelo (R3 × R3 self-built proof) — flat-color illustration cover + hover animation
 import cathereloCover from "../../imports/caterelo/caterelo-cover.webp";
 
@@ -495,7 +502,14 @@ export const projects = [
     image: "",
     coverImage: "",
     coverComponent: <InternalPlaceholder title="Opening Engine" tagline="AI-first pipeline for launching new gym locations — assets, briefs, checklists, governance." />,
-    images: [],
+    // Gallery — full product narrative: master tracking dashboard → club cards → geographic overlap → intake form → single club detail
+    images: [
+      benefitOpeningEngineShot1, // Master dashboard — all clubs × all asset types × completion status
+      benefitOpeningEngineShot2, // Club cards — single-club status with overlap warnings
+      benefitOpeningEngineShot3, // Map overlap — geographic intelligence, distance radius
+      benefitOpeningEngineShot4, // Intake form — auto-generates 7 digital + 5 print tasks
+      benefitOpeningEngineShot5, // Club detail — fully-tracked view with status closing workflow
+    ],
     isInternal: false,
     description: {
       en: "An internal AI-first tool we built to automate the creative ops behind launching a new gym location. From intake briefs to launch checklists, from asset packs to local-market adaptation — the pipeline that previously took weeks of coordinated PM work now runs as a guided workflow.",

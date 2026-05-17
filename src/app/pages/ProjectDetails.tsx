@@ -411,7 +411,15 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-y-24">
              {project.images.map((image, i) => {
                // Per-project layout override — uniform large (full-width 16:9 slabs) for these projects
-               const useUniformLarge = ["kubota", "archicom", "discobowl", "caterelo"].includes(project.id);
+               const useUniformLarge = ["kubota", "archicom", "discobowl"].includes(project.id);
+
+               // Caterelo — bespoke rhythm: maps stay monumental, single-metric screens go half-width staggered.
+               // Layout: 2 full-width maps, then 2 staggered pairs of half-width detail shots.
+               const useCathereloRhythm = project.id === "caterelo";
+
+               // Benefit Opening Engine — bespoke rhythm: master dashboards full-width, detail/form/map as varied pairs.
+               // Mix of wide horizontal (2.4–2.66 ratio), 4:3 map, portrait form, near-square detail → needs custom layout.
+               const useOpeningEngineRhythm = project.id === "benefit-opening-engine";
 
                // Default editorial rhythm (full / left / right / centered) for other projects
                const isFullWidth = i % 4 === 0;
@@ -419,9 +427,37 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                const isRight = i % 4 === 2;
                const isCentered = i % 4 === 3;
 
+               // Caterelo per-image mapping: indices 0–1 = maps (full 16:9), 2–5 = detail (half-width pairs)
+               // 2 left, 3 right + offset, 4 left, 5 right + offset
+               const isCathereloFull = useCathereloRhythm && (i === 0 || i === 1);
+               const isCathereloLeft = useCathereloRhythm && (i === 2 || i === 4);
+               const isCathereloRight = useCathereloRhythm && (i === 3 || i === 5);
+
+               // Opening Engine per-image mapping:
+               // 0 master dashboard (2.4 wide) → full-width 16:9 HERO
+               // 1 club cards (2.66 ultra-wide)  → full-width 16:9
+               // 2 map overlap (4:3) → half-width left, square aspect
+               // 3 intake form (portrait) → half-width right + offset (letterboxed elegantly in tall container)
+               // 4 club detail (5:4) → full-width 4:3 closer
+               const isOpeningEngineFull = useOpeningEngineRhythm && (i === 0 || i === 1 || i === 4);
+               const isOpeningEngineLeft = useOpeningEngineRhythm && i === 2;
+               const isOpeningEngineRight = useOpeningEngineRhythm && i === 3;
+
                let gridClass = "md:col-span-12";
                if (useUniformLarge) {
                  gridClass = "md:col-span-12";
+               } else if (isCathereloFull) {
+                 gridClass = "md:col-span-12";
+               } else if (isCathereloLeft) {
+                 gridClass = "md:col-span-6 md:col-start-1";
+               } else if (isCathereloRight) {
+                 gridClass = "md:col-span-6 md:col-start-7 md:mt-24";
+               } else if (isOpeningEngineFull) {
+                 gridClass = "md:col-span-12";
+               } else if (isOpeningEngineLeft) {
+                 gridClass = "md:col-span-7 md:col-start-1";
+               } else if (isOpeningEngineRight) {
+                 gridClass = "md:col-span-4 md:col-start-9 md:mt-16";
                } else if (isLeft) {
                  gridClass = "md:col-span-5 md:col-start-1";
                } else if (isRight) {
@@ -430,8 +466,14 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                  gridClass = "md:col-span-8 md:col-start-3";
                }
 
-               // For uniform-large layout: always 16:9, no decorative glows, lighter tilt
-               const useLargeAspect = useUniformLarge || isFullWidth;
+               // Aspect ratios:
+               // - useUniformLarge / caterelo full / opening engine 0+1 = 16:9 monumental
+               // - opening engine 4 (club detail) = 4:3 to close the narrative more "human-scale"
+               // - opening engine left (map) = 4:3 to fit square-ish content
+               // - opening engine right (form portrait) = 3:4 portrait container
+               // - others = 4:3 default
+               const isOpeningEngineHero = useOpeningEngineRhythm && (i === 0 || i === 1);
+               const useLargeAspect = useUniformLarge || isFullWidth || isCathereloFull || isOpeningEngineHero;
 
                return (
                  <div key={i} className={`${gridClass} relative group`}>
@@ -445,7 +487,7 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                         <ImageHover
                            className={`
                               w-full bg-[#0A0A0A] border border-white/5 rounded-sm
-                              ${useLargeAspect ? 'aspect-[16/9]' : 'aspect-[4/3]'}
+                              ${useLargeAspect ? 'aspect-[16/9]' : isOpeningEngineRight ? 'aspect-[3/4]' : 'aspect-[4/3]'}
                               transition-all duration-700 hover:border-white/20
                            `}
                            tiltMax={useUniformLarge ? 3 : (isCentered ? 3 : 5)}
