@@ -229,6 +229,25 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
           </ImageHover>
         </Reveal>
 
+        {/* Inline animation — auto-playing kinetic teaser right after the hero.
+            Optional field per project. Full-width 16:9, muted+loop+playsinline. No controls — feels editorial. */}
+        {(project as any).inlineAnimation && (
+          <Reveal width="100%" className="mb-32 -mt-16 md:-mt-24">
+            <div className="w-full aspect-[16/9] md:aspect-[21/9] bg-neutral-900 rounded-sm overflow-hidden">
+              <video
+                src={(project as any).inlineAnimation}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                className="w-full h-full object-cover"
+                aria-hidden="true"
+              />
+            </div>
+          </Reveal>
+        )}
+
         {/* Impact Metrics Banner */}
         {project.stats && (
           <Reveal>

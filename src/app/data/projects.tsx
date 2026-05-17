@@ -44,6 +44,7 @@ import fifaLogo from "figma:asset/51e11441d7c02bfa2791df691e15dbf208a105e4.png";
 
 // Archicom Project Assets (River Point + Bulwar Północny investments)
 import archicomCover from "../../imports/archicom/bkg1 2.png"; // Panoramic thumbnail — used on /work list + cover
+import archicomNightRendering from "../../imports/archicom/archicom-night-rendering.webp"; // Hero gallery shot — evening renovated industrial building rendering
 import archicomRP1 from "../../imports/archicom/RP1.png";
 import archicomRP2 from "../../imports/archicom/RP2.png";
 import archicomRP3 from "../../imports/archicom/RP3.png";
@@ -269,10 +270,14 @@ export const projects = [
     image: archicomCover,      // panoramic thumbnail — what shows on /work list
     coverImage: archicomCover, // same for project detail hero
     hoverVideo: "/videos/archicom-hover.mp4",
+    // Inline animation — auto-playing video right under cover/hero (kinetic teaser before stats + copy).
+    // Rendered as full-width 16:9, muted+loop+playsinline. Different from hoverVideo (which only plays on tile hover).
+    inlineAnimation: "/videos/archicom-rendering-anim.mp4",
     // YouTube anchor video — embedded full-width above image gallery
     videoUrl: "https://www.youtube.com/watch?v=7f_Qzq6B7kY",
-    // Alternating order RP/BP to show both investments early in gallery
+    // Gallery: night rendering opens as monumental hero shot, then alternating RP/BP investments
     images: [
+      archicomNightRendering, // Evening rendering — renovated industrial building, the "wow" moment opening the case
       archicomRP1,
       archicomBP1,
       archicomRP2,
