@@ -492,60 +492,61 @@ export const projects = [
   // ─────────────────────────────────────────────────────────────────────────
   {
     id: "benefit-opening-engine",
-    client: "Benefit Systems",
-    title: "Opening Engine — AI for new gym launches",
+    client: "Zdrofit",
+    title: "Opening Engine — operations framework for expansion",
     category: {
-      en: "AI Tooling / Operations Automation",
-      pl: "Narzędzie AI / Automatyzacja Operacji"
+      en: "Operations Framework / Transparent Ops",
+      pl: "Framework Operacyjny / Transparentne Ops"
     },
     year: "2025 — current",
-    image: "",
-    coverImage: "",
-    coverComponent: <InternalPlaceholder title="Opening Engine" tagline="AI-first pipeline for launching new gym locations — assets, briefs, checklists, governance." />,
-    // Gallery — full product narrative: master tracking dashboard → club cards → geographic overlap → intake form → single club detail
+    // Cover = geographic overlap map. Shows the WHY (multi-location ops) in the first 0.5 sec.
+    // Same image used for /work tile thumbnail AND project detail hero.
+    image: benefitOpeningEngineShot3,
+    coverImage: benefitOpeningEngineShot3,
+    // Gallery — full product narrative: master tracking dashboard → club cards → intake form → single club detail
+    // Map shot removed from gallery (already serves as cover/hero — no double-render).
     images: [
       benefitOpeningEngineShot1, // Master dashboard — all clubs × all asset types × completion status
       benefitOpeningEngineShot2, // Club cards — single-club status with overlap warnings
-      benefitOpeningEngineShot3, // Map overlap — geographic intelligence, distance radius
       benefitOpeningEngineShot4, // Intake form — auto-generates 7 digital + 5 print tasks
       benefitOpeningEngineShot5, // Club detail — fully-tracked view with status closing workflow
     ],
     isInternal: false,
     description: {
-      en: "An internal AI-first tool we built to automate the creative ops behind launching a new gym location. From intake briefs to launch checklists, from asset packs to local-market adaptation — the pipeline that previously took weeks of coordinated PM work now runs as a guided workflow.",
-      pl: "Wewnętrzne narzędzie AI-first które zbudowaliśmy do automatyzacji creative ops przy uruchamianiu nowej lokalizacji siłowni. Od briefów intake przez launch checklists, po asset packi i adaptację pod lokalny rynek — pipeline który wcześniej zajmował tygodnie skoordynowanej pracy PM-ów teraz działa jako guided workflow."
+      en: "An internal framework we built for Zdrofit's expansion team. Single source of truth for every new gym launch — request flow from local teams to production, visible status across all clubs and asset types, real-time reporting up to C-level. No more chasing briefs in Slack or asset versions in spreadsheets.",
+      pl: "Wewnętrzny framework który zbudowaliśmy dla zespołu ekspansji Zdrofit. Jedno źródło prawdy dla każdego nowego otwarcia siłowni — flow requestów od lokalnych zespołów do produkcji, widoczny status wszystkich klubów i typów assetów, raportowanie w czasie rzeczywistym do C-level. Koniec szukania briefów w Slacku i wersji assetów w spreadsheetach."
     },
     services: {
-      en: ["AI Workflow Design", "Operations Automation", "Internal Tooling", "Brief Standardization", "Asset Pipeline"],
-      pl: ["Projektowanie AI Workflow", "Automatyzacja Operacji", "Narzędzia Wewnętrzne", "Standaryzacja Briefów", "Pipeline Assetów"]
+      en: ["Operations Framework", "Request Flow Design", "Transparent Reporting", "C-Level Dashboards", "Multi-Team Coordination"],
+      pl: ["Framework Operacyjny", "Projektowanie Flow Requestów", "Transparentne Raportowanie", "Dashboardy C-Level", "Koordynacja Multi-Team"]
     },
     challenge: {
-      en: "Benefit Systems opens new locations at a steady cadence — each launch requiring coordinated work across 5+ PMs, brand team, local marketing, ops and external production. The bottleneck wasn't talent or budget — it was orchestration: scattered briefs, manual asset versioning, locality decisions made over Slack, governance done in spreadsheets.",
-      pl: "Benefit Systems otwiera nowe lokalizacje w stałym rytmie — każde otwarcie wymaga skoordynowanej pracy 5+ PM-ów, brand teamu, lokalnego marketingu, ops i produkcji zewnętrznej. Bottleneck nie był w talencie ani budżecie — był w orkiestracji: rozproszone briefy, manualne wersjonowanie assetów, decyzje lokalne podejmowane na Slacku, governance w spreadsheetach."
+      en: "Zdrofit opens new clubs at a steady cadence — each launch requiring coordinated work across local club teams, brand, marketing, production and external partners. The bottleneck wasn't talent or budget — it was visibility: scattered briefs, manual asset versioning, status updates by DM, governance done in spreadsheets that nobody could trust by Friday. C-level couldn't get a clean answer to \"where are we on next month's openings?\".",
+      pl: "Zdrofit otwiera nowe kluby w stałym rytmie — każde otwarcie wymaga skoordynowanej pracy lokalnych zespołów klubowych, brand teamu, marketingu, produkcji i partnerów zewnętrznych. Bottleneck nie był w talencie ani budżecie — był w widoczności: rozproszone briefy, manualne wersjonowanie assetów, statusy przez DM, governance w spreadsheetach którym do piątku nikt już nie ufał. C-level nie mógł dostać czystej odpowiedzi na pytanie „gdzie jesteśmy z otwarciami na następny miesiąc?\"."
     },
     decisions: {
-      en: "We treated the opening process as a productizable system, not a service. Mapped the full r3loop across a real launch — Diagnose to Iterate — identified every decision point, every artifact, every handoff. Then we automated the predictable parts and structured the human-decision parts as guided steps.",
-      pl: "Potraktowaliśmy proces otwarcia jako system do sproduktyzowania, nie usługę. Zmapowaliśmy pełen r3loop na realnym otwarciu — od Diagnose do Iterate — zidentyfikowaliśmy każdy decision point, każdy artefakt, każdy handoff. Potem zautomatyzowaliśmy przewidywalne części, a części z decyzją człowieka ustrukturyzowaliśmy jako guided steps."
+      en: "We treated the opening process as a productizable system, not a service layer. Mapped the full r3loop across a real launch — Diagnose to Iterate — identified every decision point, every artifact, every handoff. Built a single source of truth with three audiences in mind: local teams submit requests, the production team executes, C-level reads status — each view tuned to what that audience needs.",
+      pl: "Potraktowaliśmy proces otwarcia jako system do sproduktyzowania, nie warstwę usługową. Zmapowaliśmy pełen r3loop na realnym otwarciu — od Diagnose do Iterate — zidentyfikowaliśmy każdy decision point, każdy artefakt, każdy handoff. Zbudowaliśmy jedno źródło prawdy z myślą o trzech audytoriach: lokalne zespoły zgłaszają requesty, zespół produkcji wykonuje, C-level czyta status — każdy widok dopasowany do tego, czego dane audytorium potrzebuje."
     },
     approach: {
-      en: "AI-first architecture: structured intake with smart defaults, automated brief generation, AI-assisted local-market research, generated asset specs, governance dashboard for the brand team. Built to plug into existing Benefit tooling — no rip-and-replace.",
-      pl: "Architektura AI-first: ustrukturyzowany intake ze smart defaults, automatyczne generowanie briefów, AI-assisted research lokalnego rynku, generowane specy assetów, governance dashboard dla brand teamu. Zbudowane żeby wpiąć się w istniejące tooling Benefit — bez rip-and-replace."
+      en: "Request-first architecture: structured intake from local teams, transparent task flow to production, geographic overlap intelligence, status tracking down to individual asset type. Three views on one dataset — local team sees their requests, production team sees the queue, C-level sees the rollup. Built to plug into existing Zdrofit/Benefit tooling, not replace it.",
+      pl: "Architektura request-first: ustrukturyzowany intake od lokalnych zespołów, transparentny flow tasków do produkcji, geograficzna inteligencja nakładających się lokalizacji, status na poziomie pojedynczego typu assetu. Trzy widoki na jednym datasecie — lokalny zespół widzi swoje requesty, produkcja kolejkę, C-level rollup. Zbudowane żeby wpiąć się w istniejące tooling Zdrofit/Benefit, nie zastąpić go."
     },
     quote: {
-      en: "When the pipeline becomes a product, every new launch gets faster — not because we work harder, but because the system carries the weight.",
-      pl: "Gdy pipeline staje się produktem, każde nowe otwarcie idzie szybciej — nie dlatego że pracujemy ciężej, tylko dlatego że system niesie ciężar."
+      en: "When request flow becomes transparent, status stops being a conversation — and starts being a screen everyone trusts.",
+      pl: "Gdy flow requestów staje się transparentny, status przestaje być rozmową — a zaczyna być ekranem, któremu każdy ufa."
     },
     outcome: {
-      en: "TBD — production metrics being collected. Will be filled with brief-to-launch cycle time, asset versioning reduction, PM hours freed.",
-      pl: "TBD — metryki produkcyjne są zbierane. Wypełnimy: brief-to-launch cycle time, redukcja wersjonowania assetów, godziny PM-ów uwolnione."
+      en: "TBD — production metrics being collected. Will be filled with brief-to-launch cycle time, asset versioning reduction, weekly status meetings eliminated.",
+      pl: "TBD — metryki produkcyjne są zbierane. Wypełnimy: brief-to-launch cycle time, redukcja wersjonowania assetów, eliminacja tygodniowych statusówek."
     },
     reflection: {
-      en: "Internal tooling is where r3loop earns its keep. Methodologies are easy to write — the proof is whether you ship them as systems your client can run without you.",
-      pl: "Narzędzia wewnętrzne to gdzie r3loop udowadnia swoją wartość. Metodologie łatwo opisać — dowodem jest czy potrafisz wyshippować je jako systemy, które klient może uruchomić bez ciebie."
+      en: "Internal tooling is where frameworks earn their keep. Methodologies are easy to write — the proof is whether you ship them as systems your client can run without you, and whether C-level trusts the dashboard enough to stop asking for slides.",
+      pl: "Wewnętrzne narzędzia to gdzie frameworki udowadniają swoją wartość. Metodologie łatwo opisać — dowodem jest czy potrafisz wyshippować je jako systemy, które klient może uruchomić bez ciebie, i czy C-level ufa dashboardowi na tyle, by przestać prosić o slajdy."
     },
     stats: [
       { value: "TBD", label: { en: "Cycle Time Reduction", pl: "Skrócenie Cyklu" } },
-      { value: "TBD", label: { en: "PM Hours Freed / Launch", pl: "Godziny PM / Otwarcie" } }
+      { value: "TBD", label: { en: "Status Meetings Eliminated", pl: "Statusówek Wyeliminowanych" } }
     ]
   },
   // ─────────────────────────────────────────────────────────────────────────

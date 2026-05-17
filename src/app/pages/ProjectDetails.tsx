@@ -433,13 +433,12 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                const isCathereloLeft = useCathereloRhythm && (i === 2 || i === 4);
                const isCathereloRight = useCathereloRhythm && (i === 3 || i === 5);
 
-               // Opening Engine per-image mapping:
+               // Opening Engine per-image mapping (map shot moved to cover/hero — gallery has 4 frames):
                // 0 master dashboard (2.4 wide) → full-width 16:9 HERO
                // 1 club cards (2.66 ultra-wide)  → full-width 16:9
-               // 2 map overlap (4:3) → half-width left, square aspect
-               // 3 intake form (portrait) → half-width right + offset (letterboxed elegantly in tall container)
-               // 4 club detail (5:4) → full-width 4:3 closer
-               const isOpeningEngineFull = useOpeningEngineRhythm && (i === 0 || i === 1 || i === 4);
+               // 2 intake form (portrait 0.57) → half-width LEFT (narrow col-span-4, aspect 3:4)
+               // 3 club detail (5:4 ~square) → half-width RIGHT (wider col-span-7, 4:3, mt-16 offset)
+               const isOpeningEngineFull = useOpeningEngineRhythm && (i === 0 || i === 1);
                const isOpeningEngineLeft = useOpeningEngineRhythm && i === 2;
                const isOpeningEngineRight = useOpeningEngineRhythm && i === 3;
 
@@ -455,9 +454,11 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                } else if (isOpeningEngineFull) {
                  gridClass = "md:col-span-12";
                } else if (isOpeningEngineLeft) {
-                 gridClass = "md:col-span-7 md:col-start-1";
+                 // Intake form portrait — narrow column on left
+                 gridClass = "md:col-span-4 md:col-start-1";
                } else if (isOpeningEngineRight) {
-                 gridClass = "md:col-span-4 md:col-start-9 md:mt-16";
+                 // Club detail landscape — wider column on right, offset down
+                 gridClass = "md:col-span-7 md:col-start-6 md:mt-16";
                } else if (isLeft) {
                  gridClass = "md:col-span-5 md:col-start-1";
                } else if (isRight) {
@@ -487,7 +488,7 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                         <ImageHover
                            className={`
                               w-full bg-[#0A0A0A] border border-white/5 rounded-sm
-                              ${useLargeAspect ? 'aspect-[16/9]' : isOpeningEngineRight ? 'aspect-[3/4]' : 'aspect-[4/3]'}
+                              ${useLargeAspect ? 'aspect-[16/9]' : isOpeningEngineLeft ? 'aspect-[3/4]' : 'aspect-[4/3]'}
                               transition-all duration-700 hover:border-white/20
                            `}
                            tiltMax={useUniformLarge ? 3 : (isCentered ? 3 : 5)}
