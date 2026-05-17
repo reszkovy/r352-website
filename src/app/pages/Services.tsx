@@ -153,7 +153,11 @@ export function Services() {
              const isActive = index === activeIndex;
              return (
                <Reveal key={index} delay={index * 0.05}>
-                 <div className="relative flex flex-col border-b border-neutral-200 dark:border-white/10">
+                 <div className={`
+                   relative flex flex-col border-b border-neutral-200 dark:border-white/10
+                   transition-colors duration-500 ease-out
+                   ${isActive ? 'bg-neutral-50 dark:bg-white/[0.025]' : ''}
+                 `}>
                    {/* Lime accent bar — slides in when active */}
                    <AnimatePresence>
                      {isActive && (
@@ -173,9 +177,7 @@ export function Services() {
                      className={`
                        w-full group cursor-pointer py-10 md:py-12 text-left outline-none
                        transition-colors duration-500 ease-out
-                       hover:bg-neutral-50 dark:hover:bg-white/[0.02]
-                       focus-visible:bg-neutral-50 dark:focus-visible:bg-white/[0.02]
-                       ${isActive ? 'bg-neutral-50 dark:bg-white/[0.02]' : ''}
+                       ${!isActive ? 'hover:bg-neutral-50 dark:hover:bg-white/[0.02] focus-visible:bg-neutral-50 dark:focus-visible:bg-white/[0.02]' : ''}
                      `}
                    >
                      <div className="flex items-baseline gap-6 md:gap-10 px-4 sm:px-8 md:px-10">
@@ -241,7 +243,7 @@ export function Services() {
                          }}
                          className="overflow-hidden"
                        >
-                         <div className="pb-20 px-4 sm:px-8 md:px-10 ml-0 md:ml-[40px] lg:ml-[50px]">
+                         <div className="pb-20 pt-6 md:pt-10 px-4 sm:px-8 md:px-10 ml-0 md:ml-[40px] lg:ml-[50px]">
                            {/* Description — supporting context, lighter weight, smaller scale */}
                            <motion.p
                              initial={{ opacity: 0, y: 12 }}
