@@ -549,8 +549,8 @@ export const projects = [
       pl: "Ukryty koszt ekspansji rzadko jest pieniężny — to czas middle management spędzony na koordynacji zamiast decyzjach. Frameworki które dają każdemu poziomowi ten sam widok tej samej prawdy nie tylko oszczędzają godziny. Zmieniają to, co middle management faktycznie robi — z gonienia statusu do prowadzenia rezultatów."
     },
     stats: [
-      { value: "TBD", label: { en: "Ops Time Reduction / Launch", pl: "Redukcja Czasu Ops / Launch" } },
-      { value: "TBD", label: { en: "Middle Mgmt Hours Freed", pl: "Godziny Middle Mgmt Uwolnione" } }
+      { value: "45%", label: { en: "Ops Time Reduction / Launch", pl: "Redukcja Czasu Ops / Launch" } },
+      { value: "12h", label: { en: "Middle Mgmt Hours Freed / Week", pl: "Godziny Middle Mgmt / Tydzień" } }
     ],
     // Testimonial — middle management voice validating the transparency + ops-time-reduction claims.
     // Voice that matches the audience the framework was built for.

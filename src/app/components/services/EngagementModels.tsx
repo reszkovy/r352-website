@@ -8,8 +8,9 @@ export function EngagementModels() {
     {
       number: "01",
       title: language === "pl" ? "Sprint" : "Sprint",
-      positioning: language === "pl" 
-        ? "Skoncentrowane zadanie z jasnym początkiem, zakresem i końcem." 
+      priceFrom: language === "pl" ? "od 25 000 PLN" : "from 25 000 PLN",
+      positioning: language === "pl"
+        ? "Skoncentrowane zadanie z jasnym początkiem, zakresem i końcem."
         : "A focused engagement with a clear start, scope, and finish.",
       howItWorks: language === "pl" ? [
         "Definiujemy problem i oczekiwane rezultaty z góry",
@@ -45,6 +46,7 @@ export function EngagementModels() {
     {
       number: "02",
       title: language === "pl" ? "Abonament" : "Retainer",
+      priceFrom: language === "pl" ? "od 12 000 PLN / mies." : "from 12 000 PLN / mo",
       positioning: language === "pl"
         ? "Stała wydajność projektowa i produkcyjna w przewidywalnym, miesięcznym rytmie."
         : "Ongoing design and production capacity on a predictable monthly rhythm.",
@@ -82,6 +84,7 @@ export function EngagementModels() {
     {
       number: "03",
       title: language === "pl" ? "Diagnostyka" : "Diagnostic",
+      priceFrom: language === "pl" ? "od 8 000 PLN" : "from 8 000 PLN",
       positioning: language === "pl"
         ? "Krótki, ustrukturyzowany audyt, który pokazuje dokładnie, gdzie zawodzi proces — zanim zaangażujecie się w budowanie czegokolwiek. Pełen zwrot kosztów, jeśli rekomendacje nie są wdrażalne w ciągu 60 dni."
         : "A short, structured audit that shows you exactly where delivery breaks down — before you commit to building anything. Money back if the recommendations are not actionable within 60 days.",
@@ -122,6 +125,7 @@ export function EngagementModels() {
     {
       number: "04",
       title: language === "pl" ? "Wdrożenie Enterprise" : "Enterprise Sprint",
+      priceFrom: language === "pl" ? "od 120 000 PLN" : "from 120 000 PLN",
       positioning: language === "pl"
         ? "Pełne wdrożenie Creative Operating System dla organizacji wielolokalizacyjnej — od diagnozy po działający system z wytrenowanym zespołem."
         : "Full Creative Operating System implementation for a multi-location organization — from diagnosis to a running system with a trained team.",
@@ -159,6 +163,7 @@ export function EngagementModels() {
     {
       number: "05",
       title: language === "pl" ? "Partner Operacyjny" : "Operating Partner",
+      priceFrom: language === "pl" ? "od 18 000 PLN / mies." : "from 18 000 PLN / mo",
       positioning: language === "pl"
         ? "Strategiczna rola partnera operacyjnego — opiekun ewolucji systemu, doradca przy strategicznych decyzjach designu i komunikacji, obecność przy stole leadership."
         : "Strategic operating partner role — custodian of system evolution, advisor on strategic design and communication decisions, present at the leadership table.",
@@ -226,6 +231,11 @@ export function EngagementModels() {
                 <h3 className="text-[22px] font-semibold text-neutral-900 dark:text-[#e5e5e5] mb-1">
                   {model.title}
                 </h3>
+                {(model as any).priceFrom && (
+                  <span className="block text-[12px] font-mono uppercase tracking-[0.15em] text-neutral-900 dark:text-[#D4FF00] mb-2">
+                    {(model as any).priceFrom}
+                  </span>
+                )}
                 {(model as any).successMetric && (
                   <div className="flex items-start gap-3 mb-4 pt-1">
                     <span className="w-6 h-px bg-[#D4FF00] mt-[10px] shrink-0" />
@@ -378,6 +388,11 @@ export function EngagementModels() {
                   <h3 className="text-2xl md:text-[28px] font-semibold tracking-tight text-neutral-900 dark:text-[#e5e5e5] mb-2">
                     {model.title}
                   </h3>
+                  {(model as any).priceFrom && (
+                    <span className="block text-[13px] font-mono uppercase tracking-[0.15em] text-neutral-900 dark:text-[#D4FF00] mb-3">
+                      {(model as any).priceFrom}
+                    </span>
+                  )}
                   {(model as any).successMetric && (
                     <div className="flex items-start gap-3 mb-5 pt-2">
                       <span className="w-6 h-px bg-[#D4FF00] mt-[10px] shrink-0" />
