@@ -138,9 +138,18 @@ export function ServicesList() {
                 <p className="text-sm text-neutral-400 font-mono tracking-tight leading-relaxed">
                   {p.scope[lang]}
                 </p>
-                <p className="text-sm text-neutral-500 leading-relaxed mt-auto pt-4">
-                  {p.sub[lang]}
-                </p>
+                {/* Sub-copy — em-dash always drops to new line so every card ends in 2 lines */}
+                {(() => {
+                  const raw = p.sub[lang];
+                  const [lead, ...rest] = raw.split(" — ");
+                  const tail = rest.join(" — ");
+                  return (
+                    <p className="text-sm text-neutral-500 leading-snug mt-auto pt-4">
+                      <span className="block">{lead}</span>
+                      {tail && <span className="block">— {tail}</span>}
+                    </p>
+                  );
+                })()}
               </div>
             </Reveal>
           ))}
