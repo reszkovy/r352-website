@@ -43,12 +43,18 @@ export function Work() {
 
       {/* Projects Grid */}
       <div className="px-8 md:px-12 py-24 md:py-32 max-w-[1800px] mx-auto">
-        {/* Regular projects — full-width stacked */}
-        <div className="space-y-32">
-          {projects.filter((p: any) => !p.isNDA).map((project) => (
-            <Reveal key={project.id} className="group cursor-pointer">
+        {/* Regular projects — 2-column grid matching NDA section styling
+            (same aspect, gap, typography) for visual consistency across the page.
+            Asymmetric row stagger via index-based delay for editorial reveal. */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+          {projects.filter((p: any) => !p.isNDA).map((project, index) => (
+            <Reveal
+              key={project.id}
+              delay={(index % 2) * 0.1}
+              className="group cursor-pointer"
+            >
               <Link href={`/work/${project.id}`} className="block">
-                  <div className="w-full aspect-[16/9] bg-neutral-100 dark:bg-neutral-900 overflow-hidden mb-8 relative">
+                  <div className="w-full aspect-[16/9] bg-neutral-100 dark:bg-neutral-900 overflow-hidden mb-6 relative">
                     <div className="absolute inset-0 bg-black/0 dark:bg-white/0 group-hover:bg-black/5 dark:group-hover:bg-white/5 transition-colors z-10 duration-500" />
                     <ImageWithFallback
                       src={project.coverImage}
@@ -57,17 +63,17 @@ export function Work() {
                     />
                   </div>
 
-                  <div className="flex justify-between items-start border-t border-black/10 dark:border-white/10 pt-6">
+                  <div className="flex justify-between items-start border-t border-black/10 dark:border-white/10 pt-4">
                     <div>
-                      <h2 className="text-4xl md:text-5xl font-semibold tracking-tighter text-black dark:text-white mb-2 group-hover:text-black/80 dark:group-hover:text-white/80 transition-colors">
+                      <h2 className="text-2xl md:text-3xl font-semibold tracking-tighter text-black dark:text-white mb-1 group-hover:text-black/80 dark:group-hover:text-white/80 transition-colors">
                         {project.client}
                       </h2>
-                      <span className="text-xs font-display uppercase tracking-widest text-[#D4FF00]">
+                      <span className="text-[10px] font-display uppercase tracking-widest text-[#D4FF00]">
                         {/* @ts-ignore - Localized data */}
                         {project.category[language]}
                       </span>
                     </div>
-                    <span className="text-xs font-display uppercase tracking-widest text-neutral-600">
+                    <span className="text-[10px] font-display uppercase tracking-widest text-neutral-600 shrink-0">
                       {project.year}
                     </span>
                   </div>
