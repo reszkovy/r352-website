@@ -367,10 +367,23 @@ export function Process() {
                 <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-4">
                   {lang === "pl" ? "Dla kogo" : "Who this is for"}
                 </span>
-                <h2 className="text-4xl md:text-5xl font-normal tracking-tight text-neutral-900 dark:text-white mb-8 leading-[1.15]">
-                  {lang === "pl"
-                    ? "Dla zespołów, gdzie design to nie pojedyncze zadanie."
-                    : "Built for teams where design work is no longer a single task."}
+                {/* Explicit 3-line semantic break — controls rag and keeps
+                    clause boundaries on their own lines instead of natural wrap.
+                    Mobile collapses to natural flow via hidden <br/> on small screens. */}
+                <h2 className="text-4xl md:text-5xl font-normal tracking-tight text-neutral-900 dark:text-white mb-8 leading-[1.15] text-balance">
+                  {lang === "pl" ? (
+                    <>
+                      Dla zespołów,<br className="hidden md:inline" />
+                      {" "}gdzie design<br className="hidden md:inline" />
+                      {" "}to nie pojedyncze zadanie.
+                    </>
+                  ) : (
+                    <>
+                      Built for teams where<br className="hidden md:inline" />
+                      {" "}design work is no longer<br className="hidden md:inline" />
+                      {" "}a single task.
+                    </>
+                  )}
                 </h2>
                 <p className="text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
                   {lang === "pl"
