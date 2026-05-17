@@ -102,8 +102,8 @@ export function Work() {
                 </div>
                 <p className="col-span-12 md:col-span-5 md:justify-self-end text-sm md:text-base text-neutral-500 leading-relaxed max-w-md">
                   {language === 'pl'
-                    ? 'End-to-end. Solo, z AI jako multiplikatorem. Zero podwykonawców. To samo r3loop, które prowadzimy u klientów — zastosowane do własnych produktów najpierw.'
-                    : 'End-to-end. Solo, with AI as a multiplier. Zero subcontractors. Same r3loop we run for clients — applied to our own products first.'}
+                    ? 'Operator-led, AI-native, end-to-end. To samo r3loop, które prowadzimy u klientów — zastosowane do naszych własnych produktów najpierw.'
+                    : 'Operator-led, AI-native, end-to-end. Same r3loop we run for clients — applied to our own products first.'}
                 </p>
               </div>
             </Reveal>

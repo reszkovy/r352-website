@@ -363,6 +363,33 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                 </div>
              </Reveal>
 
+             {/* 5b. Testimonial — third-party voice validating the outcome (when present).
+                  Distinct visual treatment from editorial quote — author + role attribution. */}
+             {/* @ts-ignore */}
+             {project.testimonial && (
+                <Reveal delay={0.35}>
+                    <figure className="relative pt-6 pb-2">
+                       <span className="absolute -top-2 left-0 text-7xl text-[#D4FF00] font-serif opacity-40 leading-none">"</span>
+                       <blockquote className="pl-10 md:pl-14">
+                          <p className="text-xl md:text-2xl text-white font-medium tracking-tight leading-snug">
+                             {/* @ts-ignore */}
+                             {project.testimonial.quote[language]}
+                          </p>
+                          <figcaption className="mt-8 flex flex-col gap-1">
+                             <span className="text-base md:text-lg font-semibold text-white">
+                                {/* @ts-ignore */}
+                                {project.testimonial.author}
+                             </span>
+                             <span className="text-xs md:text-sm font-display uppercase tracking-[0.2em] text-[#D4FF00]">
+                                {/* @ts-ignore */}
+                                {project.testimonial.role[language]}
+                             </span>
+                          </figcaption>
+                       </blockquote>
+                    </figure>
+                </Reveal>
+             )}
+
              {/* 6. Reflection */}
              {/* @ts-ignore */}
              {project.reflection && (
