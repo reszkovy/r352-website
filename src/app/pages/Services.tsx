@@ -48,17 +48,22 @@ export function Services() {
             <span className="text-[11px] uppercase tracking-[2px] text-neutral-500 dark:text-[#D4FF00] font-display mb-4 block">
               {language === "pl" ? "01 · Strategia" : "01 · Strategy"}
             </span>
-            {/* Hero — matches Process/Journal master copy: bold + tracking-tighter + 2-line break */}
+            {/* Hero — matches Process/Journal master copy: bold + tracking-tighter + 2-line break.
+                Mobile: long words split with hyphen continuation to stay in viewport (Operatio-/Operacjo-). */}
             <h2 className="text-5xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-white mb-8 leading-[0.95]">
               {language === "pl" ? (
                 <>
                   Strategia. Egzekucja.<br className="hidden md:block" />
-                  {" "}Operacjonalizacja.
+                  {" "}
+                  <span className="hidden md:inline">Operacjonalizacja.</span>
+                  <span className="md:hidden">Operacjo<br/>-nalizacja.</span>
                 </>
               ) : (
                 <>
                   Strategy. Execution.<br className="hidden md:block" />
-                  {" "}Operationalization.
+                  {" "}
+                  <span className="hidden md:inline">Operationalization.</span>
+                  <span className="md:hidden">Operatio<br/>-nalization.</span>
                 </>
               )}
             </h2>

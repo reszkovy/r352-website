@@ -4,7 +4,7 @@ import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 interface HoverVideoImageProps {
   /** Static cover image — always rendered as fallback / poster */
   src: string;
-  /** Optional hover video URL — if present, plays on mouseenter, pauses on mouseleave */
+  /** Optional hover video URL — if present, plays on mouseenter (desktop) or scroll-into-view (mobile) */
   videoSrc?: string;
   /** Image alt */
   alt: string;
@@ -18,16 +18,22 @@ interface HoverVideoImageProps {
  * Behavior:
  *   - Always renders the static image (the "poster")
  *   - If videoSrc is provided, also renders a <video> element overlaid on top
+ *
+ * Desktop (hover-capable):
  *   - On mouseenter: video plays + fades to opacity 1, image hides underneath
  *   - On mouseleave: video pauses + rewinds to 0, image visible again
- *   - On touch devices: video doesn't auto-trigger (no hover state) — image only
+ *
+ * Mobile / touch (no hover):
+ *   - IntersectionObserver — when element scrolls into viewport, video autoplays + fades in
+ *   - When element scrolls out of viewport, video pauses (saves battery + bandwidth)
+ *   - Loops while in view — provides same interactive feedback as desktop hover
  *
  * Performance:
- *   - preload="auto" — video pre-loaded so hover is instant (videos are ~290KB each,
- *     acceptable trade-off vs first-hover delay from "metadata" preload)
+ *   - preload="auto" on desktop, "metadata" on mobile (data costs)
  *   - muted + playsInline — required for autoplay across browsers
  *   - loop — seamless preview
  *   - opacity transition for smooth crossfade
+ *   - IntersectionObserver disconnects on unmount
  */
 export function HoverVideoImage({
   src,
@@ -35,18 +41,58 @@ export function HoverVideoImage({
   alt,
   className = "",
 }: HoverVideoImageProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isHovering, setIsHovering] = useState(false);
+  const [isActive, setIsActive] = useState(false); // unified: hover (desktop) or in-view (mobile)
 
-  // Detect touch device — skip hover behavior entirely there
+  // Detect touch device — switches between hover and intersection-observer modes
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   useEffect(() => {
     setIsTouchDevice(window.matchMedia("(hover: none)").matches);
   }, []);
 
+  // ─── Mobile: IntersectionObserver — autoplay when in viewport ─────────
+  useEffect(() => {
+    if (!isTouchDevice || !videoSrc) return;
+
+    const container = containerRef.current;
+    if (!container) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const v = videoRef.current;
+        if (entry.isIntersecting) {
+          // 35% of element in viewport — start playing
+          setIsActive(true);
+          if (v) {
+            v.play().catch(() => {
+              // Autoplay rejected — fall back to static image
+            });
+          }
+        } else {
+          // Scrolled out — pause + reset, fade back to image
+          setIsActive(false);
+          if (v) {
+            v.pause();
+          }
+        }
+      },
+      {
+        // Trigger when at least 35% of the element is visible
+        // Slight bottom margin so videos don't autoplay too eagerly at edge
+        threshold: 0.35,
+        rootMargin: "0px 0px -10% 0px",
+      }
+    );
+
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, [isTouchDevice, videoSrc]);
+
+  // ─── Desktop: hover handlers ──────────────────────────────────────────
   const handleEnter = () => {
     if (isTouchDevice || !videoSrc) return;
-    setIsHovering(true);
+    setIsActive(true);
     const v = videoRef.current;
     if (v) {
       v.currentTime = 0;
@@ -58,7 +104,7 @@ export function HoverVideoImage({
 
   const handleLeave = () => {
     if (isTouchDevice || !videoSrc) return;
-    setIsHovering(false);
+    setIsActive(false);
     const v = videoRef.current;
     if (v) {
       v.pause();
@@ -68,6 +114,7 @@ export function HoverVideoImage({
 
   return (
     <div
+      ref={containerRef}
       className="w-full h-full relative"
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
@@ -75,21 +122,20 @@ export function HoverVideoImage({
       {/* Static image — always rendered, used as poster/fallback */}
       <ImageWithFallback src={src} alt={alt} className={className} />
 
-      {/* Optional hover video — fades in on hover, hidden by default.
-          Note: no videoCanPlay gate — opacity is gated only by isHovering.
-          The video element renders its current frame even before fully loaded,
-          and with preload="auto" the data is ready by the time user hovers. */}
-      {videoSrc && !isTouchDevice && (
+      {/* Hover/in-view video — desktop fades on hover, mobile fades on viewport intersection.
+          Mounted on BOTH desktop and mobile when videoSrc present (was desktop-only before).
+          Performance: mobile uses "metadata" preload to save data costs vs desktop "auto". */}
+      {videoSrc && (
         <video
           ref={videoRef}
           src={videoSrc}
           muted
           loop
           playsInline
-          preload="auto"
+          preload={isTouchDevice ? "metadata" : "auto"}
           className={`absolute inset-0 ${className}`}
           style={{
-            opacity: isHovering ? 1 : 0,
+            opacity: isActive ? 1 : 0,
             transition: "opacity 400ms cubic-bezier(0.22, 1, 0.36, 1)",
             pointerEvents: "none",
           }}
