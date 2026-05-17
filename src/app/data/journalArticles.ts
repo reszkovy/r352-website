@@ -29,113 +29,122 @@ export const journalArticles: Article[] = [
     image: journal9Cover,
     content_pl: `
       <p class="mb-6 text-xl leading-relaxed text-neutral-300">
-        Większość firm konsultingowych mówi o metodologii. Niewielu stosuje ją do własnej pracy. Chcieliśmy dowodu — <span class="text-white font-medium">więc zbudowaliśmy własny SaaS dokładnie tym frameworkiem, który sprzedajemy.</span>
+        Relokacja jest jedną z najtrudniejszych decyzji jakie człowiek podejmuje — wysoka stawka, trudna do odwrócenia, dane rozproszone w 60+ urzędach statystycznych w pięciu językach. <span class="text-white font-medium">Większość ludzi rezygnuje w połowie i decyduje na podstawie blog posta albo wątku w grupie facebookowej.</span>
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Caterelo to platforma relocation intelligence dla Europy Południowej. 90 regionów w 6 krajach ocenionych przez 13 sygnałów danych i 7 wymiarów decyzyjnych. AI advisor, projekcje klimatyczne 2050, 60+ oficjalnych źródeł. Live na <a href="https://caterelo.com" target="_blank" rel="noopener" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">caterelo.com</a>. Zbudowane end-to-end przez R3, operator-led, AI-native.
+        To jest problem który zbudowaliśmy żeby rozwiązać przez <a href="https://caterelo.com" target="_blank" rel="noopener" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">Caterelo</a> — decision engine relokacyjny dla Europy Południowej. I chcieliśmy go rozwiązać dokładnie tą samą metodologią, którą sprzedajemy klientom: <span class="text-white">r3loop</span>.
       </p>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Problem: relokacja to 14 zakładek przeglądarki w 5 językach</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Czterech ludzi, jeden zepsuty proces</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Relokacja jest jedną z najdroższych decyzji jakie człowiek podejmuje poza biznesem — a dane stojące za nią są rozproszone w 5 językach i 60+ urzędach statystycznych. Zrobienie tego dobrze oznacza cross-reference INE dla danych mieszkaniowych Hiszpanii, ISTAT dla Włoch, INSEE dla Francji, IPCC AR6 dla projekcji klimatycznych, Numbeo dla kosztów życia, Eurostat dla bezrobocia.
+        W rozmowach z prospektami i wcześniejszymi użytkownikami ciągle wracały te same cztery profile — każdy z innym pytaniem, ale z tym samym frustrującym doświadczeniem:
       </p>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Średni czas researchu przed Caterelo: <span class="text-white border-b border-[#D4FF00]/50">40+ godzin</span>. Wynik: większość ludzi nie kończy badania. Decyzja zapada w oparciu o blog post, post na grupie facebookowej albo pierwsze trzy oferty z Idealisty.
-      </p>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        To dokładnie ten rodzaj operacyjnego chaosu, który r3loop był zaprojektowany żeby systematyzować. Osiem kroków od problemu do produktu. Używamy go u klientów konsultingowych żeby skalować creative operations. Pytanie — czy przetrwa zastosowany do naszego własnego ambitnego projektu, w pełni end-to-end, z AI jako multiplikatorem?
-      </p>
-
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">r3loop w produkcji — 8 kroków zmapowanych 1:1</h2>
-
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">01 — Diagnose</h3>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Zaczyna się od pytania: kto faktycznie to kupuje? Zmapowaliśmy cztery persony — remote workers, rodziny z dziećmi w wieku szkolnym, emerytów, second-home buyerów. Ich priorytety nie pokrywają się. Platforma musiała oceniać regiony różnie w zależności od tego kto pyta. Tak powstał 15-pytaniowy quiz który otwiera caterelo.com/app. <span class="text-white">Diagnose w produkcji.</span>
-      </p>
-
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">02 — Map</h3>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        90 regionów × 13 sygnałów × 7 wymiarów decyzyjnych = 8 190 punktów danych odświeżanych kwartalnie. Map odpowiada na pytanie o architekturę decyzji: jak porównać Algarve z Toskanią w sposób sensowny? Musisz mierzyć te same osie (ceny nieruchomości, klimat, bezpieczeństwo, opieka zdrowotna, infrastruktura cyfrowa, koszt życia, styl życia) tak samo we wszystkich krajach. <span class="text-white">Map to architektura.</span>
-      </p>
-
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">03 — Standardize</h3>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        LifeTrend™ Score — pojedynczy wynik kompozytowy 30–90, który normalizuje 13 surowych sygnałów przez 7 wymiarów. Min-max skalowane per wymiar, ważone (bezpieczeństwo 22%, koszt życia 18%, zdrowie 13%, klimat 12%, styl życia 12%, cyfrowość 10%, edukacja 9%), zsumowane. <span class="text-white">Każdy region dostaje jedną liczbę, którą można rankować.</span> Standardize zwija złożoność w coś po czym można podjąć decyzję.
-      </p>
-
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">04 — Build</h3>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        REST API + comparator app + AI advisor + interactive map. <span class="text-white">AI-native architektura od pierwszego dnia</span> — chat advisor jest wytrenowany na pełnym datasecie, łącznie z output z quizu, więc daje kontekstowe rekomendacje, a nie generyczne odpowiedzi. Stack produkcyjny: React/TypeScript frontend, Node backend, PostgreSQL dla danych strukturalnych, vector store dla AI retrieval. Zbudowane end-to-end.
-      </p>
-
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">05 — Govern</h3>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        60+ oficjalnych źródeł, traceable provenance. Każda liczba w Caterelo linkuje do swojego origin — INE dla Hiszpanii, ISTAT dla Włoch, INSEE dla Francji, IPCC dla klimatu. Kadencja odświeżania kwartalna. Gdzie dane są niekompletne, flagujemy to. <span class="text-white">Govern to to, co czyni metodologię godną zaufania w skali.</span>
-      </p>
-
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">06 — Ship</h3>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Free tier (bez signupu, wszystkie 90 regionów, 10-letnie trendy cen, stolice) + Founding Access (€29 / 3 miesiące, AI advisor, comparison engine, projekcje klimatyczne 2050). Ship znaczy w produkcji, z użytkownikami, generujący revenue, z metrykami churn. <span class="text-white">Caterelo wyszippnęło zanim ten artykuł został napisany</span> — możesz użyć go teraz.
-      </p>
-
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">07 — Measure</h3>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Live data feeds utrzymują model świeżym (pogoda, AQI, kursy walut). Momentum scoring śledzi przyspieszanie cen. Hidden Gem Detector cross-referuje LifeTrend z Google Trends interest — wyłania niedowartościowane regiony. <span class="text-white">Measure to nie tylko analytics</span> — to warstwa która utrzymuje system uczciwym gdy świat się zmienia.
-      </p>
-
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">08 — Iterate</h3>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        AI advisor uczy się z interakcji. Nowe źródła danych dodawane kwartalnie. Projekcje Climate 2050 doprecyzowywane gdy IPCC publikuje update. Produkt staje się mądrzejszy z użyciem, nie tylko większy. <span class="text-white">Iterate to loop domykający się — i loop otwierający się ponownie.</span>
-      </p>
-
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Konkret: Katalonia vs Apulia</h2>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Dwa najpopularniejsze shortlisty relokacyjne w Europie Południowej. Oba śródziemnomorskie. Oba "lifestyle". Dane mówią różne historie:
-      </p>
-      <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg pl-4 border-l-2 border-[#D4FF00]/40">
-        <li><span class="text-white font-medium">Katalonia:</span> €4,512/m² (średnia top 5 miast), +41,2% w 5 lat, momentum: accelerating.</li>
-        <li><span class="text-white font-medium">Apulia:</span> €1,319/m² (średnia top 5 miast), +23,2% w 5 lat, momentum: stable.</li>
+      <ul class="list-none mb-10 space-y-4 text-neutral-400 text-lg pl-4 border-l-2 border-[#D4FF00]/40">
+        <li><span class="text-white font-medium">Remote worker</span> — porównuje internet, znajomość angielskiego, strefy czasowe i ekosystem coworkingowy między Andaluzją, Algarve a Kretą. Potrzebuje wąskich technicznych metryk, nie ogólnych "vibe scores".</li>
+        <li><span class="text-white font-medium">Rodzina z dziećmi w wieku szkolnym</span> — bilansuje jakość szkół, dostęp do opieki zdrowotnej, walkability, family-friendly metrics. Czas decyzji ma okno wakacyjne między rokiem szkolnym.</li>
+        <li><span class="text-white font-medium">Expat po pięćdziesiątce</span> — myśli wieloletnio o koszcie życia, tolerancji klimatycznej i lokalnej społeczności. Patrzy na 10+ lat naprzód, nie 12 miesięcy.</li>
+        <li><span class="text-white font-medium">Second-home buyer</span> — analizuje projekcje klimatyczne 2050, rental yield, trajektorie cen nieruchomości. Decyzja kapitałowa, nie tylko lifestyle'owa.</li>
       </ul>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Gap €3,193/m². Katalonia rośnie 18 punktów procentowych szybciej. Apulia daje 3,4× więcej metrów kwadratowych za euro.
+        Priorytety tych czterech osób się nie pokrywają. To samo miejsce może być <span class="text-white">"najlepsze"</span> dla remote workera i <span class="text-white">"nie dla nas"</span> dla rodziny. Generyczne listy "top 10 places to relocate" zawodziły wszystkich czterech.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        <span class="text-white">To porównanie zajmuje 30 sekund w Caterelo.</span> Bez niego patrzysz na dni cross-referowania INE i ISTAT w dwóch językach.
+        Pod tym leżał strukturalny problem: dane są w 60+ urzędach statystycznych, w 5 językach, mierzone różnie w każdym kraju. <span class="text-white border-b border-[#D4FF00]/50">40+ godzin researchu</span> żeby zrobić to dobrze. Większość ludzi nie kończy. Decyzja zapada na podstawie blog posta albo pierwszych trzech ofert z Idealisty.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Tak wygląda r3loop applied: zamiana dni pracy w sekundy — nie przez przyspieszanie pracy, tylko przez jej eliminację.
-      </p>
-
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Trzy lekcje, które zostają</h2>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Budowanie SaaSa równocześnie z prowadzeniem konsultingu zmienia sposób w jaki sprzedajesz konsulting. Przestajesz sprzedawać obietnice. Zaczynasz sprzedawać rzeczy, które już zrobiłeś na sobie.
+        Pytanie nie brzmiało <span class="text-white">"jak zbudować jeszcze jeden serwis z mieszkaniami"</span>. Pytanie brzmiało: <span class="text-white">jak zbudować decision engine, który czterem różnym osobom pomaga w ich własnym problemie</span>, używając tych samych danych ale różnie ważonych — i robi to tak, żeby trwało 30 sekund zamiast 40 godzin.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">1. AI-native ≠ AI-supported</h3>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Jak r3loop ukształtował każdą decyzję</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Caterelo zostało zaprojektowane <span class="text-white">OD możliwości AI</span> — chat advisor nie jest add-onem, jest interfejsem do danych. AI-supported byłoby: zwykłe formularze, AI w pasku wyszukiwania. AI-native znaczy: AI jest primary access pattern. W 2027 ta różnica będzie premium differentiator.
+        r3loop to nasza 8-stopniowa metodologia którą stosujemy u klientów konsultingowych do systematyzowania creative i operational work. <span class="text-white">Diagnose → Map → Standardize → Build → Govern → Ship → Measure → Iterate.</span>
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Zastosowana do Caterelo nie wyglądała jak checklist do odhaczenia — wyglądała jak filtr decyzyjny w każdym kroku. Oto jak ukształtowała produkt:
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">2. Operator-led w tej skali jest możliwe tylko z AI</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">01 — Diagnose · Czyj problem rozwiązujemy i dlaczego obecny proces zawodzi?</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Ilość pracy integracyjnej — 60+ źródeł danych, 5 języków, kwartalny refresh — zajęłaby zespołowi 4 osób rok. Z narzędziami AI jeden operator może utrzymać system end-to-end. <span class="text-white">To jest multiplier</span> — nie magiczne AI, tylko realna redukcja człowiekogodzin przy zachowaniu jakości.
+        Cztery persony, cztery różne priorytety, jeden wspólny ból — fragmentacja danych i niemożność porównania. <span class="text-white">Z tej diagnozy wynikł 14-pytaniowy quiz</span> (5 minut, jeden ekran formularza), który buduje personal relocation profile. Output: nie "top 10 miejsc", tylko <span class="text-white">Match Score</span> dla każdego z 90 regionów, oparty na tym co konkretnie tej osobie zależy.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">3. Metodologia musi przeżyć kontakt z własnymi ograniczeniami</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">02 — Map · Które dane odpowiadają na ich pytania — i jak je porównać między krajami?</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Sprzedawanie r3loop klientom to jedno. Stosowanie go do własnego produktu, z ograniczonym budżetem, bez safety net — to gdzie odkrywasz, które kroki są niezbędne a które to teatr. <span class="text-white">Każdy krok w r3loop zarobił swoje miejsce poprzez Caterelo.</span>
+        Zmapowaliśmy decyzję relokacyjną na <span class="text-white">7 wymiarów</span> (koszt życia, klimat, bezpieczeństwo, opieka zdrowotna, edukacja, lifestyle, infrastruktura cyfrowa) i <span class="text-white">13 sygnałów</span>, mierzonych tak samo we wszystkich sześciu krajach. Hiszpania (17 regionów), Włochy (20), Portugalia (6), Grecja (13), Francja (13), Chorwacja (21) — wszystkie na tych samych osiach. Dopiero to pozwala porównać Algarve z Toskanią w sposób uczciwy.
+      </p>
+
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">03 — Standardize · Jak zwijamy 13 sygnałów w jedną liczbę, którą można rankować?</h3>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        <span class="text-white">LifeTrend™ Score 30–90</span>. Min-max normalizacja per wymiar, ważone według tego co najbardziej wpływa na realne pojęcie "jakości miejsca" (bezpieczeństwo 22%, koszt życia 18%, zdrowie 13%, klimat 12%, lifestyle 12%, cyfrowość 10%, edukacja 9%), zsumowane. To jest baseline. Personal Match Score nakłada na to wagi z quizu — ten sam region może mieć LifeTrend 78 globalnie i Match Score 91 dla konkretnego użytkownika.
+      </p>
+
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">04 — Build · Co właściwie user potrzebuje robić z tymi danymi?</h3>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Nie raw spreadsheet. Konkretne narzędzia decyzyjne: <span class="text-white">Compare engine</span> dla porównania dwóch miejsc head-to-head. <span class="text-white">Decision Matrix</span> dla stress-testu 3–5 regionów na shortliście. <span class="text-white">Year 1 Life Simulator</span> dla planowania budżetu pierwszego roku (loty z origin, family size, monthly cost). <span class="text-white">Visa Wizard</span> + Tax Day Counter dla pathway'a wizowego. <span class="text-white">AI Relocation Advisor</span> wytrenowany na pełnym datasecie i twoim quizie — to nie chatbot bolted on, to interfejs do danych dostosowany do kontekstu konkretnej osoby. Pod spodem konwencjonalny stack (React/TS, Node, Postgres, vector store dla AI retrieval) — ale stack jest implementacją, nie historią.
+      </p>
+
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">05 — Govern · Jak to ma być wiarygodne w skali?</h3>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Każda liczba w Caterelo prowadzi do swojego origin — INE dla Hiszpanii, ISTAT dla Włoch, INSEE dla Francji, ELSTAT dla Grecji, INE PT dla Portugalii, DZS dla Chorwacji, plus Eurostat, OECD, WHO, IPCC AR6, Numbeo, Idealista, Immobiliare i 50+ innych. <span class="text-white">60+ oficjalnych źródeł, traceable provenance, kwartalny refresh.</span> Tam gdzie dane są niekompletne — flagujemy to wprost. Trust nie jest deklaracją, jest infrastrukturą.
+      </p>
+
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">06 — Ship · Jaka jest najniższa friction żeby zbudować to do realnej decyzji?</h3>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Free tier — bez signupu, wszystkie 90 regionów, 10-letnie trendy cen, stolice, podgląd rentalu. <span class="text-white">Founding Access €29 jednorazowo na 3 miesiące</span> — Match Score, Decision Matrix, Year 1 Simulator, AI Advisor, Climate 2050 layer, 270 deep linków do portali nieruchomościowych. Bez subskrypcji, bez auto-renew. Ship znaczy: jest live, z użytkownikami, z revenue, można użyć teraz.
+      </p>
+
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">07 — Measure · Jak system zostaje uczciwy gdy świat się zmienia?</h3>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        <span class="text-white">Live data feeds</span> (pogoda, AQI, kursy walut, Google Trends interest, Eurostat population) — model aktualizuje się ciągle, nie raz na kwartał. <span class="text-white">Momentum scoring</span> łapie przyspieszanie cen vs długoterminowych trendów. <span class="text-white">Hidden Gem Detector</span> cross-referuje LifeTrend z search interest — wyłania regiony niedowartościowane przed mainstream.
+      </p>
+
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">08 — Iterate · Jak produkt staje się mądrzejszy z użyciem, a nie tylko większy?</h3>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        AI Advisor uczy się z interakcji — w jakim kontekście odpowiedzi rezonują, gdzie user wraca z follow-upem. Local Help layer (manually reviewed locals walidujący właściwości i okolice) jest w stadium concierge — będzie skalowany do marketplace gdy popyt to uzasadni. Climate 2050 projekcje doprecyzowywane gdy IPCC publikuje update. <span class="text-white">Iterate to loop domykający się — i loop otwierający się ponownie.</span>
+      </p>
+
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Konkret: Katalonia vs Apulia w 30 sekundach</h2>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Dwa popularne shortlisty śródziemnomorskie. Oba "lifestyle". Bez Caterelo to <span class="text-white">dni cross-referowania INE i ISTAT w dwóch językach</span>. Z Caterelo dane mówią różne historie natychmiast:
+      </p>
+      <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg pl-4 border-l-2 border-[#D4FF00]/40">
+        <li><span class="text-white font-medium">Katalonia:</span> €4 512/m² (top 5 miast), +41,2% w 5 lat, momentum: accelerating.</li>
+        <li><span class="text-white font-medium">Apulia:</span> €1 319/m² (top 5 miast), +23,2% w 5 lat, momentum: stable.</li>
+      </ul>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Gap €3 193/m². Katalonia rośnie 18 punktów procentowych szybciej — Apulia daje 3,4× więcej metrów kwadratowych za euro. <span class="text-white">Jeśli jesteś drugą personą (rodzina, średni budżet, "kupić nie najem")</span> — Apulia wygrywa. Jeśli jesteś czwartą (second-home buyer, capital appreciation > space) — Katalonia.
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        To nie jest "Apulia jest lepsza". To jest <span class="text-white">"oto fakty, oto twoja waga, oto decyzja"</span>. Tak wygląda r3loop applied: nie automatyzacja pracy, tylko eliminacja pracy która i tak nie powinna istnieć.
+      </p>
+
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Trzy rzeczy które zostają</h2>
+
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">1. r3loop jest <em>portable</em> między domenami</h3>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Ten sam framework systematyzuje creative ops w sieci klubów Zdrofit (250+ lokalizacji, briefy, assety, deadliney) i decyzję relokacyjną dla osoby kupującej dom w Algarve. <span class="text-white">Mechanika jest taka sama — diagnose czyj problem, map data, standardize w jeden wskaźnik, build narzędzia, govern trust, ship, measure, iterate.</span> To dowodzi że r3loop nie jest "metodą dla agencji" — jest decision framework dla każdego operational problem.
+      </p>
+
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">2. AI-native ≠ AI-supported</h3>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Caterelo było zaprojektowane <span class="text-white">OD możliwości AI</span> — AI advisor jest interfejsem do danych, nie add-onem doczepionym do search bara. To zmienia user experience: zamiast forms i filtrów dostajesz rozmowę kontekstową ("dla mojej rodziny z dziećmi 8 i 11 lat, budżet do €1500/mo, ważne dobre szkoły — co rekomendujesz w Portugalii vs Hiszpanii?"). W 2027 ta różnica między AI-native a AI-supported będzie premium differentiator.
+      </p>
+
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">3. <em>Personal Match</em> &gt; <em>Universal Best</em></h3>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Największa lekcja z budowania pod cztery różne persony: <span class="text-white">przestań mówić ludziom co jest "najlepsze"</span> — daj im narzędzia żeby zobaczyli co jest najlepsze <em>dla nich</em>. To wymusiło Match Score zamiast generic top 10. To samo rządzi pracą u klientów — przestań mówić sieci klubów co jest "best practice" w branding, daj system który dopasowuje się do ich konkretnych ograniczeń. r3loop wymusza to projektowanie.
       </p>
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Co dalej</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Caterelo jest live na <a href="https://caterelo.com" target="_blank" rel="noopener" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">caterelo.com</a>. Pełne mapowanie metodologii jest w case study na <a href="/work/caterelo" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">r352.com/work/caterelo</a>. Data API jest otwarte na caterelo.com/api-docs.
+        Caterelo jest live na <a href="https://caterelo.com" target="_blank" rel="noopener" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">caterelo.com</a> — możesz teraz przejść quiz, zbudować swój profile, zobaczyć Match Score dla 90 regionów. Pełne mapowanie metodologii do produktu jest w case study na <a href="/work/caterelo" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">r352.com/work/caterelo</a>.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        <span class="text-white">Co dalej:</span> shippowanie kolejnych frameworków tą samą metodą. Operator's lab cały czas buduje. Każdy produkt który ship'uje staje się kolejnym dowodem że metodologia nie jest teoretyczna — była używana end-to-end przez ludzi którzy ją sprzedają.
+        Co dalej: <span class="text-white">więcej decision engines tą samą metodologią</span>. Każdy operational problem który ma więcej niż jedną personę, więcej niż jeden wymiar i więcej niż jeden valid answer pasuje pod ten sam framework. To samo r3loop, różne aplikacje.
       </p>
       <div class="bg-white/[0.03] border-l-2 border-[#D4FF00] p-8 my-12">
         <p class="text-xl text-white font-medium leading-relaxed mb-3">
-          Jeśli skalujesz wielolokalizacyjny biznes i operacje wewnętrzne są bottleneckiem — to dokładnie problem nad którym pracujemy.
+          Jeśli skalujesz wielolokalizacyjny biznes i operacje wewnętrzne są bottleneckiem — to dokładnie problem, nad którym pracujemy.
         </p>
         <p class="text-base text-neutral-400">
           Caterelo dowodzi metodologii. Twój retainer lub projekt jest jej aplikacją.
@@ -144,109 +153,118 @@ export const journalArticles: Article[] = [
     `,
     content: `
       <p class="mb-6 text-xl leading-relaxed text-neutral-300">
-        Most consultancies talk about methodology. Few apply it to their own work. We wanted proof — <span class="text-white font-medium">so we built our own SaaS using exactly the framework we sell.</span>
+        Relocation is one of the hardest decisions a person makes — high stakes, hard to reverse, data scattered across 60+ government statistics offices in five languages. <span class="text-white font-medium">Most people give up halfway and decide based on a blog post or a Facebook group thread.</span>
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Caterelo is a relocation intelligence platform for Southern Europe. 90 regions across 6 countries, scored on 13 signals across 7 decision dimensions. AI advisor, climate projections to 2050, 60+ official sources. Live at <a href="https://caterelo.com" target="_blank" rel="noopener" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">caterelo.com</a>. Built end-to-end by R3, operator-led, AI-native.
+        That's the problem we built <a href="https://caterelo.com" target="_blank" rel="noopener" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">Caterelo</a> to solve — a personal relocation decision engine for Southern Europe. And we wanted to solve it using exactly the methodology we sell to clients: <span class="text-white">r3loop</span>.
       </p>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">The problem: relocation is 14 browser tabs in 5 languages</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Four people, one broken process</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Relocation is one of the most expensive decisions someone can make outside of business — and the data behind it is fragmented across 5 languages and 60+ government statistics offices. Doing it right means cross-referencing INE for Spanish housing data, ISTAT for Italian, INSEE for French, IPCC AR6 for climate projections, Numbeo for cost of living, Eurostat for unemployment.
+        In conversations with prospects and early users, the same four profiles kept showing up — each with a different question, but the same frustrating experience:
       </p>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Average research time before Caterelo: <span class="text-white border-b border-[#D4FF00]/50">40+ hours</span>. Result: most people don't finish the research. The decision gets made based on a blog post, a Facebook group thread, or the first three listings on Idealista.
-      </p>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        That's exactly the kind of operational chaos r3loop was designed to systematize. Eight steps from problem to product. We use it with consulting clients to scale creative operations. The question — would it survive applied to our own ambitious project, fully end-to-end, with AI as the multiplier?
-      </p>
-
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">r3loop in production — 8 steps mapped 1:1</h2>
-
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">01 — Diagnose</h3>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Start with the question: who's actually buying this? We mapped four buyer personas — remote workers, families with school-age kids, retirees, second-home buyers. Their priorities don't overlap. The platform had to score regions differently depending on who's asking. That became the 15-question quiz that opens caterelo.com/app. <span class="text-white">Diagnose in production.</span>
-      </p>
-
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">02 — Map</h3>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        90 regions × 13 signals × 7 decision dimensions = 8,190 data points refreshed quarterly. Map answers the architecture-of-the-decision question: how do you compare the Algarve to Tuscany meaningfully? You need to measure the same axes (property prices, climate, safety, healthcare, digital infrastructure, cost of living, lifestyle) the same way across all countries. <span class="text-white">Map is the architecture.</span>
-      </p>
-
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">03 — Standardize</h3>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        LifeTrend™ Score — a single composite 30–90 that normalizes 13 raw signals across 7 dimensions. Min-max scaled per dimension, weighted (safety 22%, cost of living 18%, healthcare 13%, climate 12%, lifestyle 12%, digital 10%, education 9%), summed. <span class="text-white">Every region gets one number you can rank.</span> Standardize collapses complexity into something you can act on.
-      </p>
-
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">04 — Build</h3>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        REST API + comparator app + AI advisor + interactive map. <span class="text-white">AI-native architecture from day one</span> — the chat advisor is trained on the full dataset, including quiz output, so it gives context-aware recommendations rather than generic answers. Production stack: React/TypeScript frontend, Node backend, PostgreSQL for structured data, vector store for AI retrieval. Built end-to-end.
-      </p>
-
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">05 — Govern</h3>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        60+ official sources, traceable provenance. Every number in Caterelo links back to its origin — INE for Spain, ISTAT for Italy, INSEE for France, IPCC for climate. Quarterly refresh cadence. Where data is incomplete, we flag it. <span class="text-white">Govern is what makes the methodology trustworthy at scale.</span>
-      </p>
-
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">06 — Ship</h3>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Free tier (no signup, all 90 regions, 10-year price trends, capital cities) + Founding Access (€29 / 3 months, AI advisor, comparison engine, climate 2050 projections). Ship means in production, with users, generating revenue, with churn metrics. <span class="text-white">Caterelo shipped before this article was written</span> — you can use it right now.
-      </p>
-
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">07 — Measure</h3>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Live data feeds keep the model fresh (weather, AQI, currency). Momentum scoring tracks price acceleration. Hidden Gem Detector cross-references LifeTrend with Google Trends interest — surfaces undervalued regions. <span class="text-white">Measure isn't just analytics</span> — it's the layer that keeps the system honest as the world changes.
-      </p>
-
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">08 — Iterate</h3>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        AI advisor learns from interactions. New data sources get added quarterly. Climate 2050 projections get refined as IPCC publishes updates. The product gets smarter with use, not just bigger. <span class="text-white">Iterate is the loop closing — and the loop reopening.</span>
-      </p>
-
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Concrete: Catalonia vs Puglia</h2>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Two of the most popular relocation shortlists in Southern Europe. Both Mediterranean. Both "lifestyle". The data tells different stories:
-      </p>
-      <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg pl-4 border-l-2 border-[#D4FF00]/40">
-        <li><span class="text-white font-medium">Catalonia:</span> €4,512/m² (top 5 cities avg), +41.2% over 5 years, momentum: accelerating.</li>
-        <li><span class="text-white font-medium">Puglia:</span> €1,319/m² (top 5 cities avg), +23.2% over 5 years, momentum: stable.</li>
+      <ul class="list-none mb-10 space-y-4 text-neutral-400 text-lg pl-4 border-l-2 border-[#D4FF00]/40">
+        <li><span class="text-white font-medium">Remote worker</span> — comparing internet speed, English proficiency, time zones and coworking ecosystems across Andalucía, the Algarve and Crete. Needs narrow technical metrics, not generic "vibe scores".</li>
+        <li><span class="text-white font-medium">Family with school-age kids</span> — balancing school quality, healthcare access, walkability, family-friendly metrics. Decision window timed to the summer break between school years.</li>
+        <li><span class="text-white font-medium">Expat in their fifties</span> — thinking long-term about cost of living, climate tolerance and local community. Looking ten years ahead, not twelve months.</li>
+        <li><span class="text-white font-medium">Second-home buyer</span> — analyzing 2050 climate projections, rental yield, property price trajectories. A capital decision, not just a lifestyle one.</li>
       </ul>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        A €3,193/m² gap. Catalonia is growing 18 percentage points faster. Puglia gives you 3.4× more square metres per euro.
+        These four people's priorities don't overlap. The same region can be <span class="text-white">"best"</span> for the remote worker and <span class="text-white">"not for us"</span> for the family. Generic "top 10 places to relocate" lists were failing all four.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        <span class="text-white">This comparison takes 30 seconds in Caterelo.</span> Without it, you're looking at days of cross-referencing INE and ISTAT in two languages.
+        Under that sat a structural problem: the data lives in 60+ statistics offices, in five languages, measured differently in each country. <span class="text-white border-b border-[#D4FF00]/50">40+ hours of research</span> to do it right. Most people don't finish. The decision gets made on a blog post or the first three listings on Idealista.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        That's what r3loop applied looks like: turning days of work into seconds — not by speeding the work up, but by removing it.
-      </p>
-
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Three lessons that stick</h2>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Building a SaaS while running consulting changes how you sell consulting. You stop selling promises. You start selling things you've already done to yourself.
+        The question wasn't <span class="text-white">"how do we build another property listings site"</span>. The question was: <span class="text-white">how do we build a decision engine that helps four different people with their own problems</span>, using the same data weighted differently — and does it in 30 seconds instead of 40 hours.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">1. AI-native ≠ AI-supported</h3>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">How r3loop shaped every decision</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Caterelo was designed <span class="text-white">FROM AI capabilities</span> — the chat advisor isn't an add-on, it's the interface to the data. AI-supported would have been: regular forms, AI in the search bar. AI-native means: the AI is the primary access pattern. By 2027 this distinction will be a premium differentiator.
+        r3loop is our 8-step methodology for systematizing creative and operational work for consulting clients. <span class="text-white">Diagnose → Map → Standardize → Build → Govern → Ship → Measure → Iterate.</span>
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Applied to Caterelo it wasn't a checklist to tick off — it was a decision filter at every step. Here's how each one shaped the product:
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">2. Operator-led at this scale is only possible with AI</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">01 — Diagnose · Whose problem are we solving, and why does the current process fail them?</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        The amount of integration work — 60+ data sources, 5 languages, quarterly refresh — would have taken a team of 4 a year. With AI tools, one operator can hold the system end-to-end. <span class="text-white">That's the multiplier</span> — not magic AI, just a real reduction in human-hours at preserved quality.
+        Four personas, four different priorities, one shared pain — fragmented data and no way to compare meaningfully. <span class="text-white">From that diagnosis came a 14-question quiz</span> (5 minutes, single-page form) that builds a personal relocation profile. Output isn't "top 10 places" — it's <span class="text-white">a Match Score</span> for each of 90 regions, weighted by what this specific person actually cares about.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">3. The methodology has to survive contact with your own constraints</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">02 — Map · Which data answers their questions, and how do we make it comparable across countries?</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Selling r3loop to clients is one thing. Applying it to your own product, with a tight budget, no safety net — that's where you find out which steps are essential and which are theater. <span class="text-white">Every step in r3loop earned its place through Caterelo.</span>
+        We mapped the relocation decision onto <span class="text-white">7 dimensions</span> (cost of living, climate, safety, healthcare, education, lifestyle, digital infrastructure) and <span class="text-white">13 signals</span>, measured the same way across all six countries. Spain (17 regions), Italy (20), Portugal (6), Greece (13), France (13), Croatia (21) — all on the same axes. Only then can you compare the Algarve to Tuscany honestly.
+      </p>
+
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">03 — Standardize · How do we collapse 13 signals into one number you can rank?</h3>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        <span class="text-white">LifeTrend™ Score 30–90.</span> Min-max normalization per dimension, weighted by what most drives the real-life sense of "quality of place" (safety 22%, cost of living 18%, healthcare 13%, climate 12%, lifestyle 12%, digital 10%, education 9%), summed. That's the baseline. Personal Match Score overlays your quiz weights on top — the same region can score LifeTrend 78 globally and Match Score 91 for a specific user.
+      </p>
+
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">04 — Build · What does the user actually need to do with this data?</h3>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Not a raw spreadsheet. Concrete decision tools: <span class="text-white">Compare engine</span> for head-to-head between two places. <span class="text-white">Decision Matrix</span> to stress-test a 3–5 region shortlist. <span class="text-white">Year 1 Life Simulator</span> for first-year budget planning (flights from origin, family size, monthly cost). <span class="text-white">Visa Wizard</span> + Tax Day Counter for visa pathway. <span class="text-white">AI Relocation Advisor</span> trained on the full dataset and your quiz — not a chatbot bolted on, but a context-aware interface to the data. Under the hood a conventional stack (React/TS, Node, Postgres, vector store for AI retrieval) — but the stack is implementation, not the story.
+      </p>
+
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">05 — Govern · How does this stay trustworthy at scale?</h3>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Every number in Caterelo traces back to its origin — INE for Spain, ISTAT for Italy, INSEE for France, ELSTAT for Greece, INE PT for Portugal, DZS for Croatia, plus Eurostat, OECD, WHO, IPCC AR6, Numbeo, Idealista, Immobiliare, and 50+ others. <span class="text-white">60+ official sources, traceable provenance, quarterly refresh.</span> Where data is incomplete, we flag it explicitly. Trust isn't a claim, it's infrastructure.
+      </p>
+
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">06 — Ship · What's the lowest-friction way to put this in front of a real decision?</h3>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Free tier — no signup, all 90 regions, 10-year price trends, capital cities, rental overview. <span class="text-white">Founding Access €29 one-time for 3 months</span> — Match Score, Decision Matrix, Year 1 Simulator, AI Advisor, Climate 2050 layer, 270 deep-links to property portals. No subscription, no auto-renew. Ship means: live, with users, with revenue, usable today.
+      </p>
+
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">07 — Measure · How does the system stay honest as the world changes?</h3>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        <span class="text-white">Live data feeds</span> (weather, AQI, currency, Google Trends interest, Eurostat population) — the model updates continuously, not just quarterly. <span class="text-white">Momentum scoring</span> catches price acceleration vs long-term trends. <span class="text-white">Hidden Gem Detector</span> cross-references LifeTrend with search interest — surfaces regions undervalued before they go mainstream.
+      </p>
+
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">08 — Iterate · How does the product get smarter with use, not just bigger?</h3>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        The AI Advisor learns from interactions — which contexts answers resonate in, where users return for follow-ups. Local Help (manually reviewed locals validating properties and neighbourhoods) is at concierge stage — will scale to marketplace as demand justifies it. Climate 2050 projections get refined as IPCC publishes updates. <span class="text-white">Iterate is the loop closing — and the loop reopening.</span>
+      </p>
+
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Concrete: Catalonia vs Puglia in 30 seconds</h2>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Two popular Mediterranean shortlists. Both "lifestyle". Without Caterelo it's <span class="text-white">days of cross-referencing INE and ISTAT in two languages</span>. With Caterelo the data tells different stories immediately:
+      </p>
+      <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg pl-4 border-l-2 border-[#D4FF00]/40">
+        <li><span class="text-white font-medium">Catalonia:</span> €4,512/m² (top 5 cities), +41.2% over 5 years, momentum: accelerating.</li>
+        <li><span class="text-white font-medium">Puglia:</span> €1,319/m² (top 5 cities), +23.2% over 5 years, momentum: stable.</li>
+      </ul>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        A €3,193/m² gap. Catalonia is growing 18 percentage points faster — Puglia gives you 3.4× more square metres per euro. <span class="text-white">If you're the second persona (family, mid-budget, "buy not rent")</span> — Puglia wins. If you're the fourth (second-home buyer, capital appreciation &gt; space) — Catalonia.
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        It's not "Puglia is better". It's <span class="text-white">"here are the facts, here's your weighting, here's the decision"</span>. That's what r3loop applied looks like: not automating the work, but eliminating work that shouldn't exist in the first place.
+      </p>
+
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Three things that stick</h2>
+
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">1. r3loop is <em>portable</em> across domains</h3>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        The same framework that systematizes creative ops at Zdrofit (250+ club network, briefs, assets, deadlines) works for a relocation decision engine for a person buying a home in the Algarve. <span class="text-white">The mechanics are identical — diagnose whose problem, map the data, standardize into one signal, build the tools, govern trust, ship, measure, iterate.</span> That proves r3loop isn't "a method for agencies" — it's a decision framework for any operational problem.
+      </p>
+
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">2. AI-native ≠ AI-supported</h3>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Caterelo was designed <span class="text-white">FROM AI capabilities</span> — the AI Advisor is the interface to the data, not an add-on bolted onto the search bar. That changes the user experience: instead of forms and filters you get a contextual conversation ("for my family with kids 8 and 11, budget up to €1,500/mo, good schools important — what do you recommend in Portugal vs Spain?"). By 2027, the AI-native vs AI-supported distinction will be a premium differentiator.
+      </p>
+
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">3. <em>Personal Match</em> &gt; <em>Universal Best</em></h3>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        The biggest lesson from building for four different personas: <span class="text-white">stop telling people what's "best"</span> — give them tools to see what's best <em>for them</em>. That forced Match Score instead of a generic top 10. The same principle drives our client work — stop telling a club network what's "best practice" in branding; give them a system that adapts to their specific constraints. r3loop forces that design.
       </p>
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">What's next</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Caterelo is live at <a href="https://caterelo.com" target="_blank" rel="noopener" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">caterelo.com</a>. The full methodology mapping is on the case study at <a href="/work/caterelo" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">r352.com/work/caterelo</a>. The data API is open at caterelo.com/api-docs.
+        Caterelo is live at <a href="https://caterelo.com" target="_blank" rel="noopener" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">caterelo.com</a> — you can take the quiz now, build your profile, see Match Scores across 90 regions. The full methodology-to-product mapping is on the case study at <a href="/work/caterelo" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">r352.com/work/caterelo</a>.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        <span class="text-white">What's next:</span> shipping more frameworks the same way. Operator's lab keeps building. Every product that ships becomes the next proof that the methodology isn't theoretical — it's been used end-to-end by the people selling it.
+        What's next: <span class="text-white">more decision engines built with the same methodology</span>. Any operational problem with more than one persona, more than one dimension and more than one valid answer fits under the same framework. Same r3loop, different applications.
       </p>
       <div class="bg-white/[0.03] border-l-2 border-[#D4FF00] p-8 my-12">
         <p class="text-xl text-white font-medium leading-relaxed mb-3">
