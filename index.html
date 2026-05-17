@@ -46,6 +46,21 @@
     <meta name="theme-color" content="#0A0A0A" />
 
     <style>html, body { height: 100%; margin: 0; } #root { height: 100%; }</style>
+
+    <!-- Safari font fallback — Fontshare/cdnfonts.com don't load reliably on Safari/iOS Safari.
+         Instead of fighting CDN issues, we detect Safari and swap to native system font stack (SF Pro Display).
+         Zero external load, instant render, looks native on Apple devices. -->
+    <script>
+      (function() {
+        try {
+          var ua = navigator.userAgent || "";
+          var isSafari = /Safari/.test(ua) && !/Chrome|Chromium|Edg|OPR|CriOS|FxiOS/.test(ua);
+          if (isSafari) {
+            document.documentElement.classList.add("safari");
+          }
+        } catch (e) { /* noop */ }
+      })();
+    </script>
   </head>
 
   <body>

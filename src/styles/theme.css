@@ -237,6 +237,26 @@
     font-weight: 400 !important;
   }
 
+  /* Safari font fallback — swap entire font stack to native system fonts on Safari.
+     Detection via inline script in index.html. Apple devices render beautifully with SF Pro
+     out of the box, zero external load, no CDN dependency. */
+  html.safari {
+    --font-display: -apple-system, "SF Pro Display", BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    --font-body: -apple-system, "SF Pro Text", BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-sans: -apple-system, "SF Pro Text", BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-serif: -apple-system, "SF Pro Text", BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-mono: -apple-system, "SF Pro Text", BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  /* Override .font-display utility too — it has hardcoded "Tanker" reference */
+  html.safari .font-display {
+    font-family: -apple-system, "SF Pro Display", BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif !important;
+    font-weight: 600 !important; /* SF Pro Display at 400 is too thin compared to Tanker bold */
+  }
+  /* System fonts look comfortable at lighter tracking than display fonts (which need -5% to look right) */
+  html.safari .tracking-tighter {
+    letter-spacing: -0.02em !important;
+  }
+
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
