@@ -277,9 +277,9 @@ export function Brief() {
                 </span>
                 <h2 className="text-4xl md:text-5xl font-normal tracking-tight text-neutral-900 dark:text-white leading-[1.05] mb-6">
                   {lang === "pl" ? (
-                    <>Bierzemy projekty,<br className="hidden md:inline" /> które...</>
+                    <>Bierzemy<br className="hidden md:inline" /> projekty, które...</>
                   ) : (
-                    <>We take projects<br className="hidden md:inline" /> that...</>
+                    <>We take<br className="hidden md:inline" /> projects that...</>
                   )}
                 </h2>
                 <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-md">
@@ -342,8 +342,21 @@ export function Brief() {
                 <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-4">
                   {copy.preview.label}
                 </span>
+                {/* Explicit 3-line break on the brief preview title — typographic rhythm */}
                 <h2 className="text-4xl md:text-5xl font-normal tracking-tight text-neutral-900 dark:text-white leading-[1.05] mb-6">
-                  {copy.preview.title}
+                  {lang === "pl" ? (
+                    <>
+                      8 sekcji.<br />
+                      ~26 pytań.<br />
+                      ~10 minut.
+                    </>
+                  ) : (
+                    <>
+                      8 sections.<br />
+                      ~26 questions.<br />
+                      ~10 minutes.
+                    </>
+                  )}
                 </h2>
                 <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-md">
                   {copy.preview.subtitle}

@@ -67,10 +67,20 @@ export function Services() {
                 </>
               )}
             </h2>
-            <p className="text-xl md:text-2xl text-neutral-700 dark:text-neutral-300 tracking-tight font-medium max-w-3xl leading-snug">
-              {language === "pl"
-                ? "Zanim cokolwiek zbudujemy — ustalamy CO ma być zbudowane i CZEMU. Każda współpraca zaczyna się od trzech decyzji."
-                : "Before we build anything — we settle WHAT to build and WHY. Every engagement starts with three decisions."}
+            <p className="text-xl md:text-2xl text-neutral-700 dark:text-neutral-300 tracking-tight font-normal max-w-3xl leading-snug">
+              {language === "pl" ? (
+                <>
+                  Zanim cokolwiek zbudujemy — ustalamy CO ma być zbudowane i CZEMU.
+                  <br />
+                  Każda współpraca zaczyna się od trzech decyzji.
+                </>
+              ) : (
+                <>
+                  Before we build anything — we settle WHAT to build and WHY.
+                  <br />
+                  Every engagement starts with three decisions.
+                </>
+              )}
             </p>
           </div>
         </Reveal>
