@@ -154,6 +154,7 @@ export const projects = [
     year: "2024",
     image: dawidImg,
     coverImage: dawidImg,
+    hoverVideo: "/videos/dawid-hover.mp4",
     images: [
         dawidDesktopImg,
         dawidPhone1,
@@ -215,6 +216,7 @@ export const projects = [
     year: "2026 — current",
     image: archicomCover,      // panoramic thumbnail — what shows on /work list
     coverImage: archicomCover, // same for project detail hero
+    hoverVideo: "/videos/archicom-hover.mp4",
     // YouTube anchor video — embedded full-width above image gallery
     videoUrl: "https://www.youtube.com/watch?v=7f_Qzq6B7kY",
     // Alternating order RP/BP to show both investments early in gallery
@@ -328,6 +330,7 @@ export const projects = [
     year: "2023",
     image: kubotaImg,
     coverImage: kubotaImg,
+    hoverVideo: "/videos/kubota-hover.mp4",
     images: [
         kubotaAsset3,
         kubotaAsset1,
@@ -382,6 +385,7 @@ export const projects = [
     year: "2024",
     image: discobowlCover,      // 27.png — panoramic cover for /work list thumbnail
     coverImage: discobowlCover, // same for project detail hero
+    hoverVideo: "/videos/discobowl-hover.mp4",
     images: [
       discobowlFrame,     // Frame composition (likely brand+system showcase)
       discobowlPanorama,  // 1 9.png — moved here from cover slot
