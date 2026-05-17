@@ -8,7 +8,7 @@ export function EngagementModels() {
     {
       number: "01",
       title: language === "pl" ? "Sprint" : "Sprint",
-      priceFrom: language === "pl" ? "od 25 000 PLN" : "from 25 000 PLN",
+      priceFrom: language === "pl" ? "od 25 000 PLN" : "from €6,000",
       positioning: language === "pl"
         ? "Skoncentrowane zadanie z jasnym początkiem, zakresem i końcem."
         : "A focused engagement with a clear start, scope, and finish.",
@@ -46,7 +46,7 @@ export function EngagementModels() {
     {
       number: "02",
       title: language === "pl" ? "Abonament" : "Retainer",
-      priceFrom: language === "pl" ? "od 12 000 PLN / mies." : "from 12 000 PLN / mo",
+      priceFrom: language === "pl" ? "od 12 000 PLN / mies." : "from €3,000 / mo",
       positioning: language === "pl"
         ? "Stała wydajność projektowa i produkcyjna w przewidywalnym, miesięcznym rytmie."
         : "Ongoing design and production capacity on a predictable monthly rhythm.",
@@ -84,7 +84,7 @@ export function EngagementModels() {
     {
       number: "03",
       title: language === "pl" ? "Diagnostyka" : "Diagnostic",
-      priceFrom: language === "pl" ? "od 8 000 PLN" : "from 8 000 PLN",
+      priceFrom: language === "pl" ? "od 8 000 PLN" : "from €2,000",
       positioning: language === "pl"
         ? "Krótki, ustrukturyzowany audyt, który pokazuje dokładnie, gdzie zawodzi proces — zanim zaangażujecie się w budowanie czegokolwiek. Pełen zwrot kosztów, jeśli rekomendacje nie są wdrażalne w ciągu 60 dni."
         : "A short, structured audit that shows you exactly where delivery breaks down — before you commit to building anything. Money back if the recommendations are not actionable within 60 days.",
@@ -125,7 +125,7 @@ export function EngagementModels() {
     {
       number: "04",
       title: language === "pl" ? "Wdrożenie Enterprise" : "Enterprise Sprint",
-      priceFrom: language === "pl" ? "od 120 000 PLN" : "from 120 000 PLN",
+      priceFrom: language === "pl" ? "od 120 000 PLN" : "from €28,000",
       positioning: language === "pl"
         ? "Pełne wdrożenie Creative Operating System dla organizacji wielolokalizacyjnej — od diagnozy po działający system z wytrenowanym zespołem."
         : "Full Creative Operating System implementation for a multi-location organization — from diagnosis to a running system with a trained team.",
@@ -163,7 +163,7 @@ export function EngagementModels() {
     {
       number: "05",
       title: language === "pl" ? "Partner Operacyjny" : "Operating Partner",
-      priceFrom: language === "pl" ? "od 18 000 PLN / mies." : "from 18 000 PLN / mo",
+      priceFrom: language === "pl" ? "od 18 000 PLN / mies." : "from €4,500 / mo",
       positioning: language === "pl"
         ? "Strategiczna rola partnera operacyjnego — opiekun ewolucji systemu, doradca przy strategicznych decyzjach designu i komunikacji, obecność przy stole leadership."
         : "Strategic operating partner role — custodian of system evolution, advisor on strategic design and communication decisions, present at the leadership table.",

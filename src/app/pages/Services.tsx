@@ -263,7 +263,7 @@ export function Services() {
                              initial={{ opacity: 0, y: 12 }}
                              animate={{ opacity: 1, y: 0 }}
                              transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                             className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal max-w-4xl mb-16"
+                             className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal max-w-4xl mb-16 [text-wrap:balance]"
                            >
                              {card.description}
                            </motion.p>
@@ -278,7 +278,9 @@ export function Services() {
                              <h3 className="text-xs font-display uppercase tracking-[0.2em] text-[#D4FF00] mb-5">
                                {language === 'pl' ? "Wynik" : "Output"}
                              </h3>
-                             <p className="text-2xl md:text-3xl lg:text-4xl text-neutral-900 dark:text-white font-normal tracking-tight leading-[1.2]">
+                             {/* text-balance — browser auto-balances line lengths so upper and lower lines have similar char count.
+                                 Fixes ragged-bottom typography where line 2 was 2× shorter than line 1. */}
+                             <p className="text-2xl md:text-3xl lg:text-4xl text-neutral-900 dark:text-white font-normal tracking-tight leading-[1.2] [text-wrap:balance]">
                                {card.output}
                              </p>
                            </motion.div>
