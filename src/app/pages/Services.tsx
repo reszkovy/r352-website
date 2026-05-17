@@ -48,17 +48,16 @@ export function Services() {
             <span className="text-[11px] uppercase tracking-[2px] text-neutral-500 dark:text-[#D4FF00] font-display mb-4 block">
               {language === "pl" ? "01 · Strategia" : "01 · Strategy"}
             </span>
-            <h2 className="text-4xl md:text-6xl font-normal text-neutral-900 dark:text-white tracking-tight mb-8 leading-[1.05]">
+            {/* Hero — matches Process/Journal master copy: bold + tracking-tighter + 2-line break */}
+            <h2 className="text-5xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-white mb-8 leading-[0.95]">
               {language === "pl" ? (
                 <>
-                  Strategia.<br className="hidden md:inline" />
-                  {" "}Egzekucja.<br className="hidden md:inline" />
+                  Strategia. Egzekucja.<br className="hidden md:block" />
                   {" "}Operacjonalizacja.
                 </>
               ) : (
                 <>
-                  Strategy.<br className="hidden md:inline" />
-                  {" "}Execution.<br className="hidden md:inline" />
+                  Strategy. Execution.<br className="hidden md:block" />
                   {" "}Operationalization.
                 </>
               )}
