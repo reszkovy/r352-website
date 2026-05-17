@@ -433,14 +433,16 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                const isCathereloLeft = useCathereloRhythm && (i === 2 || i === 4);
                const isCathereloRight = useCathereloRhythm && (i === 3 || i === 5);
 
-               // Opening Engine per-image mapping (map shot moved to cover/hero — gallery has 4 frames):
+               // Opening Engine per-image mapping (map moved to cover/hero — gallery now has 5 frames):
                // 0 master dashboard (2.4 wide) → full-width 16:9 HERO
                // 1 club cards (2.66 ultra-wide)  → full-width 16:9
-               // 2 intake form (portrait 0.57) → half-width LEFT (narrow col-span-4, aspect 3:4)
-               // 3 club detail (5:4 ~square) → half-width RIGHT (wider col-span-7, 4:3, mt-16 offset)
+               // 2 intake form (portrait 0.57) → half-width LEFT (col-span-4, aspect 3:4)
+               // 3 club detail (5:4) → half-width RIGHT (col-span-7, 4:3, mt-16 offset)
+               // 4 popup card (1.07 square) → centered editorial moment (col-span-8 col-start-3, 4:3)
                const isOpeningEngineFull = useOpeningEngineRhythm && (i === 0 || i === 1);
                const isOpeningEngineLeft = useOpeningEngineRhythm && i === 2;
                const isOpeningEngineRight = useOpeningEngineRhythm && i === 3;
+               const isOpeningEngineCentered = useOpeningEngineRhythm && i === 4;
 
                let gridClass = "md:col-span-12";
                if (useUniformLarge) {
@@ -459,6 +461,9 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                } else if (isOpeningEngineRight) {
                  // Club detail landscape — wider column on right, offset down
                  gridClass = "md:col-span-7 md:col-start-6 md:mt-16";
+               } else if (isOpeningEngineCentered) {
+                 // Popup card square — centered editorial moment closing the gallery
+                 gridClass = "md:col-span-8 md:col-start-3";
                } else if (isLeft) {
                  gridClass = "md:col-span-5 md:col-start-1";
                } else if (isRight) {

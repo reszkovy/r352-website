@@ -53,12 +53,14 @@ import archicomBP2 from "../../imports/archicom/BP2.png";
 import archicomBP3 from "../../imports/archicom/BP3.png";
 import archicomBP4 from "../../imports/archicom/BP4.png";
 
-// Benefit Opening Engine — AI tooling for new gym launches (5 production screenshots)
+// Zdrofit Opening Engine — operations framework screenshots (6 production shots)
 import benefitOpeningEngineShot1 from "../../imports/benefit-opening-engine/01-master-dashboard.webp";
 import benefitOpeningEngineShot2 from "../../imports/benefit-opening-engine/02-club-cards.webp";
-import benefitOpeningEngineShot3 from "../../imports/benefit-opening-engine/03-map-overlap.webp";
+// Cover/hero map — wider Warsaw shot showing 11+ locations + overlap circles (replaces smaller 03-map-overlap.webp)
+import benefitOpeningEngineCover from "../../imports/benefit-opening-engine/03-map-overlap-wide.webp";
 import benefitOpeningEngineShot4 from "../../imports/benefit-opening-engine/04-intake-form.webp";
 import benefitOpeningEngineShot5 from "../../imports/benefit-opening-engine/05-club-detail.webp";
+import benefitOpeningEngineShot6 from "../../imports/benefit-opening-engine/06-club-popup-card.webp";
 
 // Caterelo (R3 × R3 self-built proof) — flat-color illustration cover + hover animation
 import cathereloCover from "../../imports/caterelo/caterelo-cover.webp";
@@ -499,54 +501,55 @@ export const projects = [
       pl: "Framework Operacyjny / Transparentne Ops"
     },
     year: "2025 — current",
-    // Cover = geographic overlap map. Shows the WHY (multi-location ops) in the first 0.5 sec.
-    // Same image used for /work tile thumbnail AND project detail hero.
-    image: benefitOpeningEngineShot3,
-    coverImage: benefitOpeningEngineShot3,
-    // Gallery — full product narrative: master tracking dashboard → club cards → intake form → single club detail
-    // Map shot removed from gallery (already serves as cover/hero — no double-render).
+    // Cover = wider Warsaw map showing 11+ locations + overlap circles.
+    // Reads "multi-location operations" in the first 0.5 sec. Same image used for /work tile + detail hero.
+    image: benefitOpeningEngineCover,
+    coverImage: benefitOpeningEngineCover,
+    // Gallery narrative: master dashboard → club cards → intake form → club detail → single-club popup.
+    // Map removed from gallery (already serves as cover/hero — no double-render).
     images: [
       benefitOpeningEngineShot1, // Master dashboard — all clubs × all asset types × completion status
-      benefitOpeningEngineShot2, // Club cards — single-club status with overlap warnings
-      benefitOpeningEngineShot4, // Intake form — auto-generates 7 digital + 5 print tasks
+      benefitOpeningEngineShot2, // Club cards — list view with overlap warnings + dates
+      benefitOpeningEngineShot4, // Intake form — structured request flow from local teams to production
       benefitOpeningEngineShot5, // Club detail — fully-tracked view with status closing workflow
+      benefitOpeningEngineShot6, // Popup card — single-club glance with Zdrofit badge, status, overlap distances
     ],
     isInternal: false,
     description: {
-      en: "An internal framework we built for Zdrofit's expansion team. Single source of truth for every new gym launch — request flow from local teams to production, visible status across all clubs and asset types, real-time reporting up to C-level. No more chasing briefs in Slack or asset versions in spreadsheets.",
-      pl: "Wewnętrzny framework który zbudowaliśmy dla zespołu ekspansji Zdrofit. Jedno źródło prawdy dla każdego nowego otwarcia siłowni — flow requestów od lokalnych zespołów do produkcji, widoczny status wszystkich klubów i typów assetów, raportowanie w czasie rzeczywistym do C-level. Koniec szukania briefów w Slacku i wersji assetów w spreadsheetach."
+      en: "An internal framework we built for Zdrofit's expansion team. Cuts request-to-launch ops time and gives every level — local club managers, middle management, brand directors, C-level — one transparent view of what's happening, what's late, and who owns it. Middle management stops chasing status in DMs and starts running operations from a screen.",
+      pl: "Wewnętrzny framework który zbudowaliśmy dla zespołu ekspansji Zdrofit. Skraca czas operacyjny od requestu do launcha i daje każdemu poziomowi — lokalnym managerom klubów, middle management, brand directorom, C-level — jeden transparentny widok co się dzieje, co jest opóźnione i kto ma własność. Middle management przestaje gonić status w DM-ach, a zaczyna prowadzić operacje z ekranu."
     },
     services: {
-      en: ["Operations Framework", "Request Flow Design", "Transparent Reporting", "C-Level Dashboards", "Multi-Team Coordination"],
-      pl: ["Framework Operacyjny", "Projektowanie Flow Requestów", "Transparentne Raportowanie", "Dashboardy C-Level", "Koordynacja Multi-Team"]
+      en: ["Operations Framework", "Request Flow Design", "Multi-Level Transparency", "Middle Management Tools", "Status Reporting"],
+      pl: ["Framework Operacyjny", "Projektowanie Flow Requestów", "Transparentność Multi-Level", "Narzędzia Middle Management", "Raportowanie Statusu"]
     },
     challenge: {
-      en: "Zdrofit opens new clubs at a steady cadence — each launch requiring coordinated work across local club teams, brand, marketing, production and external partners. The bottleneck wasn't talent or budget — it was visibility: scattered briefs, manual asset versioning, status updates by DM, governance done in spreadsheets that nobody could trust by Friday. C-level couldn't get a clean answer to \"where are we on next month's openings?\".",
-      pl: "Zdrofit otwiera nowe kluby w stałym rytmie — każde otwarcie wymaga skoordynowanej pracy lokalnych zespołów klubowych, brand teamu, marketingu, produkcji i partnerów zewnętrznych. Bottleneck nie był w talencie ani budżecie — był w widoczności: rozproszone briefy, manualne wersjonowanie assetów, statusy przez DM, governance w spreadsheetach którym do piątku nikt już nie ufał. C-level nie mógł dostać czystej odpowiedzi na pytanie „gdzie jesteśmy z otwarciami na następny miesiąc?\"."
+      en: "Zdrofit opens new clubs at a steady cadence — each launch requiring coordinated work across local club teams, middle management, brand, marketing, production and external partners. The bottleneck wasn't talent or budget — it was operations time: middle management spent hours every week chasing brief status across channels, reconciling spreadsheet versions, answering \"where are we?\" questions up the chain and \"what's blocking my asset?\" questions down the chain. Each level had its own incomplete view. Nobody trusted the same number.",
+      pl: "Zdrofit otwiera nowe kluby w stałym rytmie — każde otwarcie wymaga skoordynowanej pracy lokalnych zespołów klubowych, middle management, brand teamu, marketingu, produkcji i partnerów zewnętrznych. Bottleneck nie był w talencie ani budżecie — był w czasie operacyjnym: middle management spędzał godziny w tygodniu goniąc status briefów w różnych kanałach, godząc wersje spreadsheetów, odpowiadając na pytania „gdzie jesteśmy?\" w górę i „co blokuje mój asset?\" w dół. Każdy poziom miał swój niekompletny widok. Nikt nie ufał tej samej liczbie."
     },
     decisions: {
-      en: "We treated the opening process as a productizable system, not a service layer. Mapped the full r3loop across a real launch — Diagnose to Iterate — identified every decision point, every artifact, every handoff. Built a single source of truth with three audiences in mind: local teams submit requests, the production team executes, C-level reads status — each view tuned to what that audience needs.",
-      pl: "Potraktowaliśmy proces otwarcia jako system do sproduktyzowania, nie warstwę usługową. Zmapowaliśmy pełen r3loop na realnym otwarciu — od Diagnose do Iterate — zidentyfikowaliśmy każdy decision point, każdy artefakt, każdy handoff. Zbudowaliśmy jedno źródło prawdy z myślą o trzech audytoriach: lokalne zespoły zgłaszają requesty, zespół produkcji wykonuje, C-level czyta status — każdy widok dopasowany do tego, czego dane audytorium potrzebuje."
+      en: "We treated the opening process as a productizable system, not a service layer. Mapped the full r3loop across a real launch — Diagnose to Iterate — identified every decision point, every artifact, every handoff. Then built one shared dataset with role-tuned views: local managers submit structured requests, middle management runs the day-to-day with full request-to-status visibility, brand owns asset approval gates, C-level reads the rollup. Same truth — different angle of view.",
+      pl: "Potraktowaliśmy proces otwarcia jako system do sproduktyzowania, nie warstwę usługową. Zmapowaliśmy pełen r3loop na realnym otwarciu — od Diagnose do Iterate — zidentyfikowaliśmy każdy decision point, każdy artefakt, każdy handoff. Następnie zbudowaliśmy jeden wspólny dataset z widokami dopasowanymi do roli: lokalni managerowie zgłaszają ustrukturyzowane requesty, middle management prowadzi codzienność z pełną widocznością request-to-status, brand pilnuje gate'ów akceptacji assetów, C-level czyta rollup. Ta sama prawda — różne kąty widzenia."
     },
     approach: {
-      en: "Request-first architecture: structured intake from local teams, transparent task flow to production, geographic overlap intelligence, status tracking down to individual asset type. Three views on one dataset — local team sees their requests, production team sees the queue, C-level sees the rollup. Built to plug into existing Zdrofit/Benefit tooling, not replace it.",
-      pl: "Architektura request-first: ustrukturyzowany intake od lokalnych zespołów, transparentny flow tasków do produkcji, geograficzna inteligencja nakładających się lokalizacji, status na poziomie pojedynczego typu assetu. Trzy widoki na jednym datasecie — lokalny zespół widzi swoje requesty, produkcja kolejkę, C-level rollup. Zbudowane żeby wpiąć się w istniejące tooling Zdrofit/Benefit, nie zastąpić go."
+      en: "Request-first architecture optimized for time-to-clarity. Structured intake replaces email/DM chaos — middle management submits a complete request in under 2 minutes instead of writing follow-up emails for 2 days. Transparent task flow from request to production. Status tracked at asset-type granularity. Geographic overlap intelligence built in. Three views on one dataset, role-permissioned: local view (my requests), management view (everything I own), executive view (rollup). Built to plug into existing tooling — not rip-and-replace.",
+      pl: "Architektura request-first zoptymalizowana pod czas-do-jasności. Ustrukturyzowany intake zastępuje chaos email/DM — middle management zgłasza kompletny request w mniej niż 2 minuty zamiast pisać follow-up maile przez 2 dni. Transparentny flow tasków od requestu do produkcji. Status śledzony na granularności typu assetu. Wbudowana geograficzna inteligencja nakładających się lokalizacji. Trzy widoki na jednym datasecie, z permissions po roli: widok lokalny (moje requesty), widok management (wszystko co prowadzę), widok exec (rollup). Zbudowane żeby wpiąć się w istniejące tooling — bez rip-and-replace."
     },
     quote: {
-      en: "When request flow becomes transparent, status stops being a conversation — and starts being a screen everyone trusts.",
-      pl: "Gdy flow requestów staje się transparentny, status przestaje być rozmową — a zaczyna być ekranem, któremu każdy ufa."
+      en: "Middle management stopped sending status emails. They started sending screen links. That single change bought back hours every week — and made every level trust the same number.",
+      pl: "Middle management przestał wysyłać maile ze statusem. Zaczął wysyłać linki do ekranu. Ta jedna zmiana odzyskała godziny w tygodniu — i sprawiła, że każdy poziom zaufał tej samej liczbie."
     },
     outcome: {
-      en: "TBD — production metrics being collected. Will be filled with brief-to-launch cycle time, asset versioning reduction, weekly status meetings eliminated.",
-      pl: "TBD — metryki produkcyjne są zbierane. Wypełnimy: brief-to-launch cycle time, redukcja wersjonowania assetów, eliminacja tygodniowych statusówek."
+      en: "TBD — production metrics being collected. Will be filled with ops time reduction per launch, middle management hours freed per week, status meetings eliminated, time-from-request-to-launch.",
+      pl: "TBD — metryki produkcyjne są zbierane. Wypełnimy: redukcja czasu operacyjnego per launch, godziny middle management uwolnione tygodniowo, eliminacja statusówek, czas od requestu do launcha."
     },
     reflection: {
-      en: "Internal tooling is where frameworks earn their keep. Methodologies are easy to write — the proof is whether you ship them as systems your client can run without you, and whether C-level trusts the dashboard enough to stop asking for slides.",
-      pl: "Wewnętrzne narzędzia to gdzie frameworki udowadniają swoją wartość. Metodologie łatwo opisać — dowodem jest czy potrafisz wyshippować je jako systemy, które klient może uruchomić bez ciebie, i czy C-level ufa dashboardowi na tyle, by przestać prosić o slajdy."
+      en: "The hidden cost of expansion isn't usually money — it's middle management time spent on coordination instead of decisions. Frameworks that give every level the same view of the same truth don't just save hours. They change what middle management is actually doing — from chasing status to driving outcomes.",
+      pl: "Ukryty koszt ekspansji rzadko jest pieniężny — to czas middle management spędzony na koordynacji zamiast decyzjach. Frameworki które dają każdemu poziomowi ten sam widok tej samej prawdy nie tylko oszczędzają godziny. Zmieniają to, co middle management faktycznie robi — z gonienia statusu do prowadzenia rezultatów."
     },
     stats: [
-      { value: "TBD", label: { en: "Cycle Time Reduction", pl: "Skrócenie Cyklu" } },
-      { value: "TBD", label: { en: "Status Meetings Eliminated", pl: "Statusówek Wyeliminowanych" } }
+      { value: "TBD", label: { en: "Ops Time Reduction / Launch", pl: "Redukcja Czasu Ops / Launch" } },
+      { value: "TBD", label: { en: "Middle Mgmt Hours Freed", pl: "Godziny Middle Mgmt Uwolnione" } }
     ]
   },
   // ─────────────────────────────────────────────────────────────────────────
