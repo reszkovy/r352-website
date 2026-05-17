@@ -8,12 +8,24 @@ import { PhilosophyVisuals } from "./PhilosophyVisuals";
 import { ScrollSequence } from "@/app/components/ui/ScrollSequence";
 import { ArrowRight } from "lucide-react";
 
-// Hero motion preset — gentle slide + fade + blur on mount, matches Journal page pattern.
+// Hero motion preset — gentle slide + fade + blur on enter AND exit.
 // Bypasses Reveal because hero copy is overlay'd on ScrollSequence (no in-view trigger fires).
+// Exit added because ScrollSequence portals content outside PageTransition wrapper, so PageTransition's
+// own exit blur doesn't reach this overlay. Exit timing syncs with PageTransition sweep (0.8s + sharp easing).
 const heroMotion = {
   initial: { opacity: 0, y: 30, filter: "blur(10px)" },
-  animate: { opacity: 1, y: 0, filter: "blur(0px)" },
-  transition: { duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] as const },
+  animate: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] as const },
+  },
+  exit: {
+    opacity: 0,
+    y: -20,
+    filter: "blur(14px)",
+    transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] as const },
+  },
 };
 
 interface Belief {
