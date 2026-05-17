@@ -23,7 +23,8 @@ interface HoverVideoImageProps {
  *   - On touch devices: video doesn't auto-trigger (no hover state) — image only
  *
  * Performance:
- *   - preload="metadata" — only fetches video header until hover
+ *   - preload="auto" — video pre-loaded so hover is instant (videos are ~290KB each,
+ *     acceptable trade-off vs first-hover delay from "metadata" preload)
  *   - muted + playsInline — required for autoplay across browsers
  *   - loop — seamless preview
  *   - opacity transition for smooth crossfade
@@ -36,7 +37,6 @@ export function HoverVideoImage({
 }: HoverVideoImageProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isHovering, setIsHovering] = useState(false);
-  const [videoCanPlay, setVideoCanPlay] = useState(false);
 
   // Detect touch device — skip hover behavior entirely there
   const [isTouchDevice, setIsTouchDevice] = useState(false);
@@ -75,7 +75,10 @@ export function HoverVideoImage({
       {/* Static image — always rendered, used as poster/fallback */}
       <ImageWithFallback src={src} alt={alt} className={className} />
 
-      {/* Optional hover video — fades in on hover, hidden by default */}
+      {/* Optional hover video — fades in on hover, hidden by default.
+          Note: no videoCanPlay gate — opacity is gated only by isHovering.
+          The video element renders its current frame even before fully loaded,
+          and with preload="auto" the data is ready by the time user hovers. */}
       {videoSrc && !isTouchDevice && (
         <video
           ref={videoRef}
@@ -83,11 +86,10 @@ export function HoverVideoImage({
           muted
           loop
           playsInline
-          preload="metadata"
-          onCanPlay={() => setVideoCanPlay(true)}
+          preload="auto"
           className={`absolute inset-0 ${className}`}
           style={{
-            opacity: isHovering && videoCanPlay ? 1 : 0,
+            opacity: isHovering ? 1 : 0,
             transition: "opacity 400ms cubic-bezier(0.22, 1, 0.36, 1)",
             pointerEvents: "none",
           }}

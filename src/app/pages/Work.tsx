@@ -55,7 +55,7 @@ export function Work() {
             >
               <Link href={`/work/${project.id}`} className="block">
                   <div className="w-full aspect-[16/9] bg-neutral-100 dark:bg-neutral-900 overflow-hidden mb-6 relative">
-                    <div className="absolute inset-0 bg-black/0 dark:bg-white/0 group-hover:bg-black/5 dark:group-hover:bg-white/5 transition-colors z-10 duration-500" />
+                    <div className="absolute inset-0 bg-black/0 dark:bg-white/0 group-hover:bg-black/5 dark:group-hover:bg-white/5 transition-colors z-10 duration-500 pointer-events-none" />
                     <HoverVideoImage
                       src={project.coverImage}
                       videoSrc={(project as any).hoverVideo}
