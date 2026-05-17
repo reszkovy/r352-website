@@ -269,10 +269,8 @@ export const projects = [
     year: "2026 — current",
     image: archicomCover,      // panoramic thumbnail — what shows on /work list
     coverImage: archicomCover, // same for project detail hero
-    hoverVideo: "/videos/archicom-hover.mp4",
-    // Inline animation — auto-playing video right under cover/hero (kinetic teaser before stats + copy).
-    // Rendered as full-width 16:9, muted+loop+playsinline. Different from hoverVideo (which only plays on tile hover).
-    inlineAnimation: "/videos/archicom-rendering-anim.mp4",
+    // Hover video on /work tile — new evening rendering animation (replaces old archicom-hover.mp4)
+    hoverVideo: "/videos/archicom-rendering-anim.mp4",
     // YouTube anchor video — embedded full-width above image gallery
     videoUrl: "https://www.youtube.com/watch?v=7f_Qzq6B7kY",
     // Gallery: night rendering opens as monumental hero shot, then alternating RP/BP investments
