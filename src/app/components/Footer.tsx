@@ -34,7 +34,7 @@ export function Footer() {
     { label: t("nav.services"), href: "/services" },
     { label: t("services_page.deliverables.label"), href: "/deliverables" },
     { label: t("nav.journal"), href: "/journal" },
-    { label: "Start a brief — 48h response", href: "/brief" },
+    { label: "Start a brief", href: "/brief" },
     { label: t("nav.contact") || "Kontakt", href: "/contact" },
   ];
 
@@ -54,6 +54,29 @@ export function Footer() {
                <MagnetGrid fillColor="#000000" gradientOverlay={false} opacity={1} />
                <div className="absolute inset-0 bg-gradient-to-b from-[#151515] via-transparent to-[#151515]" />
                <div className="absolute inset-0 bg-gradient-to-r from-[#151515] via-transparent to-[#151515]" />
+            </div>
+
+            {/* Rotating R-mark — subtle watermark in upper-right corner of footer CTA section.
+                Static R in center + circular ornament rotating around it. Soft brand presence,
+                not loud. Hidden on small screens (md:block) to avoid mobile clutter.
+                — animate-spin-slow keyframe defined in theme.css (40s linear infinite)
+                — both SVGs filter-inverted from their native dark fill (#181D1F) to off-white,
+                  then knocked down to 6% opacity so it reads as ambient, not foreground. */}
+            <div className="pointer-events-none absolute -top-12 -right-12 md:-top-20 md:-right-20 w-64 h-64 md:w-96 md:h-96 hidden md:block z-0">
+              <img
+                src="/footer-mark/wokolo.svg"
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 w-full h-full animate-spin-slow"
+                style={{ filter: "brightness(0) invert(1)", opacity: 0.06 }}
+              />
+              <img
+                src="/footer-mark/r.svg"
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 m-auto w-1/4 h-1/4"
+                style={{ filter: "brightness(0) invert(1)", opacity: 0.18 }}
+              />
             </div>
 
             <div className="relative z-10">
@@ -79,7 +102,10 @@ export function Footer() {
                          </span>
                    </Link>
 
-                   <a href="https://calendly.com/p-reszkovy/30min" target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center justify-center px-12 py-4 bg-black/[0.05] dark:bg-white/[0.06] text-white transition-all duration-500 ease-out cursor-pointer overflow-hidden whitespace-nowrap w-full sm:w-auto hover:bg-white hover:text-black">
+                   {/* Schedule a call — secondary CTA. Hover lifts bg subtly + text turns lime
+                       (matches the rest of the site's hover language — lime is the brand accent,
+                       white-on-black hover felt generic + clashed with the primary lime button). */}
+                   <a href="https://calendly.com/p-reszkovy/30min" target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center justify-center px-12 py-4 bg-black/[0.05] dark:bg-white/[0.06] text-white transition-all duration-500 ease-out cursor-pointer overflow-hidden whitespace-nowrap w-full sm:w-auto hover:bg-white/[0.10] hover:text-[#D4FF00]">
                          <span className="flex items-center justify-center relative">
                            <span className="invisible text-lg font-display uppercase tracking-widest">{t("nav.schedule")}</span>
                            <span className="absolute text-lg font-display uppercase tracking-widest group-hover:tracking-normal transition-all duration-500 ease-out">{t("nav.schedule")}</span>

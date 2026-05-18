@@ -198,6 +198,23 @@
     animation: shake 0.4s ease-in-out;
   }
 
+  /* Slow continuous rotation — used by footer R-mark watermark.
+     40s per revolution = nearly imperceptible motion, reads as ambient brand presence
+     rather than animation. Linear easing = constant speed, no acceleration jank.
+     Respects prefers-reduced-motion (set to "none" if user disabled animations). */
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+  .animate-spin-slow {
+    animation: spin-slow 40s linear infinite;
+    transform-origin: center center;
+    will-change: transform;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .animate-spin-slow { animation: none; }
+  }
+
   /* TYPOGRAPHY — TEXT-WRAP RULES
      ─────────────────────────────
      Headlines (.type-h*) use `text-wrap: balance` — evenly distributes lines,
