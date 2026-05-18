@@ -29,12 +29,16 @@ export function AgencyHero() {
           higher in viewport — guarantees they're visible above-the-fold on 1366×768 and up. */}
       <div className="flex-grow flex flex-col justify-end w-full max-w-[1800px] mx-auto px-8 md:px-12 pb-20 md:pb-24 pt-40 relative z-10 pointer-events-none">
         <div className="pointer-events-auto">
+          {/* Hero headline size override — !text-5xl md:!text-7xl lg:!text-8xl forces
+              smaller size than .type-h1 default (clamp 5rem-10rem too big for 3-line headline).
+              Result: 48px mobile / 72px md / 96px lg — fits 3 lines ABOVE the fold on
+              1440x900 and up. ! prefix beats type-h1's clamp() rule. mb-6/10 also tightened. */}
           <div className="hidden md:block">
             <CinematicText
               key={`hero-title-${theme}`}
               text={t("hero.title")}
               as="h1"
-              className="type-h1 mb-8 md:mb-12 text-balance max-w-[95%] cursor-default"
+              className="type-h1 !text-5xl md:!text-7xl lg:!text-8xl mb-6 md:mb-10 text-balance max-w-[95%] cursor-default"
               delay={0.1}
               glowEffect={true}
               baseColor={baseColor}
@@ -46,7 +50,7 @@ export function AgencyHero() {
               key={`hero-title-mobile-${theme}`}
               text={t("hero.title_mobile")}
               as="div"
-              className="type-h1 mb-8 md:mb-12 text-balance max-w-[95%] cursor-default"
+              className="type-h1 !text-5xl md:!text-7xl lg:!text-8xl mb-6 md:mb-10 text-balance max-w-[95%] cursor-default"
               delay={0.1}
               glowEffect={true}
               baseColor={baseColor}
