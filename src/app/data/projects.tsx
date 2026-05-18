@@ -195,7 +195,19 @@ export const projects = [
     stats: [
         { value: "15+", label: { en: "PMs Coordinated", pl: "Koordynowanych PM-ów" } },
         { value: "300+", label: { en: "Clubs Supported", pl: "Wspieranych Klubów" } }
-    ]
+    ],
+    // Testimonial — Benefit Systems voice. ⚠ Role placeholder — replace with real title (CMO / Brand Director / Head of Marketing).
+    testimonial: {
+      quote: {
+        en: "They are proactive, transparent, and truly care about the outcome. A reliable partner for any scale.",
+        pl: "Są proaktywni, transparentni i naprawdę zależy im na efekcie. Niezawodny partner przy każdej skali."
+      },
+      author: "Alina Sztoch",
+      role: {
+        en: "Marketing & Brand Lead · Benefit Systems",
+        pl: "Marketing & Brand Lead · Benefit Systems"
+      }
+    }
   },
   {
     id: "dawid-podsiadlo",
@@ -257,7 +269,19 @@ export const projects = [
     stats: [
         { value: "300k+", label: { en: "Tickets Sold", pl: "Sprzedane Bilety" } },
         { value: "10", label: { en: "Concerts", pl: "Koncertów" } }
-    ]
+    ],
+    // Testimonial — Dawid Podsiadło production side. ⚠ Role placeholder — replace with real title (Manager / Producer / Tour Director).
+    testimonial: {
+      quote: {
+        en: "They don't just execute tasks; they think along with us and bring solutions that drive real value.",
+        pl: "Nie wykonują po prostu zadań; myślą razem z nami i dostarczają rozwiązania, które dają realną wartość."
+      },
+      author: "Marek Morisson",
+      role: {
+        en: "Tour Production · Dawid Podsiadło",
+        pl: "Produkcja Trasy · Dawid Podsiadło"
+      }
+    }
   },
   {
     id: "archicom",
@@ -323,7 +347,19 @@ export const projects = [
     stats: [
       { value: "2", label: { en: "Flagship Investments", pl: "Flagowe Inwestycje" } },
       { value: "5+", label: { en: "Channels per Investment", pl: "Kanałów per Inwestycja" } }
-    ]
+    ],
+    // Testimonial — Archicom marketing side. ⚠ Role placeholder — replace with real title.
+    testimonial: {
+      quote: {
+        en: "Consistent quality across every investment we launch. Communication is precise, deadlines hold — exactly what real estate campaigns need.",
+        pl: "Spójna jakość przy każdej inwestycji którą uruchamiamy. Komunikacja jest precyzyjna, terminy się trzymają — dokładnie tego potrzebują kampanie nieruchomości."
+      },
+      author: "Michalina Piątkowska",
+      role: {
+        en: "Marketing Lead · Archicom",
+        pl: "Marketing Lead · Archicom"
+      }
+    }
   },
   {
     id: "sonova",
@@ -374,7 +410,19 @@ export const projects = [
     stats: [
         { value: "250+", label: { en: "Locations Supported", pl: "Obsłużonych Lokalizacji" } },
         { value: "500+", label: { en: "Assets / Year", pl: "Zasobów / Rok" } }
-    ]
+    ],
+    // Testimonial — Sonova marketing side. ⚠ Role placeholder — replace with real title.
+    testimonial: {
+      quote: {
+        en: "They understand the business context and deliver work that actually moves the needle.",
+        pl: "Rozumieją kontekst biznesowy i dostarczają pracę, która realnie wpływa na wyniki."
+      },
+      author: "Filip Mazurkiewicz",
+      role: {
+        en: "Marketing Manager · Sonova / Geers",
+        pl: "Marketing Manager · Sonova / Geers"
+      }
+    }
   },
   {
     id: "kubota",
@@ -429,7 +477,19 @@ export const projects = [
     stats: [
         { value: "3+", label: { en: "Years of Partnership", pl: "Lata Współpracy" } },
         { value: "200+", label: { en: "Deliverables Shipped", pl: "Dostarczonych Materiałów" } }
-    ]
+    ],
+    // Testimonial — Kubota brand side. ⚠ Role placeholder — replace with real title.
+    testimonial: {
+      quote: {
+        en: "The communication is seamless, and their commitment to quality translates directly into our business results.",
+        pl: "Komunikacja jest płynna, a ich zaangażowanie w jakość przekłada się bezpośrednio na nasze wyniki biznesowe."
+      },
+      author: "Magdalena Rodak",
+      role: {
+        en: "Brand & Marketing · Kubota",
+        pl: "Brand & Marketing · Kubota"
+      }
+    }
   },
   {
     id: "discobowl",
