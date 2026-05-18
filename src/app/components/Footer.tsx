@@ -208,20 +208,21 @@ export function Footer() {
                    per user spec — better than wasted vertical space across other columns). */}
                {/* SVGs have hardcoded fill #151515 (works on dark mode as darker-shape-on-dark).
                    On LIGHT mode we invert + slightly darken via filter so it renders as a
-                   very-light-gray watermark (~#ECECEC) — same ambient "darker shape on bg"
-                   feel, just flipped color register. dark:filter-none keeps native dark fill. */}
+                   very-light-gray watermark (~#ECECEC), then knock to 30% opacity so it
+                   reads as truly ambient — no fight with the foreground. Dark mode keeps
+                   native dark fill at full opacity (it's already subtle by color match). */}
                <div className="pointer-events-none absolute top-32 md:top-40 left-0 w-[20.5rem] h-[20.5rem] md:w-[24.5rem] md:h-[24.5rem] z-0">
                   <img
                     src="/footer-mark/wokolo.svg"
                     alt=""
                     aria-hidden="true"
-                    className="absolute inset-0 w-full h-full animate-spin-slow [filter:invert(1)_brightness(0.92)] dark:[filter:none]"
+                    className="absolute inset-0 w-full h-full animate-spin-slow opacity-30 dark:opacity-100 [filter:invert(1)_brightness(0.92)] dark:[filter:none]"
                   />
                   <img
                     src="/footer-mark/r.svg"
                     alt=""
                     aria-hidden="true"
-                    className="absolute inset-0 m-auto w-[8.5%] h-[8.5%] [filter:invert(1)_brightness(0.92)] dark:[filter:none]"
+                    className="absolute inset-0 m-auto w-[8.5%] h-[8.5%] opacity-30 dark:opacity-100 [filter:invert(1)_brightness(0.92)] dark:[filter:none]"
                   />
                </div>
             </div>
