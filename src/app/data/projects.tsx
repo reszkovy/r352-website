@@ -54,9 +54,10 @@ import archicomBP2 from "../../imports/archicom/BP2.png";
 import archicomBP3 from "../../imports/archicom/BP3.png";
 import archicomBP4 from "../../imports/archicom/BP4.png";
 
-// regional.fit — product assets (cover + 6 gallery shots, narrative-ordered)
+// regional.fit — product assets:
+// Cover = wide marketing hero (Screenshot 03.31.59) — logo + role list + benefit chips.
+// Gallery = 5 product UI frames (marketing hero NOT repeated in gallery — already the cover).
 import regionalfitCover from "../../imports/regional-fit/regionalfit-cover.webp";
-import regionalfitShot1 from "../../imports/regional-fit/01-marketing-hero.webp";       // wide marketing splash w/ logo + role list + benefit chips
 import regionalfitShot2 from "../../imports/regional-fit/02-process-flow.webp";          // ultra-wide 4-step: Submission → Validation → Decision → Global Trends
 import regionalfitShot3 from "../../imports/regional-fit/03-network-map.webp";           // Poland map with 94 Zdrofit clubs (pilot scale signal)
 import regionalfitShot4 from "../../imports/regional-fit/04-mobile-demo.webp";           // mobile portrait: demo mode role picker (responsive proof)
@@ -521,15 +522,13 @@ export const projects = [
     coverImage: regionalfitCover,
     // Hover video on /work tile — 5-second loop of the product in motion.
     hoverVideo: "/videos/regionalfit-hover.mp4",
-    // Gallery narrative arc (6 frames):
-    // 1 — Marketing splash (logo + role list + benefit chips) sets product identity
-    // 2 — 4-step process flow (Submission → AI Validation → Regional Decision → Board Strategy) explains the system
-    // 3 — Poland network map (94 Zdrofit clubs) signals real-world deployment scale
-    // 4 — Mobile demo entry (role picker portrait) signals responsive + try-it-now
-    // 5 — Single brief detail w/ alignment scoring + policy enforcer = depth of validation logic
-    // 6 — Users + roles table = multi-role architecture in operational practice
+    // Gallery narrative arc (5 frames — marketing hero is the cover, not repeated here):
+    // 0 — 4-step process flow (Submission → AI Validation → Regional Decision → Board Strategy) explains the system
+    // 1 — Poland network map (94 Zdrofit clubs) signals real-world deployment scale
+    // 2 — Mobile demo entry (role picker portrait) signals responsive + try-it-now
+    // 3 — Single brief detail w/ alignment scoring + policy enforcer = depth of validation logic
+    // 4 — Users + roles table = multi-role architecture in operational practice
     images: [
-      regionalfitShot1,
       regionalfitShot2,
       regionalfitShot3,
       regionalfitShot4,

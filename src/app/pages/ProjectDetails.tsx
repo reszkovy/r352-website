@@ -481,22 +481,21 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                const isCathereloLeft = useCathereloRhythm && (i === 2 || i === 4);
                const isCathereloRight = useCathereloRhythm && (i === 3 || i === 5);
 
-               // regional.fit per-image mapping (6 frames, narrative-arc rhythm):
-               // 0 marketing hero (3420×1728, 1.98 wide)      → full-width 16:9 HERO
-               // 1 process flow  (4288×1050, 4.08 ULTRA-wide) → full-width 40:10 panoramic strip
-               // 2 Poland map    (1998×1490, 1.34 ≈ 4:3)      → half-width LEFT (col-span-6, 4:3)
-               // 3 mobile demo   (~portrait)                  → half-width RIGHT (col-span-4, 3:4 portrait, offset)
-               // 4 brief detail  (2004×1976, ~1.01 square)    → centered narrower (col-span-8, 1:1)
-               // 5 users + roles (2002×996, 2.01 wide)        → full-width 2:1 panoramic
-               const isOpeningEngineHeroFull = useOpeningEngineRhythm && i === 0;
-               const isOpeningEnginePanoramic = useOpeningEngineRhythm && i === 1; // ultra-wide 4:1
-               const isOpeningEngineMapLeft = useOpeningEngineRhythm && i === 2;
-               const isOpeningEngineMobileRight = useOpeningEngineRhythm && i === 3;
-               const isOpeningEngineSquareCenter = useOpeningEngineRhythm && i === 4;
-               const isOpeningEngineWide2to1 = useOpeningEngineRhythm && i === 5;
+               // regional.fit per-image mapping (5 frames, marketing hero is cover not gallery):
+               // 0 process flow  (4288×1050, 4.08 ULTRA-wide) → full-width 40:10 panoramic strip
+               // 1 Poland map    (1998×1490, 1.34 ≈ 4:3)      → half-width LEFT (col-span-6, 4:3)
+               // 2 mobile demo   (~portrait)                  → half-width RIGHT (col-span-4, 3:4 portrait, offset)
+               // 3 brief detail  (2004×1976, ~1.01 square)    → centered narrower (col-span-8, 1:1)
+               // 4 users + roles (2002×996, 2.01 wide)        → full-width 2:1 panoramic
+               const isOpeningEnginePanoramic = useOpeningEngineRhythm && i === 0; // ultra-wide 4:1 hero
+               const isOpeningEngineMapLeft = useOpeningEngineRhythm && i === 1;
+               const isOpeningEngineMobileRight = useOpeningEngineRhythm && i === 2;
+               const isOpeningEngineSquareCenter = useOpeningEngineRhythm && i === 3;
+               const isOpeningEngineWide2to1 = useOpeningEngineRhythm && i === 4;
+               const isOpeningEngineHeroFull = false; // no 16:9 hero in gallery — marketing splash lives on cover
 
                // Legacy aliases — kept for downstream conditions below
-               const isOpeningEngineFull = isOpeningEngineHeroFull || isOpeningEnginePanoramic || isOpeningEngineWide2to1;
+               const isOpeningEngineFull = isOpeningEnginePanoramic || isOpeningEngineWide2to1;
                const isOpeningEngineLeft = isOpeningEngineMapLeft;
                const isOpeningEngineRight = isOpeningEngineMobileRight;
                const isOpeningEngineCentered = isOpeningEngineSquareCenter;
