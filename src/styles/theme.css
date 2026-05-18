@@ -115,12 +115,25 @@
     transition: background-color 0.8s cubic-bezier(0.22, 1, 0.36, 1), color 0.8s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
+  /* Headline safety net — every h1/h2/h3 (even raw ones without .type-h*)
+     gets balanced text wrapping by default. Prevents one-word last lines
+     and lonely orphans on titles across the site. Can be overridden per-
+     element with text-wrap: normal if a specific manual break is needed. */
   h1, h2 {
     @apply font-sans font-medium tracking-normal;
+    text-wrap: balance;
   }
 
   h3, h4, h5, h6 {
     @apply font-sans font-medium tracking-normal;
+    text-wrap: balance;
+  }
+
+  /* Body paragraph safety net — same logic for <p>. text-wrap: pretty
+     prevents widows (single word on last line). Slight perf cost, worth
+     it for editorial readability. Override locally if needed. */
+  p {
+    text-wrap: pretty;
   }
 }
 
@@ -140,6 +153,19 @@
   
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Body-text widow killer. Apply to <p> / <div> with editorial copy.
+     Prevents single-word last line in paragraphs. Use freely on long copy. */
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Polish-language hyphenation — long PL words (operacjonalizacja,
+     wdrożeniowych) break gracefully instead of forcing rag chaos. Only fires
+     when element has lang="pl" attribute. */
+  [lang="pl"] {
+    hyphens: auto;
   }
   
   @keyframes noise {
@@ -172,12 +198,25 @@
     animation: shake 0.4s ease-in-out;
   }
 
+  /* TYPOGRAPHY — TEXT-WRAP RULES
+     ─────────────────────────────
+     Headlines (.type-h*) use `text-wrap: balance` — evenly distributes lines,
+     avoids one-word last lines on titles. Works up to ~6 lines per browser spec.
+
+     Body (.type-body-*) uses `text-wrap: pretty` — solves orphan/widow problem:
+     no single word left alone on the last line of a paragraph. Slight perf cost
+     but worth it on editorial copy.
+
+     Applied at the type-* level (not globally on h1/h2/p) to avoid double-
+     application when components manually add text-balance class. */
+
   .type-h1 {
     @apply font-sans text-white;
     font-weight: 500 !important;
     line-height: 0.85;
     letter-spacing: -0.02em;
     font-size: clamp(3.5rem, 6vw + 1rem, 7rem);
+    text-wrap: balance;
   }
   @media (min-width: 768px) {
     .type-h1 {
@@ -189,32 +228,38 @@
     @apply font-sans tracking-normal leading-[0.95] text-white;
     font-weight: 500 !important;
     font-size: clamp(2.5rem, 4vw + 1rem, 4.5rem);
+    text-wrap: balance;
   }
 
   .type-h3 {
     @apply font-sans tracking-normal leading-tight text-white;
     font-weight: 500 !important;
     font-size: clamp(1.5rem, 2vw + 1rem, 2.5rem);
+    text-wrap: balance;
   }
 
   .type-sub-lg {
     @apply font-display uppercase tracking-widest text-[#D4FF00];
     font-size: 1.25rem;
+    text-wrap: balance;
   }
 
   .type-sub-base {
     @apply font-display uppercase tracking-widest text-[#D4FF00];
     font-size: 1rem;
+    text-wrap: balance;
   }
 
   .type-sub-sm {
     @apply font-display uppercase tracking-[0.15em] text-neutral-500;
     font-size: 0.875rem;
+    text-wrap: balance;
   }
 
   .type-body-lg {
     @apply font-sans font-normal leading-relaxed text-neutral-300;
     font-size: 1.25rem;
+    text-wrap: pretty;
   }
   @media (min-width: 768px) {
     .type-body-lg {
@@ -225,11 +270,13 @@
   .type-body-base {
     @apply font-sans font-normal leading-relaxed text-neutral-400;
     font-size: 1rem;
+    text-wrap: pretty;
   }
 
   .type-body-sm {
     @apply font-sans font-normal leading-relaxed text-neutral-500;
     font-size: 0.875rem;
+    text-wrap: pretty;
   }
 
   .font-display {

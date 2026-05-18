@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>r352 — UK Competitive Socialising Outreach Tracker</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0A0A0A;
+    --surface: #141414;
+    --border: rgba(255,255,255,0.08);
+    --border-strong: rgba(255,255,255,0.16);
+    --text: #FAFAFA;
+    --text-muted: #999;
+    --text-faint: #666;
+    --accent: #D4FF00;
+    --tier-a: #D4FF00;
+    --tier-b: #8FB300;
+    --tier-c: #555;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, "SF Pro Text", BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    padding: 48px 32px 96px;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+  header { margin-bottom: 48px; border-bottom: 1px solid var(--border); padding-bottom: 32px; }
+  .brand { font-family: -apple-system, sans-serif; font-weight: 600; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+  h1 { font-size: 34px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 16px; max-width: 880px; }
+  h1 span { color: var(--accent); }
+  .lede { font-size: 16px; color: var(--text-muted); max-width: 720px; line-height: 1.7; }
+  .disclaimer {
+    margin-top: 24px;
+    padding: 14px 16px;
+    border-left: 2px solid var(--accent);
+    background: rgba(212,255,0,0.04);
+    font-size: 12px;
+    color: var(--text-muted);
+    max-width: 880px;
+  }
+  .disclaimer strong { color: var(--accent); font-weight: 600; }
+
+  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 32px;
+    align-items: center;
+  }
+  .filter-btn {
+    background: transparent;
+    border: 1px solid var(--border-strong);
+    color: var(--text);
+    padding: 8px 14px;
+    font-family: inherit;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #000; font-weight: 600; }
+  .toolbar .counter { margin-left: auto; font-size: 11px; color: var(--text-faint); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  .tier {
+    margin-bottom: 56px;
+  }
+  .tier-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+  .tier-label {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .tier-a .tier-label { color: var(--tier-a); }
+  .tier-b .tier-label { color: var(--tier-b); }
+  .tier-c .tier-label { color: var(--tier-c); }
+  .tier-title {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+  .tier-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    max-width: 680px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 20px 24px;
+    margin-bottom: 12px;
+    transition: border-color 0.2s ease;
+  }
+  .card:hover { border-color: var(--border-strong); }
+  .card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 14px;
+  }
+  .company-name {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+  .company-meta {
+    font-size: 12px;
+    color: var(--text-faint);
+    margin-top: 2px;
+    letter-spacing: 0.02em;
+  }
+  .company-meta span { margin-right: 14px; }
+  .company-meta strong { color: var(--text-muted); font-weight: 500; }
+
+  .actions {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .action-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border: 1px solid var(--border-strong);
+    transition: all 0.15s ease;
+    white-space: nowrap;
+  }
+  .action-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  .action-link.primary {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  .action-link.primary:hover {
+    background: var(--accent);
+    color: #000;
+  }
+
+  .targets {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 24px;
+    margin-top: 12px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border);
+  }
+  @media (max-width: 720px) {
+    .targets { grid-template-columns: 1fr; }
+  }
+  .target-block {
+    font-size: 12px;
+  }
+  .target-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 4px;
+  }
+  .target-value {
+    color: var(--text);
+    font-family: ui-monospace, "SF Mono", "Menlo", monospace;
+    font-size: 11.5px;
+    line-height: 1.6;
+    word-break: break-all;
+  }
+  .target-value.verified { color: var(--accent); }
+  .target-value a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px dotted var(--text-faint);
+  }
+  .target-value a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+
+  .hook {
+    margin-top: 14px;
+    padding: 12px 14px;
+    background: rgba(255,255,255,0.02);
+    border-left: 2px solid var(--accent);
+    font-size: 12.5px;
+    color: var(--text-muted);
+    font-style: italic;
+    line-height: 1.6;
+  }
+  .hook::before { content: "OUTREACH HOOK · "; color: var(--accent); font-weight: 600; font-style: normal; letter-spacing: 0.15em; font-size: 10px; }
+
+  footer {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--text-faint);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">r352 · outreach tracker</div>
+  <h1>UK competitive socialising <span>outreach universe</span></h1>
+  <p class="lede">25+ multi-venue chains in the UK competitive socialising sector — bowling, mini-golf, darts, karting, trampoline parks, social games. Warm proof: DiscoBowl (20 UK venues). Each card shows the company, public links, suggested decision-maker roles, LinkedIn search queries, email patterns, and a personalised outreach hook.</p>
+
+  <div class="disclaimer">
+    <strong>Verification protocol:</strong> Company URLs are verified. Founder/CEO names are based on publicly available sources but may be outdated — verify on LinkedIn before reaching out. Email patterns are conventions, not confirmed addresses — verify via <a href="https://hunter.io" target="_blank" style="color:var(--accent)">Hunter.io</a>, <a href="https://app.apollo.io" target="_blank" style="color:var(--accent)">Apollo.io</a>, or <a href="https://www.findymail.com" target="_blank" style="color:var(--accent)">Findymail</a> before first contact. LinkedIn search queries are pre-formed — click "LinkedIn People" to see live results.
+  </div>
+</header>
+
+<div class="toolbar">
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="tier-a">Tier A · Bowling/Premium</button>
+  <button class="filter-btn" data-filter="tier-b">Tier B · Adjacent Social</button>
+  <button class="filter-btn" data-filter="tier-c">Tier C · Enterprise</button>
+  <div class="counter" id="counter">26 organisations</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- TIER A — Boutique premium bowling + closest adjacent             -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<section class="tier tier-a" data-tier="tier-a">
+  <div class="tier-header">
+    <div class="tier-label">Tier A</div>
+    <div class="tier-title">Boutique premium · Founder-led · Fast response</div>
+  </div>
+  <p class="tier-desc">Closest fit to DiscoBowl. Founder/CEO-led with direct decision authority. Premium positioning, design-conscious, aggressive expansion. Highest expected response rate. <strong style="color:var(--text-muted)">Start here.</strong></p>
+
+  <!-- Lane7 -->
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="company-name">Lane7</div>
+        <div class="company-meta">
+          <span><strong>Venues:</strong> 15+</span>
+          <span><strong>HQ:</strong> Newcastle</span>
+          <span><strong>Format:</strong> Premium bowling + games + F&B</span>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="action-link primary" href="https://lane7.co.uk" target="_blank">Website</a>
+        <a class="action-link" href="https://www.linkedin.com/company/lane7" target="_blank">LinkedIn Co.</a>
+        <a class="action-link" href="https://www.linkedin.com/search/results/people/?keywords=Lane7&origin=GLOBAL_SEARCH_HEADER" target="_blank">LinkedIn People</a>
+      </div>
+    </div>
+    <div class="targets">
+      <div class="target-block">
+        <div class="target-label">Likely decision maker</div>
+        <div class="target-value verified">Tim Wilks · Founder &amp; CEO</div>
+        <div class="target-value"><a href="https://www.linkedin.com/search/results/people/?keywords=Tim%20Wilks%20Lane7" target="_blank">Find Tim on LinkedIn →</a></div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Email pattern</div>
+        <div class="target-value">first.last@lane7.co.uk<br/>first@lane7.co.uk<br/>tim@lane7.co.uk (likely)</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Secondary targets</div>
+        <div class="target-value">Marketing Director · Operations Director · Brand Manager<br/><a href="https://www.linkedin.com/search/results/people/?keywords=Lane7%20marketing%20director" target="_blank">Search marketing leads →</a></div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Verification</div>
+        <div class="target-value"><a href="https://hunter.io/companies/lane7.co.uk" target="_blank">Hunter.io · lane7.co.uk →</a></div>
+      </div>
+    </div>
+    <div class="hook">Saw your latest opening — Lane7's design language stays remarkably consistent even at this expansion pace. How do you handle the brief volume per new venue? We built the operations layer behind DiscoBowl's 20-venue rollout (booking + venue brand + local marketing briefs).</div>
+  </div>
+
+  <!-- All Star Lanes -->
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="company-name">All Star Lanes</div>
+        <div class="company-meta">
+          <span><strong>Venues:</strong> 7</span>
+          <span><strong>HQ:</strong> London</span>
+          <span><strong>Format:</strong> Premium boutique bowling, urban</span>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="action-link primary" href="https://www.allstarlanes.co.uk" target="_blank">Website</a>
+        <a class="action-link" href="https://www.linkedin.com/company/all-star-lanes" target="_blank">LinkedIn Co.</a>
+        <a class="action-link" href="https://www.linkedin.com/search/results/people/?keywords=All%20Star%20Lanes" target="_blank">LinkedIn People</a>
+      </div>
+    </div>
+    <div class="targets">
+      <div class="target-block">
+        <div class="target-label">Likely decision maker</div>
+        <div class="target-value">CEO / Managing Director (verify via LinkedIn — leadership changes recently)</div>
+        <div class="target-value"><a href="https://www.linkedin.com/search/results/people/?keywords=All%20Star%20Lanes%20CEO" target="_blank">Find current CEO →</a></div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Email pattern</div>
+        <div class="target-value">first.last@allstarlanes.co.uk<br/>info@allstarlanes.co.uk (avoid)</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Secondary targets</div>
+        <div class="target-value">Head of Marketing · Brand Director · Ops Director</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Verification</div>
+        <div class="target-value"><a href="https://hunter.io/companies/allstarlanes.co.uk" target="_blank">Hunter.io →</a></div>
+      </div>
+    </div>
+    <div class="hook">All Star feels like the original premium boutique bowling brand in the UK. How are you scaling brand consistency across the urban venues — we worked through this exact pattern with a 20-venue chain (DiscoBowl) and have a playbook.</div>
+  </div>
+
+  <!-- Roxy Ball Room -->
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="company-name">Roxy Ball Room</div>
+        <div class="company-meta">
+          <span><strong>Venues:</strong> 15+</span>
+          <span><strong>HQ:</strong> Leeds</span>
+          <span><strong>Format:</strong> Multi-game competitive socialising</span>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="action-link primary" href="https://roxyballroom.co.uk" target="_blank">Website</a>
+        <a class="action-link" href="https://www.linkedin.com/company/roxy-ball-room" target="_blank">LinkedIn Co.</a>
+        <a class="action-link" href="https://www.linkedin.com/search/results/people/?keywords=Roxy%20Ball%20Room" target="_blank">LinkedIn People</a>
+      </div>
+    </div>
+    <div class="targets">
+      <div class="target-block">
+        <div class="target-label">Likely decision maker</div>
+        <div class="target-value">Daniel Bull · Founder / CEO (verify)</div>
+        <div class="target-value"><a href="https://www.linkedin.com/search/results/people/?keywords=Daniel%20Bull%20Roxy" target="_blank">Find Daniel →</a></div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Email pattern</div>
+        <div class="target-value">first@roxyballroom.co.uk<br/>first.last@roxyballroom.co.uk</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Secondary targets</div>
+        <div class="target-value">Marketing Director · Head of Brand · Operations Lead</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Verification</div>
+        <div class="target-value"><a href="https://hunter.io/companies/roxyballroom.co.uk" target="_blank">Hunter.io →</a></div>
+      </div>
+    </div>
+    <div class="hook">Roxy's growth into multi-game competitive socialising is one of the strongest expansion stories in UK hospitality right now. The brand operations behind it must be intense — happy to share the framework we used for DiscoBowl's rollout if useful.</div>
+  </div>
+
+  <!-- Boom Battle Bar -->
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="company-name">Boom Battle Bar</div>
+        <div class="company-meta">
+          <span><strong>Venues:</strong> 20+</span>
+          <span><strong>HQ:</strong> UK · part of XP Factory PLC</span>
+          <span><strong>Format:</strong> Multi-game competitive (axe, darts, mini-golf)</span>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="action-link primary" href="https://www.boombattlebar.com" target="_blank">Website</a>
+        <a class="action-link" href="https://www.linkedin.com/company/boom-battle-bar" target="_blank">LinkedIn Co.</a>
+        <a class="action-link" href="https://www.linkedin.com/search/results/people/?keywords=Boom%20Battle%20Bar" target="_blank">LinkedIn People</a>
+      </div>
+    </div>
+    <div class="targets">
+      <div class="target-block">
+        <div class="target-label">Likely decision maker</div>
+        <div class="target-value">Richard Harpham · CEO XP Factory (parent)<br/>Or Boom Battle Bar MD (verify on LinkedIn)</div>
+        <div class="target-value"><a href="https://www.linkedin.com/search/results/people/?keywords=XP%20Factory%20CEO" target="_blank">Find XP Factory leadership →</a></div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Email pattern</div>
+        <div class="target-value">first.last@xpfactory.com<br/>first.last@boombattlebar.com</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Secondary targets</div>
+        <div class="target-value">Marketing Director · Property/Ops Director · Brand Director</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Verification</div>
+        <div class="target-value"><a href="https://hunter.io/companies/xpfactory.com" target="_blank">Hunter.io · XP Factory →</a></div>
+      </div>
+    </div>
+    <div class="hook">Boom Battle Bar's velocity of openings is incredible. Every new venue is a full brand + ops rollout — same problem we solved for DiscoBowl across 20 sites. Worth a 20-min comparison call?</div>
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- TIER B — Adjacent competitive socialising                        -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<section class="tier tier-b" data-tier="tier-b">
+  <div class="tier-header">
+    <div class="tier-label">Tier B</div>
+    <div class="tier-title">Adjacent competitive socialising · Cross-category expansion</div>
+  </div>
+  <p class="tier-desc">Same operational pattern (multi-venue, brand consistency, brief volume) but different game format. Use DiscoBowl as proof of pattern, not proof of vertical. Mid-response-rate, longer relationship cycles.</p>
+
+  <!-- Flight Club -->
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="company-name">Flight Club Darts</div>
+        <div class="company-meta">
+          <span><strong>Venues:</strong> 15+ (UK + US)</span>
+          <span><strong>HQ:</strong> London</span>
+          <span><strong>Format:</strong> Social darts · PE-backed (Cinven)</span>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="action-link primary" href="https://flightclubdarts.com" target="_blank">Website</a>
+        <a class="action-link" href="https://www.linkedin.com/company/flight-club-darts" target="_blank">LinkedIn Co.</a>
+        <a class="action-link" href="https://www.linkedin.com/search/results/people/?keywords=Flight%20Club%20Darts" target="_blank">LinkedIn People</a>
+      </div>
+    </div>
+    <div class="targets">
+      <div class="target-block">
+        <div class="target-label">Likely decision maker</div>
+        <div class="target-value">CEO of Flight Club (Red Engine parent company)<br/>Founder: Steve Moore + Paul Barham</div>
+        <div class="target-value"><a href="https://www.linkedin.com/search/results/people/?keywords=Red%20Engine%20Flight%20Club" target="_blank">Find Red Engine leadership →</a></div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Email pattern</div>
+        <div class="target-value">first.last@flightclubdarts.com<br/>first.last@redengine.co.uk</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Secondary targets</div>
+        <div class="target-value">Brand Director · CMO · Operations Director</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Verification</div>
+        <div class="target-value"><a href="https://hunter.io/companies/redengine.co.uk" target="_blank">Hunter.io · Red Engine →</a></div>
+      </div>
+    </div>
+    <div class="hook">Flight Club's brand operations are probably the best in the category — and the multi-country rollout adds a layer. We're noticing chains your size hit a brief-volume bottleneck around 15-20 venues. Solved that pattern for DiscoBowl, happy to share.</div>
+  </div>
+
+  <!-- Junkyard Golf Club -->
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="company-name">Junkyard Golf Club</div>
+        <div class="company-meta">
+          <span><strong>Venues:</strong> 8–10</span>
+          <span><strong>HQ:</strong> Manchester</span>
+          <span><strong>Format:</strong> Crazy golf + bar, immersive themed</span>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="action-link primary" href="https://www.junkyardgolfclub.co.uk" target="_blank">Website</a>
+        <a class="action-link" href="https://www.linkedin.com/company/junkyard-golf-club" target="_blank">LinkedIn Co.</a>
+        <a class="action-link" href="https://www.linkedin.com/search/results/people/?keywords=Junkyard%20Golf%20Club" target="_blank">LinkedIn People</a>
+      </div>
+    </div>
+    <div class="targets">
+      <div class="target-block">
+        <div class="target-label">Likely decision maker</div>
+        <div class="target-value">Founder / CEO (verify on LinkedIn)</div>
+        <div class="target-value"><a href="https://www.linkedin.com/search/results/people/?keywords=Junkyard%20Golf%20founder" target="_blank">Find founder →</a></div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Email pattern</div>
+        <div class="target-value">first.last@junkyardgolfclub.co.uk<br/>first@junkyardgolfclub.co.uk</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Secondary targets</div>
+        <div class="target-value">Head of Marketing · Brand · Site Development</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Verification</div>
+        <div class="target-value"><a href="https://hunter.io/companies/junkyardgolfclub.co.uk" target="_blank">Hunter.io →</a></div>
+      </div>
+    </div>
+    <div class="hook">Junkyard's site-specific design ambition is what makes it iconic — but also makes brand ops 10x harder than a uniform chain. Curious how you balance venue identity vs. brand system. We worked through this exact tension on a 20-venue UK rollout.</div>
+  </div>
+
+  <!-- Puttshack -->
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="company-name">Puttshack</div>
+        <div class="company-meta">
+          <span><strong>Venues:</strong> 10+ (UK + US, fast expansion)</span>
+          <span><strong>HQ:</strong> London</span>
+          <span><strong>Format:</strong> Tech-driven mini-golf + bar</span>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="action-link primary" href="https://puttshack.com" target="_blank">Website</a>
+        <a class="action-link" href="https://www.linkedin.com/company/puttshack" target="_blank">LinkedIn Co.</a>
+        <a class="action-link" href="https://www.linkedin.com/search/results/people/?keywords=Puttshack" target="_blank">LinkedIn People</a>
+      </div>
+    </div>
+    <div class="targets">
+      <div class="target-block">
+        <div class="target-label">Likely decision maker</div>
+        <div class="target-value">Founder: Adam Breeden (also Bounce, All Star Lanes, Flight Club background — UK's serial competitive socialising founder)</div>
+        <div class="target-value"><a href="https://www.linkedin.com/search/results/people/?keywords=Adam%20Breeden%20Puttshack" target="_blank">Find Adam →</a></div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Email pattern</div>
+        <div class="target-value">first.last@puttshack.com<br/>first@puttshack.com</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Secondary targets</div>
+        <div class="target-value">CMO · CDO · Brand Director · CTO (tech-heavy operations)</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Verification</div>
+        <div class="target-value"><a href="https://hunter.io/companies/puttshack.com" target="_blank">Hunter.io →</a></div>
+      </div>
+    </div>
+    <div class="hook">Puttshack has the strongest tech + design stack in mini-golf social — and the trans-Atlantic rollout pace is unmatched. The operations behind it must be intricate. We built the brief automation + brand-ops layer for DiscoBowl's 20 venues — happy to share if useful for benchmarking.</div>
+  </div>
+
+  <!-- Plonk Golf -->
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="company-name">Plonk Golf</div>
+        <div class="company-meta">
+          <span><strong>Venues:</strong> 5+</span>
+          <span><strong>HQ:</strong> London</span>
+          <span><strong>Format:</strong> Indie mini-golf, urban</span>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="action-link primary" href="https://www.plonkgolf.com" target="_blank">Website</a>
+        <a class="action-link" href="https://www.linkedin.com/company/plonk-crazy-golf" target="_blank">LinkedIn Co.</a>
+        <a class="action-link" href="https://www.linkedin.com/search/results/people/?keywords=Plonk%20Golf" target="_blank">LinkedIn People</a>
+      </div>
+    </div>
+    <div class="targets">
+      <div class="target-block">
+        <div class="target-label">Likely decision maker</div>
+        <div class="target-value">Founder (verify — independent operation, founder-led)</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Email pattern</div>
+        <div class="target-value">first@plonkgolf.com</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Secondary targets</div>
+        <div class="target-value">Operations partner · Marketing lead</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Verification</div>
+        <div class="target-value"><a href="https://hunter.io/companies/plonkgolf.com" target="_blank">Hunter.io →</a></div>
+      </div>
+    </div>
+    <div class="hook">Plonk feels like the punkier indie alternative in mini-golf. Curious — at 5 venues, are you starting to feel the brand-ops scaling pain yet? Common pattern we see hit around venue 6-7.</div>
+  </div>
+
+  <!-- Swingers -->
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="company-name">Swingers (Crazy Golf)</div>
+        <div class="company-meta">
+          <span><strong>Venues:</strong> 6+ (UK + US)</span>
+          <span><strong>HQ:</strong> London</span>
+          <span><strong>Format:</strong> Premium adult mini-golf, design-led</span>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="action-link primary" href="https://swingers.club" target="_blank">Website</a>
+        <a class="action-link" href="https://www.linkedin.com/company/swingers-the-crazy-golf-club" target="_blank">LinkedIn Co.</a>
+        <a class="action-link" href="https://www.linkedin.com/search/results/people/?keywords=Swingers%20Crazy%20Golf" target="_blank">LinkedIn People</a>
+      </div>
+    </div>
+    <div class="targets">
+      <div class="target-block">
+        <div class="target-label">Likely decision maker</div>
+        <div class="target-value">Co-founders: Matt Grech-Smith · Jeremy Simmonds (Institute of Competitive Socialising)</div>
+        <div class="target-value"><a href="https://www.linkedin.com/search/results/people/?keywords=Matt%20Grech-Smith%20Swingers" target="_blank">Find Matt →</a></div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Email pattern</div>
+        <div class="target-value">first.last@swingers.club<br/>first.last@competitivesocialising.com</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Secondary targets</div>
+        <div class="target-value">CMO · Creative Director · Head of Brand</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Verification</div>
+        <div class="target-value"><a href="https://hunter.io/companies/swingers.club" target="_blank">Hunter.io →</a></div>
+      </div>
+    </div>
+    <div class="hook">Swingers is the design-led benchmark in premium competitive socialising — the brand bar is high. As you scale into the US, are the brand-ops getting heavier? We've seen this exact bottleneck and worked through it for DiscoBowl's 20-venue UK rollout.</div>
+  </div>
+
+  <!-- Electric Shuffle -->
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="company-name">Electric Shuffle</div>
+        <div class="company-meta">
+          <span><strong>Venues:</strong> 4+ (UK + US)</span>
+          <span><strong>HQ:</strong> London</span>
+          <span><strong>Format:</strong> Premium shuffleboard + bar (ICS portfolio)</span>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="action-link primary" href="https://electricshuffle.com" target="_blank">Website</a>
+        <a class="action-link" href="https://www.linkedin.com/company/electric-shuffle" target="_blank">LinkedIn Co.</a>
+        <a class="action-link" href="https://www.linkedin.com/search/results/people/?keywords=Electric%20Shuffle" target="_blank">LinkedIn People</a>
+      </div>
+    </div>
+    <div class="targets">
+      <div class="target-block">
+        <div class="target-label">Likely decision maker</div>
+        <div class="target-value">Matt Grech-Smith / Jeremy Simmonds (parent: Institute of Competitive Socialising — same as Swingers)</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Email pattern</div>
+        <div class="target-value">first.last@electricshuffle.com</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Secondary targets</div>
+        <div class="target-value">Same leadership as Swingers — single conversation can cover both brands</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Verification</div>
+        <div class="target-value"><a href="https://hunter.io/companies/electricshuffle.com" target="_blank">Hunter.io →</a></div>
+      </div>
+    </div>
+    <div class="hook">Running Swingers + Electric Shuffle + future brands from one operating company is a serious portfolio-ops problem. We work specifically on the brand-ops layer for multi-brand multi-venue operators. DiscoBowl was 20 venues, single brand — interested to compare with your multi-brand approach.</div>
+  </div>
+
+  <!-- Bounce Ping Pong -->
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="company-name">Bounce Ping Pong</div>
+        <div class="company-meta">
+          <span><strong>Venues:</strong> 4+ UK</span>
+          <span><strong>HQ:</strong> London</span>
+          <span><strong>Format:</strong> Ping pong + bar (Adam Breeden background)</span>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="action-link primary" href="https://www.bouncepingpong.com" target="_blank">Website</a>
+        <a class="action-link" href="https://www.linkedin.com/company/bounce-ping-pong" target="_blank">LinkedIn Co.</a>
+        <a class="action-link" href="https://www.linkedin.com/search/results/people/?keywords=Bounce%20Ping%20Pong" target="_blank">LinkedIn People</a>
+      </div>
+    </div>
+    <div class="targets">
+      <div class="target-block">
+        <div class="target-label">Likely decision maker</div>
+        <div class="target-value">MD / CEO (verify on LinkedIn)</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Email pattern</div>
+        <div class="target-value">first.last@bouncepingpong.com</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Secondary targets</div>
+        <div class="target-value">Marketing lead · Brand · Ops</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Verification</div>
+        <div class="target-value"><a href="https://hunter.io/companies/bouncepingpong.com" target="_blank">Hunter.io →</a></div>
+      </div>
+    </div>
+    <div class="hook">Bounce was one of the original competitive socialising venues in London. As the category gets crowded, brand operations become the differentiator. Happy to share what we built for DiscoBowl.</div>
+  </div>
+
+  <!-- TeamSport -->
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="company-name">TeamSport Karting</div>
+        <div class="company-meta">
+          <span><strong>Venues:</strong> 30+ tracks UK</span>
+          <span><strong>HQ:</strong> UK</span>
+          <span><strong>Format:</strong> Indoor karting chain</span>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="action-link primary" href="https://www.team-sport.co.uk" target="_blank">Website</a>
+        <a class="action-link" href="https://www.linkedin.com/company/teamsport-go-karting" target="_blank">LinkedIn Co.</a>
+        <a class="action-link" href="https://www.linkedin.com/search/results/people/?keywords=TeamSport%20Karting" target="_blank">LinkedIn People</a>
+      </div>
+    </div>
+    <div class="targets">
+      <div class="target-block">
+        <div class="target-label">Likely decision maker</div>
+        <div class="target-value">CEO / MD · Operations Director</div>
+        <div class="target-value"><a href="https://www.linkedin.com/search/results/people/?keywords=TeamSport%20CEO" target="_blank">Find current CEO →</a></div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Email pattern</div>
+        <div class="target-value">first.last@team-sport.co.uk</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Secondary targets</div>
+        <div class="target-value">Marketing Director · Property/Estates Director · Brand Manager</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Verification</div>
+        <div class="target-value"><a href="https://hunter.io/companies/team-sport.co.uk" target="_blank">Hunter.io →</a></div>
+      </div>
+    </div>
+    <div class="hook">30+ tracks is the kind of scale where brand inconsistency starts costing real money — local managers go off-piste, regional campaigns drift, briefs pile up. We built the operating layer behind DiscoBowl's 20-venue rollout. 20-min comparison call?</div>
+  </div>
+
+  <!-- Gravity Active -->
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="company-name">Gravity Active Entertainment</div>
+        <div class="company-meta">
+          <span><strong>Venues:</strong> 14+ UK</span>
+          <span><strong>HQ:</strong> UK</span>
+          <span><strong>Format:</strong> Multi-format active leisure (trampoline, bowling, e-karts)</span>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="action-link primary" href="https://gravity-global.com" target="_blank">Website</a>
+        <a class="action-link" href="https://www.linkedin.com/company/gravity-uk" target="_blank">LinkedIn Co.</a>
+        <a class="action-link" href="https://www.linkedin.com/search/results/people/?keywords=Gravity%20Active%20UK" target="_blank">LinkedIn People</a>
+      </div>
+    </div>
+    <div class="targets">
+      <div class="target-block">
+        <div class="target-label">Likely decision maker</div>
+        <div class="target-value">Michael Harrison · Founder (verify)<br/>CEO of Gravity Group</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Email pattern</div>
+        <div class="target-value">first.last@gravity-global.com<br/>first.last@gravity-uk.com</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Secondary targets</div>
+        <div class="target-value">CMO · Brand Director · Property Director · Operations Lead</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Verification</div>
+        <div class="target-value"><a href="https://hunter.io/companies/gravity-global.com" target="_blank">Hunter.io →</a></div>
+      </div>
+    </div>
+    <div class="hook">Gravity's multi-format approach (trampoline + bowling + karting in one site) is one of the most operationally complex setups in active leisure. The brief volume per site must be huge. We've solved this pattern — happy to share.</div>
+  </div>
+
+  <!-- Oxygen Freejumping -->
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="company-name">Oxygen Freejumping</div>
+        <div class="company-meta">
+          <span><strong>Venues:</strong> 10+ UK</span>
+          <span><strong>HQ:</strong> UK</span>
+          <span><strong>Format:</strong> Trampoline park chain</span>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="action-link primary" href="https://www.oxygenfreejumping.co.uk" target="_blank">Website</a>
+        <a class="action-link" href="https://www.linkedin.com/company/oxygen-freejumping" target="_blank">LinkedIn Co.</a>
+        <a class="action-link" href="https://www.linkedin.com/search/results/people/?keywords=Oxygen%20Freejumping" target="_blank">LinkedIn People</a>
+      </div>
+    </div>
+    <div class="targets">
+      <div class="target-block">
+        <div class="target-label">Likely decision maker</div>
+        <div class="target-value">CEO / MD (verify on LinkedIn)</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Email pattern</div>
+        <div class="target-value">first.last@oxygenfreejumping.co.uk</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Secondary targets</div>
+        <div class="target-value">Marketing Director · Site Development · Brand</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Verification</div>
+        <div class="target-value"><a href="https://hunter.io/companies/oxygenfreejumping.co.uk" target="_blank">Hunter.io →</a></div>
+      </div>
+    </div>
+    <div class="hook">Family-leisure chains face a tough brand problem — kid-friendly + cool-enough-for-parents + safe-enough-for-corporates. How are you handling the multi-audience brand ops? Worked through similar tensions on DiscoBowl.</div>
+  </div>
+
+  <!-- Whistle Punks -->
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="company-name">Whistle Punks Urban Axe Throwing</div>
+        <div class="company-meta">
+          <span><strong>Venues:</strong> 5+ UK</span>
+          <span><strong>HQ:</strong> UK</span>
+          <span><strong>Format:</strong> Urban axe throwing venues</span>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="action-link primary" href="https://whistlepunks.com" target="_blank">Website</a>
+        <a class="action-link" href="https://www.linkedin.com/company/whistle-punks" target="_blank">LinkedIn Co.</a>
+        <a class="action-link" href="https://www.linkedin.com/search/results/people/?keywords=Whistle%20Punks" target="_blank">LinkedIn People</a>
+      </div>
+    </div>
+    <div class="targets">
+      <div class="target-block">
+        <div class="target-label">Likely decision maker</div>
+        <div class="target-value">Founder (verify)</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Email pattern</div>
+        <div class="target-value">first.last@whistlepunks.com<br/>first@whistlepunks.com</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Secondary targets</div>
+        <div class="target-value">Marketing lead · Brand</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Verification</div>
+        <div class="target-value"><a href="https://hunter.io/companies/whistlepunks.com" target="_blank">Hunter.io →</a></div>
+      </div>
+    </div>
+    <div class="hook">Whistle Punks was one of the early UK axe-throwing brands and the visual identity stayed strong as you scaled — curious how you keep that across new venues. Common bottleneck around venue 6-7, solved that for DiscoBowl.</div>
+  </div>
+
+  <!-- Sixes -->
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="company-name">Sixes Social Cricket</div>
+        <div class="company-meta">
+          <span><strong>Venues:</strong> 6+ UK + US</span>
+          <span><strong>HQ:</strong> London</span>
+          <span><strong>Format:</strong> Indoor social cricket + bar</span>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="action-link primary" href="https://sixescricket.com" target="_blank">Website</a>
+        <a class="action-link" href="https://www.linkedin.com/company/sixes-social-cricket" target="_blank">LinkedIn Co.</a>
+        <a class="action-link" href="https://www.linkedin.com/search/results/people/?keywords=Sixes%20Cricket" target="_blank">LinkedIn People</a>
+      </div>
+    </div>
+    <div class="targets">
+      <div class="target-block">
+        <div class="target-label">Likely decision maker</div>
+        <div class="target-value">Founders / CEO (verify)</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Email pattern</div>
+        <div class="target-value">first.last@sixescricket.com</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Secondary targets</div>
+        <div class="target-value">CMO · Brand · Ops Director</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Verification</div>
+        <div class="target-value"><a href="https://hunter.io/companies/sixescricket.com" target="_blank">Hunter.io →</a></div>
+      </div>
+    </div>
+    <div class="hook">Cricket as social entertainment is a unique angle — Sixes owns it. UK + US rollout means brand consistency gets tested across cultures. Have a playbook from DiscoBowl's UK roll-out worth comparing notes on.</div>
+  </div>
+
+  <!-- Hijingo -->
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="company-name">Hijingo</div>
+        <div class="company-meta">
+          <span><strong>Venues:</strong> 2+ (early stage but Adam Breeden venture)</span>
+          <span><strong>HQ:</strong> London</span>
+          <span><strong>Format:</strong> Bingo nightclub hybrid</span>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="action-link primary" href="https://www.hijingo.com" target="_blank">Website</a>
+        <a class="action-link" href="https://www.linkedin.com/search/results/people/?keywords=Hijingo" target="_blank">LinkedIn People</a>
+      </div>
+    </div>
+    <div class="targets">
+      <div class="target-block">
+        <div class="target-label">Likely decision maker</div>
+        <div class="target-value">Adam Breeden network (same founder ecosystem)</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Email pattern</div>
+        <div class="target-value">first.last@hijingo.com</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Strategic note</div>
+        <div class="target-value">Treat as Breeden-network entry point — if Puttshack doesn't respond, try here.</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Verification</div>
+        <div class="target-value"><a href="https://hunter.io/companies/hijingo.com" target="_blank">Hunter.io →</a></div>
+      </div>
+    </div>
+    <div class="hook">Smaller brand-portfolio entry into the Breeden ecosystem — if this conversation lands, it opens doors to Puttshack/Flight Club too.</div>
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- TIER C — Enterprise / FTSE listed                                -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<section class="tier tier-c" data-tier="tier-c">
+  <div class="tier-header">
+    <div class="tier-label">Tier C</div>
+    <div class="tier-title">Enterprise · Long cycle · Procurement risk</div>
+  </div>
+  <p class="tier-desc">Largest budgets but heaviest procurement gates. Don't pitch cold — only via warm intro or as a speaker meeting them on conference floor. Treat as enterprise sprint targets (€80k–€300k) once warm relationship is established.</p>
+
+  <!-- Hollywood Bowl Group -->
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="company-name">Hollywood Bowl Group</div>
+        <div class="company-meta">
+          <span><strong>Venues:</strong> 70+ (incl. Tenpin merger)</span>
+          <span><strong>HQ:</strong> Hemel Hempstead</span>
+          <span><strong>Format:</strong> FTSE-listed bowling chain · UK market leader</span>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="action-link primary" href="https://www.hollywoodbowlgroup.com" target="_blank">Investor Site</a>
+        <a class="action-link" href="https://www.hollywoodbowl.co.uk" target="_blank">Consumer Site</a>
+        <a class="action-link" href="https://www.linkedin.com/company/hollywood-bowl-uk" target="_blank">LinkedIn Co.</a>
+        <a class="action-link" href="https://www.linkedin.com/search/results/people/?keywords=Hollywood%20Bowl%20Group" target="_blank">LinkedIn People</a>
+      </div>
+    </div>
+    <div class="targets">
+      <div class="target-block">
+        <div class="target-label">Likely decision maker</div>
+        <div class="target-value">Stephen Burns · CEO (verify — public FTSE filings)<br/>+ Marketing Director · Brand Director</div>
+        <div class="target-value"><a href="https://www.linkedin.com/search/results/people/?keywords=Stephen%20Burns%20Hollywood%20Bowl" target="_blank">Find Stephen →</a></div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Email pattern</div>
+        <div class="target-value">first.last@hollywoodbowlgroup.com<br/>first.last@hollywoodbowl.co.uk</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Secondary targets</div>
+        <div class="target-value">Don't pitch CEO cold. Target Brand Director / Head of Marketing / Property Director.</div>
+      </div>
+      <div class="target-block">
+        <div class="target-label">Verification</div>
+        <div class="target-value"><a href="https://hunter.io/companies/hollywoodbowlgroup.com" target="_blank">Hunter.io →</a></div>
+      </div>
+    </div>
+    <div class="hook"><strong style="color:var(--accent);font-style:normal">NOT FOR COLD OUTREACH.</strong> Use only as: (1) conference floor target at hospitality events, (2) warm intro via DiscoBowl operations contact, (3) enterprise sprint pitch once relationship warm.</div>
+  </div>
+
+  <!-- Putt Putt-->
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="company-name">Putt Putt (UK)</div>
+        <div class="company-meta">
+          <span><strong>Venues:</strong> Multiple (verify operator)</span>
+          <span><strong>Format:</strong> Mini-golf chain</span>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="action-link primary" href="https://www.google.com/search?q=putt+putt+uk+mini+golf" target="_blank">Search</a>
+        <a class="action-link" href="https://www.linkedin.com/search/results/people/?keywords=Putt%20Putt%20UK" target="_blank">LinkedIn People</a>
+      </div>
+    </div>
+    <div class="targets">
+      <div class="target-block">
+        <div class="target-label">Strategic note</div>
+        <div class="target-value">Verify which "Putt Putt" operator before pursuing — multiple unrelated entities use the name in UK/US.</div>
+      </div>
+    </div>
+    <div class="hook">Confirm specific operator before adding to outreach sequence.</div>
+  </div>
+
+</section>
+
+
+<footer>
+  Last updated 2026-05-17 · r352 · <a href="https://r352.com">r352.com</a>
+</footer>
+
+<script>
+  const buttons = document.querySelectorAll('.filter-btn');
+  const tiers = document.querySelectorAll('.tier');
+  const counter = document.getElementById('counter');
+
+  function countVisible() {
+    let n = 0;
+    document.querySelectorAll('.card:not([hidden])').forEach(c => {
+      if (c.closest('.tier').style.display !== 'none') n++;
+    });
+    counter.textContent = n + ' organisations';
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      tiers.forEach(t => {
+        if (filter === 'all' || t.dataset.tier === filter) {
+          t.style.display = '';
+        } else {
+          t.style.display = 'none';
+        }
+      });
+      countVisible();
+    });
+  });
+  countVisible();
+</script>
+
+</body>
+</html>
