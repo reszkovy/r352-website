@@ -162,19 +162,20 @@ export function Chatbot() {
   };
 
   return (
-    // Outer wrapper is now an AnimatePresence + motion.div — chat icon (and its
-    // open chat window) only mount AFTER user has scrolled. Slide-up from y:32
-    // with Apple-decel easing matches the FloatingBriefCTA's entrance so both
-    // floating elements appear in sync.
+    // Outer wrapper is now an AnimatePresence + motion.div — chat icon mounts
+    // AFTER user has scrolled. Chat enters FIRST (no delay), Brief CTA enters
+    // SECOND (delay 0.25s in its own file). Soft 1s expo-out easing for that
+    // "settling in" feel rather than snapping. Exit unstaggered (both slide out
+    // together when user returns to top).
     <AnimatePresence>
       {scrollStarted && (
         <motion.div
           className="hidden md:block fixed bottom-6 right-6 z-[1001]"
           data-no-cursor-fx="true"
-          initial={{ opacity: 0, y: 32 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 32 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          exit={{ opacity: 0, y: 40 }}
+          transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1], delay: 0 }}
         >
       <AnimatePresence>
         {isOpen && (

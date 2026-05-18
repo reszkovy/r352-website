@@ -34,10 +34,14 @@ export function FloatingBriefCTA() {
     <AnimatePresence>
       {!shouldHide && scrollStarted && (
         <motion.button
-          initial={{ opacity: 0, y: 32 }}
+          // Staggered entrance — Chatbot icon enters FIRST (no delay), this
+          // Brief CTA enters SECOND with 0.25s delay so they appear "one then
+          // the other", chat first, brief second. Softer easing + longer duration
+          // for the "settling in" feel. Exit has no delay (both leave together).
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 32 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          exit={{ opacity: 0, y: 40 }}
+          transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
           onClick={() => {
             try { (window as any).plausible?.("brief_cta_clicked", { props: { source: "floating" } }); } catch { /* noop */ }
             setLocation("/brief");
