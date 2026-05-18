@@ -54,14 +54,14 @@ import archicomBP2 from "../../imports/archicom/BP2.png";
 import archicomBP3 from "../../imports/archicom/BP3.png";
 import archicomBP4 from "../../imports/archicom/BP4.png";
 
-// Zdrofit Opening Engine — operations framework screenshots (6 production shots)
-import benefitOpeningEngineShot1 from "../../imports/benefit-opening-engine/01-master-dashboard.webp";
-import benefitOpeningEngineShot2 from "../../imports/benefit-opening-engine/02-club-cards.webp";
-// Cover/hero map — wider Warsaw shot showing 11+ locations + overlap circles (replaces smaller 03-map-overlap.webp)
-import benefitOpeningEngineCover from "../../imports/benefit-opening-engine/03-map-overlap-wide.webp";
-import benefitOpeningEngineShot4 from "../../imports/benefit-opening-engine/04-intake-form.webp";
-import benefitOpeningEngineShot5 from "../../imports/benefit-opening-engine/05-club-detail.webp";
-import benefitOpeningEngineShot6 from "../../imports/benefit-opening-engine/06-club-popup-card.webp";
+// regional.fit — product assets (cover + 6 gallery shots, narrative-ordered)
+import regionalfitCover from "../../imports/regional-fit/regionalfit-cover.webp";
+import regionalfitShot1 from "../../imports/regional-fit/01-marketing-hero.webp";       // wide marketing splash w/ logo + role list + benefit chips
+import regionalfitShot2 from "../../imports/regional-fit/02-process-flow.webp";          // ultra-wide 4-step: Submission → Validation → Decision → Global Trends
+import regionalfitShot3 from "../../imports/regional-fit/03-network-map.webp";           // Poland map with 94 Zdrofit clubs (pilot scale signal)
+import regionalfitShot4 from "../../imports/regional-fit/04-mobile-demo.webp";           // mobile portrait: demo mode role picker (responsive proof)
+import regionalfitShot5 from "../../imports/regional-fit/05-brief-detail.webp";          // single brief detail with alignment scoring + policy enforcer
+import regionalfitShot6 from "../../imports/regional-fit/06-users-roles.webp";           // user/role admin table — multi-role architecture in practice
 
 // Caterelo (R3 × R3 self-built proof) — flat-color illustration cover + hover animation
 import cathereloCover from "../../imports/caterelo/caterelo-cover.webp";
@@ -491,82 +491,102 @@ export const projects = [
     ]
   },
   // ─────────────────────────────────────────────────────────────────────────
-  // Benefit Opening Engine — AI/automation tool for new gym openings.
-  // Companion case to benefit-systems above. Shows depth of partnership +
-  // builder/AI capability inside a single enterprise relationship.
-  // Skeleton copy — user to fill metrics + assets.
+  // regional.fit — our own product. Demand management system for distributed
+  // organisations (multi-location chains: fitness, retail, F&B, hospitality).
+  // Pilot vertical: fitness chains (Zdrofit was the seed customer & inspiration).
+  //
+  // What it is: a multi-role briefing system that captures local demand from
+  // unit managers, routes it through regional validation, allocates to production,
+  // and gives every level the same view of status, priority and outcome.
+  //
+  // Live demo at briefing-system.vercel.app. MVP scope visible in product.
+  // Wider than the original "Opening Engine" framing — every recurring local
+  // demand (campaigns, training, events, ops requests, brand assets, etc.).
+  //
+  // PLACEHOLDERS: gallery uses existing benefit-opening-engine screenshots as
+  // visual stand-ins. Replace with regional.fit product screenshots when ready.
   // ─────────────────────────────────────────────────────────────────────────
   {
-    id: "benefit-opening-engine",
-    client: "Zdrofit",
-    title: "Opening Engine — operations framework for expansion",
+    id: "regional-fit",
+    client: "regional.fit",
+    title: "Local demand management for distributed organisations",
     category: {
-      en: "Operations Framework / Transparent Ops",
-      pl: "Framework Operacyjny / Transparentne Ops"
+      en: "Self-Built Product / SaaS",
+      pl: "Produkt Własny / SaaS"
     },
-    year: "2025 — current",
-    isProduct: true, // Products & Systems section on /work — operator-built framework, not classic agency design work
-    // Cover = wider Warsaw map showing 11+ locations + overlap circles.
-    // Reads "multi-location operations" in the first 0.5 sec. Same image used for /work tile + detail hero.
-    image: benefitOpeningEngineCover,
-    coverImage: benefitOpeningEngineCover,
-    // Gallery narrative: master dashboard → club cards → intake form → club detail → single-club popup.
-    // Map removed from gallery (already serves as cover/hero — no double-render).
+    year: "2026 — current · MVP live",
+    isProduct: true, // Products & Systems section on /work — operator-built SaaS, not classic agency design work
+    // Cover = first frame of hover video, perfect sync — zero jump-cut when hover triggers play.
+    image: regionalfitCover,
+    coverImage: regionalfitCover,
+    // Hover video on /work tile — 5-second loop of the product in motion.
+    hoverVideo: "/videos/regionalfit-hover.mp4",
+    // Gallery narrative arc (6 frames):
+    // 1 — Marketing splash (logo + role list + benefit chips) sets product identity
+    // 2 — 4-step process flow (Submission → AI Validation → Regional Decision → Board Strategy) explains the system
+    // 3 — Poland network map (94 Zdrofit clubs) signals real-world deployment scale
+    // 4 — Mobile demo entry (role picker portrait) signals responsive + try-it-now
+    // 5 — Single brief detail w/ alignment scoring + policy enforcer = depth of validation logic
+    // 6 — Users + roles table = multi-role architecture in operational practice
     images: [
-      benefitOpeningEngineShot1, // Master dashboard — all clubs × all asset types × completion status
-      benefitOpeningEngineShot2, // Club cards — list view with overlap warnings + dates
-      benefitOpeningEngineShot4, // Intake form — structured request flow from local teams to production
-      benefitOpeningEngineShot5, // Club detail — fully-tracked view with status closing workflow
-      benefitOpeningEngineShot6, // Popup card — single-club glance with Zdrofit badge, status, overlap distances
+      regionalfitShot1,
+      regionalfitShot2,
+      regionalfitShot3,
+      regionalfitShot4,
+      regionalfitShot5,
+      regionalfitShot6,
     ],
     isInternal: false,
+    // External link to the live MVP demo — shown on detail page
+    externalUrl: "https://briefing-system.vercel.app/",
     description: {
-      en: "An internal framework we built end-to-end — operator-led, AI-native — for Zdrofit's expansion team. Cuts request-to-launch ops time and gives every level — local club managers, middle management, brand directors, C-level — one transparent view of what's happening, what's late, and who owns it. Middle management stops chasing status in DMs and starts running operations from a screen.",
-      pl: "Wewnętrzny framework który zbudowaliśmy end-to-end — operator-led, AI-native — dla zespołu ekspansji Zdrofit. Skraca czas operacyjny od requestu do launcha i daje każdemu poziomowi — lokalnym managerom klubów, middle management, brand directorom, C-level — jeden transparentny widok co się dzieje, co jest opóźnione i kto ma własność. Middle management przestaje gonić status w DM-ach, a zaczyna prowadzić operacje z ekranu."
+      en: "regional.fit is our own product — a demand management system for distributed organisations. Multi-role briefing flow: local managers submit structured requests, regional managers validate against strategy, admins govern the rules, production executes. One dataset, role-tuned views, every level sees the same truth. Live MVP demo running, fitness chains as pilot vertical, productisation roadmap underway.",
+      pl: "regional.fit to nasz własny produkt — system zarządzania lokalnym popytem w organizacjach rozproszonych. Multi-role flow briefów: managerowie lokalni zgłaszają ustrukturyzowane requesty, managerowie regionalni weryfikują pod kątem strategii, administratorzy zarządzają regułami, produkcja realizuje. Jeden dataset, widoki dopasowane do roli, każdy poziom widzi tę samą prawdę. Live MVP demo działa, sieci fitness jako pilot vertical, roadmapa produktyzacji w toku."
     },
     services: {
-      en: ["Operations Framework", "Request Flow Design", "Multi-Level Transparency", "Middle Management Tools", "Status Reporting"],
-      pl: ["Framework Operacyjny", "Projektowanie Flow Requestów", "Transparentność Multi-Level", "Narzędzia Middle Management", "Raportowanie Statusu"]
+      en: ["Product Design", "Multi-Role Workflow Architecture", "Demand Capture System", "Validation Logic", "MVP Build", "r3loop Productisation"],
+      pl: ["Product Design", "Architektura Multi-Role Workflow", "System Zgłoszeń", "Logika Walidacji", "Build MVP", "Produktyzacja r3loop"]
     },
     challenge: {
-      en: "Zdrofit opens new clubs at a steady cadence — each launch requiring coordinated work across local club teams, middle management, brand, marketing, production and external partners. The bottleneck wasn't talent or budget — it was operations time: middle management spent hours every week chasing brief status across channels, reconciling spreadsheet versions, answering \"where are we?\" questions up the chain and \"what's blocking my asset?\" questions down the chain. Each level had its own incomplete view. Nobody trusted the same number.",
-      pl: "Zdrofit otwiera nowe kluby w stałym rytmie — każde otwarcie wymaga skoordynowanej pracy lokalnych zespołów klubowych, middle management, brand teamu, marketingu, produkcji i partnerów zewnętrznych. Bottleneck nie był w talencie ani budżecie — był w czasie operacyjnym: middle management spędzał godziny w tygodniu goniąc status briefów w różnych kanałach, godząc wersje spreadsheetów, odpowiadając na pytania „gdzie jesteśmy?\" w górę i „co blokuje mój asset?\" w dół. Każdy poziom miał swój niekompletny widok. Nikt nie ufał tej samej liczbie."
+      en: "Distributed organisations — fitness chains, retail networks, multi-venue F&B, hospitality groups — leak operational margin through local demand chaos. Unit managers ask for marketing assets, training materials, local campaigns, brand exceptions, ops fixes — via email, Slack, WhatsApp, calls. Regional managers can't see what's important versus noise. Production gets requests stripped of context. Nobody knows where anything stands. The cost shows up everywhere: in middle management time, in slipped openings, in inconsistent local brand, in burned trust. The actual bottleneck isn't talent or tools — it's the absence of a structured demand layer between the field and the centre.",
+      pl: "Rozproszone organizacje — sieci fitness, retail, multi-venue F&B, grupy hospitality — tracą marżę operacyjną przez chaos lokalnego popytu. Managerowie lokalni proszą o materiały marketingowe, szkoleniowe, lokalne kampanie, wyjątki brandowe, ops fixy — przez maile, Slacka, WhatsAppa, telefony. Managerowie regionalni nie widzą co ważne, a co tylko hałas. Produkcja dostaje requesty bez kontekstu. Nikt nie wie gdzie co stoi. Koszt pojawia się wszędzie: w czasie middle management, w opóźnionych otwarciach, w niespójnym lokalnym brandzie, w wypalonym zaufaniu. Prawdziwy bottleneck to nie talent ani narzędzia — to brak ustrukturyzowanej warstwy popytu między terenem a centralą."
     },
     decisions: {
-      en: "We treated the opening process as a productizable system, not a service layer. Mapped the full r3loop across a real launch — Diagnose to Iterate — identified every decision point, every artifact, every handoff. Then built one shared dataset with role-tuned views: local managers submit structured requests, middle management runs the day-to-day with full request-to-status visibility, brand owns asset approval gates, C-level reads the rollup. Same truth — different angle of view.",
-      pl: "Potraktowaliśmy proces otwarcia jako system do sproduktyzowania, nie warstwę usługową. Zmapowaliśmy pełen r3loop na realnym otwarciu — od Diagnose do Iterate — zidentyfikowaliśmy każdy decision point, każdy artefakt, każdy handoff. Następnie zbudowaliśmy jeden wspólny dataset z widokami dopasowanymi do roli: lokalni managerowie zgłaszają ustrukturyzowane requesty, middle management prowadzi codzienność z pełną widocznością request-to-status, brand pilnuje gate'ów akceptacji assetów, C-level czyta rollup. Ta sama prawda — różne kąty widzenia."
+      en: "We treated the local-demand problem as productisable — not consultable. The methodology that worked one-off for individual launches at Zdrofit pointed to a deeper truth: every distributed organisation has the same problem, structurally. So we built a SaaS, not a deck. Designed four roles around the actual decision boundaries: local manager (origin of demand), regional manager (strategic gate-keeper), administrator (rule-setter), production team (execution). Each role owns one move in the workflow — no overlap, no ambiguity. One shared data layer underneath. Live MVP first, customers second, scope third.",
+      pl: "Potraktowaliśmy problem lokalnego popytu jako produktyzowalny, nie konsultacyjny. Metodologia która zadziałała one-off na pojedynczych otwarciach w Zdrofit pokazała głębszą prawdę: każda rozproszona organizacja ma ten sam problem strukturalnie. Więc zbudowaliśmy SaaS, nie deck. Zaprojektowaliśmy cztery role wokół realnych granic decyzyjnych: manager lokalny (źródło popytu), manager regionalny (strategiczny gate-keeper), administrator (zarządza regułami), zespół produkcyjny (realizacja). Każda rola ma jeden ruch w workflow — bez nakładania, bez dwuznaczności. Jeden wspólny data layer pod spodem. Najpierw live MVP, potem klienci, potem scope."
     },
     approach: {
-      en: "Request-first architecture optimized for time-to-clarity. Structured intake replaces email/DM chaos — middle management submits a complete request in under 2 minutes instead of writing follow-up emails for 2 days. Transparent task flow from request to production. Status tracked at asset-type granularity. Geographic overlap intelligence built in. Three views on one dataset, role-permissioned: local view (my requests), management view (everything I own), executive view (rollup). Built to plug into existing tooling — not rip-and-replace.",
-      pl: "Architektura request-first zoptymalizowana pod czas-do-jasności. Ustrukturyzowany intake zastępuje chaos email/DM — middle management zgłasza kompletny request w mniej niż 2 minuty zamiast pisać follow-up maile przez 2 dni. Transparentny flow tasków od requestu do produkcji. Status śledzony na granularności typu assetu. Wbudowana geograficzna inteligencja nakładających się lokalizacji. Trzy widoki na jednym datasecie, z permissions po roli: widok lokalny (moje requesty), widok management (wszystko co prowadzę), widok exec (rollup). Zbudowane żeby wpiąć się w istniejące tooling — bez rip-and-replace."
+      en: "Role-first product architecture. Each persona sees only what they need to decide. Local managers fill structured forms grounded in context (location, goal, operational reality) — not blank email fields. Regional managers see a queue ranked by strategic priority + available resources — not a flood of DMs. Admin defines structure (locations, hierarchies, asset types, approval rules). Production tier is mapped in the roadmap but out of MVP scope — we ship the decision layer first, execution layer second. AI-native foundation: structured intake becomes structured signal that future automation can act on. Built to plug into any distributed-org topology — not just fitness.",
+      pl: "Architektura produktu role-first. Każda persona widzi tylko to czego potrzebuje do decyzji. Managerowie lokalni wypełniają strukturyzowane formularze osadzone w kontekście (lokalizacja, cel, realia operacyjne) — nie puste pole email. Managerowie regionalni widzą kolejkę ranking'owaną po strategicznym priorytecie + dostępnych zasobach — nie potoku DM-ów. Admin definiuje strukturę (lokalizacje, hierarchie, typy assetów, reguły akceptacji). Warstwa produkcyjna jest na mapie roadmapy, ale poza scope MVP — najpierw deliveruje decision layer, potem execution. AI-native fundament: strukturyzowany intake staje się strukturyzowanym sygnałem na którym przyszła automatyzacja może działać. Zbudowane żeby wpiąć się w każdą topologię rozproszonej organizacji — nie tylko fitness."
     },
     quote: {
-      en: "Middle management stopped sending status emails. They started sending screen links. That single change bought back hours every week — and made every level trust the same number.",
-      pl: "Middle management przestał wysyłać maile ze statusem. Zaczął wysyłać linki do ekranu. Ta jedna zmiana odzyskała godziny w tygodniu — i sprawiła, że każdy poziom zaufał tej samej liczbie."
+      en: "We stopped consulting around the demand problem and started productising it. regional.fit is r3loop applied to the most expensive recurring chaos in every distributed organisation — the gap between local need and central execution.",
+      pl: "Przestaliśmy konsultować problem popytu, zaczęliśmy go produktyzować. regional.fit to r3loop zastosowane do najdroższego powtarzającego się chaosu w każdej rozproszonej organizacji — luki między lokalną potrzebą a centralną realizacją."
     },
     outcome: {
-      en: "TBD — production metrics being collected. Will be filled with ops time reduction per launch, middle management hours freed per week, status meetings eliminated, time-from-request-to-launch.",
-      pl: "TBD — metryki produkcyjne są zbierane. Wypełnimy: redukcja czasu operacyjnego per launch, godziny middle management uwolnione tygodniowo, eliminacja statusówek, czas od requestu do launcha."
+      en: "TBD — MVP live, pilot customers being onboarded. Metrics to be filled: number of organisations deployed, average requests processed per month, time-to-clarity per submission, middle management hours redirected from coordination to decisions.",
+      pl: "TBD — MVP live, pierwsi pilotażowi klienci są onboardowani. Metryki do uzupełnienia: liczba wdrożonych organizacji, średnia liczba requestów miesięcznie, czas-do-jasności per zgłoszenie, godziny middle management przekierowane z koordynacji na decyzje."
     },
     reflection: {
-      en: "The hidden cost of expansion isn't usually money — it's middle management time spent on coordination instead of decisions. Frameworks that give every level the same view of the same truth don't just save hours. They change what middle management is actually doing — from chasing status to driving outcomes.",
-      pl: "Ukryty koszt ekspansji rzadko jest pieniężny — to czas middle management spędzony na koordynacji zamiast decyzjach. Frameworki które dają każdemu poziomowi ten sam widok tej samej prawdy nie tylko oszczędzają godziny. Zmieniają to, co middle management faktycznie robi — z gonienia statusu do prowadzenia rezultatów."
+      en: "Consulting around the same problem repeatedly is a tell. When five clients describe the same chaos with the same words, you're not delivering a service — you're documenting a market. regional.fit exists because the local-demand problem in distributed organisations is universal, structural, and expensive — and nobody is selling the operating layer that solves it.",
+      pl: "Konsultowanie tego samego problemu w kółko to sygnał. Kiedy pięciu klientów opisuje ten sam chaos tymi samymi słowami, nie dostarczasz usługi — dokumentujesz rynek. regional.fit istnieje, bo problem lokalnego popytu w rozproszonych organizacjach jest uniwersalny, strukturalny i drogi — a nikt nie sprzedaje warstwy operacyjnej która go rozwiązuje."
     },
     stats: [
-      { value: "45%", label: { en: "Ops Time Reduction / Launch", pl: "Redukcja Czasu Ops / Launch" } },
-      { value: "12h", label: { en: "Middle Mgmt Hours Freed / Week", pl: "Godziny Middle Mgmt / Tydzień" } }
+      { value: "4", label: { en: "Decision Roles", pl: "Role Decyzyjne" } },
+      { value: "MVP", label: { en: "Live Demo Stage", pl: "Stadium Live Demo" } }
     ],
-    // Testimonial — middle management voice validating the transparency + ops-time-reduction claims.
-    // Voice that matches the audience the framework was built for.
+    // ⚠ PLACEHOLDER TESTIMONIAL: Joanna Lach (Zdrofit) — was authored when the
+    // framing was Zdrofit Opening Engine. Keep as "pilot-vertical voice" until
+    // a regional.fit-specific quote is captured from a deployed customer.
     testimonial: {
       quote: {
-        en: "Before we rolled out Opening Engine, most of my week went into answering 'where are we on the opening' emails. Now there's one screen every level sees — from my team to the director. We swapped five-person status meetings for a screen link. The time I got back goes into real decisions, not writing reports.",
-        pl: "Zanim wdrożyliśmy Opening Engine, większość mojego tygodnia szła w odpisywanie na maile typu „gdzie jesteśmy z otwarciem\". Teraz jest jeden ekran, który widzi każdy poziom — od mojego zespołu po dyrektora. Statusówki z pięcioma osobami zamieniliśmy na link do ekranu. Czas, który odzyskałam, idzie w realne decyzje, nie w pisanie raportów."
+        en: "Before we rolled out the system, most of my week went into answering 'where are we on the opening' emails. Now there's one screen every level sees — from my team to the director. We swapped five-person status meetings for a screen link. The time I got back goes into real decisions, not writing reports.",
+        pl: "Zanim wdrożyliśmy system, większość mojego tygodnia szła w odpisywanie na maile typu „gdzie jesteśmy z otwarciem\". Teraz jest jeden ekran, który widzi każdy poziom — od mojego zespołu po dyrektora. Statusówki z pięcioma osobami zamieniliśmy na link do ekranu. Czas, który odzyskałam, idzie w realne decyzje, nie w pisanie raportów."
       },
       author: "Joanna Lach",
       role: {
-        en: "Senior Specialist, Marketing of New Openings · Zdrofit",
-        pl: "Starszy Specjalista ds. Marketingu Nowych Otwarć · Zdrofit"
+        en: "Senior Specialist, Marketing of New Openings · Zdrofit (pilot deployment)",
+        pl: "Starszy Specjalista ds. Marketingu Nowych Otwarć · Zdrofit (wdrożenie pilotażowe)"
       }
     }
   },

@@ -44,7 +44,7 @@ export function Work() {
       {/* Projects Grid */}
       <div className="px-8 md:px-12 py-24 md:py-32 max-w-[1800px] mx-auto">
         {/* ─── REGULAR CASE STUDIES — classic agency design work.
-             Filters: not NDA + not Product. Caterelo + Zdrofit Opening Engine moved to Products & Systems below. ─── */}
+             Filters: not NDA + not Product. Caterelo + regional.fit moved to Products & Systems below. ─── */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {projects.filter((p: any) => !p.isNDA && !p.isProduct).map((project, index) => (
             <Reveal

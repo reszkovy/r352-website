@@ -10,6 +10,7 @@ import { useLenis } from "lenis/react";
 import { ImageHover } from "@/app/components/ui/ImageHover";
 import { YouTubeEmbed } from "@/app/components/ui/YouTubeEmbed";
 import { ArrowRight } from "lucide-react";
+import { MagneticButton } from "@/app/components/ui/MagneticButton";
 
 function LockIcon({ size = 32 }: { size?: number }) {
   return (
@@ -463,9 +464,10 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                // Layout: 2 full-width maps, then 2 staggered pairs of half-width detail shots.
                const useCathereloRhythm = project.id === "caterelo";
 
-               // Benefit Opening Engine — bespoke rhythm: master dashboards full-width, detail/form/map as varied pairs.
-               // Mix of wide horizontal (2.4–2.66 ratio), 4:3 map, portrait form, near-square detail → needs custom layout.
-               const useOpeningEngineRhythm = project.id === "benefit-opening-engine";
+               // regional.fit (formerly Opening Engine) — bespoke rhythm: master dashboards full-width,
+               // detail/form/map as varied pairs. Mix of wide horizontal (2.4–2.66 ratio), 4:3 map, portrait form,
+               // near-square detail → needs custom layout. Keep until dedicated regional.fit assets replace placeholders.
+               const useOpeningEngineRhythm = project.id === "regional-fit";
 
                // Default editorial rhythm (full / left / right / centered) for other projects
                const isFullWidth = i % 4 === 0;
@@ -479,16 +481,25 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                const isCathereloLeft = useCathereloRhythm && (i === 2 || i === 4);
                const isCathereloRight = useCathereloRhythm && (i === 3 || i === 5);
 
-               // Opening Engine per-image mapping (map moved to cover/hero — gallery now has 5 frames):
-               // 0 master dashboard (2.4 wide) → full-width 16:9 HERO
-               // 1 club cards (2.66 ultra-wide)  → full-width 16:9
-               // 2 intake form (portrait 0.57) → half-width LEFT (col-span-4, aspect 3:4)
-               // 3 club detail (5:4) → half-width RIGHT (col-span-7, 4:3, mt-16 offset)
-               // 4 popup card (1.07 square) → centered editorial moment (col-span-8 col-start-3, 4:3)
-               const isOpeningEngineFull = useOpeningEngineRhythm && (i === 0 || i === 1);
-               const isOpeningEngineLeft = useOpeningEngineRhythm && i === 2;
-               const isOpeningEngineRight = useOpeningEngineRhythm && i === 3;
-               const isOpeningEngineCentered = useOpeningEngineRhythm && i === 4;
+               // regional.fit per-image mapping (6 frames, narrative-arc rhythm):
+               // 0 marketing hero (3420×1728, 1.98 wide)      → full-width 16:9 HERO
+               // 1 process flow  (4288×1050, 4.08 ULTRA-wide) → full-width 40:10 panoramic strip
+               // 2 Poland map    (1998×1490, 1.34 ≈ 4:3)      → half-width LEFT (col-span-6, 4:3)
+               // 3 mobile demo   (~portrait)                  → half-width RIGHT (col-span-4, 3:4 portrait, offset)
+               // 4 brief detail  (2004×1976, ~1.01 square)    → centered narrower (col-span-8, 1:1)
+               // 5 users + roles (2002×996, 2.01 wide)        → full-width 2:1 panoramic
+               const isOpeningEngineHeroFull = useOpeningEngineRhythm && i === 0;
+               const isOpeningEnginePanoramic = useOpeningEngineRhythm && i === 1; // ultra-wide 4:1
+               const isOpeningEngineMapLeft = useOpeningEngineRhythm && i === 2;
+               const isOpeningEngineMobileRight = useOpeningEngineRhythm && i === 3;
+               const isOpeningEngineSquareCenter = useOpeningEngineRhythm && i === 4;
+               const isOpeningEngineWide2to1 = useOpeningEngineRhythm && i === 5;
+
+               // Legacy aliases — kept for downstream conditions below
+               const isOpeningEngineFull = isOpeningEngineHeroFull || isOpeningEnginePanoramic || isOpeningEngineWide2to1;
+               const isOpeningEngineLeft = isOpeningEngineMapLeft;
+               const isOpeningEngineRight = isOpeningEngineMobileRight;
+               const isOpeningEngineCentered = isOpeningEngineSquareCenter;
 
                let gridClass = "md:col-span-12";
                if (useUniformLarge) {
@@ -500,15 +511,16 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                } else if (isCathereloRight) {
                  gridClass = "md:col-span-6 md:col-start-7 md:mt-24";
                } else if (isOpeningEngineFull) {
+                 // All full-width frames: hero (0), panoramic process flow (1), 2:1 users table (5)
                  gridClass = "md:col-span-12";
                } else if (isOpeningEngineLeft) {
-                 // Intake form portrait — narrow column on left
-                 gridClass = "md:col-span-4 md:col-start-1";
+                 // Poland map (4:3) — half-width LEFT, paired with mobile portrait on right
+                 gridClass = "md:col-span-6 md:col-start-1";
                } else if (isOpeningEngineRight) {
-                 // Club detail landscape — wider column on right, offset down
-                 gridClass = "md:col-span-7 md:col-start-6 md:mt-16";
+                 // Mobile demo (3:4 portrait) — narrow column on RIGHT, offset down for editorial rhythm
+                 gridClass = "md:col-span-4 md:col-start-8 md:mt-16";
                } else if (isOpeningEngineCentered) {
-                 // Popup card square — centered editorial moment closing the gallery
+                 // Square brief detail — centered editorial moment, narrower so content stays readable
                  gridClass = "md:col-span-8 md:col-start-3";
                } else if (isLeft) {
                  gridClass = "md:col-span-5 md:col-start-1";
@@ -518,13 +530,14 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                  gridClass = "md:col-span-8 md:col-start-3";
                }
 
-               // Aspect ratios:
-               // - useUniformLarge / caterelo full / opening engine 0+1 = 16:9 monumental
-               // - opening engine 4 (club detail) = 4:3 to close the narrative more "human-scale"
-               // - opening engine left (map) = 4:3 to fit square-ish content
-               // - opening engine right (form portrait) = 3:4 portrait container
-               // - others = 4:3 default
-               const isOpeningEngineHero = useOpeningEngineRhythm && (i === 0 || i === 1);
+               // Aspect ratios for regional.fit gallery:
+               // - 0 marketing hero    → 16:9 (matches ~1.98 source)
+               // - 1 process flow      → 40:10 panoramic strip (matches ~4.08 ultra-wide source)
+               // - 2 Poland map        → 4:3 (matches ~1.34 source)
+               // - 3 mobile demo       → 3:4 portrait
+               // - 4 brief detail      → 1:1 square (source is ~1.01)
+               // - 5 users + roles     → 2:1 panoramic
+               const isOpeningEngineHero = isOpeningEngineHeroFull;
                const useLargeAspect = useUniformLarge || isFullWidth || isCathereloFull || isOpeningEngineHero;
 
                return (
@@ -536,10 +549,20 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                            <div className="absolute -inset-4 bg-gradient-to-r from-[#D4FF00]/20 to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                         )}
 
+                        {/* Aspect ratio routing — regional.fit gets per-frame ratios matching source content;
+                            others fall through to the default useLargeAspect / portrait / 4:3 ladder. */}
                         <ImageHover
                            className={`
                               w-full bg-[#0A0A0A] border border-white/5 rounded-sm
-                              ${useLargeAspect ? 'aspect-[16/9]' : isOpeningEngineLeft ? 'aspect-[3/4]' : 'aspect-[4/3]'}
+                              ${
+                                isOpeningEnginePanoramic ? 'aspect-[40/10]' :
+                                isOpeningEngineHeroFull ? 'aspect-[16/9]' :
+                                isOpeningEngineMapLeft ? 'aspect-[4/3]' :
+                                isOpeningEngineMobileRight ? 'aspect-[3/4]' :
+                                isOpeningEngineSquareCenter ? 'aspect-square' :
+                                isOpeningEngineWide2to1 ? 'aspect-[2/1]' :
+                                useLargeAspect ? 'aspect-[16/9]' : 'aspect-[4/3]'
+                              }
                               transition-all duration-700 hover:border-white/20
                            `}
                            tiltMax={useUniformLarge ? 3 : (isCentered ? 3 : 5)}
@@ -574,20 +597,68 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
         </section>
         )}
 
-        {/* Contact CTA */}
+        {/* Contact CTA — editorial pattern matching AgencyHero ATF.
+            No box, no border, no background fill. Just a hair-line divider above,
+            asymmetric layout (eyebrow + editorial headline LEFT / dual MagneticButton CTAs + mailto RIGHT),
+            generous breathing room. Consistent with hero CTA stack across the site. */}
         <Reveal>
-          <div className="mb-24 py-16 px-8 md:px-12 bg-white/[0.03] border border-white/10 text-center relative z-50 pointer-events-auto">
-            <span className="block text-xs font-display uppercase tracking-widest text-neutral-500 mb-6">
-              {language === 'pl' ? "Potrzebujesz podobnych rezultatów?" : "Need results like these?"}
-            </span>
-            <Link
-              href="/contact"
-              className="group relative inline-block cursor-pointer pointer-events-auto"
-            >
-              <span className="text-3xl md:text-5xl font-bold tracking-tighter text-white transition-colors duration-300 group-hover:text-[#D4FF00]">
-                {language === 'pl' ? "Porozmawiajmy" : "Let's talk"}
-              </span>
-            </Link>
+          <div className="mb-24 pt-24 md:pt-32 pb-12 border-t border-white/10 relative z-50 pointer-events-auto">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 md:gap-16">
+              {/* LEFT — eyebrow + headline */}
+              <div className="max-w-2xl">
+                <span className="block text-xs font-display uppercase tracking-[0.25em] text-neutral-500 mb-6">
+                  {language === 'pl' ? "Potrzebujesz podobnych rezultatów?" : "Need results like these?"}
+                </span>
+                <h2 className="type-h2 text-balance">
+                  {language === 'pl' ? "Porozmawiajmy." : "Let's talk."}
+                </h2>
+              </div>
+
+              {/* RIGHT — dual CTAs + mailto, mirrors hero AgencyHero pattern */}
+              <div className="flex flex-col gap-6 md:items-end shrink-0">
+                <div className="flex flex-col sm:flex-row gap-6">
+                  {/* PRIMARY — Brief funnel */}
+                  <MagneticButton
+                    onClick={() => setLocation("/brief")}
+                    className="bg-[#D4FF00] text-black border-none hover:bg-[#D4FF00]/90 rounded-none"
+                    glowColor="rgba(0, 0, 0, 0.15)"
+                  >
+                    <span className="invisible text-lg font-display uppercase tracking-widest absolute">Start a brief</span>
+                    <span className="text-lg font-display uppercase tracking-widest group-hover:tracking-normal transition-all duration-500 ease-out">
+                      {language === "pl" ? "Wypełnij brief" : "Start a brief"}
+                    </span>
+                  </MagneticButton>
+
+                  {/* SECONDARY — Calendly direct */}
+                  <MagneticButton
+                    onClick={() => {
+                      try { (window as any).plausible?.("calendly_clicked", { props: { source: `case-${project.id}` } }); } catch { /* noop */ }
+                      window.open("https://calendly.com/p-reszkovy/30min", "_blank", "noopener,noreferrer");
+                    }}
+                    className="bg-white/[0.04] text-white border-transparent hover:bg-white/[0.08] rounded-none"
+                    glowColor="rgba(212, 255, 0, 0.2)"
+                  >
+                    <span className="invisible text-lg font-display uppercase tracking-[0.25em] absolute">{language === "pl" ? "Umów rozmowę" : "Book a call"}</span>
+                    <span className="text-lg font-display uppercase tracking-wide group-hover:tracking-[0.25em] transition-all duration-500 ease-out">
+                      {language === "pl" ? "Umów rozmowę" : "Book a call"}
+                    </span>
+                  </MagneticButton>
+                </div>
+
+                {/* Tertiary — direct mail for warm leads */}
+                <a
+                  href="mailto:hello@r352.com?subject=r352%20—%20hello"
+                  onClick={() => {
+                    try { (window as any).plausible?.("mail_clicked", { props: { source: `case-${project.id}` } }); } catch { /* noop */ }
+                  }}
+                  className="self-start md:self-end group inline-flex items-center gap-3 text-xs font-display uppercase tracking-[0.2em] text-neutral-400 hover:text-[#D4FF00] transition-colors duration-500 cursor-pointer"
+                >
+                  <span className="w-6 h-px bg-neutral-600 group-hover:bg-[#D4FF00] group-hover:w-10 transition-all duration-500" />
+                  <span>{language === "pl" ? "Albo napisz bezpośrednio" : "Or write directly"} · hello@r352.com</span>
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.5} />
+                </a>
+              </div>
+            </div>
           </div>
         </Reveal>
 
