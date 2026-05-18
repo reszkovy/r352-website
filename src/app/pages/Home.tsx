@@ -50,14 +50,21 @@ export function Home() {
                 <p className="text-base md:text-lg text-neutral-400 leading-relaxed whitespace-pre-line">
                   {t("philosophy.teaser.description")}
                 </p>
-                <MagneticButton
-                  onClick={() => setLocation("/philosophy")}
-                  className="bg-transparent border-white/20 text-white hover:bg-white hover:text-black w-full max-w-[280px] sm:max-w-none sm:w-auto shrink-0"
-                  glowColor="rgba(255, 255, 255, 0.2)"
+                {/* TERTIARY text link — matches ATF hero "Or write directly" pattern.
+                    Animated underline grows on hover, arrow translates right, lime accent
+                    replaces neutral on hover. Kills the framed bordered button look. */}
+                <a
+                  href="/philosophy"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setLocation("/philosophy");
+                  }}
+                  className="group inline-flex items-center gap-3 text-xs font-display uppercase tracking-[0.2em] text-neutral-400 hover:text-[#D4FF00] transition-colors duration-500 cursor-pointer"
                 >
-                  <span className="invisible text-xs font-display uppercase tracking-widest absolute">{t("philosophy.teaser.cta")}</span>
-                  <span className="text-xs font-display uppercase tracking-widest group-hover:tracking-[0.25em] transition-all duration-500 ease-out">{t("philosophy.teaser.cta")}</span>
-                </MagneticButton>
+                  <span className="w-6 h-px bg-neutral-600 group-hover:bg-[#D4FF00] group-hover:w-10 transition-all duration-500" />
+                  <span>{t("philosophy.teaser.cta")}</span>
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.5} />
+                </a>
               </div>
             </div>
           </Reveal>

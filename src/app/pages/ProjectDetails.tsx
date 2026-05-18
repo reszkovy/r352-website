@@ -372,26 +372,45 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                 </blockquote>
              </Reveal>
 
-             {/* 5. Outcome */}
+             {/* 5. Outcome — editorial pattern (no box, no border, hair-line divider above).
+                  Bigger type than other sections, signals "this is the resolution of the story".
+                  Replaces the previous bg-neutral-900/50 framed container that read as generic. */}
              <Reveal delay={0.3}>
-                <div className="bg-neutral-900/50 p-8 md:p-12 border border-white/10">
-                   <h3 className="text-xs font-display uppercase tracking-widest text-neutral-500 mb-6">{t("work.outcome")}</h3>
-                   <p className="text-lg md:text-xl text-neutral-300 leading-relaxed">
+                <div className="pt-12 md:pt-16 border-t border-white/10">
+                   <h3 className="text-xs font-display uppercase tracking-[0.25em] text-neutral-500 mb-6">{t("work.outcome")}</h3>
+                   <p className="text-2xl md:text-3xl text-white font-normal tracking-tight leading-tight text-balance">
                       {/* @ts-ignore */}
                       {project.outcome[language]}
                    </p>
                 </div>
              </Reveal>
 
-             {/* 5b. Testimonial — third-party voice validating the outcome (when present).
-                  Distinct visual treatment from editorial quote — author + role attribution. */}
+             {/* 6. Reflection — quiet strategic afterthought (italic serif, subtle left border).
+                  Different visual register from Outcome above and Testimonial below — gives the
+                  page a rhythm of LOUD outcome → SOFT reflection → CLIENT VOICE closing. */}
+             {/* @ts-ignore */}
+             {project.reflection && (
+                <Reveal delay={0.4}>
+                    <div className="border-l border-white/20 pl-6 md:pl-12 py-2">
+                        <h3 className="text-xs font-display uppercase tracking-widest text-neutral-500 mb-4">{t("work.reflection")}</h3>
+                        <p className="text-lg md:text-xl text-neutral-400 italic font-serif leading-relaxed">
+                            {/* @ts-ignore */}
+                            {project.reflection[language]}
+                        </p>
+                    </div>
+                </Reveal>
+             )}
+
+             {/* 7. Testimonial — moved to BOTTOM as the closing emotional moment of the case.
+                  Client voice validates everything above. Full-width editorial treatment with
+                  oversized lime cudzysłów + author + role. Last thing visitor reads before CTA. */}
              {/* @ts-ignore */}
              {project.testimonial && (
-                <Reveal delay={0.35}>
-                    <figure className="relative pt-6 pb-2">
-                       <span className="absolute -top-2 left-0 text-7xl text-[#D4FF00] font-serif opacity-40 leading-none">"</span>
-                       <blockquote className="pl-10 md:pl-14">
-                          <p className="text-xl md:text-2xl text-white font-medium tracking-tight leading-snug">
+                <Reveal delay={0.5}>
+                    <figure className="relative pt-12 md:pt-16 border-t border-white/10">
+                       <span className="absolute top-8 md:top-10 left-0 text-7xl md:text-8xl text-[#D4FF00] font-serif opacity-40 leading-none">"</span>
+                       <blockquote className="pl-12 md:pl-20">
+                          <p className="text-xl md:text-2xl text-white font-medium tracking-tight leading-snug text-balance">
                              {/* @ts-ignore */}
                              {project.testimonial.quote[language]}
                           </p>
@@ -407,20 +426,6 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                           </figcaption>
                        </blockquote>
                     </figure>
-                </Reveal>
-             )}
-
-             {/* 6. Reflection */}
-             {/* @ts-ignore */}
-             {project.reflection && (
-                <Reveal delay={0.4}>
-                    <div className="border-l border-white/20 pl-6 md:pl-12 py-2">
-                        <h3 className="text-xs font-display uppercase tracking-widest text-neutral-500 mb-4">{t("work.reflection")}</h3>
-                        <p className="text-lg md:text-xl text-neutral-400 italic font-serif leading-relaxed">
-                            {/* @ts-ignore */}
-                            {project.reflection[language]}
-                        </p>
-                    </div>
                 </Reveal>
              )}
 

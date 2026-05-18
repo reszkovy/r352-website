@@ -337,10 +337,24 @@ export const translations = {
       client: "Client",
       visit_site: "Visit Website",
       next_project: "Next Project",
-      ready: "WORK.READY",
-      next: "work.next",
+      ready: "Ready for the next one?",
+      next: "Next project",
       back_to_work: "Back to Work",
-      cta_work: "See selected work"
+      cta_work: "See selected work",
+      // Case study narrative section labels — were rendering as raw keys (e.g. "WORK.OUTCOME")
+      // because they didn't exist in the namespace. Added here so eyebrows show proper copy.
+      context: "Context",
+      tension: "Tension",
+      decisions: "Decisions",
+      approach: "Approach",
+      quote: "Voice",
+      outcome: "Outcome",
+      reflection: "Reflection",
+      testimonial: "Client voice",
+      impact: "Impact",
+      services: "Services",
+      category: "Category",
+      proof: "Proof of work"
     },
     philosophy: {
       teaser: {
@@ -859,10 +873,23 @@ export const translations = {
       client: "Klient",
       visit_site: "Odwiedź stronę",
       next_project: "Następny Projekt",
-      ready: "GOTOWY.NA.WIĘCEJ",
-      next: "następny.projekt",
+      ready: "Gotowi na kolejny?",
+      next: "Następny projekt",
       back_to_work: "Powrót do prac",
-      cta_work: "Zobacz wybrane prace"
+      cta_work: "Zobacz wybrane prace",
+      // PL case study narrative section labels — paired with EN keys above.
+      context: "Kontekst",
+      tension: "Napięcie",
+      decisions: "Decyzje",
+      approach: "Podejście",
+      quote: "Głos",
+      outcome: "Rezultat",
+      reflection: "Refleksja",
+      testimonial: "Głos klienta",
+      impact: "Wpływ",
+      services: "Usługi",
+      category: "Kategoria",
+      proof: "Dowód pracy"
     },
     philosophy_page: {
       label: "Filozofia",

@@ -30,9 +30,12 @@ export function SelectedWork() {
            </Reveal>
            <Reveal delay={0.2} className="col-span-12 md:col-span-3 md:justify-self-end">
              <div className="md:text-right">
+               {/* SECONDARY MagneticButton — frosted dark style matching ATF hero "Book a call".
+                   Kills the lime border/frame. Same pattern recurs across the site as the
+                   secondary action tier (primary = lime fill, tertiary = text link with arrow). */}
                <MagneticButton
                  onClick={() => setLocation("/work")}
-                 className="bg-transparent border-[#D4FF00]/20 text-[#D4FF00] hover:bg-[#D4FF00] hover:text-black"
+                 className="bg-white/[0.04] text-white border-transparent hover:bg-white/[0.08] rounded-none"
                  glowColor="rgba(212, 255, 0, 0.2)"
                >
                  <span className="invisible text-lg font-display uppercase tracking-[0.25em] absolute">{t("work.view_all")}</span>
