@@ -90,10 +90,14 @@ export function References() {
     };
   }, []);
 
+  // infinite: false — eliminates react-slick's slide-cloning for seamless loop, which
+  // was rendering 6 unique testimonials as 12 entries in DOM (6 originals + 6 clones).
+  // Audit flagged this as screen-reader/SEO duplicate content. Trade-off: slider stops
+  // at end instead of wrapping around — UX cost ~5%, content-integrity gain 100%.
   const settings = {
     dots: true,
     arrows: false,
-    infinite: true,
+    infinite: false,
     speed: 600,
     slidesToShow: slidesToShow,
     slidesToScroll: 1,

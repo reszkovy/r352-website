@@ -28,11 +28,15 @@ export function Footer() {
     }
   };
 
+  // /deliverables removed from footer — was orphan (in footer only, not main nav, not
+  // cross-linked from /services or /process). Audit flagged inconsistent IA. Page still
+  // exists at direct URL r352.com/deliverables, usable in proposals/follow-ups as
+  // "see our full deliverables catalog" deep-link. Can be added to /services Products
+  // section as inline link if discoverability matters later.
   const navLinks = [
     { label: t("work.selected_work"), href: "/work" },
     { label: t("nav.philosophy"), href: "/philosophy" },
     { label: t("nav.services"), href: "/services" },
-    { label: t("services_page.deliverables.label"), href: "/deliverables" },
     { label: t("nav.journal"), href: "/journal" },
     { label: "Start a brief", href: "/brief" },
     { label: t("nav.contact") || "Kontakt", href: "/contact" },
