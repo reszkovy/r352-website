@@ -191,10 +191,13 @@ export function Footer() {
                </a>
 
                {/* Rotating R-mark — animated brand signature.
-                   Static r.svg in center (smaller scale: w-1/6) + wokolo.svg rotating
-                   around it (40s linear infinite). Both SVGs use native fill #151515,
-                   matching upper section bg, rendering as quiet shape on #0a0a0a. */}
-               <div className="pointer-events-none relative w-40 h-40 md:w-48 md:h-48 mt-2">
+                   Container scaled 70% larger (was 160/192px → 272/326px) so the
+                   rotating wokolo ornament reads as the dominant motif. R in center
+                   stays the same absolute size by dropping its relative fraction from
+                   1/6 to 10%, keeping the visual hierarchy: big quiet rotation around
+                   a small stable letter. Both SVGs use native fill #151515 — ledwo
+                   widoczne darker shape on #0a0a0a lower-section bg. */}
+               <div className="pointer-events-none relative w-[17rem] h-[17rem] md:w-[20.5rem] md:h-[20.5rem] mt-2">
                   <img
                     src="/footer-mark/wokolo.svg"
                     alt=""
@@ -205,7 +208,7 @@ export function Footer() {
                     src="/footer-mark/r.svg"
                     alt=""
                     aria-hidden="true"
-                    className="absolute inset-0 m-auto w-1/6 h-1/6"
+                    className="absolute inset-0 m-auto w-[10%] h-[10%]"
                   />
                </div>
             </div>
