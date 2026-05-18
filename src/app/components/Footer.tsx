@@ -167,10 +167,12 @@ export function Footer() {
             </div>
 
             {/* Column 4: Time + Founded by Reszek + Rotating R-mark watermark.
-                R-mark sits BELOW the textual blocks, as a quiet ambient signature.
-                SVG fill is already #151515 (matches upper section bg) so it reads as a
-                ledwo-widoczny "darker shape on dark" watermark against the #0a0a0a lower bg. */}
-            <div className="md:col-span-1 flex flex-col gap-8 items-start">
+                R-mark is ABSOLUTELY positioned so it doesn't stretch the column height
+                (which previously created a huge empty gap under the shorter Sitemap / Social
+                columns). It's allowed to overflow downward — past the divider, off-screen
+                if needed — because pointer-events-none + z-0 keep it inert and behind
+                everything important. */}
+            <div className="md:col-span-1 flex flex-col gap-8 items-start relative">
                <div>
                   <span className="block text-xs font-display uppercase tracking-widest text-neutral-500 mb-6">{t("footer.local_time")}</span>
                   <p className="text-lg text-neutral-300">
@@ -199,8 +201,12 @@ export function Footer() {
                    widoczne darker shape on #0a0a0a lower-section bg. */}
                {/* Container scaled +5% on top of previous +15% (cumulative +106% from
                    original baseline). Wokolo grows, R fraction drops 9% → 8.5% to keep
-                   letter at the same absolute ~27/33px size — visual hierarchy intact. */}
-               <div className="pointer-events-none relative w-[20.5rem] h-[20.5rem] md:w-[24.5rem] md:h-[24.5rem] mt-2">
+                   letter at the same absolute ~27/33px size — visual hierarchy intact.
+
+                   absolute top-32 md:top-40 → anchored below Local time + Founded by
+                   Reszek, but doesn't push column height. Can overflow downward (acceptable
+                   per user spec — better than wasted vertical space across other columns). */}
+               <div className="pointer-events-none absolute top-32 md:top-40 left-0 w-[20.5rem] h-[20.5rem] md:w-[24.5rem] md:h-[24.5rem] z-0">
                   <img
                     src="/footer-mark/wokolo.svg"
                     alt=""
