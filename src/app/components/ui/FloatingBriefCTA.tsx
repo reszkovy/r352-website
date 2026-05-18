@@ -1,6 +1,7 @@
 import { useLocation } from "wouter";
 import { motion, AnimatePresence } from "motion/react";
 import { useLanguage } from "@/app/context/LanguageContext";
+import { useScrollStarted } from "@/app/hooks/useScrollStarted";
 import { ArrowRight } from "lucide-react";
 
 /**
@@ -14,6 +15,9 @@ import { ArrowRight } from "lucide-react";
 export function FloatingBriefCTA() {
   const [location, setLocation] = useLocation();
   const { language } = useLanguage();
+  // Gate visibility on scroll — CTA stays hidden at top of page, slides up from
+  // bottom once visitor commits to scrolling. Removes the "popup" feel.
+  const scrollStarted = useScrollStarted();
 
   const hiddenOn = [
     "/brief",
@@ -28,12 +32,12 @@ export function FloatingBriefCTA() {
 
   return (
     <AnimatePresence>
-      {!shouldHide && (
+      {!shouldHide && scrollStarted && (
         <motion.button
-          initial={{ opacity: 0, x: 8 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: 8 }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ opacity: 0, y: 32 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 32 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           onClick={() => {
             try { (window as any).plausible?.("brief_cta_clicked", { props: { source: "floating" } }); } catch { /* noop */ }
             setLocation("/brief");

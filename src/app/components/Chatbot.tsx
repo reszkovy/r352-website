@@ -3,6 +3,7 @@ import { MessageCircle, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { useLocation } from "wouter";
+import { useScrollStarted } from "@/app/hooks/useScrollStarted";
 import botAvatar from "figma:asset/ca9abe862ac1bfee95045e08a8d97f21981b65dc.png";
 
 type Message = {
@@ -114,6 +115,9 @@ export function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  // Gate visibility on scroll — chat icon hidden at top of page, slides up
+  // from bottom once user starts scrolling. Removes the page-load popup feel.
+  const scrollStarted = useScrollStarted();
 
   useEffect(() => {
     // Reset messages and show welcome message based on language
@@ -158,7 +162,20 @@ export function Chatbot() {
   };
 
   return (
-    <div className="hidden md:block fixed bottom-6 right-6 z-[1001]" data-no-cursor-fx="true">
+    // Outer wrapper is now an AnimatePresence + motion.div — chat icon (and its
+    // open chat window) only mount AFTER user has scrolled. Slide-up from y:32
+    // with Apple-decel easing matches the FloatingBriefCTA's entrance so both
+    // floating elements appear in sync.
+    <AnimatePresence>
+      {scrollStarted && (
+        <motion.div
+          className="hidden md:block fixed bottom-6 right-6 z-[1001]"
+          data-no-cursor-fx="true"
+          initial={{ opacity: 0, y: 32 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 32 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        >
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -285,6 +302,8 @@ export function Chatbot() {
           </AnimatePresence>
         </motion.button>
       </div>
-    </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
