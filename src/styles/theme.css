@@ -347,10 +347,10 @@
   /* Body text weights — Plus Jakarta Sans 400/500 match BW Haas Head 400/500 closely
      in body sizes (the weight gap appears mostly at display sizes), so no bump needed. */
 
-  /* Tracking — Plus Jakarta Sans is slightly more open by default. Loosen tighter
-     tracking by ~0.005em so headlines don't feel cramped on Safari only. */
+  /* Tracking — Plus Jakarta Sans renders slightly wider than BW Haas Head.
+     -0.02em (2%) brings headlines back to the same optical density on Safari. */
   html.safari .tracking-tighter {
-    letter-spacing: -0.015em !important;
+    letter-spacing: -0.02em !important;
   }
 
   .scrollbar-hide::-webkit-scrollbar {
