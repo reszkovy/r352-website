@@ -30,15 +30,19 @@
     <meta name="twitter:description" content="Strategic design partner for multi-location organizations. From strategy to rollout-ready delivery, powered by the r3loop methodology." />
     <meta name="twitter:image" content="https://r352.com/og-image.png" />
 
-    <!-- Font loading — Safari-safe: explicit stylesheet links with crossorigin.
-         Preconnect speeds up DNS. Stylesheet links with crossorigin="anonymous" ensures Safari
-         loads @font-face from CDN without security warnings.
-         Preconnect to cdn.fontshare.com — the actual .woff2 host (separate from the CSS host). -->
+    <!-- Font loading.
+         Chrome/Firefox/Edge: Tanker (Fontshare) for display + BW Haas Head (cdnfonts) for body.
+         Safari: Tanker (Fontshare — should now load with proper crossorigin) + Plus Jakarta Sans
+         (Google Fonts — rock-solid Safari CORS, free, variable). The html.safari class switches
+         body stack to Plus Jakarta Sans. Tanker is shared across all browsers as display font. -->
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin="anonymous" />
     <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=tanker@400&display=swap" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/bw-haas-head" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
