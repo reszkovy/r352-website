@@ -223,8 +223,9 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Footer Bottom — all elements aligned LEFT so they don't collide with floating Brief CTA + chat (which live bottom-right) */}
-          <div className="flex flex-wrap items-center gap-6 md:gap-8 border-t border-white/10 pt-12 pb-4">
+          {/* Footer Bottom — all elements aligned LEFT so they don't collide with floating Brief CTA + chat (which live bottom-right).
+              No divider above — pt-12 alone gives enough breathing room, and the divider was redundant with the one above the 4-col grid. */}
+          <div className="flex flex-wrap items-center gap-6 md:gap-8 pt-12 pb-4">
             <div className="flex items-center gap-4">
               <R352Symbol className="w-8 h-8 opacity-50" />
               <p className="text-xs font-display uppercase tracking-widest text-neutral-600">
