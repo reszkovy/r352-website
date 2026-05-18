@@ -1,4 +1,32 @@
-/* Font loading moved to index.html as explicit <link rel="stylesheet"> tags —
-   Safari + iOS Safari sometimes fail to load @import-chained external font CSS
-   when bundled through Vite (CORS + chain depth issue). Keeping this file
-   in case we need locally-defined @font-face declarations later. */
+/* ════════════════════════════════════════════════════════════════════════
+   Local Tanker @font-face — self-hosted because Fontshare CDN fails on
+   Safari (CORS / format-hint compatibility issues). Once /public/fonts/
+   tanker.woff2 exists, this declaration wins over the Fontshare CDN @font-face
+   loaded via index.html stylesheet link (defined later in document, so
+   last-wins semantics give us the local file).
+
+   If the .woff2 file is NOT present in /public/fonts/, the browser silently
+   falls back to the next declared font in the stack ("Plus Jakarta Sans"
+   SemiBold on Safari, or system sans-serif elsewhere). No errors thrown.
+
+   DOWNLOAD INSTRUCTIONS:
+     1. Visit https://www.fontshare.com/fonts/tanker
+     2. Click the "Download" button (top right of font preview)
+     3. Unzip the downloaded archive
+     4. Locate "Tanker-Regular.woff2"
+     5. Rename to "tanker.woff2"
+     6. Place in /Users/reszek/Desktop/R352 WEBSITE/public/fonts/tanker.woff2
+
+   Fontshare license allows self-hosting for any use — free and legal.
+   ════════════════════════════════════════════════════════════════════════ */
+
+@font-face {
+  font-family: "Tanker";
+  /* Try woff2 first (modern Safari + everything else), fall back to woff
+     (older iOS Safari 11-13 — some users still on these versions). */
+  src: url("/fonts/Tanker-Regular.woff2") format("woff2"),
+       url("/fonts/Tanker-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
