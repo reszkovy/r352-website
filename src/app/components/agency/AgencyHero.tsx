@@ -124,6 +124,15 @@ export function AgencyHero() {
                   <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.5} />
                 </a>
               </div>
+
+              {/* Brand signature line — "Move fast, steady cadence" demoted from headline to mantra position.
+                  Sits at the very bottom of the hero as a closing brand sign-off. Sentence-case lowercase
+                  for editorial feel, em-dash prefix as author signature convention, Tanker display font
+                  scaled down to ~24-32px so it reads as tagline rather than title. */}
+              <p className="mt-10 md:mt-14 font-display text-2xl md:text-4xl tracking-tight text-[#D4FF00]">
+                <span className="text-neutral-600 mr-3">—</span>
+                {t("hero.signature")}
+              </p>
             </div>
           </Reveal>
         </div>
