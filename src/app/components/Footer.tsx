@@ -56,29 +56,6 @@ export function Footer() {
                <div className="absolute inset-0 bg-gradient-to-r from-[#151515] via-transparent to-[#151515]" />
             </div>
 
-            {/* Rotating R-mark — subtle watermark in upper-right corner of footer CTA section.
-                Static R in center + circular ornament rotating around it. Soft brand presence,
-                not loud. Hidden on small screens (md:block) to avoid mobile clutter.
-                — animate-spin-slow keyframe defined in theme.css (40s linear infinite)
-                — both SVGs filter-inverted from their native dark fill (#181D1F) to off-white,
-                  then knocked down to 6% opacity so it reads as ambient, not foreground. */}
-            <div className="pointer-events-none absolute -top-12 -right-12 md:-top-20 md:-right-20 w-64 h-64 md:w-96 md:h-96 hidden md:block z-0">
-              <img
-                src="/footer-mark/wokolo.svg"
-                alt=""
-                aria-hidden="true"
-                className="absolute inset-0 w-full h-full animate-spin-slow"
-                style={{ filter: "brightness(0) invert(1)", opacity: 0.06 }}
-              />
-              <img
-                src="/footer-mark/r.svg"
-                alt=""
-                aria-hidden="true"
-                className="absolute inset-0 m-auto w-1/4 h-1/4"
-                style={{ filter: "brightness(0) invert(1)", opacity: 0.18 }}
-              />
-            </div>
-
             <div className="relative z-10">
               <p className="text-[#D4FF00] font-display uppercase tracking-widest text-sm mb-8">
                 {t("footer.idea")}
@@ -123,7 +100,8 @@ export function Footer() {
         <div className="max-w-[1800px] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-16 md:gap-8 border-t border-white/10 pt-16 mb-24">
             
-            {/* Column 1: Address + Personal brand */}
+            {/* Column 1: Studio address only — "Founded by Reszek" moved to Column 4 sibling
+                so it pairs with the rotating R-mark watermark on the opposite end of the row. */}
             <div className="md:col-span-1">
                <span className="block text-xs font-display uppercase tracking-widest text-neutral-500 mb-6">{t("footer.studio")}</span>
                <p className="text-lg text-neutral-300 leading-relaxed">
@@ -136,15 +114,6 @@ export function Footer() {
                  className="block text-lg text-neutral-300 mt-6 hover:text-[#D4FF00] transition-colors duration-500 w-fit"
                >
                  hello@r352.com
-               </a>
-               <a
-                 href="https://www.linkedin.com/in/przemyslawreszka/"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 className="group inline-flex items-center gap-2 text-sm text-neutral-400 mt-3 hover:text-[#D4FF00] transition-colors duration-300 w-fit"
-               >
-                 <span>Founded by Reszek · LinkedIn</span>
-                 <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">↗</span>
                </a>
             </div>
 
@@ -197,13 +166,47 @@ export function Footer() {
                </ul>
             </div>
 
-            {/* Column 4: Time */}
-            <div className="md:col-span-1 flex flex-col justify-between">
+            {/* Column 4: Time + Founded by Reszek + Rotating R-mark watermark.
+                R-mark sits BELOW the textual blocks, as a quiet ambient signature.
+                SVG fill is already #151515 (matches upper section bg) so it reads as a
+                ledwo-widoczny "darker shape on dark" watermark against the #0a0a0a lower bg. */}
+            <div className="md:col-span-1 flex flex-col gap-8 items-start">
                <div>
                   <span className="block text-xs font-display uppercase tracking-widest text-neutral-500 mb-6">{t("footer.local_time")}</span>
                   <p className="text-lg text-neutral-300">
                     Mallorca {new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Madrid' })} CET
                   </p>
+               </div>
+
+               {/* Personal brand line — moved here from Column 1 so it pairs with the R-mark.
+                   "Founded by Reszek · LinkedIn" reads as a personal signature beside the watermark. */}
+               <a
+                 href="https://www.linkedin.com/in/przemyslawreszka/"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="group inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-[#D4FF00] transition-colors duration-300 w-fit"
+               >
+                 <span>Founded by Reszek · LinkedIn</span>
+                 <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">↗</span>
+               </a>
+
+               {/* Rotating R-mark — animated brand signature.
+                   Static r.svg in center (smaller scale: w-1/6) + wokolo.svg rotating
+                   around it (40s linear infinite). Both SVGs use native fill #151515,
+                   matching upper section bg, rendering as quiet shape on #0a0a0a. */}
+               <div className="pointer-events-none relative w-40 h-40 md:w-48 md:h-48 mt-2">
+                  <img
+                    src="/footer-mark/wokolo.svg"
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute inset-0 w-full h-full animate-spin-slow"
+                  />
+                  <img
+                    src="/footer-mark/r.svg"
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute inset-0 m-auto w-1/6 h-1/6"
+                  />
                </div>
             </div>
           </div>
