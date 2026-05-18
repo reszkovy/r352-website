@@ -197,10 +197,10 @@ export function Footer() {
                    1/6 to 10%, keeping the visual hierarchy: big quiet rotation around
                    a small stable letter. Both SVGs use native fill #151515 — ledwo
                    widoczne darker shape on #0a0a0a lower-section bg. */}
-               {/* Container bumped +15% on top of previous +70% — wokolo grows,
-                   R fraction drops from 10% → 9% to keep letter at the same
-                   absolute size as before so visual hierarchy stays intact. */}
-               <div className="pointer-events-none relative w-[19.5rem] h-[19.5rem] md:w-[23.5rem] md:h-[23.5rem] mt-2">
+               {/* Container scaled +5% on top of previous +15% (cumulative +106% from
+                   original baseline). Wokolo grows, R fraction drops 9% → 8.5% to keep
+                   letter at the same absolute ~27/33px size — visual hierarchy intact. */}
+               <div className="pointer-events-none relative w-[20.5rem] h-[20.5rem] md:w-[24.5rem] md:h-[24.5rem] mt-2">
                   <img
                     src="/footer-mark/wokolo.svg"
                     alt=""
@@ -211,7 +211,7 @@ export function Footer() {
                     src="/footer-mark/r.svg"
                     alt=""
                     aria-hidden="true"
-                    className="absolute inset-0 m-auto w-[9%] h-[9%]"
+                    className="absolute inset-0 m-auto w-[8.5%] h-[8.5%]"
                   />
                </div>
             </div>
