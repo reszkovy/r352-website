@@ -13,7 +13,8 @@ export const translations = {
       tagline: "YOUR AGILE DESIGN PARTNER"
     },
     hero: {
-      title: "Design operations<br/>& delivery systems<br/>— built to scale.",
+      title: "Design operations & delivery<br/>systems — built to scale.",
+      // Mobile keeps 3-line break for narrow viewports — long words wrap badly at 48px.
       title_mobile: "Design operations<br/>& delivery systems<br/>— built to scale.",
       // "Move fast, steady cadence" demoted from headline to signature line below the divider —
       // becomes brand mantra / closing thought rather than primary explanatory copy.
@@ -552,7 +553,8 @@ export const translations = {
       tagline: "TWÓJ SPRAWNY PARTNER DESIGNOWY"
     },
     hero: {
-      title: "Operacje designu<br/>& systemy wdrożeniowe<br/>— zbudowane do skali.",
+      title: "Operacje designu & systemy<br/>wdrożeniowe — zbudowane do skali.",
+      // Mobile keeps 3-line break for narrow viewports.
       title_mobile: "Operacje designu<br/>& systemy wdrożeniowe<br/>— zbudowane do skali.",
       // "Tempo bez chaosu" demoted from headline to signature line — brand mantra position.
       signature: "Tempo bez chaosu.",
