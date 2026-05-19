@@ -11,7 +11,9 @@ interface ServiceCard {
   title: string;
   description: string;
   output: string;
-  includes?: string[];
+  includes?: string[];        // main deliverables shown in expand state
+  whats_inside?: string[];    // sub-detail (lives on /deliverables, not duplicated here)
+  best_for?: string;          // 1-line audience filter shown after output
 }
 
 export function Services() {
@@ -263,10 +265,33 @@ export function Services() {
                              initial={{ opacity: 0, y: 12 }}
                              animate={{ opacity: 1, y: 0 }}
                              transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                             className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal max-w-4xl mb-16 [text-wrap:balance]"
+                             className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal max-w-4xl mb-12 [text-wrap:balance]"
                            >
                              {card.description}
                            </motion.p>
+
+                           {/* Includes — main deliverables list, brought in from /deliverables substance.
+                               Lime bullet markers + neutral text, 2-col layout for compactness on wider screens. */}
+                           {card.includes && card.includes.length > 0 && (
+                             <motion.div
+                               initial={{ opacity: 0, y: 12 }}
+                               animate={{ opacity: 1, y: 0 }}
+                               transition={{ duration: 0.6, delay: 0.14, ease: [0.16, 1, 0.3, 1] }}
+                               className="border-t border-neutral-200 dark:border-white/10 pt-10 mb-10 max-w-5xl"
+                             >
+                               <h3 className="text-xs font-display uppercase tracking-[0.2em] text-[#D4FF00] mb-5">
+                                 {language === 'pl' ? "Co zawiera" : "Includes"}
+                               </h3>
+                               <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-3">
+                                 {card.includes.map((inc: string, k: number) => (
+                                   <li key={k} className="text-[15px] md:text-base text-neutral-700 dark:text-neutral-300 flex items-start gap-3 leading-relaxed">
+                                     <span className="w-1 h-1 bg-[#D4FF00] mt-[10px] shrink-0 rounded-none" />
+                                     {inc}
+                                   </li>
+                                 ))}
+                               </ul>
+                             </motion.div>
+                           )}
 
                            {/* Output — the headline. Larger + heavier than description = clear hierarchy */}
                            <motion.div
@@ -278,11 +303,45 @@ export function Services() {
                              <h3 className="text-xs font-display uppercase tracking-[0.2em] text-[#D4FF00] mb-5">
                                {language === 'pl' ? "Wynik" : "Output"}
                              </h3>
-                             {/* text-balance — browser auto-balances line lengths so upper and lower lines have similar char count.
-                                 Fixes ragged-bottom typography where line 2 was 2× shorter than line 1. */}
                              <p className="text-2xl md:text-3xl lg:text-4xl text-neutral-900 dark:text-white font-normal tracking-tight leading-[1.2] [text-wrap:balance]">
                                {card.output}
                              </p>
+                           </motion.div>
+
+                           {/* Best for — short audience filter line, hair-line divider above */}
+                           {card.best_for && (
+                             <motion.div
+                               initial={{ opacity: 0, y: 12 }}
+                               animate={{ opacity: 1, y: 0 }}
+                               transition={{ duration: 0.6, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                               className="mt-10 flex flex-col sm:flex-row gap-3 sm:items-baseline border-t border-neutral-200 dark:border-white/10 pt-6 max-w-5xl"
+                             >
+                               <span className="text-xs font-display uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400 shrink-0">
+                                 {language === 'pl' ? "Dla kogo" : "Best for"}
+                               </span>
+                               <span className="text-sm md:text-base text-neutral-600 dark:text-neutral-300 leading-relaxed [text-wrap:pretty]">
+                                 {card.best_for}
+                               </span>
+                             </motion.div>
+                           )}
+
+                           {/* Deep-link to /deliverables anchor — for prospects who want full
+                               whats_inside detail (kept on /deliverables as deep-dive page).
+                               Anchor matches /deliverables's id={title.toLowerCase().replace(/\s+/g, '-')}. */}
+                           <motion.div
+                             initial={{ opacity: 0 }}
+                             animate={{ opacity: 1 }}
+                             transition={{ duration: 0.6, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                             className="mt-8 max-w-5xl"
+                           >
+                             <Link
+                               href={`/deliverables#${card.title.toLowerCase().replace(/\s+/g, '-')}`}
+                               className="group inline-flex items-center gap-3 text-xs font-display uppercase tracking-[0.2em] text-neutral-500 hover:text-[#D4FF00] transition-colors duration-500 cursor-pointer"
+                             >
+                               <span className="w-6 h-px bg-neutral-400 dark:bg-neutral-600 group-hover:bg-[#D4FF00] group-hover:w-10 transition-all duration-500" />
+                               <span>{language === 'pl' ? "Pełna lista deliverables" : "Full deliverables list"}</span>
+                               <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.5} />
+                             </Link>
                            </motion.div>
                          </div>
                        </motion.div>
