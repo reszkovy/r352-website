@@ -29,15 +29,15 @@ export function AgencyHero() {
           higher in viewport — guarantees they're visible above-the-fold on 1366×768 and up. */}
       <div className="flex-grow flex flex-col justify-end w-full max-w-[1800px] mx-auto px-8 md:px-12 pb-20 md:pb-24 pt-40 relative z-10 pointer-events-none">
         <div className="pointer-events-auto">
-          {/* Hero headline size — slightly reduced from 5xl/7xl/8xl to 4xl/6xl/7xl
-              (36/60/72px) per user request "odrobinę pomniejszyć". ~25% smaller, fits
-              2-line desktop / 3-line mobile comfortably above fold even on smaller laptops. */}
+          {/* Hero headline size — back up after 'design ops' shortened the headline.
+              5xl/7xl/8xl (48/72/96px) gives monumental feel without pushing CTAs below fold
+              (2-line desktop layout uses only ~192px vs the previous 3-line ~290px). */}
           <div className="hidden md:block">
             <CinematicText
               key={`hero-title-${theme}`}
               text={t("hero.title")}
               as="h1"
-              className="type-h1 !text-4xl md:!text-6xl lg:!text-7xl mb-6 md:mb-10 text-balance max-w-[95%] cursor-default"
+              className="type-h1 !text-5xl md:!text-7xl lg:!text-8xl mb-6 md:mb-10 text-balance max-w-[95%] cursor-default"
               delay={0.1}
               glowEffect={true}
               baseColor={baseColor}
@@ -49,7 +49,7 @@ export function AgencyHero() {
               key={`hero-title-mobile-${theme}`}
               text={t("hero.title_mobile")}
               as="div"
-              className="type-h1 !text-4xl md:!text-6xl lg:!text-7xl mb-6 md:mb-10 text-balance max-w-[95%] cursor-default"
+              className="type-h1 !text-5xl md:!text-7xl lg:!text-8xl mb-6 md:mb-10 text-balance max-w-[95%] cursor-default"
               delay={0.1}
               glowEffect={true}
               baseColor={baseColor}
