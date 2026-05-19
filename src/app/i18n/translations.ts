@@ -13,9 +13,10 @@ export const translations = {
       tagline: "YOUR AGILE DESIGN PARTNER"
     },
     hero: {
-      title: "Design operations & delivery<br/>systems — built to scale.",
-      // Mobile keeps 3-line break for narrow viewports — long words wrap badly at 48px.
-      title_mobile: "Design operations<br/>& delivery systems<br/>— built to scale.",
+      // "Design ops" = industry term (DesignOps Summit, Rosenfeld Media), shorter + punchier
+      // than "design operations". Headline fits cleaner at this length.
+      title: "Design ops & delivery<br/>systems — built to scale.",
+      title_mobile: "Design ops<br/>& delivery systems<br/>— built to scale.",
       // "Move fast, steady cadence" demoted from headline to signature line below the divider —
       // becomes brand mantra / closing thought rather than primary explanatory copy.
       signature: "Move fast, steady cadence.",
@@ -553,9 +554,9 @@ export const translations = {
       tagline: "TWÓJ SPRAWNY PARTNER DESIGNOWY"
     },
     hero: {
-      title: "Operacje designu & systemy<br/>wdrożeniowe — zbudowane do skali.",
-      // Mobile keeps 3-line break for narrow viewports.
-      title_mobile: "Operacje designu<br/>& systemy wdrożeniowe<br/>— zbudowane do skali.",
+      // "Design ops" anglicism — established in PL design community vocabulary.
+      title: "Design ops & systemy<br/>wdrożeniowe — zbudowane do skali.",
+      title_mobile: "Design ops<br/>& systemy wdrożeniowe<br/>— zbudowane do skali.",
       // "Tempo bez chaosu" demoted from headline to signature line — brand mantra position.
       signature: "Tempo bez chaosu.",
       description_title: "Dla marek multi-location i skalujących się operatorów.",
