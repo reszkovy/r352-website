@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>r352 — How I Run an Engagement · Operational Guide</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0A0A0A;
+    --surface: #141414;
+    --surface-2: #1c1c1c;
+    --border: rgba(255,255,255,0.08);
+    --border-strong: rgba(255,255,255,0.16);
+    --text: #FAFAFA;
+    --text-muted: #999;
+    --text-faint: #666;
+    --accent: #D4FF00;
+    --danger: #F87171;
+    --warn: #FCD34D;
+    --ok: #4ADE80;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, "SF Pro Text", BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    padding: 48px 32px 96px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  header { margin-bottom: 64px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+  .brand { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; font-weight: 600; }
+  h1 { font-size: 38px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 16px; max-width: 720px; }
+  h1 span { color: var(--accent); }
+  .lede { font-size: 15px; color: var(--text-muted); max-width: 680px; line-height: 1.7; }
+  .meta {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+  .meta strong { color: var(--accent); font-weight: 600; }
+
+  /* PHASE GROUPS */
+  .phase-group {
+    margin-bottom: 56px;
+  }
+  .phase-group-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--accent);
+  }
+  .phase-group-label {
+    font-family: ui-monospace, "SF Mono", "Menlo", monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .phase-group-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+
+  /* STAGE CARDS */
+  .stage {
+    margin-bottom: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 28px 32px;
+  }
+  .stage-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .stage-num {
+    font-family: ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .stage-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text);
+    flex: 1;
+    min-width: 200px;
+  }
+  .stage-time {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    padding: 4px 10px;
+    border: 1px solid var(--border-strong);
+  }
+
+  .stage h3 {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin: 20px 0 10px;
+  }
+
+  .stage p {
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    max-width: 720px;
+  }
+  .stage strong { color: var(--text); font-weight: 600; }
+
+  .stage ul, .stage ol {
+    padding-left: 22px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+  .stage li {
+    padding-left: 6px;
+    margin-bottom: 8px;
+  }
+  .stage li::marker { color: var(--accent); }
+  .stage ol li::marker { color: var(--accent); font-weight: 700; }
+
+  /* TEMPLATE BOX */
+  .template {
+    background: var(--surface-2);
+    border-left: 3px solid var(--accent);
+    padding: 20px 24px;
+    margin: 16px 0;
+    font-family: ui-monospace, "SF Mono", "Menlo", monospace;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.7;
+    white-space: pre-wrap;
+    border-radius: 0;
+  }
+  .template-label {
+    font-family: -apple-system, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+    font-weight: 700;
+  }
+  .template .var {
+    background: rgba(212, 255, 0, 0.12);
+    color: var(--accent);
+    padding: 1px 6px;
+    font-weight: 600;
+  }
+
+  /* DECISION TREE */
+  .decision {
+    background: rgba(252, 211, 77, 0.05);
+    border-left: 3px solid var(--warn);
+    padding: 16px 22px;
+    margin: 16px 0;
+  }
+  .decision-label {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--warn);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .decision p { color: var(--text); margin-bottom: 8px; }
+  .decision .branch {
+    margin-top: 8px;
+    padding-left: 18px;
+    color: var(--text-muted);
+    font-size: 13.5px;
+  }
+  .decision .branch::before {
+    content: "→ ";
+    color: var(--warn);
+    margin-left: -18px;
+  }
+
+  /* OUTPUT BOX */
+  .output {
+    background: rgba(74, 222, 128, 0.05);
+    border-left: 3px solid var(--ok);
+    padding: 12px 20px;
+    margin: 16px 0;
+    font-size: 13px;
+  }
+  .output-label {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ok);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .output p { color: var(--text); margin: 0; }
+
+  /* CLIENT VIEW BOX — what the client experiences at this stage */
+  .client-view {
+    background: rgba(94, 234, 212, 0.05);
+    border-left: 3px solid #5EEAD4;
+    padding: 16px 22px;
+    margin: 16px 0;
+    font-size: 13.5px;
+  }
+  .client-view-label {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #5EEAD4;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .client-view-label::before {
+    content: "◐";
+    font-size: 13px;
+  }
+  .client-view p { color: var(--text); margin: 0 0 6px; line-height: 1.7; }
+  .client-view p:last-child { margin-bottom: 0; }
+  .client-view em { color: #5EEAD4; font-style: normal; font-weight: 600; }
+
+  /* SCRIPT BOX */
+  .script {
+    background: rgba(212, 255, 0, 0.04);
+    border: 1px dashed var(--accent);
+    padding: 18px 22px;
+    margin: 16px 0;
+    font-style: italic;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .script-label {
+    font-style: normal;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  /* CHECKLIST */
+  .checklist {
+    margin: 16px 0;
+  }
+  .checklist li {
+    list-style: none;
+    padding: 8px 0 8px 32px;
+    position: relative;
+    color: var(--text);
+    border-bottom: 1px dashed var(--border);
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 12px;
+    width: 14px;
+    height: 14px;
+    border: 1.5px solid var(--border-strong);
+  }
+
+  /* APPENDIX */
+  .appendix {
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+  .appendix h2 {
+    font-size: 24px;
+    margin-bottom: 24px;
+    color: var(--text);
+  }
+
+  /* QUICK NAV */
+  .quicknav {
+    margin-bottom: 48px;
+    padding: 20px 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+  }
+  .quicknav-title {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+  .quicknav ol {
+    list-style: none;
+    counter-reset: nav-counter;
+    columns: 2;
+    column-gap: 32px;
+  }
+  @media (max-width: 720px) { .quicknav ol { columns: 1; } }
+  .quicknav li {
+    counter-increment: nav-counter;
+    padding: 5px 0 5px 34px;
+    position: relative;
+    font-size: 13px;
+    break-inside: avoid;
+  }
+  .quicknav li::before {
+    content: counter(nav-counter, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 5px;
+    color: var(--accent);
+    font-family: ui-monospace, monospace;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .quicknav a { color: var(--text); text-decoration: none; }
+  .quicknav a:hover { color: var(--accent); }
+
+  footer {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--text-faint);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">r352 · how I run an engagement · dual-audience guide</div>
+  <h1>The whole flow, <span>step by step.</span></h1>
+  <p class="lede">
+    Jeden dokument — dwie perspektywy. Companion do strategic Client Leadership Map (która tłumaczy <em>dlaczego</em>).
+    Ten doc to <strong style="color:var(--accent)">co i kiedy</strong> — konkretne ruchy, czas, templatki, skrypty —
+    a obok każdego etapu, <strong style="color:#5EEAD4">co widzi klient</strong> w plain language. Wracaj tu gdy lead
+    wpadnie, call do zaplanowania, proposal do napisania, kickoff do prowadzenia. Klient może czytać tylko sekcje
+    <strong style="color:#5EEAD4">◐ Co widzi klient</strong> — będą się składać w spójną opowieść o tym, czego się
+    spodziewać.
+  </p>
+
+  <div style="margin-top: 20px; padding: 16px 20px; background: var(--surface); border: 1px solid var(--border); font-size: 12.5px; line-height: 1.7;">
+    <div style="font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 10px;">How to read this doc</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+      <div>
+        <span style="color: var(--accent); font-weight: 700;">▸ Reszek:</span> <span style="color: var(--text-muted);">scan</span> <span style="color: var(--accent);">accent boxes</span> <span style="color: var(--text-muted);">(templates, scripts, decisions, checklists). Run from this.</span>
+      </div>
+      <div>
+        <span style="color: #5EEAD4; font-weight: 700;">◐ Klient:</span> <span style="color: var(--text-muted);">skanuj tylko</span> <span style="color: #5EEAD4;">teal boxes</span> <span style="color: var(--text-muted);">— wyjaśniają co się dzieje na każdym etapie z Waszej perspektywy.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="meta">
+    <strong>Primary user</strong> Reszek · <strong>Secondary</strong> client (read-only) · <strong>Format</strong> reference guide · <strong>Revise</strong> after each closed engagement
+  </div>
+</header>
+
+<!-- QUICK NAV -->
+<div class="quicknav">
+  <div class="quicknav-title">10 stages — quick jump</div>
+  <ol>
+    <li><a href="#s1">Lead arrives</a></li>
+    <li><a href="#s2">Discovery call prep</a></li>
+    <li><a href="#s3">Discovery call</a></li>
+    <li><a href="#s4">Proposal & close</a></li>
+    <li><a href="#s5">Pre-kickoff</a></li>
+    <li><a href="#s6">Kickoff call</a></li>
+    <li><a href="#s7">Discovery + Map (Wk 1-2)</a></li>
+    <li><a href="#s8">Build cadence (Wk 3+)</a></li>
+    <li><a href="#s9">Monthly/Quarterly review</a></li>
+    <li><a href="#s10">Renewal or Handover</a></li>
+  </ol>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- PRE-SALE                                                          -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<div class="phase-group">
+  <div class="phase-group-header">
+    <div class="phase-group-label">A — PRE-SALE</div>
+    <div class="phase-group-title">From lead to signed contract</div>
+  </div>
+
+  <!-- STAGE 1 -->
+  <div class="stage" id="s1">
+    <div class="stage-head">
+      <div class="stage-num">STAGE 01</div>
+      <div class="stage-title">Lead arrives</div>
+      <div class="stage-time">15 min</div>
+    </div>
+
+    <h3>Immediate action</h3>
+    <ol>
+      <li>Otwórz Perfect Match Scorecard (PERFECT-MATCH-MAP.html, sekcja 01)</li>
+      <li>Sprawdź LinkedIn profile decision makera — czy COO / CMO / Founder</li>
+      <li>Skanuj firmę 60 sekund — strona, portfolio, social → multi-X complexity?</li>
+      <li>Klikasz 7 checków na scorecardzie → otrzymujesz verdict</li>
+    </ol>
+
+    <div class="decision">
+      <div class="decision-label">Decision tree</div>
+      <p><strong>6-7 ✓ — FAST-TRACK</strong></p>
+      <div class="branch">Wyślij Calendly link w odpowiedzi w 24h. Zarezerwuj 90-min slot.</div>
+      <p style="margin-top:12px;"><strong>4-5 ✓ — DIAGNOSTIC-FIRST</strong></p>
+      <div class="branch">Zaproponuj €2k Diagnostic jako entry point. <em>"Sprawdźmy fit zanim zainwestujemy oboje czas."</em></div>
+      <p style="margin-top:12px;"><strong>1-3 ✓ — DECLINE</strong></p>
+      <div class="branch">Polite no. Polecz alternatywę (mniejsza agencja / freelancer). Wracaj do real work.</div>
+    </div>
+
+    <div class="template">
+<div class="template-label">Template — Fast-track reply (6-7 ✓)</div>
+Dzień dobry <span class="var">[Imię]</span>,
+
+Dzięki za wiadomość. Sytuacja którą opisaliście (<span class="var">[krótkie podsumowanie problemu 1 zdanie]</span>) brzmi jak nasz core terrain — robiliśmy podobne wdrożenia dla <span class="var">[najbliższy case study]</span>.
+
+Proponuję 90-minutowy call w którym wyjdziemy z 3 rzeczami: jasnym scope problem, możliwym frameworkiem rozwiązania, i pierwszą wyceną. Link do mojego kalendarza: <span class="var">[Calendly URL]</span>
+
+Pozdrawiam,
+Reszek
+    </div>
+
+    <div class="template">
+<div class="template-label">Template — Diagnostic-first reply (4-5 ✓)</div>
+Dzień dobry <span class="var">[Imię]</span>,
+
+Brzmi że <span class="var">[problem]</span> wymaga gruntownego rozeznania zanim ruszymy w pełne wdrożenie. Mam dla takich sytuacji 5-dniowy Diagnostic za €2k — kończy się napisanym audytem + roadmapą. Jeśli rekomendacje nie są implementowalne w 60 dni, zwracam pieniądze.
+
+20-minutowy call żeby ustalić scope diagnozy: <span class="var">[Calendly]</span>
+
+Pozdrawiam,
+Reszek
+    </div>
+
+    <div class="output">
+      <div class="output-label">Output of this stage</div>
+      <p>Calendly booked (fast-track) OR Diagnostic proposal sent OR polite decline. Decyzja w 24h od kontaktu.</p>
+    </div>
+
+    <div class="client-view">
+      <div class="client-view-label">Co widzi klient</div>
+      <p>Wysyłacie wiadomość przez formularz / LinkedIn / mail. <em>W ciągu 24h</em> dostajecie konkretną odpowiedź:
+      albo link do mojego kalendarza na 90-min rozmowę (jeśli problem pasuje do tego, co robię), albo propozycję
+      5-dniowej diagnozy za €2k (jeśli sytuacja wymaga jeszcze rozeznania), albo szczerą informację że to nie mój
+      obszar + polecenie do kogo lepiej się zgłosić. Bez ghostingu, bez "odezwę się w przyszłym tygodniu".</p>
+    </div>
+  </div>
+
+
+  <!-- STAGE 2 -->
+  <div class="stage" id="s2">
+    <div class="stage-head">
+      <div class="stage-num">STAGE 02</div>
+      <div class="stage-title">Discovery call prep</div>
+      <div class="stage-time">30 min · day before call</div>
+    </div>
+
+    <h3>Pre-call checklist</h3>
+    <ul class="checklist">
+      <li>Przejrzyj LinkedIn (decision maker + 2 inne osoby z teamu)</li>
+      <li>Otwórz ich aktualną stronę — zapisz 3 obserwacje (visual, copy, navigation pain)</li>
+      <li>Sprawdź ich ostatnie press release / news (jeśli istnieją)</li>
+      <li>Zidentyfikuj najbliższy case study z Twojego portfolio (1 mainstream + 1 wildcard)</li>
+      <li>Przygotuj 3 otwierające pytania — pisemnie</li>
+      <li>Otwórz Notion / Notepad z template'em call notes</li>
+      <li>Sprawdź mikrofon, kamerę, link Zoom/Meet</li>
+    </ul>
+
+    <h3>3 pytania których ZAWSZE używam</h3>
+    <ol>
+      <li><strong>"Co Was do mnie sprowadziło teraz?"</strong> — urgency reveal</li>
+      <li><strong>"Co próbowaliście dotąd?"</strong> — competitive landscape + co nie zadziałało</li>
+      <li><strong>"Jak wyobrażacie sobie sukces tego projektu w 6 miesięcy?"</strong> — outcome expectation</li>
+    </ol>
+
+    <div class="output">
+      <div class="output-label">Output</div>
+      <p>Notebook gotowy. 3 pytania w głowie. 1 case study match wybrany. Calendly potwierdzony.</p>
+    </div>
+
+    <div class="client-view">
+      <div class="client-view-label">Co widzi klient</div>
+      <p>Tego etapu praktycznie nie widzicie — to moja praca <em>przed</em> spotkaniem. Ale efekt zauważycie:
+      wchodzę na call znając Waszą firmę, Waszą stronę, Waszych ostatnich ruchów (press, news, premiery).
+      Nie zadaję pytań typu <em>"czym się zajmujecie?"</em>. Zaczynamy od razu od meritum.</p>
+    </div>
+  </div>
+
+
+  <!-- STAGE 3 -->
+  <div class="stage" id="s3">
+    <div class="stage-head">
+      <div class="stage-num">STAGE 03</div>
+      <div class="stage-title">Discovery call</div>
+      <div class="stage-time">90 min</div>
+    </div>
+
+    <h3>Agenda (proportions)</h3>
+    <ol>
+      <li><strong>5 min</strong> — Intro & rapport. <em>"Zanim wejdziemy w meritum, krótko o sobie..."</em></li>
+      <li><strong>15 min</strong> — 3 otwierające pytania. <strong>Słuchasz 80% czasu.</strong></li>
+      <li><strong>15 min</strong> — Reflective summary. <em>"Jeśli dobrze rozumiem, prawdziwy problem to nie X tylko Y..."</em></li>
+      <li><strong>15 min</strong> — Wprowadzasz r3loop framework jako lens (nie sprzedaż)</li>
+      <li><strong>15 min</strong> — Pokazujesz 1-2 case studies bezpośrednio mapowane</li>
+      <li><strong>10 min</strong> — Engagement options (3 modele: Sprint / Retainer / Diagnostic — narrow do 2 najbardziej relevant)</li>
+      <li><strong>10 min</strong> — Budget conversation. <em>"Jaki budżet macie na rozwiązanie tego?"</em></li>
+      <li><strong>5 min</strong> — Next step: <em>"Proposal w 72h. Decyzja po Waszej stronie."</em></li>
+    </ol>
+
+    <div class="script">
+      <span class="script-label">Opening line (after rapport)</span>
+      Chciałbym tę rozmowę poprowadzić tak — najpierw posłucham 30 minut żebym zrozumiał Wasz kontekst, potem pokażę co widzę i jakbym to ugryzł. Brzmi sensownie?
+    </div>
+
+    <div class="script">
+      <span class="script-label">Reflective summary trigger</span>
+      Słyszę tu kilka rzeczy. Spróbuję podsumować — poprawcie mnie jeśli źle interpretuję. Wasz prawdziwy problem nie jest <em>[symptom]</em>, jak początkowo brzmiało — tylko <em>[root cause]</em>. Czy to się zgadza z tym jak Wy to widzicie?
+    </div>
+
+    <div class="script">
+      <span class="script-label">Budget question</span>
+      Zanim zakończymy — pytanie o budżet. Nie żeby Was teraz zamknąć w cyfrze, tylko żebym wiedział czy proposal który Wam napiszę jest w realnym przedziale. Jaki rząd wielkości macie na ten obszar w tym roku?
+    </div>
+
+    <div class="decision">
+      <div class="decision-label">If they push back on budget question</div>
+      <p>Czasem klient mówi: <em>"to zależy od propozycji"</em>.</p>
+      <div class="branch">Odpowiedź: <em>"Rozumiem. Pomóc mi ustalić zakres — czy mówimy o €5k, €25k, czy €100k+ w 12 miesięcy? Cokolwiek z tych przedziałów, dopasuję propozycję."</em></div>
+    </div>
+
+    <div class="output">
+      <div class="output-label">Output</div>
+      <p>3 rzeczy z calla: (1) problem zrozumiany i nazwany ich słowami; (2) 2 engagement options narrowed; (3) budget bracket known. Termin proposal: 72h.</p>
+    </div>
+
+    <div class="client-view">
+      <div class="client-view-label">Co widzi klient</div>
+      <p>90-minutowa rozmowa, którą sami będziecie prowadzić bardziej niż ja. Pierwsze 30 minut <em>słucham</em> —
+      o Waszym kontekście, próbach, blokerach, co Was tu sprowadziło teraz. Potem podsumowuję, co usłyszałem,
+      i sprawdzam czy się zgadza z tym, jak Wy to widzicie. Dopiero potem mówię, co widzę z drugiej strony
+      i jakbym to ugryzł.</p>
+      <p>Pod koniec rozmowy zadam pytanie o budżet — nie żeby Was zamknąć w cyfrze, tylko żebym wiedział,
+      czy propozycja, którą napiszę, mieści się w Waszym realnym przedziale. <em>Wychodzicie z trzema rzeczami:</em>
+      Wasz prawdziwy problem nazwany, 1-2 modele współpracy zawężone, jasny termin na propozycję — 72h.</p>
+    </div>
+  </div>
+
+
+  <!-- STAGE 4 -->
+  <div class="stage" id="s4">
+    <div class="stage-head">
+      <div class="stage-num">STAGE 04</div>
+      <div class="stage-title">Proposal & close</div>
+      <div class="stage-time">72h delivery · 14 days to close</div>
+    </div>
+
+    <h3>Proposal format — 1 strona maks</h3>
+    <ol>
+      <li><strong>Problem</strong> — 2 zdania nazywające co rozwiązujemy <em>(ich słowami z calla)</em></li>
+      <li><strong>Approach</strong> — 3-4 zdania jak r3loop to ugryzie</li>
+      <li><strong>Engagement</strong> — model + scope (Sprint/Retainer/Enterprise + co dokładnie wchodzi)</li>
+      <li><strong>Timeline</strong> — kiedy start, kiedy 1st deliverable, kiedy zamknięcie</li>
+      <li><strong>Investment</strong> — twarda cena. Bez "od €X". Fixed lub monthly.</li>
+      <li><strong>Why us</strong> — 1 reason-to-believe: case study + KPI</li>
+      <li><strong>Next step</strong> — <em>"Akceptacja w pdf'ie + kontrakt w 24h"</em></li>
+    </ol>
+
+    <div class="template">
+<div class="template-label">Proposal email template</div>
+Dzień dobry <span class="var">[Imię]</span>,
+
+Po naszej rozmowie ułożyłem propozycję — w załączniku 1-stronicowy dokument.
+
+Kluczowe punkty:
+— Engagement: <span class="var">[Sprint / Retainer / Enterprise]</span>
+— Scope: <span class="var">[3-line summary]</span>
+— Timeline: <span class="var">[X tygodni od start]</span>
+— Investment: <span class="var">[€X fixed]</span> lub <span class="var">[€X/mo]</span>
+
+Jeśli to mieści się w Waszym myśleniu — proszę o sygnał, podpiszemy kontrakt w 24h od zielonego światła. Jeśli scope wymaga adjustacji, jedno 30-min calla wystarczy.
+
+Pozdrawiam,
+Reszek
+    </div>
+
+    <h3>Common objections + responses</h3>
+
+    <div class="decision">
+      <div class="decision-label">"Za drogo"</div>
+      <div class="branch"><em>"Te ceny są skalibrowane pod konkretną wartość — 12-miesięczny ROI. Jeśli teraz nie mieści się w budżecie, może warto zacząć od Diagnostic za €2k — sprawdzimy fit i nie wchodzimy w pełne wdrożenie."</em></div>
+    </div>
+
+    <div class="decision">
+      <div class="decision-label">"Mamy budżet €X, ale propozycja €Y"</div>
+      <div class="branch"><em>"Mogę dopasować scope do €X — usuwamy <strong>[mniej priorytetowy element]</strong> z scope. Ale samej stawki nie obniżam, bo to wpływa na quality bar. Co Wy na to?"</em></div>
+    </div>
+
+    <div class="decision">
+      <div class="decision-label">"Musimy to przemyśleć"</div>
+      <div class="branch"><em>"Jasne. Ile czasu? Jeśli za 7 dni nie ma decyzji, proposal się dezaktualizuje (mam ograniczone slots) — wtedy napisz, ustalimy następny window."</em></div>
+    </div>
+
+    <div class="decision">
+      <div class="decision-label">"Możecie zrobić to taniej / szybciej?"</div>
+      <div class="branch"><em>"Tańsze tak — odjąć scope. Szybsze tak — odjąć quality. Tańsze i szybsze z tym samym scope/quality — nie."</em></div>
+    </div>
+
+    <div class="output">
+      <div class="output-label">Output</div>
+      <p>Signed contract + first payment received before any work starts.</p>
+    </div>
+
+    <div class="client-view">
+      <div class="client-view-label">Co widzi klient</div>
+      <p>W ciągu 72h od rozmowy dostajecie <em>jednostronicowy</em> dokument: problem (Waszymi słowami),
+      podejście, model współpracy, timeline, twarda cena (bez "od €X"), jeden powód, dla którego warto,
+      i następny krok. Bez 20-stronicowej prezentacji, bez slidów-buforów. Akceptujecie pdf'a — kontrakt
+      do podpisu w 24h.</p>
+      <p>Jeśli scope wymaga adjustacji, jedna 30-min rozmowa wystarczy. Jeśli budżet się nie spina, mogę
+      ściąć scope — ale stawki nie obniżam, bo to wpływa na poziom roboty. Jeśli potrzebujecie więcej czasu
+      na decyzję — okej, ale propozycja ma 7-dniowy window (mam ograniczone sloty).</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- ENGAGEMENT                                                        -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<div class="phase-group">
+  <div class="phase-group-header">
+    <div class="phase-group-label">B — ENGAGEMENT</div>
+    <div class="phase-group-title">From kickoff to last delivery</div>
+  </div>
+
+  <!-- STAGE 5 -->
+  <div class="stage" id="s5">
+    <div class="stage-head">
+      <div class="stage-num">STAGE 05</div>
+      <div class="stage-title">Pre-kickoff (48h before)</div>
+      <div class="stage-time">2h prep</div>
+    </div>
+
+    <h3>What to send to client</h3>
+    <ul class="checklist">
+      <li>Email z linkiem do CLIENT-ONBOARDING.html (spersonalizowany — [Company name], [Engagement], [Start date])</li>
+      <li>Calendar invite na kickoff call (90 min, Zoom/Meet)</li>
+      <li>Workspace invites: Figma (read-only), Notion engagement page, shared Drive folder</li>
+      <li>Pre-kickoff brief: 3-5 pytań do których chcesz mieć odpowiedź na call</li>
+      <li>1-page contract summary (sukces metrics + ownership split + first deliverable date)</li>
+    </ul>
+
+    <div class="template">
+<div class="template-label">Pre-kickoff email</div>
+Dzień dobry <span class="var">[Imię]</span>,
+
+Kickoff w <span class="var">[data]</span>. Tutaj wszystko czego potrzebujecie żeby pierwsze 90 minut przebiegło sprawnie:
+
+1. Doc onboarding: <span class="var">[link]</span> — proszę przeczytać przed callem (10 minut)
+2. Workspace: <span class="var">[Figma + Notion links]</span> — zaproszenia idą osobno
+3. Pre-call brief (3 pytania): <span class="var">[link do Notion strony]</span> — odpowiedzi mile widziane przed callem, ale jeśli nie macie czasu, omówimy na żywo
+
+Plan callu:
+— 10 min: scope confirm
+— 30 min: stakeholder mapping
+— 30 min: known blockers
+— 20 min: communication cadence
+
+Do zobaczenia.
+
+Reszek
+    </div>
+
+    <div class="output">
+      <div class="output-label">Output</div>
+      <p>Klient ma wszystko czego potrzebuje. Workspace ready. Pre-kickoff brief w ich kalendarzu jako prep task.</p>
+    </div>
+
+    <div class="client-view">
+      <div class="client-view-label">Co widzi klient</div>
+      <p>Na 48h przed kickoff'em dostajecie maila z trzema rzeczami: <em>(1)</em> link do onboarding doc'a
+      (10 minut czytania — wyjaśnia, jak pracujemy razem); <em>(2)</em> zaproszenia do Figmy + Notion +
+      shared drive; <em>(3)</em> 3 pytania do przemyślenia przed callem. Odpowiedzi mile widziane wcześniej,
+      ale jeśli nie macie czasu, omówimy na żywo.</p>
+      <p>Wchodzicie na kickoff przygotowani — nie marnujemy 30 minut na <em>"a co to jest, a kto to robi"</em>.</p>
+    </div>
+  </div>
+
+
+  <!-- STAGE 6 -->
+  <div class="stage" id="s6">
+    <div class="stage-head">
+      <div class="stage-num">STAGE 06</div>
+      <div class="stage-title">Kickoff call</div>
+      <div class="stage-time">90 min · Day 1</div>
+    </div>
+
+    <h3>Agenda (strict timing)</h3>
+    <ol>
+      <li><strong>0:00-0:05</strong> — Greetings, confirm onboarding doc read</li>
+      <li><strong>0:05-0:15</strong> — Scope confirmation (recap from proposal — they say yes/adjust)</li>
+      <li><strong>0:15-0:45</strong> — Stakeholder mapping (whiteboard in Figma, live)</li>
+      <li><strong>0:45-1:15</strong> — Known blockers (rzeczy które klient wie że pójdą źle)</li>
+      <li><strong>1:15-1:30</strong> — Communication cadence (Friday delivery, Monday brief, Monthly sync)</li>
+    </ol>
+
+    <div class="script">
+      <span class="script-label">Opening line</span>
+      Cel tego calla: wyjść z 3 rzeczami — stakeholder map, listą 3 blokerów których się boicie, i kalendarzem pierwszego delivery'a. 90 minut. Nie mniej, nie więcej. OK?
+    </div>
+
+    <h3>Stakeholder mapping live</h3>
+    <p>Rysujesz w Figma live, w real-time, z udziałem klienta. Format:</p>
+    <ul>
+      <li><strong>Nazwa</strong> + <strong>rola</strong> + <strong>decision rights</strong> + <strong>response SLA</strong></li>
+      <li>Identyfikacja decision gates per major work category</li>
+      <li>Wskazanie potential bottlenecks (np. <em>"OK, czyli każdą rzecz musimy zatwierdzić u dyrektora który jest 2 dni w tygodniu — to istotne"</em>)</li>
+    </ul>
+
+    <h3>Known blockers — pytania</h3>
+    <ol>
+      <li><em>"Co Wam dotąd nie poszło z poprzednimi agencjami / freelancerami?"</em></li>
+      <li><em>"Gdzie zawsze utykają decyzje?"</em></li>
+      <li><em>"Co ma najwięcej szans pójść źle w tym engagement?"</em></li>
+    </ol>
+
+    <div class="output">
+      <div class="output-label">Output</div>
+      <p>Stakeholder + decision map signed off in Notion. 3 known blockers documented. First deliverable date locked. Communication cadence written.</p>
+    </div>
+
+    <div class="client-view">
+      <div class="client-view-label">Co widzi klient</div>
+      <p>90 minut, ostre tempo. Wychodzimy z trzema rzeczami: <em>(1)</em> mapa decyzyjna — kto co zatwierdza,
+      w jakim czasie, gdzie naturalnie utykają decyzje u Was; <em>(2)</em> 3 znane blokery — rzeczy, o których
+      Wy już wiecie że pójdą trudno; <em>(3)</em> kalendarz dostaw — kiedy spodziewać się pierwszego output'u
+      i jak wygląda nasz tygodniowy rytm.</p>
+      <p>Bez wstępów. Cel pierwszego calla to nie "poznajmy się" — to <em>"wyjdźmy z 3 konkretami"</em>.
+      Po kickoff'ie wiecie dokładnie, czego się spodziewać w pierwszych 2 tygodniach.</p>
+    </div>
+  </div>
+
+
+  <!-- STAGE 7 -->
+  <div class="stage" id="s7">
+    <div class="stage-head">
+      <div class="stage-num">STAGE 07</div>
+      <div class="stage-title">Discovery + Map (Week 1-2)</div>
+      <div class="stage-time">~10h spread across 10 days</div>
+    </div>
+
+    <h3>Discovery activities</h3>
+    <ul class="checklist">
+      <li>Async audit current files (Figma, Drive, briefs, internal docs) — 3h</li>
+      <li>3 stakeholder interviews 30-min each (COO + CMO + senior designer) — 1.5h</li>
+      <li>Mapowanie current process flow — 2h</li>
+      <li>Identification 3-5 friction points — 1h</li>
+      <li>Drafting written diagnosis 1-page — 2h</li>
+      <li>Validation 60-min sync z klientem — 1h</li>
+    </ul>
+
+    <h3>Output template — Written Diagnosis</h3>
+    <div class="template">
+<div class="template-label">Diagnosis document structure</div># r352 × <span class="var">[Client]</span> — Diagnostic Findings
+
+## Stated problem
+<span class="var">[What client said they wanted fixed]</span>
+
+## Actual problem
+<span class="var">[What you discovered is the real issue]</span>
+
+## 3-5 friction points
+1. <span class="var">[Point 1]</span> — impact + frequency
+2. <span class="var">[Point 2]</span>
+3. <span class="var">[Point 3]</span>
+
+## Approach (60-day roadmap)
+— Week 1-2: <span class="var">[What we tackle first]</span>
+— Week 3-4: <span class="var">[Next layer]</span>
+— Week 5-8: <span class="var">[System deployment]</span>
+
+## Success metrics (proposed)
+— <span class="var">[Metric 1, baseline, target]</span>
+— <span class="var">[Metric 2]</span>
+
+## Decision required from client
+<span class="var">[1-2 things needed before we proceed]</span>
+    </div>
+
+    <div class="output">
+      <div class="output-label">Output</div>
+      <p>Written diagnosis signed off by client. Real problem named. 3-5 friction points addressed in scope. Build roadmap accepted.</p>
+    </div>
+
+    <div class="client-view">
+      <div class="client-view-label">Co widzi klient</div>
+      <p>Pierwsze 2 tygodnie to <em>nie</em> jest "Reszek znika i pojawia się za miesiąc z deck'iem".
+      Robię async audit Waszych obecnych plików (Figma, Drive, briefy), 3 krótkie 30-min rozmowy z kluczowymi
+      osobami w teamie (np. COO + CMO + senior designer), mapuję obecny proces i wskazuję 3-5 miejsc,
+      gdzie wycieka czas / jakość / decyzje.</p>
+      <p>Pod koniec drugiego tygodnia dostajecie <em>jednostronicową diagnozę</em>: co powiedzieliście że jest
+      problemem, co faktycznie jest problemem (często to nie to samo), gdzie konkretnie boli, i 60-dniową
+      roadmapę. To jest moment decyzji — jeśli się zgadzacie, ruszamy z build cadence. Jeśli nie, do diagnozy
+      można wrócić — ale rekomendacje zostają u Was.</p>
+    </div>
+  </div>
+
+
+  <!-- STAGE 8 -->
+  <div class="stage" id="s8">
+    <div class="stage-head">
+      <div class="stage-num">STAGE 08</div>
+      <div class="stage-title">Build cadence (Week 3+)</div>
+      <div class="stage-time">Recurring weekly</div>
+    </div>
+
+    <h3>Weekly rhythm</h3>
+    <ul>
+      <li><strong>Monday 9:00</strong> — Send written brief: co shipped Friday, co w flight, co need from client (5 min read)</li>
+      <li><strong>Tuesday-Thursday</strong> — Heads-down build work</li>
+      <li><strong>Thursday 17:00</strong> — Async Loom check-in z preview piątkowego delivery</li>
+      <li><strong>Friday 17:00 CET</strong> — Delivery pack drop (folder + Loom walkthrough + 1-page summary)</li>
+    </ul>
+
+    <div class="template">
+<div class="template-label">Monday brief template</div>**r352 × <span class="var">[Client]</span> — Week <span class="var">[N]</span> Brief**
+
+🟢 Shipped Friday:
+— <span class="var">[Item 1]</span>
+— <span class="var">[Item 2]</span>
+
+🟡 In flight this week:
+— <span class="var">[Item 3]</span> — target Friday
+— <span class="var">[Item 4]</span> — target Friday
+
+🔴 Need from you:
+— <span class="var">[Decision X]</span> — by Wednesday EOD
+— <span class="var">[Asset Y]</span> — ASAP
+
+This week's call: <span class="var">[Day, time]</span> — agenda już w Notion.
+    </div>
+
+    <div class="template">
+<div class="template-label">Friday delivery pack email</div>**r352 × <span class="var">[Client]</span> — Week <span class="var">[N]</span> Delivery**
+
+Folder z plikami: <span class="var">[link]</span>
+
+Loom walkthrough (8 min): <span class="var">[link]</span>
+
+Summary (1-page): <span class="var">[link]</span>
+
+Next week: <span class="var">[1-line preview]</span>
+
+Pytania → Figma comments albo Slack <span class="var">[#kanał]</span>.
+    </div>
+
+    <h3>Governance gates</h3>
+    <ul>
+      <li><strong>Gate 1 — Master approval</strong> (Reszek self-gate): jeden raz per concept</li>
+      <li><strong>Gate 2 — Variant approval</strong> (Client mid-level): per variant/location</li>
+      <li><strong>Gate 3 — Pre-production</strong> (Client senior): przed przejściem do produkcji print/digital final</li>
+    </ul>
+
+    <div class="decision">
+      <div class="decision-label">If gate doesn't close in 48h</div>
+      <div class="branch">Send reminder z explicit deadline: <em>"Cisza powyżej 48h = implicit approval, proceedujemy. Jeśli nie OK, daj sygnał w 24h."</em></div>
+    </div>
+
+    <div class="output">
+      <div class="output-label">Output (per week)</div>
+      <p>Delivery pack on time. Monday brief on time. 3 gates progress visible. Klient ma weekly outcome.</p>
+    </div>
+
+    <div class="client-view">
+      <div class="client-view-label">Co widzi klient</div>
+      <p>Tygodniowy rytm, na który możecie liczyć jak na zegarek:</p>
+      <p><em>Poniedziałek 9:00</em> — krótki brief (5 min czytania): co zostało dostarczone w piątek, co jest
+      w robocie, czego potrzebuję od Was w tym tygodniu i kiedy. <em>Czwartek 17:00</em> — Loom z preview
+      tego, co przyjdzie w piątek (możecie spokojnie zareagować przed dostawą). <em>Piątek 17:00 CET</em> —
+      delivery pack: folder z plikami + 8-minutowy Loom walkthrough + jednostronicowe podsumowanie.</p>
+      <p>Decyzje idą przez 3 bramki: <em>(1)</em> akceptacja master'a (główny koncept), <em>(2)</em> akceptacja
+      wariantu (np. konkretna lokalizacja / kampania), <em>(3)</em> pre-production przed final'em. Cisza powyżej
+      48h = implicit approval. Pytajcie w Figma comments lub na Slacku — nie SMS-em, nie telefonem
+      (brak audit trail).</p>
+    </div>
+  </div>
+
+
+  <!-- STAGE 9 -->
+  <div class="stage" id="s9">
+    <div class="stage-head">
+      <div class="stage-num">STAGE 09</div>
+      <div class="stage-title">Monthly + Quarterly review</div>
+      <div class="stage-time">30-90 min per cadence</div>
+    </div>
+
+    <h3>Monthly review (30 min, first Tuesday of month)</h3>
+    <ol>
+      <li><strong>5 min</strong> — Recap last month numbers vs targets</li>
+      <li><strong>15 min</strong> — 3 wins, 3 losses, 3 things to change</li>
+      <li><strong>10 min</strong> — Next month focus + 1 forward-looking recommendation</li>
+    </ol>
+
+    <div class="template">
+<div class="template-label">Monthly outcome report (end of month, written)</div>**r352 × <span class="var">[Client]</span> — Month <span class="var">[N]</span> Outcome Report**
+
+## Numbers
+— <span class="var">[KPI 1]</span>: <span class="var">[baseline] → [actual]</span> (target: <span class="var">[X]</span>)
+— <span class="var">[KPI 2]</span>: <span class="var">[baseline] → [actual]</span>
+
+## 3 wins
+1. <span class="var">[Win 1]</span>
+2. <span class="var">[Win 2]</span>
+3. <span class="var">[Win 3]</span>
+
+## 3 misses / things to change
+1. <span class="var">[Miss 1]</span> — why + fix proposed
+2. <span class="var">[Miss 2]</span>
+
+## Next month focus
+<span class="var">[1-2 priority initiatives]</span>
+
+## Recommendation
+<span class="var">[1 forward-looking thing client should consider]</span>
+    </div>
+
+    <h3>Quarterly review (90 min)</h3>
+    <ol>
+      <li><strong>20 min</strong> — Quarter-over-quarter metric review</li>
+      <li><strong>30 min</strong> — What worked / didn't / what evolves</li>
+      <li><strong>20 min</strong> — Scope refresh for next quarter</li>
+      <li><strong>20 min</strong> — Renewal conversation (if engagement ending)</li>
+    </ol>
+
+    <div class="output">
+      <div class="output-label">Output</div>
+      <p>Monthly report delivered. Quarterly review done with scope evolution decision OR renewal commitment.</p>
+    </div>
+
+    <div class="client-view">
+      <div class="client-view-label">Co widzi klient</div>
+      <p>Raz w miesiącu, pierwszy wtorek — 30-minutowa rozmowa: liczby vs targety, 3 wygrane, 3 porażki,
+      3 rzeczy do zmiany w przyszłym miesiącu. Pod koniec miesiąca dostajecie <em>outcome report</em> na piśmie
+      — żeby było co pokazać u Was wyżej (zarząd, sponsor projektu).</p>
+      <p>Raz na kwartał — 90 minut na review w szerszej skali: jak wygląda metrics QoQ, co warto ewoluować
+      w scope na następny kwartał, czy są obszary do rozszerzenia. Jeśli to ostatni kwartał kontraktu —
+      rozmawiamy o renewal albo handover w spokoju, bez presji ostatniego tygodnia.</p>
+    </div>
+  </div>
+
+
+  <!-- STAGE 10 -->
+  <div class="stage" id="s10">
+    <div class="stage-head">
+      <div class="stage-num">STAGE 10</div>
+      <div class="stage-title">Renewal or Handover</div>
+      <div class="stage-time">Last 30 days of engagement</div>
+    </div>
+
+    <div class="decision">
+      <div class="decision-label">Decision tree at month -1</div>
+      <p><strong>Path A — RENEW (same scope)</strong></p>
+      <div class="branch">Send renewal contract z 30-day notice. Standard. Może też cena +5-10% YoY.</div>
+      <p style="margin-top:12px;"><strong>Path B — EXPAND (cross-sell)</strong></p>
+      <div class="branch">Pokazujesz nowy engagement model (np. Retainer → Operating Partner). Propose w call'u quarterly review.</div>
+      <p style="margin-top:12px;"><strong>Path C — HANDOVER (close out)</strong></p>
+      <div class="branch">Complete documentation. 2-hour training session. 30-day Q&A access. Closing call + testimonial + referral ask.</div>
+    </div>
+
+    <h3>Handover checklist</h3>
+    <ul class="checklist">
+      <li>System documentation complete (Notion / Figma)</li>
+      <li>2-hour training session done (Loom recording dla replay)</li>
+      <li>Access permissions cleaned (kto co zachowuje)</li>
+      <li>30-day Q&A access protokół ustalony</li>
+      <li>Closing call done (1h, lessons both sides)</li>
+      <li>Testimonial request sent in writing</li>
+      <li>Referral ask: <em>"Do kogo z Waszego networku pasuje to co robimy?"</em></li>
+      <li>Invoice closeout + final receipt</li>
+    </ul>
+
+    <div class="script">
+      <span class="script-label">Referral ask script</span>
+      Skoro to co budowaliśmy razem działa — kogo z Waszego networku uważacie że ma podobny problem ale jeszcze go nie rozwiązał? Nie chcę zimnego intro, tylko: jeśli kiedyś rozmowa o multi-location operations przyjdzie naturalnie, jedno zdanie z Twojej strony otwiera drogę.
+    </div>
+
+    <div class="output">
+      <div class="output-label">Output</div>
+      <p>3 outcomes: <strong>renewal signed OR clean handover + testimonial + at least 1 referral conversation initiated</strong>.</p>
+    </div>
+
+    <div class="client-view">
+      <div class="client-view-label">Co widzi klient</div>
+      <p>Na 30 dni przed końcem kontraktu rozmawiamy o jednej z trzech ścieżek: <em>(A)</em> renewal w tym samym
+      scope, ten sam tryb pracy — tylko podpis; <em>(B)</em> rozszerzenie — np. z Retainer'a do Operating
+      Partnera, dorzucamy nowy obszar; <em>(C)</em> czysty handover — domykamy projekt, ja oddaję Wam
+      dokumentację systemu, 2-godzinną sesję szkoleniową (z Loom'em na replay), i 30-dniowy dostęp do Q&A
+      już bez kontraktu.</p>
+      <p>Niezależnie od ścieżki: closing call (godzina, lessons po obu stronach), prośba o testimonial na
+      piśmie i jedno pytanie — <em>"kogo z Waszego networku to co budowaliśmy mogłoby zainteresować?"</em>
+      Bez wymuszania intro. Jeśli kiedyś naturalnie przyjdzie rozmowa, jedno Wasze zdanie otwiera drogę.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- APPENDIX                                                          -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<div class="appendix">
+  <h2>Appendix — quick references</h2>
+
+  <h3 style="color:var(--accent); font-size:12px; letter-spacing:0.2em; text-transform:uppercase; font-weight:700; margin-bottom:14px;">A1 — Communication channels</h3>
+  <ul>
+    <li><strong>Async-first:</strong> Email, Figma comments, Loom video</li>
+    <li><strong>Sync (rare):</strong> Zoom/Meet for kickoff, monthly review, quarterly review</li>
+    <li><strong>Real-time chat (optional):</strong> Slack channel per client engagement — for fast questions only, not for assignments</li>
+    <li><strong>NIGDY:</strong> SMS, telefon, WhatsApp — bo bez audit trail</li>
+  </ul>
+
+  <h3 style="color:var(--accent); font-size:12px; letter-spacing:0.2em; text-transform:uppercase; font-weight:700; margin-bottom:14px; margin-top: 28px;">A2 — Tool stack per engagement</h3>
+  <ul>
+    <li><strong>Figma</strong> — primary design surface, all deliverables live here</li>
+    <li><strong>Notion</strong> — engagement workspace, decision log, brief templates</li>
+    <li><strong>Loom</strong> — async video walkthroughs</li>
+    <li><strong>Drive / Dropbox</strong> — final exports, per-wave folders</li>
+    <li><strong>Calendar</strong> — for the rare scheduled syncs</li>
+  </ul>
+
+  <h3 style="color:var(--accent); font-size:12px; letter-spacing:0.2em; text-transform:uppercase; font-weight:700; margin-bottom:14px; margin-top: 28px;">A3 — Red flags during engagement</h3>
+  <ul>
+    <li>Klient nie czyta Friday delivery packs przez 2 tygodnie → eskalacja, sprawdź czy projekt ma sponsor</li>
+    <li>3+ open gates older than 7 days → governance breakdown, request urgent sync</li>
+    <li>Scope creep prośby bez gotowości do scope addendum → "OK zrobimy, ale wchodzi w nowy contract addendum + nowa wycena"</li>
+    <li>Nowy stakeholder dołącza po stronie klienta i revoke'uje wcześniejsze decyzje → ich onboarding (z Twoim documentation) jest osobno, nie zatrzymuje engagement</li>
+    <li>Klient prosi o discount mid-engagement → never; możesz odjąć scope ale nie cenę</li>
+  </ul>
+
+  <h3 style="color:var(--accent); font-size:12px; letter-spacing:0.2em; text-transform:uppercase; font-weight:700; margin-bottom:14px; margin-top: 28px;">A4 — Pricing quick reference</h3>
+  <ul>
+    <li><strong>Diagnostic</strong> — €2k fixed, 5 days, 60-day money-back jeśli rekomendacje nie są implementowalne</li>
+    <li><strong>Sprint</strong> — €15k+ fixed, 4-6 weeks, defined scope</li>
+    <li><strong>Retainer</strong> — €7k+/mo, 30-day notice, evolving scope per quarter</li>
+    <li><strong>Enterprise Sprint</strong> — €55k+ fixed, 12-16 weeks, multi-location rollout</li>
+    <li><strong>Operating Partner</strong> — €9.5k+/mo, embedded role, 12-month minimum</li>
+    <li><strong>Productized package</strong> (np. Investment Launch Campaign) — €20k fixed, 4 weeks, fixed scope per asset</li>
+  </ul>
+</div>
+
+
+<footer>
+  Last updated 2026-05-19 · r352 operational guide · companion do CLIENT-LEADERSHIP-MAP.html · revise after each closed engagement
+</footer>
+
+</body>
+</html>

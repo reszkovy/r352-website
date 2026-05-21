@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>r352 — Tydzień 19-25 maja</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0A0A0A;
+    --surface: #141414;
+    --border: rgba(255,255,255,0.08);
+    --border-strong: rgba(255,255,255,0.16);
+    --text: #FAFAFA;
+    --text-muted: #999;
+    --text-faint: #666;
+    --accent: #D4FF00;
+    --done: #4ADE80;
+    --critical: #F87171;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, "SF Pro Text", BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    padding: 48px 32px 96px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  header { margin-bottom: 48px; border-bottom: 1px solid var(--border); padding-bottom: 32px; }
+  .brand { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+  h1 { font-size: 36px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 12px; }
+  h1 span { color: var(--accent); }
+  .lede { font-size: 14px; color: var(--text-muted); max-width: 680px; line-height: 1.7; }
+
+  .progress-bar {
+    margin-top: 28px;
+    width: 100%;
+    max-width: 680px;
+    height: 4px;
+    background: rgba(255,255,255,0.06);
+    position: relative;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+  .progress-label {
+    margin-top: 10px;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 680px;
+  }
+  .progress-label span { color: var(--accent); font-weight: 600; }
+
+  .reset-btn {
+    background: transparent;
+    border: 1px solid var(--border-strong);
+    color: var(--text-muted);
+    padding: 5px 10px;
+    font-family: inherit;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .reset-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* DAY CARDS */
+  .day {
+    margin-bottom: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transition: all 0.2s ease;
+  }
+  .day.done {
+    border-color: rgba(74, 222, 128, 0.4);
+    background: rgba(74, 222, 128, 0.03);
+  }
+  .day-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+  }
+  .day-date {
+    font-family: ui-monospace, "SF Mono", "Menlo", monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    min-width: 100px;
+  }
+  .day-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    flex: 1;
+  }
+  .day.done .day-title {
+    color: var(--text-muted);
+    text-decoration: line-through;
+    text-decoration-color: rgba(255,255,255,0.2);
+  }
+  .day-time {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+  .day-body { padding: 20px 24px; }
+
+  /* TASK ITEMS */
+  .task {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 1px dashed var(--border);
+  }
+  .task:last-child { border-bottom: none; }
+  .task-check {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border-strong);
+    flex-shrink: 0;
+    margin-top: 2px;
+    position: relative;
+    transition: all 0.2s ease;
+  }
+  .task.done .task-check {
+    border-color: var(--done);
+    background: var(--done);
+  }
+  .task.done .task-check::after {
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 4px;
+    width: 5px;
+    height: 9px;
+    border: solid #000;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  .task-body { flex: 1; }
+  .task-label {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .task.done .task-label {
+    color: var(--text-faint);
+    text-decoration: line-through;
+  }
+  .task-detail {
+    margin-top: 6px;
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    padding-left: 0;
+  }
+  .task-detail .hook {
+    margin-top: 6px;
+    padding: 10px 12px;
+    background: rgba(212, 255, 0, 0.04);
+    border-left: 2px solid var(--accent);
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: 12px;
+  }
+  .task-meta {
+    margin-top: 6px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+  .task-meta strong { color: var(--accent); font-weight: 500; }
+
+  .task.core .task-label { font-weight: 600; }
+
+  /* MVP SECTION */
+  .mvp {
+    margin-top: 48px;
+    background: rgba(212, 255, 0, 0.04);
+    border: 1px solid var(--accent);
+    padding: 24px 28px;
+  }
+  .mvp-title {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .mvp-desc {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+  .mvp ol {
+    list-style: none;
+    counter-reset: mvp-counter;
+  }
+  .mvp li {
+    counter-increment: mvp-counter;
+    padding: 8px 0;
+    padding-left: 32px;
+    position: relative;
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .mvp li::before {
+    content: counter(mvp-counter);
+    position: absolute;
+    left: 0;
+    top: 8px;
+    color: var(--accent);
+    font-family: ui-monospace, monospace;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .mvp li strong { color: var(--text); }
+
+  /* AVOID SECTION */
+  .avoid {
+    margin-top: 32px;
+    background: rgba(248, 113, 113, 0.04);
+    border: 1px solid rgba(248, 113, 113, 0.3);
+    padding: 24px 28px;
+  }
+  .avoid-title {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--critical);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .avoid ul { list-style: none; }
+  .avoid li {
+    padding: 6px 0 6px 28px;
+    color: var(--text-muted);
+    font-size: 13px;
+    position: relative;
+    text-decoration: line-through;
+    text-decoration-color: rgba(248, 113, 113, 0.4);
+  }
+  .avoid li::before {
+    content: "✕";
+    position: absolute;
+    left: 0;
+    color: var(--critical);
+    font-weight: 600;
+  }
+
+  /* PLOT */
+  .plot {
+    margin-top: 32px;
+    padding: 24px 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+  }
+  .plot-title {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+  .plot p {
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .plot strong { color: var(--text); }
+
+  footer {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--text-faint);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">r352 · operating week · 19-25 maja 2026</div>
+  <h1>7 kroków <span>jeden tydzień</span></h1>
+  <p class="lede">Każdy dzień = jeden core action + supporting. Capacity-bound, ~2h/dzień growth work. Checkbox state zapamiętywany w przeglądarce — wracaj i odhaczaj.</p>
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+  <div class="progress-label">
+    <span><span id="progressCount">0</span> / <span id="progressTotal">0</span> tasks done</span>
+    <button class="reset-btn" onclick="resetAll()">Reset</button>
+  </div>
+</header>
+
+
+<!-- PONIEDZIAŁEK -->
+<div class="day" data-day="pon" id="day-pon">
+  <div class="day-header" onclick="toggleDay('pon')">
+    <div class="day-date">Pon 19.05</div>
+    <div class="day-title">Archicom — productized pitch</div>
+    <div class="day-time">90 min</div>
+  </div>
+  <div class="day-body">
+    <div class="task core" data-id="pon-1" onclick="toggleTask(this)">
+      <div class="task-check"></div>
+      <div class="task-body">
+        <div class="task-label">CORE — Napisz proposal dla 2 nowych inwestycji Archicom</div>
+        <div class="task-detail">
+          Format: <strong>"Investment Launch Campaign — €20k fixed, 4 tygodnie, fixed scope"</strong> — brand kit, 5-channel campaign, asset library, handover. Pierwszy productized precedens w r352.
+        </div>
+      </div>
+    </div>
+    <div class="task" data-id="pon-2" onclick="toggleTask(this)">
+      <div class="task-check"></div>
+      <div class="task-body">
+        <div class="task-label">SUPPORTING — Wyślij do Michaliny Piątkowskiej</div>
+        <div class="task-detail">
+          <div class="hook">"Wypracowaliśmy formułę która działa — proponuję pakiet 'Investment Launch Campaign' za €X fixed. Wy macie pełną predictability budżetu, my eliminujemy negocjacje wokół każdego projektu. Brzmi sensownie?"</div>
+        </div>
+        <div class="task-meta">
+          <span>OUTCOME: <strong>€40k pipeline w 7 dni</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- WTOREK -->
+<div class="day" data-day="wt" id="day-wt">
+  <div class="day-header" onclick="toggleDay('wt')">
+    <div class="day-date">Wt 20.05</div>
+    <div class="day-title">Warm bridge activation</div>
+    <div class="day-time">45 min</div>
+  </div>
+  <div class="day-body">
+    <div class="task core" data-id="wt-1" onclick="toggleTask(this)">
+      <div class="task-check"></div>
+      <div class="task-body">
+        <div class="task-label">CORE — DM do Joanny Lach (Zdrofit)</div>
+        <div class="task-detail">
+          <div class="hook">"Joanno, jeśli kiedyś w Twoim networku pojawi się ktoś z multi-location wellness/fitness brief volume problem — jedno zdanie z Twojej strony otwiera drogę."</div>
+        </div>
+      </div>
+    </div>
+    <div class="task core" data-id="wt-2" onclick="toggleTask(this)">
+      <div class="task-check"></div>
+      <div class="task-body">
+        <div class="task-label">CORE — DM do Filip Mazurkiewicz (Sonova/Geers)</div>
+        <div class="task-detail">
+          Analogiczny tekst pod multi-location medtech / healthcare. Build "warm bridge" status.
+        </div>
+      </div>
+    </div>
+    <div class="task" data-id="wt-3" onclick="toggleTask(this)">
+      <div class="task-check"></div>
+      <div class="task-body">
+        <div class="task-label">SUPPORTING — Profile-view Joanny + Filipa na LinkedIn</div>
+        <div class="task-detail">
+          Sprawdź ich engagement w ostatnich 30 dniach — czyje posty komentują? To są ich aktywne relacje.
+        </div>
+        <div class="task-meta">
+          <span>OUTCOME: <strong>2 osoby w warm bridge status</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ŚRODA -->
+<div class="day" data-day="sr" id="day-sr">
+  <div class="day-header" onclick="toggleDay('sr')">
+    <div class="day-date">Śr 21.05</div>
+    <div class="day-title">PL Tier A — CityFit cold DM</div>
+    <div class="day-time">30 min</div>
+  </div>
+  <div class="day-body">
+    <div class="task core" data-id="sr-1" onclick="toggleTask(this)">
+      <div class="task-check"></div>
+      <div class="task-body">
+        <div class="task-label">CORE — DM do CEO/Founder CityFit (Sebastian Buczek / Quercus)</div>
+        <div class="task-detail">
+          <div class="hook">"Sebastianie, widzę że CityFit otwiera kluby w tempie którego większość agencji operacyjnie nie obsłuży. Zrobiliśmy Zdrofit'owi system który dał 45% redukcji czasu ops + 12h/tydzień odzyskane przez middle management. 20-min call żeby pokazać framework?"</div>
+        </div>
+      </div>
+    </div>
+    <div class="task" data-id="sr-2" onclick="toggleTask(this)">
+      <div class="task-check"></div>
+      <div class="task-body">
+        <div class="task-label">SUPPORTING — Profile-view + komentarz pod ostatnim postem CityFit (warm-up)</div>
+        <div class="task-meta">
+          <span>OUTCOME: <strong>1 DM wysłany, realistic response ~20%</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- CZWARTEK -->
+<div class="day" data-day="cz" id="day-cz">
+  <div class="day-header" onclick="toggleDay('cz')">
+    <div class="day-date">Czw 22.05</div>
+    <div class="day-title">PL Tier A — Marvipol + Pasibus</div>
+    <div class="day-time">45 min</div>
+  </div>
+  <div class="day-body">
+    <div class="task core" data-id="cz-1" onclick="toggleTask(this)">
+      <div class="task-check"></div>
+      <div class="task-body">
+        <div class="task-label">CORE — DM do Marvipol (Mariusz Książek)</div>
+        <div class="task-detail">
+          <div class="hook">"Robimy z Archicom system kampanii multi-investment — każda inwestycja nowy brand w spójnych ramach. Pokażę framework w 20 min."</div>
+        </div>
+      </div>
+    </div>
+    <div class="task core" data-id="cz-2" onclick="toggleTask(this)">
+      <div class="task-check"></div>
+      <div class="task-body">
+        <div class="task-label">CORE — DM do Pasibus (Marcin Sztwiertnia)</div>
+        <div class="task-detail">
+          <div class="hook">"Pasibus 30+ lokali = brief volume problem. Rozwiązaliśmy ten dokładnie pattern dla DiscoBowl 20 venues UK. 20-min call?"</div>
+        </div>
+        <div class="task-meta">
+          <span>OUTCOME: <strong>2 DMs — łącznie 4 PL Tier A w tym tygodniu</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- PIĄTEK -->
+<div class="day" data-day="pt" id="day-pt">
+  <div class="day-header" onclick="toggleDay('pt')">
+    <div class="day-date">Pt 23.05</div>
+    <div class="day-title">Lane7 + DesignOps Summit submission</div>
+    <div class="day-time">90 min</div>
+  </div>
+  <div class="day-body">
+    <div class="task core" data-id="pt-1" onclick="toggleTask(this)">
+      <div class="task-check"></div>
+      <div class="task-body">
+        <div class="task-label">CORE — DM do Tim Wilks (Lane7) — UK premium bowling chain</div>
+        <div class="task-detail">
+          <div class="hook">"Tim, saw Lane7's latest opening — pace impressive. We built the operations layer behind DiscoBowl's 20-venue rollout (booking + venue brand consistency + local marketing briefs). Worth a 20-min comparison call?"</div>
+        </div>
+      </div>
+    </div>
+    <div class="task" data-id="pt-2" onclick="toggleTask(this)">
+      <div class="task-check"></div>
+      <div class="task-body">
+        <div class="task-label">SUPPORTING — Submit DesignOps Summit talk abstract</div>
+        <div class="task-detail">
+          Draft: <strong>"AI-native design ops at multi-complexity scale — lessons from 7 verticals"</strong>. 1h max — submission, nie perfection.
+        </div>
+        <div class="task-meta">
+          <span>OUTCOME: <strong>UK premium contact + speaker submission w pipeline</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- SOBOTA -->
+<div class="day" data-day="sb" id="day-sb">
+  <div class="day-header" onclick="toggleDay('sb')">
+    <div class="day-date">Sob 24.05</div>
+    <div class="day-title">regional.fit pilot outreach</div>
+    <div class="day-time">90 min</div>
+  </div>
+  <div class="day-body">
+    <div class="task" data-id="sb-1" onclick="toggleTask(this)">
+      <div class="task-check"></div>
+      <div class="task-body">
+        <div class="task-label">Zbuduj listę 10 PL fitness chains</div>
+        <div class="task-detail">
+          Calypso, Fabryka Formy, Pure Health, Holmes Place, Just Gym, Just Fit, Fitness Platinium, MK Fitness, Body Fit, Lemon Gym. *(CityFit już DM'd środa)*
+        </div>
+      </div>
+    </div>
+    <div class="task core" data-id="sb-2" onclick="toggleTask(this)">
+      <div class="task-check"></div>
+      <div class="task-body">
+        <div class="task-label">CORE — Wyślij 3 DMs z regional.fit demo + 30-day paid pilot offer</div>
+        <div class="task-detail">
+          <div class="hook">"Zbudowaliśmy regional.fit — system zarządzania lokalnym popytem dla sieci fitness. MVP live (briefing-system.vercel.app). Oferuję 30-day paid pilot za €2k. Krótki call?"</div>
+        </div>
+        <div class="task-meta">
+          <span>OUTCOME: <strong>3 fitness chains z regional.fit positioning</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- NIEDZIELA -->
+<div class="day" data-day="nd" id="day-nd">
+  <div class="day-header" onclick="toggleDay('nd')">
+    <div class="day-date">Nd 25.05</div>
+    <div class="day-title">Review + week 26.05 plan</div>
+    <div class="day-time">60 min</div>
+  </div>
+  <div class="day-body">
+    <div class="task core" data-id="nd-1" onclick="toggleTask(this)">
+      <div class="task-check"></div>
+      <div class="task-body">
+        <div class="task-label">CORE — Review co działało, co nie</div>
+        <div class="task-detail">
+          <strong>Pytania:</strong>
+          <ul style="margin-top: 8px; padding-left: 20px; color: var(--text-muted);">
+            <li>Ile DMs odpowiedziało? (target: 2 z 8)</li>
+            <li>Archicom proposal status?</li>
+            <li>Talk submission confirmation?</li>
+            <li>Co skalować w tygodniu 26.05-01.06?</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="task" data-id="nd-2" onclick="toggleTask(this)">
+      <div class="task-check"></div>
+      <div class="task-body">
+        <div class="task-label">SUPPORTING — Otwórz PERFECT-MATCH-MAP.html, odhacz progress</div>
+        <div class="task-detail">
+          Zobacz progress bar. Plan tygodnia 26.05 w oparciu o co odpowiedziało, co nie.
+        </div>
+        <div class="task-meta">
+          <span>OUTCOME: <strong>Calibrated week 2 plan</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- MINIMUM VIABLE -->
+<div class="mvp">
+  <div class="mvp-title">Minimum viable tydzień — jeśli capacity overload uderzy</div>
+  <div class="mvp-desc">Tylko 3 rzeczy muszą się stać. Reszta = bonus.</div>
+  <ol>
+    <li><strong>Archicom proposal</strong> (Pn) — €40k pipeline</li>
+    <li><strong>CityFit DM</strong> (Śr) — first cold outreach attempt</li>
+    <li><strong>DesignOps Summit submission</strong> (Pt) — speaker positioning</li>
+  </ol>
+</div>
+
+
+<!-- AVOID -->
+<div class="avoid">
+  <div class="avoid-title">NIE-DO-ZROBIENIA w tym tygodniu</div>
+  <ul>
+    <li>Site polish — moratorium kontynuowane</li>
+    <li>Footer tweaks — pomijamy</li>
+    <li>Re-evaluate audit findings — kończymy z tym</li>
+    <li>More copy iteration — "design ops & delivery systems — built to scale" zostaje 4 tygodnie</li>
+  </ul>
+</div>
+
+
+<!-- PLOT TEST -->
+<div class="plot">
+  <div class="plot-title">Plot test — co zmienia trajectorię</div>
+  <p>Z 7 actions, <strong>najbardziej plot-tier:</strong></p>
+  <p style="margin-top: 12px;">
+    <strong>1.</strong> Pierwsza productized package na klienta którego znałeś od lat — <strong>Archicom (Pn)</strong><br/>
+    <strong>2.</strong> Pierwszy cold DM do UK premium chain z DiscoBowl proof — <strong>Lane7 (Pt)</strong><br/>
+    <strong>3.</strong> Public speaker submission do DesignOps Summit — <strong>Pt</strong>
+  </p>
+  <p style="margin-top: 12px;">Te 3 zmieniają Twoją trajectorię. Reszta to operational consistency — ważne, ale nie story-defining.</p>
+</div>
+
+
+<footer>
+  Last updated 2026-05-19 · r352 operating week · <a href="https://r352.com">r352.com</a>
+</footer>
+
+
+<script>
+  const STORAGE_KEY = 'r352_week_19_25_may';
+
+  function loadState() {
+    try {
+      const state = localStorage.getItem(STORAGE_KEY);
+      return state ? JSON.parse(state) : { tasks: {} };
+    } catch (e) { return { tasks: {} }; }
+  }
+
+  function saveState(state) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) { /* noop */ }
+  }
+
+  let state = loadState();
+
+  // Initialize states
+  document.querySelectorAll('.task[data-id]').forEach(el => {
+    const id = el.dataset.id;
+    if (state.tasks[id]) el.classList.add('done');
+  });
+  updateDayStates();
+
+  function toggleTask(el) {
+    if (!el.dataset.id) return;
+    el.classList.toggle('done');
+    state.tasks[el.dataset.id] = el.classList.contains('done');
+    saveState(state);
+    updateProgress();
+    updateDayStates();
+  }
+
+  function toggleDay(dayId) {
+    // No-op for now — just click expand if needed in future
+  }
+
+  function updateDayStates() {
+    document.querySelectorAll('.day').forEach(day => {
+      const tasks = day.querySelectorAll('.task[data-id]');
+      const doneTasks = day.querySelectorAll('.task[data-id].done');
+      if (tasks.length > 0 && doneTasks.length === tasks.length) {
+        day.classList.add('done');
+      } else {
+        day.classList.remove('done');
+      }
+    });
+  }
+
+  function updateProgress() {
+    const all = document.querySelectorAll('.task[data-id]');
+    const done = document.querySelectorAll('.task[data-id].done');
+    const pct = all.length > 0 ? (done.length / all.length) * 100 : 0;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressCount').textContent = done.length;
+    document.getElementById('progressTotal').textContent = all.length;
+  }
+
+  function resetAll() {
+    if (!confirm('Reset wszystkich tasków?')) return;
+    state = { tasks: {} };
+    saveState(state);
+    document.querySelectorAll('.task[data-id]').forEach(el => el.classList.remove('done'));
+    updateProgress();
+    updateDayStates();
+  }
+
+  updateProgress();
+
+  // ═══ FOTRA EXPORT ═══
+  function exportToFotra() {
+    var WG_KEY = 'fotra_weekly_goals';
+    var days = document.querySelectorAll('.day[data-day]');
+    var weekDays = [];
+
+    days.forEach(function(dayEl) {
+      var titleEl = dayEl.querySelector('.day-title');
+      var timeEl = dayEl.querySelector('.day-time');
+      var tasks = [];
+
+      dayEl.querySelectorAll('.task[data-id]').forEach(function(taskEl) {
+        var labelEl = taskEl.querySelector('.task-label');
+        var isCore = taskEl.classList.contains('core');
+        var isDone = taskEl.classList.contains('done');
+        var label = labelEl ? labelEl.textContent.replace(/^(CORE|SUPPORTING)\s*—\s*/i, '').trim() : '';
+        tasks.push({ label: label, core: isCore, done: isDone });
+      });
+
+      weekDays.push({
+        title: titleEl ? titleEl.textContent.trim() : '',
+        time: timeEl ? timeEl.textContent.trim() : '',
+        tasks: tasks
+      });
+    });
+
+    // Extract week ID from page title/header
+    var brandEl = document.querySelector('.brand');
+    var labelText = brandEl ? brandEl.textContent.trim() : document.title;
+
+    // Calculate ISO week from first day date
+    var firstDateEl = document.querySelector('.day-date');
+    var weekId = '';
+    if (firstDateEl) {
+      var match = firstDateEl.textContent.match(/(\d{2})\.(\d{2})/);
+      if (match) {
+        var day = parseInt(match[1]), month = parseInt(match[2]);
+        var d = new Date(new Date().getFullYear(), month - 1, day);
+        var dayOfWeek = d.getDay() || 7;
+        d.setDate(d.getDate() + 4 - dayOfWeek);
+        var yearStart = new Date(d.getFullYear(), 0, 1);
+        var weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+        weekId = d.getFullYear() + '-W' + String(weekNo).padStart(2, '0');
+      }
+    }
+    if (!weekId) weekId = new Date().getFullYear() + '-W00';
+
+    // Extract label (e.g. "19-25 maja")
+    var h1 = document.querySelector('h1');
+    var label = '';
+    if (brandEl) {
+      var lm = brandEl.textContent.match(/(\d+[\-–]\d+\s+\w+\s*\d*)/);
+      if (lm) label = lm[1];
+    }
+    if (!label) label = weekId;
+
+    var plan = { label: label, days: weekDays };
+
+    // Save to localStorage
+    var data = {};
+    try { data = JSON.parse(localStorage.getItem(WG_KEY) || '{}'); } catch(e) {}
+    data[weekId] = plan;
+    localStorage.setItem(WG_KEY, JSON.stringify(data));
+
+    // Feedback
+    var totalTasks = 0;
+    weekDays.forEach(function(d) { totalTasks += d.tasks.length; });
+    var btn = document.getElementById('fotraExportBtn');
+    if (btn) {
+      btn.textContent = '✅ Wyeksportowano ' + totalTasks + ' tasków do FOTRA (' + weekId + ')';
+      btn.style.borderColor = 'rgba(74, 222, 128, 0.6)';
+      btn.style.color = '#4ADE80';
+      setTimeout(function() {
+        btn.textContent = '⚡ Eksportuj do FOTRA';
+        btn.style.borderColor = '';
+        btn.style.color = '';
+      }, 4000);
+    }
+  }
+</script>
+
+<!-- FOTRA Export Button -->
+<div style="margin-top:32px; margin-bottom:32px; text-align:center;">
+  <button id="fotraExportBtn" onclick="exportToFotra()" style="
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 12px 28px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  ">⚡ Eksportuj do FOTRA</button>
+  <div style="margin-top:8px; font-size:11px; color:var(--text-faint);">Synchronizuje taski + status z FOTRA Daily view</div>
+</div>
+
+</body>
+</html>

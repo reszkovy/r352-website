@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>r352 — Client Leadership Map · Internal</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0A0A0A;
+    --surface: #141414;
+    --border: rgba(255,255,255,0.08);
+    --border-strong: rgba(255,255,255,0.16);
+    --text: #FAFAFA;
+    --text-muted: #999;
+    --text-faint: #666;
+    --accent: #D4FF00;
+    --danger: #F87171;
+    --hook: #FCD34D;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, "SF Pro Text", BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    padding: 48px 32px 96px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  header { margin-bottom: 64px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+  .brand { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; font-weight: 600; }
+  h1 { font-size: 38px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 16px; max-width: 720px; }
+  h1 span { color: var(--accent); }
+  .lede { font-size: 15px; color: var(--text-muted); max-width: 680px; line-height: 1.7; }
+  .meta {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+  .meta strong { color: var(--accent); font-weight: 600; }
+
+  /* TOC */
+  .toc {
+    margin-bottom: 64px;
+    padding: 24px 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+  }
+  .toc-title {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .toc ol { list-style: none; counter-reset: toc-counter; }
+  .toc li {
+    counter-increment: toc-counter;
+    padding: 6px 0 6px 36px;
+    position: relative;
+    font-size: 14px;
+  }
+  .toc li::before {
+    content: counter(toc-counter, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 6px;
+    color: var(--accent);
+    font-family: ui-monospace, monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+  .toc a { color: var(--text); text-decoration: none; transition: color 0.2s ease; }
+  .toc a:hover { color: var(--accent); }
+
+  /* PHASE CARDS */
+  .phase {
+    margin-bottom: 56px;
+    padding: 36px 40px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    scroll-margin-top: 20px;
+  }
+  .phase-num {
+    font-family: ui-monospace, "SF Mono", "Menlo", monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .phase h2 {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    max-width: 600px;
+  }
+  .phase-when {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    padding: 5px 10px;
+    border: 1px solid var(--border-strong);
+    margin-bottom: 24px;
+  }
+
+  .block {
+    margin: 24px 0;
+  }
+  .block-label {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .block-label.why { color: var(--accent); }
+  .block-label.pitfall { color: var(--danger); }
+  .block-label.hook { color: var(--hook); }
+  .block-label.exit { color: var(--text-muted); }
+
+  .block p { color: var(--text-muted); margin-bottom: 10px; }
+  .block ul { padding-left: 22px; color: var(--text-muted); margin-bottom: 12px; }
+  .block ul li { padding-left: 6px; margin-bottom: 8px; }
+  .block ul li::marker { color: var(--accent); }
+  .block strong { color: var(--text); font-weight: 600; }
+
+  .why-block {
+    background: rgba(212, 255, 0, 0.04);
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    margin: 16px 0;
+  }
+  .why-block p { color: var(--text); }
+  .why-block .block-label { margin-bottom: 6px; }
+
+  .pitfall-block {
+    background: rgba(248, 113, 113, 0.04);
+    border-left: 3px solid var(--danger);
+    padding: 16px 20px;
+    margin: 16px 0;
+  }
+  .pitfall-block p, .pitfall-block li { color: var(--text-muted); }
+
+  .hook-block {
+    background: rgba(252, 211, 77, 0.05);
+    border-left: 3px solid var(--hook);
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-style: italic;
+  }
+  .hook-block p { color: var(--text); }
+  .hook-block strong { color: var(--hook); font-style: normal; }
+
+  .exit-block {
+    border: 1px dashed var(--border-strong);
+    padding: 14px 18px;
+    margin: 16px 0;
+  }
+  .exit-block p { color: var(--text); margin: 0; font-size: 13px; }
+
+  /* SUMMARY */
+  .summary {
+    margin-top: 80px;
+    padding: 36px 40px;
+    background: rgba(212, 255, 0, 0.06);
+    border: 1px solid var(--accent);
+  }
+  .summary-title {
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    font-weight: 700;
+  }
+  .summary h3 {
+    font-size: 22px;
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+  .summary ul { padding-left: 20px; color: var(--text-muted); }
+  .summary li { margin-bottom: 8px; }
+  .summary strong { color: var(--accent); }
+
+  footer {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--text-faint);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">r352 · internal playbook · client leadership map</div>
+  <h1>How I lead <span>a client through r3loop.</span></h1>
+  <p class="lede">
+    Internal operating playbook — co robię na każdej fazie i <strong style="color:var(--accent)">dlaczego</strong>.
+    Każda decyzja w sprzedaży i delivery ma swoją racjonalność strategiczną. Ten dokument to mapa
+    tej racjonalności. Czyta się raz, wraca przy każdym nowym kliencie.
+  </p>
+  <div class="meta">
+    <strong>Audience</strong> tylko ja · <strong>Version</strong> 2026.05 · <strong>Update cadence</strong> after every closed engagement
+  </div>
+</header>
+
+
+<div class="toc">
+  <div class="toc-title">12 phases — table of contents</div>
+  <ol>
+    <li><a href="#p1">Pre-engagement — qualification & fit check</a></li>
+    <li><a href="#p2">Discovery call — 90 minutes that close the deal</a></li>
+    <li><a href="#p3">Proposal & contract — pricing as filter</a></li>
+    <li><a href="#p4">Kickoff — first 24 hours set the tone</a></li>
+    <li><a href="#p5">Diagnose — find the real problem fast</a></li>
+    <li><a href="#p6">Map — stakeholders, decisions, ownership</a></li>
+    <li><a href="#p7">Standardize & Build — construct the system</a></li>
+    <li><a href="#p8">Govern — decision gates that prevent drift</a></li>
+    <li><a href="#p9">Ship — weekly cadence as identity</a></li>
+    <li><a href="#p10">Measure — metrics that justify the next quarter</a></li>
+    <li><a href="#p11">Iterate — close the loop, restart smarter</a></li>
+    <li><a href="#p12">Handover or Renewal — exit well, or expand</a></li>
+  </ol>
+</div>
+
+
+<!-- PHASE 1 -->
+<div class="phase" id="p1">
+  <div class="phase-num">PHASE 01</div>
+  <h2>Pre-engagement — qualification & fit check.</h2>
+  <div class="phase-when">Before discovery call · 5-15 min per lead</div>
+
+  <div class="block">
+    <div class="block-label">What I do</div>
+    <ul>
+      <li>Uruchamiam Perfect Match Scorecard (7 checks) na każdym leadzie</li>
+      <li>Sprawdzam profil decision makera na LinkedIn — czy jest COO / CMO / Founder czy operational mid-level</li>
+      <li>Skanuję ich site / portfolio — multi-X complexity faktyczna czy deklaratywna?</li>
+      <li>Decision routing: 6-7 ✓ → Calendly fast-track / 4-5 ✓ → Diagnostic-first / 1-3 ✓ → polite decline</li>
+    </ul>
+  </div>
+
+  <div class="why-block">
+    <div class="block-label why">Why</div>
+    <p>
+      Premium tier model umiera od złych klientów więcej niż od braku klientów. <strong>Każdy nie-fit
+      lead który zamykam = 3-4 miesiące mojego życia na engagement który nie buduje case study, nie
+      generuje referrali, męczy obie strony.</strong> Filter is the most expensive thing I never
+      do but always should.
+    </p>
+  </div>
+
+  <div class="pitfall-block">
+    <div class="block-label pitfall">Pitfall</div>
+    <p>
+      Pokusa <em>"weźmę bo cashflow"</em>. Każdy raz gdy łamię filter, regret kicks in w miesiąc 2.
+      Reguła: jeśli w głowie pojawia się <em>"będzie ciężko ale damy radę"</em> — to znaczy 4/7 max.
+      Skip. Powiedz nie. Polecz konkurenta jeśli muszisz być uprzejmy.
+    </p>
+  </div>
+
+  <div class="exit-block">
+    <p><strong>Exit criteria:</strong> Decyzja routing w 24h od pierwszego kontaktu. Bez dłuższego deliberacji.</p>
+  </div>
+</div>
+
+
+<!-- PHASE 2 -->
+<div class="phase" id="p2">
+  <div class="phase-num">PHASE 02</div>
+  <h2>Discovery call — 90 minutes that close the deal.</h2>
+  <div class="phase-when">Call 1 · 90 min · video</div>
+
+  <div class="block">
+    <div class="block-label">What I do</div>
+    <ul>
+      <li>Dwa pierwsze pytania: <em>"co Was tutaj sprowadziło teraz?"</em> i <em>"co próbowaliście dotąd?"</em></li>
+      <li>Słucham 80% czasu. Notuję 3 rzeczy: ból, próby, urgency</li>
+      <li>Refleksja: pokazuję że rozumiem ich problem lepiej niż oni sami go nazwali</li>
+      <li>Wprowadzam r3loop jako framework wyjaśniający — nie sprzedaję, edukuję</li>
+      <li>Pokazuję 1-2 case studies bezpośrednio mapowane do ich sytuacji</li>
+      <li>Pytam o budżet ostatnie 10 min: <em>"jaki jest budżet jaki możecie poświęcić na rozwiązanie tego?"</em></li>
+      <li>Kończę z 3 możliwymi engagement modelami + termin proposal: <em>"do 72h"</em></li>
+    </ul>
+  </div>
+
+  <div class="why-block">
+    <div class="block-label why">Why</div>
+    <p>
+      90 minut to dosłownie czas <strong>w którym klient decyduje czy chce ze mną pracować</strong> —
+      nie czas żebym ja decydował o nim. Reszta procesu *(proposal, kontrakt, kickoff)* jest tylko
+      operational przy YES albo NO które tu zapadnie. Jakość tych 90 minut decyduje o close rate
+      bardziej niż jakość proposala.
+    </p>
+  </div>
+
+  <div class="hook-block">
+    <div class="block-label hook">Hook I use</div>
+    <p>
+      <strong>"Nie sprzedaję designu. Sprzedaję rytm dostarczania designu. To inna kategoria zakupu —
+      podobnie jak różnica między kupieniem mebli a wyposażeniem biura."</strong>
+    </p>
+  </div>
+
+  <div class="pitfall-block">
+    <div class="block-label pitfall">Pitfall</div>
+    <p>
+      Pułapka demonstrating expertise zamiast słuchania. Premium tier sprzedaje się przez <em>"ten
+      człowiek rozumie mój problem"</em>, nie przez <em>"ten człowiek dużo wie"</em>. Jeśli mówię
+      więcej niż 30% — coś jest źle.
+    </p>
+  </div>
+
+  <div class="exit-block">
+    <p><strong>Exit criteria:</strong> Budżet wiadomy. 3 engagement options sformułowane. Decyzja co do proposal'a w 72h od calla.</p>
+  </div>
+</div>
+
+
+<!-- PHASE 3 -->
+<div class="phase" id="p3">
+  <div class="phase-num">PHASE 03</div>
+  <h2>Proposal & contract — pricing as filter.</h2>
+  <div class="phase-when">Post-call · 72h delivery</div>
+
+  <div class="block">
+    <div class="block-label">What I do</div>
+    <ul>
+      <li>1 strona proposal, nie 15. Format: problem → approach → engagement → price → next step</li>
+      <li>Pricing zawsze fixed (Sprint / Enterprise) lub monthly retainer. Nigdy hourly.</li>
+      <li>Productized package gdy to powtarzalny use case (jak Investment Launch Campaign dla Archicom)</li>
+      <li>Pricing podany twardo — bez <em>"od €X"</em>. Premium tier nie negocjuje publicznie</li>
+      <li>Dorzucam 1 reason-to-believe: case study match + 1 KPI z poprzednich klientów</li>
+      <li>Kontrakt: standardowy, 2-page, podpisuję w obie strony w 24h od akceptacji</li>
+    </ul>
+  </div>
+
+  <div class="why-block">
+    <div class="block-label why">Why</div>
+    <p>
+      Proposal nie sprzedaje — sprzedaje discovery call. Proposal <strong>buduje commitment psychologiczny</strong> przez
+      dwie rzeczy: <em>jasność scope</em> + <em>price jako filter</em>. Klient który zobaczy €30k i powie
+      <em>"za drogo"</em> nigdy nie był naszym klientem. Klient który powie <em>"OK tak"</em> już psychicznie
+      przeszedł najtrudniejszy próg — reszta to engagement, nie negocjacja.
+    </p>
+  </div>
+
+  <div class="hook-block">
+    <div class="block-label hook">Hook for pricing pushback</div>
+    <p>
+      <strong>"Te ceny są skalibrowane pod konkretną wartość którą generuję w 12 miesiącach. Jeśli teraz to za dużo,
+      to znaczy że ROI takich systemów nie domknie się w Waszej sytuacji w tym timeline. Jest większa szansa że
+      potrzebujecie kogoś tańszego — i to jest OK powiedzenie."</strong>
+    </p>
+  </div>
+
+  <div class="pitfall-block">
+    <div class="block-label pitfall">Pitfall</div>
+    <p>
+      Discount pressure. Jak tylko zacznę negocjować cenę <em>w dół</em>, zaczynam żeglowić ku
+      commodity tier. Pricing flexibility jest TYLKO przez <em>zwężenie scope'u</em>, nie obniżenie stawki.
+      <em>"Mogę zrobić mniej za €Y, ale nie mogę zrobić tyle samo za mniej"</em>.
+    </p>
+  </div>
+
+  <div class="exit-block">
+    <p><strong>Exit criteria:</strong> Signed contract + payment confirmed. Pierwsza wpłata przed jakąkolwiek pracą.</p>
+  </div>
+</div>
+
+
+<!-- PHASE 4 -->
+<div class="phase" id="p4">
+  <div class="phase-num">PHASE 04</div>
+  <h2>Kickoff — first 24 hours set the tone.</h2>
+  <div class="phase-when">Day 1 · 90-min call</div>
+
+  <div class="block">
+    <div class="block-label">What I do</div>
+    <ul>
+      <li>Wysyłam onboarding doc 48h przed callem (CLIENT-ONBOARDING.html)</li>
+      <li>Pierwsze 10 min: confirm scope, sprawdzam czy doc przeczytany</li>
+      <li>Następne 30 min: stakeholder mapping w czasie rzeczywistym (whiteboard / Figma)</li>
+      <li>30 min: identyfikacja blokerów już znanych (rzeczy które klient wie że pójdą źle)</li>
+      <li>Ostatnie 20 min: setting communication cadence (Friday delivery pack, Monday brief, monthly sync)</li>
+      <li>Po callu w 24h: shared workspace links, pre-kickoff brief, first deliverable date</li>
+    </ul>
+  </div>
+
+  <div class="why-block">
+    <div class="block-label why">Why</div>
+    <p>
+      Pierwsze 24h definiują kulturę engagement. Jeśli kickoff jest sprawny i decyzyjny — klient
+      kalibruje swoje oczekiwania na <em>"oni są szybcy i konkretni"</em>. Jeśli kickoff jest chaotyczny — kalibruje
+      się na <em>"trzeba im wszystko powtarzać"</em>. <strong>Ta kalibracja trwa cały engagement.</strong>
+    </p>
+  </div>
+
+  <div class="hook-block">
+    <div class="block-label hook">Opening line</div>
+    <p>
+      <strong>"Cel tego calla: wyjść z 3 rzeczami — stakeholder map, lista 3 blokerów których się boicie,
+      i kalendarz pierwszego delivery'a. 90 minut. Nie mniej, nie więcej."</strong>
+    </p>
+  </div>
+
+  <div class="pitfall-block">
+    <div class="block-label pitfall">Pitfall</div>
+    <p>
+      Pułapka <em>"powiedzcie mi o sobie"</em>. Nie — to zostawiam na discovery (już było). Kickoff
+      to <strong>execution call</strong>, nie introduction call. Jeśli ktoś nowy dołącza po stronie klienta —
+      ich onboarding jest osobno, nie zatrzymuje engagement.
+    </p>
+  </div>
+
+  <div class="exit-block">
+    <p><strong>Exit criteria:</strong> Stakeholder map zaktualizowana w shared workspace. First deliverable date locked. Communication cadence agreed in writing.</p>
+  </div>
+</div>
+
+
+<!-- PHASE 5 -->
+<div class="phase" id="p5">
+  <div class="phase-num">PHASE 05</div>
+  <h2>Diagnose — find the real problem fast.</h2>
+  <div class="phase-when">Day 2-7 · async + 1 sync call</div>
+
+  <div class="block">
+    <div class="block-label">What I do</div>
+    <ul>
+      <li>Async audit: dostaję dostęp do current files, briefs, internal docs</li>
+      <li>3 stakeholder interviews (30 min each) — typowo: COO, CMO, senior designer w teamie</li>
+      <li>Identifikuję 3-5 friction points — gdzie process się zacina</li>
+      <li>Dokumentuję obecny state w 1-page written diagnosis</li>
+      <li>Walidacja: 60-min call gdzie pokazuję diagnozę, klient potwierdza lub koryguje</li>
+    </ul>
+  </div>
+
+  <div class="why-block">
+    <div class="block-label why">Why</div>
+    <p>
+      Klienci często zatrudniają mnie żebym rozwiązał <em>symptom</em>, nie <em>root cause</em>. Mój
+      najmocniejszy ruch w diagnozie to <strong>nazwać prawdziwy problem słowami których klient nie używał</strong>.
+      <em>"Nie macie problemu z briefami — macie problem z decision rights. Briefy są symptomem."</em>
+    </p>
+    <p style="margin-top:12px;">
+      Ten moment psychologiczny — kiedy klient mówi <em>"o kurwa, tak właśnie jest"</em> — to moment kiedy
+      przestaję być vendorem i zaczynam być partnerem. <strong>Bez diagnozy która shift'uje frame, jestem tylko
+      kolejnym designerem.</strong>
+    </p>
+  </div>
+
+  <div class="hook-block">
+    <div class="block-label hook">Diagnostic frame</div>
+    <p>
+      <strong>"Nie chcę zacząć budować zanim wiem co jest naprawdę zepsute. To 5 dni pracy. Jeśli okaże się
+      że problem jest gdzie indziej niż myśleliście — zaoszczędzimy 3 miesiące."</strong>
+    </p>
+  </div>
+
+  <div class="pitfall-block">
+    <div class="block-label pitfall">Pitfall</div>
+    <p>
+      Skipowanie diagnozy bo <em>"klient wie czego chce"</em>. Nie zna. <strong>Jeśli klient wiedziałby
+      czego chce, miałby już to.</strong> Diagnoza to nie biurokracja — to moment gdzie zarabiam swoje pricing.
+    </p>
+  </div>
+
+  <div class="exit-block">
+    <p><strong>Exit criteria:</strong> Written diagnosis acknowledged by client. 3-5 friction points named. Build scope adjusted if needed.</p>
+  </div>
+</div>
+
+
+<!-- PHASE 6 -->
+<div class="phase" id="p6">
+  <div class="phase-num">PHASE 06</div>
+  <h2>Map — stakeholders, decisions, ownership.</h2>
+  <div class="phase-when">Day 8-12</div>
+
+  <div class="block">
+    <div class="block-label">What I do</div>
+    <ul>
+      <li>Buduję operational topology w Figma / Notion</li>
+      <li>Per stakeholder: rola, decision rights, communication preference, response time SLA</li>
+      <li>Per decision type: kto inicjuje, kto aprobuje, kto egzekutuje, kto jest informowany</li>
+      <li>Identyfikuję bottlenecks — gdzie decyzje się zatrzymują</li>
+      <li>Walidacja: 60 min sync w którym klient sygnuje topology jako accurate</li>
+    </ul>
+  </div>
+
+  <div class="why-block">
+    <div class="block-label why">Why</div>
+    <p>
+      <strong>80% projektów których nie skończono w timeline'ie umiera na nieujawnionym decision bottlenecku.</strong>
+      Klient wie że <em>"trzeba zatwierdzić u Tomka"</em> ale nie wie że Tomek aprobuje 2 razy w tygodniu, środy i piątki.
+      Mapowanie decision rights upfront eliminuje ten 80% ryzyko przed budową.
+    </p>
+  </div>
+
+  <div class="hook-block">
+    <div class="block-label hook">Setting expectation</div>
+    <p>
+      <strong>"To nie chodzi o to żeby mieć diagram dla diagramu. Chodzi o to żeby kiedy w 6 tygodniu
+      utkniemy z aprobatą, mieliśmy spisaną decyzję kto kogo przepuszcza dalej. Tak działa premium delivery."</strong>
+    </p>
+  </div>
+
+  <div class="pitfall-block">
+    <div class="block-label pitfall">Pitfall</div>
+    <p>
+      Mapping bez sign-off. Jeśli klient nie potwierdzi formal, że diagram jest accurate — później powie
+      <em>"a przecież Maria nie powinna była tego aprobować, to Krzysiek"</em>. <strong>Sign-off = umowa.</strong>
+    </p>
+  </div>
+
+  <div class="exit-block">
+    <p><strong>Exit criteria:</strong> Stakeholder + decision map signed off in writing. Decision gates defined for each major work category.</p>
+  </div>
+</div>
+
+
+<!-- PHASE 7 -->
+<div class="phase" id="p7">
+  <div class="phase-num">PHASE 07</div>
+  <h2>Standardize & Build — construct the system.</h2>
+  <div class="phase-when">Week 3-6 (variable)</div>
+
+  <div class="block">
+    <div class="block-label">What I do</div>
+    <ul>
+      <li>Definiuję <em>"done"</em> dla każdego deliverable type — quality bar w pisemnej formie</li>
+      <li>Buduję system (design system, brief templates, asset library, AI workflow) iteracyjnie</li>
+      <li>Każdy element systemu testowany na 1 real use case przed deploy</li>
+      <li>Documentation built parallel — nie po fakcie</li>
+      <li>Co tydzień: 1 nowy element systemu live + dokumentacja</li>
+    </ul>
+  </div>
+
+  <div class="why-block">
+    <div class="block-label why">Why</div>
+    <p>
+      Differentiator między r352 a klasyczną agencją: <strong>my budujemy SYSTEM, nie OUTPUT</strong>.
+      Każdy element systemu musi mieć clear definition of done, repeatable application, i być
+      udokumentowany tak żeby klient mógł go używać po naszym odejściu. Bez tego — sprzedajemy
+      hours, nie infrastructure. Ergo zarabiamy €100/h, nie €500/h.
+    </p>
+  </div>
+
+  <div class="hook-block">
+    <div class="block-label hook">Quality framing</div>
+    <p>
+      <strong>"Pierwsza wersja to nie pitch. To pierwsza iteracja. Will get reviewed, refined, deployed.
+      Premium pricing kupuje tę dyscyplinę iteracji — nie geniuszu pierwszego ruchu."</strong>
+    </p>
+  </div>
+
+  <div class="pitfall-block">
+    <div class="block-label pitfall">Pitfall</div>
+    <p>
+      Pułapka <em>"klient chce zobaczyć wszystko od razu"</em>. Nie — klient chce poczuć progress. <strong>Friday
+      delivery pack daje progress feeling bez ekspozycji na 100% scope na raz.</strong> Salami over full reveal.
+    </p>
+  </div>
+
+  <div class="exit-block">
+    <p><strong>Exit criteria:</strong> System deployed do production stage. Documentation w shared workspace. Klient passed UAT na 1 real use case.</p>
+  </div>
+</div>
+
+
+<!-- PHASE 8 -->
+<div class="phase" id="p8">
+  <div class="phase-num">PHASE 08</div>
+  <h2>Govern — decision gates that prevent drift.</h2>
+  <div class="phase-when">Ongoing (from week 1)</div>
+
+  <div class="block">
+    <div class="block-label">What I do</div>
+    <ul>
+      <li>3 standard decision gates: Master approval / Variant approval / Pre-production approval</li>
+      <li>Każdy gate ma named owner po stronie klienta + SLA dla response</li>
+      <li>No-response default rule: <em>"silence over 48h = implicit approval, work proceeds"</em></li>
+      <li>Friction protocol: jeśli gate nie zamyka się w 7 dni, eskalacja do CMO/COO automatyczna</li>
+    </ul>
+  </div>
+
+  <div class="why-block">
+    <div class="block-label why">Why</div>
+    <p>
+      Governance = the difference between premium agency i consulting black hole. <strong>Bez gates, klient
+      może revoke decyzję 6 tygodni później bo "ktoś nowy dołączył"</strong>. Z gates, decyzja jest written,
+      timestamped, owner-attributed. Ja nie pracuję na revision spiral'ach. Klient nie płaci za moje
+      stress'y.
+    </p>
+  </div>
+
+  <div class="hook-block">
+    <div class="block-label hook">When client asks why so many gates</div>
+    <p>
+      <strong>"Gates są tylko dla momentów <em>nieodwracalnych</em>. Pre-production, master approval — rzeczy które
+      jak idą do produkcji, kosztują dużo żeby cofnąć. Reszta to comments w Figma, async, no friction."</strong>
+    </p>
+  </div>
+
+  <div class="pitfall-block">
+    <div class="block-label pitfall">Pitfall</div>
+    <p>
+      Pułapka <em>"client says it's OK, we'll skip gate this time"</em>. Nie. Skip gate raz = drift culture
+      ustala się. <strong>3-gate to nie biurokracja, to insurance.</strong>
+    </p>
+  </div>
+
+  <div class="exit-block">
+    <p><strong>Exit criteria:</strong> Brak open gate'u older than 7 days. Wszystkie ostateczne decyzje w written log.</p>
+  </div>
+</div>
+
+
+<!-- PHASE 9 -->
+<div class="phase" id="p9">
+  <div class="phase-num">PHASE 09</div>
+  <h2>Ship — weekly cadence as identity.</h2>
+  <div class="phase-when">Every Friday by 17:00 CET</div>
+
+  <div class="block">
+    <div class="block-label">What I do</div>
+    <ul>
+      <li>Friday 17:00 CET: delivery pack dropped do shared workspace. Bez wyjątku.</li>
+      <li>Format: organized folder per wave + Loom video walking through what shipped + 1-page summary</li>
+      <li>Monday morning brief: 5-min written update — co shipped Friday, co w flight, co need from client</li>
+      <li>Thursday async check-in: short Loom o tym co będzie shipped w piątek</li>
+    </ul>
+  </div>
+
+  <div class="why-block">
+    <div class="block-label why">Why</div>
+    <p>
+      Cadence to nasza tożsamość. <strong>"Move fast, steady cadence"</strong> nie jest tagline'em —
+      to jest operational reality. Klient którego Friday delivery pack przyjdzie w czwartek 16:00,
+      w piątek 17:00, w sobotę 11:00 — nigdy nie traktuje r352 jako "premium tier". Cadence to to
+      czym jesteśmy.
+    </p>
+  </div>
+
+  <div class="hook-block">
+    <div class="block-label hook">Friday discipline</div>
+    <p>
+      <strong>"Każda godzina spóźnienia kosztuje klienta więcej niż jakąkolwiek korzyść z extra polishingu.
+      Predictability is the product."</strong>
+    </p>
+  </div>
+
+  <div class="pitfall-block">
+    <div class="block-label pitfall">Pitfall</div>
+    <p>
+      Pułapka <em>"to jeszcze chwilę poprawię"</em>. Friday 17:00 zawsze nieidealne, ale zawsze on time.
+      Lepiej shipnąć v0.9 piątkową niż v1.0 sobotnie.
+    </p>
+  </div>
+
+  <div class="exit-block">
+    <p><strong>Exit criteria:</strong> Każdy tydzień engagement'u ma delivery pack on time. Brak miss'ów.</p>
+  </div>
+</div>
+
+
+<!-- PHASE 10 -->
+<div class="phase" id="p10">
+  <div class="phase-num">PHASE 10</div>
+  <h2>Measure — metrics that justify the next quarter.</h2>
+  <div class="phase-when">First Tuesday each month · 30-min call</div>
+
+  <div class="block">
+    <div class="block-label">What I do</div>
+    <ul>
+      <li>Pierwsza środa miesiąca: 30-min sync video</li>
+      <li>Format: 3 numbers up / 3 numbers down / 3 things to change next month</li>
+      <li>Wysyłam written outcome report end of month — KPIs vs targets</li>
+      <li>Każdy raport ma 1 forward-looking recommendation</li>
+    </ul>
+  </div>
+
+  <div class="why-block">
+    <div class="block-label why">Why</div>
+    <p>
+      Klient nie odnowi engagement'u jeśli nie ma dowodu że pracujemy. <strong>Measurement to dowód.</strong>
+      Bez monthly report, klient ma tylko subjective feeling — który może iść w dół niezależnie od
+      objective progress. Z monthly report, klient ma <em>"masz tu liczby"</em> które uzasadniają fakturę.
+    </p>
+  </div>
+
+  <div class="hook-block">
+    <div class="block-label hook">Framing the metric conversation</div>
+    <p>
+      <strong>"Nie chcę żebyście mi wierzyli że to działa. Chcę żebyście to widzieli w liczbach,
+      które sami wybraliście jako Wasz benchmark."</strong>
+    </p>
+  </div>
+
+  <div class="pitfall-block">
+    <div class="block-label pitfall">Pitfall</div>
+    <p>
+      Pułapka raportu without insight. Liczby same z siebie nie sprzedają renewal — interpretation
+      sprzedaje. Każdy report ma <em>"co to znaczy"</em> + <em>"co dalej"</em>.
+    </p>
+  </div>
+
+  <div class="exit-block">
+    <p><strong>Exit criteria:</strong> Monthly report delivered, KPI'e zaakceptowane jako accurate, forward recommendation logged.</p>
+  </div>
+</div>
+
+
+<!-- PHASE 11 -->
+<div class="phase" id="p11">
+  <div class="phase-num">PHASE 11</div>
+  <h2>Iterate — close the loop, restart smarter.</h2>
+  <div class="phase-when">End of each quarter · 90-min review</div>
+
+  <div class="block">
+    <div class="block-label">What I do</div>
+    <ul>
+      <li>Quarterly review: 90 min, both sides</li>
+      <li>Format: what worked / what didn't / what evolves next quarter</li>
+      <li>Po review: scope refresh document → nowy proposal jeśli zmiana scope</li>
+      <li>Renewals fakturowane z 30 dni notice (no surprise)</li>
+    </ul>
+  </div>
+
+  <div class="why-block">
+    <div class="block-label why">Why</div>
+    <p>
+      Bez kwartalnego review, scope drift'uje silently. Klient zaczyna oczekiwać rzeczy poza scope, ja zaczynam
+      robić rzeczy które nie są measured. <strong>Quarterly review re-anchoruje obie strony do tego,
+      za co naprawdę płacicie.</strong> Plus to moment gdzie pricing może wzrosnąć (i ja podnoszę).
+    </p>
+  </div>
+
+  <div class="hook-block">
+    <div class="block-label hook">Renewal moment</div>
+    <p>
+      <strong>"Skoro pracujemy razem już kwartał, pozwólcie mi zrobić review tego co działa,
+      czego nie ma, i co należałoby przemyśleć na kolejny kwartał. To nie call sprzedażowy —
+      to part of how I run premium engagements."</strong>
+    </p>
+  </div>
+
+  <div class="pitfall-block">
+    <div class="block-label pitfall">Pitfall</div>
+    <p>
+      Renew bez review = scope creep guaranteed. Każdy renewal MUSI być preceded by review, nawet
+      jeśli klient mówi <em>"po prostu kontynuujmy jak jest"</em>.
+    </p>
+  </div>
+
+  <div class="exit-block">
+    <p><strong>Exit criteria:</strong> Quarterly review done. Scope evolved or confirmed in writing. Renewal contract signed (or sunset planned).</p>
+  </div>
+</div>
+
+
+<!-- PHASE 12 -->
+<div class="phase" id="p12">
+  <div class="phase-num">PHASE 12</div>
+  <h2>Handover or Renewal — exit well, or expand.</h2>
+  <div class="phase-when">Last 30 days of engagement</div>
+
+  <div class="block">
+    <div class="block-label">What I do</div>
+    <ul>
+      <li>30 dni przed planowanym końcem: decision conversation — renew, expand, or handover?</li>
+      <li>Renewal: nowy proposal, possibly higher tier, written scope</li>
+      <li>Expand: cross-sell innego engagement model (np. retainer → operating partner)</li>
+      <li>Handover: complete documentation, training session 2h, 30-day Q&A access included</li>
+      <li>Closing call: 1h, lessons learned both sides, written testimonial request</li>
+      <li>Zawsze ask: <em>"do kogo z Waszego networku pasowałoby to co robimy?"</em></li>
+    </ul>
+  </div>
+
+  <div class="why-block">
+    <div class="block-label why">Why</div>
+    <p>
+      Większość consultantów <em>fizzle out</em> z klientami — bez closing, bez handover, bez referral
+      ask. To zostawia <strong>~50% wartości engagement'u na stole</strong>. Każdy engagement powinien kończyć
+      się trzema rzeczami: <em>renewal, testimonial, referral</em>. Jeśli brak choć jednego — coś poszło
+      źle.
+    </p>
+  </div>
+
+  <div class="hook-block">
+    <div class="block-label hook">Referral ask</div>
+    <p>
+      <strong>"Skoro to co budowaliśmy razem działa — kogo z Waszego networku
+      uważacie że ma podobny problem ale jeszcze go nie rozwiązał? Nie chcę zimnego intro,
+      tylko: jeśli kiedyś rozmowa o multi-location operations przyjdzie naturalnie, daje pretekst."</strong>
+    </p>
+  </div>
+
+  <div class="pitfall-block">
+    <div class="block-label pitfall">Pitfall</div>
+    <p>
+      Pułapka <em>"nie chcę być pushy"</em>. <strong>Pushy ≠ profesjonalne ask</strong>. Klient
+      który był happy chce polecać — ale muszę dać mu język do tego. Bez referral ask, sam moment
+      rekomendacji nie nastąpi, mimo dobrej intencji.
+    </p>
+  </div>
+
+  <div class="exit-block">
+    <p><strong>Exit criteria:</strong> Renewal signed OR clean handover completed + testimonial + at least 1 introduction asked.</p>
+  </div>
+</div>
+
+
+<!-- SUMMARY -->
+<div class="summary">
+  <div class="summary-title">The whole game in 5 lines</div>
+  <h3>If forced to compress to 5 mantras for new engagement:</h3>
+  <ul>
+    <li><strong>Filter > Pitch.</strong> Better to lose a wrong-fit lead than win one.</li>
+    <li><strong>Diagnose > Build.</strong> 5 days of diagnosis saves 3 months of building wrong thing.</li>
+    <li><strong>System > Output.</strong> We deliver infrastructure, not files.</li>
+    <li><strong>Cadence > Polish.</strong> Friday on-time beats Saturday perfect.</li>
+    <li><strong>Renew + Refer > One-and-done.</strong> Every engagement closes with three outcomes: renewal, testimonial, referral.</li>
+  </ul>
+</div>
+
+
+<footer>
+  Last updated 2026-05-19 · r352 internal playbook · revisit after every closed engagement
+</footer>
+
+</body>
+</html>

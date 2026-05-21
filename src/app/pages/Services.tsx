@@ -1,7 +1,9 @@
 import { PageTransition } from "@/app/components/ui/PageTransition";
 import { Reveal } from "@/app/components/ui/Reveal";
+import { SectionWatermark } from "@/app/components/ui/SectionWatermark";
 import { EngagementModels } from "@/app/components/services/EngagementModels";
 import { useLanguage } from "@/app/context/LanguageContext";
+import { useLenisGsap } from "@/app/hooks/useLenisGsap";
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight } from "lucide-react";
@@ -18,7 +20,11 @@ interface ServiceCard {
 
 export function Services() {
   const { t, language } = useLanguage();
-  
+
+  // Bridge Lenis smooth scroll with GSAP ScrollTrigger so SectionWatermark
+  // parallax stays in sync with the rendered scroll position.
+  useLenisGsap();
+
   // Cast to specific types to avoid TS errors
   const cards = (t('services_page.cards') || []) as ServiceCard[];
 
@@ -44,6 +50,7 @@ export function Services() {
     <PageTransition className="pb-32 px-8 md:px-12 max-w-[1800px] mx-auto min-h-screen">
 
       {/* ─── Strategy — editorial opener, sets the WHY before WHAT ─── */}
+      <SectionWatermark number="01" label={language === "pl" ? "Strategia" : "Strategy"} align="right">
       <section className="pt-32 md:pt-40 mb-32 md:mb-40">
         <Reveal>
           <div className="flex flex-col mb-12 md:mb-16">
@@ -150,6 +157,7 @@ export function Services() {
           </div>
         </Reveal>
       </section>
+      </SectionWatermark>
 
       {/* ─── Products — execution layer ─── */}
       <section className="mb-40 min-h-[600px]">

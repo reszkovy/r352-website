@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>r352 — Content Plan · 12 Weeks · Akt 1 of Distribution</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0A0A0A;
+    --surface: #141414;
+    --surface-2: #1c1c1c;
+    --border: rgba(255,255,255,0.08);
+    --border-strong: rgba(255,255,255,0.16);
+    --text: #FAFAFA;
+    --text-muted: #999;
+    --text-faint: #666;
+    --accent: #D4FF00;
+    --teal: #5EEAD4;
+    --warn: #FCD34D;
+    --ok: #4ADE80;
+    --danger: #F87171;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, "SF Pro Text", BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    padding: 48px 32px 96px;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  /* HEADER */
+  header { margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+  .brand { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; font-weight: 600; }
+  h1 { font-size: 38px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 16px; max-width: 760px; }
+  h1 span { color: var(--accent); }
+  .lede { font-size: 15px; color: var(--text-muted); max-width: 720px; line-height: 1.7; }
+  .lede em { color: var(--accent); font-style: normal; }
+  .meta {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+  .meta strong { color: var(--accent); font-weight: 600; }
+
+  /* COMMITMENT BANNER */
+  .commit {
+    margin: 28px 0 0;
+    padding: 18px 24px;
+    background: rgba(212, 255, 0, 0.06);
+    border-left: 3px solid var(--accent);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .commit-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .commit strong { color: var(--accent); }
+
+  /* STATS PANEL */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 48px;
+  }
+  @media (max-width: 720px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 18px 20px;
+  }
+  .stat-num {
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .stat-num .total {
+    color: var(--text-faint);
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .stat-label {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 700;
+    margin-top: 8px;
+  }
+
+  /* PHASE GROUP */
+  .phase-group { margin-bottom: 64px; }
+  .phase-group-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 12px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--accent);
+    flex-wrap: wrap;
+  }
+  .phase-group-label {
+    font-family: ui-monospace, "SF Mono", "Menlo", monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .phase-group-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .phase-group-job {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    max-width: 760px;
+    line-height: 1.7;
+  }
+  .phase-group-job em { color: var(--teal); font-style: normal; }
+
+  /* WEEK CARD */
+  .week {
+    margin-bottom: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 24px 28px;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+  .week:hover { border-color: var(--border-strong); }
+  .week.is-published { border-left: 3px solid var(--ok); }
+  .week.is-drafted { border-left: 3px solid var(--warn); }
+
+  .week-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .week-num {
+    font-family: ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .week-date {
+    font-family: ui-monospace, monospace;
+    font-size: 11px;
+    color: var(--text-faint);
+    letter-spacing: 0.1em;
+  }
+  .week-element {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    padding: 3px 9px;
+    border: 1px solid rgba(94, 234, 212, 0.3);
+    font-weight: 700;
+  }
+  .week-title {
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .week-job {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+    padding: 10px 14px;
+    background: rgba(94, 234, 212, 0.04);
+    border-left: 2px solid var(--teal);
+  }
+  .week-job-label {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .week-angle {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 16px;
+    line-height: 1.7;
+  }
+  .week-angle .angle-label {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .week-angle em { color: var(--accent); font-style: italic; }
+
+  /* CONTROL ROW */
+  .week-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--border);
+  }
+  @media (max-width: 720px) { .week-controls { grid-template-columns: 1fr; } }
+
+  .control-block label {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .status-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .status-btn {
+    background: transparent;
+    border: 1px solid var(--border-strong);
+    color: var(--text-muted);
+    padding: 6px 12px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+  }
+  .status-btn:hover { color: var(--text); border-color: var(--text-muted); }
+  .status-btn.active[data-status="pending"] {
+    background: var(--text-faint);
+    color: var(--bg);
+    border-color: var(--text-faint);
+  }
+  .status-btn.active[data-status="drafted"] {
+    background: var(--warn);
+    color: var(--bg);
+    border-color: var(--warn);
+  }
+  .status-btn.active[data-status="published"] {
+    background: var(--ok);
+    color: var(--bg);
+    border-color: var(--ok);
+  }
+
+  .week-notes,
+  .week-source {
+    width: 100%;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 13px;
+    padding: 10px 12px;
+    resize: vertical;
+    min-height: 38px;
+    line-height: 1.55;
+  }
+  .week-notes:focus,
+  .week-source:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  .week-notes::placeholder,
+  .week-source::placeholder {
+    color: var(--text-faint);
+  }
+
+  /* WORKFLOW NOTE */
+  .workflow {
+    margin-top: 64px;
+    padding: 28px 32px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+  }
+  .workflow h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+  .workflow h2 span { color: var(--accent); }
+  .workflow p {
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    line-height: 1.7;
+    max-width: 800px;
+  }
+  .workflow ol {
+    padding-left: 22px;
+    color: var(--text-muted);
+    margin: 12px 0 16px;
+  }
+  .workflow li { padding-left: 8px; margin-bottom: 8px; }
+  .workflow li::marker { color: var(--accent); font-weight: 700; }
+  .workflow strong { color: var(--text); }
+
+  /* FOOTER */
+  footer {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--text-faint);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  footer .last { color: var(--accent); }
+
+  /* RESET LINK */
+  .reset-link {
+    color: var(--text-faint);
+    font-size: 11px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .reset-link:hover { color: var(--danger); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">r352 · content plan · akt 1 of distribution · 12 weeks</div>
+  <h1>From infrastructure-rich<br/>to <span>distribution-live.</span></h1>
+  <p class="lede">
+    12 tygodni, 12 postów, jeden łuk: <em>plant the flag → build authority → convert</em>.
+    To nie jest "kalendarz contentowy" — to <em>3-aktowa dramaturgia</em> oparta na 7 elementach
+    worldbuilding'u Caleba Ralstona. Każdy post ma jedną konkretną robotę do wykonania w łuku.
+    Brak randomu, brak "post bo poniedziałek".
+  </p>
+
+  <div class="commit">
+    <div class="commit-label">Commitment · 2026-05-20</div>
+    Zobowiązanie: <strong>1 post tygodniowo × 12 tygodni</strong>, non-negotiable. Publikacja
+    co środę. Niezależnie od low-focus days, klientów, podróży, nastroju. Decyzja zapadła
+    20 maja. Pierwszy post: <strong>środa 27 maja</strong>. Ostatni: <strong>środa 12 sierpnia</strong>.
+  </div>
+
+  <div class="meta">
+    <strong>Owner</strong> Reszek · <strong>Channel</strong> LinkedIn (+ optional r352.com cross-post) · <strong>Rhythm</strong> Wednesday 09:00 CET · <strong>Production</strong> Mon brain-dump → Tue draft → Wed publish
+  </div>
+</header>
+
+
+<!-- STATS PANEL -->
+<div class="stats" id="stats">
+  <div class="stat">
+    <div class="stat-num"><span id="stat-published">0</span><span class="total"> / 12</span></div>
+    <div class="stat-label">Published</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num"><span id="stat-drafted">0</span><span class="total"> / 12</span></div>
+    <div class="stat-label">In draft</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num"><span id="stat-pending">12</span><span class="total"> / 12</span></div>
+    <div class="stat-label">Pending</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num" id="stat-next">W1</div>
+    <div class="stat-label">Next up</div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- ACT 1                                                             -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<div class="phase-group">
+  <div class="phase-group-header">
+    <div class="phase-group-label">AKT 1 — Plant the flag</div>
+    <div class="phase-group-title">Weeks 1-4 · ludzie zaczynają Cię rozpoznawać po POV</div>
+  </div>
+  <p class="phase-group-job">
+    <em>Job:</em> w ciągu 4 tygodni decision makerzy w Twojej niszy mają zacząć kojarzyć Twoje nazwisko
+    z konkretną tezą o multi-location brand ops. Nie ze stylem wizualnym, nie z portfolio — z <em>poglądem</em>.
+    Każdy post tego aktu to wbicie chorągwi w nowym miejscu.
+  </p>
+
+  <!-- WEEK 1 -->
+  <div class="week" data-week="1">
+    <div class="week-head">
+      <div class="week-num">WEEK 01</div>
+      <div class="week-date">PUBLISH: Wed 2026-05-27</div>
+      <div class="week-element">◐ POV · Opening salvo</div>
+    </div>
+    <h3 class="week-title">Finalne zdanie POV — pierwszy strzał</h3>
+    <div class="week-job">
+      <div class="week-job-label">Job to be done</div>
+      Wbij chorągiew. Jedno zdanie którego nikt inny w niszy nie mówi głośno, w formie którą można cytować,
+      kwestionować, zapamiętać. Bez poetyckości, bez generic.
+    </div>
+    <div class="week-angle">
+      <span class="angle-label">Post angle</span>
+      Roboczo: <em>"Brand consistency w 300+ lokalizacjach to nie problem designerski — to problem operacyjny.
+      Większość agencji rozwiązuje go zatrudnianiem więcej designerów. To jest 5x droższe i 3x wolniejsze
+      niż jeden działający system briefów."</em> Final wersja zależy od Twojego dokończenia zdania. Format: short-form
+      manifesto, 150-200 słów, agresywnie jednoznaczny.
+    </div>
+  </div>
+
+  <!-- WEEK 2 -->
+  <div class="week" data-week="2">
+    <div class="week-head">
+      <div class="week-num">WEEK 02</div>
+      <div class="week-date">PUBLISH: Wed 2026-06-03</div>
+      <div class="week-element">◐ World · Scena z chaosu</div>
+    </div>
+    <h3 class="week-title">Wtorek 9:00 u COO sieci fitness — paint the world</h3>
+    <div class="week-job">
+      <div class="week-job-label">Job to be done</div>
+      Maluj świat w którym pracujesz tak żeby Twój target rozpoznał się w pierwszych 3 zdaniach. Konkretna scena,
+      konkretne liczby, konkretny moment. Nie abstrakcja "scaling design ops" — film w głowie czytelnika.
+    </div>
+    <div class="week-angle">
+      <span class="angle-label">Post angle</span>
+      Scena: <em>"Wtorek 9:00. COO sieci z 47 lokalizacjami otwiera Trello. 280 otwartych kart. 12 jednoczesnych
+      otwarć w pipeline'ie. Czwarty piątek pod rząd brief był 'dopiszemy po weekendzie'. Senior designer odszedł
+      3 miesiące temu, zostawił 200 plików bez naming convention..."</em> Pointa: <em>"To nie jest problem creative.
+      To jest problem operacyjny. I dlatego nie rozwiążą go agencje."</em>
+    </div>
+  </div>
+
+  <!-- WEEK 3 -->
+  <div class="week" data-week="3">
+    <div class="week-head">
+      <div class="week-num">WEEK 03</div>
+      <div class="week-date">PUBLISH: Wed 2026-06-10</div>
+      <div class="week-element">◐ Character · Recurring persona</div>
+    </div>
+    <h3 class="week-title">Wyczerpany COO — Twoja recurring postać</h3>
+    <div class="week-job">
+      <div class="week-job-label">Job to be done</div>
+      Wprowadź postać, która będzie wracać przez kolejne tygodnie i którą ludzie zaczną rozpoznawać jako Twoją.
+      Jak w serialu — kiedy widz drugi raz spotyka tę samą postać, czuje że wszedł w znajomy świat.
+    </div>
+    <div class="week-angle">
+      <span class="angle-label">Post angle</span>
+      <em>"Mam w pracy postać która wraca w każdej rozmowie. COO sieci 30-150 lokalizacji. 4 lata na stanowisku.
+      Wie więcej o pop-up sklepach niż o briefing convention. Każdy poniedziałek otwiera Trello i widzi 280 kart.
+      Wie że potrzebuje systemu, nie kolejnej agencji. Próbował 2 — obie zostawiły go z większą złożonością."</em>
+      Empatia + recognition = magnes na qualified inbound.
+    </div>
+  </div>
+
+  <!-- WEEK 4 -->
+  <div class="week" data-week="4">
+    <div class="week-head">
+      <div class="week-num">WEEK 04</div>
+      <div class="week-date">PUBLISH: Wed 2026-06-17</div>
+      <div class="week-element">◐ Antagonist · Linia frontu</div>
+    </div>
+    <h3 class="week-title">Agency hourly billing — wróg którego nazywasz głośno</h3>
+    <div class="week-job">
+      <div class="week-job-label">Job to be done</div>
+      Marka bez wroga jest płaska. Tu rysujesz linię frontu i pozycjonujesz się przeciwko branżowemu standardowi.
+      Część czytelników odpadnie — to dobrze. Część zostanie i pokocha — to lepiej.
+    </div>
+    <div class="week-angle">
+      <span class="angle-label">Post angle</span>
+      <em>"Agencyjny model bilingu za godziny ma strukturalną wadę: im wolniej tym lepiej dla agencji.
+      Klient płaci za czas, dostaje wolniejsze decyzje, więcej meetingów, więcej revision rounds. Mój model:
+      fixed price + outcome metric. Klient wie ile zapłaci. Wie kiedy dostanie. Wie co dostanie. Pracuję
+      szybciej, bo nie zarabiam na tempie — zarabiam na rezultacie."</em>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- ACT 2                                                             -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<div class="phase-group">
+  <div class="phase-group-header">
+    <div class="phase-group-label">AKT 2 — Build authority</div>
+    <div class="phase-group-title">Weeks 5-8 · kto Cię widzi, zaczyna rozumieć Twój system</div>
+  </div>
+  <p class="phase-group-job">
+    <em>Job:</em> ludzie którzy widzieli akt 1 i nie odpadli zaczynają teraz <em>rozumieć z czego jesteś zbudowany</em>.
+    Twój origin story, Twój język, Twoje zasady. Każdy post to kolejna ściana w domu, w którym ostatecznie
+    chcesz żeby klient zamieszkał na 12 miesięcy.
+  </p>
+
+  <!-- WEEK 5 -->
+  <div class="week" data-week="5">
+    <div class="week-head">
+      <div class="week-num">WEEK 05</div>
+      <div class="week-date">PUBLISH: Wed 2026-06-24</div>
+      <div class="week-element">◐ Origin · Lore</div>
+    </div>
+    <h3 class="week-title">15 lat designu, Deloitte UX, 5 krajów — origin story</h3>
+    <div class="week-job">
+      <div class="week-job-label">Job to be done</div>
+      Wyjaśnij dlaczego <em>akurat Ty</em> zauważyłeś że to jest problem operacyjny a nie designerski.
+      Origin story to Twój moat — tu się rozjeżdżasz od konkurencji która ma generic credentials.
+    </div>
+    <div class="week-angle">
+      <span class="angle-label">Post angle</span>
+      <em>"Zacząłem od UX w Deloitte. Potem 6 lat ekspata: Londyn, Porto, Barcelona, Ateny, Marsylia.
+      Każda firma w której pracowałem — Geers/Sonova, Inleadia, Archicom — miała ten sam problem nazwany
+      inaczej. Multi-location brand ops to nie chaos creative. To chaos systemowy. Tylko ktoś kto pracował
+      z 8 wertykalami w 5 krajach widzi że to ten sam wzór."</em>
+    </div>
+  </div>
+
+  <!-- WEEK 6 -->
+  <div class="week" data-week="6">
+    <div class="week-head">
+      <div class="week-num">WEEK 06</div>
+      <div class="week-date">PUBLISH: Wed 2026-07-01</div>
+      <div class="week-element">◐ Language · IP planting</div>
+    </div>
+    <h3 class="week-title">r3loop — 8 kroków, Twój język</h3>
+    <div class="week-job">
+      <div class="week-job-label">Job to be done</div>
+      Plant'uj słownictwo które inni będą używać. Każde słowo które wprowadzasz do branży to IP. Kiedy klient
+      mówi <em>"zróbmy r3loop na tym project'cie"</em> — marka pracuje.
+    </div>
+    <div class="week-angle">
+      <span class="angle-label">Post angle</span>
+      <em>"Każda nasza współpraca biegnie przez 8-stopniowy loop: Diagnose → Map → Standardize → Build →
+      Govern → Ship → Measure → Iterate. Niezależnie czy to 5-dniowy diagnostic czy 12-miesięczna Operating
+      Partnership. Depth każdego kroku się skaluje. Kolejność — nigdy. To jest predictability."</em>
+      Format: visual diagram + 8 one-liner descriptions.
+    </div>
+  </div>
+
+  <!-- WEEK 7 -->
+  <div class="week" data-week="7">
+    <div class="week-head">
+      <div class="week-num">WEEK 07</div>
+      <div class="week-date">PUBLISH: Wed 2026-07-08</div>
+      <div class="week-element">◐ Language · Operational</div>
+    </div>
+    <h3 class="week-title">3 bramki akceptacji — Master / Variant / Pre-production</h3>
+    <div class="week-job">
+      <div class="week-job-label">Job to be done</div>
+      Konkretna operacyjna rzecz która natychmiast pokazuje że nie mówisz na poziomie buzzwords. Każdy COO
+      multi-location wie że tu utykają jego launche.
+    </div>
+    <div class="week-angle">
+      <span class="angle-label">Post angle</span>
+      <em>"Multi-location launch utyka zawsze w tym samym miejscu: brak gate'ów akceptacji. Mój system:
+      Gate 1 — Master approval (jeden raz per concept, internal). Gate 2 — Variant approval (per lokalizacja,
+      mid-level po stronie klienta). Gate 3 — Pre-production (senior client, przed final'em). Bez tych
+      3 bramek każdy projekt staje się 200 mailami do dyrektora który jest 2 dni w tygodniu."</em>
+    </div>
+  </div>
+
+  <!-- WEEK 8 -->
+  <div class="week" data-week="8">
+    <div class="week-head">
+      <div class="week-num">WEEK 08</div>
+      <div class="week-date">PUBLISH: Wed 2026-07-15</div>
+      <div class="week-element">◐ Rule · Operating principle</div>
+    </div>
+    <h3 class="week-title">Weekly cadence > heroic launches</h3>
+    <div class="week-job">
+      <div class="week-job-label">Job to be done</div>
+      Ogłoś swoją zasadę pracy i sprowokuj reakcje od ludzi którzy żyją w heroic-launch culture. Konfrontacyjny
+      post który dzieli komentarze — celowo.
+    </div>
+    <div class="week-angle">
+      <span class="angle-label">Post angle</span>
+      <em>"Najbardziej szkodliwa kultura w design'ie sieciowym: 'wielkie odpalenie raz na kwartał'.
+      Wszystko między tym to chaos. Mój model: nudna konsekwencja. Friday delivery pack co tydzień.
+      Monday brief co poniedziałek. Brak 'reszty wyślę po długim weekendzie'. To brzmi mniej epicko niż
+      keynote'owe odpalenie — i dlatego działa lepiej."</em>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- ACT 3                                                             -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<div class="phase-group">
+  <div class="phase-group-header">
+    <div class="phase-group-label">AKT 3 — Convert</div>
+    <div class="phase-group-title">Weeks 9-12 · kto Cię rozumie, zaczyna chcieć rozmawiać</div>
+  </div>
+  <p class="phase-group-job">
+    <em>Job:</em> w ostatnich 4 tygodniach przekuwasz autorytet w pipeline. Pain identification, weakness,
+    proof, future. Pod koniec aktu 3 powinieneś mieć 3-5 qualified inbound conversations + 1-2 speaker
+    opportunities w pipeline.
+  </p>
+
+  <!-- WEEK 9 -->
+  <div class="week" data-week="9">
+    <div class="week-head">
+      <div class="week-num">WEEK 09</div>
+      <div class="week-date">PUBLISH: Wed 2026-07-22</div>
+      <div class="week-element">◐ Pain · Hidden cost</div>
+    </div>
+    <h3 class="week-title">Senior designer odchodzi co 18 miesięcy — cichy koszt</h3>
+    <div class="week-job">
+      <div class="week-job-label">Job to be done</div>
+      Nazwij cichy koszt który Twój target płaci ale nie liczy. Kiedy go nazwiesz głośno, włącza im się kalkulator.
+      Kalkulator + system jako rozwiązanie = inbound.
+    </div>
+    <div class="week-angle">
+      <span class="angle-label">Post angle</span>
+      <em>"Każda sieć płaci ten sam koszt co 18 miesięcy: senior designer odchodzi. Zostawia 200 plików bez
+      naming convention, tribal knowledge w głowie, briefy w skrzynce mailowej. Nowa osoba reverse-engineeruje
+      przez 3 miesiące. Sieć z 50 lokalizacjami liczy to jako 1 employee turnover. Faktyczny koszt:
+      45h × 12 tygodni rebuildu × 80 EUR = ~43k EUR. Cykliczne. Tego nikt nie wlicza do P&L."</em>
+    </div>
+  </div>
+
+  <!-- WEEK 10 -->
+  <div class="week" data-week="10">
+    <div class="week-head">
+      <div class="week-num">WEEK 10</div>
+      <div class="week-date">PUBLISH: Wed 2026-07-29</div>
+      <div class="week-element">◐ Weakness · Sanderson move</div>
+    </div>
+    <h3 class="week-title">Czego nie robię — lista która zwiększa autorytet</h3>
+    <div class="week-job">
+      <div class="week-job-label">Job to be done</div>
+      Move od Brandona Sandersona (kredyt Caleba Ralstona): publiczne nazwanie słabości / ograniczeń paradoksalnie
+      buduje autorytet, bo brzmisz jak ktoś z opinią, nie jak ktoś sprzedający wszystko.
+    </div>
+    <div class="week-angle">
+      <span class="angle-label">Post angle</span>
+      <em>"Czego nie robię, żeby było jasno: nie biorę więcej niż 4 klientów na raz. Nie robię generic creative
+      agency work. Nie publikuję codziennie (1×/tydzień, środy). Nie odpowiadam SMS-em (brak audit trail).
+      Nie obniżam stawek — mogę odjąć scope, ale nie cenę. Lista rzeczy których nie robię jest tak samo
+      ważna jak tych które robię."</em>
+    </div>
+  </div>
+
+  <!-- WEEK 11 -->
+  <div class="week" data-week="11">
+    <div class="week-head">
+      <div class="week-num">WEEK 11</div>
+      <div class="week-date">PUBLISH: Wed 2026-08-05</div>
+      <div class="week-element">◐ Proof · Outcome story</div>
+    </div>
+    <h3 class="week-title">Real case · liczby · konkret (np. Geers / Inleadia / Archicom)</h3>
+    <div class="week-job">
+      <div class="week-job-label">Job to be done</div>
+      Po 10 tygodniach manifestów, świata, postaci i zasad — czas na <em>dowód</em>. Konkretny case (anonimizowany
+      jeśli trzeba) z twardymi liczbami. To zamyka pętlę dla każdego decision makera który czytał akty 1-2.
+    </div>
+    <div class="week-angle">
+      <span class="angle-label">Post angle</span>
+      <em>"6 miesięcy temu wszedłem do sieci z 47 lokalizacjami. Stan wejściowy: 12-tygodniowy backlog briefów,
+      brak naming convention, senior designer 3 miesiące po odejściu. Co zrobiliśmy w r3loop: [konkret].
+      Wynik po 6 miesiącach: 45% redukcja ops time per launch. 12h tygodniowo zwrócone middle managementowi.
+      Brand consistency score: 67% → 94%. Cost of system: [X]. ROI: [Y]."</em>
+      Wybór case'u zdecydujemy bliżej tygodnia 11 — z Geers / Inleadia / Archicom / Hanoi 2026.
+    </div>
+  </div>
+
+  <!-- WEEK 12 -->
+  <div class="week" data-week="12">
+    <div class="week-head">
+      <div class="week-num">WEEK 12</div>
+      <div class="week-date">PUBLISH: Wed 2026-08-12</div>
+      <div class="week-element">◐ Future · Category positioning</div>
+    </div>
+    <h3 class="week-title">Multi-location brand ops — najszybciej rosnąca kategoria 2026-2028</h3>
+    <div class="week-job">
+      <div class="week-job-label">Job to be done</div>
+      Zamknięcie pierwszej rundy. Pozycjonujesz się jako <em>kategoria autorytet</em>, nie pojedynczy konsultant.
+      Otwierasz drogę do speaker / advisor positions w akcie 2 (kolejne 12 tygodni). To jest też launch pad
+      pod conference talk submissions (DesignOps Summit).
+    </div>
+    <div class="week-angle">
+      <span class="angle-label">Post angle</span>
+      <em>"3 lata temu 'design ops' znaczyło 'lepszy proces'. Dziś znaczy 'operational backbone scaling brandów'.
+      Trend nie zwalnia — multi-location, multi-vertical, multi-AI-workflow. Kto wygrywa w 2028: nie agencje
+      sprzedające godziny, nie freelancerzy sprzedający creative. Operatorzy budujący systemy które zostają.
+      Jeśli prowadzisz brand w 30+ lokalizacjach i nie masz operating systemu — masz 12-18 miesięcy zanim
+      to będzie liability."</em>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- WORKFLOW                                                          -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<div class="workflow">
+  <h2>Production workflow — <span>jak to się dzieje co tydzień</span></h2>
+  <p>
+    90 minut tygodniowo. Niżej tego się nie da, wyżej tego nie potrzeba w fazie akt 1.
+    Rytm który wytrzymujesz nawet na low-focus day.
+  </p>
+  <ol>
+    <li><strong>Poniedziałek 09:00 (30 min)</strong> — brain dump do Claude'a: <em>"piszę post nr X, tematyka [angle z planu], dodaj te 3 myśli ode mnie..."</em> → Claude zwraca draft w Twoim głosie.</li>
+    <li><strong>Wtorek (15 min)</strong> — refine draftu, dodaj osobiste zwroty, opublikuj brouillon do Notion albo do tej stronki w pole <em>Notes / link</em>.</li>
+    <li><strong>Wtorek (15 min)</strong> — 3 przemyślane komentarze pod postami MACS-qualified target'ów (nie pochlebstwa, merytoryczne).</li>
+    <li><strong>Środa 09:00 (10 min)</strong> — publikacja na LinkedIn. Optional: cross-post na r352.com/blog ten sam dzień (SEO + ownership).</li>
+    <li><strong>Piątek (15 min)</strong> — 2-3 cold DMs na świeżych leadach. Może odnosić się do tego co opublikowałeś w środę.</li>
+    <li><strong>Niedziela (5 min)</strong> — update status w tej stronie (Drafted / Published). Sprawdź który tydzień jest następny.</li>
+  </ol>
+  <p>
+    <strong>Jeśli tydzień się sypie:</strong> publikuj nawet "gorszą" wersję. 12 mediocre postów &gt; 6 perfect postów
+    + 6 nieopublikowanych. Compounding zaczyna się od konsekwencji, nie od polish'u. Polish przychodzi z tygodnia 6.
+  </p>
+  <p>
+    <strong>Bullshit penalty (jeśli potrzebujesz):</strong> jeśli nie publikujesz w danym środowym slocie bez wcześniej
+    ogłoszonego przesunięcia — kup koledze lot do Mallorki / wpłać 200 EUR na cel wybrany przez partnerkę / 50 burpees na social.
+    Mechanizm zewnętrzny, bo wewnętrzna motywacja na 12 tygodni jest niewystarczająca.
+  </p>
+</div>
+
+
+<footer>
+  Last updated <span class="last">2026-05-20</span> · r352 content plan · companion do CLIENT-LEADERSHIP-MAP.html i HOW-I-RUN-AN-ENGAGEMENT.html · revise po W12 (akt 2 of distribution)
+  <a class="reset-link" onclick="if(confirm('Reset all statuses and notes?')){localStorage.removeItem('r352-content-plan');location.reload();}">Reset all</a>
+</footer>
+
+
+<script>
+(function() {
+  const STORAGE_KEY = 'r352-content-plan';
+  const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+
+  // Inject controls into each week card
+  document.querySelectorAll('.week').forEach(card => {
+    const week = card.dataset.week;
+    const wState = state[week] || { status: 'pending', notes: '', source: '' };
+
+    const controls = document.createElement('div');
+    controls.className = 'week-controls';
+    controls.innerHTML = `
+      <div class="control-block">
+        <label>Status</label>
+        <div class="status-row">
+          <button class="status-btn" data-status="pending">Pending</button>
+          <button class="status-btn" data-status="drafted">Drafted</button>
+          <button class="status-btn" data-status="published">Published</button>
+        </div>
+        <label style="margin-top:14px;">Blog repurpose source <span style="color:var(--text-faint); letter-spacing:0; text-transform:none; font-weight:400;">(optional · paste link if from existing post)</span></label>
+        <input type="text" class="week-source" placeholder="np. https://r352.com/blog/multi-location-ops-2024" value="${escapeHtml(wState.source)}" />
+      </div>
+      <div class="control-block">
+        <label>Notes / draft link / publish URL</label>
+        <textarea class="week-notes" rows="5" placeholder="Personal hooks, draft fragments, link do Notion'a z draftem, link do opublikowanego postu...">${escapeHtml(wState.notes)}</textarea>
+      </div>
+    `;
+    card.appendChild(controls);
+
+    // Apply current status
+    applyStatus(card, wState.status);
+
+    // Wire up listeners
+    controls.querySelectorAll('.status-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const newStatus = btn.dataset.status;
+        state[week] = state[week] || {};
+        state[week].status = newStatus;
+        save();
+        applyStatus(card, newStatus);
+        refreshStats();
+      });
+    });
+
+    controls.querySelector('.week-notes').addEventListener('input', e => {
+      state[week] = state[week] || {};
+      state[week].notes = e.target.value;
+      save();
+    });
+
+    controls.querySelector('.week-source').addEventListener('input', e => {
+      state[week] = state[week] || {};
+      state[week].source = e.target.value;
+      save();
+    });
+  });
+
+  function applyStatus(card, status) {
+    card.classList.remove('is-pending', 'is-drafted', 'is-published');
+    card.classList.add('is-' + status);
+    card.querySelectorAll('.status-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.status === status);
+    });
+  }
+
+  function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+
+  function escapeHtml(s) {
+    if (!s) return '';
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function refreshStats() {
+    let published = 0, drafted = 0, pending = 0, next = null;
+    for (let i = 1; i <= 12; i++) {
+      const s = (state[i] && state[i].status) || 'pending';
+      if (s === 'published') published++;
+      else if (s === 'drafted') { drafted++; if (!next) next = i; }
+      else { pending++; if (!next) next = i; }
+    }
+    document.getElementById('stat-published').textContent = published;
+    document.getElementById('stat-drafted').textContent = drafted;
+    document.getElementById('stat-pending').textContent = pending;
+    document.getElementById('stat-next').textContent = next ? 'W' + next : 'Done';
+  }
+
+  refreshStats();
+})();
+</script>
+
+</body>
+</html>
