@@ -50,7 +50,7 @@ export function Services() {
     <PageTransition className="pb-32 px-8 md:px-12 max-w-[1800px] mx-auto min-h-screen">
 
       {/* ─── Strategy — editorial opener, sets the WHY before WHAT ─── */}
-      <SectionWatermark number="01" label={language === "pl" ? "Strategia" : "Strategy"} align="right">
+      <SectionWatermark number="01" align="right">
       <section className="pt-32 md:pt-40 mb-32 md:mb-40">
         <Reveal>
           <div className="flex flex-col mb-12 md:mb-16">
@@ -160,6 +160,7 @@ export function Services() {
       </SectionWatermark>
 
       {/* ─── Products — execution layer ─── */}
+      <SectionWatermark number="02" align="left">
       <section className="mb-40 min-h-[600px]">
         <Reveal>
           <div className="flex flex-col mb-12">
@@ -361,9 +362,12 @@ export function Services() {
           })}
         </div>
       </section>
+      </SectionWatermark>
 
       {/* NEW: Engagement Models Section */}
-      <EngagementModels />
+      <SectionWatermark number="03" align="right">
+        <EngagementModels />
+      </SectionWatermark>
 
       {/* CTA */}
       <section className="mt-32 border-t border-neutral-200 dark:border-white/10 pt-24 pb-32 relative z-50 pointer-events-auto">

@@ -7,8 +7,6 @@ gsap.registerPlugin(ScrollTrigger);
 interface SectionWatermarkProps {
   /** The watermark number to display, e.g. "01", "02", "03". */
   number: string;
-  /** Optional secondary label rendered above the number, e.g. "BRAND OPS". */
-  label?: string;
   /** Section content. */
   children: React.ReactNode;
   /** Override default tailwind for the wrapper. */
@@ -31,7 +29,6 @@ interface SectionWatermarkProps {
  */
 export function SectionWatermark({
   number,
-  label,
   children,
   className = "",
   align = "right",
@@ -78,14 +75,6 @@ export function SectionWatermark({
         className={`pointer-events-none absolute top-0 ${alignClass} -z-10 hidden md:block select-none overflow-hidden`}
         style={{ width: "min(90vw, 1100px)", height: "100%" }}
       >
-        {label && (
-          <span
-            className="absolute top-8 right-0 font-display text-[11px] tracking-[0.3em] uppercase text-[#D4FF00]/40 dark:text-[#D4FF00]/30"
-            style={{ writingMode: "horizontal-tb" }}
-          >
-            {label}
-          </span>
-        )}
         <span
           ref={numberRef}
           className="absolute right-0 top-0 font-display font-normal leading-none text-neutral-900/[0.045] dark:text-white/[0.06]"
