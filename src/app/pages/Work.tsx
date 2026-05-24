@@ -3,6 +3,7 @@ import { Reveal } from "@/app/components/ui/Reveal";
 import { Link } from "wouter";
 import { projects } from "@/app/data/projects";
 import { HoverVideoImage } from "@/app/components/ui/HoverVideoImage";
+import { CaseStudyStack } from "@/app/components/work/CaseStudyStack";
 import { useLanguage } from "@/app/context/LanguageContext";
 
 function LockIcon() {
@@ -39,6 +40,23 @@ export function Work() {
             </div>
           </Reveal>
         </div>
+      </div>
+
+      {/* ─── FEATURED STACK — sticky stacked cards, top 5 case studies.
+           Editorial layered presentation, GSAP scroll-pinned. Showcases the
+           same projects as the grid below but with operator-grade KPI hero
+           treatment. Mobile: gracefully degrades to vertical scroll. ─── */}
+      <div className="pt-16 md:pt-24">
+        <CaseStudyStack
+          projects={projects
+            .filter((p: any) => !p.isNDA && !p.isProduct)
+            .slice(0, 5)}
+          eyebrow={{ en: "Featured", pl: "Wybrane" }}
+          title={{
+            en: "Outcomes, not portfolios.",
+            pl: "Wyniki, nie portfolio."
+          }}
+        />
       </div>
 
       {/* Projects Grid */}
