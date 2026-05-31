@@ -67,6 +67,7 @@ import { Toaster } from "sonner";
 import { CustomCursor } from "@/app/components/ui/CustomCursor";
 import { Chatbot } from "@/app/components/Chatbot";
 import { Preloader } from "@/app/components/ui/Preloader";
+import { useTransitionRoll } from "@/app/utils/transitionDirection";
 
 // ─── Dynamic Favicon ──────────────────────
 function useFavicon() {
@@ -95,6 +96,7 @@ function AppContent() {
   const [location] = useLocation();
   const { theme } = useTheme();
   useFavicon();
+  useTransitionRoll(); // rolls random sweep direction on every navigation
 
   const getPageKey = (path: string) => {
     if (path.startsWith("/services/") && path !== "/services") return "/services/detail";

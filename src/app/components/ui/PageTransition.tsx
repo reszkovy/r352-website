@@ -3,6 +3,12 @@ import { ReactNode, useEffect, useRef } from "react";
 import { useLenis } from "lenis/react";
 import { useTheme } from "@/app/context/ThemeContext";
 import { R352Symbol } from "@/app/components/agency/R352Logo";
+import {
+  getCurrentDirection,
+  getSweepProps,
+  getBrandingClipPath,
+  type TransitionDirection,
+} from "@/app/utils/transitionDirection";
 
 interface PageTransitionProps {
   children: ReactNode;
@@ -24,6 +30,18 @@ export function PageTransition({ children, className }: PageTransitionProps) {
   const lenis = useLenis();
   const { theme } = useTheme();
   const wrapperRef = useRef<HTMLDivElement>(null);
+
+  // Direction is rolled at the App level on every route change (see
+  // useTransitionRoll). We snapshot it here at render time, so the outgoing
+  // PageTransition's exit and the incoming PageTransition's entry share the
+  // same direction within a single navigation.
+  const directionRef = useRef<TransitionDirection | null>(null);
+  if (directionRef.current === null) {
+    directionRef.current = getCurrentDirection();
+  }
+  const direction = directionRef.current;
+  const sweep = getSweepProps(direction);
+  const branding = getBrandingClipPath(direction);
 
   // Trigger transition sound on every page mount
   useEffect(() => {
@@ -53,27 +71,27 @@ export function PageTransition({ children, className }: PageTransitionProps) {
       {/* Cinematic Transition Overlay - Lime Accent */}
       <motion.div
         className="fixed top-0 left-0 w-[100vw] h-[100vh] bg-[#D4FF00]/90 backdrop-blur-2xl z-[9998] pointer-events-none"
-        initial={{ y: "0%" }}
-        animate={{ 
-          y: "-100%", 
-          transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.15 } 
+        initial={sweep.initial}
+        animate={{
+          ...sweep.animate,
+          transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.15 }
         }}
-        exit={{ 
-          y: ["100%", "0%"], 
-          transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] } 
+        exit={{
+          ...sweep.exit,
+          transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] }
         }}
       />
-      
+
       {/* Cinematic Transition Overlay - Main Black Sweep */}
       <motion.div
         className={`fixed top-0 left-0 w-[100vw] h-[100vh] ${theme === 'dark' ? 'bg-[#0A0A0A]/90' : 'bg-[#D0DBE1]/90'} backdrop-blur-3xl z-[9999] pointer-events-none`}
-        initial={{ y: "0%" }}
+        initial={sweep.initial}
         animate={{
-          y: "-100%",
+          ...sweep.animate,
           transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.05 }
         }}
         exit={{
-          y: ["100%", "0%"],
+          ...sweep.exit,
           transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.1 }
         }}
       />
@@ -81,13 +99,13 @@ export function PageTransition({ children, className }: PageTransitionProps) {
       {/* Static branding — stays perfectly still, revealed/concealed by sweep via clipPath */}
       <motion.div
         className="fixed inset-0 z-[10000] pointer-events-none flex items-center justify-center"
-        initial={{ clipPath: "inset(0 0 0 0)" }}
+        initial={{ clipPath: branding.initial }}
         animate={{
-          clipPath: "inset(0 0 100% 0)",
+          clipPath: branding.animate,
           transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.05 }
         }}
         exit={{
-          clipPath: ["inset(100% 0 0 0)", "inset(0 0 0 0)"],
+          clipPath: branding.exit,
           transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.1 }
         }}
       >
