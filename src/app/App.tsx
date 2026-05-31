@@ -96,7 +96,7 @@ function AppContent() {
   const [location] = useLocation();
   const { theme } = useTheme();
   useFavicon();
-  useTransitionRoll(); // rolls random sweep direction on every navigation
+  useTransitionRoll(); // advances deterministic sweep direction on every navigation
 
   const getPageKey = (path: string) => {
     if (path.startsWith("/services/") && path !== "/services") return "/services/detail";

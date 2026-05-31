@@ -2,14 +2,22 @@
  * Page transition direction state — shared between exit (leaving page) and
  * entry (incoming page) so a single navigation feels like one continuous sweep.
  *
- * Each PageTransition lazily reads the current direction on mount via
- * `getCurrentDirection()`. The direction is rolled fresh on every wouter
- * location change by `useTransitionRoll()` mounted in App.tsx — this fires
- * via useLayoutEffect (synchronously after DOM commit, before paint), so the
- * outgoing PageTransition's exit animation captures the new direction in time.
+ * Direction follows a DETERMINISTIC clockwise cycle (no randomness):
  *
- * Mobile: vertical-only (top/bottom). Horizontal sweeps conflict with iOS
- * pull-to-refresh + browser swipe gestures.
+ *   left-to-right → top-to-bottom → right-to-left → bottom-to-top → (repeat)
+ *
+ * Each direction has exactly one valid successor. This guarantees consecutive
+ * navigations never repeat the same direction, and produces a rhythmic
+ * compass-rotation effect rather than chaotic randomness.
+ *
+ * Each PageTransition lazily reads the current direction on mount via
+ * `getCurrentDirection()`. The direction advances on every wouter location
+ * change via `useTransitionRoll()` mounted in App.tsx — useLayoutEffect fires
+ * synchronously after DOM commit, so the outgoing PageTransition's exit
+ * animation captures the new direction in time.
+ *
+ * Mobile: vertical-only alternation (top ↔ bottom). Horizontal sweeps conflict
+ * with iOS pull-to-refresh + browser swipe-back gestures.
  */
 
 import { useLayoutEffect } from "react";
@@ -28,24 +36,40 @@ export function getCurrentDirection(): TransitionDirection {
 }
 
 /**
- * Pick a fresh random direction. Avoids repeating the previous one for
- * more visible variety across consecutive navigations. Mobile gets vertical
- * only.
+ * Desktop pairing — each direction has a fixed next direction. Together they
+ * form a clockwise compass cycle:
+ *
+ *   L→R then T→B then R→L then B→T then back to L→R
+ */
+const nextDesktop: Record<TransitionDirection, TransitionDirection> = {
+  "left-to-right": "top-to-bottom",
+  "top-to-bottom": "right-to-left",
+  "right-to-left": "bottom-to-top",
+  "bottom-to-top": "left-to-right",
+};
+
+/**
+ * Mobile pairing — pure vertical alternation, no horizontal sweeps.
+ */
+const nextMobile: Record<TransitionDirection, TransitionDirection> = {
+  "top-to-bottom": "bottom-to-top",
+  "bottom-to-top": "top-to-bottom",
+  // Horizontal directions shouldn't exist on mobile but if state carries
+  // over from a viewport resize, fall back to a sensible vertical successor.
+  "left-to-right": "bottom-to-top",
+  "right-to-left": "top-to-bottom",
+};
+
+/**
+ * Advance to the next direction in the deterministic cycle.
  */
 export function rollNewDirection(): TransitionDirection {
   const isDesktop =
     typeof window !== "undefined" &&
     window.matchMedia("(min-width: 768px)").matches;
 
-  const pool: TransitionDirection[] = isDesktop
-    ? ["top-to-bottom", "bottom-to-top", "left-to-right", "right-to-left"]
-    : ["top-to-bottom", "bottom-to-top"];
-
-  // Don't repeat — keeps consecutive transitions visibly different
-  const filtered = pool.filter((d) => d !== currentDirection);
-  const next = filtered[Math.floor(Math.random() * filtered.length)];
-  currentDirection = next;
-  return next;
+  currentDirection = (isDesktop ? nextDesktop : nextMobile)[currentDirection];
+  return currentDirection;
 }
 
 /**
@@ -96,8 +120,8 @@ export function getSweepProps(direction: TransitionDirection): {
 
 /**
  * Static branding layer (logo + tagline) uses clipPath to be revealed and
- * concealed in sync with the sweep — never moves, only clips. clipPath must
- * adapt to the sweep axis to feel cohesive.
+ * concealed in sync with the sweep — never moves, only clips. clipPath axis
+ * must match sweep axis to feel cohesive.
  */
 export function getBrandingClipPath(direction: TransitionDirection): {
   initial: string;
@@ -133,10 +157,10 @@ export function getBrandingClipPath(direction: TransitionDirection): {
 }
 
 /**
- * Mount this hook ONCE at the App level. It rolls a fresh direction on every
- * wouter location change. useLayoutEffect runs synchronously after DOM commit
- * but before browser paint, which keeps the new direction available for both
- * the outgoing PageTransition's exit and the incoming PageTransition's entry.
+ * Mount this hook ONCE at the App level. It advances the deterministic
+ * direction cycle on every wouter location change. useLayoutEffect runs
+ * synchronously after DOM commit but before browser paint, keeping the new
+ * direction available for both outgoing exit and incoming entry animations.
  */
 export function useTransitionRoll() {
   const [location] = useLocation();

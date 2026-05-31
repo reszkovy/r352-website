@@ -31,10 +31,9 @@ export function PageTransition({ children, className }: PageTransitionProps) {
   const { theme } = useTheme();
   const wrapperRef = useRef<HTMLDivElement>(null);
 
-  // Direction is rolled at the App level on every route change (see
-  // useTransitionRoll). We snapshot it here at render time, so the outgoing
-  // PageTransition's exit and the incoming PageTransition's entry share the
-  // same direction within a single navigation.
+  // Direction follows the deterministic cycle in transitionDirection utility.
+  // We snapshot it at first render via useRef so the outgoing exit and
+  // incoming entry of a single navigation share the same direction.
   const directionRef = useRef<TransitionDirection | null>(null);
   if (directionRef.current === null) {
     directionRef.current = getCurrentDirection();
