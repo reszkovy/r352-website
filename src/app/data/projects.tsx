@@ -44,15 +44,17 @@ import fifaLogo from "figma:asset/51e11441d7c02bfa2791df691e15dbf208a105e4.png";
 
 // Archicom Project Assets (River Point + Bulwar Północny investments)
 import archicomCover from "../../imports/archicom/archicom-night-rendering.webp"; // Cover — matches first frame of new hover animation
-import archicomPanorama from "../../imports/archicom/bkg1 2.png"; // Old panoramic — moved to gallery as supporting context shot
-import archicomRP1 from "../../imports/archicom/RP1.png";
-import archicomRP2 from "../../imports/archicom/RP2.png";
-import archicomRP3 from "../../imports/archicom/RP3.png";
-import archicomRP4 from "../../imports/archicom/RP4.png";
-import archicomBP1 from "../../imports/archicom/BP1.png";
-import archicomBP2 from "../../imports/archicom/BP2.png";
-import archicomBP3 from "../../imports/archicom/BP3.png";
-import archicomBP4 from "../../imports/archicom/BP4.png";
+// Migrated PNG → WebP (quality 85, ~91% size reduction, visually equivalent).
+// Originals preserved in src/imports/.backups-pre-compress/.
+import archicomPanorama from "../../imports/archicom/bkg1 2.webp"; // Old panoramic — moved to gallery as supporting context shot
+import archicomRP1 from "../../imports/archicom/RP1.webp";
+import archicomRP2 from "../../imports/archicom/RP2.webp";
+import archicomRP3 from "../../imports/archicom/RP3.webp";
+import archicomRP4 from "../../imports/archicom/RP4.webp";
+import archicomBP1 from "../../imports/archicom/BP1.webp";
+import archicomBP2 from "../../imports/archicom/BP2.webp";
+import archicomBP3 from "../../imports/archicom/BP3.webp";
+import archicomBP4 from "../../imports/archicom/BP4.webp";
 
 // regional.fit — product assets:
 // Cover = wide marketing hero (Screenshot 03.31.59) — logo + role list + benefit chips.
@@ -76,15 +78,17 @@ import cathereloShot5 from "../../imports/caterelo/05-price-chart.webp";
 import cathereloShot6 from "../../imports/caterelo/06-renovation-calc.webp";
 
 // DiscoBowl Project Assets (20 UK venues + booking system)
-import discobowlCover from "../../imports/discobowl/27.png"; // Panoramic cover — /work thumbnail + hero
-import discobowlPanorama from "../../imports/discobowl/1 9.png"; // Originally cover, moved to gallery
-import discobowlAsset1 from "../../imports/discobowl/2 2.png";
-import discobowlAsset2 from "../../imports/discobowl/3 2.png";
-import discobowlAsset3 from "../../imports/discobowl/4 2.png";
-import discobowlAsset4 from "../../imports/discobowl/5 2.png";
-import discobowlAsset5 from "../../imports/discobowl/6 2.png";
-import discobowlFrame from "../../imports/discobowl/Frame 636509 2.png";
-import discobowlGroup from "../../imports/discobowl/Group 636667.png";
+// Migrated PNG → WebP (quality 85, ~85% size reduction, visually equivalent).
+// Originals preserved in src/imports/.backups-pre-compress/.
+import discobowlCover from "../../imports/discobowl/27.webp"; // Panoramic cover — /work thumbnail + hero
+import discobowlPanorama from "../../imports/discobowl/1 9.webp"; // Originally cover, moved to gallery
+import discobowlAsset1 from "../../imports/discobowl/2 2.webp";
+import discobowlAsset2 from "../../imports/discobowl/3 2.webp";
+import discobowlAsset3 from "../../imports/discobowl/4 2.webp";
+import discobowlAsset4 from "../../imports/discobowl/5 2.webp";
+import discobowlAsset5 from "../../imports/discobowl/6 2.webp";
+import discobowlFrame from "../../imports/discobowl/Frame 636509 2.webp";
+import discobowlGroup from "../../imports/discobowl/Group 636667.webp";
 
 // Internal placeholder cover — typographic block for case studies awaiting final assets.
 // Used while the real cover image is being prepared. On-brand: dark void + lime + grey grain.
