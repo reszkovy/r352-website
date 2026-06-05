@@ -8,7 +8,6 @@ import { useLanguage } from "@/app/context/LanguageContext";
 import { useLocation } from "wouter";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { R3LoopBadge } from "@/app/components/ui/R3LoopBadge";
-import { WhyBreaksNow } from "@/app/components/marketing/WhyBreaksNow";
 
 // ─── 8-step methodology ──────────────────────────────────
 interface Step {
@@ -246,11 +245,6 @@ export function Process() {
           </Reveal>
         </div>
       </section>
-
-      {/* Why this breaks now — educational hook before methodology details.
-          Plants the category problem so visitors arrive at r3loop already
-          understanding WHY the methodology exists. */}
-      <WhyBreaksNow />
 
       {/* ─── 8-Step Tabs — interactive deep-dive (is the process map) ─── */}
       <section id="process-tabs" className="pb-20 md:pb-32 border-b border-white/10 scroll-mt-24">
