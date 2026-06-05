@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { Helmet } from "react-helmet-async";
 import { PageTransition } from "@/app/components/ui/PageTransition";
 import { Reveal } from "@/app/components/ui/Reveal";
 import { MagneticButton } from "@/app/components/ui/MagneticButton";
@@ -165,8 +166,41 @@ export function Process() {
   const step = steps[activeStep];
   const progressPct = ((activeStep + 1) / TOTAL) * 100;
 
+  // HowTo schema — JSON-LD describing r3loop as a structured 8-step process.
+  // LLMs and search engines prefer this over loose prose when a user asks
+  // "how does r3loop work" or "what are the steps of r352's methodology".
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "r3loop — r352's 8-step methodology for operational design systems",
+    "description":
+      "r3loop is r352's branded methodology. Eight sequential steps that turn operational chaos into a working design system. Sequence stays constant; depth of each step scales to engagement size.",
+    "url": "https://r352.com/process",
+    "totalTime": "P12W",
+    "step": steps.map((s, i) => ({
+      "@type": "HowToStep",
+      "position": i + 1,
+      "name": s.title.en,
+      "text": s.goal.en,
+      "url": `https://r352.com/process#step-${s.num}`,
+    })),
+    "supply": {
+      "@type": "HowToSupply",
+      "name": "Existing design operations state, stakeholder access, current brief intake process, design files and tool configurations",
+    },
+    "tool": {
+      "@type": "HowToTool",
+      "name": "r352 operating frameworks: brief templates, governance gates (Master/Variant/Pre-production), prioritization system, weekly cadence",
+    },
+  };
+
   return (
     <PageTransition>
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(howToSchema)}
+        </script>
+      </Helmet>
       {/* ─── Intro Hook — 12-col 7+5 (H1 left, supporting right) ─── */}
       <section className="pt-32 pb-16 md:pt-40 md:pb-20 px-8 md:px-12">
         <div className="max-w-[1800px] mx-auto">

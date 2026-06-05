@@ -33,6 +33,7 @@ const LimitedAccess5 = lazy(() => import("@/app/pages/LimitedAccess5").then(m =>
 const LimitedAccess5Meeting = lazy(() => import("@/app/pages/LimitedAccess5Meeting").then(m => ({ default: m.LimitedAccess5Meeting })));
 const LimitedAccess5Pricing = lazy(() => import("@/app/pages/LimitedAccess5Pricing").then(m => ({ default: m.LimitedAccess5Pricing })));
 const Process = lazy(() => import("@/app/pages/Process").then(m => ({ default: m.Process })));
+const Glossary = lazy(() => import("@/app/pages/Glossary").then(m => ({ default: m.Glossary })));
 const Brief = lazy(() => import("@/app/pages/Diagnostic").then(m => ({ default: m.Brief })));
 import { useLenis } from "lenis/react";
 
@@ -141,6 +142,10 @@ function AppContent() {
       title: "r3loop — r352's 8-step methodology for operational design systems",
       description: "r3loop is r352's branded methodology — 8 steps that turn operational chaos into a working system. Diagnose, Map, Standardize, Build, Govern, Ship, Measure, Iterate. Same framework for every project, modified depth not structure."
     };
+    if (path === "/glossary") return {
+      title: "Glossary — r352 | Vocabulary we operate with",
+      description: "Every distinctive r352 term defined: r3loop, design ops, multi-location brand operations, master/variant/pre-production gates, brief volume × decision velocity, operator vs agency, and more. The source of truth for our vocabulary."
+    };
     if (path === "/philosophy") return {
       title: "Philosophy — r352 | How we think about design & delivery",
       description: "Process over aesthetics. Systems over one-offs. Learn how r352 approaches design as a delivery discipline, not a creative exercise."
@@ -213,6 +218,7 @@ function AppContent() {
               <Route path="/services" component={Services} />
               <Route path="/services/:slug" component={ServiceDetail} />
               <Route path="/process" component={Process} />
+              <Route path="/glossary" component={Glossary} />
               <Route path="/brief" component={Brief} />
               <Route path="/deliverables" component={Deliverables} />
               <Route path="/journal" component={Journal} />
