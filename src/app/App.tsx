@@ -51,9 +51,35 @@ function ScrollToTop() {
         });
       }
     }, 700);
-    
+
     return () => clearTimeout(timer);
   }, [pathname, lenis]);
+
+  return null;
+}
+
+/**
+ * Focus the <main> element after each route change. Critical for keyboard
+ * and screen-reader users — without this, focus stays on the link they
+ * clicked (now off-screen on the old page) and they have no idea the page
+ * has changed. Coupled with #main tabIndex=-1 to make it programmatically
+ * focusable without entering the tab order.
+ */
+function FocusMainOnRouteChange() {
+  const [pathname] = useLocation();
+
+  useEffect(() => {
+    // Wait for PageTransition entry animation to complete (~700ms) before
+    // moving focus, so the focus ring doesn't flash mid-sweep.
+    const timer = setTimeout(() => {
+      const main = document.getElementById("main");
+      if (main) {
+        main.focus({ preventScroll: true });
+      }
+    }, 750);
+
+    return () => clearTimeout(timer);
+  }, [pathname]);
 
   return null;
 }
@@ -205,9 +231,21 @@ function AppContent() {
       <CustomCursor />
 
       <ScrollToTop />
+      <FocusMainOnRouteChange />
+
+      {/* Skip-to-content link — first focusable element. Hidden until focused
+          via keyboard (Tab). Lets keyboard / screen-reader users bypass the
+          header navigation and jump straight to the page content. */}
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[10001] focus:bg-[#D4FF00] focus:text-black focus:px-5 focus:py-3 focus:font-display focus:text-sm focus:tracking-wide focus:uppercase focus:outline-2 focus:outline-offset-2 focus:outline-black"
+      >
+        Skip to content
+      </a>
+
       <AgencyHeader />
-      
-      <main className="relative min-h-screen">
+
+      <main id="main" tabIndex={-1} className="relative min-h-screen focus:outline-none">
         <Suspense fallback={null}>
           <AnimatePresence mode="wait">
             <Switch location={location} key={getPageKey(location)}>

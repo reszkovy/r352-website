@@ -1,0 +1,38 @@
+name: Post-deploy smoke test
+
+# Runs after every push to main (which triggers Vercel deploy).
+# Waits 90 seconds for Vercel to finish, then verifies live state
+# against the publishing-layer audit expectations.
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      base:
+        description: 'Base URL to test (default: https://www.r352.com)'
+        required: false
+        default: 'https://www.r352.com'
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Wait for Vercel deploy (90s)
+        run: sleep 90
+
+      - name: Run post-deploy checks
+        run: node scripts/post-deploy-check.mjs --base=${{ inputs.base || 'https://www.r352.com' }}

@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>R352 Scorecard - audyt 10 kategorii</title>
+    <style>
+      :root {
+        --bg: #0a0a0a;
+        --panel: #141414;
+        --panel2: #1b1b1b;
+        --text: #f4f4ef;
+        --muted: #aaa99f;
+        --soft: #74746c;
+        --line: rgba(255, 255, 255, 0.13);
+        --lime: #d4ff00;
+        --green: #8df0a4;
+        --amber: #ffd166;
+        --red: #ff6b6b;
+        --blue: #8ecaff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at 18% 0%, rgba(212, 255, 0, 0.09), transparent 27rem),
+          radial-gradient(circle at 100% 10%, rgba(142, 202, 255, 0.07), transparent 30rem),
+          var(--bg);
+        color: var(--text);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.58;
+      }
+
+      main {
+        margin: 0 auto;
+        max-width: 1180px;
+        padding: 52px 20px 76px;
+      }
+
+      h1,
+      h2,
+      h3 {
+        line-height: 1.08;
+        margin: 0;
+      }
+
+      h1 {
+        font-size: clamp(2.7rem, 7vw, 6.5rem);
+        max-width: 980px;
+      }
+
+      h2 {
+        border-top: 1px solid var(--line);
+        font-size: clamp(1.8rem, 3vw, 2.8rem);
+        margin-top: 48px;
+        padding-top: 32px;
+      }
+
+      h3 {
+        font-size: 1.18rem;
+      }
+
+      p,
+      li {
+        color: var(--muted);
+      }
+
+      code {
+        background: #222;
+        border: 1px solid var(--line);
+        border-radius: 5px;
+        color: #fff;
+        font-family: "SFMono-Regular", Consolas, ui-monospace, monospace;
+        font-size: 0.92em;
+        padding: 0.12rem 0.34rem;
+      }
+
+      .kicker {
+        color: var(--lime);
+        font-size: 0.78rem;
+        font-weight: 850;
+        letter-spacing: 0.16em;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+      }
+
+      .lead {
+        color: #dddcd2;
+        font-size: 1.16rem;
+        max-width: 850px;
+      }
+
+      .hero {
+        border-bottom: 1px solid var(--line);
+        display: grid;
+        gap: 24px;
+        grid-template-columns: minmax(0, 1.3fr) minmax(260px, 0.7fr);
+        padding-bottom: 38px;
+      }
+
+      .overall {
+        align-self: end;
+        background: linear-gradient(180deg, rgba(212, 255, 0, 0.14), rgba(255, 255, 255, 0.04));
+        border: 1px solid rgba(212, 255, 0, 0.34);
+        border-radius: 8px;
+        padding: 24px;
+      }
+
+      .overall span {
+        color: var(--soft);
+        display: block;
+        font-size: 0.74rem;
+        font-weight: 850;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .overall strong {
+        color: var(--lime);
+        display: block;
+        font-size: clamp(3.2rem, 8vw, 6.4rem);
+        letter-spacing: -0.02em;
+        line-height: 0.95;
+        margin: 12px 0;
+      }
+
+      .grid {
+        display: grid;
+        gap: 14px;
+      }
+
+      .score-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin-top: 24px;
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 20px;
+      }
+
+      .card-head {
+        align-items: start;
+        display: flex;
+        gap: 14px;
+        justify-content: space-between;
+      }
+
+      .score {
+        color: var(--lime);
+        font-size: 2.15rem;
+        font-weight: 850;
+        letter-spacing: -0.02em;
+        line-height: 1;
+        white-space: nowrap;
+      }
+
+      .bar {
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 999px;
+        height: 8px;
+        margin: 18px 0 14px;
+        overflow: hidden;
+      }
+
+      .fill {
+        background: linear-gradient(90deg, var(--lime), var(--green));
+        border-radius: inherit;
+        height: 100%;
+      }
+
+      .fill.warn {
+        background: linear-gradient(90deg, var(--amber), var(--lime));
+      }
+
+      .fill.risk {
+        background: linear-gradient(90deg, var(--red), var(--amber));
+      }
+
+      .label {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--muted);
+        display: inline-block;
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        margin-bottom: 12px;
+        padding: 0.16rem 0.54rem;
+        text-transform: uppercase;
+      }
+
+      .label.good {
+        border-color: rgba(141, 240, 164, 0.45);
+        color: var(--green);
+      }
+
+      .label.warn {
+        border-color: rgba(255, 209, 102, 0.48);
+        color: var(--amber);
+      }
+
+      .label.risk {
+        border-color: rgba(255, 107, 107, 0.5);
+        color: var(--red);
+      }
+
+      .evidence {
+        background: var(--panel2);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        margin-top: 24px;
+        padding: 20px;
+      }
+
+      .evidence-grid {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .fact {
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 12px;
+      }
+
+      .fact strong {
+        color: #fff;
+        display: block;
+      }
+
+      .fact span {
+        color: var(--muted);
+      }
+
+      table {
+        border-collapse: collapse;
+        margin-top: 20px;
+        width: 100%;
+      }
+
+      th,
+      td {
+        border-bottom: 1px solid var(--line);
+        padding: 12px 10px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        color: #fff;
+        font-size: 0.76rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      td {
+        color: var(--muted);
+      }
+
+      .action-list {
+        background: linear-gradient(180deg, rgba(212, 255, 0, 0.12), rgba(255, 255, 255, 0.035));
+        border: 1px solid rgba(212, 255, 0, 0.36);
+        border-radius: 8px;
+        padding: 22px;
+      }
+
+      .footer {
+        border-top: 1px solid var(--line);
+        color: var(--soft);
+        margin-top: 48px;
+        padding-top: 22px;
+      }
+
+      @media (max-width: 900px) {
+        .hero,
+        .score-grid,
+        .evidence-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 620px) {
+        main {
+          padding-inline: 16px;
+        }
+
+        .card-head {
+          display: block;
+        }
+
+        .score {
+          margin-top: 10px;
+        }
+
+        code {
+          white-space: normal;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <div>
+          <p class="kicker">Audyt 10 kategorii / skala 1-1000</p>
+          <h1>R352.com scorecard</h1>
+          <p class="lead">
+            Trzecia runda audytu po wdrożeniu zmian. Produkcja dogoniła krytyczne poprawki:
+            canonical jest na <code>www</code>, assety social/favicon mają prawidłowe MIME, a brakujący
+            asset zwraca 404 zamiast HTML.
+          </p>
+        </div>
+        <aside class="overall">
+          <span>Ocena łączna</span>
+          <strong>831</strong>
+          <p>/1000. Bardzo solidny stan po poprawkach, z największym polem do wzrostu w SSR/prerender, accessibility, privacy i redukcji globalnego JS.</p>
+        </aside>
+      </section>
+
+      <section class="evidence">
+        <h2>Dowody techniczne</h2>
+        <div class="evidence-grid">
+          <div class="fact">
+            <strong>Build lokalny</strong>
+            <span><code>npm run build</code> przechodzi.</span>
+          </div>
+          <div class="fact">
+            <strong>Live canonical</strong>
+            <span><code>https://www.r352.com</code> w HTML produkcji.</span>
+          </div>
+          <div class="fact">
+            <strong>Redirect apex</strong>
+            <span><code>https://r352.com</code> -> 307 -> <code>https://www.r352.com/</code>.</span>
+          </div>
+          <div class="fact">
+            <strong>OG image</strong>
+            <span><code>/og-image.png</code> zwraca <code>image/png</code>, 70 680 B.</span>
+          </div>
+          <div class="fact">
+            <strong>Favicon</strong>
+            <span><code>/favicon.svg</code> zwraca <code>image/svg+xml</code>.</span>
+          </div>
+          <div class="fact">
+            <strong>Missing asset</strong>
+            <span><code>/missing-audit-test.png</code> zwraca 404.</span>
+          </div>
+          <div class="fact">
+            <strong>Sitemap/robots</strong>
+            <span>Live wskazuje <code>https://www.r352.com</code>.</span>
+          </div>
+          <div class="fact">
+            <strong>Bundle / dist</strong>
+            <span><code>dist</code> ok. 31 MB, największy asset ok. 837 KB.</span>
+          </div>
+          <div class="fact">
+            <strong>Hreflang</strong>
+            <span>Tylko <code>en</code> i <code>x-default</code> do czasu realnego <code>/pl</code>.</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>10 kategorii</h2>
+        <div class="grid score-grid">
+          <article class="card">
+            <div class="card-head">
+              <div>
+                <span class="label good">Bardzo dobrze</span>
+                <h3>1. Techniczne SEO</h3>
+              </div>
+              <div class="score">900</div>
+            </div>
+            <div class="bar"><div class="fill" style="width: 90%"></div></div>
+            <p>Canonical, host, robots, sitemap, OG i hreflang są spójne na live. Minus za SPA zależne od JS dla metadanych tras.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-head">
+              <div>
+                <span class="label good">Bardzo dobrze</span>
+                <h3>2. Indeksacja i crawlability</h3>
+              </div>
+              <div class="score">885</div>
+            </div>
+            <div class="bar"><div class="fill" style="width: 88.5%"></div></div>
+            <p>Sitemap i robots działają, brakujące assety zwracają 404. Nadal warto wdrożyć prerender dla głównych tras.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-head">
+              <div>
+                <span class="label good">Bardzo dobrze</span>
+                <h3>3. Social sharing i brand assets</h3>
+              </div>
+              <div class="score">930</div>
+            </div>
+            <div class="bar"><div class="fill" style="width: 93%"></div></div>
+            <p>OG image, favicon family, manifest i apple touch icon są wdrożone. To był dawniej krytyczny błąd, teraz jest mocna część strony.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-head">
+              <div>
+                <span class="label good">Mocno</span>
+                <h3>4. Performance assetów</h3>
+              </div>
+              <div class="score">820</div>
+            </div>
+            <div class="bar"><div class="fill" style="width: 82%"></div></div>
+            <p>Ogromny progres: największe Archicom PNG spadły do WebP, <code>dist</code> ma ok. 31 MB. Publiczne wideo i sekwencje klatek nadal są ciężkim obszarem.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-head">
+              <div>
+                <span class="label warn">Do poprawy</span>
+                <h3>5. JavaScript i architektura renderowania</h3>
+              </div>
+              <div class="score">705</div>
+            </div>
+            <div class="bar"><div class="fill warn" style="width: 70.5%"></div></div>
+            <p>Build jest podzielony na chunki, ale SPA nadal ma ciężki główny runtime: React, Motion, Lenis, globalne efekty i metadata per-route po JS.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-head">
+              <div>
+                <span class="label good">Bardzo mocno</span>
+                <h3>6. Content i positioning</h3>
+              </div>
+              <div class="score">925</div>
+            </div>
+            <div class="bar"><div class="fill" style="width: 92.5%"></div></div>
+            <p>Wyraźna kategoria, r3loop, mocny język operacyjny, case studies i llms.txt. To jest strategicznie jedna z najmocniejszych części strony.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-head">
+              <div>
+                <span class="label good">Mocno</span>
+                <h3>7. UX i konwersja</h3>
+              </div>
+              <div class="score">835</div>
+            </div>
+            <div class="bar"><div class="fill" style="width: 83.5%"></div></div>
+            <p>Jest jasna ścieżka: brief, call, mail. Premium feel działa. Ryzyko: dużo globalnych efektów może konkurować z czytelnością i szybkością na mobile.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-head">
+              <div>
+                <span class="label warn">Średnio</span>
+                <h3>8. Accessibility</h3>
+              </div>
+              <div class="score">690</div>
+            </div>
+            <div class="bar"><div class="fill warn" style="width: 69%"></div></div>
+            <p>Są aria-labels i alty, ale nadal warto zrobić pełny pass: focus po zmianie trasy, focus trap w menu, reduced motion dla preloadera/cursora/smooth scroll.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-head">
+              <div>
+                <span class="label warn">Częściowo</span>
+                <h3>9. Internationalization</h3>
+              </div>
+              <div class="score">760</div>
+            </div>
+            <div class="bar"><div class="fill warn" style="width: 76%"></div></div>
+            <p>Hreflang został poprawnie zdjęty, więc nie ma fałszywego <code>/pl</code>. Następny poziom to prawdziwe URL-e językowe i linkowalne wersje PL.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-head">
+              <div>
+                <span class="label risk">Ryzyko</span>
+                <h3>10. Privacy, analytics i governance</h3>
+              </div>
+              <div class="score">655</div>
+            </div>
+            <div class="bar"><div class="fill risk" style="width: 65.5%"></div></div>
+            <p>GTM działa, ale przy UE/Hiszpanii potrzebny jest jasny consent/cookie governance. Warto też dodać monitoring 404, bundle budget i cykliczny crawl.</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Tabela wyników</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Kategoria</th>
+              <th>Score</th>
+              <th>Największy plus</th>
+              <th>Najbliższy wzrost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Techniczne SEO</td>
+              <td>900</td>
+              <td>Spójny canonical, host i OG.</td>
+              <td>Prerender/SSG podstron.</td>
+            </tr>
+            <tr>
+              <td>Indeksacja i crawlability</td>
+              <td>885</td>
+              <td>404 dla brakujących assetów, poprawna sitemap.</td>
+              <td>Automatyczny crawl po deployu.</td>
+            </tr>
+            <tr>
+              <td>Social sharing i brand assets</td>
+              <td>930</td>
+              <td>OG/favicon/manifest wdrożone.</td>
+              <td>Przetestować LinkedIn/X/Slack previews.</td>
+            </tr>
+            <tr>
+              <td>Performance assetów</td>
+              <td>820</td>
+              <td>Duże PNG przerobione na WebP.</td>
+              <td>Lazy/preload strategy dla wideo i scroll frames.</td>
+            </tr>
+            <tr>
+              <td>JS i renderowanie</td>
+              <td>705</td>
+              <td>Code splitting działa.</td>
+              <td>Prerender i redukcja globalnych efektów.</td>
+            </tr>
+            <tr>
+              <td>Content i positioning</td>
+              <td>925</td>
+              <td>Silny r3loop i operator-not-agency narrative.</td>
+              <td>Więcej proof points widocznych w HTML.</td>
+            </tr>
+            <tr>
+              <td>UX i konwersja</td>
+              <td>835</td>
+              <td>Brief/call/mail są klarowne.</td>
+              <td>Uspokoić mobile i globalne overlaye.</td>
+            </tr>
+            <tr>
+              <td>Accessibility</td>
+              <td>690</td>
+              <td>Podstawy aria i alty są obecne.</td>
+              <td>Focus, menu, reduced motion.</td>
+            </tr>
+            <tr>
+              <td>Internationalization</td>
+              <td>760</td>
+              <td>Fałszywy hreflang usunięty.</td>
+              <td>Realne trasy <code>/pl</code>.</td>
+            </tr>
+            <tr>
+              <td>Privacy i governance</td>
+              <td>655</td>
+              <td>GTM nie blokuje HTML.</td>
+              <td>Consent, monitoring, budgets.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Najważniejsze następne ruchy</h2>
+        <div class="action-list">
+          <ol>
+            <li>Wdrożyć prerender/SSG dla głównych tras: <code>/</code>, <code>/services</code>, <code>/process</code>, <code>/glossary</code>, <code>/work</code>, <code>/journal</code>, <code>/contact</code>.</li>
+            <li>Zrobić accessibility pass: focus management, focus trap w menu, reduced motion dla globalnych efektów.</li>
+            <li>Dodać cookie/consent governance dla GTM i jasną politykę prywatności/cookies.</li>
+            <li>Wprowadzić monitoring po deployu: canonical check, asset MIME check, 404 check, sitemap crawl.</li>
+            <li>Zoptymalizować publiczne wideo i scroll frames: lazy loading, preload tylko krytycznych ramek, ewentualnie mniej klatek na mobile.</li>
+          </ol>
+        </div>
+      </section>
+
+      <p class="footer">
+        Audyt wykonany 2026-06-05 po wdrożeniu zmian. Skala ocen: 1-1000. Wynik łączny jest średnią ważoną z naciskiem na SEO, crawlability, performance i content.
+      </p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>R352 Roadmap do 900+ w 10 kategoriach</title>
+    <style>
+      :root {
+        --bg: #0a0a0a;
+        --panel: #141414;
+        --panel2: #1b1b1b;
+        --text: #f5f5ef;
+        --muted: #aaa99f;
+        --soft: #76766e;
+        --line: rgba(255, 255, 255, 0.13);
+        --lime: #d4ff00;
+        --green: #8df0a4;
+        --amber: #ffd166;
+        --red: #ff6b6b;
+        --blue: #8ecaff;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at 20% 0%, rgba(212, 255, 0, 0.09), transparent 28rem),
+          radial-gradient(circle at 100% 8%, rgba(142, 202, 255, 0.07), transparent 30rem),
+          var(--bg);
+        color: var(--text);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.58;
+      }
+
+      main {
+        margin: 0 auto;
+        max-width: 1180px;
+        padding: 52px 20px 76px;
+      }
+
+      h1, h2, h3 { line-height: 1.08; margin: 0; }
+      h1 { font-size: clamp(2.7rem, 7vw, 6.4rem); max-width: 1000px; }
+      h2 {
+        border-top: 1px solid var(--line);
+        font-size: clamp(1.7rem, 3vw, 2.7rem);
+        margin-top: 46px;
+        padding-top: 30px;
+      }
+      h3 { font-size: 1.18rem; }
+
+      p, li, td { color: var(--muted); }
+
+      code {
+        background: #222;
+        border: 1px solid var(--line);
+        border-radius: 5px;
+        color: #fff;
+        font-family: "SFMono-Regular", Consolas, ui-monospace, monospace;
+        font-size: 0.92em;
+        padding: 0.12rem 0.34rem;
+      }
+
+      .kicker {
+        color: var(--lime);
+        font-size: 0.78rem;
+        font-weight: 850;
+        letter-spacing: 0.16em;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+      }
+
+      .lead {
+        color: #dddcd2;
+        font-size: 1.15rem;
+        max-width: 860px;
+      }
+
+      .hero {
+        border-bottom: 1px solid var(--line);
+        display: grid;
+        gap: 24px;
+        grid-template-columns: minmax(0, 1.3fr) minmax(260px, 0.7fr);
+        padding-bottom: 38px;
+      }
+
+      .target {
+        align-self: end;
+        background: linear-gradient(180deg, rgba(212, 255, 0, 0.14), rgba(255, 255, 255, 0.04));
+        border: 1px solid rgba(212, 255, 0, 0.34);
+        border-radius: 8px;
+        padding: 24px;
+      }
+
+      .target span {
+        color: var(--soft);
+        display: block;
+        font-size: 0.74rem;
+        font-weight: 850;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .target strong {
+        color: var(--lime);
+        display: block;
+        font-size: clamp(3.3rem, 8vw, 6rem);
+        line-height: 0.95;
+        margin: 12px 0;
+      }
+
+      .grid { display: grid; gap: 14px; }
+      .two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 20px;
+      }
+
+      .card.highlight {
+        border-color: rgba(212, 255, 0, 0.34);
+      }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 0 0 14px;
+      }
+
+      .pill {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--muted);
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        padding: 0.16rem 0.56rem;
+        text-transform: uppercase;
+      }
+
+      .pill.good { border-color: rgba(141, 240, 164, 0.45); color: var(--green); }
+      .pill.warn { border-color: rgba(255, 209, 102, 0.48); color: var(--amber); }
+      .pill.risk { border-color: rgba(255, 107, 107, 0.5); color: var(--red); }
+      .pill.blue { border-color: rgba(142, 202, 255, 0.5); color: var(--blue); }
+
+      .scoreline {
+        align-items: center;
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+        margin: 16px 0;
+      }
+
+      .scoreline strong {
+        color: var(--lime);
+        font-size: 2rem;
+        line-height: 1;
+      }
+
+      .bar {
+        background: rgba(255,255,255,0.08);
+        border-radius: 999px;
+        height: 8px;
+        overflow: hidden;
+      }
+
+      .fill {
+        background: linear-gradient(90deg, var(--lime), var(--green));
+        border-radius: inherit;
+        height: 100%;
+      }
+
+      table {
+        border-collapse: collapse;
+        margin-top: 20px;
+        width: 100%;
+      }
+
+      th, td {
+        border-bottom: 1px solid var(--line);
+        padding: 12px 10px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        color: #fff;
+        font-size: 0.76rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .phase {
+        background: var(--panel2);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 20px;
+      }
+
+      .phase strong {
+        color: var(--lime);
+        display: block;
+        font-size: 0.75rem;
+        letter-spacing: 0.12em;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+      }
+
+      .footer {
+        border-top: 1px solid var(--line);
+        color: var(--soft);
+        margin-top: 48px;
+        padding-top: 22px;
+      }
+
+      @media (max-width: 900px) {
+        .hero, .two, .three { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <div>
+          <p class="kicker">Roadmap / cel: każda kategoria 900+</p>
+          <h1>Plan dojścia do 900+ dla r352.com</h1>
+          <p class="lead">
+            Punkt startowy to scorecard z wynikiem 831/1000. Strona ma już mocne SEO techniczne,
+            brand assets i content. Najwięcej punktów do podniesienia jest w renderowaniu,
+            accessibility, privacy/governance, i18n oraz dopracowaniu performance runtime.
+          </p>
+        </div>
+        <aside class="target">
+          <span>Cel końcowy</span>
+          <strong>900+</strong>
+          <p>we wszystkich 10 kategoriach. Najkrótsza droga: prerender + accessibility + consent + monitoring + realne /pl.</p>
+        </aside>
+      </section>
+
+      <section>
+        <h2>Plan fazowy</h2>
+        <div class="grid three">
+          <article class="phase">
+            <strong>Faza 1 / 1-2 dni</strong>
+            <h3>Quick wins i zabezpieczenia</h3>
+            <ul>
+              <li>Dodać monitoring po deployu: canonical, MIME, 404, sitemap.</li>
+              <li>Dodać bundle/asset budget.</li>
+              <li>Przetestować social previews w LinkedIn, Slack, X.</li>
+              <li>Ustawić reduced motion dla globalnych efektów.</li>
+            </ul>
+          </article>
+          <article class="phase">
+            <strong>Faza 2 / 3-7 dni</strong>
+            <h3>Prerender i accessibility</h3>
+            <ul>
+              <li>Prerenderować core pages i artykuły/case studies.</li>
+              <li>Zrobić focus management po zmianie route.</li>
+              <li>Dodać focus trap i semantykę mobile menu.</li>
+              <li>Ograniczyć globalne efekty na mobile.</li>
+            </ul>
+          </article>
+          <article class="phase">
+            <strong>Faza 3 / 1-3 tygodnie</strong>
+            <h3>Systemowo 900+</h3>
+            <ul>
+              <li>Wdrożyć prawdziwe URL-e <code>/pl</code>.</li>
+              <li>Dodać consent/cookie governance.</li>
+              <li>Zbudować dashboard audytu po deployu.</li>
+              <li>Ustalić cykliczny crawl i performance review.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Roadmap per kategoria</h2>
+        <div class="grid two">
+          <article class="card highlight">
+            <div class="meta"><span class="pill good">Już 900</span><span class="pill blue">Utrzymać</span></div>
+            <h3>1. Techniczne SEO: 900 -> 940</h3>
+            <div class="scoreline"><span>Obecnie</span><strong>900</strong><span>Cel</span><strong>940</strong></div>
+            <div class="bar"><div class="fill" style="width:94%"></div></div>
+            <p><strong>Co zrobić:</strong></p>
+            <ul>
+              <li>Prerenderować metadane dla core routes, aby title/description/canonical były w HTML bez JS.</li>
+              <li>Dodać automatyczny check canonicali dla sitemap URL-i po deployu.</li>
+              <li>Zweryfikować schema FAQ/reviews względem widocznej treści.</li>
+            </ul>
+            <p><strong>Test 900+:</strong> każdy URL z sitemap ma unikalny statyczny title, description, canonical i poprawną schema walidowaną w Rich Results / Schema Validator.</p>
+          </article>
+
+          <article class="card">
+            <div class="meta"><span class="pill warn">Blisko</span><span class="pill blue">SEO infra</span></div>
+            <h3>2. Indeksacja i crawlability: 885 -> 930</h3>
+            <div class="scoreline"><span>Obecnie</span><strong>885</strong><span>Cel</span><strong>930</strong></div>
+            <div class="bar"><div class="fill" style="width:93%"></div></div>
+            <p><strong>Co zrobić:</strong></p>
+            <ul>
+              <li>Dodać skrypt crawlujący wszystkie URL-e z <code>public/sitemap.xml</code> i sprawdzający status 200.</li>
+              <li>Sprawdzać, czy assety z HTML mają MIME zgodny z rozszerzeniem.</li>
+              <li>Dodać audyt 404 dla przykładowych brakujących assetów.</li>
+            </ul>
+            <p><strong>Test 900+:</strong> crawl po deployu przechodzi bez 3xx w sitemap, bez fałszywych 200 i bez HTML pod assetami.</p>
+          </article>
+
+          <article class="card highlight">
+            <div class="meta"><span class="pill good">Już 900+</span><span class="pill blue">Polish</span></div>
+            <h3>3. Social sharing i brand assets: 930 -> 960</h3>
+            <div class="scoreline"><span>Obecnie</span><strong>930</strong><span>Cel</span><strong>960</strong></div>
+            <div class="bar"><div class="fill" style="width:96%"></div></div>
+            <p><strong>Co zrobić:</strong></p>
+            <ul>
+              <li>Przetestować preview: LinkedIn Post Inspector, Slack unfurl, X Card Validator.</li>
+              <li>Dodać route-specific OG images dla case studies i journal articles.</li>
+              <li>Utrzymać favicon family i manifest po każdym deployu.</li>
+            </ul>
+            <p><strong>Test 900+:</strong> homepage, case study i artykuł mają poprawny preview w minimum 3 kanałach.</p>
+          </article>
+
+          <article class="card">
+            <div class="meta"><span class="pill warn">Performance</span><span class="pill blue">Media</span></div>
+            <h3>4. Performance assetów: 820 -> 920</h3>
+            <div class="scoreline"><span>Obecnie</span><strong>820</strong><span>Cel</span><strong>920</strong></div>
+            <div class="bar"><div class="fill" style="width:92%"></div></div>
+            <p><strong>Co zrobić:</strong></p>
+            <ul>
+              <li>Ustawić asset budget: żaden pojedynczy obraz w dist powyżej 500 KB bez świadomego wyjątku.</li>
+              <li>Lazy-load wideo hover i scroll frames, szczególnie na mobile.</li>
+              <li>Preloadować tylko krytyczne hero/media, nie całą sekwencję klatek.</li>
+              <li>Rozważyć mniejszą liczbę scroll frames dla mobile.</li>
+            </ul>
+            <p><strong>Test 900+:</strong> największy asset poniżej 500-600 KB, LCP media zoptymalizowane, mobile nie pobiera nieużywanych wideo/ramek.</p>
+          </article>
+
+          <article class="card">
+            <div class="meta"><span class="pill risk">Największy skok</span><span class="pill blue">Architecture</span></div>
+            <h3>5. JS i renderowanie: 705 -> 910</h3>
+            <div class="scoreline"><span>Obecnie</span><strong>705</strong><span>Cel</span><strong>910</strong></div>
+            <div class="bar"><div class="fill" style="width:91%"></div></div>
+            <p><strong>Co zrobić:</strong></p>
+            <ul>
+              <li>Wdrożyć prerender/SSG dla minimum: <code>/</code>, <code>/services</code>, <code>/process</code>, <code>/glossary</code>, <code>/work</code>, <code>/journal</code>, <code>/contact</code>.</li>
+              <li>Opóźnić ładowanie Chatbota i Floating CTA do idle/interaction.</li>
+              <li>Wyłączać custom cursor, cursor glow i część Motion na mobile oraz <code>prefers-reduced-motion</code>.</li>
+              <li>Sprawdzić, czy <code>jspdf</code> i <code>html2canvas</code> nie są preloadowane na zwykłych trasach.</li>
+            </ul>
+            <p><strong>Test 900+:</strong> statyczny HTML ma treść i meta per route, initial JS mniejszy, globalne efekty nie startują bez potrzeby.</p>
+          </article>
+
+          <article class="card highlight">
+            <div class="meta"><span class="pill good">Już 900+</span><span class="pill blue">Content moat</span></div>
+            <h3>6. Content i positioning: 925 -> 960</h3>
+            <div class="scoreline"><span>Obecnie</span><strong>925</strong><span>Cel</span><strong>960</strong></div>
+            <div class="bar"><div class="fill" style="width:96%"></div></div>
+            <p><strong>Co zrobić:</strong></p>
+            <ul>
+              <li>Dodać więcej widocznych proof points: metryki, quotes, before/after, workflow snapshots.</li>
+              <li>Wzmocnić stronę <code>/process</code> jako canonical source dla r3loop.</li>
+              <li>Dodać osobne sekcje FAQ widoczne na stronie, jeśli FAQ schema zostaje.</li>
+            </ul>
+            <p><strong>Test 900+:</strong> kluczowe claims mają widoczne dowody, nie tylko schema/llms copy.</p>
+          </article>
+
+          <article class="card">
+            <div class="meta"><span class="pill warn">UX</span><span class="pill blue">Mobile calm</span></div>
+            <h3>7. UX i konwersja: 835 -> 920</h3>
+            <div class="scoreline"><span>Obecnie</span><strong>835</strong><span>Cel</span><strong>920</strong></div>
+            <div class="bar"><div class="fill" style="width:92%"></div></div>
+            <p><strong>Co zrobić:</strong></p>
+            <ul>
+              <li>Zrobić mobile pass: header, menu, CTA, chatbot, hero i pierwsze CTA.</li>
+              <li>Ograniczyć liczbę globalnych elementów naraz: chatbot/brief CTA/bottom gradient.</li>
+              <li>Dodać microcopy kierujące do właściwej ścieżki: brief vs call vs mail.</li>
+              <li>Upewnić się, że każda case study kończy się jednym jasnym next step.</li>
+            </ul>
+            <p><strong>Test 900+:</strong> użytkownik na mobile w 10 sekund rozumie ofertę i ma jedną oczywistą akcję.</p>
+          </article>
+
+          <article class="card">
+            <div class="meta"><span class="pill risk">Priorytet</span><span class="pill blue">A11y</span></div>
+            <h3>8. Accessibility: 690 -> 910</h3>
+            <div class="scoreline"><span>Obecnie</span><strong>690</strong><span>Cel</span><strong>910</strong></div>
+            <div class="bar"><div class="fill" style="width:91%"></div></div>
+            <p><strong>Co zrobić:</strong></p>
+            <ul>
+              <li>Dodać focus management po każdej zmianie trasy: focus na <code>main</code> albo H1.</li>
+              <li>Mobile menu: <code>aria-expanded</code>, <code>aria-controls</code>, focus trap, Escape close.</li>
+              <li>Pełne <code>prefers-reduced-motion</code> dla preloadera, smooth scroll, cursor glow, page transitions.</li>
+              <li>Sprawdzić kontrasty light/dark i focus states.</li>
+              <li>Uruchomić manualny keyboard-only pass po top 7 stronach.</li>
+            </ul>
+            <p><strong>Test 900+:</strong> przejście keyboard-only działa, menu nie gubi focusu, reduced motion faktycznie redukuje animacje.</p>
+          </article>
+
+          <article class="card">
+            <div class="meta"><span class="pill warn">i18n</span><span class="pill blue">PL URLs</span></div>
+            <h3>9. Internationalization: 760 -> 920</h3>
+            <div class="scoreline"><span>Obecnie</span><strong>760</strong><span>Cel</span><strong>920</strong></div>
+            <div class="bar"><div class="fill" style="width:92%"></div></div>
+            <p><strong>Co zrobić:</strong></p>
+            <ul>
+              <li>Wdrożyć realne URL-e: <code>/pl</code>, <code>/pl/services</code>, <code>/pl/process</code>, itd.</li>
+              <li>Język ma wynikać z URL-a, nie tylko ze state Reacta.</li>
+              <li>Dodać pary hreflang EN/PL dopiero po realnym wdrożeniu tras.</li>
+              <li>Dodać polską sitemap albo pełną sitemap z alternates.</li>
+            </ul>
+            <p><strong>Test 900+:</strong> każda główna strona ma linkowalną wersję PL i EN, canonicale oraz hreflang są dwustronne.</p>
+          </article>
+
+          <article class="card">
+            <div class="meta"><span class="pill risk">Governance</span><span class="pill blue">Compliance</span></div>
+            <h3>10. Privacy, analytics i governance: 655 -> 905</h3>
+            <div class="scoreline"><span>Obecnie</span><strong>655</strong><span>Cel</span><strong>905</strong></div>
+            <div class="bar"><div class="fill" style="width:90.5%"></div></div>
+            <p><strong>Co zrobić:</strong></p>
+            <ul>
+              <li>Dodać cookie consent dla GTM zgodny z UE/Hiszpanią.</li>
+              <li>Upewnić się, że GTM nie ładuje marketing tags przed zgodą.</li>
+              <li>Dodać politykę prywatności i cookies jako widoczne linki w footerze.</li>
+              <li>Wdrożyć deploy checklist: build, crawl, sitemap, asset MIME, bundle budget, broken links.</li>
+              <li>Dodać miesięczny mini-audyt automatyczny.</li>
+            </ul>
+            <p><strong>Test 900+:</strong> tags respektują consent, polityki są dostępne, a po deployu automatycznie wychodzi raport techniczny.</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Minimalny zestaw zadań, który podnosi wszystko do 900+</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Zadanie</th>
+              <th>Kategorie, które podnosi</th>
+              <th>Wpływ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Prerender/SSG core pages</td>
+              <td>SEO, crawlability, JS/rendering, content</td>
+              <td>Największa pojedyncza dźwignia techniczna.</td>
+            </tr>
+            <tr>
+              <td>Accessibility pass</td>
+              <td>A11y, UX, performance perceived</td>
+              <td>Podnosi najniższą kategorię z 690 do 900+.</td>
+            </tr>
+            <tr>
+              <td>Consent + privacy links</td>
+              <td>Privacy, governance, trust</td>
+              <td>Zamyka największą lukę formalno-operacyjną.</td>
+            </tr>
+            <tr>
+              <td>Post-deploy monitoring</td>
+              <td>SEO, crawlability, assets, governance</td>
+              <td>Chroni przed regresją po kolejnych deployach.</td>
+            </tr>
+            <tr>
+              <td>Realne <code>/pl</code></td>
+              <td>i18n, SEO, UX, content</td>
+              <td>Zmienia język ze stanu UI w prawdziwy system URL-i.</td>
+            </tr>
+            <tr>
+              <td>Media/runtime optimization</td>
+              <td>Performance, JS, UX</td>
+              <td>Uspokaja mobile i obniża koszt pierwszego wejścia.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Kolejność wykonania</h2>
+        <div class="grid two">
+          <article class="card">
+            <h3>Najpierw</h3>
+            <ol>
+              <li>Accessibility pass.</li>
+              <li>Consent/cookie governance.</li>
+              <li>Monitoring po deployu.</li>
+              <li>Asset/runtime budgets.</li>
+            </ol>
+            <p>Te zadania są stosunkowo zamknięte i szybko podnoszą najsłabsze kategorie.</p>
+          </article>
+          <article class="card">
+            <h3>Potem</h3>
+            <ol>
+              <li>Prerender/SSG.</li>
+              <li>Realne <code>/pl</code>.</li>
+              <li>Route-specific OG images.</li>
+              <li>Dowody contentowe widoczne w HTML.</li>
+            </ol>
+            <p>To większe prace, ale dają trwałe 900+ i mocniejszą widoczność w Google/LLM.</p>
+          </article>
+        </div>
+      </section>
+
+      <p class="footer">
+        Roadmap przygotowana na bazie scorecardu r352.com z 2026-06-05. Skala: 1-1000, cel: każda kategoria 900+.
+      </p>
+    </main>
+  </body>
+</html>

@@ -252,14 +252,16 @@ export function AgencyHeader() {
         </nav>
         
         {/* Mobile Hamburger */}
-        <motion.button 
+        <motion.button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="pointer-events-auto md:hidden group flex flex-col justify-center items-center w-12 h-12 gap-1.5 cursor-pointer z-[1000] rounded-none backdrop-blur-sm outline-none focus:outline-none"
-            animate={{ 
+            animate={{
                 backgroundColor: "rgba(212, 255, 0, 0)" // Always transparent
             }}
             transition={{ duration: 0.3 }}
-            aria-label="Toggle menu"
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-menu-overlay"
         >
            <motion.div 
              className="w-6 h-[3px] rounded-none origin-center"
@@ -289,6 +291,10 @@ export function AgencyHeader() {
       <AnimatePresence>
         {isMenuOpen && (
             <motion.div
+                id="mobile-menu-overlay"
+                role="dialog"
+                aria-modal="true"
+                aria-label="Main navigation"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
