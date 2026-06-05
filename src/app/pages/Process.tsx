@@ -175,14 +175,14 @@ export function Process() {
     "name": "r3loop — r352's 8-step methodology for operational design systems",
     "description":
       "r3loop is r352's branded methodology. Eight sequential steps that turn operational chaos into a working design system. Sequence stays constant; depth of each step scales to engagement size.",
-    "url": "https://r352.com/process",
+    "url": "https://www.r352.com/process",
     "totalTime": "P12W",
     "step": steps.map((s, i) => ({
       "@type": "HowToStep",
       "position": i + 1,
       "name": s.title.en,
       "text": s.goal.en,
-      "url": `https://r352.com/process#step-${s.num}`,
+      "url": `https://www.r352.com/process#step-${s.num}`,
     })),
     "supply": {
       "@type": "HowToSupply",

@@ -20,13 +20,13 @@ The practice's contrarian thesis: **brand consistency in 300+ locations is not a
 
 ## Key pages
 
-- [Home](https://r352.com/): Strategic design partner positioning, hero, selected work
-- [Services](https://r352.com/services): Three strategic pillars (Brand, Operations, AI) + product engagement models
-- [Work](https://r352.com/work): Case studies — Sonova / Geers (hearing care), Benefit Systems (300+ wellness clubs), Archicom (multi-investment real estate), Kubota, DiscoBowl, UNIQA, FIFA, and others
-- [Process](https://r352.com/process): r3loop methodology breakdown — 8 steps in detail
-- [Philosophy](https://r352.com/philosophy): How r352 thinks about design as a delivery discipline, not a creative exercise
-- [Journal](https://r352.com/journal): Articles on design operations, multi-location brand systems, AI-native production
-- [Contact](https://r352.com/contact): Three engagement paths — structured brief, 30-min call, or direct email
+- [Home](https://www.r352.com/): Strategic design partner positioning, hero, selected work
+- [Services](https://www.r352.com/services): Three strategic pillars (Brand, Operations, AI) + product engagement models
+- [Work](https://www.r352.com/work): Case studies — Sonova / Geers (hearing care), Benefit Systems (300+ wellness clubs), Archicom (multi-investment real estate), Kubota, DiscoBowl, UNIQA, FIFA, and others
+- [Process](https://www.r352.com/process): r3loop methodology breakdown — 8 steps in detail
+- [Philosophy](https://www.r352.com/philosophy): How r352 thinks about design as a delivery discipline, not a creative exercise
+- [Journal](https://www.r352.com/journal): Articles on design operations, multi-location brand systems, AI-native production
+- [Contact](https://www.r352.com/contact): Three engagement paths — structured brief, 30-min call, or direct email
 
 ## Distinctive vocabulary (terms native to r352)
 
@@ -48,7 +48,7 @@ The practice's contrarian thesis: **brand consistency in 300+ locations is not a
 
 - Email: hello@r352.com
 - LinkedIn: https://www.linkedin.com/in/przemyslawreszka/
-- Website: https://r352.com
+- Website: https://www.r352.com
 - Founded by: Reszek (Przemyslaw Reszka)
 - Based: Mallorca, Spain (remote-first)
 

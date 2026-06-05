@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ponowny audyt r352.com - 2026-06-05</title>
+    <style>
+      :root {
+        --bg: #0a0a0a;
+        --panel: #141414;
+        --panel2: #1b1b1b;
+        --text: #f5f5ef;
+        --muted: #aaa99f;
+        --line: rgba(255, 255, 255, 0.13);
+        --lime: #d4ff00;
+        --green: #86efac;
+        --amber: #ffd166;
+        --red: #ff6b6b;
+        --blue: #8ecaff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at 20% 0%, rgba(212, 255, 0, 0.08), transparent 26rem),
+          radial-gradient(circle at 100% 10%, rgba(142, 202, 255, 0.06), transparent 28rem),
+          var(--bg);
+        color: var(--text);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.6;
+      }
+
+      main {
+        margin: 0 auto;
+        max-width: 1120px;
+        padding: 48px 20px 72px;
+      }
+
+      h1,
+      h2,
+      h3 {
+        line-height: 1.08;
+        margin: 0;
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 7vw, 6.2rem);
+        max-width: 920px;
+      }
+
+      h2 {
+        border-top: 1px solid var(--line);
+        font-size: clamp(1.7rem, 3vw, 2.8rem);
+        margin-top: 44px;
+        padding-top: 30px;
+      }
+
+      h3 {
+        font-size: 1.25rem;
+        margin-bottom: 10px;
+      }
+
+      p,
+      li {
+        color: var(--muted);
+      }
+
+      code {
+        background: #232323;
+        border: 1px solid var(--line);
+        border-radius: 5px;
+        color: #fff;
+        font-family: "SFMono-Regular", Consolas, ui-monospace, monospace;
+        font-size: 0.92em;
+        padding: 0.12rem 0.34rem;
+      }
+
+      .lead {
+        color: #dcdcd2;
+        font-size: 1.16rem;
+        max-width: 840px;
+      }
+
+      .kicker {
+        color: var(--lime);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+      }
+
+      .grid {
+        display: grid;
+        gap: 14px;
+      }
+
+      .two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .four {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 20px;
+      }
+
+      .card.good {
+        border-color: rgba(134, 239, 172, 0.36);
+      }
+
+      .card.warn {
+        border-color: rgba(255, 209, 102, 0.36);
+      }
+
+      .card.bad {
+        border-color: rgba(255, 107, 107, 0.42);
+      }
+
+      .metric strong {
+        display: block;
+        font-size: 2rem;
+        line-height: 1;
+        margin: 12px 0 8px;
+      }
+
+      .metric span {
+        color: var(--muted);
+        display: block;
+        font-size: 0.74rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .green {
+        color: var(--green);
+      }
+
+      .amber {
+        color: var(--amber);
+      }
+
+      .red {
+        color: var(--red);
+      }
+
+      .blue {
+        color: var(--blue);
+      }
+
+      .status {
+        display: inline-block;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        margin-bottom: 14px;
+        padding: 0.18rem 0.56rem;
+        text-transform: uppercase;
+      }
+
+      .status.done {
+        border-color: rgba(134, 239, 172, 0.5);
+        color: var(--green);
+      }
+
+      .status.partial {
+        border-color: rgba(255, 209, 102, 0.5);
+        color: var(--amber);
+      }
+
+      .status.livefail {
+        border-color: rgba(255, 107, 107, 0.55);
+        color: var(--red);
+      }
+
+      table {
+        border-collapse: collapse;
+        margin-top: 18px;
+        width: 100%;
+      }
+
+      th,
+      td {
+        border-bottom: 1px solid var(--line);
+        padding: 12px 10px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        color: #fff;
+        font-size: 0.78rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      td {
+        color: var(--muted);
+      }
+
+      .footer {
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        margin-top: 48px;
+        padding-top: 24px;
+      }
+
+      @media (max-width: 860px) {
+        .two,
+        .four {
+          grid-template-columns: 1fr;
+        }
+
+        table,
+        thead,
+        tbody,
+        tr,
+        th,
+        td {
+          display: block;
+        }
+
+        th {
+          display: none;
+        }
+
+        td {
+          padding-left: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="kicker">Ponowna analiza po częściowych poprawkach</p>
+      <h1>Re-check audytu r352.com</h1>
+      <p class="lead">
+        Lokalnie większość krytycznych punktów z pierwszego audytu została poprawiona. Produkcja
+        nadal serwuje starą wersję HTML i stary rewrite, więc obecnie najważniejszym problemem nie
+        jest już kod lokalny, tylko wdrożenie albo cache poprzedniego deploya.
+      </p>
+
+      <section>
+        <h2>Stan ogólny</h2>
+        <div class="grid four">
+          <article class="card metric good">
+            <span>Build lokalny</span>
+            <strong class="green">OK</strong>
+            <p><code>npm run build</code> przechodzi poprawnie.</p>
+          </article>
+          <article class="card metric good">
+            <span>Canonical lokalnie</span>
+            <strong class="green">OK</strong>
+            <p>HTML, SEO component, sitemap, robots i llms wskazują <code>www.r352.com</code>.</p>
+          </article>
+          <article class="card metric warn">
+            <span>Produkcja</span>
+            <strong class="amber">Stara</strong>
+            <p>Live HTML nadal ma non-www canonical i <code>hreflang pl</code>.</p>
+          </article>
+          <article class="card metric warn">
+            <span>Performance</span>
+            <strong class="amber">Lepiej</strong>
+            <p><code>dist</code> spadł z około 77 MB do około 60 MB, ale top asset nadal waży ok. 8.7 MB.</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Co zostało poprawione lokalnie</h2>
+        <div class="grid two">
+          <article class="card good">
+            <span class="status done">Naprawione lokalnie</span>
+            <h3>Canonical i host</h3>
+            <p>
+              <code>index.html</code>, <code>src/app/components/SEO.tsx</code>,
+              <code>public/sitemap.xml</code>, <code>public/robots.txt</code> i
+              <code>public/llms.txt</code> wskazują teraz <code>https://www.r352.com</code>.
+            </p>
+          </article>
+          <article class="card good">
+            <span class="status done">Naprawione lokalnie</span>
+            <h3>Brakujące assety social/favicon</h3>
+            <p>
+              Dodane są prawdziwe pliki: <code>public/og-image.png</code> 1200x630,
+              <code>public/favicon.svg</code> i <code>public/apple-touch-icon.png</code> 180x180.
+            </p>
+          </article>
+          <article class="card good">
+            <span class="status done">Naprawione lokalnie</span>
+            <h3>Hreflang PL</h3>
+            <p>
+              Fallback HTML i komponent SEO usunęły <code>hreflang="pl"</code>. Zostaje tylko
+              <code>en</code> i <code>x-default</code>, co jest spójne z brakiem realnych tras
+              <code>/pl</code>.
+            </p>
+          </article>
+          <article class="card good">
+            <span class="status done">Naprawione lokalnie</span>
+            <h3>Rewrite SPA</h3>
+            <p>
+              <code>vercel.json</code> ma teraz zawężony rewrite:
+              <code>/((?!api/|.*\\.).*)</code>. To powinno zatrzymać maskowanie brakujących plików
+              jako <code>index.html</code>.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Co nadal nie działa na live</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Test live</th>
+              <th>Wynik</th>
+              <th>Wniosek</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>curl -sL https://www.r352.com</code></td>
+              <td>HTML nadal ma <code>canonical https://r352.com</code> i <code>hreflang pl</code>.</td>
+              <td>Publiczny deploy nie odpowiada aktualnemu kodowi lokalnemu.</td>
+            </tr>
+            <tr>
+              <td><code>https://www.r352.com/og-image.png</code></td>
+              <td><code>200</code>, ale <code>content-type: text/html</code>.</td>
+              <td>Live nadal serwuje <code>index.html</code> zamiast obrazu.</td>
+            </tr>
+            <tr>
+              <td><code>https://www.r352.com/favicon.svg</code></td>
+              <td><code>200</code>, ale <code>content-type: text/html</code>.</td>
+              <td>Favicon nie jest jeszcze wdrożony publicznie.</td>
+            </tr>
+            <tr>
+              <td><code>https://www.r352.com/missing-audit-test.png</code></td>
+              <td><code>200</code>, ale <code>content-type: text/html</code>.</td>
+              <td>Nowy rewrite nie działa jeszcze na produkcji.</td>
+            </tr>
+            <tr>
+              <td><code>https://r352.com</code></td>
+              <td><code>307</code> do <code>https://www.r352.com/</code>.</td>
+              <td>To jest spójne z lokalną decyzją, żeby canonicalem był <code>www</code>.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Rzeczy częściowo poprawione</h2>
+        <div class="grid two">
+          <article class="card warn">
+            <span class="status partial">Częściowo</span>
+            <h3>Performance assetów</h3>
+            <p>
+              Jest postęp: <code>dist</code> spadł do około 60 MB. Nadal jednak największe pliki po
+              buildzie są bardzo ciężkie:
+            </p>
+            <ul>
+              <li><code>bkg1 2-*.png</code> około 8.7 MB</li>
+              <li><code>RP4</code> około 4.3 MB</li>
+              <li><code>BP4</code> około 3.1 MB</li>
+              <li><code>RP2</code> około 2.5 MB</li>
+            </ul>
+          </article>
+          <article class="card warn">
+            <span class="status partial">Drobna niespójność</span>
+            <h3>Schema language</h3>
+            <p>
+              <code>WebSite.inLanguage</code> w <code>SEO.tsx</code> nadal ma
+              <code>["en", "pl"]</code>. Skoro <code>hreflang pl</code> został zdjęty do czasu
+              realnego routingu, dla pełnej spójności warto tymczasowo zmienić to na
+              <code>["en"]</code>.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Obecne priorytety</h2>
+        <ol>
+          <li>
+            Wdrożyć aktualny build na Vercel i upewnić się, że live HTML ma canonical
+            <code>https://www.r352.com</code>.
+          </li>
+          <li>
+            Po deployu sprawdzić, czy <code>/og-image.png</code>, <code>/favicon.svg</code> i
+            <code>/apple-touch-icon.png</code> zwracają właściwy <code>content-type</code>.
+          </li>
+          <li>
+            Po deployu sprawdzić, czy brakujący asset, np. <code>/missing-audit-test.png</code>,
+            zwraca 404, a nie HTML.
+          </li>
+          <li>
+            Zmienić <code>WebSite.inLanguage</code> na <code>["en"]</code> do czasu realnego
+            wdrożenia <code>/pl</code>.
+          </li>
+          <li>
+            Dokończyć odchudzanie największych obrazów, zwłaszcza Archicom PNG.
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Ocena po poprawkach</h2>
+        <div class="grid four">
+          <article class="card metric good">
+            <span>SEO lokalnie</span>
+            <strong class="green">8/10</strong>
+            <p>Najważniejsze błędy canonical/asset/hreflang są lokalnie naprawione.</p>
+          </article>
+          <article class="card metric bad">
+            <span>SEO live</span>
+            <strong class="red">5/10</strong>
+            <p>Produkcja nadal pokazuje starą konfigurację.</p>
+          </article>
+          <article class="card metric warn">
+            <span>Performance</span>
+            <strong class="amber">6.5/10</strong>
+            <p>Jest mniejszy build, ale największe assety są nadal zbyt ciężkie.</p>
+          </article>
+          <article class="card metric warn">
+            <span>Ryzyko</span>
+            <strong class="amber">Deploy</strong>
+            <p>Największe ryzyko to różnica między lokalnym repo a produkcją.</p>
+          </article>
+        </div>
+      </section>
+
+      <p class="footer">
+        Re-check wykonany 2026-06-05. Test lokalny: <code>npm run build</code>. Test live:
+        odpowiedzi HTTP z <code>https://r352.com</code> i <code>https://www.r352.com</code>.
+      </p>
+    </main>
+  </body>
+</html>

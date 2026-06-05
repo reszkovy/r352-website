@@ -115,7 +115,7 @@ function AppContent() {
       if (project) return {
         title: `${project.client}: ${project.title} — r352 Case Study`,
         description: project.description?.en?.substring(0, 155) || `How r352 helped ${project.client} build scalable design systems and delivery workflows.`,
-        ogImage: project.coverImage?.startsWith('http') ? project.coverImage : `https://r352.com${project.coverImage}`
+        ogImage: project.coverImage?.startsWith('http') ? project.coverImage : `https://www.r352.com${project.coverImage}`
       };
       return {
         title: "Case Study — r352 | Project Details",
@@ -166,7 +166,7 @@ function AppContent() {
         return {
           title: `${cleanTitle} — r352 Journal`,
           description: `r352 Journal: ${cleanTitle}. Insights on design operations, delivery systems, and scaling creative output for multi-location organizations.`,
-          ogImage: article.image.startsWith('http') ? article.image : `https://r352.com${article.image}`,
+          ogImage: article.image.startsWith('http') ? article.image : `https://www.r352.com${article.image}`,
           article: { title: article.title, date: article.date, category: article.category }
         };
       }

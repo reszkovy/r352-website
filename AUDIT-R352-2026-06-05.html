@@ -1,0 +1,873 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Audyt strony r352.com - 2026-06-05</title>
+    <meta
+      name="description"
+      content="Audyt techniczny, SEO, performance, UX i accessibility strony r352.com wykonany 2026-06-05."
+    />
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0a0a0a;
+        --panel: #121212;
+        --panel-2: #181818;
+        --ink: #f3f3ef;
+        --muted: #aaa99f;
+        --soft: #727268;
+        --line: rgba(255, 255, 255, 0.12);
+        --lime: #d4ff00;
+        --amber: #ffd166;
+        --red: #ff5c5c;
+        --blue: #8ecaff;
+        --green: #88e28a;
+        --code: #202020;
+        --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at 20% 0%, rgba(212, 255, 0, 0.08), transparent 28rem),
+          radial-gradient(circle at 100% 15%, rgba(142, 202, 255, 0.07), transparent 30rem),
+          var(--bg);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        line-height: 1.62;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      code,
+      pre {
+        font-family:
+          "SFMono-Regular", Consolas, "Liberation Mono", Menlo, ui-monospace, monospace;
+      }
+
+      code {
+        background: var(--code);
+        border: 1px solid var(--line);
+        border-radius: 5px;
+        color: #f7f7f2;
+        font-size: 0.92em;
+        padding: 0.14rem 0.38rem;
+        white-space: nowrap;
+      }
+
+      pre {
+        background: #070707;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        color: #f7f7f2;
+        overflow: auto;
+        padding: 1rem;
+      }
+
+      .wrap {
+        margin: 0 auto;
+        max-width: 1160px;
+        padding: 32px 20px 72px;
+      }
+
+      .hero {
+        border-bottom: 1px solid var(--line);
+        display: grid;
+        gap: 28px;
+        grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.6fr);
+        padding: 64px 0 42px;
+      }
+
+      .kicker {
+        color: var(--lime);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        margin: 0 0 14px;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3 {
+        letter-spacing: 0;
+        line-height: 1.08;
+      }
+
+      h1 {
+        font-size: clamp(2.6rem, 7vw, 6.8rem);
+        margin: 0;
+        max-width: 950px;
+      }
+
+      h2 {
+        border-top: 1px solid var(--line);
+        font-size: clamp(1.8rem, 3vw, 3rem);
+        margin: 52px 0 18px;
+        padding-top: 34px;
+      }
+
+      h3 {
+        color: #fff;
+        font-size: clamp(1.2rem, 2vw, 1.55rem);
+        margin: 30px 0 12px;
+      }
+
+      p {
+        color: var(--muted);
+        margin: 0 0 1rem;
+      }
+
+      ul,
+      ol {
+        color: var(--muted);
+        margin: 0 0 1.25rem;
+        padding-left: 1.2rem;
+      }
+
+      li {
+        margin: 0.38rem 0;
+      }
+
+      strong {
+        color: var(--ink);
+      }
+
+      .lead {
+        color: #d9d9d0;
+        font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+        margin-top: 22px;
+        max-width: 830px;
+      }
+
+      .meta-card {
+        align-self: end;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.035));
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        padding: 22px;
+      }
+
+      .meta-card dl {
+        display: grid;
+        gap: 12px;
+        margin: 0;
+      }
+
+      .meta-card dt {
+        color: var(--soft);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .meta-card dd {
+        color: var(--ink);
+        margin: 2px 0 0;
+      }
+
+      .score-grid,
+      .cards,
+      .plan-grid {
+        display: grid;
+        gap: 14px;
+      }
+
+      .score-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        margin: 28px 0 8px;
+      }
+
+      .score {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        min-height: 126px;
+        padding: 16px;
+      }
+
+      .score span {
+        color: var(--soft);
+        display: block;
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .score strong {
+        color: var(--lime);
+        display: block;
+        font-size: 2rem;
+        line-height: 1;
+        margin: 16px 0 8px;
+      }
+
+      .score p {
+        font-size: 0.9rem;
+        margin: 0;
+      }
+
+      .summary-box,
+      .issue,
+      .note,
+      .day,
+      .quick-fixes {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 22px;
+      }
+
+      .summary-box {
+        border-color: rgba(212, 255, 0, 0.32);
+      }
+
+      .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .issue {
+        position: relative;
+      }
+
+      .issue::before {
+        background: var(--red);
+        border-radius: 999px;
+        content: "";
+        height: 8px;
+        left: 22px;
+        position: absolute;
+        top: 22px;
+        width: 8px;
+      }
+
+      .issue h3 {
+        margin-top: 0;
+        padding-left: 20px;
+      }
+
+      .tag-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 0 0 18px;
+      }
+
+      .tag {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--muted);
+        font-size: 0.78rem;
+        padding: 0.18rem 0.58rem;
+      }
+
+      .tag.critical {
+        border-color: rgba(255, 92, 92, 0.48);
+        color: #ffb0b0;
+      }
+
+      .tag.high {
+        border-color: rgba(255, 209, 102, 0.48);
+        color: #ffe0a3;
+      }
+
+      .tag.medium {
+        border-color: rgba(142, 202, 255, 0.48);
+        color: #bfe1ff;
+      }
+
+      .note {
+        background: var(--panel-2);
+      }
+
+      .note h3,
+      .day h3 {
+        margin-top: 0;
+      }
+
+      .plan-grid {
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+      }
+
+      .day {
+        padding: 18px;
+      }
+
+      .day strong {
+        color: var(--lime);
+        display: block;
+        font-size: 0.75rem;
+        letter-spacing: 0.14em;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+      }
+
+      .day h3 {
+        font-size: 1rem;
+        line-height: 1.22;
+      }
+
+      .day ul {
+        font-size: 0.9rem;
+        padding-left: 1rem;
+      }
+
+      .quick-fixes {
+        background: linear-gradient(180deg, rgba(212, 255, 0, 0.12), rgba(255, 255, 255, 0.035));
+        border-color: rgba(212, 255, 0, 0.42);
+      }
+
+      .quick-fixes ol {
+        color: #e7e7dc;
+        font-size: 1.05rem;
+      }
+
+      .footer {
+        border-top: 1px solid var(--line);
+        color: var(--soft);
+        font-size: 0.9rem;
+        margin-top: 56px;
+        padding-top: 24px;
+      }
+
+      @media (max-width: 980px) {
+        .hero,
+        .cards {
+          grid-template-columns: 1fr;
+        }
+
+        .score-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .plan-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 560px) {
+        .wrap {
+          padding-inline: 16px;
+        }
+
+        .hero {
+          padding-top: 42px;
+        }
+
+        .score-grid,
+        .plan-grid {
+          grid-template-columns: 1fr;
+        }
+
+        code {
+          white-space: normal;
+        }
+      }
+
+      @media print {
+        :root {
+          color-scheme: light;
+        }
+
+        body {
+          background: #fff;
+          color: #111;
+        }
+
+        p,
+        ul,
+        ol,
+        .meta-card dt,
+        .tag,
+        .footer {
+          color: #444;
+        }
+
+        .meta-card,
+        .score,
+        .summary-box,
+        .issue,
+        .note,
+        .day,
+        .quick-fixes {
+          background: #fff;
+          border-color: #ddd;
+          box-shadow: none;
+        }
+
+        code,
+        pre {
+          background: #f4f4f4;
+          border-color: #ddd;
+          color: #111;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <section class="hero">
+        <div>
+          <p class="kicker">Audyt techniczny / SEO / UX</p>
+          <h1>Audyt strony r352.com</h1>
+          <p class="lead">
+            Strona ma mocny fundament strategiczny: spójny positioning, rozbudowane SEO
+            komponentowe, sitemap, robots, llms.txt, schema.org, dobre case studies i sensowną
+            architekturę Vite/React. Największe problemy są w warstwie publikacji, canonicali,
+            assetów i renderowania.
+          </p>
+        </div>
+
+        <aside class="meta-card" aria-label="Metadane audytu">
+          <dl>
+            <div>
+              <dt>Data</dt>
+              <dd>2026-06-05</dd>
+            </div>
+            <div>
+              <dt>Zakres</dt>
+              <dd>Repo lokalne + publiczne HTTP</dd>
+            </div>
+            <div>
+              <dt>Stack</dt>
+              <dd>Vite / React / wouter / Vercel</dd>
+            </div>
+            <div>
+              <dt>Status builda</dt>
+              <dd><code>npm run build</code> przechodzi</dd>
+            </div>
+          </dl>
+        </aside>
+      </section>
+
+      <section class="score-grid" aria-label="Ocena obszarów">
+        <article class="score">
+          <span>Strategia</span>
+          <strong>8/10</strong>
+          <p>Mocny positioning i język kategorii.</p>
+        </article>
+        <article class="score">
+          <span>SEO tech</span>
+          <strong>5/10</strong>
+          <p>Dobre intencje, ale canonicale i assety wymagają naprawy.</p>
+        </article>
+        <article class="score">
+          <span>Performance</span>
+          <strong>6/10</strong>
+          <p>Build działa, lecz są ciężkie obrazy i globalne efekty.</p>
+        </article>
+        <article class="score">
+          <span>UX</span>
+          <strong>7/10</strong>
+          <p>Premium feeling, ale dużo bodźców globalnych.</p>
+        </article>
+        <article class="score">
+          <span>A11y</span>
+          <strong>6/10</strong>
+          <p>Są podstawy, brakuje dopracowania motion/focus/menu.</p>
+        </article>
+      </section>
+
+      <section>
+        <h2>Priorytet napraw</h2>
+        <div class="summary-box">
+          <ol>
+            <li>
+              Ujednolicić host canonical: wszystko na <code>https://www.r352.com</code> albo
+              wyłączyć przekierowanie na <code>www</code> i wrócić do <code>https://r352.com</code>.
+            </li>
+            <li>
+              Dodać realne pliki <code>/og-image.png</code>, <code>/favicon.svg</code>,
+              <code>/apple-touch-icon.png</code> albo poprawić ich URL-e.
+            </li>
+            <li>
+              Poprawić rewrite na Vercel tak, aby brakujące pliki assetów zwracały 404, a nie
+              <code>index.html</code>.
+            </li>
+            <li>
+              Usunąć lub realnie wdrożyć <code>/pl</code>, bo obecny <code>hreflang</code>
+              deklaruje polską wersję, której crawler nie dostaje jako osobnej strony.
+            </li>
+            <li>Zmniejszyć największe assety i odchudzić initial JS/CSS.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section>
+        <h2>Co sprawdziłem</h2>
+        <ul>
+          <li>Lokalny build: <code>npm run build</code> przechodzi poprawnie.</li>
+          <li>
+            Publiczne HTTP: <code>https://r352.com</code> zwraca <code>307</code> do
+            <code>https://www.r352.com/</code>.
+          </li>
+          <li>Live HTML: fallback metadata nadal wskazują <code>https://r352.com</code>.</li>
+          <li>Live robots/sitemap: dostępne, ale sitemap i robots wskazują non-www.</li>
+          <li>
+            Live assety: <code>/og-image.png</code>, <code>/favicon.svg</code>,
+            <code>/apple-touch-icon.png</code> zwracają <code>200</code>, ale jako
+            <code>text/html</code> z <code>index.html</code>, nie jako obraz/ikona.
+          </li>
+          <li>
+            Lokalna struktura: Vite + React + wouter, dużo katalogów <code>dist-check-*</code>,
+            publiczne wideo i sekwencje klatek.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Krytyczne problemy</h2>
+        <div class="cards">
+          <article class="issue">
+            <h3>1. Rozjazd domeny canonical vs live host</h3>
+            <div class="tag-row">
+              <span class="tag critical">Krytyczne</span>
+              <span class="tag">SEO</span>
+              <span class="tag">Indeksacja</span>
+            </div>
+            <p>Live:</p>
+            <ul>
+              <li><code>https://r352.com</code> -> <code>307</code> -> <code>https://www.r352.com/</code></li>
+              <li>HTML ma canonical <code>https://r352.com</code></li>
+              <li>sitemap ma URL-e <code>https://r352.com/...</code></li>
+              <li>robots ma <code>Sitemap: https://r352.com/sitemap.xml</code></li>
+              <li>schema.org używa <code>https://r352.com</code></li>
+            </ul>
+            <p>
+              Ryzyko: Google i LLM crawlery dostają mieszane sygnały encji i kanoniczności.
+              To może rozmywać autorytet adresu i brandu.
+            </p>
+            <p>
+              Rekomendacja: wybrać jeden host. Ponieważ Vercel obecnie wymusza <code>www</code>,
+              najszybsza naprawa to zmienić <code>baseUrl</code>, fallback URL-e, sitemap i robots
+              na <code>https://www.r352.com</code>.
+            </p>
+          </article>
+
+          <article class="issue">
+            <h3>2. Brakujące OG/favicon/apple icon</h3>
+            <div class="tag-row">
+              <span class="tag critical">Krytyczne</span>
+              <span class="tag">Social preview</span>
+              <span class="tag">Assety</span>
+            </div>
+            <p>Live status:</p>
+            <ul>
+              <li><code>https://www.r352.com/og-image.png</code> -> <code>200</code>, ale <code>text/html</code></li>
+              <li><code>https://www.r352.com/favicon.svg</code> -> <code>200</code>, ale <code>text/html</code></li>
+              <li><code>https://www.r352.com/apple-touch-icon.png</code> -> <code>200</code>, ale <code>text/html</code></li>
+            </ul>
+            <p>
+              W <code>public/</code> istnieje <code>logo.svg</code>, ale nie ma
+              <code>og-image.png</code>, <code>favicon.svg</code>, <code>apple-touch-icon.png</code>.
+            </p>
+            <p>
+              Rekomendacja: dodać realne pliki do <code>public/</code>: OG 1200 x 630, favicon SVG
+              i apple touch icon 180 x 180.
+            </p>
+          </article>
+
+          <article class="issue">
+            <h3>3. Rewrite łapie wszystko</h3>
+            <div class="tag-row">
+              <span class="tag high">Wysokie</span>
+              <span class="tag">Vercel</span>
+              <span class="tag">HTTP</span>
+            </div>
+            <p>Źródło: <code>vercel.json:2-4</code></p>
+            <pre><code>{ "source": "/(.*)", "destination": "/index.html" }</code></pre>
+            <p>
+              To jest wygodne dla SPA, ale niebezpieczne dla assetów. Brakujące obrazy, ikony
+              i potencjalnie inne pliki zwracają <code>index.html</code>, a nagłówki dla rozszerzeń
+              ustawiają cache immutable.
+            </p>
+            <p>
+              Rekomendacja: fallback SPA powinien dotyczyć tylko dokumentów, a nie plików z
+              rozszerzeniami.
+            </p>
+          </article>
+
+          <article class="issue">
+            <h3>4. <code>hreflang</code> deklaruje <code>/pl</code>, ale trasy nie ma</h3>
+            <div class="tag-row">
+              <span class="tag high">Wysokie</span>
+              <span class="tag">i18n</span>
+              <span class="tag">SEO</span>
+            </div>
+            <p>
+              Język działa jako stan Reacta, domyślnie EN. Nie ma route <code>/pl</code>,
+              <code>/pl/services</code>, itd. Live <code>/pl</code> zwraca
+              <code>index.html</code>, ale po stronie klienta wpada w 404.
+            </p>
+            <p>
+              Rekomendacja: usunąć <code>hreflang="pl"</code> do czasu wdrożenia URL-i
+              językowych albo dodać realny routing <code>/pl</code>.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>SEO i indeksacja</h2>
+        <div class="cards">
+          <article class="note">
+            <h3>Mocne strony</h3>
+            <ul>
+              <li>Jest sitemap i robots.</li>
+              <li>Jest <code>llms.txt</code>.</li>
+              <li>
+                Jest rozbudowane schema.org: Person, Organization, WebSite, ProfessionalService,
+                FAQ, BlogPosting.
+              </li>
+              <li>Każda główna trasa ma unikalne title/description w <code>getPageSEO</code>.</li>
+              <li>Sitemap zawiera core pages, case studies, journal i service details.</li>
+            </ul>
+          </article>
+
+          <article class="note">
+            <h3>Problemy</h3>
+            <ol>
+              <li>
+                Fallback HTML z <code>index.html</code> jest jedynym statycznym dokumentem dla
+                wszystkich tras.
+              </li>
+              <li><code>og:image</code> domyślnie wskazuje brakujący plik.</li>
+              <li><code>Organization.logo</code> wskazuje OG image zamiast prawdziwego logo.</li>
+              <li>
+                <code>FAQPage</code> na homepage może być ryzykowne, jeżeli pytania/odpowiedzi nie
+                są widoczne na stronie w takiej samej formie.
+              </li>
+              <li>
+                <code>reviewsSchema</code> i <code>aggregateRating</code> wymagają ostrożności:
+                recenzje powinny być realnie widoczne i udokumentowane.
+              </li>
+            </ol>
+          </article>
+        </div>
+        <p>
+          Rekomendacja strategiczna: jeśli SEO/LLM discovery jest ważne, rozważyć prerender/SSG
+          dla głównych tras. Największy zysk: prawdziwe HTML dla <code>/services</code>,
+          <code>/process</code>, <code>/glossary</code>, <code>/work/*</code> i
+          <code>/journal/*</code>.
+        </p>
+      </section>
+
+      <section>
+        <h2>Performance</h2>
+        <p>Build przechodzi, ale największe ryzyka to ciężkie assety i globalne efekty.</p>
+        <div class="cards">
+          <article class="note">
+            <h3>Największe obciążenia</h3>
+            <ul>
+              <li><code>dist/assets/bkg1 2-*.png</code> około 9.1 MB</li>
+              <li><code>RP4</code> około 4.5 MB</li>
+              <li><code>BP4</code> około 3.3 MB</li>
+              <li>kilka kolejnych PNG 1-2.6 MB</li>
+              <li><code>dist</code> po buildzie około 77 MB</li>
+              <li><code>public/videos</code> około 8.8 MB</li>
+              <li><code>public/scroll-frames</code> około 5.1 MB</li>
+              <li><code>public/scroll-frames-light</code> około 2.1 MB</li>
+              <li>główny JS około 429 KB, gzip 127 KB</li>
+              <li>CSS około 278 KB, gzip 47 KB</li>
+            </ul>
+          </article>
+
+          <article class="note">
+            <h3>Rekomendacje</h3>
+            <ol>
+              <li>Skonwertować największe PNG do AVIF/WebP i użyć responsive sizes.</li>
+              <li>Przejrzeć, czy duże assety są importowane na homepage lub przez komponenty globalne.</li>
+              <li>Dodać budżety bundle size w CI lub prosty skrypt raportujący top 20 assetów.</li>
+              <li>Ograniczyć zewnętrzne fonty: Fontshare, cdnfonts i Google Fonts to trzy osobne źródła.</li>
+              <li>Przemyśleć preloader, bo blokuje body na start przez około 800 ms plus animację.</li>
+            </ol>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>UX / konwersja</h2>
+        <div class="cards">
+          <article class="note">
+            <h3>Mocne strony</h3>
+            <ul>
+              <li>Bardzo wyrazisty positioning: design partner, operating system, r3loop.</li>
+              <li>Jest wiele ścieżek kontaktu: brief, Calendly, mail.</li>
+              <li>Case studies, services, process i glossary dobrze budują kategorię.</li>
+              <li>Floating CTA i chat mogą wspierać konwersję.</li>
+            </ul>
+          </article>
+          <article class="note">
+            <h3>Ryzyka</h3>
+            <ol>
+              <li>
+                Zbyt dużo globalnych efektów nad każdą stroną: preloader, smooth scroll, cursor
+                glow, custom cursor, persistent background, bottom gradient, floating CTA, chatbot.
+              </li>
+              <li>
+                Header ma <code>pointer-events-none</code> gdy nie jest scrolled, z wyjątkami na
+                elementach.
+              </li>
+              <li>
+                Przełącznik języka nie aktualizuje URL-a, więc użytkownik nie może wysłać linku do
+                polskiej wersji.
+              </li>
+              <li>
+                Strony <code>limitedaccess*</code> są routowane publicznie. Jeśli to materiały
+                prywatne, powinny być chronione po stronie serwera.
+              </li>
+            </ol>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Accessibility</h2>
+        <div class="cards">
+          <article class="note">
+            <h3>Plusy</h3>
+            <ul>
+              <li>Wiele przycisków ma <code>aria-label</code>.</li>
+              <li>Obrazy case studies mają alty.</li>
+              <li>Elementy dekoracyjne często mają <code>aria-hidden</code>.</li>
+            </ul>
+          </article>
+          <article class="note">
+            <h3>Ryzyka</h3>
+            <ol>
+              <li>
+                Custom cursor i motion-heavy UI powinny być w pełni wyłączalne przy
+                <code>prefers-reduced-motion</code>.
+              </li>
+              <li>
+                Smooth scroll i animowane przejścia mogą przeszkadzać użytkownikom
+                klawiatury/screen readerów, jeśli focus nie jest zarządzany po zmianie route.
+              </li>
+              <li>
+                Mobile menu powinno mieć <code>aria-expanded</code>, <code>aria-controls</code> i
+                focus trap.
+              </li>
+              <li>Chatbot/floating CTA mogą konkurować z główną nawigacją na małych ekranach.</li>
+            </ol>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Analityka i privacy</h2>
+        <p>
+          GTM jest wstrzykiwany przez React po mount: <code>src/app/components/GTM.tsx</code>.
+          Plus: nie blokuje statycznego HTML.
+        </p>
+        <p>
+          Ryzyko: brak widocznej warstwy consent/cookies w kodzie, a GTM może ładować narzędzia
+          wymagające zgody w UE. Przy lokalizacji w Hiszpanii/Mallorce warto sprawdzić zgodność z
+          ePrivacy/GDPR.
+        </p>
+      </section>
+
+      <section>
+        <h2>Rekomendowany plan 7 dni</h2>
+        <div class="plan-grid">
+          <article class="day">
+            <strong>Dzień 1</strong>
+            <h3>Kanoniczność i assety</h3>
+            <ul>
+              <li>Wybrać <code>www</code> lub non-www.</li>
+              <li>Zaktualizować <code>baseUrl</code>, sitemap, robots, schema, OG.</li>
+              <li>Dodać realne ikony i OG image.</li>
+            </ul>
+          </article>
+          <article class="day">
+            <strong>Dzień 2</strong>
+            <h3>Hreflang i i18n</h3>
+            <ul>
+              <li>Usunąć <code>/pl</code> z hreflang albo wdrożyć realne trasy.</li>
+              <li>Powiązać język z URL-em i canonicalem.</li>
+            </ul>
+          </article>
+          <article class="day">
+            <strong>Dzień 3</strong>
+            <h3>Asset performance</h3>
+            <ul>
+              <li>Skompresować top 10 największych PNG.</li>
+              <li>Sprawdzić assety na homepage.</li>
+              <li>Dodać raport asset budget.</li>
+            </ul>
+          </article>
+          <article class="day">
+            <strong>Dzień 4-5</strong>
+            <h3>Prerender SEO</h3>
+            <ul>
+              <li>Prerenderować core pages.</li>
+              <li>Dodać case studies i journal article pages.</li>
+            </ul>
+          </article>
+          <article class="day">
+            <strong>Dzień 6</strong>
+            <h3>Accessibility pass</h3>
+            <ul>
+              <li>Focus management po zmianie trasy.</li>
+              <li>Menu z <code>aria-expanded</code> i focus trap.</li>
+              <li>Reduced motion.</li>
+            </ul>
+          </article>
+          <article class="day">
+            <strong>Dzień 7</strong>
+            <h3>Content trust</h3>
+            <ul>
+              <li>Zweryfikować reviews i FAQ schema.</li>
+              <li>Dodać pełniejsze dowody: clients, outcomes, testimonials.</li>
+            </ul>
+          </article>
+          <article class="day">
+            <strong>Potem</strong>
+            <h3>Monitoring</h3>
+            <ul>
+              <li>Kontrole 404 dla assetów.</li>
+              <li>Raport bundle size.</li>
+              <li>Okresowy crawl sitemap.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Najszybsze poprawki o największym wpływie</h2>
+        <div class="quick-fixes">
+          <ol>
+            <li>Dodać brakujące assety social/favicon.</li>
+            <li>
+              Zmienić wszystkie <code>https://r352.com</code> na faktyczny canonical host albo
+              zmienić przekierowanie domeny.
+            </li>
+            <li>Usunąć <code>hreflang pl</code>, jeśli <code>/pl</code> nie będzie wdrażane teraz.</li>
+            <li>Zrobić tak, żeby <code>/missing.png</code> nie zwracało HTML.</li>
+            <li>Skompresować <code>bkg1 2-*.png</code>.</li>
+          </ol>
+        </div>
+      </section>
+
+      <p class="footer">
+        Raport wygenerowany jako samodzielny HTML na podstawie audytu lokalnego repozytorium i
+        publicznych odpowiedzi HTTP strony r352.com.
+      </p>
+    </main>
+  </body>
+</html>

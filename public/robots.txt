@@ -67,4 +67,4 @@ Allow: /
 User-agent: DuckDuckBot
 Allow: /
 
-Sitemap: https://r352.com/sitemap.xml
+Sitemap: https://www.r352.com/sitemap.xml

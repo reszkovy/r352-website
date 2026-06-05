@@ -237,12 +237,12 @@ export function Glossary() {
     "@context": "https://schema.org",
     "@type": "DefinedTermSet",
     "name": language === "pl" ? "r352 — Słownik" : "r352 — Glossary",
-    "url": "https://r352.com/glossary",
+    "url": "https://www.r352.com/glossary",
     "hasDefinedTerm": terms.map((t) => ({
       "@type": "DefinedTerm",
       "name": t.term,
       "description": t.long,
-      "inDefinedTermSet": "https://r352.com/glossary",
+      "inDefinedTermSet": "https://www.r352.com/glossary",
     })),
   };
 

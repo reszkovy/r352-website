@@ -12,7 +12,7 @@ const BRIEFLY_INTAKE_URL = `${BRIEFLY_BASE_URL}/api/public/intake`;
 const WIZARD_BASE_URL = "https://r3loop.app";
 
 const INTAKE_BRANDING = {
-  logo_url: "https://r352.com/logo.svg",
+  logo_url: "https://www.r352.com/logo.svg",
   accent_color: "#D4FF00",
   accent_color_2: "#0A0A0A",
   font_family: "Inter",

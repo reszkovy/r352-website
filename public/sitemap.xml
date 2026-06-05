@@ -2,49 +2,49 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- ─── Core marketing pages ────────────────────────────────── -->
   <url>
-    <loc>https://r352.com/</loc>
+    <loc>https://www.r352.com/</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://r352.com/services</loc>
+    <loc>https://www.r352.com/services</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://r352.com/process</loc>
+    <loc>https://www.r352.com/process</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://r352.com/glossary</loc>
+    <loc>https://www.r352.com/glossary</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://r352.com/philosophy</loc>
+    <loc>https://www.r352.com/philosophy</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://r352.com/deliverables</loc>
+    <loc>https://www.r352.com/deliverables</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://r352.com/contact</loc>
+    <loc>https://www.r352.com/contact</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://r352.com/brief</loc>
+    <loc>https://www.r352.com/brief</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -52,67 +52,67 @@
 
   <!-- ─── Work index + case studies ───────────────────────────── -->
   <url>
-    <loc>https://r352.com/work</loc>
+    <loc>https://www.r352.com/work</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://r352.com/work/sonova</loc>
+    <loc>https://www.r352.com/work/sonova</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://r352.com/work/benefit-systems</loc>
+    <loc>https://www.r352.com/work/benefit-systems</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://r352.com/work/archicom</loc>
+    <loc>https://www.r352.com/work/archicom</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://r352.com/work/kubota</loc>
+    <loc>https://www.r352.com/work/kubota</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://r352.com/work/dawid-podsiadlo</loc>
+    <loc>https://www.r352.com/work/dawid-podsiadlo</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://r352.com/work/discobowl</loc>
+    <loc>https://www.r352.com/work/discobowl</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://r352.com/work/regional-fit</loc>
+    <loc>https://www.r352.com/work/regional-fit</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://r352.com/work/caterelo</loc>
+    <loc>https://www.r352.com/work/caterelo</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://r352.com/work/uniqa</loc>
+    <loc>https://www.r352.com/work/uniqa</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://r352.com/work/fifa</loc>
+    <loc>https://www.r352.com/work/fifa</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -120,49 +120,49 @@
 
   <!-- ─── Journal index + articles ────────────────────────────── -->
   <url>
-    <loc>https://r352.com/journal</loc>
+    <loc>https://www.r352.com/journal</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://r352.com/journal/1</loc>
+    <loc>https://www.r352.com/journal/1</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://r352.com/journal/4</loc>
+    <loc>https://www.r352.com/journal/4</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://r352.com/journal/5</loc>
+    <loc>https://www.r352.com/journal/5</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://r352.com/journal/6</loc>
+    <loc>https://www.r352.com/journal/6</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://r352.com/journal/7</loc>
+    <loc>https://www.r352.com/journal/7</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://r352.com/journal/8</loc>
+    <loc>https://www.r352.com/journal/8</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://r352.com/journal/9</loc>
+    <loc>https://www.r352.com/journal/9</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
@@ -170,19 +170,19 @@
 
   <!-- ─── Service detail pages ────────────────────────────────── -->
   <url>
-    <loc>https://r352.com/services/operating-system</loc>
+    <loc>https://www.r352.com/services/operating-system</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://r352.com/services/design-production</loc>
+    <loc>https://www.r352.com/services/design-production</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://r352.com/services/build-optimize</loc>
+    <loc>https://www.r352.com/services/build-optimize</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>

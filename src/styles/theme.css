@@ -810,3 +810,42 @@ body:is(.lime-theme, .global-light-mode) a.text-white:hover {
   --tracking-tighter: -0.02em;
   --tracking-tight: -0.02em;
 }
+
+/* ─── REDUCED MOTION GUARD ──────────────────────────────────────────────
+   Respects user's OS-level "Reduce motion" preference. Disables every
+   CSS animation/transition globally and turns off smooth scroll. Custom
+   cursor + scroll-linked GSAP/framer effects also disabled (handled
+   here via opacity 0 + JS guards in respective components).
+
+   This is a WCAG 2.1 / EU Accessibility Act requirement — without it,
+   motion-sensitive users (vestibular disorders, migraine sufferers) get
+   physically uncomfortable on motion-heavy sites like r352.
+   ──────────────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Disable smooth scroll (Lenis is JS-driven; this kills the CSS layer). */
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  /* Hide custom cursor + cursor glow — they're decorative motion. */
+  .cursor-glow,
+  [class*="CursorGlow"],
+  [class*="CustomCursor"] {
+    display: none !important;
+  }
+
+  /* Footer R-mark watermark — already handled above for .animate-spin-slow,
+     this is a belt-and-suspenders backup. */
+  .animate-spin-slow {
+    animation: none !important;
+  }
+}

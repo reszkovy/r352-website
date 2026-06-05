@@ -13,10 +13,10 @@ export function SEO({
   title = "r352 — Move fast, steady cadence.",
   description = "Strategic design partner for multi-location organizations. From strategy to rollout-ready delivery, powered by the r3loop methodology — predictable quality and speed at scale.",
   path = "/",
-  ogImage = "https://r352.com/og-image.png",
+  ogImage = "https://www.r352.com/og-image.png",
   article
 }: SEOProps) {
-  const baseUrl = "https://r352.com";
+  const baseUrl = "https://www.r352.com";
   const canonicalUrl = `${baseUrl}${path === "/" ? "" : path}`;
 
   useEffect(() => {
@@ -35,14 +35,14 @@ export function SEO({
     "@type": "Person",
     "name": "Przemyslaw Reszka",
     "alternateName": "Reszek",
-    "url": "https://r352.com",
-    "image": "https://r352.com/og-image.png",
+    "url": "https://www.r352.com",
+    "image": "https://www.r352.com/og-image.png",
     "jobTitle": "Founder, Strategic Design Partner",
     "description": "Designer-operator with 15+ years of experience across UX, brand operations, and AI-native production systems. Founder of r352 and creator of the r3loop methodology for multi-location brand operations.",
     "worksFor": {
       "@type": "Organization",
       "name": "r352",
-      "url": "https://r352.com"
+      "url": "https://www.r352.com"
     },
     "alumniOf": {
       "@type": "Organization",
@@ -67,8 +67,8 @@ export function SEO({
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "r352",
-    "url": "https://r352.com",
-    "logo": "https://r352.com/og-image.png",
+    "url": "https://www.r352.com",
+    "logo": "https://www.r352.com/logo.svg",
     "description": "Strategic design partner for multi-location organizations. We build the operating system behind great design — from strategy to rollout-ready delivery, powered by the r3loop methodology.",
     "email": "hello@r352.com",
     "founder": {
@@ -96,14 +96,14 @@ export function SEO({
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "r352",
-    "url": "https://r352.com",
+    "url": "https://www.r352.com",
     "description": "Strategic design partner for multi-location brands. Operating system behind great design.",
     "publisher": {
       "@type": "Organization",
       "name": "r352",
-      "url": "https://r352.com"
+      "url": "https://www.r352.com"
     },
-    "inLanguage": ["en", "pl"]
+    "inLanguage": ["en"]
   };
 
   // FAQ schema — high-yield for LLM citations and Google's PAA / rich snippets.
@@ -159,7 +159,7 @@ export function SEO({
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "r352",
-    "url": "https://r352.com",
+    "url": "https://www.r352.com",
     "description": "Strategic design + operations consulting for multi-location organizations. We build operating systems behind great design — brand strategy, workflow architecture, QA standards, AI-first execution. Delivered through the r3loop methodology (8-step framework).",
     "priceRange": "€€€",
     "areaServed": "Worldwide",
@@ -184,7 +184,7 @@ export function SEO({
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "r352",
-    "url": "https://r352.com",
+    "url": "https://www.r352.com",
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "5",
@@ -242,15 +242,15 @@ export function SEO({
     "author": {
       "@type": "Organization",
       "name": "r352",
-      "url": "https://r352.com"
+      "url": "https://www.r352.com"
     },
     "publisher": {
       "@type": "Organization",
       "name": "r352",
-      "url": "https://r352.com",
+      "url": "https://www.r352.com",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://r352.com/og-image.png"
+        "url": "https://www.r352.com/og-image.png"
       }
     },
     "mainEntityOfPage": {
@@ -269,9 +269,9 @@ export function SEO({
       <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
       <link rel="canonical" href={canonicalUrl} />
 
-      {/* Hreflang */}
+      {/* Hreflang — only EN for now. PL is a state-based i18n toggle, not a
+          separate URL set. Re-add hreflang="pl" once we ship real /pl routes. */}
       <link rel="alternate" hrefLang="en" href={canonicalUrl} />
-      <link rel="alternate" hrefLang="pl" href={`${baseUrl}/pl${path === "/" ? "" : path}`} />
       <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />
 
       {/* Open Graph */}
