@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "motion/react";
 import { useLocation } from "wouter";
+import { useReducedMotion } from "@/app/hooks/useReducedMotion";
 
 export function CustomCursor() {
+  const reduced = useReducedMotion();
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [location] = useLocation();
@@ -77,6 +79,10 @@ export function CustomCursor() {
   if (typeof window !== "undefined" && window.matchMedia("(hover: none)").matches) {
     return null;
   }
+
+  // Reduced-motion: skip rendering the custom cursor entirely so users see the
+  // native pointer with no spring lag or hover scaling.
+  if (reduced) return null;
 
   // Calculate sizes based on state
   const size = isHovering ? 64 : 12;

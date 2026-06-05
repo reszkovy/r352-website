@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { motion, useSpring, useMotionValue } from "motion/react";
+import { useReducedMotion } from "@/app/hooks/useReducedMotion";
 
 export function CursorGlow() {
+  const reduced = useReducedMotion();
   const [isVisible, setIsVisible] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
-  
+
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -43,8 +45,11 @@ export function CursorGlow() {
     };
   }, [mouseX, mouseY, isVisible]);
 
+  // Reduced-motion: skip rendering the cursor glow entirely.
+  if (reduced) return null;
+
   return (
-    <motion.div 
+    <motion.div
       className="fixed top-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none -z-50 mix-blend-screen"
       data-ignore-selection="true"
       animate={{

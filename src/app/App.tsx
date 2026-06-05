@@ -34,6 +34,11 @@ const LimitedAccess5Meeting = lazy(() => import("@/app/pages/LimitedAccess5Meeti
 const LimitedAccess5Pricing = lazy(() => import("@/app/pages/LimitedAccess5Pricing").then(m => ({ default: m.LimitedAccess5Pricing })));
 const Process = lazy(() => import("@/app/pages/Process").then(m => ({ default: m.Process })));
 const Glossary = lazy(() => import("@/app/pages/Glossary").then(m => ({ default: m.Glossary })));
+const FAQ = lazy(() => import("@/app/pages/FAQ").then(m => ({ default: m.FAQ })));
+const Privacy = lazy(() => import("@/app/pages/Privacy").then(m => ({ default: m.Privacy })));
+const Cookies = lazy(() => import("@/app/pages/Cookies").then(m => ({ default: m.Cookies })));
+const Industries = lazy(() => import("@/app/pages/Industries").then(m => ({ default: m.Industries })));
+const IndustryDetail = lazy(() => import("@/app/pages/IndustryDetail").then(m => ({ default: m.IndustryDetail })));
 const Brief = lazy(() => import("@/app/pages/Diagnostic").then(m => ({ default: m.Brief })));
 import { useLenis } from "lenis/react";
 
@@ -95,6 +100,8 @@ import { CustomCursor } from "@/app/components/ui/CustomCursor";
 import { Chatbot } from "@/app/components/Chatbot";
 import { Preloader } from "@/app/components/ui/Preloader";
 import { useTransitionRoll } from "@/app/utils/transitionDirection";
+import { ConsentProvider } from "@/app/context/ConsentContext";
+import { ConsentBanner } from "@/app/components/ConsentBanner";
 
 // ─── Dynamic Favicon ──────────────────────
 function useFavicon() {
@@ -171,6 +178,43 @@ function AppContent() {
     if (path === "/glossary") return {
       title: "Glossary — r352 | Vocabulary we operate with",
       description: "Every distinctive r352 term defined: r3loop, design ops, multi-location brand operations, master/variant/pre-production gates, brief volume × decision velocity, operator vs agency, and more. The source of truth for our vocabulary."
+    };
+    if (path === "/faq") return {
+      title: "FAQ — r352 | Common questions answered",
+      description: "What is r3loop? Who does r352 work with? How is r352 different from a creative agency? Engagement models, founder background — answered."
+    };
+    if (path === "/privacy") return {
+      title: "Privacy Policy — r352 | How we handle your data",
+      description: "How r352 handles your data — GDPR + LOPDGDD compliant, strict opt-in analytics, no third-party advertisers, your rights and how to exercise them."
+    };
+    if (path === "/cookies") return {
+      title: "Cookie Preferences — r352 | Manage your consent",
+      description: "Manage which cookies r352 uses. Necessary cookies always on; analytics and marketing fully under your control. Strict opt-in by default."
+    };
+    if (path === "/industries") return {
+      title: "Industries — r352 | Multi-location brand operations specialists",
+      description: "r352 builds operating systems behind brand and design delivery for fitness networks, real estate developers, retail franchises, and health service networks.",
+      ogImage: "https://www.r352.com/og/industries.png"
+    };
+    if (path === "/industries/fitness-wellness") return {
+      title: "Fitness & Wellness Networks — r352 | Creative delivery across locations",
+      description: "r352 helps fitness and wellness networks turn campaign production into a repeatable operating system. Central brand standards, local execution speed.",
+      ogImage: "https://www.r352.com/og/industry-fitness-wellness.png"
+    };
+    if (path === "/industries/real-estate") return {
+      title: "Real Estate Developers — r352 | Campaign production systems",
+      description: "r352 helps real estate teams turn investment launch campaigns into a repeatable operating system. Templates, QA gates, rollout-ready delivery.",
+      ogImage: "https://www.r352.com/og/industry-real-estate.png"
+    };
+    if (path === "/industries/retail-franchise") return {
+      title: "Retail & Franchise Operators — r352 | Brand consistency across locations",
+      description: "r352 helps retail chains and franchise networks balance central brand governance with local execution. Templates, approval gates, governance system.",
+      ogImage: "https://www.r352.com/og/industry-retail-franchise.png"
+    };
+    if (path === "/industries/health-service-networks") return {
+      title: "Health & Service Networks — r352 | Multi-market brand delivery systems",
+      description: "r352 helps health and service networks deliver consistent customer-facing communication across local markets. Standards, templates, scale.",
+      ogImage: "https://www.r352.com/og/industry-health-service-networks.png"
     };
     if (path === "/philosophy") return {
       title: "Philosophy — r352 | How we think about design & delivery",
@@ -257,6 +301,11 @@ function AppContent() {
               <Route path="/services/:slug" component={ServiceDetail} />
               <Route path="/process" component={Process} />
               <Route path="/glossary" component={Glossary} />
+              <Route path="/faq" component={FAQ} />
+              <Route path="/privacy" component={Privacy} />
+              <Route path="/cookies" component={Cookies} />
+              <Route path="/industries" component={Industries} />
+              <Route path="/industries/:slug" component={IndustryDetail} />
               <Route path="/brief" component={Brief} />
               <Route path="/deliverables" component={Deliverables} />
               <Route path="/journal" component={Journal} />
@@ -311,14 +360,17 @@ function AppContent() {
 export default function App() {
   return (
     <HelmetProvider>
-      <LanguageProvider>
-        <ThemeProvider>
-          <AppContent />
-          <BottomGradient />
-          <FloatingBriefCTA />
-          <VersionLabel />
-        </ThemeProvider>
-      </LanguageProvider>
+      <ConsentProvider>
+        <LanguageProvider>
+          <ThemeProvider>
+            <AppContent />
+            <BottomGradient />
+            <FloatingBriefCTA />
+            <VersionLabel />
+            <ConsentBanner />
+          </ThemeProvider>
+        </LanguageProvider>
+      </ConsentProvider>
     </HelmetProvider>
   );
 }

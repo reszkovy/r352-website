@@ -1,0 +1,375 @@
+/**
+ * Industries — single source of truth for the /industries landing pages.
+ *
+ * Why this file exists:
+ *  - One data shape, one detail template (IndustryDetail), four routes.
+ *  - Each entry is a lead-generation page anchored on a real verticals we serve:
+ *    fitness/wellness networks, real estate developers, retail/franchise
+ *    operators, and health/service networks.
+ *  - Adding a fifth segment = one new object here + an entry in the SEO map +
+ *    sitemap. No new components, no template duplication.
+ */
+
+export interface IndustryContent {
+  /** URL slug — used in /industries/:slug. Must be unique. */
+  slug: string;
+  /** Eyebrow above the H1 — "Industry · 01" etc. */
+  eyebrow: { en: string; pl: string };
+  /** Short title for the index card + nav surfaces. */
+  title: { en: string; pl: string };
+  /** The H1 on the detail page — operator-tone, plain-spoken outcome. */
+  h1: { en: string; pl: string };
+  /** Lede paragraph under the H1 — establishes what r352 does for this segment. */
+  subcopy: { en: string; pl: string };
+  /** "Common symptoms" bullet list — observable pain we name out loud. */
+  symptoms: { en: string; pl: string }[];
+  /** Proof block — one real client, one measurable outcome, link to case study. */
+  proof: {
+    clientName: string;
+    context: { en: string; pl: string };
+    outcome: { en: string; pl: string };
+    caseStudyHref?: string;
+    /** Label for the secondary CTA — usually "See [client] case study". */
+    secondaryLabel: { en: string; pl: string };
+  };
+  /** "What the Diagnostic delivers" — concrete deliverables for this segment. */
+  whatYouGet: { en: string; pl: string }[];
+  /** Primary CTA label — drives to /brief?segment=... */
+  ctaPrimary: { en: string; pl: string };
+  /** Primary CTA href, with ?segment=... query so the brief can pre-route. */
+  ctaHref: string;
+}
+
+export const industries: IndustryContent[] = [
+  // ─── 01 ── Fitness & Wellness Networks ──────────────────────────────
+  {
+    slug: "fitness-wellness",
+    eyebrow: { en: "Industry · 01", pl: "Branża · 01" },
+    title: {
+      en: "Fitness & Wellness Networks",
+      pl: "Sieci fitness i wellness",
+    },
+    h1: {
+      en: "Creative delivery across every location, on every cadence.",
+      pl: "Kreatywna dostawa w każdej lokalizacji, w każdym rytmie.",
+    },
+    subcopy: {
+      en: "r352 helps fitness and wellness networks turn campaign production into a repeatable operating system — central brand standards, local execution speed, no governance drift.",
+      pl: "r352 pomaga sieciom fitness i wellness zamienić produkcję kampanii w powtarzalny system operacyjny — centralne standardy marki, lokalna prędkość egzekucji, zero osuwania się governance.",
+    },
+    symptoms: [
+      {
+        en: "Every new campaign restarts from zero",
+        pl: "Każda nowa kampania startuje od zera",
+      },
+      {
+        en: "Local clubs adapt assets without clear standards",
+        pl: "Lokalne kluby adaptują assety bez jasnych standardów",
+      },
+      {
+        en: "Brand consistency leaks at the location level",
+        pl: "Spójność marki przecieka na poziomie lokalizacji",
+      },
+      {
+        en: "Approvals stack up at headquarters",
+        pl: "Akceptacje piętrzą się w centrali",
+      },
+      {
+        en: "Designers become the bottleneck for every promo",
+        pl: "Designerzy stają się wąskim gardłem każdej promocji",
+      },
+    ],
+    proof: {
+      clientName: "Benefit Systems",
+      context: {
+        en: "300+ wellness clubs supported across a multi-year retainer.",
+        pl: "Ponad 300 klubów wellness obsługiwanych w ramach wieloletniego retainera.",
+      },
+      outcome: {
+        en: "Standardized brief intake reduced campaign-launch cycle time from 11 days to 3.",
+        pl: "Ujednolicony brief intake skrócił cykl launchu kampanii z 11 dni do 3.",
+      },
+      caseStudyHref: "/work/benefit-systems",
+      secondaryLabel: {
+        en: "See Benefit Systems case study",
+        pl: "Zobacz case study Benefit Systems",
+      },
+    },
+    whatYouGet: [
+      {
+        en: "Campaign workflow map across HQ + clubs",
+        pl: "Mapa workflow kampanii między centralą a klubami",
+      },
+      {
+        en: "Brand consistency leak report",
+        pl: "Raport wycieków spójności marki",
+      },
+      {
+        en: "Brief and approval pipeline diagnosis",
+        pl: "Diagnoza pipeline'u briefów i akceptacji",
+      },
+      {
+        en: "Template + toolkit opportunity scan",
+        pl: "Skan możliwości na templaty i toolkity",
+      },
+      {
+        en: "30/60/90-day operating system roadmap",
+        pl: "Roadmapa operating systemu na 30/60/90 dni",
+      },
+    ],
+    ctaPrimary: {
+      en: "Audit creative delivery across locations",
+      pl: "Audytuj kreatywną dostawę między lokalizacjami",
+    },
+    ctaHref: "/brief?segment=fitness-wellness",
+  },
+
+  // ─── 02 ── Real Estate Developers ───────────────────────────────────
+  {
+    slug: "real-estate",
+    eyebrow: { en: "Industry · 02", pl: "Branża · 02" },
+    title: {
+      en: "Real Estate Developers",
+      pl: "Deweloperzy nieruchomości",
+    },
+    h1: {
+      en: "Launch every investment without rebuilding the system from scratch.",
+      pl: "Launchuj każdą inwestycję bez odbudowy systemu od zera.",
+    },
+    subcopy: {
+      en: "r352 helps real estate teams turn campaign production into a repeatable operating system — from launch assets and approvals to templates, QA gates, and rollout-ready delivery.",
+      pl: "r352 pomaga zespołom deweloperskim zamienić produkcję kampanii w powtarzalny system operacyjny — od assetów launchowych i akceptacji, przez templaty, bramki QA, po rollout-ready delivery.",
+    },
+    symptoms: [
+      {
+        en: "Each new investment launch restarts campaign production from zero",
+        pl: "Każdy launch inwestycji startuje produkcję kampanii od zera",
+      },
+      {
+        en: "Many assets, many stakeholders, missed deadlines",
+        pl: "Dużo assetów, dużo stakeholderów, ślizgające się deadliny",
+      },
+      {
+        en: "Renders, ads, landing pages, print, and sales materials live in disconnected workflows",
+        pl: "Renderingi, reklamy, landing page'e, druk i materiały sprzedażowe żyją w odrębnych workflow'ach",
+      },
+      {
+        en: "Sales offices wait on materials that should be ready before launch",
+        pl: "Biura sprzedaży czekają na materiały, które powinny być gotowe przed launchem",
+      },
+      {
+        en: "Decision velocity collapses around revision rounds",
+        pl: "Decision velocity zapada się przy rundach poprawek",
+      },
+    ],
+    proof: {
+      clientName: "Archicom",
+      context: {
+        en: "Multi-investment real estate campaigns delivered through the r3loop methodology.",
+        pl: "Kampanie wielu inwestycji deweloperskich dostarczane przez metodologię r3loop.",
+      },
+      outcome: {
+        en: "River Point and Bulwar Północny launched using a shared production system, cutting per-investment setup time by 60%.",
+        pl: "River Point i Bulwar Północny launchowane na wspólnym systemie produkcji — czas setupu per inwestycja skrócony o 60%.",
+      },
+      caseStudyHref: "/work/archicom",
+      secondaryLabel: {
+        en: "See Archicom case study",
+        pl: "Zobacz case study Archicom",
+      },
+    },
+    whatYouGet: [
+      {
+        en: "Launch production workflow map (renders → ads → landing → print → sales)",
+        pl: "Mapa workflow produkcji launchowej (renderingi → reklamy → landing → druk → sprzedaż)",
+      },
+      {
+        en: "Multi-stakeholder approval gate diagnosis",
+        pl: "Diagnoza bramek akceptacji z wieloma stakeholderami",
+      },
+      {
+        en: "Template + toolkit opportunity scan",
+        pl: "Skan możliwości na templaty i toolkity",
+      },
+      {
+        en: "QA gate implementation plan",
+        pl: "Plan wdrożenia bramek QA",
+      },
+      {
+        en: "30/60/90-day rollout system roadmap",
+        pl: "Roadmapa systemu rolloutu na 30/60/90 dni",
+      },
+    ],
+    ctaPrimary: {
+      en: "Map your launch production system",
+      pl: "Zmapuj swój system produkcji launchowej",
+    },
+    ctaHref: "/brief?segment=real-estate",
+  },
+
+  // ─── 03 ── Retail & Franchise Operators ─────────────────────────────
+  {
+    slug: "retail-franchise",
+    eyebrow: { en: "Industry · 03", pl: "Branża · 03" },
+    title: {
+      en: "Retail & Franchise Operators",
+      pl: "Operatorzy retail i sieci franczyzowych",
+    },
+    h1: {
+      en: "Central brand standards. Local execution speed. No leaks.",
+      pl: "Centralne standardy marki. Lokalna prędkość egzekucji. Bez wycieków.",
+    },
+    subcopy: {
+      en: "r352 helps retail chains and franchise networks balance central brand governance with local execution autonomy — through templates, approval gates, and a working operating system.",
+      pl: "r352 pomaga sieciom retail i franczyzowym zbalansować centralne governance marki z autonomią lokalnej egzekucji — przez templaty, bramki akceptacji i działający operating system.",
+    },
+    symptoms: [
+      {
+        en: "Brand consistency leaks because each market adapts materials differently",
+        pl: "Spójność marki przecieka, bo każdy rynek adaptuje materiały po swojemu",
+      },
+      {
+        en: "Local branches produce assets that don't match central standards",
+        pl: "Lokalne oddziały produkują assety, które nie trzymają centralnych standardów",
+      },
+      {
+        en: "Central brand team can't keep up with location-level requests",
+        pl: "Centralny brand team nie nadąża za zapytaniami z lokalizacji",
+      },
+      {
+        en: "No clear standards for local adaptation",
+        pl: "Brak jasnych standardów lokalnej adaptacji",
+      },
+      {
+        en: "Brand consistency depends on individual memory, not a system",
+        pl: "Spójność marki zależy od pamięci pojedynczych osób, nie od systemu",
+      },
+    ],
+    proof: {
+      clientName: "r352 methodology",
+      context: {
+        en: "r352 methodology applied across multi-location brand systems.",
+        pl: "Metodologia r352 stosowana w wielolokalizacyjnych systemach marki.",
+      },
+      outcome: {
+        en: "r3loop's Govern + Standardize phases specifically address cross-market consistency at scale — reusable templates, defined adaptation rules, decision velocity tracking.",
+        pl: "Fazy Govern i Standardize z r3loop rozwiązują problem spójności między rynkami w skali — reużywalne templaty, zdefiniowane reguły adaptacji, tracking decision velocity.",
+      },
+      caseStudyHref: "/process",
+      secondaryLabel: {
+        en: "See r3loop methodology",
+        pl: "Zobacz metodologię r3loop",
+      },
+    },
+    whatYouGet: [
+      {
+        en: "Cross-market brand consistency audit",
+        pl: "Audyt spójności marki między rynkami",
+      },
+      {
+        en: "Local adaptation rules + template framework",
+        pl: "Reguły lokalnej adaptacji + framework templatów",
+      },
+      {
+        en: "Central + local approval gate design",
+        pl: "Projekt bramek akceptacji centrala + lokalizacja",
+      },
+      {
+        en: "Decision velocity baseline + improvement plan",
+        pl: "Baseline decision velocity + plan poprawy",
+      },
+      {
+        en: "30/60/90-day governance system roadmap",
+        pl: "Roadmapa systemu governance na 30/60/90 dni",
+      },
+    ],
+    ctaPrimary: {
+      en: "Find brand consistency leaks",
+      pl: "Znajdź wycieki spójności marki",
+    },
+    ctaHref: "/brief?segment=retail-franchise",
+  },
+
+  // ─── 04 ── Health & Service Networks ────────────────────────────────
+  {
+    slug: "health-service-networks",
+    eyebrow: { en: "Industry · 04", pl: "Branża · 04" },
+    title: {
+      en: "Health & Service Networks",
+      pl: "Sieci zdrowia i usług",
+    },
+    h1: {
+      en: "Multi-market customer experience, systemized.",
+      pl: "Customer experience na wielu rynkach, w systemie.",
+    },
+    subcopy: {
+      en: "r352 helps health and service networks deliver consistent customer-facing communication across every local market — repeatable standards, templates, and approval gates that scale.",
+      pl: "r352 pomaga sieciom zdrowia i usług dostarczać spójną komunikację do klienta na każdym lokalnym rynku — powtarzalne standardy, templaty i bramki akceptacji, które się skalują.",
+    },
+    symptoms: [
+      {
+        en: "Local market execution creates inconsistent customer experience",
+        pl: "Lokalna egzekucja tworzy niespójny customer experience",
+      },
+      {
+        en: "Each clinic/branch produces materials with different quality bars",
+        pl: "Każda klinika/oddział produkuje materiały na innym poziomie jakości",
+      },
+      {
+        en: "Customer-facing communication varies by market without strategy",
+        pl: "Komunikacja do klienta zmienia się między rynkami bez strategii",
+      },
+      {
+        en: "No repeatable standards for local service brands",
+        pl: "Brak powtarzalnych standardów dla lokalnych brandów usługowych",
+      },
+      {
+        en: "Central team can't scale quality control manually",
+        pl: "Centralny zespół nie skaluje ręcznej kontroli jakości",
+      },
+    ],
+    proof: {
+      clientName: "Sonova / Geers",
+      context: {
+        en: "Hearing care network operating across 17 countries.",
+        pl: "Sieć opieki słuchowej działająca w 17 krajach.",
+      },
+      outcome: {
+        en: "r3loop applied for multi-market brand delivery, reducing local-market production variance and bringing 600+ locations into a consistent customer experience.",
+        pl: "r3loop wdrożone dla wielorynkowej dostawy marki — zredukowana wariancja lokalnej produkcji, 600+ lokalizacji w spójnym customer experience.",
+      },
+      caseStudyHref: "/work/sonova",
+      secondaryLabel: {
+        en: "See Sonova / Geers case study",
+        pl: "Zobacz case study Sonova / Geers",
+      },
+    },
+    whatYouGet: [
+      {
+        en: "Multi-market brand delivery audit",
+        pl: "Audyt wielorynkowej dostawy marki",
+      },
+      {
+        en: "Local execution standards + templates",
+        pl: "Standardy lokalnej egzekucji + templaty",
+      },
+      {
+        en: "Customer experience consistency baseline",
+        pl: "Baseline spójności customer experience",
+      },
+      {
+        en: "Quality control gate design for distributed teams",
+        pl: "Projekt bramek kontroli jakości dla rozproszonych zespołów",
+      },
+      {
+        en: "30/60/90-day systemization roadmap",
+        pl: "Roadmapa systematyzacji na 30/60/90 dni",
+      },
+    ],
+    ctaPrimary: {
+      en: "Systemize multi-market brand delivery",
+      pl: "Zsystematyzuj wielorynkową dostawę marki",
+    },
+    ctaHref: "/brief?segment=health-service-networks",
+  },
+];

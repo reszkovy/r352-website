@@ -1,7 +1,44 @@
-import { useState, FormEvent } from "react";
+import { useState, useEffect, useMemo, FormEvent } from "react";
+import { useSearch } from "wouter";
 import { PageTransition } from "@/app/components/ui/PageTransition";
 import { Reveal } from "@/app/components/ui/Reveal";
 import { useLanguage } from "@/app/context/LanguageContext";
+
+// ─── Industry segment provenance ─────────────────────────────────────
+// When a user clicks "Start a brief" from /industries/{slug} we propagate
+// the segment via ?segment= so we can (a) show a subtle provenance pill
+// at the top of the brief and (b) push an analytics event for funnel
+// attribution. Display labels are bilingual — Polish copy lands when
+// the user has selected PL.
+const SEGMENT_LABELS_EN: Record<string, string> = {
+  "fitness-wellness": "Fitness & Wellness Networks",
+  "real-estate": "Real Estate Developers",
+  "retail-franchise": "Retail & Franchise Operators",
+  "health-service-networks": "Health & Service Networks",
+};
+
+const SEGMENT_LABELS_PL: Record<string, string> = {
+  "fitness-wellness": "Sieci fitness i wellness",
+  "real-estate": "Deweloperzy nieruchomości",
+  "retail-franchise": "Sieci retail i franczyza",
+  "health-service-networks": "Sieci zdrowia i usług",
+};
+
+function parseSegmentFromSearch(search: string): string | null {
+  // useSearch in wouter returns the query string WITHOUT the leading "?".
+  // URLSearchParams is happy either way, but we normalize defensively.
+  const normalized = search.startsWith("?") ? search : `?${search}`;
+  try {
+    const params = new URLSearchParams(normalized);
+    const seg = params.get("segment");
+    if (seg && Object.prototype.hasOwnProperty.call(SEGMENT_LABELS_EN, seg)) {
+      return seg;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
 
 // ─── Briefly intake config ───────────────────────────────────────────
 // API endpoint (Briefly backend) — leave on briefly-five-plum.vercel.app
@@ -42,6 +79,36 @@ const initialForm: FormState = {
 export function Brief() {
   const { language } = useLanguage();
   const lang = language as "en" | "pl";
+
+  // Read ?segment=… so we can preserve industry context across the
+  // /industries/{slug} → /brief jump. Memoized so we don't re-parse on
+  // every render of the (heavy) form section.
+  const search = useSearch();
+  const segment = useMemo(() => parseSegmentFromSearch(search), [search]);
+  const segmentLabel = segment
+    ? (lang === "pl" ? SEGMENT_LABELS_PL[segment] : SEGMENT_LABELS_EN[segment])
+    : null;
+
+  // Fire analytics event once on mount when a valid segment is present.
+  // We push to GTM's dataLayer if present (the canonical channel on
+  // r352.com); silent no-op otherwise. Guarded for SSR + try/catch so a
+  // misbehaving consumer never breaks the brief flow.
+  useEffect(() => {
+    if (!segment) return;
+    if (typeof window === "undefined") return;
+    try {
+      const w = window as any;
+      if (w.dataLayer && typeof w.dataLayer.push === "function") {
+        w.dataLayer.push({
+          event: "industry_brief_start",
+          segment,
+          source_page: `/industries/${segment}`,
+        });
+      }
+    } catch {
+      /* analytics must never break the page */
+    }
+  }, [segment]);
 
   const [form, setForm] = useState<FormState>(initialForm);
   const [submitting, setSubmitting] = useState(false);
@@ -167,6 +234,21 @@ export function Brief() {
             {/* LEFT: positioning + intro + warm lead microcopy */}
             <Reveal>
               <div className="lg:sticky lg:top-32">
+                {/* Industry provenance pill — only renders when arriving from
+                    /industries/{slug}. Subtle: small lime-bordered chip above
+                    the page eyebrow so the user knows context was preserved
+                    without dominating the hero. */}
+                {segmentLabel && (
+                  <div className="mb-6">
+                    <span
+                      className="inline-flex items-center gap-2 px-3 py-1.5 border border-[#D4FF00]/40 text-[11px] font-display uppercase tracking-[0.2em] text-neutral-700 dark:text-[#D4FF00] rounded-sm"
+                      data-segment={segment ?? undefined}
+                    >
+                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#D4FF00]" aria-hidden="true" />
+                      {lang === "pl" ? "Przychodzisz z" : "Coming from"}: {segmentLabel}
+                    </span>
+                  </div>
+                )}
                 <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-8">
                   {copy.hero.label}
                 </span>

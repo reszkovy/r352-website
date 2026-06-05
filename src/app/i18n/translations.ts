@@ -533,7 +533,86 @@ export const translations = {
       back_to_top: "Back to Top",
       rights: "All rights reserved.",
       privacy: "Privacy Policy",
-      terms: "Terms of Service"
+      terms: "Terms of Service",
+      legal: "Legal"
+    },
+    consent: {
+      banner: {
+        title: "Cookies & privacy",
+        body: "We use cookies and analytics to understand how the site performs. Strict opt-in — nothing loads until you say yes. You can change your choice anytime.",
+        accept: "Accept all",
+        deny: "Necessary only",
+        preferences: "Cookie preferences",
+        privacy: "Privacy policy"
+      }
+    },
+    privacy: {
+      label: "Legal",
+      title: "Privacy Policy",
+      lastUpdated: "Last updated: 2026-06-05",
+      draftBanner: "[DRAFT — needs legal review before publication]",
+      intro: "This policy explains what data we collect, why we collect it, how long we keep it, and what rights you have. r352 is operated from Mallorca, Spain, which means GDPR and the Spanish LOPDGDD apply to everything we do.",
+      footerNote: "Questions about this policy or your data?",
+      sections: {
+        whoWeAre: {
+          title: "Who we are",
+          body: "r352 is a design-ops and delivery-systems studio operated by Przemysław Reszka, based in Santa Catalina, Mallorca (Baleares, Spain). We work remotely with multi-location brands and scaling operators across the EU and beyond.\n\nFor anything related to your personal data, you can reach us at hello@r352.com. We are the data controller for the information you submit through this site."
+        },
+        whatWeCollect: {
+          title: "What data we collect",
+          body: "Analytics (only with your consent): aggregated usage data via Google Tag Manager and Google Analytics — pages visited, approximate location (country/city), device type, referrer. Tags only load if you accept on the consent banner.\n\nContact forms and briefs: the information you choose to submit — typically name, email, company, project context, budget range, timeline. We never collect more than you give us.\n\nStrictly necessary storage: a small local entry that remembers your consent choice itself (key: r352-consent-v1). This cannot be disabled — without it, we'd ask you again on every page.\n\nServer logs: standard request logs kept by our hosting provider (Vercel) for security and operations."
+        },
+        whyWeCollect: {
+          title: "Why we collect it",
+          body: "Analytics: to understand which pages help, which fail, and where to invest. Legal basis: your consent (Art. 6(1)(a) GDPR).\n\nContact form data: to respond to your inquiry, qualify the fit, and — if we engage — deliver the project. Legal basis: pre-contractual steps at your request and our legitimate interest in running the business (Art. 6(1)(b) and 6(1)(f) GDPR).\n\nServer logs: to keep the site available and to defend against abuse. Legal basis: legitimate interest (Art. 6(1)(f) GDPR)."
+        },
+        retention: {
+          title: "How long we keep it",
+          body: "Analytics events: up to 26 months in Google Analytics, then automatically purged.\n\nContact form and brief submissions: up to 5 years for tax and contractual compliance under Spanish law, then deleted unless an active engagement requires longer retention.\n\nConsent state (r352-consent-v1): stored in your browser until you reset it on the Cookie preferences page or clear site data manually.\n\nServer logs: rolling 30-day window unless an incident requires longer retention."
+        },
+        sharing: {
+          title: "Who we share it with",
+          body: "Hosting and infrastructure: Vercel Inc. (United States) — site delivery and edge logs, under Standard Contractual Clauses.\n\nAnalytics: Google Ireland Ltd. / Google LLC, when (and only when) you have accepted analytics cookies.\n\nEmail: standard email providers we use to reply to your message (e.g. Google Workspace).\n\nWe do not sell your data. We do not share it with advertising networks. We do not run remarketing or programmatic ads."
+        },
+        rights: {
+          title: "Your rights",
+          body: "Under GDPR and the Spanish LOPDGDD you have the right to: access your data, correct it, delete it, restrict processing, object to processing, receive a portable copy, and withdraw consent at any time (without affecting the legality of processing before withdrawal).\n\nTo exercise any of these rights, email hello@r352.com from the address you used to contact us. We will respond within 30 days.\n\nYou also have the right to file a complaint with the Spanish supervisory authority, AEPD (Agencia Española de Protección de Datos) — www.aepd.es."
+        },
+        contact: {
+          title: "How to contact us",
+          body: "Email: hello@r352.com\nLocation: Santa Catalina, Mallorca, Baleares, Spain (remote-first studio)\n\nFor data-specific requests, please use the subject line \"r352 — privacy request\" so we can route it correctly."
+        },
+        changes: {
+          title: "Changes to this policy",
+          body: "We may update this policy when our tools or processes change. The \"Last updated\" date at the top reflects the most recent revision. Material changes will be announced on the site before they take effect."
+        }
+      }
+    },
+    cookies: {
+      label: "Legal",
+      title: "Cookie Preferences",
+      lastUpdated: "Last updated: 2026-06-05",
+      draftBanner: "[DRAFT — needs legal review before publication]",
+      intro: "We default to strict opt-in. Analytics and marketing cookies stay off until you explicitly turn them on here or accept on the banner. You can change or revoke your choice at any time.",
+      alwaysOn: "Always on",
+      save: "Save preferences",
+      reset: "Reset choice",
+      savedConfirm: "Saved",
+      footerNote: "Resetting wipes your stored choice and brings the consent banner back the next time you visit. For everything else, see our Privacy Policy.",
+      categories: {
+        necessary: {
+          title: "Necessary",
+          body: "Required for the site to function — session continuity and remembering your consent decision itself. Cannot be disabled."
+        },
+        analytics: {
+          title: "Analytics",
+          body: "Aggregated, anonymised usage stats via Google Tag Manager and Google Analytics. Helps us see which pages work and which to fix. Off by default."
+        },
+        marketing: {
+          title: "Marketing",
+          body: "We do not run marketing or advertising tags today. This toggle is here so we never enable them in the future without your explicit choice."
+        }
+      }
     },
     index: "Index",
     marquee: {
@@ -1064,7 +1143,86 @@ export const translations = {
       back_to_top: "Wróć na górę",
       rights: "Wszelkie prawa zastrzeżone.",
       privacy: "Polityka Prywatności",
-      terms: "Regulamin"
+      terms: "Regulamin",
+      legal: "Prawne"
+    },
+    consent: {
+      banner: {
+        title: "Cookies i prywatność",
+        body: "Używamy cookies i analityki, żeby rozumieć jak działa strona. Strict opt-in — nic się nie ładuje, dopóki nie zgodzisz się świadomie. Decyzję możesz zmienić w każdej chwili.",
+        accept: "Akceptuję wszystko",
+        deny: "Tylko niezbędne",
+        preferences: "Ustawienia cookies",
+        privacy: "Polityka prywatności"
+      }
+    },
+    privacy: {
+      label: "Prawne",
+      title: "Polityka prywatności",
+      lastUpdated: "Ostatnia aktualizacja: 2026-06-05",
+      draftBanner: "[WERSJA ROBOCZA — wymaga weryfikacji prawnej przed publikacją]",
+      intro: "Ta polityka opisuje jakie dane zbieramy, po co, jak długo je przechowujemy i jakie masz prawa. r352 działa z Mallorki (Hiszpania), co oznacza że obowiązuje RODO oraz hiszpańska LOPDGDD.",
+      footerNote: "Pytania dotyczące tej polityki lub Twoich danych?",
+      sections: {
+        whoWeAre: {
+          title: "Kto za tym stoi",
+          body: "r352 to studio design ops i systemów dostarczania prowadzone przez Przemysława Reszkę, z bazą w Santa Catalina na Mallorce (Baleary, Hiszpania). Pracujemy zdalnie z markami multi-location i skalującymi się operatorami w UE i poza nią.\n\nW sprawach dotyczących danych osobowych: hello@r352.com. Jesteśmy administratorem danych przekazywanych przez tę stronę."
+        },
+        whatWeCollect: {
+          title: "Jakie dane zbieramy",
+          body: "Analityka (tylko za Twoją zgodą): zagregowane dane o ruchu przez Google Tag Manager i Google Analytics — odwiedzane podstrony, przybliżona lokalizacja (kraj/miasto), typ urządzenia, źródło wejścia. Tagi ładują się tylko jeśli zaakceptujesz na bannerze zgody.\n\nFormularze kontaktowe i briefy: dane, które sam zdecydujesz się przekazać — zwykle imię, email, firma, kontekst projektu, budżet, harmonogram. Nigdy nie zbieramy więcej niż nam dasz.\n\nNiezbędne przechowywanie lokalne: drobny zapis w przeglądarce pamiętający Twoją decyzję o zgodzie (klucz: r352-consent-v1). Tego nie da się wyłączyć — bez tego pytalibyśmy Cię o zgodę na każdej podstronie.\n\nLogi serwera: standardowe logi requestów utrzymywane przez naszego hostingodawcę (Vercel) w celach bezpieczeństwa i utrzymania."
+        },
+        whyWeCollect: {
+          title: "Po co je zbieramy",
+          body: "Analityka: żeby rozumieć, które podstrony działają, które zawodzą i gdzie inwestować czas. Podstawa prawna: Twoja zgoda (art. 6 ust. 1 lit. a RODO).\n\nDane z formularzy: żeby odpowiedzieć na Twoje zapytanie, zweryfikować dopasowanie i — jeśli ruszymy ze współpracą — dostarczyć projekt. Podstawa prawna: czynności przedumowne na Twoje żądanie oraz nasz prawnie uzasadniony interes prowadzenia działalności (art. 6 ust. 1 lit. b i lit. f RODO).\n\nLogi serwera: utrzymanie dostępności strony i ochrona przed nadużyciami. Podstawa prawna: prawnie uzasadniony interes (art. 6 ust. 1 lit. f RODO)."
+        },
+        retention: {
+          title: "Jak długo przechowujemy",
+          body: "Zdarzenia analityczne: do 26 miesięcy w Google Analytics, potem automatyczne czyszczenie.\n\nFormularze kontaktowe i briefy: do 5 lat — zgodnie z wymogami podatkowymi i kontraktowymi w prawie hiszpańskim, potem usuwane, chyba że aktywna współpraca wymaga dłuższego okresu.\n\nStan zgody (r352-consent-v1): w Twojej przeglądarce, dopóki nie zresetujesz go na podstronie Ustawienia cookies lub nie wyczyścisz danych witryny ręcznie.\n\nLogi serwera: ruchome okno 30 dni, chyba że incydent wymaga dłuższego przechowywania."
+        },
+        sharing: {
+          title: "Komu udostępniamy",
+          body: "Hosting i infrastruktura: Vercel Inc. (Stany Zjednoczone) — dostarczanie strony i logi edge, na podstawie Standardowych Klauzul Umownych.\n\nAnalityka: Google Ireland Ltd. / Google LLC, ale tylko (i wyłącznie) gdy zaakceptujesz cookies analityczne.\n\nEmail: standardowe usługi pocztowe używane do odpowiedzi (np. Google Workspace).\n\nNie sprzedajemy Twoich danych. Nie udostępniamy ich sieciom reklamowym. Nie prowadzimy remarketingu ani reklam programatycznych."
+        },
+        rights: {
+          title: "Twoje prawa",
+          body: "Na mocy RODO i hiszpańskiej LOPDGDD masz prawo do: dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, sprzeciwu wobec przetwarzania, otrzymania kopii w formacie umożliwiającym przenoszenie oraz wycofania zgody w dowolnym momencie (bez wpływu na zgodność z prawem przetwarzania przed wycofaniem).\n\nŻeby skorzystać z któregokolwiek z tych praw, napisz na hello@r352.com z adresu, którego użyłeś do kontaktu. Odpowiemy w ciągu 30 dni.\n\nMasz też prawo wnieść skargę do hiszpańskiego organu nadzorczego, AEPD (Agencia Española de Protección de Datos) — www.aepd.es. Jeśli mieszkasz w Polsce, skargę możesz wnieść również do PUODO."
+        },
+        contact: {
+          title: "Jak się z nami skontaktować",
+          body: "Email: hello@r352.com\nLokalizacja: Santa Catalina, Mallorca, Baleary, Hiszpania (studio remote-first)\n\nW sprawach dotyczących danych prosimy o temat \"r352 — privacy request\" — pozwala to skierować zapytanie we właściwe miejsce."
+        },
+        changes: {
+          title: "Zmiany w tej polityce",
+          body: "Tę politykę aktualizujemy, gdy zmieniają się nasze narzędzia lub procesy. Data \"Ostatnia aktualizacja\" na górze pokazuje najnowszą wersję. Istotne zmiany ogłaszamy na stronie zanim wejdą w życie."
+        }
+      }
+    },
+    cookies: {
+      label: "Prawne",
+      title: "Ustawienia cookies",
+      lastUpdated: "Ostatnia aktualizacja: 2026-06-05",
+      draftBanner: "[WERSJA ROBOCZA — wymaga weryfikacji prawnej przed publikacją]",
+      intro: "Domyślnie wszystko jest wyłączone (strict opt-in). Cookies analityczne i marketingowe pozostają nieaktywne, dopóki świadomie nie włączysz ich tutaj lub nie zaakceptujesz na bannerze. Możesz zmienić lub cofnąć decyzję w dowolnym momencie.",
+      alwaysOn: "Zawsze włączone",
+      save: "Zapisz ustawienia",
+      reset: "Zresetuj wybór",
+      savedConfirm: "Zapisano",
+      footerNote: "Reset usuwa Twój zapisany wybór i przywraca banner zgody przy następnej wizycie. W pozostałych sprawach — zobacz Politykę prywatności.",
+      categories: {
+        necessary: {
+          title: "Niezbędne",
+          body: "Wymagane do działania strony — ciągłość sesji oraz zapamiętanie samej Twojej decyzji o zgodzie. Nie da się ich wyłączyć."
+        },
+        analytics: {
+          title: "Analityka",
+          body: "Zagregowane, zanonimizowane statystyki ruchu przez Google Tag Manager i Google Analytics. Pomagają zobaczyć co działa, a co wymaga poprawy. Domyślnie wyłączone."
+        },
+        marketing: {
+          title: "Marketing",
+          body: "Dziś nie używamy tagów marketingowych ani reklamowych. Ten przełącznik istnieje, żeby w przyszłości nie uruchomić ich bez Twojej wyraźnej zgody."
+        }
+      }
     },
     index: "Index",
     philosophy: {

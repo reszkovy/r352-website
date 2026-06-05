@@ -1,12 +1,22 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { R352Symbol } from "@/app/components/agency/R352Logo";
+import { useReducedMotion } from "@/app/hooks/useReducedMotion";
 
 export function Preloader() {
+  const reduced = useReducedMotion();
   const [isLoading, setIsLoading] = useState(true);
   const [isDone, setIsDone] = useState(false);
 
   useEffect(() => {
+    // Reduced-motion: skip the lock + timer entirely, mark done immediately.
+    if (reduced) {
+      document.body.style.overflow = "";
+      setIsLoading(false);
+      setIsDone(true);
+      return;
+    }
+
     document.body.style.overflow = "hidden";
 
     const timer = setTimeout(() => {
@@ -17,13 +27,16 @@ export function Preloader() {
       clearTimeout(timer);
       document.body.style.overflow = "";
     };
-  }, []);
+  }, [reduced]);
 
   // Once AnimatePresence finishes all exit animations, fully remove from DOM
   const handleExitComplete = () => {
     setIsDone(true);
     document.body.style.overflow = "";
   };
+
+  // Reduced-motion: never render the preloader at all.
+  if (reduced) return null;
 
   if (isDone) return null;
 

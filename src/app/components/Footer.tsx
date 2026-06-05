@@ -2,12 +2,14 @@ import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
 import { R352Symbol } from "@/app/components/agency/R352Logo";
 import { useLanguage } from "@/app/context/LanguageContext";
+import { useConsent } from "@/app/context/ConsentContext";
 import { useLenis } from "lenis/react";
 import { MagnetGrid } from "@/app/components/ui/MagnetGrid";
 import { R3LoopBadge } from "@/app/components/ui/R3LoopBadge";
 
 export function Footer() {
   const { t } = useLanguage();
+  const { reset } = useConsent();
   const lenis = useLenis();
   const [location] = useLocation();
 
@@ -251,6 +253,33 @@ export function Footer() {
             >
               {t("footer.back_to_top")}
             </button>
+
+            {/* Legal strip — privacy + cookies pages + a quick reset for the consent banner.
+                Kept inline with copyright row so it doesn't compete with primary nav above. */}
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-display uppercase tracking-widest">
+              <Link
+                href="/privacy"
+                onClick={navigateToTop}
+                className="text-neutral-500 hover:text-[#D4FF00] transition-colors duration-300"
+              >
+                {t("consent.banner.privacy")}
+              </Link>
+              <Link
+                href="/cookies"
+                onClick={navigateToTop}
+                className="text-neutral-500 hover:text-[#D4FF00] transition-colors duration-300"
+              >
+                {t("consent.banner.preferences")}
+              </Link>
+              <button
+                type="button"
+                onClick={reset}
+                className="text-neutral-500 hover:text-[#D4FF00] transition-colors duration-300"
+                aria-label={t("consent.banner.preferences")}
+              >
+                {t("cookies.reset")}
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { R352Symbol, R352Text } from "./R352Logo";
 import { useLanguage } from "@/app/context/LanguageContext";
@@ -17,6 +17,10 @@ export function AgencyHeader() {
   const { language, setLanguage, t } = useLanguage();
   const { theme, toggleTheme } = useTheme();
   const lenis = useLenis();
+
+  // Refs for mobile menu focus management (Escape close + focus trap)
+  const menuOverlayRef = useRef<HTMLDivElement>(null);
+  const menuTriggerRef = useRef<HTMLButtonElement>(null);
 
   // Use Lenis scroll callback for reliable scroll tracking on desktop, and standard scroll listener for mobile
   useLenis((lenis) => {
@@ -59,6 +63,73 @@ export function AgencyHeader() {
       }
     }
   }, [isMenuOpen, lenis]);
+
+  // Mobile menu a11y: Escape to close, focus trap (Tab loops), auto-focus first link on open,
+  // restore focus to trigger button on close.
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const overlay = menuOverlayRef.current;
+    if (!overlay) return;
+
+    // Collect focusable elements inside the overlay
+    const getFocusableElements = (): HTMLElement[] => {
+      const selector =
+        'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])';
+      return Array.from(overlay.querySelectorAll<HTMLElement>(selector));
+    };
+
+    // Auto-focus first link in menu after animation paints (next frame)
+    const focusTimer = window.setTimeout(() => {
+      const focusables = getFocusableElements();
+      if (focusables.length > 0) {
+        focusables[0].focus();
+      }
+    }, 50);
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Escape closes menu + restores focus to trigger
+      if (e.key === "Escape") {
+        e.preventDefault();
+        setIsMenuOpen(false);
+        // Restore focus on next tick after menu unmount
+        window.setTimeout(() => {
+          menuTriggerRef.current?.focus();
+        }, 0);
+        return;
+      }
+
+      // Focus trap: cycle Tab / Shift+Tab inside the overlay
+      if (e.key === "Tab") {
+        const focusables = getFocusableElements();
+        if (focusables.length === 0) return;
+
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        const active = document.activeElement as HTMLElement | null;
+
+        if (e.shiftKey) {
+          // Shift+Tab from first → wrap to last
+          if (active === first || !overlay.contains(active)) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          // Tab from last → wrap to first
+          if (active === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.clearTimeout(focusTimer);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isMenuOpen]);
 
   const navItems = [
     { href: "/work", label: t("nav.work") },
@@ -253,6 +324,7 @@ export function AgencyHeader() {
         
         {/* Mobile Hamburger */}
         <motion.button
+            ref={menuTriggerRef}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="pointer-events-auto md:hidden group flex flex-col justify-center items-center w-12 h-12 gap-1.5 cursor-pointer z-[1000] rounded-none backdrop-blur-sm outline-none focus:outline-none"
             animate={{
@@ -291,6 +363,7 @@ export function AgencyHeader() {
       <AnimatePresence>
         {isMenuOpen && (
             <motion.div
+                ref={menuOverlayRef}
                 id="mobile-menu-overlay"
                 role="dialog"
                 aria-modal="true"

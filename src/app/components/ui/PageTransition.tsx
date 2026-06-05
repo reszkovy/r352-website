@@ -3,6 +3,7 @@ import { ReactNode, useEffect, useRef } from "react";
 import { useLenis } from "lenis/react";
 import { useTheme } from "@/app/context/ThemeContext";
 import { R352Symbol } from "@/app/components/agency/R352Logo";
+import { useReducedMotion } from "@/app/hooks/useReducedMotion";
 import {
   getCurrentDirection,
   getSweepProps,
@@ -30,6 +31,7 @@ export function PageTransition({ children, className }: PageTransitionProps) {
   const lenis = useLenis();
   const { theme } = useTheme();
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
 
   // Direction follows the deterministic cycle in transitionDirection utility.
   // We snapshot it at first render via useRef so the outgoing exit and
@@ -65,6 +67,69 @@ export function PageTransition({ children, className }: PageTransitionProps) {
     }
   }, [lenis]);
 
+  // Reduced-motion: collapse all sweep + content wrapper animations to zero duration
+  // so user sees the destination page immediately without cinematic overlays.
+  const sweepAnimateTransition = reduced
+    ? { duration: 0 }
+    : { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.15 };
+  const sweepExitTransition = reduced
+    ? { duration: 0 }
+    : { duration: 0.7, ease: [0.76, 0, 0.24, 1] };
+  const sweep2AnimateTransition = reduced
+    ? { duration: 0 }
+    : { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.05 };
+  const sweep2ExitTransition = reduced
+    ? { duration: 0 }
+    : { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.1 };
+  const brandingAnimateTransition = reduced
+    ? { duration: 0 }
+    : { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.05 };
+  const brandingExitTransition = reduced
+    ? { duration: 0 }
+    : { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.1 };
+
+  // Content wrapper: when reduced, start at final state (no blur/scale/y) and skip transition.
+  const wrapperInitial = reduced
+    ? { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }
+    : { opacity: 0, y: 30, scale: 0.98, filter: "blur(24px)" };
+  const wrapperAnimate = reduced
+    ? {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        filter: "blur(0px)",
+        transition: { duration: 0 }
+      }
+    : {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        filter: "blur(0px)",
+        transition: {
+          duration: 0.9,
+          delay: 0.3,
+          ease: [0.22, 1, 0.36, 1] // Apple-like smooth decel
+        }
+      };
+  const wrapperExit = reduced
+    ? {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        filter: "blur(0px)",
+        transition: { duration: 0 }
+      }
+    : {
+        opacity: 0.3,
+        y: -20,
+        scale: 0.95,
+        filter: "blur(20px)",
+        transition: {
+          duration: 0.8,
+          ease: [0.76, 0, 0.24, 1] // Synced with sweep
+        }
+      };
+
   return (
     <>
       {/* Cinematic Transition Overlay - Lime Accent */}
@@ -73,11 +138,11 @@ export function PageTransition({ children, className }: PageTransitionProps) {
         initial={sweep.initial}
         animate={{
           ...sweep.animate,
-          transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.15 }
+          transition: sweepAnimateTransition
         }}
         exit={{
           ...sweep.exit,
-          transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] }
+          transition: sweepExitTransition
         }}
       />
 
@@ -87,11 +152,11 @@ export function PageTransition({ children, className }: PageTransitionProps) {
         initial={sweep.initial}
         animate={{
           ...sweep.animate,
-          transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.05 }
+          transition: sweep2AnimateTransition
         }}
         exit={{
           ...sweep.exit,
-          transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.1 }
+          transition: sweep2ExitTransition
         }}
       />
 
@@ -101,11 +166,11 @@ export function PageTransition({ children, className }: PageTransitionProps) {
         initial={{ clipPath: branding.initial }}
         animate={{
           clipPath: branding.animate,
-          transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.05 }
+          transition: brandingAnimateTransition
         }}
         exit={{
           clipPath: branding.exit,
-          transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.1 }
+          transition: brandingExitTransition
         }}
       >
         <div className="flex flex-col items-center gap-5">
@@ -118,28 +183,9 @@ export function PageTransition({ children, className }: PageTransitionProps) {
 
       <motion.div
         ref={wrapperRef}
-        initial={{ opacity: 0, y: 30, scale: 0.98, filter: "blur(24px)" }}
-        animate={{
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          filter: "blur(0px)",
-          transition: {
-            duration: 0.9,
-            delay: 0.3,
-            ease: [0.22, 1, 0.36, 1] // Apple-like smooth decel
-          }
-        }}
-        exit={{
-          opacity: 0.3,
-          y: -20,
-          scale: 0.95,
-          filter: "blur(20px)",
-          transition: {
-            duration: 0.8,
-            ease: [0.76, 0, 0.24, 1] // Synced with sweep
-          }
-        }}
+        initial={wrapperInitial}
+        animate={wrapperAnimate}
+        exit={wrapperExit}
         onAnimationComplete={(definition) => {
           // After entry animation completes, clear inline transform/filter from this wrapper.
           // Framer keeps "transform: scale(1) translateY(0); filter: blur(0px)" applied inline,
