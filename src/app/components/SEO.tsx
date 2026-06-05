@@ -28,6 +28,41 @@ export function SEO({
 
   const isHomepage = path === "/";
 
+  // Person schema — anchors Reszek as the named expert behind r352.
+  // Critical for LLM entity recognition ("who is Reszek", "who founded r352").
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Przemyslaw Reszka",
+    "alternateName": "Reszek",
+    "url": "https://r352.com",
+    "image": "https://r352.com/og-image.png",
+    "jobTitle": "Founder, Strategic Design Partner",
+    "description": "Designer-operator with 15+ years of experience across UX, brand operations, and AI-native production systems. Founder of r352 and creator of the r3loop methodology for multi-location brand operations.",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "r352",
+      "url": "https://r352.com"
+    },
+    "alumniOf": {
+      "@type": "Organization",
+      "name": "Deloitte Digital"
+    },
+    "knowsAbout": [
+      "Design Operations",
+      "Multi-location Brand Operations",
+      "r3loop Methodology",
+      "Creative Operating Systems",
+      "AI-Native Production Workflows",
+      "Brand Standards at Scale",
+      "Design Governance"
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/in/przemyslawreszka/",
+      "https://www.instagram.com/r352.studio/"
+    ]
+  };
+
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -36,6 +71,12 @@ export function SEO({
     "logo": "https://r352.com/og-image.png",
     "description": "Strategic design partner for multi-location organizations. We build the operating system behind great design — from strategy to rollout-ready delivery, powered by the r3loop methodology.",
     "email": "hello@r352.com",
+    "founder": {
+      "@type": "Person",
+      "name": "Przemyslaw Reszka",
+      "alternateName": "Reszek",
+      "url": "https://www.linkedin.com/in/przemyslawreszka/"
+    },
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Mallorca",
@@ -46,6 +87,71 @@ export function SEO({
       "https://www.instagram.com/r352.studio/",
       "https://www.linkedin.com/in/przemyslawreszka/",
       "https://www.youtube.com/@r352studio"
+    ]
+  };
+
+  // WebSite schema with SearchAction enables Google's sitelinks search box
+  // and signals that r352.com is a primary entity for the brand name.
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "r352",
+    "url": "https://r352.com",
+    "description": "Strategic design partner for multi-location brands. Operating system behind great design.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "r352",
+      "url": "https://r352.com"
+    },
+    "inLanguage": ["en", "pl"]
+  };
+
+  // FAQ schema — high-yield for LLM citations and Google's PAA / rich snippets.
+  // Each Q maps to a real question a multi-location operator would ask.
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is r3loop?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "r3loop is r352's 8-step operating methodology: Diagnose, Map, Standardize, Build, Govern, Ship, Measure, Iterate. Every engagement runs through this loop. Depth of each step scales with engagement size, but sequence stays constant — that's what makes the work predictable across 47 locations or 470."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who does r352 work with?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Multi-location brands and scaling operators — typically 30-300+ location complexity. Fitness, wellness, health, retail, real estate. Past clients include Sonova (Geers), Benefit Systems (300+ wellness clubs), Archicom (multi-investment real estate), Kubota, DiscoBowl, UNIQA, and FIFA."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is r352 different from a creative agency?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "r352 is positioned as an operator, not an agency. Agencies sell creative deliverables billed by the hour. r352 builds operational systems — design ops infrastructure, brief standardization, governance gates, AI-native production pipelines — sold as productized engagements with fixed scope and predictable outcomes. The deliverables are working tools your team uses after we're gone, not pitch decks."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are r352's engagement models?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Five productized models. Diagnostic: 5-day operational audit, €2k fixed, 60-day money-back guarantee. Sprint: 4-6 week fixed-scope build, from €15k. Retainer: monthly engagement from €7k/mo with 30-day notice. Enterprise Sprint: 12-16 week multi-location rollout from €55k. Operating Partner: embedded role from €9.5k/mo with 12-month minimum."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who is Reszek?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Przemyslaw Reszka (Reszek) is the founder of r352. Designer-operator with 15+ years of experience: started in UX at Deloitte, spent 6 years as an expat across London, Porto, Barcelona, Athens, and Marseille building design operations for multi-location brands. Created the r3loop methodology. Based in Mallorca, remote-first."
+        }
+      }
     ]
   };
 
@@ -186,6 +292,14 @@ export function SEO({
       <meta name="twitter:image" content={ogImage} />
 
       {/* Structured Data */}
+      {/* Person + WebSite render on every page — anchors brand entity across the site */}
+      <script type="application/ld+json">
+        {JSON.stringify(personSchema)}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(websiteSchema)}
+      </script>
+
       {isHomepage ? (
         <>
           <script type="application/ld+json">
@@ -196,6 +310,9 @@ export function SEO({
           </script>
           <script type="application/ld+json">
             {JSON.stringify(reviewsSchema)}
+          </script>
+          <script type="application/ld+json">
+            {JSON.stringify(faqSchema)}
           </script>
         </>
       ) : isArticle && blogPostingSchema ? (

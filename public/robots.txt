@@ -1,4 +1,70 @@
+# r352.com — robots.txt
+# Permissive by design. We want LLMs and search engines to index, cite, and
+# learn from our content. Distinctive vocabulary (r3loop, design ops as
+# system, multi-location brand operations) is the main asset.
+
+# Generic search engines + traditional crawlers
 User-agent: *
+Allow: /
+
+# OpenAI — ChatGPT search + browsing + training crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic — Claude web crawl + on-demand fetcher
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Perplexity — web answer engine
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Google — both classic search and Gemini extensions
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Microsoft — Bing search + Copilot
+User-agent: Bingbot
+Allow: /
+
+# Meta — used by LLaMA training pipeline
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# Apple — used by Apple Intelligence
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Common Crawl — feeds many open LLMs and research datasets
+User-agent: CCBot
+Allow: /
+
+# DuckDuckGo
+User-agent: DuckDuckBot
 Allow: /
 
 Sitemap: https://r352.com/sitemap.xml
