@@ -83,6 +83,21 @@ const log = {
   err: (msg) => console.log(`[prerender] [31m✗[0m ${msg}`),
 };
 
+// ─── Vercel build guard ─────────────────────────────────────────────
+// Puppeteer Chromium download (~170 MB) is unreliable on Vercel serverless
+// build environments — network timeouts, disk limits, postinstall hooks
+// failing silently. Skip prerender on Vercel until we wire up
+// @sparticuz/chromium + puppeteer-core for serverless. Local builds run
+// the full chain (vite build && prerender). Vercel falls back to SPA
+// hydration as before — visible content layer still ships, just without
+// the static HTML per route benefit (#5 JS/rendering kategoria zostaje
+// na 7400 zamiast 9100 dopóki nie naprawimy).
+if (process.env.VERCEL === "1" || process.env.CI === "true") {
+  log.info("Vercel/CI environment detected — skipping prerender.");
+  log.info("Local builds still get prerender. Re-enable after serverless Chromium setup.");
+  process.exit(0);
+}
+
 // ─── Sanity checks ──────────────────────────────────────────────────
 if (!existsSync(DIST_DIR)) {
   log.err(`dist/ not found — run \`vite build\` first.`);
