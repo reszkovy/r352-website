@@ -37,29 +37,55 @@ export function ConsentBanner() {
     return () => mq.removeListener(update);
   }, []);
 
-  if (status !== 'pending') return null;
-
-  const motionInitial = reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 };
+  // Slide motion config — different physics for enter vs exit:
+  //  - Enter: spring with slight overshoot for premium "settling" feel
+  //    (stiffness 80 + damping 16 = ~700ms with subtle bounce at end)
+  //  - Exit: clean tween, no spring, slightly faster — feels responsive
+  //    to user action (button click → banner gets out of the way)
+  // Reduced motion: instant snap, no animation at all.
+  const motionInitial = reducedMotion
+    ? { y: 0, opacity: 1 }
+    : { y: '110%', opacity: 0 };
   const motionAnimate = reducedMotion
-    ? { opacity: 1, y: 0, transition: { duration: 0 } }
-    : { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.2 } };
+    ? { y: 0, opacity: 1, transition: { duration: 0 } }
+    : {
+        y: 0,
+        opacity: 1,
+        transition: {
+          y: { type: 'spring', stiffness: 80, damping: 16, mass: 0.9, delay: 0.3 },
+          opacity: { duration: 0.35, ease: [0.22, 1, 0.36, 1], delay: 0.3 },
+        },
+      };
   const motionExit = reducedMotion
-    ? { opacity: 1, y: 0, transition: { duration: 0 } }
-    : { opacity: 0, y: 100, transition: { duration: 0.3, ease: [0.76, 0, 0.24, 1] } };
+    ? { y: 0, opacity: 1, transition: { duration: 0 } }
+    : {
+        y: '110%',
+        opacity: 0,
+        transition: {
+          y: { duration: 0.55, ease: [0.55, 0, 0.35, 1] },
+          opacity: { duration: 0.4, ease: [0.55, 0, 0.35, 1], delay: 0.05 },
+        },
+      };
 
+  // Critical: AnimatePresence must wrap the CONDITIONAL render, not the other
+  // way around. If we exit before AnimatePresence (return null pre-AP), exit
+  // animation never plays — the parent just unmounts instantly. This pattern
+  // keeps AP mounted always; banner mounts/unmounts inside it.
   return (
-    <AnimatePresence>
-      <motion.div
-        key="consent-banner"
-        role="dialog"
-        aria-label={t('consent.banner.title')}
-        aria-live="polite"
-        initial={motionInitial}
-        animate={motionAnimate}
-        exit={motionExit}
-        className="fixed bottom-0 left-0 right-0 z-[9999] bg-[#0A0A0A] border-t border-white/10 text-white shadow-[0_-12px_40px_rgba(0,0,0,0.6)]"
-        data-no-cursor-fx="true"
-      >
+    <AnimatePresence mode="wait">
+      {status === 'pending' && (
+        <motion.div
+          key="consent-banner"
+          role="dialog"
+          aria-label={t('consent.banner.title')}
+          aria-live="polite"
+          initial={motionInitial}
+          animate={motionAnimate}
+          exit={motionExit}
+          className="fixed bottom-0 left-0 right-0 z-[9999] bg-[#0A0A0A] border-t border-white/10 text-white shadow-[0_-12px_40px_rgba(0,0,0,0.6)] will-change-transform"
+          style={{ transformOrigin: 'bottom center' }}
+          data-no-cursor-fx="true"
+        >
         <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-6 md:py-8 flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
           <div className="flex-1 min-w-0">
             <p className="text-xs md:text-sm font-display uppercase tracking-widest text-[#D4FF00] mb-2">
@@ -106,7 +132,8 @@ export function ConsentBanner() {
             </button>
           </div>
         </div>
-      </motion.div>
+        </motion.div>
+      )}
     </AnimatePresence>
   );
 }

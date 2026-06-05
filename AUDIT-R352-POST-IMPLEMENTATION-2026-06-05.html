@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>R352 - ponowny audyt po wdrozeniach</title>
+    <style>
+      :root {
+        --bg: #0a0a0a;
+        --panel: #141414;
+        --panel2: #1b1b1b;
+        --text: #f5f5ef;
+        --muted: #aaa99f;
+        --soft: #77776f;
+        --line: rgba(255,255,255,.13);
+        --lime: #d4ff00;
+        --green: #8df0a4;
+        --amber: #ffd166;
+        --red: #ff6b6b;
+        --blue: #8ecaff;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at 18% 0%, rgba(212,255,0,.09), transparent 28rem),
+          radial-gradient(circle at 100% 10%, rgba(142,202,255,.07), transparent 30rem),
+          var(--bg);
+        color: var(--text);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.58;
+      }
+
+      main {
+        margin: 0 auto;
+        max-width: 1180px;
+        padding: 52px 20px 76px;
+      }
+
+      h1, h2, h3 { line-height: 1.08; margin: 0; }
+      h1 { font-size: clamp(2.6rem, 7vw, 6.2rem); max-width: 980px; }
+      h2 {
+        border-top: 1px solid var(--line);
+        font-size: clamp(1.7rem, 3vw, 2.7rem);
+        margin-top: 48px;
+        padding-top: 32px;
+      }
+      h3 { font-size: 1.16rem; }
+      p, li, td { color: var(--muted); }
+
+      code {
+        background: #222;
+        border: 1px solid var(--line);
+        border-radius: 5px;
+        color: #fff;
+        font-family: "SFMono-Regular", Consolas, ui-monospace, monospace;
+        font-size: .92em;
+        padding: .12rem .34rem;
+      }
+
+      .kicker {
+        color: var(--lime);
+        font-size: .78rem;
+        font-weight: 850;
+        letter-spacing: .16em;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+      }
+
+      .hero {
+        border-bottom: 1px solid var(--line);
+        display: grid;
+        gap: 24px;
+        grid-template-columns: minmax(0, 1.3fr) minmax(260px, .7fr);
+        padding-bottom: 38px;
+      }
+
+      .lead {
+        color: #dddcd2;
+        font-size: 1.15rem;
+        max-width: 870px;
+      }
+
+      .overall {
+        align-self: end;
+        background: linear-gradient(180deg, rgba(212,255,0,.14), rgba(255,255,255,.04));
+        border: 1px solid rgba(212,255,0,.34);
+        border-radius: 8px;
+        padding: 24px;
+      }
+
+      .overall span, .pill {
+        font-size: .74rem;
+        font-weight: 850;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+      }
+
+      .overall span { color: var(--soft); display: block; }
+      .overall strong {
+        color: var(--lime);
+        display: block;
+        font-size: clamp(3.2rem, 8vw, 6.2rem);
+        letter-spacing: -.02em;
+        line-height: .95;
+        margin: 12px 0;
+      }
+
+      .grid { display: grid; gap: 14px; }
+      .score-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 24px; }
+      .three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 20px;
+      }
+
+      .card.good { border-color: rgba(141,240,164,.35); }
+      .card.warn { border-color: rgba(255,209,102,.38); }
+      .card.risk { border-color: rgba(255,107,107,.38); }
+
+      .card-head {
+        align-items: start;
+        display: flex;
+        gap: 14px;
+        justify-content: space-between;
+      }
+
+      .score {
+        color: var(--lime);
+        font-size: 2.05rem;
+        font-weight: 850;
+        letter-spacing: -.02em;
+        line-height: 1;
+        white-space: nowrap;
+      }
+
+      .bar {
+        background: rgba(255,255,255,.08);
+        border-radius: 999px;
+        height: 8px;
+        margin: 18px 0 14px;
+        overflow: hidden;
+      }
+
+      .fill {
+        background: linear-gradient(90deg, var(--lime), var(--green));
+        border-radius: inherit;
+        height: 100%;
+      }
+
+      .fill.warn { background: linear-gradient(90deg, var(--amber), var(--lime)); }
+      .fill.risk { background: linear-gradient(90deg, var(--red), var(--amber)); }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 0 0 14px;
+      }
+
+      .pill {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--muted);
+        padding: .16rem .56rem;
+      }
+
+      .pill.good { border-color: rgba(141,240,164,.45); color: var(--green); }
+      .pill.warn { border-color: rgba(255,209,102,.48); color: var(--amber); }
+      .pill.risk { border-color: rgba(255,107,107,.5); color: var(--red); }
+      .pill.blue { border-color: rgba(142,202,255,.5); color: var(--blue); }
+
+      table {
+        border-collapse: collapse;
+        margin-top: 20px;
+        width: 100%;
+      }
+
+      th, td {
+        border-bottom: 1px solid var(--line);
+        padding: 12px 10px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        color: #fff;
+        font-size: .76rem;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+      }
+
+      .callout {
+        background: var(--panel2);
+        border: 1px solid rgba(212,255,0,.24);
+        border-radius: 8px;
+        margin-top: 22px;
+        padding: 20px;
+      }
+
+      .footer {
+        border-top: 1px solid var(--line);
+        color: var(--soft);
+        margin-top: 48px;
+        padding-top: 22px;
+      }
+
+      @media (max-width: 900px) {
+        .hero, .score-grid, .three, .two { grid-template-columns: 1fr; }
+        main { padding-top: 34px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <div>
+          <div class="kicker">Ponowny audyt po wdrozeniach / 2026-06-05</div>
+          <h1>R352 jest duzo blizej gotowosci leadowej.</h1>
+          <p class="lead">
+            Ten audyt ocenia aktualny stan po czesciowym wdrozeniu rekomendacji: nowe landingi branżowe, rozbudowane OG assety, poprawiony consent, sitemapę, strony FAQ/privacy/cookies, focus management oraz CI dla Lighthouse i asset budget.
+          </p>
+        </div>
+        <aside class="overall">
+          <span>Wynik laczny</span>
+          <strong>873</strong>
+          <p>Na 1000. Poprzedni scorecard: 831/1000. Wzrost jest realny: najmocniej poprawily sie SEO, social assets, tresc segmentowa, governance i zaufanie.</p>
+        </aside>
+      </section>
+
+      <section>
+        <h2>Scorecard 10 kategorii</h2>
+        <div class="grid score-grid">
+          <article class="card good">
+            <div class="card-head"><h3>1. Techniczne SEO</h3><div class="score">930</div></div>
+            <div class="bar"><div class="fill" style="width:93%"></div></div>
+            <p>Canonical, hreflang EN/x-default, indexable robots, sitemap, favicony i podstawowe metadane sa poprawione. Najwieksza rezerwa: metadane per route nadal zależa od JS, bo strona jest SPA.</p>
+          </article>
+
+          <article class="card good">
+            <div class="card-head"><h3>2. Indeksacja i crawlability</h3><div class="score">925</div></div>
+            <div class="bar"><div class="fill" style="width:92.5%"></div></div>
+            <p>Sitemap zawiera FAQ, industries, 4 strony branżowe, privacy i cookies. Live fallback dla tras dziala: /faq, /cookies, /privacy i /industries/real-estate zwracaja 200.</p>
+          </article>
+
+          <article class="card good">
+            <div class="card-head"><h3>3. Social sharing i brand assets</h3><div class="score">960</div></div>
+            <div class="bar"><div class="fill" style="width:96%"></div></div>
+            <p>OG image, favicon suite, manifest i rozbudowany folder <code>public/og</code> sa bardzo mocne. Industry OG assets dzialaja live. To jedna z najmocniejszych kategorii.</p>
+          </article>
+
+          <article class="card warn">
+            <div class="card-head"><h3>4. Performance assetow</h3><div class="score">865</div></div>
+            <div class="bar"><div class="fill warn" style="width:86.5%"></div></div>
+            <p>Build przechodzi, asset budget przechodzi: 32.42 MB w <code>dist/</code> przy limicie 50 MB. Nadal sa duże obrazy i sekwencje scroll/video, a czesc assetow jest whitelistowana.</p>
+          </article>
+
+          <article class="card warn">
+            <div class="card-head"><h3>5. JS i renderowanie</h3><div class="score">760</div></div>
+            <div class="bar"><div class="fill warn" style="width:76%"></div></div>
+            <p>Lazy routes pomagaja, ale glowny chunk ma ok. 451.7 KB raw / 134.6 KB gzip. HTML tras nadal jest fallbackiem SPA, wiec dla SEO i LLM najlepszy kolejny krok to prerender/SSG.</p>
+          </article>
+
+          <article class="card good">
+            <div class="card-head"><h3>6. Content i pozycjonowanie</h3><div class="score">950</div></div>
+            <div class="bar"><div class="fill" style="width:95%"></div></div>
+            <p>Nowe strony branżowe to bardzo dobra decyzja: fitness/wellness, real estate, retail/franchise i health/service networks. Copy jest bardziej konkretne, segmentowe i leadowe.</p>
+          </article>
+
+          <article class="card warn">
+            <div class="card-head"><h3>7. UX i konwersja</h3><div class="score">890</div></div>
+            <div class="bar"><div class="fill warn" style="width:89%"></div></div>
+            <p>Segmentowe CTA prowadza do briefu z parametrami, sa FAQ i klarowniejsze sciezki. Do 900+ brakuje jeszcze weryfikacji mobile, trackingow zdarzen i mocniejszego proofu na kazdym landingu.</p>
+          </article>
+
+          <article class="card warn">
+            <div class="card-head"><h3>8. Accessibility</h3><div class="score">815</div></div>
+            <div class="bar"><div class="fill warn" style="width:81.5%"></div></div>
+            <p>Jest skip link, focus na <code>#main</code>, focus trap w mobile menu, Escape close i respektowanie reduced motion w bannerze. Nadal potrzebny manualny przebieg keyboard/screen reader i Lighthouse a11y trace.</p>
+          </article>
+
+          <article class="card warn">
+            <div class="card-head"><h3>9. Internationalization</h3><div class="score">770</div></div>
+            <div class="bar"><div class="fill warn" style="width:77%"></div></div>
+            <p>Hreflang jest juz bez blednego PL, a content EN/PL istnieje w aplikacji. Brakuje jednak prawdziwych URL-i jezykowych typu <code>/pl</code> i osobnych sitemap/hreflangow dla PL.</p>
+          </article>
+
+          <article class="card warn">
+            <div class="card-head"><h3>10. Privacy, analytics, governance</h3><div class="score">865</div></div>
+            <div class="bar"><div class="fill warn" style="width:86.5%"></div></div>
+            <p>Consent jest opt-in, GTM nie odpala przed zgoda, sa strony privacy/cookies i CI. Blokada do 900+: publiczne bannery DRAFT na privacy/cookies oraz brak potwierdzonej konsultacji prawnej.</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Co zostalo potwierdzone</h2>
+        <div class="grid three">
+          <article class="card">
+            <div class="meta"><span class="pill good">Live</span><span class="pill blue">SEO</span></div>
+            <h3>Adresy i sitemap dzialaja</h3>
+            <p><code>https://r352.com</code> przekierowuje 307 do <code>https://www.r352.com/</code>. Sitemap zawiera nowe trasy: <code>/faq</code>, <code>/industries</code>, 4 landingi branżowe, <code>/privacy</code> i <code>/cookies</code>.</p>
+          </article>
+          <article class="card">
+            <div class="meta"><span class="pill good">Build</span><span class="pill blue">CI</span></div>
+            <h3>Build i budzet sa zielone</h3>
+            <p><code>npm run build</code> przechodzi. <code>node scripts/check-asset-budget.mjs</code> przechodzi: 460 plikow, 32.42 MB w <code>dist/</code>, limit 50 MB.</p>
+          </article>
+          <article class="card">
+            <div class="meta"><span class="pill good">Consent</span><span class="pill blue">Trust</span></div>
+            <h3>GTM jest za zgoda</h3>
+            <p>Consent Mode startuje jako denied, GTM odpala dopiero po akceptacji. To duzy skok wzgledem poprzedniego stanu i wazny element gotowosci leadowej w UE.</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Najwieksze ryzyka przed 900+</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Priorytet</th>
+              <th>Ryzyko</th>
+              <th>Dlaczego to ma znaczenie</th>
+              <th>Co zrobic</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>P1</td>
+              <td>SPA bez prerenderu/SSG</td>
+              <td>Meta, schema i tresc tras sa zalezne od JS. Google zwykle sobie poradzi, ale social crawlers, LLM crawlers i czesc botow moga widziec tylko fallback.</td>
+              <td>Dodac prerender dla glownych tras albo przejsc na SSG/Next. Minimum: prerender <code>/</code>, <code>/services</code>, <code>/process</code>, <code>/work</code>, <code>/faq</code>, <code>/industries/*</code>.</td>
+            </tr>
+            <tr>
+              <td>P1</td>
+              <td>Privacy/Cookies maja status DRAFT</td>
+              <td>To obniza zaufanie, szczegolnie gdy ruszamy po leady B2B. Uzytkownik moze wejsc w stopke i zobaczyc komunikat roboczy.</td>
+              <td>Przeprowadzic legal review dla ES/EU, usunac bannery DRAFT i uaktualnic wording pod realne narzedzia analityczne.</td>
+            </tr>
+            <tr>
+              <td>P2</td>
+              <td>Wydajnosc bez realnego Lighthouse trace</td>
+              <td>Build i budzet to dobry gate, ale nie mowia wszystkiego o LCP, CLS, INP i pracy JS na mobile.</td>
+              <td>Uruchomic LHCI dla home, services, work, industries i jednego detail page. Dodac mobile preset obok desktop.</td>
+            </tr>
+            <tr>
+              <td>P2</td>
+              <td>Konwersja nie jest jeszcze zmierzona</td>
+              <td>Strona jest juz lepsza do pozyskiwania leadow, ale bez eventow nie wiadomo, ktore segmenty i CTA dzialaja.</td>
+              <td>Dodac eventy: industry CTA click, brief start, brief submit, FAQ expand, contact click, consent accepted/denied.</td>
+            </tr>
+            <tr>
+              <td>P2</td>
+              <td>A11y wymaga manualnego przejscia</td>
+              <td>Poprawki strukturalne sa dobre, ale trzeba sprawdzic keyboard flow, kontrasty, focus visibility, modale/menu i formularze.</td>
+              <td>Wykonac manualny keyboard audit + Lighthouse a11y. Cel: 95+ na kluczowych trasach.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Gotowosc do leadow</h2>
+        <div class="callout">
+          <h3>Moja ocena: tak, ale w trybie kontrolowanego startu.</h3>
+          <p>
+            Po tych wdrozeniach r352.com nadaje sie do uruchomienia pierwszych kampanii i outreachu, szczegolnie kierowanych na segmenty branżowe. Nie nazwalbym tego jeszcze finalnym systemem leadowym na pelna skale, bo brakuje pomiaru konwersji, legalnego zamkniecia privacy/cookies i twardych danych z Lighthouse/mobile.
+          </p>
+          <p>
+            Najrozsadniejszy ruch: 2-tygodniowy soft launch. Wyslac ruch do 2-3 najmocniejszych segmentow, mierzyc CTA i brief starts, dopiac legal copy, a potem skalowac kampanie. Strona jest teraz wystarczajaco dobra, zeby zaczac uczyc sie z prawdziwego ruchu.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Plan najblizszych 10 dni</h2>
+        <div class="grid two">
+          <article class="card">
+            <div class="meta"><span class="pill risk">Dzien 1-2</span></div>
+            <h3>Zamknac ryzyka zaufania</h3>
+            <ul>
+              <li>Legal review privacy/cookies i usuniecie DRAFT bannerow.</li>
+              <li>Potwierdzenie, jakie narzedzia trackingowe faktycznie dzialaja.</li>
+              <li>Dodanie eventow konwersji w GTM/GA4 po zgodzie.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="meta"><span class="pill warn">Dzien 3-5</span></div>
+            <h3>Zweryfikowac UX i performance</h3>
+            <ul>
+              <li>LHCI desktop + mobile dla kluczowych tras.</li>
+              <li>Manualny mobile QA dla industry pages i brief flow.</li>
+              <li>Keyboard audit: menu, skip link, CTA, formularze, consent.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="meta"><span class="pill blue">Dzien 6-8</span></div>
+            <h3>Wzmocnic segmenty</h3>
+            <ul>
+              <li>Dodac po 1 konkretnym mini-case/proof block na kazdym industry landing page.</li>
+              <li>Doprecyzowac CTA pod intencje segmentu.</li>
+              <li>Dodac wariant lead magnetu: checklist/audit template dla danego segmentu.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="meta"><span class="pill good">Dzien 9-10</span></div>
+            <h3>Soft launch</h3>
+            <ul>
+              <li>Uruchomic maly ruch outbound/LinkedIn do 2-3 segmentow.</li>
+              <li>Mierzyc CTR, brief start, submit rate i jakosc leadow.</li>
+              <li>Po 100-300 sesjach zdecydowac, ktore segmenty skalowac.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Zmiana wyniku wzgledem poprzedniego audytu</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Kategoria</th>
+              <th>Bylo</th>
+              <th>Jest</th>
+              <th>Zmiana</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Techniczne SEO</td><td>900</td><td>930</td><td>+30</td></tr>
+            <tr><td>Indeksacja i crawlability</td><td>895</td><td>925</td><td>+30</td></tr>
+            <tr><td>Social sharing i brand assets</td><td>890</td><td>960</td><td>+70</td></tr>
+            <tr><td>Performance assetow</td><td>855</td><td>865</td><td>+10</td></tr>
+            <tr><td>JS i renderowanie</td><td>720</td><td>760</td><td>+40</td></tr>
+            <tr><td>Content i pozycjonowanie</td><td>890</td><td>950</td><td>+60</td></tr>
+            <tr><td>UX i konwersja</td><td>820</td><td>890</td><td>+70</td></tr>
+            <tr><td>Accessibility</td><td>760</td><td>815</td><td>+55</td></tr>
+            <tr><td>Internationalization</td><td>700</td><td>770</td><td>+70</td></tr>
+            <tr><td>Privacy, analytics, governance</td><td>880</td><td>865</td><td>-15</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Spadek w privacy/governance nie oznacza regresu technicznego. Technicznie jest lepiej, ale publiczne strony privacy/cookies sa oznaczone jako DRAFT, wiec jako audyt biznesowy musze obciac punkty do czasu legal review.
+        </p>
+      </section>
+
+      <p class="footer">
+        Zakres: analiza lokalnego kodu, build produkcyjny, asset budget, konfiguracja CI, sitemap/route checks i live asset checks wykonane 2026-06-05. Nie wykonano pelnego trace Lighthouse w przegladarce ani manualnego screen reader QA.
+      </p>
+    </main>
+  </body>
+</html>
