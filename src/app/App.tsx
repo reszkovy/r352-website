@@ -132,6 +132,20 @@ function AppContent() {
   useFavicon();
   useTransitionRoll(); // advances deterministic sweep direction on every navigation
 
+  // Prerender signal — Puppeteer-based prerender script (scripts/prerender.mjs)
+  // waits for window.__PRERENDER_READY__ before snapshotting the route's HTML.
+  // We set it 1.5s after mount so initial animations / Suspense fallbacks
+  // resolve before capture. Timeout fallback in the prerender script catches
+  // any route that fails to set this signal.
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (typeof window !== "undefined") {
+        (window as { __PRERENDER_READY__?: boolean }).__PRERENDER_READY__ = true;
+      }
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, [location]);
+
   const getPageKey = (path: string) => {
     if (path.startsWith("/services/") && path !== "/services") return "/services/detail";
     return path;

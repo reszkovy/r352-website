@@ -4,7 +4,10 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && node scripts/prerender.mjs",
+    "build:vite-only": "vite build",
+    "prerender": "node scripts/prerender.mjs",
+    "preview": "vite preview",
     "dev": "vite"
   },
   "dependencies": {
@@ -69,6 +72,7 @@
     "@lhci/cli": "^0.13.0",
     "@tailwindcss/vite": "4.1.12",
     "@vitejs/plugin-react": "4.7.0",
+    "puppeteer": "^23.11.1",
     "sharp": "^0.34.5",
     "tailwindcss": "4.1.12",
     "vite": "6.3.5"

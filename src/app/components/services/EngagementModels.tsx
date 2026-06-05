@@ -9,6 +9,9 @@ export function EngagementModels() {
       number: "01",
       title: language === "pl" ? "Sprint" : "Sprint",
       // priceFrom intentionally removed — pricing discussed in Brief / Calendly to filter by fit, not price.
+      promise: language === "pl"
+        ? "W 4-6 tygodni budujemy jeden działający fragment Twojego design operating system."
+        : "In 4-6 weeks, we build one working part of your design operating system.",
       positioning: language === "pl"
         ? "Skoncentrowane zadanie z jasnym początkiem, zakresem i końcem."
         : "A focused engagement with a clear start, scope, and finish.",
@@ -47,6 +50,9 @@ export function EngagementModels() {
       number: "02",
       title: language === "pl" ? "Abonament" : "Retainer",
       // priceFrom intentionally removed — see model 01.
+      promise: language === "pl"
+        ? "Miesięczny rytm utrzymujący kampanie, lokalne zapotrzebowania i jakość pod kontrolą."
+        : "A monthly rhythm for keeping campaigns, local requests and design quality under control.",
       positioning: language === "pl"
         ? "Stała wydajność projektowa i produkcyjna w przewidywalnym, miesięcznym rytmie."
         : "Ongoing design and production capacity on a predictable monthly rhythm.",
@@ -85,6 +91,9 @@ export function EngagementModels() {
       number: "03",
       title: language === "pl" ? "Diagnostyka" : "Diagnostic",
       // priceFrom intentionally removed — see model 01.
+      promise: language === "pl"
+        ? "W 5 dni pokazujemy gdzie wasza operacja kreatywna traci czas, jakość i ownership."
+        : "In 5 days, we show where your creative operation leaks time, quality and ownership.",
       positioning: language === "pl"
         ? "Krótki, ustrukturyzowany audyt, który pokazuje dokładnie, gdzie zawodzi proces — zanim zaangażujecie się w budowanie czegokolwiek. Pełen zwrot kosztów, jeśli rekomendacje nie są wdrażalne w ciągu 60 dni."
         : "A short, structured audit that shows you exactly where delivery breaks down — before you commit to building anything. Money back if the recommendations are not actionable within 60 days.",
@@ -126,6 +135,9 @@ export function EngagementModels() {
       number: "04",
       title: language === "pl" ? "Wdrożenie Enterprise" : "Enterprise Sprint",
       // priceFrom intentionally removed — see model 01.
+      promise: language === "pl"
+        ? "W 12-16 tygodni dostarczamy multi-location rollout system, który obsługuje 300+ lokalizacji bez rozjazdów."
+        : "In 12-16 weeks, we ship a multi-location rollout system that handles 300+ branches without breaking.",
       positioning: language === "pl"
         ? "Pełne wdrożenie Creative Operating System dla organizacji wielolokalizacyjnej — od diagnozy po działający system z wytrenowanym zespołem."
         : "Full Creative Operating System implementation for a multi-location organization — from diagnosis to a running system with a trained team.",
@@ -164,6 +176,9 @@ export function EngagementModels() {
       number: "05",
       title: language === "pl" ? "Partner Operacyjny" : "Operating Partner",
       // priceFrom intentionally removed — see model 01.
+      promise: language === "pl"
+        ? "Wchodzimy jako Wasz fractional head of design ops — prowadzimy system, hiring, governance, vendor selection."
+        : "We embed as your fractional head of design ops — running the system, hiring, governance, vendor selection.",
       positioning: language === "pl"
         ? "Strategiczna rola partnera operacyjnego — opiekun ewolucji systemu, doradca przy strategicznych decyzjach designu i komunikacji, obecność przy stole leadership."
         : "Strategic operating partner role — custodian of system evolution, advisor on strategic design and communication decisions, present at the leadership table.",
@@ -243,6 +258,14 @@ export function EngagementModels() {
                       {(model as any).successMetric}
                     </p>
                   </div>
+                )}
+                {/* Promise — sharp 1-sentence promise per engagement model.
+                    Surfaces what the buyer concretely gets, in plain language.
+                    Visually weightier than the descriptive positioning below. */}
+                {(model as any).promise && (
+                  <p className="text-[15px] md:text-[16px] text-neutral-900 dark:text-white font-medium leading-snug mb-3 [text-wrap:pretty]">
+                    {(model as any).promise}
+                  </p>
                 )}
                 <p className="text-[14px] text-neutral-500 dark:text-[#888888] leading-relaxed">
                   {model.positioning}
@@ -400,6 +423,13 @@ export function EngagementModels() {
                         {(model as any).successMetric}
                       </p>
                     </div>
+                  )}
+                  {/* Promise — sharp 1-sentence promise per enterprise engagement.
+                      Larger size + brighter color than positioning for visual weight. */}
+                  {(model as any).promise && (
+                    <p className="text-[16px] md:text-[17px] text-neutral-900 dark:text-white font-medium leading-snug mb-4 [text-wrap:pretty]">
+                      {(model as any).promise}
+                    </p>
                   )}
                   <p className="text-[15px] text-neutral-600 dark:text-[#888888] leading-relaxed">
                     {model.positioning}

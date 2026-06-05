@@ -118,8 +118,8 @@ export function Services() {
               </h3>
               <p className="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
                 {language === "pl"
-                  ? "Workflow, governance i capacity — jak creative ops skalują się przez lokalizacje, zespoły i sezony. System zanim assety."
-                  : "Workflow, governance and capacity — how creative ops scale across locations, teams and seasons. System before assets."}
+                  ? "Jeden rytm intake'u, jeden format briefu, jasny ownership akceptacji, QA checklist i dashboard dla każdego powtarzalnego typu assetu. System zanim assety."
+                  : "One intake rhythm, one brief format, clear approval ownership, QA checklist and a dashboard for every recurring asset type. System before assets."}
               </p>
             </div>
           </Reveal>
@@ -132,8 +132,8 @@ export function Services() {
               </h3>
               <p className="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
                 {language === "pl"
-                  ? "Build vs buy, automation vs augmentation, ryzyko vs zwrot. Gdzie AI faktycznie ma sens w Waszym workflow — i od czego zacząć."
-                  : "Build vs buy, automation vs augmentation, risk vs reward. Where AI actually fits in your workflow — and where to start."}
+                  ? "AI brief assistant, automatyczne QA checks, decision velocity dashboard, generowanie wariantów per lokalizacja. Konkret zamiast hype'u — gdzie AI realnie przyspiesza Wasz pipeline."
+                  : "AI brief assistant, automated QA checks, decision velocity dashboard, variant generation per location. Concrete instead of hype — where AI actually speeds up your pipeline."}
               </p>
             </div>
           </Reveal>

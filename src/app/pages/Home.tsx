@@ -4,6 +4,7 @@ import { SelectedWork } from "@/app/components/agency/SelectedWork";
 import { ServicesList } from "@/app/components/agency/ServicesList";
 import { HomePrinciples } from "@/app/components/agency/HomePrinciples";
 import { References } from "@/app/components/agency/References";
+import { WhyBreaksNow } from "@/app/components/marketing/WhyBreaksNow";
 import { useLocation } from "wouter";
 import { PageTransition } from "@/app/components/ui/PageTransition";
 import { Reveal } from "@/app/components/ui/Reveal";
@@ -33,6 +34,11 @@ export function Home() {
     <PageTransition className="">
       <AgencyHero />
       <ClientLogos />
+
+      {/* Why this breaks now — educational hook: plants the category problem.
+          Visitors who don't yet know "design ops as a system" is a category
+          discover it here before being sold on r352 as the solution. */}
+      <WhyBreaksNow />
       
       {/* Philosophy Teaser — 12-col grid: title col-7, caption+CTA col-5 (7+5 asymmetric) */}
       <section className="pt-32 pb-32 md:pt-40 md:pb-40 border-t border-white/10">
