@@ -7,6 +7,7 @@ import { AnimeGrid } from "@/app/components/ui/AnimeGrid";
 import { MagneticButton } from "@/app/components/ui/MagneticButton";
 import { ElasticLine } from "@/app/components/ui/ElasticLine";
 import { ArrowRight } from "lucide-react";
+import { motion } from "motion/react";
 
 export function AgencyHero() {
   const { t, language } = useLanguage();
@@ -71,14 +72,16 @@ export function AgencyHero() {
                 This pushes subtitle + CTAs higher in viewport (ATF) and uses divider as a logical
                 separator between "decide → act" zone and "proof signals" zone. */}
 
-            {/* Audience qualifier chips — sit right under the H1 + description.
+            {/* Audience qualifier chips — premium framer-motion tooltips on hover.
                 Two semantic groups separated by a vertical divider:
-                  Group 1 (neutral chips): WHO we serve — verticals + maturity filters
-                  Group 2 (lime accent):   WHAT we do — capability differentiator
-                Each chip has a short tooltip on hover (CSS-only, no JS state) so
-                hovering animation isn't a fakeout — it reveals a 6-10 word definition. */}
+                  Group 1 (neutral chips): WHO we serve
+                  Group 2 (lime accent):   WHAT we do (capability anchor)
+                Hover triggers a synchronized variant animation across the chip border,
+                chip text color, and the floating tooltip (fade + slide + scale + blur),
+                with a smooth cinematic easing matching the site-wide motion language
+                ([0.22, 1, 0.36, 1] — same curve as PageTransition + Reveal). */}
             <div className="mb-8 md:mb-10 flex flex-wrap gap-2 md:gap-3 items-center">
-              {/* Group 1 — audience/maturity filters with tooltips */}
+              {/* Group 1 — audience/maturity filters with premium tooltips */}
               {(language === "pl" ? [
                 { label: "Multi-location", tooltip: "5–300+ fizycznych punktów, jedna marka" },
                 { label: "Multi-product", tooltip: "Wiele linii produktów pod jedną marką" },
@@ -92,34 +95,98 @@ export function AgencyHero() {
                 { label: "Brand launch", tooltip: "Pre-launch identity and 0-to-1 market entry" },
                 { label: "Post-PMF & scaling", tooltip: "Past product-market fit, beyond founder-led execution" },
               ]).map((chip, i) => (
-                <span key={i} className="group relative">
-                  <span className="inline-flex items-center px-3 py-1.5 text-[10px] md:text-[11px] font-display uppercase tracking-[0.15em] text-neutral-400 border border-white/15 rounded-full group-hover:border-[#D4FF00] group-hover:text-[#D4FF00] transition-colors duration-300 cursor-help">
+                <motion.span
+                  key={i}
+                  className="relative inline-block"
+                  initial="rest"
+                  animate="rest"
+                  whileHover="hover"
+                >
+                  <motion.span
+                    className="inline-flex items-center px-3 py-1.5 text-[10px] md:text-[11px] font-display uppercase tracking-[0.15em] border rounded-full cursor-help select-none will-change-[color,border-color]"
+                    variants={{
+                      rest: { borderColor: "rgba(255,255,255,0.15)", color: "rgb(163,163,163)" },
+                      hover: { borderColor: "#D4FF00", color: "#D4FF00" },
+                    }}
+                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                  >
                     {chip.label}
-                  </span>
-                  {/* Tooltip — fades in above chip on hover. pointer-events-none so
-                      it doesn't block hover on next chip. normal-case + tracking-normal
-                      override the chip's uppercase + tracking. */}
-                  <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-[280px] px-3 py-2 text-[11px] leading-relaxed text-neutral-200 bg-[#0a0a0a]/95 backdrop-blur-sm border border-white/15 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 normal-case tracking-normal font-sans shadow-lg">
-                    {chip.tooltip}
-                  </span>
-                </span>
+                  </motion.span>
+
+                  {/* Premium tooltip — cinematic entrance (fade + slide + scale + blur).
+                      Glass effect: backdrop-blur + bg with very low opacity. Lime gradient
+                      hairline on top reads as accent without adding a "boxy" frame.
+                      Arrow pointer (rotated square) visually links tooltip to chip. */}
+                  <motion.span
+                    className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-max max-w-[280px] z-[60]"
+                    variants={{
+                      rest: { opacity: 0, y: 8, scale: 0.96, filter: "blur(6px)" },
+                      hover: { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" },
+                    }}
+                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    <span className="relative block px-4 py-3 bg-[#0a0a0a]/85 backdrop-blur-xl border border-white/10 rounded-[6px] shadow-[0_12px_32px_-12px_rgba(0,0,0,0.6)]">
+                      {/* Lime gradient hairline accent across top */}
+                      <span aria-hidden="true" className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-[#D4FF00]/50 to-transparent" />
+                      <span className="block text-[11px] leading-relaxed text-neutral-100 normal-case tracking-normal font-sans">
+                        {chip.tooltip}
+                      </span>
+                      {/* Arrow pointer */}
+                      <span
+                        aria-hidden="true"
+                        className="absolute -bottom-[5px] left-1/2 -translate-x-1/2 w-[10px] h-[10px] bg-[#0a0a0a]/85 backdrop-blur-xl border-r border-b border-white/10 rotate-45"
+                      />
+                    </span>
+                  </motion.span>
+                </motion.span>
               ))}
 
               {/* Divider — signals category shift from "who" to "how" */}
               <span aria-hidden="true" className="hidden sm:inline-block w-px h-4 bg-white/15 mx-1" />
 
-              {/* Group 2 — capability anchor (lime accent, distinct visual register) with tooltip */}
-              <span className="group relative">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] md:text-[11px] font-display uppercase tracking-[0.15em] text-[#D4FF00] border border-[#D4FF00]/40 rounded-full group-hover:border-[#D4FF00] group-hover:bg-[#D4FF00]/[0.06] transition-colors duration-300 cursor-help">
+              {/* Group 2 — capability anchor (lime accent, distinct visual register) */}
+              <motion.span
+                className="relative inline-block"
+                initial="rest"
+                animate="rest"
+                whileHover="hover"
+              >
+                <motion.span
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] md:text-[11px] font-display uppercase tracking-[0.15em] text-[#D4FF00] border rounded-full cursor-help select-none will-change-[background-color,border-color]"
+                  variants={{
+                    rest: { borderColor: "rgba(212, 255, 0, 0.4)", backgroundColor: "rgba(212, 255, 0, 0)" },
+                    hover: { borderColor: "#D4FF00", backgroundColor: "rgba(212, 255, 0, 0.06)" },
+                  }}
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                >
                   <span aria-hidden="true" className="text-[8px] opacity-70">+</span>
                   AI Elevated Workflows
-                </span>
-                <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-[300px] px-3 py-2 text-[11px] leading-relaxed text-neutral-200 bg-[#0a0a0a]/95 backdrop-blur-sm border border-[#D4FF00]/30 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 normal-case tracking-normal font-sans shadow-lg">
-                  {language === "pl"
-                    ? "AI jako warstwa w governance i delivery — nie jako feature"
-                    : "AI as a layer in governance and delivery — not as a feature"}
-                </span>
-              </span>
+                </motion.span>
+
+                <motion.span
+                  className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-max max-w-[300px] z-[60]"
+                  variants={{
+                    rest: { opacity: 0, y: 8, scale: 0.96, filter: "blur(6px)" },
+                    hover: { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" },
+                  }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <span className="relative block px-4 py-3 bg-[#0a0a0a]/85 backdrop-blur-xl border border-[#D4FF00]/25 rounded-[6px] shadow-[0_12px_32px_-12px_rgba(0,0,0,0.6),0_0_24px_-12px_rgba(212,255,0,0.3)]">
+                    {/* Solid lime hairline (vs gradient for neutral chips) — distinct visual register */}
+                    <span aria-hidden="true" className="absolute top-0 left-4 right-4 h-px bg-[#D4FF00]/60" />
+                    <span className="block text-[11px] leading-relaxed text-neutral-100 normal-case tracking-normal font-sans">
+                      {language === "pl"
+                        ? "AI jako warstwa w governance i delivery — nie jako feature"
+                        : "AI as a layer in governance and delivery — not as a feature"}
+                    </span>
+                    {/* Arrow pointer with matching lime border */}
+                    <span
+                      aria-hidden="true"
+                      className="absolute -bottom-[5px] left-1/2 -translate-x-1/2 w-[10px] h-[10px] bg-[#0a0a0a]/85 backdrop-blur-xl border-r border-b border-[#D4FF00]/25 rotate-45"
+                    />
+                  </span>
+                </motion.span>
+              </motion.span>
             </div>
 
             {/* Action block: subtitle (vertically CENTERED to CTA buttons) + CTAs.
