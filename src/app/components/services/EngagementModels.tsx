@@ -1,5 +1,59 @@
 import { useLanguage } from "@/app/context/LanguageContext";
 import { Reveal } from "@/app/components/ui/Reveal";
+import { motion } from "motion/react";
+
+/**
+ * ChipWithTooltip — same motion + glass pattern used in the home hero ATF chips.
+ * Compresses long bullet lists into scannable label-chips; hover reveals the full
+ * context as a cinematic tooltip (fade + slide + scale + blur). Used inside the
+ * engagement model cards to reduce visible content per card by ~70%.
+ */
+function ChipWithTooltip({ label, tooltip, variant = "neutral" }: { label: string; tooltip: string; variant?: "neutral" | "lime" }) {
+  const isLime = variant === "lime";
+  return (
+    <motion.span
+      className="relative inline-block"
+      initial="rest"
+      animate="rest"
+      whileHover="hover"
+    >
+      <motion.span
+        className={`inline-flex items-center px-2.5 py-1 text-[10px] font-display uppercase tracking-[0.15em] border rounded-full cursor-help select-none will-change-[color,border-color] ${
+          isLime
+            ? "text-[#D4FF00]"
+            : "text-neutral-600 dark:text-neutral-400"
+        }`}
+        variants={{
+          rest: isLime
+            ? { borderColor: "rgba(212,255,0,0.4)" }
+            : { borderColor: "rgba(120,120,120,0.25)" },
+          hover: isLime
+            ? { borderColor: "#D4FF00" }
+            : { borderColor: "#D4FF00", color: "#D4FF00" },
+        }}
+        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+      >
+        {label}
+      </motion.span>
+      <motion.span
+        className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-max max-w-[220px] z-[60]"
+        variants={{
+          rest: { opacity: 0, y: 8, scale: 0.96, filter: "blur(6px)" },
+          hover: { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" },
+        }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <span className="relative block px-4 py-3 bg-[#0a0a0a]/85 backdrop-blur-xl border border-white/10 rounded-[6px] shadow-[0_12px_32px_-12px_rgba(0,0,0,0.6)]">
+          <span aria-hidden="true" className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-[#D4FF00]/50 to-transparent" />
+          <span className="block text-[11px] leading-relaxed text-neutral-100 normal-case tracking-normal font-sans text-center [text-wrap:balance]">
+            {tooltip}
+          </span>
+          <span aria-hidden="true" className="absolute -bottom-[5px] left-1/2 -translate-x-1/2 w-[10px] h-[10px] bg-[#0a0a0a]/85 backdrop-blur-xl border-r border-b border-white/10 rotate-45" />
+        </span>
+      </motion.span>
+    </motion.span>
+  );
+}
 
 export function EngagementModels() {
   const { language } = useLanguage();
@@ -26,6 +80,9 @@ export function EngagementModels() {
         "You get a complete deliverable at the end, not a pitch deck",
         "Handoff includes everything your team needs to run it forward"
       ],
+      howItWorksLabels: language === "pl"
+        ? ["Zakres z góry", "Stały scope", "Deliverable, nie deck", "Pełen handoff"]
+        : ["Scoped upfront", "Fixed scope", "Deliverable, not deck", "Full handoff"],
       timeline: language === "pl" ? "2-6 tygodni w zależności od zakresu" : "2-6 weeks depending on scope",
       idealWhen: language === "pl" ? [
         "Potrzebujecie systemu marki, pakietu kampanii lub strony internetowej - i wiecie, czego chcecie",
@@ -36,6 +93,9 @@ export function EngagementModels() {
         "You have a launch date and need to ship on time",
         "You want to test working with us before committing long-term"
       ],
+      idealWhenLabels: language === "pl"
+        ? ["Znana potrzeba", "Data launch'a", "Test współpracy"]
+        : ["Known need", "Launch date", "Trial run"],
       successMetric: language === "pl"
         ? "Dostawa w 4-6 tygodni vs typowe 12-16 w in-house"
         : "Delivery in 4-6 weeks vs typical 12-16 in-house",
@@ -67,6 +127,9 @@ export function EngagementModels() {
         "Predictable cadence: weekly or biweekly drops, depending on volume",
         "Includes intake management, QA, and iteration - not just execution"
       ],
+      howItWorksLabels: language === "pl"
+        ? ["Zarezerwowana pula", "Wspólny backlog", "Tygodniowy rytm", "Intake + QA w cenie"]
+        : ["Reserved capacity", "Shared backlog", "Weekly cadence", "Intake + QA included"],
       timeline: language === "pl" ? "Odnawiany co miesiąc - zalecane minimum 3 miesiące" : "Monthly rolling - minimum 3 months recommended for system benefits to kick in",
       idealWhen: language === "pl" ? [
         "Macie stałe potrzeby produkcyjne we wszystkich kanałach (social media, reklamy, e-maile, druk)",
@@ -77,6 +140,9 @@ export function EngagementModels() {
         "You want a design partner embedded in your rhythm, not a vendor you re-onboard every quarter",
         "You need consistency and speed without hiring a full in-house team"
       ],
+      idealWhenLabels: language === "pl"
+        ? ["Stała produkcja", "Embedded partner", "Bez in-house teamu"]
+        : ["Constant production", "Embedded partner", "No in-house team"],
       successMetric: language === "pl"
         ? "70% briefów ready przy pierwszym złożeniu, 60% szybsze akceptacje"
         : "70% of briefs ready on first submission, 60% faster approvals",
@@ -108,6 +174,9 @@ export function EngagementModels() {
         "You get a written report with root causes and a prioritized action plan",
         "No commitment to build - you can run the fixes yourself or engage us for the next phase"
       ],
+      howItWorksLabels: language === "pl"
+        ? ["End-to-end mapa", "Wąskie gardła", "Pisemny raport", "Bez zobowiązań"]
+        : ["End-to-end map", "Bottleneck ID", "Written report", "No commitment"],
       timeline: language === "pl" ? "1-2 tygodnie" : "1-2 weeks",
       idealWhen: language === "pl" ? [
         "Czujecie, że dostarczanie jest powolne, ale nie wiecie dlaczego",
@@ -118,6 +187,9 @@ export function EngagementModels() {
         "You're about to scale (new markets, more locations, bigger team) and want to fix the system before it breaks",
         "You want data before making a decision about hiring, tooling, or outsourcing"
       ],
+      idealWhenLabels: language === "pl"
+        ? ["Wolne, nie wiesz czemu", "Pre-scale audit", "Dane przed decyzją"]
+        : ["Slow, unsure why", "Pre-scale audit", "Data before decision"],
       successMetric: language === "pl"
         ? "5-7 priorytetyzowanych wąskich gardeł + 60-dniowy plan działania"
         : "5-7 prioritized bottlenecks + 60-day action plan",
@@ -152,6 +224,9 @@ export function EngagementModels() {
         "Weekly checkpoints with leadership + workshops with operational teams",
         "Handoff includes complete system documentation, training, and a 90-day transition plan",
       ],
+      howItWorksLabels: language === "pl"
+        ? ["Pełen cykl r3loop", "Embedded senior team", "Rytm leadership'u", "90-day handover"]
+        : ["Full r3loop cycle", "Embedded senior team", "Leadership rhythm", "90-day handover"],
       timeline: language === "pl" ? "12-16 tygodni + 90 dni hand-over" : "12-16 weeks + 90-day handover",
       idealWhen: language === "pl" ? [
         "Wielolokalizacyjna organizacja (5+ lokalizacji lub marek) potrzebująca pełnej transformacji operacyjnej",
@@ -162,6 +237,9 @@ export function EngagementModels() {
         "Internal design/marketing team is overloaded but budget and ambition are for transformation, not a patch",
         "Leadership understands the system is a long-term asset — and is willing to fund it accordingly",
       ],
+      idealWhenLabels: language === "pl"
+        ? ["5+ lokalizacji / marek", "Transformacja, nie patch", "Long-term budget"]
+        : ["5+ locations / brands", "Transformation, not patch", "Long-term budget"],
       successMetric: language === "pl"
         ? "Pełen Operating System w 12-16 tyg vs typowe in-house 12-18 miesięcy"
         : "Full Operating System in 12-16 weeks vs typical in-house 12-18 months",
@@ -193,6 +271,9 @@ export function EngagementModels() {
         "Continuous coaching for internal teams + on-call for major decisions",
         "System extensions (new locations, brands, channels) — designed together",
       ],
+      howItWorksLabels: language === "pl"
+        ? ["Monthly exec review", "Kwartalne planowanie", "On-call decyzji", "Rozszerzenia systemu"]
+        : ["Monthly exec review", "Quarterly planning", "On-call decisions", "System extensions"],
       timeline: language === "pl" ? "Kontrakt roczny, rytm miesięczny" : "Annual contract, monthly cadence",
       idealWhen: language === "pl" ? [
         "System jest zbudowany — potrzebuje opiekuna, który go rozwija i broni przed degradacją",
@@ -203,6 +284,9 @@ export function EngagementModels() {
         "C-suite wants a strategic design partner at the decision table",
         "Multi-year transformation horizon, including organizational expansion",
       ],
+      idealWhenLabels: language === "pl"
+        ? ["System potrzebuje opiekuna", "Partner przy stole", "Multi-year horizon"]
+        : ["System needs custodian", "Partner at the table", "Multi-year horizon"],
       successMetric: language === "pl"
         ? "Spadek revision loops o 50%+ rok-do-roku, system ewoluuje a nie wraca do zera"
         : "50%+ year-over-year reduction in revision loops, system evolves instead of resetting",
@@ -272,19 +356,21 @@ export function EngagementModels() {
                 </p>
               </div>
 
-              {/* How it works */}
+              {/* How it works — chip-tooltip pattern (compressed from 4-bullet list).
+                  Labels scannable in 3 seconds, full sentence revealed on hover. */}
               <div className="mb-6 flex-1">
                 <h4 className="text-[11px] uppercase tracking-[1px] text-neutral-500 dark:text-[#D4FF00] mb-3">
                   {language === "pl" ? "Jak to działa" : "How it works"}
                 </h4>
-                <ul className="space-y-3">
+                <div className="flex flex-wrap gap-2">
                   {model.howItWorks.map((item, idx) => (
-                    <li key={idx} className="text-[14px] text-neutral-700 dark:text-[#e5e5e5] flex items-start gap-3">
-                      <span className="w-1 h-1 rounded-none bg-neutral-900 dark:bg-[#D4FF00] mt-[8px] shrink-0" />
-                      <span className="leading-snug">{item}</span>
-                    </li>
+                    <ChipWithTooltip
+                      key={idx}
+                      label={(model as any).howItWorksLabels?.[idx] ?? item.split(" ").slice(0, 2).join(" ")}
+                      tooltip={item}
+                    />
                   ))}
-                </ul>
+                </div>
               </div>
 
               <hr className="border-neutral-200 dark:border-white/10 mb-6" />
@@ -302,14 +388,15 @@ export function EngagementModels() {
                   <h4 className="text-[11px] uppercase tracking-[1px] text-neutral-500 dark:text-[#D4FF00] mb-2">
                     {language === "pl" ? "Idealne, gdy" : "Ideal when"}
                   </h4>
-                  <ul className="space-y-2">
-                    {model.idealWhen.slice(0, 2).map((item, idx) => (
-                      <li key={idx} className="text-[13px] text-neutral-500 dark:text-[#888888] flex items-start gap-2">
-                        <span className="text-neutral-400 dark:text-neutral-600 mt-[-1px]">—</span>
-                        <span className="leading-snug">{item}</span>
-                      </li>
+                  <div className="flex flex-wrap gap-2">
+                    {model.idealWhen.slice(0, 3).map((item, idx) => (
+                      <ChipWithTooltip
+                        key={idx}
+                        label={(model as any).idealWhenLabels?.[idx] ?? item.split(" ").slice(0, 2).join(" ")}
+                        tooltip={item}
+                      />
                     ))}
-                  </ul>
+                  </div>
                 </div>
 
                 {/* Testimonial Quote */}
@@ -436,19 +523,20 @@ export function EngagementModels() {
                   </p>
                 </div>
 
-                {/* How it works */}
+                {/* How it works — chip-tooltip pattern (same as regular tier cards) */}
                 <div className="mb-6 flex-1">
                   <h4 className="text-[11px] uppercase tracking-[1px] text-neutral-500 dark:text-[#D4FF00] mb-3">
                     {language === "pl" ? "Jak to działa" : "How it works"}
                   </h4>
-                  <ul className="space-y-3">
+                  <div className="flex flex-wrap gap-2">
                     {model.howItWorks.map((item, idx) => (
-                      <li key={idx} className="text-[14px] text-neutral-700 dark:text-[#e5e5e5] flex items-start gap-3">
-                        <span className="w-1 h-1 rounded-none bg-neutral-900 dark:bg-[#D4FF00] mt-[8px] shrink-0" />
-                        <span className="leading-snug">{item}</span>
-                      </li>
+                      <ChipWithTooltip
+                        key={idx}
+                        label={(model as any).howItWorksLabels?.[idx] ?? item.split(" ").slice(0, 2).join(" ")}
+                        tooltip={item}
+                      />
                     ))}
-                  </ul>
+                  </div>
                 </div>
 
                 <hr className="border-neutral-200 dark:border-white/10 mb-6" />
@@ -466,14 +554,15 @@ export function EngagementModels() {
                     <h4 className="text-[11px] uppercase tracking-[1px] text-neutral-500 dark:text-[#D4FF00] mb-2">
                       {language === "pl" ? "Idealne, gdy" : "Ideal when"}
                     </h4>
-                    <ul className="space-y-2">
-                      {model.idealWhen.slice(0, 2).map((item, idx) => (
-                        <li key={idx} className="text-[13px] text-neutral-500 dark:text-[#888888] flex items-start gap-2">
-                          <span className="text-neutral-400 dark:text-neutral-600 mt-[-1px]">—</span>
-                          <span className="leading-snug">{item}</span>
-                        </li>
+                    <div className="flex flex-wrap gap-2">
+                      {model.idealWhen.slice(0, 3).map((item, idx) => (
+                        <ChipWithTooltip
+                          key={idx}
+                          label={(model as any).idealWhenLabels?.[idx] ?? item.split(" ").slice(0, 2).join(" ")}
+                          tooltip={item}
+                        />
                       ))}
-                    </ul>
+                    </div>
                   </div>
                 </div>
               </div>
