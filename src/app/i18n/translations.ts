@@ -14,12 +14,13 @@ export const translations = {
       tagline: "STRATEGIC DESIGN PARTNER"
     },
     hero: {
-      // Hero reframed to reflect Product Building Framework as master IP (broader scope
-      // than just design ops). "Operating systems for brands" anchors to Reszek's master
-      // metaphor — operator, not designer — and signals scale without locking us into a
-      // single vertical. Sub-copy carries the Framework + r3loop pairing.
-      title: "Operating systems for brands<br/>that ship at scale.",
-      title_mobile: "Operating systems<br/>for brands that<br/>ship at scale.",
+      // Hero — two crisp claims in parallel. Tagline + audience qualifier; engagement
+      // model (retainer) lives in the body copy and on Services rather than in the H1.
+      //   1. "Strategic design partner"  — WHO (matches the header tagline)
+      //   2. "For growing brands"        — WHO it's for (audience qualifier — scaling
+      //                                    brands across product, locations, campaigns)
+      title: "Strategic design partner.<br/>For growing brands.",
+      title_mobile: "Strategic design partner.<br/>For growing brands.",
       // "Move fast, steady cadence" demoted from headline to signature line below the divider —
       // becomes brand mantra / closing thought rather than primary explanatory copy.
       signature: "Move fast, steady cadence.",
@@ -637,11 +638,13 @@ export const translations = {
       tagline: "STRATEGICZNY PARTNER DESIGNOWY"
     },
     hero: {
-      // Hero przepozycjonowane — Framework jako master IP (szersze niż samo design ops).
-      // "Operating system dla marek" zakotwicza w meta-metaforze Reszka (operator, nie designer)
-      // i sygnalizuje skalę bez zamykania w jednej wertykali. Sub-copy niesie parę Framework + r3loop.
-      title: "Operating system dla marek,<br/>które wdrażają w skali.",
-      title_mobile: "Operating system<br/>dla marek, które<br/>wdrażają w skali.",
+      // Hero — dwa claim'y w parze. Tagline + audience qualifier; model współpracy
+      // (retainer) żyje w body copy i na Services, nie w H1.
+      //   1. "Strategiczny partner designowy" — KIM jesteś (echo z tagline w headerze)
+      //   2. "Dla rosnących marek"            — DLA KOGO (skalujące się marki — produkt,
+      //                                         lokalizacje, kampanie)
+      title: "Strategiczny partner designowy.<br/>Dla rosnących marek.",
+      title_mobile: "Strategiczny partner<br/>designowy.<br/>Dla rosnących marek.",
       // "Tempo bez chaosu" demoted from headline to signature line — brand mantra position.
       signature: "Tempo bez chaosu.",
       description_title: "Dla marek operujących w skali — przez lokalizacje, produkty lub kampanie.",

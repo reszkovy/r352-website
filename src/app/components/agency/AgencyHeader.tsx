@@ -206,9 +206,11 @@ export function AgencyHeader() {
                   <R352Text className="h-9 w-auto text-[#DAFF45]" color="currentColor" />
 
                   {/* Static positioning tagline — visible on lg+ screens (≥1024px)
-                      where horizontal room allows. Sits behind a thin divider so it
-                      reads as a positioning signature, not part of the logotype itself. */}
-                  <div className="hidden lg:flex items-center ml-5 pl-5 border-l border-current/20">
+                      where horizontal room allows. Pipe divider uses bg-current + opacity
+                      instead of border-current/20 (which Tailwind compiles unreliably
+                      for currentColor). This works in dark, light, and lime themes alike. */}
+                  <div className="hidden lg:flex items-center ml-5 gap-5">
+                    <span aria-hidden="true" className="block w-px h-4 bg-current opacity-30" />
                     <span className="font-display text-current text-[11px] tracking-[0.2em] whitespace-nowrap leading-none uppercase">
                       {tagline}
                     </span>
@@ -217,7 +219,11 @@ export function AgencyHeader() {
               )}
             </AnimatePresence>
         </Link>
-        <nav className="pointer-events-auto hidden md:flex gap-4 text-base font-sans font-medium lowercase tracking-normal items-center pt-1">
+        {/* Nav typography: text-base was overwhelming the bar vs the 11px tagline +
+            logo lockup, and pt-1 was pushing items below the optical center. Dropped to
+            text-sm (14px) matching the Contact button + EN/PL toggle, and removed the
+            pt-1 so items center against the logo on the parent's items-center axis. */}
+        <nav className="pointer-events-auto hidden md:flex gap-4 text-sm font-sans font-medium lowercase tracking-normal items-center">
           {navItems.map((item) => (
             <Link key={item.href} href={item.href} className={cn(
                 "group relative px-2 py-1 transition-colors duration-300 hover:text-[#D4FF00]",
