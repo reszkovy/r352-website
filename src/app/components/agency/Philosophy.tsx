@@ -7,6 +7,9 @@ import { motion } from "motion/react";
 import { PhilosophyVisuals } from "./PhilosophyVisuals";
 import { ScrollSequence } from "@/app/components/ui/ScrollSequence";
 import { ArrowRight } from "lucide-react";
+// Lime portrait with dark silhouette — same asset used by the Chatbot avatar (bottom-right).
+// Reused here at larger size as the About-section portrait.
+import reszekPortrait from "figma:asset/ca9abe862ac1bfee95045e08a8d97f21981b65dc.png";
 
 // Hero motion preset — gentle slide + fade + blur on enter AND exit.
 // Bypasses Reveal because hero copy is overlay'd on ScrollSequence (no in-view trigger fires).
@@ -147,30 +150,26 @@ export function Philosophy() {
       </div>
 
       {/* ─── Behind r352 — short personal note ──────────────────
-          Tight 2-paragraph personal note. Not a manifesto, not a bio essay —
-          just enough to put a person behind the IP. Reads as a sidebar note,
-          not a section header. Critical trust unlock for retainer prospects.
-
-          To replace the styled placeholder with a real portrait:
-          1. Drop a 1:1 square image at /public/reszek-portrait.jpg
-          2. Replace the placeholder div below with <img src="/reszek-portrait.jpg" alt="Reszek" className="w-full h-full object-cover" />
-      */}
+          Tight 4-paragraph personal note (Reszek's voice). Reads as a sidebar
+          note + lime portrait — same lime-silhouette avatar used by the Chatbot,
+          here at much larger size as the human-trust signal for retainer prospects. */}
       <div className="max-w-[1800px] mx-auto px-8 md:px-12 py-24 md:py-32 border-b border-neutral-200 dark:border-white/10">
         <Reveal>
           <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-10 md:mb-14">
             {language === 'pl' ? 'Za r352' : 'Behind r352'}
           </span>
         </Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-10 md:gap-14 items-start max-w-4xl">
+        <div className="grid grid-cols-1 md:grid-cols-[420px_1fr] gap-10 md:gap-16 items-start max-w-5xl">
           <Reveal>
-            {/* Styled portrait placeholder — replace with /reszek-portrait.jpg */}
-            <div className="relative aspect-square bg-neutral-100 dark:bg-white/[0.03] border border-neutral-200 dark:border-white/10 overflow-hidden">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="font-display text-[10rem] font-bold tracking-tighter text-neutral-300 dark:text-white/10 leading-none select-none">
-                  R
-                </span>
-              </div>
-              <div className="absolute bottom-3 left-3 text-[10px] font-display uppercase tracking-[0.2em] text-neutral-400 dark:text-neutral-600">
+            {/* Lime portrait — same avatar as the Chatbot bottom-right, scaled up. */}
+            <div className="relative aspect-square overflow-hidden">
+              <img
+                src={reszekPortrait}
+                alt={language === 'pl' ? 'Reszek — Mallorca' : 'Reszek — Mallorca'}
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+              <div className="absolute bottom-4 left-4 text-[10px] font-display uppercase tracking-[0.2em] text-black/60 mix-blend-multiply">
                 Reszek · Mallorca
               </div>
             </div>
@@ -184,13 +183,13 @@ export function Philosophy() {
               </p>
               <p>
                 {language === 'pl'
-                  ? <>Zaczynałem w Deloitte w 2010. Potem Lizbona, Barcelona, pięć innych miast. Klienci się zmieniali, branże się zmieniały, agencje się zmieniały &mdash; ale wzorzec nie. Seniorzy uwięzieni w pętlach poprawek. Briefy, które potrzebowały trzech rund zanim cokolwiek poszło. Spójność marki przeciekająca między lokalizacjami, których nikt nie miał czasu audytować. Spotkania strategiczne przerywane &bdquo;jeszcze tylko jeden baner&rdquo;.</>
-                  : <>I started at Deloitte in 2010. Then Lisbon, then Barcelona, then five other cities. The clients changed, the industries changed, the agencies changed &mdash; but the pattern didn&apos;t. Senior designers stuck in revision loops. Briefs that needed three rounds before anyone could ship. Brand consistency leaking across locations nobody had time to audit. Strategy meetings interrupted by &ldquo;just one more banner.&rdquo;</>}
+                  ? <>Zaczynałem w Deloitte Digital. Potem Lizbona, Barcelona, pięć innych miast. Klienci się zmieniali, branże się zmieniały, agencje się zmieniały &mdash; ale wzorzec nie. Seniorzy uwięzieni w pętlach poprawek. Briefy, które potrzebowały trzech rund zanim cokolwiek poszło. Spójność marki przeciekająca między lokalizacjami, których nikt nie miał czasu audytować. Spotkania strategiczne przerywane &bdquo;jeszcze tylko jeden baner&rdquo;.</>
+                  : <>I started at Deloitte Digital. Then Lisbon, then Barcelona, then five other cities. The clients changed, the industries changed, the agencies changed &mdash; but the pattern didn&apos;t. Senior designers stuck in revision loops. Briefs that needed three rounds before anyone could ship. Brand consistency leaking across locations nobody had time to audit. Strategy meetings interrupted by &ldquo;just one more banner.&rdquo;</>}
               </p>
               <p>
                 {language === 'pl'
-                  ? <>Około 2023 przestałem akceptować to jako koszt designu. Zbudowałem r3loop &mdash; metodologię, która traktuje design ops jako system operacyjny, nie cechę charakteru. Sonova, Benefit Systems i Archicom byli pierwszymi klientami. Dziś żyje wewnątrz szerszego Product Building Framework &mdash; osiem faz, które wyrzucają każdy produkt z mglistego pomysłu do operating systemu.</>
-                  : <>Around 2023 I stopped accepting that as the cost of doing design. I built r3loop &mdash; a methodology that treats design ops as an operational system, not a personality trait. Sonova, Benefit Systems and Archicom became the first clients. Now it lives inside the broader Product Building Framework &mdash; eight phases that can ship any product from foggy idea to operating system.</>}
+                  ? <>W końcu przestałem akceptować to jako koszt designu. Zbudowałem r3loop &mdash; metodologię, która traktuje design ops jako system operacyjny, nie cechę charakteru. Sonova, Benefit Systems i Archicom byli pierwszymi klientami. Dziś żyje wewnątrz szerszego Product Building Framework &mdash; osiem faz, które wyrzucają każdy produkt z mglistego pomysłu do operating systemu.</>
+                  : <>Eventually I stopped accepting that as the cost of doing design. I built r3loop &mdash; a methodology that treats design ops as an operational system, not a personality trait. Sonova, Benefit Systems and Archicom became the first clients. Now it lives inside the broader Product Building Framework &mdash; eight phases that can ship any product from foggy idea to operating system.</>}
               </p>
               <p>
                 {language === 'pl'
