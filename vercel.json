@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/framework",
+      "destination": "/process",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/((?!api/|.*\\.).*)",

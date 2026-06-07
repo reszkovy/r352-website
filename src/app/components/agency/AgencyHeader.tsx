@@ -130,13 +130,11 @@ export function AgencyHeader() {
     };
   }, [isMenuOpen]);
 
-  // Nav hierarchy: Work (proof) → Framework (master IP) → Process (r3loop slice) →
-  // Philosophy (how I think — the human layer) → Services (how to buy) → Journal (content).
-  // Philosophy stays in main nav: methodology pages (Framework + Process) are operational,
-  // Philosophy is the human-strategic counterweight that prevents the brand reading as cold.
+  // Nav hierarchy (post-Framework deletion): Work (proof) → Process (r3loop — THE
+  // methodology) → Philosophy (how I think) → Services (how to buy) → Journal (content).
+  // Framework was deleted; r3loop now stands alone as the single methodology brand.
   const navItems = [
     { href: "/work", label: t("nav.work") },
-    { href: "/framework", label: t("nav.framework") },
     { href: "/process", label: t("nav.process") },
     { href: "/philosophy", label: t("nav.philosophy") },
     { href: "/services", label: t("nav.services") },

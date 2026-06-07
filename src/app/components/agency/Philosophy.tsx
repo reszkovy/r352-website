@@ -188,8 +188,8 @@ export function Philosophy() {
               </p>
               <p>
                 {language === 'pl'
-                  ? <>W końcu przestałem akceptować to jako koszt designu. Zbudowałem r3loop &mdash; metodologię, która traktuje design ops jako system operacyjny, nie cechę charakteru. Sonova, Benefit Systems i Archicom byli pierwszymi klientami. Dziś żyje wewnątrz szerszego Product Building Framework &mdash; osiem faz, które wyrzucają każdy produkt z mglistego pomysłu do operating systemu.</>
-                  : <>Eventually I stopped accepting that as the cost of doing design. I built r3loop &mdash; a methodology that treats design ops as an operational system, not a personality trait. Sonova, Benefit Systems and Archicom became the first clients. Now it lives inside the broader Product Building Framework &mdash; eight phases that can ship any product from foggy idea to operating system.</>}
+                  ? <>W końcu przestałem akceptować to jako koszt designu. Zbudowałem r3loop &mdash; metodologię, która traktuje design ops jako system operacyjny, nie cechę charakteru. Sonova, Benefit Systems i Archicom byli pierwszymi klientami. Osiem kroków, które zamieniają kreatywny chaos w działający system &mdash; stosowane w każdej skali, od pojedynczego brand launch&apos;u po operacje multi-location.</>
+                  : <>Eventually I stopped accepting that as the cost of doing design. I built r3loop &mdash; a methodology that treats design ops as an operational system, not a personality trait. Sonova, Benefit Systems and Archicom became the first clients. Eight steps that turn creative chaos into a working system &mdash; applied at every scale, from a single brand launch to multi-location operations.</>}
               </p>
               <p>
                 {language === 'pl'

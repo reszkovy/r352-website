@@ -207,23 +207,10 @@ export function Process() {
           <Reveal>
             <div className="grid grid-cols-12 gap-6 md:gap-8 items-end">
               <div className="col-span-12 md:col-span-7">
-                {/* Breadcrumb back to master IP — explicitly subordinates r3loop
-                    as the design-ops application of the Product Building Framework.
-                    Prevents visitor confusion between the two methodology pages. */}
-                <Link
-                  href="/framework"
-                  className="inline-flex items-center gap-2 mb-5 text-[11px] uppercase tracking-[2px] text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors font-display group"
-                >
-                  <span className="opacity-60">{lang === "pl" ? "Część" : "Part of"}:</span>
-                  <span className="underline underline-offset-4 decoration-neutral-400 group-hover:decoration-neutral-900 dark:group-hover:decoration-white">
-                    Product Building Framework
-                  </span>
-                  <span aria-hidden className="transition-transform group-hover:translate-x-0.5">→</span>
-                </Link>
                 <div className="flex items-center gap-3 mb-6">
                   <R3LoopBadge size="md" />
                   <span className="text-[11px] uppercase tracking-[2px] text-neutral-500 font-display">
-                    {lang === "pl" ? "Metodologia r352 · Design Ops" : "r352 Methodology · Design Ops"}
+                    {lang === "pl" ? "Metodologia r352" : "r352 Methodology"}
                   </span>
                 </div>
                 <h1 className="text-5xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[0.95]">
@@ -250,8 +237,8 @@ export function Process() {
                 </p>
                 <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
                   {lang === "pl"
-                    ? "r3loop to nasza 8-krokowa metodologia design ops — specyficzne zastosowanie Product Building Framework dla operacji projektowych w skali. Zamienia chaos operacyjny w działający system: od diagnozy, przez produkcję i pomiar, po ciągłe usprawnianie."
-                    : "r3loop is our 8-step design ops methodology — the specific application of the Product Building Framework for design operations at scale. It turns operational chaos into a working system: from diagnosis to production, measurement and continuous improvement."}
+                    ? "r3loop to nasza 8-krokowa metodologia end-to-end — od diagnozy operacyjnej i mapowania popytu, przez standardy i produkcję, po pomiar i ciągłe usprawnianie. Tę samą sekwencję stosujemy do każdego klienta — głębokość kroków skaluje się z zakresem zaangażowania."
+                    : "r3loop is our 8-step end-to-end methodology — from operational diagnosis and demand mapping, through standards and production, to measurement and continuous improvement. We apply the same sequence to every client — the depth of each step scales with engagement size."}
                 </p>
               </div>
             </div>
@@ -405,6 +392,86 @@ export function Process() {
         </div>
       </section>
 
+      {/* ─── Operating Model — presence drops across r3loop steps ─────────
+          The killer IP graph: shows Reszek's involvement falling from 90% at
+          Diagnose to 15% at Iterate. Anti-time-for-money thesis made visual.
+          Client buys a system that runs increasingly without me — proof it's
+          a system, not hours. Migrated from former /framework page. */}
+      <section className="py-24 md:py-32 border-b border-neutral-200 dark:border-white/10">
+        <div className="max-w-[1800px] mx-auto px-8 md:px-12">
+          <Reveal>
+            <div className="mb-12 max-w-3xl">
+              <span className="block text-[11px] uppercase tracking-[0.25em] text-neutral-800 dark:text-[#D4FF00] font-display mb-4">
+                {lang === "pl" ? "Operating Model" : "Operating Model"}
+              </span>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[1.05] mb-6">
+                {lang === "pl" ? "Moja obecność maleje z każdym krokiem." : "My presence decreases with each step."}
+              </h2>
+              <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
+                {lang === "pl"
+                  ? "Średnia po stabilizacji: ~40%. Docelowy podział 80/20 — strategia vs operacje. Klient kupuje system, który po wdrożeniu działa coraz mniej z moją obecnością. To dowód, że to system, nie godziny."
+                  : "Average after stabilization: ~40%. Target 80/20 split — strategy vs operations. The client buys a system that runs increasingly without my presence. Proof it's a system, not hours."}
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal>
+            <div className="overflow-hidden border-t border-neutral-200 dark:border-white/10">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-neutral-200 dark:border-white/10 bg-neutral-50 dark:bg-white/[0.02]">
+                    <th className="text-left py-3 px-4 md:px-6 text-[10px] font-display uppercase tracking-[0.25em] text-neutral-500">
+                      {lang === "pl" ? "Krok" : "Step"}
+                    </th>
+                    <th className="text-left py-3 px-4 md:px-6 text-[10px] font-display uppercase tracking-[0.25em] text-neutral-500">
+                      {lang === "pl" ? "Moja obecność" : "My presence"}
+                    </th>
+                    <th className="text-left py-3 px-4 md:px-6 text-[10px] font-display uppercase tracking-[0.25em] text-neutral-500 hidden md:table-cell">
+                      {lang === "pl" ? "Rola" : "Role"}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {steps.map((s, i) => {
+                    // Presence drops across r3loop steps — Diagnose is hands-on,
+                    // Iterate runs without daily involvement.
+                    const presenceMap = ["90%", "70%", "65%", "45%", "35%", "20%", "20%", "15%"];
+                    const presence = presenceMap[i] ?? "30%";
+                    const role = i <= 1
+                      ? (lang === "pl" ? "Architekt i decydent" : "Architect & decision-maker")
+                      : i <= 3
+                      ? (lang === "pl" ? "Kierunkowy i kontroler jakości" : "Director & quality controller")
+                      : (lang === "pl" ? "Strategiczny nadzorca" : "Strategic overseer");
+                    return (
+                      <tr key={s.num} className="border-b border-neutral-200 dark:border-white/10 last:border-b-0">
+                        <td className="py-4 px-4 md:px-6 text-sm">
+                          <span className="font-display text-neutral-900 dark:text-[#D4FF00] mr-3">{s.num}</span>
+                          <span className="text-neutral-900 dark:text-white font-medium">{s.title[lang]}</span>
+                        </td>
+                        <td className="py-4 px-4 md:px-6">
+                          <div className="flex items-center gap-3">
+                            <div className="w-24 h-2 bg-neutral-200 dark:bg-white/10 relative">
+                              <div
+                                className="absolute left-0 top-0 h-full bg-[#D4FF00]"
+                                style={{ width: presence }}
+                              />
+                            </div>
+                            <span className="font-display text-sm text-neutral-900 dark:text-white">{presence}</span>
+                          </div>
+                        </td>
+                        <td className="py-4 px-4 md:px-6 text-sm text-neutral-600 dark:text-neutral-400 hidden md:table-cell">
+                          {role}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ─── Who this is for ─── */}
       <section className="py-24 md:py-32 border-b border-neutral-200 dark:border-white/10">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
@@ -491,46 +558,71 @@ export function Process() {
         </div>
       </section>
 
-      {/* ─── Example use case — concrete proof ─── */}
+      {/* ─── r3loop in action — Geers/Sonova case (concrete proof with hard metrics)
+          Migrated from former /framework Proof section. Replaces generic
+          "multi-location marketing team" example with named client + numbers. */}
       <section className="py-24 md:py-32 border-b border-neutral-200 dark:border-white/10">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-16 md:gap-24">
             <Reveal>
               <div>
                 <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-4">
-                  {lang === "pl" ? "Przykład zastosowania" : "Example use case"}
+                  {lang === "pl" ? "r3loop w działaniu" : "r3loop in action"}
                 </span>
                 <h2 className="text-4xl md:text-5xl font-normal tracking-tight text-neutral-900 dark:text-white mb-8 leading-[1.05]">
                   {lang === "pl" ? (
-                    <>Multi-location<br className="hidden md:inline" /> marketing team.</>
+                    <>Geers / Sonova<br className="hidden md:inline" /> 60+ salonów słuchowych.</>
                   ) : (
-                    <>Multi-location<br className="hidden md:inline" /> marketing team.</>
+                    <>Geers / Sonova<br className="hidden md:inline" /> 60+ hearing-care studios.</>
                   )}
                 </h2>
               </div>
             </Reveal>
             <Reveal delay={0.15}>
-              <div className="space-y-8">
-                <p className="text-xl md:text-2xl text-neutral-700 dark:text-neutral-300 leading-relaxed font-medium tracking-tight">
+              <div className="space-y-6">
+                <p className="text-xl md:text-2xl text-neutral-700 dark:text-neutral-300 leading-relaxed font-medium tracking-tight [text-wrap:pretty]">
                   {lang === "pl"
-                    ? "Wielolokalizacyjny zespół marketingu otrzymuje dziesiątki lokalnych requestów miesięcznie przez email, chat i ad-hoc rozmowy."
-                    : "A multi-location marketing team receives dozens of local requests every month through email, chat and ad hoc calls."}
+                    ? "Chaos materiałów marketingowych: każdy salon improwizuje, brak jednolitej tożsamości w komunikacji, briefy chodzą przez e-mail."
+                    : "Marketing materials chaos: every studio improvising, no unified identity in communication, briefs flying through email."}
                 </p>
-                <p className="text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
                   {lang === "pl"
-                    ? "Klasyfikujemy typy requestów, definiujemy reguły intake, tworzymy szablony briefów, ustalamy ownership akceptacji, wprowadzamy quality review checklisty i budujemy miesięczny rytm review."
-                    : "We classify request types, define intake rules, create brief templates, set approval ownership, introduce quality review checklists and build a monthly review rhythm."}
+                    ? "r3loop w akcji: kroki 02-03 (Map → Standardize) zdefiniowały klasyfikację requestów, brief templates i standardy jakości. Kroki 04-06 (Build → Govern → Ship) zbudowały design system + komponenty dostępne dla wszystkich lokalizacji. Krok 08 (Iterate) wprowadził miesięczny rytm review."
+                    : "r3loop in action: steps 02-03 (Map → Standardize) defined request classification, brief templates and quality standards. Steps 04-06 (Build → Govern → Ship) delivered a design system + components accessible to all locations. Step 08 (Iterate) introduced a monthly review rhythm."}
                 </p>
-                <div className="border-t border-neutral-200 dark:border-white/10 pt-8">
-                  <span className="block text-xs font-display uppercase tracking-[0.2em] text-[#D4FF00] mb-4">
-                    {lang === "pl" ? "Rezultat" : "Result"}
-                  </span>
-                  <p className="text-xl md:text-2xl text-neutral-900 dark:text-white font-bold tracking-tight leading-tight">
-                    {lang === "pl"
-                      ? "Mniej niejasnych requestów, szybsze akceptacje, reużywalne szablony i lepsza widoczność dla leadership'u."
-                      : "Fewer unclear requests, faster approvals, reusable templates and better visibility for leadership."}
-                  </p>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-neutral-200 dark:border-white/10">
+                  <div>
+                    <div className="font-display text-3xl md:text-4xl font-bold tracking-tighter text-neutral-900 dark:text-[#D4FF00] leading-none mb-2">
+                      3×
+                    </div>
+                    <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-snug">
+                      {lang === "pl" ? "szybsze cykle akceptacji" : "faster approval cycles"}
+                    </p>
+                  </div>
+                  <div>
+                    <div className="font-display text-3xl md:text-4xl font-bold tracking-tighter text-neutral-900 dark:text-[#D4FF00] leading-none mb-2">
+                      80%
+                    </div>
+                    <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-snug">
+                      {lang === "pl" ? "briefów gotowych za pierwszym razem" : "briefs ready on first submission"}
+                    </p>
+                  </div>
+                  <div>
+                    <div className="font-display text-3xl md:text-4xl font-bold tracking-tighter text-neutral-900 dark:text-[#D4FF00] leading-none mb-2">
+                      15%
+                    </div>
+                    <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-snug">
+                      {lang === "pl" ? "obecność po stabilizacji" : "my presence after stabilization"}
+                    </p>
+                  </div>
                 </div>
+                <Link
+                  href="/work/sonova"
+                  className="group inline-flex items-center gap-2 mt-4 text-[11px] font-display uppercase tracking-[0.2em] text-neutral-700 dark:text-neutral-300 hover:text-[#D4FF00] transition-colors"
+                >
+                  <span>{lang === "pl" ? "Pełny case study" : "Full case study"}</span>
+                  <ArrowRight className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2} />
+                </Link>
               </div>
             </Reveal>
           </div>

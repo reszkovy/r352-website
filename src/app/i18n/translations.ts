@@ -2,7 +2,7 @@ export const translations = {
   en: {
     nav: {
       work: "Work",
-      framework: "Framework",
+      // nav.framework removed — page deleted, r3loop on /process is single methodology
       philosophy: "Philosophy",
       services: "Services",
       contact: "Contact",
@@ -27,7 +27,7 @@ export const translations = {
       // becomes brand mantra / closing thought rather than primary explanatory copy.
       signature: "Move fast, steady cadence.",
       description_title: "For brands operating at scale — across locations, products, or campaigns.",
-      description_body: "Retainer for the steady. Project for the sharp. Same Framework + r3loop — applied to both, and to our own products in production.",
+      description_body: "Retainer for the steady. Project for the sharp. Same r3loop methodology — applied to both, and to our own products in production.",
       quote: "Design begins with a decision, not a tool.",
       micro_1: "80%+ briefs ready first round.",
       micro_2: "Approval cycles cut 3×.",
@@ -628,7 +628,7 @@ export const translations = {
   pl: {
     nav: {
       work: "Prace",
-      framework: "Framework",
+      // nav.framework usunięty — strona skasowana, r3loop na /process to jedyna metodologia
       philosophy: "Filozofia",
       services: "Usługi",
       contact: "Kontakt",
@@ -652,7 +652,7 @@ export const translations = {
       // "Tempo bez chaosu" demoted from headline to signature line — brand mantra position.
       signature: "Tempo bez chaosu.",
       description_title: "Dla marek operujących w skali — przez lokalizacje, produkty lub kampanie.",
-      description_body: "Retainer dla stabilnych. Projekt dla ostrych. Ten sam Framework + r3loop — zastosowany do obu, i do naszych własnych produktów w produkcji.",
+      description_body: "Retainer dla stabilnych. Projekt dla ostrych. Ta sama metodologia r3loop — zastosowana do obu, i do naszych własnych produktów w produkcji.",
       quote: "Projektowanie zaczyna się od decyzji, nie od narzędzia.",
       micro_1: "80%+ briefów gotowych za pierwszym razem.",
       micro_2: "Cykle akceptacji 3× szybsze.",
