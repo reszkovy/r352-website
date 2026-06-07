@@ -1,9 +1,11 @@
+import { useState, useCallback } from "react";
 import { PageTransition } from "@/app/components/ui/PageTransition";
 import { Reveal } from "@/app/components/ui/Reveal";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { Helmet } from "react-helmet-async";
 import { Link } from "wouter";
-import { ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 
 /**
  * /framework — Product Building Framework
@@ -384,9 +386,22 @@ const LAYERS: Layer[] = [
   },
 ];
 
+const TOTAL_PHASES = PHASES.length;
+
 export function Framework() {
   const { language } = useLanguage();
   const isPl = language === "pl";
+
+  // Tab UX state — only one phase visible at a time (port of /process pattern).
+  // Reduces visible Framework content from ~2500 words (all 8 phases stacked) to
+  // ~300 words (one active phase). Mobile-friendly: no hover dependency, tabs
+  // scroll horizontally, keyboard nav works on every device.
+  const [activePhase, setActivePhase] = useState(0);
+  const goToPhase = useCallback((idx: number) => {
+    setActivePhase(Math.max(0, Math.min(TOTAL_PHASES - 1, idx)));
+  }, []);
+  const phase = PHASES[activePhase];
+  const progressPct = ((activePhase + 1) / TOTAL_PHASES) * 100;
 
   // HowTo schema — JSON-LD describing the 8-phase product building system
   // as a structured methodology. Like /process schema but broader scope.
@@ -505,8 +520,12 @@ export function Framework() {
         </Reveal>
       </section>
 
-      {/* ─── 8 PHASES ─── */}
-      <section className="border-t border-neutral-200 dark:border-white/10 pt-16 mb-20">
+      {/* ─── 8 PHASES — interactive tab UX (port of /process pattern) ─────────
+          Single active phase visible at a time. Tabs across the top with progress
+          bar; active panel uses AnimatePresence for smooth phase-to-phase transitions.
+          Keyboard nav: ←/→ to step, Home/End for first/last. Mobile-friendly: tabs
+          scroll horizontally, no hover dependency, active state via tap. */}
+      <section id="phases" className="border-t border-neutral-200 dark:border-white/10 pt-16 mb-20 scroll-mt-24">
         <Reveal>
           <div className="mb-12 md:mb-16">
             <span className="block text-[11px] uppercase tracking-[0.25em] text-[#D4FF00] font-display mb-4">
@@ -518,74 +537,161 @@ export function Framework() {
           </div>
         </Reveal>
 
-        {/* Phases — vertical list */}
-        <div className="space-y-16 md:space-y-24">
-          {PHASES.map((phase, i) => (
-            <Reveal key={phase.num} delay={i * 0.04}>
-              <article
-                id={`phase-${phase.num}`}
-                className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 border-t border-neutral-200 dark:border-white/10 pt-12"
-              >
-                {/* LEFT — phase number + title */}
-                <div className="md:col-span-4">
-                  <div className="font-display text-7xl md:text-8xl font-bold tracking-tighter text-[#D4FF00] leading-none mb-4">
-                    {phase.num}
-                  </div>
-                  <h3 className="text-2xl md:text-3xl font-bold tracking-tighter text-black dark:text-white mb-4 leading-tight">
-                    {phase.title[language]}
-                  </h3>
-                  <p className="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
-                    {phase.goal[language]}
-                  </p>
-                  <div className="mt-5 inline-flex items-center gap-2 text-[11px] font-display uppercase tracking-[0.2em] text-neutral-500">
-                    <span>{isPl ? "Twoja obecność" : "Your presence"}:</span>
-                    <span className="text-[#D4FF00] font-bold">{phase.presence}</span>
-                  </div>
-                </div>
+        <Reveal>
+          <div className="border-t border-neutral-200 dark:border-white/[0.12]">
+            {/* Progress bar — fills as user steps through phases */}
+            <div className="h-[2px] bg-neutral-200 dark:bg-white/[0.06] relative">
+              <motion.div
+                className="absolute left-0 top-0 h-full bg-[#D4FF00]"
+                animate={{ width: `${progressPct}%` }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              />
+            </div>
 
-                {/* RIGHT — output contract + gate */}
-                <div className="md:col-span-8 space-y-6">
-                  <div>
-                    <div className="text-[10px] font-display uppercase tracking-[0.25em] text-[#D4FF00] mb-3">
-                      {isPl ? "Output kontrakt" : "Output contract"}
-                    </div>
-                    <ul className="space-y-2.5">
-                      {phase.outputs[language].map((out, k) => (
-                        <li key={k} className="text-[15px] md:text-base text-neutral-700 dark:text-neutral-300 flex items-start gap-3 leading-relaxed">
-                          <span className="w-3 h-3 border border-neutral-400 dark:border-neutral-600 mt-[7px] shrink-0" />
-                          <span>{out}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="border-l-2 border-[#D4FF00] pl-5 py-2 bg-[#D4FF00]/[0.04]">
-                    <div className="text-[10px] font-display uppercase tracking-[0.25em] text-[#D4FF00] mb-2">
-                      {isPl ? "Decision gate" : "Decision gate"}
-                    </div>
-                    <p className="text-[15px] md:text-base text-black dark:text-white font-medium leading-relaxed [text-wrap:pretty]">
-                      {phase.gate[language]}
-                    </p>
-                  </div>
-
-                  {/* Optional r3loop cross-link — only renders on phases that
-                      have a specific r3loop step mapping. Subordinates r3loop
-                      explicitly as the design-ops application of the framework. */}
-                  {phase.r3loopNote && (
-                    <div className="mt-4 pt-4 border-t border-black/10 dark:border-white/10">
-                      <p className="text-[12px] md:text-[13px] text-neutral-600 dark:text-neutral-400 italic leading-relaxed">
-                        <span className="not-italic font-display uppercase tracking-[0.18em] text-[10px] text-neutral-500 mr-2">
-                          r3loop:
-                        </span>
-                        {phase.r3loopNote[language]}
-                      </p>
-                    </div>
+            {/* Tab buttons — 8 phases, horizontally scrollable on mobile */}
+            <div
+              className="grid border-b border-neutral-200 dark:border-white/[0.06] overflow-x-auto"
+              role="tablist"
+              onKeyDown={(e) => {
+                if (e.key === "ArrowRight") { e.preventDefault(); goToPhase(activePhase + 1); }
+                else if (e.key === "ArrowLeft") { e.preventDefault(); goToPhase(activePhase - 1); }
+                else if (e.key === "Home") { e.preventDefault(); goToPhase(0); }
+                else if (e.key === "End") { e.preventDefault(); goToPhase(TOTAL_PHASES - 1); }
+              }}
+              style={{ gridTemplateColumns: `repeat(${TOTAL_PHASES}, minmax(110px, 1fr))` }}
+            >
+              {PHASES.map((p, i) => (
+                <button
+                  key={p.num}
+                  role="tab"
+                  aria-selected={i === activePhase}
+                  onClick={() => goToPhase(i)}
+                  className={`
+                    relative isolate
+                    border-r border-neutral-200 dark:border-white/[0.06] last:border-r-0 px-4 py-5 text-left
+                    flex flex-col gap-2 min-h-[90px] cursor-pointer
+                    transition-colors duration-500 ease-out
+                    ${i === activePhase
+                      ? "text-[#0A0A0A]"
+                      : "text-neutral-400 dark:text-neutral-600 hover:bg-neutral-100 dark:hover:bg-white/[0.03] hover:text-neutral-900 dark:hover:text-white"
+                    }
+                  `}
+                >
+                  {/* Sliding lime active background — shared layoutId animates between tabs */}
+                  {i === activePhase && (
+                    <motion.div
+                      layoutId="frameworkActiveTab"
+                      className="absolute inset-0 bg-[#D4FF00] -z-10"
+                      transition={{ type: "spring", stiffness: 380, damping: 34, mass: 0.9 }}
+                    />
                   )}
-                </div>
-              </article>
-            </Reveal>
-          ))}
-        </div>
+                  <span className={`font-display text-xs leading-none tracking-wide transition-colors duration-500 ${i === activePhase ? "text-[#0A0A0A]/60" : ""}`}>
+                    {p.num}
+                  </span>
+                  <span className={`text-sm md:text-base font-semibold tracking-tight leading-tight mt-auto transition-colors duration-500 ${i === activePhase ? "font-bold text-[#0A0A0A]" : ""}`}>
+                    {p.title[language]}
+                  </span>
+                </button>
+              ))}
+            </div>
+
+            {/* Panel — content for the active phase */}
+            <div className="relative">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activePhase}
+                  initial={{ opacity: 0, y: 18, filter: "blur(8px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, y: -10, filter: "blur(6px)" }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  className="p-8 md:p-12 lg:px-16"
+                  role="tabpanel"
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10">
+                    {/* LEFT — phase number + title + goal + presence */}
+                    <div className="md:col-span-4">
+                      <div className="font-display text-7xl md:text-8xl font-bold tracking-tighter text-[#D4FF00] leading-none mb-4">
+                        {phase.num}
+                      </div>
+                      <h3 className="text-2xl md:text-3xl font-bold tracking-tighter text-black dark:text-white mb-4 leading-tight">
+                        {phase.title[language]}
+                      </h3>
+                      <p className="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
+                        {phase.goal[language]}
+                      </p>
+                      <div className="mt-5 inline-flex items-center gap-2 text-[11px] font-display uppercase tracking-[0.2em] text-neutral-500">
+                        <span>{isPl ? "Twoja obecność" : "Your presence"}:</span>
+                        <span className="text-[#D4FF00] font-bold">{phase.presence}</span>
+                      </div>
+                    </div>
+
+                    {/* RIGHT — output contract + decision gate + r3loop note */}
+                    <div className="md:col-span-8 space-y-6">
+                      <div>
+                        <div className="text-[10px] font-display uppercase tracking-[0.25em] text-[#D4FF00] mb-3">
+                          {isPl ? "Output kontrakt" : "Output contract"}
+                        </div>
+                        <ul className="space-y-2.5">
+                          {phase.outputs[language].map((out, k) => (
+                            <li key={k} className="text-[15px] md:text-base text-neutral-700 dark:text-neutral-300 flex items-start gap-3 leading-relaxed">
+                              <span className="w-3 h-3 border border-neutral-400 dark:border-neutral-600 mt-[7px] shrink-0" />
+                              <span>{out}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="border-l-2 border-[#D4FF00] pl-5 py-2 bg-[#D4FF00]/[0.04]">
+                        <div className="text-[10px] font-display uppercase tracking-[0.25em] text-[#D4FF00] mb-2">
+                          {isPl ? "Decision gate" : "Decision gate"}
+                        </div>
+                        <p className="text-[15px] md:text-base text-black dark:text-white font-medium leading-relaxed [text-wrap:pretty]">
+                          {phase.gate[language]}
+                        </p>
+                      </div>
+
+                      {/* Optional r3loop cross-link — only renders on phases that have
+                          a specific r3loop step mapping (currently phases 03 + 04). */}
+                      {phase.r3loopNote && (
+                        <div className="mt-4 pt-4 border-t border-black/10 dark:border-white/10">
+                          <p className="text-[12px] md:text-[13px] text-neutral-600 dark:text-neutral-400 italic leading-relaxed [text-wrap:pretty]">
+                            <span className="not-italic font-display uppercase tracking-[0.18em] text-[10px] text-neutral-500 mr-2">
+                              r3loop:
+                            </span>
+                            {phase.r3loopNote[language]}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Navigation — prev/next + position indicator */}
+              <div className="flex justify-between items-center px-8 md:px-12 lg:px-16 py-6 border-t border-neutral-200 dark:border-white/[0.06]">
+                <button
+                  onClick={() => goToPhase(activePhase - 1)}
+                  disabled={activePhase === 0}
+                  className="border border-neutral-300 dark:border-white/[0.12] rounded px-5 py-2.5 text-sm text-neutral-600 dark:text-neutral-400 flex items-center gap-2 transition-all duration-300 hover:border-[#D4FF00] hover:text-[#D4FF00] hover:bg-[#D4FF00]/[0.04] disabled:opacity-15 disabled:cursor-not-allowed disabled:hover:border-neutral-300 disabled:hover:text-neutral-600 disabled:hover:bg-transparent cursor-pointer"
+                >
+                  <ArrowLeft className="w-4 h-4" strokeWidth={1.5} />
+                  <span className="hidden sm:inline">{isPl ? "Poprzednia faza" : "Previous phase"}</span>
+                </button>
+                <span className="font-mono text-[11px] text-neutral-400 dark:text-neutral-600 uppercase tracking-wide">
+                  {String(activePhase + 1).padStart(2, "0")} / {String(TOTAL_PHASES).padStart(2, "0")}
+                </span>
+                <button
+                  onClick={() => goToPhase(activePhase + 1)}
+                  disabled={activePhase === TOTAL_PHASES - 1}
+                  className="border border-neutral-300 dark:border-white/[0.12] rounded px-5 py-2.5 text-sm text-neutral-600 dark:text-neutral-400 flex items-center gap-2 transition-all duration-300 hover:border-[#D4FF00] hover:text-[#D4FF00] hover:bg-[#D4FF00]/[0.04] disabled:opacity-15 disabled:cursor-not-allowed disabled:hover:border-neutral-300 disabled:hover:text-neutral-600 disabled:hover:bg-transparent cursor-pointer"
+                >
+                  <span className="hidden sm:inline">{isPl ? "Następna faza" : "Next phase"}</span>
+                  <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
+                </button>
+              </div>
+            </div>
+          </div>
+        </Reveal>
       </section>
 
       {/* ─── OPERATING MODEL TABLE (moved up from pos 4 → 2 — this is the killer IP,

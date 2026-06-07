@@ -82,18 +82,22 @@ export function AgencyHero() {
                 ([0.22, 1, 0.36, 1] — same curve as PageTransition + Reveal). */}
             <div className="mb-8 md:mb-10 flex flex-wrap gap-2 md:gap-3 items-center">
               {/* Group 1 — audience/maturity filters with premium tooltips */}
+              {/* Tooltip strings use React fragments + &nbsp; before the last 1-2 words.
+                  This is a typography safety net — even if text-wrap:pretty doesn't render
+                  cleanly (older Safari, edge cases), the non-breaking space prevents an
+                  orphan word from sitting alone on the final line. */}
               {(language === "pl" ? [
-                { label: "Multi-location", tooltip: "5–300+ fizycznych punktów, jedna marka" },
-                { label: "Multi-product", tooltip: "Wiele linii produktów pod jedną marką" },
-                { label: "SaaS", tooltip: "Produkty software'owe od pomysłu do operating systemu" },
-                { label: "Brand launch", tooltip: "Pre-launch tożsamość, wejście na rynek od zera" },
-                { label: "Post-PMF & scaling", tooltip: "Po product-market fit, poza founder-mode" },
+                { label: "Multi-location", tooltip: <>5–300+ fizycznych punktów, jedna&nbsp;marka</> },
+                { label: "Multi-product", tooltip: <>Wiele linii produktów pod jedną&nbsp;marką</> },
+                { label: "SaaS", tooltip: <>Produkty software&apos;owe od pomysłu do operating&nbsp;systemu</> },
+                { label: "Brand launch", tooltip: <>Pre-launch tożsamość, wejście na rynek od&nbsp;zera</> },
+                { label: "Post-PMF & scaling", tooltip: <>Po product-market fit, poza founder-led&nbsp;execution</> },
               ] : [
-                { label: "Multi-location", tooltip: "5–300+ physical branches under a single brand" },
-                { label: "Multi-product", tooltip: "Multiple product lines under one brand" },
-                { label: "SaaS", tooltip: "Software products from foggy idea to operating system" },
-                { label: "Brand launch", tooltip: "Pre-launch identity and 0-to-1 market entry" },
-                { label: "Post-PMF & scaling", tooltip: "Past product-market fit, beyond founder-led execution" },
+                { label: "Multi-location", tooltip: <>5–300+ physical branches under a single&nbsp;brand</> },
+                { label: "Multi-product", tooltip: <>Multiple product lines under one&nbsp;brand</> },
+                { label: "SaaS", tooltip: <>Software products from foggy idea to operating&nbsp;system</> },
+                { label: "Brand launch", tooltip: <>Pre-launch identity and 0-to-1 market&nbsp;entry</> },
+                { label: "Post-PMF & scaling", tooltip: <>Past product-market fit, beyond founder-led&nbsp;execution</> },
               ]).map((chip, i) => (
                 <motion.span
                   key={i}
@@ -128,7 +132,7 @@ export function AgencyHero() {
                     <span className="relative block px-4 py-3 bg-[#0a0a0a]/85 backdrop-blur-xl border border-white/10 rounded-[6px] shadow-[0_12px_32px_-12px_rgba(0,0,0,0.6)]">
                       {/* Lime gradient hairline accent across top */}
                       <span aria-hidden="true" className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-[#D4FF00]/50 to-transparent" />
-                      <span className="block text-[11px] leading-relaxed text-neutral-100 normal-case tracking-normal font-sans">
+                      <span className="block text-[11px] leading-relaxed text-neutral-100 normal-case tracking-normal font-sans [text-wrap:pretty]">
                         {chip.tooltip}
                       </span>
                       {/* Arrow pointer */}
@@ -174,10 +178,12 @@ export function AgencyHero() {
                   <span className="relative block px-4 py-3 bg-[#0a0a0a]/85 backdrop-blur-xl border border-[#D4FF00]/25 rounded-[6px] shadow-[0_12px_32px_-12px_rgba(0,0,0,0.6),0_0_24px_-12px_rgba(212,255,0,0.3)]">
                     {/* Solid lime hairline (vs gradient for neutral chips) — distinct visual register */}
                     <span aria-hidden="true" className="absolute top-0 left-4 right-4 h-px bg-[#D4FF00]/60" />
-                    <span className="block text-[11px] leading-relaxed text-neutral-100 normal-case tracking-normal font-sans">
+                    <span className="block text-[11px] leading-relaxed text-neutral-100 normal-case tracking-normal font-sans [text-wrap:pretty]">
+                      {/* Non-breaking space (&nbsp;) before last word as fallback for older
+                          browsers without text-wrap:pretty support — prevents orphan word. */}
                       {language === "pl"
-                        ? "AI jako warstwa w governance i delivery — nie jako feature"
-                        : "AI as a layer in governance and delivery — not as a feature"}
+                        ? <>AI jako warstwa w governance i delivery — nie jako&nbsp;feature</>
+                        : <>AI as a layer in governance and delivery — not as a&nbsp;feature</>}
                     </span>
                     {/* Arrow pointer with matching lime border */}
                     <span
