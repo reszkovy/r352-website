@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Building Framework — r352</title>
+<meta name="description" content="End-to-end system budowy produktów: od strategii do żywego, obsługiwalnego produktu. 8 faz, modułowa struktura.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FBFBF9;
+    --bg-card: #FFFFFF;
+    --bg-subtle: #F4F2EC;
+    --ink: #0A0A0A;
+    --ink-muted: #5F5F5F;
+    --ink-soft: #8B8B86;
+    --hairline: #E5E2D9;
+    --hairline-strong: #D9D5C9;
+    --accent: #C2410C;
+    --accent-soft: #FDF4ED;
+    --max: 1280px;
+    --pad: clamp(20px, 4vw, 64px);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.55;
+    font-feature-settings: 'ss01', 'cv11';
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* ─── Layout ─── */
+  .container {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--pad);
+  }
+
+  /* ─── Header ─── */
+  .top-bar {
+    border-bottom: 1px solid var(--hairline);
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 90;
+    backdrop-filter: blur(12px);
+    background: rgba(251, 251, 249, 0.85);
+  }
+  .top-bar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+  .brand {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .brand .dot { color: var(--accent); }
+  .meta-top {
+    font-size: 12px;
+    color: var(--ink-muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ─── Hero ─── */
+  .hero {
+    padding: clamp(80px, 14vw, 180px) 0 clamp(60px, 10vw, 120px);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .hero .label {
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero .label::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--accent);
+  }
+  .hero h1 {
+    font-size: clamp(40px, 7vw, 84px);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    font-weight: 600;
+    max-width: 14ch;
+    margin-bottom: 32px;
+  }
+  .hero .lead {
+    font-size: clamp(17px, 1.5vw, 21px);
+    color: var(--ink-muted);
+    max-width: 56ch;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+  .hero .stats {
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 32px;
+    border-top: 1px solid var(--hairline);
+    padding-top: 32px;
+  }
+  .stat .num {
+    font-size: 36px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat .lab {
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── Section base ─── */
+  section { padding: clamp(60px, 9vw, 120px) 0; border-bottom: 1px solid var(--hairline); }
+  .section-head {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 32px;
+    margin-bottom: 48px;
+    align-items: baseline;
+  }
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--ink-soft);
+    padding-top: 8px;
+  }
+  .section-title h2 {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin-bottom: 12px;
+  }
+  .section-title .sub {
+    color: var(--ink-muted);
+    max-width: 60ch;
+    font-size: 16px;
+  }
+
+  @media (max-width: 700px) {
+    .section-head { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  /* ─── Logic ─── */
+  .logic-text p {
+    font-size: clamp(17px, 1.4vw, 19px);
+    line-height: 1.6;
+    max-width: 72ch;
+    margin-bottom: 20px;
+    color: var(--ink);
+  }
+  .logic-text p:last-child { margin-bottom: 0; }
+
+  /* ─── Phase Map ─── */
+  .phase-map {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 0;
+    border: 1px solid var(--hairline);
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--bg-card);
+  }
+  .phase-cell {
+    padding: 24px 16px;
+    border-right: 1px solid var(--hairline);
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-height: 130px;
+  }
+  .phase-cell:last-child { border-right: none; }
+  .phase-cell:hover { background: var(--bg-subtle); }
+  .phase-cell .pn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+  }
+  .phase-cell .pname {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.3;
+    margin-top: auto;
+  }
+  .phase-cell .pdot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  @media (max-width: 900px) {
+    .phase-map { grid-template-columns: repeat(4, 1fr); }
+    .phase-cell:nth-child(4) { border-right: none; }
+    .phase-cell:nth-child(-n+4) { border-bottom: 1px solid var(--hairline); }
+  }
+  @media (max-width: 520px) {
+    .phase-map { grid-template-columns: repeat(2, 1fr); }
+    .phase-cell { border-right: 1px solid var(--hairline) !important; border-bottom: 1px solid var(--hairline) !important; }
+    .phase-cell:nth-child(2n) { border-right: none !important; }
+    .phase-cell:nth-last-child(-n+2) { border-bottom: none !important; }
+  }
+
+  /* ─── Phase Navigation (sticky) ─── */
+  .phase-nav {
+    position: sticky;
+    top: 60px;
+    z-index: 80;
+    background: rgba(251, 251, 249, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--hairline);
+    padding: 14px 0;
+  }
+  .phase-nav-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--pad);
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .phase-nav-inner::-webkit-scrollbar { display: none; }
+  .phase-nav a {
+    text-decoration: none;
+    color: var(--ink-muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 3px;
+    white-space: nowrap;
+    transition: all 0.15s;
+  }
+  .phase-nav a:hover { color: var(--ink); background: var(--bg-subtle); }
+  .phase-nav a.active { color: var(--accent); background: var(--accent-soft); }
+
+  /* ─── Phase Sections ─── */
+  .phase {
+    padding: clamp(70px, 10vw, 130px) 0;
+    border-bottom: 1px solid var(--hairline);
+    scroll-margin-top: 110px;
+  }
+  .phase-header {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 40px;
+    margin-bottom: 56px;
+    align-items: start;
+  }
+  .phase-number-big {
+    font-size: clamp(64px, 10vw, 120px);
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    line-height: 0.85;
+    color: var(--ink);
+    font-feature-settings: 'tnum';
+  }
+  .phase-title h2 {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin-bottom: 16px;
+  }
+  .phase-title .goal {
+    font-size: clamp(16px, 1.3vw, 18px);
+    color: var(--ink-muted);
+    max-width: 60ch;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 700px) {
+    .phase-header { grid-template-columns: 1fr; gap: 20px; }
+    .phase-number-big { font-size: 56px; }
+  }
+
+  /* Contract block */
+  .contract {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--hairline);
+    border-radius: 4px;
+    margin-bottom: 48px;
+    background: var(--bg-card);
+  }
+  .contract > div {
+    padding: 24px 28px;
+  }
+  .contract > div + div { border-left: 1px solid var(--hairline); }
+  .contract .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+  }
+  .contract .content { font-size: 15px; line-height: 1.55; }
+  .contract ul { list-style: none; padding: 0; }
+  .contract li { padding-left: 22px; position: relative; margin-bottom: 6px; font-size: 14px; }
+  .contract li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 12px;
+    height: 12px;
+    border: 1px solid var(--hairline-strong);
+    border-radius: 2px;
+  }
+
+  @media (max-width: 700px) {
+    .contract { grid-template-columns: 1fr; }
+    .contract > div + div { border-left: none; border-top: 1px solid var(--hairline); }
+  }
+
+  /* Modules grid */
+  .modules-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 20px;
+  }
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--hairline);
+    border: 1px solid var(--hairline);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 48px;
+  }
+  .module {
+    background: var(--bg-card);
+    padding: 24px 24px 20px;
+    transition: background 0.15s;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 160px;
+  }
+  .module:hover { background: var(--bg-subtle); }
+  .module .mnum {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .module h4 {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+  .module .when {
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+  .module .out {
+    font-size: 13px;
+    color: var(--ink-muted);
+    margin-top: auto;
+    padding-top: 8px;
+    border-top: 1px solid var(--hairline);
+    line-height: 1.45;
+  }
+
+  /* Gate */
+  .gate {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    padding: 24px 28px;
+    margin-bottom: 40px;
+    border-radius: 0 4px 4px 0;
+  }
+  .gate .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .gate p {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+
+  /* Roles */
+  .roles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .role-card {
+    padding: 20px 22px;
+    border: 1px solid var(--hairline);
+    border-radius: 4px;
+    background: var(--bg-card);
+  }
+  .role-card .lab {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+  }
+  .role-card .lab.you { color: var(--accent); }
+  .role-card .content { font-size: 13.5px; line-height: 1.5; color: var(--ink); }
+
+  @media (max-width: 700px) {
+    .roles { grid-template-columns: 1fr; }
+  }
+
+  /* ─── Layers ─── */
+  .layers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--hairline);
+    border: 1px solid var(--hairline);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .layer {
+    background: var(--bg-card);
+    padding: 28px 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .layer .lnum {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+  }
+  .layer h4 {
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .layer ul {
+    list-style: none;
+    padding: 0;
+  }
+  .layer li {
+    font-size: 13.5px;
+    color: var(--ink-muted);
+    padding: 5px 0;
+    border-top: 1px solid var(--hairline);
+  }
+  .layer li:first-child { border-top: 1px solid var(--hairline); margin-top: 8px; padding-top: 10px; }
+
+  /* ─── Operating Model Table ─── */
+  .table-wrap {
+    border: 1px solid var(--hairline);
+    border-radius: 4px;
+    overflow-x: auto;
+    background: var(--bg-card);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  th, td {
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1px solid var(--hairline);
+    vertical-align: top;
+  }
+  th {
+    background: var(--bg-subtle);
+    font-weight: 500;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ink-muted);
+  }
+  tr:last-child td { border-bottom: none; }
+  td.num { font-family: 'JetBrains Mono', monospace; color: var(--ink-soft); }
+  td.presence {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+  }
+  .bar {
+    display: inline-block;
+    width: 60px;
+    height: 6px;
+    background: var(--hairline);
+    border-radius: 3px;
+    margin-left: 8px;
+    vertical-align: middle;
+    position: relative;
+    overflow: hidden;
+  }
+  .bar::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: var(--accent);
+    width: var(--w, 50%);
+  }
+
+  /* ─── Modularity ─── */
+  .rules-list {
+    list-style: none;
+    counter-reset: rule;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .rules-list li {
+    counter-increment: rule;
+    padding: 24px 28px;
+    border: 1px solid var(--hairline);
+    border-radius: 4px;
+    background: var(--bg-card);
+    position: relative;
+    padding-top: 56px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-muted);
+  }
+  .rules-list li::before {
+    content: counter(rule, decimal-leading-zero);
+    position: absolute;
+    top: 22px;
+    left: 28px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+  }
+  .rules-list li strong {
+    display: block;
+    color: var(--ink);
+    font-weight: 500;
+    margin-bottom: 6px;
+    font-size: 15px;
+  }
+
+  /* ─── Bundle ─── */
+  .bundle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1px;
+    background: var(--hairline);
+    border: 1px solid var(--hairline);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .bundle-cat {
+    background: var(--bg-card);
+    padding: 24px 26px;
+  }
+  .bundle-cat .cat {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+  }
+  .bundle-cat ul {
+    list-style: none;
+    padding: 0;
+  }
+  .bundle-cat li {
+    font-size: 13.5px;
+    color: var(--ink);
+    padding: 6px 0;
+    border-top: 1px solid var(--hairline);
+    line-height: 1.4;
+  }
+
+  /* ─── Principle ─── */
+  .principle-section {
+    background: var(--ink);
+    color: var(--bg);
+    border-bottom: none;
+  }
+  .principle-section .section-num { color: rgba(255,255,255,0.4); }
+  .principle-section .section-title h2 { color: var(--bg); }
+  .principle-section .section-title .sub { color: rgba(255,255,255,0.6); }
+  .principle-quote {
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    max-width: 26ch;
+    border-left: 2px solid var(--accent);
+    padding-left: 32px;
+    margin: 48px 0;
+    color: var(--bg);
+  }
+  .tests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .test {
+    background: var(--ink);
+    padding: 28px 30px;
+  }
+  .test .tn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .test h4 {
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: var(--bg);
+  }
+  .test p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.7);
+  }
+
+  /* ─── Footer ─── */
+  footer {
+    padding: 48px 0;
+    background: var(--bg);
+  }
+  footer .inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  /* ─── Animations ─── */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ─── Print ─── */
+  @media print {
+    .top-bar, .phase-nav { display: none; }
+    section, .phase { break-inside: avoid; page-break-inside: avoid; }
+    body { font-size: 11pt; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="top-bar">
+  <div class="container">
+    <div class="brand">r352<span class="dot">·</span>operating system</div>
+    <div class="meta-top">v1.0 · 2026</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" style="border-bottom: 1px solid var(--hairline);">
+  <div class="container">
+    <div class="label">Product Building Framework</div>
+    <h1>End-to-end system od strategii do żywego produktu.</h1>
+    <p class="lead">Modułowy framework w 8 fazach. Każda faza ma kontrakt wejścia i wyjścia. Sub-moduły wpinają się w fazy w trybie lite, standard lub deep — zależnie od skali projektu. Zaprojektowany do skalowania bez powiększania chaosu.</p>
+    <div class="stats">
+      <div class="stat"><div class="num">08</div><div class="lab">Faz</div></div>
+      <div class="stat"><div class="num">80+</div><div class="lab">Modułów</div></div>
+      <div class="stat"><div class="num">06</div><div class="lab">Warstw poprzecznych</div></div>
+      <div class="stat"><div class="num">35%</div><div class="lab">Średnie zaangażowanie</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGIC -->
+<section id="logika">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num">00 / Logika</div>
+      <div class="section-title">
+        <h2>Strategiczna logika</h2>
+        <p class="sub">Filozofia, na której stoi cały framework — i powód, dla którego jest skalowalny.</p>
+      </div>
+    </div>
+    <div class="logic-text">
+      <p>Każdy produkt — niezależnie od tego, czy to landing page, narzędzie wewnętrzne dla 60 lokalizacji, kampania multi-touchpoint czy SaaS — przechodzi przez te same 8 faz. <strong>Nie pomijasz faz, modyfikujesz głębokość.</strong> Mały projekt = lekka wersja każdej fazy. Duży produkt = pełne moduły.</p>
+      <p>Każda faza ma kontrakt wejścia i wyjścia. Bez zamknięcia kontraktu nie idziesz dalej. To eliminuje 80% rewizji wynikających z miękkich fundamentów.</p>
+      <p>Twoja rola w fazach jest różna: w fazach 0–2 jesteś architektem i decydentem (90% obecności), w fazach 3–4 jesteś kierunkowym i kontrolerem jakości (50%), w fazach 5–7 jesteś strategicznym nadzorcą (15–20%). Tak wygląda twardy przesun w stronę 80/20 strategia/operacje.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PHASE MAP -->
+<section id="mapa">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num">01 / Mapa</div>
+      <div class="section-title">
+        <h2>8 faz, jeden silnik</h2>
+        <p class="sub">Sekwencja jest stała. Każda faza buduje fundament pod następną.</p>
+      </div>
+    </div>
+    <div class="phase-map">
+      <a href="#faza-0" class="phase-cell"><span class="pn">00</span><span class="pdot"></span><span class="pname">Discovery & Strategia</span></a>
+      <a href="#faza-1" class="phase-cell"><span class="pn">01</span><span class="pdot"></span><span class="pname">Brand Platform</span></a>
+      <a href="#faza-2" class="phase-cell"><span class="pn">02</span><span class="pdot"></span><span class="pname">Narracja & Copy</span></a>
+      <a href="#faza-3" class="phase-cell"><span class="pn">03</span><span class="pdot"></span><span class="pname">UX & Flow</span></a>
+      <a href="#faza-4" class="phase-cell"><span class="pn">04</span><span class="pdot"></span><span class="pname">UI & Design System</span></a>
+      <a href="#faza-5" class="phase-cell"><span class="pn">05</span><span class="pdot"></span><span class="pname">Build & Deploy</span></a>
+      <a href="#faza-6" class="phase-cell"><span class="pn">06</span><span class="pdot"></span><span class="pname">Launch & Adopcja</span></a>
+      <a href="#faza-7" class="phase-cell"><span class="pn">07</span><span class="pdot"></span><span class="pname">Operacje & Skalowanie</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- STICKY PHASE NAV -->
+<nav class="phase-nav" aria-label="Phase navigation">
+  <div class="phase-nav-inner">
+    <a href="#faza-0" data-phase="0">00 Discovery</a>
+    <a href="#faza-1" data-phase="1">01 Brand</a>
+    <a href="#faza-2" data-phase="2">02 Narracja</a>
+    <a href="#faza-3" data-phase="3">03 UX</a>
+    <a href="#faza-4" data-phase="4">04 UI</a>
+    <a href="#faza-5" data-phase="5">05 Build</a>
+    <a href="#faza-6" data-phase="6">06 Launch</a>
+    <a href="#faza-7" data-phase="7">07 Operacje</a>
+    <a href="#warstwy">Warstwy</a>
+    <a href="#model">Model</a>
+    <a href="#zasada">Zasada</a>
+  </div>
+</nav>
+
+<!-- ─── PHASE 0 ─── -->
+<section class="phase" id="faza-0">
+  <div class="container">
+    <div class="phase-header">
+      <div class="phase-number-big">00</div>
+      <div class="phase-title">
+        <h2>Discovery & Strategia</h2>
+        <p class="goal">Zamienić mglisty pomysł lub problem klienta w konkretny, mierzalny brief produktowy.</p>
+      </div>
+    </div>
+
+    <div class="contract">
+      <div>
+        <div class="label">Input</div>
+        <div class="content">Surowy problem klienta lub hipoteza biznesowa. Dostęp do stakeholderów i danych.</div>
+      </div>
+      <div>
+        <div class="label">Output kontrakt</div>
+        <ul>
+          <li>Pozycjonowanie zatwierdzone przez decydenta</li>
+          <li>JTBD zwalidowane z min. 3 użytkownikami</li>
+          <li>NSM + input metrics ustalone</li>
+          <li>MVP scope + "never list" jasna</li>
+          <li>Budżet i timeline zaakceptowane</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="modules-label">Moduły · 11</div>
+    <div class="modules-grid">
+      <div class="module"><div class="mnum">0.1</div><h4>Discovery audit</h4><div class="when">Zawsze</div><div class="out">15–20 obserwacji z dowodami</div></div>
+      <div class="module"><div class="mnum">0.2</div><h4>Stakeholder map</h4><div class="when">Enterprise / multi-lokalizacja</div><div class="out">RACI + interesy + obawy</div></div>
+      <div class="module"><div class="mnum">0.3</div><h4>Jobs To Be Done</h4><div class="when">Zawsze</div><div class="out">3–5 głównych jobów (functional + emotional + social)</div></div>
+      <div class="module"><div class="mnum">0.4</div><h4>Konkurencja & benchmarking</h4><div class="when">Nowy produkt / rynek</div><div class="out">Tablica positioning + content gaps</div></div>
+      <div class="module"><div class="mnum">0.5</div><h4>Pozycjonowanie</h4><div class="when">Zawsze</div><div class="out">One-liner + statement + dlaczego TY</div></div>
+      <div class="module"><div class="mnum">0.6</div><h4>Value Proposition Canvas</h4><div class="when">Produkty B2B / SaaS</div><div class="out">Pains/gains/jobs ↔ relievers/creators</div></div>
+      <div class="module"><div class="mnum">0.7</div><h4>Business model</h4><div class="when">SaaS / produkt płatny</div><div class="out">Lean / Business Model Canvas</div></div>
+      <div class="module"><div class="mnum">0.8</div><h4>NSM + input metrics</h4><div class="when">Zawsze</div><div class="out">1 North Star Metric + 3–5 metryk wejściowych</div></div>
+      <div class="module"><div class="mnum">0.9</div><h4>MVP definition</h4><div class="when">Produkt / narzędzie</div><div class="out">Must-have / nice-to-have / never</div></div>
+      <div class="module"><div class="mnum">0.10</div><h4>Risk map</h4><div class="when">Projekt {'>'}150k PLN</div><div class="out">Top 5 ryzyk + mitigacje</div></div>
+      <div class="module"><div class="mnum">0.11</div><h4>Roadmap szkielet</h4><div class="when">Produkt z fazami</div><div class="out">90 / 180 / 365 dni view</div></div>
+    </div>
+
+    <div class="gate">
+      <div class="label">Decision gate</div>
+      <p>Czy umiem zdefiniować sukces produktu w jednym zdaniu z konkretną liczbą? Jeśli nie — zostań w fazie 0.</p>
+    </div>
+
+    <div class="roles">
+      <div class="role-card"><div class="lab">AI</div><div class="content">Klastryzacja transkryptów, generowanie wariantów pozycjonowania, benchmarking, draft Value Prop Canvas.</div></div>
+      <div class="role-card"><div class="lab you">Twoja rola</div><div class="content">Rozmowy z C-level, decyzja o pozycjonowaniu, "never list", akceptacja KPI.</div></div>
+      <div class="role-card"><div class="lab">Delegacja</div><div class="content">Desk research konkurencji, transkrypcje, kompozycja materiałów warsztatowych.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PHASE 1 ─── -->
+<section class="phase" id="faza-1">
+  <div class="container">
+    <div class="phase-header">
+      <div class="phase-number-big">01</div>
+      <div class="phase-title">
+        <h2>Brand Platform</h2>
+        <p class="goal">Zbudować fundament marki, na którym staną wszystkie kolejne decyzje — copy, UX, UI, komunikacja.</p>
+      </div>
+    </div>
+
+    <div class="contract">
+      <div>
+        <div class="label">Input</div>
+        <div class="content">Pozycjonowanie + JTBD + audience z fazy 0.</div>
+      </div>
+      <div>
+        <div class="label">Output kontrakt</div>
+        <ul>
+          <li>Brand platform zatwierdzona</li>
+          <li>Tone of voice z min. 10 przykładami "tak/nie"</li>
+          <li>Design tokens w formacie do dev handoffu</li>
+          <li>Logo i kolory finalne, nazwane, zorganizowane</li>
+          <li>Brand book dostępny dla zespołu klienta</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="modules-label">Moduły · 10</div>
+    <div class="modules-grid">
+      <div class="module"><div class="mnum">1.1</div><h4>Brand strategy</h4><div class="when">Zawsze</div><div class="out">Personality, archetyp, wartości, mission/vision</div></div>
+      <div class="module"><div class="mnum">1.2</div><h4>Naming</h4><div class="when">Nowa marka / sub-brand</div><div class="out">3 finalni kandydaci + uzasadnienie + dostępność</div></div>
+      <div class="module"><div class="mnum">1.3</div><h4>Brand architecture</h4><div class="when">Multi-brand</div><div class="out">Master / sub / endorsed model + zasady</div></div>
+      <div class="module"><div class="mnum">1.4</div><h4>Tone of Voice</h4><div class="when">Zawsze</div><div class="out">4–6 zasad ToV + przykłady "tak/nie"</div></div>
+      <div class="module"><div class="mnum">1.5</div><h4>Messaging pillars</h4><div class="when">Zawsze</div><div class="out">3–5 filarów + dowody + adaptacje</div></div>
+      <div class="module"><div class="mnum">1.6</div><h4>Visual identity foundation</h4><div class="when">Zawsze</div><div class="out">Logo, kolory, typografia, ikonografia, photo</div></div>
+      <div class="module"><div class="mnum">1.7</div><h4>Design tokens</h4><div class="when">Produkt cyfrowy</div><div class="out">JSON / Style Dictionary — colors, spacing, type</div></div>
+      <div class="module"><div class="mnum">1.8</div><h4>Brand book</h4><div class="when">Klient enterprise</div><div class="out">Living document w Notion / Figma</div></div>
+      <div class="module"><div class="mnum">1.9</div><h4>Brand voice guideline</h4><div class="when">Marka contentowa / SaaS</div><div class="out">Pełne wytyczne + AI prompty</div></div>
+      <div class="module"><div class="mnum">1.10</div><h4>Asset library</h4><div class="when">Multi-touchpoint</div><div class="out">Logo lockups, social, OOH, prezentacje</div></div>
+    </div>
+
+    <div class="gate">
+      <div class="label">Decision gate</div>
+      <p>Czy junior może napisać post lub zaprojektować baner bez Twojego briefu, używając tylko brand booka? Jeśli nie — domykaj.</p>
+    </div>
+
+    <div class="roles">
+      <div class="role-card"><div class="lab">AI</div><div class="content">30+ wariantów nazw, analiza sentymentu, draft ToV z transkryptów, konwersja brand booka na AI prompty.</div></div>
+      <div class="role-card"><div class="lab you">Twoja rola</div><div class="content">Brand strategy direction, decyzja o pozycjonowaniu wizualnym, akceptacja logo i palety, quality direction.</div></div>
+      <div class="role-card"><div class="lab">Delegacja</div><div class="content">Eksploracja typograficzna, asset library production, brand book composition.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PHASE 2 ─── -->
+<section class="phase" id="faza-2">
+  <div class="container">
+    <div class="phase-header">
+      <div class="phase-number-big">02</div>
+      <div class="phase-title">
+        <h2>Narracja & Copywriting</h2>
+        <p class="goal">Zamienić brand platform w żywe słowa — narrację, value prop copy, microcopy, content architecture.</p>
+      </div>
+    </div>
+
+    <div class="contract">
+      <div>
+        <div class="label">Input</div>
+        <div class="content">Brand platform + tone of voice + messaging pillars + audiences.</div>
+      </div>
+      <div>
+        <div class="label">Output kontrakt</div>
+        <ul>
+          <li>Narracja zatwierdzona przez decydenta</li>
+          <li>Value prop copy przetestowane z 5+ osobami</li>
+          <li>Microcopy library kompletna dla MVP</li>
+          <li>Content style guide gotowy do delegacji</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="modules-label">Moduły · 10</div>
+    <div class="modules-grid">
+      <div class="module"><div class="mnum">2.1</div><h4>Story spine / Narrative</h4><div class="when">Zawsze</div><div class="out">Główna narracja w 1 stronie</div></div>
+      <div class="module"><div class="mnum">2.2</div><h4>Value prop copy</h4><div class="when">Produkt / landing</div><div class="out">Headline + sub + 3–5 benefit blocks</div></div>
+      <div class="module"><div class="mnum">2.3</div><h4>Key messages per audience</h4><div class="when">Multi-segment</div><div class="out">Tabela: audience × messaging × proof</div></div>
+      <div class="module"><div class="mnum">2.4</div><h4>Content architecture</h4><div class="when">SaaS / strona</div><div class="out">Sitemap + content types + długości</div></div>
+      <div class="module"><div class="mnum">2.5</div><h4>SEO strategy</h4><div class="when">Ruch organiczny</div><div class="out">Keyword map + content plan</div></div>
+      <div class="module"><div class="mnum">2.6</div><h4>Microcopy library</h4><div class="when">Aplikacja / produkt</div><div class="out">Buttons, errors, empty states, tooltips</div></div>
+      <div class="module"><div class="mnum">2.7</div><h4>Email & notification copy</h4><div class="when">Komunikacja użytkownika</div><div class="out">Onboarding + transactional + marketing</div></div>
+      <div class="module"><div class="mnum">2.8</div><h4>Sales / marketing copy</h4><div class="when">Go-to-market</div><div class="out">Decks, one-pagers, sequences</div></div>
+      <div class="module"><div class="mnum">2.9</div><h4>Onboarding copy</h4><div class="when">Produkt cyfrowy</div><div class="out">First-run experience + hints</div></div>
+      <div class="module"><div class="mnum">2.10</div><h4>Content style guide</h4><div class="when">Produkt contentowy</div><div class="out">Pisownia, struktura, długości</div></div>
+    </div>
+
+    <div class="gate">
+      <div class="label">Decision gate</div>
+      <p>Czy osoba z target audience po przeczytaniu copy w 30 sekund wie: co to jest, dla kogo, dlaczego ma to wybrać? Test 5 osób — próg 4/5.</p>
+    </div>
+
+    <div class="roles">
+      <div class="role-card"><div class="lab">AI</div><div class="content">Generowanie wariantów copy, adaptacja per audience, microcopy z brand voice prompts, lokalizacja, A/B variants.</div></div>
+      <div class="role-card"><div class="lab you">Twoja rola</div><div class="content">Decyzja o narracji, hierarchii argumentów, akceptacja kluczowych headlines, quality direction tonu.</div></div>
+      <div class="role-card"><div class="lab">Delegacja</div><div class="content">Kawałkowa praca copywriterska, SEO research, mass copy production (warianty social).</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PHASE 3 ─── -->
+<section class="phase" id="faza-3">
+  <div class="container">
+    <div class="phase-header">
+      <div class="phase-number-big">03</div>
+      <div class="phase-title">
+        <h2>UX · Research, IA, Flows</h2>
+        <p class="goal">Zaprojektować strukturę i przepływy produktu zanim zacznie się wizualizacja UI.</p>
+      </div>
+    </div>
+
+    <div class="contract">
+      <div>
+        <div class="label">Input</div>
+        <div class="content">Narracja + content architecture + value prop copy + JTBD + NSM.</div>
+      </div>
+      <div>
+        <div class="label">Output kontrakt</div>
+        <ul>
+          <li>Critical user flows zaprojektowane i przetestowane</li>
+          <li>IA zwalidowana (card sort lub tree test)</li>
+          <li>Mid-fi prototyp przeszedł usability test (≥80% success)</li>
+          <li>Microcopy zintegrowane z wireframami</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="modules-label">Moduły · 10</div>
+    <div class="modules-grid">
+      <div class="module"><div class="mnum">3.1</div><h4>User research</h4><div class="when">Nowy produkt / segment</div><div class="out">5–10 wywiadów + insights</div></div>
+      <div class="module"><div class="mnum">3.2</div><h4>Personas / segments</h4><div class="when">B2B / multi-audience</div><div class="out">2–4 user types z behaviors</div></div>
+      <div class="module"><div class="mnum">3.3</div><h4>User journey map</h4><div class="when">Złożony produkt</div><div class="out">End-to-end z momentami prawdy</div></div>
+      <div class="module"><div class="mnum">3.4</div><h4>Service blueprint</h4><div class="when">Backstage / frontstage</div><div class="out">Frontstage + backstage + handoffs</div></div>
+      <div class="module"><div class="mnum">3.5</div><h4>Information Architecture</h4><div class="when">Złożony produkt</div><div class="out">Sitemap + nawigacja + taksonomia</div></div>
+      <div class="module"><div class="mnum">3.6</div><h4>User flows</h4><div class="when">Każdy produkt</div><div class="out">Critical paths z decision points</div></div>
+      <div class="module"><div class="mnum">3.7</div><h4>Wireframes (low-fi)</h4><div class="when">Każdy produkt cyfrowy</div><div class="out">Struktura, hierarchia, no styling</div></div>
+      <div class="module"><div class="mnum">3.8</div><h4>Prototyping (mid-fi)</h4><div class="when">Krytyczne flows</div><div class="out">Klikable prototyp w Figmie</div></div>
+      <div class="module"><div class="mnum">3.9</div><h4>Usability testing</h4><div class="when">Przed UI hi-fi</div><div class="out">5–7 użytkowników, structured tasks</div></div>
+      <div class="module"><div class="mnum">3.10</div><h4>UX writing review</h4><div class="when">Produkty cyfrowe</div><div class="out">Copy w kontekście — sync z fazą 2</div></div>
+    </div>
+
+    <div class="gate">
+      <div class="label">Decision gate</div>
+      <p>Czy 5 testowych użytkowników wykonało critical task bez pomocy? Jeśli mniej niż 4/5 — wracasz do flowów.</p>
+    </div>
+
+    <div class="roles">
+      <div class="role-card"><div class="lab">AI</div><div class="content">Synteza wywiadów, draft user flow z briefa, warianty IA, task scripts, analiza nagrań z testów.</div></div>
+      <div class="role-card"><div class="lab you">Twoja rola</div><div class="content">Direction strategiczny user flow (które joby krytyczne), decyzja o IA, akceptacja prototypu.</div></div>
+      <div class="role-card"><div class="lab">Delegacja</div><div class="content">Rekrutacja respondentów, production wireframes, notation z testów, detailed flows.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PHASE 4 ─── -->
+<section class="phase" id="faza-4">
+  <div class="container">
+    <div class="phase-header">
+      <div class="phase-number-big">04</div>
+      <div class="phase-title">
+        <h2>UI & Design System</h2>
+        <p class="goal">Zamienić wireframes i flows w produkcyjne, dostępne, spójne ekrany z systemowym fundamentem.</p>
+      </div>
+    </div>
+
+    <div class="contract">
+      <div>
+        <div class="label">Input</div>
+        <div class="content">Wireframes + prototyp + microcopy + design tokens + brand foundation.</div>
+      </div>
+      <div>
+        <div class="label">Output kontrakt</div>
+        <ul>
+          <li>Wszystkie ekrany MVP w hi-fi z wszystkimi stanami</li>
+          <li>Design system udokumentowany, używalny przez devów</li>
+          <li>A11y audit pass (lub udokumentowane wyjątki)</li>
+          <li>Handoff specs kompletne</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="modules-label">Moduły · 10</div>
+    <div class="modules-grid">
+      <div class="module"><div class="mnum">4.1</div><h4>Design system foundation</h4><div class="when">Produkt cyfrowy</div><div class="out">Tokens + grid + spacing system</div></div>
+      <div class="module"><div class="mnum">4.2</div><h4>Component library</h4><div class="when">10+ ekranów</div><div class="out">Atomy → molekuły → organizmy</div></div>
+      <div class="module"><div class="mnum">4.3</div><h4>Screen design (hi-fi)</h4><div class="when">Każdy produkt</div><div class="out">Wszystkie MVP screens, wszystkie stany</div></div>
+      <div class="module"><div class="mnum">4.4</div><h4>States & edge cases</h4><div class="when">Produkt cyfrowy</div><div class="out">Loading, empty, error, success, offline</div></div>
+      <div class="module"><div class="mnum">4.5</div><h4>Motion & micro-interactions</h4><div class="when">Premium / SaaS</div><div class="out">Specs + Lottie / Rive prototypes</div></div>
+      <div class="module"><div class="mnum">4.6</div><h4>Responsive specs</h4><div class="when">Web / multi-device</div><div class="out">Breakpoints + behavior rules</div></div>
+      <div class="module"><div class="mnum">4.7</div><h4>Accessibility (WCAG 2.1 AA)</h4><div class="when">Każdy produkt</div><div class="out">Audit + fixes + dokumentacja</div></div>
+      <div class="module"><div class="mnum">4.8</div><h4>Design QA system</h4><div class="when">Każdy produkt</div><div class="out">QA checklist + review workflow</div></div>
+      <div class="module"><div class="mnum">4.9</div><h4>Dev handoff specs</h4><div class="when">Do implementacji</div><div class="out">Tokens, components, props, edge cases</div></div>
+      <div class="module"><div class="mnum">4.10</div><h4>Code Connect / Variables</h4><div class="when">Stack zintegrowany</div><div class="out">Figma Variables ↔ kod tokens</div></div>
+    </div>
+
+    <div class="gate">
+      <div class="label">Decision gate</div>
+      <p>Czy developer może zaimplementować ekran X bez jednego pytania? Test na 3 losowych ekranach. Jeśli pyta — domykaj specs.</p>
+    </div>
+
+    <div class="roles">
+      <div class="role-card"><div class="lab">AI</div><div class="content">Warianty wizualne, a11y check (kontrast, alt text), copy dla edge cases, konwersja tokenów, Code Connect mapping draft.</div></div>
+      <div class="role-card"><div class="lab you">Twoja rola</div><div class="content">Quality direction wizualny, akceptacja DS foundation, review krytycznych ekranów, standard motion.</div></div>
+      <div class="role-card"><div class="lab">Delegacja</div><div class="content">Production ekranów na bazie systemu, component library extension, a11y fixes, handoff doc.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PHASE 5 ─── -->
+<section class="phase" id="faza-5">
+  <div class="container">
+    <div class="phase-header">
+      <div class="phase-number-big">05</div>
+      <div class="phase-title">
+        <h2>Build & Deploy</h2>
+        <p class="goal">Zamienić design w działający, monitorowany produkt.</p>
+      </div>
+    </div>
+
+    <div class="contract">
+      <div>
+        <div class="label">Input</div>
+        <div class="content">Design system + screens + handoff specs + KPI/NSM do monitoringu.</div>
+      </div>
+      <div>
+        <div class="label">Output kontrakt</div>
+        <ul>
+          <li>Produkt na produkcji</li>
+          <li>QA passed (defined acceptance criteria)</li>
+          <li>Monitoring i alerty włączone</li>
+          <li>Backup i rollback plan istnieje</li>
+          <li>Dokumentacja techniczna gotowa</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="modules-label">Moduły · 10</div>
+    <div class="modules-grid">
+      <div class="module"><div class="mnum">5.1</div><h4>Tech stack decision</h4><div class="when">Każdy produkt</div><div class="out">No-code / low-code / code + uzasadnienie</div></div>
+      <div class="module"><div class="mnum">5.2</div><h4>Architecture</h4><div class="when">Z backendem</div><div class="out">High-level architecture diagram</div></div>
+      <div class="module"><div class="mnum">5.3</div><h4>Data model</h4><div class="when">Z bazą</div><div class="out">ERD + flow danych</div></div>
+      <div class="module"><div class="mnum">5.4</div><h4>Sprint planning</h4><div class="when">Custom dev</div><div class="out">2-tygodniowe sprinty + DoD</div></div>
+      <div class="module"><div class="mnum">5.5</div><h4>Build (no-code)</h4><div class="when">MVP / pilot</div><div class="out">Webflow / Framer / Bubble / Softr</div></div>
+      <div class="module"><div class="mnum">5.6</div><h4>Build (custom)</h4><div class="when">SaaS skalowany</div><div class="out">Repo + CI/CD + dev process</div></div>
+      <div class="module"><div class="mnum">5.7</div><h4>Integracje</h4><div class="when">Z third-party</div><div class="out">Auth, analytics, payments, CRM</div></div>
+      <div class="module"><div class="mnum">5.8</div><h4>QA & testing</h4><div class="when">Każdy produkt</div><div class="out">Test plan + functional + cross-browser</div></div>
+      <div class="module"><div class="mnum">5.9</div><h4>Pre-launch checklist</h4><div class="when">Każdy produkt</div><div class="out">Performance, SEO, a11y, security, legal</div></div>
+      <div class="module"><div class="mnum">5.10</div><h4>Deploy & monitoring</h4><div class="when">Każdy produkt</div><div class="out">Production env + alerts + uptime</div></div>
+    </div>
+
+    <div class="gate">
+      <div class="label">Decision gate</div>
+      <p>Czy mogę pokazać produkt klientowi bez wstydu i odzyskać go po awarii w {'<'}1h? Jeśli nie — nie deploy.</p>
+    </div>
+
+    <div class="roles">
+      <div class="role-card"><div class="lab">AI</div><div class="content">Boilerplate code (review przez dev), test cases, bug triage, dokumentacja z code, pre-launch auto-check.</div></div>
+      <div class="role-card"><div class="lab you">Twoja rola</div><div class="content">Decyzja o stacku (kluczowa — wpływa na fazę 7), strategiczny review architektury, final approval.</div></div>
+      <div class="role-card"><div class="lab">Delegacja</div><div class="content">Build (full delegacja do dev/no-code partnera), QA, monitoring setup.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PHASE 6 ─── -->
+<section class="phase" id="faza-6">
+  <div class="container">
+    <div class="phase-header">
+      <div class="phase-number-big">06</div>
+      <div class="phase-title">
+        <h2>Launch & Adopcja</h2>
+        <p class="goal">Wprowadzić produkt na rynek i zapewnić, że pierwsi użytkownicy go skutecznie używają.</p>
+      </div>
+    </div>
+
+    <div class="contract">
+      <div>
+        <div class="label">Input</div>
+        <div class="content">Działający produkt + sales/marketing copy.</div>
+      </div>
+      <div>
+        <div class="label">Output kontrakt</div>
+        <ul>
+          <li>Pierwsi użytkownicy onboarded (zdefiniowana liczba)</li>
+          <li>Activation rate mierzona, baseline ustalony</li>
+          <li>Feedback loop działa — min. 1 cykl iteracji</li>
+          <li>Support nie pali — ticket time {'<'} SLA</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="modules-label">Moduły · 10</div>
+    <div class="modules-grid">
+      <div class="module"><div class="mnum">6.1</div><h4>Go-to-market plan</h4><div class="when">Każdy launch</div><div class="out">Audiences, kanały, timing, KPI launch</div></div>
+      <div class="module"><div class="mnum">6.2</div><h4>Launch communication</h4><div class="when">Public launch</div><div class="out">PR, social, email, partner</div></div>
+      <div class="module"><div class="mnum">6.3</div><h4>Onboarding flows</h4><div class="when">Z userami</div><div class="out">First-run experience + checkpoints</div></div>
+      <div class="module"><div class="mnum">6.4</div><h4>Support setup</h4><div class="when">Z userami</div><div class="out">Help center + ticket system + SLA</div></div>
+      <div class="module"><div class="mnum">6.5</div><h4>Training materials</h4><div class="when">B2B</div><div class="out">Loomy, decks, dokumentacja</div></div>
+      <div class="module"><div class="mnum">6.6</div><h4>Sales enablement</h4><div class="when">Płatny</div><div class="out">Pitch decks, demo scripts, FAQ</div></div>
+      <div class="module"><div class="mnum">6.7</div><h4>First-user feedback loop</h4><div class="when">Każdy launch</div><div class="out">In-app + manual collection</div></div>
+      <div class="module"><div class="mnum">6.8</div><h4>Activation tracking</h4><div class="when">Produkt cyfrowy</div><div class="out">Funnel signup → "aha moment"</div></div>
+      <div class="module"><div class="mnum">6.9</div><h4>Beta program</h4><div class="when">Złożony produkt</div><div class="out">5–20 anchor users z aktywnym feedbackiem</div></div>
+      <div class="module"><div class="mnum">6.10</div><h4>Crisis playbook</h4><div class="when">Enterprise</div><div class="out">Co robić jak coś pęknie publicznie</div></div>
+    </div>
+
+    <div class="gate">
+      <div class="label">Decision gate</div>
+      <p>Czy 5 pierwszych użytkowników zrobiło "aha moment" bez Twojej osobistej pomocy? Jeśli nie — domykasz onboarding.</p>
+    </div>
+
+    <div class="roles">
+      <div class="role-card"><div class="lab">AI</div><div class="content">Personalizacja launch copy per kanał, synteza pierwszego feedbacku, auto-tagging tickets, FAQ generation, email sequences.</div></div>
+      <div class="role-card"><div class="lab you">Twoja rola</div><div class="content">Strategiczna decyzja GTM, pierwsze spotkania z anchor customers, direction crisis communication.</div></div>
+      <div class="role-card"><div class="lab">Delegacja</div><div class="content">Cała egzekucja GTM, support (tier 1 AI, tier 2 ekspert), training materials.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PHASE 7 ─── -->
+<section class="phase" id="faza-7">
+  <div class="container">
+    <div class="phase-header">
+      <div class="phase-number-big">07</div>
+      <div class="phase-title">
+        <h2>Operacje & Skalowanie</h2>
+        <p class="goal">Zamienić jednorazowy launch w żywy, iterujący system, który rośnie bez Twojego dziennego udziału.</p>
+      </div>
+    </div>
+
+    <div class="contract">
+      <div>
+        <div class="label">Input</div>
+        <div class="content">Aktywny produkt + pierwsze metryki + feedback loop.</div>
+      </div>
+      <div>
+        <div class="label">Output kontrakt — produkt żyje</div>
+        <ul>
+          <li>Metryki płyną i są regularnie reviewowane</li>
+          <li>Roadmap żyje, decyzje są logowane</li>
+          <li>Twój czas operacyjny ≤15% miesięcznie po 90 dniach</li>
+          <li>Klient/team utrzymuje produkt bez Ciebie przez 30 dni</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="modules-label">Moduły · 11</div>
+    <div class="modules-grid">
+      <div class="module"><div class="mnum">7.1</div><h4>Analytics & KPI tracking</h4><div class="when">Każdy produkt</div><div class="out">Dashboard NSM + input metrics</div></div>
+      <div class="module"><div class="mnum">7.2</div><h4>Iteration cadence</h4><div class="when">Każdy produkt</div><div class="out">Sprint / weekly / monthly review rytm</div></div>
+      <div class="module"><div class="mnum">7.3</div><h4>Build–Measure–Learn</h4><div class="when">Iteracyjny</div><div class="out">Hypothesis log + experiment system</div></div>
+      <div class="module"><div class="mnum">7.4</div><h4>Customer success</h4><div class="when">B2B / SaaS</div><div class="out">CS playbook + checkpoints + churn signals</div></div>
+      <div class="module"><div class="mnum">7.5</div><h4>Content engine</h4><div class="when">Z content marketing</div><div class="out">Editorial cadence + production system</div></div>
+      <div class="module"><div class="mnum">7.6</div><h4>Roadmap governance</h4><div class="when">Multi-stakeholder</div><div class="out">Now / Next / Later + decision log</div></div>
+      <div class="module"><div class="mnum">7.7</div><h4>Versioning & change mgmt</h4><div class="when">Z updatami</div><div class="out">Release notes + comm system</div></div>
+      <div class="module"><div class="mnum">7.8</div><h4>SLA & support tiers</h4><div class="when">Enterprise</div><div class="out">Tiered support + escalation</div></div>
+      <div class="module"><div class="mnum">7.9</div><h4>Growth ops</h4><div class="when">Z lejkiem</div><div class="out">Acquisition / activation / retention loops</div></div>
+      <div class="module"><div class="mnum">7.10</div><h4>Productization handover</h4><div class="when">Skalowanie</div><div class="out">Pełen handover do team / wykonawców</div></div>
+      <div class="module"><div class="mnum">7.11</div><h4>AI ops layer</h4><div class="when">Każdy produkt</div><div class="out">AI w analizie, support, content, QA</div></div>
+    </div>
+
+    <div class="gate">
+      <div class="label">Decision gate</div>
+      <p>Czy mogę wziąć 2-tygodniowy urlop bez awarii produktu i bez wymówek? Jeśli nie — wracasz do operacjonalizacji.</p>
+    </div>
+
+    <div class="roles">
+      <div class="role-card"><div class="lab">AI</div><div class="content">Analiza metryk i flagowanie anomalii, synthesis feedbacku, auto-roadmap proposals, content engine, support tier 1.</div></div>
+      <div class="role-card"><div class="lab you">Twoja rola</div><div class="content">Strategiczny review kwartalny, decyzje o roadmap pivots, relacja z anchor customers, decyzja o produktyzacji / sunset.</div></div>
+      <div class="role-card"><div class="lab">Delegacja</div><div class="content">Wszystko egzekucyjne — ops, dev, marketing, support, content production.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CROSS-CUTTING LAYERS ─── -->
+<section id="warstwy">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num">02 / Warstwy</div>
+      <div class="section-title">
+        <h2>Warstwy poprzeczne</h2>
+        <p class="sub">6 systemów, które żyją <em>przez</em> wszystkie fazy. To system operacyjny pod fazami — bez nich framework się rozjeżdża.</p>
+      </div>
+    </div>
+    <div class="layers-grid">
+      <div class="layer">
+        <div class="lnum">L.01</div>
+        <h4>Governance</h4>
+        <ul>
+          <li>Decision log — każda decyzja strategiczna</li>
+          <li>RACI per faza</li>
+          <li>Stakeholder communication cadence</li>
+          <li>Change request process</li>
+        </ul>
+      </div>
+      <div class="layer">
+        <div class="lnum">L.02</div>
+        <h4>QA</h4>
+        <ul>
+          <li>Acceptance criteria per faza</li>
+          <li>Quality Bible — Twój smak w zasadach</li>
+          <li>Review checkpoints</li>
+          <li>Definition of Done per artefakt</li>
+        </ul>
+      </div>
+      <div class="layer">
+        <div class="lnum">L.03</div>
+        <h4>AI Workflow</h4>
+        <ul>
+          <li>Prompt library per faza</li>
+          <li>AI tools stack</li>
+          <li>Human-in-the-loop checkpoints</li>
+          <li>Governance: gdzie tak, gdzie nie</li>
+        </ul>
+      </div>
+      <div class="layer">
+        <div class="lnum">L.04</div>
+        <h4>Documentation</h4>
+        <ul>
+          <li>Living docs (Notion / Figma)</li>
+          <li>Auto-generated z AI</li>
+          <li>Versioning artefaktów</li>
+          <li>Single source of truth</li>
+        </ul>
+      </div>
+      <div class="layer">
+        <div class="lnum">L.05</div>
+        <h4>Stakeholder Mgmt</h4>
+        <ul>
+          <li>Komunikacja per persona</li>
+          <li>Demo cadence</li>
+          <li>Escalation paths</li>
+          <li>Risk communication</li>
+        </ul>
+      </div>
+      <div class="layer">
+        <div class="lnum">L.06</div>
+        <h4>Financial</h4>
+        <ul>
+          <li>Budget tracking per faza</li>
+          <li>Scope guardrails</li>
+          <li>Change orders process</li>
+          <li>Margin tracking</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── OPERATING MODEL ─── -->
+<section id="model">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num">03 / Model</div>
+      <div class="section-title">
+        <h2>Operating Model</h2>
+        <p class="sub">Twoja obecność maleje z każdą fazą. Średnia po stabilizacji: 35% — Twoje docelowe 80/20.</p>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:60px;">Faza</th>
+            <th>Nazwa</th>
+            <th style="width:200px;">Twoja obecność</th>
+            <th>Twoja rola</th>
+            <th>Główni wykonawcy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="num">00</td><td>Discovery & Strategia</td><td class="presence">90%<span class="bar" style="--w:90%"></span></td><td>Architekt, decydent</td><td>Ty + ops support</td></tr>
+          <tr><td class="num">01</td><td>Brand Platform</td><td class="presence">80%<span class="bar" style="--w:80%"></span></td><td>Strategist + creative director</td><td>Ty + mid designer</td></tr>
+          <tr><td class="num">02</td><td>Narracja & Copy</td><td class="presence">60%<span class="bar" style="--w:60%"></span></td><td>Direction + final approver</td><td>Senior copy + AI</td></tr>
+          <tr><td class="num">03</td><td>UX & Flow</td><td class="presence">50%<span class="bar" style="--w:50%"></span></td><td>Direction + critical reviews</td><td>Mid UX + AI</td></tr>
+          <tr><td class="num">04</td><td>UI & Design System</td><td class="presence">40%<span class="bar" style="--w:40%"></span></td><td>Quality direction + key screens</td><td>Mid/Senior UI + AI</td></tr>
+          <tr><td class="num">05</td><td>Build & Deploy</td><td class="presence">20%<span class="bar" style="--w:20%"></span></td><td>Tech direction + final approval</td><td>Dev / no-code partner</td></tr>
+          <tr><td class="num">06</td><td>Launch & Adopcja</td><td class="presence">25%<span class="bar" style="--w:25%"></span></td><td>Strategic launch + anchor relations</td><td>Ops / marketing partner</td></tr>
+          <tr><td class="num">07</td><td>Operacje & Skalowanie</td><td class="presence">12%<span class="bar" style="--w:12%"></span></td><td>Strategiczny nadzór + decyzje pivot</td><td>CS / ops + AI</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MODULARITY RULES ─── -->
+<section id="modularnosc">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num">04 / Modularność</div>
+      <div class="section-title">
+        <h2>Jak system rośnie</h2>
+        <p class="sub">Reguły dodawania nowych modułów bez psucia struktury.</p>
+      </div>
+    </div>
+    <ol class="rules-list">
+      <li><strong>Faza jest stała, moduł jest pluggable</strong>Nie tworzysz nowych faz — dopinasz moduły. 8 faz zostaje.</li>
+      <li><strong>Każdy moduł ma kontrakt</strong>Cel, input, output, kiedy włączać, AI rola, kto wykonuje, czas (lite / standard / deep).</li>
+      <li><strong>Moduł nie łamie kontraktu fazy</strong>Może wzbogacać output fazy, ale nie zdejmować z niego wymagań.</li>
+      <li><strong>3 warianty głębokości</strong>Lite (1 dzień), standard (1 tydzień), deep (4+ tyg). Skala dopasowana do projektu.</li>
+      <li><strong>Walidacja na pilotach</strong>Nowy moduł testujesz na 2 projektach zanim wchodzi do biblioteki.</li>
+      <li><strong>Każdy moduł musi się dać delegować</strong>Jeśli wymaga 100% Twojego mózgu — wraca do refaktoringu.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ─── DELIVERABLE BUNDLE ─── -->
+<section id="bundle">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num">05 / Bundle</div>
+      <div class="section-title">
+        <h2>Co konkretnie dostaje klient</h2>
+        <p class="sub">Pełen pakiet operacyjny — nie tylko produkt. To powód, dla którego oferta jest droga.</p>
+      </div>
+    </div>
+    <div class="bundle-grid">
+      <div class="bundle-cat">
+        <div class="cat">Strategia</div>
+        <ul><li>Pozycjonowanie</li><li>JTBD</li><li>NSM</li><li>MVP scope</li><li>Roadmap</li></ul>
+      </div>
+      <div class="bundle-cat">
+        <div class="cat">Brand</div>
+        <ul><li>Brand platform</li><li>Design tokens</li><li>Brand book</li><li>Asset library</li></ul>
+      </div>
+      <div class="bundle-cat">
+        <div class="cat">Treść</div>
+        <ul><li>Narracja</li><li>Value prop copy</li><li>Microcopy library</li><li>Content style guide</li></ul>
+      </div>
+      <div class="bundle-cat">
+        <div class="cat">Produkt</div>
+        <ul><li>Wireframes & prototyp</li><li>Screens hi-fi</li><li>Design system</li><li>Działający produkt</li></ul>
+      </div>
+      <div class="bundle-cat">
+        <div class="cat">Tech</div>
+        <ul><li>Architektura</li><li>Repo / no-code env</li><li>Dokumentacja</li></ul>
+      </div>
+      <div class="bundle-cat">
+        <div class="cat">Operacje</div>
+        <ul><li>SOP</li><li>QA checklists</li><li>Support playbook</li><li>Training materials</li></ul>
+      </div>
+      <div class="bundle-cat">
+        <div class="cat">Wzrost</div>
+        <ul><li>GTM plan</li><li>Analytics dashboard</li><li>Iteration system</li></ul>
+      </div>
+      <div class="bundle-cat">
+        <div class="cat">Governance</div>
+        <ul><li>Decision log</li><li>RACI</li><li>Roadmap governance</li><li>Change process</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── OPERATING PRINCIPLE ─── -->
+<section class="principle-section" id="zasada">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num">06 / Zasada</div>
+      <div class="section-title">
+        <h2>Operating Principle</h2>
+        <p class="sub">Cały framework w jednej zasadzie i trzech testach.</p>
+      </div>
+    </div>
+    <blockquote class="principle-quote">
+      Każda faza buduje fundament pod następną. Nie idziesz dalej, dopóki kontrakt wyjścia nie jest spełniony. Twoja obecność maleje z każdą fazą. Każdy artefakt ma być na tyle udokumentowany, że inny człowiek go utrzyma.
+    </blockquote>
+    <div class="tests-grid">
+      <div class="test">
+        <div class="tn">Test 01 / Kontrakt</div>
+        <h4>Czy faza jest zamknięta?</h4>
+        <p>Zgodnie z definicją wyjścia. Jeśli nie — domykaj. Bez wyjątków.</p>
+      </div>
+      <div class="test">
+        <div class="tn">Test 02 / Delegacja</div>
+        <h4>Czy mogę przekazać tę pracę?</h4>
+        <p>Komuś innemu z tymi artefaktami. Jeśli nie — dokumentuj dalej.</p>
+      </div>
+      <div class="test">
+        <div class="tn">Test 03 / Długowieczność</div>
+        <h4>Czy będzie używane za 6 miesięcy?</h4>
+        <p>Bez Twojej interwencji. Jeśli nie — przebuduj albo wytnij ze scope.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="container">
+    <div class="inner">
+      <div>r352 · Reszek · Operating System · v1.0</div>
+      <div>2026 · Product Building Framework</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Sticky nav active state
+  const navLinks = document.querySelectorAll('.phase-nav a');
+  const sections = Array.from(navLinks).map(a => {
+    const id = a.getAttribute('href').replace('#','');
+    return { link: a, el: document.getElementById(id) };
+  });
+
+  function onScroll() {
+    const scroll = window.scrollY + 200;
+    let current = sections[0];
+    for (const s of sections) {
+      if (s.el && s.el.offsetTop <= scroll) current = s;
+    }
+    navLinks.forEach(l => l.classList.remove('active'));
+    if (current) current.link.classList.add('active');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Reveal on scroll
+  if ('IntersectionObserver' in window) {
+    const els = document.querySelectorAll('.module, .layer, .role-card, .bundle-cat, .test, .rules-list li, .stat');
+    els.forEach(el => el.classList.add('reveal'));
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(el => io.observe(el));
+  }
+</script>
+
+</body>
+</html>

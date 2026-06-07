@@ -2,6 +2,7 @@ export const translations = {
   en: {
     nav: {
       work: "Work",
+      framework: "Framework",
       philosophy: "Philosophy",
       services: "Services",
       contact: "Contact",
@@ -20,7 +21,7 @@ export const translations = {
       // "Move fast, steady cadence" demoted from headline to signature line below the divider —
       // becomes brand mantra / closing thought rather than primary explanatory copy.
       signature: "Move fast, steady cadence.",
-      description_title: "For multi-location brands and scaling operators.",
+      description_title: "For brands operating at scale — across locations, products, or campaigns.",
       description_body: "Retainer for the steady. Project for the sharp. Same r3loop — applied to both, and to our own products in production.",
       quote: "Design begins with a decision, not a tool.",
       micro_1: "80%+ briefs ready first round.",
@@ -622,6 +623,7 @@ export const translations = {
   pl: {
     nav: {
       work: "Prace",
+      framework: "Framework",
       philosophy: "Filozofia",
       services: "Usługi",
       contact: "Kontakt",
@@ -638,7 +640,7 @@ export const translations = {
       title_mobile: "Design ops<br/>& systemy wdrożeniowe<br/>— zbudowane do skali.",
       // "Tempo bez chaosu" demoted from headline to signature line — brand mantra position.
       signature: "Tempo bez chaosu.",
-      description_title: "Dla marek multi-location i skalujących się operatorów.",
+      description_title: "Dla marek operujących w skali — przez lokalizacje, produkty lub kampanie.",
       description_body: "Retainer dla stabilnych. Projekt dla ostrych. To samo r3loop — zastosowane do obu, i do naszych własnych produktów w produkcji.",
       quote: "Projektowanie zaczyna się od decyzji, nie od narzędzia.",
       micro_1: "80%+ briefów gotowych za pierwszym razem.",

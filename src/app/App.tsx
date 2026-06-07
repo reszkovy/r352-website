@@ -33,6 +33,7 @@ const LimitedAccess5 = lazy(() => import("@/app/pages/LimitedAccess5").then(m =>
 const LimitedAccess5Meeting = lazy(() => import("@/app/pages/LimitedAccess5Meeting").then(m => ({ default: m.LimitedAccess5Meeting })));
 const LimitedAccess5Pricing = lazy(() => import("@/app/pages/LimitedAccess5Pricing").then(m => ({ default: m.LimitedAccess5Pricing })));
 const Process = lazy(() => import("@/app/pages/Process").then(m => ({ default: m.Process })));
+const Framework = lazy(() => import("@/app/pages/Framework").then(m => ({ default: m.Framework })));
 const Glossary = lazy(() => import("@/app/pages/Glossary").then(m => ({ default: m.Glossary })));
 const FAQ = lazy(() => import("@/app/pages/FAQ").then(m => ({ default: m.FAQ })));
 const Privacy = lazy(() => import("@/app/pages/Privacy").then(m => ({ default: m.Privacy })));
@@ -193,6 +194,11 @@ function AppContent() {
       title: "Glossary — r352 | Vocabulary we operate with",
       description: "Every distinctive r352 term defined: r3loop, design ops, multi-location brand operations, master/variant/pre-production gates, brief volume × decision velocity, operator vs agency, and more. The source of truth for our vocabulary."
     };
+    if (path === "/framework") return {
+      title: "Product Building Framework — r352 | 8-phase system from strategy to live product",
+      description: "Reszek's master operating framework. 8 phases (Discovery → Brand → Narrative → UX → UI → Build → Launch → Operations), each with input/output contracts and decision gates. Universal: landing pages, multi-location ops, SaaS, brand launches. r3loop is the design ops application.",
+      ogImage: "https://www.r352.com/og/process.png"
+    };
     if (path === "/faq") return {
       title: "FAQ — r352 | Common questions answered",
       description: "What is r3loop? Who does r352 work with? How is r352 different from a creative agency? Engagement models, founder background — answered."
@@ -314,6 +320,7 @@ function AppContent() {
               <Route path="/services" component={Services} />
               <Route path="/services/:slug" component={ServiceDetail} />
               <Route path="/process" component={Process} />
+              <Route path="/framework" component={Framework} />
               <Route path="/glossary" component={Glossary} />
               <Route path="/faq" component={FAQ} />
               <Route path="/privacy" component={Privacy} />

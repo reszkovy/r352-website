@@ -131,10 +131,13 @@ export function AgencyHeader() {
     };
   }, [isMenuOpen]);
 
+  // Nav hierarchy: Work (proof) → Framework (master IP) → Process (r3loop slice) →
+  // Services (how to buy) → Journal (content). Philosophy moved to footer-only
+  // discovery — Framework + Process now cover the "how we think" surface.
   const navItems = [
     { href: "/work", label: t("nav.work") },
+    { href: "/framework", label: t("nav.framework") },
     { href: "/process", label: t("nav.process") },
-    { href: "/philosophy", label: t("nav.philosophy") },
     { href: "/services", label: t("nav.services") },
     { href: "/journal", label: t("nav.journal") },
   ];
