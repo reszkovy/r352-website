@@ -20,7 +20,9 @@ export const translations = {
       //   2. "For growing brands"        — WHO it's for (audience qualifier — scaling
       //                                    brands across product, locations, campaigns)
       title: "Strategic design partner.<br/>For growing brands.",
-      title_mobile: "Strategic design partner.<br/>For growing brands.",
+      // Mobile breaks: explicit 4-line stack prevents browser from word-breaking
+      // "growing" into "growin / g brands." at 48px on 375px viewport.
+      title_mobile: "Strategic<br/>design partner.<br/>For growing<br/>brands.",
       // "Move fast, steady cadence" demoted from headline to signature line below the divider —
       // becomes brand mantra / closing thought rather than primary explanatory copy.
       signature: "Move fast, steady cadence.",
@@ -644,7 +646,9 @@ export const translations = {
       //   2. "Dla rosnących marek"            — DLA KOGO (skalujące się marki — produkt,
       //                                         lokalizacje, kampanie)
       title: "Strategiczny partner designowy.<br/>Dla rosnących marek.",
-      title_mobile: "Strategiczny partner<br/>designowy.<br/>Dla rosnących marek.",
+      // Mobile breaks: explicit 4-line stack — "Strategiczny" + "partner designowy."
+      // razem są za szerokie na 375px przy 48px foncie, wymuszamy clean stack.
+      title_mobile: "Strategiczny<br/>partner designowy.<br/>Dla rosnących<br/>marek.",
       // "Tempo bez chaosu" demoted from headline to signature line — brand mantra position.
       signature: "Tempo bez chaosu.",
       description_title: "Dla marek operujących w skali — przez lokalizacje, produkty lub kampanie.",
