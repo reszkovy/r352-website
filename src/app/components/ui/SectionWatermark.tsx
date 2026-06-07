@@ -47,19 +47,30 @@ export function SectionWatermark({
     const mm = gsap.matchMedia();
 
     mm.add("(min-width: 768px)", () => {
-      gsap.set(num, { yPercent: -10, rotate: -4 });
+      // fromTo with immediateRender:true GUARANTEES the initial state paints
+      // before any scroll happens. Previous gsap.set + gsap.to pattern relied on
+      // ScrollTrigger calculating initial progress correctly — which sometimes
+      // delayed visibility until first scroll/click interaction triggered a recalc.
+      gsap.fromTo(
+        num,
+        { yPercent: -10, rotate: -4 },
+        {
+          yPercent: 30,
+          rotate: 6,
+          ease: "none",
+          immediateRender: true,
+          scrollTrigger: {
+            trigger: section,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1.2,
+          },
+        }
+      );
 
-      gsap.to(num, {
-        yPercent: 30,
-        rotate: 6,
-        ease: "none",
-        scrollTrigger: {
-          trigger: section,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1.2,
-        },
-      });
+      // Force ScrollTrigger to recompute positions after layout settles —
+      // covers cases where Lenis smooth scroll hasn't synced yet on first paint.
+      requestAnimationFrame(() => ScrollTrigger.refresh());
     });
 
     return () => mm.revert();
@@ -75,9 +86,13 @@ export function SectionWatermark({
         className={`pointer-events-none absolute top-0 ${alignClass} -z-10 hidden md:block select-none overflow-hidden`}
         style={{ width: "min(90vw, 1100px)", height: "100%" }}
       >
+        {/* Color: previously dark:text-white/[0.06] (visible as LIGHT gray on dark bg).
+            Now uses #1e1e1e — a tone of BLACK slightly lighter than the bg (#151515),
+            so the watermark reads as an embossed shadow not a bright overlay.
+            Light mode keeps the subtle black tint at low opacity. */}
         <span
           ref={numberRef}
-          className="absolute right-0 top-0 font-display font-normal leading-none text-neutral-900/[0.045] dark:text-white/[0.06]"
+          className="absolute right-0 top-0 font-display font-normal leading-none text-neutral-900/[0.04] dark:text-[#1e1e1e]"
           style={{
             fontSize: "clamp(14rem, 32vw, 30rem)",
             letterSpacing: "-0.04em",
