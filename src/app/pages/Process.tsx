@@ -475,62 +475,50 @@ export function Process() {
       {/* ─── Who this is for ─── */}
       <section className="py-24 md:py-32 border-b border-neutral-200 dark:border-white/10">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-16 md:gap-24">
+          {/* Who this is for — role-based personas (migrated from former /framework
+              "For operators who build systems" section). Each role gets a lime label
+              + 1-sentence specific positioning. Replaces the previous flat team-type
+              list with sharper persona qualification. */}
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-10 md:gap-16">
             <Reveal>
               <div>
-                <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-4">
+                <span className="block text-[11px] uppercase tracking-[0.25em] text-neutral-800 dark:text-[#D4FF00] font-display mb-4">
                   {lang === "pl" ? "Dla kogo" : "Who this is for"}
                 </span>
-                {/* Explicit 3-line semantic break — controls rag and keeps
-                    clause boundaries on their own lines instead of natural wrap.
-                    Mobile collapses to natural flow via hidden <br/> on small screens. */}
-                <h2 className="text-4xl md:text-5xl font-normal tracking-tight text-neutral-900 dark:text-white mb-8 leading-[1.15] text-balance">
-                  {lang === "pl" ? (
-                    <>
-                      Dla zespołów,<br className="hidden md:inline" />
-                      {" "}gdzie design<br className="hidden md:inline" />
-                      {" "}to nie pojedyncze zadanie.
-                    </>
-                  ) : (
-                    <>
-                      Built for teams where<br className="hidden md:inline" />
-                      {" "}design work is no longer<br className="hidden md:inline" />
-                      {" "}a single task.
-                    </>
-                  )}
+                <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[1.05] mb-6">
+                  {lang === "pl" ? "Dla operatorów, którzy budują systemy — nie tylko produkty." : "For operators who build systems — not just products."}
                 </h2>
-                <p className="text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
                   {lang === "pl"
-                    ? "Dla organizacji zarządzających wieloma stakeholderami, lokalizacjami, markami, kampaniami, produktami lub powtarzającymi się requestami — gdzie jakość, szybkość i ownership trzeba zsystemizować."
-                    : "For organizations managing multiple stakeholders, locations, brands, campaigns, product surfaces or recurring asset requests — where quality, speed and ownership need to be systemized."}
+                    ? "r3loop działa, kiedy stawka jest większa niż jeden ekran. Kiedy decyzje, które podejmiesz dziś, będą żyć w organizacji przez lata."
+                    : "r3loop works when the stakes are bigger than one screen. When the decisions you make today will live in the organization for years."}
                 </p>
               </div>
             </Reveal>
-            <Reveal delay={0.15}>
-              <ul className="flex flex-col divide-y divide-neutral-200 dark:divide-white/10">
-                {(lang === "pl" ? [
-                  "Zespoły marketingu z powtarzającymi się requestami na assety",
-                  "Marki wielolokalizacyjne",
-                  "Zespoły brand i growth",
-                  "Zespoły produktowe",
-                  "Organizacje z wieloma stakeholderami",
-                  "Zespoły utknięte w niejasnych pętlach feedbacku",
-                  "Zespoły gdzie zbyt wiele pracy idzie przez email, chat i last-minute requesty",
-                ] : [
-                  "Marketing teams with recurring asset requests",
-                  "Multi-location brands",
-                  "Brand and growth teams",
-                  "Product teams",
-                  "Organizations with many stakeholders",
-                  "Teams stuck in unclear feedback loops",
-                  "Teams where too much work happens through email, chat and last-minute requests",
-                ]).map((item, i) => (
-                  <li key={i} className="py-4 text-base md:text-lg text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors">
-                    {item}
+            <ul className="flex flex-col divide-y divide-neutral-200 dark:divide-white/10">
+              {(lang === "pl" ? [
+                { role: "Założyciel / CEO", desc: "Wypuszczasz SaaS lub digital product — chcesz uniknąć kosztownych poprawek i przepalonych iteracji." },
+                { role: "Właściciel marki", desc: "Relaunchujesz tożsamość lub wchodzisz na nowy rynek — szukasz systemu, który utrzyma jakość bez Twojej obecności." },
+                { role: "Lider operacji multi-location", desc: "Konsolidujesz operacje kreatywne dla 5–300+ lokalizacji — chcesz scenariuszy, nie improwizacji." },
+                { role: "Product Manager", desc: "Dziedziczysz pół-zbudowany produkt — potrzebujesz domknięcia faz i wyciszenia ad-hoc requestów." },
+                { role: "Lider marketingu", desc: "Przygotowujesz launch marki i kampanii — chcesz spójności tonu, narracji i wykonania." },
+                { role: "Operating Partner", desc: "Budujesz operating system dla portfolio firm — potrzebujesz metodologii, która skaluje bez Ciebie." },
+              ] : [
+                { role: "Founder / CEO", desc: "You're launching a SaaS or digital product — you want to avoid costly revisions and burned iterations." },
+                { role: "Brand owner", desc: "You're relaunching identity or entering a new market — you need a system that holds quality without your presence." },
+                { role: "Multi-location ops leader", desc: "You're consolidating creative operations across 5–300+ locations — you want scenarios, not improvisation." },
+                { role: "Product Manager", desc: "You've inherited a half-built product — you need phases closed and ad-hoc requests silenced." },
+                { role: "Marketing leader", desc: "You're preparing a brand + campaign launch — you want consistent tone, narrative, and execution." },
+                { role: "Operating Partner", desc: "You're building an operating system across portfolio companies — you need a methodology that scales without you." },
+              ]).map((item, i) => (
+                <Reveal key={i} delay={0.05 + i * 0.04}>
+                  <li className="py-5">
+                    <div className="text-[11px] font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-2">{item.role}</div>
+                    <p className="text-base text-neutral-700 dark:text-neutral-300 leading-relaxed [text-wrap:pretty]">{item.desc}</p>
                   </li>
-                ))}
-              </ul>
-            </Reveal>
+                </Reveal>
+              ))}
+            </ul>
           </div>
         </div>
       </section>

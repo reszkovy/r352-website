@@ -122,7 +122,7 @@ export function AgencyHero() {
                       hairline on top reads as accent without adding a "boxy" frame.
                       Arrow pointer (rotated square) visually links tooltip to chip. */}
                   <motion.span
-                    className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-max max-w-[280px] z-[60]"
+                    className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-max max-w-[220px] z-[60]"
                     variants={{
                       rest: { opacity: 0, y: 8, scale: 0.96, filter: "blur(6px)" },
                       hover: { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" },
@@ -132,7 +132,7 @@ export function AgencyHero() {
                     <span className="relative block px-4 py-3 bg-[#0a0a0a]/85 backdrop-blur-xl border border-white/10 rounded-[6px] shadow-[0_12px_32px_-12px_rgba(0,0,0,0.6)]">
                       {/* Lime gradient hairline accent across top */}
                       <span aria-hidden="true" className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-[#D4FF00]/50 to-transparent" />
-                      <span className="block text-[11px] leading-relaxed text-neutral-100 normal-case tracking-normal font-sans [text-wrap:pretty]">
+                      <span className="block text-[11px] leading-relaxed text-neutral-100 normal-case tracking-normal font-sans text-center [text-wrap:balance]">
                         {chip.tooltip}
                       </span>
                       {/* Arrow pointer */}
@@ -168,7 +168,7 @@ export function AgencyHero() {
                 </motion.span>
 
                 <motion.span
-                  className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-max max-w-[300px] z-[60]"
+                  className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-max max-w-[240px] z-[60]"
                   variants={{
                     rest: { opacity: 0, y: 8, scale: 0.96, filter: "blur(6px)" },
                     hover: { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" },
@@ -178,7 +178,7 @@ export function AgencyHero() {
                   <span className="relative block px-4 py-3 bg-[#0a0a0a]/85 backdrop-blur-xl border border-[#D4FF00]/25 rounded-[6px] shadow-[0_12px_32px_-12px_rgba(0,0,0,0.6),0_0_24px_-12px_rgba(212,255,0,0.3)]">
                     {/* Solid lime hairline (vs gradient for neutral chips) — distinct visual register */}
                     <span aria-hidden="true" className="absolute top-0 left-4 right-4 h-px bg-[#D4FF00]/60" />
-                    <span className="block text-[11px] leading-relaxed text-neutral-100 normal-case tracking-normal font-sans [text-wrap:pretty]">
+                    <span className="block text-[11px] leading-relaxed text-neutral-100 normal-case tracking-normal font-sans text-center [text-wrap:balance]">
                       {/* Non-breaking space (&nbsp;) before last word as fallback for older
                           browsers without text-wrap:pretty support — prevents orphan word. */}
                       {language === "pl"
