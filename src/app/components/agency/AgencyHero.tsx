@@ -70,25 +70,14 @@ export function AgencyHero() {
                 separator between "decide → act" zone and "proof signals" zone. */}
 
             {/* Audience qualifier chips — sit right under the H1 + description, BEFORE
-                action block. Instant self-identification: warm lead reads "Strategic design
-                partner. For growing brands." and the chips immediately clarify WHAT KIND of
-                growing brands. Filters wrong-fit visitors before they keep scrolling. */}
-            <div className="mb-8 md:mb-10 flex flex-wrap gap-2 md:gap-3">
-              {(language === "pl" ? [
-                "Multi-location",
-                "Multi-product",
-                "SaaS",
-                "Brand launch",
-                "Post-PMF & scaling",
-                "AI Elevated Workflows",
-              ] : [
-                "Multi-location",
-                "Multi-product",
-                "SaaS",
-                "Brand launch",
-                "Post-PMF & scaling",
-                "AI Elevated Workflows",
-              ]).map((chip, i) => (
+                action block. Two semantic groups separated by a vertical divider:
+                  Group 1 (neutral chips): WHO we serve — verticals + maturity filters
+                  Group 2 (lime accent):   WHAT we do — capability differentiator
+                AI Elevated Workflows is pulled out + given lime border/text so warm
+                leads read it as a distinct claim, not just another audience tag. */}
+            <div className="mb-8 md:mb-10 flex flex-wrap gap-2 md:gap-3 items-center">
+              {/* Group 1 — audience/maturity filters */}
+              {["Multi-location", "Multi-product", "SaaS", "Brand launch", "Post-PMF & scaling"].map((chip, i) => (
                 <span
                   key={i}
                   className="inline-flex items-center px-3 py-1.5 text-[10px] md:text-[11px] font-display uppercase tracking-[0.15em] text-neutral-400 border border-white/15 rounded-full hover:border-[#D4FF00] hover:text-[#D4FF00] transition-colors duration-300 cursor-default"
@@ -96,6 +85,16 @@ export function AgencyHero() {
                   {chip}
                 </span>
               ))}
+
+              {/* Divider — signals category shift from "who" to "how". Hidden on
+                  smallest viewports where flex-wrap would orphan it weirdly. */}
+              <span aria-hidden="true" className="hidden sm:inline-block w-px h-4 bg-white/15 mx-1" />
+
+              {/* Group 2 — capability anchor (lime accent, distinct visual register) */}
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] md:text-[11px] font-display uppercase tracking-[0.15em] text-[#D4FF00] border border-[#D4FF00]/40 rounded-full hover:border-[#D4FF00] hover:bg-[#D4FF00]/[0.06] transition-colors duration-300 cursor-default">
+                <span aria-hidden="true" className="text-[8px] opacity-70">+</span>
+                AI Elevated Workflows
+              </span>
             </div>
 
             {/* Action block: subtitle (vertically CENTERED to CTA buttons) + CTAs.
