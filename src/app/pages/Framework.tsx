@@ -742,10 +742,13 @@ export function Framework() {
           </div>
         </Reveal>
 
+        {/* Cards use shade-based elevation (slightly lighter than page bg in dark mode,
+            slightly darker in light mode) — NOT borders. House rule: no boxy frames,
+            depth through tonal contrast only. Matches the EngagementModels pattern. */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {LAYERS.map((layer, i) => (
             <Reveal key={layer.num} delay={i * 0.05}>
-              <div className="border border-neutral-200 dark:border-white/10 p-6 md:p-8 h-full">
+              <div className="bg-neutral-50 dark:bg-white/[0.025] p-6 md:p-8 h-full">
                 <div className="font-display text-xs text-[#D4FF00] tracking-[0.2em] uppercase mb-3">
                   {layer.num}
                 </div>

@@ -80,12 +80,14 @@ export function AgencyHero() {
                 "SaaS",
                 "Brand launch",
                 "Post-PMF & scaling",
+                "AI Elevated Workflows",
               ] : [
                 "Multi-location",
                 "Multi-product",
                 "SaaS",
                 "Brand launch",
                 "Post-PMF & scaling",
+                "AI Elevated Workflows",
               ]).map((chip, i) => (
                 <span
                   key={i}
