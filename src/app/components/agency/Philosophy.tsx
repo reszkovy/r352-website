@@ -146,11 +146,10 @@ export function Philosophy() {
         </div>
       </div>
 
-      {/* ─── About / Behind r352 ──────────────────────────────────
-          The human behind the IP. Sits between Beliefs (marketing-facing
-          philosophy) and Contrasts (anti-agency POV) so warm leads see WHO
-          is saying these things before scrolling deeper. Critical trust unlock
-          for retainer prospects — they're buying TY, not a firm.
+      {/* ─── Behind r352 — short personal note ──────────────────
+          Tight 2-paragraph personal note. Not a manifesto, not a bio essay —
+          just enough to put a person behind the IP. Reads as a sidebar note,
+          not a section header. Critical trust unlock for retainer prospects.
 
           To replace the styled placeholder with a real portrait:
           1. Drop a 1:1 square image at /public/reszek-portrait.jpg
@@ -158,62 +157,55 @@ export function Philosophy() {
       */}
       <div className="max-w-[1800px] mx-auto px-8 md:px-12 py-24 md:py-32 border-b border-neutral-200 dark:border-white/10">
         <Reveal>
-          <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-12 md:mb-16">
+          <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-10 md:mb-14">
             {language === 'pl' ? 'Za r352' : 'Behind r352'}
           </span>
         </Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-10 md:gap-16 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-10 md:gap-14 items-start max-w-4xl">
           <Reveal>
             {/* Styled portrait placeholder — replace with /reszek-portrait.jpg */}
-            <div className="relative aspect-square bg-neutral-100 dark:bg-white/[0.03] border border-neutral-200 dark:border-white/10 overflow-hidden max-w-[420px]">
+            <div className="relative aspect-square bg-neutral-100 dark:bg-white/[0.03] border border-neutral-200 dark:border-white/10 overflow-hidden">
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="font-display text-[12rem] md:text-[14rem] font-bold tracking-tighter text-neutral-300 dark:text-white/10 leading-none select-none">
+                <span className="font-display text-[10rem] font-bold tracking-tighter text-neutral-300 dark:text-white/10 leading-none select-none">
                   R
                 </span>
               </div>
-              <div className="absolute bottom-4 left-4 text-[10px] font-display uppercase tracking-[0.2em] text-neutral-400 dark:text-neutral-600">
+              <div className="absolute bottom-3 left-3 text-[10px] font-display uppercase tracking-[0.2em] text-neutral-400 dark:text-neutral-600">
                 Reszek · Mallorca
               </div>
             </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <div className="space-y-6 max-w-2xl">
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[1.05]">
+            <div className="space-y-5 max-w-xl text-[15px] md:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">
+              <p>
                 {language === 'pl'
-                  ? 'Po 15 latach sprzedawania godzin designerskich — przestałem.'
-                  : 'After 15 years selling design hours — I stopped.'}
-              </h2>
-              <p className="text-lg md:text-xl text-neutral-700 dark:text-neutral-300 leading-relaxed [text-wrap:pretty]">
-                {language === 'pl'
-                  ? 'Od UX w Deloitte przez sześć lat między Londynem, Porto, Barceloną, Atenami i Marsylią — zbierałem wiedzę o tym, jak naprawdę działa design w organizacjach, które skalują się szybciej niż ich procesy.'
-                  : 'From UX at Deloitte through six years across London, Porto, Barcelona, Athens and Marseille — I was learning how design actually works inside organizations that scale faster than their processes.'}
+                  ? 'Projektuję od piętnastu lat i większości tego co wiem nauczyłem się patrząc, jak piękna praca jest zabijana przez słabe operacje.'
+                  : "I've been designing for fifteen years and most of what I learned came from watching beautiful work get killed by bad operations."}
               </p>
-              <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
+              <p>
                 {language === 'pl'
-                  ? 'Przeniosłem się na Majorkę i zbudowałem r352 w innym modelu: strategiczny partner designowy, retainer-first, pracujący z 5–10 markami naraz zamiast 50. r3loop to metodologia design ops, którą szlifowałem trzy lata z klientami multi-location jak Sonova, Benefit Systems i Archicom. Product Building Framework to szerszy operating system pod spodem.'
-                  : 'I moved to Mallorca and built r352 as a different model: strategic design partner, retainer-first, working with 5–10 brands at a time instead of 50. r3loop is the design ops methodology I refined over three years with multi-location clients like Sonova, Benefit Systems and Archicom. The Product Building Framework is the broader operating system underneath it.'}
+                  ? <>Zaczynałem w Deloitte w 2010. Potem Lizbona, Barcelona, pięć innych miast. Klienci się zmieniali, branże się zmieniały, agencje się zmieniały &mdash; ale wzorzec nie. Seniorzy uwięzieni w pętlach poprawek. Briefy, które potrzebowały trzech rund zanim cokolwiek poszło. Spójność marki przeciekająca między lokalizacjami, których nikt nie miał czasu audytować. Spotkania strategiczne przerywane &bdquo;jeszcze tylko jeden baner&rdquo;.</>
+                  : <>I started at Deloitte in 2010. Then Lisbon, then Barcelona, then five other cities. The clients changed, the industries changed, the agencies changed &mdash; but the pattern didn&apos;t. Senior designers stuck in revision loops. Briefs that needed three rounds before anyone could ship. Brand consistency leaking across locations nobody had time to audit. Strategy meetings interrupted by &ldquo;just one more banner.&rdquo;</>}
               </p>
-              <div className="pt-4 border-t border-neutral-200 dark:border-white/10">
-                <p className="text-xl md:text-2xl font-semibold text-neutral-900 dark:text-white leading-snug tracking-tight">
-                  {language === 'pl'
-                    ? 'Sprzedaję systemy, nie godziny.'
-                    : 'I sell systems, not hours.'}
-                </p>
-                <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed mt-3 [text-wrap:pretty]">
-                  {language === 'pl'
-                    ? 'Pracuję z founderami, właścicielami marek i operatorami, którzy są gotowi przestać skalować chaos.'
-                    : 'I work with founders, brand owners and operators who are ready to stop scaling chaos.'}
-                </p>
-              </div>
-              <div className="pt-4">
-                <Link
-                  href="/framework"
-                  className="group inline-flex items-center gap-3 text-[11px] font-display uppercase tracking-[0.2em] text-neutral-700 dark:text-neutral-300 hover:text-[#D4FF00] transition-colors"
+              <p>
+                {language === 'pl'
+                  ? <>Około 2023 przestałem akceptować to jako koszt designu. Zbudowałem r3loop &mdash; metodologię, która traktuje design ops jako system operacyjny, nie cechę charakteru. Sonova, Benefit Systems i Archicom byli pierwszymi klientami. Dziś żyje wewnątrz szerszego Product Building Framework &mdash; osiem faz, które wyrzucają każdy produkt z mglistego pomysłu do operating systemu.</>
+                  : <>Around 2023 I stopped accepting that as the cost of doing design. I built r3loop &mdash; a methodology that treats design ops as an operational system, not a personality trait. Sonova, Benefit Systems and Archicom became the first clients. Now it lives inside the broader Product Building Framework &mdash; eight phases that can ship any product from foggy idea to operating system.</>}
+              </p>
+              <p>
+                {language === 'pl'
+                  ? 'Z Majorki, pracuję z 5–10 markami naraz na retainer, plus dwa własne SaaS w boku (Caterelo, regional.fit). Metodologia, którą sprzedajesz, musi przetrwać twoje własne użycie.'
+                  : "I'm based in Mallorca, work with 5–10 brands at a time on retainer, and run two of my own SaaS products on the side (Caterelo, regional.fit). Methodology you sell needs to survive your own use of it."}
+              </p>
+              <p className="text-[13px] text-neutral-500 dark:text-neutral-500 pt-2">
+                {language === 'pl' ? 'Piszę okazjonalnie o tym co skaluje i co nie. Kontakt: ' : 'I write occasionally about what scales and what doesn’t. Reach out: '}
+                <a
+                  href="mailto:hello@r352.com"
+                  className="text-neutral-700 dark:text-neutral-300 hover:text-[#D4FF00] transition-colors"
                 >
-                  <span>{language === 'pl' ? 'Zobacz framework, który zbudowałem' : 'See the framework I built'}</span>
-                  <ArrowRight className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2} />
-                </Link>
-              </div>
+                  hello@r352.com
+                </a>
+              </p>
             </div>
           </Reveal>
         </div>

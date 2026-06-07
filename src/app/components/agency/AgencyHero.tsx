@@ -75,14 +75,12 @@ export function AgencyHero() {
                 "Multi-product",
                 "SaaS",
                 "Brand launch",
-                "5–300 lokalizacji",
                 "Post-PMF & scaling",
               ] : [
                 "Multi-location",
                 "Multi-product",
                 "SaaS",
                 "Brand launch",
-                "5–300 locations",
                 "Post-PMF & scaling",
               ]).map((chip, i) => (
                 <span
