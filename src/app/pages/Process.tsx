@@ -157,6 +157,13 @@ export function Process() {
   const [, setLocation] = useLocation();
   const [activeStep, setActiveStep] = useState(0);
 
+  // Q4 r3loop Playbook waitlist state.
+  // On submit: fires Plausible custom event (tracked in dashboard) + opens user's
+  // mail client with prefilled subject/body so signups land in hello@r352.com
+  // until a proper ESP (Mailchimp / Klaviyo / Loops) is wired up.
+  const [waitlistEmail, setWaitlistEmail] = useState("");
+  const [waitlistSubmitted, setWaitlistSubmitted] = useState(false);
+
   const lang = language as "en" | "pl";
 
   const goToStep = useCallback((idx: number) => {
@@ -614,6 +621,236 @@ export function Process() {
               </div>
             </Reveal>
           </div>
+        </div>
+      </section>
+
+      {/* ─── r3loop sustained — Kubota long-term retainer + brand reactivation
+          Paired with Geers proof (above). Different angle: Geers proves SCALE
+          (60+ locations, multi-location ops fix); Kubota proves DURATION (3+ years,
+          brand reactivation, IPO debut materials sustained on retainer model).
+          Together: r3loop works across scale AND time. */}
+      <section className="py-24 md:py-32 border-b border-neutral-200 dark:border-white/10">
+        <div className="max-w-[1800px] mx-auto px-8 md:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-16 md:gap-24">
+            <Reveal>
+              <div>
+                <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-4">
+                  {lang === "pl" ? "r3loop w długim dystansie" : "r3loop sustained"}
+                </span>
+                <h2 className="text-4xl md:text-5xl font-normal tracking-tight text-neutral-900 dark:text-white mb-8 leading-[1.05]">
+                  {lang === "pl" ? (
+                    <>Kubota<br className="hidden md:inline" /> 3+ lata retainera.</>
+                  ) : (
+                    <>Kubota<br className="hidden md:inline" /> 3+ years on retainer.</>
+                  )}
+                </h2>
+              </div>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <div className="space-y-6">
+                <p className="text-xl md:text-2xl text-neutral-700 dark:text-neutral-300 leading-relaxed font-medium tracking-tight [text-wrap:pretty]">
+                  {lang === "pl"
+                    ? "Reaktywacja marki w drodze do debiutu giełdowego. Brand stracił momentum, potrzebował IPO-grade kommunikacji i ciągłej produkcji — bez wracania do projekt-po-projekcie chaos."
+                    : "Brand reactivation on the road to a stock-exchange debut. The brand had lost momentum, needed IPO-grade communication and continuous production — without falling back into project-by-project chaos."}
+                </p>
+                <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
+                  {lang === "pl"
+                    ? "r3loop jako ciągła metodologia, nie engagement projektowy. Kroki 03–05 (Standardize → Build → Govern) ustabilizowały brand system i workflow akceptacji. Kroki 06–08 (Ship → Measure → Iterate) prowadziły zespół przez 3+ lata: IPO materiały, always-on creative, kwartalne brand health reviews."
+                    : "r3loop as continuous methodology, not project engagement. Steps 03–05 (Standardize → Build → Govern) stabilized the brand system and approval workflow. Steps 06–08 (Ship → Measure → Iterate) carried the team through 3+ years: IPO materials, always-on creative, quarterly brand health reviews."}
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-neutral-200 dark:border-white/10">
+                  <div>
+                    <div className="font-display text-3xl md:text-4xl font-bold tracking-tighter text-neutral-900 dark:text-[#D4FF00] leading-none mb-2">
+                      3+
+                    </div>
+                    <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-snug">
+                      {lang === "pl" ? "lata ciągłego retainera" : "years on continuous retainer"}
+                    </p>
+                  </div>
+                  <div>
+                    <div className="font-display text-3xl md:text-4xl font-bold tracking-tighter text-neutral-900 dark:text-[#D4FF00] leading-none mb-2">
+                      200+
+                    </div>
+                    <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-snug">
+                      {lang === "pl" ? "deliverables shippnięte" : "deliverables shipped"}
+                    </p>
+                  </div>
+                  <div>
+                    <div className="font-display text-3xl md:text-4xl font-bold tracking-tighter text-neutral-900 dark:text-[#D4FF00] leading-none mb-2">
+                      IPO
+                    </div>
+                    <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-snug">
+                      {lang === "pl" ? "debiut na GPW wsparty brand systemem" : "WSE debut backed by brand system"}
+                    </p>
+                  </div>
+                </div>
+                <Link
+                  href="/work/kubota"
+                  className="group inline-flex items-center gap-2 mt-4 text-[11px] font-display uppercase tracking-[0.2em] text-neutral-700 dark:text-neutral-300 hover:text-[#D4FF00] transition-colors"
+                >
+                  <span>{lang === "pl" ? "Pełny case study" : "Full case study"}</span>
+                  <ArrowRight className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2} />
+                </Link>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Q4 2026 — r3loop Playbook waitlist ──────────────────────
+          Productization scaffold. Captures emails for the paid playbook launch.
+          Founding price (€1500) vs standard (€2000) creates urgency without
+          forcing decisions today. Sits between methodology proof (above) and
+          closing CTA (below) — so warm leads who've read the methodology see
+          the "want this without consulting?" path before the contact CTA.
+
+          TODO: replace mailto fallback with proper ESP integration (Mailchimp /
+          Klaviyo / Loops / Brevo) once one is chosen. For now mailto routes
+          signups to hello@r352.com and Plausible tracks the conversion event. */}
+      <section className="py-24 md:py-32 border-b border-neutral-200 dark:border-white/10 relative overflow-hidden">
+        {/* Subtle lime ambient glow — signals this section is special, future-tense */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 opacity-[0.04] dark:opacity-[0.06] bg-[radial-gradient(circle_at_50%_40%,#D4FF00,transparent_60%)] pointer-events-none"
+        />
+        <div className="max-w-[1800px] mx-auto px-8 md:px-12">
+          <Reveal>
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-12 md:gap-20 items-start">
+              {/* LEFT — eyebrow + headline + POV */}
+              <div>
+                <span className="inline-flex items-center gap-2 mb-5 text-[10px] font-display uppercase tracking-[0.25em] text-[#D4FF00] border border-[#D4FF00]/40 rounded-full px-3 py-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#D4FF00] animate-pulse" />
+                  {lang === "pl" ? "Q4 2026 · Wkrótce" : "Q4 2026 · Coming"}
+                </span>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[1.0] mb-6">
+                  r3loop<br />Playbook.
+                </h2>
+                <p className="text-lg md:text-xl text-neutral-700 dark:text-neutral-300 leading-relaxed font-medium [text-wrap:pretty]">
+                  {lang === "pl"
+                    ? "Cała metodologia r3loop — 8 kroków, output contracts, decision gates, AI prompts, governance templates — sprodukowana jako guided playbook."
+                    : "The full r3loop methodology — 8 steps, output contracts, decision gates, AI prompts, governance templates — productized as a guided playbook."}
+                </p>
+                <p className="text-base text-neutral-500 dark:text-neutral-500 leading-relaxed mt-4 [text-wrap:pretty]">
+                  {lang === "pl"
+                    ? "Dla tych, którzy nie potrzebują nas w pokoju — potrzebują systemu, który możemy oddać."
+                    : "For teams that don't need us in the room — they need a system we can hand off."}
+                </p>
+              </div>
+
+              {/* RIGHT — what's inside + price + form */}
+              <div className="space-y-8">
+                {/* What's inside — 4-up grid of chips */}
+                <div>
+                  <span className="block text-[10px] uppercase tracking-[0.25em] text-neutral-500 dark:text-neutral-500 font-display mb-4">
+                    {lang === "pl" ? "Co jest w środku" : "What's inside"}
+                  </span>
+                  <ul className="grid grid-cols-2 gap-x-6 gap-y-3">
+                    {(lang === "pl" ? [
+                      "8 kroków szczegółowo",
+                      "Output contracts per krok",
+                      "Decision gates + KPIs",
+                      "Brief templates",
+                      "Quality review checklisty",
+                      "AI prompt library",
+                      "Governance frameworks",
+                      "3 case studies in depth",
+                    ] : [
+                      "8 steps in depth",
+                      "Output contracts per step",
+                      "Decision gates + KPIs",
+                      "Brief templates",
+                      "Quality review checklists",
+                      "AI prompt library",
+                      "Governance frameworks",
+                      "3 case studies in depth",
+                    ]).map((item, i) => (
+                      <li key={i} className="text-sm text-neutral-700 dark:text-neutral-300 flex items-start gap-2 leading-snug">
+                        <span className="text-[#D4FF00] mt-[2px] shrink-0">·</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Pricing teaser — founding vs standard */}
+                <div className="flex items-baseline gap-6 pt-6 border-t border-neutral-200 dark:border-white/10">
+                  <div>
+                    <div className="text-[10px] uppercase tracking-[0.25em] text-[#D4FF00] font-display mb-1">
+                      {lang === "pl" ? "Founding access" : "Founding access"}
+                    </div>
+                    <div className="text-3xl md:text-4xl font-bold tracking-tighter text-neutral-900 dark:text-white">
+                      €1500
+                    </div>
+                  </div>
+                  <div className="opacity-50">
+                    <div className="text-[10px] uppercase tracking-[0.25em] text-neutral-500 font-display mb-1">
+                      {lang === "pl" ? "Standard launch" : "Standard launch"}
+                    </div>
+                    <div className="text-xl md:text-2xl font-medium tracking-tight text-neutral-500 dark:text-neutral-500 line-through decoration-1">
+                      €2000
+                    </div>
+                  </div>
+                </div>
+
+                {/* Email capture form */}
+                {!waitlistSubmitted ? (
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      if (!waitlistEmail) return;
+                      // Track conversion via Plausible custom event
+                      try {
+                        (window as any).plausible?.("playbook_waitlist_signup", {
+                          props: { source: "process_page", lang },
+                        });
+                      } catch { /* noop */ }
+                      // Open mail client as fallback storage until ESP is wired
+                      const subject = encodeURIComponent("r3loop Playbook — early access waitlist");
+                      const body = encodeURIComponent(
+                        `I'd like to join the r3loop Playbook waitlist.\n\nEmail: ${waitlistEmail}\n\n(Sent from r352.com/process)`
+                      );
+                      window.location.href = `mailto:hello@r352.com?subject=${subject}&body=${body}`;
+                      setWaitlistSubmitted(true);
+                    }}
+                    className="space-y-3"
+                  >
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <input
+                        type="email"
+                        required
+                        value={waitlistEmail}
+                        onChange={(e) => setWaitlistEmail(e.target.value)}
+                        placeholder={lang === "pl" ? "Twój email" : "Your email"}
+                        className="flex-1 px-4 py-3 text-sm bg-neutral-50 dark:bg-white/[0.03] border border-neutral-300 dark:border-white/15 rounded-none text-neutral-900 dark:text-white placeholder:text-neutral-500 focus:outline-none focus:border-[#D4FF00] focus:bg-white dark:focus:bg-white/[0.05] transition-colors"
+                      />
+                      <button
+                        type="submit"
+                        className="px-6 py-3 bg-[#D4FF00] text-black text-sm font-display uppercase tracking-[0.15em] font-bold hover:bg-white transition-colors duration-300 cursor-pointer whitespace-nowrap"
+                      >
+                        {lang === "pl" ? "Rezerwuję" : "Reserve access"}
+                      </button>
+                    </div>
+                    <p className="text-[11px] text-neutral-500 dark:text-neutral-500">
+                      {lang === "pl"
+                        ? "Pierwsze 100 osób na waitliście dostaje founding price €1500. Bez spamu — tylko launch announcement i 1-2 update'y o postępach."
+                        : "First 100 on the waitlist get the founding price €1500. No spam — just the launch announcement and 1-2 progress updates."}
+                    </p>
+                  </form>
+                ) : (
+                  <div className="border-l-2 border-[#D4FF00] pl-5 py-4 bg-[#D4FF00]/[0.04]">
+                    <div className="text-[10px] font-display uppercase tracking-[0.25em] text-[#D4FF00] mb-2">
+                      {lang === "pl" ? "Jesteś na liście" : "You're on the list"}
+                    </div>
+                    <p className="text-base text-neutral-900 dark:text-white leading-relaxed [text-wrap:pretty]">
+                      {lang === "pl"
+                        ? "Dostaniesz launch announcement w Q4 z founding price €1500 (zamiast €2000). Tymczasem — sprawdź czy klient otworzył się prawidłowo i wysłał email do hello@r352.com."
+                        : "You'll get the launch announcement in Q4 with the founding price €1500 (instead of €2000). In the meantime — check that your mail client opened and sent the email to hello@r352.com."}
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
