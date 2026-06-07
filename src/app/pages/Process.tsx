@@ -5,7 +5,7 @@ import { PageTransition } from "@/app/components/ui/PageTransition";
 import { Reveal } from "@/app/components/ui/Reveal";
 import { MagneticButton } from "@/app/components/ui/MagneticButton";
 import { useLanguage } from "@/app/context/LanguageContext";
-import { useLocation } from "wouter";
+import { useLocation, Link } from "wouter";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { R3LoopBadge } from "@/app/components/ui/R3LoopBadge";
 
@@ -207,10 +207,23 @@ export function Process() {
           <Reveal>
             <div className="grid grid-cols-12 gap-6 md:gap-8 items-end">
               <div className="col-span-12 md:col-span-7">
+                {/* Breadcrumb back to master IP — explicitly subordinates r3loop
+                    as the design-ops application of the Product Building Framework.
+                    Prevents visitor confusion between the two methodology pages. */}
+                <Link
+                  href="/framework"
+                  className="inline-flex items-center gap-2 mb-5 text-[11px] uppercase tracking-[2px] text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors font-display group"
+                >
+                  <span className="opacity-60">{lang === "pl" ? "Część" : "Part of"}:</span>
+                  <span className="underline underline-offset-4 decoration-neutral-400 group-hover:decoration-neutral-900 dark:group-hover:decoration-white">
+                    Product Building Framework
+                  </span>
+                  <span aria-hidden className="transition-transform group-hover:translate-x-0.5">→</span>
+                </Link>
                 <div className="flex items-center gap-3 mb-6">
                   <R3LoopBadge size="md" />
                   <span className="text-[11px] uppercase tracking-[2px] text-neutral-500 font-display">
-                    {lang === "pl" ? "Metodologia r352" : "r352 Methodology"}
+                    {lang === "pl" ? "Metodologia r352 · Design Ops" : "r352 Methodology · Design Ops"}
                   </span>
                 </div>
                 <h1 className="text-5xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[0.95]">
@@ -237,8 +250,8 @@ export function Process() {
                 </p>
                 <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
                   {lang === "pl"
-                    ? "r3loop to nasza 8-krokowa metodologia, która zamienia chaos operacyjny w działający system — od diagnozy, przez produkcję i pomiar, po ciągłe usprawnianie."
-                    : "r3loop is our 8-step methodology that turns operational chaos into a working system — from diagnosis to production, measurement and continuous improvement."}
+                    ? "r3loop to nasza 8-krokowa metodologia design ops — specyficzne zastosowanie Product Building Framework dla operacji projektowych w skali. Zamienia chaos operacyjny w działający system: od diagnozy, przez produkcję i pomiar, po ciągłe usprawnianie."
+                    : "r3loop is our 8-step design ops methodology — the specific application of the Product Building Framework for design operations at scale. It turns operational chaos into a working system: from diagnosis to production, measurement and continuous improvement."}
                 </p>
               </div>
             </div>

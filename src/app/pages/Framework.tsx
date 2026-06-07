@@ -30,6 +30,10 @@ interface Phase {
   outputs: { en: string[]; pl: string[] };
   gate: { en: string; pl: string };
   presence: string; // % of Reszek's involvement
+  // Optional cross-link to r3loop application — clarifies how this phase
+  // is implemented when the work is design ops at multi-location scale.
+  // Renders as a small italic note below the gate.
+  r3loopNote?: { en: string; pl: string };
 }
 
 const PHASES: Phase[] = [
@@ -144,6 +148,10 @@ const PHASES: Phase[] = [
       pl: "Czy 5 testowych użytkowników wykonało critical task bez pomocy? Jeśli mniej niż 4/5 — wracasz do flowów.",
     },
     presence: "50%",
+    r3loopNote: {
+      en: "For multi-location brand ops, this phase is structured by r3loop steps 02–03 (Map → Standardize). See /process.",
+      pl: "Dla operacji marek multi-location ta faza jest strukturyzowana przez kroki r3loop 02–03 (Map → Standardize). Zobacz /process.",
+    },
   },
   {
     num: "04",
@@ -171,6 +179,10 @@ const PHASES: Phase[] = [
       pl: "Czy developer może zaimplementować ekran X bez jednego pytania? Test na 3 losowych ekranach. Jeśli pyta — domykaj specs.",
     },
     presence: "35%",
+    r3loopNote: {
+      en: "For multi-location brand ops, this phase is structured by r3loop steps 03–06 (Standardize → Build → Govern → Ship). See /process.",
+      pl: "Dla operacji marek multi-location ta faza jest strukturyzowana przez kroki r3loop 03–06 (Standardize → Build → Govern → Ship). Zobacz /process.",
+    },
   },
   {
     num: "05",
@@ -491,6 +503,20 @@ export function Framework() {
                       {phase.gate[language]}
                     </p>
                   </div>
+
+                  {/* Optional r3loop cross-link — only renders on phases that
+                      have a specific r3loop step mapping. Subordinates r3loop
+                      explicitly as the design-ops application of the framework. */}
+                  {phase.r3loopNote && (
+                    <div className="mt-4 pt-4 border-t border-black/10 dark:border-white/10">
+                      <p className="text-[12px] md:text-[13px] text-neutral-600 dark:text-neutral-400 italic leading-relaxed">
+                        <span className="not-italic font-display uppercase tracking-[0.18em] text-[10px] text-neutral-500 mr-2">
+                          r3loop:
+                        </span>
+                        {phase.r3loopNote[language]}
+                      </p>
+                    </div>
+                  )}
                 </div>
               </article>
             </Reveal>

@@ -132,12 +132,14 @@ export function AgencyHeader() {
   }, [isMenuOpen]);
 
   // Nav hierarchy: Work (proof) → Framework (master IP) → Process (r3loop slice) →
-  // Services (how to buy) → Journal (content). Philosophy moved to footer-only
-  // discovery — Framework + Process now cover the "how we think" surface.
+  // Philosophy (how I think — the human layer) → Services (how to buy) → Journal (content).
+  // Philosophy stays in main nav: methodology pages (Framework + Process) are operational,
+  // Philosophy is the human-strategic counterweight that prevents the brand reading as cold.
   const navItems = [
     { href: "/work", label: t("nav.work") },
     { href: "/framework", label: t("nav.framework") },
     { href: "/process", label: t("nav.process") },
+    { href: "/philosophy", label: t("nav.philosophy") },
     { href: "/services", label: t("nav.services") },
     { href: "/journal", label: t("nav.journal") },
   ];
