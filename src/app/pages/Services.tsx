@@ -3,7 +3,6 @@ import { Reveal } from "@/app/components/ui/Reveal";
 import { SectionWatermark } from "@/app/components/ui/SectionWatermark";
 import { EngagementModels } from "@/app/components/services/EngagementModels";
 import { useLanguage } from "@/app/context/LanguageContext";
-import { useLenisGsap } from "@/app/hooks/useLenisGsap";
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight } from "lucide-react";
@@ -21,9 +20,8 @@ interface ServiceCard {
 export function Services() {
   const { t, language } = useLanguage();
 
-  // Bridge Lenis smooth scroll with GSAP ScrollTrigger so SectionWatermark
-  // parallax stays in sync with the rendered scroll position.
-  useLenisGsap();
+  // SectionWatermark now uses framer-motion's native useScroll (no GSAP) —
+  // useLenisGsap bridge no longer needed for the watermark parallax.
 
   // Cast to specific types to avoid TS errors
   const cards = (t('services_page.cards') || []) as ServiceCard[];

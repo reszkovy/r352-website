@@ -1,8 +1,5 @@
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
 
 interface SectionWatermarkProps {
   /** The watermark number to display, e.g. "01", "02", "03". */
@@ -20,12 +17,18 @@ interface SectionWatermarkProps {
  * scroll-linked to the section's viewport progress. Provides typographic
  * signature without adding decoration noise.
  *
- *  - Number translateY's downward as the section scrolls (parallax depth).
- *  - Number rotates subtly (8°) for kinetic interest, not for show.
- *  - Mobile (< md): static, no scroll-link (perf + simplicity).
+ * Implementation: framer-motion's useScroll + useTransform. Replaces previous
+ * GSAP + ScrollTrigger approach which had initial-paint timing bugs (number
+ * sometimes wasn't visible until first scroll/click triggered ScrollTrigger
+ * recalc). useScroll subscribes natively to scroll progress via the React
+ * lifecycle — value is computed on first render, no refresh dance needed.
  *
- * Use this to mark the major sections of /services. Keep usage minimal —
- * watermarks lose impact when over-applied.
+ *  - Number translates downward as the section scrolls (-10% → +30%).
+ *  - Number rotates subtly (-4° → +6°) for kinetic depth.
+ *  - Mobile (< md): static, no scroll-link (hidden via Tailwind class).
+ *  - Initial opacity fade-in (0 → 1) gives smooth entrance instead of pop.
+ *
+ * Use this to mark the major sections of /services. Keep usage minimal.
  */
 export function SectionWatermark({
   number,
@@ -34,47 +37,20 @@ export function SectionWatermark({
   align = "right",
 }: SectionWatermarkProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const numberRef = useRef<HTMLSpanElement>(null);
 
-  useEffect(() => {
-    const section = sectionRef.current;
-    const num = numberRef.current;
-    if (!section || !num) return;
+  // Track the section's progress through the viewport.
+  // ["start end", "end start"] = animation runs from section's TOP entering at
+  // viewport BOTTOM (progress 0) to section's BOTTOM exiting at viewport TOP
+  // (progress 1). Same mental model as GSAP's start/end strings.
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
 
-    // Skip scroll-link on touch / narrow viewports.
-    // matchMedia keeps the ScrollTrigger alive only when the breakpoint is met,
-    // and cleans up automatically on resize across the breakpoint.
-    const mm = gsap.matchMedia();
-
-    mm.add("(min-width: 768px)", () => {
-      // fromTo with immediateRender:true GUARANTEES the initial state paints
-      // before any scroll happens. Previous gsap.set + gsap.to pattern relied on
-      // ScrollTrigger calculating initial progress correctly — which sometimes
-      // delayed visibility until first scroll/click interaction triggered a recalc.
-      gsap.fromTo(
-        num,
-        { yPercent: -10, rotate: -4 },
-        {
-          yPercent: 30,
-          rotate: 6,
-          ease: "none",
-          immediateRender: true,
-          scrollTrigger: {
-            trigger: section,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 1.2,
-          },
-        }
-      );
-
-      // Force ScrollTrigger to recompute positions after layout settles —
-      // covers cases where Lenis smooth scroll hasn't synced yet on first paint.
-      requestAnimationFrame(() => ScrollTrigger.refresh());
-    });
-
-    return () => mm.revert();
-  }, []);
+  // Map 0→1 progress to translateY -10% → +30% and rotation -4° → +6°.
+  // Identical motion params to the previous GSAP version, just driven natively.
+  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "30%"]);
+  const rotate = useTransform(scrollYProgress, [0, 1], [-4, 6]);
 
   const alignClass = align === "right" ? "right-0 md:-right-4" : "left-0 md:-left-4";
 
@@ -86,21 +62,24 @@ export function SectionWatermark({
         className={`pointer-events-none absolute top-0 ${alignClass} -z-10 hidden md:block select-none overflow-hidden`}
         style={{ width: "min(90vw, 1100px)", height: "100%" }}
       >
-        {/* Color: previously dark:text-white/[0.06] (visible as LIGHT gray on dark bg).
-            Now uses #1e1e1e — a tone of BLACK slightly lighter than the bg (#151515),
-            so the watermark reads as an embossed shadow not a bright overlay.
-            Light mode keeps the subtle black tint at low opacity. */}
-        <span
-          ref={numberRef}
+        {/* Color: text-[#1e1e1e] in dark mode = tone of BLACK 9 units lighter
+            than bg (#151515) → reads as embossed shadow, not bright overlay.
+            Light mode keeps subtle black tint at low opacity. */}
+        <motion.span
           className="absolute right-0 top-0 font-display font-normal leading-none text-neutral-900/[0.04] dark:text-[#1e1e1e]"
           style={{
             fontSize: "clamp(14rem, 32vw, 30rem)",
             letterSpacing: "-0.04em",
             transformOrigin: "100% 50%",
+            y,
+            rotate,
           }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
         >
           {number}
-        </span>
+        </motion.span>
       </div>
 
       {children}
