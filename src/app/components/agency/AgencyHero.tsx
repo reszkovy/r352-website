@@ -65,6 +65,35 @@ export function AgencyHero() {
                 This pushes subtitle + CTAs higher in viewport (ATF) and uses divider as a logical
                 separator between "decide → act" zone and "proof signals" zone. */}
 
+            {/* Audience qualifier chips — sit right under the H1 + description, BEFORE
+                action block. Instant self-identification: warm lead reads "Strategic design
+                partner. For growing brands." and the chips immediately clarify WHAT KIND of
+                growing brands. Filters wrong-fit visitors before they keep scrolling. */}
+            <div className="mb-8 md:mb-10 flex flex-wrap gap-2 md:gap-3">
+              {(language === "pl" ? [
+                "Multi-location",
+                "Multi-product",
+                "SaaS",
+                "Brand launch",
+                "5–300 lokalizacji",
+                "Post-PMF & scaling",
+              ] : [
+                "Multi-location",
+                "Multi-product",
+                "SaaS",
+                "Brand launch",
+                "5–300 locations",
+                "Post-PMF & scaling",
+              ]).map((chip, i) => (
+                <span
+                  key={i}
+                  className="inline-flex items-center px-3 py-1.5 text-[10px] md:text-[11px] font-display uppercase tracking-[0.15em] text-neutral-400 border border-white/15 rounded-full hover:border-[#D4FF00] hover:text-[#D4FF00] transition-colors duration-300 cursor-default"
+                >
+                  {chip}
+                </span>
+              ))}
+            </div>
+
             {/* Action block: subtitle (vertically CENTERED to CTA buttons) + CTAs.
                 items-center aligns subheader to the optical middle of the button group on md+.
                 On mobile they stack normally. */}

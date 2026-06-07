@@ -146,6 +146,79 @@ export function Philosophy() {
         </div>
       </div>
 
+      {/* ─── About / Behind r352 ──────────────────────────────────
+          The human behind the IP. Sits between Beliefs (marketing-facing
+          philosophy) and Contrasts (anti-agency POV) so warm leads see WHO
+          is saying these things before scrolling deeper. Critical trust unlock
+          for retainer prospects — they're buying TY, not a firm.
+
+          To replace the styled placeholder with a real portrait:
+          1. Drop a 1:1 square image at /public/reszek-portrait.jpg
+          2. Replace the placeholder div below with <img src="/reszek-portrait.jpg" alt="Reszek" className="w-full h-full object-cover" />
+      */}
+      <div className="max-w-[1800px] mx-auto px-8 md:px-12 py-24 md:py-32 border-b border-neutral-200 dark:border-white/10">
+        <Reveal>
+          <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-12 md:mb-16">
+            {language === 'pl' ? 'Za r352' : 'Behind r352'}
+          </span>
+        </Reveal>
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-10 md:gap-16 items-start">
+          <Reveal>
+            {/* Styled portrait placeholder — replace with /reszek-portrait.jpg */}
+            <div className="relative aspect-square bg-neutral-100 dark:bg-white/[0.03] border border-neutral-200 dark:border-white/10 overflow-hidden max-w-[420px]">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="font-display text-[12rem] md:text-[14rem] font-bold tracking-tighter text-neutral-300 dark:text-white/10 leading-none select-none">
+                  R
+                </span>
+              </div>
+              <div className="absolute bottom-4 left-4 text-[10px] font-display uppercase tracking-[0.2em] text-neutral-400 dark:text-neutral-600">
+                Reszek · Mallorca
+              </div>
+            </div>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <div className="space-y-6 max-w-2xl">
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[1.05]">
+                {language === 'pl'
+                  ? 'Po 15 latach sprzedawania godzin designerskich — przestałem.'
+                  : 'After 15 years selling design hours — I stopped.'}
+              </h2>
+              <p className="text-lg md:text-xl text-neutral-700 dark:text-neutral-300 leading-relaxed [text-wrap:pretty]">
+                {language === 'pl'
+                  ? 'Od UX w Deloitte przez sześć lat między Londynem, Porto, Barceloną, Atenami i Marsylią — zbierałem wiedzę o tym, jak naprawdę działa design w organizacjach, które skalują się szybciej niż ich procesy.'
+                  : 'From UX at Deloitte through six years across London, Porto, Barcelona, Athens and Marseille — I was learning how design actually works inside organizations that scale faster than their processes.'}
+              </p>
+              <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
+                {language === 'pl'
+                  ? 'Przeniosłem się na Majorkę i zbudowałem r352 w innym modelu: strategiczny partner designowy, retainer-first, pracujący z 5–10 markami naraz zamiast 50. r3loop to metodologia design ops, którą szlifowałem trzy lata z klientami multi-location jak Sonova, Benefit Systems i Archicom. Product Building Framework to szerszy operating system pod spodem.'
+                  : 'I moved to Mallorca and built r352 as a different model: strategic design partner, retainer-first, working with 5–10 brands at a time instead of 50. r3loop is the design ops methodology I refined over three years with multi-location clients like Sonova, Benefit Systems and Archicom. The Product Building Framework is the broader operating system underneath it.'}
+              </p>
+              <div className="pt-4 border-t border-neutral-200 dark:border-white/10">
+                <p className="text-xl md:text-2xl font-semibold text-neutral-900 dark:text-white leading-snug tracking-tight">
+                  {language === 'pl'
+                    ? 'Sprzedaję systemy, nie godziny.'
+                    : 'I sell systems, not hours.'}
+                </p>
+                <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed mt-3 [text-wrap:pretty]">
+                  {language === 'pl'
+                    ? 'Pracuję z founderami, właścicielami marek i operatorami, którzy są gotowi przestać skalować chaos.'
+                    : 'I work with founders, brand owners and operators who are ready to stop scaling chaos.'}
+                </p>
+              </div>
+              <div className="pt-4">
+                <Link
+                  href="/framework"
+                  className="group inline-flex items-center gap-3 text-[11px] font-display uppercase tracking-[0.2em] text-neutral-700 dark:text-neutral-300 hover:text-[#D4FF00] transition-colors"
+                >
+                  <span>{language === 'pl' ? 'Zobacz framework, który zbudowałem' : 'See the framework I built'}</span>
+                  <ArrowRight className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2} />
+                </Link>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+
       {/* Contrasts: Not This → This */}
       <div className="max-w-[1800px] mx-auto px-8 md:px-12 py-24 md:py-32 border-b border-neutral-200 dark:border-white/10">
         <Reveal>

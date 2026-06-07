@@ -482,6 +482,92 @@ export function EngagementModels() {
         </div>
       </div>
 
+      {/* ─── Pairing matrix — engagement ↔ product mapping ───────────────
+          Resolves the decision-fatigue problem: buyer sees "Sprint" and asks
+          "for what product?" Surfaces the existing `products` field from each
+          model in a clean table so warm leads can self-match in 10 seconds. */}
+      <Reveal>
+        <div className="mt-24 md:mt-32 border-t border-neutral-200 dark:border-white/10 pt-16">
+          <div className="mb-10 max-w-3xl">
+            <span className="block text-[11px] uppercase tracking-[2px] text-neutral-500 dark:text-[#D4FF00] font-display mb-4">
+              {language === "pl" ? "Mapowanie modeli i produktów" : "Engagement ↔ product pairing"}
+            </span>
+            <h3 className="text-3xl md:text-5xl font-bold text-neutral-900 dark:text-white tracking-tight mb-6">
+              {language === "pl"
+                ? "Który model dla którego produktu?"
+                : "Which engagement for which product?"}
+            </h3>
+            <p className="text-[15px] text-neutral-600 dark:text-[#888888] max-w-[640px] leading-relaxed">
+              {language === "pl"
+                ? "Każdy model najlepiej pasuje do określonego typu pracy. Jeśli wiesz co chcesz zbudować — zacznij od pasującego modelu, nie od domyślnego."
+                : "Each model maps best to a specific type of work. If you know what you want to build — start with the matching model, not the default one."}
+            </p>
+          </div>
+
+          <div className="border-t border-neutral-200 dark:border-white/10">
+            {([
+              {
+                model: language === "pl" ? "Sprint" : "Sprint",
+                label: language === "pl" ? "Stały zakres · 2-6 tygodni" : "Fixed scope · 2-6 weeks",
+                fit: language === "pl"
+                  ? "Brand System launch · Website Launch · Pakiet kampanii (jednorazowy) · UX produktu cyfrowego"
+                  : "Brand System launch · Website Launch · Campaign Toolkit (one-off) · Digital Product UX",
+              },
+              {
+                model: language === "pl" ? "Abonament" : "Retainer",
+                label: language === "pl" ? "Ciągły rytm · od 3 miesięcy" : "Ongoing rhythm · from 3 months",
+                fit: language === "pl"
+                  ? "Always-On Communication · System assetów multi-location · Stałe kampanie · Spójność marki"
+                  : "Always-On Communication · Multi-Location Asset System · Recurring campaigns · Brand consistency",
+              },
+              {
+                model: language === "pl" ? "Diagnostyka" : "Diagnostic",
+                label: language === "pl" ? "5 dni · jednorazowo" : "5 days · one-time",
+                fit: language === "pl"
+                  ? "Walidacja przed Sprintem · Audyt workflow · Mapa wąskich gardeł · Decyzja przed inwestycją"
+                  : "Pre-Sprint validation · Workflow audit · Bottleneck mapping · Decision before investing",
+              },
+              {
+                model: language === "pl" ? "Wdrożenie Enterprise" : "Enterprise Sprint",
+                label: language === "pl" ? "12-16 tygodni + 90-dniowy handover" : "12-16 weeks + 90-day handover",
+                fit: language === "pl"
+                  ? "Pełny Creative Operating System · Transformacja multi-location (300+ branchy) · Brand + Ops razem"
+                  : "Full Creative Operating System · Multi-location transformation (300+ branches) · Brand + Ops together",
+              },
+              {
+                model: language === "pl" ? "Partner Operacyjny" : "Operating Partner",
+                label: language === "pl" ? "Kontrakt roczny · rytm miesięczny" : "Annual contract · monthly cadence",
+                fit: language === "pl"
+                  ? "Długoterminowa opieka strategiczna · Ewolucja systemu · Rozszerzenia (nowe rynki, marki, kanały) · Coaching wewnętrznych zespołów"
+                  : "Long-term strategic stewardship · System evolution · Expansions (new markets, brands, channels) · Internal team coaching",
+              },
+            ]).map((row, i) => (
+              <div
+                key={i}
+                className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-4 md:gap-8 py-6 md:py-7 border-b border-neutral-200 dark:border-white/10"
+              >
+                <div>
+                  <div className="text-lg md:text-xl font-semibold text-neutral-900 dark:text-white tracking-tight leading-tight">
+                    {row.model}
+                  </div>
+                  <div className="text-[11px] uppercase tracking-[0.15em] text-neutral-500 dark:text-[#666666] font-display mt-1.5">
+                    {row.label}
+                  </div>
+                </div>
+                <div>
+                  <div className="text-[10px] uppercase tracking-[0.2em] text-neutral-500 dark:text-[#D4FF00]/70 font-display mb-2">
+                    {language === "pl" ? "Najczęściej dla" : "Most often for"}
+                  </div>
+                  <p className="text-[14px] md:text-[15px] text-neutral-700 dark:text-neutral-300 leading-relaxed [text-wrap:pretty]">
+                    {row.fit}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Reveal>
+
       {/* CTA — flat, divider-only */}
       <Reveal>
         <div className="mt-16 flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-neutral-200 dark:border-white/10 pt-12">
