@@ -627,7 +627,7 @@ export function Framework() {
             </p>
             <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
               {isPl
-                ? "Trzy testy. Jeśli każdy zwróci „tak" po fazie — framework działa. Jeśli któryś zwróci „nie" — zostań w fazie."
+                ? 'Trzy testy. Jeśli każdy zwróci "tak" po fazie — framework działa. Jeśli któryś zwróci "nie" — zostań w fazie.'
                 : 'Three tests. If each returns "yes" after a phase — the framework works. If any returns "no" — stay in the phase.'}
             </p>
           </div>
