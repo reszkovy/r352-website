@@ -33,10 +33,14 @@ export function AnimeGrid() {
     const centerX = 328;
     const centerY = 337;
 
-    // Configuration
-    const baseScale = 0.35; 
-    const gridSize = 600; 
-    const activeRadius = 650; 
+    // Mobile-aware configuration: on small viewports we render the raster bigger
+    // and sparser so it reads as a backdrop pattern rather than dense noise.
+    // Combined with reduced wrapper opacity on mobile (see return JSX), this
+    // prevents the canvas from competing with hero CTAs visually.
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    const baseScale = isMobile ? 0.55 : 0.35;
+    const gridSize = isMobile ? 720 : 600;
+    const activeRadius = 650;
     
     const resize = () => {
       const { width, height } = container.getBoundingClientRect();
@@ -206,9 +210,12 @@ export function AnimeGrid() {
   }, []);
 
   return (
-    <div ref={containerRef} className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-      <canvas 
-        ref={canvasRef} 
+    // z-0 keeps it behind the hero content (z-10), but on mobile we ALSO push
+    // opacity to 50% so it visually sits as a backdrop pattern, not a layer
+    // competing with the CTAs. Desktop keeps full opacity for full design impact.
+    <div ref={containerRef} className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-50 md:opacity-100">
+      <canvas
+        ref={canvasRef}
         className="block w-full h-full"
       />
     </div>

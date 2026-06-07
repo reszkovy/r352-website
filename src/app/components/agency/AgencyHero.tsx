@@ -71,31 +71,54 @@ export function AgencyHero() {
                 This pushes subtitle + CTAs higher in viewport (ATF) and uses divider as a logical
                 separator between "decide → act" zone and "proof signals" zone. */}
 
-            {/* Audience qualifier chips — sit right under the H1 + description, BEFORE
-                action block. Two semantic groups separated by a vertical divider:
+            {/* Audience qualifier chips — sit right under the H1 + description.
+                Two semantic groups separated by a vertical divider:
                   Group 1 (neutral chips): WHO we serve — verticals + maturity filters
                   Group 2 (lime accent):   WHAT we do — capability differentiator
-                AI Elevated Workflows is pulled out + given lime border/text so warm
-                leads read it as a distinct claim, not just another audience tag. */}
+                Each chip has a short tooltip on hover (CSS-only, no JS state) so
+                hovering animation isn't a fakeout — it reveals a 6-10 word definition. */}
             <div className="mb-8 md:mb-10 flex flex-wrap gap-2 md:gap-3 items-center">
-              {/* Group 1 — audience/maturity filters */}
-              {["Multi-location", "Multi-product", "SaaS", "Brand launch", "Post-PMF & scaling"].map((chip, i) => (
-                <span
-                  key={i}
-                  className="inline-flex items-center px-3 py-1.5 text-[10px] md:text-[11px] font-display uppercase tracking-[0.15em] text-neutral-400 border border-white/15 rounded-full hover:border-[#D4FF00] hover:text-[#D4FF00] transition-colors duration-300 cursor-default"
-                >
-                  {chip}
+              {/* Group 1 — audience/maturity filters with tooltips */}
+              {(language === "pl" ? [
+                { label: "Multi-location", tooltip: "5–300+ fizycznych punktów, jedna marka" },
+                { label: "Multi-product", tooltip: "Wiele linii produktów pod jedną marką" },
+                { label: "SaaS", tooltip: "Produkty software'owe od pomysłu do operating systemu" },
+                { label: "Brand launch", tooltip: "Pre-launch tożsamość, wejście na rynek od zera" },
+                { label: "Post-PMF & scaling", tooltip: "Po product-market fit, poza founder-mode" },
+              ] : [
+                { label: "Multi-location", tooltip: "5–300+ physical branches under a single brand" },
+                { label: "Multi-product", tooltip: "Multiple product lines under one brand" },
+                { label: "SaaS", tooltip: "Software products from foggy idea to operating system" },
+                { label: "Brand launch", tooltip: "Pre-launch identity and 0-to-1 market entry" },
+                { label: "Post-PMF & scaling", tooltip: "Past product-market fit, beyond founder-led execution" },
+              ]).map((chip, i) => (
+                <span key={i} className="group relative">
+                  <span className="inline-flex items-center px-3 py-1.5 text-[10px] md:text-[11px] font-display uppercase tracking-[0.15em] text-neutral-400 border border-white/15 rounded-full group-hover:border-[#D4FF00] group-hover:text-[#D4FF00] transition-colors duration-300 cursor-help">
+                    {chip.label}
+                  </span>
+                  {/* Tooltip — fades in above chip on hover. pointer-events-none so
+                      it doesn't block hover on next chip. normal-case + tracking-normal
+                      override the chip's uppercase + tracking. */}
+                  <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-[280px] px-3 py-2 text-[11px] leading-relaxed text-neutral-200 bg-[#0a0a0a]/95 backdrop-blur-sm border border-white/15 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 normal-case tracking-normal font-sans shadow-lg">
+                    {chip.tooltip}
+                  </span>
                 </span>
               ))}
 
-              {/* Divider — signals category shift from "who" to "how". Hidden on
-                  smallest viewports where flex-wrap would orphan it weirdly. */}
+              {/* Divider — signals category shift from "who" to "how" */}
               <span aria-hidden="true" className="hidden sm:inline-block w-px h-4 bg-white/15 mx-1" />
 
-              {/* Group 2 — capability anchor (lime accent, distinct visual register) */}
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] md:text-[11px] font-display uppercase tracking-[0.15em] text-[#D4FF00] border border-[#D4FF00]/40 rounded-full hover:border-[#D4FF00] hover:bg-[#D4FF00]/[0.06] transition-colors duration-300 cursor-default">
-                <span aria-hidden="true" className="text-[8px] opacity-70">+</span>
-                AI Elevated Workflows
+              {/* Group 2 — capability anchor (lime accent, distinct visual register) with tooltip */}
+              <span className="group relative">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] md:text-[11px] font-display uppercase tracking-[0.15em] text-[#D4FF00] border border-[#D4FF00]/40 rounded-full group-hover:border-[#D4FF00] group-hover:bg-[#D4FF00]/[0.06] transition-colors duration-300 cursor-help">
+                  <span aria-hidden="true" className="text-[8px] opacity-70">+</span>
+                  AI Elevated Workflows
+                </span>
+                <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-[300px] px-3 py-2 text-[11px] leading-relaxed text-neutral-200 bg-[#0a0a0a]/95 backdrop-blur-sm border border-[#D4FF00]/30 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 normal-case tracking-normal font-sans shadow-lg">
+                  {language === "pl"
+                    ? "AI jako warstwa w governance i delivery — nie jako feature"
+                    : "AI as a layer in governance and delivery — not as a feature"}
+                </span>
               </span>
             </div>
 
