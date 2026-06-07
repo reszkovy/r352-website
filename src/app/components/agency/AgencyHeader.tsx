@@ -12,7 +12,6 @@ export function AgencyHeader() {
   const [location] = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLogoHovered, setIsLogoHovered] = useState(false);
   const [isLimeTheme, setIsLimeTheme] = useState(false);
   const { language, setLanguage, t } = useLanguage();
   const { theme, toggleTheme } = useTheme();
@@ -154,7 +153,6 @@ export function AgencyHeader() {
   };
 
   const tagline = t("nav.tagline");
-  const taglineWords = tagline.split(" ");
 
   return (
     <>
@@ -185,16 +183,17 @@ export function AgencyHeader() {
           }}
         />
         <div className="px-8 md:px-12 flex justify-between items-center w-full relative z-10">
-        <Link 
-            href="/" 
+        <Link
+            href="/"
             className="pointer-events-auto cursor-pointer group relative flex items-center z-[1000] gap-[5px]"
-            onMouseEnter={() => setIsLogoHovered(true)}
-            onMouseLeave={() => setIsLogoHovered(false)}
         >
             {/* Symbol - R Icon */}
             <R352Symbol className="h-10 w-auto text-[#DAFF45]" color="currentColor" />
-            
-            {/* Text - 352 */}
+
+            {/* Text - 352 + always-visible positioning tagline.
+                Tagline reveals on logo hover was killed — positioning insight ("Strategic
+                Design Partner") needs to be visible by default, not hidden behind an interaction.
+                Tagline hides on scroll alongside the 352 text — only the R-mark remains. */}
             <AnimatePresence>
               {!isScrolled && (
                 <motion.div
@@ -204,49 +203,16 @@ export function AgencyHeader() {
                   transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                   className="overflow-hidden flex items-center"
                 >
-                  <div> 
-                    <R352Text className="h-9 w-auto text-[#DAFF45]" color="currentColor" /> 
-                  </div>
+                  <R352Text className="h-9 w-auto text-[#DAFF45]" color="currentColor" />
 
-                  {/* Tagline - Reveal Animation */}
-                  <motion.div 
-                    initial={{ width: 0, opacity: 0 }}
-                    animate={{ 
-                        width: isLogoHovered ? "auto" : 0,
-                        opacity: isLogoHovered ? 1 : 0
-                    }}
-                    transition={{ 
-                        duration: 0.8, // Slower duration for smoothness
-                        ease: [0.22, 1, 0.36, 1],
-                        // Small delay on exit to let words animate out first
-                        delay: isLogoHovered ? 0 : 0.2 
-                    }}
-                    className="overflow-hidden flex items-center h-9" 
-                  >
-                    <div className="pl-4 flex gap-[0.3em] overflow-hidden">
-                        {taglineWords.map((word, i) => (
-                            <motion.span
-                                key={i}
-                                // Reduced font size to 13px
-                                className="font-display text-white text-[13px] tracking-widest whitespace-nowrap leading-none pt-1" 
-                                initial={{ y: 15, opacity: 0, rotateX: 90 }}
-                                animate={{ 
-                                    y: isLogoHovered ? 0 : 15, 
-                                    opacity: isLogoHovered ? 1 : 0,
-                                    rotateX: isLogoHovered ? 0 : 90
-                                }}
-                                transition={{ 
-                                    duration: 0.6, // Smooth duration for words
-                                    // Stagger entry, reverse stagger exit (or just slight delay)
-                                    delay: isLogoHovered ? 0.2 + (i * 0.04) : 0,
-                                    ease: [0.22, 1, 0.36, 1] 
-                                }}
-                            >
-                                {word}
-                            </motion.span>
-                        ))}
-                    </div>
-                  </motion.div>
+                  {/* Static positioning tagline — visible on lg+ screens (≥1024px)
+                      where horizontal room allows. Sits behind a thin divider so it
+                      reads as a positioning signature, not part of the logotype itself. */}
+                  <div className="hidden lg:flex items-center ml-5 pl-5 border-l border-current/20">
+                    <span className="font-display text-current text-[11px] tracking-[0.2em] whitespace-nowrap leading-none uppercase">
+                      {tagline}
+                    </span>
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -285,21 +251,12 @@ export function AgencyHeader() {
             </Link>
           ))}
 
-          {/* Contact & Schedule Buttons */}
-          <div className="flex gap-2 ml-4">
-             {/* Schedule Button */}
-             <a href={scheduleButton.href} target="_blank" rel="noopener noreferrer" className="group relative px-2 py-1 overflow-hidden">
-                 <div className="relative z-10 font-sans font-medium text-sm lowercase tracking-normal">
-                    <span className="block text-[#D4FF00] group-hover:-translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.85,0,0.15,1)]">
-                        {scheduleButton.label}
-                    </span>
-                    <span className="absolute inset-0 block text-white translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.85,0,0.15,1)]">
-                        {scheduleButton.label}
-                    </span>
-                 </div>
-             </a>
-
-             {/* Contact Button */}
+          {/* Contact button only — Schedule was removed from desktop nav.
+              Rationale: Calendly link already exists in Hero CTA, FloatingBriefCTA (persistent
+              global element), and Contact page. Three Calendly entry points was bloating
+              the header and causing nav-wrap on 1024–1280px widths. Mobile keeps Schedule
+              in the spacious overlay menu. */}
+          <div className="flex gap-2 ml-3">
              <Link href={contactButton.href} className="group relative px-2 py-1 overflow-hidden">
                  <div className="relative z-10 font-sans font-medium text-sm lowercase tracking-normal">
                     <span className="block text-[#D4FF00] group-hover:-translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.85,0,0.15,1)]">

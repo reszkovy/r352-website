@@ -46,17 +46,17 @@ const PHASES: Phase[] = [
     },
     outputs: {
       en: [
-        "Positioning approved by decision-maker",
-        "JTBD validated with min. 3 users",
-        "NSM + input metrics defined",
-        'MVP scope + "never list" clear',
+        "Positioning approved by the decision-maker",
+        "User goals validated with at least 3 real users",
+        "Success metric defined — one number that signals the product is working, plus supporting metrics",
+        'Scope of the first version (MVP) and the "never list" (what we will not build) are clear',
         "Budget and timeline accepted",
       ],
       pl: [
         "Pozycjonowanie zatwierdzone przez decydenta",
-        "JTBD zwalidowane z min. 3 użytkownikami",
-        "NSM + input metrics ustalone",
-        'MVP scope + "never list" jasna',
+        "Cele użytkowników zwalidowane z min. 3 realnymi osobami",
+        "Wskaźnik sukcesu zdefiniowany — jedna liczba sygnalizująca, że produkt działa, plus metryki wspierające",
+        'Zakres pierwszej wersji (MVP) i "never list" (czego nie zbudujemy) są jasne',
         "Budżet i timeline zaakceptowane",
       ],
     },
@@ -76,15 +76,15 @@ const PHASES: Phase[] = [
     outputs: {
       en: [
         "Brand platform approved",
-        'Tone of voice with min. 10 "yes/no" examples',
-        "Design tokens in dev-handoff format",
+        'Brand tone of voice defined with at least 10 "use this / not this" examples',
+        "Design tokens (colors, fonts, spacing as code variables) in a format developers can use directly",
         "Logo and colors final, named, organized",
-        "Brand book available to client team",
+        "Brand book available to the client team",
       ],
       pl: [
         "Brand platform zatwierdzona",
-        'Tone of voice z min. 10 przykładami "tak/nie"',
-        "Design tokens w formacie do dev handoffu",
+        'Tone of voice marki zdefiniowany z min. 10 przykładami "tak mówimy / tak nie mówimy"',
+        "Design tokens (kolory, fonty, odstępy jako zmienne) w formacie gotowym do użycia przez developerów",
         "Logo i kolory finalne, nazwane, zorganizowane",
         "Brand book dostępny dla zespołu klienta",
       ],
@@ -104,16 +104,16 @@ const PHASES: Phase[] = [
     },
     outputs: {
       en: [
-        "Narrative approved by decision-maker",
-        "Value prop copy tested with 5+ people",
-        "Microcopy library complete for MVP",
-        "Content style guide ready for delegation",
+        "Narrative approved by the decision-maker",
+        "Value proposition copy tested with 5+ people from the target audience",
+        "Microcopy library (button labels, error messages, empty states, tooltips) complete for the first version",
+        "Content style guide ready — your team can write on-brand without your review",
       ],
       pl: [
         "Narracja zatwierdzona przez decydenta",
-        "Value prop copy przetestowane z 5+ osobami",
-        "Microcopy library kompletna dla MVP",
-        "Content style guide gotowy do delegacji",
+        "Copy z propozycją wartości przetestowane z 5+ osobami z grupy docelowej",
+        "Biblioteka microcopy (etykiety przycisków, komunikaty błędów, puste stany, podpowiedzi) kompletna dla pierwszej wersji",
+        "Content style guide gotowy — Twój zespół pisze on-brand bez Twojego review",
       ],
     },
     gate: {
@@ -124,22 +124,22 @@ const PHASES: Phase[] = [
   },
   {
     num: "03",
-    title: { en: "UX — Research, IA, Flows", pl: "UX · Research, IA, Flows" },
+    title: { en: "UX — Research, Information Architecture, Flows", pl: "UX · Research, Architektura Informacji, Przepływy" },
     goal: {
-      en: "Design the product structure and flows before any UI visualization begins.",
-      pl: "Zaprojektować strukturę i przepływy produktu zanim zacznie się wizualizacja UI.",
+      en: "Design the product structure and user flows before any visual design begins.",
+      pl: "Zaprojektować strukturę i przepływy użytkownika zanim zacznie się wizualizacja.",
     },
     outputs: {
       en: [
-        "Critical user flows designed and tested",
-        "IA validated (card sort or tree test)",
-        "Mid-fi prototype passed usability test (≥80% success)",
+        "Critical user flows (key paths through the product) designed and tested",
+        "Information architecture validated through structured user testing",
+        "Medium-fidelity prototype (clickable, unstyled) passes usability test (at least 80% success)",
         "Microcopy integrated with wireframes",
       ],
       pl: [
-        "Critical user flows zaprojektowane i przetestowane",
-        "IA zwalidowana (card sort lub tree test)",
-        "Mid-fi prototyp przeszedł usability test (≥80% success)",
+        "Krytyczne przepływy użytkownika (kluczowe ścieżki przez produkt) zaprojektowane i przetestowane",
+        "Architektura informacji zwalidowana przez ustrukturyzowany test użytkowy",
+        "Prototyp w średniej szczegółowości (klikalny, bez stylów) przechodzi test użyteczności (min. 80% sukcesu)",
         "Microcopy zintegrowane z wireframami",
       ],
     },
@@ -162,16 +162,16 @@ const PHASES: Phase[] = [
     },
     outputs: {
       en: [
-        "All MVP screens in hi-fi with all states",
-        "Design system documented, usable by devs",
-        "A11y audit pass (or documented exceptions)",
-        "Handoff specs complete",
+        "All first-version screens in final visual design with every state (loading, error, empty, success)",
+        "Design system documented and usable by developers without follow-up questions",
+        "Accessibility audit passed (or exceptions documented and approved)",
+        "Developer handoff specifications complete",
       ],
       pl: [
-        "Wszystkie ekrany MVP w hi-fi z wszystkimi stanami",
-        "Design system udokumentowany, używalny przez devów",
-        "A11y audit pass (lub udokumentowane wyjątki)",
-        "Handoff specs kompletne",
+        "Wszystkie ekrany pierwszej wersji w finalnym designie ze wszystkimi stanami (ładowanie, błąd, pusty, sukces)",
+        "Design system udokumentowany i używalny przez developerów bez dopytywania",
+        "Audyt dostępności zaliczony (lub wyjątki udokumentowane i zatwierdzone)",
+        "Specyfikacje przekazania developerom kompletne",
       ],
     },
     gate: {
@@ -281,18 +281,18 @@ const LAYERS: Layer[] = [
     name: { en: "Decisions & Governance", pl: "Decyzje & Governance" },
     items: {
       en: [
-        "Decision log — every strategic decision",
-        "RACI per phase",
-        "Stakeholder communication cadence",
-        "Change request process",
-        "Acceptance criteria per phase",
+        "Decision log — every strategic decision recorded with who, why, when",
+        "Responsibility map (who does what, who decides what) per phase",
+        "Stakeholder communication cadence — fixed weekly rhythm, not ad-hoc",
+        "Change request process — how scope shifts get approved without chaos",
+        "Acceptance criteria per phase — written before work starts",
       ],
       pl: [
-        "Decision log — każda decyzja strategiczna",
-        "RACI per faza",
-        "Stakeholder communication cadence",
-        "Change request process",
-        "Acceptance criteria per faza",
+        "Decision log — każda decyzja strategiczna zapisana (kto, dlaczego, kiedy)",
+        "Mapa odpowiedzialności (kto co robi, kto co decyduje) per faza",
+        "Rytm komunikacji ze stakeholderami — stała kadencja tygodniowa, nie ad-hoc",
+        "Proces change requestów — jak zmiany scope'u są zatwierdzane bez chaosu",
+        "Kryteria akceptacji per faza — spisane zanim ruszy praca",
       ],
     },
   },
@@ -317,16 +317,16 @@ const LAYERS: Layer[] = [
     name: { en: "AI Operating Layer", pl: "AI Operating Layer" },
     items: {
       en: [
-        "Prompt library per phase",
-        "AI tools stack",
-        "Human-in-the-loop checkpoints",
-        "Governance: where yes, where no",
+        "Prompt library per phase — proven AI prompts tied to specific tasks",
+        "AI tools stack — which tools we use where, and why",
+        "Human-in-the-loop checkpoints (AI proposes, a person decides)",
+        "Governance — where AI is allowed, where a human signs off",
       ],
       pl: [
-        "Prompt library per faza",
-        "AI tools stack",
-        "Human-in-the-loop checkpoints",
-        "Governance: gdzie tak, gdzie nie",
+        "Biblioteka promptów per faza — sprawdzone prompty AI przypisane do konkretnych zadań",
+        "AI tools stack — z jakich narzędzi korzystamy, gdzie i dlaczego",
+        "Punkty kontroli z człowiekiem (AI proponuje, człowiek decyduje)",
+        "Governance — gdzie AI ma głos, gdzie człowiek podpisuje",
       ],
     },
   },
@@ -351,16 +351,16 @@ const LAYERS: Layer[] = [
     name: { en: "Metrics & Telemetry", pl: "Metryki & Telemetria" },
     items: {
       en: [
-        "Input metrics per phase",
-        "NSM tracking",
-        "Decision velocity dashboard",
-        "Health score per artifact",
+        "Input metrics per phase — leading indicators, not just outcomes",
+        "Main success metric (North Star Metric) tracked monthly",
+        "Decision velocity dashboard — how fast decisions actually get made",
+        "Health score per deliverable — is each artifact aging well or rotting?",
       ],
       pl: [
-        "Input metrics per faza",
-        "NSM tracking",
-        "Decision velocity dashboard",
-        "Health score per artefakt",
+        "Metryki wejściowe per faza — wskaźniki wyprzedzające, nie tylko wyniki",
+        "Główny wskaźnik sukcesu (North Star Metric) śledzony co miesiąc",
+        "Decision velocity dashboard — jak szybko decyzje faktycznie zapadają",
+        "Health score per deliverable — czy każdy artefakt się starzeje dobrze, czy gnije?",
       ],
     },
   },
@@ -438,6 +438,70 @@ export function Framework() {
               ? "Każda faza ma kontrakt wejścia i wyjścia. Bez zamknięcia kontraktu nie idziesz dalej. To eliminuje 80% rewizji wynikających z miękkich fundamentów."
               : "Each phase has an input/output contract. You don't move forward without closing the contract. This eliminates 80% of revisions stemming from soft foundations."}
           </p>
+        </Reveal>
+      </section>
+
+      {/* ─── WHO THIS IS FOR — explicit audience definition (was missing) ─── */}
+      <section className="border-t border-neutral-200 dark:border-white/10 pt-16 mb-20">
+        <Reveal>
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-10 md:gap-16">
+            <div>
+              <span className="block text-[11px] uppercase tracking-[0.25em] text-[#D4FF00] font-display mb-4">
+                {isPl ? "Dla kogo" : "Who this is for"}
+              </span>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-black dark:text-white leading-[1.05] mb-6">
+                {isPl ? "Dla operatorów, którzy budują systemy — nie tylko produkty." : "For operators who build systems — not just products."}
+              </h2>
+              <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
+                {isPl
+                  ? "Framework działa, kiedy stawka jest większa niż jeden ekran. Kiedy decyzje, które podejmiesz dziś, będą żyć w organizacji przez lata."
+                  : "The framework works when the stakes are bigger than one screen. When the decisions you make today will live in the organization for years."}
+              </p>
+            </div>
+            <ul className="flex flex-col divide-y divide-neutral-200 dark:divide-white/10">
+              {(isPl ? [
+                { role: "Założyciel / CEO", desc: "Wypuszczasz SaaS lub digital product — chcesz uniknąć kosztownych poprawek i przepalonych iteracji." },
+                { role: "Właściciel marki", desc: "Relaunchujesz tożsamość lub wchodzisz na nowy rynek — szukasz systemu, który utrzyma jakość bez Twojej obecności." },
+                { role: "Lider operacji multi-location", desc: "Konsolidujesz operacje kreatywne dla 5–300+ lokalizacji — chcesz scenariuszy, nie improwizacji." },
+                { role: "Product Manager", desc: "Dziedziczysz pół-zbudowany produkt — potrzebujesz domknięcia faz i wyciszenia ad-hoc requestów." },
+                { role: "Lider marketingu", desc: "Przygotowujesz launch marki i kampanii — chcesz spójności tonu, narracji i wykonania." },
+                { role: "Operating Partner", desc: "Budujesz operating system dla portfolio firm — potrzebujesz frameworku, który skaluje bez Ciebie." },
+              ] : [
+                { role: "Founder / CEO", desc: "You're launching a SaaS or digital product — you want to avoid costly revisions and burned iterations." },
+                { role: "Brand owner", desc: "You're relaunching identity or entering a new market — you need a system that holds quality without your presence." },
+                { role: "Multi-location ops leader", desc: "You're consolidating creative operations across 5–300+ locations — you want scenarios, not improvisation." },
+                { role: "Product Manager", desc: "You've inherited a half-built product — you need phases closed and ad-hoc requests silenced." },
+                { role: "Marketing leader", desc: "You're preparing a brand + campaign launch — you want consistent tone, narrative, and execution." },
+                { role: "Operating Partner", desc: "You're building an operating system across portfolio companies — you need a framework that scales without you." },
+              ]).map((item, i) => (
+                <li key={i} className="py-5">
+                  <div className="text-[11px] font-display uppercase tracking-[0.2em] text-[#D4FF00] mb-2">{item.role}</div>
+                  <p className="text-base text-neutral-700 dark:text-neutral-300 leading-relaxed [text-wrap:pretty]">{item.desc}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
+      </section>
+
+      {/* ─── WHEN THIS IS TOO MUCH — explicit qualifier ─── */}
+      <section className="border-t border-neutral-200 dark:border-white/10 pt-16 mb-20">
+        <Reveal>
+          <div className="max-w-4xl">
+            <span className="block text-[11px] uppercase tracking-[0.25em] text-neutral-500 font-display mb-6">
+              {isPl ? "Kiedy framework to za dużo" : "When this framework is too much"}
+            </span>
+            <p className="text-2xl md:text-3xl font-bold tracking-tight text-neutral-700 dark:text-neutral-300 leading-snug mb-6 [text-wrap:balance]">
+              {isPl
+                ? "Framework jest prawdopodobnie za duży, jeśli potrzebujesz jednorazowego landinga, jednorazowego brand refresha lub pojedynczego asseta kampanii."
+                : "The framework is probably too much if you only need a one-off landing page, a one-time brand refresh, or a single campaign asset."}
+            </p>
+            <p className="text-lg text-neutral-500 dark:text-neutral-500 leading-relaxed max-w-3xl">
+              {isPl
+                ? "Działa najlepiej, gdy stawka strategiczna jest realna — wielofazowy produkt, marka która ma żyć lata, lub operacje, które rosną bez Twojej obecności."
+                : "It works best when the strategic stakes are real — a multi-phase product, a brand meant to live for years, or operations that grow without your presence."}
+            </p>
+          </div>
         </Reveal>
       </section>
 
@@ -524,49 +588,9 @@ export function Framework() {
         </div>
       </section>
 
-      {/* ─── 6 CROSS-CUTTING LAYERS ─── */}
-      <section className="border-t border-neutral-200 dark:border-white/10 pt-16 mb-20">
-        <Reveal>
-          <div className="mb-12 max-w-3xl">
-            <span className="block text-[11px] uppercase tracking-[0.25em] text-[#D4FF00] font-display mb-4">
-              {isPl ? "Warstwy poprzeczne" : "Cross-cutting layers"}
-            </span>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-black dark:text-white leading-[1.05] mb-6">
-              {isPl ? "6 systemów, które żyją przez wszystkie fazy." : "6 systems that live across all phases."}
-            </h2>
-            <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
-              {isPl
-                ? "To system operacyjny pod fazami — bez nich framework się rozjeżdża."
-                : "This is the operating system beneath the phases — without them, the framework drifts."}
-            </p>
-          </div>
-        </Reveal>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {LAYERS.map((layer, i) => (
-            <Reveal key={layer.num} delay={i * 0.05}>
-              <div className="border border-neutral-200 dark:border-white/10 p-6 md:p-8 h-full">
-                <div className="font-display text-xs text-[#D4FF00] tracking-[0.2em] uppercase mb-3">
-                  {layer.num}
-                </div>
-                <h3 className="text-xl md:text-2xl font-bold tracking-tighter text-black dark:text-white mb-4 leading-tight">
-                  {layer.name[language]}
-                </h3>
-                <ul className="space-y-2">
-                  {layer.items[language].map((item, k) => (
-                    <li key={k} className="text-[14px] text-neutral-600 dark:text-neutral-400 flex items-start gap-2 leading-relaxed">
-                      <span className="text-[#D4FF00] mt-[2px] shrink-0">·</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      {/* ─── OPERATING MODEL TABLE ─── */}
+      {/* ─── OPERATING MODEL TABLE (moved up from pos 4 → 2 — this is the killer IP,
+          was previously buried below LAYERS. Showing presence-drops graph right after
+          phases makes "system not hours" the central proof of the page) ─── */}
       <section className="border-t border-neutral-200 dark:border-white/10 pt-16 mb-20">
         <Reveal>
           <div className="mb-12 max-w-3xl">
@@ -578,7 +602,7 @@ export function Framework() {
             </h2>
             <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
               {isPl
-                ? "Średnia po stabilizacji: 35%. Docelowy podział 80/20: strategia vs operacje. Klient kupuje system, który po wdrożeniu działa coraz mniej z moją obecnością — to dowód że to system, nie godziny."
+                ? "Średnia po stabilizacji: 35%. Docelowy podział 80/20: strategia vs operacje. Klient kupuje system, który po wdrożeniu działa coraz mniej z moją obecnością — to dowód, że to system, nie godziny."
                 : "Average after stabilization: 35%. Target 80/20 split: strategy vs operations. The client buys a system that runs increasingly without my presence — proof it's a system, not hours."}
             </p>
           </div>
@@ -634,6 +658,112 @@ export function Framework() {
             </table>
           </div>
         </Reveal>
+      </section>
+
+      {/* ─── PROOF / CASE STUDY — replaces pure theory with concrete application.
+          Geers/Sonova is Reszek's strongest multi-location case — anchors the framework
+          to real numbers (3× faster approvals, 80% briefs first-round, 15% presence). ─── */}
+      <section className="border-t border-neutral-200 dark:border-white/10 pt-16 mb-20">
+        <Reveal>
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-10 md:gap-16">
+            <div>
+              <span className="block text-[11px] uppercase tracking-[0.25em] text-[#D4FF00] font-display mb-4">
+                {isPl ? "Framework w działaniu" : "Framework in action"}
+              </span>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-black dark:text-white leading-[1.05]">
+                {isPl ? "Przykład zastosowania." : "An example application."}
+              </h2>
+            </div>
+            <div className="space-y-6">
+              <p className="text-xl md:text-2xl text-neutral-700 dark:text-neutral-300 leading-relaxed font-medium [text-wrap:pretty]">
+                {isPl
+                  ? "Geers / Sonova — sieć 60+ salonów słuchowych w Polsce. Chaos materiałów marketingowych: każdy salon improwizuje, brak jednolitej tożsamości w komunikacji, briefy chodzą przez e-mail."
+                  : "Geers / Sonova — a network of 60+ hearing-care studios in Poland. Marketing materials chaos: every studio improvising, no unified identity in communication, briefs flying through email."}
+              </p>
+              <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
+                {isPl
+                  ? "Framework w akcji: Faza 01 ustabilizowała brand platform, Faza 02 dała narrację gotową do delegacji, Fazy 03–04 zbudowały design system i komponenty dostępne dla wszystkich lokalizacji, Faza 07 wprowadziła rytm operacyjny — miesięczne review, kwartalne governance check."
+                  : "Framework in action: Phase 01 stabilized the brand platform, Phase 02 delivered a narrative ready for delegation, Phases 03–04 built a design system and components accessible to all locations, Phase 07 introduced an operational rhythm — monthly reviews, quarterly governance checks."}
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-neutral-200 dark:border-white/10">
+                <div>
+                  <div className="font-display text-3xl md:text-4xl font-bold tracking-tighter text-[#D4FF00] leading-none mb-2">
+                    3×
+                  </div>
+                  <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-snug">
+                    {isPl ? "szybsze cykle akceptacji" : "faster approval cycles"}
+                  </p>
+                </div>
+                <div>
+                  <div className="font-display text-3xl md:text-4xl font-bold tracking-tighter text-[#D4FF00] leading-none mb-2">
+                    80%
+                  </div>
+                  <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-snug">
+                    {isPl ? "briefów gotowych za pierwszym razem" : "briefs ready on first submission"}
+                  </p>
+                </div>
+                <div>
+                  <div className="font-display text-3xl md:text-4xl font-bold tracking-tighter text-[#D4FF00] leading-none mb-2">
+                    15%
+                  </div>
+                  <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-snug">
+                    {isPl ? "obecność po stabilizacji" : "my presence after stabilization"}
+                  </p>
+                </div>
+              </div>
+              <Link
+                href="/work/sonova"
+                className="group inline-flex items-center gap-2 mt-4 text-[11px] font-display uppercase tracking-[0.2em] text-neutral-700 dark:text-neutral-300 hover:text-[#D4FF00] transition-colors"
+              >
+                <span>{isPl ? "Pełny case study" : "Full case study"}</span>
+                <ArrowRight className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2} />
+              </Link>
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
+      {/* ─── 6 CROSS-CUTTING LAYERS (moved down from pos 3 → 5 — supporting infrastructure
+          after the killer IP graph + proof case study; reads as "and here's what makes it work") ─── */}
+      <section className="border-t border-neutral-200 dark:border-white/10 pt-16 mb-20">
+        <Reveal>
+          <div className="mb-12 max-w-3xl">
+            <span className="block text-[11px] uppercase tracking-[0.25em] text-[#D4FF00] font-display mb-4">
+              {isPl ? "Warstwy poprzeczne" : "Cross-cutting layers"}
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-black dark:text-white leading-[1.05] mb-6">
+              {isPl ? "6 systemów, które żyją przez wszystkie fazy." : "6 systems that live across all phases."}
+            </h2>
+            <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
+              {isPl
+                ? "To system operacyjny pod fazami — bez nich framework się rozjeżdża."
+                : "This is the operating system beneath the phases — without them, the framework drifts."}
+            </p>
+          </div>
+        </Reveal>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {LAYERS.map((layer, i) => (
+            <Reveal key={layer.num} delay={i * 0.05}>
+              <div className="border border-neutral-200 dark:border-white/10 p-6 md:p-8 h-full">
+                <div className="font-display text-xs text-[#D4FF00] tracking-[0.2em] uppercase mb-3">
+                  {layer.num}
+                </div>
+                <h3 className="text-xl md:text-2xl font-bold tracking-tighter text-black dark:text-white mb-4 leading-tight">
+                  {layer.name[language]}
+                </h3>
+                <ul className="space-y-2">
+                  {layer.items[language].map((item, k) => (
+                    <li key={k} className="text-[14px] text-neutral-600 dark:text-neutral-400 flex items-start gap-2 leading-relaxed">
+                      <span className="text-[#D4FF00] mt-[2px] shrink-0">·</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </section>
 
       {/* ─── OPERATING PRINCIPLE ─── */}

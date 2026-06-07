@@ -11,7 +11,7 @@ export const translations = {
       journal: "Journal",
       detailed_brief: "Detailed Brief",
       pricing: "Limited Access",
-      tagline: "YOUR AGILE DESIGN PARTNER"
+      tagline: "STRATEGIC DESIGN PARTNER"
     },
     hero: {
       // Hero reframed to reflect Product Building Framework as master IP (broader scope
@@ -634,7 +634,7 @@ export const translations = {
       journal: "Dziennik",
       detailed_brief: "Szczegółowy Brief",
       pricing: "Dostęp ograniczony",
-      tagline: "TWÓJ SPRAWNY PARTNER DESIGNOWY"
+      tagline: "STRATEGICZNY PARTNER DESIGNOWY"
     },
     hero: {
       // Hero przepozycjonowane — Framework jako master IP (szersze niż samo design ops).
