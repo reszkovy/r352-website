@@ -45,15 +45,17 @@ export function AgencyHero() {
             />
           </div>
           <div className="block md:hidden" aria-hidden="true">
-            {/* Mobile hero: text-balance REMOVED — was re-flowing the title at 48px
-                on 375px viewport into mid-word breaks ("growin" / "g brands."). With
-                explicit <br/> in title_mobile + no balance, the 4-line stack renders
-                cleanly without browser intervention. */}
+            {/* Mobile hero typography:
+                  - Font reduced 48px → 40px (text-[40px]) so "design partner." and
+                    "partner designowy." fit on a single line at ~375-393px viewports.
+                  - Leading tightened 0.95 → 0.76 (20% reduction) so the 4-line stack
+                    reads as a unified block, not 4 separate sentences.
+                  - text-balance still off (would re-flow into word breaks). */}
             <CinematicText
               key={`hero-title-mobile-${theme}`}
               text={t("hero.title_mobile")}
               as="div"
-              className="type-h1 !text-5xl md:!text-7xl lg:!text-8xl mb-6 md:mb-10 max-w-[95%] cursor-default leading-[0.95]"
+              className="type-h1 !text-[40px] mb-6 max-w-[95%] cursor-default leading-[0.76]"
               delay={0.1}
               glowEffect={true}
               baseColor={baseColor}
