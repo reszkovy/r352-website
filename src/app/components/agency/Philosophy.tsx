@@ -7,9 +7,10 @@ import { motion } from "motion/react";
 import { PhilosophyVisuals } from "./PhilosophyVisuals";
 import { ScrollSequence } from "@/app/components/ui/ScrollSequence";
 import { ArrowRight } from "lucide-react";
-// Lime portrait with dark silhouette — same asset used by the Chatbot avatar (bottom-right).
-// Reused here at larger size as the About-section portrait.
-import reszekPortrait from "figma:asset/ca9abe862ac1bfee95045e08a8d97f21981b65dc.png";
+// Transparent-glass humanoid portrait — Midjourney render aligned to the "no face"
+// brand position ("The work speaks. I don't have to."). Lives in src/assets/ and is
+// resolved via the figma:asset/ vite plugin (prefers .webp if generated later).
+import reszekPortrait from "figma:asset/reszek-glass-portrait.png";
 
 // Hero motion preset — gentle slide + fade + blur on enter AND exit.
 // Bypasses Reveal because hero copy is overlay'd on ScrollSequence (no in-view trigger fires).
@@ -169,8 +170,18 @@ export function Philosophy() {
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
-              <div className="absolute bottom-4 left-4 text-[10px] font-display uppercase tracking-[0.2em] text-black/60 mix-blend-multiply">
-                Reszek · Mallorca
+              {/* POV statement overlay — explicit "no face" brand position.
+                  Reframes the silhouette portrait from accidental/missing-photo to
+                  intentional anti-influencer signal. Two-line stack: POV statement
+                  prominent, signature line small underneath. Light-on-dark colors
+                  for the glass-figure portrait (darker neutral background). */}
+              <div className="absolute bottom-4 left-4 right-4">
+                <p className="font-display text-white/80 leading-tight tracking-tight text-[15px] md:text-base font-bold mb-1.5 max-w-[260px]">
+                  The work speaks.<br />I don&apos;t have to.
+                </p>
+                <p className="text-[10px] font-display uppercase tracking-[0.2em] text-white/60">
+                  Reszek · Mallorca
+                </p>
               </div>
             </div>
           </Reveal>
