@@ -403,8 +403,9 @@ export function Process() {
           The killer IP graph: shows Reszek's involvement falling from 90% at
           Diagnose to 15% at Iterate. Anti-time-for-money thesis made visual.
           Client buys a system that runs increasingly without me — proof it's
-          a system, not hours. Migrated from former /framework page. */}
-      <section className="py-24 md:py-32 border-b border-neutral-200 dark:border-white/10">
+          a system, not hours. Migrated from former /framework page.
+          Anchor #operating-model — deep-linked from home page Operating Model teaser. */}
+      <section id="operating-model" className="py-24 md:py-32 border-b border-neutral-200 dark:border-white/10 scroll-mt-24">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
           <Reveal>
             <div className="mb-12 max-w-3xl">

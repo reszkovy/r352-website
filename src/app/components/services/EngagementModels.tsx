@@ -356,13 +356,16 @@ export function EngagementModels() {
                 </p>
               </div>
 
-              {/* How it works — chip-tooltip pattern (compressed from 4-bullet list).
-                  Labels scannable in 3 seconds, full sentence revealed on hover. */}
+              {/* How it works — dual rendering:
+                  - Desktop (md+): chip-tooltip pattern (compressed, hover reveals full text)
+                  - Mobile: full bullets (no hover on touch — render text directly so info
+                    isn't trapped behind interaction that doesn't fire) */}
               <div className="mb-6 flex-1">
                 <h4 className="text-[11px] uppercase tracking-[1px] text-neutral-500 dark:text-[#D4FF00] mb-3">
                   {language === "pl" ? "Jak to działa" : "How it works"}
                 </h4>
-                <div className="flex flex-wrap gap-2">
+                {/* Desktop chips */}
+                <div className="hidden md:flex flex-wrap gap-2">
                   {model.howItWorks.map((item, idx) => (
                     <ChipWithTooltip
                       key={idx}
@@ -371,6 +374,15 @@ export function EngagementModels() {
                     />
                   ))}
                 </div>
+                {/* Mobile bullets — full text visible since hover doesn't fire on touch */}
+                <ul className="md:hidden space-y-3">
+                  {model.howItWorks.map((item, idx) => (
+                    <li key={idx} className="text-[14px] text-neutral-700 dark:text-[#e5e5e5] flex items-start gap-3">
+                      <span className="w-1 h-1 rounded-none bg-neutral-900 dark:bg-[#D4FF00] mt-[8px] shrink-0" />
+                      <span className="leading-snug">{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
 
               <hr className="border-neutral-200 dark:border-white/10 mb-6" />
@@ -388,7 +400,8 @@ export function EngagementModels() {
                   <h4 className="text-[11px] uppercase tracking-[1px] text-neutral-500 dark:text-[#D4FF00] mb-2">
                     {language === "pl" ? "Idealne, gdy" : "Ideal when"}
                   </h4>
-                  <div className="flex flex-wrap gap-2">
+                  {/* Desktop chips */}
+                  <div className="hidden md:flex flex-wrap gap-2">
                     {model.idealWhen.slice(0, 3).map((item, idx) => (
                       <ChipWithTooltip
                         key={idx}
@@ -397,6 +410,15 @@ export function EngagementModels() {
                       />
                     ))}
                   </div>
+                  {/* Mobile bullets */}
+                  <ul className="md:hidden space-y-2">
+                    {model.idealWhen.slice(0, 3).map((item, idx) => (
+                      <li key={idx} className="text-[13px] text-neutral-500 dark:text-[#888888] flex items-start gap-2">
+                        <span className="text-neutral-400 dark:text-neutral-600 mt-[-1px]">—</span>
+                        <span className="leading-snug">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
                 {/* Testimonial Quote */}
@@ -523,12 +545,12 @@ export function EngagementModels() {
                   </p>
                 </div>
 
-                {/* How it works — chip-tooltip pattern (same as regular tier cards) */}
+                {/* How it works — dual rendering (chips desktop, bullets mobile) */}
                 <div className="mb-6 flex-1">
                   <h4 className="text-[11px] uppercase tracking-[1px] text-neutral-500 dark:text-[#D4FF00] mb-3">
                     {language === "pl" ? "Jak to działa" : "How it works"}
                   </h4>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="hidden md:flex flex-wrap gap-2">
                     {model.howItWorks.map((item, idx) => (
                       <ChipWithTooltip
                         key={idx}
@@ -537,6 +559,14 @@ export function EngagementModels() {
                       />
                     ))}
                   </div>
+                  <ul className="md:hidden space-y-3">
+                    {model.howItWorks.map((item, idx) => (
+                      <li key={idx} className="text-[14px] text-neutral-700 dark:text-[#e5e5e5] flex items-start gap-3">
+                        <span className="w-1 h-1 rounded-none bg-neutral-900 dark:bg-[#D4FF00] mt-[8px] shrink-0" />
+                        <span className="leading-snug">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
                 <hr className="border-neutral-200 dark:border-white/10 mb-6" />
@@ -554,7 +584,7 @@ export function EngagementModels() {
                     <h4 className="text-[11px] uppercase tracking-[1px] text-neutral-500 dark:text-[#D4FF00] mb-2">
                       {language === "pl" ? "Idealne, gdy" : "Ideal when"}
                     </h4>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="hidden md:flex flex-wrap gap-2">
                       {model.idealWhen.slice(0, 3).map((item, idx) => (
                         <ChipWithTooltip
                           key={idx}
@@ -563,6 +593,14 @@ export function EngagementModels() {
                         />
                       ))}
                     </div>
+                    <ul className="md:hidden space-y-2">
+                      {model.idealWhen.slice(0, 3).map((item, idx) => (
+                        <li key={idx} className="text-[13px] text-neutral-500 dark:text-[#888888] flex items-start gap-2">
+                          <span className="text-neutral-400 dark:text-neutral-600 mt-[-1px]">—</span>
+                          <span className="leading-snug">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>
