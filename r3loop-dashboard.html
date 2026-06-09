@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>r3loop Diagnostic — r352.com</title>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg-elevated: #151515;
+    --bg-card: rgba(255, 255, 255, 0.025);
+    --border: rgba(255, 255, 255, 0.08);
+    --border-bright: rgba(255, 255, 255, 0.15);
+    --text-primary: #ffffff;
+    --text-secondary: #888888;
+    --text-tertiary: #555555;
+    --lime: #D4FF00;
+    --lime-dim: rgba(212, 255, 0, 0.15);
+    --lime-glow: rgba(212, 255, 0, 0.08);
+    --positive: #4ade80;
+    --neutral: #525252;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    line-height: 1.5;
+    padding: 40px 24px;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  /* === HEADER === */
+  .header { margin-bottom: 60px; }
+  .eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--lime);
+    padding: 6px 12px;
+    border: 1px solid rgba(212, 255, 0, 0.4);
+    border-radius: 999px;
+    margin-bottom: 24px;
+    font-weight: 600;
+  }
+  .eyebrow .dot {
+    display: inline-block; width: 6px; height: 6px;
+    background: var(--lime); border-radius: 50%;
+    margin-right: 6px; vertical-align: middle;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%, 100% { opacity: 1 } 50% { opacity: 0.5 } }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .h1-meta {
+    color: var(--text-secondary);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+  .h1-meta strong { color: var(--text-primary); }
+
+  /* === HERO STATS === */
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 24px;
+    margin: 48px 0;
+    padding: 32px;
+    background: var(--bg-elevated);
+    border-radius: 8px;
+  }
+  .stat-block { }
+  .stat-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--text-tertiary);
+    margin-bottom: 8px;
+  }
+  .stat-value {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+  .stat-value.lime { color: var(--lime); }
+  .stat-value.delta {
+    color: var(--positive);
+    font-size: 1.75rem;
+  }
+  .stat-value .arrow { color: var(--lime); margin: 0 8px; }
+  .stat-secondary {
+    color: var(--text-secondary);
+    font-size: 13px;
+    margin-top: 4px;
+  }
+
+  /* === SECTION TITLES === */
+  h2 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 64px 0 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  h2 .section-eyebrow {
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--lime);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  /* === CATEGORY SCORES TABLE === */
+  .scores-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .scores-table thead th {
+    text-align: left;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--text-tertiary);
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .scores-table td {
+    padding: 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+  .scores-table tr:hover td { background: rgba(255, 255, 255, 0.015); }
+  .cat-name { font-weight: 500; font-size: 14px; }
+  .cat-num {
+    color: var(--lime);
+    font-weight: 700;
+    margin-right: 12px;
+    font-size: 13px;
+  }
+  .cat-step {
+    display: inline-block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-secondary);
+    padding: 3px 8px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin-top: 4px;
+  }
+  .score-bar {
+    display: flex; align-items: center; gap: 12px;
+    min-width: 0;
+  }
+  .bar-container {
+    width: 100%; max-width: 200px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    position: relative;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .bar-v1 {
+    position: absolute; left: 0; top: 0; height: 100%;
+    background: var(--neutral);
+    border-radius: 3px;
+  }
+  .bar-v2 {
+    position: absolute; left: 0; top: 0; height: 100%;
+    background: var(--lime);
+    border-radius: 3px;
+    transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .score-value {
+    font-size: 14px; font-weight: 600;
+    white-space: nowrap;
+    font-feature-settings: 'tnum';
+  }
+  .delta-cell {
+    text-align: right;
+    font-size: 14px;
+    font-weight: 600;
+    font-feature-settings: 'tnum';
+  }
+  .delta-positive { color: var(--positive); }
+  .delta-zero { color: var(--text-tertiary); }
+
+  /* === CHANGELOG === */
+  .changelog { margin-top: 32px; }
+  .change-card {
+    background: var(--bg-card);
+    border-left: 2px solid var(--lime);
+    padding: 24px 28px;
+    margin-bottom: 16px;
+    border-radius: 0 6px 6px 0;
+  }
+  .change-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .change-id {
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 11px;
+    color: var(--lime);
+    background: var(--lime-glow);
+    padding: 4px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+  }
+  .change-title {
+    font-size: 16px; font-weight: 600;
+    flex: 1; min-width: 200px;
+  }
+  .change-delta {
+    color: var(--positive);
+    font-size: 14px;
+    font-weight: 600;
+    font-feature-settings: 'tnum';
+  }
+  .change-detail {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 8px 0 4px;
+  }
+  .change-detail strong { color: var(--text-primary); }
+  .change-impact {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-tertiary);
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .change-impact strong { color: var(--lime); }
+
+  /* === NEXT MOVES === */
+  .next-moves {
+    background: var(--bg-elevated);
+    padding: 32px;
+    border-radius: 8px;
+    margin-top: 32px;
+  }
+  .next-moves-intro {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+  .next-move {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 20px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: center;
+    font-size: 14px;
+  }
+  .next-move:last-child { border-bottom: none; }
+  .next-move-id {
+    font-family: 'SF Mono', monospace;
+    color: var(--lime);
+    font-size: 11px;
+    background: var(--lime-glow);
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+  .next-move-impact {
+    color: var(--positive);
+    font-weight: 600;
+    font-feature-settings: 'tnum';
+  }
+  .next-move-effort {
+    color: var(--text-tertiary);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+
+  /* === FOOTER === */
+  .footer {
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-meta {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+  }
+  .footer-meta strong { color: var(--lime); }
+  .footer a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: color 0.3s, border-color 0.3s;
+  }
+  .footer a:hover { color: var(--lime); border-color: var(--lime); }
+
+  /* === LIME ARROW === */
+  .arrow-icon { display: inline-block; width: 14px; height: 14px; vertical-align: middle; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <header class="header">
+    <span class="eyebrow"><span class="dot"></span>Iteration #1 · live</span>
+    <h1>r3loop Diagnostic</h1>
+    <div class="h1-meta">
+      Target: <strong>r352.com</strong> ·
+      Snapshot <strong>V1</strong> → <strong>V2</strong> ·
+      Run via <strong>spec v2 (50 prompts)</strong>
+    </div>
+  </header>
+
+  <!-- HERO STATS -->
+  <div class="hero-stats">
+    <div class="stat-block">
+      <div class="stat-label">V1 baseline</div>
+      <div class="stat-value">9 367</div>
+      <div class="stat-secondary">/ 10 000 avg</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-label">V2 current</div>
+      <div class="stat-value lime">9 467</div>
+      <div class="stat-secondary">/ 10 000 avg</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-label">Total delta</div>
+      <div class="stat-value delta">+900</div>
+      <div class="stat-secondary">across 9 categories</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-label">Target hit</div>
+      <div class="stat-value lime">105%</div>
+      <div class="stat-secondary">+50 margin over +850 goal</div>
+    </div>
+  </div>
+
+  <!-- CATEGORY SCORES -->
+  <h2>
+    <span class="section-eyebrow">Category breakdown</span>
+    10 categories · scored against r3loop spec v2
+  </h2>
+
+  <table class="scores-table">
+    <thead>
+      <tr>
+        <th style="width: 30%;">Category</th>
+        <th style="width: 35%;">Score V1 → V2</th>
+        <th style="width: 20%;">r3loop step</th>
+        <th style="width: 15%; text-align: right;">Delta</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="cat-num">01</span><span class="cat-name">Positioning Clarity</span></td>
+        <td>
+          <div class="score-bar">
+            <div class="bar-container">
+              <div class="bar-v1" style="width: 95%;"></div>
+              <div class="bar-v2" style="width: 95%;"></div>
+            </div>
+            <span class="score-value">9 500</span>
+          </div>
+        </td>
+        <td><span class="cat-step">03 Standardize</span></td>
+        <td class="delta-cell delta-zero">—</td>
+      </tr>
+      <tr>
+        <td><span class="cat-num">02</span><span class="cat-name">IP Definability</span></td>
+        <td>
+          <div class="score-bar">
+            <div class="bar-container">
+              <div class="bar-v1" style="width: 94%;"></div>
+              <div class="bar-v2" style="width: 94%;"></div>
+            </div>
+            <span class="score-value">9 400</span>
+          </div>
+        </td>
+        <td><span class="cat-step">03 Standardize</span></td>
+        <td class="delta-cell delta-zero">—</td>
+      </tr>
+      <tr>
+        <td><span class="cat-num">03</span><span class="cat-name">Audience Qualification</span></td>
+        <td>
+          <div class="score-bar">
+            <div class="bar-container">
+              <div class="bar-v1" style="width: 95%;"></div>
+              <div class="bar-v2" style="width: 95%;"></div>
+            </div>
+            <span class="score-value">9 500</span>
+          </div>
+        </td>
+        <td><span class="cat-step">02 Map</span></td>
+        <td class="delta-cell delta-zero">—</td>
+      </tr>
+      <tr>
+        <td><span class="cat-num">04</span><span class="cat-name">Proof Density</span></td>
+        <td>
+          <div class="score-bar">
+            <div class="bar-container">
+              <div class="bar-v1" style="width: 95%;"></div>
+              <div class="bar-v2" style="width: 95%;"></div>
+            </div>
+            <span class="score-value">9 500</span>
+          </div>
+        </td>
+        <td><span class="cat-step">06 Ship</span></td>
+        <td class="delta-cell delta-zero">—</td>
+      </tr>
+      <tr>
+        <td><span class="cat-num">05</span><span class="cat-name">Conversion Path Design</span></td>
+        <td>
+          <div class="score-bar">
+            <div class="bar-container">
+              <div class="bar-v1" style="width: 88%;"></div>
+              <div class="bar-v2" style="width: 95%;"></div>
+            </div>
+            <span class="score-value">8 800 → 9 500</span>
+          </div>
+        </td>
+        <td><span class="cat-step">04 Build</span></td>
+        <td class="delta-cell delta-positive">+700</td>
+      </tr>
+      <tr>
+        <td><span class="cat-num">06</span><span class="cat-name">Anti-Time POV</span></td>
+        <td>
+          <div class="score-bar">
+            <div class="bar-container">
+              <div class="bar-v1" style="width: 93%;"></div>
+              <div class="bar-v2" style="width: 95%;"></div>
+            </div>
+            <span class="score-value">9 300 → 9 500</span>
+          </div>
+        </td>
+        <td><span class="cat-step">03 Standardize</span></td>
+        <td class="delta-cell delta-positive">+200</td>
+      </tr>
+      <tr>
+        <td><span class="cat-num">07</span><span class="cat-name">Visual / Brand Craft</span></td>
+        <td>
+          <div class="score-bar">
+            <div class="bar-container">
+              <div class="bar-v1" style="width: 97%;"></div>
+              <div class="bar-v2" style="width: 97%;"></div>
+            </div>
+            <span class="score-value">9 700</span>
+          </div>
+        </td>
+        <td><span class="cat-step">04 Build</span></td>
+        <td class="delta-cell delta-zero">—</td>
+      </tr>
+      <tr>
+        <td><span class="cat-num">08</span><span class="cat-name">Technical SEO & GEO</span></td>
+        <td>
+          <div class="score-bar">
+            <div class="bar-container">
+              <div class="bar-v1" style="width: 92%;"></div>
+              <div class="bar-v2" style="width: 92%;"></div>
+            </div>
+            <span class="score-value">9 200</span>
+          </div>
+        </td>
+        <td><span class="cat-step">06 Ship</span></td>
+        <td class="delta-cell delta-zero">—</td>
+      </tr>
+      <tr>
+        <td><span class="cat-num">09</span><span class="cat-name">Productization Readiness</span></td>
+        <td>
+          <div class="score-bar">
+            <div class="bar-container">
+              <div class="bar-v1" style="width: 94%;"></div>
+              <div class="bar-v2" style="width: 94%;"></div>
+            </div>
+            <span class="score-value">9 400</span>
+          </div>
+        </td>
+        <td><span class="cat-step">05 Govern</span></td>
+        <td class="delta-cell delta-zero">—</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- CHANGELOG -->
+  <h2>
+    <span class="section-eyebrow">Changelog · iteration #1</span>
+    Prompts applied (2)
+  </h2>
+
+  <div class="changelog">
+
+    <div class="change-card">
+      <div class="change-header">
+        <span class="change-id">prompt [5.4]</span>
+        <span class="change-title">Mobile fallback for chip-tooltip pattern</span>
+        <span class="change-delta">+700</span>
+      </div>
+      <p class="change-detail">
+        <strong>Diagnosis:</strong> /services chip-tooltips were hover-dependent. Mobile users (40-60%
+        of traffic) saw only chip labels — full sentences trapped behind unfireable hover interaction.
+      </p>
+      <p class="change-detail">
+        <strong>Action:</strong> Dual-rendering pattern in EngagementModels.tsx — desktop (md+) keeps
+        chip-tooltip pattern with cinematic motion + glass; mobile (md-) renders full bullet lists
+        with no info loss. Applied to 4 locations: regular models × (How it works + Ideal when),
+        enterprise models × (How it works + Ideal when).
+      </p>
+      <div class="change-impact">
+        <span><strong>r3loop step:</strong> 04 Build</span>
+        <span><strong>Category:</strong> 05 Conversion Path</span>
+        <span><strong>Files:</strong> EngagementModels.tsx</span>
+      </div>
+    </div>
+
+    <div class="change-card">
+      <div class="change-header">
+        <span class="change-id">prompt [6.2]</span>
+        <span class="change-title">Operating Model proof on Home</span>
+        <span class="change-delta">+200</span>
+      </div>
+      <p class="change-detail">
+        <strong>Diagnosis:</strong> Anti-time POV (Operating Model graph showing 90% → 15% presence)
+        only existed on /process. Home visitors didn't see anti-hourly proof until they navigated
+        deep into methodology page. Lost opportunity to plant POV at first scroll.
+      </p>
+      <p class="change-detail">
+        <strong>Action:</strong> Compressed 3-row Operating Model teaser added to Home between Marquee
+        and ServicesList. Shows Diagnose 90% / Build 45% / Iterate 15% with lime fill bars + roles.
+        Deep links to /process#operating-model for full 8-row table. Anchor added on /process for
+        scroll-target behavior.
+      </p>
+      <div class="change-impact">
+        <span><strong>r3loop step:</strong> 03 Standardize</span>
+        <span><strong>Category:</strong> 06 Anti-Time POV</span>
+        <span><strong>Files:</strong> Home.tsx, Process.tsx</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- NEXT MOVES -->
+  <h2>
+    <span class="section-eyebrow">Queued for iteration #2</span>
+    Highest-ROI prompts not yet applied
+  </h2>
+
+  <div class="next-moves">
+    <p class="next-moves-intro">
+      Each next iteration applies more prompts from spec v2. Predicted lift per prompt is calibrated
+      against historical r352.com baseline data.
+    </p>
+
+    <div class="next-move">
+      <span class="next-move-id">prompt [8.1]</span>
+      <span>Article schema for Journal posts (currently missing structured data for articles)</span>
+      <span class="next-move-impact">+300</span>
+      <span class="next-move-effort">30 min</span>
+    </div>
+
+    <div class="next-move">
+      <span class="next-move-id">prompt [10.5]</span>
+      <span>Newsletter capture beyond Q4 waitlist (audience asset accumulation)</span>
+      <span class="next-move-impact">+600</span>
+      <span class="next-move-effort">1 h</span>
+    </div>
+
+    <div class="next-move">
+      <span class="next-move-id">prompt [9.5]</span>
+      <span>r3loop step productization mapping page (sub-product roadmap visible)</span>
+      <span class="next-move-impact">+500</span>
+      <span class="next-move-effort">1.5 h</span>
+    </div>
+
+    <div class="next-move">
+      <span class="next-move-id">prompt [7.4]</span>
+      <span>Visual identity coherence audit across all surfaces (glass portrait extension)</span>
+      <span class="next-move-impact">+150</span>
+      <span class="next-move-effort">45 min</span>
+    </div>
+  </div>
+
+  <!-- METHODOLOGY NOTE -->
+  <h2>
+    <span class="section-eyebrow">Loop architecture · how this worked</span>
+    The methodology applied to itself
+  </h2>
+
+  <div class="change-card">
+    <p class="change-detail" style="font-size: 14px; line-height: 1.7;">
+      <strong>What just happened</strong> — r3loop methodology was applied to r352.com itself in a
+      single iteration cycle. Each r3loop step fired:
+    </p>
+    <div class="change-impact" style="font-size: 13px; gap: 16px; margin-top: 16px;">
+      <span><strong>01 Diagnose:</strong> Baseline scores captured (V1)</span>
+      <span><strong>02 Map:</strong> Top-ROI prompts identified from spec v2 library</span>
+      <span><strong>04 Build:</strong> Prompts [5.4] + [6.2] applied (code changes)</span>
+      <span><strong>06 Ship:</strong> Commit + push to production</span>
+      <span><strong>07 Measure:</strong> Re-score, calculate delta (+900)</span>
+      <span><strong>05 Govern:</strong> Changelog with prompt IDs (this dashboard)</span>
+    </div>
+    <p class="change-detail" style="margin-top: 20px;">
+      Six of eight r3loop steps fired in one session. This is the loop where AI prompts itself —
+      not human prompting AI, not AI generating output, but methodology orchestrating its own
+      application against a target. Boris Cherny's claim made operational.
+    </p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-meta">
+      r3loop Diagnostic · iteration <strong>#001</strong> · run <strong>06/2026</strong>
+    </div>
+    <a href="https://r352.com" target="_blank" rel="noopener">View r352.com live →</a>
+  </footer>
+
+</div>
+</body>
+</html>

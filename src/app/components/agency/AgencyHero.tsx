@@ -89,12 +89,14 @@ export function AgencyHero() {
               {(language === "pl" ? [
                 { label: "Multi-location", tooltip: <>5–300+ fizycznych punktów, jedna&nbsp;marka</> },
                 { label: "Multi-product", tooltip: <>Wiele linii produktów pod jedną&nbsp;marką</> },
+                { label: "Multi-brand", tooltip: <>Wiele marek pod jednym operating&nbsp;systemem</> },
                 { label: "SaaS", tooltip: <>Produkty software&apos;owe od pomysłu do operating&nbsp;systemu</> },
                 { label: "Brand launch", tooltip: <>Pre-launch tożsamość, wejście na rynek od&nbsp;zera</> },
                 { label: "Post-PMF & scaling", tooltip: <>Po product-market fit, poza founder-led&nbsp;execution</> },
               ] : [
                 { label: "Multi-location", tooltip: <>5–300+ physical branches under a single&nbsp;brand</> },
                 { label: "Multi-product", tooltip: <>Multiple product lines under one&nbsp;brand</> },
+                { label: "Multi-brand", tooltip: <>Multiple brands sharing one operating&nbsp;system</> },
                 { label: "SaaS", tooltip: <>Software products from foggy idea to operating&nbsp;system</> },
                 { label: "Brand launch", tooltip: <>Pre-launch identity and 0-to-1 market&nbsp;entry</> },
                 { label: "Post-PMF & scaling", tooltip: <>Past product-market fit, beyond founder-led&nbsp;execution</> },

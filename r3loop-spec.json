@@ -1,0 +1,221 @@
+{
+  "version": "2.0",
+  "name": "r3loop",
+  "description": "Loop architecture for design ops. AI-orchestrated since 2022.",
+  "spec_source": "r3loop-spec-v2.md",
+  "generated_at": "2026-06-08",
+
+  "steps": [
+    {
+      "num": "01",
+      "id": "diagnose",
+      "name": "Diagnose",
+      "purpose": "Find the real problem before designing anything",
+      "ai_role": "Pattern-match pain against known r3loop failure modes; generate interview templates; analyze workflow audits; identify bottlenecks with hypothesized impact",
+      "human_role": "Conduct interviews; approve audit scope; sign off on root-cause; prioritize bottlenecks",
+      "decision_gate": "Can I describe the operational problem in one sentence with a concrete time-cost number?",
+      "kpis": ["time_to_root_cause_days", "stakeholder_consensus_pct", "bottlenecks_confirmed_pct"],
+      "primary_categories": [3, 10],
+      "failure_modes": ["confirmation_bias", "skipping_interviews", "solution_loaded_diagnosis"]
+    },
+    {
+      "num": "02",
+      "id": "map",
+      "name": "Map",
+      "purpose": "Understand demand landscape",
+      "ai_role": "Classify requests from raw data; detect seasonality; calculate volume per stakeholder; identify request taxonomy",
+      "human_role": "Validate classification taxonomy; make accept/reject/defer decisions; approve mapping output",
+      "decision_gate": "Can a new request be classified at intake within 30 seconds, by anyone?",
+      "kpis": ["requests_categorized_pct", "stakeholder_distribution_clarity", "seasonal_patterns_identified_count"],
+      "primary_categories": [3, 10],
+      "failure_modes": ["over_classification", "under_sample", "stakeholder_undercount"]
+    },
+    {
+      "num": "03",
+      "id": "standardize",
+      "name": "Standardize",
+      "purpose": "Set rules before production starts",
+      "ai_role": "Generate brief templates per category; codify Definition of Ready; build quality checklists; create AI brief assistant prompts; score brief quality at submission",
+      "human_role": "Define quality standards; decide exceptions; approve template language; train team on usage",
+      "decision_gate": "Can a junior team member fill a brief WITHOUT asking the lead designer questions?",
+      "kpis": ["briefs_DoR_pct_first_submission", "brief_completion_time_avg", "quality_review_first_round_pass_pct"],
+      "primary_categories": [1, 2, 6],
+      "failure_modes": ["template_bloat", "standards_without_enforcement", "subjective_quality"]
+    },
+    {
+      "num": "04",
+      "id": "build",
+      "name": "Build",
+      "purpose": "Create what ships, against the standards",
+      "ai_role": "Generate v1 deliverables; apply brand constraints automatically; suggest variants; auto-check against quality checklist",
+      "human_role": "Senior execution refinement; strategic direction; taste decisions; approval per artifact type",
+      "decision_gate": "Can a developer/team implement this without asking a single question?",
+      "kpis": ["cycle_time_brief_to_delivery", "qa_first_round_pass_pct", "followup_questions_per_handoff"],
+      "primary_categories": [5, 7],
+      "failure_modes": ["ai_mediocrity", "skipping_qa", "over_revision_loops"]
+    },
+    {
+      "num": "05",
+      "id": "govern",
+      "name": "Govern",
+      "purpose": "Define who decides, how, when",
+      "ai_role": "Log decisions in structured format; route change requests; track decision velocity; flag stalled decisions",
+      "human_role": "Define ownership map; approve escalation paths; resolve conflicts when AI escalates",
+      "decision_gate": "For any artifact, can I name (a) who approved it, (b) when, (c) what the rationale was?",
+      "kpis": ["decision_time_avg_per_type", "decisions_logged_with_rationale_pct", "decision_reversal_rate"],
+      "primary_categories": [5, 9],
+      "failure_modes": ["logging_fatigue", "unclear_ownership", "escalation_by_default"]
+    },
+    {
+      "num": "06",
+      "id": "ship",
+      "name": "Ship",
+      "purpose": "Deliver with quality gates, not hope",
+      "ai_role": "Run quality checklist automatically; generate handoff docs; pre-flight checks; compare deliverable to brief",
+      "human_role": "Final sign-off; edge case judgment; stakeholder communication around ship",
+      "decision_gate": "Did the deliverable match the brief AND pass quality checklist AND get sign-off?",
+      "kpis": ["qa_first_round_pass_pct", "time_qa_pass_to_ship", "post_ship_issues_per_delivery"],
+      "primary_categories": [4, 8],
+      "failure_modes": ["ship_by_deadline_not_quality", "skipping_post_ship_monitoring", "insufficient_handoff"]
+    },
+    {
+      "num": "07",
+      "id": "measure",
+      "name": "Measure",
+      "purpose": "Track what actually changed",
+      "ai_role": "Aggregate metrics; generate KPI reports; detect anomalies; correlate metric movements with system changes",
+      "human_role": "Define what to measure; review reports + ask 'so what?'; communicate insights; decide when to investigate",
+      "decision_gate": "Can I show 3 measurable improvements vs baseline within 60 days?",
+      "kpis": ["dashboard_live", "reports_on_cadence_pct", "decisions_from_data_pct"],
+      "primary_categories": [4, 10],
+      "failure_modes": ["vanity_metrics", "dashboard_unused", "no_baseline"]
+    },
+    {
+      "num": "08",
+      "id": "iterate",
+      "name": "Iterate",
+      "purpose": "Keep the system alive, not frozen",
+      "ai_role": "Analyze metric trends; flag degradation; propose process changes with predicted impact; detect drift patterns",
+      "human_role": "Approve process changes; lead retrospectives; decide evolve vs maintain; sign off on system updates",
+      "decision_gate": "Can I take a 2-week vacation without the system breaking?",
+      "kpis": ["qoq_trend_all_kpis", "process_update_adoption_rate", "operator_presence_pct"],
+      "primary_categories": [2, 9, 10],
+      "failure_modes": ["iteration_without_measurement", "no_iteration", "over_iteration"]
+    }
+  ],
+
+  "categories": [
+    { "id": 1, "name": "Positioning Clarity", "max_score": 10000, "primary_step": "03", "secondary_step": "02" },
+    { "id": 2, "name": "IP Definability", "max_score": 10000, "primary_step": "03", "secondary_step": "08" },
+    { "id": 3, "name": "Audience Qualification", "max_score": 10000, "primary_step": "02", "secondary_step": "04" },
+    { "id": 4, "name": "Proof Density", "max_score": 10000, "primary_step": "06", "secondary_step": "07" },
+    { "id": 5, "name": "Conversion Path Design", "max_score": 10000, "primary_step": "04", "secondary_step": "05" },
+    { "id": 6, "name": "Anti-Time POV", "max_score": 10000, "primary_step": "03", "secondary_step": "05" },
+    { "id": 7, "name": "Visual / Brand Craft", "max_score": 10000, "primary_step": "04", "secondary_step": "06" },
+    { "id": 8, "name": "Technical SEO & GEO", "max_score": 10000, "primary_step": "06", "secondary_step": "07" },
+    { "id": 9, "name": "Productization Readiness", "max_score": 10000, "primary_step": "05", "secondary_step": "08" },
+    { "id": 10, "name": "Distribution Muscle", "max_score": 10000, "primary_step": "02", "secondary_step": "07" }
+  ],
+
+  "prompts": [
+    {
+      "id": "1.1",
+      "title": "The 5-second test",
+      "step": "03",
+      "category_primary": 1,
+      "category_secondary": null,
+      "type": "verify",
+      "input_schema": { "hero_h1": "string", "tagline": "string", "sub_line": "string" },
+      "agent_prompt": "You're a buyer arriving at a B2B service page. You see this hero block:\nH1: '{{hero_h1}}'\nTagline: '{{tagline}}'\nSub: '{{sub_line}}'\n\nWithout scrolling, answer in 5 seconds: WHO is this person/company? WHO is it for? WHAT makes it different? If any answer is 'unclear' or 'need more context', flag the failed element. Return JSON: { who, target, differentiator, failed_elements[], pass: bool }",
+      "pass_criteria": "All 3 questions answered concretely; no failed_elements",
+      "score_impact": 2000,
+      "dependencies": []
+    },
+    {
+      "id": "1.2",
+      "title": "Tagline-H1 redundancy audit",
+      "step": "03",
+      "category_primary": 1,
+      "category_secondary": null,
+      "type": "diagnose",
+      "input_schema": { "tagline": "string", "h1": "string" },
+      "agent_prompt": "Compare these two strings semantically. Are they making the same claim or distinct claims?\nTagline: '{{tagline}}'\nH1: '{{h1}}'\n\nReturn: { redundancy_score: 0-1, recommendation: 'split'|'merge'|'keep', proposed_split: { identity_line, claim_line } if redundancy_score > 0.6 }",
+      "pass_criteria": "redundancy_score < 0.4 OR explicit reason to keep similar",
+      "score_impact": 800,
+      "dependencies": ["1.1"]
+    },
+    {
+      "id": "1.3",
+      "title": "Audience qualifier visibility",
+      "step": "02",
+      "category_primary": 1,
+      "category_secondary": 3,
+      "type": "build",
+      "input_schema": { "h1": "string", "sub_line": "string", "current_audience_signals": "string[]" },
+      "agent_prompt": "Analyze if a visitor can self-identify as in-target within 3 seconds of seeing the hero. Current signals: {{current_audience_signals}}.\n\nIf H1 contains generic terms like 'growing brands' or 'B2B teams', recommend adding 4-6 audience qualifier chips. Generate the chips based on: industry verticals, maturity stages, scale signals.\n\nReturn: { needs_chips: bool, recommended_chips: [{ label, tooltip }], placement: 'below_h1'|'inside_h1' }",
+      "pass_criteria": "Either H1 is specific OR audience chips are visible",
+      "score_impact": 1500,
+      "dependencies": ["1.1"]
+    },
+    {
+      "id": "1.4",
+      "title": "Mobile typography stress test",
+      "step": "06",
+      "category_primary": 1,
+      "category_secondary": 7,
+      "type": "verify",
+      "input_schema": { "h1_desktop": "string", "h1_mobile": "string", "viewport_test": "'375px'|'412px'" },
+      "agent_prompt": "Simulate rendering H1 at 48px on 375px viewport. Word-break analysis:\nDesktop: '{{h1_desktop}}'\nMobile: '{{h1_mobile}}'\n\nIdentify: words wider than 311px (375 - 64 padding), mid-word break risks, line wrap awkwardness.\n\nReturn: { word_break_detected: bool, problematic_words[], recommended_breaks: <inserted br tags>, recommended_font_size, recommended_leading }",
+      "pass_criteria": "No word breaks mid-word; no orphan single-word lines; readable at 375px",
+      "score_impact": 600,
+      "dependencies": ["1.1"]
+    },
+    {
+      "id": "1.5",
+      "title": "Three-word category test",
+      "step": "03",
+      "category_primary": 1,
+      "category_secondary": 2,
+      "type": "diagnose",
+      "input_schema": { "how_you_describe_what_you_do": "string" },
+      "agent_prompt": "Compress this description into MAXIMUM 3 words that name your category:\n'{{how_you_describe_what_you_do}}'\n\nExamples of strong 3-word categories: 'Design ops methodology', 'Brand operating system', 'AI loop architecture'.\n\nIf you can't compress to 3 words, the category isn't named yet. Generate 5 candidate 3-word phrases. Score each by: specificity, ownability, memorability.\n\nReturn: { current_word_count, can_compress: bool, candidates: [{ phrase, scores }], recommended: <best phrase> }",
+      "pass_criteria": "3-word category exists in user vocabulary",
+      "score_impact": 1000,
+      "dependencies": ["1.1"]
+    }
+  ],
+
+  "_notes": "First 5 of 50 prompts converted to JSON. Remaining 45 will be added in subsequent commits — same schema structure. Each prompt becomes a self-contained agent execution unit. Loadable into Next.js runtime via import or fetch.",
+
+  "scoring": {
+    "max_per_category": 10000,
+    "max_total": 100000,
+    "site_score_avg_formula": "sum(category_scores) / 10",
+    "pass_status_values": { "fail": 0, "partial": 0.5, "pass": 1.0 },
+    "score_calculation": "category_score = baseline (0) + sum(prompt.score_impact * pass_status)",
+    "benchmarks_solo": {
+      "top_1_percent": 9000,
+      "top_decile": 7500,
+      "median": 5000,
+      "below_median": 2500
+    }
+  },
+
+  "architecture": {
+    "phase_1_mvp": {
+      "stack": ["Next.js 14", "Vercel", "Claude API", "Tailwind", "localStorage"],
+      "estimated_cost_monthly_usd": "0 + ~50 in Claude tokens",
+      "estimated_build_time_weeks": 2
+    },
+    "phase_2_saas": {
+      "stack": ["+ Supabase auth + DB", "user accounts", "snapshot persistence"],
+      "estimated_cost_monthly_usd": "20-50 + tokens",
+      "estimated_build_time_weeks": 4
+    },
+    "phase_3_team": {
+      "stack": ["+ multi-user workspaces", "custom categories", "API access"],
+      "estimated_cost_monthly_usd": "200+ + tokens",
+      "estimated_build_time_weeks": 8
+    }
+  }
+}
