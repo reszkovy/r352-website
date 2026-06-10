@@ -26,6 +26,14 @@ export function EngagementModels() {
                 </span>
                 <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-white whitespace-normal md:whitespace-pre-line" dangerouslySetInnerHTML={{ __html: t("engagement.title") }}>
                 </h2>
+                {/* Framework bridge — DIAGNOSE/BUILD/SCALE is r3loop compressed,
+                    not a second methodology. Keeps the visual brand, kills the
+                    "two frameworks" read flagged in the content audit. */}
+                <p className="mt-4 text-sm text-neutral-500 max-w-xl leading-relaxed">
+                  {language === "pl"
+                    ? "Trzy fazy — r3loop w kompresji: kroki 01–02 to diagnoza, 03–06 budowa, 07–08 skalowanie."
+                    : "Three phases — r3loop compressed: steps 01–02 diagnose, 03–06 build, 07–08 scale."}
+                </p>
               </div>
             </div>
             {/* Decorative lime dots */}

@@ -7,11 +7,10 @@
     <title>r352 — We build the system behind great design.</title>
     <meta name="description" content="Design, systems & AI — strategic design partner for multi-location organizations. r352 builds the operating system behind great design — from strategy to rollout-ready delivery, powered by the r3loop methodology." />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    <link rel="canonical" href="https://www.r352.com" />
-
-    <!-- Hreflang — only EN until /pl routing ships. -->
-    <link rel="alternate" hreflang="en" href="https://www.r352.com" />
-    <link rel="alternate" hreflang="x-default" href="https://www.r352.com" />
+    <!-- NOTE: no static canonical/hreflang here — react-helmet-async (SEO.tsx)
+         injects the per-route canonical + hreflang. A static canonical in this
+         template would get baked into EVERY prerendered page as a duplicate
+         pointing at the homepage. -->
 
     <!-- Open Graph (fallback — overridden per route by react-helmet-async) -->
     <meta property="og:type" content="website" />

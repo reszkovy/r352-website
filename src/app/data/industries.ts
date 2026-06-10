@@ -85,9 +85,11 @@ export const industries: IndustryContent[] = [
         en: "300+ wellness clubs supported across a multi-year retainer.",
         pl: "Ponad 300 klubów wellness obsługiwanych w ramach wieloletniego retainera.",
       },
+      // TODO(reszek): potwierdź metrykę "11 dni → 3" cyklu launchu — usunięta,
+      // bo nie ma pokrycia w kanonie case'u Benefit Systems. Po weryfikacji można przywrócić.
       outcome: {
-        en: "Standardized brief intake reduced campaign-launch cycle time from 11 days to 3.",
-        pl: "Ujednolicony brief intake skrócił cykl launchu kampanii z 11 dni do 3.",
+        en: "Brief intake standardized across 5+ parallel PM streams — campaign launches moved from ad-hoc emails to a fixed weekly cadence, with launch assets locked 2.5 months before each club opening.",
+        pl: "Brief intake ujednolicony dla 5+ równoległych streamów PM — launche kampanii przeszły z ad-hocowych maili na stały tygodniowy rytm, a assety launchowe zamykane 2,5 miesiąca przed otwarciem klubu.",
       },
       caseStudyHref: "/work/benefit-systems",
       secondaryLabel: {
@@ -168,9 +170,11 @@ export const industries: IndustryContent[] = [
         en: "Multi-investment real estate campaigns delivered through the r3loop methodology.",
         pl: "Kampanie wielu inwestycji deweloperskich dostarczane przez metodologię r3loop.",
       },
+      // TODO(reszek): potwierdź "setup time cut by 60%" — liczba bez pokrycia w kanonie faktów;
+      // zmiękczona do mechanizmu. Po weryfikacji można przywrócić konkretną wartość.
       outcome: {
-        en: "River Point and Bulwar Północny launched using a shared production system, cutting per-investment setup time by 60%.",
-        pl: "River Point i Bulwar Północny launchowane na wspólnym systemie produkcji — czas setupu per inwestycja skrócony o 60%.",
+        en: "River Point and Bulwar Północny launched on one shared production system — the second launch reused templates, approval gates, and asset pipelines instead of rebuilding them from scratch.",
+        pl: "River Point i Bulwar Północny launchowane na jednym wspólnym systemie produkcji — drugi launch reużył templaty, bramki akceptacji i pipeline'y assetów zamiast budować je od zera.",
       },
       caseStudyHref: "/work/archicom",
       secondaryLabel: {

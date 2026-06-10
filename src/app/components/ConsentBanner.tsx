@@ -74,9 +74,12 @@ export function ConsentBanner() {
   return (
     <AnimatePresence mode="wait">
       {status === 'pending' && (
+        // role="region" (not "dialog") — the banner never traps or moves
+        // focus, so dialog semantics would be misleading to AT users. A
+        // labelled region is discoverable via landmark navigation instead.
         <motion.div
           key="consent-banner"
-          role="dialog"
+          role="region"
           aria-label={t('consent.banner.title')}
           aria-live="polite"
           initial={motionInitial}

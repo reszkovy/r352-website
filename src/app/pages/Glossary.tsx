@@ -44,7 +44,7 @@ const TERMS_EN: GlossaryTerm[] = [
     short: "r352's primary specialty domain.",
     long:
       "Operational design work for brands running 30-300+ locations, venues, properties, or simultaneous campaigns. Distinct from single-location brand work because the bottleneck is never creative — it's coordination, governance, and variant management across many parallel threads.",
-    example: "Sonova/Geers runs 600+ hearing care locations across 17 countries — pure multi-location brand operations terrain.",
+    example: "Geers (Sonova Group) — 250+ hearing care locations in Poland; the wider Sonova network: 600+ across 17 countries. Pure multi-location brand operations terrain.",
   },
   {
     term: "Master / Variant / Pre-production gates",
@@ -85,7 +85,7 @@ const TERMS_EN: GlossaryTerm[] = [
     term: "Diagnostic",
     short: "r352's 5-day operational audit engagement.",
     long:
-      "Fixed €2k engagement. We audit your current design operations, interview 3 stakeholders, identify 3-5 friction points, and deliver a one-page written diagnosis with a 60-day roadmap. 60-day money-back guarantee if recommendations aren't actionable. Often used as a low-commitment fit test before a full Sprint or Operating Partner engagement.",
+      "Fixed €2k engagement, 5 working days. We audit your current design operations — stakeholder interviews, 5-7 prioritized bottlenecks — and deliver a one-page written diagnosis with a 60-day roadmap. 60-day money-back guarantee if recommendations aren't actionable. Often used as a low-commitment fit test before a full Sprint or Operating Partner engagement.",
     example: "Start with the Diagnostic — if the findings don't convince your CFO, you get a refund.",
     related: { label: "All engagement models", href: "/services" },
   },
@@ -170,7 +170,7 @@ const TERMS_PL: GlossaryTerm[] = [
     short: "Główna specjalizacja r352.",
     long:
       "Operacyjna praca designerska dla brand'ów obsługujących 30-300+ lokalizacji, venues, nieruchomości lub równoległych kampanii. Inne niż praca dla single-location brand'u — bottleneckiem nigdy nie jest creative, tylko koordynacja, governance i zarządzanie wariantami w wielu równoległych ścieżkach.",
-    example: "Sonova/Geers obsługuje 600+ lokalizacji opieki słuchowej w 17 krajach — czysty teren multi-location brand operations.",
+    example: "Geers (Sonova Group) — 250+ lokalizacji opieki słuchowej w Polsce; cała sieć Sonova: 600+ w 17 krajach. Czysty teren multi-location brand operations.",
   },
   {
     term: "Bramki Master / Variant / Pre-production",
@@ -211,7 +211,7 @@ const TERMS_PL: GlossaryTerm[] = [
     term: "Diagnostic",
     short: "5-dniowa operacyjna audytowa engagement r352.",
     long:
-      "Fixed €2k engagement. Audytujemy obecne design operations, interview'ujemy 3 stakeholder'ów, identyfikujemy 3-5 friction points, dostarczamy jednostronicową pisemną diagnozę z 60-dniową roadmapą. 60-day money-back guarantee jeśli rekomendacje nie są actionable. Często używane jako low-commitment fit test przed pełnym Sprint'em lub Operating Partner.",
+      "Fixed €2k engagement, 5 dni roboczych. Audytujemy obecne design operations — wywiady ze stakeholder'ami, 5-7 spriorytetyzowanych bottlenecków — i dostarczamy jednostronicową pisemną diagnozę z 60-dniową roadmapą. 60-day money-back guarantee jeśli rekomendacje nie są actionable. Często używane jako low-commitment fit test przed pełnym Sprint'em lub Operating Partner.",
     example: "Zacznij od Diagnostic — jeśli findings nie przekonają Twojego CFO, dostajesz zwrot.",
     related: { label: "Wszystkie modele współpracy", href: "/services" },
   },

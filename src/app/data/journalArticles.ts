@@ -83,6 +83,9 @@ export const journalArticles: Article[] = [
           Start with the Diagnostic. The instrument does the rest.
         </p>
       </div>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        And if you want the tools before the engagement — <a href="/process" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">the Q4 Playbook waitlist is live on /process</a>.
+      </p>
     `,
   },
   {
@@ -1314,29 +1317,28 @@ export const journalArticles: Article[] = [
 
       <div class="my-16 border-l-2 border-[#D4FF00] pl-6 md:pl-8">
         <h3 class="font-display text-[#D4FF00] text-3xl md:text-5xl uppercase tracking-tighter leading-[0.9]">
-          Balans w pracy zdalnej<br/>to przewidywalne obciążenie
+          Zaufanie klienta buduje się<br/>na przewidywalnym rytmie
         </h3>
       </div>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Mam rodzinę, bloki deep work, i życie poza ekranem.
-        Gdy praca jest przypadkowa, nawet mała lista zadań wydaje się cięższa niż duża.
+        Klient nie widzi twojego procesu. Widzi tylko jego rytm.
+        I to na podstawie rytmu decyduje, ile może ci powierzyć.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Ponieważ twój mózg pozostaje w "trybie oczekiwania" - co się zmieni w następnej chwili?
+        Gdy dostarczanie jest przypadkowe, klient przechodzi w "tryb kontroli" - dopytuje, eskaluje, mikro-zarządza.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Przewidywalność to to, co tworzy balans:
+        Przewidywalność odwraca ten mechanizm:
       </p>
       <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>wiesz, kiedy dzieje się deep work</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>wiesz, kiedy dzieje się feedback</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>wiesz, kiedy podejmowane są decyzje</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>wiesz, kiedy rzeczy się wysyłają</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>wiesz, kiedy jesteś offline</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>klient wie, kiedy praca się wysyła</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>klient wie, kiedy jego feedback jest potrzebny - i że po oknie decyzja zapada</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>klient wie, że sign-off jest finalny, a nie "do odwołania"</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>klient wie, że "pilne" znaczy pilne, bo nie jest defaultem</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>klient przestaje pytać "co z moim projektem?"</span></li>
       </ul>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        To nie jest motywacyjna pogadanka. To przewaga operacyjna.
-        Bez niej, jakość zaczyna się pękać i dostarczanie staje się nerwowe.
+        To nie jest miękka korzyść. To mechanizm: każdy przewidywalny tydzień obniża koszt kontroli po stronie klienta - i podnosi gotowość, żeby powierzyć większy scope.
       </p>
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Cotygodniowe dostarczanie to najprostszy sposób<br/>aby jakość nie dryftowała</h2>
@@ -1375,35 +1377,35 @@ export const journalArticles: Article[] = [
 
       <div class="my-16 bg-neutral-900/50 p-8 md:p-12 border border-white/5 relative overflow-hidden">
         <div class="absolute top-0 right-0 p-4 opacity-10 font-display text-9xl leading-none text-[#D4FF00] pointer-events-none select-none">RHYTHM</div>
-        <h3 class="relative z-10 font-display text-white text-2xl uppercase tracking-widest mb-8">Jak kadencja wygląda w praktyce</h3>
-        <p class="relative z-10 text-neutral-400 text-sm mb-8">Nie musi być skomplikowane. Potrzebujesz tylko struktury.</p>
+        <h3 class="relative z-10 font-display text-white text-2xl uppercase tracking-widest mb-8">Co klient widzi, gdy kadencja działa</h3>
+        <p class="relative z-10 text-neutral-400 text-sm mb-8">Mechanikę systemu opisuję osobno. Tutaj liczy się to, co z niej widać po stronie klienta.</p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 relative z-10">
             <div class="bg-black/40 p-5 border-l-2 border-[#D4FF00]">
-                <strong class="text-white block text-sm font-display uppercase tracking-wider mb-2">01. Jedna Ścieżka Intake</strong>
-                <p class="text-neutral-400 text-sm">Zgłoszenia nie przychodzą przez DM-y i losowe wątki. Jedno miejsce. Zawsze.</p>
+                <strong class="text-white block text-sm font-display uppercase tracking-wider mb-2">01. Status bez pytania</strong>
+                <p class="text-neutral-400 text-sm">Klient nie pisze "jakieś update'y?". Rytm odpowiada, zanim pytanie się pojawi.</p>
             </div>
             <div class="bg-black/40 p-5 border-l-2 border-neutral-700 hover:border-[#D4FF00] transition-colors">
-                <strong class="text-white block text-sm font-display uppercase tracking-wider mb-2">02. Brief, który Ma Sens</strong>
-                <p class="text-neutral-400 text-sm">Cel, audience, ograniczenia, przykłady, definicja done. Krótki, ale rzeczywisty.</p>
+                <strong class="text-white block text-sm font-display uppercase tracking-wider mb-2">02. Feedback z terminem</strong>
+                <p class="text-neutral-400 text-sm">Klient wie, kiedy jego input jest potrzebny. Decyzje przestają się ślizgać.</p>
             </div>
             <div class="bg-black/40 p-5 border-l-2 border-neutral-700 hover:border-[#D4FF00] transition-colors">
-                <strong class="text-white block text-sm font-display uppercase tracking-wider mb-2">03. Właściciel Decyzji</strong>
-                <p class="text-neutral-400 text-sm">Jedna osoba, która może powiedzieć tak/nie. Bez tego, feedback nigdy się nie kończy.</p>
+                <strong class="text-white block text-sm font-display uppercase tracking-wider mb-2">03. Sign-off, który trzyma</strong>
+                <p class="text-neutral-400 text-sm">Jedna osoba zatwierdza w jednym momencie. "Finalne" znaczy finalne.</p>
             </div>
             <div class="bg-black/40 p-5 border-l-2 border-neutral-700 hover:border-[#D4FF00] transition-colors">
-                <strong class="text-white block text-sm font-display uppercase tracking-wider mb-2">04. Okna Feedbacku</strong>
-                <p class="text-neutral-400 text-sm">Feedback nie kapie przez cały dzień. Dzieje się w slotach. W formacie. Z kryteriami.</p>
+                <strong class="text-white block text-sm font-display uppercase tracking-wider mb-2">04. Eskalacja, która coś znaczy</strong>
+                <p class="text-neutral-400 text-sm">Skoro "pilne" jest wyjątkiem, prawdziwy alarm dostaje natychmiastową reakcję.</p>
             </div>
             <div class="bg-black/40 p-5 border-l-2 border-neutral-700 hover:border-[#D4FF00] transition-colors">
-                <strong class="text-white block text-sm font-display uppercase tracking-wider mb-2">05. Standard Pakowania</strong>
-                <p class="text-neutral-400 text-sm">Nie "gotowe w Figmie". Gotowe do publikacji: pliki, nazewnictwo, warianty, specyfikacje, notatki handoff.</p>
+                <strong class="text-white block text-sm font-display uppercase tracking-wider mb-2">05. Publish-ready za każdym razem</strong>
+                <p class="text-neutral-400 text-sm">To, co przychodzi, można publikować. Bez "jeszcze jednej poprawki".</p>
             </div>
             <div class="bg-black/40 p-5 border-l-2 border-[#D4FF00]">
-                <strong class="text-white block text-sm font-display uppercase tracking-wider mb-2">06. Cotygodniowy Rytm</strong>
-                <p class="text-neutral-400 text-sm">Każdego tygodnia wysyłasz coś rzeczywistego. Nie "postęp". Output.</p>
+                <strong class="text-white block text-sm font-display uppercase tracking-wider mb-2">06. Tydzień, pod który można planować</strong>
+                <p class="text-neutral-400 text-sm">Klient układa własne launche pod twój rytm. Przestajesz być dostawcą - zaczynasz być infrastrukturą.</p>
             </div>
         </div>
-        <p class="relative z-10 text-neutral-400 text-sm mt-8">To tyle. Wszystko inne to szczegóły.</p>
+        <p class="relative z-10 text-neutral-400 text-sm mt-8">Zaufanie nie bierze się z obietnic. Bierze się z powtarzalności.</p>
       </div>
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Responsywność bez wypalenia</h2>
@@ -1415,9 +1417,9 @@ export const journalArticles: Article[] = [
         Dla mnie responsywność oznacza:
       </p>
       <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>wyjaśnij zgłoszenie szybko</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>wyrównaj decyzje szybko</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>dostarcz następny użyteczny krok szybko</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>klient dostaje odpowiedź tego samego dnia, bo zgłoszenia mają jedno wejście</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>niepewność znika, zanim dotrze do szefa twojego klienta</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>następny krok jest zawsze widoczny - dla zespołu i dla klienta</span></li>
       </ul>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Kadencja czyni to możliwym, ponieważ każdy wie, co jest następne i kiedy.
@@ -1426,10 +1428,10 @@ export const journalArticles: Article[] = [
         Bez rytmu, nawet najbar "responsywna" osoba zmienia się w support.
       </p>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Spokojne wykonanie<br/>to rzeczywiste premium</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Spokój to to,<br/>za co klienci przedłużają</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Teamy nie chcą tylko "szybko".
-        Chcą szybko bez chaosu.
+        Klienci nie kupują tylko "szybko".
+        Kupują szybko bez chaosu.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Chcą czuć:
@@ -1442,7 +1444,7 @@ export const journalArticles: Article[] = [
         <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>nic nie zależy od paniki i heroizmu</span></li>
       </ul>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        To jest to, co kadencja Ci daje.
+        To jest to, co kadencja Ci daje. I to jest to, co przedłuża retainery - nie portfolio.
       </p>
 
       <p class="font-display text-white text-2xl uppercase tracking-wider my-8">
@@ -1500,29 +1502,28 @@ export const journalArticles: Article[] = [
 
       <div class="my-16 border-l-2 border-[#D4FF00] pl-6 md:pl-8">
         <h3 class="font-display text-[#D4FF00] text-3xl md:text-5xl uppercase tracking-tighter leading-[0.9]">
-          Balance in remote work<br/>is predictable load
+          Client trust is built<br/>on a predictable rhythm
         </h3>
       </div>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        I have a family, deep work blocks, and a life outside the screen.
-        When work is random, even a small task list feels heavier than a big one.
+        The client never sees your process. They only see its rhythm.
+        And it’s the rhythm they use to decide how much more they can trust you with.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Because your brain stays in “waiting mode” - what’s going to drop next?
+        When delivery is random, the client shifts into “control mode” - chasing, escalating, micro-managing.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Predictability is what creates balance:
+        Predictability reverses that mechanism:
       </p>
       <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>you know when deep work happens</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>you know when feedback happens</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>you know when decisions happen</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>you know when things ship</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>you know when you’re offline</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>the client knows when work ships</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>the client knows when their feedback is due - and that after the window, the decision stands</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>the client knows sign-off is final, not “until further notice”</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>the client knows “urgent” means urgent, because it isn’t the default</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>the client stops asking “what’s happening with my project?”</span></li>
       </ul>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        This isn’t motivational talk. It’s operational advantage.
-        Without it, quality starts to crack and delivery becomes nervous.
+        This isn’t a soft benefit. It’s a mechanism: every predictable week lowers the client’s cost of control - and raises their willingness to hand over a bigger scope.
       </p>
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Weekly shipping is the simplest way<br/>to keep quality from drifting</h2>
@@ -1561,35 +1562,35 @@ export const journalArticles: Article[] = [
 
       <div class="my-16 bg-neutral-900/50 p-8 md:p-12 border border-white/5 relative overflow-hidden">
         <div class="absolute top-0 right-0 p-4 opacity-10 font-display text-9xl leading-none text-[#D4FF00] pointer-events-none select-none">RHYTHM</div>
-        <h3 class="relative z-10 font-display text-white text-2xl uppercase tracking-widest mb-8">What cadence looks like in practice</h3>
-        <p class="relative z-10 text-neutral-400 text-sm mb-8">It doesn’t need to be complicated. You just need a backbone.</p>
+        <h3 class="relative z-10 font-display text-white text-2xl uppercase tracking-widest mb-8">What the client sees when cadence works</h3>
+        <p class="relative z-10 text-neutral-400 text-sm mb-8">The internal mechanics are a separate story. What matters here is what shows on the client’s side.</p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 relative z-10">
             <div class="bg-black/40 p-5 border-l-2 border-[#D4FF00]">
-                <strong class="text-white block text-sm font-display uppercase tracking-wider mb-2">01. One Intake Path</strong>
-                <p class="text-neutral-400 text-sm">Requests don’t arrive through DMs and random threads. One place. Always.</p>
+                <strong class="text-white block text-sm font-display uppercase tracking-wider mb-2">01. Status Without Asking</strong>
+                <p class="text-neutral-400 text-sm">The client never writes “any updates?”. The rhythm answers before the question exists.</p>
             </div>
             <div class="bg-black/40 p-5 border-l-2 border-neutral-700 hover:border-[#D4FF00] transition-colors">
-                <strong class="text-white block text-sm font-display uppercase tracking-wider mb-2">02. A Brief That Makes Sense</strong>
-                <p class="text-neutral-400 text-sm">Goal, audience, constraints, examples, definition of done. Short, but real.</p>
+                <strong class="text-white block text-sm font-display uppercase tracking-wider mb-2">02. Feedback With a Deadline</strong>
+                <p class="text-neutral-400 text-sm">The client knows when their input is due. Decisions stop slipping.</p>
             </div>
             <div class="bg-black/40 p-5 border-l-2 border-neutral-700 hover:border-[#D4FF00] transition-colors">
-                <strong class="text-white block text-sm font-display uppercase tracking-wider mb-2">03. A Decision Owner</strong>
-                <p class="text-neutral-400 text-sm">One person who can say yes/no. Without this, feedback never ends.</p>
+                <strong class="text-white block text-sm font-display uppercase tracking-wider mb-2">03. A Sign-off That Holds</strong>
+                <p class="text-neutral-400 text-sm">One person approves at one moment. “Final” means final.</p>
             </div>
             <div class="bg-black/40 p-5 border-l-2 border-neutral-700 hover:border-[#D4FF00] transition-colors">
-                <strong class="text-white block text-sm font-display uppercase tracking-wider mb-2">04. Feedback Windows</strong>
-                <p class="text-neutral-400 text-sm">Feedback doesn’t drip all day. It happens in slots. In a format. With criteria.</p>
+                <strong class="text-white block text-sm font-display uppercase tracking-wider mb-2">04. Escalation That Means Something</strong>
+                <p class="text-neutral-400 text-sm">Because “urgent” is the exception, a real alarm gets an immediate response.</p>
             </div>
             <div class="bg-black/40 p-5 border-l-2 border-neutral-700 hover:border-[#D4FF00] transition-colors">
-                <strong class="text-white block text-sm font-display uppercase tracking-wider mb-2">05. A Packaging Standard</strong>
-                <p class="text-neutral-400 text-sm">Not “done in Figma”. Publish-ready: files, naming, variants, specs, handoff notes.</p>
+                <strong class="text-white block text-sm font-display uppercase tracking-wider mb-2">05. Publish-Ready, Every Time</strong>
+                <p class="text-neutral-400 text-sm">What arrives can go live. No “one more fix”.</p>
             </div>
             <div class="bg-black/40 p-5 border-l-2 border-[#D4FF00]">
-                <strong class="text-white block text-sm font-display uppercase tracking-wider mb-2">06. Weekly Rhythm</strong>
-                <p class="text-neutral-400 text-sm">Every week you ship something real. Not “progress”. Output.</p>
+                <strong class="text-white block text-sm font-display uppercase tracking-wider mb-2">06. A Week You Can Plan Around</strong>
+                <p class="text-neutral-400 text-sm">The client schedules their own launches against your rhythm. You stop being a vendor - you become infrastructure.</p>
             </div>
         </div>
-        <p class="relative z-10 text-neutral-400 text-sm mt-8">That’s it. Everything else is detail.</p>
+        <p class="relative z-10 text-neutral-400 text-sm mt-8">Trust doesn’t come from promises. It comes from repetition.</p>
       </div>
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Responsiveness without burnout</h2>
@@ -1601,9 +1602,9 @@ export const journalArticles: Article[] = [
         For me, responsiveness means:
       </p>
       <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>clarify the request fast</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>align decisions fast</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>deliver the next usable step fast</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>the client gets an answer the same day, because requests have one entry point</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>uncertainty is removed before it reaches your client’s boss</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>the next usable step is always visible - to the team and to the client</span></li>
       </ul>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Cadence makes this possible because everyone knows what’s next and when.
@@ -1612,10 +1613,10 @@ export const journalArticles: Article[] = [
         Without rhythm, even the most “responsive” person turns into support.
       </p>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Calm execution<br/>is the real premium</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Calm is what<br/>clients renew for</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Teams don’t only want “fast”.
-        They want fast without chaos.
+        Clients don’t only buy “fast”.
+        They buy fast without chaos.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         They want to feel:
@@ -1628,7 +1629,7 @@ export const journalArticles: Article[] = [
         <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>nothing depends on panic and heroics</span></li>
       </ul>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        That’s what cadence gives you.
+        That’s what cadence gives you. And that’s what renews retainers - not the portfolio.
       </p>
 
       <p class="font-display text-white text-2xl uppercase tracking-wider my-8">

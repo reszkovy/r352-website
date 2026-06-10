@@ -70,6 +70,7 @@
   },
   "devDependencies": {
     "@lhci/cli": "^0.13.0",
+    "@playwright/browser-chromium": "1.60.0",
     "@tailwindcss/vite": "4.1.12",
     "@vitejs/plugin-react": "4.7.0",
     "puppeteer": "^23.11.1",

@@ -165,42 +165,45 @@ export const projects = [
     ],
     isInternal: false,
     description: {
-      en: "Working with Benefit Systems is not just about design - it's about building a scalable communication system for the largest sports club network in Poland, with precision, process and locally adapted aesthetics.",
-      pl: "Praca z Benefit Systems to nie tylko design - to budowanie skalowalnego systemu komunikacji dla największej sieci klubów sportowych w Polsce, z precyzją, procesem i lokalnie dopasowaną estetyką."
+      en: "Benefit Systems operates 300+ wellness clubs in Poland — the largest network in the country, opening new locations on a rolling calendar. Since 2019 we run the visual-communication production system behind those openings and campaigns: key visuals and full asset packages, from mesh banners to digital screens, delivered on a fixed operational rhythm.",
+      pl: "Benefit Systems prowadzi 300+ klubów wellness w Polsce — największą sieć w kraju, otwierającą nowe lokalizacje w trybie ciągłym. Od 2019 prowadzimy system produkcji komunikacji wizualnej stojący za tymi otwarciami i kampaniami: key visuale i pełne pakiety zasobów, od siatek mesh po ekrany cyfrowe, dostarczane w stałym rytmie operacyjnym."
     },
     services: {
       en: ["Visual Communication", "Key Visuals", "Asset Production"],
       pl: ["Komunikacja Wizualna", "Key Visuale", "Produkcja Zasobów"]
     },
     challenge: {
-      en: "Balancing bold, eye-catching visuals with practical functionality required innovative thinking. We had to coordinate with over 5 Project Managers simultaneously while ensuring assets were finalized 2.5 months before every club opening.",
-      pl: "Zbalansowanie odważnych, przyciągających wzrok wizualiów z praktyczną funkcjonalnością wymagało innowacyjnego myślenia. Musieliśmy koordynować pracę z ponad 5 Project Managerami jednocześnie, zapewniając finalizację zasobów na 2,5 miesiąca przed otwarciem każdego klubu."
+      en: "Every club opening is a hard deadline with a long physical supply chain behind it: assets must be production-final 2.5 months before doors open. With 5+ Project Managers running parallel openings, the old mode — ad-hoc briefs and per-project coordination — meant status chasing, duplicate feedback and files arriving late enough to threaten launch dates.",
+      pl: "Każde otwarcie klubu to twardy deadline z długim fizycznym łańcuchem produkcji za sobą: zasoby muszą być gotowe do produkcji 2,5 miesiąca przed otwarciem drzwi. Przy 5+ Project Managerach prowadzących równoległe otwarcia, stary tryb — briefy ad-hoc i koordynacja per projekt — oznaczał gonienie statusów, zdublowany feedback i pliki spóźnione na tyle, by zagrażać datom otwarć."
     },
     decisions: {
-      en: "We established a workflow relying on structured timelines and checklists. We focused on layout systems that are scalable, adaptable and easy to deploy across multiple locations, from mesh banners to digital screens.",
-      pl: "Ustanowiliśmy przepływ pracy oparty na ustrukturyzowanych harmonogramach i listach kontrolnych. Skupiliśmy się na systemach layoutu, które są skalowalne, adaptowalne i łatwe do wdrożenia w wielu lokalizacjach, od siatek mesh po ekrany cyfrowe."
+      en: "01 Diagnose traced delays to unstructured intake and unclear sign-off ownership. 02 Map turned each opening into a fixed checklist of assets with deadlines counted back from opening day. 03 Standardize built a scalable layout system — one key-visual logic adapted per location and format. 06 Ship runs on a standing production calendar: every PM sees the same pipeline, every asset has a dated decision gate.",
+      pl: "01 Diagnose namierzył opóźnienia w nieustrukturyzowanym intake'u i niejasnej własności akceptacji. 02 Map zamienił każde otwarcie w stałą checklistę zasobów z terminami liczonymi wstecz od dnia otwarcia. 03 Standardize zbudował skalowalny system layoutów — jedna logika key visuala adaptowana per lokalizacja i format. 06 Ship działa na stałym kalendarzu produkcyjnym: każdy PM widzi ten sam pipeline, każdy zasób ma datowaną bramkę decyzyjną."
     },
     approach: {
-      en: "We manage the entire visual communication system, delivering unique key visuals and full asset packages tailored to local campaigns. We treat every new club launch as a unique project within a consistent framework.",
-      pl: "Zarządzamy całym systemem komunikacji wizualnej, dostarczając unikalne key visuale i pełne pakiety zasobów dopasowane do lokalnych kampanii. Każde otwarcie nowego klubu traktujemy jako unikalny projekt w ramach spójnych ram."
+      en: "Each opening is a unique key visual inside a non-negotiable framework: locked brand structure, variable local expression. The checklist-driven cadence means a new club enters the pipeline as a configuration, not a project from scratch. AI supports format multiplication — one approved master fans out into the full media package.",
+      pl: "Każde otwarcie to unikalny key visual w nienegocjowalnych ramach: zablokowana struktura marki, zmienna lokalna ekspresja. Rytm oparty o checklisty sprawia, że nowy klub wchodzi do pipeline'u jako konfiguracja, nie projekt od zera. AI wspiera multiplikację formatów — jeden zatwierdzony master rozchodzi się na pełen pakiet mediowy."
     },
     quote: {
-      en: "Wellness at work, simplified for everyone.",
-      pl: "Wellness w pracy, uproszczony dla każdego."
+      en: "An opening date never moves. The system makes sure the assets never do either.",
+      pl: "Data otwarcia nigdy się nie przesuwa. System dba o to, żeby zasoby też nie."
     },
     outcome: {
-      en: "A long-term partnership demonstrating how design scales across hundreds of locations without losing clarity. Each project strengthens Benefit Systems' presence in Poland’s urban spaces through visual storytelling and operational excellence.",
-      pl: "Długoterminowe partnerstwo pokazujące, jak design skaluje się w setkach lokalizacji bez utraty jasności. Każdy projekt wzmacnia obecność Benefit Systems w polskich przestrzeniach miejskich poprzez wizualny storytelling i doskonałość operacyjną."
+      en: "A standing production system that holds the 2.5-month asset lock across parallel openings. 300+ clubs supported, 5+ Project Managers coordinated through one pipeline instead of five parallel inboxes — a partnership running since 2019.",
+      pl: "Stały system produkcji, który trzyma 2,5-miesięczny lock zasobów przy równoległych otwarciach. 300+ wspieranych klubów, 5+ Project Managerów koordynowanych przez jeden pipeline zamiast pięciu równoległych skrzynek — partnerstwo trwające od 2019 roku."
     },
     reflection: {
-      en: "Reliability is the ultimate design feature. When you run multiple threads in parallel, process becomes as important as the pixels.",
-      pl: "Niezawodność to ostateczna cecha designu. Gdy prowadzisz wiele wątków równolegle, proces staje się tak samo ważny jak piksele."
+      en: "Reliability is the deliverable. When openings run in parallel, process throughput matters as much as the pixels — the system is what lets quality survive scale.",
+      pl: "Niezawodność jest deliverable'em. Gdy otwarcia biegną równolegle, przepustowość procesu znaczy tyle samo co piksele — to system pozwala jakości przetrwać skalę."
     },
+    // TODO(reszek): jeśli realnie koordynowanych jest 15+ PM-ów, podbij claim tutaj ORAZ w challenge/outcome.
+    // Do potwierdzenia ujednolicone do bezpieczniejszego "5+" (poprzednio header mówił "15+", body "5+").
     stats: [
-        { value: "15+", label: { en: "PMs Coordinated", pl: "Koordynowanych PM-ów" } },
-        { value: "300+", label: { en: "Clubs Supported", pl: "Wspieranych Klubów" } }
+        { value: "300+", label: { en: "Clubs Supported", pl: "Wspieranych Klubów" } },
+        { value: "5+", label: { en: "PMs in Parallel", pl: "PM-ów Równolegle" } },
+        { value: "2.5", label: { en: "Months Asset Lead Time", pl: "Mies. Wyprzedzenia Produkcji" } }
     ],
-    // Testimonial — Benefit Systems voice. ⚠ Role placeholder — replace with real title (CMO / Brand Director / Head of Marketing).
+    // Testimonial — Benefit Systems. Rola potwierdzona w kanonie: "Marketing & Brand Lead · Benefit Systems". Treść cytatu = słowa klienta, nie zmieniać.
     testimonial: {
       quote: {
         en: "They are proactive, transparent, and truly care about the outcome. A reliable partner for any scale.",
@@ -255,8 +258,8 @@ export const projects = [
       pl: "Zaprojektowaliśmy wydajną architekturę dla sklepu internetowego oraz stworzyliśmy intuicyjne aplikacje ułatwiające logistykę i doświadczenie fanów podczas koncertów. Równolegle zarządzaliśmy produkcją materiałów fizycznych na wydarzenia."
     },
     approach: {
-      en: "We combined technological and production expertise. We designed and deployed reliability-focused digital products while maintaining strict visual consistency with promotional materials.",
-      pl: "Połączyliśmy kompetencje technologiczne z produkcyjnymi. Zaprojektowaliśmy i wdrożyliśmy produkty cyfrowe zorientowane na niezawodność, dbając jednocześnie o spójność z materiałami promocyjnymi."
+      en: "We combined technological and production expertise. We designed and deployed reliability-focused digital products while maintaining strict visual consistency with promotional materials. The engagement runs as a standing system, not ad-hoc requests: each tour cycle opens with a structured intake covering every deliverable — store, apps, physical production — and work ships on a fixed cadence mapped to the tour calendar. Drop dates and show dates set the decision gates; nothing waits on a brief written the week before.",
+      pl: "Połączyliśmy kompetencje technologiczne z produkcyjnymi. Zaprojektowaliśmy i wdrożyliśmy produkty cyfrowe zorientowane na niezawodność, dbając jednocześnie o spójność z materiałami promocyjnymi. Współpraca działa jako stały system, nie zlecenia ad-hoc: każdy cykl trasy zaczyna się od ustrukturyzowanego intake'u obejmującego wszystkie deliverables — sklep, aplikacje, produkcję fizyczną — a praca jest dostarczana w stałym rytmie zmapowanym na kalendarz trasy. Daty dropów i koncertów wyznaczają bramki decyzyjne; nic nie czeka na brief pisany tydzień wcześniej."
     },
     quote: {
       en: "Digital products at this scale don't forgive errors - the e-commerce store and apps must work flawlessly.",
@@ -373,46 +376,48 @@ export const projects = [
       en: "Brand Support",
       pl: "Wsparcie Marki"
     },
-    year: "2023 — current",
+    year: "2022 — current",
     image: sonovaCoverImg,
     coverImage: sonovaCoverImg,
     hoverVideo: "/videos/sonova-hover.mp4",
     images: [sonovaAsset4, sonovaAsset1, sonovaAsset2, sonovaAsset3, sonovaAsset5],
     isInternal: false,
     description: {
-      en: "We help Sonova communicate clearly and confidently across their Polish market, delivering campaigns, print materials and digital assets that connect with diverse audiences.",
-      pl: "Pomagamy firmie Sonova komunikować się w sposób jasny i pewny na polskim rynku, dostarczając kampanie, materiały drukowane i zasoby cyfrowe, które łączą się z różnorodnymi odbiorcami."
+      en: "Geers (Sonova Group) runs 250+ hearing-care locations in Poland, part of a Sonova network of 600+ locations across 17 countries. Since 2022 we operate the marketing production layer for the Polish market: retail campaigns, print and digital assets shipped through a standing brief-to-asset pipeline — not per-project agency cycles.",
+      pl: "Geers (Sonova Group) prowadzi 250+ punktów opieki słuchowej w Polsce, będąc częścią sieci Sonova liczącej 600+ lokalizacji w 17 krajach. Od 2022 obsługujemy warstwę produkcji marketingowej dla polskiego rynku: kampanie retail, materiały drukowane i cyfrowe dostarczane przez stały pipeline brief-to-asset — nie przez cykle agencyjne per projekt."
     },
     services: {
       en: ["Retail Campaigns", "Print Design", "Digital Assets"],
       pl: ["Kampanie Retail", "Projekty Drukowane", "Zasoby Cyfrowe"]
     },
     challenge: {
-      en: "We provide continuous creative and production support for Sonova’s Polish operations. The challenge is to maintain global brand precision while localizing communication for hundreds of clinics and diverse audiences.",
-      pl: "Zapewniamy ciągłe wsparcie kreatywne i produkcyjne dla polskich operacji Sonova. Wyzwaniem jest zachowanie globalnej precyzji marki przy jednoczesnej lokalizacji komunikacji dla setek klinik i zróżnicowanych odbiorców."
+      en: "Before the system, campaigns started from loose email briefs. Each asset bounced between local marketing, compliance and production — multiple revision rounds, approval cycles measured in weeks, and 250+ locations waiting on materials. The cost wasn't creative quality. It was coordination time and missed retail windows.",
+      pl: "Zanim powstał system, kampanie zaczynały się od luźnych briefów mailowych. Każdy zasób krążył między lokalnym marketingiem, compliance i produkcją — wiele rund poprawek, cykle akceptacji liczone w tygodniach i 250+ lokalizacji czekających na materiały. Kosztem nie była jakość kreacji. Był nim czas koordynacji i przegapione okna retailowe."
     },
     decisions: {
-      en: "We established a modular system allowing fast and consistent rollout across all clinics. We closely coordinate with local marketing to ensure visuals are on-brand, compliant, and conversion-ready.",
-      pl: "Stworzyliśmy modułowy system umożliwiający szybkie i spójne wdrożenia we wszystkich klinikach. Ściśle współpracujemy z lokalnym marketingiem, aby wizualizacje były zgodne z marką, przepisami i nastawione na konwersję."
+      en: "We ran r3loop on the pipeline, not the pixels. 01 Diagnose located where briefs actually stalled: ambiguous inputs and compliance checks arriving last. 02 Map charted every asset type against its real approval path. 03 Standardize converted that into brief templates with output contracts — format, channel, regulatory constraints and sign-off owner defined before design starts. 05 Govern moved compliance review to intake instead of the end.",
+      pl: "Zastosowaliśmy r3loop do pipeline'u, nie do pikseli. 01 Diagnose zlokalizował, gdzie briefy faktycznie utykały: niejednoznaczne inputy i compliance sprawdzane na końcu. 02 Map rozrysował każdy typ zasobu na jego realną ścieżkę akceptacji. 03 Standardize zamienił to w szablony briefów z output contracts — format, kanał, ograniczenia regulacyjne i właściciel akceptacji zdefiniowane, zanim zacznie się projektowanie. 05 Govern przeniósł przegląd compliance na początek intake'u zamiast na koniec."
     },
     approach: {
-      en: "We support both brand-level messaging and conversion-driven communication. For each campaign, we refine templates to better serve patients, sales teams, and the organization's goals.",
-      pl: "Wspieramy zarówno komunikację wizerunkową, jak i sprzedażową. Przy każdej kampanii udoskonalamy szablony, aby lepiej służyły pacjentom, zespołom sprzedaży i celom organizacji."
+      en: "Production runs on a modular asset system: master layouts per channel, locked brand and regulatory zones, variable local content. AI carries the volume layer — variant generation, resizing and copy adaptation across formats — while human review holds two decision gates: brief acceptance and final compliance sign-off. 500+ assets per year ship through this loop.",
+      pl: "Produkcja działa na modułowym systemie zasobów: master layouty per kanał, zablokowane strefy brandowe i regulacyjne, zmienna treść lokalna. AI obsługuje warstwę wolumenu — generowanie wariantów, resizing i adaptację copy między formatami — a przegląd ludzki trzyma dwie bramki decyzyjne: akceptację briefu i finalny sign-off compliance. Przez tę pętlę przechodzi 500+ zasobów rocznie."
     },
     quote: {
-      en: "Sonova’s mission is about restoring hearing - our role is to make that promise feel accessible, trustworthy and clear.",
-      pl: "Misją Sonova jest przywracanie słuchu - naszą rolą jest sprawienie, by ta obietnica była dostępna, wiarygodna i jasna."
+      en: "We didn't redesign Geers' communication. We redesigned how it gets approved and shipped.",
+      pl: "Nie przeprojektowaliśmy komunikacji Geers. Przeprojektowaliśmy to, jak jest akceptowana i dostarczana."
     },
     outcome: {
-      en: "We successfully localize communication without losing quality. Deliverables include print-ready materials, web banners, and tailored messaging that resonates with senior and multi-generational audiences.",
-      pl: "Skutecznie lokalizujemy komunikację bez utraty jakości. Dostarczamy gotowe materiały do druku, banery i dopasowane komunikaty, które rezonują z odbiorcami senioralnymi i wielopokoleniowymi."
+      en: "Within two quarters, 80%+ of briefs cleared first-round — up from a workflow where multiple revision loops were the norm. Approval cycles now run 3× faster, and the retail calendar gets served with predictable lead times across 250+ Polish locations.",
+      pl: "W ciągu dwóch kwartałów 80%+ briefów przechodziło za pierwszym podejściem — wcześniej normą było kilka pętli poprawek. Cykle akceptacji są teraz 3× szybsze, a kalendarz retail obsługiwany z przewidywalnym wyprzedzeniem w 250+ polskich lokalizacjach."
     },
     reflection: {
-      en: "With each project, we focus on simplifying complexity, building human connections and helping people hear the world again.",
-      pl: "Przy każdym projekcie skupiamy się na upraszczaniu złożoności, budowaniu ludzkich relacji i pomaganiu ludziom usłyszeć świat na nowo."
+      en: "In regulated, multi-location retail the constraint is never design capacity — it's decision throughput. Fix the gates and the volume takes care of itself.",
+      pl: "W regulowanym, wielolokalizacyjnym retailu ograniczeniem nigdy nie jest moc projektowa — jest nim przepustowość decyzji. Napraw bramki, a wolumen zadba o siebie sam."
     },
     stats: [
-        { value: "250+", label: { en: "Locations Supported", pl: "Obsłużonych Lokalizacji" } },
+        { value: "250+", label: { en: "Locations in Poland", pl: "Lokalizacji w Polsce" } },
+        { value: "80%+", label: { en: "Briefs First-Round", pl: "Briefów za 1. Podejściem" } },
+        { value: "3×", label: { en: "Faster Approvals", pl: "Szybsze Akceptacje" } },
         { value: "500+", label: { en: "Assets / Year", pl: "Zasobów / Rok" } }
     ],
     // Testimonial — Sonova marketing side. ⚠ Role placeholder — replace with real title.
@@ -436,7 +441,8 @@ export const projects = [
       en: "Design-first partner",
       pl: "Zintegrowany partner projektowy"
     },
-    year: "2023",
+    // TODO(reszek): doprecyzuj zakres lat współpracy (poprzednio stało "2023", co kłóciło się ze statem "3+ Years").
+    year: "3+ years",
     image: kubotaImg,
     coverImage: kubotaImg,
     hoverVideo: "/videos/kubota-hover.mp4",
@@ -446,43 +452,45 @@ export const projects = [
         kubotaAsset2
     ],
     isInternal: false,
+    // TODO(reszek): potwierdź rynek i rok debiutu publicznego Kuboty — do potwierdzenia używamy
+    // "public-market debut" (nie "IPO" ani "WSE debut", bo to nieścisłe).
     description: {
-      en: "Kubota’s growth required more than one-off campaigns. We supported the brand from early-stage momentum to large-scale communication by building a consistent visual language and a repeatable content production system. This helped the marketing team move faster, stay coherent across channels, and ship reliably during key moments, including a dedicated IPO debut materials package.",
-      pl: "Rozwój marki Kubota wymagał czegoś więcej niż jednorazowych kampanii. Wspieraliśmy markę od wczesnego etapu wzrostu do komunikacji na dużą skalę, budując spójny język wizualny i powtarzalny system produkcji treści. Pomogło to zespołowi marketingu działać szybciej, zachować spójność we wszystkich kanałach i niezawodnie dostarczać materiały w kluczowych momentach, w tym dedykowany pakiet na debiut giełdowy."
+      en: "Kubota scaled from cult-brand comeback to retail-volume output. For 3+ years we have run its content production system — 200+ deliverables across digital, social and print — including brand-system support for Kubota's public-market debut. Not a campaign vendor: a standing production layer the marketing team plans against.",
+      pl: "Kubota przeskalowała się z powrotu kultowej marki do produkcji w wolumenie retailowym. Od 3+ lat prowadzimy jej system produkcji treści — 200+ deliverables w digitalu, social mediach i druku — w tym wsparcie brand-systemowe przy debiucie Kuboty na rynku publicznym. Nie vendor od kampanii: stała warstwa produkcyjna, na której zespół marketingu może planować."
     },
     services: {
-      en: ["Always-on content", "Campaign assets", "Modular formats", "IPO materials"],
-      pl: ["Bieżąca obsługa", "Materiały kampanijne", "Formaty modułowe", "Materiały IPO"]
+      en: ["Always-on content", "Campaign assets", "Modular formats", "Public-debut materials"],
+      pl: ["Bieżąca obsługa", "Materiały kampanijne", "Formaty modułowe", "Materiały na debiut publiczny"]
     },
     challenge: {
-      en: "Kubota needed continuous, high-quality creative output while scaling fast. The core challenge wasn’t a single project, it was maintaining consistency across touchpoints, reducing approval friction, and keeping speed high without compromising detail.",
-      pl: "Kubota potrzebowała ciągłych, wysokiej jakości materiałów kreatywnych w trakcie szybkiego skalowania. Głównym wyzwaniem nie był pojedynczy projekt, ale utrzymanie spójności we wszystkich punktach styku, redukcja tarć decyzyjnych i utrzymanie tempa bez kompromisów w detalach."
+      en: "Growth multiplied output demand faster than the team could brief it. Every campaign restarted the same negotiation — formats, tone, file specs, who approves what. The cost showed up as rework: assets cycling through review rounds while drop dates stayed fixed.",
+      pl: "Wzrost mnożył zapotrzebowanie na output szybciej, niż zespół był w stanie je briefować. Każda kampania zaczynała od nowa tę samą negocjację — formaty, ton, specyfikacje plików, kto co akceptuje. Koszt objawiał się jako rework: zasoby krążące po rundach review, podczas gdy daty dropów stały w miejscu."
     },
     decisions: {
-      en: "We acted as an embedded design-first partner, delivering campaign assets and always-on content across digital, social, and print. In parallel, we built a modular system of formats and reusable components that made production predictable, reduced back-and-forth, and kept the brand visually coherent even as volume increased.",
-      pl: "Działaliśmy jako zintegrowany partner projektowy, dostarczając materiały do kampanii i bieżącej komunikacji w kanałach digital, social i druku. Równolegle zbudowaliśmy modułowy system formatów i reużywalnych komponentów, który uczynił produkcję przewidywalną, zmniejszył liczbę poprawek i utrzymał spójność wizualną marki nawet przy rosnącym wolumenie."
+      en: "01 Diagnose isolated the rework driver — undefined output contracts, not weak creative. 03 Standardize built a modular format library: locked brand components, explicit variable zones, file specs baked into each template. 05 Govern set one approval path per asset class — a single decision gate with a named owner, no parallel feedback threads. 08 Iterate reviews the library quarterly and retires formats that stopped earning their slot.",
+      pl: "01 Diagnose wyizolował źródło reworku — niezdefiniowane output contracts, nie słabą kreację. 03 Standardize zbudował modułową bibliotekę formatów: zablokowane komponenty brandowe, jawne strefy zmienne, specyfikacje plików wpisane w każdy szablon. 05 Govern ustawił jedną ścieżkę akceptacji per klasa zasobu — pojedyncza bramka decyzyjna z imiennym właścicielem, bez równoległych wątków feedbacku. 08 Iterate kwartalnie przegląda bibliotekę i wycofuje formaty, które przestały zarabiać na swoje miejsce."
     },
     approach: {
-      en: "At a key milestone, we delivered a dedicated set of communication materials supporting Kubota’s IPO debut process. The focus was clarity, consistency, and execution readiness under high visibility, while protecting the brand’s tone and quality on both the “big picture” and detail level.",
-      pl: "W kluczowym momencie dostarczyliśmy dedykowany zestaw materiałów komunikacyjnych wspierających proces debiutu giełdowego marki Kubota. Skupiliśmy się na jasności, spójności i gotowości egzekucyjnej przy dużej widoczności, chroniąc jednocześnie ton i jakość marki zarówno na poziomie strategicznym, jak i w detalach."
+      en: "Always-on production on a fixed cadence: structured intake, weekly delivery slots, predictable turnaround per asset class. AI accelerates the volume work — format adaptation, variant builds, resizing — while the library keeps every output on-brand by construction. For the public-market debut we built a dedicated communication set from the same component library, so the highest-visibility materials stayed consistent with everyday brand output.",
+      pl: "Produkcja always-on w stałym rytmie: ustrukturyzowany intake, cotygodniowe sloty dostaw, przewidywalny turnaround per klasa zasobu. AI przyspiesza pracę wolumenową — adaptacje formatów, budowę wariantów, resizing — a biblioteka z definicji trzyma każdy output w brandzie. Na debiut na rynku publicznym zbudowaliśmy dedykowany zestaw komunikacji z tej samej biblioteki komponentów, dzięki czemu materiały o najwyższej widoczności pozostały spójne z codziennym outputem marki."
     },
     quote: {
       en: "Systemizing content delivery. Keeping brand quality consistent during growth.",
       pl: "Systematyzacja dostarczania treści. Utrzymanie spójnej jakości marki podczas wzrostu."
     },
     outcome: {
-      en: "A scalable creative workflow that helped Kubota ship faster with fewer iterations, clearer standards, and consistent output across channels during growth and high-stakes moments.",
-      pl: "Skalowalny proces kreatywny, który pomógł marce Kubota działać szybciej z mniejszą liczbą iteracji, jaśniejszymi standardami i spójnymi materiałami we wszystkich kanałach podczas wzrostu i kluczowych momentów."
+      en: "3+ years, 200+ deliverables shipped through one repeatable workflow — fewer iteration rounds per asset, faster releases, and a brand that held coherent through its highest-visibility moment, the public-market debut, without spinning up a separate agency engagement.",
+      pl: "3+ lata, 200+ deliverables dostarczonych przez jeden powtarzalny workflow — mniej rund iteracji per zasób, szybsze premiery i marka, która pozostała spójna w swoim najbardziej widocznym momencie, debiucie na rynku publicznym, bez uruchamiania osobnego engagementu agencyjnego."
     },
     reflection: {
-      en: "Highlights: Always-on content production and campaign assets, Modular formats and reusable components, Cross-channel consistency (digital / social / print), IPO debut communication materials package.",
-      pl: "Najważniejsze punkty: Bieżąca produkcja treści i materiały kampanijne, Modułowe formaty i reużywalne komponenty, Spójność we wszystkich kanałach (digital / social / print), Pakiet materiałów na debiut IPO."
+      en: "Long engagements don't survive on creativity — they survive on predictability. The format library is the reason year three runs faster than year one.",
+      pl: "Długie współprace nie przetrwają na kreatywności — przetrwają na przewidywalności. Biblioteka formatów to powód, dla którego trzeci rok działa szybciej niż pierwszy."
     },
     stats: [
         { value: "3+", label: { en: "Years of Partnership", pl: "Lata Współpracy" } },
         { value: "200+", label: { en: "Deliverables Shipped", pl: "Dostarczonych Materiałów" } }
     ],
-    // Testimonial — Kubota brand side. ⚠ Role placeholder — replace with real title.
+    // Testimonial — Kubota. Rola potwierdzona w kanonie: "Brand & Marketing · Kubota". Treść cytatu = słowa klienta, nie zmieniać.
     testimonial: {
       quote: {
         en: "The communication is seamless, and their commitment to quality translates directly into our business results.",
@@ -739,9 +747,10 @@ export const projects = [
     isInternal: false,
     isNDA: true,
     ndaPassword: "uniqa2025",
+    // TODO(reszek): potwierdź status atrybucji — praca z okresu wcześniejszych engagementów agencyjnych.
     description: {
-      en: "Product UX/UI and design system for one of Europe's leading insurance groups. End-to-end digital product design — from user research through interface design to a scalable component library.",
-      pl: "Product UX/UI i design system dla jednej z wiodących europejskich grup ubezpieczeniowych. Kompleksowy design produktu cyfrowego — od badań użytkowników przez projektowanie interfejsu po skalowalną bibliotekę komponentów."
+      en: "Product UX/UI and design system for one of Europe's leading insurance groups. End-to-end digital product design — from user research through interface design to a scalable component library. Delivered during prior agency engagements; covered by NDA.",
+      pl: "Product UX/UI i design system dla jednej z wiodących europejskich grup ubezpieczeniowych. Kompleksowy design produktu cyfrowego — od badań użytkowników przez projektowanie interfejsu po skalowalną bibliotekę komponentów. Zrealizowane w ramach wcześniejszych współprac agencyjnych; objęte NDA."
     },
     services: {
       en: ["Product UX/UI", "Design System", "User Research", "Digital Assets"],
@@ -792,9 +801,10 @@ export const projects = [
     isInternal: false,
     isNDA: true,
     ndaPassword: "fifa2025",
+    // TODO(reszek): potwierdź status atrybucji — praca z okresu wcześniejszych engagementów agencyjnych.
     description: {
-      en: "Product UX/UI for a global tournament digital experience. Interface design, component systems, and real-time content architecture built for millions of concurrent users.",
-      pl: "Product UX/UI dla globalnego cyfrowego doświadczenia turniejowego. Projektowanie interfejsu, systemy komponentów i architektura treści real-time zbudowana dla milionów jednoczesnych użytkowników."
+      en: "Product UX/UI for a global tournament digital experience. Interface design, component systems, and real-time content architecture built for millions of concurrent users. Delivered during prior agency engagements; covered by NDA.",
+      pl: "Product UX/UI dla globalnego cyfrowego doświadczenia turniejowego. Projektowanie interfejsu, systemy komponentów i architektura treści real-time zbudowana dla milionów jednoczesnych użytkowników. Zrealizowane w ramach wcześniejszych współprac agencyjnych; objęte NDA."
     },
     services: {
       en: ["Product UX/UI", "UI System", "Real-time Content", "Campaign Assets"],

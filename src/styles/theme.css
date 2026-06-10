@@ -88,6 +88,36 @@
     @apply border-border outline-ring/50;
   }
 
+  /* ─── GLOBAL FOCUS-VISIBLE RING (WCAG 2.1 AA — 2.4.7 Focus Visible) ───
+     Consistent lime focus indicator for every keyboard-focusable control.
+     :focus-visible only — mouse clicks don't paint the ring, keyboard
+     navigation always does. outline-offset keeps the ring outside the
+     element so it stays visible against dark fills and hairline borders.
+     Beats per-component `outline-none` resets via pseudo-class specificity. */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  summary:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid #D4FF00 !important;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Light themes — lime on white fails the 3:1 non-text contrast minimum
+     (#D4FF00 vs #FFFFFF ≈ 1.07:1), so the ring flips to black. */
+  body:is(.lime-theme, .global-light-mode) a:focus-visible,
+  body:is(.lime-theme, .global-light-mode) button:focus-visible,
+  body:is(.lime-theme, .global-light-mode) input:focus-visible,
+  body:is(.lime-theme, .global-light-mode) select:focus-visible,
+  body:is(.lime-theme, .global-light-mode) textarea:focus-visible,
+  body:is(.lime-theme, .global-light-mode) summary:focus-visible,
+  body:is(.lime-theme, .global-light-mode) [tabindex]:focus-visible {
+    outline-color: #000000 !important;
+  }
+
   html.lenis, html.lenis body {
     height: auto;
   }

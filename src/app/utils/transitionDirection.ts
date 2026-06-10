@@ -157,6 +157,25 @@ export function getBrandingClipPath(direction: TransitionDirection): {
 }
 
 /**
+ * Depth scrim gradient for the OUTGOING page — a soft directional shadow that
+ * deepens toward the edge the sweep enters from, selling the illusion that the
+ * incoming sweep is a physical layer sliding OVER the exiting page. Fades in
+ * during exit, fades out during entry (so the handoff stays seamless).
+ */
+export function getDepthScrim(direction: TransitionDirection): string {
+  switch (direction) {
+    case "top-to-bottom":
+      return "linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 60%)";
+    case "bottom-to-top":
+      return "linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 60%)";
+    case "left-to-right":
+      return "linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 60%)";
+    case "right-to-left":
+      return "linear-gradient(to left, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 60%)";
+  }
+}
+
+/**
  * Mount this hook ONCE at the App level. It advances the deterministic
  * direction cycle on every wouter location change. useLayoutEffect runs
  * synchronously after DOM commit but before browser paint, keeping the new

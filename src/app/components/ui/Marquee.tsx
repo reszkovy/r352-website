@@ -4,7 +4,7 @@ import { cn } from "@/app/components/ui/utils";
 import { useLanguage } from "@/app/context/LanguageContext";
 
 export function Marquee() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   
   const rawText = t("marquee.text");
   const words = rawText.split(/\s*[·\-]\s*/).filter(Boolean);
@@ -131,6 +131,15 @@ export function Marquee() {
           </div>
         </motion.div>
       </motion.div>
+
+      {/* Framework bridge — DIAGNOSE·BUILD·SCALE is r3loop compressed into
+          three phases, not a second methodology. One sentence so the buyer
+          never reads it as a competing framework. */}
+      <p className="relative z-10 mt-10 md:mt-14 px-8 text-center font-mono text-[11px] md:text-xs tracking-wide text-neutral-500">
+        {language === "pl"
+          ? "Trzy fazy — r3loop w kompresji: kroki 01–02 to diagnoza, 03–06 budowa, 07–08 skalowanie."
+          : "Three phases — r3loop compressed: steps 01–02 diagnose, 03–06 build, 07–08 scale."}
+      </p>
     </div>
   );
 }

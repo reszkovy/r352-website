@@ -23,14 +23,21 @@
  *  - Don't set prefers-reduced-motion (capture normal motion state)
  *  - Set theme: dark (matches default)
  *
- * Exit code 0 = all routes captured (or fell back to existing dist/index.html).
- * Exit code 1 = unrecoverable failure (browser launch, build dir missing).
+ * Exit code 0 = all routes captured (or fell back to existing dist/index.html),
+ *               OR graceful skip on Vercel/CI when Chromium is unavailable.
+ * Exit code 1 = unrecoverable failure in LOCAL dev only (browser launch,
+ *               build dir missing). On Vercel/CI fatals never fail the build.
+ *
+ * Vercel: runs for real (since 2026-06). Chromium comes from
+ * @playwright/browser-chromium (devDependency, postinstall → CDN download
+ * into ~/.cache/ms-playwright). See "Chromium resolution" section below.
  */
 
 import { spawn } from "node:child_process";
 import { mkdir, writeFile, access } from "node:fs/promises";
-import { existsSync, constants } from "node:fs";
+import { existsSync, readdirSync, constants } from "node:fs";
 import { join, dirname } from "node:path";
+import { homedir } from "node:os";
 import { fileURLToPath } from "node:url";
 import http from "node:http";
 import puppeteer from "puppeteer";
@@ -108,20 +115,92 @@ const log = {
   err: (msg) => console.log(`[prerender] [31m✗[0m ${msg}`),
 };
 
-// ─── Vercel build guard ─────────────────────────────────────────────
-// Puppeteer Chromium download (~170 MB) is unreliable on Vercel serverless
-// build environments — network timeouts, disk limits, postinstall hooks
-// failing silently. Skip prerender on Vercel until we wire up
-// @sparticuz/chromium + puppeteer-core for serverless. Local builds run
-// the full chain (vite build && prerender). Vercel falls back to SPA
-// hydration as before — visible content layer still ships, just without
-// the static HTML per route benefit (#5 JS/rendering kategoria zostaje
-// na 7400 zamiast 9100 dopóki nie naprawimy).
-if (process.env.VERCEL === "1" || process.env.CI === "true") {
-  log.info("Vercel/CI environment detected — skipping prerender.");
-  log.info("Local builds still get prerender. Re-enable after serverless Chromium setup.");
-  process.exit(0);
+// ─── Chromium resolution (Vercel/CI-aware) ──────────────────────────
+// Prerender now RUNS on Vercel. The old guard skipped it because the
+// Puppeteer postinstall download (~170 MB) was unreliable there — so
+// instead we ship `@playwright/browser-chromium` as a devDependency:
+// its postinstall pulls Chromium from Playwright's CDN into
+// ~/.cache/ms-playwright (reliable on Vercel's x64 Linux build image),
+// and Puppeteer drives that binary via `executablePath`.
+// (PUPPETEER_SKIP_DOWNLOAD=true is set in vercel.json build env so the
+// flaky Puppeteer download never even starts on Vercel.)
+//
+// Resolution order:
+//   1. PUPPETEER_EXECUTABLE_PATH env — explicit override, always wins
+//   2. Puppeteer's own bundled Chrome (local macOS dev — unchanged)
+//   3. Newest chromium-* in the Playwright browsers cache (Vercel path)
+//
+// If NO browser is found / Chromium fails to launch:
+//   - on Vercel/CI: graceful skip with a warning (exit 0) — deploy ships
+//     the plain SPA shell exactly like the old guard did, build never fails
+//   - locally: hard exit 1 so the broken setup is visible in dev
+const IS_VERCEL_OR_CI =
+  process.env.VERCEL === "1" || process.env.CI === "true" || process.env.CI === "1";
+
+function findPlaywrightChromium() {
+  const roots = [];
+  const envBrowsersPath = process.env.PLAYWRIGHT_BROWSERS_PATH;
+  if (envBrowsersPath && envBrowsersPath !== "0") roots.push(envBrowsersPath);
+  if (envBrowsersPath === "0") {
+    roots.push(join(PROJECT_ROOT, "node_modules", "playwright-core", ".local-browsers"));
+  }
+  roots.push(join(homedir(), ".cache", "ms-playwright"));            // Linux (Vercel)
+  roots.push(join(homedir(), "Library", "Caches", "ms-playwright")); // macOS
+  roots.push(join(homedir(), "AppData", "Local", "ms-playwright"));  // Windows
+
+  for (const root of roots) {
+    if (!existsSync(root)) continue;
+    let entries;
+    try { entries = readdirSync(root); } catch { continue; }
+    const revisions = entries
+      .filter((d) => /^chromium-\d+$/.test(d))
+      .sort((a, b) => Number(b.split("-")[1]) - Number(a.split("-")[1])); // newest first
+    for (const rev of revisions) {
+      const candidates = [
+        join(root, rev, "chrome-linux", "chrome"),
+        join(root, rev, "chrome-linux64", "chrome"),
+        join(root, rev, "chrome-mac", "Chromium.app", "Contents", "MacOS", "Chromium"),
+        join(root, rev, "chrome-mac-arm64", "Chromium.app", "Contents", "MacOS", "Chromium"),
+        join(root, rev, "chrome-win", "chrome.exe"),
+      ];
+      for (const candidate of candidates) {
+        if (existsSync(candidate)) return candidate;
+      }
+    }
+  }
+  return null;
 }
+
+function resolveChromiumExecutable() {
+  // 1. Explicit override
+  const envPath = process.env.PUPPETEER_EXECUTABLE_PATH;
+  if (envPath) {
+    if (existsSync(envPath)) return { path: envPath, source: "PUPPETEER_EXECUTABLE_PATH" };
+    log.warn(`PUPPETEER_EXECUTABLE_PATH set but not found on disk: ${envPath}`);
+  }
+  // 2. Puppeteer's own managed Chrome (local dev)
+  try {
+    const pptrPath = puppeteer.executablePath();
+    if (pptrPath && existsSync(pptrPath)) return { path: pptrPath, source: "puppeteer cache" };
+  } catch { /* no puppeteer-managed browser — fall through */ }
+  // 3. Playwright browsers cache (@playwright/browser-chromium postinstall)
+  const pwPath = findPlaywrightChromium();
+  if (pwPath) return { path: pwPath, source: "playwright cache" };
+  return null;
+}
+
+const chromium = resolveChromiumExecutable();
+if (!chromium) {
+  if (IS_VERCEL_OR_CI) {
+    log.warn("No Chromium found (PUPPETEER_EXECUTABLE_PATH / puppeteer cache / playwright cache all empty).");
+    log.warn("Graceful skip on Vercel/CI — deploy ships the SPA shell without per-route static HTML.");
+    log.warn("Check that `@playwright/browser-chromium` postinstall ran during npm install.");
+    process.exit(0);
+  }
+  log.err("No Chromium found. Install one: `npx puppeteer browsers install chrome` or `npx playwright install chromium`.");
+  process.exit(1);
+}
+log.info(`Chromium: ${chromium.path} (via ${chromium.source})`);
 
 // ─── Sanity checks ──────────────────────────────────────────────────
 if (!existsSync(DIST_DIR)) {
@@ -220,6 +299,7 @@ try {
   log.info(`Launching headless Chromium...`);
   browser = await puppeteer.launch({
     headless: "new",
+    executablePath: chromium.path,
     args: [
       "--no-sandbox",
       "--disable-setuid-sandbox",
@@ -279,6 +359,19 @@ try {
 
       await page.close();
 
+      // ── Empty-root guard ────────────────────────────────────────
+      // Never write a snapshot whose #root is empty — that would replace
+      // a (potentially good) file with a blank SPA shell. This matters
+      // most for "/" because dist/index.html is the ONLY prerender output
+      // that shares its path with the vite build artifact: any rebuild
+      // (or `cp -rf dist-a4/* dist/`) overwrites it with the empty shell,
+      // and a subsequent bad capture must not be allowed to "confirm" it.
+      if (/<div id="root"><\/div>/.test(html)) {
+        throw new Error(
+          `captured HTML has an EMPTY #root (app did not mount) — refusing to write ${route}`
+        );
+      }
+
       // Write to dist/{route}/index.html — for "/" it's dist/index.html (overwrite),
       // for nested routes it's dist/path/to/route/index.html.
       const outDir = route === "/"
@@ -312,8 +405,15 @@ try {
     log.warn(`Failed routes fall back to dist/index.html (SPA hydration still works).`);
   }
 } catch (err) {
-  log.err(`Fatal: ${err.message}`);
   await cleanup();
+  if (IS_VERCEL_OR_CI) {
+    // Requirement: a Vercel build must NEVER fail because of prerender.
+    // Browser launch / preview-server failure → warn + ship SPA shell.
+    log.warn(`Fatal during prerender on Vercel/CI: ${err.message}`);
+    log.warn("Graceful skip — deploy continues with the SPA shell (routes hydrate client-side).");
+    process.exit(0);
+  }
+  log.err(`Fatal: ${err.message}`);
   process.exit(1);
 }
 

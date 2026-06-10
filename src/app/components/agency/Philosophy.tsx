@@ -195,10 +195,13 @@ export function Philosophy() {
                   ? 'Projektuję od piętnastu lat i większości tego co wiem nauczyłem się patrząc, jak piękna praca jest zabijana przez słabe operacje.'
                   : "I've been designing for fifteen years and most of what I learned came from watching beautiful work get killed by bad operations."}
               </p>
+              {/* TODO(reszek): potwierdź listę miast — bio mówiło "Lisbon, Barcelona", a FAQ/SEO
+                  wymieniają London, Porto, Barcelona, Athens, Marseille (bez Lizbony). Do czasu
+                  potwierdzenia wersja bezmiastowa, spójna z liczbami z FAQ (6 lat, 5 miast). */}
               <p>
                 {language === 'pl'
-                  ? <>Zaczynałem w Deloitte Digital. Potem Lizbona, Barcelona, pięć innych miast &mdash; Kubota, trasy Dawida Podsiadły z Muzk, w międzyczasie Pelion. Potem większe sceny &mdash; FIFA, UNIQA, blockchain w erze web3. Różne branże, różne agencje, różna skala &mdash; ale zawsze ten sam wzorzec. Seniorzy uwięzieni w pętlach poprawek. Briefy, które potrzebowały trzech rund zanim cokolwiek poszło. Spójność marki przeciekająca między lokalizacjami, których nikt nie miał czasu audytować. Spotkania strategiczne przerywane &bdquo;jeszcze tylko jeden baner&rdquo;.</>
-                  : <>I started at Deloitte Digital. Then Lisbon, then Barcelona, then five other cities &mdash; Kubota, Dawid Podsiadło&apos;s tours with Muzk, Pelion in between. Bigger stages came next &mdash; FIFA, UNIQA, blockchain during the web3 wave. Different industries, different agencies, different scales &mdash; but always the same pattern. Senior designers stuck in revision loops. Briefs that needed three rounds before anyone could ship. Brand consistency leaking across locations nobody had time to audit. Strategy meetings interrupted by &ldquo;just one more banner.&rdquo;</>}
+                  ? <>Zaczynałem w Deloitte Digital. Potem przyszły lata na expacie &mdash; sześć lat, pięć miast, pięć kultur operacyjnych. Kubota, trasy Dawida Podsiadły z Muzk, w międzyczasie Pelion. Potem większe sceny &mdash; FIFA, UNIQA, blockchain w erze web3. Różne branże, różne agencje, różna skala &mdash; ale zawsze ten sam wzorzec. Seniorzy uwięzieni w pętlach poprawek. Briefy, które potrzebowały trzech rund zanim cokolwiek poszło. Spójność marki przeciekająca między lokalizacjami, których nikt nie miał czasu audytować. Spotkania strategiczne przerywane &bdquo;jeszcze tylko jeden baner&rdquo;.</>
+                  : <>I started at Deloitte Digital. Then came the expat years &mdash; six years, five cities, five operating cultures. Kubota, Dawid Podsiadło&apos;s tours with Muzk, Pelion in between. Bigger stages came next &mdash; FIFA, UNIQA, blockchain during the web3 wave. Different industries, different agencies, different scales &mdash; but always the same pattern. Senior designers stuck in revision loops. Briefs that needed three rounds before anyone could ship. Brand consistency leaking across locations nobody had time to audit. Strategy meetings interrupted by &ldquo;just one more banner.&rdquo;</>}
               </p>
               <p>
                 {language === 'pl'
@@ -219,6 +222,48 @@ export function Philosophy() {
                   hello@r352.com
                 </a>
               </p>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+
+      {/* ─── Soundtrack — Federico Mompou "Música Callada" (Silent Music, 1959)
+          Catalan composer's mystical minimalism — anti-virtuosic, anti-romantic,
+          sparse + warm. Mompou himself: "Music that doesn't disturb, doesn't impose."
+          Brand fit: tych słów echo z About caption "The work speaks. I don't have to."
+          Spotify embed — compact 80px height, NO autoplay (UX + Google ranking).
+          User klika świadomie. 30s preview dla każdego, full track dla Spotify users.
+          Track ID: canonical Cuaderno I (full ~22 min album) — swap URL jeśli wolisz
+          konkretne nagranie (Henck/ECM 1989, Mompou sam 1974, Stephen Hough Hyperion). */}
+      <div className="max-w-[1800px] mx-auto px-8 md:px-12 py-20 md:py-24 border-b border-neutral-200 dark:border-white/10">
+        <div className="max-w-2xl">
+          <Reveal>
+            <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-4">
+              {language === 'pl' ? 'Soundtrack' : 'Soundtrack'}
+            </span>
+            <p className="text-base md:text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed mb-2 [text-wrap:pretty]">
+              {language === 'pl'
+                ? 'Federico Mompou — Música Callada (1959).'
+                : 'Federico Mompou — Música Callada (1959).'}
+            </p>
+            <p className="text-sm md:text-base text-neutral-500 dark:text-neutral-500 leading-relaxed italic mb-6 [text-wrap:pretty]">
+              {language === 'pl'
+                ? '„Muzyka, która nie przeszkadza, nie narzuca się." — Mompou'
+                : '"Music that doesn\'t disturb, doesn\'t impose." — Mompou'}
+            </p>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <div className="rounded-md overflow-hidden">
+              <iframe
+                src="https://open.spotify.com/embed/album/2DUjEuS2GeYAY4WjkrIgs1"
+                width="100%"
+                height="80"
+                frameBorder="0"
+                allow="encrypted-media; clipboard-write"
+                loading="lazy"
+                title="Federico Mompou — Música Callada"
+                className="block"
+              />
             </div>
           </Reveal>
         </div>

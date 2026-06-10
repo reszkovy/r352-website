@@ -8,6 +8,7 @@ import {
   getCurrentDirection,
   getSweepProps,
   getBrandingClipPath,
+  getDepthScrim,
   type TransitionDirection,
 } from "@/app/utils/transitionDirection";
 
@@ -88,10 +89,36 @@ export function PageTransition({ children, className }: PageTransitionProps) {
     ? { duration: 0 }
     : { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.1 };
 
-  // Content wrapper: when reduced, start at final state (no blur/scale/y) and skip transition.
+  // ─── Direction-aware content choreography ───────────────────────────
+  // Vertical navigations get a dedicated motion language matching the
+  // horizontal one in class: perspective "page-flip" tilt on the X axis
+  // (horizontal tilts on Y feel via lateral travel), a vertical motion-blur
+  // smear (gaussian blur + anisotropic scaleY stretch), and parallax between
+  // the exiting and entering layer (exit drifts 28px WITH the sweep flow,
+  // entry arrives from 44px against it — outgoing moves slower than incoming,
+  // reading as depth). Timing/easing identical to horizontal so the compass
+  // cycle feels like one system.
+  const isVertical =
+    direction === "top-to-bottom" || direction === "bottom-to-top";
+  // +1 = flow travels downward, -1 = upward (matches sweep travel direction)
+  const flow = direction === "top-to-bottom" ? 1 : -1;
+
+  // Content wrapper: when reduced, start at final state (no blur/tilt/y) and skip transition.
   const wrapperInitial = reduced
     ? { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }
-    : { opacity: 0, y: 30, scale: 0.98, filter: "blur(24px)" };
+    : isVertical
+      ? {
+          // Incoming page rides IN with the flow: enters from the edge the
+          // sweep came from, tilted back in perspective, vertically smeared.
+          opacity: 0,
+          y: -44 * flow,
+          rotateX: 7 * flow,
+          scaleY: 1.04,
+          scaleX: 0.99,
+          transformPerspective: 1200,
+          filter: "blur(24px)",
+        }
+      : { opacity: 0, y: 30, scale: 0.98, filter: "blur(24px)" };
   const wrapperAnimate = reduced
     ? {
         opacity: 1,
@@ -100,7 +127,22 @@ export function PageTransition({ children, className }: PageTransitionProps) {
         filter: "blur(0px)",
         transition: { duration: 0 }
       }
-    : {
+    : isVertical
+      ? {
+          opacity: 1,
+          y: 0,
+          rotateX: 0,
+          scaleY: 1,
+          scaleX: 1,
+          transformPerspective: 1200,
+          filter: "blur(0px)",
+          transition: {
+            duration: 0.9,
+            delay: 0.3,
+            ease: [0.22, 1, 0.36, 1] // Same Apple-like decel as horizontal
+          }
+        }
+      : {
         opacity: 1,
         y: 0,
         scale: 1,
@@ -119,7 +161,24 @@ export function PageTransition({ children, className }: PageTransitionProps) {
         filter: "blur(0px)",
         transition: { duration: 0 }
       }
-    : {
+    : isVertical
+      ? {
+          // Outgoing page is "flipped away": counter-tilt to the incoming
+          // page's tilt (reads as one continuous rotation through the swap),
+          // slow parallax drift with the flow, vertical smear + blur.
+          opacity: 0.3,
+          y: 28 * flow,
+          rotateX: -7 * flow,
+          scaleY: 1.03,
+          scaleX: 0.99,
+          transformPerspective: 1200,
+          filter: "blur(20px)",
+          transition: {
+            duration: 0.8,
+            ease: [0.76, 0, 0.24, 1] // Synced with sweep
+          }
+        }
+      : {
         opacity: 0.3,
         y: -20,
         scale: 0.95,
@@ -132,6 +191,32 @@ export function PageTransition({ children, className }: PageTransitionProps) {
 
   return (
     <>
+      {/* Depth scrim — directional shadow on the OUTGOING page (vertical only).
+          Sits just below the sweeps; deepens toward the edge the sweep enters
+          from, so the sweep reads as a physical layer sliding OVER the page.
+          Fades in during exit, and the incoming page mounts WITH it visible,
+          fading out as the sweep peels away — exit and enter interlock, no gap. */}
+      {isVertical && (
+        <motion.div
+          aria-hidden
+          className="fixed top-0 left-0 w-[100vw] h-[100vh] z-[9997] pointer-events-none"
+          style={{ background: getDepthScrim(direction) }}
+          initial={{ opacity: reduced ? 0 : 1 }}
+          animate={{
+            opacity: 0,
+            transition: reduced
+              ? { duration: 0 }
+              : { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.1 }
+          }}
+          exit={{
+            opacity: reduced ? 0 : 1,
+            transition: reduced
+              ? { duration: 0 }
+              : { duration: 0.7, ease: [0.76, 0, 0.24, 1] }
+          }}
+        />
+      )}
+
       {/* Cinematic Transition Overlay - Lime Accent */}
       <motion.div
         className="fixed top-0 left-0 w-[100vw] h-[100vh] bg-[#D4FF00]/90 backdrop-blur-2xl z-[9998] pointer-events-none"

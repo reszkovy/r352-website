@@ -1,4 +1,4 @@
-import { ReactNode, useId, useState } from "react";
+import { ReactNode, useEffect, useId, useState } from "react";
 import { motion } from "motion/react";
 
 /**
@@ -23,6 +23,8 @@ import { motion } from "motion/react";
  * - trigger carries aria-describedby pointing at the tooltip's id
  * - tooltip has role="tooltip"
  * - Escape closes the tooltip while focused
+ * - Escape ALSO closes a hover-opened tooltip (document-level listener,
+ *   WCAG 1.4.13 "dismissable" — keydown never reaches an unfocused chip)
  */
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
@@ -52,6 +54,19 @@ export function ChipTooltip({
 }: ChipTooltipProps) {
   const tooltipId = useId();
   const [open, setOpen] = useState(false);
+
+  // WCAG 1.4.13 (Content on Hover or Focus — dismissable): Escape must close
+  // the tooltip even when it was opened by mouse hover and the chip is NOT
+  // focused. The trigger's own onKeyDown only covers the focused case, so a
+  // document-level listener runs while open.
+  useEffect(() => {
+    if (!open) return;
+    const onDocKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", onDocKeyDown);
+    return () => document.removeEventListener("keydown", onDocKeyDown);
+  }, [open]);
 
   const isLime = variant === "lime";
 

@@ -85,15 +85,18 @@ export function AgencyHero() {
               {/* Group 1 — audience/maturity filters with premium tooltips.
                   Tooltip strings use React fragments + &nbsp; before the last 1-2 words —
                   a typography safety net preventing orphan words on the final line. */}
+              {/* TODO(reszek): próg ICP ujednolicony do 30–300+ (był 5–300+, podczas gdy
+                  FAQ/Glossary/SEO mówią 30–300+). Process.tsx nadal ma 5–300+ — poza
+                  zakresem tej zmiany, do wyrównania osobno. */}
               {(language === "pl" ? [
-                { label: "Multi-location", tooltip: <>5–300+ fizycznych punktów, jedna&nbsp;marka</> },
+                { label: "Multi-location", tooltip: <>30–300+ fizycznych punktów, jedna&nbsp;marka</> },
                 { label: "Multi-product", tooltip: <>Wiele linii produktów pod jedną&nbsp;marką</> },
                 { label: "Multi-brand", tooltip: <>Wiele marek pod jednym operating&nbsp;systemem</> },
                 { label: "SaaS", tooltip: <>Produkty software&apos;owe od pomysłu do operating&nbsp;systemu</> },
                 { label: "Brand launch", tooltip: <>Pre-launch tożsamość, wejście na rynek od&nbsp;zera</> },
                 { label: "Post-PMF & scaling", tooltip: <>Po product-market fit, poza founder-led&nbsp;execution</> },
               ] : [
-                { label: "Multi-location", tooltip: <>5–300+ physical branches under a single&nbsp;brand</> },
+                { label: "Multi-location", tooltip: <>30–300+ physical branches under a single&nbsp;brand</> },
                 { label: "Multi-product", tooltip: <>Multiple product lines under one&nbsp;brand</> },
                 { label: "Multi-brand", tooltip: <>Multiple brands sharing one operating&nbsp;system</> },
                 { label: "SaaS", tooltip: <>Software products from foggy idea to operating&nbsp;system</> },

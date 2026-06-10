@@ -16,7 +16,8 @@ export function EngagementModels() {
     {
       number: "01",
       title: language === "pl" ? "Sprint" : "Sprint",
-      // priceFrom intentionally removed — pricing discussed in Brief / Calendly to filter by fit, not price.
+      // Canonical pricing — same ranges as published in FAQ/glossary. Ranges, not quotes.
+      priceFrom: language === "pl" ? "od €15k" : "from €15k",
       promise: language === "pl"
         ? "W 4-6 tygodni budujemy jeden działający fragment Twojego design operating system."
         : "In 4-6 weeks, we build one working part of your design operating system.",
@@ -25,19 +26,19 @@ export function EngagementModels() {
         : "A focused engagement with a clear start, scope, and finish.",
       howItWorks: language === "pl" ? [
         "Definiujemy problem i oczekiwane rezultaty z góry",
-        "Stały zakres, stały harmonogram - bez otwartych umów",
+        "Stały zakres, stały harmonogram — bez otwartych umów",
         "Otrzymujecie gotowy produkt na końcu, a nie prezentację",
         "Przekazanie obejmuje wszystko, czego wasz zespół potrzebuje do dalszego działania"
       ] : [
         "We define the problem and deliverables upfront",
-        "Fixed scope, fixed timeline - no open-ended retainers",
+        "Fixed scope, fixed timeline — no open-ended retainers",
         "You get a complete deliverable at the end, not a pitch deck",
         "Handoff includes everything your team needs to run it forward"
       ],
       howItWorksLabels: language === "pl"
         ? ["Zakres z góry", "Stały scope", "Deliverable, nie deck", "Pełen handoff"]
         : ["Scoped upfront", "Fixed scope", "Deliverable, not deck", "Full handoff"],
-      timeline: language === "pl" ? "2-6 tygodni w zależności od zakresu" : "2-6 weeks depending on scope",
+      timeline: language === "pl" ? "4-6 tygodni w zależności od zakresu" : "4-6 weeks depending on scope",
       idealWhen: language === "pl" ? [
         "Potrzebujecie systemu marki, pakietu kampanii lub strony internetowej - i wiecie, czego chcecie",
         "Macie datę premiery i musicie zdążyć na czas",
@@ -63,7 +64,7 @@ export function EngagementModels() {
     {
       number: "02",
       title: language === "pl" ? "Abonament" : "Retainer",
-      // priceFrom intentionally removed — see model 01.
+      priceFrom: language === "pl" ? "od €7k/mies. · 30 dni wypowiedzenia" : "from €7k/mo · 30-day notice",
       promise: language === "pl"
         ? "Miesięczny rytm utrzymujący kampanie, lokalne zapotrzebowania i jakość pod kontrolą."
         : "A monthly rhythm for keeping campaigns, local requests and design quality under control.",
@@ -98,8 +99,8 @@ export function EngagementModels() {
         ? ["Stała produkcja", "Embedded partner", "Bez in-house teamu"]
         : ["Constant production", "Embedded partner", "No in-house team"],
       successMetric: language === "pl"
-        ? "70% briefów ready przy pierwszym złożeniu, 60% szybsze akceptacje"
-        : "70% of briefs ready on first submission, 60% faster approvals",
+        ? "80%+ briefów first-round, cykle akceptacji 3× szybsze (Geers, w 2 kwartały)"
+        : "80%+ briefs first-round, approval cycles 3× faster (Geers, within 2 quarters)",
       startsWith: language === "pl"
         ? "Sprint diagnostyczny (1-2 tygodnie), podczas którego sprawdzamy obecny obieg pracy, proces zgłoszeń i ustalamy rytm dostaw."
         : "A diagnostic sprint (1-2 weeks) where we audit your current workflow, set up intake, and define the delivery cadence.",
@@ -110,10 +111,10 @@ export function EngagementModels() {
     {
       number: "03",
       title: language === "pl" ? "Diagnostyka" : "Diagnostic",
-      // priceFrom intentionally removed — see model 01.
+      priceFrom: language === "pl" ? "€2k fixed · 60-dniowa gwarancja zwrotu" : "€2k fixed · 60-day money-back",
       promise: language === "pl"
-        ? "W 5 dni pokazujemy gdzie wasza operacja kreatywna traci czas, jakość i ownership."
-        : "In 5 days, we show where your creative operation leaks time, quality and ownership.",
+        ? "W 5 dni roboczych pokazujemy gdzie wasza operacja kreatywna traci czas, jakość i ownership."
+        : "In 5 working days, we show where your creative operation leaks time, quality and ownership.",
       positioning: language === "pl"
         ? "Krótki, ustrukturyzowany audyt, który pokazuje dokładnie, gdzie zawodzi proces — zanim zaangażujecie się w budowanie czegokolwiek. Pełen zwrot kosztów, jeśli rekomendacje nie są wdrażalne w ciągu 60 dni."
         : "A short, structured audit that shows you exactly where delivery breaks down — before you commit to building anything. Money back if the recommendations are not actionable within 60 days.",
@@ -131,7 +132,7 @@ export function EngagementModels() {
       howItWorksLabels: language === "pl"
         ? ["End-to-end mapa", "Wąskie gardła", "Pisemny raport", "Bez zobowiązań"]
         : ["End-to-end map", "Bottleneck ID", "Written report", "No commitment"],
-      timeline: language === "pl" ? "1-2 tygodnie" : "1-2 weeks",
+      timeline: language === "pl" ? "5 dni roboczych · kickoff w 1-2 tygodnie" : "5 working days · kickoff within 1-2 weeks",
       idealWhen: language === "pl" ? [
         "Czujecie, że dostarczanie jest powolne, ale nie wiecie dlaczego",
         "Planujecie skalowanie i chcecie naprawić system, zanim ulegnie awarii",
@@ -160,7 +161,7 @@ export function EngagementModels() {
     {
       number: "04",
       title: language === "pl" ? "Wdrożenie Enterprise" : "Enterprise Sprint",
-      // priceFrom intentionally removed — see model 01.
+      priceFrom: language === "pl" ? "od €55k" : "from €55k",
       promise: language === "pl"
         ? "W 12-16 tygodni dostarczamy multi-location rollout system, który obsługuje 300+ lokalizacji bez rozjazdów."
         : "In 12-16 weeks, we ship a multi-location rollout system that handles 300+ branches without breaking.",
@@ -169,18 +170,18 @@ export function EngagementModels() {
         : "Full Creative Operating System implementation for a multi-location organization — from diagnosis to a running system with a trained team.",
       howItWorks: language === "pl" ? [
         "Pełny cykl: diagnoza, mapa popytu, standardy, ownership decyzji, budowa systemu, miary i rytm review",
-        "Seniorski zespół osadzony w organizacji przez 12-16 tygodni",
+        "Founder + sieć seniorów osadzeni w organizacji przez 12-16 tygodni",
         "Cotygodniowe checkpointy z leadership + warsztaty z zespołami operacyjnymi",
         "Przekazanie obejmuje pełną dokumentację systemu, training i 90-dniowy hand-over",
       ] : [
         "Full cycle: diagnosis, demand mapping, standards, decision ownership, system build, measurement and review rhythm",
-        "Senior team embedded in the organization for 12-16 weeks",
+        "Founder + senior network embedded in the organization for 12-16 weeks",
         "Weekly checkpoints with leadership + workshops with operational teams",
         "Handoff includes complete system documentation, training, and a 90-day transition plan",
       ],
       howItWorksLabels: language === "pl"
-        ? ["Pełen cykl r3loop", "Embedded senior team", "Rytm leadership'u", "90-day handover"]
-        : ["Full r3loop cycle", "Embedded senior team", "Leadership rhythm", "90-day handover"],
+        ? ["Pełen cykl r3loop", "Founder + sieć seniorów", "Rytm leadership'u", "90-day handover"]
+        : ["Full r3loop cycle", "Founder + senior network", "Leadership rhythm", "90-day handover"],
       timeline: language === "pl" ? "12-16 tygodni + 90 dni hand-over" : "12-16 weeks + 90-day handover",
       idealWhen: language === "pl" ? [
         "Wielolokalizacyjna organizacja (5+ lokalizacji lub marek) potrzebująca pełnej transformacji operacyjnej",
@@ -207,7 +208,7 @@ export function EngagementModels() {
     {
       number: "05",
       title: language === "pl" ? "Partner Operacyjny" : "Operating Partner",
-      // priceFrom intentionally removed — see model 01.
+      priceFrom: language === "pl" ? "od €9.5k/mies. · minimum 12 miesięcy" : "from €9.5k/mo · 12-mo minimum",
       promise: language === "pl"
         ? "Wchodzimy jako Wasz fractional head of design ops — prowadzimy system, hiring, governance, vendor selection."
         : "We embed as your fractional head of design ops — running the system, hiring, governance, vendor selection.",
@@ -258,7 +259,7 @@ export function EngagementModels() {
       <div className="flex flex-col mb-16">
         <Reveal>
           <span className="text-[11px] uppercase tracking-[2px] text-neutral-500 dark:text-[#D4FF00] font-display mb-4 block">
-            {language === "pl" ? "Modele współpracy" : "Engagement Models"}
+            {language === "pl" ? "Modele współpracy i cennik" : "Engagement models & pricing"}
           </span>
           <h2 className="text-4xl md:text-6xl font-bold text-neutral-900 dark:text-white tracking-tight mb-6">
             {language === "pl" ? "Jak pracujemy" : "How we work together"}
@@ -421,9 +422,9 @@ export function EngagementModels() {
               </tr>
               <tr className="border-b border-neutral-100 dark:border-white/5">
                 <td className="py-3 pr-4 font-medium text-neutral-500 dark:text-neutral-500">{language === "pl" ? "Harmonogram" : "Timeline"}</td>
-                <td className="py-3 px-4">{language === "pl" ? "2-6 tygodni" : "2-6 weeks"}</td>
+                <td className="py-3 px-4">{language === "pl" ? "4-6 tygodni" : "4-6 weeks"}</td>
                 <td className="py-3 px-4">{language === "pl" ? "Co miesiąc" : "Monthly rolling"}</td>
-                <td className="py-3 pl-4">{language === "pl" ? "1-2 tygodnie" : "1-2 weeks"}</td>
+                <td className="py-3 pl-4">{language === "pl" ? "5 dni roboczych" : "5 working days"}</td>
               </tr>
               <tr className="border-b border-neutral-100 dark:border-white/5">
                 <td className="py-3 pr-4 font-medium text-neutral-500 dark:text-neutral-500">{language === "pl" ? "Zakres" : "Scope"}</td>
@@ -563,6 +564,89 @@ export function EngagementModels() {
         </div>
       </div>
 
+      {/* ─── Pricing — canonical ranges on the record ──────────────────────
+          Same numbers as published in FAQ/glossary; surfaced here so a buyer
+          never has to dig for them. Editorial list, divider-only — no pricing
+          table monster. Ranges, not quotes: final scope set in the scoping call. */}
+      <Reveal>
+        <div className="mt-24 md:mt-32 border-t border-neutral-200 dark:border-white/10 pt-16">
+          <div className="mb-10 max-w-3xl">
+            <span className="block text-[11px] uppercase tracking-[2px] text-neutral-500 dark:text-[#D4FF00] font-display mb-4">
+              {language === "pl" ? "Cennik" : "Pricing"}
+            </span>
+            <h3 className="text-3xl md:text-5xl font-bold text-neutral-900 dark:text-white tracking-tight mb-6">
+              {language === "pl" ? "Widełki, bez owijania." : "Ranges, on the record."}
+            </h3>
+            <p className="text-[15px] text-neutral-600 dark:text-[#888888] max-w-[640px] leading-relaxed">
+              {language === "pl"
+                ? "Każde zaangażowanie jest wyceniane indywidualnie po rozmowie scopingowej — ale widełki nie są tajemnicą. Punkt startu dla pięciu modeli:"
+                : "Every engagement is scoped individually after a scoping call — but the ranges are not a secret. Where each of the five models starts:"}
+            </p>
+          </div>
+
+          <dl className="border-t border-neutral-200 dark:border-white/10">
+            {([
+              {
+                name: language === "pl" ? "Diagnostyka" : "Diagnostic",
+                price: "€2k",
+                note: language === "pl"
+                  ? "Fixed fee · 5 dni roboczych · 60-dniowa gwarancja zwrotu"
+                  : "Fixed fee · 5 working days · 60-day money-back guarantee",
+              },
+              {
+                name: "Sprint",
+                price: language === "pl" ? "od €15k" : "from €15k",
+                note: language === "pl"
+                  ? "Stały zakres · 4-6 tygodni"
+                  : "Fixed scope · 4-6 weeks",
+              },
+              {
+                name: language === "pl" ? "Abonament" : "Retainer",
+                price: language === "pl" ? "od €7k/mies." : "from €7k/mo",
+                note: language === "pl"
+                  ? "30 dni wypowiedzenia · bez lock-inu"
+                  : "30-day notice · no lock-in",
+              },
+              {
+                name: language === "pl" ? "Wdrożenie Enterprise" : "Enterprise Sprint",
+                price: language === "pl" ? "od €55k" : "from €55k",
+                note: language === "pl"
+                  ? "12-16 tygodni + 90 dni handoveru"
+                  : "12-16 weeks + 90-day handover",
+              },
+              {
+                name: language === "pl" ? "Partner Operacyjny" : "Operating Partner",
+                price: language === "pl" ? "od €9.5k/mies." : "from €9.5k/mo",
+                note: language === "pl"
+                  ? "Minimum 12 miesięcy"
+                  : "12-month minimum",
+              },
+            ]).map((row, i) => (
+              <div
+                key={i}
+                className="grid grid-cols-12 gap-2 md:gap-8 items-baseline py-5 border-b border-neutral-200 dark:border-white/10"
+              >
+                <dt className="col-span-12 md:col-span-4 text-[15px] md:text-base font-semibold text-neutral-900 dark:text-white tracking-tight">
+                  {row.name}
+                </dt>
+                <dd className="col-span-6 md:col-span-3 m-0 font-mono text-[13px] md:text-[14px] uppercase tracking-[0.1em] text-neutral-900 dark:text-[#D4FF00]">
+                  {row.price}
+                </dd>
+                <dd className="col-span-6 md:col-span-5 m-0 text-[13px] text-neutral-500 dark:text-[#888888] leading-snug text-right md:text-left">
+                  {row.note}
+                </dd>
+              </div>
+            ))}
+          </dl>
+
+          <p className="mt-5 text-[12px] text-neutral-500 dark:text-[#666666] leading-relaxed max-w-[640px]">
+            {language === "pl"
+              ? "Kwoty netto. Finalna wycena zależy od zakresu, liczby lokalizacji i głębokości wdrożenia — ustalana przed startem, nie w trakcie."
+              : "Net amounts. Final pricing depends on scope, location count and implementation depth — set before kickoff, not along the way."}
+          </p>
+        </div>
+      </Reveal>
+
       {/* ─── Pairing Matrix — engagement model ↔ buying scenario ──────────
           Resolves decision fatigue: rows = the 5 engagement models, columns =
           best-for scenarios, dot marks = fit strength. A buyer self-matches
@@ -613,7 +697,7 @@ export function EngagementModels() {
                 {([
                   {
                     model: language === "pl" ? "Sprint" : "Sprint",
-                    meta: language === "pl" ? "Stały zakres · 2-6 tygodni" : "Fixed scope · 2-6 weeks",
+                    meta: language === "pl" ? "Stały zakres · 4-6 tygodni" : "Fixed scope · 4-6 weeks",
                     fit: language === "pl"
                       ? "Brand System launch · Website Launch · Pakiet kampanii (jednorazowy) · UX produktu cyfrowego"
                       : "Brand System launch · Website Launch · Campaign Toolkit (one-off) · Digital Product UX",
@@ -629,7 +713,7 @@ export function EngagementModels() {
                   },
                   {
                     model: language === "pl" ? "Diagnostyka" : "Diagnostic",
-                    meta: language === "pl" ? "5 dni · jednorazowo" : "5 days · one-time",
+                    meta: language === "pl" ? "5 dni roboczych · jednorazowo" : "5 working days · one-time",
                     fit: language === "pl"
                       ? "Walidacja przed Sprintem · Audyt workflow · Mapa wąskich gardeł · Decyzja przed inwestycją"
                       : "Pre-Sprint validation · Workflow audit · Bottleneck mapping · Decision before investing",

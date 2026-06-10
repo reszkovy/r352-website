@@ -40,8 +40,8 @@ const steps: Step[] = [
     ],
     metric: { en: "Time to root cause for every recurring problem.", pl: "Czas do zidentyfikowania przyczyny każdego powtarzającego się problemu." },
     gate: {
-      en: "Can I describe the operational problem in one sentence with a concrete time-cost number? If not — stay in Diagnose.",
-      pl: "Czy potrafię opisać problem operacyjny w jednym zdaniu z konkretną liczbą kosztu czasowego? Jeśli nie — zostań w Diagnozie.",
+      en: "Can we describe the operational problem in one sentence with a concrete time-cost number? If not — stay in Diagnose.",
+      pl: "Czy potrafimy opisać problem operacyjny w jednym zdaniu z konkretną liczbą kosztu czasowego? Jeśli nie — zostań w Diagnozie.",
     },
   },
   {
@@ -120,8 +120,8 @@ const steps: Step[] = [
     ],
     metric: { en: "Average decision time and decision reversal rate (both trending down).", pl: "Średni czas decyzji i wskaźnik cofania decyzji (oba w trendzie spadkowym)." },
     gate: {
-      en: "For any artifact, can I name who approved it, when, and what the rationale was? If less than 95% traceability — fix the logging.",
-      pl: "Czy dla dowolnego artefaktu potrafię wskazać kto go zatwierdził, kiedy i jakie było uzasadnienie? Jeśli śledzalność poniżej 95% — napraw logowanie.",
+      en: "For any artifact, can we name who approved it, when, and what the rationale was? If less than 95% traceability — fix the logging.",
+      pl: "Czy dla dowolnego artefaktu potrafimy wskazać kto go zatwierdził, kiedy i jakie było uzasadnienie? Jeśli śledzalność poniżej 95% — napraw logowanie.",
     },
   },
   {
@@ -160,8 +160,8 @@ const steps: Step[] = [
     ],
     metric: { en: "Dashboard live + first baseline captured within 2 weeks of system launch.", pl: "Dashboard live + pierwszy baseline uchwycony w ciągu 2 tygodni od launchu systemu." },
     gate: {
-      en: "Can I show 3 measurable improvements vs baseline within 60 days? If no — the system isn't working, or the measurement is broken.",
-      pl: "Czy mogę pokazać 3 mierzalne usprawnienia względem baseline'u w ciągu 60 dni? Jeśli nie — system nie działa albo pomiar jest zepsuty.",
+      en: "Can we show 3 measurable improvements vs baseline within 60 days? If no — the system isn't working, or the measurement is broken.",
+      pl: "Czy możemy pokazać 3 mierzalne usprawnienia względem baseline'u w ciągu 60 dni? Jeśli nie — system nie działa albo pomiar jest zepsuty.",
     },
   },
   {
@@ -180,8 +180,8 @@ const steps: Step[] = [
     ],
     metric: { en: "Quarter-over-quarter trend of all metrics from phases 03–06.", pl: "Trend kwartał-do-kwartału wszystkich metryk z faz 03–06." },
     gate: {
-      en: "Can I take a 2-week vacation without the system breaking? If no — the system isn't yet operating without me. Stay in Iterate.",
-      pl: "Czy mogę wziąć 2 tygodnie urlopu bez tego, żeby system się rozsypał? Jeśli nie — system jeszcze nie działa beze mnie. Zostań w Iteracji.",
+      en: "Can the system's owner take a 2-week vacation without anything breaking? If no — the system isn't yet operating on its own. Stay in Iterate.",
+      pl: "Czy właściciel systemu może wziąć 2 tygodnie urlopu bez tego, żeby cokolwiek się rozsypało? Jeśli nie — system jeszcze nie działa samodzielnie. Zostań w Iteracji.",
     },
   },
 ];
@@ -488,12 +488,12 @@ export function Process() {
                 {lang === "pl" ? "Operating Model" : "Operating Model"}
               </span>
               <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[1.05] mb-6">
-                {lang === "pl" ? "Moja obecność maleje z każdym krokiem." : "My presence decreases with each step."}
+                {lang === "pl" ? "Obecność foundera maleje z każdym krokiem." : "Founder presence decreases with each step."}
               </h2>
               <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
                 {lang === "pl"
-                  ? "Średnia po stabilizacji: ~40%. Docelowy podział 80/20 — strategia vs operacje. Klient kupuje system, który po wdrożeniu działa coraz mniej z moją obecnością. To dowód, że to system, nie godziny."
-                  : "Average after stabilization: ~40%. Target 80/20 split — strategy vs operations. The client buys a system that runs increasingly without my presence. Proof it's a system, not hours."}
+                  ? "Średnia po stabilizacji: ~40%. Docelowy podział 80/20 — strategia vs operacje. Klient kupuje system, który po wdrożeniu działa coraz bardziej bez obecności foundera. To dowód, że to system, nie godziny."
+                  : "Average after stabilization: ~40%. Target 80/20 split — strategy vs operations. The client buys a system that runs increasingly without founder presence. Proof it's a system, not hours."}
               </p>
             </div>
           </Reveal>
@@ -507,7 +507,7 @@ export function Process() {
                       {lang === "pl" ? "Krok" : "Step"}
                     </th>
                     <th className="text-left py-3 px-4 md:px-6 text-[10px] font-display uppercase tracking-[0.25em] text-neutral-500">
-                      {lang === "pl" ? "Moja obecność" : "My presence"}
+                      {lang === "pl" ? "Obecność foundera" : "Founder presence"}
                     </th>
                     <th className="text-left py-3 px-4 md:px-6 text-[10px] font-display uppercase tracking-[0.25em] text-neutral-500 hidden md:table-cell">
                       {lang === "pl" ? "Rola" : "Role"}
@@ -600,14 +600,14 @@ export function Process() {
               {(lang === "pl" ? [
                 { role: "Założyciel / CEO", desc: "Wypuszczasz SaaS lub digital product — chcesz uniknąć kosztownych poprawek i przepalonych iteracji." },
                 { role: "Właściciel marki", desc: "Relaunchujesz tożsamość lub wchodzisz na nowy rynek — szukasz systemu, który utrzyma jakość bez Twojej obecności." },
-                { role: "Lider operacji multi-location", desc: "Konsolidujesz operacje kreatywne dla 5–300+ lokalizacji — chcesz scenariuszy, nie improwizacji." },
+                { role: "Lider operacji multi-location", desc: "Konsolidujesz operacje kreatywne dla 30–300+ lokalizacji — chcesz scenariuszy, nie improwizacji." },
                 { role: "Product Manager", desc: "Dziedziczysz pół-zbudowany produkt — potrzebujesz domknięcia faz i wyciszenia ad-hoc requestów." },
                 { role: "Lider marketingu", desc: "Przygotowujesz launch marki i kampanii — chcesz spójności tonu, narracji i wykonania." },
                 { role: "Operating Partner", desc: "Budujesz operating system dla portfolio firm — potrzebujesz metodologii, która skaluje bez Ciebie." },
               ] : [
                 { role: "Founder / CEO", desc: "You're launching a SaaS or digital product — you want to avoid costly revisions and burned iterations." },
                 { role: "Brand owner", desc: "You're relaunching identity or entering a new market — you need a system that holds quality without your presence." },
-                { role: "Multi-location ops leader", desc: "You're consolidating creative operations across 5–300+ locations — you want scenarios, not improvisation." },
+                { role: "Multi-location ops leader", desc: "You're consolidating creative operations across 30–300+ locations — you want scenarios, not improvisation." },
                 { role: "Product Manager", desc: "You've inherited a half-built product — you need phases closed and ad-hoc requests silenced." },
                 { role: "Marketing leader", desc: "You're preparing a brand + campaign launch — you want consistent tone, narrative, and execution." },
                 { role: "Operating Partner", desc: "You're building an operating system across portfolio companies — you need a methodology that scales without you." },
@@ -701,7 +701,7 @@ export function Process() {
                       15%
                     </div>
                     <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-snug">
-                      {lang === "pl" ? "obecność po stabilizacji" : "my presence after stabilization"}
+                      {lang === "pl" ? "obecność foundera po stabilizacji" : "founder presence after stabilization"}
                     </p>
                   </div>
                 </div>

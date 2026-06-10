@@ -122,7 +122,7 @@ export function SEO({
         "name": "Who does r352 work with?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Multi-location brands and scaling operators — typically 30-300+ location complexity. Fitness, wellness, health, retail, real estate. Past clients include Sonova (Geers), Benefit Systems (300+ wellness clubs), Archicom (multi-investment real estate), Kubota, DiscoBowl, UNIQA, and FIFA."
+          "text": "Multi-location brands and scaling operators — typically 30–300+ location complexity. Fitness, wellness, health, retail, real estate. Past clients include Sonova (Geers), Benefit Systems (300+ wellness clubs), Archicom (multi-investment real estate), Kubota, DiscoBowl, UNIQA, and FIFA."
         }
       },
       {
@@ -138,7 +138,7 @@ export function SEO({
         "name": "What are r352's engagement models?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Five productized models. Diagnostic: 5-day operational audit, €2k fixed, 60-day money-back guarantee. Sprint: 4-6 week fixed-scope build, from €15k. Retainer: monthly engagement from €7k/mo with 30-day notice. Enterprise Sprint: 12-16 week multi-location rollout from €55k. Operating Partner: embedded role from €9.5k/mo with 12-month minimum."
+          "text": "Five productized models. Diagnostic: 5-day operational audit, €2k fixed, 60-day money-back guarantee. Sprint: 4–6 week fixed-scope build, from €15k. Retainer: monthly engagement from €7k/mo with 30-day notice. Enterprise Sprint: 12–16 week multi-location rollout from €55k. Operating Partner: embedded role from €9.5k/mo with 12-month minimum."
         }
       },
       {
@@ -146,7 +146,9 @@ export function SEO({
         "name": "Who is Reszek?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Przemyslaw Reszka (Reszek) is the founder of r352. Designer-operator with 15+ years of experience: started in UX at Deloitte, spent 6 years as an expat across London, Porto, Barcelona, Athens, and Marseille building design operations for multi-location brands. Created the r3loop methodology. Based in Mallorca, remote-first."
+          // TODO(reszek): potwierdź listę miast w bio — na razie ogólne "six years across European markets".
+          // MUST stay byte-identical with FAQ_EN in src/app/pages/FAQ.tsx (schema/content parity).
+          "text": "Przemyslaw Reszka (Reszek) is the founder of r352. Designer-operator with 15+ years of experience: started in UX at Deloitte, then spent six years across European markets building design operations for multi-location brands. Created the r3loop methodology. Based in Mallorca, remote-first."
         }
       }
     ]

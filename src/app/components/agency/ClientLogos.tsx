@@ -1,5 +1,6 @@
 import { Reveal } from "@/app/components/ui/Reveal";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/app/context/LanguageContext";
 // New assets provided by user
 import deloitteLogo from "figma:asset/58f9891995f72756719a6583adb94e90f0590ad3.png";
 import benefitLogo from "figma:asset/e9e0c20de4346f961fc2e9469ef295e4b015b901.png";
@@ -11,6 +12,7 @@ import fifaLogo from "figma:asset/51e11441d7c02bfa2791df691e15dbf208a105e4.png";
 import sonovaLogo from "figma:asset/b14b67ba2d6df576bef8431f5353f2a1244c4815.png";
 
 export function ClientLogos() {
+  const { t } = useLanguage();
   const uniqueClients = [
     { name: "Deloitte Digital", logo: deloitteLogo, url: "https://www.deloittedigital.com" },
     { name: "Sonova", logo: sonovaLogo, url: "https://www.sonova.com" },
@@ -27,8 +29,9 @@ export function ClientLogos() {
         <div className="max-w-[1800px] mx-auto px-8 md:px-12 flex flex-col md:flex-row items-center gap-8 md:gap-12">
           {/* Label */}
           <div className="w-full md:w-auto flex-shrink-0">
+             {/* Was hardcoded "We worked with" — calque + EN-only. Now i18n: "Selected clients" / "Wybrani klienci". */}
              <h3 className="text-[#D4FF00] font-display font-normal uppercase tracking-widest text-sm md:text-base whitespace-nowrap text-left">
-               We worked with
+               {t("clients.label")}
              </h3>
           </div>
 

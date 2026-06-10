@@ -30,11 +30,6 @@ export function Footer() {
     }
   };
 
-  // /deliverables removed from footer — was orphan (in footer only, not main nav, not
-  // cross-linked from /services or /process). Audit flagged inconsistent IA. Page still
-  // exists at direct URL r352.com/deliverables, usable in proposals/follow-ups as
-  // "see our full deliverables catalog" deep-link. Can be added to /services Products
-  // section as inline link if discoverability matters later.
   const navLinks = [
     { label: t("work.selected_work"), href: "/work" },
     { label: t("nav.philosophy"), href: "/philosophy" },
@@ -42,6 +37,16 @@ export function Footer() {
     { label: t("nav.journal"), href: "/journal" },
     { label: "Start a brief", href: "/brief" },
     { label: t("nav.contact") || "Kontakt", href: "/contact" },
+  ];
+
+  // Resources group — de-orphans /faq, /industries, /deliverables, /glossary
+  // (audit: pages existed at direct URLs only, zero internal links → invisible to
+  // users and crawlers). Rendered as a discreet secondary list under Sitemap.
+  const resourceLinks = [
+    { label: t("footer.link_faq"), href: "/faq" },
+    { label: t("footer.link_industries"), href: "/industries" },
+    { label: t("footer.link_deliverables"), href: "/deliverables" },
+    { label: t("footer.link_glossary"), href: "/glossary" },
   ];
 
   // Channel focus — LinkedIn + email only. Instagram/YouTube removed (dormant
@@ -152,6 +157,25 @@ export function Footer() {
                                {link.label}
                            </span>
                        </div>
+                     </Link>
+                   </li>
+                 ))}
+               </ul>
+
+               {/* Resources — secondary, quieter than the sitemap list above */}
+               <span className="block text-xs font-display uppercase tracking-widest text-neutral-500 mt-10 mb-4">{t("footer.resources")}</span>
+               <ul className="flex flex-col gap-2 items-start">
+                 {resourceLinks.map((link) => (
+                   <li key={link.href}>
+                     <Link
+                       href={link.href}
+                       onClick={navigateToTop}
+                       className={cn(
+                         "inline-flex py-0.5 text-sm transition-colors duration-300 hover:text-[#D4FF00]",
+                         location === link.href ? "text-[#D4FF00]" : "text-neutral-400"
+                       )}
+                     >
+                       {link.label}
                      </Link>
                    </li>
                  ))}

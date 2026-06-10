@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { PageTransition } from "@/app/components/ui/PageTransition";
 import { Reveal } from "@/app/components/ui/Reveal";
 import { useLanguage } from "@/app/context/LanguageContext";
@@ -18,6 +19,12 @@ import { Helmet } from "react-helmet-async";
  *  - Zero JS, works without hydration
  *  - Screen-reader friendly by default (aria-expanded handled by UA)
  *  - Matches the operator aesthetic — no JS splash, just function
+ *
+ * A11y hardening (WCAG 2.1 AA): Chromium/Firefox expose the expanded state
+ * of <summary> natively, but Safari + VoiceOver support is inconsistent, so
+ * each summary additionally carries explicit aria-expanded + aria-controls,
+ * synced through the native <details> toggle event. Redundant where the UA
+ * already does the right thing, corrective where it doesn't.
  */
 
 interface FaqItem {
@@ -44,7 +51,9 @@ const FAQ_EN: FaqItem[] = [
   },
   {
     q: "Who is Reszek?",
-    a: "Przemyslaw Reszka (Reszek) is the founder of r352. Designer-operator with 15+ years of experience: started in UX at Deloitte, spent 6 years as an expat across London, Porto, Barcelona, Athens, and Marseille building design operations for multi-location brands. Created the r3loop methodology. Based in Mallorca, remote-first.",
+    // TODO(reszek): potwierdź listę miast w bio — na razie ogólne "six years across European markets".
+    // MUST stay byte-identical with faqSchema in src/app/components/SEO.tsx (schema/content parity).
+    a: "Przemyslaw Reszka (Reszek) is the founder of r352. Designer-operator with 15+ years of experience: started in UX at Deloitte, then spent six years across European markets building design operations for multi-location brands. Created the r3loop methodology. Based in Mallorca, remote-first.",
   },
 ];
 
@@ -67,13 +76,18 @@ const FAQ_PL: FaqItem[] = [
   },
   {
     q: "Kim jest Reszek?",
-    a: "Przemysław Reszka (Reszek) to założyciel r352. Designer-operator z 15+ latami doświadczenia: zaczynał w UX w Deloitte, spędził 6 lat jako expat między Londynem, Porto, Barceloną, Atenami i Marsylią, budując design operations dla multi-location brandów. Stworzył metodologię r3loop. Mieszka na Majorce, pracuje remote-first.",
+    // TODO(reszek): potwierdź listę miast w bio — na razie ogólne "sześć lat na europejskich rynkach".
+    a: "Przemysław Reszka (Reszek) to założyciel r352. Designer-operator z 15+ latami doświadczenia: zaczynał w UX w Deloitte, potem spędził sześć lat na europejskich rynkach, budując design operations dla multi-location brandów. Stworzył metodologię r3loop. Mieszka na Majorce, pracuje remote-first.",
   },
 ];
 
 export function FAQ() {
   const { language } = useLanguage();
   const items = language === "pl" ? FAQ_PL : FAQ_EN;
+
+  // Explicit expanded-state mirror for aria-expanded (see header comment).
+  // Native <details> stays the source of truth — onToggle just syncs aria.
+  const [openItems, setOpenItems] = useState<Record<number, boolean>>({});
 
   // Mirror SEO.tsx faqSchema — by rendering it here too we keep the page
   // self-contained for crawlers that arrive directly at /faq without first
@@ -126,8 +140,18 @@ export function FAQ() {
           <Reveal key={item.q} delay={i * 0.04}>
             <details
               className="group border-b border-neutral-200 dark:border-white/10 py-8 md:py-10 [&_summary::-webkit-details-marker]:hidden"
+              onToggle={(e) =>
+                setOpenItems((prev) => ({
+                  ...prev,
+                  [i]: (e.currentTarget as HTMLDetailsElement).open,
+                }))
+              }
             >
-              <summary className="flex items-start gap-6 cursor-pointer list-none select-none">
+              <summary
+                className="flex items-start gap-6 cursor-pointer list-none select-none"
+                aria-expanded={!!openItems[i]}
+                aria-controls={`faq-panel-${i}`}
+              >
                 <span className="font-display text-xs text-[#D4FF00] tracking-[0.2em] pt-2 shrink-0 w-8">
                   {String(i + 1).padStart(2, "0")}
                 </span>
@@ -141,7 +165,7 @@ export function FAQ() {
                   +
                 </span>
               </summary>
-              <div className="mt-6 pl-14 pr-4 md:pr-12">
+              <div id={`faq-panel-${i}`} className="mt-6 pl-14 pr-4 md:pr-12">
                 <p className="text-base md:text-[17px] text-neutral-700 dark:text-neutral-300 leading-relaxed [text-wrap:pretty]">
                   {item.a}
                 </p>

@@ -59,6 +59,14 @@ export default defineConfig({
           'vendor-react': ['react', 'react-dom'],
           'vendor-motion': ['motion/react'],
           'vendor-lenis': ['lenis', 'lenis/react'],
+          // Stable, rarely-updated libs split out of the entry chunk so app-code
+          // deploys don't invalidate their browser cache (~80KB min of the entry).
+          'vendor-ui': ['sonner', 'react-helmet-async', 'wouter', 'tailwind-merge', 'clsx'],
+          // PDF stack — only reachable from lazy /limitedaccess* page chunks,
+          // never preloaded on initial route. Named explicitly so future imports
+          // can't accidentally merge it into a page or entry chunk.
+          'vendor-pdf': ['jspdf'],
+          'vendor-html2canvas': ['html2canvas'],
         },
       },
     },

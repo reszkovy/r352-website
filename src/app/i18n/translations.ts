@@ -29,8 +29,9 @@ export const translations = {
       description_title: "For brands operating at scale — across locations, products, or campaigns.",
       description_body: "Retainer for the steady. Project for the sharp. Same r3loop methodology — applied to both, and to our own products in production.",
       quote: "Design begins with a decision, not a tool.",
-      micro_1: "80%+ briefs ready first round.",
-      micro_2: "Approval cycles cut 3×.",
+      // Attribution added — audit flagged hero metrics as unverifiable claims.
+      micro_1: "80%+ briefs ready first round — Geers, 2 quarters.",
+      micro_2: "Approval cycles cut 3× — measured, not promised.",
       micro_3: "Weekly shipping cadence.",
       cta_start: "Start a brief",
       cta_work: "Book a call"
@@ -76,6 +77,10 @@ export const translations = {
           company: "Archicom"
         }
       ]
+    },
+    clients: {
+      // Was hardcoded "We worked with" in ClientLogos — calque, audit-flagged.
+      label: "Selected clients"
     },
     services: {
       title: "Our expertise",
@@ -131,7 +136,7 @@ export const translations = {
       intro: "We turn messy requests into ready-to-publish output — through a repeatable delivery system and a senior quality bar.\nEnd-to-end: alignment → design → production → handoff.",
       micro: "",
       hero_title: "What we ship",
-      hero_subtitle: "Brand, campaigns, and web - delivered with a quality bar, QA, and a steady cadence.",
+      hero_subtitle: "Brand, campaigns, and web — delivered with a quality bar, QA, and a steady cadence.",
       cards: [
         {
           title: "Brand System",
@@ -255,7 +260,7 @@ export const translations = {
         {
           title: "AI Development & Automation",
           description: "We take the system we've built and operationalize it — wired into your existing tools, accelerated by AI workflows.",
-          output: "Brief intake, scoring, quality review and asset routing running as a live system — not a deck. Your team brief, we triage, AI accelerates, output ships.",
+          output: "Brief intake, scoring, quality review and asset routing running as a live system — not a deck. Your team briefs, we triage, AI accelerates, output ships.",
           best_for: "Teams that already have standards but execution still depends on heroics — intake by email, manual scoring, QA in DMs. Ready to ship the operating layer that turns standards into automated workflow.",
           includes: [
             "AI brief assistant tailored to your standards",
@@ -318,7 +323,7 @@ export const translations = {
       engagement: {
         label: "Engagement",
         heading: "How we work",
-        cta: "Let's build your delivery system ��� and ship.",
+        cta: "Let's build your delivery system — and ship.",
         models: {
           sprint: {
             type: "Fixed scope",
@@ -502,19 +507,19 @@ export const translations = {
         project: {
           subtitle: "FIND THE BOTTLENECK",
           title: "DIAGNOSE",
-          description: "We look at how your team briefs, approves, and ships - then show you exactly where the time and quality get lost.",
+          description: "We look at how your team briefs, approves, and ships — then show you exactly where the time and quality get lost.",
           features: ["Delivery workflow audit", "Bottleneck map with root causes", "Actionable plan in under 2 weeks"]
         },
         retainer: {
           subtitle: "BUILD THE SYSTEM",
           title: "BUILD",
-          description: "We design the standards, templates, and delivery process your team needs - so output stays consistent no matter who's executing.",
+          description: "We design the standards, templates, and delivery process your team needs — so output stays consistent no matter who's executing.",
           features: ["Brand standard templates", "Intake process and QA checkpoints", "Delivery cadence that ships"]
         },
         augmentation: {
           subtitle: "MAKE IT STICK",
           title: "SCALE",
-          description: "We hand off everything your team needs to run the system on their own - with guardrails that keep quality consistent.",
+          description: "We hand off everything your team needs to run the system on their own — with guardrails that keep quality consistent.",
           features: ["Full handoff with team training", "Built-in guardrails that flag drift", "Scales quality without adding headcount"]
         }
       }
@@ -529,11 +534,18 @@ export const translations = {
     },
     footer: {
       idea: "Let's build your delivery system — and ship.",
-      bold_ideas: "Bold ideas",
-      shaped: "shaped with care.",
+      // Was "Bold ideas / shaped with care." — pure agency-speak, contradicted the
+      // "operator, not agency" POV. Replaced with the system claim.
+      bold_ideas: "We build the system",
+      shaped: "behind great design.",
       cta: "Start a project",
       studio: "Studio",
       sitemap: "Sitemap",
+      resources: "Resources",
+      link_faq: "FAQ",
+      link_industries: "Industries",
+      link_deliverables: "Deliverables",
+      link_glossary: "Glossary",
       social: "Social",
       local_time: "Local Time",
       back_to_top: "Back to Top",
@@ -660,8 +672,9 @@ export const translations = {
       description_title: "Dla marek operujących w skali — przez lokalizacje, produkty lub kampanie.",
       description_body: "Retainer dla stabilnych. Projekt dla ostrych. Ta sama metodologia r3loop — zastosowana do obu, i do naszych własnych produktów w produkcji.",
       quote: "Projektowanie zaczyna się od decyzji, nie od narzędzia.",
-      micro_1: "80%+ briefów gotowych za pierwszym razem.",
-      micro_2: "Cykle akceptacji 3× szybsze.",
+      // Atrybucja dodana — audyt flagował metryki hero jako nieweryfikowalne.
+      micro_1: "80%+ briefów gotowych za pierwszym razem — Geers, 2 kwartały.",
+      micro_2: "Cykle akceptacji 3× szybsze — zmierzone, nie obiecane.",
       micro_3: "Tygodniowy rytm dostaw.",
       cta_start: "Wypełnij brief",
       cta_work: "Umów rozmowę"
@@ -707,6 +720,10 @@ export const translations = {
           company: "Archicom"
         }
       ]
+    },
+    clients: {
+      // Było hardcoded "We worked with" w ClientLogos — kalka, flagowana w audycie.
+      label: "Wybrani klienci"
     },
     services: {
       title: "Nasza ekspertyza",
@@ -762,7 +779,7 @@ export const translations = {
       intro: "Zamieniamy chaotyczne zlecenia w gotowe do publikacji efekty — dzięki powtarzalnemu systemowi dostarczania i wysokim standardom jakości.\nOd początku do końca: wdrożenie → projekt → produkcja → przekazanie.",
       micro: "",
       hero_title: "Co dostarczamy",
-      hero_subtitle: "Branding, kampanie i strony www - dostarczane z jakością, QA i stałym rytmem.",
+      hero_subtitle: "Branding, kampanie i strony www — dostarczane z jakością, QA i stałym rytmem.",
       cards: [
         {
           title: "System Marki",
@@ -1125,19 +1142,19 @@ export const translations = {
         project: {
           subtitle: "ZNAJDŹ WĄSKIE GARDŁO",
           title: "DIAGNOZA",
-          description: "Sprawdzamy, jak wasz zespół tworzy wytyczne, akceptuje i wdraża projekty - następnie pokazujemy wam dokładnie, gdzie ucieka czas i jakość.",
+          description: "Sprawdzamy, jak wasz zespół tworzy wytyczne, akceptuje i wdraża projekty — następnie pokazujemy wam dokładnie, gdzie ucieka czas i jakość.",
           features: ["Audyt procesu dostarczania", "Mapa wąskich gardeł z ich przyczynami", "Plan działania w niespełna 2 tygodnie"]
         },
         retainer: {
           subtitle: "ZBUDUJ SYSTEM",
           title: "BUDOWA",
-          description: "Projektujemy standardy, szablony i proces dostarczania, jakich potrzebuje wasz zespół - aby efekty były spójne, niezależnie od tego, kto je realizuje.",
+          description: "Projektujemy standardy, szablony i proces dostarczania, jakich potrzebuje wasz zespół — aby efekty były spójne, niezależnie od tego, kto je realizuje.",
           features: ["Szablony standardów marki", "Proces przyjmowania zleceń i kontrola jakości", "Rytm pracy z dostarczaniem"]
         },
         augmentation: {
           subtitle: "UTRWAL EFEKTY",
           title: "SKALOWANIE",
-          description: "Przekazujemy wam wszystko, czego wasz zespół potrzebuje, by samodzielnie prowadzić system - wraz z zabezpieczeniami, które utrzymują stałą jakość.",
+          description: "Przekazujemy wam wszystko, czego wasz zespół potrzebuje, by samodzielnie prowadzić system — wraz z zabezpieczeniami, które utrzymują stałą jakość.",
           features: ["Pełne przekazanie systemu ze szkoleniem zespołu", "Wbudowane zabezpieczenia wykrywające odchylenia", "Skalowanie jakości"]
         }
       }
@@ -1152,11 +1169,18 @@ export const translations = {
     },
     footer: {
       idea: "Zbudujmy Twój system dostarczania — i zacznijmy wysyłać.",
-      bold_ideas: "Odważne pomysły",
-      shaped: "z precyzją i troską.",
+      // Było "Odważne pomysły / z precyzją i troską." — agency-speak, sprzeczny
+      // z POV "operator, nie agencja". Zamienione na claim systemowy.
+      bold_ideas: "Budujemy system,",
+      shaped: "który stoi za dobrym designem.",
       cta: "Rozpocznij projekt",
       studio: "Studio",
       sitemap: "Mapa strony",
+      resources: "Zasoby",
+      link_faq: "FAQ",
+      link_industries: "Branże",
+      link_deliverables: "Deliverables",
+      link_glossary: "Słownik",
       social: "Social Media",
       local_time: "Czas lokalny",
       back_to_top: "Wróć na górę",

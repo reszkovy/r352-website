@@ -55,22 +55,17 @@ export function Services() {
             <span className="text-[11px] uppercase tracking-[2px] text-neutral-500 dark:text-[#D4FF00] font-display mb-4 block">
               {language === "pl" ? "01 · Strategia" : "01 · Strategy"}
             </span>
-            {/* Hero — matches Process/Journal master copy: bold + tracking-tighter + 2-line break.
-                Mobile: long words split with hyphen continuation to stay in viewport (Operatio-/Operacjo-). */}
+            {/* Hero — matches Process/Journal master copy: bold + tracking-tighter + 2-line break. */}
             <h2 className="text-5xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-white mb-8 leading-[0.95]">
               {language === "pl" ? (
                 <>
                   Strategia. Egzekucja.<br className="hidden md:block" />
-                  {" "}
-                  <span className="hidden md:inline">Operacjonalizacja.</span>
-                  <span className="md:hidden">Operacjo<br/>-nalizacja.</span>
+                  {" "}Operacje.
                 </>
               ) : (
                 <>
                   Strategy. Execution.<br className="hidden md:block" />
-                  {" "}
-                  <span className="hidden md:inline">Operationalization.</span>
-                  <span className="md:hidden">Operatio<br/>-nalization.</span>
+                  {" "}Operations.
                 </>
               )}
             </h2>
@@ -361,6 +356,49 @@ export function Services() {
         </div>
       </section>
       </SectionWatermark>
+
+      {/* ─── Who does the work — founder-led reality, framed as the advantage.
+          Placed directly before engagement models & pricing so the buyer knows
+          who delivers before reading what it costs. Resolves the "senior team"
+          vs solo-founder ambiguity flagged in the content audit. ─── */}
+      <section className="mb-32 md:mb-40 border-t border-neutral-200 dark:border-white/10 pt-16 md:pt-20">
+        <Reveal>
+          <div className="grid grid-cols-12 gap-6 md:gap-8">
+            <div className="col-span-12 md:col-span-4">
+              <span className="text-[11px] uppercase tracking-[2px] text-neutral-500 dark:text-[#D4FF00] font-display mb-4 block">
+                {language === "pl" ? "Kto wykonuje pracę" : "Who does the work"}
+              </span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[1.05]">
+                {language === "pl" ? (
+                  <>Founder-led.<br />Z założenia.</>
+                ) : (
+                  <>Founder-led.<br />By design.</>
+                )}
+              </h2>
+            </div>
+            <div className="col-span-12 md:col-span-8 md:max-w-3xl flex flex-col gap-6">
+              <p className="text-lg md:text-xl text-neutral-700 dark:text-neutral-300 leading-relaxed [text-wrap:pretty]">
+                {language === "pl"
+                  ? "r352 jest founder-led. Każda bramka decyzyjna ma jednego właściciela — Reszka. Wolumen fazy build przechodzi przez imienną sieć seniorów i AI-native linie produkcyjne, nie przez juniorów."
+                  : "r352 is founder-led. Every decision gate is owned by one person — Reszek. Build-phase volume runs through a named senior network and AI-native production lines, not juniors."}
+              </p>
+              <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
+                {language === "pl"
+                  ? "Krzywa obecności (90% → 15%) to model staffingu: kupujecie system, nie godziny."
+                  : "The presence curve (90% → 15%) is the staffing model: you buy the system, not the hours."}
+              </p>
+              <Link
+                href="/process#operating-model"
+                className="group inline-flex items-center gap-3 text-xs font-display uppercase tracking-[0.2em] text-neutral-500 hover:text-[#D4FF00] transition-colors duration-500"
+              >
+                <span className="w-6 h-px bg-neutral-400 dark:bg-neutral-600 group-hover:bg-[#D4FF00] group-hover:w-10 transition-all duration-500" />
+                <span>{language === "pl" ? "Zobacz krzywą obecności" : "See the presence curve"}</span>
+                <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.5} />
+              </Link>
+            </div>
+          </div>
+        </Reveal>
+      </section>
 
       {/* NEW: Engagement Models Section */}
       <SectionWatermark number="03" align="right">
