@@ -87,6 +87,9 @@ export function MagneticButton({
       className={cn(
         "relative inline-flex items-center justify-center px-8 py-4 overflow-hidden rounded-none font-display text-sm tracking-widest uppercase transition-all duration-500 group cursor-pointer",
         "bg-neutral-900 text-white border border-neutral-800 hover:border-[#D4FF00]/50",
+        // js-music-trigger — picked up by useCTAHoverMusicTrigger() (delegated
+        // pointerover listener) to start the ambient Mompou track on first hover.
+        "js-music-trigger",
         className
       )}
     >

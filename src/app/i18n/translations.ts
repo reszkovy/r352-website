@@ -11,7 +11,7 @@ export const translations = {
       journal: "Journal",
       detailed_brief: "Detailed Brief",
       pricing: "Limited Access",
-      tagline: "DESIGN · SYSTEMS · AI"
+      tagline: "DESIGN · SYSTEMS · PRODUCTS · AI"
     },
     hero: {
       // Hero — two crisp claims in parallel. Tagline + audience qualifier; engagement
@@ -649,7 +649,7 @@ export const translations = {
       journal: "Dziennik",
       detailed_brief: "Szczegółowy Brief",
       pricing: "Dostęp ograniczony",
-      tagline: "DESIGN · SYSTEMS · AI"
+      tagline: "DESIGN · SYSTEMS · PRODUCTS · AI"
     },
     hero: {
       // Hero — dwa claim'y w parze. Tagline + audience qualifier; model współpracy

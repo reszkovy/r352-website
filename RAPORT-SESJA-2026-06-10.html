@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>r352 — Raport sesji 2026-06-10</title>
+<style>
+  :root { --bg:#0a0a0b; --surface:#121214; --border:rgba(255,255,255,.08); --text:#e8e8e6; --dim:#8a8a86; --lime:#cdde4a; --red:#e5604c; --amber:#d9a441; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:'SF Mono',ui-monospace,'JetBrains Mono',monospace; font-size:14px; line-height:1.65; padding:56px 24px; }
+  .wrap { max-width:960px; margin:0 auto; }
+  .eyebrow { color:var(--lime); text-transform:uppercase; letter-spacing:.2em; font-size:11px; }
+  h1 { font-size:26px; font-weight:700; margin:8px 0 4px; letter-spacing:-.02em; }
+  .sub { color:var(--dim); margin-bottom:40px; }
+  h2 { font-size:12px; text-transform:uppercase; letter-spacing:.15em; color:var(--lime); margin:48px 0 16px; padding-top:24px; border-top:1px solid var(--border); }
+  h3 { font-size:14px; font-weight:600; margin:20px 0 8px; }
+  p { margin-bottom:12px; }
+  .card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:20px 22px; margin-bottom:12px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:12px; margin:16px 0; }
+  .stat-label { color:var(--dim); font-size:10px; text-transform:uppercase; letter-spacing:.12em; }
+  .stat-value { font-size:30px; font-weight:700; margin-top:4px; }
+  .lime { color:var(--lime); } .red { color:var(--red); } .amber { color:var(--amber); } .dim { color:var(--dim); }
+  table { width:100%; border-collapse:collapse; margin:12px 0; }
+  th { text-align:left; color:var(--dim); font-size:10px; text-transform:uppercase; letter-spacing:.1em; padding:8px 10px; border-bottom:1px solid var(--border); font-weight:500; }
+  td { padding:9px 10px; border-bottom:1px solid var(--border); font-size:13px; vertical-align:top; }
+  .bar { height:6px; background:rgba(255,255,255,.06); border-radius:3px; overflow:hidden; position:relative; margin-top:6px; }
+  .fill { height:100%; border-radius:3px; background:var(--lime); }
+  .fill.low { background:var(--red); } .fill.mid { background:var(--amber); }
+  .pill { display:inline-block; border:1px solid var(--border); border-radius:99px; padding:1px 10px; font-size:10px; color:var(--dim); text-transform:uppercase; letter-spacing:.08em; margin-right:6px; }
+  .pill.ok { color:var(--lime); border-color:rgba(205,222,74,.35); }
+  .pill.warn { color:var(--amber); border-color:rgba(217,164,65,.35); }
+  .pill.crit { color:var(--red); border-color:rgba(229,96,76,.35); }
+  ul { list-style:none; } li { padding:5px 0 5px 18px; position:relative; }
+  li::before { content:"·"; color:var(--lime); position:absolute; left:4px; }
+  .traj { display:flex; align-items:flex-end; gap:8px; height:120px; margin:20px 0 6px; }
+  .tcol { flex:1; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; gap:6px; }
+  .tbar { width:100%; border-radius:4px 4px 0 0; background:linear-gradient(180deg,var(--lime),rgba(205,222,74,.25)); }
+  .tbar.r { background:linear-gradient(180deg,var(--red),rgba(229,96,76,.25)); }
+  .tnum { font-size:11px; font-weight:700; } .tlab { font-size:9px; color:var(--dim); text-align:center; line-height:1.3; }
+  code { background:rgba(255,255,255,.06); border-radius:4px; padding:1px 6px; font-size:12px; }
+  .foot { color:var(--dim); font-size:11px; margin-top:48px; padding-top:16px; border-top:1px solid var(--border); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="eyebrow">r352 · raport operacyjny</div>
+  <h1>Sesja 2026-06-10 — silnik r3loop, iteracje do 9000+, warstwa merytoryczna</h1>
+  <div class="sub">Zakres: budowa silnika scoringu → 2 iteracje strony → warstwa konkursowa (wdrożona i wycofana na decyzję) → audyt + naprawa merytoryki (11 agentów) → przejścia, SEO-tech, a11y, performance</div>
+
+  <h2>01 — Trajektoria wyniku r3loop (0–10 000, cel 9000+)</h2>
+  <div class="traj">
+    <div class="tcol"><span class="tnum">4132</span><div class="tbar r" style="height:41%"></div><span class="tlab">baseline<br>09.06</span></div>
+    <div class="tcol"><span class="tnum">8947</span><div class="tbar" style="height:89%"></div><span class="tlab">v2<br>iteracja 1</span></div>
+    <div class="tcol"><span class="tnum">9083</span><div class="tbar" style="height:91%"></div><span class="tlab">v3<br>iteracja 2</span></div>
+    <div class="tcol"><span class="tnum">8996</span><div class="tbar r" style="height:90%"></div><span class="tlab">v4<br>tagline regres</span></div>
+    <div class="tcol"><span class="tnum">9083</span><div class="tbar" style="height:91%"></div><span class="tlab">v5/v6<br>spójność</span></div>
+    <div class="tcol"><span class="tnum">7965</span><div class="tbar r" style="height:80%"></div><span class="tlab">v7<br>playbook off</span></div>
+    <div class="tcol"><span class="tnum">9083</span><div class="tbar" style="height:91%"></div><span class="tlab">v8 final<br>playbook dyskretny</span></div>
+  </div>
+  <p class="dim" style="font-size:12px">Stan końcowy: <b class="lime">9083 / 10 000 — top 1-2% solo</b> wg własnego frameworku (50 promptów, ocena konserwatywna). Pełna historia: <code>r3loop/snapshots/</code>, dashboard: <code>r3loop/dashboard.html</code>.</p>
+
+  <table>
+    <thead><tr><th>Kategoria</th><th style="width:42%">Wynik</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>1 · Positioning Clarity</td><td><div class="bar"><div class="fill" style="width:100%"></div></div></td><td>10 000</td></tr>
+      <tr><td>2 · IP Definability</td><td><div class="bar"><div class="fill" style="width:92.65%"></div></div></td><td>9 265</td></tr>
+      <tr><td>3 · Audience Qualification</td><td><div class="bar"><div class="fill" style="width:100%"></div></div></td><td>10 000</td></tr>
+      <tr><td>4 · Proof Density</td><td><div class="bar"><div class="fill" style="width:100%"></div></div></td><td>10 000</td></tr>
+      <tr><td>5 · Conversion Path</td><td><div class="bar"><div class="fill" style="width:91.25%"></div></div></td><td>9 125</td></tr>
+      <tr><td>6 · Anti-Time POV</td><td><div class="bar"><div class="fill" style="width:100%"></div></div></td><td>10 000</td></tr>
+      <tr><td>7 · Visual / Brand Craft</td><td><div class="bar"><div class="fill" style="width:91.3%"></div></div></td><td>9 130</td></tr>
+      <tr><td>8 · Technical SEO &amp; GEO</td><td><div class="bar"><div class="fill mid" style="width:76.09%"></div></div></td><td>7 609</td></tr>
+      <tr><td>9 · Productization</td><td><div class="bar"><div class="fill" style="width:100%"></div></div></td><td>10 000</td></tr>
+      <tr><td>10 · Distribution Muscle</td><td><div class="bar"><div class="fill low" style="width:56.98%"></div></div></td><td>5 698 — wymaga działań off-site (kadencja LinkedIn, monitoring, lista)</td></tr>
+    </tbody>
+  </table>
+
+  <h2>02 — Audyt merytoryczny: kluczowe ustalenia → status naprawy</h2>
+  <p>Synteza audytu: <b>strategia i POV 9/10, warstwa dowodowa była na 4/10</b> — liczby kłóciły się między stronami, cennik schowany na stronach-sierotach, case'y mówiły językiem agencji, którą site deklaratywnie nie jest.</p>
+  <table>
+    <thead><tr><th>Ustalenie</th><th>Waga</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Sonova: 60+ vs 250+ vs 600+ lokalizacji (3 strony, 3 liczby) + daty 2022/2023</td><td><span class="pill crit">krytyczne</span></td><td class="lime">Naprawione — kanon: Geers 250+ PL / Sonova 600+ w 17 krajach</td></tr>
+      <tr><td>Kubota: "IPO — WSE debut" — weryfikowalnie nieścisłe</td><td><span class="pill crit">krytyczne</span></td><td class="lime">Naprawione konserwatywnie ("public-market debut") + TODO potwierdzenia</td></tr>
+      <tr><td>Cennik tylko na stronach-sierotach (/faq, /glossary bez linków z nav)</td><td><span class="pill crit">krytyczne</span></td><td class="lime">Naprawione — pricing na /services, sieroty wpięte w footer</td></tr>
+      <tr><td>Home (/) nieprerenderowany — pusty #root dla crawlerów</td><td><span class="pill crit">krytyczne</span></td><td class="lime">Naprawione + guard w prerenderze (pusty root nigdy nie nadpisze dobrego pliku)</td></tr>
+      <tr><td>Prerender wyłączony na Vercelu — produkcja serwowała SPA shell bez SEO</td><td><span class="pill crit">krytyczne</span></td><td class="lime">Naprawione — chromium na Vercelu, graceful fallback</td></tr>
+      <tr><td>Podwójny canonical (statyczny → homepage na każdej stronie)</td><td><span class="pill crit">krytyczne</span></td><td class="lime">Naprawione — 1 canonical per-path, zweryfikowane na 35 trasach</td></tr>
+      <tr><td>Solo vs "we" — "Senior team embedded" bez pokrycia, bus-factor nieadresowany</td><td><span class="pill crit">krytyczne</span></td><td class="lime">Naprawione — sekcja "Founder-led. By design." (solo + named network + presence curve jako model)</td></tr>
+      <tr><td>Dwa konkurujące frameworki: r3loop (8 kroków) vs DIAGNOSE·BUILD·SCALE (3 fazy)</td><td><span class="pill warn">istotne</span></td><td class="lime">Naprawione — zdanie-most: 3 fazy = skompresowany loop (01-02 / 03-06 / 07-08)</td></tr>
+      <tr><td>Case'y pisane językiem agencji, bez kroków loop i metryk w treści</td><td><span class="pill warn">istotne</span></td><td class="lime">Przepisane: problem → kroki → metryka przed/po (Sonova, Kubota, Benefit)</td></tr>
+      <tr><td>Metryki hero (80%/3×) vs karta Retainer (70%/60%) — te same claimy, inne liczby</td><td><span class="pill warn">istotne</span></td><td class="lime">Ujednolicone z atrybucją mechanizmu (AI Brief Assistant → journal/10)</td></tr>
+      <tr><td>"Bold ideas shaped with care" — agencyjny tagline w stopce każdej strony</td><td><span class="pill warn">istotne</span></td><td class="lime">Usunięte — zastąpione linią systemową</td></tr>
+      <tr><td>ICP faluje: 5–300+ / 30–300+ / 5+ lokalizacji</td><td><span class="pill warn">istotne</span></td><td class="lime">Kanon 30–300+; minima produktowe jawnie jako minima</td></tr>
+      <tr><td>Industries: metryki bez pokrycia w case'ach ("11 dni → 3")</td><td><span class="pill warn">istotne</span></td><td class="lime">Usunięte / zmiękczone do pokrytych</td></tr>
+      <tr><td>Język: "Your team brief", "We worked with", "Operatio-nalization", kalki</td><td><span class="pill warn">istotne</span></td><td class="lime">Przebieg redakcyjny wykonany</td></tr>
+      <tr><td>FIFA/UNIQA — klienci r352 czy dorobek agencyjny? Niedopowiedzenie</td><td><span class="pill warn">istotne</span></td><td class="amber">Czeka na Twoją decyzję (TODO)</td></tr>
+    </tbody>
+  </table>
+
+  <h2>03 — Warstwa wizualna i interakcje (zrobione w tej sesji)</h2>
+  <div class="card">
+    <h3>Zostało na stronie</h3>
+    <ul>
+      <li><b>Pionowe przejścia stron</b> dociągnięte do poziomu poziomych: perspektywiczne kartkowanie (rotateX ±7°), kierunkowy smear+blur, depth scrim, parallax exit/enter, zero czarnych klatek — zweryfikowane klatka-po-klatce (52 klatki)</li>
+      <li><b>Animacja kroków r3loop</b> — 8 węzłów na jednej linii, progresywne zapalanie w scrollu, domknięcie pętli glifem ↻ (zygzak usunięty)</li>
+      <li><b>Miękki cień belki</b> — gradient czerni 80%→0% z easingiem (0.22,1,0.36,1), zamiast sztywnego bloku</li>
+      <li><b>Naprawa sticky site-wide</b> — overflow-x-hidden na rootcie zabijał position:sticky w całej aplikacji</li>
+      <li>Pillsy etykiet (/contact, /diagnostic) wg zasady: CTA = ostre rogi, przypisy = rounded-full; /contact bez hero — 3 ścieżki kontaktu nad foldem</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>Wycofane na Twoją decyzję (kod został w repo, wyłączony flagami)</h3>
+    <ul>
+      <li>WebGL glass-hero (postać z gaze-trackingiem, depth z sylwetki, trail ciekłego szkła) — <code>GlassHero.tsx</code></li>
+      <li>Kinetic typography manifestu — <code>KineticManifesto.tsx</code></li>
+      <li>Preloader + grain overlay</li>
+    </ul>
+  </div>
+
+  <h2>04 — Tech / SEO / Performance</h2>
+  <ul>
+    <li>Prerender: 18 → <b>35 tras</b> (artykuły + case'y z Article/BlogPosting JSON-LD w crawlowalnym HTML)</li>
+    <li>Naprawiony bug react-helmet-async (fragmenty) — home dostał ProfessionalService/Reviews/FAQPage, /services Service schema</li>
+    <li>Bundle: entry <b>−19% gzip</b>, jspdf bez modulepreload na każdej stronie (vite.config — manual chunks)</li>
+    <li>Accessibility: focus ringi, nawigacja klawiaturą w briefie, ARIA na chipach/tooltipach</li>
+    <li>JPEG→WebP (320→105 KB), lazy loading, konsolidacja easingów do 2 krzywych</li>
+  </ul>
+
+  <h2>05 — Czeka na Ciebie</h2>
+  <div class="card">
+    <h3>Potwierdzenia faktów (TODO(reszek) w kodzie — wybrałem warianty konserwatywne, nic nie zmyślałem)</h3>
+    <ul>
+      <li>Kubota: rynek i rok debiutu giełdowego (NewConnect/GPW?) — obecnie "public-market debut" bez szczegółu</li>
+      <li>Benefit Systems: 5+ czy 15+ PM-ów; metryka "11→3 dni" — przywrócić tylko jeśli prawdziwa</li>
+      <li>Archicom: "-60% setup time" — pokrycie?</li>
+      <li>FIFA / UNIQA: klienci r352 czy dorobek z etapu agencyjnego (obecnie niedoprecyzowane)</li>
+      <li>Lista miast w bio (Porto czy Lizbona?) — obecnie "six years across European markets"</li>
+      <li>Zgoda Geers/Sonova na publiczne metryki (80% briefs, 3× approvals)</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>Backlog QA (następna runda)</h3>
+    <ul>
+      <li><span class="pill crit">mobile</span> Cookie banner zajmuje ~70% ekranu na 375px — do kompaktowej wersji</li>
+      <li><span class="pill warn">light mode</span> Scrim headera za słaby — nav traci czytelność na jasnych sekcjach</li>
+      <li>+ pozostałe znaleziska z przebiegu QA mobile/light (raport u agenta QA — do priorytetyzacji wspólnie)</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>Dystrybucja — jedyna kategoria poniżej 6000 (5698) i wąskie gardło do 1M PLN</h3>
+    <ul>
+      <li>Kadencja: 2 posty LinkedIn/tydz. × 8 tygodni (50 promptów spec = ~6 mies. seedów contentu) — <b>+1744 pkt</b></li>
+      <li>Monitoring 5-10 liderów design-ops/AI z SLA 24h odpowiedzi — <b>+1628 pkt</b></li>
+      <li>Lead magnet zasilający listę waitlisty (mini-diagnostic / r3loop canvas 1-pager) — <b>+930 pkt</b></li>
+    </ul>
+  </div>
+
+  <div class="foot">Wygenerowano 2026-06-10 · źródła: r3loop/snapshots/*.json, r3loop/evaluations/*.json, audyt merytoryczny (50 promptów spec v2 + audyt contentu), raporty 11 agentów implementacyjnych · silnik: r3loop/engine/</div>
+
+</div>
+</body>
+</html>

@@ -48,6 +48,7 @@ export function FloatingBriefCTA() {
           }}
           aria-label={label}
           className={`
+            js-music-trigger
             fixed z-50 group
             bottom-6 right-6 md:bottom-[42px] md:right-[112px]
             inline-flex items-center gap-3

@@ -58,3 +58,5 @@ src/assets/archicom.mp4
 src/assets/kubota.mp4
 src/assets/podsiadlo.mp4
 src/assets/discobowl.mp4
+
+dist-*

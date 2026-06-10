@@ -102,6 +102,8 @@ import { Chatbot } from "@/app/components/Chatbot";
 import { useTransitionRoll } from "@/app/utils/transitionDirection";
 import { ConsentProvider } from "@/app/context/ConsentContext";
 import { ConsentBanner } from "@/app/components/ConsentBanner";
+import { AudioProvider } from "@/app/context/AudioContext";
+import { useCTAHoverMusicTrigger } from "@/app/hooks/useCTAHoverMusicTrigger";
 
 // ─── Dynamic Favicon ──────────────────────
 function useFavicon() {
@@ -131,6 +133,7 @@ function AppContent() {
   const { theme } = useTheme();
   useFavicon();
   useTransitionRoll(); // advances deterministic sweep direction on every navigation
+  useCTAHoverMusicTrigger(); // first CTA hover triggers ambient Mompou playback
 
   // Prerender signal — Puppeteer-based prerender script (scripts/prerender.mjs)
   // waits for window.__PRERENDER_READY__ before snapshotting the route's HTML.
@@ -382,11 +385,13 @@ export default function App() {
       <ConsentProvider>
         <LanguageProvider>
           <ThemeProvider>
-            <AppContent />
-            <BottomGradient />
-            <FloatingBriefCTA />
-            <VersionLabel />
-            <ConsentBanner />
+            <AudioProvider>
+              <AppContent />
+              <BottomGradient />
+              <FloatingBriefCTA />
+              <VersionLabel />
+              <ConsentBanner />
+            </AudioProvider>
           </ThemeProvider>
         </LanguageProvider>
       </ConsentProvider>
