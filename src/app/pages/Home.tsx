@@ -11,7 +11,6 @@ import { useLanguage } from "@/app/context/LanguageContext";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { MagneticButton } from "@/app/components/ui/MagneticButton";
-import { KineticManifesto } from "@/app/components/ui/KineticManifesto";
 import { Marquee } from "@/app/components/ui/Marquee";
 import { ArrowRight } from "lucide-react";
 
@@ -34,11 +33,7 @@ export function Home() {
     <PageTransition className="">
       <AgencyHero />
       <ClientLogos />
-      
-      {/* Philosophy Manifesto — Scene 1: scroll-driven kinetic typography.
-          Static 7+5 teaser layout for prerender/bots/reduced-motion/mobile
-          lives inside the component (KineticManifesto → StaticManifesto). */}
-      <KineticManifesto />
+      {/* KineticManifesto DISABLED 2026-06-10 on client decision */}
 
       <SelectedWork />
 

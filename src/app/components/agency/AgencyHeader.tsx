@@ -164,21 +164,25 @@ export function AgencyHeader() {
           ? "text-black py-4 md:py-6" 
           : cn("text-white transition-all duration-700", isScrolled ? "py-4 md:py-6" : "mix-blend-difference py-6 md:py-8")
       )}>
-        {/* Dark Mode Version — solid dark blur bar (was a fading gradient that let
-            scrolling content show through and collide with nav items) */}
+        {/* Dark Mode Version — soft black gradient scrim (client direction
+            2026-06-10): no rigid bar — a shadow fading 80% → 0% opacity,
+            extended past the header so the falloff reads soft. Brand easing. */}
         <div
           className={cn(
-            "absolute inset-0 -z-10 bg-black/60 border-b border-white/5 pointer-events-none transition-all duration-700",
-            isScrolled && theme === 'dark' && !isLimeTheme ? "opacity-100 backdrop-blur-md shadow-[0_12px_40px_-8px_rgba(0,0,0,0.55)]" : "opacity-0"
+            "absolute inset-x-0 top-0 h-[210%] -z-10 pointer-events-none",
+            "bg-gradient-to-b from-black/80 via-black/35 to-transparent",
+            "transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
+            isScrolled && theme === 'dark' && !isLimeTheme ? "opacity-100" : "opacity-0"
           )}
         />
-        {/* Light Mode Version — matching solid light blur bar */}
+        {/* Light Mode Version — same soft scrim, tuned down for light bg */}
         <div
           className={cn(
-            "absolute inset-0 -z-10 border-b border-black/5 pointer-events-none transition-all duration-700",
-            isScrolled && (theme === 'light' || isLimeTheme) ? "opacity-100 backdrop-blur-md shadow-[0_12px_32px_-10px_rgba(0,0,0,0.18)]" : "opacity-0"
+            "absolute inset-x-0 top-0 h-[210%] -z-10 pointer-events-none",
+            "bg-gradient-to-b from-white/85 via-white/40 to-transparent",
+            "transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
+            isScrolled && (theme === 'light' || isLimeTheme) ? "opacity-100" : "opacity-0"
           )}
-          style={{ backgroundColor: "rgba(255, 255, 255, 0.75)" }}
         />
         <div className="px-8 md:px-12 flex justify-between items-center w-full relative z-10">
         <Link

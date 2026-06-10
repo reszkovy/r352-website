@@ -394,7 +394,7 @@ void main() {
   // subtly emerging from the background, not dominate the ATF. One knob:
   // 1.0 = previous hero-dominant look, lower = quieter. Gaze/3D unaffected.
   // ======================================================================
-  const float PRESENCE = 0.40;
+  const float PRESENCE = 0.22;
   col      *= 0.30 + 0.42 * PRESENCE;   // deep exposure cut — silhouette emerges, not poses
   a        *= 0.82 + 0.18 * PRESENCE;   // breath of background through the glass
   limeAmt  *= PRESENCE;

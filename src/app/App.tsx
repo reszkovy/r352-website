@@ -13,7 +13,6 @@ import { projects } from "@/app/data/projects";
 // Non-lazy (always needed)
 // NoiseBackground (animated full-screen canvas, per-frame ImageData) replaced by
 // GrainOverlay — static SVG-noise tile, zero per-frame cost, sits above content.
-import { GrainOverlay } from "@/app/components/ui/GrainOverlay";
 import { PersistentBackground } from "@/app/components/ui/PersistentBackground";
 
 // Lazy-loaded pages (code splitting)
@@ -100,7 +99,6 @@ import { ThemeProvider, useTheme } from "@/app/context/ThemeContext";
 import { Toaster } from "sonner";
 import { CustomCursor } from "@/app/components/ui/CustomCursor";
 import { Chatbot } from "@/app/components/Chatbot";
-import { Preloader } from "@/app/components/ui/Preloader";
 import { useTransitionRoll } from "@/app/utils/transitionDirection";
 import { ConsentProvider } from "@/app/context/ConsentContext";
 import { ConsentBanner } from "@/app/components/ConsentBanner";
@@ -283,7 +281,6 @@ function AppContent() {
   return (
     <>
       <GTM />
-      <Preloader />
       {(() => { const seo = getPageSEO(location); return <SEO path={location} title={seo.title} description={seo.description} ogImage={seo.ogImage} article={seo.article} />; })()}
       <SmoothScroll>
       {/* overflow-x-clip (NOT -hidden): overflow-x-hidden makes this div a scroll
@@ -293,7 +290,6 @@ function AppContent() {
           clip clips horizontal overflow identically without creating a scroller. */}
       <div className={`${theme === 'dark' ? 'dark' : ''} bg-background min-h-screen w-full overflow-x-clip text-foreground font-sans selection:bg-white selection:text-black relative transition-colors duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)]`}>
       <PersistentBackground />
-      <GrainOverlay />
       <CursorGlow />
       <CustomCursor />
 

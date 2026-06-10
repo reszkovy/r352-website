@@ -7,7 +7,6 @@ import { AnimeGrid } from "@/app/components/ui/AnimeGrid";
 import { MagneticButton } from "@/app/components/ui/MagneticButton";
 import { ElasticLine } from "@/app/components/ui/ElasticLine";
 import { ChipTooltip } from "@/app/components/ui/ChipTooltip";
-import { GlassHero } from "@/app/components/ui/GlassHero";
 import { ArrowRight } from "lucide-react";
 
 export function AgencyHero() {
@@ -26,23 +25,7 @@ export function AgencyHero() {
       {/* Background Elements - Full Width */}
       <AnimeGrid />
 
-      {/* Signature moment — full-bleed WebGL liquid-glass scene.
-          The canvas spans the ENTIRE hero viewport, BEHIND the type
-          (z-[1] < content z-10): volumetric lime aurora in the back, the
-          glass figure right-anchored (~88% height), micro-dust in front —
-          all parallaxing at different rates. An in-shader scrim darkens the
-          headline zone so type stays fully readable where it overlaps.
-          Static <img> always in DOM (prerender/SEO); GL only initializes
-          lazily on desktop (>=768px), never for crawlers / reduced motion.
-          Mobile: smaller + dimmed static image as atmosphere, no GL. */}
-      <GlassHero
-        alt={
-          language === "pl"
-            ? "Szklana humanoidalna postać w czarnej czapce — sygnaturowy wizerunek R352"
-            : "Translucent glass humanoid figure in a black cap — the R352 signature portrait"
-        }
-        className="absolute inset-0 z-[1]"
-      />
+      {/* GlassHero (WebGL figure) DISABLED 2026-06-10 on client decision -- ATF restored to the type-led layout. Component kept in src/app/components/ui/GlassHero.tsx if revisited. */}
 
       {/* Content Container - Centered and Max Width.
           Tightened pb-32 → pb-20 and mb-16/24 → mb-8/12 to lift the subtitle + CTAs
