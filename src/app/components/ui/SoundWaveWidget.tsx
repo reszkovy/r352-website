@@ -75,7 +75,10 @@ export function SoundWaveWidget({ className = "" }: { className?: string }) {
           className="relative block w-[20px] h-[20px]"
           aria-hidden="true"
         >
-          {/* IDLE — soft outline speaker + rounded sound waves */}
+          {/* IDLE — universal outline PLAY (client direction 2026-06-10):
+              same visual language as the ThemeToggle sun (lucide-style
+              1.75 stroke outline) — instantly readable as "play", no
+              ambiguity with a collapsed menu. Subtle scale-breathe on hover. */}
           <span
             className="absolute inset-0 flex items-center justify-center"
             style={{
@@ -94,30 +97,16 @@ export function SoundWaveWidget({ className = "" }: { className?: string }) {
               strokeWidth="1.75"
               strokeLinecap="round"
               strokeLinejoin="round"
+              style={{
+                animation: breathe
+                  ? "r352-wave-breathe 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0s infinite"
+                  : "none",
+                transformBox: "fill-box",
+                transformOrigin: "center",
+              }}
             >
-              {/* Speaker body — rounded, friendly outline */}
-              <path d="M11 6.9 7.6 9.6H5.7c-.7 0-1.2.5-1.2 1.2v2.4c0 .7.5 1.2 1.2 1.2h1.9l3.4 2.7c.5.4 1.3 0 1.3-.6V7.5c0-.6-.8-1-1.3-.6Z" />
-              {/* Sound waves — breathe on hover */}
-              <path
-                d="M15.2 9.9a3.2 3.2 0 0 1 0 4.2"
-                style={{
-                  transformBox: "fill-box",
-                  transformOrigin: "left center",
-                  animation: breathe
-                    ? "r352-wave-breathe 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0s infinite"
-                    : "none",
-                }}
-              />
-              <path
-                d="M17.7 7.9a6.4 6.4 0 0 1 0 8.2"
-                style={{
-                  transformBox: "fill-box",
-                  transformOrigin: "left center",
-                  animation: breathe
-                    ? "r352-wave-breathe 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.18s infinite"
-                    : "none",
-                }}
-              />
+              {/* Play triangle — rounded joins, friendly outline */}
+              <path d="M8.5 6.8c0-1 1.1-1.6 2-1.1l8 4.7c.9.5.9 1.7 0 2.2l-8 4.7c-.9.5-2-.1-2-1.1V6.8Z" />
             </svg>
           </span>
 

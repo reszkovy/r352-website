@@ -88,7 +88,6 @@ const ROUTES = [
   "/journal/6",
   "/journal/7",
   "/journal/8",
-  "/journal/10",
   // Work case studies — crawlable proof pages
   "/work/archicom",
   "/work/benefit-systems",

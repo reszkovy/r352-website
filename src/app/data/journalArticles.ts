@@ -28,6 +28,10 @@ export interface Article {
 export const journalArticles: Article[] = [
   {
     id: 10,
+    // UNPUBLISHED 2026-06-10 (client decision) — entry pulled from the journal.
+    // 301 /journal/10 -> /journal in vercel.json; removed from sitemap and
+    // prerender routes. Flip published: true to restore.
+    published: false,
     title: "From methodology to product:<br/>mapping r3loop steps to tools",
     title_pl: "Od metodologii do produktu:<br/>kroki r3loop jako narzędzia",
     date: "June 2026",

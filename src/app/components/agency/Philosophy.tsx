@@ -227,47 +227,9 @@ export function Philosophy() {
         </div>
       </div>
 
-      {/* ─── Soundtrack — Federico Mompou "Música Callada" (Silent Music, 1959)
-          Catalan composer's mystical minimalism — anti-virtuosic, anti-romantic,
-          sparse + warm. Mompou himself: "Music that doesn't disturb, doesn't impose."
-          Brand fit: tych słów echo z About caption "The work speaks. I don't have to."
-          Spotify embed — compact 80px height, NO autoplay (UX + Google ranking).
-          User klika świadomie. 30s preview dla każdego, full track dla Spotify users.
-          Track ID: canonical Cuaderno I (full ~22 min album) — swap URL jeśli wolisz
-          konkretne nagranie (Henck/ECM 1989, Mompou sam 1974, Stephen Hough Hyperion). */}
-      <div className="max-w-[1800px] mx-auto px-8 md:px-12 py-20 md:py-24 border-b border-neutral-200 dark:border-white/10">
-        <div className="max-w-2xl">
-          <Reveal>
-            <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-4">
-              {language === 'pl' ? 'Soundtrack' : 'Soundtrack'}
-            </span>
-            <p className="text-base md:text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed mb-2 [text-wrap:pretty]">
-              {language === 'pl'
-                ? 'Federico Mompou — Música Callada (1959).'
-                : 'Federico Mompou — Música Callada (1959).'}
-            </p>
-            <p className="text-sm md:text-base text-neutral-500 dark:text-neutral-500 leading-relaxed italic mb-6 [text-wrap:pretty]">
-              {language === 'pl'
-                ? '„Muzyka, która nie przeszkadza, nie narzuca się." — Mompou'
-                : '"Music that doesn\'t disturb, doesn\'t impose." — Mompou'}
-            </p>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <div className="rounded-md overflow-hidden">
-              <iframe
-                src="https://open.spotify.com/embed/album/2DUjEuS2GeYAY4WjkrIgs1"
-                width="100%"
-                height="80"
-                frameBorder="0"
-                allow="encrypted-media; clipboard-write"
-                loading="lazy"
-                title="Federico Mompou — Música Callada"
-                className="block"
-              />
-            </div>
-          </Reveal>
-        </div>
-      </div>
+      {/* Soundtrack section REMOVED 2026-06-10 (client decision) — the Spotify
+          album embed 404'd ("We can't seem to find the page"). The Mompou
+          ambient lives on in the site-wide audio system (AudioContext). */}
 
       {/* Contrasts: Not This → This */}
       <div className="max-w-[1800px] mx-auto px-8 md:px-12 py-24 md:py-32 border-b border-neutral-200 dark:border-white/10">
