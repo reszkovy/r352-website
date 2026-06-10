@@ -11,7 +11,9 @@ import { journalArticles } from "@/app/data/journalArticles";
 import { projects } from "@/app/data/projects";
 
 // Non-lazy (always needed)
-import { NoiseBackground } from "@/app/components/ui/NoiseBackground";
+// NoiseBackground (animated full-screen canvas, per-frame ImageData) replaced by
+// GrainOverlay — static SVG-noise tile, zero per-frame cost, sits above content.
+import { GrainOverlay } from "@/app/components/ui/GrainOverlay";
 import { PersistentBackground } from "@/app/components/ui/PersistentBackground";
 
 // Lazy-loaded pages (code splitting)
@@ -284,9 +286,14 @@ function AppContent() {
       <Preloader />
       {(() => { const seo = getPageSEO(location); return <SEO path={location} title={seo.title} description={seo.description} ogImage={seo.ogImage} article={seo.article} />; })()}
       <SmoothScroll>
-      <div className={`${theme === 'dark' ? 'dark' : ''} bg-background min-h-screen w-full overflow-x-hidden text-foreground font-sans selection:bg-white selection:text-black relative transition-colors duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)]`}>
-      <NoiseBackground />
+      {/* overflow-x-clip (NOT -hidden): overflow-x-hidden makes this div a scroll
+          container, which becomes the sticky scrollport for every descendant —
+          position:sticky binds to this non-scrolling div and never pins (the
+          KineticManifesto/LoopPath scenes scrolled away leaving blank viewports).
+          clip clips horizontal overflow identically without creating a scroller. */}
+      <div className={`${theme === 'dark' ? 'dark' : ''} bg-background min-h-screen w-full overflow-x-clip text-foreground font-sans selection:bg-white selection:text-black relative transition-colors duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)]`}>
       <PersistentBackground />
+      <GrainOverlay />
       <CursorGlow />
       <CustomCursor />
 

@@ -7,6 +7,7 @@ import { useLanguage } from "@/app/context/LanguageContext";
 import { useLenis } from "lenis/react";
 import { useTheme } from "@/app/context/ThemeContext";
 import { ThemeToggle } from "@/app/components/ui/ThemeToggle";
+import { AudioToggle } from "@/app/components/ui/AudioToggle";
 
 export function AgencyHeader() {
   const [location] = useLocation();
@@ -21,14 +22,16 @@ export function AgencyHeader() {
   const menuOverlayRef = useRef<HTMLDivElement>(null);
   const menuTriggerRef = useRef<HTMLButtonElement>(null);
 
-  // Use Lenis scroll callback for reliable scroll tracking on desktop, and standard scroll listener for mobile
+  // Use Lenis scroll callback for reliable scroll tracking on desktop, and standard scroll listener for mobile.
+  // Threshold 80px (was 150): content slides under the fixed header well before 150px,
+  // causing wordmark/nav collisions — the backdrop must be up before anything reaches it.
   useLenis((lenis) => {
-    setIsScrolled(lenis.scroll > 150);
+    setIsScrolled(lenis.scroll > 80);
   });
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 150) {
+      if (window.scrollY > 80) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -161,24 +164,21 @@ export function AgencyHeader() {
           ? "text-black py-4 md:py-6" 
           : cn("text-white transition-all duration-700", isScrolled ? "py-4 md:py-6" : "mix-blend-difference py-6 md:py-8")
       )}>
-        {/* Dark Mode Version - Soft gradient shadow */}
-        <div 
+        {/* Dark Mode Version — solid dark blur bar (was a fading gradient that let
+            scrolling content show through and collide with nav items) */}
+        <div
           className={cn(
-            "absolute inset-0 -z-10 bg-gradient-to-b from-[#050505]/95 via-[#050505]/70 to-transparent pointer-events-none transition-all duration-700 h-[160%]",
-            isScrolled && theme === 'dark' && !isLimeTheme ? "opacity-100" : "opacity-0"
+            "absolute inset-0 -z-10 bg-black/60 border-b border-white/5 pointer-events-none transition-all duration-700",
+            isScrolled && theme === 'dark' && !isLimeTheme ? "opacity-100 backdrop-blur-md shadow-[0_12px_40px_-8px_rgba(0,0,0,0.55)]" : "opacity-0"
           )}
         />
-        {/* Light Mode Version - Light Blur gradient shadow */}
-        <div 
+        {/* Light Mode Version — matching solid light blur bar */}
+        <div
           className={cn(
-            "absolute inset-0 -z-10 pointer-events-none transition-all duration-700 h-[160%]",
-            isScrolled && (theme === 'light' || isLimeTheme) ? "opacity-100 backdrop-blur-md" : "opacity-0"
+            "absolute inset-0 -z-10 border-b border-black/5 pointer-events-none transition-all duration-700",
+            isScrolled && (theme === 'light' || isLimeTheme) ? "opacity-100 backdrop-blur-md shadow-[0_12px_32px_-10px_rgba(0,0,0,0.18)]" : "opacity-0"
           )}
-          style={{
-            backgroundColor: "rgba(255, 255, 255, 0.75)",
-            maskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%)",
-            WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%)"
-          }}
+          style={{ backgroundColor: "rgba(255, 255, 255, 0.75)" }}
         />
         <div className="px-8 md:px-12 flex justify-between items-center w-full relative z-10">
         <Link
@@ -286,6 +286,9 @@ export function AgencyHeader() {
 
           {/* Theme Switcher — moved from floating bottom-right corner */}
           <ThemeToggle />
+
+          {/* UI sound toggle — opt-in, off by default (Web Audio, no autoplay) */}
+          <AudioToggle className="ml-1" />
         </nav>
         
         {/* Mobile Hamburger */}
@@ -418,6 +421,9 @@ export function AgencyHeader() {
                         <span className="mx-2">/</span>
                         <span className={cn(theme === 'dark' && "text-[#D4FF00]")}>DARK</span>
                       </button>
+
+                      {/* UI sound toggle — same consent-first control as desktop nav */}
+                      <AudioToggle />
                 </motion.div>
             </motion.div>
         )}

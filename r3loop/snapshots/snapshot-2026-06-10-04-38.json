@@ -1,0 +1,327 @@
+{
+  "label": "v5 — final (tagline Reszka + spójność)",
+  "created_at": "2026-06-10T04:38:54.161Z",
+  "spec_version": "1.0",
+  "evidence_file": "r3loop/evidence/evidence-2026-06-10.json",
+  "site_score": 9083,
+  "benchmark": "top 1-2% solo",
+  "target": 9000,
+  "gap_to_target": 0,
+  "category_scores": {
+    "1": 10000,
+    "2": 9265,
+    "3": 10000,
+    "4": 10000,
+    "5": 9125,
+    "6": 10000,
+    "7": 9130,
+    "8": 7609,
+    "9": 10000,
+    "10": 5698
+  },
+  "category_names": {
+    "1": "Positioning Clarity",
+    "2": "IP Definability",
+    "3": "Audience Qualification",
+    "4": "Proof Density",
+    "5": "Conversion Path Design",
+    "6": "Anti-Time POV",
+    "7": "Visual / Brand Craft",
+    "8": "Technical SEO & GEO",
+    "9": "Productization Readiness",
+    "10": "Distribution Muscle"
+  },
+  "category_detail": {
+    "1": {
+      "earned_raw": 5900,
+      "max_raw": 5900,
+      "normalized": 10000,
+      "passed": [
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5"
+      ],
+      "partial": [],
+      "failed": []
+    },
+    "2": {
+      "earned_raw": 6300,
+      "max_raw": 6800,
+      "normalized": 9265,
+      "passed": [
+        "2.1",
+        "2.2",
+        "2.4",
+        "2.5"
+      ],
+      "partial": [
+        "2.3"
+      ],
+      "failed": []
+    },
+    "3": {
+      "earned_raw": 5400,
+      "max_raw": 5400,
+      "normalized": 10000,
+      "passed": [
+        "3.1",
+        "3.2",
+        "3.3",
+        "3.4",
+        "3.5"
+      ],
+      "partial": [],
+      "failed": []
+    },
+    "4": {
+      "earned_raw": 4400,
+      "max_raw": 4400,
+      "normalized": 10000,
+      "passed": [
+        "4.1",
+        "4.2",
+        "4.3",
+        "4.4",
+        "4.5"
+      ],
+      "partial": [],
+      "failed": []
+    },
+    "5": {
+      "earned_raw": 3650,
+      "max_raw": 4000,
+      "normalized": 9125,
+      "passed": [
+        "5.1",
+        "5.2",
+        "5.3",
+        "5.4"
+      ],
+      "partial": [
+        "5.5"
+      ],
+      "failed": []
+    },
+    "6": {
+      "earned_raw": 5000,
+      "max_raw": 5000,
+      "normalized": 10000,
+      "passed": [
+        "6.1",
+        "6.2",
+        "6.3",
+        "6.4",
+        "6.5"
+      ],
+      "partial": [],
+      "failed": []
+    },
+    "7": {
+      "earned_raw": 2100,
+      "max_raw": 2300,
+      "normalized": 9130,
+      "passed": [
+        "7.2",
+        "7.3",
+        "7.4",
+        "7.5"
+      ],
+      "partial": [
+        "7.1"
+      ],
+      "failed": []
+    },
+    "8": {
+      "earned_raw": 1750,
+      "max_raw": 2300,
+      "normalized": 7609,
+      "passed": [
+        "8.2",
+        "8.3",
+        "8.5"
+      ],
+      "partial": [
+        "8.1",
+        "8.4"
+      ],
+      "failed": []
+    },
+    "9": {
+      "earned_raw": 4000,
+      "max_raw": 4000,
+      "normalized": 10000,
+      "passed": [
+        "9.1",
+        "9.2",
+        "9.3",
+        "9.4",
+        "9.5"
+      ],
+      "partial": [],
+      "failed": []
+    },
+    "10": {
+      "earned_raw": 2450,
+      "max_raw": 4300,
+      "normalized": 5698,
+      "passed": [
+        "10.2",
+        "10.4"
+      ],
+      "partial": [
+        "10.1",
+        "10.5"
+      ],
+      "failed": [
+        "10.3"
+      ]
+    }
+  },
+  "prompts_passed": [
+    "1.1",
+    "1.2",
+    "1.3",
+    "1.4",
+    "1.5",
+    "2.1",
+    "2.2",
+    "2.4",
+    "2.5",
+    "3.1",
+    "3.2",
+    "3.3",
+    "3.4",
+    "3.5",
+    "4.1",
+    "4.2",
+    "4.3",
+    "4.4",
+    "4.5",
+    "5.1",
+    "5.2",
+    "5.3",
+    "5.4",
+    "6.1",
+    "6.2",
+    "6.3",
+    "6.4",
+    "6.5",
+    "7.2",
+    "7.3",
+    "7.4",
+    "7.5",
+    "8.2",
+    "8.3",
+    "8.5",
+    "9.1",
+    "9.2",
+    "9.3",
+    "9.4",
+    "9.5",
+    "10.2",
+    "10.4"
+  ],
+  "prioritized_fixes": [
+    {
+      "id": "10.1",
+      "title": "Content cadence audit",
+      "category": 10,
+      "step": "07",
+      "status": 0.5,
+      "recoverable_points": 1744,
+      "fix": "Sustain ≥1 journal post/week or evidence the 2×/week LinkedIn arc (mirror posts to /journal or log publishing history into the evidence pack).",
+      "notes": "On-site cadence improved but below bar: /journal now lists 7 posts (added id 10), with 3 published in June 2026 — recent pace ≈3/month — but the 90-day window (Mar 12–Jun 10) holds ~5 posts ≈ 0.4/week vs the ≥1/week criterion. LinkedIn (primary channel) cadence remains unverifiable on-site; partial credit capped at 0.5 per off-site rule."
+    },
+    {
+      "id": "10.3",
+      "title": "First-mover monitoring",
+      "category": 10,
+      "step": "07",
+      "status": 0,
+      "recoverable_points": 1628,
+      "fix": "Stand up RSS/X alerts for 5-10 design-ops/AI leaders with a 24h response SLA and one pre-built response template citing r3loop; log the setup in the repo so the evidence collector can verify it.",
+      "notes": "Still no on-site evidence of first-mover monitoring: no leader-response post in /journal (article 10 is a step→product piece, not a claim response), no alerts infrastructure or response template detectable from the build. Requires off-site setup and confirmation."
+    },
+    {
+      "id": "8.1",
+      "title": "Schema completeness audit",
+      "category": 8,
+      "step": "06",
+      "status": 0.5,
+      "recoverable_points": 1522,
+      "fix": "Add Article (or CreativeWork/Case-study) JSON-LD to the 10 /work/:slug prerendered pages — same pattern as the journal BlogPosting injection.",
+      "notes": "Major iteration-2 progress verified in prerendered HTML: home now carries 6 JSON-LD blocks (Person, WebSite, Organization, ProfessionalService, Organization with Review+AggregateRating, FAQPage) — the SEO.tsx helmet fragment bug is fixed; /services has Service; /process has HowTo; /glossary DefinedTermSet; /faq FAQPage; and all 7 prerendered /journal articles ship BlogPosting+Article. Remaining gap against the pass criteria ('ALL page types have appropriate schema'): the 10 newly prerendered /work case pages have NO Article/CreativeWork JSON-LD — top-level types are only the sitewide Person/WebSite/Organization (verified across work/sonova, archicom, benefit-systems, caterelo, dawid-podsiadlo). 4 of 5 required page types complete; case studies still missing."
+    },
+    {
+      "id": "10.5",
+      "title": "Audience asset accumulation",
+      "category": 10,
+      "step": "07",
+      "status": 0.5,
+      "recoverable_points": 930,
+      "fix": "Wire the waitlist to an ESP, add one lead magnet (free mini-diagnostic or 1-page r3loop canvas) feeding the same list, and report list size in the evidence pack.",
+      "notes": "First owned-audience asset is live: the Q4 Playbook waitlist on /process captures emails with the founding-price incentive ('First 100... €1500') and playbook_waitlist_signup tracking. But it is a single product waitlist, not yet a newsletter with a lead-magnet flow, and list growth is unverifiable from the build — 0.5 cap per off-site rule."
+    },
+    {
+      "id": "5.5",
+      "title": "Conversion path analytics setup",
+      "category": 5,
+      "step": "07",
+      "status": 0.5,
+      "recoverable_points": 875,
+      "fix": "Confirm all 5 events render in the analytics dashboard and screenshot/log it into the evidence pack (extend collect.mjs or attach manual confirmation).",
+      "notes": "All 5 required events now exist in the shipped bundles: brief_cta_clicked, brief_submitted, calendly_clicked, mail_clicked, and the new playbook_waitlist_signup (in Process-DsaSQqqs.js, fired with the waitlist form). On-site implementation is complete; dashboard visibility (Plausible/GA) cannot be confirmed from the build — off-site cap applies."
+    },
+    {
+      "id": "7.1",
+      "title": "Motion language consistency",
+      "category": 7,
+      "step": "04",
+      "status": 0.5,
+      "recoverable_points": 870,
+      "fix": "Override Tailwind's default transition-timing-function in the config and replace the (.85,0,.15,1), (.4,0,.6,1), (.25,1,.5,1) usages with the brand curve or one sanctioned utility curve.",
+      "notes": "Brand curve dominance doubled — cubic-bezier(.22,1,.36,1) now 18 occurrences in compiled CSS (was 9) and all new components (ChipTooltip, Operating Model, Playbook) use it — but 5 other curves still ship: (.4,0,.2,1)×4 and (0,0,.2,1)×2 (Tailwind defaults), plus (.85,0,.15,1)×2, (.4,0,.6,1)×2, (.25,1,.5,1)×2. 6 unique curves vs the ≤2 standard; the claimed consolidation did not fully land in the compiled output."
+    },
+    {
+      "id": "8.4",
+      "title": "WebP image migration",
+      "category": 8,
+      "step": "06",
+      "status": 0.5,
+      "recoverable_points": 870,
+      "fix": "Convert the remaining JPEG and the reszek-glass-portrait PNG to WebP at 80% quality; audit JS-mounted images for IntersectionObserver lazy mounting.",
+      "notes": "Improved but not 100%: one JPEG still ships in the bundle (dist/assets/*.jpeg ×1), and the new philosophy portrait is a PNG (reszek-glass-portrait-D9jlhr83.png) rather than WebP. loading=\"lazy\" coverage improved (7 on home, 1 on philosophy — including the new portrait) but most below-fold imagery remains JS-injected with unverified lazy behavior."
+    },
+    {
+      "id": "2.3",
+      "title": "Client-citation test",
+      "category": 2,
+      "step": "07",
+      "status": 0.5,
+      "recoverable_points": 735,
+      "fix": "Publish 2 verbatim client quotes naming 'r3loop' (Geers/Sonova + Kubota or Benefit Systems) on /process and the case pages, attributed to a named role.",
+      "notes": "Improved but not at bar: /process now states 'r3loop in production at Geers (Sonova Group) since 2022 — 60+ studios. The client cites the methodology by name in case-study materials.' (has_testimonials now true). But that is r352 asserting a citation, not a published client quote, and only one client (Geers) is claimed — pass needs 2+ named clients citing r3loop publicly. Scan of newly prerendered /work pages confirms no change: client quotes exist (e.g. Sonova) but none cites r3loop by name."
+    }
+  ],
+  "delta_vs_previous": {
+    "vs": "snapshot-2026-06-10-04-34.json",
+    "site_score": 87,
+    "categories": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 869,
+      "8": 0,
+      "9": 0,
+      "10": 0
+    },
+    "newly_passed": [
+      "7.4"
+    ]
+  }
+}

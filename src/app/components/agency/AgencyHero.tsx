@@ -7,6 +7,7 @@ import { AnimeGrid } from "@/app/components/ui/AnimeGrid";
 import { MagneticButton } from "@/app/components/ui/MagneticButton";
 import { ElasticLine } from "@/app/components/ui/ElasticLine";
 import { ChipTooltip } from "@/app/components/ui/ChipTooltip";
+import { GlassHero } from "@/app/components/ui/GlassHero";
 import { ArrowRight } from "lucide-react";
 
 export function AgencyHero() {
@@ -24,7 +25,25 @@ export function AgencyHero() {
     <section className="relative w-full min-h-screen flex flex-col overflow-hidden bg-background">
       {/* Background Elements - Full Width */}
       <AnimeGrid />
-      
+
+      {/* Signature moment — full-bleed WebGL liquid-glass scene.
+          The canvas spans the ENTIRE hero viewport, BEHIND the type
+          (z-[1] < content z-10): volumetric lime aurora in the back, the
+          glass figure right-anchored (~88% height), micro-dust in front —
+          all parallaxing at different rates. An in-shader scrim darkens the
+          headline zone so type stays fully readable where it overlaps.
+          Static <img> always in DOM (prerender/SEO); GL only initializes
+          lazily on desktop (>=768px), never for crawlers / reduced motion.
+          Mobile: smaller + dimmed static image as atmosphere, no GL. */}
+      <GlassHero
+        alt={
+          language === "pl"
+            ? "Szklana humanoidalna postać w czarnej czapce — sygnaturowy wizerunek R352"
+            : "Translucent glass humanoid figure in a black cap — the R352 signature portrait"
+        }
+        className="absolute inset-0 z-[1]"
+      />
+
       {/* Content Container - Centered and Max Width.
           Tightened pb-32 → pb-20 and mb-16/24 → mb-8/12 to lift the subtitle + CTAs
           higher in viewport — guarantees they're visible above-the-fold on 1366×768 and up. */}
@@ -38,7 +57,7 @@ export function AgencyHero() {
               key={`hero-title-${theme}`}
               text={t("hero.title")}
               as="h1"
-              className="type-h1 !text-5xl md:!text-7xl lg:!text-8xl mb-6 md:mb-10 text-balance max-w-[95%] cursor-default"
+              className="type-h1 !text-5xl md:!text-7xl lg:!text-8xl mb-6 md:mb-10 max-w-[95%] cursor-default leading-[0.95]"
               delay={0.1}
               glowEffect={true}
               baseColor={baseColor}

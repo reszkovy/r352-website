@@ -645,7 +645,13 @@ export const translations = {
       //   1. "Strategiczny partner designowy" — KIM jesteś (echo z tagline w headerze)
       //   2. "Dla rosnących marek"            — DLA KOGO (skalujące się marki — produkt,
       //                                         lokalizacje, kampanie)
-      title: "Strategiczny partner designowy.<br/>Dla rosnących marek.",
+      // Desktop: explicit 3-line stack — "Strategiczny partner designowy." (31 chars)
+      // overflował viewport przy text-8xl na średnich desktopach, a text-balance
+      // mieszany z per-character CinematicText animation produkował word-break chaos
+      // ("Strategicz" + gap + "part" / "desi" / "Dla rosnącyc" + gap + "marek").
+      // Trzy explicit linie eliminują wrap ambiguity — text renderuje przewidywalnie
+      // na każdej szerokości >=md.
+      title: "Strategiczny partner<br/>designowy.<br/>Dla rosnących marek.",
       // Mobile breaks: explicit 4-line stack — "Strategiczny" + "partner designowy."
       // razem są za szerokie na 375px przy 48px foncie, wymuszamy clean stack.
       title_mobile: "Strategiczny<br/>partner designowy.<br/>Dla rosnących<br/>marek.",

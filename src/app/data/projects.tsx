@@ -206,7 +206,7 @@ export const projects = [
         en: "They are proactive, transparent, and truly care about the outcome. A reliable partner for any scale.",
         pl: "Są proaktywni, transparentni i naprawdę zależy im na efekcie. Niezawodny partner przy każdej skali."
       },
-      author: "Alina Sztoch",
+      author: "Magdalena Rodak",
       role: {
         en: "Marketing & Brand Lead · Benefit Systems",
         pl: "Marketing & Brand Lead · Benefit Systems"
@@ -488,7 +488,7 @@ export const projects = [
         en: "The communication is seamless, and their commitment to quality translates directly into our business results.",
         pl: "Komunikacja jest płynna, a ich zaangażowanie w jakość przekłada się bezpośrednio na nasze wyniki biznesowe."
       },
-      author: "Magdalena Rodak",
+      author: "Alina Sztoch",
       role: {
         en: "Brand & Marketing · Kubota",
         pl: "Brand & Marketing · Kubota"

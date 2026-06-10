@@ -11,13 +11,14 @@ import { useLanguage } from "@/app/context/LanguageContext";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { MagneticButton } from "@/app/components/ui/MagneticButton";
+import { KineticManifesto } from "@/app/components/ui/KineticManifesto";
 import { Marquee } from "@/app/components/ui/Marquee";
 import { ArrowRight } from "lucide-react";
 
 import presentationImg from "../../imports/Background.webp";
 
 export function Home() {
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
   const [, setLocation] = useLocation();
   const parallaxContainerRef = useRef<HTMLDivElement>(null);
 
@@ -34,42 +35,10 @@ export function Home() {
       <AgencyHero />
       <ClientLogos />
       
-      {/* Philosophy Teaser — 12-col grid: title col-7, caption+CTA col-5 (7+5 asymmetric) */}
-      <section className="pt-32 pb-32 md:pt-40 md:pb-40 border-t border-white/10">
-        <div className="max-w-[1800px] mx-auto px-8 md:px-12">
-          <Reveal>
-            <div className="grid grid-cols-12 gap-6 md:gap-8 items-end">
-              {/* LEFT col-7: title — plain h2, smaller size to fit col-7 cleanly, break-keep to prevent mid-word split */}
-              <h2
-                className="col-span-12 md:col-span-7 text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight leading-[1.2] text-white break-keep"
-                dangerouslySetInnerHTML={{ __html: t("philosophy.teaser.title") }}
-              />
-
-              {/* RIGHT col-5: caption + CTA stacked */}
-              <div className="col-span-12 md:col-span-5 md:justify-self-end max-w-xl space-y-8">
-                <p className="text-base md:text-lg text-neutral-400 leading-relaxed whitespace-pre-line">
-                  {t("philosophy.teaser.description")}
-                </p>
-                {/* TERTIARY text link — matches ATF hero "Or write directly" pattern.
-                    Animated underline grows on hover, arrow translates right, lime accent
-                    replaces neutral on hover. Kills the framed bordered button look. */}
-                <a
-                  href="/philosophy"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setLocation("/philosophy");
-                  }}
-                  className="group inline-flex items-center gap-3 text-xs font-display uppercase tracking-[0.2em] text-neutral-400 hover:text-[#D4FF00] transition-colors duration-500 cursor-pointer"
-                >
-                  <span className="w-6 h-px bg-neutral-600 group-hover:bg-[#D4FF00] group-hover:w-10 transition-all duration-500" />
-                  <span>{t("philosophy.teaser.cta")}</span>
-                  <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.5} />
-                </a>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      {/* Philosophy Manifesto — Scene 1: scroll-driven kinetic typography.
+          Static 7+5 teaser layout for prerender/bots/reduced-motion/mobile
+          lives inside the component (KineticManifesto → StaticManifesto). */}
+      <KineticManifesto />
 
       <SelectedWork />
 

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>r3loop Engine — Live Diagnostic</title>
+<style>
+  :root {
+    --bg: #0a0a0b; --surface: #111113; --border: rgba(255,255,255,0.08);
+    --text: #e8e8e6; --dim: #8a8a86; --lime: #cdde4a; --red: #e5604c; --amber: #d9a441;
+    --mono: 'SF Mono', ui-monospace, 'JetBrains Mono', monospace;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:var(--mono); font-size:14px; line-height:1.5; padding:48px 24px; }
+  .wrap { max-width: 920px; margin:0 auto; }
+  .eyebrow { color:var(--dim); text-transform:uppercase; letter-spacing:0.15em; font-size:11px; }
+  h1 { font-size:22px; font-weight:600; margin:6px 0 4px; }
+  .meta { color:var(--dim); font-size:12px; margin-bottom:32px; }
+  .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin-bottom:40px; }
+  .stat { background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:18px; }
+  .stat-label { color:var(--dim); font-size:11px; text-transform:uppercase; letter-spacing:0.1em; }
+  .stat-value { font-size:30px; font-weight:700; margin-top:6px; }
+  .stat-sub { color:var(--dim); font-size:11px; margin-top:4px; }
+  .lime { color:var(--lime); } .red { color:var(--red); } .amber { color:var(--amber); }
+  h2 { font-size:13px; text-transform:uppercase; letter-spacing:0.12em; color:var(--dim); margin:36px 0 14px; font-weight:600; }
+  table { width:100%; border-collapse:collapse; }
+  th { text-align:left; color:var(--dim); font-size:11px; text-transform:uppercase; letter-spacing:0.08em; padding:8px 10px; border-bottom:1px solid var(--border); font-weight:500; }
+  td { padding:10px; border-bottom:1px solid var(--border); font-size:13px; vertical-align:middle; }
+  tr:hover td { background:rgba(255,255,255,0.015); }
+  .num { color:var(--dim); margin-right:10px; font-size:12px; }
+  .barbox { display:flex; align-items:center; gap:10px; }
+  .bar { flex:1; height:6px; background:rgba(255,255,255,0.06); border-radius:3px; overflow:hidden; position:relative; }
+  .fill { height:100%; border-radius:3px; background:var(--lime); transition:width .6s ease; }
+  .fill.low { background:var(--red); } .fill.mid { background:var(--amber); }
+  .target-line { position:absolute; left:90%; top:-2px; width:1px; height:10px; background:rgba(255,255,255,0.4); }
+  .sval { min-width:52px; text-align:right; font-weight:600; }
+  .delta-pos { color:var(--lime); } .delta-neg { color:var(--red); } .delta-zero { color:var(--dim); }
+  .fix { background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:14px 16px; margin-bottom:10px; display:flex; gap:14px; align-items:baseline; }
+  .fix-pts { color:var(--lime); font-weight:700; min-width:64px; }
+  .fix-id { color:var(--dim); font-size:12px; min-width:38px; }
+  .fix-body b { font-weight:600; } .fix-body .fixtext { color:var(--dim); font-size:12px; display:block; margin-top:3px; }
+  .err { background:var(--surface); border:1px solid var(--red); border-radius:10px; padding:24px; color:var(--red); }
+  .badge { display:inline-block; border:1px solid var(--border); border-radius:99px; padding:2px 10px; font-size:11px; color:var(--dim); margin-left:8px; vertical-align:middle; }
+</style>
+</head>
+<body>
+<div class="wrap" id="app"><div class="err" style="border-color:var(--border);color:var(--dim)">Loading latest snapshot…</div></div>
+<script src="snapshots/latest.js"></script>
+<script>
+const fmt = n => n.toLocaleString('en-US').replace(/,/g, ' ');
+const cls = v => v >= 9000 ? '' : v >= 5000 ? 'mid' : 'low';
+const dcls = d => d > 0 ? 'delta-pos' : d < 0 ? 'delta-neg' : 'delta-zero';
+const dtxt = d => d == null ? '—' : (d > 0 ? '+' : '') + fmt(d);
+
+if (window.R3SNAPSHOT) {
+  render(window.R3SNAPSHOT); // file:// path — loaded via <script src>, no server needed
+} else {
+  fetch('snapshots/latest.json')
+    .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(render)
+    .catch(() => {
+      document.getElementById('app').innerHTML =
+        '<div class="err">Could not load snapshot.<br><br>' +
+        'Generate one: <code>node r3loop/engine/score.mjs --eval r3loop/evaluations/&lt;file&gt;.json</code><br>' +
+        'Then re-open this file.</div>';
+    });
+}
+
+function render(s) {
+  const d = s.delta_vs_previous;
+  const cats = Object.entries(s.category_names).map(([id, name]) => ({
+    id, name, score: s.category_scores[id], delta: d ? d.categories[id] : null,
+  }));
+  const gapCls = s.site_score >= 9000 ? 'lime' : s.site_score >= 7500 ? 'amber' : 'red';
+  document.getElementById('app').innerHTML = `
+    <div class="eyebrow">r3loop engine · live diagnostic</div>
+    <h1>${s.label} <span class="badge">spec v${s.spec_version || '?'}</span></h1>
+    <div class="meta">${new Date(s.created_at).toLocaleString()} · evidence: ${s.evidence_file || 'n/a'}</div>
+    <div class="stats">
+      <div class="stat"><div class="stat-label">Site score</div>
+        <div class="stat-value ${gapCls}">${fmt(s.site_score)}</div>
+        <div class="stat-sub">/ 10 000 · ${s.benchmark}</div></div>
+      <div class="stat"><div class="stat-label">Gap to target</div>
+        <div class="stat-value">${fmt(s.gap_to_target)}</div>
+        <div class="stat-sub">target: ${fmt(s.target)} (top 1-2%)</div></div>
+      <div class="stat"><div class="stat-label">Delta vs previous</div>
+        <div class="stat-value ${d ? dcls(d.site_score) : 'delta-zero'}">${d ? dtxt(d.site_score) : '—'}</div>
+        <div class="stat-sub">${d ? 'vs ' + d.vs : 'first snapshot (baseline)'}</div></div>
+      <div class="stat"><div class="stat-label">Prompts passed</div>
+        <div class="stat-value">${s.prompts_passed.length}<span style="font-size:16px;color:var(--dim)"> / 50</span></div>
+        <div class="stat-sub">${d && d.newly_passed.length ? 'newly passed: ' + d.newly_passed.join(', ') : ''}</div></div>
+    </div>
+    <h2>Category breakdown · 10 × 10 000</h2>
+    <table><thead><tr><th style="width:34%">Category</th><th style="width:44%">Score</th><th style="width:12%;text-align:right">Delta</th><th style="width:10%;text-align:right">Failing</th></tr></thead>
+    <tbody>${cats.map(c => `
+      <tr><td><span class="num">${String(c.id).padStart(2, '0')}</span>${c.name}</td>
+      <td><div class="barbox"><div class="bar"><div class="fill ${cls(c.score)}" style="width:${c.score / 100}%"></div><div class="target-line"></div></div>
+      <span class="sval">${fmt(c.score)}</span></div></td>
+      <td style="text-align:right" class="${dcls(c.delta ?? 0)}">${dtxt(c.delta)}</td>
+      <td style="text-align:right;color:var(--dim)">${s.category_detail[c.id].failed.length + s.category_detail[c.id].partial.length}</td></tr>`).join('')}
+    </tbody></table>
+    <h2>Prioritized fixes · by recoverable points</h2>
+    ${s.prioritized_fixes.slice(0, 12).map(f => `
+      <div class="fix"><span class="fix-pts">+${fmt(f.recoverable_points)}</span><span class="fix-id">${f.id}</span>
+      <span class="fix-body"><b>${f.title}</b> <span class="badge">cat ${f.category} · step ${f.step}${f.status === 0.5 ? ' · partial' : ''}</span>
+      <span class="fixtext">${f.fix || f.notes || ''}</span></span></div>`).join('')}`;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,579 @@
+{
+  "label": "baseline 2026-06-09",
+  "created_at": "2026-06-09T19:16:43.240Z",
+  "spec_version": "1.0",
+  "evidence_file": "r3loop/evidence/evidence-2026-06-09.json",
+  "site_score": 4132,
+  "benchmark": "below median solo",
+  "target": 9000,
+  "gap_to_target": 4868,
+  "category_scores": {
+    "1": 7373,
+    "2": 5368,
+    "3": 5000,
+    "4": 2273,
+    "5": 5125,
+    "6": 3300,
+    "7": 2826,
+    "8": 6739,
+    "9": 875,
+    "10": 2442
+  },
+  "category_names": {
+    "1": "Positioning Clarity",
+    "2": "IP Definability",
+    "3": "Audience Qualification",
+    "4": "Proof Density",
+    "5": "Conversion Path Design",
+    "6": "Anti-Time POV",
+    "7": "Visual / Brand Craft",
+    "8": "Technical SEO & GEO",
+    "9": "Productization Readiness",
+    "10": "Distribution Muscle"
+  },
+  "category_detail": {
+    "1": {
+      "earned_raw": 4350,
+      "max_raw": 5900,
+      "normalized": 7373,
+      "passed": [
+        "1.1",
+        "1.2"
+      ],
+      "partial": [
+        "1.3",
+        "1.4",
+        "1.5"
+      ],
+      "failed": []
+    },
+    "2": {
+      "earned_raw": 3650,
+      "max_raw": 6800,
+      "normalized": 5368,
+      "passed": [
+        "2.1"
+      ],
+      "partial": [
+        "2.2",
+        "2.4",
+        "2.5"
+      ],
+      "failed": [
+        "2.3"
+      ]
+    },
+    "3": {
+      "earned_raw": 2700,
+      "max_raw": 5400,
+      "normalized": 5000,
+      "passed": [
+        "3.2",
+        "3.4",
+        "3.5"
+      ],
+      "partial": [],
+      "failed": [
+        "3.1",
+        "3.3"
+      ]
+    },
+    "4": {
+      "earned_raw": 1000,
+      "max_raw": 4400,
+      "normalized": 2273,
+      "passed": [
+        "4.5"
+      ],
+      "partial": [
+        "4.2"
+      ],
+      "failed": [
+        "4.1",
+        "4.3",
+        "4.4"
+      ]
+    },
+    "5": {
+      "earned_raw": 2050,
+      "max_raw": 4000,
+      "normalized": 5125,
+      "passed": [
+        "5.2",
+        "5.4"
+      ],
+      "partial": [
+        "5.1",
+        "5.5"
+      ],
+      "failed": [
+        "5.3"
+      ]
+    },
+    "6": {
+      "earned_raw": 1650,
+      "max_raw": 5000,
+      "normalized": 3300,
+      "passed": [
+        "6.5"
+      ],
+      "partial": [
+        "6.1",
+        "6.3"
+      ],
+      "failed": [
+        "6.2",
+        "6.4"
+      ]
+    },
+    "7": {
+      "earned_raw": 650,
+      "max_raw": 2300,
+      "normalized": 2826,
+      "passed": [],
+      "partial": [
+        "7.1",
+        "7.3",
+        "7.4"
+      ],
+      "failed": [
+        "7.2",
+        "7.5"
+      ]
+    },
+    "8": {
+      "earned_raw": 1550,
+      "max_raw": 2300,
+      "normalized": 6739,
+      "passed": [
+        "8.2",
+        "8.5"
+      ],
+      "partial": [
+        "8.1",
+        "8.3",
+        "8.4"
+      ],
+      "failed": []
+    },
+    "9": {
+      "earned_raw": 350,
+      "max_raw": 4000,
+      "normalized": 875,
+      "passed": [],
+      "partial": [
+        "9.5"
+      ],
+      "failed": [
+        "9.1",
+        "9.2",
+        "9.3",
+        "9.4"
+      ]
+    },
+    "10": {
+      "earned_raw": 1050,
+      "max_raw": 4300,
+      "normalized": 2442,
+      "passed": [
+        "10.2"
+      ],
+      "partial": [
+        "10.4"
+      ],
+      "failed": [
+        "10.1",
+        "10.3",
+        "10.5"
+      ]
+    }
+  },
+  "prompts_passed": [
+    "1.1",
+    "1.2",
+    "2.1",
+    "3.2",
+    "3.4",
+    "3.5",
+    "4.5",
+    "5.2",
+    "5.4",
+    "6.5",
+    "8.2",
+    "8.5",
+    "10.2"
+  ],
+  "prioritized_fixes": [
+    {
+      "id": "4.1",
+      "title": "Two-proof minimum",
+      "category": 4,
+      "step": "06",
+      "status": 0,
+      "recoverable_points": 4091,
+      "fix": "Add the two named proof cases to /process: Geers (SCALE: 60+ studios, 3× faster approvals, 80% briefs first round) and Kubota (DURATION: 3+ years, 200+ deliverables, IPO support), each with 3 metrics and a 1-2 sentence story.",
+      "notes": "/process shows zero case studies with hard metrics. Its only example is the generic 'Multi-location marketing team.' whose Result is unquantified: 'Fewer unclear requests, faster approvals, reusable templates and better visibility for leadership'. The specced Geers (60+/3×/80%/15%) and Kubota (3+ years/200+ deliverables/IPO) cases are absent from the build — grep 'Geers'/'Kubota' in /process returns nothing."
+    },
+    {
+      "id": "9.1",
+      "title": "Waitlist live check",
+      "category": 9,
+      "step": "05",
+      "status": 0,
+      "recoverable_points": 3750,
+      "fix": "Ship the Q4 Playbook waitlist on /process this week: email field + playbook_waitlist_signup Plausible event + mailto fallback + pricing teaser.",
+      "notes": "No waitlist exists anywhere in the build: grep for 'waitlist', 'founding', '1500' across dist returns zero matches; the only form on the site is the /brief project intake (forms:1, all other pages forms:0). With a Q4 2026 launch, every week without capture is lost early-access pipeline."
+    },
+    {
+      "id": "10.1",
+      "title": "Content cadence audit",
+      "category": 10,
+      "step": "07",
+      "status": 0,
+      "recoverable_points": 3488,
+      "fix": "Lock the non-negotiable cadence: 2 LinkedIn posts/week × 8 weeks from the existing content arc, and mirror at least 1/month to /journal.",
+      "notes": "On-site cadence fails: /journal lists 6 posts spanning Feb–June 2026 (Feb ×2, Mar, May, June ×2) ≈ 0.3 posts/week, far under 1/week for 90 days. LinkedIn (the primary channel) has no on-site cadence evidence — requires manual confirmation."
+    },
+    {
+      "id": "3.1",
+      "title": "Role-based personas check",
+      "category": 3,
+      "step": "02",
+      "status": 0,
+      "recoverable_points": 2778,
+      "fix": "Replace the flat team list on /process with 6 role-based personas in 'You're X, you want Y' format (Founder/CEO, Brand owner, Multi-location ops lead, PM, Marketing leader, Operating Partner).",
+      "notes": "/process 'Who this is for' is team/organization-based, not role-based: H2 'Built for teams where design work is no longer a single task.' with list items like 'Teams stuck in unclear feedback loops', 'Teams where too much work happens through email, chat and last-minute requests'. No named-role personas (Founder/CEO, Brand owner, etc.) anywhere in the build."
+    },
+    {
+      "id": "7.2",
+      "title": "Premium tooltip pattern",
+      "category": 7,
+      "step": "04",
+      "status": 0,
+      "recoverable_points": 2609,
+      "fix": "Implement the shared Tooltip component (framer-motion fade+slide+scale+blur entrance, backdrop-blur glass, lime hairline, arrow pointer, [0.22,1,0.36,1]) and use it for chips and term hovers.",
+      "notes": "The premium tooltip pattern is not implemented — no framer-motion tooltip component exists in the asset chunks, grep 'chip' returns nothing, and 'tooltip' appears only as a residual class in the compiled CSS. There are no glass/lime/arrow tooltips in the shipped UI."
+    },
+    {
+      "id": "5.3",
+      "title": "Density-to-depth balance",
+      "category": 5,
+      "step": "04",
+      "status": 0,
+      "recoverable_points": 2500,
+      "fix": "Refactor the 5 engagement model cards to 2-3 word chips with hover tooltips carrying the full sentence (target ~70% visible-content reduction).",
+      "notes": "The chip-tooltip refactor is not in the build: engagement model cards on /services render full 'How it works' (5 occurrences) and 'Ideal when' bullet lists as visible <li> text, far over 20 words per card. Grep for 'chip' in dist returns nothing; no tooltip component chunk exists in assets."
+    },
+    {
+      "id": "6.2",
+      "title": "Operating Model proof",
+      "category": 6,
+      "step": "03",
+      "status": 0,
+      "recoverable_points": 2400,
+      "fix": "Build the 8-row Operating Model table on /process (Step | Presence % | Role, 90% Diagnose → 15% Iterate) with lime fill bars.",
+      "notes": "No Operating Model table exists on /process — grep for 'presence', 'Architect', 'Strategic overseer', '90%' all return zero matches in dist/process/index.html. The anti-hourly POV has no visual proof on the methodology page."
+    },
+    {
+      "id": "3.3",
+      "title": "Self-identification chips",
+      "category": 3,
+      "step": "02",
+      "status": 0,
+      "recoverable_points": 2222,
+      "fix": "Build the 4-6 chip row (label + 6-10 word tooltip, audience + capability groups) under the home H1 with a mobile-safe treatment.",
+      "notes": "No audience chips under the home H1 — grep for the specced chip labels ('Post-PMF', 'Brand launch', 'Multi-product', 'AI Elevated') returns zero matches in dist/index.html, and no tooltip-bearing chip component is present. Only the plain sub-line 'For multi-location brands and scaling operators.' exists."
+    },
+    {
+      "id": "6.4",
+      "title": "Productization signal",
+      "category": 6,
+      "step": "05",
+      "status": 0,
+      "recoverable_points": 2000,
+      "fix": "Add the Q4 r3loop Playbook section to /process: teaser copy, waitlist email capture (mailto fallback), €1500 founding vs €2000 standard anchor, 8-item inventory.",
+      "notes": "No productization scaffold in the build: grep for 'waitlist', 'founding', '1500' returns nothing; /process has no Q4 Playbook teaser, no email capture, no price anchoring, no what's-inside inventory. The only 'playbook' mentions are incidental ('operational playbook' inside the Build step text)."
+    },
+    {
+      "id": "10.5",
+      "title": "Audience asset accumulation",
+      "category": 10,
+      "step": "07",
+      "status": 0,
+      "recoverable_points": 1860,
+      "fix": "Launch the Q4 Playbook waitlist as the first owned-audience asset, then add a lead magnet (free mini-diagnostic or 1-page r3loop canvas) feeding the same list.",
+      "notes": "No owned-audience capture exists anywhere: zero newsletter signup, zero waitlist, no lead magnet — the only email capture is the /brief project intake which is a sales form, not audience accumulation. All audience is currently rented (LinkedIn/Instagram/YouTube links)."
+    },
+    {
+      "id": "9.3",
+      "title": "Productization filter test",
+      "category": 9,
+      "step": "03",
+      "status": 0,
+      "recoverable_points": 1750,
+      "fix": "Publish the product offer statement with the filter sentence ('For teams that don't need us in the room — they need a system we can hand off.') as the Q4 Playbook tagline.",
+      "notes": "There is no product offer statement on the site to test — no Playbook section, no 'for teams that don't need us in the room' framing. The closest survival framing is /deliverables' 'Your team ships on-brand without checking with you first', which describes service deliverables, not a standalone product."
+    },
+    {
+      "id": "7.5",
+      "title": "No-face brand statement",
+      "category": 7,
+      "step": "03",
+      "status": 0,
+      "recoverable_points": 1739,
+      "fix": "Add the lime+silhouette portrait block to /philosophy with the caption 'The work speaks. I don't have to.' (mix-blend-multiply over lime).",
+      "notes": "No portrait with a brand-statement caption exists: grep for 'The work speaks' and 'Operator, not influencer' on /philosophy returns nothing, and the page has no About-portrait section at all (H3s end at 'A note on craft'). The no-face position is currently unstated, not strategic."
+    },
+    {
+      "id": "10.3",
+      "title": "First-mover monitoring",
+      "category": 10,
+      "step": "07",
+      "status": 0,
+      "recoverable_points": 1628,
+      "fix": "Stand up RSS/X alerts for 5-10 design-ops/AI leaders with a 24h response SLA and one pre-built response template citing r3loop.",
+      "notes": "No on-site evidence of first-mover monitoring — no alerts infrastructure, response templates, or leader-response content is detectable from the build (the Boris Cherny response post exists only in planning docs, not in /journal). Requires manual confirmation."
+    },
+    {
+      "id": "4.3",
+      "title": "Named clients vs generic",
+      "category": 4,
+      "step": "06",
+      "status": 0,
+      "recoverable_points": 1591,
+      "fix": "Swap the generic /process example for the named Geers version ('Sonova / Geers — 60+ hearing-care studios') and keep the anonymized variant only where NDA forces it.",
+      "notes": "The only case description visible on /process is the generic placeholder 'A multi-location marketing team receives dozens of local requests every month...' — 0% named. Named clients exist on /work and in FAQ ('Sonova (Geers), Benefit Systems (300+ wellness clubs), Archicom, Kubota...') but not in the methodology page's case slot."
+    },
+    {
+      "id": "8.1",
+      "title": "Schema completeness audit",
+      "category": 8,
+      "step": "06",
+      "status": 0.5,
+      "recoverable_points": 1522,
+      "fix": "Add Service JSON-LD to /services and Article JSON-LD to the 10 /work case pages and journal posts; also fix the evidence collector to parse inline ld+json.",
+      "notes": "Core schemas are live in dist HTML (the evidence pack's json_ld_count:0 is an extractor false-negative): /process has HowTo + 8 HowToStep, /glossary has DefinedTermSet + 14 DefinedTerm, /faq has FAQPage + 5 Question/Answer, all pages carry Organization/Person/WebSite. Missing: Service schema on /services and Article schema on /work case pages and /journal posts (those pages only have the sitewide Organization block)."
+    },
+    {
+      "id": "5.1",
+      "title": "Decision-fatigue test on services",
+      "category": 5,
+      "step": "04",
+      "status": 0.5,
+      "recoverable_points": 1500,
+      "fix": "Add the Pairing Matrix below the engagement models: rows = 5 models, columns = best-for products/scenarios, so the buyer self-matches in <30s.",
+      "notes": "/services stacks two taxonomies — 6 product accordions ('01 Brand System +' ... '06 AI Development & Automation +') and 5 engagement models — with no pairing matrix between them (grep 'Pairing' returns nothing). Fatigue is partially mitigated because each model carries an 'Ideal when' line (5 found, e.g. 'Ideal when — You feel delivery is slow but can't pinpoint why')."
+    },
+    {
+      "id": "6.1",
+      "title": "Anti-hourly POV visibility",
+      "category": 6,
+      "step": "03",
+      "status": 0.5,
+      "recoverable_points": 1500,
+      "fix": "Ship the Operating Model presence graph (90%→15%) on /process and add an explicit 'the system runs without us' statement.",
+      "notes": "2 of 4 signals present: anti-hourly claim (FAQ: 'Agencies sell creative deliverables billed by the hour. r352 builds operational systems... sold as productized engagements'; glossary 'Operator, not agency') and productized pricing (€2k Diagnostic, €7k/mo Retainer, €55k Enterprise Sprint). Missing: the presence-decreasing-over-time visual (no 90%→15% anywhere) and the 'methodology survives without me' framing."
+    },
+    {
+      "id": "9.4",
+      "title": "8-item value visibility",
+      "category": 9,
+      "step": "04",
+      "status": 0,
+      "recoverable_points": 1500,
+      "fix": "Build the 2-col 8-item inventory grid (8 steps in depth, output contracts, decision gates + KPIs, brief templates, QA checklists, AI prompt library, governance frameworks, case studies).",
+      "notes": "No 'What's inside' inventory exists — there is no product section at all, so no 8-item grid (grep 'What's inside' / 'Playbook' as a product returns nothing; 'playbook' only appears incidentally in step copy and Polish journal text)."
+    },
+    {
+      "id": "2.2",
+      "title": "Methodology 4-checklist",
+      "category": 2,
+      "step": "03",
+      "status": 0.5,
+      "recoverable_points": 1471,
+      "fix": "Add an explicit pass/fail decision-gate question to each of the 8 step panels on /process (e.g. Diagnose gate: 'Can we name the top 5 bottlenecks with time cost? If no, don't proceed.').",
+      "notes": "3 of 4 tests pass: NAME (r3loop), STRUCTURE (8 steps Diagnose→Iterate on /process), MEASURABLE OUTPUTS ('What you get' + per-step 'KPI', e.g. 'Time to root cause for every recurring problem'). DECISION CRITERIA fail: no per-step pass/fail gate question is visible on /process ('decision gates' / 'output contracts' vocabulary absent from the build)."
+    },
+    {
+      "id": "2.3",
+      "title": "Client-citation test",
+      "category": 2,
+      "step": "07",
+      "status": 0,
+      "recoverable_points": 1471,
+      "fix": "Collect 2 named client quotes that say 'r3loop' verbatim (Sonova/Geers, Benefit Systems) and publish them on /process and the case study pages.",
+      "notes": "No client publicly cites r3loop anywhere in the evidence: has_testimonials is false on all 18 pages, and the only r3loop attribution on /work is self-referential ('Same r3loop we run for clients — applied to our own products first'). No on-site client quotes naming the methodology — requires manual confirmation off-site."
+    },
+    {
+      "id": "1.3",
+      "title": "Audience qualifier visibility",
+      "category": 1,
+      "step": "02",
+      "status": 0.5,
+      "recoverable_points": 1271,
+      "fix": "Ship the 6 audience chips (Multi-location, Multi-product, SaaS, Brand launch, Post-PMF, AI Elevated Workflows) with tooltips below the home H1, as specced.",
+      "notes": "No audience qualifier chips exist on the home hero (grep for 'Post-PMF', 'Brand launch', 'Multi-product', 'AI Elevated' returns nothing — the items near the H1 are proof metrics, not audience chips). The sub-line 'For multi-location brands and scaling operators.' carries one audience signal but 'scaling operators' is broad and there is no vertical/maturity self-identification."
+    },
+    {
+      "id": "9.2",
+      "title": "Founding vs standard price anchoring",
+      "category": 9,
+      "step": "03",
+      "status": 0,
+      "recoverable_points": 1250,
+      "fix": "Add the dual-anchor display to the Q4 Playbook section: €1500 founding (lime, bold) vs €2000 standard (strikethrough, dimmed).",
+      "notes": "No dual-anchor pricing exists — '€1500', '€2000', 'founding' and 'standard launch price' appear nowhere in dist. The product teaser section it would live in does not exist either."
+    },
+    {
+      "id": "4.4",
+      "title": "r3loop step traceability",
+      "category": 4,
+      "step": "06",
+      "status": 0,
+      "recoverable_points": 1136,
+      "fix": "Add a one-sentence step-trace to each case (e.g. 'Steps 02-03 (Map → Standardize) classified the request workflow; steps 06-08 sustained delivery for 3 years.').",
+      "notes": "No case story references r3loop steps. The /process mini-case describes activities ('We classify request types, define intake rules, create brief templates...') without mapping them to steps 02-03 etc.; /work case cards ('Benefit Systems Product Design / System 2019 — current') carry no step traces at all."
+    },
+    {
+      "id": "2.4",
+      "title": "Productization probe",
+      "category": 2,
+      "step": "08",
+      "status": 0.5,
+      "recoverable_points": 1103,
+      "fix": "Draft the Q4 Playbook skeleton: per-step output contracts, decision gates, failure modes, and one worked example per step (target 50 pages).",
+      "notes": "Methodology is partially extracted: /process publishes per-step What-we-do / What-you-get / Why-it-matters / Duration / KPI, and the repo holds r3loop-spec-v2.md + prompts.json. Missing for handoff-grade extraction: decision-criteria language, failure modes + recovery, example cases per step, AI prompt library — nothing usable by a third party without the practitioner."
+    },
+    {
+      "id": "7.3",
+      "title": "Mobile word-break audit",
+      "category": 7,
+      "step": "06",
+      "status": 0.5,
+      "recoverable_points": 1087,
+      "fix": "Wrap letter spans in word-level inline-block containers (or add explicit mobile breaks) and verify at 375px/412px.",
+      "notes": "Same finding as 1.4: H1 tokens are short so overflow risk at 375px is low, and the hero renders dual H1 variants, but the letter-split animation (per-character spans) is exactly the structure that produced the previous 'growin / g brands.' break and no explicit per-word nowrap or mobile <br/> stack is verifiable in the dist HTML."
+    },
+    {
+      "id": "4.2",
+      "title": "Metric specificity audit",
+      "category": 4,
+      "step": "06",
+      "status": 0.5,
+      "recoverable_points": 909,
+      "fix": "Replace the unquantified /process result line with numbered, scoped, timed metrics (e.g. 'briefs ready first round: 80%+ within 2 quarters; approval cycle 12 days → 4').",
+      "notes": "Home/FAQ metrics are quantified and scoped ('80%+ briefs ready first round', 'Approval cycles cut 3×', '300+ wellness clubs') but mostly untimed. The methodology page's visible result metrics fail entirely: 'Fewer unclear requests, faster approvals' — neither quantified, scoped, nor timed."
+    },
+    {
+      "id": "5.5",
+      "title": "Conversion path analytics setup",
+      "category": 5,
+      "step": "07",
+      "status": 0.5,
+      "recoverable_points": 875,
+      "fix": "Add the playbook_waitlist_signup event when the waitlist ships, and confirm all 5 events render in the Plausible/GA dashboard.",
+      "notes": "4 of 5 required events exist in the bundles: brief_cta_clicked (≈brief_started), brief_submitted, calendly_clicked (3 call sites), mail_clicked (3 call sites), wired to GTM/GA + plausible. 'waitlist_signup' is missing entirely because no waitlist exists; dashboard visibility cannot be confirmed from the build."
+    },
+    {
+      "id": "9.5",
+      "title": "r3loop step productization mapping",
+      "category": 9,
+      "step": "08",
+      "status": 0.5,
+      "recoverable_points": 875,
+      "fix": "Publish a step→product map (even one Journal post): Diagnose→audit tool, Standardize→AI Brief Assistant, Measure→KPI dashboard, and link regional.fit/Caterelo to their source steps.",
+      "notes": "Partial on-site signal: /work shows two self-built products born from the methodology ('Same r3loop we run for clients — applied to our own products first' — regional.fit 'SaaS... MVP live', Caterelo 'AI Platform'), proving productization muscle. But no per-step SaaS mapping exists (no Standardize→Brief Assistant, Measure→dashboard articulation), so '3 steps with viable standalone SaaS form' is not evidenced."
+    },
+    {
+      "id": "7.1",
+      "title": "Motion language consistency",
+      "category": 7,
+      "step": "04",
+      "status": 0.5,
+      "recoverable_points": 870,
+      "fix": "Consolidate to [0.22,1,0.36,1] plus one utility curve: replace (.85,0,.15,1), (.25,1,.5,1) and (.4,0,.6,1) usages and override Tailwind's default transition-timing-function in the config.",
+      "notes": "The brand curve cubic-bezier(.22,1,.36,1) dominates (9 occurrences in compiled CSS) but 5 other curves coexist: (.85,0,.15,1), (.4,0,.2,1), (.25,1,.5,1), (0,0,.2,1), (.4,0,.6,1) — 6 unique curves vs the ≤2 standard, even granting some are Tailwind defaults on micro-transitions."
+    },
+    {
+      "id": "7.4",
+      "title": "Visual identity coherence",
+      "category": 7,
+      "step": "04",
+      "status": 0.5,
+      "recoverable_points": 870,
+      "fix": "Unify the tagline to one phrase across header, meta and og_title, and deploy the lime+silhouette element on at least two surfaces (About portrait + assistant/footer mark).",
+      "notes": "Logo surfaces (logo.svg, favicon family, footer-mark, og-image) appear to share one mark, but the lime+silhouette identity from the spec is absent (no chatbot icon, no About portrait on /philosophy), and the verbal identity is fractured: header says 'YOUR AGILE DESIGN PARTNER' while meta/llms.txt say 'Strategic design partner'."
+    },
+    {
+      "id": "8.3",
+      "title": "Redirect discipline",
+      "category": 8,
+      "step": "06",
+      "status": 0.5,
+      "recoverable_points": 870,
+      "fix": "Confirm whether /journal/2 and /journal/3 were ever indexed; if yes, add 301s to their successors (or /journal) in vercel.json.",
+      "notes": "The documented deletion is covered: vercel.json has '/framework' → '/process' permanent redirect. But journal IDs jump 1 → 4 (and the sitemap lists /journal/1,4,5,6,7,8,9), implying /journal/2 and /journal/3 were removed with no redirect rule present for them."
+    },
+    {
+      "id": "8.4",
+      "title": "WebP image migration",
+      "category": 8,
+      "step": "06",
+      "status": 0.5,
+      "recoverable_points": 870,
+      "fix": "Convert assets/0_2-DZXEMaNm.jpeg to WebP and add loading='lazy' (or verify IntersectionObserver lazy mounting) for all below-fold images.",
+      "notes": "Content imagery is WebP-dominant (316 webp; the 32 non-favicon PNGs are og/* social cards which don't affect page load) but one JPEG ships in the bundle (assets/0_2-DZXEMaNm.jpeg) and loading=\"lazy\" appears in only 2 of 18 prerendered pages — most below-fold images are JS-injected with unverified lazy behavior."
+    },
+    {
+      "id": "1.5",
+      "title": "Three-word category test",
+      "category": 1,
+      "step": "03",
+      "status": 0.5,
+      "recoverable_points": 847,
+      "fix": "Standardize on one 3-word category across header tagline, meta, og_title and llms.txt; retire 'agile design partner'.",
+      "notes": "A 3-word category exists ('Strategic design partner' in meta/llms.txt) but the site simultaneously uses 'agile design partner' (header tagline) and 'Design ops & delivery systems' (H1) — three competing labels, none of which is the methodology category ('loop architecture for design ops' appears nowhere in the build)."
+    },
+    {
+      "id": "6.3",
+      "title": "Methodology survival sentence",
+      "category": 6,
+      "step": "03",
+      "status": 0.5,
+      "recoverable_points": 800,
+      "fix": "Add one explicit survival sentence to /process: 'r3loop runs without us because every step has documented decision criteria, measurable KPIs, trained client owners, and AI agents between gates.'",
+      "notes": "Structural survival elements exist in copy — /deliverables: 'Your team ships on-brand without checking with you first', Govern step: 'decisions are traceable and don't bottleneck on one person', glossary 'Tribal knowledge' — but no page completes the explicit 'r3loop runs without me because...' sentence referencing documented criteria/KPIs/trained teams/AI gates."
+    },
+    {
+      "id": "2.5",
+      "title": "Borrowed authority smell test",
+      "category": 2,
+      "step": "03",
+      "status": 0.5,
+      "recoverable_points": 588,
+      "fix": "Add 3+ proprietary terms to /glossary and use them in body copy: 'decision gates', 'output contracts', '90%→15% presence curve'.",
+      "notes": "Glossary defines 14 terms but only ~3 are clearly proprietary: 'r3loop', 'Master / Variant / Pre-production gates', 'Brief volume × decision velocity'. The rest are borrowed/generic ('Design ops', 'Sprint', 'Retainer', 'Diagnostic', 'Operating Partner', 'Tribal knowledge'). 'Decision gates' and 'output contracts' from the spec are not in the glossary. Below the 5-proprietary-terms bar."
+    },
+    {
+      "id": "10.4",
+      "title": "Channel concentration",
+      "category": 10,
+      "step": "02",
+      "status": 0.5,
+      "recoverable_points": 581,
+      "fix": "Commit to LinkedIn + email waitlist as the two channels; demote or remove Instagram/YouTube footer links until they have real cadence.",
+      "notes": "Mixed signal: llms.txt lists only LinkedIn ('Founded by Reszek · LinkedIn ↗' is also the footer's authority link), suggesting LinkedIn-first concentration, but the footer advertises three channels (Instagram, LinkedIn, YouTube) with no on-site evidence any of them is consistently active. No owned email channel exists yet."
+    },
+    {
+      "id": "1.4",
+      "title": "Mobile typography stress test",
+      "category": 1,
+      "step": "06",
+      "status": 0.5,
+      "recoverable_points": 508,
+      "fix": "Verify the letter-split H1 at 375px (white-space:nowrap per word or wrap letters in per-word spans); add explicit mobile line breaks if any word group wraps mid-word.",
+      "notes": "Current H1 words are short ('Design ops & delivery systems — built to scale.' — longest token 'delivery', low overflow risk at 375px) and the H1 is rendered twice suggesting desktop/mobile variants. But the letter-split animation (every character in its own span) can wrap mid-word at any character, and no explicit <br/> mobile stack or rendered-viewport verification exists in evidence."
+    }
+  ],
+  "delta_vs_previous": null
+}

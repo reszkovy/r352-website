@@ -51,17 +51,32 @@ export function SelectedWork() {
             <Reveal key={project.id} delay={0.3 + (index * 0.1)} className={index === 2 ? "col-span-12" : "col-span-12 md:col-span-6"}>
               <Link href={`/work/${project.id}`} className="block group cursor-pointer relative">
                    <div className="aspect-[16/9] w-full bg-[#111] relative overflow-hidden transition-all duration-[1.5s]">
-                     <HoverVideoImage
-                        src={project.coverImage}
-                        videoSrc={(project as any).hoverVideo}
-                        alt={project.title}
-                        className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-1000"
-                     />
+                     {/* Scale layer — wraps image AND hover-video so both zoom together.
+                         1 → 1.04 on hover, site easing. motion-safe only (reduced-motion
+                         users get the static frame). */}
+                     <div className="absolute inset-0 motion-safe:group-hover:scale-[1.04] transition-transform duration-[1.2s] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform">
+                       <HoverVideoImage
+                          src={project.coverImage}
+                          videoSrc={(project as any).hoverVideo}
+                          alt={project.title}
+                          className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-1000"
+                       />
+                     </div>
                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-1000 z-10 pointer-events-none" />
+
+                     {/* Lime index — 01 / 02 / 03. Slides in from the left on hover-capable
+                         devices; always visible on touch (no hover dependency). */}
+                     <span
+                       aria-hidden="true"
+                       className="absolute top-6 left-6 md:top-8 md:left-12 z-20 pointer-events-none font-display text-[#D4FF00] text-2xl md:text-4xl leading-none tabular-nums select-none transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:-translate-x-4 [@media(hover:hover)]:group-hover:opacity-100 [@media(hover:hover)]:group-hover:translate-x-0"
+                     >
+                       {String(index + 1).padStart(2, "0")}
+                     </span>
                      
                      <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-12 z-20 pointer-events-none overflow-hidden">
                         <div className="translate-y-8 group-hover:translate-y-0 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]">
-                          <h3 className="type-h3 mb-1 text-white group-hover:text-[#D4FF00] transition-colors duration-500">{project.client}</h3>
+                          {/* Title — color shift + letter-spacing micro-expand on hover */}
+                          <h3 className="type-h3 mb-1 text-white group-hover:text-[#D4FF00] tracking-normal motion-safe:group-hover:tracking-[0.02em] transition-[color,letter-spacing] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">{project.client}</h3>
                           
                           <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]">
                             <div className="overflow-hidden">

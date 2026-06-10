@@ -1,0 +1,257 @@
+{
+  "evaluated_at": "2026-06-10",
+  "evaluator": "claude-v6 (tagline DESIGN · SYSTEMS · AI)",
+  "evidence_file": "r3loop/evidence/evidence-2026-06-10.json",
+  "evaluations": {
+    "1.1": {
+      "status": 1,
+      "notes": "5s test: WHO = design-first AI generalist / strategic design partner; FOR = growing brands + chipy; DIFFERENT = AI-first w taglinie. Przechodzi.",
+      "fix": ""
+    },
+    "1.2": {
+      "status": 1,
+      "notes": "Tagline (zakres usługi) vs H1 (tożsamość+audience) — odrębne klaimy, brak redundancji.",
+      "fix": ""
+    },
+    "1.3": {
+      "status": 1,
+      "notes": "Re-verified after H1 redesign: the 7-chip row (6 audience + 1 capability after the '+' separator) survives intact under the new H1 in prerendered dist/index.html — Multi-location, Multi-product, Multi-brand, SaaS, Brand launch, Post-PMF & scaling, + AI Elevated Workflows — each with an always-in-DOM role=\"tooltip\" definition (e.g. Multi-location → '5–300+ physical branches under a single brand'). H1 is now category-specific AND chips are visible — both halves of the pass criteria hold.",
+      "fix": ""
+    },
+    "1.4": {
+      "status": 1,
+      "notes": "Structural fix holds for the new, longer H1: each word's per-character spans are wrapped in <span class=\"inline-flex whitespace-nowrap\"> word groups (19 nowrap groups in the duplicated H1 render, 25 total on page) inside flex flex-wrap line containers — mid-word breaks are structurally impossible. Longest word 'architecture' (12 chars) at mobile !text-5xl (48px, Bw Haas Head 500, -0.02em tracking) measures ~290-300px, fitting the ~310px content width at 375px (max-w-[95%] inside page padding) with no overflow. PL mobile uses an explicit 4-line <br/> stack ('Architektura pętli / dla design ops. / Systemy, / nie godziny.').",
+      "fix": ""
+    },
+    "1.5": {
+      "status": 1,
+      "notes": "Category ownership strengthened: 'Loop architecture for design ops' is now the H1 itself — plus footer ('Strategic design partner. Loop architecture for design ops.'), llms.txt ('Category: loop architecture for design ops' + a dedicated vocabulary entry), and the home JSON-LD descriptions ('Loop architecture for design ops — the operating system behind great design'). Meta description and og_title still lead with the 'Strategic design partner'/'system behind great design' framing without the literal category phrase — acceptable per pass criteria (3-word category exists and is in active vocabulary; identity vs category surfaces are consistent, not conflicting). Residue: the stale orphan bundle from the previous build is STILL in dist (assets/index-JLOUrSMt.js, contains 'agile design partner'); it renders nowhere.",
+      "fix": "Housekeeping (still open from v2): purge stale previous-build chunks from dist/assets (index-JLOUrSMt.js with 'YOUR AGILE DESIGN PARTNER', plus the superseded index-BOcdEGv9.js generation) so no crawler can fetch dead vocabulary."
+    },
+    "2.1": {
+      "status": 1,
+      "notes": "Unchanged from baseline and re-verified: r3loop is the only named methodology (/process title 'r3loop — r352's 8-step methodology', glossary term 01, FAQ Q1). /framework → /process 301 still in vercel.json. No convergence pairs.",
+      "fix": ""
+    },
+    "2.2": {
+      "status": 1,
+      "notes": "All 4 tests now pass: NAME (r3loop), STRUCTURE (8 steps), MEASURABLE OUTPUTS (per-step 'What you get' + KPI), and DECISION CRITERIA — each step now has an explicit pass/fail gate ('Decision gate: Can I describe the operational problem in one sentence with a concrete time-cost number? If not — stay in Diagnose.'). 8 gates verified in the sr-only full-content block ('r3loop — all 8 steps, decision gates and KPIs'), 18 'Decision gate' occurrences total on /process including the visible step panel.",
+      "fix": ""
+    },
+    "2.3": {
+      "status": 0.5,
+      "notes": "Improved but not at bar: /process now states 'r3loop in production at Geers (Sonova Group) since 2022 — 60+ studios. The client cites the methodology by name in case-study materials.' (has_testimonials now true). But that is r352 asserting a citation, not a published client quote, and only one client (Geers) is claimed — pass needs 2+ named clients citing r3loop publicly. Scan of newly prerendered /work pages confirms no change: client quotes exist (e.g. Sonova) but none cites r3loop by name.",
+      "fix": "Publish 2 verbatim client quotes naming 'r3loop' (Geers/Sonova + Kubota or Benefit Systems) on /process and the case pages, attributed to a named role."
+    },
+    "2.4": {
+      "status": 1,
+      "notes": "Extraction crossed the ~70% readiness bar: every step now publishes output contract ('What you get'), decision-gate language, and KPI on /process; the Playbook inventory commits to the remaining artifacts (output contracts per step, decision gates + KPIs, brief templates, QA checklists, AI prompt library, governance frameworks, 8 case-study minis); two worked cases (Geers, Kubota) trace steps. Content build publicly started ('Q4 2026 · Coming').",
+      "fix": "Remaining gap for handoff-grade extraction: document common failure modes + recovery per step — not yet visible anywhere."
+    },
+    "2.5": {
+      "status": 1,
+      "notes": "Glossary grew from 14 to 17 terms with the 3 promised proprietary additions — 'Decision gate', 'Output contract', 'Presence curve' — alongside r3loop, Master/Variant/Pre-production gates, Brief volume × decision velocity, Delivery pack, Steady cadence, Operator-not-agency. Proprietary count ≥5 and ratio ~50%+; terms are in active body use ('Decision gate' ×18 on /process, presence curve embodied in the Operating Model table). 17 DefinedTerm JSON-LD entries confirmed.",
+      "fix": ""
+    },
+    "3.1": {
+      "status": 1,
+      "notes": "/process 'Who this is for' migrated to 6 named role personas in 'You're X — you want Y' format: Founder / CEO, Brand owner, Multi-location ops leader, Product Manager, Marketing leader, Operating Partner (e.g. 'Founder / CEO — You're launching a SaaS or digital product — you want to avoid costly revisions and burned iterations.'). Verified in prerendered dist/process/index.html.",
+      "fix": ""
+    },
+    "3.2": {
+      "status": 1,
+      "notes": "Retained from baseline and re-verified: 'This is probably too much if you only need a one-off banner, a quick visual refresh or a single landing page with no recurring workflow behind it.' — 3 disqualifying scenarios on /process; /brief adds 4 fit filters.",
+      "fix": ""
+    },
+    "3.3": {
+      "status": 1,
+      "notes": "Chip row shipped under home H1: 6 audience chips + 1 capability chip ('AI Elevated Workflows') after a '+' separator, each with a 6-10 word tooltip in glass style; chips render on all viewports (container is plain 'flex flex-wrap', not hidden on mobile) and tooltips are focus-accessible (tabindex=0, aria-describedby). Note: 7 total chips vs the 4-6 guideline, mitigated by the audience/capability grouping.",
+      "fix": ""
+    },
+    "3.4": {
+      "status": 1,
+      "notes": "Multi-location remains the unambiguous primary: first chip in hero order, meta 'Strategic design partner for multi-location organizations', llms.txt 'Multi-location brand operations — primary specialty domain', /industries 'Narrow specialty: multi-location brand operations'. Secondaries (SaaS, Brand launch, Post-PMF) clearly subordinate.",
+      "fix": ""
+    },
+    "3.5": {
+      "status": 1,
+      "notes": "Segmented intake intact: industry pages still route to /brief?segment=<slug> (verified segment=fitness-wellness in dist/industries/fitness-wellness/index.html) and the brief wizard ingests the parameter.",
+      "fix": ""
+    },
+    "4.1": {
+      "status": 1,
+      "notes": "/process now carries 2 named cases with 3 hard metrics each, on different axes: Geers/Sonova (SCALE — 60+ studios, '3× faster approval cycles', '80% briefs ready on first submission', '15% my presence after stabilization') and Kubota (DURATION — '3+ years on continuous retainer', '200+ deliverables shipped', 'IPO WSE debut backed by brand system'), each with a 1-2 sentence story.",
+      "fix": ""
+    },
+    "4.2": {
+      "status": 1,
+      "notes": "Visible metrics are quantified and scoped, and the /process cases add timing: 'since 2022', 'after stabilization', '3+ years', '200+ deliverables'. The old unquantified result line ('Fewer unclear requests, faster approvals') and the generic example are gone from /process ('marketing team' returns 0 matches). Home metrics ('80%+ briefs ready first round', 'Approval cycles cut 3×') remain quantified+scoped, ≥2/3 average.",
+      "fix": ""
+    },
+    "4.3": {
+      "status": 1,
+      "notes": "100% of visible case descriptions on /process are named: 'Geers / Sonova — 60+ hearing-care studios' and 'Kubota — 3+ years on retainer'. The generic 'multi-location marketing team' placeholder is removed (0 matches in dist/process/index.html).",
+      "fix": ""
+    },
+    "4.4": {
+      "status": 1,
+      "notes": "Both methodology-page cases carry explicit step traces: Geers — 'steps 02-03 (Map → Standardize) defined request classification... Steps 04-06 (Build → Govern → Ship) delivered a design system... Step 08 (Iterate) introduced a monthly review rhythm'; Kubota — 'Steps 03–05 (Standardize → Build → Govern) stabilized the brand... steps 03–08 run continuously'. Methodology is concretely traceable, matching the spec's target sentences. (Iteration-2 scan: the 10 newly prerendered /work case pages still contain zero 'steps 0X–0Y' traces — fix below remains open.)",
+      "fix": "Extend step-trace sentences to the 10 /work case detail pages (currently no 'steps 0X–0Y' traces in the work case data bundle)."
+    },
+    "4.5": {
+      "status": 1,
+      "notes": "Multi-axis proof strengthened: /process itself now covers SCALE (Geers 60+ studios) + DURATION (Kubota 3+ years); sitewide adds IP (regional.fit 'MVP live', Caterelo on /work) and DOMAIN spread (fitness, hearing care, real estate, music, insurance, FIFA).",
+      "fix": ""
+    },
+    "5.1": {
+      "status": 1,
+      "notes": "Fatigue resolved: engagement model cards compressed to chips ('Scoped upfront', 'Fixed scope', 'Deliverable, not deck') with 'best-for' benefit lines ('Delivery in 4-6 weeks vs typical 12-16 in-house'), and the Pairing Matrix shipped — 'Which model for which scenario?' table (2 <table> elements on /services) mapping models to products/scenarios. Buyer can self-match in <30s.",
+      "fix": ""
+    },
+    "5.2": {
+      "status": 1,
+      "notes": "Unchanged and re-verified: home above-fold has primary 'Start a brief', secondary 'Book a call', tertiary 'Or write directly · hello@r352.com'; /contact labels them 'Primary · 5–18 min / Secondary · 30 sec / Tertiary · 30 min slot'.",
+      "fix": ""
+    },
+    "5.3": {
+      "status": 1,
+      "notes": "Chip-tooltip refactor shipped on /services: 'How it works' and 'Ideal when' bullet lists are now 2-3 word chips ('hidden md:flex flex-wrap gap-2') with full sentences moved into glass tooltips — 35 role=\"tooltip\" nodes on the page, ~70% visible-content reduction with zero info loss. Residual: each card keeps a 2-sentence summary, so total visible words/card (~35) exceeds the literal <20 target, but the bullet density that drove the prompt is gone.",
+      "fix": "Optional polish: trim card summaries to one sentence to hit the <20 visible words target."
+    },
+    "5.4": {
+      "status": 1,
+      "notes": "Mobile fallback shipped (spec Option A): every chip row on /services is paired with a '<ul class=\"md:hidden space-y-3\">' rendering the full bullet sentences on mobile — verified in prerendered HTML ('We define the problem and deliverables upfront' etc. as visible <li> under md). Home hero chips render on all viewports and tooltips are focus/tap-triggerable (tabindex=0).",
+      "fix": ""
+    },
+    "5.5": {
+      "status": 0.5,
+      "notes": "All 5 required events now exist in the shipped bundles: brief_cta_clicked, brief_submitted, calendly_clicked, mail_clicked, and the new playbook_waitlist_signup (in Process-DsaSQqqs.js, fired with the waitlist form). On-site implementation is complete; dashboard visibility (Plausible/GA) cannot be confirmed from the build — off-site cap applies.",
+      "fix": "Confirm all 5 events render in the analytics dashboard and screenshot/log it into the evidence pack (extend collect.mjs or attach manual confirmation)."
+    },
+    "6.1": {
+      "status": 1,
+      "notes": "All 4 anti-hourly signals now present: (1) presence-decreasing visual — Operating Model table 90%→15% with 8 lime fill bars on /process; (2) explicit claim — 'We don't sell presence and we don't sell hours. The system runs without us — that's exactly what you're paying for.' plus 'Proof it's a system, not hours.'; (3) productized pricing (€2k/€7k-mo/€55k in FAQ/glossary, €1500/€2000 Playbook); (4) survives-without-me framing — 'r3loop runs without us because...'.",
+      "fix": ""
+    },
+    "6.2": {
+      "status": 1,
+      "notes": "Operating Model table live on /process with all 8 steps: 'Step | My presence | Role' — 01 Diagnose 90% Architect & decision-maker → 08 Iterate 15% Strategic overseer, with 8 percentage-width lime (#D4FF00) fill bars and context copy ('Average after stabilization: ~40%. Target 80/20 split — strategy vs operations.').",
+      "fix": ""
+    },
+    "6.3": {
+      "status": 1,
+      "notes": "Explicit survival sentence shipped, structural not personal: 'r3loop runs without us because every step has documented decision criteria, measurable KPIs, trained client owners, and AI agents between gates.' — verbatim the recommended completion, live on /process.",
+      "fix": ""
+    },
+    "6.4": {
+      "status": 1,
+      "notes": "Full productization scaffold live on /process: 'Q4 2026 · Coming — r3loop Playbook' section, waitlist email capture (type=email input + 'Reserve access'), founding €1500 vs standard €2000 anchoring, and the 8-item 'What's inside' inventory. Capture is live now, ~4 months pre-launch.",
+      "fix": ""
+    },
+    "6.5": {
+      "status": 1,
+      "notes": "Unchanged and re-verified: no hourly rates anywhere; productized prices visible in FAQ/glossary/llms.txt plus the new dual-anchor Playbook pricing; /services engagement cards remain price-free, preserving PL-vs-international optionality.",
+      "fix": ""
+    },
+    "7.1": {
+      "status": 0.5,
+      "notes": "Brand curve dominance doubled — cubic-bezier(.22,1,.36,1) now 18 occurrences in compiled CSS (was 9) and all new components (ChipTooltip, Operating Model, Playbook) use it — but 5 other curves still ship: (.4,0,.2,1)×4 and (0,0,.2,1)×2 (Tailwind defaults), plus (.85,0,.15,1)×2, (.4,0,.6,1)×2, (.25,1,.5,1)×2. 6 unique curves vs the ≤2 standard; the claimed consolidation did not fully land in the compiled output.",
+      "fix": "Override Tailwind's default transition-timing-function in the config and replace the (.85,0,.15,1), (.4,0,.6,1), (.25,1,.5,1) usages with the brand curve or one sanctioned utility curve."
+    },
+    "7.2": {
+      "status": 1,
+      "notes": "Premium tooltip pattern fully shipped in ChipTooltip (used on home hero + services): entrance animates opacity + blur(6px→0) + translateY(6px) + scale(0.97→1), backdrop-blur-xl glass on bg-[#0a0a0a]/85, lime gradient hairline ('via-[#D4FF00]/50'), rotate-45 arrow pointer, text-center + [text-wrap:balance], keyboard-accessible (tabindex=0, aria-describedby, focus-visible ring).",
+      "fix": ""
+    },
+    "7.3": {
+      "status": 1,
+      "notes": "Re-verified against the redesigned, longer H1: per-character spans remain grouped in word-level 'inline-flex whitespace-nowrap' wrappers inside flex-wrap line containers in dist/index.html — the 'growin / g brands.' class of break is structurally impossible. Worst-case word 'architecture' (12 chars) fits at 48px/-0.02em within the 375px content width (~290-300px rendered vs ~310px available); 'billable' and 'Systems,' are comfortable. PL mobile variant ships an explicit 4-line <br/> stack.",
+      "fix": ""
+    },
+    "7.4": {
+      "status": 1,
+      "notes": "Spójna hierarchia klaimów: header 'DESIGN · SYSTEMS · AI' (zakres usługi), H1 'Strategic design partner. For growing brands.' (tożsamość+audience), meta/llms 'Design, systems & AI — strategic design partner…' + kategoria 'loop architecture for design ops'. Jeden głos na wszystkich powierzchniach.",
+      "fix": ""
+    },
+    "7.5": {
+      "status": 1,
+      "notes": "Portrait with brand-statement caption live on /philosophy 'Behind r352' section: lime block with portrait and overlay caption 'The work speaks. I don't have to.' + 'Reszek · Mallorca' — the no-face stance is now explicit positioning, implemented with mix-blend treatment as specced.",
+      "fix": ""
+    },
+    "8.1": {
+      "status": 0.5,
+      "notes": "Major iteration-2 progress verified in prerendered HTML: home now carries 6 JSON-LD blocks (Person, WebSite, Organization, ProfessionalService, Organization with Review+AggregateRating, FAQPage) — the SEO.tsx helmet fragment bug is fixed; /services has Service; /process has HowTo; /glossary DefinedTermSet; /faq FAQPage; and all 7 prerendered /journal articles ship BlogPosting+Article. Remaining gap against the pass criteria ('ALL page types have appropriate schema'): the 10 newly prerendered /work case pages have NO Article/CreativeWork JSON-LD — top-level types are only the sitewide Person/WebSite/Organization (verified across work/sonova, archicom, benefit-systems, caterelo, dawid-podsiadlo). 4 of 5 required page types complete; case studies still missing.",
+      "fix": "Add Article (or CreativeWork/Case-study) JSON-LD to the 10 /work/:slug prerendered pages — same pattern as the journal BlogPosting injection."
+    },
+    "8.2": {
+      "status": 1,
+      "notes": "Re-verified in fresh evidence: /llms.txt present and current — opens with the category line ('Category: loop architecture for design ops', now matching the new H1 verbatim in territory), retains brand description, contrarian thesis, r3loop summary, proprietary vocabulary (including a dedicated 'Loop architecture for design ops' entry), canonical URLs, founder identification, and citation guidance.",
+      "fix": ""
+    },
+    "8.3": {
+      "status": 1,
+      "notes": "Redirect discipline complete: vercel.json carries permanent redirects for /framework → /process AND the new /journal/2 → /journal and /journal/3 → /journal — the baseline's only identified gap is closed. Sitemap contains no dead URLs.",
+      "fix": ""
+    },
+    "8.4": {
+      "status": 0.5,
+      "notes": "Improved but not 100%: one JPEG still ships in the bundle (dist/assets/*.jpeg ×1), and the new philosophy portrait is a PNG (reszek-glass-portrait-D9jlhr83.png) rather than WebP. loading=\"lazy\" coverage improved (7 on home, 1 on philosophy — including the new portrait) but most below-fold imagery remains JS-injected with unverified lazy behavior.",
+      "fix": "Convert the remaining JPEG and the reszek-glass-portrait PNG to WebP at 80% quality; audit JS-mounted images for IntersectionObserver lazy mounting."
+    },
+    "8.5": {
+      "status": 1,
+      "notes": "Sitemap grew 38 → 39 in lockstep with content: /journal/10 added (article id:10 exists in the data bundle), /journal/2 and /journal/3 correctly absent (now 301s), /framework still absent. All 39 URLs resolve to live routes (18 prerendered + work/journal/services SPA routes).",
+      "fix": ""
+    },
+    "9.1": {
+      "status": 1,
+      "notes": "Waitlist is LIVE on /process: email capture form (type=email, required, 'Reserve access'), playbook_waitlist_signup Plausible event wired in Process-DsaSQqqs.js, mailto:hello@r352.com fallback in the submit handler, and pricing teaser visible ('First 100 on the waitlist get the founding price €1500'). All 4 required components verified in build.",
+      "fix": ""
+    },
+    "9.2": {
+      "status": 1,
+      "notes": "Dual-anchor pricing live exactly as specced: 'Founding access €1500' (text-3xl/4xl bold, lime label) vs 'Standard launch €2000' (opacity-50, line-through decoration-1, dimmed). Urgency framing: 'First 100 on the waitlist get the founding price.'",
+      "fix": ""
+    },
+    "9.3": {
+      "status": 1,
+      "notes": "The filter statement is published verbatim as the Playbook tagline on /process: 'For teams that don't need us in the room — they need a system we can hand off.' — matched by the product's contents (output contracts, decision gates, AI prompts, governance templates), honestly filtering fit from non-fit.",
+      "fix": ""
+    },
+    "9.4": {
+      "status": 1,
+      "notes": "8-item inventory live in a 2-col grid (ul.grid.grid-cols-2 verified): 8 steps in depth · Output contracts per step · Decision gates + KPIs · Brief templates · Quality review checklists · AI prompt library · Governance frameworks · 8 case-study minis. Buyer counts value before the price anchor below it.",
+      "fix": ""
+    },
+    "9.5": {
+      "status": 1,
+      "notes": "Step→product map published as journal article id 10 'From methodology to product: mapping r3loop steps to tools' (June 2026, in sitemap, linked from /journal): maps Diagnose, Standardize → Brief Assistant (×2 mentions), Measure → KPI dashboard (×2), and ties regional.fit (×2) and Caterelo (×5) to their source steps — ≥3 steps with standalone product form, exactly the prescribed fix.",
+      "fix": ""
+    },
+    "10.1": {
+      "status": 0.5,
+      "notes": "On-site cadence improved but below bar: /journal now lists 7 posts (added id 10), with 3 published in June 2026 — recent pace ≈3/month — but the 90-day window (Mar 12–Jun 10) holds ~5 posts ≈ 0.4/week vs the ≥1/week criterion. LinkedIn (primary channel) cadence remains unverifiable on-site; partial credit capped at 0.5 per off-site rule.",
+      "fix": "Sustain ≥1 journal post/week or evidence the 2×/week LinkedIn arc (mirror posts to /journal or log publishing history into the evidence pack)."
+    },
+    "10.2": {
+      "status": 1,
+      "notes": "Mix still POV-dominant (≥50%): 5 of 7 posts are POV/manifesto; the new article 10 adds the first PROOF-type post (own products as evidence of methodology), improving the previously absent Proof share toward the 20-30% target.",
+      "fix": ""
+    },
+    "10.3": {
+      "status": 0,
+      "notes": "Still no on-site evidence of first-mover monitoring: no leader-response post in /journal (article 10 is a step→product piece, not a claim response), no alerts infrastructure or response template detectable from the build. Requires off-site setup and confirmation.",
+      "fix": "Stand up RSS/X alerts for 5-10 design-ops/AI leaders with a 24h response SLA and one pre-built response template citing r3loop; log the setup in the repo so the evidence collector can verify it."
+    },
+    "10.4": {
+      "status": 1,
+      "notes": "Channel concentration fixed on-site: footer now lists only LinkedIn + Email (Instagram and YouTube removed — 0 matches in dist/index.html), llms.txt names LinkedIn as the authority link, and the email channel now has a real owned asset (Playbook waitlist). Two dominant channels as recommended; ongoing activity consistency is off-site.",
+      "fix": ""
+    },
+    "10.5": {
+      "status": 0.5,
+      "notes": "First owned-audience asset is live: the Q4 Playbook waitlist on /process captures emails with the founding-price incentive ('First 100... €1500') and playbook_waitlist_signup tracking. But it is a single product waitlist, not yet a newsletter with a lead-magnet flow, and list growth is unverifiable from the build — 0.5 cap per off-site rule.",
+      "fix": "Wire the waitlist to an ESP, add one lead magnet (free mini-diagnostic or 1-page r3loop canvas) feeding the same list, and report list size in the evidence pack."
+    }
+  }
+}

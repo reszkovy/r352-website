@@ -191,7 +191,7 @@ export function SEO({
     "review": [
       {
         "@type": "Review",
-        "author": { "@type": "Person", "name": "Magdalena Rodak" },
+        "author": { "@type": "Person", "name": "Alina Sztoch" },
         "reviewBody": "The communication is seamless, and their commitment to quality translates directly into our business results.",
         "reviewRating": { "@type": "Rating", "ratingValue": "5" }
       },
@@ -209,7 +209,7 @@ export function SEO({
       },
       {
         "@type": "Review",
-        "author": { "@type": "Person", "name": "Alina Sztoch" },
+        "author": { "@type": "Person", "name": "Magdalena Rodak" },
         "reviewBody": "They are proactive, transparent, and truly care about the outcome. A reliable partner for any scale.",
         "reviewRating": { "@type": "Rating", "ratingValue": "5" }
       },

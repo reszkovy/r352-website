@@ -1,8 +1,10 @@
+import { useEffect, useState } from "react";
 import { Reveal } from "@/app/components/ui/Reveal";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
 import { R3LoopBadge } from "@/app/components/ui/R3LoopBadge";
+import { LoopPath } from "@/app/components/ui/LoopPath";
 
 /**
  * ServicesList — unified system section on Home.
@@ -82,6 +84,32 @@ export function ServicesList() {
   const { language } = useLanguage();
   const lang = language as Lang;
 
+  // Scene 2 — "the r3loop draws itself". Starts static (full step grid in the
+  // initial DOM for prerender/SEO); upgrades to the scroll-scrubbed loop only
+  // after mount, on wide viewports, with motion allowed and no webdriver.
+  const [kineticLoop, setKineticLoop] = useState(false);
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return;
+    const decide = () => {
+      const reduced = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+      const bot = !!(navigator as Navigator & { webdriver?: boolean })
+        .webdriver;
+      const wide = window.matchMedia("(min-width: 1024px)").matches;
+      setKineticLoop(!reduced && !bot && wide);
+    };
+    decide();
+    const mqMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const mqWidth = window.matchMedia("(min-width: 1024px)");
+    mqMotion.addEventListener("change", decide);
+    mqWidth.addEventListener("change", decide);
+    return () => {
+      mqMotion.removeEventListener("change", decide);
+      mqWidth.removeEventListener("change", decide);
+    };
+  }, []);
+
   return (
     <section className="py-32 md:py-40 border-t border-white/5">
       <div className="max-w-[1800px] mx-auto px-8 md:px-12">
@@ -155,10 +183,13 @@ export function ServicesList() {
           ))}
         </div>
 
-        {/* ─── 8-STEP PROCESS STRIP ─── */}
-        <Reveal>
-          <div className="border-t border-white/10 pt-12 md:pt-16 mb-16">
-            {/* 8-step strip header — 12-col 8+4 asymmetric */}
+        {/* ─── 8-STEP PROCESS STRIP — Scene 2: the r3loop draws itself.
+            Kinetic (lg+, motion allowed): sticky scene where a continuous SVG
+            path scrubs through all 8 nodes and closes the loop back into 01.
+            Static (initial render / bots / reduced motion / <1024px): the
+            original 8-step grid — full step names always in the DOM. ─── */}
+        {(() => {
+          const stripHeader = (
             <div className="grid grid-cols-12 gap-6 md:gap-8 items-end mb-12">
               <div className="col-span-12 md:col-span-8">
                 <div className="flex items-center gap-3 mb-3">
@@ -199,21 +230,45 @@ export function ServicesList() {
                 )}
               </p>
             </div>
+          );
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-6 md:gap-4">
-              {PROCESS_STEPS.map((step, i) => (
-                <Reveal key={step.num} delay={0.05 + i * 0.04}>
-                  <Link href="/process" className="flex flex-col gap-2 group cursor-pointer">
-                    <span className="font-display text-xs text-[#D4FF00]">{step.num}</span>
-                    <span className="text-base font-bold tracking-tight text-white leading-tight group-hover:text-[#D4FF00] transition-colors duration-300">
-                      {step[lang]}
-                    </span>
-                  </Link>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </Reveal>
+          if (kineticLoop) {
+            return (
+              <div className="border-t border-white/10 mb-16">
+                <LoopPath
+                  steps={PROCESS_STEPS.map((s) => ({ num: s.num, label: s[lang] }))}
+                  closingLabel={
+                    lang === "pl"
+                      ? "pętla się domyka — Iterate wraca do 01 Diagnose"
+                      : "the loop closes — Iterate feeds back into 01 Diagnose"
+                  }
+                >
+                  {stripHeader}
+                </LoopPath>
+              </div>
+            );
+          }
+
+          return (
+            <Reveal>
+              <div className="border-t border-white/10 pt-12 md:pt-16 mb-16">
+                {stripHeader}
+                <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-6 md:gap-4">
+                  {PROCESS_STEPS.map((step, i) => (
+                    <Reveal key={step.num} delay={0.05 + i * 0.04}>
+                      <Link href="/process" className="flex flex-col gap-2 group cursor-pointer">
+                        <span className="font-display text-xs text-[#D4FF00]">{step.num}</span>
+                        <span className="text-base font-bold tracking-tight text-white leading-tight group-hover:text-[#D4FF00] transition-colors duration-300">
+                          {step[lang]}
+                        </span>
+                      </Link>
+                    </Reveal>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          );
+        })()}
 
         {/* ─── DUAL CTAs ─── */}
         <Reveal delay={0.4}>
