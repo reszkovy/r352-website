@@ -7,6 +7,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
+import { Helmet } from "react-helmet-async";
 
 interface ServiceCard {
   title: string;
@@ -16,6 +17,64 @@ interface ServiceCard {
   whats_inside?: string[];    // sub-detail (lives on /deliverables, not duplicated here)
   best_for?: string;          // 1-line audience filter shown after output
 }
+
+// ─── Pre-purchase FAQ ─────────────────────────────────────────────────
+// The five questions a buyer asks before committing to any of the five
+// engagement models. Answers use ONLY facts already published on this page
+// and /faq (pricing ranges, guarantees, timelines, handoff scope).
+// Rendered below EngagementModels + mirrored as FAQPage JSON-LD in <Helmet>.
+const SERVICES_FAQ: { q: { en: string; pl: string }; a: { en: string; pl: string } }[] = [
+  {
+    q: {
+      en: "What's the difference between the five engagement models?",
+      pl: "Czym różni się pięć modeli współpracy?",
+    },
+    a: {
+      en: "They map to problem maturity. Diagnostic (€2k, 5 working days) finds the problem. Sprint (from €15k, 4–6 weeks, fixed scope) ships one working part of the system. Retainer (from €7k/mo, 30-day notice) covers ongoing production. Enterprise Sprint (from €55k, 12–16 weeks) implements a full Creative Operating System for multi-location organizations. Operating Partner (from €9.5k/mo, 12-month minimum) is an embedded strategic role. If several fit, start with the smallest engagement.",
+      pl: "Mapują się na dojrzałość problemu. Diagnostic (€2k, 5 dni roboczych) znajduje problem. Sprint (od €15k, 4–6 tygodni, fixed scope) dostarcza jedną działającą część systemu. Retainer (od €7k/mc, 30-day notice) pokrywa bieżącą produkcję. Enterprise Sprint (od €55k, 12–16 tygodni) wdraża pełny Creative Operating System dla organizacji multi-location. Operating Partner (od €9.5k/mc, 12-miesięczne minimum) to embedded rola strategiczna. Jeśli pasuje kilka — zacznij od najmniejszego engagementu.",
+    },
+  },
+  {
+    q: {
+      en: "What if the Diagnostic doesn't work for us?",
+      pl: "Co jeśli Diagnostic u nas nie zadziała?",
+    },
+    a: {
+      en: "The Diagnostic carries a 60-day money-back guarantee: if the recommendations are not actionable within 60 days, you get your money back. There's also no commitment to build — you receive a written report with root causes and a prioritized action plan, and you can run the fixes yourself or engage us for the next phase.",
+      pl: "Diagnostic ma 60-day money-back guarantee: jeśli rekomendacje nie są actionable w ciągu 60 dni, dostajesz zwrot pieniędzy. Nie ma też zobowiązania do budowy — dostajesz pisemny raport z root causes i spriorytetyzowanym action planem, a fixy możesz wdrożyć samodzielnie albo zaangażować nas do kolejnej fazy.",
+    },
+  },
+  {
+    q: {
+      en: "How fast can we start?",
+      pl: "Jak szybko możemy wystartować?",
+    },
+    a: {
+      en: "The Diagnostic starts with a 60-minute kickoff, scheduled within 1–2 weeks, and runs 5 working days. A Sprint starts from a scoping call and delivers in 4–6 weeks — versus a typical 12–16 weeks in-house. Every engagement is scoped upfront, so the timeline is fixed before kickoff, not discovered along the way.",
+      pl: "Diagnostic zaczyna się od 60-minutowego kickoffu, planowanego w 1–2 tygodnie, i trwa 5 dni roboczych. Sprint startuje od scoping callu i dostarcza w 4–6 tygodni — versus typowe 12–16 tygodni in-house. Każdy engagement jest scope'owany z góry, więc timeline jest ustalony przed kickoffem, nie odkrywany po drodze.",
+    },
+  },
+  {
+    q: {
+      en: "Are the prices fixed?",
+      pl: "Czy ceny są fixed?",
+    },
+    a: {
+      en: "The Diagnostic is a fixed fee: €2k for 5 working days. The other models have public starting points — Sprint from €15k, Retainer from €7k/mo, Enterprise Sprint from €55k, Operating Partner from €9.5k/mo — scoped individually after a scoping call. Final pricing depends on scope, location count and implementation depth, and is set before kickoff, not along the way. All amounts are net.",
+      pl: "Diagnostic ma fixed fee: €2k za 5 dni roboczych. Pozostałe modele mają jawne punkty startowe — Sprint od €15k, Retainer od €7k/mc, Enterprise Sprint od €55k, Operating Partner od €9.5k/mc — scope'owane indywidualnie po scoping callu. Finalna cena zależy od zakresu, liczby lokalizacji i głębokości wdrożenia, i jest ustalana przed kickoffem, nie po drodze. Wszystkie kwoty netto.",
+    },
+  },
+  {
+    q: {
+      en: "What do we actually keep after the engagement ends?",
+      pl: "Co faktycznie zostaje u nas po zakończeniu współpracy?",
+    },
+    a: {
+      en: "A complete deliverable, not a pitch deck. Sprint handoff includes everything your team needs to run the system forward. Enterprise Sprint adds complete system documentation, team training, and a 90-day transition plan. The deliverables are working tools your team uses after we're gone — you buy the system, not the hours.",
+      pl: "Kompletny deliverable, nie pitch deck. Handoff Sprintu zawiera wszystko, czego Wasz zespół potrzebuje, żeby prowadzić system dalej. Enterprise Sprint dodaje pełną dokumentację systemu, szkolenie zespołu i 90-dniowy plan przejściowy. Deliverables to działające narzędzia, których zespół używa po naszym wyjściu — kupujecie system, nie godziny.",
+    },
+  },
+];
 
 export function Services() {
   const { t, language } = useLanguage();
@@ -29,8 +88,28 @@ export function Services() {
   // Active state for the accordion — null = all collapsed by default
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
+  // Explicit expanded-state mirror for aria-expanded on the FAQ <details>
+  // (same Safari/VoiceOver hardening pattern as FAQ.tsx).
+  const [openFaq, setOpenFaq] = useState<Record<number, boolean>>({});
+
   // If cards are not loaded yet, don't crash
   if (!cards.length) return null;
+
+  // FAQPage JSON-LD — mirrors the on-page pre-purchase FAQ section below
+  // (schema/content parity). react-helmet-async does not render <script>
+  // inside fragments — it must be a direct child of <Helmet> (see Process.tsx).
+  const servicesFaqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": SERVICES_FAQ.map((item) => ({
+      "@type": "Question",
+      "name": item.q[language],
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.a[language],
+      },
+    })),
+  };
 
   const getPillarTags = (index: number) => {
     switch (index) {
@@ -46,6 +125,11 @@ export function Services() {
 
   return (
     <PageTransition className="pb-32 px-8 md:px-12 max-w-[1800px] mx-auto min-h-screen">
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(servicesFaqSchema)}
+        </script>
+      </Helmet>
 
       {/* ─── Strategy — editorial opener, sets the WHY before WHAT ─── */}
       <SectionWatermark number="01" align="right">
@@ -404,6 +488,76 @@ export function Services() {
       <SectionWatermark number="03" align="right">
         <EngagementModels />
       </SectionWatermark>
+
+      {/* ─── Pre-purchase FAQ — buyer questions before committing.
+          Placed directly after engagement models & pricing so objections
+          (guarantee, start speed, fixed pricing, handoff) are answered at
+          the exact moment they form. Native <details>/<summary> in the
+          same pattern as FAQ.tsx; mirrored by the FAQPage JSON-LD in the
+          <Helmet> at the top of this component. ─── */}
+      <section className="mt-32 md:mt-40 border-t border-neutral-200 dark:border-white/10 pt-16 md:pt-20">
+        <Reveal>
+          <div className="grid grid-cols-12 gap-6 md:gap-10 mb-14">
+            <div className="col-span-12 md:col-span-4">
+              <span className="text-[11px] uppercase tracking-[2px] text-neutral-500 dark:text-[#D4FF00] font-display mb-4 block">
+                {language === "pl" ? "04 · FAQ" : "04 · FAQ"}
+              </span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[1.05]">
+                {language === "pl" ? (
+                  <>Zanim się<br />zdecydujesz.</>
+                ) : (
+                  <>Before you<br />commit.</>
+                )}
+              </h2>
+            </div>
+            <p className="col-span-12 md:col-span-8 md:pt-2 text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty] max-w-3xl">
+              {language === "pl"
+                ? "Pięć pytań, które kupujący zadają przed wyborem modelu — różnice, gwarancja, start, ceny i co zostaje po zakończeniu."
+                : "The five questions buyers ask before choosing a model — differences, guarantee, start speed, pricing, and what you keep when it ends."}
+            </p>
+          </div>
+
+          <div className="border-t border-neutral-200 dark:border-white/10 max-w-4xl">
+            {SERVICES_FAQ.map((item, i) => (
+              <Reveal key={item.q.en} delay={i * 0.04}>
+                <details
+                  className="group border-b border-neutral-200 dark:border-white/10 py-7 md:py-8 [&_summary::-webkit-details-marker]:hidden"
+                  onToggle={(e) =>
+                    setOpenFaq((prev) => ({
+                      ...prev,
+                      [i]: (e.currentTarget as HTMLDetailsElement).open,
+                    }))
+                  }
+                >
+                  <summary
+                    className="flex items-start gap-6 cursor-pointer list-none select-none"
+                    aria-expanded={!!openFaq[i]}
+                    aria-controls={`services-faq-panel-${i}`}
+                  >
+                    <span className="font-display text-xs text-[#D4FF00] tracking-[0.2em] pt-2 shrink-0 w-8">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="flex-1 text-xl md:text-2xl font-bold tracking-tight text-neutral-900 dark:text-white leading-snug group-hover:text-[#D4FF00] transition-colors duration-300">
+                      {item.q[language]}
+                    </span>
+                    <span
+                      className="text-[#D4FF00] text-3xl leading-none pt-1 shrink-0 transition-transform duration-300 group-open:rotate-45"
+                      aria-hidden="true"
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <div id={`services-faq-panel-${i}`} className="mt-5 pl-14 pr-4 md:pr-12">
+                    <p className="text-base md:text-[17px] text-neutral-700 dark:text-neutral-300 leading-relaxed [text-wrap:pretty]">
+                      {item.a[language]}
+                    </p>
+                  </div>
+                </details>
+              </Reveal>
+            ))}
+          </div>
+        </Reveal>
+      </section>
 
       {/* CTA */}
       <section className="mt-32 border-t border-neutral-200 dark:border-white/10 pt-24 pb-32 relative z-50 pointer-events-auto">

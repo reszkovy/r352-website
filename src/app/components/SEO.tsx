@@ -58,6 +58,8 @@ export function SEO({
       "Design Governance"
     ],
     "sameAs": [
+      // TODO(reszek): dodać GitHub/X/inne profile dla grafu encji (entity graph) —
+      // każdy dodatkowy zweryfikowany profil wzmacnia rozpoznanie Person w LLM/Knowledge Graph.
       "https://www.linkedin.com/in/przemyslawreszka/"
     ]
   };

@@ -9,8 +9,12 @@ import { useReducedMotion } from "@/app/hooks/useReducedMotion";
  * "szum" / UI sound 3-bar equalizer) per client direction 2026-06-10.
  *
  * States:
- *   - idle (paused) → bars resting at low height, low opacity. Pulse on hover.
- *   - playing       → bars EQ-bounce in staggered loop
+ *   - idle (paused) → soft outline speaker icon with rounded sound waves
+ *                     (warm vector style per client direction 2026-06-10 —
+ *                     the resting bars read as a collapsed menu). Waves
+ *                     "breathe" gently on hover.
+ *   - playing       → bars EQ-bounce in staggered loop (unchanged)
+ *   - idle ↔ playing → crossfade + scale, ease cubic-bezier(0.22, 1, 0.36, 1)
  *
  * Tooltip motion is hand-rolled from the ChipTooltip pattern (AgencyHero.tsx)
  * — fade + slide(6px) + scale(0.97) + blur, ease cubic-bezier(0.22, 1, 0.36, 1).
@@ -18,9 +22,10 @@ import { useReducedMotion } from "@/app/hooks/useReducedMotion";
  * with arrow pointer + max-width); we replicate only the motion language.
  *
  * Accessibility:
- *   - aria-label "Toggle background music"
+ *   - aria-label "Play ambient soundtrack" (idle) / "Pause ambient soundtrack" (playing)
  *   - aria-pressed reflects play state
- *   - prefers-reduced-motion: bars animate but with reduced delta + slower
+ *   - prefers-reduced-motion: bars animate but with reduced delta + slower;
+ *     idle hover breathing is disabled
  */
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
@@ -38,7 +43,9 @@ export function SoundWaveWidget({ className = "" }: { className?: string }) {
   const [hovered, setHovered] = useState(false);
 
   const animate = isPlaying && !reduced;
-  const idleHeight = isPlaying ? "10px" : hovered ? "8px" : "4px";
+  const breathe = !isPlaying && hovered && !reduced;
+  const crossfade =
+    "opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1), transform 0.4s cubic-bezier(0.22, 1, 0.36, 1)";
 
   return (
     <span className={`relative inline-block ${className}`}>
@@ -55,7 +62,9 @@ export function SoundWaveWidget({ className = "" }: { className?: string }) {
         }}
         onFocus={() => setTooltipOpen(true)}
         onBlur={() => setTooltipOpen(false)}
-        aria-label="Toggle background music"
+        aria-label={
+          isPlaying ? "Pause ambient soundtrack" : "Play ambient soundtrack"
+        }
         aria-pressed={isPlaying}
         aria-describedby={tooltipId}
         className={`inline-flex items-center justify-center w-7 h-7 transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] outline-none focus-visible:ring-1 focus-visible:ring-[#D4FF00]/60 ${
@@ -63,29 +72,89 @@ export function SoundWaveWidget({ className = "" }: { className?: string }) {
         }`}
       >
         <span
-          className="flex items-end gap-[3px] h-[16px]"
+          className="relative block w-[20px] h-[20px]"
           aria-hidden="true"
         >
-          {Array.from({ length: BAR_COUNT }, (_, i) => (
-            <span
-              key={i}
-              className="block w-[3px] rounded-[1px] bg-current"
-              style={{
-                height: animate ? undefined : idleHeight,
-                animation: animate
-                  ? `r352-soundwave ${reduced ? "1.6s" : "0.9s"} ease-in-out ${BAR_DELAYS[i] ?? 0}s infinite alternate`
-                  : "none",
-                transition: "height 0.4s cubic-bezier(0.22, 1, 0.36, 1)",
-                opacity: isPlaying ? 1 : hovered ? 0.85 : 0.55,
-              }}
-            />
-          ))}
+          {/* IDLE — soft outline speaker + rounded sound waves */}
+          <span
+            className="absolute inset-0 flex items-center justify-center"
+            style={{
+              opacity: isPlaying ? 0 : hovered ? 1 : 0.8,
+              transform: isPlaying ? "scale(0.55)" : "scale(1)",
+              transition: crossfade,
+              pointerEvents: "none",
+            }}
+          >
+            <svg
+              width="19"
+              height="19"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              {/* Speaker body — rounded, friendly outline */}
+              <path d="M11 6.9 7.6 9.6H5.7c-.7 0-1.2.5-1.2 1.2v2.4c0 .7.5 1.2 1.2 1.2h1.9l3.4 2.7c.5.4 1.3 0 1.3-.6V7.5c0-.6-.8-1-1.3-.6Z" />
+              {/* Sound waves — breathe on hover */}
+              <path
+                d="M15.2 9.9a3.2 3.2 0 0 1 0 4.2"
+                style={{
+                  transformBox: "fill-box",
+                  transformOrigin: "left center",
+                  animation: breathe
+                    ? "r352-wave-breathe 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0s infinite"
+                    : "none",
+                }}
+              />
+              <path
+                d="M17.7 7.9a6.4 6.4 0 0 1 0 8.2"
+                style={{
+                  transformBox: "fill-box",
+                  transformOrigin: "left center",
+                  animation: breathe
+                    ? "r352-wave-breathe 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.18s infinite"
+                    : "none",
+                }}
+              />
+            </svg>
+          </span>
+
+          {/* PLAYING — 4-bar EQ (unchanged animation) */}
+          <span
+            className="absolute inset-0 flex items-end justify-center gap-[3px] py-[2px]"
+            style={{
+              opacity: isPlaying ? 1 : 0,
+              transform: isPlaying ? "scale(1)" : "scale(0.55)",
+              transition: crossfade,
+              pointerEvents: "none",
+            }}
+          >
+            {Array.from({ length: BAR_COUNT }, (_, i) => (
+              <span
+                key={i}
+                className="block w-[3px] rounded-[1px] bg-current"
+                style={{
+                  height: animate ? undefined : "10px",
+                  animation: animate
+                    ? `r352-soundwave ${reduced ? "1.6s" : "0.9s"} ease-in-out ${BAR_DELAYS[i] ?? 0}s infinite alternate`
+                    : "none",
+                  transition: "height 0.4s cubic-bezier(0.22, 1, 0.36, 1)",
+                }}
+              />
+            ))}
+          </span>
         </span>
         <style>{`
           @keyframes r352-soundwave {
             0%   { height: 4px; }
             50%  { height: 12px; }
             100% { height: 16px; }
+          }
+          @keyframes r352-wave-breathe {
+            0%, 100% { opacity: 0.65; transform: scale(1); }
+            50%      { opacity: 1;    transform: scale(1.12); }
           }
         `}</style>
       </button>

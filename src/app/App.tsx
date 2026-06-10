@@ -157,7 +157,8 @@ function AppContent() {
   const getPageSEO = (path: string): { title: string; description: string; ogImage?: string; article?: { title: string; date: string; category: string } } => {
     if (path === "/work") return {
       title: "Work — r352 | Selected projects & case studies",
-      description: "See how we help multi-location brands like Sonova, Benefit Systems, and Kubota ship faster with scalable design systems and delivery workflows."
+      description: "See how we help multi-location brands like Sonova, Benefit Systems, and Kubota ship faster with scalable design systems and delivery workflows.",
+      ogImage: "https://www.r352.com/og/work.png"
     };
     if (path.startsWith("/work/")) {
       const projectId = path.replace("/work/", "");
@@ -165,7 +166,7 @@ function AppContent() {
       if (project) return {
         title: `${project.client}: ${project.title} — r352 Case Study`,
         description: project.description?.en?.substring(0, 155) || `How r352 helped ${project.client} build scalable design systems and delivery workflows.`,
-        ogImage: project.coverImage?.startsWith('http') ? project.coverImage : `https://www.r352.com${project.coverImage}`
+        ogImage: `https://www.r352.com/og/case-${projectId}.png`
       };
       return {
         title: "Case Study — r352 | Project Details",
@@ -174,7 +175,8 @@ function AppContent() {
     }
     if (path === "/services") return {
       title: "Services — r352 | Strategy, Operating System, Design & Build",
-      description: "Four layers, one system. Strategy decides what to ship. Operating System makes work predictable. Design & Production ships the assets. Build & Optimize handles implementation. Delivered through r3loop."
+      description: "Five engagement models, from a €2k five-day diagnostic to an embedded operating partner. Strategy to delivery, run through the r3loop methodology.",
+      ogImage: "https://www.r352.com/og/services.png"
     };
     if (path === "/services/operating-system") return {
       title: "Operating System — r352 | Brand Standards & Delivery Infrastructure",
@@ -189,18 +191,21 @@ function AppContent() {
       description: "We design and build digital products, landing pages, and interfaces that convert — grounded in data and user research."
     };
     if (path === "/process") return {
-      title: "r3loop — r352's 8-step methodology for operational design systems",
-      description: "r3loop is r352's branded methodology — 8 steps that turn operational chaos into a working system. Diagnose, Map, Standardize, Build, Govern, Ship, Measure, Iterate. Same framework for every project, modified depth not structure."
+      title: "r3loop — r352 | The 8-step design ops methodology",
+      description: "r3loop is r352's 8-step methodology: Diagnose, Map, Standardize, Build, Govern, Ship, Measure, Iterate. Same sequence every project, scaled in depth.",
+      ogImage: "https://www.r352.com/og/process.png"
     };
     if (path === "/glossary") return {
-      title: "Glossary — r352 | Vocabulary we operate with",
-      description: "Every distinctive r352 term defined: r3loop, design ops, multi-location brand operations, master/variant/pre-production gates, brief volume × decision velocity, operator vs agency, and more. The source of truth for our vocabulary."
+      title: "Glossary — r352 | Design ops terminology defined",
+      description: "Design ops terminology defined: r3loop, master/variant gates, brief volume, decision velocity, operator vs agency — the vocabulary r352 operates with.",
+      ogImage: "https://www.r352.com/og/glossary.png"
     };
     // /framework SEO entry removed — page deleted, route 301-redirected to /process
     // via vercel.json. r3loop on /process is now the single methodology page.
     if (path === "/faq") return {
       title: "FAQ — r352 | Common questions answered",
-      description: "What is r3loop? Who does r352 work with? How is r352 different from a creative agency? Engagement models, founder background — answered."
+      description: "What is r3loop? Who does r352 work with? How is r352 different from a creative agency? Engagement models, founder background — answered.",
+      ogImage: "https://www.r352.com/og/faq.png"
     };
     if (path === "/privacy") return {
       title: "Privacy Policy — r352 | How we handle your data",
@@ -211,33 +216,33 @@ function AppContent() {
       description: "Manage which cookies r352 uses. Necessary cookies always on; analytics and marketing fully under your control. Strict opt-in by default."
     };
     if (path === "/industries") return {
-      title: "Industries — r352 | Multi-location brand operations specialists",
-      description: "r352 builds operating systems behind brand and design delivery for fitness networks, real estate developers, retail franchises, and health service networks.",
+      title: "Industries — r352 | Multi-location brand operations",
+      description: "Operating systems behind brand and design delivery for fitness networks, real estate developers, retail franchises, and health service networks.",
       ogImage: "https://www.r352.com/og/industries.png"
     };
     if (path === "/industries/fitness-wellness") return {
-      title: "Fitness & Wellness Networks — r352 | Creative delivery across locations",
+      title: "Fitness & Wellness — r352 | Design ops for club networks",
       description: "r352 helps fitness and wellness networks turn campaign production into a repeatable operating system. Central brand standards, local execution speed.",
       ogImage: "https://www.r352.com/og/industry-fitness-wellness.png"
     };
     if (path === "/industries/real-estate") return {
-      title: "Real Estate Developers — r352 | Campaign production systems",
+      title: "Real Estate — r352 | Campaign systems for developers",
       description: "r352 helps real estate teams turn investment launch campaigns into a repeatable operating system. Templates, QA gates, rollout-ready delivery.",
       ogImage: "https://www.r352.com/og/industry-real-estate.png"
     };
     if (path === "/industries/retail-franchise") return {
-      title: "Retail & Franchise Operators — r352 | Brand consistency across locations",
+      title: "Retail & Franchise — r352 | Brand consistency at scale",
       description: "r352 helps retail chains and franchise networks balance central brand governance with local execution. Templates, approval gates, governance system.",
       ogImage: "https://www.r352.com/og/industry-retail-franchise.png"
     };
     if (path === "/industries/health-service-networks") return {
-      title: "Health & Service Networks — r352 | Multi-market brand delivery systems",
+      title: "Health & Service Networks — r352 | Brand delivery systems",
       description: "r352 helps health and service networks deliver consistent customer-facing communication across local markets. Standards, templates, scale.",
       ogImage: "https://www.r352.com/og/industry-health-service-networks.png"
     };
     if (path === "/philosophy") return {
-      title: "Philosophy — r352 | How we think about design & delivery",
-      description: "Process over aesthetics. Systems over one-offs. Learn how r352 approaches design as a delivery discipline, not a creative exercise."
+      title: "Philosophy — r352 | Operator, not agency",
+      description: "Operator, not agency. Why r352 builds working systems instead of selling billable hours — process over aesthetics, systems over one-offs."
     };
     if (path === "/deliverables") return {
       title: "Deliverables — r352 | What you actually get",
@@ -245,7 +250,8 @@ function AppContent() {
     };
     if (path === "/journal") return {
       title: "Journal — r352 | Insights on design operations & delivery",
-      description: "Articles on design operations, delivery workflows, brand systems, and how multi-location organizations can scale their creative output."
+      description: "Articles on design operations, delivery workflows, brand systems, and how multi-location organizations can scale their creative output.",
+      ogImage: "https://www.r352.com/og/journal.png"
     };
     if (path.startsWith("/journal/")) {
       const articleId = parseInt(path.replace("/journal/", ""));
@@ -255,7 +261,7 @@ function AppContent() {
         return {
           title: `${cleanTitle} — r352 Journal`,
           description: `r352 Journal: ${cleanTitle}. Insights on design operations, delivery systems, and scaling creative output for multi-location organizations.`,
-          ogImage: article.image.startsWith('http') ? article.image : `https://www.r352.com${article.image}`,
+          ogImage: `https://www.r352.com/og/article-${article.id}.png`,
           article: { title: article.title, date: article.date, category: article.category }
         };
       }
@@ -266,11 +272,18 @@ function AppContent() {
     }
     if (path === "/contact") return {
       title: "Contact — r352 | Brief, call, or write directly",
-      description: "Three paths to start: structured brief (5–18 min, 48h response), book a 30-min call, or write to hello@r352.com. For multi-location organizations ready to systemize their design operations."
+      description: "Start with a structured brief (48h response), book a 30-minute call, or write to hello@r352.com. For teams ready to systemize their design operations.",
+      ogImage: "https://www.r352.com/og/contact.png"
+    };
+    // /brief — previously fell through to the default site-wide description.
+    if (path === "/brief") return {
+      title: "Brief — r352 | Structured project intake",
+      description: "Start your project with a structured brief: 8 sections, ~26 questions, about 10 minutes. First response with engagement model and scope within 48 hours."
     };
     return {
       title: "r352 — Move fast, steady cadence.",
-      description: "Strategic design partner for multi-location organizations. From strategy to rollout-ready delivery, powered by the r3loop methodology — predictable quality and speed at scale."
+      description: "Strategic design partner for multi-location organizations. From strategy to rollout-ready delivery, powered by the r3loop methodology — predictable quality and speed at scale.",
+      ogImage: "https://www.r352.com/og/home.png"
     };
   };
 

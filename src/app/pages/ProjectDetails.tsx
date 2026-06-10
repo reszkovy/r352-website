@@ -1,4 +1,5 @@
 import { Link, useLocation } from "wouter";
+import { Helmet } from "react-helmet-async";
 import { PageTransition } from "@/app/components/ui/PageTransition";
 import { Reveal } from "@/app/components/ui/Reveal";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
@@ -157,10 +158,64 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
 
   if (!project) return null;
 
+  // ── CreativeWork JSON-LD — per-case structured data for /work/:slug ──
+  // Same local-Helmet pattern as the HowTo schema in Process.tsx. Headline +
+  // client as Organization (about) + r352 as Organization author + canonical
+  // URL per slug. Dates derived from the project's `year` field (year-only is
+  // a valid schema.org Date); "current" engagements get dateModified = build year.
+  // Metrics (project.stats) deliberately stay OUT of schema claims — numbers
+  // appear only inside the prose description, never as standalone assertions.
+  const baseUrl = "https://www.r352.com";
+  const caseUrl = `${baseUrl}/work/${project.id}`;
+  const yearMatches = String(project.year).match(/\d{4}/g);
+  const firstYear = yearMatches?.[0];
+  const lastYear = yearMatches?.[yearMatches.length - 1];
+  const isOngoing = /current/i.test(String(project.year));
+  const coverImg = (project as any).coverImage as string | undefined;
+  const caseSchema = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "headline": `${project.client}: ${project.title}`,
+    "name": project.title,
+    "url": caseUrl,
+    "inLanguage": "en",
+    "about": {
+      "@type": "Organization",
+      "name": project.client
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "r352",
+      "url": baseUrl
+    },
+    // @ts-ignore — description is { en, pl } on every project
+    "description": project.description?.en,
+    ...(project.category?.en ? { "genre": project.category.en } : {}),
+    ...(firstYear ? { "datePublished": firstYear } : {}),
+    ...(firstYear
+      ? { "dateModified": isOngoing ? String(new Date().getFullYear()) : (lastYear ?? firstYear) }
+      : {}),
+    ...(coverImg
+      ? { "image": coverImg.startsWith("http") ? coverImg : `${baseUrl}${coverImg}` }
+      : {}),
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": caseUrl
+    }
+  };
+  // Rendered in BOTH branches (NDA gate + full case) so structured data
+  // survives the early return for NDA-protected projects.
+  const caseSchemaHelmet = (
+    <Helmet>
+      <script type="application/ld+json">{JSON.stringify(caseSchema)}</script>
+    </Helmet>
+  );
+
   // Show NDA gate if project is protected and not yet unlocked
   if (isNDA && !ndaUnlocked) {
     return (
       <PageTransition className="min-h-screen bg-background text-white selection:bg-[#D4FF00] selection:text-black">
+        {caseSchemaHelmet}
         {/* Navigation */}
         <div className="fixed top-0 left-0 w-full z-50 px-6 py-6 md:px-12 flex justify-between items-center mix-blend-difference pointer-events-none">
           <Link href="/work" className="pointer-events-auto inline-flex items-center gap-2 text-xs font-display uppercase tracking-widest text-white/50 hover:text-[#D4FF00] transition-colors duration-300">
@@ -174,7 +229,8 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
 
   return (
     <PageTransition className="min-h-screen bg-background text-white selection:bg-[#D4FF00] selection:text-black">
-      
+      {caseSchemaHelmet}
+
       {/* Navigation - Fixed or Absolute Top */}
       <div className="fixed top-0 left-0 w-full z-50 px-6 py-6 md:px-12 flex justify-between items-center mix-blend-difference pointer-events-none">
          <Link href="/work" className="pointer-events-auto inline-flex items-center gap-2 text-xs font-display uppercase tracking-widest text-white/50 hover:text-[#D4FF00] transition-colors duration-300">

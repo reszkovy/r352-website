@@ -17,10 +17,25 @@ import { useLanguage } from '@/app/context/LanguageContext';
  * overlays (10000+) so route changes don't paint over the banner mid-sweep.
  *
  * Reduced motion: skip slide-up animation entirely.
+ *
+ * Responsive: below 768px the banner renders a compact variant (short
+ * one-line copy + privacy link + single button row) capped well under
+ * 30% of viewport height so it never covers the hero on mobile. The
+ * full layout is untouched and shown from md: up.
  */
 export function ConsentBanner() {
   const { status, accept, deny } = useConsent();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+
+  // Mobile-only condensed copy (<768px). The full translations live in
+  // i18n/translations.ts — but this file is the only one we own, so the
+  // short variant is inlined here. Single sentence + privacy link keeps
+  // the banner under ~30% of a 375x667 viewport instead of covering the
+  // hero on first visit. Desktop keeps the full t('consent.banner.body').
+  const shortBody =
+    language === 'pl'
+      ? 'Cookies i analityka — strict opt-in. Nic się nie ładuje bez Twojej zgody.'
+      : 'Cookies & analytics — strict opt-in. Nothing loads until you say yes.';
   const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -89,7 +104,41 @@ export function ConsentBanner() {
           style={{ transformOrigin: 'bottom center' }}
           data-no-cursor-fx="true"
         >
-        <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-6 md:py-8 flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
+        {/* ── Mobile (<768px): compact one-liner + single button row ── */}
+        <div className="md:hidden px-5 pt-4 pb-4">
+          <p className="text-[13px] text-neutral-300 leading-snug">
+            {shortBody}{' '}
+            <Link
+              href="/privacy"
+              className="text-neutral-400 hover:text-[#D4FF00] underline underline-offset-4 decoration-white/20 hover:decoration-[#D4FF00] transition-colors duration-300 whitespace-nowrap"
+            >
+              {t('consent.banner.privacy')}
+            </Link>
+          </p>
+          <div className="flex gap-2 mt-3">
+            <button
+              type="button"
+              onClick={deny}
+              className="flex-1 inline-flex items-center justify-center px-3 py-2.5 bg-transparent text-white border border-white/30 hover:border-white/70 hover:bg-white/[0.04] transition-all duration-300 ease-out cursor-pointer"
+            >
+              <span className="text-[11px] font-display uppercase tracking-wide leading-none">
+                {t('consent.banner.deny')}
+              </span>
+            </button>
+            <button
+              type="button"
+              onClick={accept}
+              className="flex-1 inline-flex items-center justify-center px-3 py-2.5 bg-[#D4FF00] text-black hover:bg-white transition-all duration-300 ease-out cursor-pointer"
+            >
+              <span className="text-[11px] font-display uppercase tracking-wide leading-none font-medium">
+                {t('consent.banner.accept')}
+              </span>
+            </button>
+          </div>
+        </div>
+
+        {/* ── Desktop (≥768px): original full layout, unchanged ── */}
+        <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-6 md:py-8 hidden md:flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
           <div className="flex-1 min-w-0">
             <p className="text-xs md:text-sm font-display uppercase tracking-widest text-[#D4FF00] mb-2">
               {t('consent.banner.title')}

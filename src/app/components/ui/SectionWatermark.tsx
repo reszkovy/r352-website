@@ -55,7 +55,18 @@ export function SectionWatermark({
   const alignClass = align === "right" ? "right-0 md:-right-4" : "left-0 md:-left-4";
 
   return (
-    <div ref={sectionRef} className={`relative ${className}`}>
+    // `isolate` is load-bearing: it makes this wrapper its own stacking
+    // context, so the watermark's -z-10 resolves HERE — above the page
+    // background, below the section content. Without it, the negative
+    // z-index resolves against the root stacking context and the number
+    // paints BEHIND the app's bg-background div (App.tsx) → invisible.
+    // This used to "work" only while PageTransition's wrapper kept an
+    // inline transform/filter (accidental stacking context), which it now
+    // clears in onAnimationComplete to fix position:sticky — leaving the
+    // watermark hidden on fresh load until a re-render re-applied styles.
+    // isolation:isolate does NOT create a containing block, so it is safe
+    // for sticky/fixed descendants.
+    <div ref={sectionRef} className={`relative isolate ${className}`}>
       {/* Watermark — sits behind content, never receives pointer events */}
       <div
         aria-hidden

@@ -355,9 +355,35 @@ try {
       }
 
       // Capture full final HTML
-      const html = await page.evaluate(() => `<!DOCTYPE html>${document.documentElement.outerHTML}`);
+      let html = await page.evaluate(() => `<!DOCTYPE html>${document.documentElement.outerHTML}`);
 
       await page.close();
+
+      // ── De-dupe static template meta vs helmet (data-rh) ─────────
+      // The vite template ships fallback <meta description/og:*/twitter:*>
+      // tags. react-helmet-async ADDS its per-route versions (data-rh)
+      // without removing the static ones, so every prerendered page would
+      // carry TWO descriptions / og:titles — crawlers may read the first
+      // (generic) one. If a data-rh equivalent exists, strip the static tag.
+      const dedupeMeta = (h, attr, name) => {
+        const rhRe = new RegExp(`<meta[^>]*data-rh="true"[^>]*${attr}="${name}"[^>]*>|<meta[^>]*${attr}="${name}"[^>]*data-rh="true"[^>]*>`);
+        if (!rhRe.test(h)) return h; // no helmet version — keep static fallback
+        return h.replace(
+          new RegExp(`<meta(?![^>]*data-rh)[^>]*${attr}="${name}"[^>]*>\\s*`, "g"),
+          ""
+        );
+      };
+      for (const [attr, name] of [
+        ["name", "description"],
+        ["property", "og:type"], ["property", "og:site_name"],
+        ["property", "og:title"], ["property", "og:description"],
+        ["property", "og:url"], ["property", "og:image"],
+        ["property", "og:image:width"], ["property", "og:image:height"],
+        ["name", "twitter:card"], ["name", "twitter:title"],
+        ["name", "twitter:description"], ["name", "twitter:image"],
+      ]) {
+        html = dedupeMeta(html, attr, name);
+      }
 
       // ── Empty-root guard ────────────────────────────────────────
       // Never write a snapshot whose #root is empty — that would replace

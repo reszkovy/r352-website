@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import { Link, useRoute } from "wouter";
+import { Helmet } from "react-helmet-async";
 import { PageTransition } from "@/app/components/ui/PageTransition";
 import { Reveal } from "@/app/components/ui/Reveal";
 import { useLanguage } from "@/app/context/LanguageContext";
@@ -17,7 +19,8 @@ import { ArrowRight } from "lucide-react";
  *  3. r352 Approach — 8-step r3loop, tightly summarized
  *  4. Proof         — client, context, outcome stat, link to case study
  *  5. What you get  — Diagnostic deliverables for this segment
- *  6. CTA           — large repeat of primary CTA + softer fallbacks
+ *  6. FAQ           — operator questions per vertical + FAQPage JSON-LD
+ *  7. CTA           — large repeat of primary CTA + softer fallbacks
  */
 
 // ─── r3loop step content (shared across all industries) ──────────────
@@ -116,7 +119,37 @@ export function IndustryDetail() {
   const slug = params?.slug ?? "";
 
   const content: IndustryContent | undefined = industries.find((i) => i.slug === slug);
+
+  // Explicit expanded-state mirror for aria-expanded on the FAQ <details>
+  // (same Safari/VoiceOver hardening as FAQ.tsx). Hook must run before any
+  // early return to keep the hook order stable across renders.
+  const [openFaq, setOpenFaq] = useState<Record<number, boolean>>({});
+
+  // The component stays mounted when navigating between industry slugs
+  // (same route pattern), but the <details> elements re-create closed —
+  // reset the aria mirror so it can't go stale across slugs.
+  useEffect(() => {
+    setOpenFaq({});
+  }, [slug]);
+
   if (!content) return <IndustryNotFound />;
+
+  // FAQPage JSON-LD for this segment — mirrors the on-page FAQ section below
+  // (schema/content parity, Google FAQ policy). Built from the active language.
+  // NOTE: react-helmet-async does not render <script> inside fragments — the
+  // <script> must be a direct child of <Helmet> (same pattern as Process.tsx).
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": content.faq.map((item) => ({
+      "@type": "Question",
+      "name": item.q[language],
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.a[language],
+      },
+    })),
+  };
 
   // Convenience accessors — language picker repeated all over the JSX otherwise.
   const eyebrow = content.eyebrow[language];
@@ -129,6 +162,12 @@ export function IndustryDetail() {
 
   return (
     <PageTransition className="pb-32 px-8 md:px-12 max-w-[1400px] mx-auto min-h-screen">
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+      </Helmet>
+
       {/* ─── 1 · HERO ──────────────────────────────────────────────── */}
       <section className="pt-32 md:pt-40 mb-24 md:mb-32 max-w-4xl">
         <Reveal>
@@ -332,7 +371,72 @@ export function IndustryDetail() {
         </Reveal>
       </section>
 
-      {/* ─── 6 · CTA ────────────────────────────────────────────────── */}
+      {/* ─── 6 · FAQ ────────────────────────────────────────────────
+          Operator questions for this vertical, answered with on-page facts
+          only. Native <details>/<summary> (zero-JS expand, SR-friendly) in
+          the same pattern as FAQ.tsx; mirrored by FAQPage JSON-LD in the
+          local <Helmet> above so AI engines and rich results can quote it. */}
+      <section className="border-t border-neutral-200 dark:border-white/10 pt-20 md:pt-24 mb-24 md:mb-32">
+        <Reveal>
+          <div className="grid grid-cols-12 gap-6 md:gap-10 mb-14">
+            <div className="col-span-12 md:col-span-4">
+              <span className="font-display text-xs text-[#D4FF00] tracking-[0.2em] mb-3 block">
+                {language === "pl" ? "05 · FAQ" : "05 · FAQ"}
+              </span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter text-black dark:text-white leading-[1] [text-wrap:balance]">
+                {language === "pl" ? "Pytania operatorów" : "Operator questions"}
+              </h2>
+            </div>
+            <p className="col-span-12 md:col-span-8 md:pt-2 text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
+              {language === "pl"
+                ? "Pytania, które słyszymy od COO i dyrektorów sieci w tym verticalu — odpowiedzi krótkie, konkretne, z faktów."
+                : "The questions we hear from COOs and network directors in this vertical — short, specific answers, facts only."}
+            </p>
+          </div>
+
+          <div className="border-t border-neutral-200 dark:border-white/10 max-w-4xl">
+            {content.faq.map((item, i) => (
+              <Reveal key={item.q.en} delay={i * 0.04}>
+                <details
+                  className="group border-b border-neutral-200 dark:border-white/10 py-7 md:py-8 [&_summary::-webkit-details-marker]:hidden"
+                  onToggle={(e) =>
+                    setOpenFaq((prev) => ({
+                      ...prev,
+                      [i]: (e.currentTarget as HTMLDetailsElement).open,
+                    }))
+                  }
+                >
+                  <summary
+                    className="flex items-start gap-6 cursor-pointer list-none select-none"
+                    aria-expanded={!!openFaq[i]}
+                    aria-controls={`industry-faq-panel-${i}`}
+                  >
+                    <span className="font-display text-xs text-[#D4FF00] tracking-[0.2em] pt-2 shrink-0 w-8">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="flex-1 text-xl md:text-2xl font-bold tracking-tight text-black dark:text-white leading-snug group-hover:text-[#D4FF00] transition-colors duration-300">
+                      {item.q[language]}
+                    </span>
+                    <span
+                      className="text-[#D4FF00] text-3xl leading-none pt-1 shrink-0 transition-transform duration-300 group-open:rotate-45"
+                      aria-hidden="true"
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <div id={`industry-faq-panel-${i}`} className="mt-5 pl-14 pr-4 md:pr-12">
+                    <p className="text-base md:text-[17px] text-neutral-700 dark:text-neutral-300 leading-relaxed [text-wrap:pretty]">
+                      {item.a[language]}
+                    </p>
+                  </div>
+                </details>
+              </Reveal>
+            ))}
+          </div>
+        </Reveal>
+      </section>
+
+      {/* ─── 7 · CTA ────────────────────────────────────────────────── */}
       <section className="border-t border-neutral-200 dark:border-white/10 pt-24 md:pt-28">
         <Reveal>
           <div className="flex flex-col items-center text-center max-w-3xl mx-auto">

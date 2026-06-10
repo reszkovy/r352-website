@@ -7,6 +7,8 @@ import journal7Cover from "../../imports/journal-7-cover.webp"; // organic field
 import journal8Cover from "../../imports/journal-8-cover.webp"; // bold typographic chaos + contained R — "What we refuse to ship"
 // Caterelo article cover — reuse the case study cover (lime sun on Southern Europe map)
 import journal9Cover from "../../imports/caterelo/caterelo-cover.webp";
+// Article 10 cover — branded OG card (r352 branding + article title), replaces the reused Caterelo art
+import journal10Cover from "../../assets/journal-10-cover.png";
 
 export interface Article {
   id: number;
@@ -31,7 +33,7 @@ export const journalArticles: Article[] = [
     date: "June 2026",
     dateISO: "2026-06-10",
     category: "Operator Notes",
-    image: journal9Cover,
+    image: journal10Cover,
     content: `
       <p class="mb-6 text-xl leading-relaxed text-neutral-300">
         A methodology that only exists in slide decks is a liability. It depends on me being in the room, and the whole point of r3loop is to make engagements less dependent on me being in the room. <span class="text-white font-medium">So over the past two years I've been turning the steps of the loop into tools</span> — deliberately, one step at a time, wherever a step's output was structured enough to become software.
