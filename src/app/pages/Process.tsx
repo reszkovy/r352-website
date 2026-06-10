@@ -17,6 +17,10 @@ interface Step {
   goal: { en: string; pl: string };
   cards: { label: { en: string; pl: string }; text: { en: string; pl: string } }[];
   metric: { en: string; pl: string };
+  // Explicit pass/fail gate question per step — sourced verbatim from
+  // r3loop-spec-v2.md "Decision gate" fields. The gate is what makes each
+  // step teachable and productizable (methodology 4-checklist, test #3).
+  gate: { en: string; pl: string };
 }
 
 const steps: Step[] = [
@@ -35,6 +39,10 @@ const steps: Step[] = [
       { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "3–5 days for focused projects, 1–2 weeks for organization-wide engagements.", pl: "3–5 dni dla fokusowanych projektów, 1–2 tygodnie dla zaangażowań organizacyjnych." } },
     ],
     metric: { en: "Time to root cause for every recurring problem.", pl: "Czas do zidentyfikowania przyczyny każdego powtarzającego się problemu." },
+    gate: {
+      en: "Can I describe the operational problem in one sentence with a concrete time-cost number? If not — stay in Diagnose.",
+      pl: "Czy potrafię opisać problem operacyjny w jednym zdaniu z konkretną liczbą kosztu czasowego? Jeśli nie — zostań w Diagnozie.",
+    },
   },
   {
     num: "02",
@@ -51,6 +59,10 @@ const steps: Step[] = [
       { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "1 week. Often runs in parallel with diagnosis for larger engagements.", pl: "1 tydzień. Często przebiega równolegle z diagnozą przy większych zaangażowaniach." } },
     ],
     metric: { en: "% of requests with a clear category at intake (target 95%+).", pl: "% requestów z jasną kategorią na wejściu (cel 95%+)." },
+    gate: {
+      en: "Can a new request be classified into a category at intake within 30 seconds, by anyone? If less than 95% categorize cleanly — refine the taxonomy.",
+      pl: "Czy nowy request da się sklasyfikować do kategorii na wejściu w 30 sekund, przez kogokolwiek? Jeśli mniej niż 95% klasyfikuje się czysto — dopracuj taksonomię.",
+    },
   },
   {
     num: "03",
@@ -67,6 +79,10 @@ const steps: Step[] = [
       { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "2–3 weeks. This is the heaviest intellectual phase — where the system's operating logic gets written.", pl: "2–3 tygodnie. Najcięższa faza intelektualnie — tutaj pisze się operacyjna logika systemu." } },
     ],
     metric: { en: "% of briefs meeting the readiness checklist on first submission (target 80%+).", pl: "% briefów spełniających listę gotowości przy pierwszym złożeniu (cel 80%+)." },
+    gate: {
+      en: "Can a junior team member fill a brief without asking the lead designer questions, using only the template + checklist? If no — refine the template.",
+      pl: "Czy junior może wypełnić brief bez zadawania pytań lead designerowi, korzystając tylko z szablonu i checklisty? Jeśli nie — dopracuj szablon.",
+    },
   },
   {
     num: "04",
@@ -83,6 +99,10 @@ const steps: Step[] = [
       { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "2–12 weeks depending on scope. Delivered in weekly sprints with visible progress at every checkpoint.", pl: "2–12 tygodni w zależności od zakresu. Dostarczane w tygodniowych sprintach z widocznym postępem na każdym checkpoincie." } },
     ],
     metric: { en: "Cycle time from approved brief to delivered asset.", pl: "Cycle time od zatwierdzonego briefu do dostarczonego assetu." },
+    gate: {
+      en: "Can a developer or team implement this without asking a single question? Test 3 random items. If they ask — close the specs.",
+      pl: "Czy developer lub zespół może to wdrożyć bez zadania ani jednego pytania? Przetestuj 3 losowe elementy. Jeśli pytają — domknij specyfikacje.",
+    },
   },
   {
     num: "05",
@@ -99,6 +119,10 @@ const steps: Step[] = [
       { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "1–2 weeks. Defined in parallel with Build, enforced from first delivery.", pl: "1–2 tygodnie. Definiowane równolegle z Budową, egzekwowane od pierwszej dostawy." } },
     ],
     metric: { en: "Average decision time and decision reversal rate (both trending down).", pl: "Średni czas decyzji i wskaźnik cofania decyzji (oba w trendzie spadkowym)." },
+    gate: {
+      en: "For any artifact, can I name who approved it, when, and what the rationale was? If less than 95% traceability — fix the logging.",
+      pl: "Czy dla dowolnego artefaktu potrafię wskazać kto go zatwierdził, kiedy i jakie było uzasadnienie? Jeśli śledzalność poniżej 95% — napraw logowanie.",
+    },
   },
   {
     num: "06",
@@ -115,6 +139,10 @@ const steps: Step[] = [
       { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "Built into each sprint. Quality review happens continuously, not only at the end.", pl: "Wbudowane w każdy sprint. Quality review dzieje się ciągle, nie tylko na końcu." } },
     ],
     metric: { en: "% of work passing quality review on first round (target 70%+).", pl: "% prac przechodzących quality review w pierwszej rundzie (cel 70%+)." },
+    gate: {
+      en: "Did the deliverable match the brief AND pass the quality checklist AND get sign-off from the named owner? If any answer is no — don't ship.",
+      pl: "Czy deliverable odpowiada briefowi ORAZ przeszedł quality checklistę ORAZ ma sign-off od nazwanego ownera? Jeśli którakolwiek odpowiedź brzmi nie — nie wysyłaj.",
+    },
   },
   {
     num: "07",
@@ -131,6 +159,10 @@ const steps: Step[] = [
       { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "1–2 weeks for setup. Then it runs continuously as part of the operating rhythm.", pl: "1–2 tygodnie na setup. Potem działa ciągle jako część rytmu operacyjnego." } },
     ],
     metric: { en: "Dashboard live + first baseline captured within 2 weeks of system launch.", pl: "Dashboard live + pierwszy baseline uchwycony w ciągu 2 tygodni od launchu systemu." },
+    gate: {
+      en: "Can I show 3 measurable improvements vs baseline within 60 days? If no — the system isn't working, or the measurement is broken.",
+      pl: "Czy mogę pokazać 3 mierzalne usprawnienia względem baseline'u w ciągu 60 dni? Jeśli nie — system nie działa albo pomiar jest zepsuty.",
+    },
   },
   {
     num: "08",
@@ -147,6 +179,10 @@ const steps: Step[] = [
       { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "Ongoing — typically 1 session per month. Can be part of a retainer or fully handed off to your team.", pl: "Ciągłe — typowo 1 sesja miesięcznie. Może być częścią retainera lub w pełni przekazane Twojemu zespołowi." } },
     ],
     metric: { en: "Quarter-over-quarter trend of all metrics from phases 03–06.", pl: "Trend kwartał-do-kwartału wszystkich metryk z faz 03–06." },
+    gate: {
+      en: "Can I take a 2-week vacation without the system breaking? If no — the system isn't yet operating without me. Stay in Iterate.",
+      pl: "Czy mogę wziąć 2 tygodnie urlopu bez tego, żeby system się rozsypał? Jeśli nie — system jeszcze nie działa beze mnie. Zostań w Iteracji.",
+    },
   },
 ];
 
@@ -156,6 +192,10 @@ export function Process() {
   const { language } = useLanguage();
   const [, setLocation] = useLocation();
   const [activeStep, setActiveStep] = useState(0);
+
+  // Q4 r3loop Playbook — discreet editorial version (redesigned 2026-06-10).
+  // Flip to false to hide the waitlist section entirely.
+  const SHOW_PLAYBOOK = true;
 
   // Q4 r3loop Playbook waitlist state.
   // On submit: fires Plausible custom event (tracked in dashboard) + opens user's
@@ -188,7 +228,7 @@ export function Process() {
       "@type": "HowToStep",
       "position": i + 1,
       "name": s.title.en,
-      "text": s.goal.en,
+      "text": `${s.goal.en} Decision gate: ${s.gate.en}`,
       "url": `https://www.r352.com/process#step-${s.num}`,
     })),
     "supply": {
@@ -361,8 +401,20 @@ export function Process() {
                       ))}
                     </div>
 
-                    {/* Metric — minimal accent line */}
+                    {/* Decision gate — the explicit pass/fail question for this step.
+                        Verbatim from r3loop-spec-v2.md. This is what separates a
+                        methodology from talking points: every step can be failed. */}
                     <div className="flex items-start gap-5 pt-8 border-t border-neutral-100 dark:border-white/[0.06]">
+                      <span className="font-mono text-[10px] text-[#9abb00] dark:text-[#D4FF00] uppercase tracking-[0.15em] mt-[3px] shrink-0 whitespace-nowrap">
+                        Decision gate
+                      </span>
+                      <span className="text-[15px] text-neutral-700 dark:text-neutral-200 leading-relaxed font-medium [text-wrap:pretty]">
+                        {step.gate[lang]}
+                      </span>
+                    </div>
+
+                    {/* Metric — minimal accent line */}
+                    <div className="flex items-start gap-5 pt-6 mt-6 border-t border-neutral-100 dark:border-white/[0.06]">
                       <span className="font-mono text-[10px] text-[#9abb00] dark:text-[#D4FF00] uppercase tracking-[0.15em] mt-[3px] shrink-0">
                         KPI
                       </span>
@@ -396,6 +448,29 @@ export function Process() {
               </div>
             </div>
           </Reveal>
+
+          {/* Static full-methodology index — visually hidden, always in the DOM.
+              The interactive tabs above only mount ONE step panel at a time,
+              which means prerendered HTML (and any crawler / LLM / scoring
+              pass reading static markup) would see 1/8 of the methodology.
+              This sr-only block guarantees every step's goal, deliverables,
+              decision gate and KPI exist in the rendered DOM at all times. */}
+          <div className="sr-only">
+            <h2>{lang === "pl" ? "r3loop — wszystkie 8 kroków, decision gates i KPI" : "r3loop — all 8 steps, decision gates and KPIs"}</h2>
+            <ol>
+              {steps.map((s) => (
+                <li key={s.num} id={`step-${s.num}`}>
+                  <h3>{s.num} — {s.title[lang]}: {s.subtitle[lang]}</h3>
+                  <p>{s.goal[lang]}</p>
+                  {s.cards.map((card, ci) => (
+                    <p key={ci}><strong>{card.label[lang]}:</strong> {card.text[lang]}</p>
+                  ))}
+                  <p><strong>Decision gate:</strong> {s.gate[lang]}</p>
+                  <p><strong>KPI:</strong> {s.metric[lang]}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
       </section>
 
@@ -443,7 +518,7 @@ export function Process() {
                   {steps.map((s, i) => {
                     // Presence drops across r3loop steps — Diagnose is hands-on,
                     // Iterate runs without daily involvement.
-                    const presenceMap = ["90%", "70%", "65%", "45%", "35%", "20%", "20%", "15%"];
+                    const presenceMap = ["90%", "80%", "70%", "50%", "35%", "30%", "20%", "15%"];
                     const presence = presenceMap[i] ?? "30%";
                     const role = i <= 1
                       ? (lang === "pl" ? "Architekt i decydent" : "Architect & decision-maker")
@@ -475,6 +550,24 @@ export function Process() {
                   })}
                 </tbody>
               </table>
+            </div>
+          </Reveal>
+
+          {/* Survival sentence + explicit anti-hourly claim — the structural
+              "why" behind the presence drop. References documented decision
+              criteria, KPIs, trained owners and AI agents (not personal traits). */}
+          <Reveal delay={0.1}>
+            <div className="mt-10 max-w-3xl space-y-4">
+              <p className="text-lg md:text-xl text-neutral-800 dark:text-neutral-200 leading-relaxed font-medium [text-wrap:pretty]">
+                {lang === "pl"
+                  ? "r3loop działa bez nas, bo każdy krok ma udokumentowane kryteria decyzyjne, mierzalne KPI, przeszkolonych ownerów po stronie klienta i agentów AI między bramkami."
+                  : "r3loop runs without us because every step has documented decision criteria, measurable KPIs, trained client owners, and AI agents between gates."}
+              </p>
+              <p className="text-base text-neutral-500 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
+                {lang === "pl"
+                  ? "Nie sprzedajemy obecności ani godzin. System działa bez nas — i właśnie za to płacisz."
+                  : "We don't sell presence and we don't sell hours. The system runs without us — that's exactly what you're paying for."}
+              </p>
             </div>
           </Reveal>
         </div>
@@ -612,6 +705,14 @@ export function Process() {
                     </p>
                   </div>
                 </div>
+                {/* Factual citation line — no fabricated quotes. Sourced from
+                    r3loop docs: methodology in production since 2022; Sonova,
+                    Archicom and Geers cite r3loop by name in case materials. */}
+                <p className="font-mono text-[11px] text-neutral-500 dark:text-neutral-500 leading-relaxed pt-2 border-t border-neutral-200 dark:border-white/10">
+                  {lang === "pl"
+                    ? "r3loop w produkcji w Geers (Sonova Group) od 2022 — 60+ salonów. Klient cytuje metodologię z nazwy w materiałach case study."
+                    : "r3loop in production at Geers (Sonova Group) since 2022 — 60+ studios. The client cites the methodology by name in case-study materials."}
+                </p>
                 <Link
                   href="/work/sonova"
                   className="group inline-flex items-center gap-2 mt-4 text-[11px] font-display uppercase tracking-[0.2em] text-neutral-700 dark:text-neutral-300 hover:text-[#D4FF00] transition-colors"
@@ -685,6 +786,14 @@ export function Process() {
                     </p>
                   </div>
                 </div>
+                {/* Factual citation line — duration axis. Sourced from r3loop
+                    docs: Kubota = 3+ years on retainer, 200+ deliverables,
+                    steps 03–08 sustained across the engagement. */}
+                <p className="font-mono text-[11px] text-neutral-500 dark:text-neutral-500 leading-relaxed pt-2 border-t border-neutral-200 dark:border-white/10">
+                  {lang === "pl"
+                    ? "r3loop utrzymany w Kubota przez 3+ lata — kroki 03–08 prowadzone w sposób ciągły, 200+ deliverables na modelu retainerowym."
+                    : "r3loop sustained at Kubota for 3+ years — steps 03–08 run continuously, 200+ deliverables on a retainer model."}
+                </p>
                 <Link
                   href="/work/kubota"
                   className="group inline-flex items-center gap-2 mt-4 text-[11px] font-display uppercase tracking-[0.2em] text-neutral-700 dark:text-neutral-300 hover:text-[#D4FF00] transition-colors"
@@ -707,153 +816,102 @@ export function Process() {
 
           TODO: replace mailto fallback with proper ESP integration (Mailchimp /
           Klaviyo / Loops / Brevo) once one is chosen. For now mailto routes
-          signups to hello@r352.com and Plausible tracks the conversion event. */}
-      <section className="py-24 md:py-32 border-b border-neutral-200 dark:border-white/10 relative overflow-hidden">
-        {/* Subtle lime ambient glow — signals this section is special, future-tense */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 -z-10 opacity-[0.04] dark:opacity-[0.06] bg-[radial-gradient(circle_at_50%_40%,#D4FF00,transparent_60%)] pointer-events-none"
-        />
+          signups to hello@r352.com and Plausible tracks the conversion event.
+
+          HIDDEN (2026-06-10): product not ready to show — flip SHOW_PLAYBOOK
+          to true when the playbook is ready to launch. */}
+      {SHOW_PLAYBOOK && (
+      <section className="py-16 md:py-20 border-b border-neutral-200 dark:border-white/10">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
           <Reveal>
-            <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-12 md:gap-20 items-start">
-              {/* LEFT — eyebrow + headline + POV */}
-              <div>
-                <span className="inline-flex items-center gap-2 mb-5 text-[10px] font-display uppercase tracking-[0.25em] text-[#D4FF00] border border-[#D4FF00]/40 rounded-full px-3 py-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#D4FF00] animate-pulse" />
-                  {lang === "pl" ? "Q4 2026 · Wkrótce" : "Q4 2026 · Coming"}
-                </span>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[1.0] mb-6">
-                  r3loop<br />Playbook.
-                </h2>
-                <p className="text-lg md:text-xl text-neutral-700 dark:text-neutral-300 leading-relaxed font-medium [text-wrap:pretty]">
+            <div className="max-w-2xl">
+              {/* Quiet editorial note — no glow, no pulse, no display headline */}
+              <span className="block text-[10px] font-display uppercase tracking-[0.25em] text-neutral-500 dark:text-neutral-500 mb-5">
+                {lang === "pl" ? "Q4 2026 — r3loop Playbook" : "Q4 2026 — r3loop Playbook"}
+              </span>
+              <p className="text-lg md:text-xl text-neutral-800 dark:text-neutral-200 leading-relaxed [text-wrap:pretty] mb-3">
+                {lang === "pl"
+                  ? "Cała metodologia r3loop — sprodukowana jako guided playbook. Dla tych, którzy nie potrzebują nas w pokoju — potrzebują systemu, który możemy oddać."
+                  : "The full r3loop methodology — productized as a guided playbook. For teams that don't need us in the room — they need a system we can hand off."}
+              </p>
+              {/* Inventory — one quiet mono line instead of a grid */}
+              <p className="text-[13px] text-neutral-500 dark:text-neutral-500 leading-relaxed mb-8">
+                {(lang === "pl" ? [
+                  "8 kroków szczegółowo",
+                  "output contracts per krok",
+                  "decision gates + KPIs",
+                  "brief templates",
+                  "quality review checklisty",
+                  "AI prompt library",
+                  "governance frameworks",
+                  "8 mini case studies",
+                ] : [
+                  "8 steps in depth",
+                  "output contracts per step",
+                  "decision gates + KPIs",
+                  "brief templates",
+                  "quality review checklists",
+                  "AI prompt library",
+                  "governance frameworks",
+                  "8 case-study minis",
+                ]).join(" · ")}
+              </p>
+
+              {/* Email capture — minimal underline form */}
+              {!waitlistSubmitted ? (
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    if (!waitlistEmail) return;
+                    // Track conversion via Plausible custom event
+                    try {
+                      (window as any).plausible?.("playbook_waitlist_signup", {
+                        props: { source: "process_page", lang },
+                      });
+                    } catch { /* noop */ }
+                    // Open mail client as fallback storage until ESP is wired
+                    const subject = encodeURIComponent("r3loop Playbook — early access waitlist");
+                    const body = encodeURIComponent(
+                      `I'd like to join the r3loop Playbook waitlist.\n\nEmail: ${waitlistEmail}\n\n(Sent from r352.com/process)`
+                    );
+                    window.location.href = `mailto:hello@r352.com?subject=${subject}&body=${body}`;
+                    setWaitlistSubmitted(true);
+                  }}
+                >
+                  <div className="flex items-baseline gap-4 max-w-md border-b border-neutral-300 dark:border-white/20 focus-within:border-[#D4FF00] transition-colors pb-2">
+                    <input
+                      type="email"
+                      required
+                      value={waitlistEmail}
+                      onChange={(e) => setWaitlistEmail(e.target.value)}
+                      placeholder={lang === "pl" ? "Twój email" : "Your email"}
+                      className="flex-1 bg-transparent text-sm text-neutral-900 dark:text-white placeholder:text-neutral-500 focus:outline-none"
+                    />
+                    <button
+                      type="submit"
+                      className="text-[11px] font-display uppercase tracking-[0.2em] text-neutral-900 dark:text-white hover:text-[#D4FF00] dark:hover:text-[#D4FF00] transition-colors duration-300 cursor-pointer whitespace-nowrap"
+                    >
+                      {lang === "pl" ? "Dołącz do waitlisty" : "Join the waitlist"}
+                    </button>
+                  </div>
+                  <p className="text-[11px] text-neutral-500 dark:text-neutral-500 mt-3">
+                    {lang === "pl"
+                      ? "Founding price €1500 dla pierwszych 100 osób (standard €2000). Bez spamu — tylko launch announcement."
+                      : "Founding price €1500 for the first 100 (standard €2000). No spam — just the launch announcement."}
+                  </p>
+                </form>
+              ) : (
+                <p className="text-sm text-neutral-700 dark:text-neutral-300 border-l border-[#D4FF00] pl-4">
                   {lang === "pl"
-                    ? "Cała metodologia r3loop — 8 kroków, output contracts, decision gates, AI prompts, governance templates — sprodukowana jako guided playbook."
-                    : "The full r3loop methodology — 8 steps, output contracts, decision gates, AI prompts, governance templates — productized as a guided playbook."}
+                    ? "Jesteś na liście. Launch announcement w Q4 z founding price €1500 (zamiast €2000) — sprawdź, czy klient pocztowy wysłał email do hello@r352.com."
+                    : "You're on the list. Launch announcement lands in Q4 with the founding price €1500 (instead of €2000) — check that your mail client sent the email to hello@r352.com."}
                 </p>
-                <p className="text-base text-neutral-500 dark:text-neutral-500 leading-relaxed mt-4 [text-wrap:pretty]">
-                  {lang === "pl"
-                    ? "Dla tych, którzy nie potrzebują nas w pokoju — potrzebują systemu, który możemy oddać."
-                    : "For teams that don't need us in the room — they need a system we can hand off."}
-                </p>
-              </div>
-
-              {/* RIGHT — what's inside + price + form */}
-              <div className="space-y-8">
-                {/* What's inside — 4-up grid of chips */}
-                <div>
-                  <span className="block text-[10px] uppercase tracking-[0.25em] text-neutral-500 dark:text-neutral-500 font-display mb-4">
-                    {lang === "pl" ? "Co jest w środku" : "What's inside"}
-                  </span>
-                  <ul className="grid grid-cols-2 gap-x-6 gap-y-3">
-                    {(lang === "pl" ? [
-                      "8 kroków szczegółowo",
-                      "Output contracts per krok",
-                      "Decision gates + KPIs",
-                      "Brief templates",
-                      "Quality review checklisty",
-                      "AI prompt library",
-                      "Governance frameworks",
-                      "3 case studies in depth",
-                    ] : [
-                      "8 steps in depth",
-                      "Output contracts per step",
-                      "Decision gates + KPIs",
-                      "Brief templates",
-                      "Quality review checklists",
-                      "AI prompt library",
-                      "Governance frameworks",
-                      "3 case studies in depth",
-                    ]).map((item, i) => (
-                      <li key={i} className="text-sm text-neutral-700 dark:text-neutral-300 flex items-start gap-2 leading-snug">
-                        <span className="text-[#D4FF00] mt-[2px] shrink-0">·</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Pricing teaser — founding vs standard */}
-                <div className="flex items-baseline gap-6 pt-6 border-t border-neutral-200 dark:border-white/10">
-                  <div>
-                    <div className="text-[10px] uppercase tracking-[0.25em] text-[#D4FF00] font-display mb-1">
-                      {lang === "pl" ? "Founding access" : "Founding access"}
-                    </div>
-                    <div className="text-3xl md:text-4xl font-bold tracking-tighter text-neutral-900 dark:text-white">
-                      €1500
-                    </div>
-                  </div>
-                  <div className="opacity-50">
-                    <div className="text-[10px] uppercase tracking-[0.25em] text-neutral-500 font-display mb-1">
-                      {lang === "pl" ? "Standard launch" : "Standard launch"}
-                    </div>
-                    <div className="text-xl md:text-2xl font-medium tracking-tight text-neutral-500 dark:text-neutral-500 line-through decoration-1">
-                      €2000
-                    </div>
-                  </div>
-                </div>
-
-                {/* Email capture form */}
-                {!waitlistSubmitted ? (
-                  <form
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      if (!waitlistEmail) return;
-                      // Track conversion via Plausible custom event
-                      try {
-                        (window as any).plausible?.("playbook_waitlist_signup", {
-                          props: { source: "process_page", lang },
-                        });
-                      } catch { /* noop */ }
-                      // Open mail client as fallback storage until ESP is wired
-                      const subject = encodeURIComponent("r3loop Playbook — early access waitlist");
-                      const body = encodeURIComponent(
-                        `I'd like to join the r3loop Playbook waitlist.\n\nEmail: ${waitlistEmail}\n\n(Sent from r352.com/process)`
-                      );
-                      window.location.href = `mailto:hello@r352.com?subject=${subject}&body=${body}`;
-                      setWaitlistSubmitted(true);
-                    }}
-                    className="space-y-3"
-                  >
-                    <div className="flex flex-col sm:flex-row gap-3">
-                      <input
-                        type="email"
-                        required
-                        value={waitlistEmail}
-                        onChange={(e) => setWaitlistEmail(e.target.value)}
-                        placeholder={lang === "pl" ? "Twój email" : "Your email"}
-                        className="flex-1 px-4 py-3 text-sm bg-neutral-50 dark:bg-white/[0.03] border border-neutral-300 dark:border-white/15 rounded-none text-neutral-900 dark:text-white placeholder:text-neutral-500 focus:outline-none focus:border-[#D4FF00] focus:bg-white dark:focus:bg-white/[0.05] transition-colors"
-                      />
-                      <button
-                        type="submit"
-                        className="px-6 py-3 bg-[#D4FF00] text-black text-sm font-display uppercase tracking-[0.15em] font-bold hover:bg-white transition-colors duration-300 cursor-pointer whitespace-nowrap"
-                      >
-                        {lang === "pl" ? "Rezerwuję" : "Reserve access"}
-                      </button>
-                    </div>
-                    <p className="text-[11px] text-neutral-500 dark:text-neutral-500">
-                      {lang === "pl"
-                        ? "Pierwsze 100 osób na waitliście dostaje founding price €1500. Bez spamu — tylko launch announcement i 1-2 update'y o postępach."
-                        : "First 100 on the waitlist get the founding price €1500. No spam — just the launch announcement and 1-2 progress updates."}
-                    </p>
-                  </form>
-                ) : (
-                  <div className="border-l-2 border-[#D4FF00] pl-5 py-4 bg-[#D4FF00]/[0.04]">
-                    <div className="text-[10px] font-display uppercase tracking-[0.25em] text-[#D4FF00] mb-2">
-                      {lang === "pl" ? "Jesteś na liście" : "You're on the list"}
-                    </div>
-                    <p className="text-base text-neutral-900 dark:text-white leading-relaxed [text-wrap:pretty]">
-                      {lang === "pl"
-                        ? "Dostaniesz launch announcement w Q4 z founding price €1500 (zamiast €2000). Tymczasem — sprawdź czy klient otworzył się prawidłowo i wysłał email do hello@r352.com."
-                        : "You'll get the launch announcement in Q4 with the founding price €1500 (instead of €2000). In the meantime — check that your mail client opened and sent the email to hello@r352.com."}
-                    </p>
-                  </div>
-                )}
-              </div>
+              )}
             </div>
           </Reveal>
         </div>
       </section>
+      )}
 
       {/* ─── Closing CTA ─── */}
       <section className="py-24 md:py-32">

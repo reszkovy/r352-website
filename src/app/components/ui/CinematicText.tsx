@@ -66,22 +66,46 @@ export function CinematicText({
       {lines.map((line, lineIndex) => (
         <div key={lineIndex} className="overflow-hidden leading-[1.05] pb-2 flex flex-wrap">
           {splitByChar ? (
-            // Character by character animation
-            line.split('').map((char, charIndex) => (
-              <InteractiveChar 
-                key={`${lineIndex}-${charIndex}`}
-                char={char}
-                delay={delay}
-                duration={duration}
-                lineIndex={lineIndex}
-                charIndex={charIndex}
-                controls={controls}
-                glowEffect={glowEffect}
-                mousePosition={mousePosition}
-                baseColor={baseColor}
-                glowColor={glowColor}
-              />
-            ))
+            // Character-by-character animation, GROUPED PER WORD.
+            // Each word's char spans live inside an inline-flex whitespace-nowrap
+            // wrapper, so the flex-wrap line container can only break BETWEEN
+            // words — never mid-word. Fixes broken words at 375px viewports
+            // (previously every char was an independent flex item, so lines
+            // could wrap in the middle of a word). charIndex stays globally
+            // sequential across the line so the stagger cadence is unchanged.
+            (() => {
+              let charOffset = 0;
+              return line.split(' ').map((word, wordIndex, words) => {
+                const start = charOffset;
+                // Keep the trailing space inside the word group (rendered as
+                // &nbsp; by InteractiveChar) so inter-word spacing survives
+                // the flex layout's whitespace collapsing.
+                const chunk = wordIndex < words.length - 1 ? word + ' ' : word;
+                charOffset += chunk.length;
+                return (
+                  <span
+                    key={`${lineIndex}-w${wordIndex}`}
+                    className="inline-flex whitespace-nowrap"
+                  >
+                    {chunk.split('').map((char, charIndex) => (
+                      <InteractiveChar
+                        key={`${lineIndex}-${start + charIndex}`}
+                        char={char}
+                        delay={delay}
+                        duration={duration}
+                        lineIndex={lineIndex}
+                        charIndex={start + charIndex}
+                        controls={controls}
+                        glowEffect={glowEffect}
+                        mousePosition={mousePosition}
+                        baseColor={baseColor}
+                        glowColor={glowColor}
+                      />
+                    ))}
+                  </span>
+                );
+              });
+            })()
           ) : (
             // Line by line animation
             <motion.div

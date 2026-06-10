@@ -44,10 +44,11 @@ export function Footer() {
     { label: t("nav.contact") || "Kontakt", href: "/contact" },
   ];
 
+  // Channel focus — LinkedIn + email only. Instagram/YouTube removed (dormant
+  // channels dilute the channel-focus signal; re-add only when actively maintained).
   const socialLinks = [
-    { label: "Instagram", href: "https://www.instagram.com/r352.studio/" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/przemyslawreszka/" },
-    { label: "YouTube", href: "https://www.youtube.com/@r352studio" }
+    { label: "Email", href: "mailto:hello@r352.com" }
   ];
 
   return (
@@ -121,6 +122,12 @@ export function Footer() {
                >
                  hello@r352.com
                </a>
+               {/* Verbal identity — one category line, sitewide. Matches header
+                   tagline ("Strategic design partner") + the methodology category. */}
+               <p className="text-xs text-neutral-500 mt-6 leading-relaxed max-w-[240px]">
+                 Strategic design partner.<br />
+                 Loop architecture for design ops.
+               </p>
             </div>
 
             {/* Column 2: Sitemap */}

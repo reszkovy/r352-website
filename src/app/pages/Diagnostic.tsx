@@ -241,7 +241,7 @@ export function Brief() {
                 {segmentLabel && (
                   <div className="mb-6">
                     <span
-                      className="inline-flex items-center gap-2 px-3 py-1.5 border border-[#D4FF00]/40 text-[11px] font-display uppercase tracking-[0.2em] text-neutral-700 dark:text-[#D4FF00] rounded-sm"
+                      className="inline-flex items-center gap-2 px-3 py-1.5 border border-[#D4FF00]/40 text-[11px] font-display uppercase tracking-[0.2em] text-neutral-700 dark:text-[#D4FF00] rounded-full"
                       data-segment={segment ?? undefined}
                     >
                       <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#D4FF00]" aria-hidden="true" />

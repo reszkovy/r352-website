@@ -5,6 +5,24 @@ import { journalArticles } from "@/app/data/journalArticles";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import { useLanguage } from "@/app/context/LanguageContext";
+import { Helmet } from "react-helmet-async";
+
+// Display dates are human strings ("June 2026"); schema.org wants ISO 8601.
+// Articles can override with an explicit dateISO; otherwise we parse the
+// display string to the first of the month.
+const MONTHS: Record<string, string> = {
+  jan: "01", feb: "02", mar: "03", apr: "04", may: "05", jun: "06",
+  jul: "07", aug: "08", sep: "09", oct: "10", nov: "11", dec: "12",
+};
+function toISODate(display: string, explicit?: string): string {
+  if (explicit) return explicit;
+  const m = display.trim().toLowerCase().match(/^([a-z]+)\s+(\d{4})$/);
+  if (m) {
+    const month = MONTHS[m[1].slice(0, 3)];
+    if (month) return `${m[2]}-${month}-01`;
+  }
+  return display;
+}
 
 export function JournalArticle({ params }: { params?: { id: string } }) {
   const { language } = useLanguage();
@@ -38,8 +56,40 @@ export function JournalArticle({ params }: { params?: { id: string } }) {
     );
   }
 
+  // Article JSON-LD — built from the same data fields the page renders
+  // (headline, datePublished, author Person). Complements the BlogPosting
+  // schema injected by SEO.tsx with an explicit named-author entity.
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": article.title.replace(/<br\s*\/?>/g, " "),
+    "datePublished": toISODate(article.date, article.dateISO),
+    "dateModified": toISODate(article.date, article.dateISO),
+    "articleSection": article.category,
+    "url": `https://www.r352.com/journal/${article.id}`,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://www.r352.com/journal/${article.id}`,
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Przemyslaw Reszka",
+      "alternateName": "Reszek",
+      "url": "https://www.r352.com",
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "r352",
+      "url": "https://www.r352.com",
+      "logo": { "@type": "ImageObject", "url": "https://www.r352.com/og-image.png" },
+    },
+  };
+
   return (
     <PageTransition className="min-h-screen bg-background text-black dark:text-white w-full overflow-x-hidden">
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
+      </Helmet>
       {/* Hero Section */}
       <div className="relative min-h-[85vh] md:min-h-[70vh] w-full overflow-hidden flex-shrink-0" ref={containerRef}>
         <motion.div style={{ y }} className="absolute inset-0">
@@ -123,9 +173,10 @@ export function JournalArticle({ params }: { params?: { id: string } }) {
 
                     <Link href={`/journal/${nextArticle.id}`} className="group block relative aspect-[21/9] overflow-hidden w-full">
                          <div className="absolute inset-0 bg-neutral-900">
-                           <img 
-                             src={nextArticle.image} 
-                             alt={nextArticle.title} 
+                           <img
+                             src={nextArticle.image}
+                             alt={nextArticle.title}
+                             loading="lazy"
                              className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000 ease-out"
                            />
                            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors duration-500" />

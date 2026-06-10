@@ -123,6 +123,30 @@ const TERMS_EN: GlossaryTerm[] = [
     long:
       "Every Friday at 17:00 CET, the client receives a delivery pack: folder of finished assets, 8-minute Loom walkthrough, one-page summary of what shipped and what's next. The delivery pack is the heartbeat of the engagement — when it's late, something has gone wrong with the system, not with the work.",
   },
+  {
+    term: "Decision gate",
+    short: "The pass/fail question that closes each r3loop step.",
+    long:
+      "Every r3loop step ends with one binary question — a decision gate. Diagnose closes with \"do we know which friction point costs the most?\" Standardize closes with \"can a new hire produce an on-standard brief without asking anyone?\" If the answer is no, the step isn't done — no amount of activity substitutes for the gate. Decision gates are what keep the loop honest: they convert open-ended consulting work into a sequence of verifiable checkpoints.",
+    example: "Week 3 review: the Map step failed its decision gate — two approval paths still undocumented — so Build doesn't start Monday.",
+    related: { label: "See r3loop in detail", href: "/process" },
+  },
+  {
+    term: "Output contract",
+    short: "The structured deliverable spec each r3loop step must produce.",
+    long:
+      "Each step in r3loop owes the next step a defined artifact in a defined format — that's its output contract. Diagnose owes a ranked friction-point list. Standardize owes templates plus a QA checklist. Measure owes a KPI baseline. Because the contract specifies structure, not just content, outputs are reusable across engagements — and productizable: the same output contract that feeds a client rollout can feed a tool. Work that doesn't fulfill its contract doesn't move downstream.",
+    example: "The audit isn't 'insights in a deck' — the output contract says ranked friction points with cost estimates, owner, and a 60-day fix window.",
+    related: { label: "See r3loop in detail", href: "/process" },
+  },
+  {
+    term: "Presence curve",
+    short: "The 90%→15% operator-involvement decline across the loop.",
+    long:
+      "The presence curve describes how much of the operator's (r352's) hands-on involvement each r3loop step requires. Diagnose runs at roughly 90% operator presence — interviews, judgment, synthesis. By Measure and Iterate, presence drops to around 15%: the system, templates, and the client's own team carry the work, with r352 reviewing exceptions. The declining curve is the point of the engagement — if operator presence stays flat, you've bought a dependency, not a system.",
+    example: "Month 6 of the retainer: we're at the 15% end of the presence curve — the team runs the cadence, we audit the exceptions.",
+    related: { label: "See r3loop in detail", href: "/process" },
+  },
 ];
 
 const TERMS_PL: GlossaryTerm[] = [
@@ -224,6 +248,30 @@ const TERMS_PL: GlossaryTerm[] = [
     short: "Piątkowy output bundle zamykający każdy roboczy tydzień.",
     long:
       "Każdy piątek o 17:00 CET, klient otrzymuje delivery pack: folder z finalnymi asset'ami, 8-minutowy Loom walkthrough, jednostronicowe podsumowanie co zostało dostarczone i co dalej. Delivery pack to puls engagement'u — gdy się spóźnia, coś poszło źle z systemem, nie z pracą.",
+  },
+  {
+    term: "Decision gate",
+    short: "Pytanie pass/fail zamykające każdy krok r3loop.",
+    long:
+      "Każdy krok r3loop kończy się jednym binarnym pytaniem — decision gate. Diagnose zamyka się pytaniem \"czy wiemy, który friction point kosztuje najwięcej?\" Standardize — \"czy nowa osoba w zespole wyprodukuje brief zgodny ze standardem bez pytania kogokolwiek?\" Jeśli odpowiedź brzmi nie, krok nie jest skończony — żadna ilość aktywności nie zastępuje bramki. Decision gates utrzymują loop w uczciwości: zamieniają otwartą pracę konsultingową w sekwencję weryfikowalnych checkpointów.",
+    example: "Review w tygodniu 3: krok Map nie przeszedł decision gate — dwie ścieżki akceptacji wciąż nieudokumentowane — więc Build nie startuje w poniedziałek.",
+    related: { label: "Zobacz r3loop w szczegółach", href: "/process" },
+  },
+  {
+    term: "Output contract",
+    short: "Ustrukturyzowany spec deliverable'u, który musi wyprodukować każdy krok r3loop.",
+    long:
+      "Każdy krok r3loop jest winien następnemu zdefiniowany artefakt w zdefiniowanym formacie — to jego output contract. Diagnose jest winien rankowaną listę friction points. Standardize — templaty plus QA checklist. Measure — baseline KPI. Ponieważ kontrakt określa strukturę, nie tylko treść, outputy są reużywalne między engagement'ami — i produktyzowalne: ten sam output contract, który zasila rollout u klienta, może zasilić narzędzie. Praca, która nie wypełnia kontraktu, nie idzie dalej.",
+    example: "Audyt to nie 'insighty w decku' — output contract mówi: rankowane friction points z estymacją kosztu, ownerem i 60-dniowym oknem naprawy.",
+    related: { label: "Zobacz r3loop w szczegółach", href: "/process" },
+  },
+  {
+    term: "Presence curve",
+    short: "Spadek zaangażowania operatora z 90% do 15% wzdłuż loop'a.",
+    long:
+      "Presence curve opisuje, ile hands-on zaangażowania operatora (r352) wymaga każdy krok r3loop. Diagnose działa przy ~90% obecności operatora — wywiady, osąd, synteza. Przy Measure i Iterate obecność spada do ~15%: system, templaty i własny zespół klienta niosą pracę, a r352 robi review wyjątków. Opadająca krzywa to sens engagement'u — jeśli obecność operatora pozostaje płaska, kupiłeś zależność, nie system.",
+    example: "Szósty miesiąc retainer'u: jesteśmy na 15-procentowym końcu presence curve — zespół prowadzi cadence, my audytujemy wyjątki.",
+    related: { label: "Zobacz r3loop w szczegółach", href: "/process" },
   },
 ];
 

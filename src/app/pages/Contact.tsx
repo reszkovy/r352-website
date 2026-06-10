@@ -14,41 +14,32 @@ export function Contact() {
 
   return (
     <PageTransition>
-      {/* ─── Hero ─── */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 px-8 md:px-12">
-        <div className="max-w-[1800px] mx-auto">
+      {/* ─── Compact header — no hero, contact options above the fold ───
+          (2026-06-10: full hero removed on request — h1 kept compact for
+          SEO/a11y, intro/subline dropped so all 3 contact paths are visible
+          without scrolling) */}
+      <section className="pt-28 md:pt-32 px-8 md:px-12">
+        <div className="max-w-[1800px] mx-auto border-b border-neutral-200 dark:border-white/10 pb-8 md:pb-10">
           <Reveal>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-end">
-              <div>
-                <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-8">
-                  {copy.hero.label}
-                </span>
-                <h1 className="text-5xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[0.95] mb-8">
-                  {copy.hero.title}
-                </h1>
-                <p className="text-xl md:text-2xl text-neutral-700 dark:text-neutral-300 leading-snug font-medium tracking-tight max-w-2xl">
-                  {copy.hero.intro}
-                </p>
-              </div>
-              <div className="md:justify-self-end max-w-md">
-                <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                  {copy.hero.subline}
-                </p>
-              </div>
-            </div>
+            <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-3">
+              {copy.hero.label}
+            </span>
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-none">
+              {copy.hero.title}
+            </h1>
           </Reveal>
         </div>
       </section>
 
       {/* ─── 3-Path Choice — Brief (primary) | Mail + Call (secondary) ─── */}
-      <section className="py-20 md:py-28 border-t border-neutral-200 dark:border-white/10">
+      <section className="pt-10 md:pt-12 pb-20 md:pb-28">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-20">
 
             {/* PATH A — PRIMARY: Brief */}
             <Reveal>
-              <div className="relative pt-10 lg:pt-12 lg:pr-12 lg:border-r border-neutral-200 dark:border-white/10">
-                <span className="absolute top-0 left-0 inline-block text-[10px] font-display uppercase tracking-[0.25em] text-[#D4FF00] bg-[#D4FF00]/10 dark:bg-[#D4FF00]/10 border border-[#D4FF00]/40 px-2 py-1">
+              <div className="lg:pr-12 lg:border-r border-neutral-200 dark:border-white/10">
+                <span className="inline-block text-[10px] font-display uppercase tracking-[0.25em] text-[#D4FF00] bg-[#D4FF00]/10 dark:bg-[#D4FF00]/10 border border-[#D4FF00]/40 rounded-full px-3 py-1.5 mb-6">
                   {copy.pathA.badge}
                 </span>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight text-neutral-900 dark:text-white mb-6 leading-[1.05]">
@@ -83,8 +74,8 @@ export function Contact() {
 
               {/* PATH B — SECONDARY: Direct mail */}
               <Reveal delay={0.1}>
-                <div className="pt-10 lg:pt-12">
-                  <span className="inline-block text-[10px] font-display uppercase tracking-[0.25em] text-neutral-500 dark:text-neutral-500 border border-neutral-300 dark:border-white/20 px-2 py-1 mb-6">
+                <div>
+                  <span className="inline-block text-[10px] font-display uppercase tracking-[0.25em] text-neutral-500 dark:text-neutral-500 border border-neutral-300 dark:border-white/20 rounded-full px-3 py-1.5 mb-6">
                     {copy.pathB.badge}
                   </span>
                   <h2 className="text-xl md:text-2xl font-medium tracking-tight text-neutral-700 dark:text-neutral-300 mb-4 leading-[1.15]">
@@ -109,7 +100,7 @@ export function Contact() {
               {/* PATH C — TERTIARY: Schedule a call (Calendly) */}
               <Reveal delay={0.2}>
                 <div className="border-t border-neutral-200 dark:border-white/10 pt-10">
-                  <span className="inline-block text-[10px] font-display uppercase tracking-[0.25em] text-neutral-500 dark:text-neutral-500 border border-neutral-300 dark:border-white/20 px-2 py-1 mb-6">
+                  <span className="inline-block text-[10px] font-display uppercase tracking-[0.25em] text-neutral-500 dark:text-neutral-500 border border-neutral-300 dark:border-white/20 rounded-full px-3 py-1.5 mb-6">
                     {copy.pathC.badge}
                   </span>
                   <h2 className="text-xl md:text-2xl font-medium tracking-tight text-neutral-700 dark:text-neutral-300 mb-4 leading-[1.15]">

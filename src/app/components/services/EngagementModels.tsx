@@ -1,59 +1,13 @@
 import { useLanguage } from "@/app/context/LanguageContext";
 import { Reveal } from "@/app/components/ui/Reveal";
-import { motion } from "motion/react";
+import { ChipTooltip } from "@/app/components/ui/ChipTooltip";
 
-/**
- * ChipWithTooltip — same motion + glass pattern used in the home hero ATF chips.
- * Compresses long bullet lists into scannable label-chips; hover reveals the full
- * context as a cinematic tooltip (fade + slide + scale + blur). Used inside the
- * engagement model cards to reduce visible content per card by ~70%.
- */
-function ChipWithTooltip({ label, tooltip, variant = "neutral" }: { label: string; tooltip: string; variant?: "neutral" | "lime" }) {
-  const isLime = variant === "lime";
-  return (
-    <motion.span
-      className="relative inline-block"
-      initial="rest"
-      animate="rest"
-      whileHover="hover"
-    >
-      <motion.span
-        className={`inline-flex items-center px-2.5 py-1 text-[10px] font-display uppercase tracking-[0.15em] border rounded-full cursor-help select-none will-change-[color,border-color] ${
-          isLime
-            ? "text-[#D4FF00]"
-            : "text-neutral-600 dark:text-neutral-400"
-        }`}
-        variants={{
-          rest: isLime
-            ? { borderColor: "rgba(212,255,0,0.4)" }
-            : { borderColor: "rgba(120,120,120,0.25)" },
-          hover: isLime
-            ? { borderColor: "#D4FF00" }
-            : { borderColor: "#D4FF00", color: "#D4FF00" },
-        }}
-        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-      >
-        {label}
-      </motion.span>
-      <motion.span
-        className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-max max-w-[220px] z-[60]"
-        variants={{
-          rest: { opacity: 0, y: 8, scale: 0.96, filter: "blur(6px)" },
-          hover: { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" },
-        }}
-        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <span className="relative block px-4 py-3 bg-[#0a0a0a]/85 backdrop-blur-xl border border-white/10 rounded-[6px] shadow-[0_12px_32px_-12px_rgba(0,0,0,0.6)]">
-          <span aria-hidden="true" className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-[#D4FF00]/50 to-transparent" />
-          <span className="block text-[11px] leading-relaxed text-neutral-100 normal-case tracking-normal font-sans text-center [text-wrap:balance]">
-            {tooltip}
-          </span>
-          <span aria-hidden="true" className="absolute -bottom-[5px] left-1/2 -translate-x-1/2 w-[10px] h-[10px] bg-[#0a0a0a]/85 backdrop-blur-xl border-r border-b border-white/10 rotate-45" />
-        </span>
-      </motion.span>
-    </motion.span>
-  );
-}
+// Chip + tooltip pattern is shared with the home hero ATF chips — see
+// ui/ChipTooltip.tsx. It compresses long bullet lists into scannable
+// label-chips (~70% visible-text reduction per card); hover/focus reveals
+// the full sentence as a cinematic tooltip. The full text remains in the
+// DOM at all times (hidden via opacity/visibility), so prerendered HTML
+// keeps every word of the original copy.
 
 export function EngagementModels() {
   const { language } = useLanguage();
@@ -367,7 +321,7 @@ export function EngagementModels() {
                 {/* Desktop chips */}
                 <div className="hidden md:flex flex-wrap gap-2">
                   {model.howItWorks.map((item, idx) => (
-                    <ChipWithTooltip
+                    <ChipTooltip size="sm"
                       key={idx}
                       label={(model as any).howItWorksLabels?.[idx] ?? item.split(" ").slice(0, 2).join(" ")}
                       tooltip={item}
@@ -403,7 +357,7 @@ export function EngagementModels() {
                   {/* Desktop chips */}
                   <div className="hidden md:flex flex-wrap gap-2">
                     {model.idealWhen.slice(0, 3).map((item, idx) => (
-                      <ChipWithTooltip
+                      <ChipTooltip size="sm"
                         key={idx}
                         label={(model as any).idealWhenLabels?.[idx] ?? item.split(" ").slice(0, 2).join(" ")}
                         tooltip={item}
@@ -552,7 +506,7 @@ export function EngagementModels() {
                   </h4>
                   <div className="hidden md:flex flex-wrap gap-2">
                     {model.howItWorks.map((item, idx) => (
-                      <ChipWithTooltip
+                      <ChipTooltip size="sm"
                         key={idx}
                         label={(model as any).howItWorksLabels?.[idx] ?? item.split(" ").slice(0, 2).join(" ")}
                         tooltip={item}
@@ -586,7 +540,7 @@ export function EngagementModels() {
                     </h4>
                     <div className="hidden md:flex flex-wrap gap-2">
                       {model.idealWhen.slice(0, 3).map((item, idx) => (
-                        <ChipWithTooltip
+                        <ChipTooltip size="sm"
                           key={idx}
                           label={(model as any).idealWhenLabels?.[idx] ?? item.split(" ").slice(0, 2).join(" ")}
                           tooltip={item}
@@ -609,88 +563,148 @@ export function EngagementModels() {
         </div>
       </div>
 
-      {/* ─── Pairing matrix — engagement ↔ product mapping ───────────────
-          Resolves the decision-fatigue problem: buyer sees "Sprint" and asks
-          "for what product?" Surfaces the existing `products` field from each
-          model in a clean table so warm leads can self-match in 10 seconds. */}
+      {/* ─── Pairing Matrix — engagement model ↔ buying scenario ──────────
+          Resolves decision fatigue: rows = the 5 engagement models, columns =
+          best-for scenarios, dot marks = fit strength. A buyer self-matches
+          in under 30 seconds instead of re-reading five card descriptions.
+          Static table; horizontal scroll on mobile (min-width + overflow-x).
+          Each model's product-pairing sentence stays in the DOM (sr-only)
+          so prerendered HTML keeps the full mapping copy. */}
       <Reveal>
         <div className="mt-24 md:mt-32 border-t border-neutral-200 dark:border-white/10 pt-16">
           <div className="mb-10 max-w-3xl">
             <span className="block text-[11px] uppercase tracking-[2px] text-neutral-500 dark:text-[#D4FF00] font-display mb-4">
-              {language === "pl" ? "Mapowanie modeli i produktów" : "Engagement ↔ product pairing"}
+              {language === "pl" ? "Macierz dopasowania" : "Pairing Matrix"}
             </span>
             <h3 className="text-3xl md:text-5xl font-bold text-neutral-900 dark:text-white tracking-tight mb-6">
               {language === "pl"
-                ? "Który model dla którego produktu?"
-                : "Which engagement for which product?"}
+                ? "Który model do którego scenariusza?"
+                : "Which model for which scenario?"}
             </h3>
             <p className="text-[15px] text-neutral-600 dark:text-[#888888] max-w-[640px] leading-relaxed">
               {language === "pl"
-                ? "Każdy model najlepiej pasuje do określonego typu pracy. Jeśli wiesz co chcesz zbudować — zacznij od pasującego modelu, nie od domyślnego."
-                : "Each model maps best to a specific type of work. If you know what you want to build — start with the matching model, not the default one."}
+                ? "Znajdź swój scenariusz w kolumnach, zjedź do wypełnionej kropki — to twój punkt startu. Jeśli pasuje kilka, zacznij od najmniejszego zaangażowania."
+                : "Find your scenario in the columns, scan down to the filled dot — that's your starting point. If several match, start with the smallest engagement."}
             </p>
           </div>
 
-          <div className="border-t border-neutral-200 dark:border-white/10">
-            {([
-              {
-                model: language === "pl" ? "Sprint" : "Sprint",
-                label: language === "pl" ? "Stały zakres · 2-6 tygodni" : "Fixed scope · 2-6 weeks",
-                fit: language === "pl"
-                  ? "Brand System launch · Website Launch · Pakiet kampanii (jednorazowy) · UX produktu cyfrowego"
-                  : "Brand System launch · Website Launch · Campaign Toolkit (one-off) · Digital Product UX",
-              },
-              {
-                model: language === "pl" ? "Abonament" : "Retainer",
-                label: language === "pl" ? "Ciągły rytm · od 3 miesięcy" : "Ongoing rhythm · from 3 months",
-                fit: language === "pl"
-                  ? "Always-On Communication · System assetów multi-location · Stałe kampanie · Spójność marki"
-                  : "Always-On Communication · Multi-Location Asset System · Recurring campaigns · Brand consistency",
-              },
-              {
-                model: language === "pl" ? "Diagnostyka" : "Diagnostic",
-                label: language === "pl" ? "5 dni · jednorazowo" : "5 days · one-time",
-                fit: language === "pl"
-                  ? "Walidacja przed Sprintem · Audyt workflow · Mapa wąskich gardeł · Decyzja przed inwestycją"
-                  : "Pre-Sprint validation · Workflow audit · Bottleneck mapping · Decision before investing",
-              },
-              {
-                model: language === "pl" ? "Wdrożenie Enterprise" : "Enterprise Sprint",
-                label: language === "pl" ? "12-16 tygodni + 90-dniowy handover" : "12-16 weeks + 90-day handover",
-                fit: language === "pl"
-                  ? "Pełny Creative Operating System · Transformacja multi-location (300+ branchy) · Brand + Ops razem"
-                  : "Full Creative Operating System · Multi-location transformation (300+ branches) · Brand + Ops together",
-              },
-              {
-                model: language === "pl" ? "Partner Operacyjny" : "Operating Partner",
-                label: language === "pl" ? "Kontrakt roczny · rytm miesięczny" : "Annual contract · monthly cadence",
-                fit: language === "pl"
-                  ? "Długoterminowa opieka strategiczna · Ewolucja systemu · Rozszerzenia (nowe rynki, marki, kanały) · Coaching wewnętrznych zespołów"
-                  : "Long-term strategic stewardship · System evolution · Expansions (new markets, brands, channels) · Internal team coaching",
-              },
-            ]).map((row, i) => (
-              <div
-                key={i}
-                className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-4 md:gap-8 py-6 md:py-7 border-b border-neutral-200 dark:border-white/10"
-              >
-                <div>
-                  <div className="text-lg md:text-xl font-semibold text-neutral-900 dark:text-white tracking-tight leading-tight">
-                    {row.model}
-                  </div>
-                  <div className="text-[11px] uppercase tracking-[0.15em] text-neutral-500 dark:text-[#666666] font-display mt-1.5">
-                    {row.label}
-                  </div>
-                </div>
-                <div>
-                  <div className="text-[10px] uppercase tracking-[0.2em] text-neutral-500 dark:text-[#D4FF00]/70 font-display mb-2">
-                    {language === "pl" ? "Najczęściej dla" : "Most often for"}
-                  </div>
-                  <p className="text-[14px] md:text-[15px] text-neutral-700 dark:text-neutral-300 leading-relaxed [text-wrap:pretty]">
-                    {row.fit}
-                  </p>
-                </div>
-              </div>
-            ))}
+          <div className="overflow-x-auto pb-4">
+            <table className="w-full min-w-[760px] border-collapse text-left">
+              <thead>
+                <tr className="border-b border-neutral-200 dark:border-white/10">
+                  <th className="py-4 pr-4 font-normal text-[13px] text-neutral-400 align-bottom">
+                    {language === "pl" ? "Model" : "Model"}
+                  </th>
+                  {(language === "pl"
+                    ? ["Brand launch", "Rollout multi-location", "Reset design ops", "Adopcja AI workflow", "Stałe partnerstwo"]
+                    : ["Brand launch", "Multi-location rollout", "Design ops reset", "AI workflow adoption", "Ongoing partnership"]
+                  ).map((scenario, i) => (
+                    <th
+                      key={i}
+                      className="py-4 px-4 text-center align-bottom font-display font-medium text-[10px] uppercase tracking-[0.15em] text-neutral-600 dark:text-neutral-400"
+                    >
+                      {scenario}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {/* marks: 2 = best fit (filled lime dot) · 1 = workable (hollow dot) · 0 = not a match */}
+                {([
+                  {
+                    model: language === "pl" ? "Sprint" : "Sprint",
+                    meta: language === "pl" ? "Stały zakres · 2-6 tygodni" : "Fixed scope · 2-6 weeks",
+                    fit: language === "pl"
+                      ? "Brand System launch · Website Launch · Pakiet kampanii (jednorazowy) · UX produktu cyfrowego"
+                      : "Brand System launch · Website Launch · Campaign Toolkit (one-off) · Digital Product UX",
+                    marks: [2, 1, 1, 1, 0],
+                  },
+                  {
+                    model: language === "pl" ? "Abonament" : "Retainer",
+                    meta: language === "pl" ? "Ciągły rytm · od 3 miesięcy" : "Ongoing rhythm · from 3 months",
+                    fit: language === "pl"
+                      ? "Always-On Communication · System assetów multi-location · Stałe kampanie · Spójność marki"
+                      : "Always-On Communication · Multi-Location Asset System · Recurring campaigns · Brand consistency",
+                    marks: [1, 1, 0, 1, 2],
+                  },
+                  {
+                    model: language === "pl" ? "Diagnostyka" : "Diagnostic",
+                    meta: language === "pl" ? "5 dni · jednorazowo" : "5 days · one-time",
+                    fit: language === "pl"
+                      ? "Walidacja przed Sprintem · Audyt workflow · Mapa wąskich gardeł · Decyzja przed inwestycją"
+                      : "Pre-Sprint validation · Workflow audit · Bottleneck mapping · Decision before investing",
+                    marks: [0, 1, 2, 1, 0],
+                  },
+                  {
+                    model: language === "pl" ? "Wdrożenie Enterprise" : "Enterprise Sprint",
+                    meta: language === "pl" ? "12-16 tygodni + 90-dniowy handover" : "12-16 weeks + 90-day handover",
+                    fit: language === "pl"
+                      ? "Pełny Creative Operating System · Transformacja multi-location (300+ branchy) · Brand + Ops razem"
+                      : "Full Creative Operating System · Multi-location transformation (300+ branches) · Brand + Ops together",
+                    marks: [1, 2, 2, 2, 0],
+                  },
+                  {
+                    model: language === "pl" ? "Partner Operacyjny" : "Operating Partner",
+                    meta: language === "pl" ? "Kontrakt roczny · rytm miesięczny" : "Annual contract · monthly cadence",
+                    fit: language === "pl"
+                      ? "Długoterminowa opieka strategiczna · Ewolucja systemu · Rozszerzenia (nowe rynki, marki, kanały) · Coaching wewnętrznych zespołów"
+                      : "Long-term strategic stewardship · System evolution · Expansions (new markets, brands, channels) · Internal team coaching",
+                    marks: [0, 1, 1, 1, 2],
+                  },
+                ]).map((row, i) => (
+                  <tr key={i} className="border-b border-neutral-100 dark:border-white/5">
+                    <td className="py-5 pr-4 align-top">
+                      <div className="text-[15px] md:text-base font-semibold text-neutral-900 dark:text-white tracking-tight leading-tight whitespace-nowrap">
+                        {row.model}
+                      </div>
+                      <div className="text-[10px] uppercase tracking-[0.15em] text-neutral-500 dark:text-[#666666] font-display mt-1 whitespace-nowrap">
+                        {row.meta}
+                      </div>
+                      {/* Full product-pairing copy — visually hidden, kept in DOM
+                          for crawlers / prerendered evidence */}
+                      <span className="sr-only">
+                        {language === "pl" ? "Najczęściej dla: " : "Most often for: "}
+                        {row.fit}
+                      </span>
+                    </td>
+                    {row.marks.map((mark, j) => (
+                      <td key={j} className="py-5 px-4 text-center align-middle">
+                        {mark === 2 ? (
+                          <span aria-hidden="true" className="inline-block w-2.5 h-2.5 rounded-full bg-[#D4FF00] shadow-[0_0_10px_rgba(212,255,0,0.35)]" />
+                        ) : mark === 1 ? (
+                          <span aria-hidden="true" className="inline-block w-2.5 h-2.5 rounded-full border border-neutral-400 dark:border-neutral-500" />
+                        ) : (
+                          <span aria-hidden="true" className="text-neutral-300 dark:text-neutral-700 text-[13px] leading-none">—</span>
+                        )}
+                        <span className="sr-only">
+                          {mark === 2
+                            ? (language === "pl" ? "Najlepszy fit" : "Best fit")
+                            : mark === 1
+                              ? (language === "pl" ? "Możliwy fit" : "Workable fit")
+                              : (language === "pl" ? "Nie pasuje" : "Not a match")}
+                        </span>
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Legend */}
+          <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-[12px] text-neutral-500 dark:text-[#888888]">
+            <span className="inline-flex items-center gap-2">
+              <span aria-hidden="true" className="inline-block w-2 h-2 rounded-full bg-[#D4FF00]" />
+              {language === "pl" ? "Najlepszy fit" : "Best fit"}
+            </span>
+            <span className="inline-flex items-center gap-2">
+              <span aria-hidden="true" className="inline-block w-2 h-2 rounded-full border border-neutral-400 dark:border-neutral-500" />
+              {language === "pl" ? "Możliwy fit" : "Workable fit"}
+            </span>
+            <span className="inline-flex items-center gap-2">
+              <span aria-hidden="true" className="text-neutral-400 dark:text-neutral-600">—</span>
+              {language === "pl" ? "Nie pasuje" : "Not a match"}
+            </span>
           </div>
         </div>
       </Reveal>

@@ -3,7 +3,8 @@ import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { ImageHover } from "@/app/components/ui/ImageHover";
 import { useLanguage } from "@/app/context/LanguageContext";
 
-import imgGreen from "../../../imports/0_2.jpeg";
+// Converted from 0_2.jpeg (320 KB) → webp (105 KB) via sharp — was the only jpeg in the bundle.
+import imgGreen from "../../../imports/0_2-green.webp";
 import imgGray from "../../../imports/0_3.webp";
 import imgBlack from "../../../imports/0_2.webp";
 

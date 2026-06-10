@@ -11,14 +11,14 @@ export const translations = {
       journal: "Journal",
       detailed_brief: "Detailed Brief",
       pricing: "Limited Access",
-      tagline: "STRATEGIC DESIGN PARTNER"
+      tagline: "DESIGN · SYSTEMS · AI"
     },
     hero: {
       // Hero — two crisp claims in parallel. Tagline + audience qualifier; engagement
       // model (retainer) lives in the body copy and on Services rather than in the H1.
-      //   1. "Strategic design partner"  — WHO (matches the header tagline)
-      //   2. "For growing brands"        — WHO it's for (audience qualifier — scaling
-      //                                    brands across product, locations, campaigns)
+      //   1. "Strategic design partner"  — WHO (identity)
+      //   2. "For growing brands"        — WHO it's for (audience qualifier;
+      //                                    differentiation carried by header tagline + chips)
       title: "Strategic design partner.<br/>For growing brands.",
       // Mobile breaks: explicit 4-line stack prevents browser from word-breaking
       // "growing" into "growin / g brands." at 48px on 375px viewport.
@@ -637,7 +637,7 @@ export const translations = {
       journal: "Dziennik",
       detailed_brief: "Szczegółowy Brief",
       pricing: "Dostęp ograniczony",
-      tagline: "STRATEGICZNY PARTNER DESIGNOWY"
+      tagline: "DESIGN · SYSTEMS · AI"
     },
     hero: {
       // Hero — dwa claim'y w parze. Tagline + audience qualifier; model współpracy

@@ -73,7 +73,32 @@ const ROUTES = [
   "/industries/real-estate",
   "/industries/retail-franchise",
   "/industries/health-service-networks",
+  // Journal articles — prerendered so Article JSON-LD + content are crawlable
+  // (published ids only; 9 is unpublished, excluded)
+  "/journal/1",
+  "/journal/4",
+  "/journal/5",
+  "/journal/6",
+  "/journal/7",
+  "/journal/8",
+  "/journal/10",
+  // Work case studies — crawlable proof pages
+  "/work/archicom",
+  "/work/benefit-systems",
+  "/work/caterelo",
+  "/work/dawid-podsiadlo",
+  "/work/discobowl",
+  "/work/fifa",
+  "/work/kubota",
+  "/work/regional-fit",
+  "/work/sonova",
+  "/work/uniqa",
 ];
+
+// Optional subset run: PRERENDER_ROUTES="/a,/b" node scripts/prerender.mjs
+const ROUTE_LIST = process.env.PRERENDER_ROUTES
+  ? process.env.PRERENDER_ROUTES.split(",").map((r) => r.trim()).filter(Boolean)
+  : ROUTES;
 
 // ─── Tiny logger ────────────────────────────────────────────────────
 const log = {
@@ -204,7 +229,7 @@ try {
   log.ok(`Chromium launched`);
 
   // ─── Render each route ──────────────────────────────────────────
-  for (const route of ROUTES) {
+  for (const route of ROUTE_LIST) {
     const url = `${PREVIEW_HOST}${route}`;
     const startMs = Date.now();
 

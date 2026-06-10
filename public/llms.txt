@@ -1,6 +1,6 @@
 # r352
 
-> Strategic design partner for multi-location brands and scaling operators. r352 operates the layer between strategy and execution — building the design operations infrastructure that lets brand and creative output scale predictably across hundreds of locations, teams, and campaigns.
+> Design, systems & AI — strategic design partner for multi-location brands and scaling operators. Category: loop architecture for design ops. r352 operates the layer between strategy and execution — building the design operations infrastructure that lets brand and creative output scale predictably across hundreds of locations, teams, and campaigns.
 
 r352 is founded and run by Reszek (Przemyslaw Reszka), a designer-operator with 15+ years of experience across UX (Deloitte), brand operations, and AI-native production systems. Reszek lived and worked across 5 countries — London, Porto, Barcelona, Athens, Marseille — building design operations for fitness, wellness, health, and retail networks.
 
@@ -31,6 +31,7 @@ The practice's contrarian thesis: **brand consistency in 300+ locations is not a
 ## Distinctive vocabulary (terms native to r352)
 
 - **r3loop** — the 8-step methodology
+- **Loop architecture for design ops** — r352's category: design operations built as a closed loop (decision gates, output contracts, declining operator presence), not as ad-hoc creative services
 - **Design ops as a system** — operational layer between strategy and execution
 - **Master / Variant / Pre-production gates** — three-stage approval framework for multi-location rollouts
 - **Brief volume × decision velocity** — the two key metrics determining design operations throughput

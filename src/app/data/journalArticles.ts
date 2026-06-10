@@ -13,6 +13,8 @@ export interface Article {
   title: string;
   title_pl?: string;
   date: string;
+  /** Optional ISO 8601 publication date for schema.org (e.g. "2026-06-10"). Falls back to parsing `date`. */
+  dateISO?: string;
   category: string;
   image: string;
   content: string; // HTML or Markdown content
@@ -22,6 +24,67 @@ export interface Article {
 }
 
 export const journalArticles: Article[] = [
+  {
+    id: 10,
+    title: "From methodology to product:<br/>mapping r3loop steps to tools",
+    title_pl: "Od metodologii do produktu:<br/>kroki r3loop jako narzędzia",
+    date: "June 2026",
+    dateISO: "2026-06-10",
+    category: "Operator Notes",
+    image: journal9Cover,
+    content: `
+      <p class="mb-6 text-xl leading-relaxed text-neutral-300">
+        A methodology that only exists in slide decks is a liability. It depends on me being in the room, and the whole point of r3loop is to make engagements less dependent on me being in the room. <span class="text-white font-medium">So over the past two years I've been turning the steps of the loop into tools</span> — deliberately, one step at a time, wherever a step's output was structured enough to become software.
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        This article maps which r3loop steps have productized, into what, and why those steps and not others. It's also the honest version of the "we build systems, not deliverables" claim — here is what the systems actually are.
+      </p>
+
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Why steps productize at all</h2>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Every r3loop step has two properties that most consulting work lacks. It ends with a <span class="text-white">decision gate</span> — a pass/fail question that closes the step — and it owes the next step an <span class="text-white">output contract</span>: a defined artifact in a defined format. Structured input, structured output, binary completion criteria. That is, almost word for word, the specification of a software tool.
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Not every step qualifies equally. Govern and Ship stay mostly human — they're about judgment and accountability inside a specific organization. The steps that productize first are the ones I repeat in identical form across every engagement: Diagnose, Standardize, Measure.
+      </p>
+
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Diagnose → the diagnostic tool</h3>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        The 5-day Diagnostic engagement runs on the same instrument every time: a structured interview script, a friction-point inventory, and a scoring rubric that ranks each finding by operational cost. After enough repetitions, the instrument stopped being notes and became a tool — <span class="text-white">a standardized audit that produces a ranked friction-point list with cost estimates, owners, and a 60-day fix window</span>. The output contract is fixed, so the findings are comparable across clients, and a second audit a year later measures real movement instead of impressions.
+      </p>
+
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Standardize → the AI Brief Assistant</h3>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Standardize is the most repeated step in the loop, and brief intake is its core. The templates and QA checklist that the step owes downstream turned into the <span class="text-white">AI Brief Assistant</span>: a tool that drafts on-standard briefs from a short structured intake, flags missing decisions before work starts, and enforces the format the rest of the system expects. This is where the "80%+ of briefs ready first round" number comes from — it isn't designer heroics, it's the tool refusing to pass an incomplete brief through the gate.
+      </p>
+
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Measure → the KPI dashboard</h3>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Measure owes the loop a baseline: <span class="text-white">brief volume × decision velocity</span>, the two numbers that determine real creative throughput. The KPI dashboard tracks both continuously — briefs in flight, time from intake to approved direction, exceptions that breached the standard. It's also what lets the presence curve actually decline: by the Measure end of an engagement, the client's team reads the dashboard and I review the exceptions, not the other way around.
+      </p>
+
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Products born from the loop</h2>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Two of my own products exist because the loop, run end-to-end, produces products. <a href="https://regional.fit" target="_blank" rel="noopener" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">regional.fit</a> came out of years of multi-location fitness work — the Diagnose and Map steps applied to regional fitness markets instead of a single client's operations. <a href="https://caterelo.com" target="_blank" rel="noopener" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">Caterelo</a> is the fullest expression: all eight steps applied to the relocation decision, from diagnosing four user personas to a live product with a scoring model, decision tools, and quarterly data refresh.
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Neither is a side project in the usual sense. They're proof of work: <span class="text-white">a methodology you sell needs to survive your own use of it.</span> If r3loop couldn't carry a product from zero to revenue without a client paying for the ride, I'd have no business prescribing it to a 250-location network.
+      </p>
+
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">What this means if you hire me</h2>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Practically, three things. The Diagnostic you buy runs on an instrument that has been calibrated across engagements, not invented for you on day one. The brief standards we set up arrive with a working assistant, not a PDF your team will stop reading in March. And the dashboard stays after I leave — the tools are deliverables, not demos. That's the difference between selling hours and selling a system: <span class="text-white">the system is still there when the invoice stops.</span>
+      </p>
+      <div class="bg-white/[0.03] border-l-2 border-[#D4FF00] p-8 my-12">
+        <p class="text-xl text-white font-medium leading-relaxed mb-3">
+          If your design operations run on tribal knowledge and heroic effort, the loop — and its tools — is the fix.
+        </p>
+        <p class="text-base text-neutral-400">
+          Start with the Diagnostic. The instrument does the rest.
+        </p>
+      </div>
+    `,
+  },
   {
     id: 9,
     // DISABLED — turn on later by flipping `published: true` or removing the line

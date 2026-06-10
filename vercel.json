@@ -4,6 +4,16 @@
       "source": "/framework",
       "destination": "/process",
       "permanent": true
+    },
+    {
+      "source": "/journal/2",
+      "destination": "/journal",
+      "permanent": true
+    },
+    {
+      "source": "/journal/3",
+      "destination": "/journal",
+      "permanent": true
     }
   ],
   "rewrites": [

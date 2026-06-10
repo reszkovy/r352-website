@@ -263,10 +263,10 @@ export function AgencyHeader() {
           <div className="flex gap-2 ml-3">
              <Link href={contactButton.href} className="group relative px-2 py-1 overflow-hidden">
                  <div className="relative z-10 font-sans font-medium text-sm lowercase tracking-normal">
-                    <span className="block text-[#D4FF00] group-hover:-translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.85,0,0.15,1)]">
+                    <span className="block text-[#D4FF00] group-hover:-translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">
                         {contactButton.label}
                     </span>
-                    <span className="absolute inset-0 block text-white translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.85,0,0.15,1)]">
+                    <span className="absolute inset-0 block text-white translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">
                         {contactButton.label}
                     </span>
                  </div>

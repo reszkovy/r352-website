@@ -6,8 +6,8 @@ import { useTheme } from "@/app/context/ThemeContext";
 import { AnimeGrid } from "@/app/components/ui/AnimeGrid";
 import { MagneticButton } from "@/app/components/ui/MagneticButton";
 import { ElasticLine } from "@/app/components/ui/ElasticLine";
+import { ChipTooltip } from "@/app/components/ui/ChipTooltip";
 import { ArrowRight } from "lucide-react";
-import { motion } from "motion/react";
 
 export function AgencyHero() {
   const { t, language } = useLanguage();
@@ -72,20 +72,17 @@ export function AgencyHero() {
                 This pushes subtitle + CTAs higher in viewport (ATF) and uses divider as a logical
                 separator between "decide → act" zone and "proof signals" zone. */}
 
-            {/* Audience qualifier chips — premium framer-motion tooltips on hover.
+            {/* Audience qualifier chips — shared ChipTooltip component (ui/ChipTooltip).
                 Two semantic groups separated by a vertical divider:
                   Group 1 (neutral chips): WHO we serve
                   Group 2 (lime accent):   WHAT we do (capability anchor)
-                Hover triggers a synchronized variant animation across the chip border,
-                chip text color, and the floating tooltip (fade + slide + scale + blur),
-                with a smooth cinematic easing matching the site-wide motion language
-                ([0.22, 1, 0.36, 1] — same curve as PageTransition + Reveal). */}
+                Tooltip content is ALWAYS in the DOM (hidden via opacity/visibility) so
+                prerendered HTML carries the full qualifier text. Triggers are keyboard-
+                focusable with aria-describedby. Chips wrap + shrink below 640px. */}
             <div className="mb-8 md:mb-10 flex flex-wrap gap-2 md:gap-3 items-center">
-              {/* Group 1 — audience/maturity filters with premium tooltips */}
-              {/* Tooltip strings use React fragments + &nbsp; before the last 1-2 words.
-                  This is a typography safety net — even if text-wrap:pretty doesn't render
-                  cleanly (older Safari, edge cases), the non-breaking space prevents an
-                  orphan word from sitting alone on the final line. */}
+              {/* Group 1 — audience/maturity filters with premium tooltips.
+                  Tooltip strings use React fragments + &nbsp; before the last 1-2 words —
+                  a typography safety net preventing orphan words on the final line. */}
               {(language === "pl" ? [
                 { label: "Multi-location", tooltip: <>5–300+ fizycznych punktów, jedna&nbsp;marka</> },
                 { label: "Multi-product", tooltip: <>Wiele linii produktów pod jedną&nbsp;marką</> },
@@ -101,100 +98,27 @@ export function AgencyHero() {
                 { label: "Brand launch", tooltip: <>Pre-launch identity and 0-to-1 market&nbsp;entry</> },
                 { label: "Post-PMF & scaling", tooltip: <>Past product-market fit, beyond founder-led&nbsp;execution</> },
               ]).map((chip, i) => (
-                <motion.span
-                  key={i}
-                  className="relative inline-block"
-                  initial="rest"
-                  animate="rest"
-                  whileHover="hover"
-                >
-                  <motion.span
-                    className="inline-flex items-center px-3 py-1.5 text-[10px] md:text-[11px] font-display uppercase tracking-[0.15em] border rounded-full cursor-help select-none will-change-[color,border-color]"
-                    variants={{
-                      rest: { borderColor: "rgba(255,255,255,0.15)", color: "rgb(163,163,163)" },
-                      hover: { borderColor: "#D4FF00", color: "#D4FF00" },
-                    }}
-                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                  >
-                    {chip.label}
-                  </motion.span>
-
-                  {/* Premium tooltip — cinematic entrance (fade + slide + scale + blur).
-                      Glass effect: backdrop-blur + bg with very low opacity. Lime gradient
-                      hairline on top reads as accent without adding a "boxy" frame.
-                      Arrow pointer (rotated square) visually links tooltip to chip. */}
-                  <motion.span
-                    className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-max max-w-[220px] z-[60]"
-                    variants={{
-                      rest: { opacity: 0, y: 8, scale: 0.96, filter: "blur(6px)" },
-                      hover: { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" },
-                    }}
-                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  >
-                    <span className="relative block px-4 py-3 bg-[#0a0a0a]/85 backdrop-blur-xl border border-white/10 rounded-[6px] shadow-[0_12px_32px_-12px_rgba(0,0,0,0.6)]">
-                      {/* Lime gradient hairline accent across top */}
-                      <span aria-hidden="true" className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-[#D4FF00]/50 to-transparent" />
-                      <span className="block text-[11px] leading-relaxed text-neutral-100 normal-case tracking-normal font-sans text-center [text-wrap:balance]">
-                        {chip.tooltip}
-                      </span>
-                      {/* Arrow pointer */}
-                      <span
-                        aria-hidden="true"
-                        className="absolute -bottom-[5px] left-1/2 -translate-x-1/2 w-[10px] h-[10px] bg-[#0a0a0a]/85 backdrop-blur-xl border-r border-b border-white/10 rotate-45"
-                      />
-                    </span>
-                  </motion.span>
-                </motion.span>
+                <ChipTooltip key={i} label={chip.label} tooltip={chip.tooltip} tooltipClassName="max-w-[220px]" />
               ))}
 
               {/* Divider — signals category shift from "who" to "how" */}
               <span aria-hidden="true" className="hidden sm:inline-block w-px h-4 bg-white/15 mx-1" />
 
               {/* Group 2 — capability anchor (lime accent, distinct visual register) */}
-              <motion.span
-                className="relative inline-block"
-                initial="rest"
-                animate="rest"
-                whileHover="hover"
-              >
-                <motion.span
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] md:text-[11px] font-display uppercase tracking-[0.15em] text-[#D4FF00] border rounded-full cursor-help select-none will-change-[background-color,border-color]"
-                  variants={{
-                    rest: { borderColor: "rgba(212, 255, 0, 0.4)", backgroundColor: "rgba(212, 255, 0, 0)" },
-                    hover: { borderColor: "#D4FF00", backgroundColor: "rgba(212, 255, 0, 0.06)" },
-                  }}
-                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  <span aria-hidden="true" className="text-[8px] opacity-70">+</span>
-                  AI Elevated Workflows
-                </motion.span>
-
-                <motion.span
-                  className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-max max-w-[240px] z-[60]"
-                  variants={{
-                    rest: { opacity: 0, y: 8, scale: 0.96, filter: "blur(6px)" },
-                    hover: { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" },
-                  }}
-                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  <span className="relative block px-4 py-3 bg-[#0a0a0a]/85 backdrop-blur-xl border border-[#D4FF00]/25 rounded-[6px] shadow-[0_12px_32px_-12px_rgba(0,0,0,0.6),0_0_24px_-12px_rgba(212,255,0,0.3)]">
-                    {/* Solid lime hairline (vs gradient for neutral chips) — distinct visual register */}
-                    <span aria-hidden="true" className="absolute top-0 left-4 right-4 h-px bg-[#D4FF00]/60" />
-                    <span className="block text-[11px] leading-relaxed text-neutral-100 normal-case tracking-normal font-sans text-center [text-wrap:balance]">
-                      {/* Non-breaking space (&nbsp;) before last word as fallback for older
-                          browsers without text-wrap:pretty support — prevents orphan word. */}
-                      {language === "pl"
-                        ? <>AI jako warstwa w governance i delivery — nie jako&nbsp;feature</>
-                        : <>AI as a layer in governance and delivery — not as a&nbsp;feature</>}
-                    </span>
-                    {/* Arrow pointer with matching lime border */}
-                    <span
-                      aria-hidden="true"
-                      className="absolute -bottom-[5px] left-1/2 -translate-x-1/2 w-[10px] h-[10px] bg-[#0a0a0a]/85 backdrop-blur-xl border-r border-b border-[#D4FF00]/25 rotate-45"
-                    />
-                  </span>
-                </motion.span>
-              </motion.span>
+              <ChipTooltip
+                variant="lime"
+                label={
+                  <>
+                    <span aria-hidden="true" className="text-[8px] opacity-70">+</span>
+                    AI Elevated Workflows
+                  </>
+                }
+                tooltip={
+                  language === "pl"
+                    ? <>AI jako warstwa w governance i delivery — nie jako&nbsp;feature</>
+                    : <>AI as a layer in governance and delivery — not as a&nbsp;feature</>
+                }
+              />
             </div>
 
             {/* Action block: subtitle (vertically CENTERED to CTA buttons) + CTAs.

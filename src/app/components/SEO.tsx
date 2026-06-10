@@ -11,7 +11,7 @@ interface SEOProps {
 
 export function SEO({
   title = "r352 — Move fast, steady cadence.",
-  description = "Strategic design partner for multi-location organizations. From strategy to rollout-ready delivery, powered by the r3loop methodology — predictable quality and speed at scale.",
+  description = "Design, systems & AI — strategic design partner for multi-location organizations. Loop architecture for design ops, from strategy to rollout-ready delivery, powered by the r3loop methodology. Predictable quality and speed at scale.",
   path = "/",
   ogImage = "https://www.r352.com/og-image.png",
   article
@@ -58,8 +58,7 @@ export function SEO({
       "Design Governance"
     ],
     "sameAs": [
-      "https://www.linkedin.com/in/przemyslawreszka/",
-      "https://www.instagram.com/r352.studio/"
+      "https://www.linkedin.com/in/przemyslawreszka/"
     ]
   };
 
@@ -69,7 +68,7 @@ export function SEO({
     "name": "r352",
     "url": "https://www.r352.com",
     "logo": "https://www.r352.com/logo.svg",
-    "description": "Strategic design partner for multi-location organizations. We build the operating system behind great design — from strategy to rollout-ready delivery, powered by the r3loop methodology.",
+    "description": "Strategic design partner for multi-location organizations. Loop architecture for design ops — we build the operating system behind great design, from strategy to rollout-ready delivery, powered by the r3loop methodology.",
     "email": "hello@r352.com",
     "founder": {
       "@type": "Person",
@@ -84,9 +83,7 @@ export function SEO({
       "addressCountry": "ES"
     },
     "sameAs": [
-      "https://www.instagram.com/r352.studio/",
-      "https://www.linkedin.com/in/przemyslawreszka/",
-      "https://www.youtube.com/@r352studio"
+      "https://www.linkedin.com/in/przemyslawreszka/"
     ]
   };
 
@@ -97,7 +94,7 @@ export function SEO({
     "@type": "WebSite",
     "name": "r352",
     "url": "https://www.r352.com",
-    "description": "Strategic design partner for multi-location brands. Operating system behind great design.",
+    "description": "Strategic design partner for multi-location brands. Loop architecture for design ops — the operating system behind great design.",
     "publisher": {
       "@type": "Organization",
       "name": "r352",
@@ -231,6 +228,41 @@ export function SEO({
     ]
   };
 
+  // Service schema — /services route only. Names the offering as a service
+  // entity (provider r352, serviceType "Design operations consulting") so
+  // search engines + LLMs classify the page as a service catalog, not prose.
+  const isServicesPage = path === "/services";
+
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "r352 — Strategic design partner",
+    "serviceType": "Design operations consulting",
+    "description": "Loop architecture for design ops. Strategy, operating system, design & production, and build & optimize — delivered through the r3loop methodology as productized engagements (Diagnostic, Sprint, Retainer, Enterprise Sprint, Operating Partner).",
+    "url": "https://www.r352.com/services",
+    "provider": {
+      "@type": "Organization",
+      "name": "r352",
+      "url": "https://www.r352.com"
+    },
+    "areaServed": "Worldwide",
+    "audience": {
+      "@type": "BusinessAudience",
+      "name": "Multi-location brands and scaling operators (30-300+ locations)"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Engagement models",
+      "itemListElement": [
+        { "@type": "Offer", "name": "Diagnostic", "description": "5-day operational audit, €2k fixed, 60-day money-back guarantee." },
+        { "@type": "Offer", "name": "Sprint", "description": "4-6 week fixed-scope build, from €15k." },
+        { "@type": "Offer", "name": "Retainer", "description": "Monthly engagement from €7k/mo, 30-day notice." },
+        { "@type": "Offer", "name": "Enterprise Sprint", "description": "12-16 week multi-location rollout, from €55k." },
+        { "@type": "Offer", "name": "Operating Partner", "description": "Embedded role from €9.5k/mo, 12-month minimum." }
+      ]
+    }
+  };
+
   const isArticle = !!article;
 
   const blogPostingSchema = article ? {
@@ -240,8 +272,9 @@ export function SEO({
     "datePublished": article.date,
     "dateModified": article.date,
     "author": {
-      "@type": "Organization",
-      "name": "r352",
+      "@type": "Person",
+      "name": "Przemyslaw Reszka",
+      "alternateName": "Reszek",
       "url": "https://www.r352.com"
     },
     "publisher": {
@@ -292,43 +325,43 @@ export function SEO({
       <meta name="twitter:image" content={ogImage} />
 
       {/* Structured Data */}
-      {/* Person + WebSite render on every page — anchors brand entity across the site */}
+      {/* Person + WebSite render on every page — anchors brand entity across the site.
+          NOTE: react-helmet-async does NOT render children nested inside fragments —
+          every <script> below must be a DIRECT child expression of <Helmet>. */}
       <script type="application/ld+json">
         {JSON.stringify(personSchema)}
       </script>
       <script type="application/ld+json">
         {JSON.stringify(websiteSchema)}
       </script>
-
+      <script type="application/ld+json">
+        {JSON.stringify(organizationSchema)}
+      </script>
       {isHomepage ? (
-        <>
-          <script type="application/ld+json">
-            {JSON.stringify(organizationSchema)}
-          </script>
-          <script type="application/ld+json">
-            {JSON.stringify(professionalServiceSchema)}
-          </script>
-          <script type="application/ld+json">
-            {JSON.stringify(reviewsSchema)}
-          </script>
-          <script type="application/ld+json">
-            {JSON.stringify(faqSchema)}
-          </script>
-        </>
-      ) : isArticle && blogPostingSchema ? (
-        <>
-          <script type="application/ld+json">
-            {JSON.stringify(organizationSchema)}
-          </script>
-          <script type="application/ld+json">
-            {JSON.stringify(blogPostingSchema)}
-          </script>
-        </>
-      ) : (
         <script type="application/ld+json">
-          {JSON.stringify(organizationSchema)}
+          {JSON.stringify(professionalServiceSchema)}
         </script>
-      )}
+      ) : null}
+      {isHomepage ? (
+        <script type="application/ld+json">
+          {JSON.stringify(reviewsSchema)}
+        </script>
+      ) : null}
+      {isHomepage ? (
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+      ) : null}
+      {isArticle && blogPostingSchema ? (
+        <script type="application/ld+json">
+          {JSON.stringify(blogPostingSchema)}
+        </script>
+      ) : null}
+      {isServicesPage ? (
+        <script type="application/ld+json">
+          {JSON.stringify(serviceSchema)}
+        </script>
+      ) : null}
     </Helmet>
   );
 }

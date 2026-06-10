@@ -162,12 +162,15 @@ export function Philosophy() {
         </Reveal>
         <div className="grid grid-cols-1 md:grid-cols-[420px_1fr] gap-10 md:gap-16 items-start max-w-5xl">
           <Reveal>
-            {/* Lime portrait — same avatar as the Chatbot bottom-right, scaled up. */}
-            <div className="relative aspect-square overflow-hidden">
+            {/* Lime portrait — no-face brand statement block. Glass-humanoid
+                portrait sits on a solid lime (#D4FF00) backdrop and is blended
+                via mix-blend-luminosity, so the figure reads as a lime-toned
+                silhouette — the chatbot's lime+silhouette identity at full size. */}
+            <div className="relative aspect-square overflow-hidden bg-[#D4FF00]">
               <img
                 src={reszekPortrait}
                 alt={language === 'pl' ? 'Reszek — Mallorca' : 'Reszek — Mallorca'}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover mix-blend-luminosity"
                 loading="lazy"
               />
               {/* POV statement overlay — explicit "no face" brand position.

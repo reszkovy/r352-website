@@ -60,10 +60,10 @@ export function SelectedWork() {
                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-1000 z-10 pointer-events-none" />
                      
                      <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-12 z-20 pointer-events-none overflow-hidden">
-                        <div className="translate-y-8 group-hover:translate-y-0 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]">
+                        <div className="translate-y-8 group-hover:translate-y-0 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]">
                           <h3 className="type-h3 mb-1 text-white group-hover:text-[#D4FF00] transition-colors duration-500">{project.client}</h3>
                           
-                          <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]">
+                          <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]">
                             <div className="overflow-hidden">
                               <div className="pt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100 ease-out flex flex-col items-start gap-4">
                                 <span className="block text-sm text-neutral-300 max-w-lg leading-relaxed line-clamp-2">

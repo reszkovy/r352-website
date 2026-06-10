@@ -41,7 +41,7 @@ export function ParallaxImage({
         <ImageWithFallback 
           src={src} 
           alt={alt} 
-          className="w-full h-full object-cover will-change-transform scale-100 group-hover:scale-110 transition-transform duration-[1.5s] ease-[cubic-bezier(0.25,1,0.5,1)]"
+          className="w-full h-full object-cover will-change-transform scale-100 group-hover:scale-110 transition-transform duration-[1.5s] ease-[cubic-bezier(0.22,1,0.36,1)]"
         />
       </motion.div>
     </div>
