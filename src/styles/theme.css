@@ -839,6 +839,15 @@ body:is(.lime-theme, .global-light-mode) a.text-white:hover {
   --font-weight-black: 500;
   --tracking-tighter: -0.02em;
   --tracking-tight: -0.02em;
+
+  /* ── Motion language consolidation (r3loop 7.1) ──────────────────
+     Brand curve everywhere by default: Tailwind's transition utilities
+     and ease-* tokens resolve to the primary brand easing instead of
+     the generic cubic-bezier(0.4, 0, 0.2, 1). Secondary utility curve
+     (0.16, 1, 0.3, 1) stays available via ease-out for gentle settles. */
+  --default-transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ─── REDUCED MOTION GUARD ──────────────────────────────────────────────

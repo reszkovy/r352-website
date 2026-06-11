@@ -10,7 +10,7 @@ import { ArrowRight } from "lucide-react";
 // Transparent-glass humanoid portrait — Midjourney render aligned to the "no face"
 // brand position ("The work speaks. I don't have to."). Lives in src/assets/ and is
 // resolved via the figma:asset/ vite plugin (prefers .webp if generated later).
-import reszekPortrait from "figma:asset/reszek-glass-portrait.png";
+import reszekPortrait from "figma:asset/reszek-glass-portrait.webp"; // 1.7MB PNG -> 88KB webp q80 (8.4)
 
 // Hero motion preset — gentle slide + fade + blur on enter AND exit.
 // Bypasses Reveal because hero copy is overlay'd on ScrollSequence (no in-view trigger fires).

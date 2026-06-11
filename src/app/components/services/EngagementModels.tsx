@@ -17,7 +17,7 @@ export function EngagementModels() {
       number: "01",
       title: language === "pl" ? "Sprint" : "Sprint",
       // Canonical pricing — same ranges as published in FAQ/glossary. Ranges, not quotes.
-      priceFrom: language === "pl" ? "od €15k" : "from €15k",
+      // priceFrom removed — see strategic note below pricing block
       promise: language === "pl"
         ? "W 4-6 tygodni budujemy jeden działający fragment Twojego design operating system."
         : "In 4-6 weeks, we build one working part of your design operating system.",
@@ -64,7 +64,7 @@ export function EngagementModels() {
     {
       number: "02",
       title: language === "pl" ? "Abonament" : "Retainer",
-      priceFrom: language === "pl" ? "od €7k/mies. · 30 dni wypowiedzenia" : "from €7k/mo · 30-day notice",
+      // priceFrom removed — pricing in scoping call only
       promise: language === "pl"
         ? "Miesięczny rytm utrzymujący kampanie, lokalne zapotrzebowania i jakość pod kontrolą."
         : "A monthly rhythm for keeping campaigns, local requests and design quality under control.",
@@ -111,7 +111,7 @@ export function EngagementModels() {
     {
       number: "03",
       title: language === "pl" ? "Diagnostyka" : "Diagnostic",
-      priceFrom: language === "pl" ? "€2k fixed · 60-dniowa gwarancja zwrotu" : "€2k fixed · 60-day money-back",
+      // priceFrom removed — pricing in scoping call only
       promise: language === "pl"
         ? "W 5 dni roboczych pokazujemy gdzie wasza operacja kreatywna traci czas, jakość i ownership."
         : "In 5 working days, we show where your creative operation leaks time, quality and ownership.",
@@ -161,7 +161,7 @@ export function EngagementModels() {
     {
       number: "04",
       title: language === "pl" ? "Wdrożenie Enterprise" : "Enterprise Sprint",
-      priceFrom: language === "pl" ? "od €55k" : "from €55k",
+      // priceFrom removed — pricing in scoping call only
       promise: language === "pl"
         ? "W 12-16 tygodni dostarczamy multi-location rollout system, który obsługuje 300+ lokalizacji bez rozjazdów."
         : "In 12-16 weeks, we ship a multi-location rollout system that handles 300+ branches without breaking.",
@@ -208,7 +208,7 @@ export function EngagementModels() {
     {
       number: "05",
       title: language === "pl" ? "Partner Operacyjny" : "Operating Partner",
-      priceFrom: language === "pl" ? "od €9.5k/mies. · minimum 12 miesięcy" : "from €9.5k/mo · 12-mo minimum",
+      // priceFrom removed — pricing in scoping call only
       promise: language === "pl"
         ? "Wchodzimy jako Wasz fractional head of design ops — prowadzimy system, hiring, governance, vendor selection."
         : "We embed as your fractional head of design ops — running the system, hiring, governance, vendor selection.",
@@ -564,88 +564,10 @@ export function EngagementModels() {
         </div>
       </div>
 
-      {/* ─── Pricing — canonical ranges on the record ──────────────────────
-          Same numbers as published in FAQ/glossary; surfaced here so a buyer
-          never has to dig for them. Editorial list, divider-only — no pricing
-          table monster. Ranges, not quotes: final scope set in the scoping call. */}
-      <Reveal>
-        <div className="mt-24 md:mt-32 border-t border-neutral-200 dark:border-white/10 pt-16">
-          <div className="mb-10 max-w-3xl">
-            <span className="block text-[11px] uppercase tracking-[2px] text-neutral-500 dark:text-[#D4FF00] font-display mb-4">
-              {language === "pl" ? "Cennik" : "Pricing"}
-            </span>
-            <h3 className="text-3xl md:text-5xl font-bold text-neutral-900 dark:text-white tracking-tight mb-6">
-              {language === "pl" ? "Widełki, bez owijania." : "Ranges, on the record."}
-            </h3>
-            <p className="text-[15px] text-neutral-600 dark:text-[#888888] max-w-[640px] leading-relaxed">
-              {language === "pl"
-                ? "Każde zaangażowanie jest wyceniane indywidualnie po rozmowie scopingowej — ale widełki nie są tajemnicą. Punkt startu dla pięciu modeli:"
-                : "Every engagement is scoped individually after a scoping call — but the ranges are not a secret. Where each of the five models starts:"}
-            </p>
-          </div>
-
-          <dl className="border-t border-neutral-200 dark:border-white/10">
-            {([
-              {
-                name: language === "pl" ? "Diagnostyka" : "Diagnostic",
-                price: "€2k",
-                note: language === "pl"
-                  ? "Fixed fee · 5 dni roboczych · 60-dniowa gwarancja zwrotu"
-                  : "Fixed fee · 5 working days · 60-day money-back guarantee",
-              },
-              {
-                name: "Sprint",
-                price: language === "pl" ? "od €15k" : "from €15k",
-                note: language === "pl"
-                  ? "Stały zakres · 4-6 tygodni"
-                  : "Fixed scope · 4-6 weeks",
-              },
-              {
-                name: language === "pl" ? "Abonament" : "Retainer",
-                price: language === "pl" ? "od €7k/mies." : "from €7k/mo",
-                note: language === "pl"
-                  ? "30 dni wypowiedzenia · bez lock-inu"
-                  : "30-day notice · no lock-in",
-              },
-              {
-                name: language === "pl" ? "Wdrożenie Enterprise" : "Enterprise Sprint",
-                price: language === "pl" ? "od €55k" : "from €55k",
-                note: language === "pl"
-                  ? "12-16 tygodni + 90 dni handoveru"
-                  : "12-16 weeks + 90-day handover",
-              },
-              {
-                name: language === "pl" ? "Partner Operacyjny" : "Operating Partner",
-                price: language === "pl" ? "od €9.5k/mies." : "from €9.5k/mo",
-                note: language === "pl"
-                  ? "Minimum 12 miesięcy"
-                  : "12-month minimum",
-              },
-            ]).map((row, i) => (
-              <div
-                key={i}
-                className="grid grid-cols-12 gap-2 md:gap-8 items-baseline py-5 border-b border-neutral-200 dark:border-white/10"
-              >
-                <dt className="col-span-12 md:col-span-4 text-[15px] md:text-base font-semibold text-neutral-900 dark:text-white tracking-tight">
-                  {row.name}
-                </dt>
-                <dd className="col-span-6 md:col-span-3 m-0 font-mono text-[13px] md:text-[14px] uppercase tracking-[0.1em] text-neutral-900 dark:text-[#D4FF00]">
-                  {row.price}
-                </dd>
-                <dd className="col-span-6 md:col-span-5 m-0 text-[13px] text-neutral-500 dark:text-[#888888] leading-snug text-right md:text-left">
-                  {row.note}
-                </dd>
-              </div>
-            ))}
-          </dl>
-
-          <p className="mt-5 text-[12px] text-neutral-500 dark:text-[#666666] leading-relaxed max-w-[640px]">
-            {language === "pl"
-              ? "Kwoty netto. Finalna wycena zależy od zakresu, liczby lokalizacji i głębokości wdrożenia — ustalana przed startem, nie w trakcie."
-              : "Net amounts. Final pricing depends on scope, location count and implementation depth — set before kickoff, not along the way."}
-          </p>
-        </div>
-      </Reveal>
+      {/* ─── Pricing block removed per strategic decision (2026-06):
+          per-market pricing optionality between PL clients (current) and
+          international markets (ambition) — visible €-anchors locked the
+          ceiling. Pricing discussed in /brief or scoping call, not posted. */}
 
       {/* ─── Pairing Matrix — engagement model ↔ buying scenario ──────────
           Resolves decision fatigue: rows = the 5 engagement models, columns =

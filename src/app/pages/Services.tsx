@@ -30,8 +30,8 @@ const SERVICES_FAQ: { q: { en: string; pl: string }; a: { en: string; pl: string
       pl: "Czym różni się pięć modeli współpracy?",
     },
     a: {
-      en: "They map to problem maturity. Diagnostic (€2k, 5 working days) finds the problem. Sprint (from €15k, 4–6 weeks, fixed scope) ships one working part of the system. Retainer (from €7k/mo, 30-day notice) covers ongoing production. Enterprise Sprint (from €55k, 12–16 weeks) implements a full Creative Operating System for multi-location organizations. Operating Partner (from €9.5k/mo, 12-month minimum) is an embedded strategic role. If several fit, start with the smallest engagement.",
-      pl: "Mapują się na dojrzałość problemu. Diagnostic (€2k, 5 dni roboczych) znajduje problem. Sprint (od €15k, 4–6 tygodni, fixed scope) dostarcza jedną działającą część systemu. Retainer (od €7k/mc, 30-day notice) pokrywa bieżącą produkcję. Enterprise Sprint (od €55k, 12–16 tygodni) wdraża pełny Creative Operating System dla organizacji multi-location. Operating Partner (od €9.5k/mc, 12-miesięczne minimum) to embedded rola strategiczna. Jeśli pasuje kilka — zacznij od najmniejszego engagementu.",
+      en: "They map to problem maturity. Diagnostic (5 working days) finds the problem. Sprint (4–6 weeks, fixed scope) ships one working part of the system. Retainer (30-day notice) covers ongoing production. Enterprise Sprint (12–16 weeks) implements a full Creative Operating System for multi-location organizations. Operating Partner (12-month minimum) is an embedded strategic role. If several fit, start with the smallest engagement.",
+      pl: "Mapują się na dojrzałość problemu. Diagnostic (5 dni roboczych) znajduje problem. Sprint (4–6 tygodni, fixed scope) dostarcza jedną działającą część systemu. Retainer (30-day notice) pokrywa bieżącą produkcję. Enterprise Sprint (12–16 tygodni) wdraża pełny Creative Operating System dla organizacji multi-location. Operating Partner (12-miesięczne minimum) to embedded rola strategiczna. Jeśli pasuje kilka — zacznij od najmniejszego engagementu.",
     },
   },
   {
@@ -56,12 +56,12 @@ const SERVICES_FAQ: { q: { en: string; pl: string }; a: { en: string; pl: string
   },
   {
     q: {
-      en: "Are the prices fixed?",
-      pl: "Czy ceny są fixed?",
+      en: "How is pricing handled?",
+      pl: "Jak ustalana jest cena?",
     },
     a: {
-      en: "The Diagnostic is a fixed fee: €2k for 5 working days. The other models have public starting points — Sprint from €15k, Retainer from €7k/mo, Enterprise Sprint from €55k, Operating Partner from €9.5k/mo — scoped individually after a scoping call. Final pricing depends on scope, location count and implementation depth, and is set before kickoff, not along the way. All amounts are net.",
-      pl: "Diagnostic ma fixed fee: €2k za 5 dni roboczych. Pozostałe modele mają jawne punkty startowe — Sprint od €15k, Retainer od €7k/mc, Enterprise Sprint od €55k, Operating Partner od €9.5k/mc — scope'owane indywidualnie po scoping callu. Finalna cena zależy od zakresu, liczby lokalizacji i głębokości wdrożenia, i jest ustalana przed kickoffem, nie po drodze. Wszystkie kwoty netto.",
+      en: "Pricing is set in the scoping call, individually per engagement. Final scope, location count, and implementation depth determine where you land — set before kickoff, not discovered along the way. The Diagnostic carries a 60-day money-back guarantee if the recommendations aren't actionable.",
+      pl: "Cena jest ustalana w scoping callu, indywidualnie per engagement. Finalny scope, liczba lokalizacji i głębokość wdrożenia decydują gdzie wylądujesz — ustalane przed kickoffem, nie odkrywane po drodze. Diagnostic ma 60-day money-back guarantee jeśli rekomendacje nie są actionable.",
     },
   },
   {

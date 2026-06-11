@@ -807,6 +807,33 @@ export function Process() {
         </div>
       </section>
 
+      {/* ─── From loop to tools — step→product map (r3loop 9.5) ──────
+          Factual strip: which steps have been productized into software.
+          Replaces the unpublished journal/10 essay with a dry, structural
+          version. Sits right before the Playbook section — same discreet
+          editorial register. */}
+      <section className="py-14 md:py-16 border-b border-neutral-200 dark:border-white/10">
+        <div className="max-w-[1800px] mx-auto px-8 md:px-12">
+          <Reveal>
+            <div className="max-w-2xl">
+              <span className="block text-[10px] font-display uppercase tracking-[0.25em] text-neutral-500 dark:text-neutral-500 mb-5">
+                {lang === "pl" ? "Z pętli do narzędzi" : "From loop to tools"}
+              </span>
+              <p className="text-base md:text-lg text-neutral-800 dark:text-neutral-200 leading-relaxed [text-wrap:pretty] mb-4">
+                {lang === "pl"
+                  ? "Krok, którego output jest wystarczająco ustrukturyzowany, staje się oprogramowaniem — to test, czy metodologia jest systemem, a nie sloganem."
+                  : "Any step with a structured enough output becomes software — that's the test of whether the methodology is a system, not a slogan."}
+              </p>
+              <p className="text-[13px] text-neutral-500 dark:text-neutral-500 leading-relaxed">
+                {lang === "pl"
+                  ? "01 Diagnose → narzędzie diagnostyczne (scoring 50 kryteriów) · 03 Standardize → AI Brief Assistant (bramka jakości briefu) · 07 Measure → dashboard KPI (cotygodniowe delivery packs) · produkty z pętli: regional.fit (MVP live), Caterelo"
+                  : "01 Diagnose → diagnostic instrument (50-criteria scoring) · 03 Standardize → AI Brief Assistant (brief quality gate) · 07 Measure → KPI dashboard (weekly delivery packs) · products born from the loop: regional.fit (MVP live), Caterelo"}
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ─── Q4 2026 — r3loop Playbook waitlist ──────────────────────
           Productization scaffold. Captures emails for the paid playbook launch.
           Founding price (€1500) vs standard (€2000) creates urgency without

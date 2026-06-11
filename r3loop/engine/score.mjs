@@ -76,6 +76,11 @@ for (const p of SPEC.prompts) {
 const category_scores = {};
 for (const [c, v] of Object.entries(cats)) category_scores[c] = Math.round((10000 * v.earned) / v.max);
 const site_score = Math.round(Object.values(category_scores).reduce((a, b) => a + b, 0) / 10);
+// Core score: site quality WITHOUT category 10 (Distribution) — distribution
+// is an off-site execution track, scored separately (decision 2026-06-11).
+const site_score_core = Math.round(
+  Object.entries(category_scores).filter(([c]) => c !== '10').reduce((a, [, v]) => a + v, 0) / 9
+);
 const benchmark =
   site_score >= 9000 ? 'top 1-2% solo' :
   site_score >= 7500 ? 'top decile solo' :
@@ -114,7 +119,7 @@ const snapshot = {
   created_at: ts,
   spec_version: SPEC.version,
   evidence_file: evalData.evidence_file || null,
-  site_score, benchmark, target: 9000,
+  site_score, site_score_core, benchmark, target: 9000,
   gap_to_target: Math.max(0, 9000 - site_score),
   category_scores,
   category_names: CATEGORIES,

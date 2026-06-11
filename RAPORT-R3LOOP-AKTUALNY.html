@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>r3loop — Ocena strony (9 kategorii) + Dystrybucja osobno</title>
+<style>
+  :root { --bg:#0a0a0b; --surface:#121214; --border:rgba(255,255,255,.08); --text:#e8e8e6; --dim:#8a8a86; --lime:#cdde4a; --red:#e5604c; --amber:#d9a441; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:'SF Mono',ui-monospace,'JetBrains Mono',monospace; font-size:14px; line-height:1.65; padding:56px 24px; }
+  .wrap { max-width:980px; margin:0 auto; }
+  .eyebrow { color:var(--lime); text-transform:uppercase; letter-spacing:.2em; font-size:11px; }
+  h1 { font-size:26px; font-weight:700; margin:8px 0 4px; letter-spacing:-.02em; }
+  .sub { color:var(--dim); margin-bottom:36px; }
+  .hero { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin-bottom:44px; }
+  .stat { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:18px 20px; }
+  .stat-label { color:var(--dim); font-size:10px; text-transform:uppercase; letter-spacing:.12em; }
+  .stat-value { font-size:32px; font-weight:700; margin-top:4px; }
+  .lime { color:var(--lime); } .red { color:var(--red); } .amber { color:var(--amber); } .dim { color:var(--dim); }
+  .cat { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:20px 22px; margin-bottom:14px; }
+  .cat-head { display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap; }
+  .cat-name { font-size:15px; font-weight:600; }
+  .cat-num { color:var(--dim); margin-right:10px; font-size:12px; }
+  .cat-score { font-size:22px; font-weight:700; min-width:90px; text-align:right; }
+  .bar { height:7px; background:rgba(255,255,255,.06); border-radius:4px; overflow:hidden; position:relative; margin:12px 0 10px; }
+  .fill { height:100%; border-radius:4px; background:var(--lime); }
+  .fill.low { background:var(--red); }
+  .target { position:absolute; left:90%; top:-3px; width:1.5px; height:13px; background:rgba(255,255,255,.45); }
+  .hint { font-size:12.5px; color:var(--dim); }
+  .hint b { color:var(--text); font-weight:600; }
+  .hint .pts { color:var(--lime); font-weight:700; }
+  .pill { display:inline-block; border:1px solid var(--border); border-radius:99px; padding:1px 10px; font-size:10px; text-transform:uppercase; letter-spacing:.08em; margin-left:8px; vertical-align:middle; }
+  .pill.full { color:var(--lime); border-color:rgba(205,222,74,.4); }
+  .pill.you { color:var(--amber); border-color:rgba(217,164,65,.4); }
+  h2 { font-size:12px; text-transform:uppercase; letter-spacing:.15em; color:var(--lime); margin:48px 0 18px; padding-top:24px; border-top:1px solid var(--border); }
+  h2.red { color:var(--red); }
+  code { background:rgba(255,255,255,.06); border-radius:4px; padding:1px 6px; font-size:12px; }
+  .foot { color:var(--dim); font-size:11px; margin-top:44px; padding-top:16px; border-top:1px solid var(--border); }
+
+  .tabs { display:flex; gap:8px; margin-bottom:36px; border-bottom:1px solid var(--border); padding-bottom:0; }
+  .tab-btn { background:none; border:none; color:var(--dim); font-family:inherit; font-size:12px; text-transform:uppercase; letter-spacing:.12em; padding:10px 18px; cursor:pointer; border-bottom:2px solid transparent; }
+  .tab-btn.active { color:var(--lime); border-bottom-color:var(--lime); }
+  .tab-btn.council-tab.active { color:var(--red); border-bottom-color:var(--red); }
+  .tab-pane { display:none; } .tab-pane.active { display:block; }
+  .verdict h3 { font-size:13px; text-transform:uppercase; letter-spacing:.12em; color:var(--lime); margin:28px 0 10px; }
+  .verdict h3.r { color:var(--red); }
+  .verdict p, .verdict li { font-size:13.5px; color:var(--text); margin-bottom:10px; }
+  .verdict .q { border-left:2px solid var(--red); padding:14px 18px; background:var(--surface); border-radius:0 10px 10px 0; margin:14px 0; color:var(--dim); font-style:italic; }
+  .advisor { display:inline-block; border:1px solid var(--border); border-radius:99px; padding:2px 12px; font-size:11px; color:var(--dim); margin:0 6px 6px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="eyebrow">r3loop engine · spec v2 · snapshot v11</div>
+  <h1>Ocena strony — 9 kategorii · 0–10 000</h1>
+  <div class="sub">2026-06-11 · dystrybucja wyłączona z oceny strony (osobny tor wykonawczy) · ocena konserwatywna na prerenderowanym HTML</div>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('score', this)">Scorecard · 9 kategorii</button>
+    <button class="tab-btn council-tab" onclick="showTab('council', this)">⚖ Werdykt Council (surowa ocena)</button>
+  </div>
+
+  <div id="tab-score" class="tab-pane active">
+
+  <div class="hero">
+    <div class="stat"><div class="stat-label">Site score · 9 kategorii</div><div class="stat-value lime">9 821</div><div class="dim" style="font-size:11px">/ 10 000 · top 1-2% solo</div></div>
+    <div class="stat"><div class="stat-label">Kategorie na maksimum</div><div class="stat-value">7<span style="font-size:16px;color:var(--dim)"> / 9</span></div><div class="dim" style="font-size:11px">pozostałe dwie czekają na Ciebie, nie na kod</div></div>
+    <div class="stat"><div class="stat-label">Do odzyskania</div><div class="stat-value">1 610</div><div class="dim" style="font-size:11px">pkt — w 100% poza repo (cytaty + analityka)</div></div>
+    <div class="stat"><div class="stat-label">Droga sesji (core)</div><div class="stat-value" style="font-size:20px">→ 9 821</div><div class="dim" style="font-size:11px">start: 4132 (pełna skala) · 11 snapshotów</div></div>
+  </div>
+
+  <div class="cat">
+    <div class="cat-head"><span class="cat-name"><span class="cat-num">01</span>Positioning Clarity<span class="pill full">max</span></span><span class="cat-score lime">10 000</span></div>
+    <div class="bar"><div class="fill" style="width:100%"></div><div class="target"></div></div>
+    <div class="hint"><b>Utrzymanie:</b> hierarchia klaimów spójna (tagline = zakres, H1 = tożsamość + audience, chipy = kwalifikacja). Każda zmiana taglinu/H1 → test 5 sekund + propagacja na meta i llms.txt, inaczej wraca regres z v4.</div>
+  </div>
+
+  <div class="cat">
+    <div class="cat-head"><span class="cat-name"><span class="cat-num">02</span>IP Definability<span class="pill you">czeka na Ciebie</span></span><span class="cat-score">9 265</span></div>
+    <div class="bar"><div class="fill" style="width:92.65%"></div><div class="target"></div></div>
+    <div class="hint"><b>Ostatni brak:</b> [2.3] 2 cytaty klientów wymieniające „r3loop" z nazwy <span class="pts">+735</span> (Geers/Sonova + Kubota lub Benefit). Jedna prośba mailowa do klienta — kod tego nie zrobi. Nazwa, struktura 8 kroków, decision gates, KPI — komplet.</div>
+  </div>
+
+  <div class="cat">
+    <div class="cat-head"><span class="cat-name"><span class="cat-num">03</span>Audience Qualification<span class="pill full">max</span></span><span class="cat-score lime">10 000</span></div>
+    <div class="bar"><div class="fill" style="width:100%"></div><div class="target"></div></div>
+    <div class="hint"><b>Utrzymanie:</b> chipy + persony + kanon ICP 30–300+. Przy nowych treściach minima produktowe zawsze jawnie jako minima.</div>
+  </div>
+
+  <div class="cat">
+    <div class="cat-head"><span class="cat-name"><span class="cat-num">04</span>Proof Density<span class="pill full">max</span></span><span class="cat-score lime">10 000</span></div>
+    <div class="bar"><div class="fill" style="width:100%"></div><div class="target"></div></div>
+    <div class="hint"><b>Utrzymanie + ryzyko:</b> case'y z metrykami i step-trace'ami na miejscu, ale <b>6 faktów wciąż czeka na Twoje potwierdzenie</b> (TODO w kodzie: Kubota debiut, PM-y Benefit, zgoda Geers, FIFA/UNIQA, Archicom −60%, miasta w bio). To nie punkty — to wiarygodność przy dealu 55k+.</div>
+  </div>
+
+  <div class="cat">
+    <div class="cat-head"><span class="cat-name"><span class="cat-num">05</span>Conversion Path Design<span class="pill you">czeka na Ciebie</span></span><span class="cat-score">9 125</span></div>
+    <div class="bar"><div class="fill" style="width:91.25%"></div><div class="target"></div></div>
+    <div class="hint"><b>Ostatni brak:</b> [5.5] dowód z panelu analityki <span class="pts">+875</span> — wejdź w Plausible/GA, potwierdź że eventy lejka (brief_started, mail_clicked, playbook_waitlist_signup…) raportują, zrzuć screenshot. 10 minut.</div>
+  </div>
+
+  <div class="cat">
+    <div class="cat-head"><span class="cat-name"><span class="cat-num">06</span>Anti-Time POV<span class="pill full">max</span></span><span class="cat-score lime">10 000</span></div>
+    <div class="bar"><div class="fill" style="width:100%"></div><div class="target"></div></div>
+    <div class="hint"><b>Utrzymanie:</b> krzywa 90→15%, zdanie przetrwania, anti-hourly, dyskretny Playbook. Pamiętaj o cenie ukrycia produktyzacji: −2000 (lekcja z v7).</div>
+  </div>
+
+  <div class="cat">
+    <div class="cat-head"><span class="cat-name"><span class="cat-num">07</span>Visual / Brand Craft<span class="pill full">max</span></span><span class="cat-score lime">10 000</span></div>
+    <div class="bar"><div class="fill" style="width:100%"></div><div class="target"></div></div>
+    <div class="hint"><b>Domknięte w tej rundzie:</b> język ruchu skonsolidowany — brand curve (0.22,1,0.36,1) jako default Tailwinda + jedna krzywa utility. W skompilowanym CSS: 11× brand, 1× utility. Plus: pionowe przejścia stron, pillsy, tooltips, portret.</div>
+  </div>
+
+  <div class="cat">
+    <div class="cat-head"><span class="cat-name"><span class="cat-num">08</span>Technical SEO &amp; GEO<span class="pill full">max</span></span><span class="cat-score lime">10 000</span></div>
+    <div class="bar"><div class="fill" style="width:100%"></div><div class="target"></div></div>
+    <div class="hint"><b>Domknięte w tej rundzie:</b> zero JPEG w bundlu, portret 1741→88 KB WebP. Wcześniej: schema-komplet na 34 trasach, canonical per-URL, unikalne meta, FAQ-bloki, og per trasa, prerender na Vercelu. <b>Po deployu (poza punktacją):</b> <code>node scripts/indexnow-ping.mjs</code>, Bing Webmaster Tools, self-host fontów na Macu.</div>
+  </div>
+
+  <div class="cat">
+    <div class="cat-head"><span class="cat-name"><span class="cat-num">09</span>Productization Readiness<span class="pill full">max</span></span><span class="cat-score lime">10 000</span></div>
+    <div class="bar"><div class="fill" style="width:100%"></div><div class="target"></div></div>
+    <div class="hint"><b>Domknięte w tej rundzie:</b> mapa krok→narzędzie wróciła jako sucha sekcja „From loop to tools" na /process (Diagnose→instrument diagnostyczny, Standardize→AI Brief Assistant, Measure→KPI dashboard + regional.fit/Caterelo) — bez eseju, w rejestrze strony. Waitlist, ceny €1500/€2000, inwentarz, filter statement — komplet.</div>
+  </div>
+
+  <h2 class="red">Dystrybucja — osobny tor (poza oceną strony)</h2>
+  <div class="cat" style="border-color:rgba(229,96,76,.25)">
+    <div class="cat-head"><span class="cat-name"><span class="cat-num">10</span>Distribution Muscle</span><span class="cat-score red">5 698</span></div>
+    <div class="bar"><div class="fill low" style="width:56.98%"></div><div class="target"></div></div>
+    <div class="hint">
+      Świadomie wyłączona z oceny strony — to tor wykonawczy (ludzie + kadencja), nie właściwość produktu. Stan i plan, gdy przyjdzie jego czas:<br><br>
+      <b>[10.1] Kadencja contentu</b> <span class="pts">+1744</span> — 2 posty LinkedIn/tydz. × 8 tyg. (50 promptów spec = seedy na ~6 mies.) + 1 wpis/mies. na /journal.<br>
+      <b>[10.3] Monitoring first-mover</b> <span class="pts">+1628</span> — alerty na 5-10 liderów design-ops/AI, SLA 24h, szablon odpowiedzi z r3loop.<br>
+      <b>[10.5] Własna lista</b> <span class="pts">+930</span> — waitlist → ESP + 1 lead magnet (mini-diagnostic / r3loop canvas).<br>
+      <b>[10.4]</b> koncentracja kanałów — zrobione (LinkedIn + email) · <b>[10.2]</b> mix POV — zrobione.<br><br>
+      Komplet = ~9 990 i bezpośrednie wsparcie GEO (modele ważą obecność off-site). Wraca na stół jako osobne zadanie.
+    </div>
+  </div>
+
+  <h2>Jak czytać i jak aktualizować</h2>
+  <div class="hint" style="font-size:13px">
+    Site score = średnia 9 kategorii (bez Dystrybucji); kategoria = suma za 50 promptów (pass 1.0 / partial 0.5 / fail 0), normalizowana do 10 000. Ocena zawsze na prerenderowanym HTML. Pętla: <code>npm run build → node r3loop/engine/collect.mjs → ewaluacja → node r3loop/engine/score.mjs --eval …</code> (silnik liczy oba wyniki: site_score_core = 9 kategorii, site_score = pełna skala). Żywy dashboard: <code>r3loop/dashboard.html</code>.
+  </div>
+
+  </div><!-- /tab-score -->
+
+  <div id="tab-council" class="tab-pane verdict">
+    <div class="q">Pytanie do rady: czy samoocena własnym frameworkiem, oceniana przez AI, które samo wdrażało poprawki, jest cokolwiek warta? Czy "top 1-2% solo" to realny benchmark? Czy wyłączenie dystrybucji to zdrowa separacja, czy samooszustwo? Co naprawdę blokuje 1M PLN?<br><br>Metodologia: 5 niezależnych doradców (Contrarian, First Principles, Expansionist, Outsider, Executor) → 5 anonimowych recenzji wzajemnych → synteza przewodniczącego. Pełny transkrypt: council-transcript-2026-06-11.md</div>
+
+    <h3>Gdzie rada jest zgodna (5/5)</h3>
+    <p><b>1. 9821/10000 nie ma wartości dowodowej.</b> Kryteria, implementacja i ocena pochodzą z tego samego modelu — "AI jest w 98% zadowolone z AI". Wynik mierzy zgodność strony z gustem modelu, nie zdolność do generowania przychodu.</p>
+    <p><b>2. "Top 1-2% solo" nie istnieje jako benchmark.</b> Brak mianownika, grupy porównawczej i definicji operacyjnej. Liczba wygenerowana, żeby nagrodzić użytkownika.</p>
+    <p><b>3. Wyłączenie Dystrybucji to selekcja wyniku</b> — ironia: 5698 to jedyny uczciwy wynik w scoringu, bo mierzy rzeczy nienaprawialne promptem w HTML-u. Wykluczono dokładnie tę kategorię, która koreluje z pieniędzmi.</p>
+    <p><b>4. Realna blokada 1M PLN to zero rozmów sprzedażowych, nie jakość strony.</b> 83k/mies. = 4-5 klientów strategicznych. Żaden z 50 promptów nie mierzy liczby rozmów z decydentami. Iteracje scoringu to praca zastępcza.</p>
+
+    <h3 class="r">Gdzie rada się kłóci</h3>
+    <p>Jedyny spór: <b>czy framework 50 promptów to ukryty produkt (audyt 5-15k PLN), czy kolejna forma eskapizmu?</b> Recenzje 3:1 przeciw tezie produktowej w obecnej formie ("wycena równie wyssana z palca jak top 1-2%", "circular reasoning NIE znika przy cudzej stronie — kryteria nadal z tego samego modelu"). Ale Review 5 uratował rdzeń: teza trafia do zamrażarki z datą odmrożenia — po pierwszym płatnym pilocie — nie do kosza.</p>
+
+    <h3>Ślepe punkty wyłapane dopiero w recenzji wzajemnej</h3>
+    <p><b>1. Mechanizm psychologiczny (najważniejszy punkt rady):</b> pętla scoringu daje dopaminę postępu bez ryzyka usłyszenia "nie". Outreach grozi odrzuceniem; iteracja promptu — nigdy. Bez nazwania tego, każda rada "rób sprzedaż" odbije się i za 90 dni wróci polerowanie.</p>
+    <p><b>2. Test kalibracji — jeden eksperyment rozstrzyga dwie debaty:</b> przepuść 3 strony konkurentów przez te same 50 promptów. Wszyscy 9000+ → narzędzie schlebia, "top 1-2%" upada. Różnicuje → pierwsza twarda przesłanka, że framework może być produktem.</p>
+    <p><b>3. Brak "definition of done":</b> strona nie ma kryterium zamknięcia (propozycja: 3 zapytania inbound = koniec iteracji) ani limitu godzin/tydzień.</p>
+    <p><b>4. Struktura 1M i kanał:</b> Playbook po €1500 = ~150 sprzedaży/rok na samą nogę produktową. A przy 4-5 klientach enterprise deal przychodzi z relacji — sieć Sonova/Kubota/Benefit to pipeline, nie r352.design. Strona dla tego segmentu to higiena, nie silnik.</p>
+
+    <h3>Rekomendacja rady</h3>
+    <p>1. <b>Zamrozić r3loop scoring na 90 dni.</b> 9821 = "strona skończona technicznie". Tyle mówi i nic więcej.</p>
+    <p>2. <b>Domknąć higienę w 2 dni:</b> formularz + ESP zamiast mailto (2h), 6 niepotwierdzonych faktów (1 dzień).</p>
+    <p>3. <b>Jedna metryka tygodniowa: rozmowy sprzedażowe z decydentami.</b> Cel: 10 rozmów z warm network w 30 dni. Każda godzina przy stronie = koszt alternatywny godziny pipeline'u (licz w MACS).</p>
+    <p>4. <b>Teza "framework jako produkt" odmrożona dopiero po pierwszym płatnym pilocie.</b></p>
+    <p>5. <b>Publiczna metryka jako antidotum na pętlę dopaminową</b> — liczba rozmów/tydzień raportowana na zewnątrz.</p>
+
+    <h3 class="r">Jedna rzecz do zrobienia najpierw</h3>
+    <p><b>Test kalibracji — dziś:</b> 3 strony konkurencyjnych studiów design-ops przez te same 50 promptów. Jedno popołudnie, zero kosztu, rozstrzyga dwie debaty naraz. <b>A jutro rano:</b> link do strony do 5 osób z byłych projektów z pytaniem "co tu kupuję i za ile?" — żaden prompt nie zastąpi człowieka z budżetem.</p>
+  </div><!-- /tab-council -->
+
+  <script>
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-pane').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+  </script>
+
+  <div class="foot">Snapshot v11 · 2026-06-11 · core 9 821 / pełna skala 9 409 · silnik: r3loop/engine · spec: r3loop-spec-v2.md · w tej rundzie domknięte: 7.1 easingi, 8.4 obrazy, 9.5 mapa krok→produkt (+696 core) · pozostałe braki core: wyłącznie [2.3] i [5.5] — oba po Twojej stronie</div>
+
+</div>
+</body>
+</html>
