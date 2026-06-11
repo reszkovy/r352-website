@@ -5,7 +5,11 @@ import { useLanguage } from "@/app/context/LanguageContext";
 import deloitteLogo from "figma:asset/58f9891995f72756719a6583adb94e90f0590ad3.png";
 import benefitLogo from "figma:asset/e9e0c20de4346f961fc2e9469ef295e4b015b901.png";
 import dawidLogo from "figma:asset/ba749ac924400bb32e1a42b8f18e7464907fccd8.png";
-import kubotaLogo from "figma:asset/7750d53403eee4d14f322fd5a118f3c5750f51a5.png";
+// Kubota logo refreshed 2026-06-11 — client-supplied new brandmark (SVG, 4.9KB).
+// Replaces the previous figma:asset PNG. figmaAssetResolver passes the filename
+// straight through to src/assets/, so SVG resolves identically to PNG path.
+// Vector = crisper at all sizes, smaller payload, future-proof for high-DPI.
+import kubotaLogo from "figma:asset/kubota-logo-white.svg";
 import uniqaLogo from "figma:asset/590f188d1475875fa3221bb4f86c99f935f70cbe.png";
 import fifaLogo from "figma:asset/51e11441d7c02bfa2791df691e15dbf208a105e4.png";
 // Keeping existing Sonova asset as no new one was provided
