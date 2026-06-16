@@ -149,10 +149,112 @@ export const journalArticles: Article[] = [
         Knowledge hub łączy cztery właściwości których żadne z powyższych nie ma jednocześnie: <span class="text-white">single source</span> (jedno miejsce do którego wszyscy się odwołują), <span class="text-white">dual rendering</span> (wizualny dla ludzi + .md dla AI), <span class="text-white">active enforcement</span> (QA layer ocenia output, nie tylko opisuje rules), i <span class="text-white">productized methodology</span> (powtarzalny system, nie one-off artifact). Każde z tych elementów wzmacnia pozostałe.
       </p>
 
+      <figure class="my-12">
+        <div class="bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-sm">
+          <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto" role="img" aria-labelledby="fig3-pl-title" style="font-family: system-ui, sans-serif;">
+            <title id="fig3-pl-title">Brand book PDF vs Knowledge Hub — porownanie</title>
+            <g>
+              <rect x="20" y="20" width="370" height="280" rx="8" fill="#262626" stroke="#404040" stroke-width="1"/>
+              <text x="40" y="52" fill="#737373" font-size="11" letter-spacing="2" font-weight="600">WCZORAJ</text>
+              <text x="40" y="90" fill="#FFFFFF" font-size="22" font-weight="700">PDF brand book</text>
+              <g transform="translate(40, 120)" stroke="#737373" stroke-width="1.5" fill="none">
+                <rect x="0" y="0" width="48" height="60" rx="2"/>
+                <line x1="0" y1="12" x2="48" y2="12"/>
+                <line x1="8" y1="24" x2="40" y2="24"/>
+                <line x1="8" y1="32" x2="36" y2="32"/>
+                <line x1="8" y1="40" x2="40" y2="40"/>
+                <line x1="8" y1="48" x2="32" y2="48"/>
+              </g>
+              <g transform="translate(110, 130)" font-size="13" fill="#737373">
+                <text y="0"><tspan fill="#D4FF00">&#8594;</tspan> Statyczny</text>
+                <text y="20"><tspan fill="#D4FF00">&#8594;</tspan> Nieczytelny dla AI</text>
+                <text y="40"><tspan fill="#D4FF00">&#8594;</tspan> Umiera w dniu publikacji</text>
+                <text y="60"><tspan fill="#D4FF00">&#8594;</tspan> 60 stron ktorych nikt nie czyta</text>
+              </g>
+              <text x="40" y="270" fill="#404040" font-size="11" letter-spacing="1">v.2023 &middot; OSTATNIA AKTUALIZACJA</text>
+            </g>
+            <g>
+              <rect x="410" y="20" width="370" height="280" rx="8" fill="#D4FF00" fill-opacity="0.08" stroke="#D4FF00" stroke-width="1.5"/>
+              <text x="430" y="52" fill="#D4FF00" font-size="11" letter-spacing="2" font-weight="600">DZIS</text>
+              <text x="430" y="90" fill="#FFFFFF" font-size="22" font-weight="700">Knowledge Hub</text>
+              <g transform="translate(430, 120)" stroke="#D4FF00" stroke-width="1.5" fill="none">
+                <circle cx="24" cy="30" r="6" fill="#D4FF00"/>
+                <circle cx="6" cy="12" r="3.5" fill="#D4FF00"/>
+                <circle cx="42" cy="12" r="3.5" fill="#D4FF00"/>
+                <circle cx="6" cy="48" r="3.5" fill="#D4FF00"/>
+                <circle cx="42" cy="48" r="3.5" fill="#D4FF00"/>
+                <line x1="24" y1="30" x2="6" y2="12"/>
+                <line x1="24" y1="30" x2="42" y2="12"/>
+                <line x1="24" y1="30" x2="6" y2="48"/>
+                <line x1="24" y1="30" x2="42" y2="48"/>
+              </g>
+              <g transform="translate(500, 130)" font-size="13" fill="#FFFFFF">
+                <text y="0"><tspan fill="#D4FF00">&#8594;</tspan> Dynamiczny</text>
+                <text y="20"><tspan fill="#D4FF00">&#8594;</tspan> Czytelny dla AI agentow</text>
+                <text y="40"><tspan fill="#D4FF00">&#8594;</tspan> Ewoluuje ciagle</text>
+                <text y="60"><tspan fill="#D4FF00">&#8594;</tspan> 4 warstwy operujace live</text>
+              </g>
+              <text x="430" y="270" fill="#D4FF00" font-size="11" letter-spacing="1">LIVE &middot; AKTUALIZOWANY CIAGLE</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption class="mt-4 text-sm text-neutral-500 text-center italic">
+          Fig 3 &middot; PDF brand book vs Knowledge Hub &mdash; dwa rozne paradygmaty operacyjne.
+        </figcaption>
+      </figure>
+
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Knowledge hub = 4-warstwowa architektura</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Brand knowledge hub nie jest brand bookiem 2.0. To <span class="text-white">całe operacje brandowe jako system</span>, podzielone na cztery warstwy które razem dają operacyjną przewagę. Dlaczego cztery, nie trzy, nie pięć: trzy nie pokrywają production layer (zostawiasz zespół samemu sobie z AI). Pięć dodaje sztuczny podział, który robi system trudniejszym do utrzymania. Cztery to minimum viable architecture z maksymalnym ROI per warstwa.
       </p>
+
+      <figure class="my-12">
+        <div class="bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-sm">
+          <svg viewBox="0 0 800 540" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto" role="img" aria-labelledby="fig1-pl-title" style="font-family: system-ui, sans-serif;">
+            <title id="fig1-pl-title">4-warstwowa architektura knowledge hub</title>
+            <g transform="translate(100, 20)">
+              <rect width="600" height="90" rx="12" fill="#262626" stroke="#404040" stroke-width="1"/>
+              <text x="24" y="32" fill="#D4FF00" font-size="13" font-weight="700" letter-spacing="2">01</text>
+              <text x="24" y="58" fill="#FFFFFF" font-size="20" font-weight="600">Knowledge</text>
+              <text x="24" y="78" fill="#737373" font-size="13">23 moduly &middot; 5 bucketow &middot; jedno zrodlo prawdy</text>
+            </g>
+            <g transform="translate(395, 115)" fill="none" stroke="#D4FF00" stroke-width="2">
+              <line x1="5" y1="0" x2="5" y2="20"/>
+              <polyline points="0,15 5,22 10,15"/>
+            </g>
+            <g transform="translate(100, 145)">
+              <rect width="600" height="90" rx="12" fill="#262626" stroke="#404040" stroke-width="1"/>
+              <text x="24" y="32" fill="#D4FF00" font-size="13" font-weight="700" letter-spacing="2">02</text>
+              <text x="24" y="58" fill="#FFFFFF" font-size="20" font-weight="600">Format</text>
+              <text x="24" y="78" fill="#737373" font-size="13">wizualny UI dla ludzi + curated .md dla AI agentow</text>
+            </g>
+            <g transform="translate(395, 240)" fill="none" stroke="#D4FF00" stroke-width="2">
+              <line x1="5" y1="0" x2="5" y2="20"/>
+              <polyline points="0,15 5,22 10,15"/>
+            </g>
+            <g transform="translate(100, 270)">
+              <rect width="600" height="90" rx="12" fill="#262626" stroke="#404040" stroke-width="1"/>
+              <text x="24" y="32" fill="#D4FF00" font-size="13" font-weight="700" letter-spacing="2">03</text>
+              <text x="24" y="58" fill="#FFFFFF" font-size="20" font-weight="600">QA</text>
+              <text x="24" y="78" fill="#737373" font-size="13">drop asset &rarr; score 0&ndash;100 + lista fixow w 3 sekundy</text>
+            </g>
+            <g transform="translate(395, 365)" fill="none" stroke="#D4FF00" stroke-width="2">
+              <line x1="5" y1="0" x2="5" y2="20"/>
+              <polyline points="0,15 5,22 10,15"/>
+            </g>
+            <g transform="translate(100, 395)">
+              <rect width="600" height="90" rx="12" fill="#262626" stroke="#404040" stroke-width="1"/>
+              <text x="24" y="32" fill="#D4FF00" font-size="13" font-weight="700" letter-spacing="2">04</text>
+              <text x="24" y="58" fill="#FFFFFF" font-size="20" font-weight="600">Production</text>
+              <text x="24" y="78" fill="#737373" font-size="13">biblioteka promptow + AI skills z auto-loaded brand context</text>
+            </g>
+            <text x="400" y="520" text-anchor="middle" fill="#737373" font-size="12" letter-spacing="1.5">COMPOUNDING OUTPUT &middot; KAZDA WARSTWA KARMI NASTEPNA</text>
+          </svg>
+        </div>
+        <figcaption class="mt-4 text-sm text-neutral-500 text-center italic">
+          Fig 1 &middot; 4-warstwowa architektura &mdash; kazda warstwa karmi nastepna.
+        </figcaption>
+      </figure>
 
       <ul class="list-none mb-10 space-y-4 text-neutral-400 text-lg pl-4 border-l-2 border-[#D4FF00]/40">
         <li><span class="text-white font-medium">1. Warstwa wiedzy (Knowledge)</span> — 23 moduły w 5 bucketach. Wszystko czego potrzebujesz żeby coś było on-brand. Bez tego: zespół zgaduje, wynik zależy od osoby która akurat brief czyta.</li>
@@ -169,6 +271,79 @@ export const journalArticles: Article[] = [
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Każda decyzja brandowa wpada w jeden z pięciu bucketów. Wszystkie są dostępne dla zespołu + AI w tej samej strukturze. Liczba 23 nie jest arbitralna — to suma modułów które naprawdę kontrolują decyzje brandowe w produkcji. Mniej zostawia luki. Więcej dodaje overhead bez ROI.
       </p>
+
+      <figure class="my-12">
+        <div class="bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-sm">
+          <svg viewBox="0 0 800 360" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto" role="img" aria-labelledby="fig2-pl-title" style="font-family: system-ui, sans-serif;">
+            <title id="fig2-pl-title">23 moduly w 5 bucketach &mdash; system map</title>
+            <g>
+              <line x1="160" y1="50" x2="160" y2="280" stroke="#262626" stroke-width="1"/>
+              <line x1="300" y1="50" x2="300" y2="280" stroke="#262626" stroke-width="1"/>
+              <line x1="440" y1="50" x2="440" y2="280" stroke="#262626" stroke-width="1"/>
+              <line x1="580" y1="50" x2="580" y2="280" stroke="#262626" stroke-width="1"/>
+            </g>
+            <g transform="translate(40, 50)">
+              <text x="0" y="0" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="1.5">STRATEGIA</text>
+              <text x="0" y="16" fill="#737373" font-size="11" letter-spacing="1">+ VOICE</text>
+              <text x="0" y="38" fill="#D4FF00" font-size="28" font-weight="700">5</text>
+              <g transform="translate(0, 60)" fill="#D4FF00">
+                <rect x="0" y="0" width="14" height="14" rx="2"/>
+                <rect x="0" y="22" width="14" height="14" rx="2"/>
+                <rect x="0" y="44" width="14" height="14" rx="2"/>
+                <rect x="0" y="66" width="14" height="14" rx="2"/>
+                <rect x="0" y="88" width="14" height="14" rx="2"/>
+              </g>
+            </g>
+            <g transform="translate(180, 50)">
+              <text x="0" y="0" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="1.5">JEZYK</text>
+              <text x="0" y="38" fill="#D4FF00" font-size="28" font-weight="700">3</text>
+              <g transform="translate(0, 60)" fill="#D4FF00">
+                <rect x="0" y="0" width="14" height="14" rx="2"/>
+                <rect x="0" y="22" width="14" height="14" rx="2"/>
+                <rect x="0" y="44" width="14" height="14" rx="2"/>
+              </g>
+            </g>
+            <g transform="translate(320, 50)">
+              <text x="0" y="0" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="1.5">VISUAL</text>
+              <text x="0" y="38" fill="#D4FF00" font-size="28" font-weight="700">6</text>
+              <g transform="translate(0, 60)" fill="#D4FF00">
+                <rect x="0" y="0" width="14" height="14" rx="2"/>
+                <rect x="0" y="22" width="14" height="14" rx="2"/>
+                <rect x="0" y="44" width="14" height="14" rx="2"/>
+                <rect x="0" y="66" width="14" height="14" rx="2"/>
+                <rect x="0" y="88" width="14" height="14" rx="2"/>
+                <rect x="0" y="110" width="14" height="14" rx="2"/>
+              </g>
+            </g>
+            <g transform="translate(460, 50)">
+              <text x="0" y="0" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="1.5">WYKONANIE</text>
+              <text x="0" y="38" fill="#D4FF00" font-size="28" font-weight="700">6</text>
+              <g transform="translate(0, 60)" fill="#D4FF00">
+                <rect x="0" y="0" width="14" height="14" rx="2"/>
+                <rect x="0" y="22" width="14" height="14" rx="2"/>
+                <rect x="0" y="44" width="14" height="14" rx="2"/>
+                <rect x="0" y="66" width="14" height="14" rx="2"/>
+                <rect x="0" y="88" width="14" height="14" rx="2"/>
+                <rect x="0" y="110" width="14" height="14" rx="2"/>
+              </g>
+            </g>
+            <g transform="translate(600, 50)">
+              <text x="0" y="0" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="1.5">REFERENCE</text>
+              <text x="0" y="38" fill="#D4FF00" font-size="28" font-weight="700">3</text>
+              <g transform="translate(0, 60)" fill="#D4FF00">
+                <rect x="0" y="0" width="14" height="14" rx="2"/>
+                <rect x="0" y="22" width="14" height="14" rx="2"/>
+                <rect x="0" y="44" width="14" height="14" rx="2"/>
+              </g>
+            </g>
+            <line x1="40" y1="310" x2="760" y2="310" stroke="#404040" stroke-width="1"/>
+            <text x="400" y="340" text-anchor="middle" fill="#737373" font-size="12" letter-spacing="1.5">23 MODULY &middot; 5 BUCKETOW &middot; JEDNO KANONICZNE ZRODLO</text>
+          </svg>
+        </div>
+        <figcaption class="mt-4 text-sm text-neutral-500 text-center italic">
+          Fig 2 &middot; 23 moduly rozlozone na 5 bucketow &mdash; mapa systemu wiedzy.
+        </figcaption>
+      </figure>
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">01 · Strategia + voice (5 modułów)</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
@@ -368,6 +543,42 @@ export const journalArticles: Article[] = [
       </p>
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Active QA layer — gatekeeper z konkretnym scoringiem</h2>
+
+      <figure class="my-12">
+        <div class="bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-sm">
+          <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto" role="img" aria-labelledby="fig4-pl-title" style="font-family: system-ui, sans-serif;">
+            <title id="fig4-pl-title">QA Score &mdash; ring i lista fixow</title>
+            <g transform="translate(180, 150)">
+              <circle cx="0" cy="0" r="80" fill="none" stroke="#262626" stroke-width="16"/>
+              <circle cx="0" cy="0" r="80" fill="none" stroke="#D4FF00" stroke-width="16" stroke-linecap="round" stroke-dasharray="372 503" transform="rotate(-90)"/>
+              <text x="0" y="6" text-anchor="middle" fill="#FFFFFF" font-size="56" font-weight="700">74</text>
+              <text x="0" y="32" text-anchor="middle" fill="#737373" font-size="10" letter-spacing="1.5">BRAND CONSISTENCY</text>
+            </g>
+            <g transform="translate(360, 50)">
+              <rect width="400" height="58" rx="6" fill="#262626" stroke="#404040" stroke-width="1"/>
+              <circle cx="20" cy="29" r="5" fill="#FF4B4B"/>
+              <text x="36" y="26" fill="#FFFFFF" font-size="13" font-weight="600">Visual &middot; Logo</text>
+              <text x="36" y="44" fill="#737373" font-size="12">Kolor #FF4B00 &ne; brand lead green</text>
+            </g>
+            <g transform="translate(360, 130)">
+              <rect width="400" height="58" rx="6" fill="#262626" stroke="#404040" stroke-width="1"/>
+              <circle cx="20" cy="29" r="5" fill="#FF4B4B"/>
+              <text x="36" y="26" fill="#FFFFFF" font-size="13" font-weight="600">Jezyk &middot; Lexicon</text>
+              <text x="36" y="44" fill="#737373" font-size="12">&quot;gadzet&quot; &rarr; uzyj &quot;sprzet medyczny&quot;</text>
+            </g>
+            <g transform="translate(360, 210)">
+              <rect width="400" height="58" rx="6" fill="#262626" stroke="#404040" stroke-width="1"/>
+              <circle cx="20" cy="29" r="5" fill="#FFB020"/>
+              <text x="36" y="26" fill="#FFFFFF" font-size="13" font-weight="600">Visual &middot; Foto</text>
+              <text x="36" y="44" fill="#737373" font-size="12">Stock photo wykryte &mdash; uzyj custom shotu</text>
+            </g>
+            <text x="400" y="300" text-anchor="middle" fill="#737373" font-size="12" letter-spacing="1.5">DROP ASSET &rarr; SCORE + LISTA FIXOW W 3 SEKUNDY</text>
+          </svg>
+        </div>
+        <figcaption class="mt-4 text-sm text-neutral-500 text-center italic">
+          Fig 4 &middot; QA scoring &mdash; obiektywny score 0&ndash;100 zamiast subiektywnej dyskusji &quot;czy to on-brand&quot;.
+        </figcaption>
+      </figure>
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">Scoring methodology — jak liczyć</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
@@ -609,6 +820,49 @@ auto_load: true
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Knowledge hub to compounding asset. Krzywa wartości po fazach:
       </p>
+
+      <figure class="my-12">
+        <div class="bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-sm">
+          <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto" role="img" aria-labelledby="fig5-pl-title" style="font-family: system-ui, sans-serif;">
+            <title id="fig5-pl-title">Compounding moat &mdash; krzywa wartosci w czasie</title>
+            <g stroke="#262626" stroke-width="1">
+              <line x1="80" y1="240" x2="760" y2="240"/>
+              <line x1="80" y1="40" x2="80" y2="240"/>
+            </g>
+            <g stroke="#262626" stroke-width="1" stroke-dasharray="2 4">
+              <line x1="80" y1="80" x2="760" y2="80"/>
+              <line x1="80" y1="160" x2="760" y2="160"/>
+              <line x1="250" y1="40" x2="250" y2="240"/>
+              <line x1="500" y1="40" x2="500" y2="240"/>
+              <line x1="700" y1="40" x2="700" y2="240"/>
+            </g>
+            <path d="M 80 230 Q 200 228 250 218 Q 360 200 500 140 Q 620 80 700 50" fill="none" stroke="#D4FF00" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M 80 230 Q 200 228 250 218 Q 360 200 500 140 Q 620 80 700 50 L 700 240 L 80 240 Z" fill="#D4FF00" fill-opacity="0.06"/>
+            <g fill="#D4FF00">
+              <circle cx="250" cy="218" r="6"/>
+              <circle cx="500" cy="140" r="6"/>
+              <circle cx="700" cy="50" r="6"/>
+            </g>
+            <g font-size="11" fill="#737373" text-anchor="middle">
+              <text x="80" y="262">0</text>
+              <text x="250" y="262">M6</text>
+              <text x="500" y="262">M18</text>
+              <text x="700" y="262">M36</text>
+              <text x="400" y="290" letter-spacing="1.5">CZAS &middot; MIESIACE</text>
+            </g>
+            <g font-size="11" fill="#737373">
+              <text x="250" y="208" text-anchor="middle" fill="#FFFFFF" font-weight="600">Setup pain</text>
+              <text x="500" y="128" text-anchor="middle" fill="#FFFFFF" font-weight="600">Stabilization</text>
+              <text x="700" y="38" text-anchor="middle" fill="#FFFFFF" font-weight="600">Compounding</text>
+            </g>
+            <text x="40" y="140" fill="#737373" font-size="11" letter-spacing="1.5" transform="rotate(-90, 40, 140)" text-anchor="middle">WARTOSC OPERACYJNA</text>
+          </svg>
+        </div>
+        <figcaption class="mt-4 text-sm text-neutral-500 text-center italic">
+          Fig 5 &middot; Pierwsze 6 miesiecy najtrudniejsze. Kolejne 30 miesiecy buduje compounding moat.
+        </figcaption>
+      </figure>
+
       <ul class="list-none mb-10 space-y-4 text-neutral-400 text-lg pl-4 border-l-2 border-[#D4FF00]/40">
         <li><span class="text-white font-medium">Miesiące 1-6 (setup pain)</span> — niski immediate value, zespół jeszcze się uczy, friction w adoption, budujesz initial content + procesy. To są najtrudniejsze miesiące, większość projektów które porzuciły hub porzuciły tutaj.</li>
         <li><span class="text-white font-medium">Miesiące 7-18 (stabilization)</span> — prompt library rośnie z 25 startowych do ~100, QA scoring stabilizuje się, zespół ma adopcję na poziomie 80%+, vendor onboarding już szybszy.</li>
@@ -747,10 +1001,113 @@ auto_load: true
         Every decision repeated × 50 designers × 12 months = hundreds of hours lost on repeated answers. Slack is great for real-time communication. <span class="text-white">As a brand source of truth — it's like an email archive from 2008: technically accessible, practically unsearchable.</span>
       </p>
 
+      <figure class="my-12">
+        <div class="bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-sm">
+          <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto" role="img" aria-labelledby="fig3-en-title" style="font-family: system-ui, sans-serif;">
+            <title id="fig3-en-title">PDF brand book vs Knowledge Hub &mdash; comparison</title>
+            <g>
+              <rect x="20" y="20" width="370" height="280" rx="8" fill="#262626" stroke="#404040" stroke-width="1"/>
+              <text x="40" y="52" fill="#737373" font-size="11" letter-spacing="2" font-weight="600">YESTERDAY</text>
+              <text x="40" y="90" fill="#FFFFFF" font-size="22" font-weight="700">PDF brand book</text>
+              <g transform="translate(40, 120)" stroke="#737373" stroke-width="1.5" fill="none">
+                <rect x="0" y="0" width="48" height="60" rx="2"/>
+                <line x1="0" y1="12" x2="48" y2="12"/>
+                <line x1="8" y1="24" x2="40" y2="24"/>
+                <line x1="8" y1="32" x2="36" y2="32"/>
+                <line x1="8" y1="40" x2="40" y2="40"/>
+                <line x1="8" y1="48" x2="32" y2="48"/>
+              </g>
+              <g transform="translate(110, 130)" font-size="13" fill="#737373">
+                <text y="0"><tspan fill="#D4FF00">&#8594;</tspan> Static</text>
+                <text y="20"><tspan fill="#D4FF00">&#8594;</tspan> Unsearchable by AI</text>
+                <text y="40"><tspan fill="#D4FF00">&#8594;</tspan> Dies on publish day</text>
+                <text y="60"><tspan fill="#D4FF00">&#8594;</tspan> 60 pages no one reads</text>
+              </g>
+              <text x="40" y="270" fill="#404040" font-size="11" letter-spacing="1">v.2023 &middot; LAST UPDATED</text>
+            </g>
+            <g>
+              <rect x="410" y="20" width="370" height="280" rx="8" fill="#D4FF00" fill-opacity="0.08" stroke="#D4FF00" stroke-width="1.5"/>
+              <text x="430" y="52" fill="#D4FF00" font-size="11" letter-spacing="2" font-weight="600">TODAY</text>
+              <text x="430" y="90" fill="#FFFFFF" font-size="22" font-weight="700">Knowledge Hub</text>
+              <g transform="translate(430, 120)" stroke="#D4FF00" stroke-width="1.5" fill="none">
+                <circle cx="24" cy="30" r="6" fill="#D4FF00"/>
+                <circle cx="6" cy="12" r="3.5" fill="#D4FF00"/>
+                <circle cx="42" cy="12" r="3.5" fill="#D4FF00"/>
+                <circle cx="6" cy="48" r="3.5" fill="#D4FF00"/>
+                <circle cx="42" cy="48" r="3.5" fill="#D4FF00"/>
+                <line x1="24" y1="30" x2="6" y2="12"/>
+                <line x1="24" y1="30" x2="42" y2="12"/>
+                <line x1="24" y1="30" x2="6" y2="48"/>
+                <line x1="24" y1="30" x2="42" y2="48"/>
+              </g>
+              <g transform="translate(500, 130)" font-size="13" fill="#FFFFFF">
+                <text y="0"><tspan fill="#D4FF00">&#8594;</tspan> Dynamic</text>
+                <text y="20"><tspan fill="#D4FF00">&#8594;</tspan> AI-readable</text>
+                <text y="40"><tspan fill="#D4FF00">&#8594;</tspan> Evolves continuously</text>
+                <text y="60"><tspan fill="#D4FF00">&#8594;</tspan> 4 layers operating live</text>
+              </g>
+              <text x="430" y="270" fill="#D4FF00" font-size="11" letter-spacing="1">LIVE &middot; CONTINUOUSLY UPDATED</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption class="mt-4 text-sm text-neutral-500 text-center italic">
+          Fig 3 &middot; PDF brand book vs Knowledge Hub &mdash; two operational paradigms.
+        </figcaption>
+      </figure>
+
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Knowledge hub = 4-layer architecture</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         A brand knowledge hub is not a brand book 2.0. It's <span class="text-white">entire brand operations as a system</span>, split into four layers that together create operational leverage. Why four, not three, not five: three doesn't cover the production layer (you leave the team alone with AI). Five adds an artificial split that makes the system harder to maintain. Four is the minimum viable architecture with maximum ROI per layer.
       </p>
+
+      <figure class="my-12">
+        <div class="bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-sm">
+          <svg viewBox="0 0 800 540" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto" role="img" aria-labelledby="fig1-en-title" style="font-family: system-ui, sans-serif;">
+            <title id="fig1-en-title">4-layer knowledge hub architecture</title>
+            <g transform="translate(100, 20)">
+              <rect width="600" height="90" rx="12" fill="#262626" stroke="#404040" stroke-width="1"/>
+              <text x="24" y="32" fill="#D4FF00" font-size="13" font-weight="700" letter-spacing="2">01</text>
+              <text x="24" y="58" fill="#FFFFFF" font-size="20" font-weight="600">Knowledge</text>
+              <text x="24" y="78" fill="#737373" font-size="13">23 modules &middot; 5 buckets &middot; one source of truth</text>
+            </g>
+            <g transform="translate(395, 115)" fill="none" stroke="#D4FF00" stroke-width="2">
+              <line x1="5" y1="0" x2="5" y2="20"/>
+              <polyline points="0,15 5,22 10,15"/>
+            </g>
+            <g transform="translate(100, 145)">
+              <rect width="600" height="90" rx="12" fill="#262626" stroke="#404040" stroke-width="1"/>
+              <text x="24" y="32" fill="#D4FF00" font-size="13" font-weight="700" letter-spacing="2">02</text>
+              <text x="24" y="58" fill="#FFFFFF" font-size="20" font-weight="600">Format</text>
+              <text x="24" y="78" fill="#737373" font-size="13">visual UI for humans + curated .md for AI agents</text>
+            </g>
+            <g transform="translate(395, 240)" fill="none" stroke="#D4FF00" stroke-width="2">
+              <line x1="5" y1="0" x2="5" y2="20"/>
+              <polyline points="0,15 5,22 10,15"/>
+            </g>
+            <g transform="translate(100, 270)">
+              <rect width="600" height="90" rx="12" fill="#262626" stroke="#404040" stroke-width="1"/>
+              <text x="24" y="32" fill="#D4FF00" font-size="13" font-weight="700" letter-spacing="2">03</text>
+              <text x="24" y="58" fill="#FFFFFF" font-size="20" font-weight="600">QA</text>
+              <text x="24" y="78" fill="#737373" font-size="13">drop asset &rarr; score 0&ndash;100 + fix list in 3 seconds</text>
+            </g>
+            <g transform="translate(395, 365)" fill="none" stroke="#D4FF00" stroke-width="2">
+              <line x1="5" y1="0" x2="5" y2="20"/>
+              <polyline points="0,15 5,22 10,15"/>
+            </g>
+            <g transform="translate(100, 395)">
+              <rect width="600" height="90" rx="12" fill="#262626" stroke="#404040" stroke-width="1"/>
+              <text x="24" y="32" fill="#D4FF00" font-size="13" font-weight="700" letter-spacing="2">04</text>
+              <text x="24" y="58" fill="#FFFFFF" font-size="20" font-weight="600">Production</text>
+              <text x="24" y="78" fill="#737373" font-size="13">prompt library + AI skills with auto-loaded brand context</text>
+            </g>
+            <text x="400" y="520" text-anchor="middle" fill="#737373" font-size="12" letter-spacing="1.5">COMPOUNDING OUTPUT &middot; EACH LAYER FEEDS THE NEXT</text>
+          </svg>
+        </div>
+        <figcaption class="mt-4 text-sm text-neutral-500 text-center italic">
+          Fig 1 &middot; 4-layer architecture &mdash; each layer feeds the next.
+        </figcaption>
+      </figure>
+
       <ul class="list-none mb-10 space-y-4 text-neutral-400 text-lg pl-4 border-l-2 border-[#D4FF00]/40">
         <li><span class="text-white font-medium">1. Knowledge layer</span> — 23 modules across 5 buckets (strategy, language, visual, execution, reference). Everything you need to make something on-brand. Without it: team guesses, output depends on whoever happens to read the brief.</li>
         <li><span class="text-white font-medium">2. Format layer</span> — same content in two forms: visual system for humans + curated .md file for AI agents. Without it: humans read one thing, AI generates another — drift guaranteed.</li>
@@ -765,6 +1122,79 @@ auto_load: true
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Every brand decision falls into one of five buckets. All are accessible to team + AI in the same structure. The number 23 isn't arbitrary — it's the sum of modules that actually control brand decisions in production. Fewer leaves gaps. More adds overhead without ROI.
       </p>
+
+      <figure class="my-12">
+        <div class="bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-sm">
+          <svg viewBox="0 0 800 360" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto" role="img" aria-labelledby="fig2-en-title" style="font-family: system-ui, sans-serif;">
+            <title id="fig2-en-title">23 modules across 5 buckets &mdash; system map</title>
+            <g>
+              <line x1="160" y1="50" x2="160" y2="280" stroke="#262626" stroke-width="1"/>
+              <line x1="300" y1="50" x2="300" y2="280" stroke="#262626" stroke-width="1"/>
+              <line x1="440" y1="50" x2="440" y2="280" stroke="#262626" stroke-width="1"/>
+              <line x1="580" y1="50" x2="580" y2="280" stroke="#262626" stroke-width="1"/>
+            </g>
+            <g transform="translate(40, 50)">
+              <text x="0" y="0" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="1.5">STRATEGY</text>
+              <text x="0" y="16" fill="#737373" font-size="11" letter-spacing="1">+ VOICE</text>
+              <text x="0" y="38" fill="#D4FF00" font-size="28" font-weight="700">5</text>
+              <g transform="translate(0, 60)" fill="#D4FF00">
+                <rect x="0" y="0" width="14" height="14" rx="2"/>
+                <rect x="0" y="22" width="14" height="14" rx="2"/>
+                <rect x="0" y="44" width="14" height="14" rx="2"/>
+                <rect x="0" y="66" width="14" height="14" rx="2"/>
+                <rect x="0" y="88" width="14" height="14" rx="2"/>
+              </g>
+            </g>
+            <g transform="translate(180, 50)">
+              <text x="0" y="0" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="1.5">LANGUAGE</text>
+              <text x="0" y="38" fill="#D4FF00" font-size="28" font-weight="700">3</text>
+              <g transform="translate(0, 60)" fill="#D4FF00">
+                <rect x="0" y="0" width="14" height="14" rx="2"/>
+                <rect x="0" y="22" width="14" height="14" rx="2"/>
+                <rect x="0" y="44" width="14" height="14" rx="2"/>
+              </g>
+            </g>
+            <g transform="translate(320, 50)">
+              <text x="0" y="0" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="1.5">VISUAL</text>
+              <text x="0" y="38" fill="#D4FF00" font-size="28" font-weight="700">6</text>
+              <g transform="translate(0, 60)" fill="#D4FF00">
+                <rect x="0" y="0" width="14" height="14" rx="2"/>
+                <rect x="0" y="22" width="14" height="14" rx="2"/>
+                <rect x="0" y="44" width="14" height="14" rx="2"/>
+                <rect x="0" y="66" width="14" height="14" rx="2"/>
+                <rect x="0" y="88" width="14" height="14" rx="2"/>
+                <rect x="0" y="110" width="14" height="14" rx="2"/>
+              </g>
+            </g>
+            <g transform="translate(460, 50)">
+              <text x="0" y="0" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="1.5">EXECUTION</text>
+              <text x="0" y="38" fill="#D4FF00" font-size="28" font-weight="700">6</text>
+              <g transform="translate(0, 60)" fill="#D4FF00">
+                <rect x="0" y="0" width="14" height="14" rx="2"/>
+                <rect x="0" y="22" width="14" height="14" rx="2"/>
+                <rect x="0" y="44" width="14" height="14" rx="2"/>
+                <rect x="0" y="66" width="14" height="14" rx="2"/>
+                <rect x="0" y="88" width="14" height="14" rx="2"/>
+                <rect x="0" y="110" width="14" height="14" rx="2"/>
+              </g>
+            </g>
+            <g transform="translate(600, 50)">
+              <text x="0" y="0" fill="#FFFFFF" font-size="12" font-weight="700" letter-spacing="1.5">REFERENCE</text>
+              <text x="0" y="38" fill="#D4FF00" font-size="28" font-weight="700">3</text>
+              <g transform="translate(0, 60)" fill="#D4FF00">
+                <rect x="0" y="0" width="14" height="14" rx="2"/>
+                <rect x="0" y="22" width="14" height="14" rx="2"/>
+                <rect x="0" y="44" width="14" height="14" rx="2"/>
+              </g>
+            </g>
+            <line x1="40" y1="310" x2="760" y2="310" stroke="#404040" stroke-width="1"/>
+            <text x="400" y="340" text-anchor="middle" fill="#737373" font-size="12" letter-spacing="1.5">23 MODULES &middot; 5 BUCKETS &middot; ONE CANONICAL SOURCE</text>
+          </svg>
+        </div>
+        <figcaption class="mt-4 text-sm text-neutral-500 text-center italic">
+          Fig 2 &middot; 23 modules across 5 buckets &mdash; the system map.
+        </figcaption>
+      </figure>
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">01 · Strategy + voice (5 modules)</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
@@ -911,6 +1341,42 @@ auto_load: true
       </p>
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Active QA layer — gatekeeper with concrete scoring</h2>
+
+      <figure class="my-12">
+        <div class="bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-sm">
+          <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto" role="img" aria-labelledby="fig4-en-title" style="font-family: system-ui, sans-serif;">
+            <title id="fig4-en-title">QA Score &mdash; ring and fix list</title>
+            <g transform="translate(180, 150)">
+              <circle cx="0" cy="0" r="80" fill="none" stroke="#262626" stroke-width="16"/>
+              <circle cx="0" cy="0" r="80" fill="none" stroke="#D4FF00" stroke-width="16" stroke-linecap="round" stroke-dasharray="372 503" transform="rotate(-90)"/>
+              <text x="0" y="6" text-anchor="middle" fill="#FFFFFF" font-size="56" font-weight="700">74</text>
+              <text x="0" y="32" text-anchor="middle" fill="#737373" font-size="10" letter-spacing="1.5">BRAND CONSISTENCY</text>
+            </g>
+            <g transform="translate(360, 50)">
+              <rect width="400" height="58" rx="6" fill="#262626" stroke="#404040" stroke-width="1"/>
+              <circle cx="20" cy="29" r="5" fill="#FF4B4B"/>
+              <text x="36" y="26" fill="#FFFFFF" font-size="13" font-weight="600">Visual &middot; Logo</text>
+              <text x="36" y="44" fill="#737373" font-size="12">Color #FF4B00 &ne; brand lead green</text>
+            </g>
+            <g transform="translate(360, 130)">
+              <rect width="400" height="58" rx="6" fill="#262626" stroke="#404040" stroke-width="1"/>
+              <circle cx="20" cy="29" r="5" fill="#FF4B4B"/>
+              <text x="36" y="26" fill="#FFFFFF" font-size="13" font-weight="600">Language &middot; Lexicon</text>
+              <text x="36" y="44" fill="#737373" font-size="12">&quot;gadget&quot; &rarr; use &quot;medical device&quot;</text>
+            </g>
+            <g transform="translate(360, 210)">
+              <rect width="400" height="58" rx="6" fill="#262626" stroke="#404040" stroke-width="1"/>
+              <circle cx="20" cy="29" r="5" fill="#FFB020"/>
+              <text x="36" y="26" fill="#FFFFFF" font-size="13" font-weight="600">Visual &middot; Photo</text>
+              <text x="36" y="44" fill="#737373" font-size="12">Stock photo detected &mdash; use custom shot</text>
+            </g>
+            <text x="400" y="300" text-anchor="middle" fill="#737373" font-size="12" letter-spacing="1.5">DROP ASSET &rarr; SCORE + FIX LIST IN 3 SECONDS</text>
+          </svg>
+        </div>
+        <figcaption class="mt-4 text-sm text-neutral-500 text-center italic">
+          Fig 4 &middot; QA scoring &mdash; objective 0&ndash;100 score replaces subjective &quot;is this on-brand&quot; debate.
+        </figcaption>
+      </figure>
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">Scoring methodology — how to count</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
@@ -1082,6 +1548,48 @@ auto_load: true
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Brands that build the knowledge hub in 2026 collect a compounding advantage. <span class="text-white">The rest will be 5 years too late.</span>
       </p>
+
+      <figure class="my-12">
+        <div class="bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-sm">
+          <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto" role="img" aria-labelledby="fig5-en-title" style="font-family: system-ui, sans-serif;">
+            <title id="fig5-en-title">Compounding moat &mdash; value curve over time</title>
+            <g stroke="#262626" stroke-width="1">
+              <line x1="80" y1="240" x2="760" y2="240"/>
+              <line x1="80" y1="40" x2="80" y2="240"/>
+            </g>
+            <g stroke="#262626" stroke-width="1" stroke-dasharray="2 4">
+              <line x1="80" y1="80" x2="760" y2="80"/>
+              <line x1="80" y1="160" x2="760" y2="160"/>
+              <line x1="250" y1="40" x2="250" y2="240"/>
+              <line x1="500" y1="40" x2="500" y2="240"/>
+              <line x1="700" y1="40" x2="700" y2="240"/>
+            </g>
+            <path d="M 80 230 Q 200 228 250 218 Q 360 200 500 140 Q 620 80 700 50" fill="none" stroke="#D4FF00" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M 80 230 Q 200 228 250 218 Q 360 200 500 140 Q 620 80 700 50 L 700 240 L 80 240 Z" fill="#D4FF00" fill-opacity="0.06"/>
+            <g fill="#D4FF00">
+              <circle cx="250" cy="218" r="6"/>
+              <circle cx="500" cy="140" r="6"/>
+              <circle cx="700" cy="50" r="6"/>
+            </g>
+            <g font-size="11" fill="#737373" text-anchor="middle">
+              <text x="80" y="262">0</text>
+              <text x="250" y="262">M6</text>
+              <text x="500" y="262">M18</text>
+              <text x="700" y="262">M36</text>
+              <text x="400" y="290" letter-spacing="1.5">TIME &middot; MONTHS</text>
+            </g>
+            <g font-size="11" fill="#737373">
+              <text x="250" y="208" text-anchor="middle" fill="#FFFFFF" font-weight="600">Setup pain</text>
+              <text x="500" y="128" text-anchor="middle" fill="#FFFFFF" font-weight="600">Stabilization</text>
+              <text x="700" y="38" text-anchor="middle" fill="#FFFFFF" font-weight="600">Compounding</text>
+            </g>
+            <text x="40" y="140" fill="#737373" font-size="11" letter-spacing="1.5" transform="rotate(-90, 40, 140)" text-anchor="middle">OPERATIONAL VALUE</text>
+          </svg>
+        </div>
+        <figcaption class="mt-4 text-sm text-neutral-500 text-center italic">
+          Fig 5 &middot; First 6 months are hardest. The next 30 months build a compounding moat.
+        </figcaption>
+      </figure>
 
       <div class="bg-white/[0.03] border-l-2 border-[#D4FF00] p-8 my-12">
         <p class="text-xl text-white font-medium leading-relaxed mb-3">
