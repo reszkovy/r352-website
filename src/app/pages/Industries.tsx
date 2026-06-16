@@ -50,9 +50,16 @@ export function Industries() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {industries.map((industry, i) => (
             <Reveal key={industry.slug} delay={i * 0.06}>
+              {/* Card surface — line-only treatment. Previous bg tint
+                  (bg-neutral-50/40 dark:bg-white/[0.015]) rendered as a faint
+                  grey/white box against #0a0a0a, which collided with the no-card
+                  aesthetic the rest of the site uses (sections separated by hairlines,
+                  not chrome). Now: invisible at rest, light bg ONLY on hover so the
+                  affordance is still present without the always-on "marketing card"
+                  look the user wanted removed (2026-06-11). */}
               <Link
                 href={`/industries/${industry.slug}`}
-                className="group relative block h-full border border-neutral-200 dark:border-white/10 p-8 md:p-10 lg:p-12 bg-neutral-50/40 dark:bg-white/[0.015] hover:border-[#D4FF00] hover:bg-neutral-50 dark:hover:bg-white/[0.04] transition-all duration-500"
+                className="group relative block h-full border border-neutral-200 dark:border-white/10 p-8 md:p-10 lg:p-12 hover:border-[#D4FF00] dark:hover:bg-white/[0.03] hover:bg-neutral-50/60 transition-all duration-500"
               >
                 {/* Eyebrow + lime number */}
                 <div className="flex items-baseline justify-between mb-8">

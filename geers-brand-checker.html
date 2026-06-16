@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geers · Brand Consistency Check</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ─── TOKENS — pulled from Geers brand hub ───────────────── */
+  :root {
+    --geers-green: #006B3F;
+    --geers-green-dark: #00472A;
+    --geers-lime: #D4FF45;
+    --geers-mint-bg: #F0F8F2;
+    --geers-mint-soft: #E0F0E5;
+
+    --charcoal: #1A1A1A;
+    --grey-700: #374151;
+    --grey-500: #6B7280;
+    --grey-300: #D1D5DB;
+    --grey-200: #E5E7EB;
+    --grey-100: #F3F4F6;
+    --white: #FFFFFF;
+
+    --danger: #DC2626;
+    --warning: #D97706;
+    --success: #006B3F;
+
+    --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+    --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px;
+    --space-12: 48px; --space-16: 64px; --space-20: 80px;
+
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --motion-fast: 200ms;
+    --motion-base: 400ms;
+    --motion-slow: 800ms;
+
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-pill: 999px;
+
+    --max-w: 880px;
+  }
+
+  /* ─── RESET ─────────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-weight: 400;
+    color: var(--charcoal);
+    background: var(--white);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+  /* ─── LAYOUT — hairline separation, no chrome ─────────── */
+  .container { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--space-6); }
+
+  /* ─── HEADER ────────────────────────────────────────────── */
+  .site-header {
+    border-bottom: 1px solid var(--grey-200);
+    padding: var(--space-5) 0;
+    background: var(--white);
+    position: sticky; top: 0; z-index: 10;
+  }
+  .header-row {
+    display: flex; justify-content: space-between; align-items: center;
+    max-width: var(--max-w); margin: 0 auto; padding: 0 var(--space-6);
+  }
+  .brand {
+    display: flex; align-items: center; gap: var(--space-2);
+    font-weight: 700; font-size: 22px; color: var(--charcoal);
+    letter-spacing: -0.02em;
+  }
+  .brand-dot {
+    width: 24px; height: 24px; border-radius: 50%;
+    background: var(--geers-green);
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--white); font-size: 14px; font-weight: 700;
+  }
+  .nav-eyebrow {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--grey-500); font-weight: 500;
+  }
+
+  /* ─── HERO ──────────────────────────────────────────────── */
+  .hero { padding: var(--space-16) 0 var(--space-12); }
+  .eyebrow {
+    display: inline-block; font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--geers-green); font-weight: 600;
+    margin-bottom: var(--space-5);
+  }
+  .h1 {
+    font-size: clamp(32px, 4.5vw, 48px); font-weight: 700;
+    line-height: 1.05; letter-spacing: -0.025em; color: var(--charcoal);
+    margin-bottom: var(--space-5); max-width: 700px;
+  }
+  .h1 em { font-style: normal; color: var(--geers-green); font-weight: 700; }
+  .subtitle {
+    font-size: 18px; line-height: 1.6; color: var(--grey-700);
+    max-width: 620px;
+  }
+
+  /* ─── UPLOAD ZONE ───────────────────────────────────────── */
+  .check-form { padding-bottom: var(--space-20); }
+  .field-label {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 13px; font-weight: 500; color: var(--grey-700);
+    margin-bottom: var(--space-3); letter-spacing: 0.01em;
+  }
+  .field-hint { font-size: 12px; color: var(--grey-500); }
+
+  .drop-zone {
+    border: 1.5px dashed var(--grey-300);
+    border-radius: var(--radius-md);
+    padding: var(--space-12) var(--space-8);
+    text-align: center;
+    background: var(--white);
+    transition: all var(--motion-base) var(--ease-out);
+    cursor: pointer;
+    margin-bottom: var(--space-8);
+  }
+  .drop-zone:hover { border-color: var(--geers-green); background: var(--geers-mint-bg); }
+  .drop-zone.is-dragging { border-color: var(--geers-green); background: var(--geers-mint-bg); border-style: solid; }
+  .drop-zone.has-file { border-color: var(--geers-green); background: var(--geers-mint-bg); border-style: solid; }
+
+  .drop-icon {
+    width: 48px; height: 48px; margin: 0 auto var(--space-4);
+    color: var(--grey-500); transition: color var(--motion-base);
+  }
+  .drop-zone:hover .drop-icon, .drop-zone.has-file .drop-icon { color: var(--geers-green); }
+  .drop-text { font-size: 16px; color: var(--grey-700); font-weight: 500; }
+  .drop-sub { font-size: 13px; color: var(--grey-500); margin-top: var(--space-2); }
+  .filename { font-size: 14px; color: var(--geers-green-dark); font-weight: 600; margin-top: var(--space-2); }
+  #file-input { display: none; }
+
+  .or-divider {
+    display: flex; align-items: center; gap: var(--space-4);
+    margin: var(--space-6) 0;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--grey-500); font-weight: 500;
+  }
+  .or-divider::before, .or-divider::after {
+    content: ''; flex: 1; height: 1px; background: var(--grey-200);
+  }
+
+  .text-input {
+    width: 100%; min-height: 140px; padding: var(--space-4);
+    border: 1.5px solid var(--grey-200); border-radius: var(--radius-md);
+    font-family: inherit; font-size: 15px; line-height: 1.6;
+    color: var(--charcoal); background: var(--white); resize: vertical;
+    transition: border-color var(--motion-fast) var(--ease-in-out);
+    margin-bottom: var(--space-8);
+  }
+  .text-input:focus { outline: none; border-color: var(--geers-green); }
+
+  /* ─── CTA ───────────────────────────────────────────────── */
+  .cta-row { display: flex; gap: var(--space-4); align-items: center; }
+  .cta-primary {
+    display: inline-flex; align-items: center; gap: var(--space-2);
+    padding: var(--space-4) var(--space-8);
+    background: var(--geers-green); color: var(--white);
+    border-radius: var(--radius-pill);
+    font-size: 15px; font-weight: 600; letter-spacing: 0.01em;
+    transition: all var(--motion-fast) var(--ease-in-out);
+  }
+  .cta-primary:hover { background: var(--geers-green-dark); transform: translateY(-1px); }
+  .cta-primary:disabled { background: var(--grey-300); color: var(--grey-500); cursor: not-allowed; transform: none; }
+  .cta-secondary {
+    font-size: 13px; color: var(--grey-500); font-weight: 500;
+    text-decoration: underline; text-decoration-color: var(--grey-300);
+    text-underline-offset: 4px;
+    transition: color var(--motion-fast);
+  }
+  .cta-secondary:hover { color: var(--geers-green); }
+
+  /* ─── LOADING STATE ─────────────────────────────────────── */
+  .loading-state {
+    display: none; padding: var(--space-12) 0; text-align: center;
+  }
+  .loading-state.is-active { display: block; }
+  .spinner {
+    width: 44px; height: 44px; margin: 0 auto var(--space-5);
+    border: 3px solid var(--geers-mint-soft);
+    border-top-color: var(--geers-green);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .loading-text {
+    font-size: 14px; color: var(--grey-700);
+    font-variant-numeric: tabular-nums;
+  }
+  .loading-stages {
+    margin-top: var(--space-4); font-size: 12px; color: var(--grey-500);
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── RESULTS ───────────────────────────────────────────── */
+  .results {
+    display: none; padding-top: var(--space-16); padding-bottom: var(--space-20);
+    border-top: 1px solid var(--grey-200);
+    margin-top: var(--space-16);
+  }
+  .results.is-visible { display: block; }
+  .results > * {
+    opacity: 0; transform: translateY(12px);
+    animation: reveal var(--motion-slow) var(--ease-out) forwards;
+  }
+  .results > *:nth-child(1) { animation-delay: 0ms; }
+  .results > *:nth-child(2) { animation-delay: 100ms; }
+  .results > *:nth-child(3) { animation-delay: 200ms; }
+  @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
+
+  .score-overview {
+    display: grid; grid-template-columns: auto 1fr; gap: var(--space-8);
+    align-items: center; padding: var(--space-8); margin-bottom: var(--space-12);
+    background: var(--geers-mint-bg); border-radius: var(--radius-lg);
+  }
+  .score-ring {
+    width: 120px; height: 120px; position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .score-ring svg { transform: rotate(-90deg); }
+  .score-ring-bg { stroke: var(--geers-mint-soft); }
+  .score-ring-fill {
+    stroke: var(--geers-green); stroke-linecap: round;
+    transition: stroke-dashoffset 1.2s var(--ease-out);
+  }
+  .score-number {
+    position: absolute;
+    font-size: 32px; font-weight: 700; color: var(--charcoal);
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+  .score-meta .score-label {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--grey-500); font-weight: 600; margin-bottom: var(--space-2);
+  }
+  .score-meta .score-headline {
+    font-size: 24px; font-weight: 700; color: var(--charcoal);
+    margin-bottom: var(--space-2); letter-spacing: -0.015em;
+  }
+  .score-meta .score-sub { font-size: 14px; color: var(--grey-700); line-height: 1.5; }
+
+  /* ─── CATEGORY BREAKDOWN ────────────────────────────────── */
+  .section-eyebrow {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--geers-green); font-weight: 600; margin-bottom: var(--space-3);
+  }
+  .section-title {
+    font-size: 24px; font-weight: 700; color: var(--charcoal);
+    letter-spacing: -0.02em; margin-bottom: var(--space-8);
+  }
+  .bucket-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: var(--space-3); margin-bottom: var(--space-12);
+  }
+  .bucket-card {
+    padding: var(--space-5); background: var(--white);
+    border: 1px solid var(--grey-200); border-radius: var(--radius-md);
+    transition: border-color var(--motion-fast);
+  }
+  .bucket-card:hover { border-color: var(--geers-green); }
+  .bucket-name {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.02em;
+    color: var(--grey-700); text-transform: uppercase;
+    margin-bottom: var(--space-3);
+  }
+  .bucket-score-row {
+    display: flex; align-items: baseline; gap: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+  .bucket-score {
+    font-size: 28px; font-weight: 700; color: var(--charcoal);
+    letter-spacing: -0.02em; font-variant-numeric: tabular-nums;
+  }
+  .bucket-max { font-size: 13px; color: var(--grey-500); font-weight: 500; }
+  .bucket-bar {
+    width: 100%; height: 4px; background: var(--grey-100);
+    border-radius: var(--radius-pill); overflow: hidden;
+  }
+  .bucket-bar-fill {
+    height: 100%; border-radius: inherit; transition: width 1.2s var(--ease-out);
+  }
+  .bucket-bar-fill.score-high { background: var(--geers-green); }
+  .bucket-bar-fill.score-mid { background: var(--warning); }
+  .bucket-bar-fill.score-low { background: var(--danger); }
+
+  /* ─── ISSUE LIST ────────────────────────────────────────── */
+  .issue-list { display: flex; flex-direction: column; gap: var(--space-2); }
+  .issue {
+    display: grid; grid-template-columns: auto 1fr auto; gap: var(--space-4);
+    align-items: start; padding: var(--space-5) var(--space-6);
+    background: var(--white); border: 1px solid var(--grey-200);
+    border-radius: var(--radius-md);
+    transition: border-color var(--motion-fast);
+  }
+  .issue:hover { border-color: var(--grey-300); }
+  .severity-dot {
+    width: 8px; height: 8px; border-radius: 50%; margin-top: 7px;
+  }
+  .severity-dot.sev-high { background: var(--danger); }
+  .severity-dot.sev-mid { background: var(--warning); }
+  .severity-dot.sev-low { background: var(--success); }
+  .issue-body { display: flex; flex-direction: column; gap: var(--space-2); }
+  .issue-title {
+    font-size: 15px; font-weight: 600; color: var(--charcoal);
+    line-height: 1.4;
+  }
+  .issue-rule {
+    font-size: 12px; color: var(--grey-500); letter-spacing: 0.02em;
+    text-transform: uppercase; font-weight: 500;
+  }
+  .issue-fix {
+    font-size: 14px; color: var(--grey-700); line-height: 1.5;
+    padding-top: var(--space-2);
+    border-top: 1px dashed var(--grey-200);
+    margin-top: var(--space-1);
+  }
+  .issue-fix strong { color: var(--geers-green-dark); font-weight: 600; }
+  .issue-bucket {
+    font-size: 11px; color: var(--grey-500); font-weight: 500;
+    padding: var(--space-1) var(--space-3); background: var(--grey-100);
+    border-radius: var(--radius-pill); letter-spacing: 0.02em;
+    white-space: nowrap; text-transform: uppercase;
+  }
+
+  /* ─── ACTIONS AFTER RESULTS ─────────────────────────────── */
+  .results-actions {
+    display: flex; gap: var(--space-4); padding-top: var(--space-12);
+    border-top: 1px solid var(--grey-200); margin-top: var(--space-12);
+  }
+  .btn-tertiary {
+    padding: var(--space-3) var(--space-6);
+    border: 1px solid var(--grey-300); border-radius: var(--radius-pill);
+    font-size: 13px; font-weight: 500; color: var(--grey-700);
+    transition: all var(--motion-fast);
+  }
+  .btn-tertiary:hover { border-color: var(--geers-green); color: var(--geers-green); }
+
+  /* ─── FOOTER ────────────────────────────────────────────── */
+  .site-footer {
+    border-top: 1px solid var(--grey-200); padding: var(--space-8) 0;
+    margin-top: var(--space-20);
+  }
+  .footer-row {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: var(--space-4);
+    max-width: var(--max-w); margin: 0 auto; padding: 0 var(--space-6);
+  }
+  .footer-meta {
+    font-size: 12px; color: var(--grey-500); letter-spacing: 0.02em;
+  }
+  .footer-link {
+    font-size: 12px; color: var(--grey-700); text-decoration: none;
+    border-bottom: 1px solid var(--grey-300);
+    padding-bottom: 1px;
+    transition: all var(--motion-fast);
+  }
+  .footer-link:hover { color: var(--geers-green); border-bottom-color: var(--geers-green); }
+
+  /* ─── REDUCED MOTION ────────────────────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* ─── MOBILE ────────────────────────────────────────────── */
+  @media (max-width: 640px) {
+    .hero { padding: var(--space-12) 0 var(--space-8); }
+    .h1 { font-size: 28px; }
+    .subtitle { font-size: 15px; }
+    .score-overview { grid-template-columns: 1fr; text-align: center; }
+    .score-ring { margin: 0 auto; }
+    .bucket-grid { grid-template-columns: repeat(2, 1fr); }
+    .issue { grid-template-columns: auto 1fr; }
+    .issue-bucket { grid-column: 2; justify-self: start; }
+    .results-actions { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-row">
+    <a href="#" class="brand">
+      <span class="brand-dot">!</span>
+      Geers
+    </a>
+    <span class="nav-eyebrow">Brand Consistency Check · v1.0</span>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="eyebrow">Internal tool · Geers PL team</span>
+    <h1 class="h1">Sprawdź materiał względem <em>reguł marki</em>.</h1>
+    <p class="subtitle">
+      Drop image, plik PDF, lub wklej copy. System oceni materiał wzgledem 23 modułów brand systemu i wskaże konkretne odstępstwa wraz z propozycjami fixów.
+    </p>
+  </section>
+
+  <!-- CHECK FORM -->
+  <section class="check-form" id="check-form-section">
+
+    <div class="field-label">
+      <span>Materiał do sprawdzenia</span>
+      <span class="field-hint">JPG, PNG, PDF, MP4 — max 25MB</span>
+    </div>
+
+    <label class="drop-zone" id="drop-zone" for="file-input">
+      <svg class="drop-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 13.5l3-3m0 0l3 3m-3-3v12m0-12c1.396 0 2.738.55 3.728 1.534M3 16.5c0 1.657 1.343 3 3 3h12c1.657 0 3-1.343 3-3M3 16.5a8.997 8.997 0 014.728-7.945M3 16.5V12a9 9 0 0118 0v4.5"/>
+      </svg>
+      <div class="drop-text" id="drop-text">Przeciągnij plik lub kliknij, aby wybrać</div>
+      <div class="drop-sub" id="drop-sub">Najlepiej assety z kampanii, social media, OOH, draft komunikacji</div>
+      <input type="file" id="file-input" accept="image/*,application/pdf,video/*">
+    </label>
+
+    <div class="or-divider">albo</div>
+
+    <div class="field-label">
+      <span>Copy lub headline do oceny</span>
+      <span class="field-hint">opcjonalnie</span>
+    </div>
+    <textarea
+      class="text-input"
+      id="text-input"
+      placeholder="Wklej tekst, headline kampanii, treść posta, body emaila..."
+    ></textarea>
+
+    <div class="cta-row">
+      <button class="cta-primary" id="run-check" disabled>
+        <span>Uruchom sprawdzenie</span>
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
+      <button class="cta-secondary" id="load-demo">Załaduj przykładowy materiał</button>
+    </div>
+
+    <!-- LOADING -->
+    <div class="loading-state" id="loading">
+      <div class="spinner"></div>
+      <div class="loading-text">Sprawdzamy materiał względem 23 modułów…</div>
+      <div class="loading-stages" id="loading-stages">Strategia + voice…</div>
+    </div>
+
+  </section>
+
+  <!-- RESULTS -->
+  <section class="results" id="results">
+
+    <!-- Overall score -->
+    <div class="score-overview">
+      <div class="score-ring">
+        <svg width="120" height="120">
+          <circle class="score-ring-bg" cx="60" cy="60" r="52" stroke-width="8" fill="none"/>
+          <circle class="score-ring-fill" id="score-ring-fill" cx="60" cy="60" r="52" stroke-width="8" fill="none"
+                  stroke-dasharray="326.7" stroke-dashoffset="326.7"/>
+        </svg>
+        <span class="score-number" id="score-number">0</span>
+      </div>
+      <div class="score-meta">
+        <div class="score-label">Brand consistency score</div>
+        <div class="score-headline">Na granicy akceptacji</div>
+        <div class="score-sub">
+          Materiał ma kilka odstępstw od reguł marki — głównie w kolorystyce i języku. Wymaga 3 punktowych poprawek przed publikacją.
+        </div>
+      </div>
+    </div>
+
+    <!-- Bucket breakdown -->
+    <div class="section-eyebrow">Rozkład per bucket</div>
+    <h2 class="section-title">5 obszarów oceny</h2>
+    <div class="bucket-grid">
+      <div class="bucket-card">
+        <div class="bucket-name">Strategia + voice</div>
+        <div class="bucket-score-row">
+          <span class="bucket-score">88</span>
+          <span class="bucket-max">/ 100</span>
+        </div>
+        <div class="bucket-bar"><div class="bucket-bar-fill score-high" style="width: 88%"></div></div>
+      </div>
+      <div class="bucket-card">
+        <div class="bucket-name">Język</div>
+        <div class="bucket-score-row">
+          <span class="bucket-score">62</span>
+          <span class="bucket-max">/ 100</span>
+        </div>
+        <div class="bucket-bar"><div class="bucket-bar-fill score-mid" style="width: 62%"></div></div>
+      </div>
+      <div class="bucket-card">
+        <div class="bucket-name">Visual</div>
+        <div class="bucket-score-row">
+          <span class="bucket-score">55</span>
+          <span class="bucket-max">/ 100</span>
+        </div>
+        <div class="bucket-bar"><div class="bucket-bar-fill score-low" style="width: 55%"></div></div>
+      </div>
+      <div class="bucket-card">
+        <div class="bucket-name">Wykonanie</div>
+        <div class="bucket-score-row">
+          <span class="bucket-score">92</span>
+          <span class="bucket-max">/ 100</span>
+        </div>
+        <div class="bucket-bar"><div class="bucket-bar-fill score-high" style="width: 92%"></div></div>
+      </div>
+      <div class="bucket-card">
+        <div class="bucket-name">Reference</div>
+        <div class="bucket-score-row">
+          <span class="bucket-score">85</span>
+          <span class="bucket-max">/ 100</span>
+        </div>
+        <div class="bucket-bar"><div class="bucket-bar-fill score-high" style="width: 85%"></div></div>
+      </div>
+    </div>
+
+    <!-- Issue list -->
+    <div class="section-eyebrow">Issues do naprawy</div>
+    <h2 class="section-title">5 odstępstw, posortowane od krytycznych</h2>
+    <div class="issue-list">
+
+      <div class="issue">
+        <div class="severity-dot sev-high"></div>
+        <div class="issue-body">
+          <div class="issue-rule">Visual · Logo rules</div>
+          <div class="issue-title">Logo Geers użyte w nieautoryzowanym kolorze (#FF4B00 zamiast lead green #006B3F)</div>
+          <div class="issue-fix">
+            <strong>Fix:</strong> Zamień na oficjalny wariant lead green. Inne kolory marki są dopuszczone tylko jako accent, nigdy jako kolor samego logo.
+          </div>
+        </div>
+        <span class="issue-bucket">Visual</span>
+      </div>
+
+      <div class="issue">
+        <div class="severity-dot sev-high"></div>
+        <div class="issue-body">
+          <div class="issue-rule">Język · Lexicon AudioCare</div>
+          <div class="issue-title">Użyto słowa "gadżet" w kontekście aparatu słuchowego (2 wystąpienia)</div>
+          <div class="issue-fix">
+            <strong>Fix:</strong> Zastąp "gadżet" → "sprzęt medyczny" lub "rozwiązanie audiologiczne". Patrz: hub → Język → Słowa zakazane.
+          </div>
+        </div>
+        <span class="issue-bucket">Język</span>
+      </div>
+
+      <div class="issue">
+        <div class="severity-dot sev-mid"></div>
+        <div class="issue-body">
+          <div class="issue-rule">Visual · Fotografia</div>
+          <div class="issue-title">Zdjęcie wygląda na stock — model trzyma aparat w wystudiowanej pozie</div>
+          <div class="issue-fix">
+            <strong>Fix:</strong> Zero stocku — zasada #1. Użyj materiałów z Geers photo library (real-life, unstaged). Patrz: hub → Visual → Fotografia, 3 zasady.
+          </div>
+        </div>
+        <span class="issue-bucket">Visual</span>
+      </div>
+
+      <div class="issue">
+        <div class="severity-dot sev-mid"></div>
+        <div class="issue-body">
+          <div class="issue-rule">Visual · Kształty</div>
+          <div class="issue-title">Kompozycja używa 5 oficjalnych kształtów — przekroczono limit max 3 na layout</div>
+          <div class="issue-fix">
+            <strong>Fix:</strong> Zredukuj do 3 kształtów. Zachowaj rotację — kształty zawsze rotowane, nigdy statyczne. Patrz: hub → Visual → 3 oficjalne kształty.
+          </div>
+        </div>
+        <span class="issue-bucket">Visual</span>
+      </div>
+
+      <div class="issue">
+        <div class="severity-dot sev-low"></div>
+        <div class="issue-body">
+          <div class="issue-rule">Strategia + voice · Tone</div>
+          <div class="issue-title">Tryb tonu "Casual" zastosowany na komunikacie B2B — zaproponuj "Ekspert"</div>
+          <div class="issue-fix">
+            <strong>Fix:</strong> Dla komunikacji do protetyków i partnerów medycznych użyj trybu Ekspert (najwyższa specjalistyczność, najmniej kolokwialny). Patrz: hub → Strategia + voice → 3 tryby tonu.
+          </div>
+        </div>
+        <span class="issue-bucket">Voice</span>
+      </div>
+
+    </div>
+
+    <!-- Actions -->
+    <div class="results-actions">
+      <button class="btn-tertiary" id="run-again">Sprawdź inny materiał</button>
+      <button class="btn-tertiary" id="export-report">Pobierz raport PDF</button>
+      <button class="btn-tertiary" id="share-link">Udostępnij wynik zespołowi</button>
+    </div>
+
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-row">
+    <span class="footer-meta">Geers Brand Knowledge Hub · v2.0 · materiał wewnętrzny</span>
+    <a href="#" class="footer-link">↗ Wróć do brand hub</a>
+  </div>
+</footer>
+
+<script>
+  // ─── STATE ────────────────────────────────────────────────
+  const fileInput = document.getElementById('file-input');
+  const dropZone = document.getElementById('drop-zone');
+  const dropText = document.getElementById('drop-text');
+  const dropSub = document.getElementById('drop-sub');
+  const textInput = document.getElementById('text-input');
+  const runCheckBtn = document.getElementById('run-check');
+  const loadDemoBtn = document.getElementById('load-demo');
+  const loading = document.getElementById('loading');
+  const loadingStages = document.getElementById('loading-stages');
+  const results = document.getElementById('results');
+  const scoreNumber = document.getElementById('score-number');
+  const scoreRingFill = document.getElementById('score-ring-fill');
+  const formSection = document.getElementById('check-form-section');
+
+  let uploadedFile = null;
+
+  // ─── ENABLE CTA when input present ────────────────────────
+  function updateCTAState() {
+    runCheckBtn.disabled = !(uploadedFile || textInput.value.trim().length > 0);
+  }
+  textInput.addEventListener('input', updateCTAState);
+
+  // ─── FILE HANDLING ────────────────────────────────────────
+  fileInput.addEventListener('change', (e) => {
+    if (e.target.files.length > 0) {
+      handleFile(e.target.files[0]);
+    }
+  });
+
+  function handleFile(file) {
+    uploadedFile = file;
+    dropZone.classList.add('has-file');
+    dropText.textContent = file.name;
+    dropSub.innerHTML = `<span class="filename">${(file.size / 1024).toFixed(1)} KB · ${file.type || 'unknown type'}</span>`;
+    updateCTAState();
+  }
+
+  // Drag-drop visual feedback
+  ['dragenter', 'dragover'].forEach(ev =>
+    dropZone.addEventListener(ev, (e) => { e.preventDefault(); dropZone.classList.add('is-dragging'); })
+  );
+  ['dragleave', 'drop'].forEach(ev =>
+    dropZone.addEventListener(ev, (e) => { e.preventDefault(); dropZone.classList.remove('is-dragging'); })
+  );
+  dropZone.addEventListener('drop', (e) => {
+    if (e.dataTransfer.files.length > 0) {
+      handleFile(e.dataTransfer.files[0]);
+    }
+  });
+
+  // ─── DEMO MATERIAL ────────────────────────────────────────
+  loadDemoBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    textInput.value = "Nasz nowy gadżet słuchowy to przełom! Bezpłatne badania, super cena tylko teraz.";
+    uploadedFile = { name: 'kampania-Q3-draft.jpg', size: 245760, type: 'image/jpeg' };
+    dropZone.classList.add('has-file');
+    dropText.textContent = uploadedFile.name;
+    dropSub.innerHTML = `<span class="filename">${(uploadedFile.size / 1024).toFixed(1)} KB · ${uploadedFile.type}</span>`;
+    updateCTAState();
+  });
+
+  // ─── RUN CHECK (mock) ─────────────────────────────────────
+  runCheckBtn.addEventListener('click', () => {
+    formSection.style.display = 'none';
+    loading.classList.add('is-active');
+
+    const stages = [
+      'Strategia + voice…',
+      'Język — lexicon + DO/DON\'T…',
+      'Visual — logo, paleta, typografia…',
+      'Wykonanie — layout, motion, a11y…',
+      'Reference — cross-check assets…'
+    ];
+    let i = 0;
+    const stageInterval = setInterval(() => {
+      loadingStages.textContent = stages[i];
+      i++;
+      if (i >= stages.length) clearInterval(stageInterval);
+    }, 600);
+
+    setTimeout(() => {
+      loading.classList.remove('is-active');
+      results.classList.add('is-visible');
+      animateScore(74);
+      results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 3200);
+  });
+
+  // ─── ANIMATE SCORE ────────────────────────────────────────
+  function animateScore(target) {
+    const duration = 1200;
+    const start = performance.now();
+    const circumference = 326.7;
+    const targetOffset = circumference - (circumference * target / 100);
+    function tick(now) {
+      const t = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - t, 3);
+      scoreNumber.textContent = Math.round(target * eased);
+      scoreRingFill.style.strokeDashoffset = circumference - ((circumference - targetOffset) * eased);
+      if (t < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // ─── RESET ────────────────────────────────────────────────
+  document.getElementById('run-again').addEventListener('click', () => {
+    results.classList.remove('is-visible');
+    formSection.style.display = 'block';
+    textInput.value = '';
+    uploadedFile = null;
+    fileInput.value = '';
+    dropZone.classList.remove('has-file');
+    dropText.textContent = 'Przeciągnij plik lub kliknij, aby wybrać';
+    dropSub.innerHTML = 'Najlepiej assety z kampanii, social media, OOH, draft komunikacji';
+    updateCTAState();
+    formSection.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // ─── STUBS for non-mocked actions ────────────────────────
+  document.getElementById('export-report').addEventListener('click', () =>
+    alert('Mock: w produkcji wygeneruje PDF z pełnym raportem + fixami per issue.')
+  );
+  document.getElementById('share-link').addEventListener('click', () =>
+    alert('Mock: w produkcji wygeneruje shareable link do tego konkretnego wyniku.')
+  );
+</script>
+
+</body>
+</html>

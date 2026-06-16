@@ -303,7 +303,12 @@ export function IndustryDetail() {
             {language === "pl" ? "Zrobione w praktyce" : "Done in practice"}
           </h2>
 
-          <div className="border border-neutral-200 dark:border-white/10 p-8 md:p-12 lg:p-16 bg-neutral-50/50 dark:bg-white/[0.02]">
+          {/* Proof card — same line-only treatment as Industries listing.
+              Removed bg-neutral-50/50 dark:bg-white/[0.02] tint per 2026-06 directive
+              ("brzydkie tła których mieliśmy unikać"). Border alone carries the
+              container affordance, matches the no-chrome aesthetic used across
+              the rest of the site. */}
+          <div className="border border-neutral-200 dark:border-white/10 p-8 md:p-12 lg:p-16">
             <div className="grid grid-cols-12 gap-6 md:gap-10">
               <div className="col-span-12 md:col-span-5">
                 <span className="text-[10px] font-display uppercase tracking-[0.25em] text-neutral-500 mb-3 block">

@@ -88,6 +88,7 @@ const ROUTES = [
   "/journal/6",
   "/journal/7",
   "/journal/8",
+  "/journal/11", // Brand knowledge hub w erze AI agentów (Jun 2026)
   // Work case studies — crawlable proof pages
   "/work/archicom",
   "/work/benefit-systems",

@@ -110,10 +110,19 @@ export function Footer() {
       {/* Lower: Links & Info — darker background */}
       <div className="bg-[#0a0a0a] px-8 md:px-12 pt-16 pb-12">
         <div className="max-w-[1800px] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-16 md:gap-8 border-t border-white/10 pt-16 mb-24">
-            
-            {/* Column 1: Studio address only — "Founded by Reszek" moved to Column 4 sibling
-                so it pairs with the rotating R-mark watermark on the opposite end of the row. */}
+          {/* Footer compaction (2026-06-11) — 4 cols → 3 cols.
+              - Resources sub-list folded INTO Sitemap column as an internal 2-up grid
+                (Sitemap | Resources side-by-side) — same width, half the height vs.
+                the previous stacked-below treatment.
+              - Social column dissolved — LinkedIn + Email migrated under Local Time
+                in the rightmost column. Right column now reads as a tight "ways to
+                connect / where we are" block instead of three thin stubs.
+              Net effect: vertical height shrunk ~40%, less wasted whitespace, the
+              R-mark watermark sits closer to its anchoring content. */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12 border-t border-white/10 pt-16 mb-24">
+
+            {/* Column 1: Studio address (unchanged). "Founded by Reszek" still lives
+                in Column 3 so it pairs with the R-mark watermark on the opposite end. */}
             <div className="md:col-span-1">
                <span className="block text-xs font-display uppercase tracking-widest text-neutral-500 mb-6">{t("footer.studio")}</span>
                <p className="text-lg text-neutral-300 leading-relaxed">
@@ -135,75 +144,79 @@ export function Footer() {
                </p>
             </div>
 
-            {/* Column 2: Sitemap */}
+            {/* Column 2: Sitemap + Resources as internal 2-up grid. Both lists get
+                eyebrow-equal styling — Resources is no longer rendered as a smaller
+                "secondary" list, because the side-by-side placement already
+                communicates the relative weight without typographic dimming. */}
             <div className="md:col-span-1">
-               <span className="block text-xs font-display uppercase tracking-widest text-neutral-500 mb-6">{t("footer.sitemap")}</span>
-               <ul className="flex flex-col gap-3 items-start">
-                 {navLinks.map((link) => (
-                   <li key={link.label}>
-                     <Link href={link.href} className={cn(
-                        "group relative inline-flex py-1 transition-colors duration-300 hover:text-[#D4FF00]",
-                        location === link.href ? "text-[#D4FF00]" : "text-neutral-300"
-                     )}>
-                       <div className="relative overflow-hidden flex flex-col items-start justify-center">
-                           <span className="font-medium tracking-[0.15em] opacity-0 invisible select-none text-lg" aria-hidden="true">
-                               {link.label}
-                           </span>
-                           <span className={cn(
-                               "absolute inset-0 flex items-center justify-start transition-all duration-300 ease-out text-lg",
-                               "font-normal tracking-normal group-hover:font-medium group-hover:tracking-[0.15em]",
-                               location === link.href && "font-medium tracking-normal"
-                           )}>
-                               {link.label}
-                           </span>
-                       </div>
-                     </Link>
-                   </li>
-                 ))}
-               </ul>
+               <div className="grid grid-cols-2 gap-8">
 
-               {/* Resources — secondary, quieter than the sitemap list above */}
-               <span className="block text-xs font-display uppercase tracking-widest text-neutral-500 mt-10 mb-4">{t("footer.resources")}</span>
-               <ul className="flex flex-col gap-2 items-start">
-                 {resourceLinks.map((link) => (
-                   <li key={link.href}>
-                     <Link
-                       href={link.href}
-                       onClick={navigateToTop}
-                       className={cn(
-                         "inline-flex py-0.5 text-sm transition-colors duration-300 hover:text-[#D4FF00]",
-                         location === link.href ? "text-[#D4FF00]" : "text-neutral-400"
-                       )}
-                     >
-                       {link.label}
-                     </Link>
-                   </li>
-                 ))}
-               </ul>
+                  {/* Sub-col A: Primary navigation */}
+                  <div>
+                     <span className="block text-xs font-display uppercase tracking-widest text-neutral-500 mb-6">{t("footer.sitemap")}</span>
+                     <ul className="flex flex-col gap-3 items-start">
+                        {navLinks.map((link) => (
+                           <li key={link.label}>
+                              <Link href={link.href} className={cn(
+                                 "group relative inline-flex py-1 transition-colors duration-300 hover:text-[#D4FF00]",
+                                 location === link.href ? "text-[#D4FF00]" : "text-neutral-300"
+                              )}>
+                              <div className="relative overflow-hidden flex flex-col items-start justify-center">
+                                    <span className="font-medium tracking-[0.15em] opacity-0 invisible select-none text-base" aria-hidden="true">
+                                       {link.label}
+                                    </span>
+                                    <span className={cn(
+                                       "absolute inset-0 flex items-center justify-start transition-all duration-300 ease-out text-base",
+                                       "font-normal tracking-normal group-hover:font-medium group-hover:tracking-[0.15em]",
+                                       location === link.href && "font-medium tracking-normal"
+                                    )}>
+                                       {link.label}
+                                    </span>
+                              </div>
+                              </Link>
+                           </li>
+                        ))}
+                     </ul>
+                  </div>
+
+                  {/* Sub-col B: Resources. Same interactive treatment as Sitemap —
+                      shift+letter-spacing on hover — so users perceive both lists as
+                      equal-priority navigation, not main + footnote. */}
+                  <div>
+                     <span className="block text-xs font-display uppercase tracking-widest text-neutral-500 mb-6">{t("footer.resources")}</span>
+                     <ul className="flex flex-col gap-3 items-start">
+                        {resourceLinks.map((link) => (
+                           <li key={link.href}>
+                              <Link
+                                 href={link.href}
+                                 onClick={navigateToTop}
+                                 className={cn(
+                                    "group relative inline-flex py-1 transition-colors duration-300 hover:text-[#D4FF00]",
+                                    location === link.href ? "text-[#D4FF00]" : "text-neutral-300"
+                                 )}
+                              >
+                                 <div className="relative overflow-hidden flex flex-col items-start justify-center">
+                                    <span className="font-medium tracking-[0.15em] opacity-0 invisible select-none text-base" aria-hidden="true">
+                                       {link.label}
+                                    </span>
+                                    <span className={cn(
+                                       "absolute inset-0 flex items-center justify-start transition-all duration-300 ease-out text-base",
+                                       "font-normal tracking-normal group-hover:font-medium group-hover:tracking-[0.15em]",
+                                       location === link.href && "font-medium tracking-normal"
+                                    )}>
+                                       {link.label}
+                                    </span>
+                                 </div>
+                              </Link>
+                           </li>
+                        ))}
+                     </ul>
+                  </div>
+
+               </div>
             </div>
 
-             {/* Column 3: Socials */}
-             <div className="md:col-span-1">
-               <span className="block text-xs font-display uppercase tracking-widest text-neutral-500 mb-6">{t("footer.social")}</span>
-               <ul className="flex flex-col gap-3 items-start">
-                 {socialLinks.map((link) => (
-                   <li key={link.label}>
-                     <a href={link.href} target="_blank" rel="noopener noreferrer" className="group relative inline-flex py-1 transition-colors duration-300 text-neutral-300 hover:text-[#D4FF00]">
-                       <div className="relative overflow-hidden flex flex-col items-start justify-center">
-                           <span className="font-medium tracking-[0.15em] opacity-0 invisible select-none text-lg" aria-hidden="true">
-                               {link.label}
-                           </span>
-                           <span className="absolute inset-0 flex items-center justify-start transition-all duration-300 ease-out font-normal tracking-normal group-hover:font-medium group-hover:tracking-[0.15em] text-lg">
-                               {link.label}
-                           </span>
-                       </div>
-                     </a>
-                   </li>
-                 ))}
-               </ul>
-            </div>
-
-            {/* Column 4: Time + Founded by Reszek + Rotating R-mark watermark.
+            {/* Column 3: Time + Connect (LinkedIn/Email) + Founded by Reszek + Rotating R-mark.
                 R-mark is ABSOLUTELY positioned so it doesn't stretch the column height
                 (which previously created a huge empty gap under the shorter Sitemap / Social
                 columns). It's allowed to overflow downward — past the divider, off-screen
@@ -217,8 +230,32 @@ export function Footer() {
                   </p>
                </div>
 
-               {/* Personal brand line — moved here from Column 1 so it pairs with the R-mark.
-                   "Founded by Reszek · LinkedIn" reads as a personal signature beside the watermark. */}
+               {/* CONNECT — folded in from the dissolved Social column.
+                   LinkedIn + Email rendered with the same hover treatment as the
+                   Sitemap/Resources lists so the right column reads as a coherent
+                   "where + how to reach us" block instead of a thin time-stub. */}
+               <div>
+                  <span className="block text-xs font-display uppercase tracking-widest text-neutral-500 mb-6">{t("footer.social")}</span>
+                  <ul className="flex flex-col gap-3 items-start">
+                     {socialLinks.map((link) => (
+                        <li key={link.label}>
+                           <a href={link.href} target={link.href.startsWith("http") ? "_blank" : undefined} rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined} className="group relative inline-flex py-1 transition-colors duration-300 text-neutral-300 hover:text-[#D4FF00]">
+                              <div className="relative overflow-hidden flex flex-col items-start justify-center">
+                                 <span className="font-medium tracking-[0.15em] opacity-0 invisible select-none text-base" aria-hidden="true">
+                                    {link.label}
+                                 </span>
+                                 <span className="absolute inset-0 flex items-center justify-start transition-all duration-300 ease-out font-normal tracking-normal group-hover:font-medium group-hover:tracking-[0.15em] text-base">
+                                    {link.label}
+                                 </span>
+                              </div>
+                           </a>
+                        </li>
+                     ))}
+                  </ul>
+               </div>
+
+               {/* Personal brand line — pairs with the R-mark watermark.
+                   "Founded by Reszek · LinkedIn" reads as a personal signature beside the mark. */}
                <a
                  href="https://www.linkedin.com/in/przemyslawreszka/"
                  target="_blank"
@@ -240,15 +277,17 @@ export function Footer() {
                    original baseline). Wokolo grows, R fraction drops 9% → 8.5% to keep
                    letter at the same absolute ~27/33px size — visual hierarchy intact.
 
-                   absolute top-32 md:top-40 → anchored below Local time + Founded by
-                   Reszek, but doesn't push column height. Can overflow downward (acceptable
-                   per user spec — better than wasted vertical space across other columns). */}
+                   top-64 md:top-72 → repositioned downward after CONNECT block (LinkedIn +
+                   Email) folded in above. Previous top-32/md:top-40 would have caused the
+                   rotating mark to sit behind the connect links instead of below the
+                   signature line. Can still overflow downward — pointer-events-none + z-0
+                   keep it inert. */}
                {/* SVGs have hardcoded fill #151515 (works on dark mode as darker-shape-on-dark).
                    On LIGHT mode we invert + slightly darken via filter so it renders as a
                    very-light-gray watermark (~#ECECEC), then knock to 30% opacity so it
                    reads as truly ambient — no fight with the foreground. Dark mode keeps
                    native dark fill at full opacity (it's already subtle by color match). */}
-               <div className="pointer-events-none absolute top-32 md:top-40 left-0 w-[20.5rem] h-[20.5rem] md:w-[24.5rem] md:h-[24.5rem] z-0">
+               <div className="pointer-events-none absolute top-64 md:top-72 left-0 w-[20.5rem] h-[20.5rem] md:w-[24.5rem] md:h-[24.5rem] z-0">
                   <img
                     src="/footer-mark/wokolo.svg"
                     alt=""
