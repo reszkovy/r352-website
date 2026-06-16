@@ -38,8 +38,11 @@ export const journalArticles: Article[] = [
     // ──────────────────────────────────────────────────────────────────
     id: 11,
     published: true,
-    title: "Brand knowledge hub:<br/>why your PDF won't survive AI agents",
-    title_pl: "Brand knowledge hub:<br/>dlaczego PDF cię nie obroni przed agentami AI",
+    // Title broken into 3 explicit lines to match article 10's symmetric layout.
+    // Hero is min-h-[85vh] with image bg — asymmetric breaks cause line 2 to wrap
+    // into image area and overlap the cover. Each line ~17-22 chars = balanced.
+    title: "Brand knowledge hub:<br/>why your PDF won't<br/>survive AI agents",
+    title_pl: "Brand knowledge hub:<br/>PDF nie obroni cię<br/>przed agentami AI",
     date: "June 2026",
     dateISO: "2026-06-16",
     category: "Brand Operations",
