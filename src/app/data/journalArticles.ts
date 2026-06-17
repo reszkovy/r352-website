@@ -51,107 +51,131 @@ export const journalArticles: Article[] = [
     image: journal11Cover,
     content_pl: `
       <p class="mb-6 text-xl leading-relaxed text-neutral-300">
-        Brand book PDF który leży na firmowym dysku, otwierany raz na pół roku, ostatnio aktualizowany w 2023 — to <span class="text-white font-medium">firma bez CRM-a w 2010 roku</span>. Działa. Do czasu. Aż przyjdzie moment kiedy ktoś zauważy że konkurencja ma narzędzia które obsługują przypadki o których ty jeszcze nie pomyślałeś.
+        Brand book PDF który leży na firmowym dysku. Otwierany raz na pół roku. Ostatnio aktualizowany w 2023. To <span class="text-white font-medium">firma bez CRM-a w 2010 roku</span>. Działa. Do czasu. Aż konkurencja ma narzędzia obsługujące przypadki o których ty jeszcze nie pomyślałeś.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Ten moment dla brandu nastąpił w 2026, kiedy każdy zespół marketingowy zaczął używać Claude'a, ChatGPT i Midjourney przy każdym briefie. <span class="text-white">AI nie zastąpiło zespołu — stało się jego trzecim członkiem.</span> A trzeci członek zespołu nie wie czego nie wie. Jeśli nie ma curated źródła twojej marki, uczy się jej z internetu, ze strzępów blogów konkurencji, z LinkedIn-postów sprzed dwóch lat.
+        Ten moment dla brandu nastąpił w 2026. Każdy zespół marketingowy promptuje Claude'a, ChatGPT i Midjourney przy każdym briefie. <span class="text-white">AI nie zastąpiło twojego zespołu. Dołączyło do niego.</span> Trzeci członek, który nie wie czego nie wie. I uczy się twojej marki z internetu. Ze strzępów blogów konkurencji. Z LinkedIn-postów sprzed dwóch lat.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Ten artykuł jest operatorską wersją tej tezy. 23 moduły, 4 warstwy architektury, case Geers po trzech latach produkcji, 5 typowych pułapek przy budowie, cadence maintenance'u, ROI calculation. Bez fluffu, bez frameworków-dla-frameworków. Tak jak to się robi.
-      </p>
-
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Nowa rzeczywistość: twój zespół już promptuje AI</h2>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        To się dzieje teraz, niezależnie od tego czy to akceptujesz. Cztery scenariusze które dzieją się w twojej organizacji w tym tygodniu — niezależnie od tego, czy zostały zatwierdzone:
+        Ten artykuł jest operatorską wersją tej tezy. 23 moduły, 4 warstwy, case Geers po trzech latach produkcji, 5 typowych pułapek, cadence maintenance'u, ROI. Bez fluffu, bez frameworków-dla-frameworków. Tak jak to się robi.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Scenariusz 1 — Sobota, 23:30, junior copy w panice</h3>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Twój zespół już promptuje. Dziś, w tej chwili.</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Junior copywriter ma w poniedziałek o 9:00 deadline na kampanię B2B. Wpisuje do Claude'a: <span class="text-white">"napisz 5 wariantów posta LinkedIn o naszym nowym produkcie, w tonie naszej marki, target: decision makery z mid-marketu"</span>. Claude nie wie czym jest "ton waszej marki" — więc wymyśla. Bierze średnią z 50 milionów postów LinkedIn jakie widział. Dostaje pięć korporacyjnych klisz z "rewolucji" i "transformacji" — czyli dokładnie tych słów które brand manager wyrzucił z lexiconu rok temu.
+        Wiem co myślisz. "Mamy guidelines, zespół wie jak pisać". No dobra. Spójrzmy na cztery scenariusze które dzieją się w twojej organizacji w tym tygodniu, bez względu czy ktoś je zatwierdził.
+      </p>
+
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Scenariusz 1. Sobota 23:30, junior copy w panice</h3>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Junior copywriter ma poniedziałek 9:00 deadline na kampanię B2B. Pisze do Claude'a: <span class="text-white">"napisz 5 wariantów posta LinkedIn o naszym nowym produkcie, w tonie naszej marki, target: decision makery z mid-marketu"</span>.
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Claude nie wie czym jest "ton waszej marki". Więc wymyśla. Bierze średnią z 50 milionów postów LinkedIn jakie widział. Wypluwa pięć korporacyjnych klisz o "rewolucji" i "transformacji". Czyli dokładnie tych słów które brand manager wyrzucił z lexiconu rok temu.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Junior nie ma czasu na drugą rundę. Wybiera najmniej zły wariant. Publikuje w poniedziałek o 8:45. Brand manager widzi post o 11:00, pisze do juniora, junior tłumaczy że "tak generuje Claude". <span class="text-white">Post zostaje na profilu firmy.</span> Tysiąc impresji, dwie reakcje od konkurencji. Drift +1.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Scenariusz 2 — Designer i 50 wariantów "brand palette"</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Scenariusz 2. Designer i 50 wariantów "brand palette"</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Designer dostaje brief na kampanię SoMe. Otwiera Midjourney. Wpisuje: <span class="text-white">"social media campaign for [nasza marka], brand palette, premium, minimalist"</span>. Generuje 50 wariantów. 8 z nich wygląda na tyle "on-brand" że można ich użyć. Wybiera trzy — każdy z tych trzech ma trochę inną wersję paletki: jeden ma akcent niebieski (którego nie ma w brand booku), drugi ma typografię z Google Fonts (a marka używa custom type), trzeci ma kompozycję z innej epoki marki.
+        Designer dostaje brief na SoMe. Otwiera Midjourney. <span class="text-white">"social media campaign for [nasza marka], brand palette, premium, minimalist"</span>. 50 wariantów. Osiem wygląda na tyle "on-brand" że można ich użyć.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Wszystkie trzy idą do produkcji. Konkurencja w swoim quarterly competitive review widzi te kreacje obok poprzednich i pyta wewnętrznie: <span class="text-white">"czy oni zmienili branding?"</span>. Drift +3. Wewnątrz nikt nie zauważył — bo każdy lokalny brand manager widział tylko swoje trzy posty, nie 200 łącznie.
-      </p>
-
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Scenariusz 3 — 200 deliverables, 12 miesięcy, exponential drift</h3>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Marketing produkuje 200 deliverables kwartalnie. 192 lokale w Polsce (case realny). Każdy lokal ma lokalnego managera marketingu który czyta brand book po swojemu. Jeden interpretuje "professional tone" jako formalny. Drugi jako kumpelski-ale-z-szacunkiem. Trzeci pomija ten rozdział i robi po prostu jak czuje.
+        Wybiera trzy. Każdy z trochę inną paletką. Jeden ma akcent niebieski (którego nie ma w brand booku). Drugi typografię z Google Fonts (a marka używa custom type). Trzeci kompozycję z poprzedniej epoki marki.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Po jednym kwartale drift jest niezauważalny. Po dwóch — visible w side-by-side. Po czterech — <span class="text-white">brand manager musi przeprowadzić "brand reset"</span>. Reset kosztuje 3-6 miesięcy retreningów, agency briefingów, asset rebuildów. Co quarter te 3-6 miesięcy się powtarza, jeśli nie ma curated źródła do którego wszyscy się odwołują.
+        Wszystkie trzy idą do produkcji. Konkurencja podczas quarterly review widzi te kreacje obok poprzednich i pyta: <span class="text-white">"czy oni zmienili branding?"</span>. Drift +3. Wewnątrz nikt nie zauważył. Bo każdy lokalny brand manager widział tylko swoje trzy posty, nie 200 łącznie.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Scenariusz 4 — Sales deck i "in voice marki"</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Scenariusz 3. 200 deliverables, 12 miesięcy, exponential drift</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Sales rep ma demo z prospect'em jutro rano. Otwiera master sales deck z zeszłego kwartału. Edytuje trzy slajdy — bo ten deal jest inny, trzeba mocniej zaadresować ich specyficzny use case. Pisze nową copy "in voice marki" — bo tak czuje. Robi screenshot z internetowego prosumer'a, wkleja jako "industry data". <span class="text-white">Brand manager widzi tę wersję trzy tygodnie później</span> — gdy prospect referuje deal do drugiego zespołu i ten zespół pyta o szczegóły.
+        Marketing produkuje 200 deliverables kwartalnie. 192 lokale w Polsce. Realny case. Każdy lokal ma swojego managera który czyta brand book po swojemu. Jeden interpretuje "professional tone" jako formalny. Drugi jako kumpelski-ale-z-szacunkiem. Trzeci pomija ten rozdział i robi jak czuje.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Chargeback po fakcie. Sales rep tłumaczy że "musiał szybko". Brand manager tłumaczy że "tak nie mówimy". Deal się nie zamyka — z innych powodów, ale brand drift dostarcza dodatkowy argument w post-mortemie.
+        Po jednym kwartale drift jest niezauważalny. Po dwóch widoczny w side-by-side. Po czterech <span class="text-white">brand manager musi przeprowadzić "brand reset"</span>. Reset kosztuje 3-6 miesięcy retreningów, agency briefingów, asset rebuildów. Co quarter te 3-6 miesięcy się powtarza.
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Brzmi znajomo? Powiem ci coś. To nie jest błąd zespołu. To brak źródła do którego wszyscy się odwołują.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Hidden tax — konkretna liczba</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Scenariusz 4. Sales deck i "w voice marki"</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Wszystkie te scenariusze mają wspólny mianownik: <span class="text-white">zespół spędza godziny na debacie "czy to on-brand"</span> zamiast pracować. Zróbmy konkretną kalkulację dla średniego organization'a z ambicjami brandowymi:
+        Sales rep ma demo jutro rano. Otwiera master sales deck z zeszłego kwartału. Edytuje trzy slajdy bo "ten deal jest inny". Pisze nową copy "w voice marki" bo tak czuje. Robi screenshot z prosumer'a w internecie, wkleja jako "industry data".
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        <span class="text-white">Brand manager widzi tę wersję trzy tygodnie później.</span> Gdy prospect referuje deal do drugiego zespołu i ten zespół pyta o szczegóły. Chargeback po fakcie. Sales rep tłumaczy że "musiał szybko". Brand manager tłumaczy że "tak nie mówimy". Deal się nie zamyka. Z innych powodów. Ale brand drift dostarcza dodatkowy argument w post-mortemie.
+      </p>
+
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Hidden tax. Konkretna liczba.</h3>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Wszystkie te scenariusze mają wspólny mianownik. <span class="text-white">Zespół spędza godziny na debacie "czy to on-brand"</span> zamiast pracować. Spójrzmy na liczby dla średniego organization'a:
       </p>
       <ul class="list-none mb-10 space-y-4 text-neutral-400 text-lg pl-4 border-l-2 border-[#D4FF00]/40">
-        <li>Zespół marketingu: <span class="text-white">8 osób</span> (1 brand manager, 3 marketers, 2 designerów, 2 copywriterów)</li>
+        <li>Zespół marketingu: <span class="text-white">8 osób</span> (1 brand manager, 3 marketerów, 2 designerów, 2 copywriterów)</li>
         <li>Brand-related debates miesięcznie: <span class="text-white">~6 godzin per osoba</span> (review meetingi, approval rounds, "czy to on-brand")</li>
-        <li>Średnia stawka (PLN): <span class="text-white">~180 PLN/h fully loaded</span> (salary + benefits + overhead)</li>
+        <li>Średnia stawka: <span class="text-white">~180 PLN/h fully loaded</span> (salary + benefits + overhead)</li>
         <li>Miesięcznie: 8 × 6 × 180 = <span class="text-white">8 640 PLN</span></li>
         <li>Rocznie: <span class="text-white">~104 000 PLN</span> tylko na debaty o brand consistency</li>
       </ul>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Do tego dodaj koszt re-doików (każda zła kreacja idąca do produkcji + rebuild), koszt rebranding resetów co 18 miesięcy, koszt utraconej decision velocity. <span class="text-white">Realistyczny hidden tax dla mid-market organization to 200-350k PLN rocznie</span>. Knowledge hub kosztuje raz, wycina ten tax na zawsze.
+        Do tego dodaj koszt re-doików, rebranding resetów co 18 miesięcy, utraconej decision velocity. <span class="text-white">Realistyczny hidden tax dla mid-market to 200-350k PLN rocznie.</span> Knowledge hub kosztuje raz. Wycina ten tax na zawsze.
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Pomyśl o tym. 104k PLN. Tylko na dyskusje.
       </p>
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Dlaczego klasyczne podejścia zawodzą</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Zanim wejdziemy w architekturę knowledge huba, warto zrozumieć dlaczego cztery najbardziej rozpowszechnione podejścia nie rozwiązują problemu — żebyś nie próbował naprawiać niewłaściwego narzędzia.
+        Zanim wejdziemy w architekturę huba, popatrz dlaczego cztery najbardziej rozpowszechnione podejścia nie rozwiązują problemu. Żebyś nie próbował naprawiać niewłaściwego narzędzia.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">PDF brand book — umiera w dniu publikacji</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">PDF brand book. Umiera w dniu publikacji.</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        PDF brand book to artefakt który wygląda profesjonalnie i daje brand managerowi poczucie że "to jest zrobione". <span class="text-white">Cztery powody dlaczego umiera w dniu publikacji</span>: 1) jest statyczny — nie aktualizujesz, ktoś inny nie wie że jest nowa wersja; 2) jest niedostępny dla AI agentów — Claude nie potrafi otworzyć PDF z firmowego SharePoint'a i wyciągnąć z niego logiki tonu; 3) nie ma governance — kto ma ownership, kto akceptuje zmiany, kiedy następny review; 4) nie ma versioningu — czy wersja którą czytasz jest aktualna, czy z 2023.
+        PDF brand book to artefakt który wygląda profesjonalnie i daje brand managerowi poczucie że "to jest zrobione". <span class="text-white">Cztery powody dlaczego umiera w dniu publikacji.</span>
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Brand book PDF jest jak printed encyclopedia w 2010 — w teorii kompletny, w praktyce nieaktualny przed dotarciem do drukarni.
-      </p>
-
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Notion / Confluence — za luźne, brak schemy</h3>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Notion albo Confluence wydają się rozwiązaniem — żywe, edytowalne, dostępne dla zespołu. Problem: są <span class="text-white">strukturalnie too unstructured</span>. Każda strona ma inną organizację. Każdy autor pisze po swojemu. Nie ma enforcement schemy — czyli AI agent który ma to zassać dostaje 200 stron z różnymi headerami, różnym poziomem szczegółu, różnymi formatami.
+        Jeden. Jest statyczny. Nie aktualizujesz go, nikt nie wie że jest nowa wersja. Dwa. Jest niedostępny dla AI. Claude nie otworzy PDF z firmowego SharePoint'a i nie wyciągnie z niego logiki tonu. Trzy. Nie ma governance. Kto ma ownership, kto akceptuje zmiany, kiedy następny review. Cztery. Nie ma versioningu. Czy wersja którą czytasz jest aktualna, czy z 2023.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Notion jest świetny do internal docs i project managementu. Jako brand knowledge hub — staje się drugim brand bookiem PDF, tylko z gorszym UX i bez kontroli wersji.
+        Brand book PDF jest jak printed encyclopedia w 2010. W teorii kompletny. W praktyce nieaktualny przed dotarciem do drukarni.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">DAM (Bynder, Brandfolder, Frontify) — assets bez kontekstu</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Notion / Confluence. Za luźne, brak schemy.</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Digital Asset Management systemy są zaprojektowane pod jeden specific problem: przechowywanie i dystrybucja plików. Logo packs, zdjęcia produktowe, video assets. <span class="text-white">Robią to bardzo dobrze.</span> Ale brand to nie tylko assets — brand to przede wszystkim voice, tone, reguły kompozycji, kontekst użycia.
+        Notion albo Confluence wydają się rozwiązaniem. Żywe, edytowalne, dostępne dla zespołu. Problem: są <span class="text-white">strukturalnie too unstructured</span>. Każda strona ma inną organizację. Każdy autor pisze po swojemu.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Brand voice nigdy nie trafia do DAM'a — bo DAM jest projektowany pod pliki. Reguły "kiedy używać tego shotu, a kiedy tamtego" nie istnieją w DAM jako enforceable rules. A bez kontekstu, asset to tylko plik. Designer może użyć wszystkiego — nie wie czego nie powinien.
+        Nie ma enforcement schemy. AI agent który ma to zassać dostaje 200 stron z różnymi headerami, różnym poziomem szczegółu, różnymi formatami. Notion jest świetny do internal docs i project managementu. Jako brand knowledge hub staje się drugim brand bookiem PDF, tylko z gorszym UX i bez kontroli wersji.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Slack / email — wiedza w fragmentach</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">DAM (Bynder, Brandfolder, Frontify). Assets bez kontekstu.</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Realna brand knowledge w większości organizacji żyje w Slack threads i email exchange'ach. <span class="text-white">"Hej, czy możemy użyć tego kolory na social?"</span> — brand manager odpowiada — koniec. Decyzja zapisana w jednym wątku który nikt nigdy więcej nie znajdzie. Następny designer pyta o to samo trzy miesiące później. Brand manager odpowiada to samo — bo nikt nie skapitalizował wiedzy.
+        Digital Asset Management systemy są zaprojektowane pod jeden problem. Przechowywanie i dystrybucja plików. Logo packs, zdjęcia produktowe, video assets. <span class="text-white">Robią to bardzo dobrze.</span>
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Każda decyzja powtarzana × 50 designerów × 12 miesięcy = setki godzin tracone na repeated answers. Slack jest świetnym medium do real-time komunikacji. <span class="text-white">Jako brand source of truth — jest jak archiwum maili z 2008: technicznie dostępne, praktycznie niewyszukiwalne.</span>
+        Ale brand to nie tylko assets. Brand to przede wszystkim voice, tone, reguły kompozycji, kontekst użycia. Brand voice nigdy nie trafia do DAM'a. Bo DAM jest projektowany pod pliki. Reguły "kiedy używać tego shotu, a kiedy tamtego" nie istnieją w DAM jako enforceable rules.
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Bez kontekstu, asset to tylko plik. Designer może użyć wszystkiego. Nie wie czego nie powinien.
+      </p>
+
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Slack / email. Wiedza w fragmentach.</h3>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Realna brand knowledge w większości organizacji żyje w Slack threads. <span class="text-white">"Hej, czy możemy użyć tego koloru na social?"</span>. Brand manager odpowiada. Koniec. Decyzja zapisana w wątku którego nikt nigdy więcej nie znajdzie.
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Następny designer pyta o to samo trzy miesiące później. Brand manager odpowiada to samo. Bo nikt nie skapitalizował wiedzy. Każda decyzja powtarzana × 50 designerów × 12 miesięcy = setki godzin tracone na repeated answers.
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Slack jest świetnym medium do real-time komunikacji. <span class="text-white">Jako brand source of truth jest jak archiwum maili z 2008. Technicznie dostępne, praktycznie niewyszukiwalne.</span>
       </p>
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">Co różni unified knowledge hub</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Knowledge hub łączy cztery właściwości których żadne z powyższych nie ma jednocześnie: <span class="text-white">single source</span> (jedno miejsce do którego wszyscy się odwołują), <span class="text-white">dual rendering</span> (wizualny dla ludzi + .md dla AI), <span class="text-white">active enforcement</span> (QA layer ocenia output, nie tylko opisuje rules), i <span class="text-white">productized methodology</span> (powtarzalny system, nie one-off artifact). Każde z tych elementów wzmacnia pozostałe.
+        Knowledge hub łączy cztery rzeczy których żadne z powyższych nie ma jednocześnie. <span class="text-white">Single source</span> (jedno miejsce do którego wszyscy się odwołują). <span class="text-white">Dual rendering</span> (wizualny dla ludzi plus .md dla AI). <span class="text-white">Active enforcement</span> (QA layer ocenia output, nie tylko opisuje rules). I <span class="text-white">productized methodology</span> (powtarzalny system, nie one-off artifact).
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Każdy z tych elementów wzmacnia pozostałe. Wyjmij jeden, tracisz cały leverage.
       </p>
 
       <figure class="my-12">
@@ -210,7 +234,10 @@ export const journalArticles: Article[] = [
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Knowledge hub = 4-warstwowa architektura</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Brand knowledge hub nie jest brand bookiem 2.0. To <span class="text-white">całe operacje brandowe jako system</span>, podzielone na cztery warstwy które razem dają operacyjną przewagę. Dlaczego cztery, nie trzy, nie pięć: trzy nie pokrywają production layer (zostawiasz zespół samemu sobie z AI). Pięć dodaje sztuczny podział, który robi system trudniejszym do utrzymania. Cztery to minimum viable architecture z maksymalnym ROI per warstwa.
+        Knowledge hub nie jest brand bookiem 2.0. To <span class="text-white">całe operacje brandowe jako system</span>, podzielone na cztery warstwy które razem dają leverage.
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Dlaczego akurat cztery? Bo trzy nie pokrywają production layer (zostawiasz zespół samemu sobie z AI). Pięć dodaje sztuczny podział i system staje się trudniejszy do utrzymania. Cztery to minimum viable architecture z maksymalnym ROI per warstwa.
       </p>
 
       <figure class="my-12">
@@ -262,19 +289,19 @@ export const journalArticles: Article[] = [
       </figure>
 
       <ul class="list-none mb-10 space-y-4 text-neutral-400 text-lg pl-4 border-l-2 border-[#D4FF00]/40">
-        <li><span class="text-white font-medium">1. Warstwa wiedzy (Knowledge)</span> — 23 moduły w 5 bucketach. Wszystko czego potrzebujesz żeby coś było on-brand. Bez tego: zespół zgaduje, wynik zależy od osoby która akurat brief czyta.</li>
-        <li><span class="text-white font-medium">2. Warstwa formatu (Format)</span> — ten sam content w dwóch formach: wizualny system dla ludzi + curated plik .md dla AI agentów. Bez tego: ludzie czytają jedno, AI generuje co innego — drift gwarantowany.</li>
-        <li><span class="text-white font-medium">3. Warstwa QA (Active enforcement)</span> — narzędzie które ocenia każdy nowy asset przed publikacją. Bez tego: rules są deklaracją, nie enforcement'em. Każdy myśli że jest "wystarczająco on-brand".</li>
-        <li><span class="text-white font-medium">4. Warstwa produkcji (Production)</span> — biblioteka promptów + AI skills z auto-loadem brand contextu. Bez tego: zespół promptuje AI od zera za każdym razem, tracąc 80% potencjału systemu.</li>
+        <li><span class="text-white font-medium">1. Knowledge.</span> 23 moduły w 5 bucketach. Wszystko czego potrzebujesz żeby coś było on-brand. Bez tego zespół zgaduje, wynik zależy od osoby która akurat brief czyta.</li>
+        <li><span class="text-white font-medium">2. Format.</span> Ten sam content w dwóch formach. Wizualny dla ludzi plus curated .md dla AI. Bez tego ludzie czytają jedno, AI generuje co innego. Drift gwarantowany.</li>
+        <li><span class="text-white font-medium">3. QA (active enforcement).</span> Narzędzie które ocenia każdy nowy asset przed publikacją. Bez tego rules są deklaracją, nie enforcement'em. Każdy myśli że jest "wystarczająco on-brand".</li>
+        <li><span class="text-white font-medium">4. Production.</span> Biblioteka promptów plus AI skills z auto-loadem brand contextu. Bez tego zespół promptuje AI od zera za każdym razem, tracąc 80% potencjału systemu.</li>
       </ul>
 
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Każda warstwa karmi następną: <span class="text-white">Knowledge → Format → QA → Production</span>. Knowledge bez Format jest non-actionable. Format bez QA jest reguła bez egzekucji. QA bez Production jest gatekeeper bez generation. Production bez Knowledge generuje śmieci szybciej.
+        Każda warstwa karmi następną. <span class="text-white">Knowledge → Format → QA → Production.</span> Knowledge bez Format jest non-actionable. Format bez QA jest reguła bez egzekucji. QA bez Production jest gatekeeper bez generation. Production bez Knowledge generuje śmieci. Tylko szybciej.
       </p>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">23 moduły w 5 bucketach — pełny breakdown</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">23 moduły w 5 bucketach</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Każda decyzja brandowa wpada w jeden z pięciu bucketów. Wszystkie są dostępne dla zespołu + AI w tej samej strukturze. Liczba 23 nie jest arbitralna — to suma modułów które naprawdę kontrolują decyzje brandowe w produkcji. Mniej zostawia luki. Więcej dodaje overhead bez ROI.
+        Każda decyzja brandowa wpada w jeden z pięciu bucketów. Wszystkie dostępne dla zespołu plus AI w tej samej strukturze. Liczba 23 nie jest arbitralna. To suma modułów które naprawdę kontrolują decyzje w produkcji. Mniej zostawia luki. Więcej dodaje overhead bez ROI.
       </p>
 
       <figure class="my-12">
@@ -352,124 +379,124 @@ export const journalArticles: Article[] = [
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">01 · Strategia + voice (5 modułów)</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        To DNA marki. Wszystko inne buduje się na tym fundamencie — i wszystko inne wymaga decyzji, gdy ten fundament jest niejednoznaczny. Pięć modułów które tworzą strategiczny stos:
+        To DNA marki. Wszystko inne buduje się na tym fundamencie. I wszystko inne wymaga decyzji gdy fundament jest niejednoznaczny.
       </p>
       <ul class="list-none mb-10 space-y-4 text-neutral-400 text-lg pl-4 border-l-2 border-[#D4FF00]/40">
-        <li><span class="text-white font-medium">Pozycjonowanie</span> — jedno zdanie: "jesteśmy X dla Y, bo Z". Konkretne, falsyfikowalne, nie aspirational fluff.</li>
-        <li><span class="text-white font-medium">Mission</span> — dlaczego marka istnieje poza zarabianiem pieniędzy. Krótkie. Z internal use, nie do storytelling decku.</li>
-        <li><span class="text-white font-medium">4 atrybuty marki</span> — przymiotniki które każdy output musi spełnić. Geers ma np. "ekspercka, dostępna, ludzka, regulowana". Każdy z tych przymiotników ma konkretną definicję operacyjną.</li>
-        <li><span class="text-white font-medium">3 tryby tonu</span> — formal/conversational/playful, każdy z konkretnym opisem kiedy używać i przykładami. Bez tego "brand voice" pozostaje abstrakcją.</li>
-        <li><span class="text-white font-medium">Modulacja głosu per kanał</span> — LinkedIn vs Instagram vs salon vs B2B mail. Te same atrybuty, różna modulacja. Konkretne reguły, nie "dostosuj do kanału".</li>
+        <li><span class="text-white font-medium">Pozycjonowanie.</span> Jedno zdanie. "Jesteśmy X dla Y, bo Z". Konkretne, falsyfikowalne, nie aspirational fluff.</li>
+        <li><span class="text-white font-medium">Mission.</span> Dlaczego marka istnieje poza zarabianiem pieniędzy. Krótkie. Do internal use, nie do storytelling decku.</li>
+        <li><span class="text-white font-medium">4 atrybuty marki.</span> Przymiotniki które każdy output musi spełnić. Geers ma "ekspercka, dostępna, ludzka, regulowana". Każdy z konkretną definicją operacyjną.</li>
+        <li><span class="text-white font-medium">3 tryby tonu.</span> Formal, conversational, playful. Każdy z opisem kiedy używać i przykładami. Bez tego "brand voice" zostaje abstrakcją.</li>
+        <li><span class="text-white font-medium">Modulacja per kanał.</span> LinkedIn vs Instagram vs salon vs B2B mail. Te same atrybuty, różna modulacja. Konkretne reguły, nie "dostosuj do kanału".</li>
       </ul>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Common mistake przy tym buckecie: zostawienie atrybutów na poziomie aspiracji. "Innowacyjna" nie jest atrybutem operacyjnym — bo nikt nie wie jak to wyegzekwować. <span class="text-white">"Innowacyjna = pokazuje konkretne dane z 2024-2026 vs branżowy standard"</span> jest atrybutem operacyjnym.
+        Common mistake. Zostawiasz atrybuty na poziomie aspiracji. "Innowacyjna" nie jest atrybutem operacyjnym. Bo nikt nie wie jak to wyegzekwować. <span class="text-white">"Innowacyjna = pokazuje konkretne dane z 2024-2026 vs branżowy standard"</span> już jest.
       </p>
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">02 · Język (3 moduły)</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Trzy moduły które dają juniorowi copywriterowi konkretną decision tree o 23:30 w sobotę:
+        Trzy moduły które dają juniorowi copywriterowi konkretną decision tree o 23:30 w sobotę.
       </p>
       <ul class="list-none mb-10 space-y-4 text-neutral-400 text-lg pl-4 border-l-2 border-[#D4FF00]/40">
-        <li><span class="text-white font-medium">DO/DON'T dla copy</span> — tabela z przykładami. "DO: 'Twój słuch po prostu działa'. DON'T: 'Nasza technologia rewolucjonizuje słyszenie'". Konkretne, nie ogólne.</li>
-        <li><span class="text-white font-medium">Lexicon — słowa zakazane i ich tłumaczenia</span> — lista 30-50 słów: "rewolucja → realna zmiana", "transformacja → ewolucja", "innowacja → konkretne narzędzie". Junior nie musi gadać — ma tabelkę.</li>
-        <li><span class="text-white font-medium">Reguły mówienia "po marce" per kanał</span> — SoMe inaczej niż B2B sales deck. Konkretne rules: "LinkedIn: max 80 słów per akapit, zawsze konkretny number w pierwszym zdaniu".</li>
+        <li><span class="text-white font-medium">DO/DON'T dla copy.</span> Tabela z przykładami. "DO: Twój słuch po prostu działa. DON'T: Nasza technologia rewolucjonizuje słyszenie". Konkretne, nie ogólne.</li>
+        <li><span class="text-white font-medium">Lexicon zakazanych słów.</span> 30-50 słów. "rewolucja → realna zmiana", "transformacja → ewolucja", "innowacja → konkretne narzędzie". Junior nie musi gadać. Ma tabelkę.</li>
+        <li><span class="text-white font-medium">Reguły per kanał.</span> SoMe inaczej niż B2B sales deck. "LinkedIn: max 80 słów per akapit, zawsze konkretny number w pierwszym zdaniu".</li>
       </ul>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Geers example: lexicon ma 47 słów zakazanych. Każde z tłumaczeniem. Junior copywriter sprawdza draft przed publikacją — find&amp;replace w 30 sekund. <span class="text-white">Bez tego: zespół spędza 4-6 godzin tygodniowo na "czy tak się u nas mówi".</span>
+        Geers example. Lexicon ma 47 słów zakazanych. Każde z tłumaczeniem. Junior copywriter robi find &amp; replace w 30 sekund przed publikacją. <span class="text-white">Bez tego: zespół spędza 4-6 godzin tygodniowo na "czy tak się u nas mówi".</span>
       </p>
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">03 · Visual (6 modułów)</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Sześć modułów które definiują jak marka wygląda — z naciskiem na "verified z live site, nie z PDF brand booka":
+        Sześć modułów które definiują jak marka wygląda. Z naciskiem na "verified z live site, nie z PDF brand booka".
       </p>
       <ul class="list-none mb-10 space-y-4 text-neutral-400 text-lg pl-4 border-l-2 border-[#D4FF00]/40">
-        <li><span class="text-white font-medium">Logo rules</span> — minimum sizing, clearspace, do-not-do exemplars (logo na fotce, logo w gradzie, logo zniekształcone). Konkretne przykłady, nie teoria.</li>
-        <li><span class="text-white font-medium">Paleta kolorów</span> — verified z live site (hex extracted z faktycznych produktów), nie z PDF brand book który nigdy nie został zaktualizowany po refreshu w 2024. Z tokenami CSS gotowymi do użycia.</li>
-        <li><span class="text-white font-medium">Typografia</span> — type scale, font weights, line heights jako konkretne wartości, nie "dobierz odpowiedni rozmiar".</li>
-        <li><span class="text-white font-medium">Oficjalne kształty</span> — biblioteka shapes, border radii, geometryczne moduły które tworzą brand language.</li>
-        <li><span class="text-white font-medium">Biblioteka ikon</span> — set z naming convention, sizing rules, użycie kiedy iconka kiedy tekst.</li>
-        <li><span class="text-white font-medium">Fotografia z zasadą "zero stocku"</span> — co fotografujemy, jak, w jakich warunkach, z jakim post-prodem. Plus negative examples: "nie używamy stocku, nawet od premium źródeł".</li>
+        <li><span class="text-white font-medium">Logo rules.</span> Minimum sizing, clearspace, do-not-do exemplars (logo na fotce, logo w gradzie, logo zniekształcone). Konkretne przykłady, nie teoria.</li>
+        <li><span class="text-white font-medium">Paleta kolorów.</span> Verified z live site (hex extracted z faktycznych produktów), nie z PDF który nigdy nie został zaktualizowany po refreshu. Z CSS tokenami gotowymi do użycia.</li>
+        <li><span class="text-white font-medium">Typografia.</span> Type scale, font weights, line heights jako konkretne wartości. Nie "dobierz odpowiedni rozmiar".</li>
+        <li><span class="text-white font-medium">Oficjalne kształty.</span> Biblioteka shapes, border radii, geometryczne moduły które tworzą brand language.</li>
+        <li><span class="text-white font-medium">Biblioteka ikon.</span> Set z naming convention, sizing rules, kiedy iconka kiedy tekst.</li>
+        <li><span class="text-white font-medium">Fotografia z zasadą "zero stocku".</span> Co fotografujemy, jak, w jakich warunkach, z jakim post-prodem. Plus negative examples: "nie używamy stocku, nawet od premium źródeł".</li>
       </ul>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Common mistake: paleta kolorów w brand booku ≠ paleta na live site. Po 12 miesiącach iteracji site evoluuje, brand book zostaje. <span class="text-white">Knowledge hub musi mieć paletkę verified z live site jako single source — inaczej developer i designer pracują na dwóch różnych prawdach.</span>
+        Common mistake. Paleta w brand booku różni się od palety na live site. Po 12 miesiącach iteracji site evoluuje, brand book zostaje. <span class="text-white">Hub musi mieć paletkę verified z live site jako single source. Inaczej developer i designer pracują na dwóch różnych prawdach.</span>
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">04 · Wykonanie (6 modułów) — najbardziej differentiating</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">04 · Wykonanie (6 modułów). Najbardziej differentiating.</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        To jest warstwa którą większość brand consultantów pomija — bo wymaga rozumienia jak to się buduje w kodzie. Dlatego to jest też warstwa która daje największą operacyjną przewagę. <span class="text-white">Sześć modułów które robią z "brand book" → "design system":</span>
+        To jest warstwa którą większość brand consultantów pomija. Bo wymaga rozumienia jak to się buduje w kodzie. Dlatego to jest też warstwa która daje największy operacyjny edge. <span class="text-white">Sześć modułów które robią z "brand book" "design system".</span>
       </p>
       <ul class="list-none mb-10 space-y-4 text-neutral-400 text-lg pl-4 border-l-2 border-[#D4FF00]/40">
-        <li><span class="text-white font-medium">Layout grid + tokeny spacingu</span> — 8pt baseline grid, predefiniowane spacing tokens (xs, sm, md, lg, xl, 2xl, 3xl), konkretne wartości w px. Designer i developer pracują z tymi samymi liczbami.</li>
-        <li><span class="text-white font-medium">Interakcje (hover/focus/states)</span> — wszystkie interactive states zdefiniowane: hover, focus, active, disabled, loading. Z konkretnym mapowaniem na visual changes.</li>
-        <li><span class="text-white font-medium">Motion language</span> — easing curves (custom cubic-bezier, nie "ease-in-out"), durations (150ms micro, 250ms macro, 400ms hero), reveal patterns (fade-up, slide-in, scale). Brand ma swój temp.</li>
-        <li><span class="text-white font-medium">Stack techniczny</span> — frameworks, libraries, fonts hosting, image optimization. Co używamy, czemu, z jakimi constraintami. Bez tego: każdy nowy developer wprowadza inną decyzję.</li>
-        <li><span class="text-white font-medium">Accessibility budgets</span> — WCAG AA jako minimum, contrast ratios per komponent, keyboard navigation, screen reader behavior. Konkretne, audytowalne kryteria.</li>
-        <li><span class="text-white font-medium">Performance budgets</span> — LCP &lt; 2.5s, CLS &lt; 0.1, INP &lt; 200ms, total page weight &lt; 1.5MB. Liczby nie deklaracje. Co quartile się sprawdza, co quarter się reportuje.</li>
+        <li><span class="text-white font-medium">Layout grid + spacing tokeny.</span> 8pt baseline, predefiniowane tokens (xs, sm, md, lg, xl, 2xl, 3xl), konkretne wartości w px. Designer i developer pracują z tymi samymi liczbami.</li>
+        <li><span class="text-white font-medium">Interakcje.</span> Wszystkie states zdefiniowane: hover, focus, active, disabled, loading. Z konkretnym mapowaniem na visual changes.</li>
+        <li><span class="text-white font-medium">Motion language.</span> Easing curves (custom cubic-bezier, nie "ease-in-out"), durations (150ms micro, 250ms macro, 400ms hero), reveal patterns. Brand ma swój temp.</li>
+        <li><span class="text-white font-medium">Stack techniczny.</span> Frameworks, libraries, fonts hosting, image optimization. Co używamy, czemu, z jakimi constraintami. Bez tego każdy nowy developer wprowadza inną decyzję.</li>
+        <li><span class="text-white font-medium">Accessibility budgets.</span> WCAG AA minimum, contrast ratios per komponent, keyboard navigation, screen reader behavior. Konkretne, audytowalne kryteria.</li>
+        <li><span class="text-white font-medium">Performance budgets.</span> LCP &lt; 2.5s, CLS &lt; 0.1, INP &lt; 200ms, total page weight &lt; 1.5MB. Liczby, nie deklaracje. Co quartile sprawdzane, co quarter reportowane.</li>
       </ul>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Geers example: motion language ma 4 easing curves, każdy z konkretną nazwą i use case ("brand.easeOut: kiedy element się ustawia w finalnej pozycji"). Designer w Figmie i developer w kodzie używają tych samych nazw. <span class="text-white">Zero "co miałeś na myśli przez snappy" debat.</span>
+        Geers example. Motion language ma 4 easing curves. Każdy z konkretną nazwą i use case ("brand.easeOut: kiedy element się ustawia w finalnej pozycji"). Designer w Figmie i developer w kodzie używają tych samych nazw. <span class="text-white">Zero "co miałeś na myśli przez snappy" debat.</span>
       </p>
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">05 · Reference (3 moduły)</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Trzy moduły które zamykają loop — pokazują nie tylko "jak", ale "co już zrobiliśmy dobrze":
+        Trzy moduły które zamykają loop. Pokazują nie tylko "jak", ale "co już zrobiliśmy dobrze".
       </p>
       <ul class="list-none mb-10 space-y-4 text-neutral-400 text-lg pl-4 border-l-2 border-[#D4FF00]/40">
-        <li><span class="text-white font-medium">Real assets z produkcji jako wzorce</span> — top 10 deliverables z ostatnich 12 miesięcy które są canonical. Nowy vendor zaczyna od tych, nie od abstrakcyjnych guidelines.</li>
-        <li><span class="text-white font-medium">Production patterns</span> — recurring layouts (hero, feature grid, testimonial block, CTA section) z konkretnymi proporcjami i contentem. Składanie nowych assetów = composition z istniejących patterns.</li>
-        <li><span class="text-white font-medium">Source pages</span> — explicit lista: "to jest źródło prawdy dla typography (live site /design-tokens), to dla copy (knowledge hub /voice), to dla brand assets (DAM /brand-pack)". Bez tego: każdy szuka po swojemu, znajduje stare wersje.</li>
+        <li><span class="text-white font-medium">Real assets z produkcji jako wzorce.</span> Top 10 deliverables z ostatnich 12 miesięcy. Canonical. Nowy vendor zaczyna od tych, nie od abstrakcyjnych guidelines.</li>
+        <li><span class="text-white font-medium">Production patterns.</span> Recurring layouts (hero, feature grid, testimonial block, CTA section) z konkretnymi proporcjami i contentem. Składanie nowych assetów = composition z istniejących patterns.</li>
+        <li><span class="text-white font-medium">Source pages.</span> Explicit lista: "to jest źródło prawdy dla typography (live site /design-tokens), to dla copy (hub /voice), to dla brand assets (DAM /brand-pack)". Bez tego każdy szuka po swojemu, znajduje stare wersje.</li>
       </ul>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Common mistake: pomijanie tej warstwy bo "zespół wie gdzie szukać". <span class="text-white">Nie wie. Albo wie ten jeden senior który odchodzi za pół roku. Reference layer to insurance policy przeciwko utracie tribal knowledge.</span>
+        Common mistake. Pomijasz tę warstwę bo "zespół wie gdzie szukać". <span class="text-white">Nie wie. Albo wie ten jeden senior który odchodzi za pół roku. Reference layer to insurance przeciwko utracie tribal knowledge.</span>
       </p>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Case: Geers (Sonova PL) — pełna historia po 3 latach</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Case: Geers (Sonova PL). Pełna historia po 3 latach.</h2>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Before state — chaos który nazywał się "business as usual"</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Before state. Chaos który nazywał się "business as usual".</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Geers przed knowledge hub'em: 192 salony w Polsce, 3 agencje kreatywne pracujące równolegle, ~6 freelancerów na rotacji, in-house team z 4 osób, ~200 deliverables na kwartał. Brand book PDF z 2021 (40 stron), aktualizowany "kiedy ktoś znajdzie czas". Każdy nowy vendor onboardingowany przez 2-3 tygodnie meetingów z brand managerem.
+        Kiedy zaczynaliśmy z Geers, sytuacja wyglądała tak. 192 salony w Polsce. 3 agencje kreatywne równolegle. Sześciu freelancerów na rotacji. In-house team z 4 osób. ~200 deliverables na kwartał. Brand book PDF z 2021 (40 stron), aktualizowany "kiedy ktoś znajdzie czas". Każdy nowy vendor onboardingowany przez 2-3 tygodnie meetingów z brand managerem.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Operacyjne objawy: <span class="text-white">3 rundy approval'a per asset jako norma</span>, 4-6 godzin debate "czy to on-brand" tygodniowo, lokalny manager w Krakowie używał innej palety niż lokalny manager w Gdańsku (oboje "według brand booka"), kampania Q4 2022 musiała być przerobiona w 60% bo po pierwszym launchu okazało się że nie spełnia brand standards.
+        Operacyjne objawy. <span class="text-white">3 rundy approval'a per asset jako norma.</span> 4-6 godzin debate "czy to on-brand" tygodniowo. Lokalny manager w Krakowie używał innej palety niż lokalny manager w Gdańsku (oboje "według brand booka"). Kampania Q4 2022 musiała być przerobiona w 60% po pierwszym launchu.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Diagnosis — 5-day diagnostic findings</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Diagnosis. 5-day diagnostic findings.</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Pierwszych 5 dni — diagnostic phase. Top 5 bottlenecks które zostały zidentyfikowane:
+        Pierwsze 5 dni. Diagnostic phase. Top 5 bottlenecks.
       </p>
       <ul class="list-none mb-10 space-y-4 text-neutral-400 text-lg pl-4 border-l-2 border-[#D4FF00]/40">
-        <li><span class="text-white font-medium">#1 Brak single source of truth</span> — brand book PDF, intranet z różną wersją, Slack threads z decyzjami, lokalne folders z assetami. 4 źródła, 4 różne prawdy.</li>
-        <li><span class="text-white font-medium">#2 Brak operationalized voice</span> — tone of voice zdefiniowany jako "expert and approachable", ale bez konkretnych do/don't, bez lexiconu. Każdy interpretował.</li>
-        <li><span class="text-white font-medium">#3 Visual drift między lokalami</span> — typografia, color usage, photography style — wszystko z różną interpretacją. Side-by-side comparison z 12 lokali pokazał 5 widocznie różnych "wersji marki".</li>
-        <li><span class="text-white font-medium">#4 Approval bottleneck na brand manager'ze</span> — wszystko musiało przejść przez jedną osobę, 30-60 min review per asset, średnio 3 rundy.</li>
-        <li><span class="text-white font-medium">#5 Brak versioningu / change log</span> — gdy paleta się zmieniła w Q2 2022, 60% wewnętrznych assetów dalej używało starej. Brak mechanizmu propagacji zmian.</li>
+        <li><span class="text-white font-medium">#1. Brak single source of truth.</span> Brand book PDF, intranet z różną wersją, Slack threads z decyzjami, lokalne folders z assetami. 4 źródła, 4 różne prawdy.</li>
+        <li><span class="text-white font-medium">#2. Brak operationalized voice.</span> Tone zdefiniowany jako "expert and approachable". Bez konkretnych do/don't, bez lexiconu. Każdy interpretował.</li>
+        <li><span class="text-white font-medium">#3. Visual drift między lokalami.</span> Typografia, color usage, photography style. Wszystko z różną interpretacją. Side-by-side z 12 lokali pokazał 5 widocznie różnych "wersji marki".</li>
+        <li><span class="text-white font-medium">#4. Approval bottleneck na brand managerze.</span> Wszystko przez jedną osobę. 30-60 min review per asset, średnio 3 rundy.</li>
+        <li><span class="text-white font-medium">#5. Brak versioningu.</span> Gdy paleta zmieniła się w Q2 2022, 60% wewnętrznych assetów dalej używało starej. Brak mechanizmu propagacji zmian.</li>
       </ul>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">The build — 3 miesiące, miesiąc po miesiącu</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">The build. 3 miesiące, miesiąc po miesiącu.</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        <span class="text-white">Miesiąc 1 — Knowledge layer + Format layer.</span> Audit istniejących materiałów, ekstrakcja kanonicznych wartości (paleta verified z live site, typography z faktycznego użycia, voice z najlepszych assetów). Struktura 23 modułów, każdy w formacie wizualnym dla ludzi + .md dla AI. Sign-off od brand managera + CMO.
+        <span class="text-white">Miesiąc 1. Knowledge plus Format layer.</span> Audit istniejących materiałów. Ekstrakcja kanonicznych wartości (paleta verified z live site, typography z faktycznego użycia, voice z najlepszych assetów). Struktura 23 modułów, każdy w formacie wizualnym plus .md. Sign-off od brand managera plus CMO.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        <span class="text-white">Miesiąc 2 — QA layer.</span> Scoring methodology (każdy z 23 modułów × waga = total 0-100). Build tool który przyjmuje asset, ocenia względem rules, zwraca score + listę fixów. Pilot z 3 assetami z bieżącej kampanii — kalibracja scoringu, fine-tuning thresholds.
+        <span class="text-white">Miesiąc 2. QA layer.</span> Scoring methodology (każdy z 23 modułów × waga = total 0-100). Build tool który przyjmuje asset, ocenia względem rules, zwraca score plus listę fixów. Pilot z 3 assetami z bieżącej kampanii. Kalibracja, fine-tuning thresholds.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        <span class="text-white">Miesiąc 3 — Production layer + onboarding.</span> Biblioteka 25 promptów pod recurring use cases. AI skills .md gotowy do auto-loadu w Claude/ChatGPT. Onboarding zespołu (4 godz training × 8 osób), onboarding 3 agencji (2 godz session per agencja). Wszyscy mają dostęp do tego samego curated źródła.
-      </p>
-
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">First quarter — friction i wins</h3>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Pierwszy kwartał po wdrożeniu: friction był real. Senior designer próbował omijać QA layer bo "wiem co robię". Junior copywriter pierwsze 3 tygodnie nie używał prompt library bo "łatwiej napisać samemu". <span class="text-white">Brand manager musiał ustanowić nowy enforcement</span>: każdy asset idący do produkcji musi mieć QA score &gt;85 i log w prompt library.
-      </p>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Po 6 tygodniach friction zniknął — bo zespół zobaczył wins: approval time spadł z średnio 2 dni na 4 godziny. Rundy iteracji z 3 na 1. Junior copywriter przestał spędzać godziny na "czy tak się u nas mówi". Brand manager przestał być bottleneckiem — stał się governance ownerem.
+        <span class="text-white">Miesiąc 3. Production layer plus onboarding.</span> Biblioteka 25 promptów. AI skills .md gotowy do auto-loadu w Claude/ChatGPT. Onboarding zespołu (4 godz training × 8 osób). Onboarding 3 agencji (2 godz session per agencja). Wszyscy mają dostęp do tego samego curated źródła.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">3 lata później — what compounded</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">First quarter. Friction i wins.</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Po 3 latach knowledge hub Geers ma: 23 moduły rozszerzone do 31 (dodane: video standards, podcast voice, event materials, partnership co-branding, B2B sales decks, internal comms, employer brand, recruitment voice). 125 promptów w bibliotece (z 25 startowych). AI skills retrofittedowane pod Claude 3.5, GPT-4, Midjourney v7.
+        Powiem ci szczerze. Pierwszy kwartał był ciężki. Senior designer próbował omijać QA layer bo "wiem co robię". Junior copywriter pierwsze 3 tygodnie nie używał prompt library bo "łatwiej napisać samemu". <span class="text-white">Brand manager musiał ustanowić nowy enforcement.</span> Każdy asset idący do produkcji musi mieć QA score &gt;85 i log w prompt library.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Vendor onboarding: z 2-3 tygodni na <span class="text-white">2-3 dni</span>. Nowy freelance designer dostaje URL knowledge hub'a, ma 4-godzinny self-service onboarding, w drugi dzień robi pierwszy production asset z QA score &gt;90.
+        Po 6 tygodniach friction zniknął. Bo zespół zobaczył wins. Approval time spadł z 2 dni na 4 godziny. Rundy iteracji z 3 na 1. Junior copywriter przestał spędzać godziny na "czy tak się u nas mówi". Brand manager przestał być bottleneckiem. Stał się governance ownerem.
+      </p>
+
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">3 lata później. Co compoundsuje.</h3>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Po 3 latach knowledge hub Geers ma 23 moduły rozszerzone do 31 (dodane: video standards, podcast voice, event materials, partnership co-branding, B2B sales decks, internal comms, employer brand, recruitment voice). 125 promptów w bibliotece (z 25 startowych). AI skills retrofittedowane pod Claude 3.5, GPT-4, Midjourney v7.
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Vendor onboarding. Z 2-3 tygodni na <span class="text-white">2-3 dni</span>. Nowy freelance designer dostaje URL huba, ma 4-godzinny self-service onboarding, w drugi dzień robi pierwszy production asset z QA score &gt;90.
       </p>
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">Konkretne metryki po 3 latach</h3>
@@ -477,26 +504,26 @@ export const journalArticles: Article[] = [
         <li><span class="text-white font-medium">200+ deliverables/kwartał</span> jako stabilny baseline (vs ~150 przed)</li>
         <li><span class="text-white font-medium">0% widoczny drift wizualny i językowy</span> (side-by-side audit co kwartał)</li>
         <li><span class="text-white font-medium">~70% redukcja approval time</span> (z 2 dni na 4 godz średnio)</li>
-        <li><span class="text-white font-medium">3 → 1 runda iteracji</span> jako norma (z 3-4 jako norma przed)</li>
+        <li><span class="text-white font-medium">3 → 1 runda iteracji</span> jako norma</li>
         <li><span class="text-white font-medium">~85% redukcja vendor onboarding time</span> (z 3 tyg na 3 dni)</li>
         <li><span class="text-white font-medium">12 nowych vendorów onboardingowanych</span> w ciągu 3 lat z minimum friction</li>
-        <li><span class="text-white font-medium">Hidden tax z ~104k PLN/rok na ~12k PLN/rok</span> (głównie governance maintenance)</li>
+        <li><span class="text-white font-medium">Hidden tax z ~104k PLN/rok na ~12k PLN/rok</span></li>
       </ul>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Total ROI: knowledge hub jest jednym z najbardziej zyskownych investments które zespół Geers zrobił w brand operations. Cost-of-build amortyzowany w pierwszym roku, compounding return od miesiąca 13.
+        Hub jest jednym z najbardziej zyskownych investments które Geers zrobił w brand operations. Cost-of-build amortyzowany w pierwszym roku. Compounding return od miesiąca 13.
       </p>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Dual-format — dlaczego .md i jak to działa technicznie</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Dual-format. Dlaczego .md i jak to działa.</h2>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Dlaczego .md specifically (vs JSON, YAML, XML)</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Dlaczego .md (vs JSON, YAML, XML)</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        .md ma cztery właściwości których inne formaty nie łączą jednocześnie: <span class="text-white">LLM-native</span> (modele są wytrenowane na markdown, parsują naturalnie), <span class="text-white">human-readable</span> (brand manager otwiera w edytorze i czyta, nie potrzebuje deserializera), <span class="text-white">version-controllable</span> (git diff działa, każda zmiana widoczna), <span class="text-white">no schema overhead</span> (nie musisz definiować struktury upfront, content sam się self-organizuje).
+        .md ma cztery właściwości których inne formaty nie łączą jednocześnie. <span class="text-white">LLM-native</span> (modele są wytrenowane na markdown). <span class="text-white">Human-readable</span> (brand manager otwiera w edytorze i czyta, bez deserializera). <span class="text-white">Version-controllable</span> (git diff działa, każda zmiana widoczna). <span class="text-white">No schema overhead</span> (nie musisz definiować struktury upfront, content się self-organizuje).
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        JSON jest zbyt schema-heavy. YAML jest schema-aware ale mniej naturalny dla LLM. XML jest legacy i verbose. .md trafia w sweet spot: structured enough żeby AI dostał deterministyczny context, loose enough żeby zespół mógł edytować bez tooling.
+        JSON jest zbyt schema-heavy. YAML jest schema-aware ale mniej naturalny dla LLM. XML jest legacy i verbose. .md trafia w sweet spot. Structured enough żeby AI dostał deterministyczny context. Loose enough żeby zespół mógł edytować bez tooling.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Struktura .md pliku — przykładowy skeleton</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Struktura .md pliku. Przykładowy skeleton.</h3>
       <div class="bg-[#0a0a0a] border border-white/10 p-6 my-8 font-mono text-sm text-neutral-300 overflow-x-auto whitespace-pre"># Brand voice — [Brand name]
 
 ## Positioning
@@ -537,17 +564,20 @@ export const journalArticles: Article[] = [
 ### Instagram
 [similar structure]</div>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Jak agent consume'uje — prompt template</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Jak agent consume'uje. Prompt template.</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Junior copywriter pisze w Claude: <span class="text-white">"Draft LinkedIn post about Q3 product launch"</span>. Agent ma w system prompt auto-loaded brand-voice.md. Generuje od razu z lexiconem zastosowanym, w odpowiednim tone mode dla LinkedIn, z konkretną liczbą w pierwszym zdaniu. Junior nie musi pamiętać 47 słów zakazanych — agent zna je z .md.
+        Junior copywriter pisze w Claude: <span class="text-white">"Draft LinkedIn post about Q3 product launch"</span>. Agent ma w system prompt auto-loaded brand-voice.md. Generuje od razu z lexiconem zastosowanym, w odpowiednim tone mode dla LinkedIn, z konkretną liczbą w pierwszym zdaniu. Junior nie musi pamiętać 47 słów zakazanych. Agent zna je z .md.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Single source, dual rendering — praktycznie</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Single source, dual rendering. Praktycznie.</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Ta sama informacja staje się: <span class="text-white">wizualny UI</span> dla ludzi (interaktywny, klikalny, z examples i screenshots) — i <span class="text-white">curated .md</span> dla AI (structured, parseable, complete context). Workflow: edytujesz raz (w preferowanym formacie — wizualny dla content managera, .md dla developera), oba renderingi się aktualizują z tego samego źródła. Brak duplikatu, brak drift między wersjami.
+        Ta sama informacja staje się dwiema rzeczami. <span class="text-white">Wizualny UI</span> dla ludzi (interaktywny, klikalny, z examples i screenshots). I <span class="text-white">curated .md</span> dla AI (structured, parseable, complete context).
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Workflow. Edytujesz raz (w preferowanym formacie, wizualny dla content managera, .md dla developera). Oba renderingi aktualizują się z tego samego źródła. Brak duplikatu. Brak drift między wersjami.
       </p>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Active QA layer — gatekeeper z konkretnym scoringiem</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Active QA layer. Gatekeeper z konkretnym scoringiem.</h2>
 
       <figure class="my-12">
         <div class="bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-sm">
@@ -585,24 +615,24 @@ export const journalArticles: Article[] = [
         </figcaption>
       </figure>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Scoring methodology — jak liczyć</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Scoring methodology. Jak liczyć.</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        23 moduły × waga = total score 0-100. Wagi nie są równe — niektóre moduły mają większy wpływ na "on-brand vs off-brand" niż inne. Przykładowy split dla Geers: voice attributes 15pkt, lexicon compliance 12pkt, color palette 10pkt, typography 10pkt, layout grid 8pkt, motion 6pkt, photography 8pkt, logo usage 10pkt, accessibility 8pkt, performance 6pkt, reszta rozproszona po pozostałych modułach.
+        23 moduły × waga = total score 0-100. Wagi nie są równe. Niektóre moduły mają większy wpływ na "on-brand vs off-brand" niż inne. Przykładowy split dla Geers: voice attributes 15pkt, lexicon compliance 12pkt, color palette 10pkt, typography 10pkt, layout grid 8pkt, motion 6pkt, photography 8pkt, logo usage 10pkt, accessibility 8pkt, performance 6pkt. Reszta rozproszona.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        <span class="text-white">Threshold dla production: 85+.</span> Poniżej 85 — wraca do iteracji z konkretną listą fixów. Między 85-94 — go z optional improvements. 95+ — exemplar, ląduje w Reference bucket jako wzorzec.
+        <span class="text-white">Threshold dla production: 85+.</span> Poniżej 85 wraca do iteracji z konkretną listą fixów. Między 85-94 go z optional improvements. 95+ exemplar, ląduje w Reference bucket jako wzorzec.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Severity tiers — co flag'uje system</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Severity tiers. Co flag'uje system.</h3>
       <ul class="list-none mb-10 space-y-4 text-neutral-400 text-lg pl-4 border-l-2 border-[#D4FF00]/40">
-        <li><span class="text-white font-medium">High severity (must fix)</span> — użycie słowa z lexiconu, wrong logo placement, niespełnione accessibility minima, kolor outside palety. Asset nie idzie do produkcji.</li>
-        <li><span class="text-white font-medium">Mid severity (should fix)</span> — suboptimal typography choice, inconsistent spacing, photography style mismatch. Idzie do produkcji jeśli deadline tight, ale flag w post-mortem.</li>
-        <li><span class="text-white font-medium">Low severity (nice to fix)</span> — micro-spacing inconsistencies, slight motion timing off, minor a11y improvements. Backlog dla następnej iteracji.</li>
+        <li><span class="text-white font-medium">High severity (must fix).</span> Słowo z lexiconu, wrong logo placement, niespełnione accessibility minima, kolor outside palety. Asset nie idzie do produkcji.</li>
+        <li><span class="text-white font-medium">Mid severity (should fix).</span> Suboptimal typography choice, inconsistent spacing, photography style mismatch. Idzie do produkcji jeśli deadline tight, ale flag w post-mortem.</li>
+        <li><span class="text-white font-medium">Low severity (nice to fix).</span> Micro-spacing inconsistencies, slight motion timing off, minor a11y improvements. Backlog dla następnej iteracji.</li>
       </ul>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Real check example — social post draft</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Real check example. Social post draft.</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Designer dropuje draft social posta. System w 3 sekundy zwraca:
+        Powiedzmy że designer dropuje draft social posta. System w 3 sekundy zwraca:
       </p>
       <div class="bg-[#0a0a0a] border border-white/10 p-6 my-8 font-mono text-sm text-neutral-300 overflow-x-auto whitespace-pre">QA Score: 78/100 — REQUIRES REVISION
 
@@ -622,33 +652,36 @@ Fix the 3 high-severity items minimum. Re-submit for re-check.</div>
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">Workflow comparison</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        <span class="text-white">BEFORE</span>: brief → asset (4h) → 30-min review meeting z brand managerem → "this doesn't feel right, można poprawić X i Y?" → iteration (2h) → 30-min re-review → "lepiej, ale jeszcze Z" → iteration (1h) → ship. <span class="text-white">Total: 8h work + 3 meetings × 0.5h = 9.5h, 3 rundy.</span>
+        <span class="text-white">BEFORE.</span> Brief, asset (4h), 30-min review meeting z brand managerem, "this doesn't feel right, można poprawić X i Y", iteration (2h), 30-min re-review, "lepiej, ale jeszcze Z", iteration (1h), ship. <span class="text-white">Total: 8h work plus 3 meetings × 0.5h = 9.5h. 3 rundy.</span>
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        <span class="text-white">AFTER</span>: brief → asset (4h) → QA check (3s) → objective score + fix list → iteration (1h) → re-check (3s) → ship. <span class="text-white">Total: 5h work + 6s checks = 5h, 1 runda.</span>
+        <span class="text-white">AFTER.</span> Brief, asset (4h), QA check (3s), objective score plus fix list, iteration (1h), re-check (3s), ship. <span class="text-white">Total: 5h work plus 6s checks = 5h. 1 runda.</span>
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Saving per asset: <span class="text-white">~4.5h</span>. Volume: 200 assetów/kwartał. Quarterly saving: <span class="text-white">~900h = ~22 person-weeks</span>. Przy stawce 180 PLN/h fully loaded: <span class="text-white">~162 000 PLN/kwartał</span>, czyli ~650 000 PLN/rok zaoszczędzone tylko na approval cycle compression.
+        Saving per asset: <span class="text-white">~4.5h</span>. Volume: 200 assetów/kwartał. Quarterly saving: <span class="text-white">~900h = ~22 person-weeks</span>. Przy stawce 180 PLN/h: <span class="text-white">~162 000 PLN/kwartał</span>. Czyli ~650 000 PLN/rok zaoszczędzone tylko na approval cycle compression.
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Spójrzmy na tę liczbę jeszcze raz. 650 000 PLN rocznie. Tylko z jednej warstwy.
       </p>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Production layer — biblioteka promptów + skills</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Production layer. Biblioteka promptów plus skills.</h2>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Prompt library — co tam jest</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Prompt library. Co tam jest.</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Curated biblioteka promptów dla recurring use cases. Każdy prompt ma opisany kontekst, target audience, oczekiwany output. Przykłady z Geers library:
       </p>
       <ul class="list-none mb-10 space-y-4 text-neutral-400 text-lg pl-4 border-l-2 border-[#D4FF00]/40">
-        <li><span class="text-white font-medium">awareness-social-post</span> — top-of-funnel social content, brand storytelling tone, 80 words max</li>
-        <li><span class="text-white font-medium">consideration-email</span> — mid-funnel nurture email, expert tone, konkretne dane z badań</li>
-        <li><span class="text-white font-medium">loyalty-sms</span> — retention SMS, conversational tone, max 160 chars, CTA do salon visit</li>
-        <li><span class="text-white font-medium">salon-window-copy</span> — copy do witryny lokalu, formal+approachable, lokalizacja-aware</li>
-        <li><span class="text-white font-medium">B2B-sales-deck-slide</span> — content do sales decka, expert tone, data-heavy, dla decision makerów</li>
-        <li><span class="text-white font-medium">internal-comms-update</span> — all-hands updates, human tone, transparentny, action-oriented</li>
-        <li><span class="text-white font-medium">recruitment-jd</span> — job description, employer brand voice, inclusive, konkretne expectations</li>
-        <li><span class="text-white font-medium">customer-success-response</span> — support tickets, empathic tone, problem-solving framework</li>
+        <li><span class="text-white font-medium">awareness-social-post.</span> Top-of-funnel social content, brand storytelling tone, 80 words max</li>
+        <li><span class="text-white font-medium">consideration-email.</span> Mid-funnel nurture email, expert tone, konkretne dane z badań</li>
+        <li><span class="text-white font-medium">loyalty-sms.</span> Retention SMS, conversational tone, max 160 chars, CTA do salon visit</li>
+        <li><span class="text-white font-medium">salon-window-copy.</span> Copy do witryny lokalu, formal+approachable, lokalizacja-aware</li>
+        <li><span class="text-white font-medium">B2B-sales-deck-slide.</span> Content do sales decka, expert tone, data-heavy, dla decision makerów</li>
+        <li><span class="text-white font-medium">internal-comms-update.</span> All-hands updates, human tone, transparentny, action-oriented</li>
+        <li><span class="text-white font-medium">recruitment-jd.</span> Job description, employer brand voice, inclusive, konkretne expectations</li>
+        <li><span class="text-white font-medium">customer-success-response.</span> Support tickets, empathic tone, problem-solving framework</li>
       </ul>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">AI skill .md — struktura z frontmatter</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">AI skill .md. Struktura z frontmatter.</h3>
       <div class="bg-[#0a0a0a] border border-white/10 p-6 my-8 font-mono text-sm text-neutral-300 overflow-x-auto whitespace-pre">---
 name: geers-voice
 description: Apply Geers brand voice — audiology expert, accessible, regulated environment
