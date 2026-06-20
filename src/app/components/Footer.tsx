@@ -296,17 +296,18 @@ export function Footer() {
                    original baseline). Wokolo grows, R fraction drops 9% → 8.5% to keep
                    letter at the same absolute ~27/33px size — visual hierarchy intact.
 
-                   top-64 md:top-72 → repositioned downward after CONNECT block (LinkedIn +
-                   Email) folded in above. Previous top-32/md:top-40 would have caused the
-                   rotating mark to sit behind the connect links instead of below the
-                   signature line. Can still overflow downward — pointer-events-none + z-0
-                   keep it inert. */}
+                   top-80 md:top-96 → repositioned downward AGAIN after wegobold cross-link
+                   ("Need end-to-end product? wegobold.com — product side.") was added under
+                   Founded by Reszek. Previous top-64/md:top-72 was tuned for col 3 height
+                   without that link, now wraps to 2 lines on mobile so watermark needs more
+                   clearance. Can still overflow downward — pointer-events-none + z-0 keep
+                   it inert below all interactive content. */}
                {/* SVGs have hardcoded fill #151515 (works on dark mode as darker-shape-on-dark).
                    On LIGHT mode we invert + slightly darken via filter so it renders as a
                    very-light-gray watermark (~#ECECEC), then knock to 30% opacity so it
                    reads as truly ambient — no fight with the foreground. Dark mode keeps
                    native dark fill at full opacity (it's already subtle by color match). */}
-               <div className="pointer-events-none absolute top-64 md:top-72 left-0 w-[20.5rem] h-[20.5rem] md:w-[24.5rem] md:h-[24.5rem] z-0">
+               <div className="pointer-events-none absolute top-80 md:top-96 left-0 w-[20.5rem] h-[20.5rem] md:w-[24.5rem] md:h-[24.5rem] z-0">
                   <img
                     src="/footer-mark/wokolo.svg"
                     alt=""
