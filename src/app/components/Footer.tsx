@@ -266,24 +266,11 @@ export function Footer() {
                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">↗</span>
                </a>
 
-               {/* Sister-brand cross-link — wegobold = Reszek's product side of practice
-                   (post-split z letsgobold). "Product side" implikuje istnienie "consulting
-                   side" (= r352) — jedna praktyka, dwie strony. Omija trap'y: bez "my"
-                   (personal-possessive), bez "founder" (chest-thumping), bez "hands"
-                   (solo-signal), bez "related" (cold). Voice-y period-fragment. */}
-               <a
-                 href="https://wegobold.com"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 className="group inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-[#D4FF00] transition-colors duration-300 w-fit"
-               >
-                 <span>
-                   Need end-to-end product?{" "}
-                   <span className="text-neutral-300 group-hover:text-[#D4FF00] transition-colors">wegobold.com</span>
-                   <span className="text-neutral-500"> — product side.</span>
-                 </span>
-                 <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">↗</span>
-               </a>
+               {/* Wegobold sister-brand cross-link REMOVED 2026-06 — portfolio + business
+                   model mismatch z r352 (enterprise consulting vs performance lead-gen)
+                   creates brand confusion vs trust transfer. Revisit po 6-12 mies. kiedy
+                   wegobold ma własną pozycję AS execution arm (jeśli ten kierunek wybrany).
+                   See chat strategy analysis 2026-06 dla full reasoning. */}
 
                {/* Rotating R-mark — animated brand signature.
                    Container scaled 70% larger (was 160/192px → 272/326px) so the
@@ -292,22 +279,15 @@ export function Footer() {
                    1/6 to 10%, keeping the visual hierarchy: big quiet rotation around
                    a small stable letter. Both SVGs use native fill #151515 — ledwo
                    widoczne darker shape on #0a0a0a lower-section bg. */}
-               {/* Container scaled +5% on top of previous +15% (cumulative +106% from
-                   original baseline). Wokolo grows, R fraction drops 9% → 8.5% to keep
-                   letter at the same absolute ~27/33px size — visual hierarchy intact.
-
-                   top-80 md:top-96 → repositioned downward AGAIN after wegobold cross-link
-                   ("Need end-to-end product? wegobold.com — product side.") was added under
-                   Founded by Reszek. Previous top-64/md:top-72 was tuned for col 3 height
-                   without that link, now wraps to 2 lines on mobile so watermark needs more
-                   clearance. Can still overflow downward — pointer-events-none + z-0 keep
-                   it inert below all interactive content. */}
+               {/* top-64 md:top-72 → restored after wegobold cross-link removed.
+                   Anchored below Time + Connect (LinkedIn/Email) + Founded by Reszek line.
+                   Can overflow downward — pointer-events-none + z-0 keep it inert. */}
                {/* SVGs have hardcoded fill #151515 (works on dark mode as darker-shape-on-dark).
                    On LIGHT mode we invert + slightly darken via filter so it renders as a
                    very-light-gray watermark (~#ECECEC), then knock to 30% opacity so it
                    reads as truly ambient — no fight with the foreground. Dark mode keeps
                    native dark fill at full opacity (it's already subtle by color match). */}
-               <div className="pointer-events-none absolute top-80 md:top-96 left-0 w-[20.5rem] h-[20.5rem] md:w-[24.5rem] md:h-[24.5rem] z-0">
+               <div className="pointer-events-none absolute top-64 md:top-72 left-0 w-[20.5rem] h-[20.5rem] md:w-[24.5rem] md:h-[24.5rem] z-0">
                   <img
                     src="/footer-mark/wokolo.svg"
                     alt=""

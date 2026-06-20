@@ -53,7 +53,7 @@ export function ClientLogos() {
                   client.name === "Dawid Podsiadło" ? "h-6 md:h-10" : 
                   client.name === "Deloitte Digital" ? "h-6 md:h-10" : 
                   client.name === "UNIQA" ? "h-8 md:h-12" : 
-                  client.name === "Kubota" ? "h-5 md:h-9" : 
+                  client.name === "Kubota" ? "h-10 md:h-16" :
                   client.name === "Benefit Systems" ? "h-5 md:h-9" : 
                   client.name === "FIFA" ? "h-6 md:h-10" : 
                   client.name === "Sonova" ? "h-4 md:h-7" : 
