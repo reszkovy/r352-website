@@ -266,9 +266,11 @@ export function Footer() {
                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">↗</span>
                </a>
 
-               {/* Sister-brand cross-link — wegobold positioned as part of r352 family.
-                   r352 = strategy + system. wegobold = full-stack product execution arm.
-                   Telegraphuje group/ecosystem signal: jeden właściciel, dwa zakresy. */}
+               {/* Sister-brand cross-link — wegobold = Reszek's product side of practice
+                   (post-split z letsgobold). "Product side" implikuje istnienie "consulting
+                   side" (= r352) — jedna praktyka, dwie strony. Omija trap'y: bez "my"
+                   (personal-possessive), bez "founder" (chest-thumping), bez "hands"
+                   (solo-signal), bez "related" (cold). Voice-y period-fragment. */}
                <a
                  href="https://wegobold.com"
                  target="_blank"
@@ -276,9 +278,9 @@ export function Footer() {
                  className="group inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-[#D4FF00] transition-colors duration-300 w-fit"
                >
                  <span>
-                   Need an end-to-end product?{" "}
+                   Need end-to-end product?{" "}
                    <span className="text-neutral-300 group-hover:text-[#D4FF00] transition-colors">wegobold.com</span>
-                   <span className="text-neutral-500"> — part of r352.</span>
+                   <span className="text-neutral-500"> — product side.</span>
                  </span>
                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">↗</span>
                </a>
