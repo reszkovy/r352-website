@@ -126,9 +126,8 @@ export function Footer() {
             <div className="md:col-span-1">
                <span className="block text-xs font-display uppercase tracking-widest text-neutral-500 mb-6">{t("footer.studio")}</span>
                <p className="text-lg text-neutral-300 leading-relaxed">
-                 Mallorca, Baleares<br/>
-                 Santa Catalina<br/>
-                 (remote)
+                 EU<br/>
+                 remote / distributed
                </p>
                <a
                  href="mailto:hello@r352.com?subject=r352%20—%20hello"
@@ -226,7 +225,7 @@ export function Footer() {
                <div>
                   <span className="block text-xs font-display uppercase tracking-widest text-neutral-500 mb-6">{t("footer.local_time")}</span>
                   <p className="text-lg text-neutral-300">
-                    Mallorca {new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Madrid' })} CET
+                    {new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Madrid' })} CET
                   </p>
                </div>
 

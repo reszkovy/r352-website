@@ -80,8 +80,6 @@ export function SEO({
     },
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Mallorca",
-      "addressRegion": "Baleares",
       "addressCountry": "ES"
     },
     "sameAs": [
@@ -150,7 +148,7 @@ export function SEO({
           "@type": "Answer",
           // TODO(reszek): potwierdź listę miast w bio — na razie ogólne "six years across European markets".
           // MUST stay byte-identical with FAQ_EN in src/app/pages/FAQ.tsx (schema/content parity).
-          "text": "Przemyslaw Reszka (Reszek) is the founder of r352. Designer-operator with 15+ years of experience: started in UX at Deloitte, then spent six years across European markets building design operations for multi-location brands. Created the r3loop methodology. Based in Mallorca, remote-first."
+          "text": "Przemyslaw Reszka (Reszek) is the founder of r352. Designer-operator with 15+ years of experience: started in UX at Deloitte, then spent six years across European markets building design operations for multi-location brands. Created the r3loop methodology. EU-based, remote-first."
         }
       }
     ]

@@ -53,7 +53,7 @@ const FAQ_EN: FaqItem[] = [
     q: "Who is Reszek?",
     // TODO(reszek): potwierdź listę miast w bio — na razie ogólne "six years across European markets".
     // MUST stay byte-identical with faqSchema in src/app/components/SEO.tsx (schema/content parity).
-    a: "Przemyslaw Reszka (Reszek) is the founder of r352. Designer-operator with 15+ years of experience: started in UX at Deloitte, then spent six years across European markets building design operations for multi-location brands. Created the r3loop methodology. Based in Mallorca, remote-first.",
+    a: "Przemyslaw Reszka (Reszek) is the founder of r352. Designer-operator with 15+ years of experience: started in UX at Deloitte, then spent six years across European markets building design operations for multi-location brands. Created the r3loop methodology. EU-based, remote-first.",
   },
 ];
 
@@ -77,7 +77,7 @@ const FAQ_PL: FaqItem[] = [
   {
     q: "Kim jest Reszek?",
     // TODO(reszek): potwierdź listę miast w bio — na razie ogólne "sześć lat na europejskich rynkach".
-    a: "Przemysław Reszka (Reszek) to założyciel r352. Designer-operator z 15+ latami doświadczenia: zaczynał w UX w Deloitte, potem spędził sześć lat na europejskich rynkach, budując design operations dla multi-location brandów. Stworzył metodologię r3loop. Mieszka na Majorce, pracuje remote-first.",
+    a: "Przemysław Reszka (Reszek) to założyciel r352. Designer-operator z 15+ latami doświadczenia: zaczynał w UX w Deloitte, potem spędził sześć lat na europejskich rynkach, budując design operations dla multi-location brandów. Stworzył metodologię r3loop. Bazuje w UE, pracuje remote-first.",
   },
 ];
 

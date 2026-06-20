@@ -169,7 +169,7 @@ export function Philosophy() {
             <div className="relative aspect-square overflow-hidden bg-[#D4FF00]">
               <img
                 src={reszekPortrait}
-                alt={language === 'pl' ? 'Reszek — Mallorca' : 'Reszek — Mallorca'}
+                alt={language === 'pl' ? 'Reszek — portrait' : 'Reszek — portrait'}
                 className="w-full h-full object-cover mix-blend-luminosity"
                 loading="lazy"
               />
@@ -183,7 +183,7 @@ export function Philosophy() {
                   The work speaks.<br />I don&apos;t have to.
                 </p>
                 <p className="text-[10px] font-display uppercase tracking-[0.2em] text-white/60">
-                  Reszek · Mallorca
+                  Reszek · remote
                 </p>
               </div>
             </div>
@@ -210,8 +210,8 @@ export function Philosophy() {
               </p>
               <p>
                 {language === 'pl'
-                  ? 'Z Majorki, pracuję z 5–10 markami naraz na retainer, plus dwa własne SaaS w boku (Caterelo, regional.fit). Metodologia, którą sprzedajesz, musi przetrwać twoje własne użycie.'
-                  : "I'm based in Mallorca, work with 5–10 brands at a time on retainer, and run two of my own SaaS products on the side (Caterelo, regional.fit). Methodology you sell needs to survive your own use of it."}
+                  ? 'EU-based, remote-first. Pracuję z 5–10 markami naraz na retainer, plus dwa własne SaaS w boku (Caterelo, regional.fit). Metodologia, którą sprzedajesz, musi przetrwać twoje własne użycie.'
+                  : "EU-based, remote-first. Working with 5–10 brands at a time on retainer, plus running two of my own SaaS products on the side (Caterelo, regional.fit). Methodology you sell needs to survive your own use of it."}
               </p>
               <p className="text-[13px] text-neutral-500 dark:text-neutral-500 pt-2">
                 {language === 'pl' ? 'Piszę okazjonalnie o tym co skaluje i co nie. Kontakt: ' : 'I write occasionally about what scales and what doesn’t. Reach out: '}

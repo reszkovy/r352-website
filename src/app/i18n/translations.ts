@@ -488,7 +488,7 @@ export const translations = {
         email: "Email us",
         social: "Follow us",
         address: "Address",
-        address_value: "Mallorca, Baleares, Santa Catalina (remote)",
+        address_value: "EU · remote / distributed",
         time: "Local time",
         availability: "Availability",
         available: "Accepting new projects"
@@ -1123,7 +1123,7 @@ export const translations = {
         email: "Napisz do nas",
         social: "Śledź nas",
         address: "Adres",
-        address_value: "Mallorca, Baleares, Santa Catalina (remote)",
+        address_value: "EU · remote / distributed",
         time: "Czas lokalny",
         availability: "Dostępność",
         available: "Przyjmujemy nowe projekty"
