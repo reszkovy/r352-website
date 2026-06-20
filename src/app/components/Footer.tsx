@@ -266,6 +266,23 @@ export function Footer() {
                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">↗</span>
                </a>
 
+               {/* Sister-brand cross-link — wegobold positioned as part of r352 family.
+                   r352 = strategy + system. wegobold = full-stack product execution arm.
+                   Telegraphuje group/ecosystem signal: jeden właściciel, dwa zakresy. */}
+               <a
+                 href="https://wegobold.com"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="group inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-[#D4FF00] transition-colors duration-300 w-fit"
+               >
+                 <span>
+                   Need an end-to-end product?{" "}
+                   <span className="text-neutral-300 group-hover:text-[#D4FF00] transition-colors">wegobold.com</span>
+                   <span className="text-neutral-500"> — part of r352.</span>
+                 </span>
+                 <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">↗</span>
+               </a>
+
                {/* Rotating R-mark — animated brand signature.
                    Container scaled 70% larger (was 160/192px → 272/326px) so the
                    rotating wokolo ornament reads as the dominant motif. R in center
