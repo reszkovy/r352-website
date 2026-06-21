@@ -233,12 +233,13 @@ export function ForAgencies() {
             {pl ? "Jak to działa" : "How it works"}
           </span>
         </Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 border border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-2">
           {steps.map((step, i) => {
             const c = pl ? step.pl : step.en;
+            const isLeft = i % 2 === 0;
             return (
               <Reveal key={step.id} delay={0.1 + i * 0.08} width="100%">
-                <div className="bg-[#0A0A0A] p-8 md:p-12 h-full hover:bg-[#151515] transition-colors duration-500 group">
+                <div className={`group h-full py-10 md:py-14 border-t border-white/10 ${isLeft ? "md:pr-14 md:border-r md:border-white/10" : "md:pl-14"}`}>
                   <span className="font-display text-sm text-[#D4FF00] block mb-6">{step.id}</span>
                   <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-[#D4FF00] transition-colors">
                     {c.t}
@@ -326,12 +327,12 @@ export function ForAgencies() {
               : "Three shapes. No rate card - each one starts from a brief, scoped and priced to fit."}
           </p>
         </Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10 border border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-3">
           {engage.map((m, i) => {
             const c = pl ? m.pl : m.en;
             return (
               <Reveal key={i} delay={0.1 + i * 0.08} width="100%">
-                <div className="bg-[#0A0A0A] p-8 md:p-10 h-full hover:bg-[#151515] transition-colors duration-500 group">
+                <div className={`group h-full py-8 md:py-10 border-t border-white/10 ${i !== 0 ? "md:pl-10 md:border-l md:border-white/10" : ""} ${i !== engage.length - 1 ? "md:pr-10" : ""}`}>
                   <h3 className="text-xl md:text-2xl font-bold text-white mb-4 group-hover:text-[#D4FF00] transition-colors">{c.t}</h3>
                   <p className="text-base text-neutral-400 leading-relaxed">{c.d}</p>
                 </div>
