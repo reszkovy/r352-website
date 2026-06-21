@@ -32,8 +32,8 @@ export function ForAgencies() {
     },
     {
       id: "02",
-      en: { t: "We embed as one team", d: "Strategy, creative direction and execution - one integrated unit on your account. No briefing three vendors, no stitching the work together. One partner, accountable end to end." },
-      pl: { t: "Wchodzimy jako jeden zespół", d: "Strategia, kierunek kreatywny i egzekucja - jeden zintegrowany zespół na Twoim koncie. Bez briefowania trzech wykonawców, bez zszywania efektów. Jeden partner, odpowiedzialny end to end." },
+      en: { t: "We embed as one team", d: "Embedded in your team, backed by a curated network of specialists scaled to the work - one accountable partner up front, real bench depth behind it. No briefing three vendors, no stitching the work together." },
+      pl: { t: "Wchodzimy jako jeden zespół", d: "Wchodzimy do Twojego zespołu, ze sprawdzoną siecią specjalistów dobieraną do skali projektu - jeden odpowiedzialny partner z przodu, realne zaplecze z tyłu. Bez briefowania trzech wykonawców, bez zszywania efektów." },
     },
     {
       id: "03",
