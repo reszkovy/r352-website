@@ -119,28 +119,28 @@ export function ForAgencies() {
         frameCount={125}
         framePath="/agency-frames/frame"
         padDigits={3}
-        pinHeight="280vh"
+        pinHeight="180vh"
         backgroundColor="#0a0a0a"
-        fadeChildrenAt={[0.22, 0.5]}
-        canvasClassName="absolute inset-0 w-full h-full object-contain object-top md:object-right mix-blend-screen"
+        fadeChildrenAt={[0.12, 0.32]}
+        canvasClassName="absolute inset-0 w-full h-full object-contain object-top md:object-center mix-blend-screen"
         overlayClassName="flex items-end md:items-center px-6 md:px-12 pb-20 md:pb-0"
       >
         {/* Mobile-only bottom scrim — hands sit top (object-top), copy sits
             bottom; this gradient keeps the copy legible over the glow. */}
         <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent md:hidden pointer-events-none" />
         <div className="max-w-[1600px] mx-auto w-full relative">
-          <div className="max-w-xl">
-            <span className="text-xs font-display uppercase tracking-widest text-[#D4FF00] mb-6 md:mb-8 block">
+          <div className="max-w-2xl">
+            <span className="text-xs font-display uppercase tracking-widest text-[#D4FF00] mb-5 md:mb-6 block">
               {pl ? "Dla agencji" : "For Agencies"}
             </span>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white leading-[0.92] mb-8 dark:drop-shadow-[0_2px_24px_rgba(0,0,0,0.65)]">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-white leading-[0.95] mb-6 dark:drop-shadow-[0_2px_24px_rgba(0,0,0,0.65)]">
               {pl ? (
                 <>Wygrywasz pitch.<br />My dostarczamy.</>
               ) : (
                 <>Win the pitch.<br />We run the delivery.</>
               )}
             </h1>
-            <p className="text-lg md:text-2xl text-neutral-200 leading-relaxed mb-10 dark:drop-shadow-[0_2px_12px_rgba(0,0,0,0.65)]">
+            <p className="text-base md:text-xl text-neutral-200 leading-relaxed mb-8 max-w-lg dark:drop-shadow-[0_2px_12px_rgba(0,0,0,0.65)]">
               {pl
                 ? "White-label, end-to-end konsultant dla agencji. Strategia, kreacja i egzekucja w jednym miejscu — pod Twoją marką. Ty prowadzisz relację, my robimy to, co umiemy najlepiej."
                 : "A white-label, end-to-end consultant for agencies. Strategy, creative and execution in one place — under your name. You lead the relationship, we do what we do best."}
