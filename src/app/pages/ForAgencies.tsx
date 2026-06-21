@@ -194,28 +194,35 @@ export function ForAgencies() {
         </div>
       </Reveal>
 
-      {/* ── The tension ── */}
-      <section className="mb-32 md:mb-48 grid grid-cols-1 lg:grid-cols-12 gap-12">
-        <div className="lg:col-span-5">
-          <Reveal>
-            <span className="text-xs font-display uppercase tracking-widest text-neutral-500 mb-6 block">
-              {pl ? "Napięcie" : "The tension"}
-            </span>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white leading-[1.05]">
-              {pl
-                ? "Wygrywasz na kreacji. Wycieka na realizacji."
-                : "You win on creative. It leaks on delivery."}
-            </h2>
-          </Reveal>
-        </div>
-        <div className="lg:col-span-7 lg:pt-2">
-          <Reveal delay={0.15}>
-            <p className="text-lg md:text-xl text-neutral-400 leading-relaxed max-w-2xl">
-              {pl
-                ? "Pitch zamknięty, klient na pokładzie — a potem trzy rundy poprawek, niejasna odpowiedzialność i rwany rytm zjadają marżę i reputację. Nie potrzebujesz kolejnych rąk. Potrzebujesz systemu, który dowozi przewidywalnie — i specjalisty, który nim steruje."
-                : "Pitch closed, client onboarded — then three revision rounds, unclear ownership, and a broken cadence eat the margin and the reputation. You don't need more hands. You need a system that ships predictably — and a specialist who runs it."}
-            </p>
-          </Reveal>
+      {/* ── The tension — eyebrow spans the full width above the grid so the
+          headline (left) and paragraph (right) top-align cleanly. The paragraph
+          gets a small lg top nudge so its first line sits on the headline's
+          first line instead of floating above it. ── */}
+      <section className="mb-32 md:mb-48">
+        <Reveal>
+          <span className="text-xs font-display uppercase tracking-widest text-neutral-500 mb-8 block">
+            {pl ? "Napięcie" : "The tension"}
+          </span>
+        </Reveal>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
+          <div className="lg:col-span-5">
+            <Reveal>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white leading-[1.05]">
+                {pl
+                  ? "Wygrywasz na kreacji. Wycieka na realizacji."
+                  : "You win on creative. It leaks on delivery."}
+              </h2>
+            </Reveal>
+          </div>
+          <div className="lg:col-span-7">
+            <Reveal delay={0.15}>
+              <p className="text-lg md:text-xl text-neutral-400 leading-relaxed max-w-2xl lg:pt-2">
+                {pl
+                  ? "Pitch zamknięty, klient na pokładzie — a potem trzy rundy poprawek, niejasna odpowiedzialność i rwany rytm zjadają marżę i reputację. Nie potrzebujesz kolejnych rąk. Potrzebujesz systemu, który dowozi przewidywalnie — i specjalisty, który nim steruje."
+                  : "Pitch closed, client onboarded — then three revision rounds, unclear ownership, and a broken cadence eat the margin and the reputation. You don't need more hands. You need a system that ships predictably — and a specialist who runs it."}
+              </p>
+            </Reveal>
+          </div>
         </div>
       </section>
 
