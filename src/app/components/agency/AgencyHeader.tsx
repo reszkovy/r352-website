@@ -168,26 +168,18 @@ export function AgencyHeader() {
           ? "text-black py-4 md:py-6" 
           : cn("text-white transition-all duration-700", isScrolled ? "py-4 md:py-6" : "mix-blend-difference py-6 md:py-8")
       )}>
-        {/* Dark Mode Version — soft scrim, no rigid bar (client direction 2026-06-10).
-            QA fix 2026-06-21: the single blur-free gradient let high-contrast content
-            from pinned/light sections (e.g. "Every project starts with a brief", the
-            r3loop phase captions) bleed THROUGH the soft falloff and collide with the
-            nav. Mirroring the light-mode approach now — two layers, still no hard line:
-            1) bar — confined to header height with backdrop-blur, pushing whatever sits
-               directly behind the nav out of focus so it can never read as a collision;
-            2) tail — blur-free gradient falloff below the bar for the soft edge. */}
+        {/* Dark Mode Version — soft linear scrim, NO rigid bar, NO blur (client
+            direction: a shadow that fades top→transparent, never a frosted bar).
+            QA 2026-06-21: a backdrop-blur layer was tried to kill nav/heading
+            collisions but its blur cutoff read as a hard "technical" bar — reverted.
+            Back to a single blur-free gradient, but stronger (95% vs the old 80%)
+            and taller (h-[260%] vs 210%) so the falloff is long and gradual: it
+            darkens high-contrast content enough to keep the nav legible while
+            staying purely linear, with no edge anywhere. Brand easing. */}
         <div
           className={cn(
-            "absolute inset-x-0 top-0 h-full -z-10 pointer-events-none",
-            "backdrop-blur-md bg-gradient-to-b from-black/90 via-black/70 to-black/40",
-            "transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
-            isScrolled && theme === 'dark' && !isLimeTheme ? "opacity-100" : "opacity-0"
-          )}
-        />
-        <div
-          className={cn(
-            "absolute inset-x-0 top-full h-[120%] -z-10 pointer-events-none",
-            "bg-gradient-to-b from-black/40 to-transparent",
+            "absolute inset-x-0 top-0 h-[260%] -z-10 pointer-events-none",
+            "bg-gradient-to-b from-black/95 via-black/55 to-transparent",
             "transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
             isScrolled && theme === 'dark' && !isLimeTheme ? "opacity-100" : "opacity-0"
           )}
