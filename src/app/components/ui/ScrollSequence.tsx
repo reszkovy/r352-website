@@ -141,8 +141,11 @@ export function ScrollSequence({
         if (exitMode === "fade") {
           // Canvas holds with a slow parallax drift and fades out, revealing
           // the next section (behind the portal) as it scrolls up over it.
+          // Fade is front-loaded (completes over the first ~45% of the exit)
+          // so the frame clears fast and never lingers opaque over the
+          // incoming copy — the section reads as coming OVER the dissolving frame.
           canvasTopPx = -(scrolled - playDistance) * 0.22;
-          wrapperOpacity = Math.max(0, 1 - (scrolled - playDistance) / exitDistance);
+          wrapperOpacity = Math.max(0, 1 - (scrolled - playDistance) / (exitDistance * 0.45));
         } else {
           // Slide up off-screen (default).
           canvasTopPx = -(scrolled - playDistance);
