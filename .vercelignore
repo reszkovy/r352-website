@@ -1,0 +1,36 @@
+# Throwaway QA build snapshots (committed historically) — not part of the build
+dist-check*
+dist-img
+dist
+
+# Source videos that are NOT imported by the app (real hover clips live in
+# public/videos/). Kept out of the deploy upload to cut size + file count.
+src/assets/*.mp4
+
+# Working docs, mockups, audits, raw media — none are imported by the app
+*.log
+*.md
+AUDIT-*.html
+RAPORT-*.html
+WEEK-*.html
+PL-OUTREACH.html
+UK-BOWLING-OUTREACH.html
+CLIENT-*.html
+CONTENT-PLAN-*.html
+PERFECT-MATCH-MAP.html
+LISTA-100-TRACKER.html
+HOW-I-RUN-AN-ENGAGEMENT.html
+reszek_framework.html
+geers-*.html
+r352-*.html
+r3loop-dashboard.html
+Archicom_paleta_kolorow.html
+
+# Raw animation frame sequences + demo media (not referenced by the build).
+# NOTE: only the ROOT demo mp3 is excluded — public/audio + public/sounds mp3s
+# ARE served, so no broad *.mp3 rule here.
+ANIMACJA_scrool
+Animacja_scrool jasna
+animacja-foot
+PHOTO DiscoBowl
+/Mompou*.mp3

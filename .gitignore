@@ -29,34 +29,8 @@ src/assets/highgaz_*.png
 src/imports/highgaz_*.png
 src/assets/sonov_1.png
 
-# MJ source MP4s (optimized to public/videos)
-src/assets/highgaz_httpss.mj.*.mp4
-src/assets/podsiadlo.mp4
-src/assets/archicom.mp4
-src/assets/kubota.mp4
-src/assets/discobowl.mp4
-src/assets/benefit.mp4
-src/assets/podsiadlo.mp4
-src/assets/archicom.mp4
-src/assets/kubota.mp4
-src/assets/discobowl.mp4
-src/assets/benefit.mp4
-src/assets/podsiadlo.mp4
-src/assets/archicom.mp4
-src/assets/kubota.mp4
-src/assets/discobowl.mp4
-src/assets/benefit.mp4
-src/assets/disco2.mp4
-src/assets/benefit.mp4
-src/assets/archicom.mp4
-src/assets/kubota.mp4
-src/assets/podsiadlo.mp4
-src/assets/discobowl.mp4
-src/assets/disco2.mp4
-src/assets/benefit.mp4
-src/assets/archicom.mp4
-src/assets/kubota.mp4
-src/assets/podsiadlo.mp4
-src/assets/discobowl.mp4
+# MJ source MP4s — NOT imported by the app (real hover clips live in
+# public/videos/). All of src/assets/*.mp4 is dead source media.
+src/assets/*.mp4
 
 dist-*

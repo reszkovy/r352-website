@@ -71,6 +71,22 @@ export function ForAgencies() {
     },
   ];
 
+  // ── How we engage — three shapes, all priced from a brief (premium, no rate card) ──
+  const engage = [
+    {
+      en: { t: "Per project", d: "One won pitch, one defined scope — start to shipped. The cleanest way to try the partnership." },
+      pl: { t: "Per projekt", d: "Jeden wygrany pitch, jeden zdefiniowany zakres — od startu po dowiezienie. Najczystszy sposób, by przetestować współpracę." },
+    },
+    {
+      en: { t: "Retained capacity", d: "A standing senior team on call across your accounts, monthly. Predictable cost, no hiring, no idle bench." },
+      pl: { t: "Retainer", d: "Stały senioralny zespół na zawołanie na Twoich klientach, miesięcznie. Przewidywalny koszt, bez rekrutacji, bez przestoju." },
+    },
+    {
+      en: { t: "Embedded for a launch", d: "We sit inside your team for a campaign or launch window — strategy through execution, end to end, then hand back." },
+      pl: { t: "Embedded na launch", d: "Wchodzimy do Twojego zespołu na okno kampanii lub launchu — strategia po egzekucję, end to end, potem oddajemy ster." },
+    },
+  ];
+
   return (
     <PageTransition className="min-h-screen pt-32 pb-24 px-6 md:px-12 max-w-[1600px] mx-auto">
       {/* ── Hero ── */}
@@ -116,6 +132,18 @@ export function ForAgencies() {
           </div>
         </Reveal>
       </section>
+
+      {/* ── Proof line — quiet credibility band. CONFIRM/ADJUST WORDING with the
+            client before relying on it publicly (currently a true but unnamed claim). ── */}
+      <Reveal>
+        <div className="mb-32 md:mb-40 border-l-2 border-[#D4FF00] pl-6 md:pl-8">
+          <p className="text-lg md:text-2xl text-neutral-300 leading-relaxed max-w-3xl">
+            {pl
+              ? "Już to robimy — embedded w jednej z większych polskich agencji, na żywej pracy klienckiej."
+              : "We already run this — embedded with one of Poland's larger agencies, on live client work."}
+          </p>
+        </div>
+      </Reveal>
 
       {/* ── The tension ── */}
       <section className="mb-32 md:mb-48 grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -222,6 +250,33 @@ export function ForAgencies() {
               <Reveal key={i} delay={0.1 + i * 0.1} width="100%">
                 <div className="border-t border-white/15 pt-6 h-full">
                   <h3 className="text-xl md:text-2xl font-bold text-white mb-4 leading-snug">{c.t}</h3>
+                  <p className="text-base text-neutral-400 leading-relaxed">{c.d}</p>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* ── How we engage ── */}
+      <section className="mb-32 md:mb-40">
+        <Reveal>
+          <span className="text-xs font-display uppercase tracking-widest text-[#D4FF00] mb-4 block">
+            {pl ? "Jak współpracujemy" : "How we engage"}
+          </span>
+          <p className="text-lg md:text-xl text-neutral-400 leading-relaxed max-w-2xl mb-12">
+            {pl
+              ? "Trzy kształty współpracy. Bez cennika — każdy zaczyna się od briefu i wyceny dopasowanej do zakresu."
+              : "Three shapes. No rate card — each one starts from a brief, scoped and priced to fit."}
+          </p>
+        </Reveal>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10 border border-white/10">
+          {engage.map((m, i) => {
+            const c = pl ? m.pl : m.en;
+            return (
+              <Reveal key={i} delay={0.1 + i * 0.08} width="100%">
+                <div className="bg-[#0A0A0A] p-8 md:p-10 h-full hover:bg-[#151515] transition-colors duration-500 group">
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-4 group-hover:text-[#D4FF00] transition-colors">{c.t}</h3>
                   <p className="text-base text-neutral-400 leading-relaxed">{c.d}</p>
                 </div>
               </Reveal>
