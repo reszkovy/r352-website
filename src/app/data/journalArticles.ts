@@ -8,10 +8,10 @@ import journal8Cover from "../../imports/journal-8-cover.webp"; // bold typograp
 // Caterelo article cover — reuse the case study cover (lime sun on Southern Europe map)
 import journal9Cover from "../../imports/caterelo/caterelo-cover.webp";
 // Article 10 cover — branded OG card (r352 branding + article title), replaces the reused Caterelo art
-import journal10Cover from "../../assets/journal-10-cover.png";
+import journal10Cover from "../../assets/journal-10-cover.webp";
 // Article 11 cover — glass codex (transparent book) crossing diagonal lime stripe.
 // Matches the LinkedIn carousel hero asset for "Brand knowledge hub" launch (June 2026).
-import journal11Cover from "../../assets/journal-11-cover.png";
+import journal11Cover from "../../assets/journal-11-cover.webp";
 
 export interface Article {
   id: number;

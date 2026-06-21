@@ -168,13 +168,26 @@ export function AgencyHeader() {
           ? "text-black py-4 md:py-6" 
           : cn("text-white transition-all duration-700", isScrolled ? "py-4 md:py-6" : "mix-blend-difference py-6 md:py-8")
       )}>
-        {/* Dark Mode Version — soft black gradient scrim (client direction
-            2026-06-10): no rigid bar — a shadow fading 80% → 0% opacity,
-            extended past the header so the falloff reads soft. Brand easing. */}
+        {/* Dark Mode Version — soft scrim, no rigid bar (client direction 2026-06-10).
+            QA fix 2026-06-21: the single blur-free gradient let high-contrast content
+            from pinned/light sections (e.g. "Every project starts with a brief", the
+            r3loop phase captions) bleed THROUGH the soft falloff and collide with the
+            nav. Mirroring the light-mode approach now — two layers, still no hard line:
+            1) bar — confined to header height with backdrop-blur, pushing whatever sits
+               directly behind the nav out of focus so it can never read as a collision;
+            2) tail — blur-free gradient falloff below the bar for the soft edge. */}
         <div
           className={cn(
-            "absolute inset-x-0 top-0 h-[210%] -z-10 pointer-events-none",
-            "bg-gradient-to-b from-black/80 via-black/35 to-transparent",
+            "absolute inset-x-0 top-0 h-full -z-10 pointer-events-none",
+            "backdrop-blur-md bg-gradient-to-b from-black/90 via-black/70 to-black/40",
+            "transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
+            isScrolled && theme === 'dark' && !isLimeTheme ? "opacity-100" : "opacity-0"
+          )}
+        />
+        <div
+          className={cn(
+            "absolute inset-x-0 top-full h-[120%] -z-10 pointer-events-none",
+            "bg-gradient-to-b from-black/40 to-transparent",
             "transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
             isScrolled && theme === 'dark' && !isLimeTheme ? "opacity-100" : "opacity-0"
           )}

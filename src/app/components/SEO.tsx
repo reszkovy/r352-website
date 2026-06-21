@@ -10,7 +10,7 @@ interface SEOProps {
 }
 
 export function SEO({
-  title = "r352 — Move fast, steady cadence.",
+  title = "r352 — Strategic design partner for growing brands.",
   description = "Design, systems & AI — strategic design partner for multi-location organizations. Loop architecture for design ops, from strategy to rollout-ready delivery, powered by the r3loop methodology. Predictable quality and speed at scale.",
   path = "/",
   ogImage = "https://www.r352.com/og-image.png",

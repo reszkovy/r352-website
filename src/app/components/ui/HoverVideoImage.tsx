@@ -124,7 +124,12 @@ export function HoverVideoImage({
 
       {/* Hover/in-view video — desktop fades on hover, mobile fades on viewport intersection.
           Mounted on BOTH desktop and mobile when videoSrc present (was desktop-only before).
-          Performance: mobile uses "metadata" preload to save data costs vs desktop "auto". */}
+          Performance (QA 2026-06-21): preload="metadata" everywhere. Was "auto" on desktop,
+          which eagerly downloaded the FULL clip of every Work card before any hover — on /work
+          that's tens of MB (clips run 4–21 MB each) fetched up front for content most visitors
+          never hover. "metadata" fetches only dimensions/duration; the full file streams on
+          first hover, and the 400ms opacity crossfade masks the brief buffer. Mobile already
+          used "metadata". Big initial-payload cut, no perceptible UX change. */}
       {videoSrc && (
         <video
           ref={videoRef}
@@ -132,7 +137,7 @@ export function HoverVideoImage({
           muted
           loop
           playsInline
-          preload={isTouchDevice ? "metadata" : "auto"}
+          preload="metadata"
           className={`absolute inset-0 ${className}`}
           style={{
             opacity: isActive ? 1 : 0,

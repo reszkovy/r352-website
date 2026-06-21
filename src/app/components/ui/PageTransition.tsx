@@ -23,7 +23,10 @@ interface PageTransitionProps {
 // triggers the sound. .catch() swallows the autoplay-policy rejection.
 let transitionAudio: HTMLAudioElement | null = null;
 if (typeof window !== "undefined") {
-  transitionAudio = new Audio("/sounds/transition-ltr.wav");
+  // MP3 (48KB VBR) replaces the original 928KB WAV — eagerly preloaded on first
+  // paint, so the lossless PCM was a heavy, pointless cost for a 5s whoosh played
+  // at volume 0.4. Perceptually identical, 95% smaller. (QA 2026-06-21)
+  transitionAudio = new Audio("/sounds/transition-ltr.mp3");
   transitionAudio.volume = 0.4;
   transitionAudio.preload = "auto";
 }

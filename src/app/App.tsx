@@ -281,7 +281,7 @@ function AppContent() {
       description: "Start your project with a structured brief: 8 sections, ~26 questions, about 10 minutes. First response with engagement model and scope within 48 hours."
     };
     return {
-      title: "r352 — Move fast, steady cadence.",
+      title: "r352 — Strategic design partner for growing brands.",
       description: "Strategic design partner for multi-location organizations. From strategy to rollout-ready delivery, powered by the r3loop methodology — predictable quality and speed at scale.",
       ogImage: "https://www.r352.com/og/home.png"
     };
