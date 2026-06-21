@@ -47,6 +47,10 @@ export function Footer() {
     { label: t("footer.link_industries"), href: "/industries" },
     { label: t("footer.link_deliverables"), href: "/deliverables" },
     { label: t("footer.link_glossary"), href: "/glossary" },
+    // For Agencies — white-label / project-consultant track. Footer-only entry by
+    // design (kept out of top-nav so it doesn't compete with the primary
+    // brand-direct narrative). Surfaced contextually from /services too.
+    { label: t("footer.link_agencies"), href: "/for-agencies" },
   ];
 
   // Channel focus — LinkedIn + email only. Instagram/YouTube removed (dormant

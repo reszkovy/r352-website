@@ -70,6 +70,7 @@ const ROUTES = [
   "/journal",
   "/contact",
   "/brief",
+  "/for-agencies",
   "/philosophy",
   "/deliverables",
   "/faq",

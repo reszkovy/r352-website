@@ -41,6 +41,7 @@ const Cookies = lazy(() => import("@/app/pages/Cookies").then(m => ({ default: m
 const Industries = lazy(() => import("@/app/pages/Industries").then(m => ({ default: m.Industries })));
 const IndustryDetail = lazy(() => import("@/app/pages/IndustryDetail").then(m => ({ default: m.IndustryDetail })));
 const Brief = lazy(() => import("@/app/pages/Diagnostic").then(m => ({ default: m.Brief })));
+const ForAgencies = lazy(() => import("@/app/pages/ForAgencies").then(m => ({ default: m.ForAgencies })));
 import { useLenis } from "lenis/react";
 
 function ScrollToTop() {
@@ -280,6 +281,10 @@ function AppContent() {
       title: "Brief — r352 | Structured project intake",
       description: "Start your project with a structured brief: 8 sections, ~26 questions, about 10 minutes. First response with engagement model and scope within 48 hours."
     };
+    if (path === "/for-agencies") return {
+      title: "For Agencies — r352 | White-label, end-to-end consulting",
+      description: "A white-label, end-to-end consultant for agencies. Strategy, creative and execution in one place — we embed on your client as one integrated team, under your name. You lead the relationship and keep the credit; we do what we do best."
+    };
     return {
       title: "r352 — Strategic design partner for growing brands.",
       description: "Strategic design partner for multi-location organizations. From strategy to rollout-ready delivery, powered by the r3loop methodology — predictable quality and speed at scale.",
@@ -342,6 +347,7 @@ function AppContent() {
               <Route path="/industries" component={Industries} />
               <Route path="/industries/:slug" component={IndustryDetail} />
               <Route path="/brief" component={Brief} />
+              <Route path="/for-agencies" component={ForAgencies} />
               <Route path="/deliverables" component={Deliverables} />
               <Route path="/journal" component={Journal} />
               <Route path="/journal/:id" component={JournalArticle} />

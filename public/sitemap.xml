@@ -56,6 +56,13 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://www.r352.com/for-agencies</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- ─── Industry landing pages (segment-specific lead gen) ─── -->
   <url>
     <loc>https://www.r352.com/industries</loc>

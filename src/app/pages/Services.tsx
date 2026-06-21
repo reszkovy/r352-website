@@ -559,6 +559,35 @@ export function Services() {
         </Reveal>
       </section>
 
+      {/* For agencies — contextual cross-link to the white-label track. Discreet
+          band (not a top-nav item) so it reaches agency buyers without competing
+          with the brand-direct narrative above. */}
+      <section className="mt-32 relative z-50 pointer-events-auto">
+        <Reveal>
+          <Link
+            href="/for-agencies"
+            className="group block border border-neutral-200 dark:border-white/10 hover:border-[#D4FF00] dark:hover:border-[#D4FF00] transition-colors duration-300 p-8 md:p-12"
+          >
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+              <div>
+                <span className="text-xs font-display uppercase tracking-widest text-[#D4FF00] mb-3 block">
+                  {language === 'pl' ? "Dla agencji" : "For agencies"}
+                </span>
+                <p className="text-2xl md:text-3xl font-bold tracking-tight text-black dark:text-white leading-snug max-w-2xl">
+                  {language === 'pl'
+                    ? "Jesteś agencją? Dostarczamy pod Twoją marką."
+                    : "Run an agency? We run delivery under your name."}
+                </p>
+              </div>
+              <span className="inline-flex items-center gap-3 font-display uppercase tracking-widest text-sm text-black dark:text-white group-hover:text-[#D4FF00] transition-colors duration-300 shrink-0">
+                White-label
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.5} />
+              </span>
+            </div>
+          </Link>
+        </Reveal>
+      </section>
+
       {/* CTA */}
       <section className="mt-32 border-t border-neutral-200 dark:border-white/10 pt-24 pb-32 relative z-50 pointer-events-auto">
         <Reveal>
