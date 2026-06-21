@@ -1,2 +1,2 @@
-// Sanity CMS disabled — this file is intentionally empty
+// Sanity CMS disabled - this file is intentionally empty
 export {}

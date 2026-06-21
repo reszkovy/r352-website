@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 /**
  * Returns true when user has "Reduce motion" enabled in OS settings.
- * Singleton-friendly — same query result across all components.
+ * Singleton-friendly - same query result across all components.
  * SSR-safe (returns false during prerender).
  */
 export function useReducedMotion(): boolean {

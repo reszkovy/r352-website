@@ -9,7 +9,7 @@ import { MagneticButton } from "@/app/components/ui/MagneticButton";
 export function SelectedWork() {
   const { t, language } = useLanguage();
   const [, setLocation] = useLocation();
-  // Explicit IDs — full control over which 3 cases appear on Home (rest visible on /work only)
+  // Explicit IDs - full control over which 3 cases appear on Home (rest visible on /work only)
   const HOMEPAGE_PROJECT_IDS = ["benefit-systems", "sonova", "dawid-podsiadlo"];
   const selectedProjects = HOMEPAGE_PROJECT_IDS
     .map((id) => projects.find((p) => p.id === id))
@@ -18,7 +18,7 @@ export function SelectedWork() {
   return (
     <section className="py-32 bg-transparent relative z-10">
       <div className="max-w-[1800px] mx-auto px-8 md:px-12">
-        {/* Header — 12-col 9+3 (title left dominant, view-all right) */}
+        {/* Header - 12-col 9+3 (title left dominant, view-all right) */}
         <div className="grid grid-cols-12 gap-6 md:gap-8 items-end mb-16">
            <Reveal className="col-span-12 md:col-span-9">
              <div>
@@ -30,7 +30,7 @@ export function SelectedWork() {
            </Reveal>
            <Reveal delay={0.2} className="col-span-12 md:col-span-3 md:justify-self-end">
              <div className="md:text-right">
-               {/* SECONDARY MagneticButton — frosted dark style matching ATF hero "Book a call".
+               {/* SECONDARY MagneticButton - frosted dark style matching ATF hero "Book a call".
                    Kills the lime border/frame. Same pattern recurs across the site as the
                    secondary action tier (primary = lime fill, tertiary = text link with arrow). */}
                <MagneticButton
@@ -45,13 +45,13 @@ export function SelectedWork() {
            </Reveal>
         </div>
 
-        {/* Project cards — 12-col 6+6, third project full-width col-12 */}
+        {/* Project cards - 12-col 6+6, third project full-width col-12 */}
         <div className="grid grid-cols-12 gap-6 md:gap-8">
           {selectedProjects.map((project, index) => (
             <Reveal key={project.id} delay={0.3 + (index * 0.1)} className={index === 2 ? "col-span-12" : "col-span-12 md:col-span-6"}>
               <Link href={`/work/${project.id}`} className="block group cursor-pointer relative">
                    <div className="aspect-[16/9] w-full bg-[#111] relative overflow-hidden transition-all duration-[1.5s]">
-                     {/* Scale layer — wraps image AND hover-video so both zoom together.
+                     {/* Scale layer - wraps image AND hover-video so both zoom together.
                          1 → 1.04 on hover, site easing. motion-safe only (reduced-motion
                          users get the static frame). */}
                      <div className="absolute inset-0 motion-safe:group-hover:scale-[1.04] transition-transform duration-[1.2s] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform">
@@ -64,7 +64,7 @@ export function SelectedWork() {
                      </div>
                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-1000 z-10 pointer-events-none" />
 
-                     {/* Lime index — 01 / 02 / 03. Slides in from the left on hover-capable
+                     {/* Lime index - 01 / 02 / 03. Slides in from the left on hover-capable
                          devices; always visible on touch (no hover dependency). */}
                      <span
                        aria-hidden="true"
@@ -75,7 +75,7 @@ export function SelectedWork() {
                      
                      <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-12 z-20 pointer-events-none overflow-hidden">
                         <div className="translate-y-8 group-hover:translate-y-0 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]">
-                          {/* Title — color shift + letter-spacing micro-expand on hover */}
+                          {/* Title - color shift + letter-spacing micro-expand on hover */}
                           <h3 className="type-h3 mb-1 text-white group-hover:text-[#D4FF00] tracking-normal motion-safe:group-hover:tracking-[0.02em] transition-[color,letter-spacing] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]">{project.client}</h3>
                           
                           <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]">

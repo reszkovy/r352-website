@@ -3,7 +3,7 @@ import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { ImageHover } from "@/app/components/ui/ImageHover";
 import { useLanguage } from "@/app/context/LanguageContext";
 
-// Converted from 0_2.jpeg (320 KB) → webp (105 KB) via sharp — was the only jpeg in the bundle.
+// Converted from 0_2.jpeg (320 KB) → webp (105 KB) via sharp - was the only jpeg in the bundle.
 import imgGreen from "../../../imports/0_2-green.webp";
 import imgGray from "../../../imports/0_3.webp";
 import imgBlack from "../../../imports/0_2.webp";
@@ -14,7 +14,7 @@ export function HomePrinciples() {
   const principles = [
     {
       title: language === 'pl' ? "Systemy ponad jednorazowe akcje." : "Systems over one-offs.",
-      description: language === 'pl' ? "Nie projektujemy rzeczy — projektujemy sposób ich projektowania. Standardy, szablony, QA. Kiedy je wdrożymy, Twój zespół poradzi sobie bez nas." : "We don't design things — we design how things get designed. Standards, templates, QA. Once built, your team runs it without us.",
+      description: language === 'pl' ? "Nie projektujemy rzeczy - projektujemy sposób ich projektowania. Standardy, szablony, QA. Kiedy je wdrożymy, Twój zespół poradzi sobie bez nas." : "We don't design things - we design how things get designed. Standards, templates, QA. Once built, your team runs it without us.",
       image: imgBlack
     },
     {
@@ -32,7 +32,7 @@ export function HomePrinciples() {
   return (
     <section className="py-24 md:py-32 bg-background text-white border-t border-white/10">
       <div className="max-w-[1800px] mx-auto px-8 md:px-12">
-        {/* 3 cards — 12-col 4+4+4 */}
+        {/* 3 cards - 12-col 4+4+4 */}
         <div className="grid grid-cols-12 gap-6 md:gap-8">
           {principles.map((item, i) => (
             <Reveal key={i} delay={i * 0.1} className="col-span-12 md:col-span-4">

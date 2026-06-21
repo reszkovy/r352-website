@@ -6,14 +6,14 @@ import { ArrowRight } from "lucide-react";
 import { ScrollSequence } from "@/app/components/ui/ScrollSequence";
 
 /**
- * ForAgencies — the white-label / project-consultant track.
+ * ForAgencies - the white-label / project-consultant track.
  *
- * Audience: agency owners, creative directors, heads of delivery — NOT the
- * end brand. Positioning: end-to-end consulting — r352 is the integrated
+ * Audience: agency owners, creative directors, heads of delivery - NOT the
+ * end brand. Positioning: end-to-end consulting - r352 is the integrated
  * strategy + creative + execution team an agency embeds on a client, white-
  * labeled. The agency delegates client-leading and account ownership; r352 does
  * what it does best (think + make + ship as one accountable unit). NOT overflow
- * hands-for-hire, and deliberately NO r3loop framing here — this track is sold
+ * hands-for-hire, and deliberately NO r3loop framing here - this track is sold
  * as senior end-to-end consulting, not the productized methodology.
  *
  * Footer-only entry by design (kept out of top-nav so it doesn't compete with
@@ -23,7 +23,7 @@ export function ForAgencies() {
   const { language } = useLanguage();
   const pl = language === "pl";
 
-  // ── How it works — four steps, agency keeps the front, r352 runs the system ──
+  // ── How it works - four steps, agency keeps the front, r352 runs the system ──
   const steps = [
     {
       id: "01",
@@ -32,29 +32,29 @@ export function ForAgencies() {
     },
     {
       id: "02",
-      en: { t: "We embed as one team", d: "Strategy, creative direction and execution — one integrated unit on your account. No briefing three vendors, no stitching the work together. One partner, accountable end to end." },
-      pl: { t: "Wchodzimy jako jeden zespół", d: "Strategia, kierunek kreatywny i egzekucja — jeden zintegrowany zespół na Twoim koncie. Bez briefowania trzech wykonawców, bez zszywania efektów. Jeden partner, odpowiedzialny end to end." },
+      en: { t: "We embed as one team", d: "Strategy, creative direction and execution - one integrated unit on your account. No briefing three vendors, no stitching the work together. One partner, accountable end to end." },
+      pl: { t: "Wchodzimy jako jeden zespół", d: "Strategia, kierunek kreatywny i egzekucja - jeden zintegrowany zespół na Twoim koncie. Bez briefowania trzech wykonawców, bez zszywania efektów. Jeden partner, odpowiedzialny end to end." },
     },
     {
       id: "03",
       en: { t: "We deliver, white-labeled", d: "Senior craft and AI-elevated production ship under your name. We stay invisible to the client unless you want us in the room." },
-      pl: { t: "Dowozimy, white-label", d: "Senioralny warsztat i produkcja wzmocniona AI wychodzą pod Twoją marką. Dla klienta jesteśmy niewidzialni — chyba że chcesz nas przy stole." },
+      pl: { t: "Dowozimy, white-label", d: "Senioralny warsztat i produkcja wzmocniona AI wychodzą pod Twoją marką. Dla klienta jesteśmy niewidzialni - chyba że chcesz nas przy stole." },
     },
     {
       id: "04",
-      en: { t: "You keep the credit", d: "The work, the case study, the renewal — yours. We measure ourselves on time-to-ship and approval cycles, not on logo placement." },
-      pl: { t: "Zatrzymujesz zasługi", d: "Praca, case study, odnowienie — Twoje. Mierzymy się czasem dostawy i liczbą rund akceptacji, nie miejscem na logo." },
+      en: { t: "You keep the credit", d: "The work, the case study, the renewal - yours. We measure ourselves on time-to-ship and approval cycles, not on logo placement." },
+      pl: { t: "Zatrzymujesz zasługi", d: "Praca, case study, odnowienie - Twoje. Mierzymy się czasem dostawy i liczbą rund akceptacji, nie miejscem na logo." },
     },
   ];
 
-  // ── Clear split of ownership — removes the "are they replacing us?" fear ──
+  // ── Clear split of ownership - removes the "are they replacing us?" fear ──
   const weHandle = pl
-    ? ["Strategię i kierunek kreatywny", "Senioralny design i produkcję", "Egzekucję end-to-end — jeden zespół", "Produkcję wzmocnioną AI", "Jakość i przewidywalny rytm dostaw"]
-    : ["Strategy & creative direction", "Senior design & production craft", "End-to-end execution — one team", "AI-elevated production", "Quality & a predictable shipping cadence"];
+    ? ["Strategię i kierunek kreatywny", "Senioralny design i produkcję", "Egzekucję end-to-end - jeden zespół", "Produkcję wzmocnioną AI", "Jakość i przewidywalny rytm dostaw"]
+    : ["Strategy & creative direction", "Senior design & production craft", "End-to-end execution - one team", "AI-elevated production", "Quality & a predictable shipping cadence"];
 
   const youKeep = pl
-    ? ["Prowadzenie klienta i relację", "Markę na deckach i w komunikacji", "Pitch i relację handlową", "Case study i odnowienia", "Marżę — bez etatów na pokładzie"]
-    : ["The client lead & relationship", "Your brand on decks & comms", "The pitch & commercial relationship", "The case study & renewals", "Your margin — without adding headcount"];
+    ? ["Prowadzenie klienta i relację", "Markę na deckach i w komunikacji", "Pitch i relację handlową", "Case study i odnowienia", "Marżę - bez etatów na pokładzie"]
+    : ["The client lead & relationship", "Your brand on decks & comms", "The pitch & commercial relationship", "The case study & renewals", "Your margin - without adding headcount"];
 
   // ── Who it's for ──
   const fits = [
@@ -63,54 +63,54 @@ export function ForAgencies() {
       pl: { t: "Agencje wygrywające ponad swoją moc", d: "Domykasz projekty, których obecny zespół nie dowiezie na sprzedanym poziomie. Wepnij senioralny zespół, nie freelancerów." },
     },
     {
-      en: { t: "Agencies strong on ideas, stretched on delivery", d: "Great creative, chaotic execution — revision loops, unclear ownership, slipping deadlines. We take the work from concept to shipped." },
-      pl: { t: "Agencje mocne w pomysłach, słabsze w realizacji", d: "Świetna kreacja, chaotyczna egzekucja — pętle poprawek, niejasna odpowiedzialność, ślizgające się terminy. Bierzemy pracę od koncepcji po dowiezienie." },
+      en: { t: "Agencies strong on ideas, stretched on delivery", d: "Great creative, chaotic execution - revision loops, unclear ownership, slipping deadlines. We take the work from concept to shipped." },
+      pl: { t: "Agencje mocne w pomysłach, słabsze w realizacji", d: "Świetna kreacja, chaotyczna egzekucja - pętle poprawek, niejasna odpowiedzialność, ślizgające się terminy. Bierzemy pracę od koncepcji po dowiezienie." },
     },
     {
-      en: { t: "Agencies that need strategy through execution", d: "You want one senior partner who can think it, design it and ship it — not a chain of freelancers you have to direct and stitch together." },
-      pl: { t: "Agencje, które potrzebują strategii i egzekucji naraz", d: "Chcesz jednego senioralnego partnera, który to wymyśli, zaprojektuje i dowiezie — zamiast łańcucha freelancerów do kierowania i zszywania." },
+      en: { t: "Agencies that need strategy through execution", d: "You want one senior partner who can think it, design it and ship it - not a chain of freelancers you have to direct and stitch together." },
+      pl: { t: "Agencje, które potrzebują strategii i egzekucji naraz", d: "Chcesz jednego senioralnego partnera, który to wymyśli, zaprojektuje i dowiezie - zamiast łańcucha freelancerów do kierowania i zszywania." },
     },
   ];
 
-  // ── How we engage — three shapes, all priced from a brief (premium, no rate card) ──
+  // ── How we engage - three shapes, all priced from a brief (premium, no rate card) ──
   const engage = [
     {
-      en: { t: "Per project", d: "One won pitch, one defined scope — start to shipped. The cleanest way to try the partnership." },
-      pl: { t: "Per projekt", d: "Jeden wygrany pitch, jeden zdefiniowany zakres — od startu po dowiezienie. Najczystszy sposób, by przetestować współpracę." },
+      en: { t: "Per project", d: "One won pitch, one defined scope - start to shipped. The cleanest way to try the partnership." },
+      pl: { t: "Per projekt", d: "Jeden wygrany pitch, jeden zdefiniowany zakres - od startu po dowiezienie. Najczystszy sposób, by przetestować współpracę." },
     },
     {
       en: { t: "Retained capacity", d: "A standing senior team on call across your accounts, monthly. Predictable cost, no hiring, no idle bench." },
       pl: { t: "Retainer", d: "Stały senioralny zespół na zawołanie na Twoich klientach, miesięcznie. Przewidywalny koszt, bez rekrutacji, bez przestoju." },
     },
     {
-      en: { t: "Embedded for a launch", d: "We sit inside your team for a campaign or launch window — strategy through execution, end to end, then hand back." },
-      pl: { t: "Embedded na launch", d: "Wchodzimy do Twojego zespołu na okno kampanii lub launchu — strategia po egzekucję, end to end, potem oddajemy ster." },
+      en: { t: "Embedded for a launch", d: "We sit inside your team for a campaign or launch window - strategy through execution, end to end, then hand back." },
+      pl: { t: "Embedded na launch", d: "Wchodzimy do Twojego zespołu na okno kampanii lub launchu - strategia po egzekucję, end to end, potem oddajemy ster." },
     },
   ];
 
-  // ── The retainer — fixed monthly capacity, deliberately non-invasive process ──
+  // ── The retainer - fixed monthly capacity, deliberately non-invasive process ──
   const retainerSteps = [
     {
-      en: { t: "One way in", d: "A single point of contact, in the tools you already use — Slack, Notion, email. Nothing new for your team to learn." },
-      pl: { t: "Jedno wejście", d: "Jeden punkt kontaktu, w narzędziach, których już używasz — Slack, Notion, mail. Twój zespół nie uczy się niczego nowego." },
+      en: { t: "One way in", d: "A single point of contact, in the tools you already use - Slack, Notion, email. Nothing new for your team to learn." },
+      pl: { t: "Jedno wejście", d: "Jeden punkt kontaktu, w narzędziach, których już używasz - Slack, Notion, mail. Twój zespół nie uczy się niczego nowego." },
     },
     {
-      en: { t: "Fixed monthly scope", d: "A set capacity each month at a flat fee. Predictable cost, predictable output — no surprise invoices, no re-scoping every task." },
-      pl: { t: "Stały miesięczny zakres", d: "Ustalona moc co miesiąc w stałej stawce. Przewidywalny koszt i output — bez niespodzianek na fakturze, bez wyceniania każdego zadania." },
+      en: { t: "Fixed monthly scope", d: "A set capacity each month at a flat fee. Predictable cost, predictable output - no surprise invoices, no re-scoping every task." },
+      pl: { t: "Stały miesięczny zakres", d: "Ustalona moc co miesiąc w stałej stawce. Przewidywalny koszt i output - bez niespodzianek na fakturze, bez wyceniania każdego zadania." },
     },
     {
-      en: { t: "Your rhythm, not ours", d: "We slot into your cadence, briefs and approvals. We adapt to how your team works — we don't make you adopt our process." },
-      pl: { t: "Twój rytm, nie nasz", d: "Wchodzimy w Twój rytm, briefy i akceptacje. To my dopasowujemy się do Twojego zespołu — nie odwrotnie." },
+      en: { t: "Your rhythm, not ours", d: "We slot into your cadence, briefs and approvals. We adapt to how your team works - we don't make you adopt our process." },
+      pl: { t: "Twój rytm, nie nasz", d: "Wchodzimy w Twój rytm, briefy i akceptacje. To my dopasowujemy się do Twojego zespołu - nie odwrotnie." },
     },
     {
-      en: { t: "Quiet by default", d: "Async-first, light reporting. We surface only what needs a decision — no standing meetings, no overhead added to your week." },
-      pl: { t: "Cicho z domysłu", d: "Async-first, lekki reporting. Pokazujemy tylko to, co wymaga decyzji — bez stałych spotkań, bez dociążania Twojego tygodnia." },
+      en: { t: "Quiet by default", d: "Async-first, light reporting. We surface only what needs a decision - no standing meetings, no overhead added to your week." },
+      pl: { t: "Cicho z domysłu", d: "Async-first, lekki reporting. Pokazujemy tylko to, co wymaga decyzji - bez stałych spotkań, bez dociążania Twojego tygodnia." },
     },
   ];
 
   return (
     <PageTransition className="min-h-screen pb-24">
-      {/* ── Hero — full-bleed scroll-scrubbed glass-hands sequence (philosophy-style).
+      {/* ── Hero - full-bleed scroll-scrubbed glass-hands sequence (philosophy-style).
           The handoff metaphor, now in motion: scrubbing the scroll plays the hands
           presenting the finished crystal. Copy is overlaid and fades out as you
           scroll; object-contain keeps the portrait uncropped and the black source
@@ -127,7 +127,7 @@ export function ForAgencies() {
         canvasClassName="absolute inset-0 w-full h-full object-contain object-top md:object-right mix-blend-screen md:scale-[1.3] md:origin-right"
         overlayClassName="flex items-end md:items-center px-6 md:px-12 pb-20 md:pb-0"
       >
-        {/* Mobile-only bottom scrim — hands sit top (object-top), copy sits
+        {/* Mobile-only bottom scrim - hands sit top (object-top), copy sits
             bottom; this gradient keeps the copy legible over the glow. */}
         <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent md:hidden pointer-events-none" />
         <div className="max-w-[1600px] mx-auto w-full relative">
@@ -144,8 +144,8 @@ export function ForAgencies() {
             </h1>
             <p className="text-base md:text-xl text-neutral-200 leading-relaxed mb-8 max-w-lg dark:drop-shadow-[0_2px_12px_rgba(0,0,0,0.65)]">
               {pl
-                ? "White-label, end-to-end konsultant dla agencji. Strategia, kreacja i egzekucja w jednym miejscu — pod Twoją marką. Ty prowadzisz relację, my robimy to, co umiemy najlepiej."
-                : "A white-label, end-to-end consultant for agencies. Strategy, creative and execution in one place — under your name. You lead the relationship, we do what we do best."}
+                ? "White-label, end-to-end konsultant dla agencji. Strategia, kreacja i egzekucja w jednym miejscu - pod Twoją marką. Ty prowadzisz relację, my robimy to, co umiemy najlepiej."
+                : "A white-label, end-to-end consultant for agencies. Strategy, creative and execution in one place - under your name. You lead the relationship, we do what we do best."}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pointer-events-auto">
               <Link
@@ -171,30 +171,30 @@ export function ForAgencies() {
       {/* Contained content below the full-bleed scroll hero.
           -mt-[100vh] pulls it up behind the fixed canvas portal (which paints on
           top) so it's already risen, hidden behind the opaque last frame, when
-          the fade-exit begins — then it's revealed through the fading hands as
+          the fade-exit begins - then it's revealed through the fading hands as
           they cross-fade out. relative + z-0 keeps a clean stacking context. */}
       <div className="relative z-0 -mt-[80vh] px-6 md:px-12 max-w-[1600px] mx-auto pt-24 md:pt-32">
 
-      {/* ── Proof line — quiet credibility band. CONFIRM/ADJUST WORDING with the
+      {/* ── Proof line - quiet credibility band. CONFIRM/ADJUST WORDING with the
             client before relying on it publicly (currently a true but unnamed claim). ── */}
       <Reveal>
         <div className="mb-32 md:mb-40 border-l-2 border-[#D4FF00] pl-6 md:pl-8">
           <p className="text-lg md:text-2xl text-neutral-300 leading-relaxed max-w-3xl">
             {pl
-              ? "Już to robimy — embedded w jednej z większych polskich agencji, na żywej pracy klienckiej."
-              : "We already run this — embedded with one of Poland's larger agencies, on live client work."}
+              ? "Już to robimy - embedded w jednej z większych polskich agencji, na żywej pracy klienckiej."
+              : "We already run this - embedded with one of Poland's larger agencies, on live client work."}
           </p>
-          {/* NDA note — turns the unnamed claim into a feature: discretion IS the
+          {/* NDA note - turns the unnamed claim into a feature: discretion IS the
               white-label product. Also why this page shows no logos/case detail. */}
           <p className="text-sm md:text-base text-neutral-500 leading-relaxed max-w-2xl mt-4">
             {pl
-              ? "Bez nazw, bez szczegółów — każda współpraca działa pod NDA. Ta dyskrecja to część usługi: white-label znaczy, że Twój klient nigdy nas nie widzi, a Twoja przewaga zostaje Twoja."
-              : "No names, no details — every engagement runs under NDA. The discretion is the product: white-label means your client never sees us, and your edge stays yours."}
+              ? "Bez nazw, bez szczegółów - każda współpraca działa pod NDA. Ta dyskrecja to część usługi: white-label znaczy, że Twój klient nigdy nas nie widzi, a Twoja przewaga zostaje Twoja."
+              : "No names, no details - every engagement runs under NDA. The discretion is the product: white-label means your client never sees us, and your edge stays yours."}
           </p>
         </div>
       </Reveal>
 
-      {/* ── The tension — eyebrow spans the full width above the grid so the
+      {/* ── The tension - eyebrow spans the full width above the grid so the
           headline (left) and paragraph (right) top-align cleanly. The paragraph
           gets a small lg top nudge so its first line sits on the headline's
           first line instead of floating above it. ── */}
@@ -218,8 +218,8 @@ export function ForAgencies() {
             <Reveal delay={0.15}>
               <p className="text-lg md:text-xl text-neutral-400 leading-relaxed max-w-2xl lg:pt-2">
                 {pl
-                  ? "Pitch zamknięty, klient na pokładzie — a potem trzy rundy poprawek, niejasna odpowiedzialność i rwany rytm zjadają marżę i reputację. Nie potrzebujesz kolejnych rąk. Potrzebujesz systemu, który dowozi przewidywalnie — i specjalisty, który nim steruje."
-                  : "Pitch closed, client onboarded — then three revision rounds, unclear ownership, and a broken cadence eat the margin and the reputation. You don't need more hands. You need a system that ships predictably — and a specialist who runs it."}
+                  ? "Pitch zamknięty, klient na pokładzie - a potem trzy rundy poprawek, niejasna odpowiedzialność i rwany rytm zjadają marżę i reputację. Nie potrzebujesz kolejnych rąk. Potrzebujesz systemu, który dowozi przewidywalnie - i specjalisty, który nim steruje."
+                  : "Pitch closed, client onboarded - then three revision rounds, unclear ownership, and a broken cadence eat the margin and the reputation. You don't need more hands. You need a system that ships predictably - and a specialist who runs it."}
               </p>
             </Reveal>
           </div>
@@ -267,7 +267,7 @@ export function ForAgencies() {
               <ul className="space-y-5">
                 {weHandle.map((item) => (
                   <li key={item} className="flex items-start gap-4 text-lg text-neutral-300 leading-snug">
-                    <span className="text-[#D4FF00] mt-1.5 shrink-0">—</span>
+                    <span className="text-[#D4FF00] mt-1.5 shrink-0">-</span>
                     {item}
                   </li>
                 ))}
@@ -282,7 +282,7 @@ export function ForAgencies() {
               <ul className="space-y-5">
                 {youKeep.map((item) => (
                   <li key={item} className="flex items-start gap-4 text-lg text-neutral-300 leading-snug">
-                    <span className="text-white mt-1.5 shrink-0">—</span>
+                    <span className="text-white mt-1.5 shrink-0">-</span>
                     {item}
                   </li>
                 ))}
@@ -322,8 +322,8 @@ export function ForAgencies() {
           </span>
           <p className="text-lg md:text-xl text-neutral-400 leading-relaxed max-w-2xl mb-12">
             {pl
-              ? "Trzy kształty współpracy. Bez cennika — każdy zaczyna się od briefu i wyceny dopasowanej do zakresu."
-              : "Three shapes. No rate card — each one starts from a brief, scoped and priced to fit."}
+              ? "Trzy kształty współpracy. Bez cennika - każdy zaczyna się od briefu i wyceny dopasowanej do zakresu."
+              : "Three shapes. No rate card - each one starts from a brief, scoped and priced to fit."}
           </p>
         </Reveal>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10 border border-white/10">
@@ -341,7 +341,7 @@ export function ForAgencies() {
         </div>
       </section>
 
-      {/* ── The retainer — fixed capacity, non-invasive process ── */}
+      {/* ── The retainer - fixed capacity, non-invasive process ── */}
       <section className="mb-32 md:mb-40 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
         <div className="lg:col-span-5">
           <Reveal>
@@ -353,8 +353,8 @@ export function ForAgencies() {
             </h2>
             <p className="text-lg text-neutral-400 leading-relaxed max-w-md">
               {pl
-                ? "Stały miesięczny retainer, który działa po cichu wewnątrz Twojego procesu — przewidywalny koszt, bez narzucania narzędzi, spotkań i biurokracji."
-                : "A fixed monthly retainer that runs quietly inside your existing flow — predictable cost, no imposed tools, meetings or process."}
+                ? "Stały miesięczny retainer, który działa po cichu wewnątrz Twojego procesu - przewidywalny koszt, bez narzucania narzędzi, spotkań i biurokracji."
+                : "A fixed monthly retainer that runs quietly inside your existing flow - predictable cost, no imposed tools, meetings or process."}
             </p>
           </Reveal>
         </div>

@@ -3,21 +3,21 @@ import { motion, AnimatePresence } from "motion/react";
 import { R352Symbol } from "@/app/components/agency/R352Logo";
 
 /**
- * Entry preloader — black screen, r352 mark + tabular counter 0→100,
+ * Entry preloader - black screen, r352 mark + tabular counter 0→100,
  * two-stage curtain exit (lime sliver sweep leads, black lifts behind it).
  *
  * Pure overlay: page content mounts immediately underneath (SEO/LCP safe).
  * Total runtime ≤2.2s. Plays ONCE per browser session.
  *
  * Hard skip conditions (renders nothing, zero side effects):
- *   - navigator.webdriver (Puppeteer prerender — never delays __PRERENDER_READY__)
+ *   - navigator.webdriver (Puppeteer prerender - never delays __PRERENDER_READY__)
  *   - prefers-reduced-motion
  *   - sessionStorage flag already set (subsequent in-session loads)
  */
 
 const SESSION_KEY = "r352-preloader-played";
 
-// Counter timing (ms) — fast start, hold at ~90, snap to 100.
+// Counter timing (ms) - fast start, hold at ~90, snap to 100.
 const RISE_MS = 950; // 0 → 90, easeOutQuart (fast start, decelerating)
 const HOLD_UNTIL_MS = 1200; // hold at 90
 const EXIT_AT_MS = 1280; // snap to 100, then begin curtain exit
@@ -38,7 +38,7 @@ function shouldPlay(): boolean {
 }
 
 export function Preloader() {
-  // Decided synchronously before first paint — no flash, no layout shift.
+  // Decided synchronously before first paint - no flash, no layout shift.
   const [active] = useState<boolean>(shouldPlay);
   const [exiting, setExiting] = useState(false);
   const [done, setDone] = useState(false);
@@ -48,11 +48,11 @@ export function Preloader() {
   useEffect(() => {
     if (!active) return;
 
-    // Mark played immediately — even an interrupted load counts as a play.
+    // Mark played immediately - even an interrupted load counts as a play.
     try {
       sessionStorage.setItem(SESSION_KEY, "1");
     } catch {
-      /* private mode — ignore */
+      /* private mode - ignore */
     }
 
     // Lock scroll while the curtain is down.
@@ -100,12 +100,12 @@ export function Preloader() {
           initial={{ opacity: 1 }}
           exit={{
             opacity: 0,
-            // Near-instant fade AFTER the curtain choreography (0.85s) completes —
+            // Near-instant fade AFTER the curtain choreography (0.85s) completes -
             // keeps the wrapper alive so AnimatePresence waits for all children.
             transition: { duration: 0.05, delay: 0.87 },
           }}
         >
-          {/* Stage 2 — black curtain lifts, revealing the hero */}
+          {/* Stage 2 - black curtain lifts, revealing the hero */}
           <motion.div
             className="absolute inset-0 bg-[#0A0A0A] z-[1]"
             initial={{ y: "0%" }}
@@ -115,7 +115,7 @@ export function Preloader() {
             }}
           />
 
-          {/* Stage 1 — lime sliver sweeps up through the screen first */}
+          {/* Stage 1 - lime sliver sweeps up through the screen first */}
           <motion.div
             className="absolute inset-x-0 bottom-0 h-[18vh] bg-[#D4FF00] z-[2]"
             initial={{ y: "100%" }}
@@ -125,7 +125,7 @@ export function Preloader() {
             }}
           />
 
-          {/* Branding — logo mark centered, concealed upward in sync with the black lift */}
+          {/* Branding - logo mark centered, concealed upward in sync with the black lift */}
           <motion.div
             className="absolute inset-0 z-[3] flex items-center justify-center"
             initial={{ clipPath: "inset(0 0 0 0)" }}
@@ -142,7 +142,7 @@ export function Preloader() {
             </div>
           </motion.div>
 
-          {/* Tabular counter — bottom right, snaps out with the black curtain */}
+          {/* Tabular counter - bottom right, snaps out with the black curtain */}
           <motion.div
             className="absolute bottom-6 right-8 md:bottom-10 md:right-12 z-[3]"
             initial={{ opacity: 1 }}

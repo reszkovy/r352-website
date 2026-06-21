@@ -25,7 +25,7 @@ export function AgencyHeader() {
 
   // Use Lenis scroll callback for reliable scroll tracking on desktop, and standard scroll listener for mobile.
   // Threshold 80px (was 150): content slides under the fixed header well before 150px,
-  // causing wordmark/nav collisions — the backdrop must be up before anything reaches it.
+  // causing wordmark/nav collisions - the backdrop must be up before anything reaches it.
   useLenis((lenis) => {
     setIsScrolled(lenis.scroll > 80);
   });
@@ -134,7 +134,7 @@ export function AgencyHeader() {
     };
   }, [isMenuOpen]);
 
-  // Nav hierarchy (post-Framework deletion): Work (proof) → Process (r3loop — THE
+  // Nav hierarchy (post-Framework deletion): Work (proof) → Process (r3loop - THE
   // methodology) → Philosophy (how I think) → Services (how to buy) → Journal (content).
   // Framework was deleted; r3loop now stands alone as the single methodology brand.
   const navItems = [
@@ -145,7 +145,7 @@ export function AgencyHeader() {
     { href: "/journal", label: t("nav.journal") },
   ];
 
-  // Nav contact — familiar pattern. Premium signal moved to FloatingBriefCTA (persistent, global).
+  // Nav contact - familiar pattern. Premium signal moved to FloatingBriefCTA (persistent, global).
   // /contact = hybrid landing (Brief primary + mailto secondary). /brief = wizard entry.
   const contactButton = { href: "/contact", label: t("nav.contact") };
   const scheduleButton = { href: "https://calendly.com/p-reszkovy/30min", label: t("nav.schedule") };
@@ -158,7 +158,7 @@ export function AgencyHeader() {
 
   return (
     <>
-      {/* Right-aligned "now playing" strip — slides in below the nav row
+      {/* Right-aligned "now playing" strip - slides in below the nav row
           whenever ambient music is playing. Quiet annotation, no layout shift. */}
       <NowPlayingIndicator />
       <header className={cn(
@@ -168,10 +168,10 @@ export function AgencyHeader() {
           ? "text-black py-4 md:py-6" 
           : cn("text-white transition-all duration-700", isScrolled ? "py-4 md:py-6" : "mix-blend-difference py-6 md:py-8")
       )}>
-        {/* Dark Mode Version — soft linear scrim, NO rigid bar, NO blur (client
+        {/* Dark Mode Version - soft linear scrim, NO rigid bar, NO blur (client
             direction: a shadow that fades top→transparent, never a frosted bar).
             QA 2026-06-21: a backdrop-blur layer was tried to kill nav/heading
-            collisions but its blur cutoff read as a hard "technical" bar — reverted.
+            collisions but its blur cutoff read as a hard "technical" bar - reverted.
             Back to a single blur-free gradient, but stronger (95% vs the old 80%)
             and taller (h-[260%] vs 210%) so the falloff is long and gradual: it
             darkens high-contrast content enough to keep the nav legible while
@@ -184,14 +184,14 @@ export function AgencyHeader() {
             isScrolled && theme === 'dark' && !isLimeTheme ? "opacity-100" : "opacity-0"
           )}
         />
-        {/* Light Mode Version — QA fix 2026-06-10: v1 (white/85 → 40 → transparent)
+        {/* Light Mode Version - QA fix 2026-06-10: v1 (white/85 → 40 → transparent)
             was too weak; nav lost legibility over light sections on scroll.
             Two layers now, still no rigid bar (client wants soft):
-            1) bar — confined to header height with backdrop-blur-sm (blurring
+            1) bar - confined to header height with backdrop-blur-sm (blurring
                the full 210% tail would smear page content right below the nav)
                + stronger white stops + a ~9% black shadow for gentle edge
                definition without a hard line;
-            2) tail — blur-free gradient falloff below the bar, picking up where
+            2) tail - blur-free gradient falloff below the bar, picking up where
                the bar's bottom stop (white/70) ends so the transition stays
                seamless. Same brand easing + duration as the dark scrim. */}
         <div
@@ -220,9 +220,9 @@ export function AgencyHeader() {
             <R352Symbol className="h-10 w-auto text-[#DAFF45]" color="currentColor" />
 
             {/* Text - 352 + always-visible positioning tagline.
-                Tagline reveals on logo hover was killed — positioning insight ("Strategic
+                Tagline reveals on logo hover was killed - positioning insight ("Strategic
                 Design Partner") needs to be visible by default, not hidden behind an interaction.
-                Tagline hides on scroll alongside the 352 text — only the R-mark remains. */}
+                Tagline hides on scroll alongside the 352 text - only the R-mark remains. */}
             <AnimatePresence>
               {!isScrolled && (
                 <motion.div
@@ -234,7 +234,7 @@ export function AgencyHeader() {
                 >
                   <R352Text className="h-9 w-auto text-[#DAFF45]" color="currentColor" />
 
-                  {/* Static positioning tagline — visible on lg+ screens (≥1024px)
+                  {/* Static positioning tagline - visible on lg+ screens (≥1024px)
                       where horizontal room allows. Pipe divider uses bg-current + opacity
                       instead of border-current/20 (which Tailwind compiles unreliably
                       for currentColor). This works in dark, light, and lime themes alike. */}
@@ -286,10 +286,10 @@ export function AgencyHeader() {
             </Link>
           ))}
 
-          {/* Contact button only — Schedule was removed from desktop nav.
+          {/* Contact button only - Schedule was removed from desktop nav.
               Rationale: Calendly link already exists in Hero CTA, FloatingBriefCTA (persistent
               global element), and Contact page. Three Calendly entry points was bloating
-              the header and causing nav-wrap on 1024–1280px widths. Mobile keeps Schedule
+              the header and causing nav-wrap on 1024-1280px widths. Mobile keeps Schedule
               in the spacious overlay menu. */}
           <div className="flex gap-2 ml-3">
              <Link href={contactButton.href} className="group relative px-2 py-1 overflow-hidden">
@@ -315,10 +315,10 @@ export function AgencyHeader() {
             <span className={cn(language === 'pl' && "text-[#D4FF00]")}>PL</span>
           </button>
 
-          {/* Theme Switcher — moved from floating bottom-right corner */}
+          {/* Theme Switcher - moved from floating bottom-right corner */}
           <ThemeToggle />
 
-          {/* Background music toggle — Mompou's "Música Callada I, No. 1" loops as
+          {/* Background music toggle - Mompou's "Música Callada I, No. 1" loops as
               ambient backdrop. First CTA hover anywhere on the site triggers playback
               (see useCTAHoverMusicTrigger). Replaces the previous AudioToggle (UI
               sounds / "szum") per client direction 2026-06-10. */}
@@ -456,7 +456,7 @@ export function AgencyHeader() {
                         <span className={cn(theme === 'dark' && "text-[#D4FF00]")}>DARK</span>
                       </button>
 
-                      {/* Background music toggle — same control as desktop nav */}
+                      {/* Background music toggle - same control as desktop nav */}
                       <SoundWaveWidget />
                 </motion.div>
             </motion.div>

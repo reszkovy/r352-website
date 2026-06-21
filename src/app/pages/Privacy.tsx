@@ -5,7 +5,7 @@ import { useLanguage } from "@/app/context/LanguageContext";
 /**
  * Privacy Policy page.
  *
- * IMPORTANT: Copy is DRAFT — flagged with a banner at the top of the page.
+ * IMPORTANT: Copy is DRAFT - flagged with a banner at the top of the page.
  * Needs review by Spanish/EU legal counsel before public publication.
  *
  * Jurisdiction: Spain (Mallorca) → GDPR + LOPDGDD apply.
@@ -30,7 +30,7 @@ export function Privacy() {
       <div className="min-h-screen bg-[#0A0A0A] text-white pt-32 md:pt-40 pb-24 px-6 md:px-12">
         <div className="max-w-[920px] mx-auto">
           <Reveal>
-            {/* Draft banner — remove after legal review */}
+            {/* Draft banner - remove after legal review */}
             <div className="mb-12 px-5 py-4 border border-[#D4FF00]/40 bg-[#D4FF00]/[0.04] text-[#D4FF00] text-xs md:text-sm font-display uppercase tracking-widest">
               {t('privacy.draftBanner')}
             </div>
@@ -84,7 +84,7 @@ export function Privacy() {
               <p className="mb-2">{t('privacy.footerNote')}</p>
               <p>
                 <a
-                  href="mailto:hello@r352.com?subject=r352%20—%20privacy%20question"
+                  href="mailto:hello@r352.com?subject=r352%20-%20privacy%20question"
                   className="text-neutral-300 hover:text-[#D4FF00] transition-colors duration-300"
                 >
                   hello@r352.com

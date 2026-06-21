@@ -17,7 +17,7 @@ interface Step {
   goal: { en: string; pl: string };
   cards: { label: { en: string; pl: string }; text: { en: string; pl: string } }[];
   metric: { en: string; pl: string };
-  // Explicit pass/fail gate question per step — sourced verbatim from
+  // Explicit pass/fail gate question per step - sourced verbatim from
   // r3loop-spec-v2.md "Decision gate" fields. The gate is what makes each
   // step teachable and productizable (methodology 4-checklist, test #3).
   gate: { en: string; pl: string };
@@ -29,19 +29,19 @@ const steps: Step[] = [
     title: { en: "Diagnose", pl: "Diagnoza" },
     subtitle: { en: "Find the real problem before designing anything", pl: "Znaleźć realny problem zanim cokolwiek zaprojektujemy" },
     goal: {
-      en: "We audit the current state — workflows, bottlenecks, stakeholders, tools, and decision paths. No assumptions, only evidence with time-cost data.",
-      pl: "Audytujemy stan obecny — workflow, wąskie gardła, stakeholderzy, narzędzia i ścieżki decyzyjne. Bez założeń, tylko dowody z danymi o kosztach czasowych.",
+      en: "We audit the current state - workflows, bottlenecks, stakeholders, tools, and decision paths. No assumptions, only evidence with time-cost data.",
+      pl: "Audytujemy stan obecny - workflow, wąskie gardła, stakeholderzy, narzędzia i ścieżki decyzyjne. Bez założeń, tylko dowody z danymi o kosztach czasowych.",
     },
     cards: [
       { label: { en: "What we do", pl: "Co robimy" }, text: { en: "Stakeholder interviews, workflow audit, request source analysis, tool review and pain-point mapping with estimated time cost.", pl: "Wywiady ze stakeholderami, audyt workflow, analiza źródeł requestów, przegląd narzędzi i mapowanie pain-pointów z szacowanym kosztem czasowym." } },
-      { label: { en: "What you get", pl: "Co dostajesz" }, text: { en: "A 1-page operational diagnosis with 5–7 prioritized bottlenecks and a recommended action sequence for the next 60 days.", pl: "Jednostronicowa diagnoza operacyjna z 5–7 priorytetyzowanymi wąskimi gardłami i zalecaną sekwencją działań na 60 dni." } },
-      { label: { en: "Why it matters", pl: "Dlaczego to ważne" }, text: { en: "Without diagnosis, every solution is a guess — even if it looks good.", pl: "Bez diagnozy każde rozwiązanie to zgadywanka — nawet jeśli wygląda dobrze." } },
-      { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "3–5 days for focused projects, 1–2 weeks for organization-wide engagements.", pl: "3–5 dni dla fokusowanych projektów, 1–2 tygodnie dla zaangażowań organizacyjnych." } },
+      { label: { en: "What you get", pl: "Co dostajesz" }, text: { en: "A 1-page operational diagnosis with 5-7 prioritized bottlenecks and a recommended action sequence for the next 60 days.", pl: "Jednostronicowa diagnoza operacyjna z 5-7 priorytetyzowanymi wąskimi gardłami i zalecaną sekwencją działań na 60 dni." } },
+      { label: { en: "Why it matters", pl: "Dlaczego to ważne" }, text: { en: "Without diagnosis, every solution is a guess - even if it looks good.", pl: "Bez diagnozy każde rozwiązanie to zgadywanka - nawet jeśli wygląda dobrze." } },
+      { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "3-5 days for focused projects, 1-2 weeks for organization-wide engagements.", pl: "3-5 dni dla fokusowanych projektów, 1-2 tygodnie dla zaangażowań organizacyjnych." } },
     ],
     metric: { en: "Time to root cause for every recurring problem.", pl: "Czas do zidentyfikowania przyczyny każdego powtarzającego się problemu." },
     gate: {
-      en: "Can we describe the operational problem in one sentence with a concrete time-cost number? If not — stay in Diagnose.",
-      pl: "Czy potrafimy opisać problem operacyjny w jednym zdaniu z konkretną liczbą kosztu czasowego? Jeśli nie — zostań w Diagnozie.",
+      en: "Can we describe the operational problem in one sentence with a concrete time-cost number? If not - stay in Diagnose.",
+      pl: "Czy potrafimy opisać problem operacyjny w jednym zdaniu z konkretną liczbą kosztu czasowego? Jeśli nie - zostań w Diagnozie.",
     },
   },
   {
@@ -49,8 +49,8 @@ const steps: Step[] = [
     title: { en: "Map", pl: "Mapowanie" },
     subtitle: { en: "Understand the demand landscape", pl: "Zrozumieć krajobraz popytu" },
     goal: {
-      en: "We map what's coming in — who requests what, how often, in what format, with what urgency. This turns an infinite backlog into a classified, manageable system.",
-      pl: "Mapujemy co przychodzi — kto, co, jak często, w jakim formacie, z jaką pilnością. To zamienia nieskończony backlog w sklasyfikowany, zarządzalny system.",
+      en: "We map what's coming in - who requests what, how often, in what format, with what urgency. This turns an infinite backlog into a classified, manageable system.",
+      pl: "Mapujemy co przychodzi - kto, co, jak często, w jakim formacie, z jaką pilnością. To zamienia nieskończony backlog w sklasyfikowany, zarządzalny system.",
     },
     cards: [
       { label: { en: "What we do", pl: "Co robimy" }, text: { en: "Audit of where requests come from, classification of request types, stakeholder volume analysis and seasonality mapping.", pl: "Audyt skąd przychodzą requesty, klasyfikacja typów requestów, analiza wolumenu per stakeholder i mapowanie sezonowości." } },
@@ -60,8 +60,8 @@ const steps: Step[] = [
     ],
     metric: { en: "% of requests with a clear category at intake (target 95%+).", pl: "% requestów z jasną kategorią na wejściu (cel 95%+)." },
     gate: {
-      en: "Can a new request be classified into a category at intake within 30 seconds, by anyone? If less than 95% categorize cleanly — refine the taxonomy.",
-      pl: "Czy nowy request da się sklasyfikować do kategorii na wejściu w 30 sekund, przez kogokolwiek? Jeśli mniej niż 95% klasyfikuje się czysto — dopracuj taksonomię.",
+      en: "Can a new request be classified into a category at intake within 30 seconds, by anyone? If less than 95% categorize cleanly - refine the taxonomy.",
+      pl: "Czy nowy request da się sklasyfikować do kategorii na wejściu w 30 sekund, przez kogokolwiek? Jeśli mniej niż 95% klasyfikuje się czysto - dopracuj taksonomię.",
     },
   },
   {
@@ -76,32 +76,32 @@ const steps: Step[] = [
       { label: { en: "What we do", pl: "Co robimy" }, text: { en: "Brief templates for standard, local and express requests, a readiness checklist before production starts, a simple scoring system for priority, urgency, business value and production effort, weekly request reviews, creative quality standards and quality review checklists for each asset type.", pl: "Szablony briefów dla standardowych, lokalnych i ekspresowych requestów, lista gotowości zanim ruszy produkcja, prosty system scoringowy dla priorytetu, pilności, wartości biznesowej i nakładu produkcyjnego, cotygodniowe review requestów, standardy jakości kreatywnej i quality review checklisty per typ assetu." } },
       { label: { en: "What you get", pl: "Co dostajesz" }, text: { en: "A template library, prioritization system, creative quality standards, quality review checklists, AI brief assistant prompts and a 90-day adoption plan.", pl: "Biblioteka szablonów, system priorytetyzacji, standardy jakości kreatywnej, quality review checklisty, prompty AI asystenta briefu i 90-dniowy plan adopcji." } },
       { label: { en: "Why it matters", pl: "Dlaczego to ważne" }, text: { en: "Standards eliminate revision loops before they start. When the brief is complete and quality criteria are clear, feedback becomes precise instead of political.", pl: "Standardy eliminują pętle poprawek zanim się zaczną. Kiedy brief jest kompletny a kryteria jakości są jasne, feedback staje się precyzyjny zamiast polityczny." } },
-      { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "2–3 weeks. This is the heaviest intellectual phase — where the system's operating logic gets written.", pl: "2–3 tygodnie. Najcięższa faza intelektualnie — tutaj pisze się operacyjna logika systemu." } },
+      { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "2-3 weeks. This is the heaviest intellectual phase - where the system's operating logic gets written.", pl: "2-3 tygodnie. Najcięższa faza intelektualnie - tutaj pisze się operacyjna logika systemu." } },
     ],
     metric: { en: "% of briefs meeting the readiness checklist on first submission (target 80%+).", pl: "% briefów spełniających listę gotowości przy pierwszym złożeniu (cel 80%+)." },
     gate: {
-      en: "Can a junior team member fill a brief without asking the lead designer questions, using only the template + checklist? If no — refine the template.",
-      pl: "Czy junior może wypełnić brief bez zadawania pytań lead designerowi, korzystając tylko z szablonu i checklisty? Jeśli nie — dopracuj szablon.",
+      en: "Can a junior team member fill a brief without asking the lead designer questions, using only the template + checklist? If no - refine the template.",
+      pl: "Czy junior może wypełnić brief bez zadawania pytań lead designerowi, korzystając tylko z szablonu i checklisty? Jeśli nie - dopracuj szablon.",
     },
   },
   {
     num: "04",
     title: { en: "Build", pl: "Budowa" },
-    subtitle: { en: "Create what ships — systems, interfaces, assets", pl: "Tworzyć to, co idzie na produkcję" },
+    subtitle: { en: "Create what ships - systems, interfaces, assets", pl: "Tworzyć to, co idzie na produkcję" },
     goal: {
-      en: "Senior-level execution against the standards from Phase 03. Whether it's UX/UI, brand system, campaign toolkit, or operational playbook — we build production-ready deliverables, not concepts.",
-      pl: "Egzekucja na seniorskim poziomie zgodnie ze standardami z Fazy 03. Niezależnie czy to UX/UI, system marki, toolkit kampanijny czy playbook operacyjny — budujemy gotowe do produkcji deliverables, nie koncepty.",
+      en: "Senior-level execution against the standards from Phase 03. Whether it's UX/UI, brand system, campaign toolkit, or operational playbook - we build production-ready deliverables, not concepts.",
+      pl: "Egzekucja na seniorskim poziomie zgodnie ze standardami z Fazy 03. Niezależnie czy to UX/UI, system marki, toolkit kampanijny czy playbook operacyjny - budujemy gotowe do produkcji deliverables, nie koncepty.",
     },
     cards: [
       { label: { en: "What we do", pl: "Co robimy" }, text: { en: "UX and interface design, brand systems, campaign assets, component libraries, production workflows, approval ownership by asset type, handoff instructions and tool integrations.", pl: "Design UX i interfejsów, systemy marki, assety kampanijne, biblioteki komponentów, workflow produkcji, mapa ownership akceptacji per typ assetu, instrukcje handoffu i integracje narzędzi." } },
-      { label: { en: "What you get", pl: "Co dostajesz" }, text: { en: "Production-ready files, systems and documentation. This can include service blueprints, workflow diagrams, component libraries, campaign assets or interfaces — depending on what the project needs.", pl: "Gotowe do produkcji pliki, systemy i dokumentacja. To może obejmować service blueprinty, diagramy workflow, biblioteki komponentów, assety kampanijne lub interfejsy — w zależności od potrzeb projektu." } },
+      { label: { en: "What you get", pl: "Co dostajesz" }, text: { en: "Production-ready files, systems and documentation. This can include service blueprints, workflow diagrams, component libraries, campaign assets or interfaces - depending on what the project needs.", pl: "Gotowe do produkcji pliki, systemy i dokumentacja. To może obejmować service blueprinty, diagramy workflow, biblioteki komponentów, assety kampanijne lub interfejsy - w zależności od potrzeb projektu." } },
       { label: { en: "Why it matters", pl: "Dlaczego to ważne" }, text: { en: "Craft without structure breaks during delivery. We combine senior execution with clear standards, so quality becomes repeatable instead of heroic.", pl: "Rzemiosło bez struktury łamie się przy dostawie. Łączymy seniorską egzekucję z jasnymi standardami, więc jakość staje się powtarzalna zamiast heroiczna." } },
-      { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "2–12 weeks depending on scope. Delivered in weekly sprints with visible progress at every checkpoint.", pl: "2–12 tygodni w zależności od zakresu. Dostarczane w tygodniowych sprintach z widocznym postępem na każdym checkpoincie." } },
+      { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "2-12 weeks depending on scope. Delivered in weekly sprints with visible progress at every checkpoint.", pl: "2-12 tygodni w zależności od zakresu. Dostarczane w tygodniowych sprintach z widocznym postępem na każdym checkpoincie." } },
     ],
     metric: { en: "Cycle time from approved brief to delivered asset.", pl: "Cycle time od zatwierdzonego briefu do dostarczonego assetu." },
     gate: {
-      en: "Can a developer or team implement this without asking a single question? Test 3 random items. If they ask — close the specs.",
-      pl: "Czy developer lub zespół może to wdrożyć bez zadania ani jednego pytania? Przetestuj 3 losowe elementy. Jeśli pytają — domknij specyfikacje.",
+      en: "Can a developer or team implement this without asking a single question? Test 3 random items. If they ask - close the specs.",
+      pl: "Czy developer lub zespół może to wdrożyć bez zadania ani jednego pytania? Przetestuj 3 losowe elementy. Jeśli pytają - domknij specyfikacje.",
     },
   },
   {
@@ -109,19 +109,19 @@ const steps: Step[] = [
     title: { en: "Govern", pl: "Governance" },
     subtitle: { en: "Define who decides, how, and when", pl: "Zdefiniować kto decyduje, jak i kiedy" },
     goal: {
-      en: "We define ownership, approval paths, change request rules, and decision logs — so decisions are traceable and don't bottleneck on one person.",
-      pl: "Definiujemy ownership, ścieżki akceptacji, zasady change requestów i logi decyzji — żeby decyzje były śledzalne i nie blokowały się na jednej osobie.",
+      en: "We define ownership, approval paths, change request rules, and decision logs - so decisions are traceable and don't bottleneck on one person.",
+      pl: "Definiujemy ownership, ścieżki akceptacji, zasady change requestów i logi decyzji - żeby decyzje były śledzalne i nie blokowały się na jednej osobie.",
     },
     cards: [
       { label: { en: "What we do", pl: "Co robimy" }, text: { en: "Decision ownership model, approval rules, escalation paths, change request process, conflict resolution rules and decision log structure.", pl: "Model ownership decyzji, zasady akceptacji, ścieżki eskalacji, proces change requestów, zasady rozwiązywania konfliktów i struktura logu decyzji." } },
       { label: { en: "What you get", pl: "Co dostajesz" }, text: { en: "A clear decision playbook. Everyone knows who approves what, how changes are handled and where important decisions are documented.", pl: "Jasny decision playbook. Każdy wie kto akceptuje co, jak obsługiwane są zmiany i gdzie dokumentowane są ważne decyzje." } },
       { label: { en: "Why it matters", pl: "Dlaczego to ważne" }, text: { en: "Most revision loops are not about quality. They happen because ownership is unclear. When everyone knows who decides what, projects move faster.", pl: "Większość pętli poprawek nie dotyczy jakości. Pojawiają się bo ownership jest niejasny. Kiedy wszyscy wiedzą kto decyduje o czym, projekty idą szybciej." } },
-      { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "1–2 weeks. Defined in parallel with Build, enforced from first delivery.", pl: "1–2 tygodnie. Definiowane równolegle z Budową, egzekwowane od pierwszej dostawy." } },
+      { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "1-2 weeks. Defined in parallel with Build, enforced from first delivery.", pl: "1-2 tygodnie. Definiowane równolegle z Budową, egzekwowane od pierwszej dostawy." } },
     ],
     metric: { en: "Average decision time and decision reversal rate (both trending down).", pl: "Średni czas decyzji i wskaźnik cofania decyzji (oba w trendzie spadkowym)." },
     gate: {
-      en: "For any artifact, can we name who approved it, when, and what the rationale was? If less than 95% traceability — fix the logging.",
-      pl: "Czy dla dowolnego artefaktu potrafimy wskazać kto go zatwierdził, kiedy i jakie było uzasadnienie? Jeśli śledzalność poniżej 95% — napraw logowanie.",
+      en: "For any artifact, can we name who approved it, when, and what the rationale was? If less than 95% traceability - fix the logging.",
+      pl: "Czy dla dowolnego artefaktu potrafimy wskazać kto go zatwierdził, kiedy i jakie było uzasadnienie? Jeśli śledzalność poniżej 95% - napraw logowanie.",
     },
   },
   {
@@ -140,8 +140,8 @@ const steps: Step[] = [
     ],
     metric: { en: "% of work passing quality review on first round (target 70%+).", pl: "% prac przechodzących quality review w pierwszej rundzie (cel 70%+)." },
     gate: {
-      en: "Did the deliverable match the brief AND pass the quality checklist AND get sign-off from the named owner? If any answer is no — don't ship.",
-      pl: "Czy deliverable odpowiada briefowi ORAZ przeszedł quality checklistę ORAZ ma sign-off od nazwanego ownera? Jeśli którakolwiek odpowiedź brzmi nie — nie wysyłaj.",
+      en: "Did the deliverable match the brief AND pass the quality checklist AND get sign-off from the named owner? If any answer is no - don't ship.",
+      pl: "Czy deliverable odpowiada briefowi ORAZ przeszedł quality checklistę ORAZ ma sign-off od nazwanego ownera? Jeśli którakolwiek odpowiedź brzmi nie - nie wysyłaj.",
     },
   },
   {
@@ -149,19 +149,19 @@ const steps: Step[] = [
     title: { en: "Measure", pl: "Pomiar" },
     subtitle: { en: "Track what actually changed", pl: "Śledzić co się naprawdę zmieniło" },
     goal: {
-      en: "We set up measurement infrastructure — KPI dashboards, review cadences, adoption tracking. Without data, you can't prove the system works or find where it's leaking.",
-      pl: "Stawiamy infrastrukturę pomiarową — dashboardy KPI, kadencje review, tracking adopcji. Bez danych nie udowodnisz że system działa ani nie znajdziesz gdzie przecieka.",
+      en: "We set up measurement infrastructure - KPI dashboards, review cadences, adoption tracking. Without data, you can't prove the system works or find where it's leaking.",
+      pl: "Stawiamy infrastrukturę pomiarową - dashboardy KPI, kadencje review, tracking adopcji. Bez danych nie udowodnisz że system działa ani nie znajdziesz gdzie przecieka.",
     },
     cards: [
       { label: { en: "What we do", pl: "Co robimy" }, text: { en: "Workflow performance dashboard setup, baseline measurement, monthly review structure, adoption tracking by team and AI workflow integration where useful.", pl: "Setup dashboardu workflow performance, pomiar bazowy, struktura miesięcznego review, tracking adopcji per zespół i integracja AI workflow tam gdzie to ma sens." } },
       { label: { en: "What you get", pl: "Co dostajesz" }, text: { en: "A measurement framework your team can use to track cycle time, revision rates, brief quality, recurring bottlenecks and adoption of the new process.", pl: "Framework pomiarowy, którego Twój zespół może używać do śledzenia cycle time, wskaźników poprawek, jakości briefów, powtarzających się wąskich gardeł i adopcji nowego procesu." } },
       { label: { en: "Why it matters", pl: "Dlaczego to ważne" }, text: { en: "If you do not measure the workflow, you end up managing opinions instead of real problems.", pl: "Jeśli nie mierzysz workflow, kończysz zarządzając opiniami zamiast realnymi problemami." } },
-      { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "1–2 weeks for setup. Then it runs continuously as part of the operating rhythm.", pl: "1–2 tygodnie na setup. Potem działa ciągle jako część rytmu operacyjnego." } },
+      { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "1-2 weeks for setup. Then it runs continuously as part of the operating rhythm.", pl: "1-2 tygodnie na setup. Potem działa ciągle jako część rytmu operacyjnego." } },
     ],
     metric: { en: "Dashboard live + first baseline captured within 2 weeks of system launch.", pl: "Dashboard live + pierwszy baseline uchwycony w ciągu 2 tygodni od launchu systemu." },
     gate: {
-      en: "Can we show 3 measurable improvements vs baseline within 60 days? If no — the system isn't working, or the measurement is broken.",
-      pl: "Czy możemy pokazać 3 mierzalne usprawnienia względem baseline'u w ciągu 60 dni? Jeśli nie — system nie działa albo pomiar jest zepsuty.",
+      en: "Can we show 3 measurable improvements vs baseline within 60 days? If no - the system isn't working, or the measurement is broken.",
+      pl: "Czy możemy pokazać 3 mierzalne usprawnienia względem baseline'u w ciągu 60 dni? Jeśli nie - system nie działa albo pomiar jest zepsuty.",
     },
   },
   {
@@ -169,19 +169,19 @@ const steps: Step[] = [
     title: { en: "Iterate", pl: "Iteracja" },
     subtitle: { en: "Keep the system alive, not frozen", pl: "Utrzymać system żywym, nie zamrożonym" },
     goal: {
-      en: "We run monthly reviews, quarterly governance checks, and process optimization cycles. The system adapts to the changing organization — it doesn't become shelf-ware.",
-      pl: "Prowadzimy monthly review, kwartalne governance checks i cykle optymalizacji procesu. System adaptuje się do zmieniającej się organizacji — nie staje się półkowym dokumentem.",
+      en: "We run monthly reviews, quarterly governance checks, and process optimization cycles. The system adapts to the changing organization - it doesn't become shelf-ware.",
+      pl: "Prowadzimy monthly review, kwartalne governance checks i cykle optymalizacji procesu. System adaptuje się do zmieniającej się organizacji - nie staje się półkowym dokumentem.",
     },
     cards: [
       { label: { en: "What we do", pl: "Co robimy" }, text: { en: "Monthly review sessions, quarterly process reviews, optimization sprints, checks for old workflow habits, AI workflow updates and team coaching.", pl: "Miesięczne sesje review, kwartalne review procesu, sprinty optymalizacji, sprawdzanie powrotu do starych nawyków workflow, aktualizacje AI workflow i coaching zespołu." } },
       { label: { en: "What you get", pl: "Co dostajesz" }, text: { en: "A system that keeps improving instead of becoming outdated. Your team gets updated templates, process recommendations, quarterly trend reviews and a clear rhythm for improving how work gets done.", pl: "System, który ciągle się poprawia zamiast stawać się przestarzały. Twój zespół dostaje zaktualizowane szablony, rekomendacje procesowe, kwartalne review trendów i jasny rytm poprawy tego jak praca jest wykonywana." } },
       { label: { en: "Why it matters", pl: "Dlaczego to ważne" }, text: { en: "Every process decays. Teams change, tools change and priorities shift. Without a review rhythm, the system slowly stops working and the team returns to old habits.", pl: "Każdy proces się degraduje. Zespoły się zmieniają, narzędzia się zmieniają i priorytety się przesuwają. Bez rytmu review system powoli przestaje działać a zespół wraca do starych nawyków." } },
-      { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "Ongoing — typically 1 session per month. Can be part of a retainer or fully handed off to your team.", pl: "Ciągłe — typowo 1 sesja miesięcznie. Może być częścią retainera lub w pełni przekazane Twojemu zespołowi." } },
+      { label: { en: "Typical duration", pl: "Typowy czas" }, text: { en: "Ongoing - typically 1 session per month. Can be part of a retainer or fully handed off to your team.", pl: "Ciągłe - typowo 1 sesja miesięcznie. Może być częścią retainera lub w pełni przekazane Twojemu zespołowi." } },
     ],
-    metric: { en: "Quarter-over-quarter trend of all metrics from phases 03–06.", pl: "Trend kwartał-do-kwartału wszystkich metryk z faz 03–06." },
+    metric: { en: "Quarter-over-quarter trend of all metrics from phases 03-06.", pl: "Trend kwartał-do-kwartału wszystkich metryk z faz 03-06." },
     gate: {
-      en: "Can the system's owner take a 2-week vacation without anything breaking? If no — the system isn't yet operating on its own. Stay in Iterate.",
-      pl: "Czy właściciel systemu może wziąć 2 tygodnie urlopu bez tego, żeby cokolwiek się rozsypało? Jeśli nie — system jeszcze nie działa samodzielnie. Zostań w Iteracji.",
+      en: "Can the system's owner take a 2-week vacation without anything breaking? If no - the system isn't yet operating on its own. Stay in Iterate.",
+      pl: "Czy właściciel systemu może wziąć 2 tygodnie urlopu bez tego, żeby cokolwiek się rozsypało? Jeśli nie - system jeszcze nie działa samodzielnie. Zostań w Iteracji.",
     },
   },
 ];
@@ -193,7 +193,7 @@ export function Process() {
   const [, setLocation] = useLocation();
   const [activeStep, setActiveStep] = useState(0);
 
-  // Q4 r3loop Playbook — discreet editorial version (redesigned 2026-06-10).
+  // Q4 r3loop Playbook - discreet editorial version (redesigned 2026-06-10).
   // Flip to false to hide the waitlist section entirely.
   const SHOW_PLAYBOOK = true;
 
@@ -213,13 +213,13 @@ export function Process() {
   const step = steps[activeStep];
   const progressPct = ((activeStep + 1) / TOTAL) * 100;
 
-  // HowTo schema — JSON-LD describing r3loop as a structured 8-step process.
+  // HowTo schema - JSON-LD describing r3loop as a structured 8-step process.
   // LLMs and search engines prefer this over loose prose when a user asks
   // "how does r3loop work" or "what are the steps of r352's methodology".
   const howToSchema = {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    "name": "r3loop — r352's 8-step methodology for operational design systems",
+    "name": "r3loop - r352's 8-step methodology for operational design systems",
     "description":
       "r3loop is r352's branded methodology. Eight sequential steps that turn operational chaos into a working design system. Sequence stays constant; depth of each step scales to engagement size.",
     "url": "https://www.r352.com/process",
@@ -248,7 +248,7 @@ export function Process() {
           {JSON.stringify(howToSchema)}
         </script>
       </Helmet>
-      {/* ─── Intro Hook — 12-col 7+5 (H1 left, supporting right) ─── */}
+      {/* ─── Intro Hook - 12-col 7+5 (H1 left, supporting right) ─── */}
       <section className="pt-32 pb-16 md:pt-40 md:pb-20 px-8 md:px-12">
         <div className="max-w-[1800px] mx-auto">
           <Reveal>
@@ -284,8 +284,8 @@ export function Process() {
                 </p>
                 <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
                   {lang === "pl"
-                    ? "r3loop to nasza 8-krokowa metodologia end-to-end — od diagnozy operacyjnej i mapowania popytu, przez standardy i produkcję, po pomiar i ciągłe usprawnianie. Tę samą sekwencję stosujemy do każdego klienta — głębokość kroków skaluje się z zakresem zaangażowania."
-                    : "r3loop is our 8-step end-to-end methodology — from operational diagnosis and demand mapping, through standards and production, to measurement and continuous improvement. We apply the same sequence to every client — the depth of each step scales with engagement size."}
+                    ? "r3loop to nasza 8-krokowa metodologia end-to-end - od diagnozy operacyjnej i mapowania popytu, przez standardy i produkcję, po pomiar i ciągłe usprawnianie. Tę samą sekwencję stosujemy do każdego klienta - głębokość kroków skaluje się z zakresem zaangażowania."
+                    : "r3loop is our 8-step end-to-end methodology - from operational diagnosis and demand mapping, through standards and production, to measurement and continuous improvement. We apply the same sequence to every client - the depth of each step scales with engagement size."}
                 </p>
               </div>
             </div>
@@ -293,7 +293,7 @@ export function Process() {
         </div>
       </section>
 
-      {/* ─── 8-Step Tabs — interactive deep-dive (is the process map) ─── */}
+      {/* ─── 8-Step Tabs - interactive deep-dive (is the process map) ─── */}
       <section id="process-tabs" className="pb-20 md:pb-32 border-b border-white/10 scroll-mt-24">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
           <Reveal>
@@ -336,7 +336,7 @@ export function Process() {
                       }
                     `}
                   >
-                    {/* Sliding active background — Framer animates between tabs via shared layoutId */}
+                    {/* Sliding active background - Framer animates between tabs via shared layoutId */}
                     {i === activeStep && (
                       <motion.div
                         layoutId="processActiveTab"
@@ -366,7 +366,7 @@ export function Process() {
                     className="p-8 md:p-12 lg:px-16"
                     role="tabpanel"
                   >
-                    {/* Header — subtitle, single line on md+ */}
+                    {/* Header - subtitle, single line on md+ */}
                     <motion.h3
                       initial={{ opacity: 0, y: 14 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -376,7 +376,7 @@ export function Process() {
                       {step.subtitle[lang]}
                     </motion.h3>
 
-                    {/* Detail grid — editorial layout, no boxy cards */}
+                    {/* Detail grid - editorial layout, no boxy cards */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-0 mb-10">
                       {step.cards.map((card, ci) => (
                         <div
@@ -401,7 +401,7 @@ export function Process() {
                       ))}
                     </div>
 
-                    {/* Decision gate — the explicit pass/fail question for this step.
+                    {/* Decision gate - the explicit pass/fail question for this step.
                         Verbatim from r3loop-spec-v2.md. This is what separates a
                         methodology from talking points: every step can be failed. */}
                     <div className="flex items-start gap-5 pt-8 border-t border-neutral-100 dark:border-white/[0.06]">
@@ -413,7 +413,7 @@ export function Process() {
                       </span>
                     </div>
 
-                    {/* Metric — minimal accent line */}
+                    {/* Metric - minimal accent line */}
                     <div className="flex items-start gap-5 pt-6 mt-6 border-t border-neutral-100 dark:border-white/[0.06]">
                       <span className="font-mono text-[10px] text-[#9abb00] dark:text-[#D4FF00] uppercase tracking-[0.15em] mt-[3px] shrink-0">
                         KPI
@@ -449,18 +449,18 @@ export function Process() {
             </div>
           </Reveal>
 
-          {/* Static full-methodology index — visually hidden, always in the DOM.
+          {/* Static full-methodology index - visually hidden, always in the DOM.
               The interactive tabs above only mount ONE step panel at a time,
               which means prerendered HTML (and any crawler / LLM / scoring
               pass reading static markup) would see 1/8 of the methodology.
               This sr-only block guarantees every step's goal, deliverables,
               decision gate and KPI exist in the rendered DOM at all times. */}
           <div className="sr-only">
-            <h2>{lang === "pl" ? "r3loop — wszystkie 8 kroków, decision gates i KPI" : "r3loop — all 8 steps, decision gates and KPIs"}</h2>
+            <h2>{lang === "pl" ? "r3loop - wszystkie 8 kroków, decision gates i KPI" : "r3loop - all 8 steps, decision gates and KPIs"}</h2>
             <ol>
               {steps.map((s) => (
                 <li key={s.num} id={`step-${s.num}`}>
-                  <h3>{s.num} — {s.title[lang]}: {s.subtitle[lang]}</h3>
+                  <h3>{s.num} - {s.title[lang]}: {s.subtitle[lang]}</h3>
                   <p>{s.goal[lang]}</p>
                   {s.cards.map((card, ci) => (
                     <p key={ci}><strong>{card.label[lang]}:</strong> {card.text[lang]}</p>
@@ -474,12 +474,12 @@ export function Process() {
         </div>
       </section>
 
-      {/* ─── Operating Model — presence drops across r3loop steps ─────────
+      {/* ─── Operating Model - presence drops across r3loop steps ─────────
           The killer IP graph: shows Reszek's involvement falling from 90% at
           Diagnose to 15% at Iterate. Anti-time-for-money thesis made visual.
-          Client buys a system that runs increasingly without me — proof it's
+          Client buys a system that runs increasingly without me - proof it's
           a system, not hours. Migrated from former /framework page.
-          Anchor #operating-model — deep-linked from home page Operating Model teaser. */}
+          Anchor #operating-model - deep-linked from home page Operating Model teaser. */}
       <section id="operating-model" className="py-24 md:py-32 border-b border-neutral-200 dark:border-white/10 scroll-mt-24">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
           <Reveal>
@@ -492,8 +492,8 @@ export function Process() {
               </h2>
               <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
                 {lang === "pl"
-                  ? "Średnia po stabilizacji: ~40%. Docelowy podział 80/20 — strategia vs operacje. Klient kupuje system, który po wdrożeniu działa coraz bardziej bez obecności foundera. To dowód, że to system, nie godziny."
-                  : "Average after stabilization: ~40%. Target 80/20 split — strategy vs operations. The client buys a system that runs increasingly without founder presence. Proof it's a system, not hours."}
+                  ? "Średnia po stabilizacji: ~40%. Docelowy podział 80/20 - strategia vs operacje. Klient kupuje system, który po wdrożeniu działa coraz bardziej bez obecności foundera. To dowód, że to system, nie godziny."
+                  : "Average after stabilization: ~40%. Target 80/20 split - strategy vs operations. The client buys a system that runs increasingly without founder presence. Proof it's a system, not hours."}
               </p>
             </div>
           </Reveal>
@@ -516,7 +516,7 @@ export function Process() {
                 </thead>
                 <tbody>
                   {steps.map((s, i) => {
-                    // Presence drops across r3loop steps — Diagnose is hands-on,
+                    // Presence drops across r3loop steps - Diagnose is hands-on,
                     // Iterate runs without daily involvement.
                     const presenceMap = ["90%", "80%", "70%", "50%", "35%", "30%", "20%", "15%"];
                     const presence = presenceMap[i] ?? "30%";
@@ -553,7 +553,7 @@ export function Process() {
             </div>
           </Reveal>
 
-          {/* Survival sentence + explicit anti-hourly claim — the structural
+          {/* Survival sentence + explicit anti-hourly claim - the structural
               "why" behind the presence drop. References documented decision
               criteria, KPIs, trained owners and AI agents (not personal traits). */}
           <Reveal delay={0.1}>
@@ -565,8 +565,8 @@ export function Process() {
               </p>
               <p className="text-base text-neutral-500 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
                 {lang === "pl"
-                  ? "Nie sprzedajemy obecności ani godzin. System działa bez nas — i właśnie za to płacisz."
-                  : "We don't sell presence and we don't sell hours. The system runs without us — that's exactly what you're paying for."}
+                  ? "Nie sprzedajemy obecności ani godzin. System działa bez nas - i właśnie za to płacisz."
+                  : "We don't sell presence and we don't sell hours. The system runs without us - that's exactly what you're paying for."}
               </p>
             </div>
           </Reveal>
@@ -576,7 +576,7 @@ export function Process() {
       {/* ─── Who this is for ─── */}
       <section className="py-24 md:py-32 border-b border-neutral-200 dark:border-white/10">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
-          {/* Who this is for — role-based personas (migrated from former /framework
+          {/* Who this is for - role-based personas (migrated from former /framework
               "For operators who build systems" section). Each role gets a lime label
               + 1-sentence specific positioning. Replaces the previous flat team-type
               list with sharper persona qualification. */}
@@ -587,7 +587,7 @@ export function Process() {
                   {lang === "pl" ? "Dla kogo" : "Who this is for"}
                 </span>
                 <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[1.05] mb-6">
-                  {lang === "pl" ? "Dla operatorów, którzy budują systemy — nie tylko produkty." : "For operators who build systems — not just products."}
+                  {lang === "pl" ? "Dla operatorów, którzy budują systemy - nie tylko produkty." : "For operators who build systems - not just products."}
                 </h2>
                 <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
                   {lang === "pl"
@@ -598,19 +598,19 @@ export function Process() {
             </Reveal>
             <ul className="flex flex-col divide-y divide-neutral-200 dark:divide-white/10">
               {(lang === "pl" ? [
-                { role: "Założyciel / CEO", desc: "Wypuszczasz SaaS lub digital product — chcesz uniknąć kosztownych poprawek i przepalonych iteracji." },
-                { role: "Właściciel marki", desc: "Relaunchujesz tożsamość lub wchodzisz na nowy rynek — szukasz systemu, który utrzyma jakość bez Twojej obecności." },
-                { role: "Lider operacji multi-location", desc: "Konsolidujesz operacje kreatywne dla 30–300+ lokalizacji — chcesz scenariuszy, nie improwizacji." },
-                { role: "Product Manager", desc: "Dziedziczysz pół-zbudowany produkt — potrzebujesz domknięcia faz i wyciszenia ad-hoc requestów." },
-                { role: "Lider marketingu", desc: "Przygotowujesz launch marki i kampanii — chcesz spójności tonu, narracji i wykonania." },
-                { role: "Operating Partner", desc: "Budujesz operating system dla portfolio firm — potrzebujesz metodologii, która skaluje bez Ciebie." },
+                { role: "Założyciel / CEO", desc: "Wypuszczasz SaaS lub digital product - chcesz uniknąć kosztownych poprawek i przepalonych iteracji." },
+                { role: "Właściciel marki", desc: "Relaunchujesz tożsamość lub wchodzisz na nowy rynek - szukasz systemu, który utrzyma jakość bez Twojej obecności." },
+                { role: "Lider operacji multi-location", desc: "Konsolidujesz operacje kreatywne dla 30-300+ lokalizacji - chcesz scenariuszy, nie improwizacji." },
+                { role: "Product Manager", desc: "Dziedziczysz pół-zbudowany produkt - potrzebujesz domknięcia faz i wyciszenia ad-hoc requestów." },
+                { role: "Lider marketingu", desc: "Przygotowujesz launch marki i kampanii - chcesz spójności tonu, narracji i wykonania." },
+                { role: "Operating Partner", desc: "Budujesz operating system dla portfolio firm - potrzebujesz metodologii, która skaluje bez Ciebie." },
               ] : [
-                { role: "Founder / CEO", desc: "You're launching a SaaS or digital product — you want to avoid costly revisions and burned iterations." },
-                { role: "Brand owner", desc: "You're relaunching identity or entering a new market — you need a system that holds quality without your presence." },
-                { role: "Multi-location ops leader", desc: "You're consolidating creative operations across 30–300+ locations — you want scenarios, not improvisation." },
-                { role: "Product Manager", desc: "You've inherited a half-built product — you need phases closed and ad-hoc requests silenced." },
-                { role: "Marketing leader", desc: "You're preparing a brand + campaign launch — you want consistent tone, narrative, and execution." },
-                { role: "Operating Partner", desc: "You're building an operating system across portfolio companies — you need a methodology that scales without you." },
+                { role: "Founder / CEO", desc: "You're launching a SaaS or digital product - you want to avoid costly revisions and burned iterations." },
+                { role: "Brand owner", desc: "You're relaunching identity or entering a new market - you need a system that holds quality without your presence." },
+                { role: "Multi-location ops leader", desc: "You're consolidating creative operations across 30-300+ locations - you want scenarios, not improvisation." },
+                { role: "Product Manager", desc: "You've inherited a half-built product - you need phases closed and ad-hoc requests silenced." },
+                { role: "Marketing leader", desc: "You're preparing a brand + campaign launch - you want consistent tone, narrative, and execution." },
+                { role: "Operating Partner", desc: "You're building an operating system across portfolio companies - you need a methodology that scales without you." },
               ]).map((item, i) => (
                 <Reveal key={i} delay={0.05 + i * 0.04}>
                   <li className="py-5">
@@ -624,7 +624,7 @@ export function Process() {
         </div>
       </section>
 
-      {/* ─── When this is too much — qualifier ─── */}
+      {/* ─── When this is too much - qualifier ─── */}
       <section className="py-20 md:py-24 border-b border-neutral-200 dark:border-white/10">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
           <Reveal>
@@ -647,7 +647,7 @@ export function Process() {
         </div>
       </section>
 
-      {/* ─── r3loop in action — Geers/Sonova case (concrete proof with hard metrics)
+      {/* ─── r3loop in action - Geers/Sonova case (concrete proof with hard metrics)
           Migrated from former /framework Proof section. Replaces generic
           "multi-location marketing team" example with named client + numbers. */}
       <section className="py-24 md:py-32 border-b border-neutral-200 dark:border-white/10">
@@ -705,13 +705,13 @@ export function Process() {
                     </p>
                   </div>
                 </div>
-                {/* Factual citation line — no fabricated quotes. Sourced from
+                {/* Factual citation line - no fabricated quotes. Sourced from
                     r3loop docs: methodology in production since 2022; Sonova,
                     Archicom and Geers cite r3loop by name in case materials. */}
                 <p className="font-mono text-[11px] text-neutral-500 dark:text-neutral-500 leading-relaxed pt-2 border-t border-neutral-200 dark:border-white/10">
                   {lang === "pl"
-                    ? "r3loop w produkcji w Geers (Sonova Group) od 2022 — 60+ salonów. Klient cytuje metodologię z nazwy w materiałach case study."
-                    : "r3loop in production at Geers (Sonova Group) since 2022 — 60+ studios. The client cites the methodology by name in case-study materials."}
+                    ? "r3loop w produkcji w Geers (Sonova Group) od 2022 - 60+ salonów. Klient cytuje metodologię z nazwy w materiałach case study."
+                    : "r3loop in production at Geers (Sonova Group) since 2022 - 60+ studios. The client cites the methodology by name in case-study materials."}
                 </p>
                 <Link
                   href="/work/sonova"
@@ -726,7 +726,7 @@ export function Process() {
         </div>
       </section>
 
-      {/* ─── r3loop sustained — Kubota long-term retainer + brand reactivation
+      {/* ─── r3loop sustained - Kubota long-term retainer + brand reactivation
           Paired with Geers proof (above). Different angle: Geers proves SCALE
           (60+ locations, multi-location ops fix); Kubota proves DURATION (3+ years,
           brand reactivation, IPO debut materials sustained on retainer model).
@@ -752,13 +752,13 @@ export function Process() {
               <div className="space-y-6">
                 <p className="text-xl md:text-2xl text-neutral-700 dark:text-neutral-300 leading-relaxed font-medium tracking-tight [text-wrap:pretty]">
                   {lang === "pl"
-                    ? "Reaktywacja marki w drodze do debiutu giełdowego. Brand stracił momentum, potrzebował IPO-grade kommunikacji i ciągłej produkcji — bez wracania do projekt-po-projekcie chaos."
-                    : "Brand reactivation on the road to a stock-exchange debut. The brand had lost momentum, needed IPO-grade communication and continuous production — without falling back into project-by-project chaos."}
+                    ? "Reaktywacja marki w drodze do debiutu giełdowego. Brand stracił momentum, potrzebował IPO-grade kommunikacji i ciągłej produkcji - bez wracania do projekt-po-projekcie chaos."
+                    : "Brand reactivation on the road to a stock-exchange debut. The brand had lost momentum, needed IPO-grade communication and continuous production - without falling back into project-by-project chaos."}
                 </p>
                 <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
                   {lang === "pl"
-                    ? "r3loop jako ciągła metodologia, nie engagement projektowy. Kroki 03–05 (Standardize → Build → Govern) ustabilizowały brand system i workflow akceptacji. Kroki 06–08 (Ship → Measure → Iterate) prowadziły zespół przez 3+ lata: IPO materiały, always-on creative, kwartalne brand health reviews."
-                    : "r3loop as continuous methodology, not project engagement. Steps 03–05 (Standardize → Build → Govern) stabilized the brand system and approval workflow. Steps 06–08 (Ship → Measure → Iterate) carried the team through 3+ years: IPO materials, always-on creative, quarterly brand health reviews."}
+                    ? "r3loop jako ciągła metodologia, nie engagement projektowy. Kroki 03-05 (Standardize → Build → Govern) ustabilizowały brand system i workflow akceptacji. Kroki 06-08 (Ship → Measure → Iterate) prowadziły zespół przez 3+ lata: IPO materiały, always-on creative, kwartalne brand health reviews."
+                    : "r3loop as continuous methodology, not project engagement. Steps 03-05 (Standardize → Build → Govern) stabilized the brand system and approval workflow. Steps 06-08 (Ship → Measure → Iterate) carried the team through 3+ years: IPO materials, always-on creative, quarterly brand health reviews."}
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-neutral-200 dark:border-white/10">
                   <div>
@@ -786,13 +786,13 @@ export function Process() {
                     </p>
                   </div>
                 </div>
-                {/* Factual citation line — duration axis. Sourced from r3loop
+                {/* Factual citation line - duration axis. Sourced from r3loop
                     docs: Kubota = 3+ years on retainer, 200+ deliverables,
-                    steps 03–08 sustained across the engagement. */}
+                    steps 03-08 sustained across the engagement. */}
                 <p className="font-mono text-[11px] text-neutral-500 dark:text-neutral-500 leading-relaxed pt-2 border-t border-neutral-200 dark:border-white/10">
                   {lang === "pl"
-                    ? "r3loop utrzymany w Kubota przez 3+ lata — kroki 03–08 prowadzone w sposób ciągły, 200+ deliverables na modelu retainerowym."
-                    : "r3loop sustained at Kubota for 3+ years — steps 03–08 run continuously, 200+ deliverables on a retainer model."}
+                    ? "r3loop utrzymany w Kubota przez 3+ lata - kroki 03-08 prowadzone w sposób ciągły, 200+ deliverables na modelu retainerowym."
+                    : "r3loop sustained at Kubota for 3+ years - steps 03-08 run continuously, 200+ deliverables on a retainer model."}
                 </p>
                 <Link
                   href="/work/kubota"
@@ -807,10 +807,10 @@ export function Process() {
         </div>
       </section>
 
-      {/* ─── From loop to tools — step→product map (r3loop 9.5) ──────
+      {/* ─── From loop to tools - step→product map (r3loop 9.5) ──────
           Factual strip: which steps have been productized into software.
           Replaces the unpublished journal/10 essay with a dry, structural
-          version. Sits right before the Playbook section — same discreet
+          version. Sits right before the Playbook section - same discreet
           editorial register. */}
       <section className="py-14 md:py-16 border-b border-neutral-200 dark:border-white/10">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
@@ -821,8 +821,8 @@ export function Process() {
               </span>
               <p className="text-base md:text-lg text-neutral-800 dark:text-neutral-200 leading-relaxed [text-wrap:pretty] mb-4">
                 {lang === "pl"
-                  ? "Krok, którego output jest wystarczająco ustrukturyzowany, staje się oprogramowaniem — to test, czy metodologia jest systemem, a nie sloganem."
-                  : "Any step with a structured enough output becomes software — that's the test of whether the methodology is a system, not a slogan."}
+                  ? "Krok, którego output jest wystarczająco ustrukturyzowany, staje się oprogramowaniem - to test, czy metodologia jest systemem, a nie sloganem."
+                  : "Any step with a structured enough output becomes software - that's the test of whether the methodology is a system, not a slogan."}
               </p>
               <p className="text-[13px] text-neutral-500 dark:text-neutral-500 leading-relaxed">
                 {lang === "pl"
@@ -834,34 +834,34 @@ export function Process() {
         </div>
       </section>
 
-      {/* ─── Q4 2026 — r3loop Playbook waitlist ──────────────────────
+      {/* ─── Q4 2026 - r3loop Playbook waitlist ──────────────────────
           Productization scaffold. Captures emails for the paid playbook launch.
           Founding price (€1500) vs standard (€2000) creates urgency without
           forcing decisions today. Sits between methodology proof (above) and
-          closing CTA (below) — so warm leads who've read the methodology see
+          closing CTA (below) - so warm leads who've read the methodology see
           the "want this without consulting?" path before the contact CTA.
 
           TODO: replace mailto fallback with proper ESP integration (Mailchimp /
           Klaviyo / Loops / Brevo) once one is chosen. For now mailto routes
           signups to hello@r352.com and Plausible tracks the conversion event.
 
-          HIDDEN (2026-06-10): product not ready to show — flip SHOW_PLAYBOOK
+          HIDDEN (2026-06-10): product not ready to show - flip SHOW_PLAYBOOK
           to true when the playbook is ready to launch. */}
       {SHOW_PLAYBOOK && (
       <section className="py-16 md:py-20 border-b border-neutral-200 dark:border-white/10">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
           <Reveal>
             <div className="max-w-2xl">
-              {/* Quiet editorial note — no glow, no pulse, no display headline */}
+              {/* Quiet editorial note - no glow, no pulse, no display headline */}
               <span className="block text-[10px] font-display uppercase tracking-[0.25em] text-neutral-500 dark:text-neutral-500 mb-5">
-                {lang === "pl" ? "Q4 2026 — r3loop Playbook" : "Q4 2026 — r3loop Playbook"}
+                {lang === "pl" ? "Q4 2026 - r3loop Playbook" : "Q4 2026 - r3loop Playbook"}
               </span>
               <p className="text-lg md:text-xl text-neutral-800 dark:text-neutral-200 leading-relaxed [text-wrap:pretty] mb-3">
                 {lang === "pl"
-                  ? "Cała metodologia r3loop — sprodukowana jako guided playbook. Dla tych, którzy nie potrzebują nas w pokoju — potrzebują systemu, który możemy oddać."
-                  : "The full r3loop methodology — productized as a guided playbook. For teams that don't need us in the room — they need a system we can hand off."}
+                  ? "Cała metodologia r3loop - sprodukowana jako guided playbook. Dla tych, którzy nie potrzebują nas w pokoju - potrzebują systemu, który możemy oddać."
+                  : "The full r3loop methodology - productized as a guided playbook. For teams that don't need us in the room - they need a system we can hand off."}
               </p>
-              {/* Inventory — one quiet mono line instead of a grid */}
+              {/* Inventory - one quiet mono line instead of a grid */}
               <p className="text-[13px] text-neutral-500 dark:text-neutral-500 leading-relaxed mb-8">
                 {(lang === "pl" ? [
                   "8 kroków szczegółowo",
@@ -884,7 +884,7 @@ export function Process() {
                 ]).join(" · ")}
               </p>
 
-              {/* Email capture — minimal underline form */}
+              {/* Email capture - minimal underline form */}
               {!waitlistSubmitted ? (
                 <form
                   onSubmit={(e) => {
@@ -897,7 +897,7 @@ export function Process() {
                       });
                     } catch { /* noop */ }
                     // Open mail client as fallback storage until ESP is wired
-                    const subject = encodeURIComponent("r3loop Playbook — early access waitlist");
+                    const subject = encodeURIComponent("r3loop Playbook - early access waitlist");
                     const body = encodeURIComponent(
                       `I'd like to join the r3loop Playbook waitlist.\n\nEmail: ${waitlistEmail}\n\n(Sent from r352.com/process)`
                     );
@@ -923,15 +923,15 @@ export function Process() {
                   </div>
                   <p className="text-[11px] text-neutral-500 dark:text-neutral-500 mt-3">
                     {lang === "pl"
-                      ? "Founding price €1500 dla pierwszych 100 osób (standard €2000). Bez spamu — tylko launch announcement."
-                      : "Founding price €1500 for the first 100 (standard €2000). No spam — just the launch announcement."}
+                      ? "Founding price €1500 dla pierwszych 100 osób (standard €2000). Bez spamu - tylko launch announcement."
+                      : "Founding price €1500 for the first 100 (standard €2000). No spam - just the launch announcement."}
                   </p>
                 </form>
               ) : (
                 <p className="text-sm text-neutral-700 dark:text-neutral-300 border-l border-[#D4FF00] pl-4">
                   {lang === "pl"
-                    ? "Jesteś na liście. Launch announcement w Q4 z founding price €1500 (zamiast €2000) — sprawdź, czy klient pocztowy wysłał email do hello@r352.com."
-                    : "You're on the list. Launch announcement lands in Q4 with the founding price €1500 (instead of €2000) — check that your mail client sent the email to hello@r352.com."}
+                    ? "Jesteś na liście. Launch announcement w Q4 z founding price €1500 (zamiast €2000) - sprawdź, czy klient pocztowy wysłał email do hello@r352.com."
+                    : "You're on the list. Launch announcement lands in Q4 with the founding price €1500 (instead of €2000) - check that your mail client sent the email to hello@r352.com."}
                 </p>
               )}
             </div>

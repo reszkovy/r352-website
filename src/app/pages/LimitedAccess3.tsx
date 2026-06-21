@@ -182,7 +182,7 @@ function generateArchicomPdf() {
     pdf.addImage(canvas.toDataURL("image/jpeg", 0.95), "JPEG", 0, 0, SW, SH);
   };
 
-  // 1 — Cover
+  // 1 - Cover
   addSlide(() => {
     ctx.fillStyle = "rgba(255,255,255,0.015)"; ctx.font = "bold 600px Arial, sans-serif"; ctx.fillText("r", SW - 600, 700);
     ctx.strokeStyle = L + "30"; ctx.lineWidth = 1;
@@ -213,19 +213,19 @@ function generateArchicomPdf() {
     ctx.fillText("R352 AGENCY", PAD + 30, 830); ctx.letterSpacing = "0px";
   }, 1);
 
-  // 2 — Bulwar Północny
+  // 2 - Bulwar Północny
   addSlide(() => {
     slideHeader(ctx, "01", "Bulwar P\u00F3\u0142nocny", `${bpTasks.length} task\u00F3w \u00b7 Suma: ${fmt(BP_TOTAL)} z\u0142 netto`);
     drawTaskTable(ctx, bpTasks, 200, BP_TOTAL, "BP");
   }, 2);
 
-  // 3 — River Point
+  // 3 - River Point
   addSlide(() => {
     slideHeader(ctx, "02", "River Point", `${rpTasks.length} task\u00F3w \u00b7 Suma: ${fmt(RP_TOTAL)} z\u0142 netto`);
     drawTaskTable(ctx, rpTasks, 200, RP_TOTAL, "RP");
   }, 3);
 
-  // 4 — Podsumowanie + CTA
+  // 4 - Podsumowanie + CTA
   addSlide(() => {
     const g2 = ctx.createRadialGradient(SW / 2, SH / 2, 0, SW / 2, SH / 2, 600);
     g2.addColorStop(0, "rgba(212,255,0,0.04)"); g2.addColorStop(1, "rgba(0,0,0,0)");
@@ -392,7 +392,7 @@ export function LimitedAccess3() {
               </h1>
               <p className="text-base md:text-lg text-white/50 mt-6 max-w-2xl leading-relaxed">
                 Zestawienie wszystkich zrealizowanych zadań kreatywnych dla projektów
-                Bulwar Północny i River Point — łącznie {TOTAL_TASKS} tasków.
+                Bulwar Północny i River Point - łącznie {TOTAL_TASKS} tasków.
               </p>
               <div className="mt-8">
                 <button onClick={handleExportPdf} disabled={exporting} className="group inline-flex items-center gap-3 px-5 py-2.5 border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] hover:border-white/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-wait">
@@ -603,7 +603,7 @@ export function LimitedAccess3() {
                 "Wszystkie kwoty netto PLN.",
                 "Pozycje oznaczone \"do ustalenia\" dotyczą zadań w trakcie finalizacji.",
                 "Zestawienie obejmuje wyłącznie zrealizowane taski kreatywne.",
-                "Dokument poufny — przygotowany wyłącznie dla Archicom.",
+                "Dokument poufny - przygotowany wyłącznie dla Archicom.",
               ].map((note, i) => (
                 <div key={i} className={`px-5 py-3 ${i > 0 ? "border-t border-white/[0.04]" : ""} flex items-start gap-3`}>
                   <span className="text-white/15 text-xs mt-0.5 shrink-0">{String(i + 1).padStart(2, "0")}</span>
@@ -620,7 +620,7 @@ export function LimitedAccess3() {
                 Pytania do zestawienia?
               </h3>
               <p className="text-white/40 text-sm mb-8 max-w-lg mx-auto leading-relaxed">
-                W razie pytań dotyczących poszczególnych pozycji lub potrzeby dodatkowych materiałów — zapraszamy do kontaktu.
+                W razie pytań dotyczących poszczególnych pozycji lub potrzeby dodatkowych materiałów - zapraszamy do kontaktu.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link
@@ -643,7 +643,7 @@ export function LimitedAccess3() {
                 <span className="flex items-center gap-1.5"><Mail className="w-3 h-3" /> hello@r352.agency</span>
               </div>
               <p className="text-white/10 text-xs mt-8">
-                Dokument poufny — przygotowany wyłącznie dla Archicom  |  r352 agency 2026
+                Dokument poufny - przygotowany wyłącznie dla Archicom  |  r352 agency 2026
               </p>
             </div>
           </Reveal>

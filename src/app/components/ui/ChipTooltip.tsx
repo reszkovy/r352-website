@@ -2,21 +2,21 @@ import { ReactNode, useEffect, useId, useState } from "react";
 import { motion } from "motion/react";
 
 /**
- * ChipTooltip — shared premium chip + tooltip pattern (single source of truth).
+ * ChipTooltip - shared premium chip + tooltip pattern (single source of truth).
  *
  * Used by: AgencyHero (audience qualifier chips) and EngagementModels
  * (compressed "how it works" / "ideal when" chips). Previously duplicated
- * inline in both files — extracted here so motion language stays in sync.
+ * inline in both files - extracted here so motion language stays in sync.
  *
- * Motion: cinematic entrance — fade + slide(6px) + scale(0.97) + blur,
+ * Motion: cinematic entrance - fade + slide(6px) + scale(0.97) + blur,
  * easing cubic-bezier(0.22, 1, 0.36, 1) (site-wide curve, same as
  * PageTransition / Reveal / MaskedText).
  *
- * IMPORTANT — DOM visibility contract:
+ * IMPORTANT - DOM visibility contract:
  * The tooltip content is ALWAYS mounted in the DOM. Open/close is toggled
  * purely via CSS opacity/visibility (motion variants), never via conditional
  * rendering. Prerendered static HTML therefore always contains the full
- * tooltip text — crawlers and evaluators see it without hovering.
+ * tooltip text - crawlers and evaluators see it without hovering.
  *
  * Accessibility:
  * - trigger is keyboard-focusable (tabIndex=0) and opens on focus
@@ -24,7 +24,7 @@ import { motion } from "motion/react";
  * - tooltip has role="tooltip"
  * - Escape closes the tooltip while focused
  * - Escape ALSO closes a hover-opened tooltip (document-level listener,
- *   WCAG 1.4.13 "dismissable" — keydown never reaches an unfocused chip)
+ *   WCAG 1.4.13 "dismissable" - keydown never reaches an unfocused chip)
  */
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
@@ -32,7 +32,7 @@ const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 interface ChipTooltipProps {
   /** Short visible chip label (2-3 words). */
   label: ReactNode;
-  /** Full qualifier sentence revealed on hover/focus — always in DOM. */
+  /** Full qualifier sentence revealed on hover/focus - always in DOM. */
   tooltip: ReactNode;
   /** "neutral" = grey chip (lime on hover) · "lime" = lime accent chip. */
   variant?: "neutral" | "lime";
@@ -55,7 +55,7 @@ export function ChipTooltip({
   const tooltipId = useId();
   const [open, setOpen] = useState(false);
 
-  // WCAG 1.4.13 (Content on Hover or Focus — dismissable): Escape must close
+  // WCAG 1.4.13 (Content on Hover or Focus - dismissable): Escape must close
   // the tooltip even when it was opened by mouse hover and the chip is NOT
   // focused. The trigger's own onKeyDown only covers the focused case, so a
   // document-level listener runs while open.
@@ -70,14 +70,14 @@ export function ChipTooltip({
 
   const isLime = variant === "lime";
 
-  // Mobile-safe sizing — chips shrink below 640px (text-[10px]) and wrap
+  // Mobile-safe sizing - chips shrink below 640px (text-[10px]) and wrap
   // naturally inside any flex-wrap parent.
   const sizeClasses =
     size === "sm"
       ? "px-2.5 py-1 text-[10px]"
       : "px-3 py-1.5 text-[10px] sm:text-[11px]";
 
-  // Resting vs open chip colors — CSS transition handles the crossfade,
+  // Resting vs open chip colors - CSS transition handles the crossfade,
   // motion handles the floating tooltip. dark: variants keep this usable
   // on light-surface pages (Services) and dark-surface pages (Home hero).
   const restClasses = isLime
@@ -89,7 +89,7 @@ export function ChipTooltip({
 
   return (
     <span className={`relative inline-block ${className}`}>
-      {/* Trigger chip — hover, keyboard focus, and Escape supported */}
+      {/* Trigger chip - hover, keyboard focus, and Escape supported */}
       <span
         tabIndex={0}
         aria-describedby={tooltipId}
@@ -111,7 +111,7 @@ export function ChipTooltip({
         {label}
       </span>
 
-      {/* Tooltip — ALWAYS in the DOM; opacity/visibility toggled via motion.
+      {/* Tooltip - ALWAYS in the DOM; opacity/visibility toggled via motion.
           visibility flips to hidden only AFTER the exit animation completes
           (transitionEnd) so the close fade stays visible. */}
       <motion.span
@@ -138,7 +138,7 @@ export function ChipTooltip({
         }}
         transition={{ duration: 0.45, ease: EASE }}
       >
-        {/* Glass panel — backdrop-blur + low-opacity dark fill, soft drop shadow */}
+        {/* Glass panel - backdrop-blur + low-opacity dark fill, soft drop shadow */}
         <span
           className={`relative block px-4 py-3 bg-[#0a0a0a]/85 backdrop-blur-xl border rounded-[6px] ${
             isLime
@@ -146,7 +146,7 @@ export function ChipTooltip({
               : "border-white/10 shadow-[0_12px_32px_-12px_rgba(0,0,0,0.6)]"
           }`}
         >
-          {/* Lime hairline accent across the top — solid for lime variant,
+          {/* Lime hairline accent across the top - solid for lime variant,
               gradient fade for neutral (subtler register) */}
           <span
             aria-hidden="true"
@@ -159,7 +159,7 @@ export function ChipTooltip({
           <span className="block text-[11px] leading-relaxed text-neutral-100 normal-case tracking-normal font-sans text-center [text-wrap:balance]">
             {tooltip}
           </span>
-          {/* Arrow pointer — rotated square linking tooltip to chip */}
+          {/* Arrow pointer - rotated square linking tooltip to chip */}
           <span
             aria-hidden="true"
             className={`absolute -bottom-[5px] left-1/2 -translate-x-1/2 w-[10px] h-[10px] bg-[#0a0a0a]/85 backdrop-blur-xl border-r border-b rotate-45 ${

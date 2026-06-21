@@ -43,10 +43,10 @@ import uniqaLogo from "figma:asset/590f188d1475875fa3221bb4f86c99f935f70cbe.png"
 import fifaLogo from "figma:asset/51e11441d7c02bfa2791df691e15dbf208a105e4.png";
 
 // Archicom Project Assets (River Point + Bulwar Północny investments)
-import archicomCover from "../../imports/archicom/archicom-night-rendering.webp"; // Cover — matches first frame of new hover animation
+import archicomCover from "../../imports/archicom/archicom-night-rendering.webp"; // Cover - matches first frame of new hover animation
 // Migrated PNG → WebP (quality 85, ~91% size reduction, visually equivalent).
 // Originals preserved in src/imports/.backups-pre-compress/.
-import archicomPanorama from "../../imports/archicom/bkg1 2.webp"; // Old panoramic — moved to gallery as supporting context shot
+import archicomPanorama from "../../imports/archicom/bkg1 2.webp"; // Old panoramic - moved to gallery as supporting context shot
 import archicomRP1 from "../../imports/archicom/RP1.webp";
 import archicomRP2 from "../../imports/archicom/RP2.webp";
 import archicomRP3 from "../../imports/archicom/RP3.webp";
@@ -56,20 +56,20 @@ import archicomBP2 from "../../imports/archicom/BP2.webp";
 import archicomBP3 from "../../imports/archicom/BP3.webp";
 import archicomBP4 from "../../imports/archicom/BP4.webp";
 
-// regional.fit — product assets:
-// Cover = wide marketing hero (Screenshot 03.31.59) — logo + role list + benefit chips.
-// Gallery = 5 product UI frames (marketing hero NOT repeated in gallery — already the cover).
+// regional.fit - product assets:
+// Cover = wide marketing hero (Screenshot 03.31.59) - logo + role list + benefit chips.
+// Gallery = 5 product UI frames (marketing hero NOT repeated in gallery - already the cover).
 import regionalfitCover from "../../imports/regional-fit/regionalfit-cover.webp";
 import regionalfitShot2 from "../../imports/regional-fit/02-process-flow.webp";          // ultra-wide 4-step: Submission → Validation → Decision → Global Trends
 import regionalfitShot3 from "../../imports/regional-fit/03-network-map.webp";           // Poland map with 94 Zdrofit clubs (pilot scale signal)
 import regionalfitShot4 from "../../imports/regional-fit/04-mobile-demo.webp";           // mobile portrait: demo mode role picker (responsive proof)
 import regionalfitShot5 from "../../imports/regional-fit/05-brief-detail.webp";          // single brief detail with alignment scoring + policy enforcer
-import regionalfitShot6 from "../../imports/regional-fit/06-users-roles.webp";           // user/role admin table — multi-role architecture in practice
+import regionalfitShot6 from "../../imports/regional-fit/06-users-roles.webp";           // user/role admin table - multi-role architecture in practice
 
-// Caterelo (R3 × R3 self-built proof) — flat-color illustration cover + hover animation
+// Caterelo (R3 × R3 self-built proof) - flat-color illustration cover + hover animation
 import cathereloCover from "../../imports/caterelo/caterelo-cover.webp";
 
-// Caterelo gallery — full product narrative: Europe overview → region map → compare → detail → chart → calculator
+// Caterelo gallery - full product narrative: Europe overview → region map → compare → detail → chart → calculator
 import cathereloShot1 from "../../imports/caterelo/01-europe-overview.webp";
 import cathereloShot2 from "../../imports/caterelo/02-region-map.webp";
 import cathereloShot3 from "../../imports/caterelo/03-compare.webp";
@@ -80,7 +80,7 @@ import cathereloShot6 from "../../imports/caterelo/06-renovation-calc.webp";
 // DiscoBowl Project Assets (20 UK venues + booking system)
 // Migrated PNG → WebP (quality 85, ~85% size reduction, visually equivalent).
 // Originals preserved in src/imports/.backups-pre-compress/.
-import discobowlCover from "../../imports/discobowl/27.webp"; // Panoramic cover — /work thumbnail + hero
+import discobowlCover from "../../imports/discobowl/27.webp"; // Panoramic cover - /work thumbnail + hero
 import discobowlPanorama from "../../imports/discobowl/1 9.webp"; // Originally cover, moved to gallery
 import discobowlAsset1 from "../../imports/discobowl/2 2.webp";
 import discobowlAsset2 from "../../imports/discobowl/3 2.webp";
@@ -90,7 +90,7 @@ import discobowlAsset5 from "../../imports/discobowl/6 2.webp";
 import discobowlFrame from "../../imports/discobowl/Frame 636509 2.webp";
 import discobowlGroup from "../../imports/discobowl/Group 636667.webp";
 
-// Internal placeholder cover — typographic block for case studies awaiting final assets.
+// Internal placeholder cover - typographic block for case studies awaiting final assets.
 // Used while the real cover image is being prepared. On-brand: dark void + lime + grey grain.
 function InternalPlaceholder({ title, tagline, accent = "#D4FF00", background = "#181D1F" }: { title: string; tagline?: string; accent?: string; background?: string }) {
   return (
@@ -100,7 +100,7 @@ function InternalPlaceholder({ title, tagline, accent = "#D4FF00", background = 
     >
       {/* Noise / grain overlay */}
       <div className="absolute inset-0 opacity-[0.10]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")', backgroundSize: '128px 128px' }} />
-      {/* Diagonal lime accent — vertical line on left edge */}
+      {/* Diagonal lime accent - vertical line on left edge */}
       <div className="absolute top-0 bottom-0 left-0 w-[3px]" style={{ background: accent }} />
       {/* Faint radial glow */}
       <div className="absolute inset-0 opacity-[0.18]" style={{ background: `radial-gradient(ellipse at 20% 90%, ${accent}40 0%, transparent 50%)` }} />
@@ -122,7 +122,7 @@ function InternalPlaceholder({ title, tagline, accent = "#D4FF00", background = 
   );
 }
 
-// NDA placeholder cover component — blurred logo on gradient
+// NDA placeholder cover component - blurred logo on gradient
 function NdaPlaceholder({ logo, colors }: { logo: string; colors: [string, string] }) {
   return (
     <div
@@ -152,7 +152,7 @@ export const projects = [
       en: "Product Design / System",
       pl: "Design Produktu / System"
     },
-    year: "2019 — current",
+    year: "2019 - current",
     image: benefitImg,
     coverImage: benefitCoverImg,
     hoverVideo: "/videos/benefit-hover.mp4",
@@ -165,36 +165,36 @@ export const projects = [
     ],
     isInternal: false,
     description: {
-      en: "Benefit Systems operates 300+ wellness clubs in Poland — the largest network in the country, opening new locations on a rolling calendar. Since 2019 we run the visual-communication production system behind those openings and campaigns: key visuals and full asset packages, from mesh banners to digital screens, delivered on a fixed operational rhythm.",
-      pl: "Benefit Systems prowadzi 300+ klubów wellness w Polsce — największą sieć w kraju, otwierającą nowe lokalizacje w trybie ciągłym. Od 2019 prowadzimy system produkcji komunikacji wizualnej stojący za tymi otwarciami i kampaniami: key visuale i pełne pakiety zasobów, od siatek mesh po ekrany cyfrowe, dostarczane w stałym rytmie operacyjnym."
+      en: "Benefit Systems operates 300+ wellness clubs in Poland - the largest network in the country, opening new locations on a rolling calendar. Since 2019 we run the visual-communication production system behind those openings and campaigns: key visuals and full asset packages, from mesh banners to digital screens, delivered on a fixed operational rhythm.",
+      pl: "Benefit Systems prowadzi 300+ klubów wellness w Polsce - największą sieć w kraju, otwierającą nowe lokalizacje w trybie ciągłym. Od 2019 prowadzimy system produkcji komunikacji wizualnej stojący za tymi otwarciami i kampaniami: key visuale i pełne pakiety zasobów, od siatek mesh po ekrany cyfrowe, dostarczane w stałym rytmie operacyjnym."
     },
     services: {
       en: ["Visual Communication", "Key Visuals", "Asset Production"],
       pl: ["Komunikacja Wizualna", "Key Visuale", "Produkcja Zasobów"]
     },
     challenge: {
-      en: "Every club opening is a hard deadline with a long physical supply chain behind it: assets must be production-final 2.5 months before doors open. With 5+ Project Managers running parallel openings, the old mode — ad-hoc briefs and per-project coordination — meant status chasing, duplicate feedback and files arriving late enough to threaten launch dates.",
-      pl: "Każde otwarcie klubu to twardy deadline z długim fizycznym łańcuchem produkcji za sobą: zasoby muszą być gotowe do produkcji 2,5 miesiąca przed otwarciem drzwi. Przy 5+ Project Managerach prowadzących równoległe otwarcia, stary tryb — briefy ad-hoc i koordynacja per projekt — oznaczał gonienie statusów, zdublowany feedback i pliki spóźnione na tyle, by zagrażać datom otwarć."
+      en: "Every club opening is a hard deadline with a long physical supply chain behind it: assets must be production-final 2.5 months before doors open. With 5+ Project Managers running parallel openings, the old mode - ad-hoc briefs and per-project coordination - meant status chasing, duplicate feedback and files arriving late enough to threaten launch dates.",
+      pl: "Każde otwarcie klubu to twardy deadline z długim fizycznym łańcuchem produkcji za sobą: zasoby muszą być gotowe do produkcji 2,5 miesiąca przed otwarciem drzwi. Przy 5+ Project Managerach prowadzących równoległe otwarcia, stary tryb - briefy ad-hoc i koordynacja per projekt - oznaczał gonienie statusów, zdublowany feedback i pliki spóźnione na tyle, by zagrażać datom otwarć."
     },
     decisions: {
-      en: "01 Diagnose traced delays to unstructured intake and unclear sign-off ownership. 02 Map turned each opening into a fixed checklist of assets with deadlines counted back from opening day. 03 Standardize built a scalable layout system — one key-visual logic adapted per location and format. 06 Ship runs on a standing production calendar: every PM sees the same pipeline, every asset has a dated decision gate.",
-      pl: "01 Diagnose namierzył opóźnienia w nieustrukturyzowanym intake'u i niejasnej własności akceptacji. 02 Map zamienił każde otwarcie w stałą checklistę zasobów z terminami liczonymi wstecz od dnia otwarcia. 03 Standardize zbudował skalowalny system layoutów — jedna logika key visuala adaptowana per lokalizacja i format. 06 Ship działa na stałym kalendarzu produkcyjnym: każdy PM widzi ten sam pipeline, każdy zasób ma datowaną bramkę decyzyjną."
+      en: "01 Diagnose traced delays to unstructured intake and unclear sign-off ownership. 02 Map turned each opening into a fixed checklist of assets with deadlines counted back from opening day. 03 Standardize built a scalable layout system - one key-visual logic adapted per location and format. 06 Ship runs on a standing production calendar: every PM sees the same pipeline, every asset has a dated decision gate.",
+      pl: "01 Diagnose namierzył opóźnienia w nieustrukturyzowanym intake'u i niejasnej własności akceptacji. 02 Map zamienił każde otwarcie w stałą checklistę zasobów z terminami liczonymi wstecz od dnia otwarcia. 03 Standardize zbudował skalowalny system layoutów - jedna logika key visuala adaptowana per lokalizacja i format. 06 Ship działa na stałym kalendarzu produkcyjnym: każdy PM widzi ten sam pipeline, każdy zasób ma datowaną bramkę decyzyjną."
     },
     approach: {
-      en: "Each opening is a unique key visual inside a non-negotiable framework: locked brand structure, variable local expression. The checklist-driven cadence means a new club enters the pipeline as a configuration, not a project from scratch. AI supports format multiplication — one approved master fans out into the full media package.",
-      pl: "Każde otwarcie to unikalny key visual w nienegocjowalnych ramach: zablokowana struktura marki, zmienna lokalna ekspresja. Rytm oparty o checklisty sprawia, że nowy klub wchodzi do pipeline'u jako konfiguracja, nie projekt od zera. AI wspiera multiplikację formatów — jeden zatwierdzony master rozchodzi się na pełen pakiet mediowy."
+      en: "Each opening is a unique key visual inside a non-negotiable framework: locked brand structure, variable local expression. The checklist-driven cadence means a new club enters the pipeline as a configuration, not a project from scratch. AI supports format multiplication - one approved master fans out into the full media package.",
+      pl: "Każde otwarcie to unikalny key visual w nienegocjowalnych ramach: zablokowana struktura marki, zmienna lokalna ekspresja. Rytm oparty o checklisty sprawia, że nowy klub wchodzi do pipeline'u jako konfiguracja, nie projekt od zera. AI wspiera multiplikację formatów - jeden zatwierdzony master rozchodzi się na pełen pakiet mediowy."
     },
     quote: {
       en: "An opening date never moves. The system makes sure the assets never do either.",
       pl: "Data otwarcia nigdy się nie przesuwa. System dba o to, żeby zasoby też nie."
     },
     outcome: {
-      en: "A standing production system that holds the 2.5-month asset lock across parallel openings. 300+ clubs supported, 5+ Project Managers coordinated through one pipeline instead of five parallel inboxes — a partnership running since 2019.",
-      pl: "Stały system produkcji, który trzyma 2,5-miesięczny lock zasobów przy równoległych otwarciach. 300+ wspieranych klubów, 5+ Project Managerów koordynowanych przez jeden pipeline zamiast pięciu równoległych skrzynek — partnerstwo trwające od 2019 roku."
+      en: "A standing production system that holds the 2.5-month asset lock across parallel openings. 300+ clubs supported, 5+ Project Managers coordinated through one pipeline instead of five parallel inboxes - a partnership running since 2019.",
+      pl: "Stały system produkcji, który trzyma 2,5-miesięczny lock zasobów przy równoległych otwarciach. 300+ wspieranych klubów, 5+ Project Managerów koordynowanych przez jeden pipeline zamiast pięciu równoległych skrzynek - partnerstwo trwające od 2019 roku."
     },
     reflection: {
-      en: "Reliability is the deliverable. When openings run in parallel, process throughput matters as much as the pixels — the system is what lets quality survive scale.",
-      pl: "Niezawodność jest deliverable'em. Gdy otwarcia biegną równolegle, przepustowość procesu znaczy tyle samo co piksele — to system pozwala jakości przetrwać skalę."
+      en: "Reliability is the deliverable. When openings run in parallel, process throughput matters as much as the pixels - the system is what lets quality survive scale.",
+      pl: "Niezawodność jest deliverable'em. Gdy otwarcia biegną równolegle, przepustowość procesu znaczy tyle samo co piksele - to system pozwala jakości przetrwać skalę."
     },
     // TODO(reszek): jeśli realnie koordynowanych jest 15+ PM-ów, podbij claim tutaj ORAZ w challenge/outcome.
     // Do potwierdzenia ujednolicone do bezpieczniejszego "5+" (poprzednio header mówił "15+", body "5+").
@@ -203,7 +203,7 @@ export const projects = [
         { value: "5+", label: { en: "PMs in Parallel", pl: "PM-ów Równolegle" } },
         { value: "2.5", label: { en: "Months Asset Lead Time", pl: "Mies. Wyprzedzenia Produkcji" } }
     ],
-    // Testimonial — Benefit Systems. Rola potwierdzona w kanonie: "Marketing & Brand Lead · Benefit Systems". Treść cytatu = słowa klienta, nie zmieniać.
+    // Testimonial - Benefit Systems. Rola potwierdzona w kanonie: "Marketing & Brand Lead · Benefit Systems". Treść cytatu = słowa klienta, nie zmieniać.
     testimonial: {
       quote: {
         en: "They are proactive, transparent, and truly care about the outcome. A reliable partner for any scale.",
@@ -258,8 +258,8 @@ export const projects = [
       pl: "Zaprojektowaliśmy wydajną architekturę dla sklepu internetowego oraz stworzyliśmy intuicyjne aplikacje ułatwiające logistykę i doświadczenie fanów podczas koncertów. Równolegle zarządzaliśmy produkcją materiałów fizycznych na wydarzenia."
     },
     approach: {
-      en: "We combined technological and production expertise. We designed and deployed reliability-focused digital products while maintaining strict visual consistency with promotional materials. The engagement runs as a standing system, not ad-hoc requests: each tour cycle opens with a structured intake covering every deliverable — store, apps, physical production — and work ships on a fixed cadence mapped to the tour calendar. Drop dates and show dates set the decision gates; nothing waits on a brief written the week before.",
-      pl: "Połączyliśmy kompetencje technologiczne z produkcyjnymi. Zaprojektowaliśmy i wdrożyliśmy produkty cyfrowe zorientowane na niezawodność, dbając jednocześnie o spójność z materiałami promocyjnymi. Współpraca działa jako stały system, nie zlecenia ad-hoc: każdy cykl trasy zaczyna się od ustrukturyzowanego intake'u obejmującego wszystkie deliverables — sklep, aplikacje, produkcję fizyczną — a praca jest dostarczana w stałym rytmie zmapowanym na kalendarz trasy. Daty dropów i koncertów wyznaczają bramki decyzyjne; nic nie czeka na brief pisany tydzień wcześniej."
+      en: "We combined technological and production expertise. We designed and deployed reliability-focused digital products while maintaining strict visual consistency with promotional materials. The engagement runs as a standing system, not ad-hoc requests: each tour cycle opens with a structured intake covering every deliverable - store, apps, physical production - and work ships on a fixed cadence mapped to the tour calendar. Drop dates and show dates set the decision gates; nothing waits on a brief written the week before.",
+      pl: "Połączyliśmy kompetencje technologiczne z produkcyjnymi. Zaprojektowaliśmy i wdrożyliśmy produkty cyfrowe zorientowane na niezawodność, dbając jednocześnie o spójność z materiałami promocyjnymi. Współpraca działa jako stały system, nie zlecenia ad-hoc: każdy cykl trasy zaczyna się od ustrukturyzowanego intake'u obejmującego wszystkie deliverables - sklep, aplikacje, produkcję fizyczną - a praca jest dostarczana w stałym rytmie zmapowanym na kalendarz trasy. Daty dropów i koncertów wyznaczają bramki decyzyjne; nic nie czeka na brief pisany tydzień wcześniej."
     },
     quote: {
       en: "Digital products at this scale don't forgive errors - the e-commerce store and apps must work flawlessly.",
@@ -277,7 +277,7 @@ export const projects = [
         { value: "300k+", label: { en: "Tickets Sold", pl: "Sprzedane Bilety" } },
         { value: "10", label: { en: "Concerts", pl: "Koncertów" } }
     ],
-    // Testimonial — Dawid Podsiadło production side. ⚠ Role placeholder — replace with real title (Manager / Producer / Tour Director).
+    // Testimonial - Dawid Podsiadło production side. ⚠ Role placeholder - replace with real title (Manager / Producer / Tour Director).
     testimonial: {
       quote: {
         en: "They don't just execute tasks; they think along with us and bring solutions that drive real value.",
@@ -298,17 +298,17 @@ export const projects = [
       en: "Real Estate / Multi-channel Production",
       pl: "Real Estate / Produkcja Multi-channel"
     },
-    year: "2026 — current",
-    image: archicomCover,      // panoramic thumbnail — what shows on /work list
+    year: "2026 - current",
+    image: archicomCover,      // panoramic thumbnail - what shows on /work list
     coverImage: archicomCover, // same for project detail hero
-    // Hover video on /work tile — new evening rendering animation (replaces old archicom-hover.mp4)
+    // Hover video on /work tile - new evening rendering animation (replaces old archicom-hover.mp4)
     hoverVideo: "/videos/archicom-rendering-anim.mp4",
-    // YouTube anchor video — embedded full-width above image gallery
+    // YouTube anchor video - embedded full-width above image gallery
     videoUrl: "https://www.youtube.com/watch?v=7f_Qzq6B7kY",
     // Gallery: old panoramic shot opens as context-setter (previous cover, now supporting context),
     // then alternating RP/BP investments
     images: [
-      archicomPanorama, // Old panoramic — broader context for the renovation series
+      archicomPanorama, // Old panoramic - broader context for the renovation series
       archicomRP1,
       archicomBP1,
       archicomRP2,
@@ -320,46 +320,46 @@ export const projects = [
     ],
     isInternal: false,
     description: {
-      en: "Archicom is one of Poland's largest residential developers, running multiple investments simultaneously across major cities — each requiring a launch campaign that feels distinct (location identity) yet stays anchored to the corporate brand. We've supported their marketing operations broadly; River Point and Bulwar Północny shown here are flagship Wrocław examples of the system in action — print, outdoor, digital, animation and production support.",
-      pl: "Archicom to jeden z największych deweloperów mieszkaniowych w Polsce, prowadzący wiele inwestycji równolegle w głównych miastach — każda wymaga kampanii launchowej, która jest rozpoznawalna lokalnie, ale spójna z marką korporacyjną. Wspieraliśmy ich operacje marketingowe szeroko; River Point i Bulwary Północne pokazane tutaj to flagowe wrocławskie przykłady systemu w działaniu — print, outdoor, digital, animacja i wsparcie produkcyjne."
+      en: "Archicom is one of Poland's largest residential developers, running multiple investments simultaneously across major cities - each requiring a launch campaign that feels distinct (location identity) yet stays anchored to the corporate brand. We've supported their marketing operations broadly; River Point and Bulwar Północny shown here are flagship Wrocław examples of the system in action - print, outdoor, digital, animation and production support.",
+      pl: "Archicom to jeden z największych deweloperów mieszkaniowych w Polsce, prowadzący wiele inwestycji równolegle w głównych miastach - każda wymaga kampanii launchowej, która jest rozpoznawalna lokalnie, ale spójna z marką korporacyjną. Wspieraliśmy ich operacje marketingowe szeroko; River Point i Bulwary Północne pokazane tutaj to flagowe wrocławskie przykłady systemu w działaniu - print, outdoor, digital, animacja i wsparcie produkcyjne."
     },
     services: {
       en: ["Print Materials", "Outdoor Campaigns", "Digital Assets", "Animations & Video", "Production Support"],
       pl: ["Materiały Drukowane", "Kampanie Outdoor", "Zasoby Digital", "Animacje i Wideo", "Wsparcie Produkcyjne"]
     },
     challenge: {
-      en: "Each investment needs its own brand expression — River Point and Bulwar Północny have different audiences, locations and architectural language. But every asset has to feel like Archicom. Add 5+ media channels per investment plus tight launch timelines, and you have a production volume challenge with brand consistency stakes.",
-      pl: "Każda inwestycja potrzebuje własnej ekspresji brandowej — River Point i Bulwary Północne mają różnych odbiorców, lokalizacje i język architektoniczny. Ale każdy asset musi być rozpoznawalny jako Archicom. Dodaj 5+ kanałów mediowych per inwestycja plus napięte launch timeline'y i masz wyzwanie wolumenu produkcji ze stawkami brand consistency."
+      en: "Each investment needs its own brand expression - River Point and Bulwar Północny have different audiences, locations and architectural language. But every asset has to feel like Archicom. Add 5+ media channels per investment plus tight launch timelines, and you have a production volume challenge with brand consistency stakes.",
+      pl: "Każda inwestycja potrzebuje własnej ekspresji brandowej - River Point i Bulwary Północne mają różnych odbiorców, lokalizacje i język architektoniczny. Ale każdy asset musi być rozpoznawalny jako Archicom. Dodaj 5+ kanałów mediowych per inwestycja plus napięte launch timeline'y i masz wyzwanie wolumenu produkcji ze stawkami brand consistency."
     },
     decisions: {
-      en: "We structured the work around a two-layer brand system: Archicom corporate identity as the foundation, investment-specific micro-brand as the expression layer. Production was built around modular templates per channel — each new asset is an adaptation, not a fresh design. Animation became the anchor asset, with derivatives generated for static formats.",
-      pl: "Zorganizowaliśmy pracę wokół dwuwarstwowego systemu marki: Archicom korporacyjne jako fundament, micro-brand per inwestycja jako warstwa ekspresji. Produkcja oparta o modułowe szablony per kanał — każdy nowy asset to adaptacja, nie projekt od zera. Animacja stała się asset'em flagowym, z derivatywami dla formatów statycznych."
+      en: "We structured the work around a two-layer brand system: Archicom corporate identity as the foundation, investment-specific micro-brand as the expression layer. Production was built around modular templates per channel - each new asset is an adaptation, not a fresh design. Animation became the anchor asset, with derivatives generated for static formats.",
+      pl: "Zorganizowaliśmy pracę wokół dwuwarstwowego systemu marki: Archicom korporacyjne jako fundament, micro-brand per inwestycja jako warstwa ekspresji. Produkcja oparta o modułowe szablony per kanał - każdy nowy asset to adaptacja, nie projekt od zera. Animacja stała się asset'em flagowym, z derivatywami dla formatów statycznych."
     },
     approach: {
-      en: "We handled the full pipeline from concept to delivered assets — not just design files, but the production support that takes work from approved layout to printed billboard, animated ad, social media set. For each investment, we built a content library the marketing team could pull from for ongoing campaigns.",
-      pl: "Obsługiwaliśmy pełen pipeline od koncepcji do dostarczonych assetów — nie tylko pliki designu, ale wsparcie produkcyjne, które przeprowadza pracę od zatwierdzonego layoutu do wydrukowanego billboardu, animowanej reklamy, social media setu. Per inwestycja zbudowaliśmy bibliotekę treści, którą zespół marketingu mógł reużywać do bieżących kampanii."
+      en: "We handled the full pipeline from concept to delivered assets - not just design files, but the production support that takes work from approved layout to printed billboard, animated ad, social media set. For each investment, we built a content library the marketing team could pull from for ongoing campaigns.",
+      pl: "Obsługiwaliśmy pełen pipeline od koncepcji do dostarczonych assetów - nie tylko pliki designu, ale wsparcie produkcyjne, które przeprowadza pracę od zatwierdzonego layoutu do wydrukowanego billboardu, animowanej reklamy, social media setu. Per inwestycja zbudowaliśmy bibliotekę treści, którą zespół marketingu mógł reużywać do bieżących kampanii."
     },
     quote: {
       en: "Each investment is a launch event. The system makes it routine excellence, not heroic delivery.",
       pl: "Każda inwestycja to launch event. System sprawia, że to rutynowa doskonałość, nie heroiczna dostawa."
     },
     outcome: {
-      en: "Two flagship Wrocław investments launched with full multi-channel campaigns — print, outdoor, digital, animation. Brand consistency across investments AND with Archicom corporate. Production cadence that kept up with sales-driven launch timelines.",
-      pl: "Dwie flagowe wrocławskie inwestycje uruchomione z pełnymi kampaniami multi-channel — print, outdoor, digital, animacja. Brand consistency między inwestycjami ORAZ z marką korporacyjną Archicom. Tempo produkcji nadążające za sales-driven timeline'ami launchu."
+      en: "Two flagship Wrocław investments launched with full multi-channel campaigns - print, outdoor, digital, animation. Brand consistency across investments AND with Archicom corporate. Production cadence that kept up with sales-driven launch timelines.",
+      pl: "Dwie flagowe wrocławskie inwestycje uruchomione z pełnymi kampaniami multi-channel - print, outdoor, digital, animacja. Brand consistency między inwestycjami ORAZ z marką korporacyjną Archicom. Tempo produkcji nadążające za sales-driven timeline'ami launchu."
     },
     reflection: {
-      en: "In real estate communication, every campaign is high-stakes — millions in inventory waiting on launch awareness. Systems aren't a luxury, they're the only way to deliver consistently across multiple investments without burning out the marketing team.",
-      pl: "W komunikacji nieruchomości każda kampania to high-stakes — miliony w ofercie czekają na launch awareness. Systemy to nie luksus, to jedyny sposób na konsekwentne dostarczanie w wielu inwestycjach bez wypalania zespołu marketingu."
+      en: "In real estate communication, every campaign is high-stakes - millions in inventory waiting on launch awareness. Systems aren't a luxury, they're the only way to deliver consistently across multiple investments without burning out the marketing team.",
+      pl: "W komunikacji nieruchomości każda kampania to high-stakes - miliony w ofercie czekają na launch awareness. Systemy to nie luksus, to jedyny sposób na konsekwentne dostarczanie w wielu inwestycjach bez wypalania zespołu marketingu."
     },
     stats: [
       { value: "2", label: { en: "Flagship Investments", pl: "Flagowe Inwestycje" } },
       { value: "5+", label: { en: "Channels per Investment", pl: "Kanałów per Inwestycja" } }
     ],
-    // Testimonial — Archicom marketing side. ⚠ Role placeholder — replace with real title.
+    // Testimonial - Archicom marketing side. ⚠ Role placeholder - replace with real title.
     testimonial: {
       quote: {
-        en: "Consistent quality across every investment we launch. Communication is precise, deadlines hold — exactly what real estate campaigns need.",
-        pl: "Spójna jakość przy każdej inwestycji którą uruchamiamy. Komunikacja jest precyzyjna, terminy się trzymają — dokładnie tego potrzebują kampanie nieruchomości."
+        en: "Consistent quality across every investment we launch. Communication is precise, deadlines hold - exactly what real estate campaigns need.",
+        pl: "Spójna jakość przy każdej inwestycji którą uruchamiamy. Komunikacja jest precyzyjna, terminy się trzymają - dokładnie tego potrzebują kampanie nieruchomości."
       },
       author: "Michalina Piątkowska",
       role: {
@@ -376,43 +376,43 @@ export const projects = [
       en: "Brand Support",
       pl: "Wsparcie Marki"
     },
-    year: "2022 — current",
+    year: "2022 - current",
     image: sonovaCoverImg,
     coverImage: sonovaCoverImg,
     hoverVideo: "/videos/sonova-hover.mp4",
     images: [sonovaAsset4, sonovaAsset1, sonovaAsset2, sonovaAsset3, sonovaAsset5],
     isInternal: false,
     description: {
-      en: "Geers (Sonova Group) runs 250+ hearing-care locations in Poland, part of a Sonova network of 600+ locations across 17 countries. Since 2022 we operate the marketing production layer for the Polish market: retail campaigns, print and digital assets shipped through a standing brief-to-asset pipeline — not per-project agency cycles.",
-      pl: "Geers (Sonova Group) prowadzi 250+ punktów opieki słuchowej w Polsce, będąc częścią sieci Sonova liczącej 600+ lokalizacji w 17 krajach. Od 2022 obsługujemy warstwę produkcji marketingowej dla polskiego rynku: kampanie retail, materiały drukowane i cyfrowe dostarczane przez stały pipeline brief-to-asset — nie przez cykle agencyjne per projekt."
+      en: "Geers (Sonova Group) runs 250+ hearing-care locations in Poland, part of a Sonova network of 600+ locations across 17 countries. Since 2022 we operate the marketing production layer for the Polish market: retail campaigns, print and digital assets shipped through a standing brief-to-asset pipeline - not per-project agency cycles.",
+      pl: "Geers (Sonova Group) prowadzi 250+ punktów opieki słuchowej w Polsce, będąc częścią sieci Sonova liczącej 600+ lokalizacji w 17 krajach. Od 2022 obsługujemy warstwę produkcji marketingowej dla polskiego rynku: kampanie retail, materiały drukowane i cyfrowe dostarczane przez stały pipeline brief-to-asset - nie przez cykle agencyjne per projekt."
     },
     services: {
       en: ["Retail Campaigns", "Print Design", "Digital Assets"],
       pl: ["Kampanie Retail", "Projekty Drukowane", "Zasoby Cyfrowe"]
     },
     challenge: {
-      en: "Before the system, campaigns started from loose email briefs. Each asset bounced between local marketing, compliance and production — multiple revision rounds, approval cycles measured in weeks, and 250+ locations waiting on materials. The cost wasn't creative quality. It was coordination time and missed retail windows.",
-      pl: "Zanim powstał system, kampanie zaczynały się od luźnych briefów mailowych. Każdy zasób krążył między lokalnym marketingiem, compliance i produkcją — wiele rund poprawek, cykle akceptacji liczone w tygodniach i 250+ lokalizacji czekających na materiały. Kosztem nie była jakość kreacji. Był nim czas koordynacji i przegapione okna retailowe."
+      en: "Before the system, campaigns started from loose email briefs. Each asset bounced between local marketing, compliance and production - multiple revision rounds, approval cycles measured in weeks, and 250+ locations waiting on materials. The cost wasn't creative quality. It was coordination time and missed retail windows.",
+      pl: "Zanim powstał system, kampanie zaczynały się od luźnych briefów mailowych. Każdy zasób krążył między lokalnym marketingiem, compliance i produkcją - wiele rund poprawek, cykle akceptacji liczone w tygodniach i 250+ lokalizacji czekających na materiały. Kosztem nie była jakość kreacji. Był nim czas koordynacji i przegapione okna retailowe."
     },
     decisions: {
-      en: "We ran r3loop on the pipeline, not the pixels. 01 Diagnose located where briefs actually stalled: ambiguous inputs and compliance checks arriving last. 02 Map charted every asset type against its real approval path. 03 Standardize converted that into brief templates with output contracts — format, channel, regulatory constraints and sign-off owner defined before design starts. 05 Govern moved compliance review to intake instead of the end.",
-      pl: "Zastosowaliśmy r3loop do pipeline'u, nie do pikseli. 01 Diagnose zlokalizował, gdzie briefy faktycznie utykały: niejednoznaczne inputy i compliance sprawdzane na końcu. 02 Map rozrysował każdy typ zasobu na jego realną ścieżkę akceptacji. 03 Standardize zamienił to w szablony briefów z output contracts — format, kanał, ograniczenia regulacyjne i właściciel akceptacji zdefiniowane, zanim zacznie się projektowanie. 05 Govern przeniósł przegląd compliance na początek intake'u zamiast na koniec."
+      en: "We ran r3loop on the pipeline, not the pixels. 01 Diagnose located where briefs actually stalled: ambiguous inputs and compliance checks arriving last. 02 Map charted every asset type against its real approval path. 03 Standardize converted that into brief templates with output contracts - format, channel, regulatory constraints and sign-off owner defined before design starts. 05 Govern moved compliance review to intake instead of the end.",
+      pl: "Zastosowaliśmy r3loop do pipeline'u, nie do pikseli. 01 Diagnose zlokalizował, gdzie briefy faktycznie utykały: niejednoznaczne inputy i compliance sprawdzane na końcu. 02 Map rozrysował każdy typ zasobu na jego realną ścieżkę akceptacji. 03 Standardize zamienił to w szablony briefów z output contracts - format, kanał, ograniczenia regulacyjne i właściciel akceptacji zdefiniowane, zanim zacznie się projektowanie. 05 Govern przeniósł przegląd compliance na początek intake'u zamiast na koniec."
     },
     approach: {
-      en: "Production runs on a modular asset system: master layouts per channel, locked brand and regulatory zones, variable local content. AI carries the volume layer — variant generation, resizing and copy adaptation across formats — while human review holds two decision gates: brief acceptance and final compliance sign-off. 500+ assets per year ship through this loop.",
-      pl: "Produkcja działa na modułowym systemie zasobów: master layouty per kanał, zablokowane strefy brandowe i regulacyjne, zmienna treść lokalna. AI obsługuje warstwę wolumenu — generowanie wariantów, resizing i adaptację copy między formatami — a przegląd ludzki trzyma dwie bramki decyzyjne: akceptację briefu i finalny sign-off compliance. Przez tę pętlę przechodzi 500+ zasobów rocznie."
+      en: "Production runs on a modular asset system: master layouts per channel, locked brand and regulatory zones, variable local content. AI carries the volume layer - variant generation, resizing and copy adaptation across formats - while human review holds two decision gates: brief acceptance and final compliance sign-off. 500+ assets per year ship through this loop.",
+      pl: "Produkcja działa na modułowym systemie zasobów: master layouty per kanał, zablokowane strefy brandowe i regulacyjne, zmienna treść lokalna. AI obsługuje warstwę wolumenu - generowanie wariantów, resizing i adaptację copy między formatami - a przegląd ludzki trzyma dwie bramki decyzyjne: akceptację briefu i finalny sign-off compliance. Przez tę pętlę przechodzi 500+ zasobów rocznie."
     },
     quote: {
       en: "We didn't redesign Geers' communication. We redesigned how it gets approved and shipped.",
       pl: "Nie przeprojektowaliśmy komunikacji Geers. Przeprojektowaliśmy to, jak jest akceptowana i dostarczana."
     },
     outcome: {
-      en: "Within two quarters, 80%+ of briefs cleared first-round — up from a workflow where multiple revision loops were the norm. Approval cycles now run 3× faster, and the retail calendar gets served with predictable lead times across 250+ Polish locations.",
-      pl: "W ciągu dwóch kwartałów 80%+ briefów przechodziło za pierwszym podejściem — wcześniej normą było kilka pętli poprawek. Cykle akceptacji są teraz 3× szybsze, a kalendarz retail obsługiwany z przewidywalnym wyprzedzeniem w 250+ polskich lokalizacjach."
+      en: "Within two quarters, 80%+ of briefs cleared first-round - up from a workflow where multiple revision loops were the norm. Approval cycles now run 3× faster, and the retail calendar gets served with predictable lead times across 250+ Polish locations.",
+      pl: "W ciągu dwóch kwartałów 80%+ briefów przechodziło za pierwszym podejściem - wcześniej normą było kilka pętli poprawek. Cykle akceptacji są teraz 3× szybsze, a kalendarz retail obsługiwany z przewidywalnym wyprzedzeniem w 250+ polskich lokalizacjach."
     },
     reflection: {
-      en: "In regulated, multi-location retail the constraint is never design capacity — it's decision throughput. Fix the gates and the volume takes care of itself.",
-      pl: "W regulowanym, wielolokalizacyjnym retailu ograniczeniem nigdy nie jest moc projektowa — jest nim przepustowość decyzji. Napraw bramki, a wolumen zadba o siebie sam."
+      en: "In regulated, multi-location retail the constraint is never design capacity - it's decision throughput. Fix the gates and the volume takes care of itself.",
+      pl: "W regulowanym, wielolokalizacyjnym retailu ograniczeniem nigdy nie jest moc projektowa - jest nim przepustowość decyzji. Napraw bramki, a wolumen zadba o siebie sam."
     },
     stats: [
         { value: "250+", label: { en: "Locations in Poland", pl: "Lokalizacji w Polsce" } },
@@ -420,7 +420,7 @@ export const projects = [
         { value: "3×", label: { en: "Faster Approvals", pl: "Szybsze Akceptacje" } },
         { value: "500+", label: { en: "Assets / Year", pl: "Zasobów / Rok" } }
     ],
-    // Testimonial — Sonova marketing side. ⚠ Role placeholder — replace with real title.
+    // Testimonial - Sonova marketing side. ⚠ Role placeholder - replace with real title.
     testimonial: {
       quote: {
         en: "They understand the business context and deliver work that actually moves the needle.",
@@ -452,45 +452,45 @@ export const projects = [
         kubotaAsset2
     ],
     isInternal: false,
-    // TODO(reszek): potwierdź rynek i rok debiutu publicznego Kuboty — do potwierdzenia używamy
+    // TODO(reszek): potwierdź rynek i rok debiutu publicznego Kuboty - do potwierdzenia używamy
     // "public-market debut" (nie "IPO" ani "WSE debut", bo to nieścisłe).
     description: {
-      en: "Kubota scaled from cult-brand comeback to retail-volume output. For 3+ years we have run its content production system — 200+ deliverables across digital, social and print — including brand-system support for Kubota's public-market debut. Not a campaign vendor: a standing production layer the marketing team plans against.",
-      pl: "Kubota przeskalowała się z powrotu kultowej marki do produkcji w wolumenie retailowym. Od 3+ lat prowadzimy jej system produkcji treści — 200+ deliverables w digitalu, social mediach i druku — w tym wsparcie brand-systemowe przy debiucie Kuboty na rynku publicznym. Nie vendor od kampanii: stała warstwa produkcyjna, na której zespół marketingu może planować."
+      en: "Kubota scaled from cult-brand comeback to retail-volume output. For 3+ years we have run its content production system - 200+ deliverables across digital, social and print - including brand-system support for Kubota's public-market debut. Not a campaign vendor: a standing production layer the marketing team plans against.",
+      pl: "Kubota przeskalowała się z powrotu kultowej marki do produkcji w wolumenie retailowym. Od 3+ lat prowadzimy jej system produkcji treści - 200+ deliverables w digitalu, social mediach i druku - w tym wsparcie brand-systemowe przy debiucie Kuboty na rynku publicznym. Nie vendor od kampanii: stała warstwa produkcyjna, na której zespół marketingu może planować."
     },
     services: {
       en: ["Always-on content", "Campaign assets", "Modular formats", "Public-debut materials"],
       pl: ["Bieżąca obsługa", "Materiały kampanijne", "Formaty modułowe", "Materiały na debiut publiczny"]
     },
     challenge: {
-      en: "Growth multiplied output demand faster than the team could brief it. Every campaign restarted the same negotiation — formats, tone, file specs, who approves what. The cost showed up as rework: assets cycling through review rounds while drop dates stayed fixed.",
-      pl: "Wzrost mnożył zapotrzebowanie na output szybciej, niż zespół był w stanie je briefować. Każda kampania zaczynała od nowa tę samą negocjację — formaty, ton, specyfikacje plików, kto co akceptuje. Koszt objawiał się jako rework: zasoby krążące po rundach review, podczas gdy daty dropów stały w miejscu."
+      en: "Growth multiplied output demand faster than the team could brief it. Every campaign restarted the same negotiation - formats, tone, file specs, who approves what. The cost showed up as rework: assets cycling through review rounds while drop dates stayed fixed.",
+      pl: "Wzrost mnożył zapotrzebowanie na output szybciej, niż zespół był w stanie je briefować. Każda kampania zaczynała od nowa tę samą negocjację - formaty, ton, specyfikacje plików, kto co akceptuje. Koszt objawiał się jako rework: zasoby krążące po rundach review, podczas gdy daty dropów stały w miejscu."
     },
     decisions: {
-      en: "01 Diagnose isolated the rework driver — undefined output contracts, not weak creative. 03 Standardize built a modular format library: locked brand components, explicit variable zones, file specs baked into each template. 05 Govern set one approval path per asset class — a single decision gate with a named owner, no parallel feedback threads. 08 Iterate reviews the library quarterly and retires formats that stopped earning their slot.",
-      pl: "01 Diagnose wyizolował źródło reworku — niezdefiniowane output contracts, nie słabą kreację. 03 Standardize zbudował modułową bibliotekę formatów: zablokowane komponenty brandowe, jawne strefy zmienne, specyfikacje plików wpisane w każdy szablon. 05 Govern ustawił jedną ścieżkę akceptacji per klasa zasobu — pojedyncza bramka decyzyjna z imiennym właścicielem, bez równoległych wątków feedbacku. 08 Iterate kwartalnie przegląda bibliotekę i wycofuje formaty, które przestały zarabiać na swoje miejsce."
+      en: "01 Diagnose isolated the rework driver - undefined output contracts, not weak creative. 03 Standardize built a modular format library: locked brand components, explicit variable zones, file specs baked into each template. 05 Govern set one approval path per asset class - a single decision gate with a named owner, no parallel feedback threads. 08 Iterate reviews the library quarterly and retires formats that stopped earning their slot.",
+      pl: "01 Diagnose wyizolował źródło reworku - niezdefiniowane output contracts, nie słabą kreację. 03 Standardize zbudował modułową bibliotekę formatów: zablokowane komponenty brandowe, jawne strefy zmienne, specyfikacje plików wpisane w każdy szablon. 05 Govern ustawił jedną ścieżkę akceptacji per klasa zasobu - pojedyncza bramka decyzyjna z imiennym właścicielem, bez równoległych wątków feedbacku. 08 Iterate kwartalnie przegląda bibliotekę i wycofuje formaty, które przestały zarabiać na swoje miejsce."
     },
     approach: {
-      en: "Always-on production on a fixed cadence: structured intake, weekly delivery slots, predictable turnaround per asset class. AI accelerates the volume work — format adaptation, variant builds, resizing — while the library keeps every output on-brand by construction. For the public-market debut we built a dedicated communication set from the same component library, so the highest-visibility materials stayed consistent with everyday brand output.",
-      pl: "Produkcja always-on w stałym rytmie: ustrukturyzowany intake, cotygodniowe sloty dostaw, przewidywalny turnaround per klasa zasobu. AI przyspiesza pracę wolumenową — adaptacje formatów, budowę wariantów, resizing — a biblioteka z definicji trzyma każdy output w brandzie. Na debiut na rynku publicznym zbudowaliśmy dedykowany zestaw komunikacji z tej samej biblioteki komponentów, dzięki czemu materiały o najwyższej widoczności pozostały spójne z codziennym outputem marki."
+      en: "Always-on production on a fixed cadence: structured intake, weekly delivery slots, predictable turnaround per asset class. AI accelerates the volume work - format adaptation, variant builds, resizing - while the library keeps every output on-brand by construction. For the public-market debut we built a dedicated communication set from the same component library, so the highest-visibility materials stayed consistent with everyday brand output.",
+      pl: "Produkcja always-on w stałym rytmie: ustrukturyzowany intake, cotygodniowe sloty dostaw, przewidywalny turnaround per klasa zasobu. AI przyspiesza pracę wolumenową - adaptacje formatów, budowę wariantów, resizing - a biblioteka z definicji trzyma każdy output w brandzie. Na debiut na rynku publicznym zbudowaliśmy dedykowany zestaw komunikacji z tej samej biblioteki komponentów, dzięki czemu materiały o najwyższej widoczności pozostały spójne z codziennym outputem marki."
     },
     quote: {
       en: "Systemizing content delivery. Keeping brand quality consistent during growth.",
       pl: "Systematyzacja dostarczania treści. Utrzymanie spójnej jakości marki podczas wzrostu."
     },
     outcome: {
-      en: "3+ years, 200+ deliverables shipped through one repeatable workflow — fewer iteration rounds per asset, faster releases, and a brand that held coherent through its highest-visibility moment, the public-market debut, without spinning up a separate agency engagement.",
-      pl: "3+ lata, 200+ deliverables dostarczonych przez jeden powtarzalny workflow — mniej rund iteracji per zasób, szybsze premiery i marka, która pozostała spójna w swoim najbardziej widocznym momencie, debiucie na rynku publicznym, bez uruchamiania osobnego engagementu agencyjnego."
+      en: "3+ years, 200+ deliverables shipped through one repeatable workflow - fewer iteration rounds per asset, faster releases, and a brand that held coherent through its highest-visibility moment, the public-market debut, without spinning up a separate agency engagement.",
+      pl: "3+ lata, 200+ deliverables dostarczonych przez jeden powtarzalny workflow - mniej rund iteracji per zasób, szybsze premiery i marka, która pozostała spójna w swoim najbardziej widocznym momencie, debiucie na rynku publicznym, bez uruchamiania osobnego engagementu agencyjnego."
     },
     reflection: {
-      en: "Long engagements don't survive on creativity — they survive on predictability. The format library is the reason year three runs faster than year one.",
-      pl: "Długie współprace nie przetrwają na kreatywności — przetrwają na przewidywalności. Biblioteka formatów to powód, dla którego trzeci rok działa szybciej niż pierwszy."
+      en: "Long engagements don't survive on creativity - they survive on predictability. The format library is the reason year three runs faster than year one.",
+      pl: "Długie współprace nie przetrwają na kreatywności - przetrwają na przewidywalności. Biblioteka formatów to powód, dla którego trzeci rok działa szybciej niż pierwszy."
     },
     stats: [
         { value: "3+", label: { en: "Years of Partnership", pl: "Lata Współpracy" } },
         { value: "200+", label: { en: "Deliverables Shipped", pl: "Dostarczonych Materiałów" } }
     ],
-    // Testimonial — Kubota. Rola potwierdzona w kanonie: "Brand & Marketing · Kubota". Treść cytatu = słowa klienta, nie zmieniać.
+    // Testimonial - Kubota. Rola potwierdzona w kanonie: "Brand & Marketing · Kubota". Treść cytatu = słowa klienta, nie zmieniać.
     testimonial: {
       quote: {
         en: "The communication is seamless, and their commitment to quality translates directly into our business results.",
@@ -512,12 +512,12 @@ export const projects = [
       pl: "Entertainment / Produkt Rezerwacyjny"
     },
     year: "2024",
-    image: discobowlCover,      // 27.png — panoramic cover for /work list thumbnail
+    image: discobowlCover,      // 27.png - panoramic cover for /work list thumbnail
     coverImage: discobowlCover, // same for project detail hero
     hoverVideo: "/videos/discobowl-hover.mp4",
     images: [
       discobowlFrame,     // Frame composition (likely brand+system showcase)
-      discobowlPanorama,  // 1 9.png — moved here from cover slot
+      discobowlPanorama,  // 1 9.png - moved here from cover slot
       discobowlAsset1,
       discobowlAsset2,
       discobowlAsset3,
@@ -527,20 +527,20 @@ export const projects = [
     ],
     isInternal: false,
     description: {
-      en: "DiscoBowl operates 20+ bowling venues across the UK, each running its own schedule, capacity and local marketing. We designed the UX and built the booking system — two coordinated sites + reservation platform — that handles cross-venue consistency while letting each venue express local personality.",
-      pl: "DiscoBowl prowadzi 20+ kręgielni w UK, każda z własnym harmonogramem, pojemnością i lokalnym marketingiem. Zaprojektowaliśmy UX i zbudowaliśmy system rezerwacyjny — dwie skoordynowane strony + platformę rezerwacji — która obsługuje cross-venue consistency, pozwalając każdej kręgielni na lokalny charakter."
+      en: "DiscoBowl operates 20+ bowling venues across the UK, each running its own schedule, capacity and local marketing. We designed the UX and built the booking system - two coordinated sites + reservation platform - that handles cross-venue consistency while letting each venue express local personality.",
+      pl: "DiscoBowl prowadzi 20+ kręgielni w UK, każda z własnym harmonogramem, pojemnością i lokalnym marketingiem. Zaprojektowaliśmy UX i zbudowaliśmy system rezerwacyjny - dwie skoordynowane strony + platformę rezerwacji - która obsługuje cross-venue consistency, pozwalając każdej kręgielni na lokalny charakter."
     },
     services: {
       en: ["UX Design", "Product Design", "Multi-site Architecture", "Booking System UX", "Brand Consistency"],
       pl: ["UX Design", "Product Design", "Architektura Multi-site", "UX Systemu Rezerwacji", "Brand Consistency"]
     },
     challenge: {
-      en: "Twenty venues, each booking-active 7 days a week. Each venue has its own schedule, pricing tiers, league nights, kid party slots and corporate events. The booking system needs to feel like one DiscoBowl brand but adapt to each venue's reality — without manual override per location.",
-      pl: "Dwadzieścia kręgielni, każda aktywna z rezerwacjami 7 dni w tygodniu. Każda ma własny harmonogram, cenniki, ligi, eventy dla dzieci, eventy firmowe. System rezerwacji musi czuć się jak jeden DiscoBowl brand, ale adaptować się do realiów każdej kręgielni — bez manualnych override'ów per lokalizacja."
+      en: "Twenty venues, each booking-active 7 days a week. Each venue has its own schedule, pricing tiers, league nights, kid party slots and corporate events. The booking system needs to feel like one DiscoBowl brand but adapt to each venue's reality - without manual override per location.",
+      pl: "Dwadzieścia kręgielni, każda aktywna z rezerwacjami 7 dni w tygodniu. Każda ma własny harmonogram, cenniki, ligi, eventy dla dzieci, eventy firmowe. System rezerwacji musi czuć się jak jeden DiscoBowl brand, ale adaptować się do realiów każdej kręgielni - bez manualnych override'ów per lokalizacja."
     },
     decisions: {
-      en: "We treated the booking system as a product, not a feature. UX-first: every flow tested against real audience patterns — family weekends, league regulars, corporate events. Architecture: one shared component system feeding two coordinated sites — main brand site for awareness, dedicated reservations site for conversion — with venue-specific data layers underneath.",
-      pl: "Potraktowaliśmy system rezerwacji jako produkt, nie feature. UX-first: każdy flow testowany przeciw realnym wzorcom audience — rodzinne weekendy, regularni ligowicze, eventy firmowe. Architektura: jeden shared component system zasilający dwie skoordynowane strony — main brand dla awareness, dedicated reservations dla konwersji — z venue-specific data layers pod spodem."
+      en: "We treated the booking system as a product, not a feature. UX-first: every flow tested against real audience patterns - family weekends, league regulars, corporate events. Architecture: one shared component system feeding two coordinated sites - main brand site for awareness, dedicated reservations site for conversion - with venue-specific data layers underneath.",
+      pl: "Potraktowaliśmy system rezerwacji jako produkt, nie feature. UX-first: każdy flow testowany przeciw realnym wzorcom audience - rodzinne weekendy, regularni ligowicze, eventy firmowe. Architektura: jeden shared component system zasilający dwie skoordynowane strony - main brand dla awareness, dedicated reservations dla konwersji - z venue-specific data layers pod spodem."
     },
     approach: {
       en: "Multi-step booking flow that minimizes drop-off: venue selection → date/time → group size → extras → checkout. Every step optimized for mobile (where most leisure bookings happen). Brand consistency through a shared design system across both sites and 20 venue subpages.",
@@ -564,7 +564,7 @@ export const projects = [
     ]
   },
   // ─────────────────────────────────────────────────────────────────────────
-  // regional.fit — our own product. Demand management system for distributed
+  // regional.fit - our own product. Demand management system for distributed
   // organisations (multi-location chains: fitness, retail, F&B, hospitality).
   // Pilot vertical: fitness chains (Zdrofit was the seed customer & inspiration).
   //
@@ -573,7 +573,7 @@ export const projects = [
   // and gives every level the same view of status, priority and outcome.
   //
   // Live demo at briefing-system.vercel.app. MVP scope visible in product.
-  // Wider than the original "Opening Engine" framing — every recurring local
+  // Wider than the original "Opening Engine" framing - every recurring local
   // demand (campaigns, training, events, ops requests, brand assets, etc.).
   //
   // PLACEHOLDERS: gallery uses existing benefit-opening-engine screenshots as
@@ -587,19 +587,19 @@ export const projects = [
       en: "Self-Built Product / SaaS",
       pl: "Produkt Własny / SaaS"
     },
-    year: "2026 — current · MVP live",
-    isProduct: true, // Products & Systems section on /work — operator-built SaaS, not classic agency design work
-    // Cover = first frame of hover video, perfect sync — zero jump-cut when hover triggers play.
+    year: "2026 - current · MVP live",
+    isProduct: true, // Products & Systems section on /work - operator-built SaaS, not classic agency design work
+    // Cover = first frame of hover video, perfect sync - zero jump-cut when hover triggers play.
     image: regionalfitCover,
     coverImage: regionalfitCover,
-    // Hover video on /work tile — 5-second loop of the product in motion.
+    // Hover video on /work tile - 5-second loop of the product in motion.
     hoverVideo: "/videos/regionalfit-hover.mp4",
-    // Gallery narrative arc (5 frames — marketing hero is the cover, not repeated here):
-    // 0 — 4-step process flow (Submission → AI Validation → Regional Decision → Board Strategy) explains the system
-    // 1 — Poland network map (94 Zdrofit clubs) signals real-world deployment scale
-    // 2 — Mobile demo entry (role picker portrait) signals responsive + try-it-now
-    // 3 — Single brief detail w/ alignment scoring + policy enforcer = depth of validation logic
-    // 4 — Users + roles table = multi-role architecture in operational practice
+    // Gallery narrative arc (5 frames - marketing hero is the cover, not repeated here):
+    // 0 - 4-step process flow (Submission → AI Validation → Regional Decision → Board Strategy) explains the system
+    // 1 - Poland network map (94 Zdrofit clubs) signals real-world deployment scale
+    // 2 - Mobile demo entry (role picker portrait) signals responsive + try-it-now
+    // 3 - Single brief detail w/ alignment scoring + policy enforcer = depth of validation logic
+    // 4 - Users + roles table = multi-role architecture in operational practice
     images: [
       regionalfitShot2,
       regionalfitShot3,
@@ -608,51 +608,51 @@ export const projects = [
       regionalfitShot6,
     ],
     isInternal: false,
-    // External link to the live MVP demo — shown on detail page
+    // External link to the live MVP demo - shown on detail page
     externalUrl: "https://briefing-system.vercel.app/",
     description: {
-      en: "regional.fit is our own product — a demand management system for distributed organisations. Multi-role briefing flow: local managers submit structured requests, regional managers validate against strategy, admins govern the rules, production executes. One dataset, role-tuned views, every level sees the same truth. Live MVP demo running, fitness chains as pilot vertical, productisation roadmap underway.",
-      pl: "regional.fit to nasz własny produkt — system zarządzania lokalnym popytem w organizacjach rozproszonych. Multi-role flow briefów: managerowie lokalni zgłaszają ustrukturyzowane requesty, managerowie regionalni weryfikują pod kątem strategii, administratorzy zarządzają regułami, produkcja realizuje. Jeden dataset, widoki dopasowane do roli, każdy poziom widzi tę samą prawdę. Live MVP demo działa, sieci fitness jako pilot vertical, roadmapa produktyzacji w toku."
+      en: "regional.fit is our own product - a demand management system for distributed organisations. Multi-role briefing flow: local managers submit structured requests, regional managers validate against strategy, admins govern the rules, production executes. One dataset, role-tuned views, every level sees the same truth. Live MVP demo running, fitness chains as pilot vertical, productisation roadmap underway.",
+      pl: "regional.fit to nasz własny produkt - system zarządzania lokalnym popytem w organizacjach rozproszonych. Multi-role flow briefów: managerowie lokalni zgłaszają ustrukturyzowane requesty, managerowie regionalni weryfikują pod kątem strategii, administratorzy zarządzają regułami, produkcja realizuje. Jeden dataset, widoki dopasowane do roli, każdy poziom widzi tę samą prawdę. Live MVP demo działa, sieci fitness jako pilot vertical, roadmapa produktyzacji w toku."
     },
     services: {
       en: ["Product Design", "Multi-Role Workflow Architecture", "Demand Capture System", "Validation Logic", "MVP Build", "r3loop Productisation"],
       pl: ["Product Design", "Architektura Multi-Role Workflow", "System Zgłoszeń", "Logika Walidacji", "Build MVP", "Produktyzacja r3loop"]
     },
     challenge: {
-      en: "Distributed organisations — fitness chains, retail networks, multi-venue F&B, hospitality groups — leak operational margin through local demand chaos. Unit managers ask for marketing assets, training materials, local campaigns, brand exceptions, ops fixes — via email, Slack, WhatsApp, calls. Regional managers can't see what's important versus noise. Production gets requests stripped of context. Nobody knows where anything stands. The cost shows up everywhere: in middle management time, in slipped openings, in inconsistent local brand, in burned trust. The actual bottleneck isn't talent or tools — it's the absence of a structured demand layer between the field and the centre.",
-      pl: "Rozproszone organizacje — sieci fitness, retail, multi-venue F&B, grupy hospitality — tracą marżę operacyjną przez chaos lokalnego popytu. Managerowie lokalni proszą o materiały marketingowe, szkoleniowe, lokalne kampanie, wyjątki brandowe, ops fixy — przez maile, Slacka, WhatsAppa, telefony. Managerowie regionalni nie widzą co ważne, a co tylko hałas. Produkcja dostaje requesty bez kontekstu. Nikt nie wie gdzie co stoi. Koszt pojawia się wszędzie: w czasie middle management, w opóźnionych otwarciach, w niespójnym lokalnym brandzie, w wypalonym zaufaniu. Prawdziwy bottleneck to nie talent ani narzędzia — to brak ustrukturyzowanej warstwy popytu między terenem a centralą."
+      en: "Distributed organisations - fitness chains, retail networks, multi-venue F&B, hospitality groups - leak operational margin through local demand chaos. Unit managers ask for marketing assets, training materials, local campaigns, brand exceptions, ops fixes - via email, Slack, WhatsApp, calls. Regional managers can't see what's important versus noise. Production gets requests stripped of context. Nobody knows where anything stands. The cost shows up everywhere: in middle management time, in slipped openings, in inconsistent local brand, in burned trust. The actual bottleneck isn't talent or tools - it's the absence of a structured demand layer between the field and the centre.",
+      pl: "Rozproszone organizacje - sieci fitness, retail, multi-venue F&B, grupy hospitality - tracą marżę operacyjną przez chaos lokalnego popytu. Managerowie lokalni proszą o materiały marketingowe, szkoleniowe, lokalne kampanie, wyjątki brandowe, ops fixy - przez maile, Slacka, WhatsAppa, telefony. Managerowie regionalni nie widzą co ważne, a co tylko hałas. Produkcja dostaje requesty bez kontekstu. Nikt nie wie gdzie co stoi. Koszt pojawia się wszędzie: w czasie middle management, w opóźnionych otwarciach, w niespójnym lokalnym brandzie, w wypalonym zaufaniu. Prawdziwy bottleneck to nie talent ani narzędzia - to brak ustrukturyzowanej warstwy popytu między terenem a centralą."
     },
     decisions: {
-      en: "We treated the local-demand problem as productisable — not consultable. The methodology that worked one-off for individual launches at Zdrofit pointed to a deeper truth: every distributed organisation has the same problem, structurally. So we built a SaaS, not a deck. Designed four roles around the actual decision boundaries: local manager (origin of demand), regional manager (strategic gate-keeper), administrator (rule-setter), production team (execution). Each role owns one move in the workflow — no overlap, no ambiguity. One shared data layer underneath. Live MVP first, customers second, scope third.",
-      pl: "Potraktowaliśmy problem lokalnego popytu jako produktyzowalny, nie konsultacyjny. Metodologia która zadziałała one-off na pojedynczych otwarciach w Zdrofit pokazała głębszą prawdę: każda rozproszona organizacja ma ten sam problem strukturalnie. Więc zbudowaliśmy SaaS, nie deck. Zaprojektowaliśmy cztery role wokół realnych granic decyzyjnych: manager lokalny (źródło popytu), manager regionalny (strategiczny gate-keeper), administrator (zarządza regułami), zespół produkcyjny (realizacja). Każda rola ma jeden ruch w workflow — bez nakładania, bez dwuznaczności. Jeden wspólny data layer pod spodem. Najpierw live MVP, potem klienci, potem scope."
+      en: "We treated the local-demand problem as productisable - not consultable. The methodology that worked one-off for individual launches at Zdrofit pointed to a deeper truth: every distributed organisation has the same problem, structurally. So we built a SaaS, not a deck. Designed four roles around the actual decision boundaries: local manager (origin of demand), regional manager (strategic gate-keeper), administrator (rule-setter), production team (execution). Each role owns one move in the workflow - no overlap, no ambiguity. One shared data layer underneath. Live MVP first, customers second, scope third.",
+      pl: "Potraktowaliśmy problem lokalnego popytu jako produktyzowalny, nie konsultacyjny. Metodologia która zadziałała one-off na pojedynczych otwarciach w Zdrofit pokazała głębszą prawdę: każda rozproszona organizacja ma ten sam problem strukturalnie. Więc zbudowaliśmy SaaS, nie deck. Zaprojektowaliśmy cztery role wokół realnych granic decyzyjnych: manager lokalny (źródło popytu), manager regionalny (strategiczny gate-keeper), administrator (zarządza regułami), zespół produkcyjny (realizacja). Każda rola ma jeden ruch w workflow - bez nakładania, bez dwuznaczności. Jeden wspólny data layer pod spodem. Najpierw live MVP, potem klienci, potem scope."
     },
     approach: {
-      en: "Role-first product architecture. Each persona sees only what they need to decide. Local managers fill structured forms grounded in context (location, goal, operational reality) — not blank email fields. Regional managers see a queue ranked by strategic priority + available resources — not a flood of DMs. Admin defines structure (locations, hierarchies, asset types, approval rules). Production tier is mapped in the roadmap but out of MVP scope — we ship the decision layer first, execution layer second. AI-native foundation: structured intake becomes structured signal that future automation can act on. Built to plug into any distributed-org topology — not just fitness.",
-      pl: "Architektura produktu role-first. Każda persona widzi tylko to czego potrzebuje do decyzji. Managerowie lokalni wypełniają strukturyzowane formularze osadzone w kontekście (lokalizacja, cel, realia operacyjne) — nie puste pole email. Managerowie regionalni widzą kolejkę ranking'owaną po strategicznym priorytecie + dostępnych zasobach — nie potoku DM-ów. Admin definiuje strukturę (lokalizacje, hierarchie, typy assetów, reguły akceptacji). Warstwa produkcyjna jest na mapie roadmapy, ale poza scope MVP — najpierw deliveruje decision layer, potem execution. AI-native fundament: strukturyzowany intake staje się strukturyzowanym sygnałem na którym przyszła automatyzacja może działać. Zbudowane żeby wpiąć się w każdą topologię rozproszonej organizacji — nie tylko fitness."
+      en: "Role-first product architecture. Each persona sees only what they need to decide. Local managers fill structured forms grounded in context (location, goal, operational reality) - not blank email fields. Regional managers see a queue ranked by strategic priority + available resources - not a flood of DMs. Admin defines structure (locations, hierarchies, asset types, approval rules). Production tier is mapped in the roadmap but out of MVP scope - we ship the decision layer first, execution layer second. AI-native foundation: structured intake becomes structured signal that future automation can act on. Built to plug into any distributed-org topology - not just fitness.",
+      pl: "Architektura produktu role-first. Każda persona widzi tylko to czego potrzebuje do decyzji. Managerowie lokalni wypełniają strukturyzowane formularze osadzone w kontekście (lokalizacja, cel, realia operacyjne) - nie puste pole email. Managerowie regionalni widzą kolejkę ranking'owaną po strategicznym priorytecie + dostępnych zasobach - nie potoku DM-ów. Admin definiuje strukturę (lokalizacje, hierarchie, typy assetów, reguły akceptacji). Warstwa produkcyjna jest na mapie roadmapy, ale poza scope MVP - najpierw deliveruje decision layer, potem execution. AI-native fundament: strukturyzowany intake staje się strukturyzowanym sygnałem na którym przyszła automatyzacja może działać. Zbudowane żeby wpiąć się w każdą topologię rozproszonej organizacji - nie tylko fitness."
     },
     quote: {
-      en: "We stopped consulting around the demand problem and started productising it. regional.fit is r3loop applied to the most expensive recurring chaos in every distributed organisation — the gap between local need and central execution.",
-      pl: "Przestaliśmy konsultować problem popytu, zaczęliśmy go produktyzować. regional.fit to r3loop zastosowane do najdroższego powtarzającego się chaosu w każdej rozproszonej organizacji — luki między lokalną potrzebą a centralną realizacją."
+      en: "We stopped consulting around the demand problem and started productising it. regional.fit is r3loop applied to the most expensive recurring chaos in every distributed organisation - the gap between local need and central execution.",
+      pl: "Przestaliśmy konsultować problem popytu, zaczęliśmy go produktyzować. regional.fit to r3loop zastosowane do najdroższego powtarzającego się chaosu w każdej rozproszonej organizacji - luki między lokalną potrzebą a centralną realizacją."
     },
     outcome: {
-      en: "TBD — MVP live, pilot customers being onboarded. Metrics to be filled: number of organisations deployed, average requests processed per month, time-to-clarity per submission, middle management hours redirected from coordination to decisions.",
-      pl: "TBD — MVP live, pierwsi pilotażowi klienci są onboardowani. Metryki do uzupełnienia: liczba wdrożonych organizacji, średnia liczba requestów miesięcznie, czas-do-jasności per zgłoszenie, godziny middle management przekierowane z koordynacji na decyzje."
+      en: "TBD - MVP live, pilot customers being onboarded. Metrics to be filled: number of organisations deployed, average requests processed per month, time-to-clarity per submission, middle management hours redirected from coordination to decisions.",
+      pl: "TBD - MVP live, pierwsi pilotażowi klienci są onboardowani. Metryki do uzupełnienia: liczba wdrożonych organizacji, średnia liczba requestów miesięcznie, czas-do-jasności per zgłoszenie, godziny middle management przekierowane z koordynacji na decyzje."
     },
     reflection: {
-      en: "Consulting around the same problem repeatedly is a tell. When five clients describe the same chaos with the same words, you're not delivering a service — you're documenting a market. regional.fit exists because the local-demand problem in distributed organisations is universal, structural, and expensive — and nobody is selling the operating layer that solves it.",
-      pl: "Konsultowanie tego samego problemu w kółko to sygnał. Kiedy pięciu klientów opisuje ten sam chaos tymi samymi słowami, nie dostarczasz usługi — dokumentujesz rynek. regional.fit istnieje, bo problem lokalnego popytu w rozproszonych organizacjach jest uniwersalny, strukturalny i drogi — a nikt nie sprzedaje warstwy operacyjnej która go rozwiązuje."
+      en: "Consulting around the same problem repeatedly is a tell. When five clients describe the same chaos with the same words, you're not delivering a service - you're documenting a market. regional.fit exists because the local-demand problem in distributed organisations is universal, structural, and expensive - and nobody is selling the operating layer that solves it.",
+      pl: "Konsultowanie tego samego problemu w kółko to sygnał. Kiedy pięciu klientów opisuje ten sam chaos tymi samymi słowami, nie dostarczasz usługi - dokumentujesz rynek. regional.fit istnieje, bo problem lokalnego popytu w rozproszonych organizacjach jest uniwersalny, strukturalny i drogi - a nikt nie sprzedaje warstwy operacyjnej która go rozwiązuje."
     },
     stats: [
       { value: "4", label: { en: "Decision Roles", pl: "Role Decyzyjne" } },
       { value: "MVP", label: { en: "Live Demo Stage", pl: "Stadium Live Demo" } }
     ],
-    // ⚠ PLACEHOLDER TESTIMONIAL: Joanna Lach (Zdrofit) — was authored when the
+    // ⚠ PLACEHOLDER TESTIMONIAL: Joanna Lach (Zdrofit) - was authored when the
     // framing was Zdrofit Opening Engine. Keep as "pilot-vertical voice" until
     // a regional.fit-specific quote is captured from a deployed customer.
     testimonial: {
       quote: {
-        en: "Before we rolled out the system, most of my week went into answering 'where are we on the opening' emails. Now there's one screen every level sees — from my team to the director. We swapped five-person status meetings for a screen link. The time I got back goes into real decisions, not writing reports.",
-        pl: "Zanim wdrożyliśmy system, większość mojego tygodnia szła w odpisywanie na maile typu „gdzie jesteśmy z otwarciem\". Teraz jest jeden ekran, który widzi każdy poziom — od mojego zespołu po dyrektora. Statusówki z pięcioma osobami zamieniliśmy na link do ekranu. Czas, który odzyskałam, idzie w realne decyzje, nie w pisanie raportów."
+        en: "Before we rolled out the system, most of my week went into answering 'where are we on the opening' emails. Now there's one screen every level sees - from my team to the director. We swapped five-person status meetings for a screen link. The time I got back goes into real decisions, not writing reports.",
+        pl: "Zanim wdrożyliśmy system, większość mojego tygodnia szła w odpisywanie na maile typu „gdzie jesteśmy z otwarciem\". Teraz jest jeden ekran, który widzi każdy poziom - od mojego zespołu po dyrektora. Statusówki z pięcioma osobami zamieniliśmy na link do ekranu. Czas, który odzyskałam, idzie w realne decyzje, nie w pisanie raportów."
       },
       author: "Joanna Lach",
       role: {
@@ -662,7 +662,7 @@ export const projects = [
     }
   },
   // ─────────────────────────────────────────────────────────────────────────
-  // Caterelo — R3 × R3 self-built proof.
+  // Caterelo - R3 × R3 self-built proof.
   // Operator's case: we built our own SaaS to prove the methodology works
   // outside the consulting context. Relocation intelligence for Southern Europe.
   // Live at caterelo.com.
@@ -675,54 +675,54 @@ export const projects = [
       en: "Self-Built Product / AI Platform",
       pl: "Produkt Własny / Platforma AI"
     },
-    year: "2026 — current",
-    isProduct: true, // Products & Systems section on /work — R3×R3 self-built SaaS proof
+    year: "2026 - current",
+    isProduct: true, // Products & Systems section on /work - R3×R3 self-built SaaS proof
     image: cathereloCover,
     coverImage: cathereloCover,
     hoverVideo: "/videos/caterelo-hover.mp4",
-    // Gallery — narrative flow: Europe overview → drill into regions → compare → deep dive → chart → calculator
+    // Gallery - narrative flow: Europe overview → drill into regions → compare → deep dive → chart → calculator
     images: [
       cathereloShot1, // Europe-level interactive map with country price changes
-      cathereloShot2, // Region drill-down — Spain's 17 regions color-coded by trend
-      cathereloShot3, // Side-by-side comparison — Thessaly vs Centro with LifeTrend™ scores
-      cathereloShot4, // Single region deep dive — Castilla-La Mancha full data sheet
-      cathereloShot5, // Editorial price chart — clean €/m² visualization with 1Y/5Y/10Y deltas
-      cathereloShot6, // Renovation calculator — total ownership math with reality check
+      cathereloShot2, // Region drill-down - Spain's 17 regions color-coded by trend
+      cathereloShot3, // Side-by-side comparison - Thessaly vs Centro with LifeTrend™ scores
+      cathereloShot4, // Single region deep dive - Castilla-La Mancha full data sheet
+      cathereloShot5, // Editorial price chart - clean €/m² visualization with 1Y/5Y/10Y deltas
+      cathereloShot6, // Renovation calculator - total ownership math with reality check
     ],
     isInternal: false,
-    // External link to the live product — shown on detail page
+    // External link to the live product - shown on detail page
     externalUrl: "https://caterelo.com",
     description: {
-      en: "Caterelo is our own product — a relocation intelligence platform for Southern Europe. 90 regions across 6 countries scored against 13 data signals and 7 decision dimensions. We built it to prove the methodology we sell: r3loop applied end-to-end, from quiz intake through scoring engine to AI advisor and live data feeds.",
-      pl: "Caterelo to nasz własny produkt — platforma relocation intelligence dla Europy Południowej. 90 regionów w 6 krajach ocenianych przez 13 sygnałów danych i 7 wymiarów decyzyjnych. Zbudowaliśmy to żeby udowodnić metodologię którą sprzedajemy: r3loop zastosowane end-to-end, od quiz intake przez engine scoringowy po AI advisor i live data feeds."
+      en: "Caterelo is our own product - a relocation intelligence platform for Southern Europe. 90 regions across 6 countries scored against 13 data signals and 7 decision dimensions. We built it to prove the methodology we sell: r3loop applied end-to-end, from quiz intake through scoring engine to AI advisor and live data feeds.",
+      pl: "Caterelo to nasz własny produkt - platforma relocation intelligence dla Europy Południowej. 90 regionów w 6 krajach ocenianych przez 13 sygnałów danych i 7 wymiarów decyzyjnych. Zbudowaliśmy to żeby udowodnić metodologię którą sprzedajemy: r3loop zastosowane end-to-end, od quiz intake przez engine scoringowy po AI advisor i live data feeds."
     },
     services: {
       en: ["Product Design", "AI Architecture", "Data Pipeline", "REST API", "Frontend Build", "Methodology Validation"],
       pl: ["Design Produktu", "Architektura AI", "Pipeline Danych", "REST API", "Frontend Build", "Walidacja Metodologii"]
     },
     challenge: {
-      en: "Most consultancies talk about methodology — few apply it to their own work. We wanted to prove r3loop isn't theory by shipping a production product built with it. Constraint: lean operator-led build with AI-native architecture. The methodology had to hold up under real production conditions or it wasn't real.",
-      pl: "Większość firm konsultingowych mówi o metodologii — niewielu ją stosuje do własnej pracy. Chcieliśmy udowodnić że r3loop to nie teoria poprzez wyshippowanie produktu produkcyjnego zbudowanego nim. Ograniczenie: lean, operator-led build z AI-native architekturą. Metodologia musiała sprawdzić się w realnych warunkach produkcyjnych albo nie była realna."
+      en: "Most consultancies talk about methodology - few apply it to their own work. We wanted to prove r3loop isn't theory by shipping a production product built with it. Constraint: lean operator-led build with AI-native architecture. The methodology had to hold up under real production conditions or it wasn't real.",
+      pl: "Większość firm konsultingowych mówi o metodologii - niewielu ją stosuje do własnej pracy. Chcieliśmy udowodnić że r3loop to nie teoria poprzez wyshippowanie produktu produkcyjnego zbudowanego nim. Ograniczenie: lean, operator-led build z AI-native architekturą. Metodologia musiała sprawdzić się w realnych warunkach produkcyjnych albo nie była realna."
     },
     decisions: {
       en: "We applied r3loop 1:1 to caterelo's architecture: Diagnose became the 15-question relocation quiz. Map became 90 regions × 13 signals. Standardize became the LifeTrend™ composite score. Build became the REST API + AI advisor + interactive map. Govern became 60+ official sources with quarterly refresh. Ship became live free + Pro tiers. Measure became momentum scoring + Hidden Gem detector. Iterate is the AI advisor learning + Climate 2050 projections.",
-      pl: "Zastosowaliśmy r3loop 1:1 do architektury caterelo: Diagnose to 15-pytaniowy quiz relokacji. Map to 90 regionów × 13 sygnałów. Standardize to LifeTrend™ — kompozyt score. Build to REST API + AI advisor + interactive map. Govern to 60+ oficjalnych źródeł z quarterly refresh. Ship to live free + Pro tiers. Measure to momentum scoring + Hidden Gem detector. Iterate to AI advisor który się uczy + projekcje Climate 2050."
+      pl: "Zastosowaliśmy r3loop 1:1 do architektury caterelo: Diagnose to 15-pytaniowy quiz relokacji. Map to 90 regionów × 13 sygnałów. Standardize to LifeTrend™ - kompozyt score. Build to REST API + AI advisor + interactive map. Govern to 60+ oficjalnych źródeł z quarterly refresh. Ship to live free + Pro tiers. Measure to momentum scoring + Hidden Gem detector. Iterate to AI advisor który się uczy + projekcje Climate 2050."
     },
     approach: {
-      en: "Solo-operator AI-first stack. Data layer built on official sources (Eurostat, IPCC, INE, ISTAT, INSEE) with traceable provenance. Scoring engine normalizes 13 raw signals into one LifeTrend™ composite. AI advisor trained on the full dataset — answers user questions in natural language. Live feeds (weather, AQI, currency) keep the model fresh. REST API opens the data layer to other developers.",
-      pl: "Stack AI-first dla solo-operatora. Warstwa danych zbudowana na oficjalnych źródłach (Eurostat, IPCC, INE, ISTAT, INSEE) z traceable provenance. Scoring engine normalizuje 13 surowych sygnałów do jednego kompozytu LifeTrend™. AI advisor wytrenowany na pełnym datasecie — odpowiada na pytania w naturalnym języku. Live feeds (pogoda, AQI, kursy) utrzymują model w aktualności. REST API otwiera warstwę danych dla innych developerów."
+      en: "Solo-operator AI-first stack. Data layer built on official sources (Eurostat, IPCC, INE, ISTAT, INSEE) with traceable provenance. Scoring engine normalizes 13 raw signals into one LifeTrend™ composite. AI advisor trained on the full dataset - answers user questions in natural language. Live feeds (weather, AQI, currency) keep the model fresh. REST API opens the data layer to other developers.",
+      pl: "Stack AI-first dla solo-operatora. Warstwa danych zbudowana na oficjalnych źródłach (Eurostat, IPCC, INE, ISTAT, INSEE) z traceable provenance. Scoring engine normalizuje 13 surowych sygnałów do jednego kompozytu LifeTrend™. AI advisor wytrenowany na pełnym datasecie - odpowiada na pytania w naturalnym języku. Live feeds (pogoda, AQI, kursy) utrzymują model w aktualności. REST API otwiera warstwę danych dla innych developerów."
     },
     quote: {
-      en: "We sell methodology. The strongest way to prove it works — apply it to our own work and ship.",
-      pl: "Sprzedajemy metodologię. Najmocniejszy sposób udowodnienia że działa — zastosować ją do własnej pracy i wyshippować."
+      en: "We sell methodology. The strongest way to prove it works - apply it to our own work and ship.",
+      pl: "Sprzedajemy metodologię. Najmocniejszy sposób udowodnienia że działa - zastosować ją do własnej pracy i wyshippować."
     },
     outcome: {
-      en: "Live product at caterelo.com — free tier + Founding Access €29/3 months. 90 regions scored. 60+ official sources integrated. AI advisor in production. r3loop methodology validated end-to-end under solo-operator constraints.",
-      pl: "Produkt live na caterelo.com — free tier + Founding Access €29/3 miesiące. 90 regionów ocenionych. 60+ oficjalnych źródeł zintegrowanych. AI advisor w produkcji. Metodologia r3loop zwalidowana end-to-end w warunkach solo-operatora."
+      en: "Live product at caterelo.com - free tier + Founding Access €29/3 months. 90 regions scored. 60+ official sources integrated. AI advisor in production. r3loop methodology validated end-to-end under solo-operator constraints.",
+      pl: "Produkt live na caterelo.com - free tier + Founding Access €29/3 miesiące. 90 regionów ocenionych. 60+ oficjalnych źródeł zintegrowanych. AI advisor w produkcji. Metodologia r3loop zwalidowana end-to-end w warunkach solo-operatora."
     },
     reflection: {
-      en: "Building your own product changes how you consult. You stop selling promises — you start selling work you've already done on yourself. The credibility shift compounds across every client conversation that follows.",
-      pl: "Budowanie własnego produktu zmienia sposób w jaki konsultujesz. Przestajesz sprzedawać obietnice — zaczynasz sprzedawać pracę którą zrobiłeś już na sobie. Przesunięcie wiarygodności kumuluje się w każdej kolejnej rozmowie z klientem."
+      en: "Building your own product changes how you consult. You stop selling promises - you start selling work you've already done on yourself. The credibility shift compounds across every client conversation that follows.",
+      pl: "Budowanie własnego produktu zmienia sposób w jaki konsultujesz. Przestajesz sprzedawać obietnice - zaczynasz sprzedawać pracę którą zrobiłeś już na sobie. Przesunięcie wiarygodności kumuluje się w każdej kolejnej rozmowie z klientem."
     },
     stats: [
       { value: "90", label: { en: "Regions Tracked", pl: "Regionów" } },
@@ -747,10 +747,10 @@ export const projects = [
     isInternal: false,
     isNDA: true,
     ndaPassword: "uniqa2025",
-    // TODO(reszek): potwierdź status atrybucji — praca z okresu wcześniejszych engagementów agencyjnych.
+    // TODO(reszek): potwierdź status atrybucji - praca z okresu wcześniejszych engagementów agencyjnych.
     description: {
-      en: "Product UX/UI and design system for one of Europe's leading insurance groups. End-to-end digital product design — from user research through interface design to a scalable component library. Delivered during prior agency engagements; covered by NDA.",
-      pl: "Product UX/UI i design system dla jednej z wiodących europejskich grup ubezpieczeniowych. Kompleksowy design produktu cyfrowego — od badań użytkowników przez projektowanie interfejsu po skalowalną bibliotekę komponentów. Zrealizowane w ramach wcześniejszych współprac agencyjnych; objęte NDA."
+      en: "Product UX/UI and design system for one of Europe's leading insurance groups. End-to-end digital product design - from user research through interface design to a scalable component library. Delivered during prior agency engagements; covered by NDA.",
+      pl: "Product UX/UI i design system dla jednej z wiodących europejskich grup ubezpieczeniowych. Kompleksowy design produktu cyfrowego - od badań użytkowników przez projektowanie interfejsu po skalowalną bibliotekę komponentów. Zrealizowane w ramach wcześniejszych współprac agencyjnych; objęte NDA."
     },
     services: {
       en: ["Product UX/UI", "Design System", "User Research", "Digital Assets"],
@@ -765,12 +765,12 @@ export const projects = [
       pl: "Zbudowaliśmy modułowy system kampanijny z reużywalnymi komponentami, które pozwalają lokalnym zespołom samodzielnie produkować materiały zgodne z marką, redukując wąskie gardła i czas realizacji."
     },
     approach: {
-      en: "A structured delivery framework combining brand governance with production efficiency — enabling both strategic control and operational speed.",
-      pl: "Ustrukturyzowany framework dostarczania łączący zarządzanie marką z efektywnością produkcji — umożliwiający zarówno kontrolę strategiczną, jak i szybkość operacyjną."
+      en: "A structured delivery framework combining brand governance with production efficiency - enabling both strategic control and operational speed.",
+      pl: "Ustrukturyzowany framework dostarczania łączący zarządzanie marką z efektywnością produkcji - umożliwiający zarówno kontrolę strategiczną, jak i szybkość operacyjną."
     },
     quote: {
-      en: "When brand and process work together, scale becomes a feature — not a compromise.",
-      pl: "Gdy marka i proces działają razem, skala staje się zaletą — nie kompromisem."
+      en: "When brand and process work together, scale becomes a feature - not a compromise.",
+      pl: "Gdy marka i proces działają razem, skala staje się zaletą - nie kompromisem."
     },
     outcome: {
       en: "A repeatable, scalable production system that reduced campaign turnaround by 40% while maintaining brand integrity across all markets.",
@@ -801,7 +801,7 @@ export const projects = [
     isInternal: false,
     isNDA: true,
     ndaPassword: "fifa2025",
-    // TODO(reszek): potwierdź status atrybucji — praca z okresu wcześniejszych engagementów agencyjnych.
+    // TODO(reszek): potwierdź status atrybucji - praca z okresu wcześniejszych engagementów agencyjnych.
     description: {
       en: "Product UX/UI for a global tournament digital experience. Interface design, component systems, and real-time content architecture built for millions of concurrent users. Delivered during prior agency engagements; covered by NDA.",
       pl: "Product UX/UI dla globalnego cyfrowego doświadczenia turniejowego. Projektowanie interfejsu, systemy komponentów i architektura treści real-time zbudowana dla milionów jednoczesnych użytkowników. Zrealizowane w ramach wcześniejszych współprac agencyjnych; objęte NDA."
@@ -827,12 +827,12 @@ export const projects = [
       pl: "W tej skali design to logistyka. Każdy piksel jest dostarczany na czas."
     },
     outcome: {
-      en: "Seamless visual experience delivered across all digital touchpoints for a global audience, on time and on brand — from first whistle to final.",
-      pl: "Płynne doświadczenie wizualne dostarczone na wszystkich cyfrowych punktach styku dla globalnej publiczności, na czas i zgodnie z marką — od pierwszego gwizdka do ostatniego."
+      en: "Seamless visual experience delivered across all digital touchpoints for a global audience, on time and on brand - from first whistle to final.",
+      pl: "Płynne doświadczenie wizualne dostarczone na wszystkich cyfrowych punktach styku dla globalnej publiczności, na czas i zgodnie z marką - od pierwszego gwizdka do ostatniego."
     },
     reflection: {
-      en: "Working at FIFA scale teaches you that systems aren't optional — they're the only way to deliver quality when millions are watching.",
-      pl: "Praca w skali FIFA uczy, że systemy nie są opcjonalne — to jedyny sposób na dostarczenie jakości, gdy miliony patrzą."
+      en: "Working at FIFA scale teaches you that systems aren't optional - they're the only way to deliver quality when millions are watching.",
+      pl: "Praca w skali FIFA uczy, że systemy nie są opcjonalne - to jedyny sposób na dostarczenie jakości, gdy miliony patrzą."
     },
     stats: [
         { value: "50+", label: { en: "Digital Touchpoints", pl: "Cyfrowych Punktów Styku" } },

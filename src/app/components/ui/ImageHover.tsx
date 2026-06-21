@@ -114,7 +114,7 @@ export function ImageHover({
       >
         {children}
 
-        {/* Lime Light Leak — radial gradient following cursor */}
+        {/* Lime Light Leak - radial gradient following cursor */}
         {glow && (
           <motion.div
             className="absolute inset-0 pointer-events-none z-10"
@@ -167,7 +167,7 @@ export function ImageHover({
           }}
         />
 
-        {/* Edge highlight on hover — subtle lime border glow */}
+        {/* Edge highlight on hover - subtle lime border glow */}
         <div
           className="absolute inset-0 pointer-events-none z-20 transition-all duration-700"
           style={{

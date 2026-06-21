@@ -2,14 +2,14 @@ import deliveryOSImage from "figma:asset/f5bde9dbf97a6173262b508893d89c9f53e0425
 import calmExecutionImage from "figma:asset/04b8212c348ba87b31f3fb0fdf4b1e2cf2d7e8f3.png";
 import cadenceImage from "figma:asset/00ba10d702fb047d9a6ba4780de74db73f7e5403.png";
 import journal6Cover from "../../imports/journal-6-cover.webp";
-// Typographic covers (minio set) — abstract on-brand alternatives to character-heavy MJ shots
-import journal7Cover from "../../imports/journal-7-cover.webp"; // organic field + R mark — "Brand at 250 locations"
-import journal8Cover from "../../imports/journal-8-cover.webp"; // bold typographic chaos + contained R — "What we refuse to ship"
-// Caterelo article cover — reuse the case study cover (lime sun on Southern Europe map)
+// Typographic covers (minio set) - abstract on-brand alternatives to character-heavy MJ shots
+import journal7Cover from "../../imports/journal-7-cover.webp"; // organic field + R mark - "Brand at 250 locations"
+import journal8Cover from "../../imports/journal-8-cover.webp"; // bold typographic chaos + contained R - "What we refuse to ship"
+// Caterelo article cover - reuse the case study cover (lime sun on Southern Europe map)
 import journal9Cover from "../../imports/caterelo/caterelo-cover.webp";
-// Article 10 cover — branded OG card (r352 branding + article title), replaces the reused Caterelo art
+// Article 10 cover - branded OG card (r352 branding + article title), replaces the reused Caterelo art
 import journal10Cover from "../../assets/journal-10-cover.webp";
-// Article 11 cover — glass codex (transparent book) crossing diagonal lime stripe.
+// Article 11 cover - glass codex (transparent book) crossing diagonal lime stripe.
 // Matches the LinkedIn carousel hero asset for "Brand knowledge hub" launch (June 2026).
 import journal11Cover from "../../assets/journal-11-cover.webp";
 
@@ -24,25 +24,25 @@ export interface Article {
   image: string;
   content: string; // HTML or Markdown content
   content_pl?: string;
-  /** Optional publishing flag — if false, article is hidden from index + detail routes. Defaults to true. */
+  /** Optional publishing flag - if false, article is hidden from index + detail routes. Defaults to true. */
   published?: boolean;
 }
 
 export const journalArticles: Article[] = [
   {
     // ──────────────────────────────────────────────────────────────────
-    // Article 11 — Brand Knowledge Hub w erze agentów AI (Jun 2026)
+    // Article 11 - Brand Knowledge Hub w erze agentów AI (Jun 2026)
     // Companion long-form do LinkedIn carousel launch (Geers/Sonova case).
     // Conversion funnel: LI carousel → /journal/11 → /brief or /process.
     // Cover: glass codex crossing diagonal lime stripe (matches carousel hero).
     // ──────────────────────────────────────────────────────────────────
     id: 11,
     published: true,
-    // Title — dropped "Brand knowledge hub:" prefix (URL + category communicate it)
+    // Title - dropped "Brand knowledge hub:" prefix (URL + category communicate it)
     // for shorter 2-line punchy headline that matches article 10's visual rhythm
     // (~18 chars per line, 2 lines total). 3-line version was too tall against
     // min-h-[85vh] hero and competed with cover image. Schema.org headline
-    // unchanged conceptually — full topic title in body intro paragraph.
+    // unchanged conceptually - full topic title in body intro paragraph.
     title: "Your PDF won't<br/>survive AI agents",
     title_pl: "PDF nie obroni cię<br/>przed agentami AI",
     date: "June 2026",
@@ -181,7 +181,7 @@ export const journalArticles: Article[] = [
       <figure class="my-12">
         <div class="bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-sm">
           <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto" role="img" aria-labelledby="fig3-pl-title" style="font-family: system-ui, sans-serif;">
-            <title id="fig3-pl-title">Brand book PDF vs Knowledge Hub — porownanie</title>
+            <title id="fig3-pl-title">Brand book PDF vs Knowledge Hub - porownanie</title>
             <g>
               <rect x="20" y="20" width="370" height="280" rx="8" fill="#262626" stroke="#404040" stroke-width="1"/>
               <text x="40" y="52" fill="#737373" font-size="11" letter-spacing="2" font-weight="600">WCZORAJ</text>
@@ -524,7 +524,7 @@ export const journalArticles: Article[] = [
       </p>
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">Struktura .md pliku. Przykładowy skeleton.</h3>
-      <div class="bg-[#0a0a0a] border border-white/10 p-6 my-8 font-mono text-sm text-neutral-300 overflow-x-auto whitespace-pre"># Brand voice — [Brand name]
+      <div class="bg-[#0a0a0a] border border-white/10 p-6 my-8 font-mono text-sm text-neutral-300 overflow-x-auto whitespace-pre"># Brand voice - [Brand name]
 
 ## Positioning
 [Jedno zdanie. Konkretne. Falsyfikowalne.]
@@ -634,12 +634,12 @@ export const journalArticles: Article[] = [
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Powiedzmy że designer dropuje draft social posta. System w 3 sekundy zwraca:
       </p>
-      <div class="bg-[#0a0a0a] border border-white/10 p-6 my-8 font-mono text-sm text-neutral-300 overflow-x-auto whitespace-pre">QA Score: 78/100 — REQUIRES REVISION
+      <div class="bg-[#0a0a0a] border border-white/10 p-6 my-8 font-mono text-sm text-neutral-300 overflow-x-auto whitespace-pre">QA Score: 78/100 - REQUIRES REVISION
 
 High severity (3):
-- Copy uses "rewolucja" (line 2) — replace with "realna zmiana"
+- Copy uses "rewolucja" (line 2) - replace with "realna zmiana"
 - Logo placement: minimum clearspace violated (top edge)
-- Color #FF6B35 used — not in palette (closest: brand.orange #E85A2A)
+- Color #FF6B35 used - not in palette (closest: brand.orange #E85A2A)
 
 Mid severity (2):
 - Typography: H2 weight 700, brand standard is 600
@@ -684,7 +684,7 @@ Fix the 3 high-severity items minimum. Re-submit for re-check.</div>
       <h3 class="text-xl font-bold text-white mt-10 mb-4">AI skill .md. Struktura z frontmatter.</h3>
       <div class="bg-[#0a0a0a] border border-white/10 p-6 my-8 font-mono text-sm text-neutral-300 overflow-x-auto whitespace-pre">---
 name: geers-voice
-description: Apply Geers brand voice — audiology expert, accessible, regulated environment
+description: Apply Geers brand voice - audiology expert, accessible, regulated environment
 version: 3.2
 last_updated: 2026-05-15
 auto_load: true
@@ -701,128 +701,128 @@ auto_load: true
 [Inline brand-voice.md content]
 
 ## Examples library
-[10 canonical examples — on-brand]
-[10 anti-pattern examples — off-brand]
+[10 canonical examples - on-brand]
+[10 anti-pattern examples - off-brand]
 
 ## Anti-patterns to flag
 [List of common mistakes z explanations]</div>
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">Compounding mechanism</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Każdy nowy prompt który dodajesz do biblioteki, każdy successful generation który tagujesz jako exemplar — <span class="text-white">wzmacnia twój moat</span>. Po 6 miesiącach biblioteka ma 80 promptów. Po 12 miesiącach — 150. Każdy nowy member zespołu startuje z 150 promptami gotowymi do użycia — vs konkurent który dopiero startuje i ma 0.
+        Każdy nowy prompt który dodajesz do biblioteki, każdy successful generation który tagujesz jako exemplar - <span class="text-white">wzmacnia twój moat</span>. Po 6 miesiącach biblioteka ma 80 promptów. Po 12 miesiącach - 150. Każdy nowy member zespołu startuje z 150 promptami gotowymi do użycia - vs konkurent który dopiero startuje i ma 0.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Real example — skill in action</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Real example - skill in action</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Junior copywriter pisze w Claude: <span class="text-white">"draft awareness post about new hearing aid model — target: 55-65 yo decision makers for parents"</span>. Agent ma auto-loaded geers-voice skill. Generuje od razu: tone formal+approachable, używa "realna zmiana" zamiast "rewolucja", konkretna liczba w pierwszym zdaniu (zgodnie z LinkedIn rule), CTA do salon visit, 78 słów total (under 80 limit). <span class="text-white">Output ma QA score 91 from first try.</span> Junior nie musi pamiętać rules — agent je zna.
+        Junior copywriter pisze w Claude: <span class="text-white">"draft awareness post about new hearing aid model - target: 55-65 yo decision makers for parents"</span>. Agent ma auto-loaded geers-voice skill. Generuje od razu: tone formal+approachable, używa "realna zmiana" zamiast "rewolucja", konkretna liczba w pierwszym zdaniu (zgodnie z LinkedIn rule), CTA do salon visit, 78 słów total (under 80 limit). <span class="text-white">Output ma QA score 91 from first try.</span> Junior nie musi pamiętać rules - agent je zna.
       </p>
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">5 typowych pułapek przy budowie hub'a</h2>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Pułapka 1 — Building only for humans</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Pułapka 1 - Building only for humans</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Najczęstszy mistake: budujesz piękny wizualny knowledge hub dla zespołu, pomijasz dual-format dla AI. <span class="text-white">Połowa wartości znika.</span> Zespół ma świetny tool, AI dalej generuje off-brand bo nie ma curated źródła. Drift compoundsuje. Fix: od dnia 1 buduj w obu formatach równolegle. Każdy nowy rule wpada do wizualnego UI + do .md jednocześnie.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Pułapka 2 — Porting PDF brand book do web</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Pułapka 2 - Porting PDF brand book do web</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Brand manager bierze obecny brand book PDF i robi z niego website. <span class="text-white">To nie jest knowledge hub. To jest brand book PDF na web.</span> Brak struktury 23 modułów, brak QA layer, brak production layer. Estetycznie lepsze, operacyjnie to samo. Fix: zacznij od architecture (4 warstwy), wypełnij contentem. PDF jest źródłem inputu, nie templatem.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Pułapka 3 — Brak governance owner</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Pułapka 3 - Brak governance owner</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Knowledge hub jest zbudowany, ale nikt nie ma explicitnego ownership. Brand manager myśli że to design ops, design ops myśli że to brand manager, nikt nie aktualizuje. Po 6 miesiącach hub jest stale. Po 12 — irrelevant. <span class="text-white">Bez dedicated owner z konkretnym time budget'em, hub rotuje.</span> Fix: explicit owner z minimum 4h/week dedicated time. Wpisane do job description, mierzone w performance review.
+        Knowledge hub jest zbudowany, ale nikt nie ma explicitnego ownership. Brand manager myśli że to design ops, design ops myśli że to brand manager, nikt nie aktualizuje. Po 6 miesiącach hub jest stale. Po 12 - irrelevant. <span class="text-white">Bez dedicated owner z konkretnym time budget'em, hub rotuje.</span> Fix: explicit owner z minimum 4h/week dedicated time. Wpisane do job description, mierzone w performance review.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Pułapka 4 — Scope creep</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Pułapka 4 - Scope creep</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Knowledge hub zaczyna być "wszystkim do wszystkiego". Próbujesz dodać DAM functionality (storage of all marketing assets), intranet functionality (HR comms, company news), CMS functionality (content publishing). <span class="text-white">Hub przestaje być knowledge hub, staje się Frankenstein.</span> Fix: trzymaj scope. Hub jest źródłem rules + reference + production tools. Storage zostaje w DAM. Comms w Slack. CMS w CMS. Integration via API jeśli potrzebna.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Pułapka 5 — Build once, never update</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Pułapka 5 - Build once, never update</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Hub zbudowany w Q1, używany jak Bible w Q2-Q4. <span class="text-white">Brand się zmienia (nowe produkty, nowe kanały, nowe insights), hub zostaje statyczny — drift między hub'em a rzeczywistością.</span> Compounding moat działa tylko jeśli system się aktualizuje. Fix: cadence maintenance (weekly/monthly/quarterly/annual review). Każdy nowy successful asset feeds back do reference bucket. Każdy new tool integration triggers production layer update.
+        Hub zbudowany w Q1, używany jak Bible w Q2-Q4. <span class="text-white">Brand się zmienia (nowe produkty, nowe kanały, nowe insights), hub zostaje statyczny - drift między hub'em a rzeczywistością.</span> Compounding moat działa tylko jeśli system się aktualizuje. Fix: cadence maintenance (weekly/monthly/quarterly/annual review). Każdy nowy successful asset feeds back do reference bucket. Każdy new tool integration triggers production layer update.
       </p>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Build vs buy — która ścieżka dla ciebie</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Build vs buy - która ścieżka dla ciebie</h2>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">DIY path — kiedy ma sens</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">DIY path - kiedy ma sens</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Zespół ma bandwidth (minimum 1 dedicated person × 3 miesiące full-time, plus 0.5 FTE ongoing maintenance), design ops maturity (rozumiesz design systems, masz Figma library w użyciu, prowadzisz token management), i ownership (jest jasno kto decyduje co wchodzi do hub'a). <span class="text-white">DIY jest tańsze w cash, droższe w time-to-value</span>: zwykle 6-9 miesięcy do production-ready, vs 3 miesiące z consultantem.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Consultant path — kiedy ma sens</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Consultant path - kiedy ma sens</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Potrzebujesz metodologii (nie chcesz wymyślać struktury 23 modułów od zera), outside perspective (consultant widzi blind spots które zespół internal nie widzi bo "tak zawsze robiliśmy"), i speed-to-value (3 miesiące do production-ready vs 6-9 DIY). <span class="text-white">Consultant jest droższy w cash, tańszy w opportunity cost</span>: szybciej zaczynasz mieć compounding return.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">SaaS tools (Frontify, Bynder, BrandPad) — dlaczego niewystarczające</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">SaaS tools (Frontify, Bynder, BrandPad) - dlaczego niewystarczające</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Frontify, Bynder, BrandPad są good at asset management i basic brand guidelines storage. <span class="text-white">Nie są good at: dual-format dla AI, active QA layer, production layer z prompts, deep customization pod twoją specyfikę.</span> Capture assets, ale nie voice rules in actionable form. Capture guidelines, ale nie enforcement. Dla małych orgs z prostym brandem — OK. Dla mid-market i enterprise z multi-channel ambitions — undershoots.
+        Frontify, Bynder, BrandPad są good at asset management i basic brand guidelines storage. <span class="text-white">Nie są good at: dual-format dla AI, active QA layer, production layer z prompts, deep customization pod twoją specyfikę.</span> Capture assets, ale nie voice rules in actionable form. Capture guidelines, ale nie enforcement. Dla małych orgs z prostym brandem - OK. Dla mid-market i enterprise z multi-channel ambitions - undershoots.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Hybrid (most common) — consultant builds, internal maintains</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Hybrid (most common) - consultant builds, internal maintains</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Najpopularniejsza ścieżka u mid-market: consultant buduje hub w 3 miesiące (full architecture, content extraction, initial 23 modules, QA tool, prompt library, training), internal team przejmuje maintenance (cadence, updates, new modules). <span class="text-white">Best of both: methodology + speed od consultanta, ownership + context od internal teamu.</span> Typowy split: 90% wartości w pierwszych 3 miesiącach build, 10% wartości w ongoing maintenance — ale to 10% determinuje czy hub żyje czy zaczyna gnić.
+        Najpopularniejsza ścieżka u mid-market: consultant buduje hub w 3 miesiące (full architecture, content extraction, initial 23 modules, QA tool, prompt library, training), internal team przejmuje maintenance (cadence, updates, new modules). <span class="text-white">Best of both: methodology + speed od consultanta, ownership + context od internal teamu.</span> Typowy split: 90% wartości w pierwszych 3 miesiącach build, 10% wartości w ongoing maintenance - ale to 10% determinuje czy hub żyje czy zaczyna gnić.
       </p>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Maintenance cadence — żeby hub żył dalej</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Maintenance cadence - żeby hub żył dalej</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Bez explicit cadence hub umiera. Cztery poziomy maintenance, każdy z konkretnymi action items i ownership:
       </p>
       <ul class="list-none mb-10 space-y-4 text-neutral-400 text-lg pl-4 border-l-2 border-[#D4FF00]/40">
-        <li><span class="text-white font-medium">Weekly (~2h)</span> — prompt library updates (nowe successful prompty taggowane i dodawane), new examples added do reference bucket, QA score review (jakie issues najczęściej flag'owane). Owner: design ops lead lub senior designer.</li>
-        <li><span class="text-white font-medium">Monthly (~4h)</span> — brand asset library refresh (nowe production assets dodane, stare archived), vendor onboarding check (czy nowy freelancer korzysta z huba), .md sync (czy curated .md jest aktualny vs wizualny UI). Owner: brand manager.</li>
-        <li><span class="text-white font-medium">Quarterly (~8h)</span> — 23-module audit (czy każdy moduł jest jeszcze relevant, czy potrzebne nowe), retire stale rules, add new modules jeśli rozszerzasz brand surface area. Owner: brand manager + design lead.</li>
-        <li><span class="text-white font-medium">Annually (~16h)</span> — full system review (czy architecture jeszcze gra, czy nowe AI tools wymagają integracji), upgrades AI skills pod nowe model versions, governance review. Owner: cross-functional team (brand + design + AI ops).</li>
+        <li><span class="text-white font-medium">Weekly (~2h)</span> - prompt library updates (nowe successful prompty taggowane i dodawane), new examples added do reference bucket, QA score review (jakie issues najczęściej flag'owane). Owner: design ops lead lub senior designer.</li>
+        <li><span class="text-white font-medium">Monthly (~4h)</span> - brand asset library refresh (nowe production assets dodane, stare archived), vendor onboarding check (czy nowy freelancer korzysta z huba), .md sync (czy curated .md jest aktualny vs wizualny UI). Owner: brand manager.</li>
+        <li><span class="text-white font-medium">Quarterly (~8h)</span> - 23-module audit (czy każdy moduł jest jeszcze relevant, czy potrzebne nowe), retire stale rules, add new modules jeśli rozszerzasz brand surface area. Owner: brand manager + design lead.</li>
+        <li><span class="text-white font-medium">Annually (~16h)</span> - full system review (czy architecture jeszcze gra, czy nowe AI tools wymagają integracji), upgrades AI skills pod nowe model versions, governance review. Owner: cross-functional team (brand + design + AI ops).</li>
       </ul>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Total time investment maintenance: ~30h/kwartał, czyli ~120h/rok = ~3 person-weeks. <span class="text-white">Vs hidden tax 200-350k PLN/rok bez huba — ROI clear.</span>
+        Total time investment maintenance: ~30h/kwartał, czyli ~120h/rok = ~3 person-weeks. <span class="text-white">Vs hidden tax 200-350k PLN/rok bez huba - ROI clear.</span>
       </p>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Adjacent capabilities — multiplied ROI</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Adjacent capabilities - multiplied ROI</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Knowledge hub built dla marketing'u zaczyna płacić się w 5+ działach gdy zaczynasz świadomie skalować voice rules cross-departmentally:
       </p>
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">Sales enablement</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Same voice rules + lexicon feeding sales decks, proposal templates, follow-up emails. Sales rep nie musi "interpretować brand voice" — ma AI skill który generuje on-brand sales content. <span class="text-white">Geers example: sales team z 12 reps generuje ~80 customized decków/miesiąc, każdy z auto-loaded voice skill.</span>
+        Same voice rules + lexicon feeding sales decks, proposal templates, follow-up emails. Sales rep nie musi "interpretować brand voice" - ma AI skill który generuje on-brand sales content. <span class="text-white">Geers example: sales team z 12 reps generuje ~80 customized decków/miesiąc, każdy z auto-loaded voice skill.</span>
       </p>
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">Customer success</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Voice rules apply do support responses, success emails, customer onboarding materials. Support agent w trudnej sytuacji nie improwizuje — używa AI skill który zna brand voice w empathic mode. Konsystencja od pierwszego touch po post-purchase support.
+        Voice rules apply do support responses, success emails, customer onboarding materials. Support agent w trudnej sytuacji nie improwizuje - używa AI skill który zna brand voice w empathic mode. Konsystencja od pierwszego touch po post-purchase support.
       </p>
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">Internal comms</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        HR comms, all-hands updates, internal newsletters — wszystkie używają tej samej brand voice w wewnętrznym trybie (transparent, human, action-oriented). Employees doświadczają consistent brand internally — co przekłada się na consistent brand externally.
+        HR comms, all-hands updates, internal newsletters - wszystkie używają tej samej brand voice w wewnętrznym trybie (transparent, human, action-oriented). Employees doświadczają consistent brand internally - co przekłada się na consistent brand externally.
       </p>
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">Recruiting i employer brand</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Job descriptions, employer brand pages, LinkedIn life pages — wszystkie wygenerowane przez recruitment-jd skill. <span class="text-white">Candidate experience consistent z customer experience.</span> Top-of-funnel dla talent pipeline pracuje tym samym mechanizmem co top-of-funnel dla customer pipeline.
+        Job descriptions, employer brand pages, LinkedIn life pages - wszystkie wygenerowane przez recruitment-jd skill. <span class="text-white">Candidate experience consistent z customer experience.</span> Top-of-funnel dla talent pipeline pracuje tym samym mechanizmem co top-of-funnel dla customer pipeline.
       </p>
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">Why this multiplies ROI</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Hub zbudowany pod marketing kosztuje X. Gdy zaczynasz świadomie skalować cross-departmentally — ten sam X amortyzuje się przez 5+ działów. <span class="text-white">Effective cost per department: X/5.</span> ROI multiplication bez proporcjonalnego wzrostu maintenance cost. Każdy nowy department adoption to incremental win.
+        Hub zbudowany pod marketing kosztuje X. Gdy zaczynasz świadomie skalować cross-departmentally - ten sam X amortyzuje się przez 5+ działów. <span class="text-white">Effective cost per department: X/5.</span> ROI multiplication bez proporcjonalnego wzrostu maintenance cost. Każdy nowy department adoption to incremental win.
       </p>
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Czy twoja marka jest na tyle duża?</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Brand knowledge hub nie jest dla każdego. To infrastruktura — i jak każda infrastruktura, ma swój próg ROI. Pięć kryteriów, każde z konkretnym uzasadnieniem dlaczego ten próg:
+        Brand knowledge hub nie jest dla każdego. To infrastruktura - i jak każda infrastruktura, ma swój próg ROI. Pięć kryteriów, każde z konkretnym uzasadnieniem dlaczego ten próg:
       </p>
       <ul class="list-none mb-10 space-y-4 text-neutral-400 text-lg pl-4 border-l-2 border-[#D4FF00]/40">
-        <li><span class="text-white font-medium">5+ lokalizacji / oddziałów</span> — poniżej tego liczba "interpretacji marki" jest zarządzalna przez single brand manager. Powyżej — drift staje się exponential.</li>
-        <li><span class="text-white font-medium">3+ vendorów contentowych równolegle</span> — agencje, freelancerzy, in-house. Każdy vendor = potencjalne źródło inconsistency. 3+ vendorów = potrzebujesz curated source które wszyscy mogą zassać.</li>
-        <li><span class="text-white font-medium">Multi-market roadmap</span> — jeśli planujesz 2+ rynki w ciągu 18 miesięcy, hub jest infrastructure która umożliwia szybkie skalowanie. Bez niej każda nowa rynkowa adaptacja restartuje brand consistency.</li>
-        <li><span class="text-white font-medium">100+ deliverables/kwartał</span> — poniżej tej skali hidden tax debate'ów jest niski enough żeby tolerować. Powyżej — debate'y zaczynają zjeść istotną część bandwidth'u zespołu.</li>
-        <li><span class="text-white font-medium">Zespół używa AI codziennie</span> — jeśli zespół nie używa AI, hub'a build pod AI agentów jest premature. Ale jeśli używają codziennie (Claude, ChatGPT, Midjourney) i nie ma curated source — drift już się dzieje, tylko jeszcze nie zmierzony.</li>
+        <li><span class="text-white font-medium">5+ lokalizacji / oddziałów</span> - poniżej tego liczba "interpretacji marki" jest zarządzalna przez single brand manager. Powyżej - drift staje się exponential.</li>
+        <li><span class="text-white font-medium">3+ vendorów contentowych równolegle</span> - agencje, freelancerzy, in-house. Każdy vendor = potencjalne źródło inconsistency. 3+ vendorów = potrzebujesz curated source które wszyscy mogą zassać.</li>
+        <li><span class="text-white font-medium">Multi-market roadmap</span> - jeśli planujesz 2+ rynki w ciągu 18 miesięcy, hub jest infrastructure która umożliwia szybkie skalowanie. Bez niej każda nowa rynkowa adaptacja restartuje brand consistency.</li>
+        <li><span class="text-white font-medium">100+ deliverables/kwartał</span> - poniżej tej skali hidden tax debate'ów jest niski enough żeby tolerować. Powyżej - debate'y zaczynają zjeść istotną część bandwidth'u zespołu.</li>
+        <li><span class="text-white font-medium">Zespół używa AI codziennie</span> - jeśli zespół nie używa AI, hub'a build pod AI agentów jest premature. Ale jeśli używają codziennie (Claude, ChatGPT, Midjourney) i nie ma curated source - drift już się dzieje, tylko jeszcze nie zmierzony.</li>
       </ul>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">ROI calculation — konkretna tabela</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">ROI calculation - konkretna tabela</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Średni mid-market case (8-osobowy team marketingu, 200 deliverables/kwartał, 3 vendorów):
       </p>
@@ -840,13 +840,13 @@ auto_load: true
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">Common objections + responses</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        <span class="text-white">"Nie mamy budżetu."</span> → Skalkuluj cost of NOT building. Hidden tax 200-350k/rok już płacisz — tylko ukryty w salaries i lost productivity. Knowledge hub nie zwiększa kosztu, tylko go widzi i wycina.
+        <span class="text-white">"Nie mamy budżetu."</span> → Skalkuluj cost of NOT building. Hidden tax 200-350k/rok już płacisz - tylko ukryty w salaries i lost productivity. Knowledge hub nie zwiększa kosztu, tylko go widzi i wycina.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         <span class="text-white">"Nasz brand book PDF wystarczy."</span> → Cztery powody dlaczego nie: 1) AI agenci nie mogą go zassać; 2) zespół go nie otwiera (kiedy ostatnio ktoś otwierał? prowadź internal poll); 3) versioning brak; 4) governance brak. Wystarczy tylko jeśli zespół nie pracuje.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        <span class="text-white">"AI jeszcze nie jest gotowe na nasz case."</span> → Już teraz junior copywriter w sobotę o 23:30 używa Claude. Już teraz designer prompts'uje Midjourney. AI jest w workflow zespołu — pytanie tylko czy z curated source czy bez. Marki które czekają tracą 12-18 miesięcy compounding moat.
+        <span class="text-white">"AI jeszcze nie jest gotowe na nasz case."</span> → Już teraz junior copywriter w sobotę o 23:30 używa Claude. Już teraz designer prompts'uje Midjourney. AI jest w workflow zespołu - pytanie tylko czy z curated source czy bez. Marki które czekają tracą 12-18 miesięcy compounding moat.
       </p>
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">When NOT to build</h3>
@@ -854,7 +854,7 @@ auto_load: true
         Hub nie ma sensu przy: &lt;5 lokalizacji, single vendor (in-house team only), niski marketing volume (&lt;50 assetów/kwartał), brand voice jeszcze nie skrystalizowany (jeśli sam nie wiesz co jest on-brand, hub nie pomoże). <span class="text-white">W tych przypadkach: zostań przy lightweight brand guidelines + dedykowanym brand managerze do approval'u. Build hub kiedy przekroczysz progi.</span>
       </p>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Compounding moat — czemu czas teraz</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Compounding moat - czemu czas teraz</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Knowledge hub to compounding asset. Krzywa wartości po fazach:
       </p>
@@ -902,12 +902,12 @@ auto_load: true
       </figure>
 
       <ul class="list-none mb-10 space-y-4 text-neutral-400 text-lg pl-4 border-l-2 border-[#D4FF00]/40">
-        <li><span class="text-white font-medium">Miesiące 1-6 (setup pain)</span> — niski immediate value, zespół jeszcze się uczy, friction w adoption, budujesz initial content + procesy. To są najtrudniejsze miesiące, większość projektów które porzuciły hub porzuciły tutaj.</li>
-        <li><span class="text-white font-medium">Miesiące 7-18 (stabilization)</span> — prompt library rośnie z 25 startowych do ~100, QA scoring stabilizuje się, zespół ma adopcję na poziomie 80%+, vendor onboarding już szybszy.</li>
-        <li><span class="text-white font-medium">Miesiące 19-36 (compounding kicks in)</span> — każdy nowy vendor onboardingowany 5x szybciej niż pre-hub, każdy nowy market entry uses hub jako foundation, AI agents trained na 3 latach curated data generują w QA score 90+ first try.</li>
+        <li><span class="text-white font-medium">Miesiące 1-6 (setup pain)</span> - niski immediate value, zespół jeszcze się uczy, friction w adoption, budujesz initial content + procesy. To są najtrudniejsze miesiące, większość projektów które porzuciły hub porzuciły tutaj.</li>
+        <li><span class="text-white font-medium">Miesiące 7-18 (stabilization)</span> - prompt library rośnie z 25 startowych do ~100, QA scoring stabilizuje się, zespół ma adopcję na poziomie 80%+, vendor onboarding już szybszy.</li>
+        <li><span class="text-white font-medium">Miesiące 19-36 (compounding kicks in)</span> - każdy nowy vendor onboardingowany 5x szybciej niż pre-hub, każdy nowy market entry uses hub jako foundation, AI agents trained na 3 latach curated data generują w QA score 90+ first try.</li>
       </ul>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        <span class="text-white">5-year head start math:</span> 12 kwartałów × 200 production cycles = 2 400 cykli z system advantage. Konkurent startujący w 2031 potrzebuje 36 miesięcy żeby dogonić — przez te 36 miesięcy ty masz 1 800 dodatkowych cykli przewagi. To nie linear advantage, to exponential — bo każdy cykl feeds back do hub'a (nowe examples, nowe prompty, lepszy QA tuning).
+        <span class="text-white">5-year head start math:</span> 12 kwartałów × 200 production cycles = 2 400 cykli z system advantage. Konkurent startujący w 2031 potrzebuje 36 miesięcy żeby dogonić - przez te 36 miesięcy ty masz 1 800 dodatkowych cykli przewagi. To nie linear advantage, to exponential - bo każdy cykl feeds back do hub'a (nowe examples, nowe prompty, lepszy QA tuning).
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Marki które zbudują knowledge hub w 2026 zbiorą compounding advantage. <span class="text-white">Reszta będzie 5 lat za późno.</span>
@@ -924,16 +924,16 @@ auto_load: true
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Następny krok</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Jeśli ten artykuł zarezonował z twoją sytuacją — masz trzy ścieżki:
+        Jeśli ten artykuł zarezonował z twoją sytuacją - masz trzy ścieżki:
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        <span class="text-white font-medium">1. Zobacz pełną metodologię.</span> <a href="/process" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">/process</a> pokazuje 8-stopniowy framework r3loop którym buduje się takie systemy operacyjne — od diagnozy po wdrożenie + maintenance.
+        <span class="text-white font-medium">1. Zobacz pełną metodologię.</span> <a href="/process" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">/process</a> pokazuje 8-stopniowy framework r3loop którym buduje się takie systemy operacyjne - od diagnozy po wdrożenie + maintenance.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        <span class="text-white font-medium">2. Zacznij od Diagnostic.</span> 5-dniowy fixed-scope audyt operacyjny — mapuje twoją obecną sytuację, identyfikuje 5-7 priorytetowych bottlenecks, daje 30/60/90-day roadmap. 60-day money-back guarantee jeśli rekomendacje nie są actionable. <a href="/brief" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">/brief</a> — krótki formularz, pierwsza odpowiedź w 48 godzin.
+        <span class="text-white font-medium">2. Zacznij od Diagnostic.</span> 5-dniowy fixed-scope audyt operacyjny - mapuje twoją obecną sytuację, identyfikuje 5-7 priorytetowych bottlenecks, daje 30/60/90-day roadmap. 60-day money-back guarantee jeśli rekomendacje nie są actionable. <a href="/brief" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">/brief</a> - krótki formularz, pierwsza odpowiedź w 48 godzin.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        <span class="text-white font-medium">3. Zobacz jak to wygląda w praktyce.</span> Case studies <a href="/work/geers" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">Geers (Sonova PL)</a> i <a href="/work/benefit-systems" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">Benefit Systems</a> pokazują knowledge hub'y w działaniu — multi-location, multi-vendor, multi-market.
+        <span class="text-white font-medium">3. Zobacz jak to wygląda w praktyce.</span> Case studies <a href="/work/geers" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">Geers (Sonova PL)</a> i <a href="/work/benefit-systems" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">Benefit Systems</a> pokazują knowledge hub'y w działaniu - multi-location, multi-vendor, multi-market.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Albo po prostu <a href="mailto:hello@r352.com" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">napisz</a>. DM też otwarte.
@@ -941,10 +941,10 @@ auto_load: true
     `,
     content: `
       <p class="mb-6 text-xl leading-relaxed text-neutral-300">
-        A PDF brand book sitting on a company drive, opened once every six months, last updated in 2023 — that's <span class="text-white font-medium">a company without a CRM in 2010</span>. It works. Until it doesn't. Until someone notices the competition has tools handling cases you haven't even thought about yet.
+        A PDF brand book sitting on a company drive, opened once every six months, last updated in 2023 - that's <span class="text-white font-medium">a company without a CRM in 2010</span>. It works. Until it doesn't. Until someone notices the competition has tools handling cases you haven't even thought about yet.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        That moment came for brand operations in 2026, when every marketing team started using Claude, ChatGPT, and Midjourney on every brief. <span class="text-white">AI didn't replace the team — it became its third member.</span> And a third team member doesn't know what they don't know. If there's no curated source for your brand, they learn it from the internet — from competitor blog fragments, from two-year-old LinkedIn posts.
+        That moment came for brand operations in 2026, when every marketing team started using Claude, ChatGPT, and Midjourney on every brief. <span class="text-white">AI didn't replace the team - it became its third member.</span> And a third team member doesn't know what they don't know. If there's no curated source for your brand, they learn it from the internet - from competitor blog fragments, from two-year-old LinkedIn posts.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         This article is the operator's version of that thesis. 23 modules, 4 architecture layers, Geers case after three years of production, 5 common build pitfalls, maintenance cadence, ROI calculation. No fluff, no frameworks-for-frameworks. The way this actually gets done.
@@ -952,42 +952,42 @@ auto_load: true
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">The new reality: your team is already prompting AI</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        This is happening now, whether you accept it or not. Four scenarios playing out in your organization this week — whether or not they were approved:
+        This is happening now, whether you accept it or not. Four scenarios playing out in your organization this week - whether or not they were approved:
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Scenario 1 — Saturday, 11:30 PM, panicked junior copywriter</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Scenario 1 - Saturday, 11:30 PM, panicked junior copywriter</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Junior copywriter has a Monday 9 AM deadline for a B2B campaign. Types into Claude: <span class="text-white">"write 5 LinkedIn post variants about our new product, in our brand tone, target: mid-market decision makers"</span>. Claude doesn't know what your "brand tone" is — so it invents one. Pulls the average of 50 million LinkedIn posts it's seen. Returns five corporate clichés about "revolution" and "transformation" — exactly the words your brand manager banned from the lexicon a year ago.
+        Junior copywriter has a Monday 9 AM deadline for a B2B campaign. Types into Claude: <span class="text-white">"write 5 LinkedIn post variants about our new product, in our brand tone, target: mid-market decision makers"</span>. Claude doesn't know what your "brand tone" is - so it invents one. Pulls the average of 50 million LinkedIn posts it's seen. Returns five corporate clichés about "revolution" and "transformation" - exactly the words your brand manager banned from the lexicon a year ago.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Junior doesn't have time for a second round. Picks the least bad variant. Publishes Monday 8:45. Brand manager sees the post at 11:00, messages the junior, junior explains "that's what Claude generates." <span class="text-white">Post stays on the company profile.</span> A thousand impressions, two reactions from competitors. Drift +1.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Scenario 2 — Designer and 50 "brand palette" variants</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Scenario 2 - Designer and 50 "brand palette" variants</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Designer gets a brief for a social campaign. Opens Midjourney. Types: <span class="text-white">"social media campaign for [our brand], brand palette, premium, minimalist"</span>. Generates 50 variants. Eight look "on-brand enough" to be usable. Picks three — each with a slightly different palette: one has a blue accent (not in brand book), the second uses Google Fonts typography (brand uses custom type), the third has composition from a previous brand era.
+        Designer gets a brief for a social campaign. Opens Midjourney. Types: <span class="text-white">"social media campaign for [our brand], brand palette, premium, minimalist"</span>. Generates 50 variants. Eight look "on-brand enough" to be usable. Picks three - each with a slightly different palette: one has a blue accent (not in brand book), the second uses Google Fonts typography (brand uses custom type), the third has composition from a previous brand era.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        All three go into production. The competitor doing a quarterly competitive review sees these creatives next to the previous ones and asks internally: <span class="text-white">"did they rebrand?"</span> Drift +3. Internally nobody noticed — because every local brand manager saw only their three posts, not 200 in aggregate.
+        All three go into production. The competitor doing a quarterly competitive review sees these creatives next to the previous ones and asks internally: <span class="text-white">"did they rebrand?"</span> Drift +3. Internally nobody noticed - because every local brand manager saw only their three posts, not 200 in aggregate.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Scenario 3 — 200 deliverables, 12 months, exponential drift</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Scenario 3 - 200 deliverables, 12 months, exponential drift</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Marketing produces 200 deliverables per quarter. 192 locations across the country (real case). Each location has a local marketing manager reading the brand book their own way. One interprets "professional tone" as formal. Another as friendly-but-respectful. A third skips that section entirely and just goes by feel.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        After one quarter the drift is invisible. After two — visible in side-by-side comparison. After four — <span class="text-white">brand manager has to run a "brand reset"</span>. The reset costs 3-6 months of retraining, agency briefings, asset rebuilds. Every quarter, those 3-6 months repeat — unless there's a curated source everyone references.
+        After one quarter the drift is invisible. After two - visible in side-by-side comparison. After four - <span class="text-white">brand manager has to run a "brand reset"</span>. The reset costs 3-6 months of retraining, agency briefings, asset rebuilds. Every quarter, those 3-6 months repeat - unless there's a curated source everyone references.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Scenario 4 — Vendor agency improvises because the PDF is unsearchable</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Scenario 4 - Vendor agency improvises because the PDF is unsearchable</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Outside agency lands a brief on Friday afternoon. Brand book is 60 pages of PDF on a shared drive. Account manager opens it, skims for 8 minutes, can't find the answer to "what's our tone when addressing a regulated B2B buyer in healthcare." Picks up the phone — brand manager is in meetings. <span class="text-white">Agency ships their best guess on Monday.</span> Brand manager reviews on Tuesday, requests 14 revisions, slips deadline by a week, and the agency invoices for the extra rounds.
+        Outside agency lands a brief on Friday afternoon. Brand book is 60 pages of PDF on a shared drive. Account manager opens it, skims for 8 minutes, can't find the answer to "what's our tone when addressing a regulated B2B buyer in healthcare." Picks up the phone - brand manager is in meetings. <span class="text-white">Agency ships their best guess on Monday.</span> Brand manager reviews on Tuesday, requests 14 revisions, slips deadline by a week, and the agency invoices for the extra rounds.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         The friction isn't the agency. The friction is that a 60-page PDF without search, without structured rules, without examples, is unusable as an operational source. Every vendor improvises by default.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Hidden tax — the concrete number</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Hidden tax - the concrete number</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         All four scenarios share a common denominator: <span class="text-white">the team spends hours debating "is this on-brand"</span> instead of working. Concrete calculation for a typical mid-market organization with brand ambitions:
       </p>
@@ -1004,39 +1004,39 @@ auto_load: true
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Why classic approaches fail</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Before getting into the hub's architecture, it helps to understand why the four most common approaches don't solve the problem — so you don't try to fix the wrong tool.
+        Before getting into the hub's architecture, it helps to understand why the four most common approaches don't solve the problem - so you don't try to fix the wrong tool.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">PDF brand book — dies the day it ships</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">PDF brand book - dies the day it ships</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        A PDF brand book is the artifact that looks professional and gives the brand manager the feeling of "it's done." <span class="text-white">Four reasons it dies on launch day</span>: 1) it's static — you don't update it, nobody knows there's a new version; 2) it's not AI-accessible — Claude can't open a PDF from your company SharePoint and extract tone logic from it; 3) no governance — who owns it, who approves changes, when's the next review; 4) no versioning — is the version you're reading current, or from 2023.
+        A PDF brand book is the artifact that looks professional and gives the brand manager the feeling of "it's done." <span class="text-white">Four reasons it dies on launch day</span>: 1) it's static - you don't update it, nobody knows there's a new version; 2) it's not AI-accessible - Claude can't open a PDF from your company SharePoint and extract tone logic from it; 3) no governance - who owns it, who approves changes, when's the next review; 4) no versioning - is the version you're reading current, or from 2023.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        A PDF brand book is a printed encyclopedia in 2010 — theoretically complete, in practice obsolete before it reaches the printer.
-      </p>
-
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Notion / Confluence — too loose, no schema</h3>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Notion or Confluence feel like the solution — live, editable, accessible to the team. Problem: they're <span class="text-white">structurally too unstructured</span>. Every page has different organization. Every author writes their own way. There's no schema enforcement — meaning the AI agent that needs to ingest this gets 200 pages with mixed headers, mixed detail levels, mixed formats.
-      </p>
-      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Notion is great for internal docs and project management. As a brand knowledge hub — it becomes a second PDF brand book, just with worse UX and no version control.
+        A PDF brand book is a printed encyclopedia in 2010 - theoretically complete, in practice obsolete before it reaches the printer.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">DAM (Bynder, Frontify, Brandfolder) — assets without context</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Notion / Confluence - too loose, no schema</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Digital Asset Management systems are designed for one specific problem: storing and distributing files. Logo packs, product photography, video assets. <span class="text-white">They do it very well.</span> But brand isn't just assets — brand is primarily voice, tone, composition rules, usage context.
+        Notion or Confluence feel like the solution - live, editable, accessible to the team. Problem: they're <span class="text-white">structurally too unstructured</span>. Every page has different organization. Every author writes their own way. There's no schema enforcement - meaning the AI agent that needs to ingest this gets 200 pages with mixed headers, mixed detail levels, mixed formats.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Brand voice never enters a DAM — because a DAM is designed for files. Rules like "when to use this shot vs. that one" don't exist in a DAM as enforceable rules. And without context, an asset is just a file. The designer can use anything — they don't know what they shouldn't.
+        Notion is great for internal docs and project management. As a brand knowledge hub - it becomes a second PDF brand book, just with worse UX and no version control.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Slack / email — knowledge in fragments</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">DAM (Bynder, Frontify, Brandfolder) - assets without context</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Real brand knowledge in most organizations lives in Slack threads and email exchanges. <span class="text-white">"Hey, can we use this color on social?"</span> — brand manager replies — end. Decision stored in a thread nobody will ever find again. Next designer asks the same question three months later. Brand manager replies with the same answer — because nobody capitalized the knowledge.
+        Digital Asset Management systems are designed for one specific problem: storing and distributing files. Logo packs, product photography, video assets. <span class="text-white">They do it very well.</span> But brand isn't just assets - brand is primarily voice, tone, composition rules, usage context.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Every decision repeated × 50 designers × 12 months = hundreds of hours lost on repeated answers. Slack is great for real-time communication. <span class="text-white">As a brand source of truth — it's like an email archive from 2008: technically accessible, practically unsearchable.</span>
+        Brand voice never enters a DAM - because a DAM is designed for files. Rules like "when to use this shot vs. that one" don't exist in a DAM as enforceable rules. And without context, an asset is just a file. The designer can use anything - they don't know what they shouldn't.
+      </p>
+
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Slack / email - knowledge in fragments</h3>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Real brand knowledge in most organizations lives in Slack threads and email exchanges. <span class="text-white">"Hey, can we use this color on social?"</span> - brand manager replies - end. Decision stored in a thread nobody will ever find again. Next designer asks the same question three months later. Brand manager replies with the same answer - because nobody capitalized the knowledge.
+      </p>
+      <p class="mb-6 text-lg leading-relaxed text-neutral-400">
+        Every decision repeated × 50 designers × 12 months = hundreds of hours lost on repeated answers. Slack is great for real-time communication. <span class="text-white">As a brand source of truth - it's like an email archive from 2008: technically accessible, practically unsearchable.</span>
       </p>
 
       <figure class="my-12">
@@ -1147,18 +1147,18 @@ auto_load: true
       </figure>
 
       <ul class="list-none mb-10 space-y-4 text-neutral-400 text-lg pl-4 border-l-2 border-[#D4FF00]/40">
-        <li><span class="text-white font-medium">1. Knowledge layer</span> — 23 modules across 5 buckets (strategy, language, visual, execution, reference). Everything you need to make something on-brand. Without it: team guesses, output depends on whoever happens to read the brief.</li>
-        <li><span class="text-white font-medium">2. Format layer</span> — same content in two forms: visual system for humans + curated .md file for AI agents. Without it: humans read one thing, AI generates another — drift guaranteed.</li>
-        <li><span class="text-white font-medium">3. QA layer (active enforcement)</span> — a tool that scores every new asset before publication. Without it: rules are a declaration, not enforcement. Everyone thinks they're "on-brand enough."</li>
-        <li><span class="text-white font-medium">4. Production layer</span> — prompt library + AI skills with auto-loaded brand context. Without it: team prompts AI from scratch every time, losing 80% of the system's potential.</li>
+        <li><span class="text-white font-medium">1. Knowledge layer</span> - 23 modules across 5 buckets (strategy, language, visual, execution, reference). Everything you need to make something on-brand. Without it: team guesses, output depends on whoever happens to read the brief.</li>
+        <li><span class="text-white font-medium">2. Format layer</span> - same content in two forms: visual system for humans + curated .md file for AI agents. Without it: humans read one thing, AI generates another - drift guaranteed.</li>
+        <li><span class="text-white font-medium">3. QA layer (active enforcement)</span> - a tool that scores every new asset before publication. Without it: rules are a declaration, not enforcement. Everyone thinks they're "on-brand enough."</li>
+        <li><span class="text-white font-medium">4. Production layer</span> - prompt library + AI skills with auto-loaded brand context. Without it: team prompts AI from scratch every time, losing 80% of the system's potential.</li>
       </ul>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Each layer feeds the next: <span class="text-white">Knowledge → Format → QA → Production</span>. Knowledge without Format is non-actionable. Format without QA is rule without enforcement. QA without Production is gatekeeper without generation. Production without Knowledge generates garbage faster.
       </p>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">23 modules across 5 buckets — full breakdown</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">23 modules across 5 buckets - full breakdown</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Every brand decision falls into one of five buckets. All are accessible to team + AI in the same structure. The number 23 isn't arbitrary — it's the sum of modules that actually control brand decisions in production. Fewer leaves gaps. More adds overhead without ROI.
+        Every brand decision falls into one of five buckets. All are accessible to team + AI in the same structure. The number 23 isn't arbitrary - it's the sum of modules that actually control brand decisions in production. Fewer leaves gaps. More adds overhead without ROI.
       </p>
 
       <figure class="my-12">
@@ -1236,35 +1236,35 @@ auto_load: true
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">01 · Strategy + voice (5 modules)</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        The brand's DNA. Everything else builds on this foundation — and everything else demands a decision when the foundation is ambiguous. Five modules that form the strategic stack:
+        The brand's DNA. Everything else builds on this foundation - and everything else demands a decision when the foundation is ambiguous. Five modules that form the strategic stack:
       </p>
       <ul class="list-none mb-10 space-y-4 text-neutral-400 text-lg pl-4 border-l-2 border-[#D4FF00]/40">
-        <li><span class="text-white font-medium">Positioning</span> — one sentence: "we're X for Y, because Z". Concrete, falsifiable, no aspirational fluff.</li>
-        <li><span class="text-white font-medium">Mission</span> — why the brand exists beyond making money. Short. Internal use, not for the storytelling deck.</li>
-        <li><span class="text-white font-medium">4 brand attributes</span> — adjectives every output must satisfy. Geers, for example, uses "expert, accessible, human, regulated." Each with a concrete operational definition.</li>
-        <li><span class="text-white font-medium">3 tone modes</span> — formal/conversational/playful, each with a specific description of when to use and examples. Without this, "brand voice" remains an abstraction.</li>
-        <li><span class="text-white font-medium">Voice modulation per channel</span> — LinkedIn vs. Instagram vs. in-store vs. B2B email. Same attributes, different modulation. Concrete rules, not "adapt to the channel."</li>
+        <li><span class="text-white font-medium">Positioning</span> - one sentence: "we're X for Y, because Z". Concrete, falsifiable, no aspirational fluff.</li>
+        <li><span class="text-white font-medium">Mission</span> - why the brand exists beyond making money. Short. Internal use, not for the storytelling deck.</li>
+        <li><span class="text-white font-medium">4 brand attributes</span> - adjectives every output must satisfy. Geers, for example, uses "expert, accessible, human, regulated." Each with a concrete operational definition.</li>
+        <li><span class="text-white font-medium">3 tone modes</span> - formal/conversational/playful, each with a specific description of when to use and examples. Without this, "brand voice" remains an abstraction.</li>
+        <li><span class="text-white font-medium">Voice modulation per channel</span> - LinkedIn vs. Instagram vs. in-store vs. B2B email. Same attributes, different modulation. Concrete rules, not "adapt to the channel."</li>
       </ul>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Common mistake on this bucket: leaving attributes at aspiration level. "Innovative" isn't an operational attribute — because nobody knows how to enforce it. <span class="text-white">"Innovative = shows specific data from 2024-2026 vs. industry standard"</span> is an operational attribute.
+        Common mistake on this bucket: leaving attributes at aspiration level. "Innovative" isn't an operational attribute - because nobody knows how to enforce it. <span class="text-white">"Innovative = shows specific data from 2024-2026 vs. industry standard"</span> is an operational attribute.
       </p>
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">02 · Language (3 modules)</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Three modules that give the junior copywriter a concrete decision tree at 11:30 PM on Saturday: DO/DON'T table for copy with concrete examples; lexicon of banned words with their replacements (30-50 entries); per-channel speaking rules with specific constraints. Geers example: lexicon has 47 banned words, each with a replacement. Junior copywriter checks the draft before publishing — find &amp; replace in 30 seconds. <span class="text-white">Without it: the team spends 4-6 hours per week on "is this how we say it."</span>
+        Three modules that give the junior copywriter a concrete decision tree at 11:30 PM on Saturday: DO/DON'T table for copy with concrete examples; lexicon of banned words with their replacements (30-50 entries); per-channel speaking rules with specific constraints. Geers example: lexicon has 47 banned words, each with a replacement. Junior copywriter checks the draft before publishing - find &amp; replace in 30 seconds. <span class="text-white">Without it: the team spends 4-6 hours per week on "is this how we say it."</span>
       </p>
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">03 · Visual (6 modules)</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Six modules that define how the brand looks — with the emphasis on "verified from the live site, not from the PDF brand book": logo rules with do-not-do exemplars; color palette verified from live site (hex extracted from actual products), with CSS tokens ready to use; typography as concrete scale values; official shapes library; icon library with naming convention; photography with the "zero stock" principle.
+        Six modules that define how the brand looks - with the emphasis on "verified from the live site, not from the PDF brand book": logo rules with do-not-do exemplars; color palette verified from live site (hex extracted from actual products), with CSS tokens ready to use; typography as concrete scale values; official shapes library; icon library with naming convention; photography with the "zero stock" principle.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Common mistake: palette in the brand book ≠ palette on the live site. After 12 months of iteration the site evolves, the brand book stays. <span class="text-white">The knowledge hub must have a palette verified from the live site as single source — otherwise developer and designer work from two different truths.</span>
+        Common mistake: palette in the brand book ≠ palette on the live site. After 12 months of iteration the site evolves, the brand book stays. <span class="text-white">The knowledge hub must have a palette verified from the live site as single source - otherwise developer and designer work from two different truths.</span>
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">04 · Execution (6 modules) — the most differentiating</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">04 · Execution (6 modules) - the most differentiating</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        This is the layer most brand consultants skip — because it requires understanding how things get built in code. Which is why it's also the layer that gives the biggest operational edge. <span class="text-white">Six modules that turn "brand book" into "design system":</span> layout grid + spacing tokens (8pt baseline, predefined scale); interaction states (hover/focus/active/disabled/loading); motion language (custom easing curves, durations, reveal patterns); tech stack (frameworks, libraries, hosting); accessibility budgets (WCAG AA minimum, per-component contrast); performance budgets (LCP &lt; 2.5s, CLS &lt; 0.1, INP &lt; 200ms).
+        This is the layer most brand consultants skip - because it requires understanding how things get built in code. Which is why it's also the layer that gives the biggest operational edge. <span class="text-white">Six modules that turn "brand book" into "design system":</span> layout grid + spacing tokens (8pt baseline, predefined scale); interaction states (hover/focus/active/disabled/loading); motion language (custom easing curves, durations, reveal patterns); tech stack (frameworks, libraries, hosting); accessibility budgets (WCAG AA minimum, per-component contrast); performance budgets (LCP &lt; 2.5s, CLS &lt; 0.1, INP &lt; 200ms).
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Geers example: motion language has 4 easing curves, each with a concrete name and use case ("brand.easeOut: when an element settles into its final position"). Designer in Figma and developer in code use the same names. <span class="text-white">Zero "what did you mean by snappy" debates.</span>
@@ -1272,12 +1272,12 @@ auto_load: true
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">05 · Reference (3 modules)</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Three modules that close the loop — showing not just "how," but "what we've already done well": real production assets as canonical templates (top 10 from last 12 months); production patterns (recurring layouts with concrete proportions); source pages (explicit "this is the source of truth for X" list). <span class="text-white">Reference layer is insurance against losing tribal knowledge.</span> Without it: every new senior leaving takes part of the brand with them.
+        Three modules that close the loop - showing not just "how," but "what we've already done well": real production assets as canonical templates (top 10 from last 12 months); production patterns (recurring layouts with concrete proportions); source pages (explicit "this is the source of truth for X" list). <span class="text-white">Reference layer is insurance against losing tribal knowledge.</span> Without it: every new senior leaving takes part of the brand with them.
       </p>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Case: Geers (Sonova PL) — full story after 3 years</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Case: Geers (Sonova PL) - full story after 3 years</h2>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Before state — chaos called "business as usual"</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Before state - chaos called "business as usual"</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Geers before the knowledge hub: 192 stores across Poland, 3 creative agencies working in parallel, ~6 freelancers on rotation, in-house team of 4, ~200 deliverables per quarter. PDF brand book from 2021 (40 pages), updated "when someone finds the time." Every new vendor onboarded through 2-3 weeks of meetings with the brand manager.
       </p>
@@ -1285,31 +1285,31 @@ auto_load: true
         Operational symptoms: <span class="text-white">3 rounds of approval per asset as the norm</span>, 4-6 hours of "is this on-brand" debate per week, the local manager in Kraków using a different palette than the local manager in Gdańsk (both "according to the brand book"), the Q4 2022 campaign requiring 60% rework after first launch because it didn't meet brand standards.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Diagnosis — 5-day diagnostic findings</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Diagnosis - 5-day diagnostic findings</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        First 5 days — diagnostic phase. Top 5 bottlenecks identified: no single source of truth (PDF, intranet, Slack, local folders — four sources, four versions of the truth); no operationalized voice (tone defined as "expert and approachable" but no DO/DON'T, no lexicon); visual drift between locations (side-by-side from 12 stores showed 5 visibly different "versions" of the brand); approval bottleneck on the brand manager (everything through one person, 30-60 min per asset, average 3 rounds); no versioning or changelog (palette changed in Q2 2022, 60% of internal assets still used the old one).
+        First 5 days - diagnostic phase. Top 5 bottlenecks identified: no single source of truth (PDF, intranet, Slack, local folders - four sources, four versions of the truth); no operationalized voice (tone defined as "expert and approachable" but no DO/DON'T, no lexicon); visual drift between locations (side-by-side from 12 stores showed 5 visibly different "versions" of the brand); approval bottleneck on the brand manager (everything through one person, 30-60 min per asset, average 3 rounds); no versioning or changelog (palette changed in Q2 2022, 60% of internal assets still used the old one).
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">The build — 3 months, month by month</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">The build - 3 months, month by month</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        <span class="text-white">Month 1 — Knowledge layer + Format layer.</span> Audit of existing materials, extraction of canonical values (palette verified from live site, typography from actual usage, voice from best assets). Structure of 23 modules, each in visual format for humans + .md for AI. Sign-off from brand manager + CMO.
+        <span class="text-white">Month 1 - Knowledge layer + Format layer.</span> Audit of existing materials, extraction of canonical values (palette verified from live site, typography from actual usage, voice from best assets). Structure of 23 modules, each in visual format for humans + .md for AI. Sign-off from brand manager + CMO.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        <span class="text-white">Month 2 — QA layer.</span> Scoring methodology (each of the 23 modules × weight = total 0-100). Build a tool that takes an asset, scores against rules, returns score + fix list. Pilot with 3 assets from the current campaign — calibration, threshold tuning.
+        <span class="text-white">Month 2 - QA layer.</span> Scoring methodology (each of the 23 modules × weight = total 0-100). Build a tool that takes an asset, scores against rules, returns score + fix list. Pilot with 3 assets from the current campaign - calibration, threshold tuning.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        <span class="text-white">Month 3 — Production layer + onboarding.</span> Library of 25 prompts for recurring use cases. AI skill .md ready for auto-load in Claude/ChatGPT. Team onboarding (4h training × 8 people), agency onboarding (2h session per agency). Everyone has access to the same curated source.
+        <span class="text-white">Month 3 - Production layer + onboarding.</span> Library of 25 prompts for recurring use cases. AI skill .md ready for auto-load in Claude/ChatGPT. Team onboarding (4h training × 8 people), agency onboarding (2h session per agency). Everyone has access to the same curated source.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">First quarter — friction and wins</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">First quarter - friction and wins</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         First quarter post-launch: friction was real. Senior designer tried to skip the QA layer because "I know what I'm doing." Junior copywriter avoided the prompt library for the first 3 weeks because "easier to write it myself." <span class="text-white">Brand manager had to establish new enforcement</span>: every asset going to production must have QA score &gt; 85 and a log in the prompt library.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        After 6 weeks the friction vanished — because the team saw the wins: approval time dropped from an average of 2 days to 4 hours. Iteration rounds from 3 to 1. Junior copywriter stopped spending hours on "is this how we say it." Brand manager stopped being a bottleneck — became a governance owner.
+        After 6 weeks the friction vanished - because the team saw the wins: approval time dropped from an average of 2 days to 4 hours. Iteration rounds from 3 to 1. Junior copywriter stopped spending hours on "is this how we say it." Brand manager stopped being a bottleneck - became a governance owner.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">3 years later — what compounded</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">3 years later - what compounded</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         After 3 years the Geers knowledge hub has: 23 modules expanded to 31 (added: video standards, podcast voice, event materials, partnership co-branding, B2B sales decks, internal comms, employer brand, recruitment voice). 125 prompts in the library (from 25 starter prompts). AI skills retrofitted for Claude 3.5, GPT-4, Midjourney v7.
       </p>
@@ -1328,7 +1328,7 @@ auto_load: true
         <li><span class="text-white font-medium">Hidden tax from ~€23k/year to ~€3k/year</span> (mostly governance maintenance)</li>
       </ul>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Dual-format — why .md and how it works technically</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Dual-format - why .md and how it works technically</h2>
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">Why .md specifically (vs JSON, YAML, XML)</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
@@ -1338,8 +1338,8 @@ auto_load: true
         JSON is too schema-heavy. YAML is schema-aware but less natural for LLMs. XML is legacy and verbose. .md hits the sweet spot: structured enough that AI gets deterministic context, loose enough that the team can edit without tooling.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Structure of the .md file — example skeleton</h3>
-      <pre class="bg-black/40 border border-white/10 p-6 my-8 overflow-x-auto text-sm leading-relaxed text-neutral-300 font-mono"><code># Brand voice — [Brand name]
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Structure of the .md file - example skeleton</h3>
+      <pre class="bg-black/40 border border-white/10 p-6 my-8 overflow-x-auto text-sm leading-relaxed text-neutral-300 font-mono"><code># Brand voice - [Brand name]
 
 ## Positioning
 [One sentence. Concrete. Falsifiable.]
@@ -1370,15 +1370,15 @@ auto_load: true
 - Always concrete number in first sentence
 - [3 more rules]</code></pre>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">How an agent consumes it — single source, dual rendering</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">How an agent consumes it - single source, dual rendering</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Junior copywriter writes in Claude: <span class="text-white">"Draft a LinkedIn post about the Q3 product launch"</span>. The agent has brand-voice.md auto-loaded in the system prompt. Generates immediately with the lexicon applied, in the right tone mode for LinkedIn, with a concrete number in the first sentence. Junior doesn't have to remember the 47 banned words — the agent knows them from the .md.
+        Junior copywriter writes in Claude: <span class="text-white">"Draft a LinkedIn post about the Q3 product launch"</span>. The agent has brand-voice.md auto-loaded in the system prompt. Generates immediately with the lexicon applied, in the right tone mode for LinkedIn, with a concrete number in the first sentence. Junior doesn't have to remember the 47 banned words - the agent knows them from the .md.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        The same content becomes: <span class="text-white">visual UI</span> for humans (interactive, clickable, with examples and screenshots) — and <span class="text-white">curated .md</span> for AI (structured, parseable, complete context). Workflow: you edit once (in the preferred format — visual for the content manager, .md for the developer), both renderings update from the same source. No duplicates, no drift between versions.
+        The same content becomes: <span class="text-white">visual UI</span> for humans (interactive, clickable, with examples and screenshots) - and <span class="text-white">curated .md</span> for AI (structured, parseable, complete context). Workflow: you edit once (in the preferred format - visual for the content manager, .md for the developer), both renderings update from the same source. No duplicates, no drift between versions.
       </p>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Active QA layer — gatekeeper with concrete scoring</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Active QA layer - gatekeeper with concrete scoring</h2>
 
       <figure class="my-12">
         <div class="bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-sm">
@@ -1416,24 +1416,24 @@ auto_load: true
         </figcaption>
       </figure>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Scoring methodology — how to count</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Scoring methodology - how to count</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        23 modules × weight = total score 0-100. Weights aren't equal — some modules have a bigger impact on "on-brand vs off-brand" than others. Example split for Geers: voice attributes 15pt, lexicon compliance 12pt, color palette 10pt, typography 10pt, layout grid 8pt, motion 6pt, photography 8pt, logo usage 10pt, accessibility 8pt, performance 6pt, the rest distributed across remaining modules.
+        23 modules × weight = total score 0-100. Weights aren't equal - some modules have a bigger impact on "on-brand vs off-brand" than others. Example split for Geers: voice attributes 15pt, lexicon compliance 12pt, color palette 10pt, typography 10pt, layout grid 8pt, motion 6pt, photography 8pt, logo usage 10pt, accessibility 8pt, performance 6pt, the rest distributed across remaining modules.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        <span class="text-white">Production threshold: 85+.</span> Below 85 — back to iteration with a concrete fix list. Between 85-94 — go with optional improvements. 95+ — exemplar, lands in the Reference bucket as a template.
+        <span class="text-white">Production threshold: 85+.</span> Below 85 - back to iteration with a concrete fix list. Between 85-94 - go with optional improvements. 95+ - exemplar, lands in the Reference bucket as a template.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Real check example — social post draft</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Real check example - social post draft</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Designer drops a social post draft. System returns in 3 seconds:
       </p>
-      <pre class="bg-black/40 border border-white/10 p-6 my-8 overflow-x-auto text-sm leading-relaxed text-neutral-300 font-mono"><code>QA Score: 78/100 — REQUIRES REVISION
+      <pre class="bg-black/40 border border-white/10 p-6 my-8 overflow-x-auto text-sm leading-relaxed text-neutral-300 font-mono"><code>QA Score: 78/100 - REQUIRES REVISION
 
 High severity (3):
-- Copy uses "revolution" (line 2) — replace with "real change"
+- Copy uses "revolution" (line 2) - replace with "real change"
 - Logo placement: minimum clearspace violated (top edge)
-- Color #FF6B35 used — not in palette (closest: brand.orange #E85A2A)
+- Color #FF6B35 used - not in palette (closest: brand.orange #E85A2A)
 
 Mid severity (2):
 - Typography: H2 weight 700, brand standard is 600
@@ -1444,7 +1444,7 @@ Low severity (1):
 
 Fix the 3 high-severity items minimum. Re-submit for re-check.</code></pre>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Workflow comparison — the math on savings</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Workflow comparison - the math on savings</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         <span class="text-white">BEFORE</span>: brief → asset (4h) → 30-min review with brand manager → "doesn't feel right" → iteration (2h) → re-review → "better, but" → iteration (1h) → ship. <span class="text-white">Total: 8h work + 3 × 0.5h meetings = 9.5h, 3 rounds.</span>
       </p>
@@ -1455,17 +1455,17 @@ Fix the 3 high-severity items minimum. Re-submit for re-check.</code></pre>
         Savings per asset: <span class="text-white">~4.5h</span>. Volume: 200 assets/quarter. Quarterly saving: <span class="text-white">~900h = ~22 person-weeks</span>. At €40/h fully loaded: <span class="text-white">~€36,000/quarter</span>, or ~€144,000/year saved on approval-cycle compression alone.
       </p>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Production layer — prompt library + skills</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Production layer - prompt library + skills</h2>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Prompt library — what's in it</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Prompt library - what's in it</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         A curated prompt library for recurring use cases. Each prompt has documented context, target audience, and expected output. Examples from the Geers library: <span class="text-white">awareness-social-post</span> (top-of-funnel social, 80-word max), <span class="text-white">consideration-email</span> (mid-funnel nurture with research data), <span class="text-white">loyalty-sms</span> (retention SMS, max 160 chars), <span class="text-white">salon-window-copy</span> (location-aware in-store copy), <span class="text-white">B2B-sales-deck-slide</span> (data-heavy expert tone), <span class="text-white">recruitment-jd</span> (employer brand voice), <span class="text-white">customer-success-response</span> (support tickets, empathic tone).
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">AI skill .md — structure with frontmatter</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">AI skill .md - structure with frontmatter</h3>
       <pre class="bg-black/40 border border-white/10 p-6 my-8 overflow-x-auto text-sm leading-relaxed text-neutral-300 font-mono"><code>---
 name: geers-voice
-description: Apply Geers brand voice — audiology expert, accessible, regulated environment
+description: Apply Geers brand voice - audiology expert, accessible, regulated environment
 version: 3.2
 last_updated: 2026-05-15
 auto_load: true
@@ -1482,81 +1482,81 @@ auto_load: true
 [Inline brand-voice.md content]
 
 ## Examples library
-[10 canonical examples — on-brand]
-[10 anti-pattern examples — off-brand]
+[10 canonical examples - on-brand]
+[10 anti-pattern examples - off-brand]
 
 ## Anti-patterns to flag
 [List of common mistakes with explanations]</code></pre>
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">Compounding mechanism</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Every new prompt you add to the library, every successful generation you tag as exemplar — <span class="text-white">strengthens your moat</span>. After 6 months the library has 80 prompts. After 12 months — 150. Every new team member starts with 150 prompts ready to use — vs. a competitor starting from 0.
+        Every new prompt you add to the library, every successful generation you tag as exemplar - <span class="text-white">strengthens your moat</span>. After 6 months the library has 80 prompts. After 12 months - 150. Every new team member starts with 150 prompts ready to use - vs. a competitor starting from 0.
       </p>
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">5 common pitfalls when building a hub</h2>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Trap 1 — Building only for humans</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Trap 1 - Building only for humans</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Most common mistake: you build a beautiful visual knowledge hub for the team and skip the dual-format for AI. <span class="text-white">Half the value disappears.</span> Team has a great tool, AI still generates off-brand because it has no curated source. Drift compounds. Fix: from day 1, build both formats in parallel. Every new rule lands in the visual UI + the .md at the same time.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Trap 2 — Porting the PDF brand book to the web</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Trap 2 - Porting the PDF brand book to the web</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Brand manager takes the existing PDF brand book and turns it into a website. <span class="text-white">This isn't a knowledge hub. It's a PDF brand book on the web.</span> No 23-module structure, no QA layer, no production layer. Better aesthetics, same operations. Fix: start from architecture (4 layers), fill in content. The PDF is an input source, not a template.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Trap 3 — No governance owner</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Trap 3 - No governance owner</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Knowledge hub is built, but nobody has explicit ownership. Brand manager thinks it's design ops, design ops thinks it's brand manager, nobody updates it. After 6 months the hub is stale. After 12 — irrelevant. <span class="text-white">Without a dedicated owner with concrete time budget, the hub rots.</span> Fix: explicit owner with minimum 4h/week of dedicated time. Written into the job description, measured in performance review.
+        Knowledge hub is built, but nobody has explicit ownership. Brand manager thinks it's design ops, design ops thinks it's brand manager, nobody updates it. After 6 months the hub is stale. After 12 - irrelevant. <span class="text-white">Without a dedicated owner with concrete time budget, the hub rots.</span> Fix: explicit owner with minimum 4h/week of dedicated time. Written into the job description, measured in performance review.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Trap 4 — Scope creep</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Trap 4 - Scope creep</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Knowledge hub starts being "everything to everyone." You try to add DAM functionality (storage of all marketing assets), intranet functionality (HR comms, company news), CMS functionality (content publishing). <span class="text-white">Hub stops being a knowledge hub, becomes a Frankenstein.</span> Fix: hold the scope. Hub is the source of rules + reference + production tools. Storage stays in DAM. Comms in Slack. CMS in CMS. Integrate via API if needed.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Trap 5 — Build once, never update</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Trap 5 - Build once, never update</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Hub built in Q1, used like a Bible Q2-Q4. <span class="text-white">Brand changes (new products, new channels, new insights), hub stays static — drift between hub and reality.</span> Compounding moat works only if the system updates. Fix: maintenance cadence (weekly/monthly/quarterly/annual review). Every successful asset feeds back into the reference bucket. Every new tool integration triggers a production layer update.
+        Hub built in Q1, used like a Bible Q2-Q4. <span class="text-white">Brand changes (new products, new channels, new insights), hub stays static - drift between hub and reality.</span> Compounding moat works only if the system updates. Fix: maintenance cadence (weekly/monthly/quarterly/annual review). Every successful asset feeds back into the reference bucket. Every new tool integration triggers a production layer update.
       </p>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Build vs buy — which path for you</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Build vs buy - which path for you</h2>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">DIY path — when it makes sense</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">DIY path - when it makes sense</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Team has bandwidth (minimum 1 dedicated person × 3 months full-time, plus 0.5 FTE ongoing maintenance), design ops maturity (you understand design systems, you have a Figma library in use, you run token management), and ownership (clear decision-maker on what goes into the hub). <span class="text-white">DIY is cheaper in cash, more expensive in time-to-value</span>: typically 6-9 months to production-ready, vs. 3 months with a consultant.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Consultant path — when it makes sense</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Consultant path - when it makes sense</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         You need methodology (you don't want to invent the 23-module structure from scratch), outside perspective (consultant sees blind spots an internal team misses because "we've always done it this way"), and speed-to-value (3 months to production vs. 6-9 DIY). <span class="text-white">Consultant is more expensive in cash, cheaper in opportunity cost</span>: you start getting compounding return sooner.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">SaaS tools (Frontify, Bynder, BrandPad) — why insufficient</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">SaaS tools (Frontify, Bynder, BrandPad) - why insufficient</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Frontify, Bynder, BrandPad are good at asset management and basic brand guidelines storage. <span class="text-white">They are not good at: dual-format for AI, active QA layer, production layer with prompts, deep customization for your specifics.</span> Capture assets but not voice rules in actionable form. Capture guidelines but not enforcement. For small orgs with a simple brand — OK. For mid-market and enterprise with multi-channel ambitions — undershoots.
+        Frontify, Bynder, BrandPad are good at asset management and basic brand guidelines storage. <span class="text-white">They are not good at: dual-format for AI, active QA layer, production layer with prompts, deep customization for your specifics.</span> Capture assets but not voice rules in actionable form. Capture guidelines but not enforcement. For small orgs with a simple brand - OK. For mid-market and enterprise with multi-channel ambitions - undershoots.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">Hybrid (most common) — consultant builds, internal maintains</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">Hybrid (most common) - consultant builds, internal maintains</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Most popular path for mid-market: consultant builds the hub in 3 months (full architecture, content extraction, initial 23 modules, QA tool, prompt library, training), internal team takes over maintenance (cadence, updates, new modules). <span class="text-white">Best of both: methodology + speed from the consultant, ownership + context from the internal team.</span>
       </p>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Maintenance cadence — keeping the hub alive</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Maintenance cadence - keeping the hub alive</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Without an explicit cadence the hub dies. Four levels of maintenance, each with concrete action items and ownership:
       </p>
       <ul class="list-none mb-10 space-y-4 text-neutral-400 text-lg pl-4 border-l-2 border-[#D4FF00]/40">
-        <li><span class="text-white font-medium">Weekly (~2h)</span> — prompt library updates, new examples added to reference bucket, QA score review. Owner: design ops lead or senior designer.</li>
-        <li><span class="text-white font-medium">Monthly (~4h)</span> — brand asset library refresh, vendor onboarding check, .md sync. Owner: brand manager.</li>
-        <li><span class="text-white font-medium">Quarterly (~8h)</span> — 23-module audit, retire stale rules, add new modules if expanding brand surface area. Owner: brand manager + design lead.</li>
-        <li><span class="text-white font-medium">Annually (~16h)</span> — full system review, upgrades to AI skills for new model versions, governance review. Owner: cross-functional team.</li>
+        <li><span class="text-white font-medium">Weekly (~2h)</span> - prompt library updates, new examples added to reference bucket, QA score review. Owner: design ops lead or senior designer.</li>
+        <li><span class="text-white font-medium">Monthly (~4h)</span> - brand asset library refresh, vendor onboarding check, .md sync. Owner: brand manager.</li>
+        <li><span class="text-white font-medium">Quarterly (~8h)</span> - 23-module audit, retire stale rules, add new modules if expanding brand surface area. Owner: brand manager + design lead.</li>
+        <li><span class="text-white font-medium">Annually (~16h)</span> - full system review, upgrades to AI skills for new model versions, governance review. Owner: cross-functional team.</li>
       </ul>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Total maintenance investment: ~30h/quarter, ~120h/year = ~3 person-weeks. <span class="text-white">Vs. €50-80k/year hidden tax without a hub — ROI clear.</span>
+        Total maintenance investment: ~30h/quarter, ~120h/year = ~3 person-weeks. <span class="text-white">Vs. €50-80k/year hidden tax without a hub - ROI clear.</span>
       </p>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">ROI math — does the hub pay off</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">ROI math - does the hub pay off</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Average mid-market case (8-person marketing team, 200 deliverables/quarter, 3 vendors):
       </p>
@@ -1574,7 +1574,7 @@ auto_load: true
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Is your brand big enough to need this?</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        A brand knowledge hub isn't for everyone. It's infrastructure — and like any infrastructure, has an ROI threshold. When the hub pays off:
+        A brand knowledge hub isn't for everyone. It's infrastructure - and like any infrastructure, has an ROI threshold. When the hub pays off:
       </p>
       <ul class="list-none mb-10 space-y-4 text-neutral-400 text-lg pl-4 border-l-2 border-[#D4FF00]/40">
         <li><span class="text-white">5+ locations or branches</span> generating their own marketing materials</li>
@@ -1640,13 +1640,13 @@ auto_load: true
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Next step</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        <span class="text-white font-medium">1. See the methodology.</span> <a href="/process" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">/process</a> shows the 8-step r3loop framework used to build these operational systems — from diagnosis through implementation and maintenance.
+        <span class="text-white font-medium">1. See the methodology.</span> <a href="/process" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">/process</a> shows the 8-step r3loop framework used to build these operational systems - from diagnosis through implementation and maintenance.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        <span class="text-white font-medium">2. Start with the Diagnostic.</span> 5-day fixed-scope operational audit — maps your current state, identifies 5-7 priority bottlenecks, gives a 30/60/90-day roadmap. 60-day money-back guarantee if recommendations aren't actionable. <a href="/brief" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">/brief</a> — short form, first response within 48 hours.
+        <span class="text-white font-medium">2. Start with the Diagnostic.</span> 5-day fixed-scope operational audit - maps your current state, identifies 5-7 priority bottlenecks, gives a 30/60/90-day roadmap. 60-day money-back guarantee if recommendations aren't actionable. <a href="/brief" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">/brief</a> - short form, first response within 48 hours.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        <span class="text-white font-medium">3. See it in practice.</span> Case studies <a href="/work/geers" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">Geers (Sonova PL)</a> and <a href="/work/benefit-systems" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">Benefit Systems</a> show knowledge hubs in action — multi-location, multi-vendor, multi-market.
+        <span class="text-white font-medium">3. See it in practice.</span> Case studies <a href="/work/geers" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">Geers (Sonova PL)</a> and <a href="/work/benefit-systems" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">Benefit Systems</a> show knowledge hubs in action - multi-location, multi-vendor, multi-market.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Or just <a href="mailto:hello@r352.com" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">write</a>. DMs open.
@@ -1655,7 +1655,7 @@ auto_load: true
   },
   {
     id: 10,
-    // UNPUBLISHED 2026-06-10 (client decision) — entry pulled from the journal.
+    // UNPUBLISHED 2026-06-10 (client decision) - entry pulled from the journal.
     // 301 /journal/10 -> /journal in vercel.json; removed from sitemap and
     // prerender routes. Flip published: true to restore.
     published: false,
@@ -1667,38 +1667,38 @@ auto_load: true
     image: journal10Cover,
     content: `
       <p class="mb-6 text-xl leading-relaxed text-neutral-300">
-        A methodology that only exists in slide decks is a liability. It depends on me being in the room, and the whole point of r3loop is to make engagements less dependent on me being in the room. <span class="text-white font-medium">So over the past two years I've been turning the steps of the loop into tools</span> — deliberately, one step at a time, wherever a step's output was structured enough to become software.
+        A methodology that only exists in slide decks is a liability. It depends on me being in the room, and the whole point of r3loop is to make engagements less dependent on me being in the room. <span class="text-white font-medium">So over the past two years I've been turning the steps of the loop into tools</span> - deliberately, one step at a time, wherever a step's output was structured enough to become software.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        This article maps which r3loop steps have productized, into what, and why those steps and not others. It's also the honest version of the "we build systems, not deliverables" claim — here is what the systems actually are.
+        This article maps which r3loop steps have productized, into what, and why those steps and not others. It's also the honest version of the "we build systems, not deliverables" claim - here is what the systems actually are.
       </p>
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Why steps productize at all</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Every r3loop step has two properties that most consulting work lacks. It ends with a <span class="text-white">decision gate</span> — a pass/fail question that closes the step — and it owes the next step an <span class="text-white">output contract</span>: a defined artifact in a defined format. Structured input, structured output, binary completion criteria. That is, almost word for word, the specification of a software tool.
+        Every r3loop step has two properties that most consulting work lacks. It ends with a <span class="text-white">decision gate</span> - a pass/fail question that closes the step - and it owes the next step an <span class="text-white">output contract</span>: a defined artifact in a defined format. Structured input, structured output, binary completion criteria. That is, almost word for word, the specification of a software tool.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Not every step qualifies equally. Govern and Ship stay mostly human — they're about judgment and accountability inside a specific organization. The steps that productize first are the ones I repeat in identical form across every engagement: Diagnose, Standardize, Measure.
+        Not every step qualifies equally. Govern and Ship stay mostly human - they're about judgment and accountability inside a specific organization. The steps that productize first are the ones I repeat in identical form across every engagement: Diagnose, Standardize, Measure.
       </p>
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">Diagnose → the diagnostic tool</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        The 5-day Diagnostic engagement runs on the same instrument every time: a structured interview script, a friction-point inventory, and a scoring rubric that ranks each finding by operational cost. After enough repetitions, the instrument stopped being notes and became a tool — <span class="text-white">a standardized audit that produces a ranked friction-point list with cost estimates, owners, and a 60-day fix window</span>. The output contract is fixed, so the findings are comparable across clients, and a second audit a year later measures real movement instead of impressions.
+        The 5-day Diagnostic engagement runs on the same instrument every time: a structured interview script, a friction-point inventory, and a scoring rubric that ranks each finding by operational cost. After enough repetitions, the instrument stopped being notes and became a tool - <span class="text-white">a standardized audit that produces a ranked friction-point list with cost estimates, owners, and a 60-day fix window</span>. The output contract is fixed, so the findings are comparable across clients, and a second audit a year later measures real movement instead of impressions.
       </p>
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">Standardize → the AI Brief Assistant</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Standardize is the most repeated step in the loop, and brief intake is its core. The templates and QA checklist that the step owes downstream turned into the <span class="text-white">AI Brief Assistant</span>: a tool that drafts on-standard briefs from a short structured intake, flags missing decisions before work starts, and enforces the format the rest of the system expects. This is where the "80%+ of briefs ready first round" number comes from — it isn't designer heroics, it's the tool refusing to pass an incomplete brief through the gate.
+        Standardize is the most repeated step in the loop, and brief intake is its core. The templates and QA checklist that the step owes downstream turned into the <span class="text-white">AI Brief Assistant</span>: a tool that drafts on-standard briefs from a short structured intake, flags missing decisions before work starts, and enforces the format the rest of the system expects. This is where the "80%+ of briefs ready first round" number comes from - it isn't designer heroics, it's the tool refusing to pass an incomplete brief through the gate.
       </p>
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">Measure → the KPI dashboard</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Measure owes the loop a baseline: <span class="text-white">brief volume × decision velocity</span>, the two numbers that determine real creative throughput. The KPI dashboard tracks both continuously — briefs in flight, time from intake to approved direction, exceptions that breached the standard. It's also what lets the presence curve actually decline: by the Measure end of an engagement, the client's team reads the dashboard and I review the exceptions, not the other way around.
+        Measure owes the loop a baseline: <span class="text-white">brief volume × decision velocity</span>, the two numbers that determine real creative throughput. The KPI dashboard tracks both continuously - briefs in flight, time from intake to approved direction, exceptions that breached the standard. It's also what lets the presence curve actually decline: by the Measure end of an engagement, the client's team reads the dashboard and I review the exceptions, not the other way around.
       </p>
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Products born from the loop</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Two of my own products exist because the loop, run end-to-end, produces products. <a href="https://regional.fit" target="_blank" rel="noopener" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">regional.fit</a> came out of years of multi-location fitness work — the Diagnose and Map steps applied to regional fitness markets instead of a single client's operations. <a href="https://caterelo.com" target="_blank" rel="noopener" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">Caterelo</a> is the fullest expression: all eight steps applied to the relocation decision, from diagnosing four user personas to a live product with a scoring model, decision tools, and quarterly data refresh.
+        Two of my own products exist because the loop, run end-to-end, produces products. <a href="https://regional.fit" target="_blank" rel="noopener" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">regional.fit</a> came out of years of multi-location fitness work - the Diagnose and Map steps applied to regional fitness markets instead of a single client's operations. <a href="https://caterelo.com" target="_blank" rel="noopener" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">Caterelo</a> is the fullest expression: all eight steps applied to the relocation decision, from diagnosing four user personas to a live product with a scoring model, decision tools, and quarterly data refresh.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Neither is a side project in the usual sense. They're proof of work: <span class="text-white">a methodology you sell needs to survive your own use of it.</span> If r3loop couldn't carry a product from zero to revenue without a client paying for the ride, I'd have no business prescribing it to a 250-location network.
@@ -1706,24 +1706,24 @@ auto_load: true
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">What this means if you hire me</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Practically, three things. The Diagnostic you buy runs on an instrument that has been calibrated across engagements, not invented for you on day one. The brief standards we set up arrive with a working assistant, not a PDF your team will stop reading in March. And the dashboard stays after I leave — the tools are deliverables, not demos. That's the difference between selling hours and selling a system: <span class="text-white">the system is still there when the invoice stops.</span>
+        Practically, three things. The Diagnostic you buy runs on an instrument that has been calibrated across engagements, not invented for you on day one. The brief standards we set up arrive with a working assistant, not a PDF your team will stop reading in March. And the dashboard stays after I leave - the tools are deliverables, not demos. That's the difference between selling hours and selling a system: <span class="text-white">the system is still there when the invoice stops.</span>
       </p>
       <div class="bg-white/[0.03] border-l-2 border-[#D4FF00] p-8 my-12">
         <p class="text-xl text-white font-medium leading-relaxed mb-3">
-          If your design operations run on tribal knowledge and heroic effort, the loop — and its tools — is the fix.
+          If your design operations run on tribal knowledge and heroic effort, the loop - and its tools - is the fix.
         </p>
         <p class="text-base text-neutral-400">
           Start with the Diagnostic. The instrument does the rest.
         </p>
       </div>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        And if you want the tools before the engagement — <a href="/process" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">the Q4 Playbook waitlist is live on /process</a>.
+        And if you want the tools before the engagement - <a href="/process" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">the Q4 Playbook waitlist is live on /process</a>.
       </p>
     `,
   },
   {
     id: 9,
-    // DISABLED — turn on later by flipping `published: true` or removing the line
+    // DISABLED - turn on later by flipping `published: true` or removing the line
     published: false,
     title: "Building Caterelo:<br/>r3loop applied",
     title_pl: "Jak zbudowaliśmy<br/>Caterelo z r3loop",
@@ -1732,21 +1732,21 @@ auto_load: true
     image: journal9Cover,
     content_pl: `
       <p class="mb-6 text-xl leading-relaxed text-neutral-300">
-        Relokacja jest jedną z najtrudniejszych decyzji jakie człowiek podejmuje — wysoka stawka, trudna do odwrócenia, dane rozproszone w 60+ urzędach statystycznych w pięciu językach. <span class="text-white font-medium">Większość ludzi rezygnuje w połowie i decyduje na podstawie blog posta albo wątku w grupie facebookowej.</span>
+        Relokacja jest jedną z najtrudniejszych decyzji jakie człowiek podejmuje - wysoka stawka, trudna do odwrócenia, dane rozproszone w 60+ urzędach statystycznych w pięciu językach. <span class="text-white font-medium">Większość ludzi rezygnuje w połowie i decyduje na podstawie blog posta albo wątku w grupie facebookowej.</span>
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        To jest problem który zbudowaliśmy żeby rozwiązać przez <a href="https://caterelo.com" target="_blank" rel="noopener" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">Caterelo</a> — decision engine relokacyjny dla Europy Południowej. I chcieliśmy go rozwiązać dokładnie tą samą metodologią, którą sprzedajemy klientom: <span class="text-white">r3loop</span>.
+        To jest problem który zbudowaliśmy żeby rozwiązać przez <a href="https://caterelo.com" target="_blank" rel="noopener" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">Caterelo</a> - decision engine relokacyjny dla Europy Południowej. I chcieliśmy go rozwiązać dokładnie tą samą metodologią, którą sprzedajemy klientom: <span class="text-white">r3loop</span>.
       </p>
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Czterech ludzi, jeden zepsuty proces</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        W rozmowach z prospektami i wcześniejszymi użytkownikami ciągle wracały te same cztery profile — każdy z innym pytaniem, ale z tym samym frustrującym doświadczeniem:
+        W rozmowach z prospektami i wcześniejszymi użytkownikami ciągle wracały te same cztery profile - każdy z innym pytaniem, ale z tym samym frustrującym doświadczeniem:
       </p>
       <ul class="list-none mb-10 space-y-4 text-neutral-400 text-lg pl-4 border-l-2 border-[#D4FF00]/40">
-        <li><span class="text-white font-medium">Remote worker</span> — porównuje internet, znajomość angielskiego, strefy czasowe i ekosystem coworkingowy między Andaluzją, Algarve a Kretą. Potrzebuje wąskich technicznych metryk, nie ogólnych "vibe scores".</li>
-        <li><span class="text-white font-medium">Rodzina z dziećmi w wieku szkolnym</span> — bilansuje jakość szkół, dostęp do opieki zdrowotnej, walkability, family-friendly metrics. Czas decyzji ma okno wakacyjne między rokiem szkolnym.</li>
-        <li><span class="text-white font-medium">Expat po pięćdziesiątce</span> — myśli wieloletnio o koszcie życia, tolerancji klimatycznej i lokalnej społeczności. Patrzy na 10+ lat naprzód, nie 12 miesięcy.</li>
-        <li><span class="text-white font-medium">Second-home buyer</span> — analizuje projekcje klimatyczne 2050, rental yield, trajektorie cen nieruchomości. Decyzja kapitałowa, nie tylko lifestyle'owa.</li>
+        <li><span class="text-white font-medium">Remote worker</span> - porównuje internet, znajomość angielskiego, strefy czasowe i ekosystem coworkingowy między Andaluzją, Algarve a Kretą. Potrzebuje wąskich technicznych metryk, nie ogólnych "vibe scores".</li>
+        <li><span class="text-white font-medium">Rodzina z dziećmi w wieku szkolnym</span> - bilansuje jakość szkół, dostęp do opieki zdrowotnej, walkability, family-friendly metrics. Czas decyzji ma okno wakacyjne między rokiem szkolnym.</li>
+        <li><span class="text-white font-medium">Expat po pięćdziesiątce</span> - myśli wieloletnio o koszcie życia, tolerancji klimatycznej i lokalnej społeczności. Patrzy na 10+ lat naprzód, nie 12 miesięcy.</li>
+        <li><span class="text-white font-medium">Second-home buyer</span> - analizuje projekcje klimatyczne 2050, rental yield, trajektorie cen nieruchomości. Decyzja kapitałowa, nie tylko lifestyle'owa.</li>
       </ul>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Priorytety tych czterech osób się nie pokrywają. To samo miejsce może być <span class="text-white">"najlepsze"</span> dla remote workera i <span class="text-white">"nie dla nas"</span> dla rodziny. Generyczne listy "top 10 places to relocate" zawodziły wszystkich czterech.
@@ -1755,7 +1755,7 @@ auto_load: true
         Pod tym leżał strukturalny problem: dane są w 60+ urzędach statystycznych, w 5 językach, mierzone różnie w każdym kraju. <span class="text-white border-b border-[#D4FF00]/50">40+ godzin researchu</span> żeby zrobić to dobrze. Większość ludzi nie kończy. Decyzja zapada na podstawie blog posta albo pierwszych trzech ofert z Idealisty.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Pytanie nie brzmiało <span class="text-white">"jak zbudować jeszcze jeden serwis z mieszkaniami"</span>. Pytanie brzmiało: <span class="text-white">jak zbudować decision engine, który czterem różnym osobom pomaga w ich własnym problemie</span>, używając tych samych danych ale różnie ważonych — i robi to tak, żeby trwało 30 sekund zamiast 40 godzin.
+        Pytanie nie brzmiało <span class="text-white">"jak zbudować jeszcze jeden serwis z mieszkaniami"</span>. Pytanie brzmiało: <span class="text-white">jak zbudować decision engine, który czterem różnym osobom pomaga w ich własnym problemie</span>, używając tych samych danych ale różnie ważonych - i robi to tak, żeby trwało 30 sekund zamiast 40 godzin.
       </p>
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Jak r3loop ukształtował każdą decyzję</h2>
@@ -1763,47 +1763,47 @@ auto_load: true
         r3loop to nasza 8-stopniowa metodologia którą stosujemy u klientów konsultingowych do systematyzowania creative i operational work. <span class="text-white">Diagnose → Map → Standardize → Build → Govern → Ship → Measure → Iterate.</span>
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Zastosowana do Caterelo nie wyglądała jak checklist do odhaczenia — wyglądała jak filtr decyzyjny w każdym kroku. Oto jak ukształtowała produkt:
+        Zastosowana do Caterelo nie wyglądała jak checklist do odhaczenia - wyglądała jak filtr decyzyjny w każdym kroku. Oto jak ukształtowała produkt:
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">01 — Diagnose · Czyj problem rozwiązujemy i dlaczego obecny proces zawodzi?</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">01 - Diagnose · Czyj problem rozwiązujemy i dlaczego obecny proces zawodzi?</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Cztery persony, cztery różne priorytety, jeden wspólny ból — fragmentacja danych i niemożność porównania. <span class="text-white">Z tej diagnozy wynikł 14-pytaniowy quiz</span> (5 minut, jeden ekran formularza), który buduje personal relocation profile. Output: nie "top 10 miejsc", tylko <span class="text-white">Match Score</span> dla każdego z 90 regionów, oparty na tym co konkretnie tej osobie zależy.
+        Cztery persony, cztery różne priorytety, jeden wspólny ból - fragmentacja danych i niemożność porównania. <span class="text-white">Z tej diagnozy wynikł 14-pytaniowy quiz</span> (5 minut, jeden ekran formularza), który buduje personal relocation profile. Output: nie "top 10 miejsc", tylko <span class="text-white">Match Score</span> dla każdego z 90 regionów, oparty na tym co konkretnie tej osobie zależy.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">02 — Map · Które dane odpowiadają na ich pytania — i jak je porównać między krajami?</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">02 - Map · Które dane odpowiadają na ich pytania - i jak je porównać między krajami?</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Zmapowaliśmy decyzję relokacyjną na <span class="text-white">7 wymiarów</span> (koszt życia, klimat, bezpieczeństwo, opieka zdrowotna, edukacja, lifestyle, infrastruktura cyfrowa) i <span class="text-white">13 sygnałów</span>, mierzonych tak samo we wszystkich sześciu krajach. Hiszpania (17 regionów), Włochy (20), Portugalia (6), Grecja (13), Francja (13), Chorwacja (21) — wszystkie na tych samych osiach. Dopiero to pozwala porównać Algarve z Toskanią w sposób uczciwy.
+        Zmapowaliśmy decyzję relokacyjną na <span class="text-white">7 wymiarów</span> (koszt życia, klimat, bezpieczeństwo, opieka zdrowotna, edukacja, lifestyle, infrastruktura cyfrowa) i <span class="text-white">13 sygnałów</span>, mierzonych tak samo we wszystkich sześciu krajach. Hiszpania (17 regionów), Włochy (20), Portugalia (6), Grecja (13), Francja (13), Chorwacja (21) - wszystkie na tych samych osiach. Dopiero to pozwala porównać Algarve z Toskanią w sposób uczciwy.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">03 — Standardize · Jak zwijamy 13 sygnałów w jedną liczbę, którą można rankować?</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">03 - Standardize · Jak zwijamy 13 sygnałów w jedną liczbę, którą można rankować?</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        <span class="text-white">LifeTrend™ Score 30–90</span>. Min-max normalizacja per wymiar, ważone według tego co najbardziej wpływa na realne pojęcie "jakości miejsca" (bezpieczeństwo 22%, koszt życia 18%, zdrowie 13%, klimat 12%, lifestyle 12%, cyfrowość 10%, edukacja 9%), zsumowane. To jest baseline. Personal Match Score nakłada na to wagi z quizu — ten sam region może mieć LifeTrend 78 globalnie i Match Score 91 dla konkretnego użytkownika.
+        <span class="text-white">LifeTrend™ Score 30-90</span>. Min-max normalizacja per wymiar, ważone według tego co najbardziej wpływa na realne pojęcie "jakości miejsca" (bezpieczeństwo 22%, koszt życia 18%, zdrowie 13%, klimat 12%, lifestyle 12%, cyfrowość 10%, edukacja 9%), zsumowane. To jest baseline. Personal Match Score nakłada na to wagi z quizu - ten sam region może mieć LifeTrend 78 globalnie i Match Score 91 dla konkretnego użytkownika.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">04 — Build · Co właściwie user potrzebuje robić z tymi danymi?</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">04 - Build · Co właściwie user potrzebuje robić z tymi danymi?</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Nie raw spreadsheet. Konkretne narzędzia decyzyjne: <span class="text-white">Compare engine</span> dla porównania dwóch miejsc head-to-head. <span class="text-white">Decision Matrix</span> dla stress-testu 3–5 regionów na shortliście. <span class="text-white">Year 1 Life Simulator</span> dla planowania budżetu pierwszego roku (loty z origin, family size, monthly cost). <span class="text-white">Visa Wizard</span> + Tax Day Counter dla pathway'a wizowego. <span class="text-white">AI Relocation Advisor</span> wytrenowany na pełnym datasecie i twoim quizie — to nie chatbot bolted on, to interfejs do danych dostosowany do kontekstu konkretnej osoby. Pod spodem konwencjonalny stack (React/TS, Node, Postgres, vector store dla AI retrieval) — ale stack jest implementacją, nie historią.
+        Nie raw spreadsheet. Konkretne narzędzia decyzyjne: <span class="text-white">Compare engine</span> dla porównania dwóch miejsc head-to-head. <span class="text-white">Decision Matrix</span> dla stress-testu 3-5 regionów na shortliście. <span class="text-white">Year 1 Life Simulator</span> dla planowania budżetu pierwszego roku (loty z origin, family size, monthly cost). <span class="text-white">Visa Wizard</span> + Tax Day Counter dla pathway'a wizowego. <span class="text-white">AI Relocation Advisor</span> wytrenowany na pełnym datasecie i twoim quizie - to nie chatbot bolted on, to interfejs do danych dostosowany do kontekstu konkretnej osoby. Pod spodem konwencjonalny stack (React/TS, Node, Postgres, vector store dla AI retrieval) - ale stack jest implementacją, nie historią.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">05 — Govern · Jak to ma być wiarygodne w skali?</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">05 - Govern · Jak to ma być wiarygodne w skali?</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Każda liczba w Caterelo prowadzi do swojego origin — INE dla Hiszpanii, ISTAT dla Włoch, INSEE dla Francji, ELSTAT dla Grecji, INE PT dla Portugalii, DZS dla Chorwacji, plus Eurostat, OECD, WHO, IPCC AR6, Numbeo, Idealista, Immobiliare i 50+ innych. <span class="text-white">60+ oficjalnych źródeł, traceable provenance, kwartalny refresh.</span> Tam gdzie dane są niekompletne — flagujemy to wprost. Trust nie jest deklaracją, jest infrastrukturą.
+        Każda liczba w Caterelo prowadzi do swojego origin - INE dla Hiszpanii, ISTAT dla Włoch, INSEE dla Francji, ELSTAT dla Grecji, INE PT dla Portugalii, DZS dla Chorwacji, plus Eurostat, OECD, WHO, IPCC AR6, Numbeo, Idealista, Immobiliare i 50+ innych. <span class="text-white">60+ oficjalnych źródeł, traceable provenance, kwartalny refresh.</span> Tam gdzie dane są niekompletne - flagujemy to wprost. Trust nie jest deklaracją, jest infrastrukturą.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">06 — Ship · Jaka jest najniższa friction żeby zbudować to do realnej decyzji?</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">06 - Ship · Jaka jest najniższa friction żeby zbudować to do realnej decyzji?</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Free tier — bez signupu, wszystkie 90 regionów, 10-letnie trendy cen, stolice, podgląd rentalu. <span class="text-white">Founding Access €29 jednorazowo na 3 miesiące</span> — Match Score, Decision Matrix, Year 1 Simulator, AI Advisor, Climate 2050 layer, 270 deep linków do portali nieruchomościowych. Bez subskrypcji, bez auto-renew. Ship znaczy: jest live, z użytkownikami, z revenue, można użyć teraz.
+        Free tier - bez signupu, wszystkie 90 regionów, 10-letnie trendy cen, stolice, podgląd rentalu. <span class="text-white">Founding Access €29 jednorazowo na 3 miesiące</span> - Match Score, Decision Matrix, Year 1 Simulator, AI Advisor, Climate 2050 layer, 270 deep linków do portali nieruchomościowych. Bez subskrypcji, bez auto-renew. Ship znaczy: jest live, z użytkownikami, z revenue, można użyć teraz.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">07 — Measure · Jak system zostaje uczciwy gdy świat się zmienia?</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">07 - Measure · Jak system zostaje uczciwy gdy świat się zmienia?</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        <span class="text-white">Live data feeds</span> (pogoda, AQI, kursy walut, Google Trends interest, Eurostat population) — model aktualizuje się ciągle, nie raz na kwartał. <span class="text-white">Momentum scoring</span> łapie przyspieszanie cen vs długoterminowych trendów. <span class="text-white">Hidden Gem Detector</span> cross-referuje LifeTrend z search interest — wyłania regiony niedowartościowane przed mainstream.
+        <span class="text-white">Live data feeds</span> (pogoda, AQI, kursy walut, Google Trends interest, Eurostat population) - model aktualizuje się ciągle, nie raz na kwartał. <span class="text-white">Momentum scoring</span> łapie przyspieszanie cen vs długoterminowych trendów. <span class="text-white">Hidden Gem Detector</span> cross-referuje LifeTrend z search interest - wyłania regiony niedowartościowane przed mainstream.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">08 — Iterate · Jak produkt staje się mądrzejszy z użyciem, a nie tylko większy?</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">08 - Iterate · Jak produkt staje się mądrzejszy z użyciem, a nie tylko większy?</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        AI Advisor uczy się z interakcji — w jakim kontekście odpowiedzi rezonują, gdzie user wraca z follow-upem. Local Help layer (manually reviewed locals walidujący właściwości i okolice) jest w stadium concierge — będzie skalowany do marketplace gdy popyt to uzasadni. Climate 2050 projekcje doprecyzowywane gdy IPCC publikuje update. <span class="text-white">Iterate to loop domykający się — i loop otwierający się ponownie.</span>
+        AI Advisor uczy się z interakcji - w jakim kontekście odpowiedzi rezonują, gdzie user wraca z follow-upem. Local Help layer (manually reviewed locals walidujący właściwości i okolice) jest w stadium concierge - będzie skalowany do marketplace gdy popyt to uzasadni. Climate 2050 projekcje doprecyzowywane gdy IPCC publikuje update. <span class="text-white">Iterate to loop domykający się - i loop otwierający się ponownie.</span>
       </p>
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Konkret: Katalonia vs Apulia w 30 sekundach</h2>
@@ -1815,7 +1815,7 @@ auto_load: true
         <li><span class="text-white font-medium">Apulia:</span> €1 319/m² (top 5 miast), +23,2% w 5 lat, momentum: stable.</li>
       </ul>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Gap €3 193/m². Katalonia rośnie 18 punktów procentowych szybciej — Apulia daje 3,4× więcej metrów kwadratowych za euro. <span class="text-white">Jeśli jesteś drugą personą (rodzina, średni budżet, "kupić nie najem")</span> — Apulia wygrywa. Jeśli jesteś czwartą (second-home buyer, capital appreciation > space) — Katalonia.
+        Gap €3 193/m². Katalonia rośnie 18 punktów procentowych szybciej - Apulia daje 3,4× więcej metrów kwadratowych za euro. <span class="text-white">Jeśli jesteś drugą personą (rodzina, średni budżet, "kupić nie najem")</span> - Apulia wygrywa. Jeśli jesteś czwartą (second-home buyer, capital appreciation > space) - Katalonia.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         To nie jest "Apulia jest lepsza". To jest <span class="text-white">"oto fakty, oto twoja waga, oto decyzja"</span>. Tak wygląda r3loop applied: nie automatyzacja pracy, tylko eliminacja pracy która i tak nie powinna istnieć.
@@ -1825,29 +1825,29 @@ auto_load: true
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">1. r3loop jest <em>portable</em> między domenami</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Ten sam framework systematyzuje creative ops w sieci klubów Zdrofit (250+ lokalizacji, briefy, assety, deadliney) i decyzję relokacyjną dla osoby kupującej dom w Algarve. <span class="text-white">Mechanika jest taka sama — diagnose czyj problem, map data, standardize w jeden wskaźnik, build narzędzia, govern trust, ship, measure, iterate.</span> To dowodzi że r3loop nie jest "metodą dla agencji" — jest decision framework dla każdego operational problem.
+        Ten sam framework systematyzuje creative ops w sieci klubów Zdrofit (250+ lokalizacji, briefy, assety, deadliney) i decyzję relokacyjną dla osoby kupującej dom w Algarve. <span class="text-white">Mechanika jest taka sama - diagnose czyj problem, map data, standardize w jeden wskaźnik, build narzędzia, govern trust, ship, measure, iterate.</span> To dowodzi że r3loop nie jest "metodą dla agencji" - jest decision framework dla każdego operational problem.
       </p>
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">2. AI-native ≠ AI-supported</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Caterelo było zaprojektowane <span class="text-white">OD możliwości AI</span> — AI advisor jest interfejsem do danych, nie add-onem doczepionym do search bara. To zmienia user experience: zamiast forms i filtrów dostajesz rozmowę kontekstową ("dla mojej rodziny z dziećmi 8 i 11 lat, budżet do €1500/mo, ważne dobre szkoły — co rekomendujesz w Portugalii vs Hiszpanii?"). W 2027 ta różnica między AI-native a AI-supported będzie premium differentiator.
+        Caterelo było zaprojektowane <span class="text-white">OD możliwości AI</span> - AI advisor jest interfejsem do danych, nie add-onem doczepionym do search bara. To zmienia user experience: zamiast forms i filtrów dostajesz rozmowę kontekstową ("dla mojej rodziny z dziećmi 8 i 11 lat, budżet do €1500/mo, ważne dobre szkoły - co rekomendujesz w Portugalii vs Hiszpanii?"). W 2027 ta różnica między AI-native a AI-supported będzie premium differentiator.
       </p>
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">3. <em>Personal Match</em> &gt; <em>Universal Best</em></h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Największa lekcja z budowania pod cztery różne persony: <span class="text-white">przestań mówić ludziom co jest "najlepsze"</span> — daj im narzędzia żeby zobaczyli co jest najlepsze <em>dla nich</em>. To wymusiło Match Score zamiast generic top 10. To samo rządzi pracą u klientów — przestań mówić sieci klubów co jest "best practice" w branding, daj system który dopasowuje się do ich konkretnych ograniczeń. r3loop wymusza to projektowanie.
+        Największa lekcja z budowania pod cztery różne persony: <span class="text-white">przestań mówić ludziom co jest "najlepsze"</span> - daj im narzędzia żeby zobaczyli co jest najlepsze <em>dla nich</em>. To wymusiło Match Score zamiast generic top 10. To samo rządzi pracą u klientów - przestań mówić sieci klubów co jest "best practice" w branding, daj system który dopasowuje się do ich konkretnych ograniczeń. r3loop wymusza to projektowanie.
       </p>
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Co dalej</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Caterelo jest live na <a href="https://caterelo.com" target="_blank" rel="noopener" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">caterelo.com</a> — możesz teraz przejść quiz, zbudować swój profile, zobaczyć Match Score dla 90 regionów. Pełne mapowanie metodologii do produktu jest w case study na <a href="/work/caterelo" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">r352.com/work/caterelo</a>.
+        Caterelo jest live na <a href="https://caterelo.com" target="_blank" rel="noopener" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">caterelo.com</a> - możesz teraz przejść quiz, zbudować swój profile, zobaczyć Match Score dla 90 regionów. Pełne mapowanie metodologii do produktu jest w case study na <a href="/work/caterelo" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">r352.com/work/caterelo</a>.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Co dalej: <span class="text-white">więcej decision engines tą samą metodologią</span>. Każdy operational problem który ma więcej niż jedną personę, więcej niż jeden wymiar i więcej niż jeden valid answer pasuje pod ten sam framework. To samo r3loop, różne aplikacje.
       </p>
       <div class="bg-white/[0.03] border-l-2 border-[#D4FF00] p-8 my-12">
         <p class="text-xl text-white font-medium leading-relaxed mb-3">
-          Jeśli skalujesz wielolokalizacyjny biznes i operacje wewnętrzne są bottleneckiem — to dokładnie problem, nad którym pracujemy.
+          Jeśli skalujesz wielolokalizacyjny biznes i operacje wewnętrzne są bottleneckiem - to dokładnie problem, nad którym pracujemy.
         </p>
         <p class="text-base text-neutral-400">
           Caterelo dowodzi metodologii. Twój retainer lub projekt jest jej aplikacją.
@@ -1856,21 +1856,21 @@ auto_load: true
     `,
     content: `
       <p class="mb-6 text-xl leading-relaxed text-neutral-300">
-        Relocation is one of the hardest decisions a person makes — high stakes, hard to reverse, data scattered across 60+ government statistics offices in five languages. <span class="text-white font-medium">Most people give up halfway and decide based on a blog post or a Facebook group thread.</span>
+        Relocation is one of the hardest decisions a person makes - high stakes, hard to reverse, data scattered across 60+ government statistics offices in five languages. <span class="text-white font-medium">Most people give up halfway and decide based on a blog post or a Facebook group thread.</span>
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        That's the problem we built <a href="https://caterelo.com" target="_blank" rel="noopener" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">Caterelo</a> to solve — a personal relocation decision engine for Southern Europe. And we wanted to solve it using exactly the methodology we sell to clients: <span class="text-white">r3loop</span>.
+        That's the problem we built <a href="https://caterelo.com" target="_blank" rel="noopener" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">Caterelo</a> to solve - a personal relocation decision engine for Southern Europe. And we wanted to solve it using exactly the methodology we sell to clients: <span class="text-white">r3loop</span>.
       </p>
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Four people, one broken process</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        In conversations with prospects and early users, the same four profiles kept showing up — each with a different question, but the same frustrating experience:
+        In conversations with prospects and early users, the same four profiles kept showing up - each with a different question, but the same frustrating experience:
       </p>
       <ul class="list-none mb-10 space-y-4 text-neutral-400 text-lg pl-4 border-l-2 border-[#D4FF00]/40">
-        <li><span class="text-white font-medium">Remote worker</span> — comparing internet speed, English proficiency, time zones and coworking ecosystems across Andalucía, the Algarve and Crete. Needs narrow technical metrics, not generic "vibe scores".</li>
-        <li><span class="text-white font-medium">Family with school-age kids</span> — balancing school quality, healthcare access, walkability, family-friendly metrics. Decision window timed to the summer break between school years.</li>
-        <li><span class="text-white font-medium">Expat in their fifties</span> — thinking long-term about cost of living, climate tolerance and local community. Looking ten years ahead, not twelve months.</li>
-        <li><span class="text-white font-medium">Second-home buyer</span> — analyzing 2050 climate projections, rental yield, property price trajectories. A capital decision, not just a lifestyle one.</li>
+        <li><span class="text-white font-medium">Remote worker</span> - comparing internet speed, English proficiency, time zones and coworking ecosystems across Andalucía, the Algarve and Crete. Needs narrow technical metrics, not generic "vibe scores".</li>
+        <li><span class="text-white font-medium">Family with school-age kids</span> - balancing school quality, healthcare access, walkability, family-friendly metrics. Decision window timed to the summer break between school years.</li>
+        <li><span class="text-white font-medium">Expat in their fifties</span> - thinking long-term about cost of living, climate tolerance and local community. Looking ten years ahead, not twelve months.</li>
+        <li><span class="text-white font-medium">Second-home buyer</span> - analyzing 2050 climate projections, rental yield, property price trajectories. A capital decision, not just a lifestyle one.</li>
       </ul>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         These four people's priorities don't overlap. The same region can be <span class="text-white">"best"</span> for the remote worker and <span class="text-white">"not for us"</span> for the family. Generic "top 10 places to relocate" lists were failing all four.
@@ -1879,7 +1879,7 @@ auto_load: true
         Under that sat a structural problem: the data lives in 60+ statistics offices, in five languages, measured differently in each country. <span class="text-white border-b border-[#D4FF00]/50">40+ hours of research</span> to do it right. Most people don't finish. The decision gets made on a blog post or the first three listings on Idealista.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        The question wasn't <span class="text-white">"how do we build another property listings site"</span>. The question was: <span class="text-white">how do we build a decision engine that helps four different people with their own problems</span>, using the same data weighted differently — and does it in 30 seconds instead of 40 hours.
+        The question wasn't <span class="text-white">"how do we build another property listings site"</span>. The question was: <span class="text-white">how do we build a decision engine that helps four different people with their own problems</span>, using the same data weighted differently - and does it in 30 seconds instead of 40 hours.
       </p>
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">How r3loop shaped every decision</h2>
@@ -1887,47 +1887,47 @@ auto_load: true
         r3loop is our 8-step methodology for systematizing creative and operational work for consulting clients. <span class="text-white">Diagnose → Map → Standardize → Build → Govern → Ship → Measure → Iterate.</span>
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Applied to Caterelo it wasn't a checklist to tick off — it was a decision filter at every step. Here's how each one shaped the product:
+        Applied to Caterelo it wasn't a checklist to tick off - it was a decision filter at every step. Here's how each one shaped the product:
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">01 — Diagnose · Whose problem are we solving, and why does the current process fail them?</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">01 - Diagnose · Whose problem are we solving, and why does the current process fail them?</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Four personas, four different priorities, one shared pain — fragmented data and no way to compare meaningfully. <span class="text-white">From that diagnosis came a 14-question quiz</span> (5 minutes, single-page form) that builds a personal relocation profile. Output isn't "top 10 places" — it's <span class="text-white">a Match Score</span> for each of 90 regions, weighted by what this specific person actually cares about.
+        Four personas, four different priorities, one shared pain - fragmented data and no way to compare meaningfully. <span class="text-white">From that diagnosis came a 14-question quiz</span> (5 minutes, single-page form) that builds a personal relocation profile. Output isn't "top 10 places" - it's <span class="text-white">a Match Score</span> for each of 90 regions, weighted by what this specific person actually cares about.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">02 — Map · Which data answers their questions, and how do we make it comparable across countries?</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">02 - Map · Which data answers their questions, and how do we make it comparable across countries?</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        We mapped the relocation decision onto <span class="text-white">7 dimensions</span> (cost of living, climate, safety, healthcare, education, lifestyle, digital infrastructure) and <span class="text-white">13 signals</span>, measured the same way across all six countries. Spain (17 regions), Italy (20), Portugal (6), Greece (13), France (13), Croatia (21) — all on the same axes. Only then can you compare the Algarve to Tuscany honestly.
+        We mapped the relocation decision onto <span class="text-white">7 dimensions</span> (cost of living, climate, safety, healthcare, education, lifestyle, digital infrastructure) and <span class="text-white">13 signals</span>, measured the same way across all six countries. Spain (17 regions), Italy (20), Portugal (6), Greece (13), France (13), Croatia (21) - all on the same axes. Only then can you compare the Algarve to Tuscany honestly.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">03 — Standardize · How do we collapse 13 signals into one number you can rank?</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">03 - Standardize · How do we collapse 13 signals into one number you can rank?</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        <span class="text-white">LifeTrend™ Score 30–90.</span> Min-max normalization per dimension, weighted by what most drives the real-life sense of "quality of place" (safety 22%, cost of living 18%, healthcare 13%, climate 12%, lifestyle 12%, digital 10%, education 9%), summed. That's the baseline. Personal Match Score overlays your quiz weights on top — the same region can score LifeTrend 78 globally and Match Score 91 for a specific user.
+        <span class="text-white">LifeTrend™ Score 30-90.</span> Min-max normalization per dimension, weighted by what most drives the real-life sense of "quality of place" (safety 22%, cost of living 18%, healthcare 13%, climate 12%, lifestyle 12%, digital 10%, education 9%), summed. That's the baseline. Personal Match Score overlays your quiz weights on top - the same region can score LifeTrend 78 globally and Match Score 91 for a specific user.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">04 — Build · What does the user actually need to do with this data?</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">04 - Build · What does the user actually need to do with this data?</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Not a raw spreadsheet. Concrete decision tools: <span class="text-white">Compare engine</span> for head-to-head between two places. <span class="text-white">Decision Matrix</span> to stress-test a 3–5 region shortlist. <span class="text-white">Year 1 Life Simulator</span> for first-year budget planning (flights from origin, family size, monthly cost). <span class="text-white">Visa Wizard</span> + Tax Day Counter for visa pathway. <span class="text-white">AI Relocation Advisor</span> trained on the full dataset and your quiz — not a chatbot bolted on, but a context-aware interface to the data. Under the hood a conventional stack (React/TS, Node, Postgres, vector store for AI retrieval) — but the stack is implementation, not the story.
+        Not a raw spreadsheet. Concrete decision tools: <span class="text-white">Compare engine</span> for head-to-head between two places. <span class="text-white">Decision Matrix</span> to stress-test a 3-5 region shortlist. <span class="text-white">Year 1 Life Simulator</span> for first-year budget planning (flights from origin, family size, monthly cost). <span class="text-white">Visa Wizard</span> + Tax Day Counter for visa pathway. <span class="text-white">AI Relocation Advisor</span> trained on the full dataset and your quiz - not a chatbot bolted on, but a context-aware interface to the data. Under the hood a conventional stack (React/TS, Node, Postgres, vector store for AI retrieval) - but the stack is implementation, not the story.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">05 — Govern · How does this stay trustworthy at scale?</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">05 - Govern · How does this stay trustworthy at scale?</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Every number in Caterelo traces back to its origin — INE for Spain, ISTAT for Italy, INSEE for France, ELSTAT for Greece, INE PT for Portugal, DZS for Croatia, plus Eurostat, OECD, WHO, IPCC AR6, Numbeo, Idealista, Immobiliare, and 50+ others. <span class="text-white">60+ official sources, traceable provenance, quarterly refresh.</span> Where data is incomplete, we flag it explicitly. Trust isn't a claim, it's infrastructure.
+        Every number in Caterelo traces back to its origin - INE for Spain, ISTAT for Italy, INSEE for France, ELSTAT for Greece, INE PT for Portugal, DZS for Croatia, plus Eurostat, OECD, WHO, IPCC AR6, Numbeo, Idealista, Immobiliare, and 50+ others. <span class="text-white">60+ official sources, traceable provenance, quarterly refresh.</span> Where data is incomplete, we flag it explicitly. Trust isn't a claim, it's infrastructure.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">06 — Ship · What's the lowest-friction way to put this in front of a real decision?</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">06 - Ship · What's the lowest-friction way to put this in front of a real decision?</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Free tier — no signup, all 90 regions, 10-year price trends, capital cities, rental overview. <span class="text-white">Founding Access €29 one-time for 3 months</span> — Match Score, Decision Matrix, Year 1 Simulator, AI Advisor, Climate 2050 layer, 270 deep-links to property portals. No subscription, no auto-renew. Ship means: live, with users, with revenue, usable today.
+        Free tier - no signup, all 90 regions, 10-year price trends, capital cities, rental overview. <span class="text-white">Founding Access €29 one-time for 3 months</span> - Match Score, Decision Matrix, Year 1 Simulator, AI Advisor, Climate 2050 layer, 270 deep-links to property portals. No subscription, no auto-renew. Ship means: live, with users, with revenue, usable today.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">07 — Measure · How does the system stay honest as the world changes?</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">07 - Measure · How does the system stay honest as the world changes?</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        <span class="text-white">Live data feeds</span> (weather, AQI, currency, Google Trends interest, Eurostat population) — the model updates continuously, not just quarterly. <span class="text-white">Momentum scoring</span> catches price acceleration vs long-term trends. <span class="text-white">Hidden Gem Detector</span> cross-references LifeTrend with search interest — surfaces regions undervalued before they go mainstream.
+        <span class="text-white">Live data feeds</span> (weather, AQI, currency, Google Trends interest, Eurostat population) - the model updates continuously, not just quarterly. <span class="text-white">Momentum scoring</span> catches price acceleration vs long-term trends. <span class="text-white">Hidden Gem Detector</span> cross-references LifeTrend with search interest - surfaces regions undervalued before they go mainstream.
       </p>
 
-      <h3 class="text-xl font-bold text-white mt-10 mb-4">08 — Iterate · How does the product get smarter with use, not just bigger?</h3>
+      <h3 class="text-xl font-bold text-white mt-10 mb-4">08 - Iterate · How does the product get smarter with use, not just bigger?</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        The AI Advisor learns from interactions — which contexts answers resonate in, where users return for follow-ups. Local Help (manually reviewed locals validating properties and neighbourhoods) is at concierge stage — will scale to marketplace as demand justifies it. Climate 2050 projections get refined as IPCC publishes updates. <span class="text-white">Iterate is the loop closing — and the loop reopening.</span>
+        The AI Advisor learns from interactions - which contexts answers resonate in, where users return for follow-ups. Local Help (manually reviewed locals validating properties and neighbourhoods) is at concierge stage - will scale to marketplace as demand justifies it. Climate 2050 projections get refined as IPCC publishes updates. <span class="text-white">Iterate is the loop closing - and the loop reopening.</span>
       </p>
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Concrete: Catalonia vs Puglia in 30 seconds</h2>
@@ -1939,7 +1939,7 @@ auto_load: true
         <li><span class="text-white font-medium">Puglia:</span> €1,319/m² (top 5 cities), +23.2% over 5 years, momentum: stable.</li>
       </ul>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        A €3,193/m² gap. Catalonia is growing 18 percentage points faster — Puglia gives you 3.4× more square metres per euro. <span class="text-white">If you're the second persona (family, mid-budget, "buy not rent")</span> — Puglia wins. If you're the fourth (second-home buyer, capital appreciation &gt; space) — Catalonia.
+        A €3,193/m² gap. Catalonia is growing 18 percentage points faster - Puglia gives you 3.4× more square metres per euro. <span class="text-white">If you're the second persona (family, mid-budget, "buy not rent")</span> - Puglia wins. If you're the fourth (second-home buyer, capital appreciation &gt; space) - Catalonia.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         It's not "Puglia is better". It's <span class="text-white">"here are the facts, here's your weighting, here's the decision"</span>. That's what r3loop applied looks like: not automating the work, but eliminating work that shouldn't exist in the first place.
@@ -1949,29 +1949,29 @@ auto_load: true
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">1. r3loop is <em>portable</em> across domains</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        The same framework that systematizes creative ops at Zdrofit (250+ club network, briefs, assets, deadlines) works for a relocation decision engine for a person buying a home in the Algarve. <span class="text-white">The mechanics are identical — diagnose whose problem, map the data, standardize into one signal, build the tools, govern trust, ship, measure, iterate.</span> That proves r3loop isn't "a method for agencies" — it's a decision framework for any operational problem.
+        The same framework that systematizes creative ops at Zdrofit (250+ club network, briefs, assets, deadlines) works for a relocation decision engine for a person buying a home in the Algarve. <span class="text-white">The mechanics are identical - diagnose whose problem, map the data, standardize into one signal, build the tools, govern trust, ship, measure, iterate.</span> That proves r3loop isn't "a method for agencies" - it's a decision framework for any operational problem.
       </p>
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">2. AI-native ≠ AI-supported</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Caterelo was designed <span class="text-white">FROM AI capabilities</span> — the AI Advisor is the interface to the data, not an add-on bolted onto the search bar. That changes the user experience: instead of forms and filters you get a contextual conversation ("for my family with kids 8 and 11, budget up to €1,500/mo, good schools important — what do you recommend in Portugal vs Spain?"). By 2027, the AI-native vs AI-supported distinction will be a premium differentiator.
+        Caterelo was designed <span class="text-white">FROM AI capabilities</span> - the AI Advisor is the interface to the data, not an add-on bolted onto the search bar. That changes the user experience: instead of forms and filters you get a contextual conversation ("for my family with kids 8 and 11, budget up to €1,500/mo, good schools important - what do you recommend in Portugal vs Spain?"). By 2027, the AI-native vs AI-supported distinction will be a premium differentiator.
       </p>
 
       <h3 class="text-xl font-bold text-white mt-10 mb-4">3. <em>Personal Match</em> &gt; <em>Universal Best</em></h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        The biggest lesson from building for four different personas: <span class="text-white">stop telling people what's "best"</span> — give them tools to see what's best <em>for them</em>. That forced Match Score instead of a generic top 10. The same principle drives our client work — stop telling a club network what's "best practice" in branding; give them a system that adapts to their specific constraints. r3loop forces that design.
+        The biggest lesson from building for four different personas: <span class="text-white">stop telling people what's "best"</span> - give them tools to see what's best <em>for them</em>. That forced Match Score instead of a generic top 10. The same principle drives our client work - stop telling a club network what's "best practice" in branding; give them a system that adapts to their specific constraints. r3loop forces that design.
       </p>
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">What's next</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Caterelo is live at <a href="https://caterelo.com" target="_blank" rel="noopener" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">caterelo.com</a> — you can take the quiz now, build your profile, see Match Scores across 90 regions. The full methodology-to-product mapping is on the case study at <a href="/work/caterelo" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">r352.com/work/caterelo</a>.
+        Caterelo is live at <a href="https://caterelo.com" target="_blank" rel="noopener" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">caterelo.com</a> - you can take the quiz now, build your profile, see Match Scores across 90 regions. The full methodology-to-product mapping is on the case study at <a href="/work/caterelo" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">r352.com/work/caterelo</a>.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         What's next: <span class="text-white">more decision engines built with the same methodology</span>. Any operational problem with more than one persona, more than one dimension and more than one valid answer fits under the same framework. Same r3loop, different applications.
       </p>
       <div class="bg-white/[0.03] border-l-2 border-[#D4FF00] p-8 my-12">
         <p class="text-xl text-white font-medium leading-relaxed mb-3">
-          If you're scaling a multi-location business and internal operations are a bottleneck — that's exactly the problem we work on.
+          If you're scaling a multi-location business and internal operations are a bottleneck - that's exactly the problem we work on.
         </p>
         <p class="text-base text-neutral-400">
           Caterelo proves the methodology. Your retainer or project is its application.
@@ -2000,12 +2000,12 @@ auto_load: true
         Po dekadzie pracy z multi-location markami (fitness, wellness, retail, real estate) widzę te same pięć wzorców powtarzanych w 90% przypadków. Każdy z nich wygląda jak "design problem" na powierzchni. Żaden nim nie jest.
       </p>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 01 — Niejasne briefy<br/>to workflow problem, nie creative problem</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 01 - Niejasne briefy<br/>to workflow problem, nie creative problem</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Sygnał: "Nasi designerzy nie rozumieją czego chcemy. Robią coś innego niż prosimy."
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Rzeczywistość: briefy wpadają do zespołu przez 4 różne kanały (mail, Slack, Notion, telefon). Brak template'a. Brak Definition of Ready. Designer dostaje zlecenie, które kompletny jest w 40% — reszta to założenia.
+        Rzeczywistość: briefy wpadają do zespołu przez 4 różne kanały (mail, Slack, Notion, telefon). Brak template'a. Brak Definition of Ready. Designer dostaje zlecenie, które kompletny jest w 40% - reszta to założenia.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Nie zatrudnisz tu lepszego designera. Naprawisz to <span class="text-white">strukturą briefu + jednym intake channel</span>.
@@ -2016,7 +2016,7 @@ auto_load: true
         <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Definition of Ready: brief nie zaczyna produkcji dopóki nie spełnia checklist'y.</span></li>
       </ul>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 02 — Pętle poprawek<br/>to governance problem, nie quality problem</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 02 - Pętle poprawek<br/>to governance problem, nie quality problem</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Sygnał: "Projekty robimy po 5 rund. Każdy ma uwagi. Nic nie idzie do produkcji."
       </p>
@@ -2039,7 +2039,7 @@ auto_load: true
         <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Kryteria feedbacku z góry. "Nie pasuje" nie jest feedback. "Nie pasuje, bo X" jest.</span></li>
       </ul>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 03 — Inconsistency across locations<br/>to standards problem, nie aesthetic problem</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 03 - Inconsistency across locations<br/>to standards problem, nie aesthetic problem</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Sygnał: "Każda lokalizacja robi swoje. Materiały wyglądają jak z 5 różnych firm."
       </p>
@@ -2047,7 +2047,7 @@ auto_load: true
         Rzeczywistość: brand guidelines istnieją (jako PDF). Nikt ich nie używa. Każdy local marketing manager robi po swojemu, bo PDF nie odpowiada na pytanie "jak konkretnie zrobić ad pod ten lokalny event w tym formacie".
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Brand guidelines są niewystarczające. Potrzebujesz <span class="text-white">templates + asset library + clear rules per format</span>. PDF mówi "nasz kolor to #D4FF00". Template mówi "Twoja kampania Q3 — tutaj klikasz, podmieniasz tekst, ekspport, gotowe".
+        Brand guidelines są niewystarczające. Potrzebujesz <span class="text-white">templates + asset library + clear rules per format</span>. PDF mówi "nasz kolor to #D4FF00". Template mówi "Twoja kampania Q3 - tutaj klikasz, podmieniasz tekst, ekspport, gotowe".
       </p>
       <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
         <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Templates per format (social, print, outdoor, digital ads, email). Nie generic.</span></li>
@@ -2055,15 +2055,15 @@ auto_load: true
         <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>QA checklist before publish. 5-7 punktów, nie 50.</span></li>
       </ul>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 04 — Slow delivery<br/>to cadence problem, nie capacity problem</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 04 - Slow delivery<br/>to cadence problem, nie capacity problem</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Sygnał: "Wszystko trwa za długo. Zatrudniamy więcej, ale szybciej nie jest."
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Rzeczywistość: praca przychodzi w spikach. Tydzień nic, potem 12 rzeczy na piątek o 16:00. Designer kończy projekt, nie ma następnego brief'a gotowego, czeka. Dochodzi kolejny brief — wszystko ASAP, wszystko ważne.
+        Rzeczywistość: praca przychodzi w spikach. Tydzień nic, potem 12 rzeczy na piątek o 16:00. Designer kończy projekt, nie ma następnego brief'a gotowego, czeka. Dochodzi kolejny brief - wszystko ASAP, wszystko ważne.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Dodanie kolejnego designera nie rozwiązuje tego. Spike pattern się powieksza. Rozwiązaniem jest <span class="text-white">stały cotygodniowy rytm</span> — predictable cadence, nie reactive sprints.
+        Dodanie kolejnego designera nie rozwiązuje tego. Spike pattern się powieksza. Rozwiązaniem jest <span class="text-white">stały cotygodniowy rytm</span> - predictable cadence, nie reactive sprints.
       </p>
       <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
         <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Tydzień zawsze ma deliverable. Output, nie progress.</span></li>
@@ -2071,7 +2071,7 @@ auto_load: true
         <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>"Pilne" to wyjątek wymagający uzasadnienia, nie default mode.</span></li>
       </ul>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 05 — Brand drift<br/>to ownership problem, nie discipline problem</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 05 - Brand drift<br/>to ownership problem, nie discipline problem</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Sygnał: "Marka rozjeżdża się przez czas. Każdy projekt wygląda trochę inaczej."
       </p>
@@ -2079,7 +2079,7 @@ auto_load: true
         Rzeczywistość: nikt nie jest właścicielem brand consistency. Marketing dir myśli że to brand manager. Brand manager myśli że to design lead. Design lead myśli że to "wspólna sprawa". Każdy myśli że ktoś inny pilnuje. Nikt nie pilnuje.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Brand consistency potrzebuje <span class="text-white">jednego custodian</span> — osoby z explicit mandate "to jest moja praca". Bez tego każde indywidualne decision drifts, kumulują się przez 18 miesięcy, marka wygląda jak po rebrandzie którego nie było.
+        Brand consistency potrzebuje <span class="text-white">jednego custodian</span> - osoby z explicit mandate "to jest moja praca". Bez tego każde indywidualne decision drifts, kumulują się przez 18 miesięcy, marka wygląda jak po rebrandzie którego nie było.
       </p>
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Co się zmienia, kiedy to naprawisz</h2>
@@ -2101,10 +2101,10 @@ auto_load: true
         <div class="absolute top-0 right-0 p-4 opacity-10 font-display text-9xl leading-none text-[#D4FF00] pointer-events-none select-none">SYSTEM</div>
         <h3 class="relative z-10 font-display text-white text-2xl uppercase tracking-widest mb-8">Robimy to przez 8-krokowy framework</h3>
         <p class="relative z-10 text-neutral-400 text-base mb-4">
-          W r352 codifyowaliśmy te 5 patterns w sekwencyjny framework — nazywamy go r3loop. Nic radykalnego, każdy z 8 kroków adresuje konkretną pułapkę operacyjną w odpowiedniej kolejności.
+          W r352 codifyowaliśmy te 5 patterns w sekwencyjny framework - nazywamy go r3loop. Nic radykalnego, każdy z 8 kroków adresuje konkretną pułapkę operacyjną w odpowiedniej kolejności.
         </p>
         <p class="relative z-10 text-neutral-400 text-base">
-          Jeśli ciekawi Cię szczegół — pełen breakdown na <a href="/process" class="text-[#D4FF00] hover:text-white transition-colors border-b border-[#D4FF00]/40">/process</a>. Ale ważniejsze niż framework jest to, że te 5 patterns istnieje w 90% multi-location organizacji. Najpierw je rozpoznaj. Potem zdecyduj jak je rozwiązać.
+          Jeśli ciekawi Cię szczegół - pełen breakdown na <a href="/process" class="text-[#D4FF00] hover:text-white transition-colors border-b border-[#D4FF00]/40">/process</a>. Ale ważniejsze niż framework jest to, że te 5 patterns istnieje w 90% multi-location organizacji. Najpierw je rozpoznaj. Potem zdecyduj jak je rozwiązać.
         </p>
       </div>
 
@@ -2113,12 +2113,12 @@ auto_load: true
         Test prostszy niż audyt:
       </p>
       <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Czy zmiana designera rozwiązuje problem? Jeśli tak — design problem. Jeśli nie — system problem.</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Czy problem powtarza się across różnych projektów? Jeśli tak — system, nie indywidualne.</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Czy "good" project happens przez heroizm pojedynczej osoby? Jeśli tak — masz heroizm, nie system.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Czy zmiana designera rozwiązuje problem? Jeśli tak - design problem. Jeśli nie - system problem.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Czy problem powtarza się across różnych projektów? Jeśli tak - system, nie indywidualne.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Czy "good" project happens przez heroizm pojedynczej osoby? Jeśli tak - masz heroizm, nie system.</span></li>
       </ul>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        90% "design problems" w multi-location organizacjach to operations problems. To dobra wiadomość — operations problems są solvable. Design talent gaps trudno rozwiązać. Workflow gaps można rozwiązać w 6-12 tygodni.
+        90% "design problems" w multi-location organizacjach to operations problems. To dobra wiadomość - operations problems są solvable. Design talent gaps trudno rozwiązać. Workflow gaps można rozwiązać w 6-12 tygodni.
       </p>
 
       <p class="font-display text-white text-2xl uppercase tracking-wider my-8">
@@ -2129,7 +2129,7 @@ auto_load: true
 
       <div class="bg-neutral-900 border border-white/5 p-8 md:p-12 text-center">
          <p class="text-lg text-neutral-400 max-w-2xl mx-auto mb-4">
-            Jeśli rozpoznajesz którykolwiek z tych 5 patterns w swoim zespole — najprawdopodobniej nie potrzebujesz lepszego designera.
+            Jeśli rozpoznajesz którykolwiek z tych 5 patterns w swoim zespole - najprawdopodobniej nie potrzebujesz lepszego designera.
          </p>
          <p class="font-display text-[#D4FF00] text-4xl md:text-5xl uppercase tracking-tighter leading-none">
             Potrzebujesz lepszego<br/>systemu.
@@ -2150,12 +2150,12 @@ auto_load: true
         After a decade working with multi-location brands (fitness, wellness, retail, real estate), I see the same five patterns repeat in 90% of cases. Each looks like a "design problem" on the surface. None of them are.
       </p>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 01 — Unclear briefs<br/>are a workflow problem, not a creative problem</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 01 - Unclear briefs<br/>are a workflow problem, not a creative problem</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Signal: "Our designers don't understand what we want. They deliver something different from what we asked for."
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Reality: briefs arrive through 4 different channels (email, Slack, Notion, phone calls). No template. No Definition of Ready. The designer receives a request that's 40% complete — the rest is assumptions.
+        Reality: briefs arrive through 4 different channels (email, Slack, Notion, phone calls). No template. No Definition of Ready. The designer receives a request that's 40% complete - the rest is assumptions.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         You won't fix this by hiring a better designer. You fix it with <span class="text-white">brief structure + a single intake channel</span>.
@@ -2166,7 +2166,7 @@ auto_load: true
         <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Definition of Ready: production doesn't start until the brief passes a checklist.</span></li>
       </ul>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 02 — Revision loops<br/>are a governance problem, not a quality problem</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 02 - Revision loops<br/>are a governance problem, not a quality problem</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Signal: "Projects take 5 rounds. Everyone has comments. Nothing ships."
       </p>
@@ -2189,7 +2189,7 @@ auto_load: true
         <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Feedback criteria upfront. "Doesn't fit" isn't feedback. "Doesn't fit because X" is.</span></li>
       </ul>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 03 — Inconsistency across locations<br/>is a standards problem, not an aesthetic problem</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 03 - Inconsistency across locations<br/>is a standards problem, not an aesthetic problem</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Signal: "Every location does its own thing. Materials look like they came from 5 different companies."
       </p>
@@ -2197,7 +2197,7 @@ auto_load: true
         Reality: brand guidelines exist (as a PDF). Nobody uses them. Each local marketing manager does it their way, because the PDF doesn't answer "how exactly do I make an ad for this local event in this format".
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Brand guidelines aren't enough. You need <span class="text-white">templates + asset library + clear rules per format</span>. The PDF says "our color is #D4FF00". The template says "Your Q3 campaign — click here, swap the text, export, done".
+        Brand guidelines aren't enough. You need <span class="text-white">templates + asset library + clear rules per format</span>. The PDF says "our color is #D4FF00". The template says "Your Q3 campaign - click here, swap the text, export, done".
       </p>
       <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
         <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Templates per format (social, print, outdoor, digital ads, email). Not generic.</span></li>
@@ -2205,15 +2205,15 @@ auto_load: true
         <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>QA checklist before publish. 5-7 points, not 50.</span></li>
       </ul>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 04 — Slow delivery<br/>is a cadence problem, not a capacity problem</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 04 - Slow delivery<br/>is a cadence problem, not a capacity problem</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Signal: "Everything takes too long. We hire more people, but it's not faster."
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Reality: work arrives in spikes. A quiet week, then 12 things due Friday at 4pm. The designer finishes one project, has no next brief ready, waits. Then another brief arrives — all ASAP, all important.
+        Reality: work arrives in spikes. A quiet week, then 12 things due Friday at 4pm. The designer finishes one project, has no next brief ready, waits. Then another brief arrives - all ASAP, all important.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Adding another designer doesn't fix this. The spike pattern just gets bigger. The fix is <span class="text-white">a steady weekly rhythm</span> — predictable cadence, not reactive sprints.
+        Adding another designer doesn't fix this. The spike pattern just gets bigger. The fix is <span class="text-white">a steady weekly rhythm</span> - predictable cadence, not reactive sprints.
       </p>
       <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
         <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Every week ships a deliverable. Output, not progress.</span></li>
@@ -2221,7 +2221,7 @@ auto_load: true
         <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>"Urgent" is an exception that needs justification, not a default mode.</span></li>
       </ul>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 05 — Brand drift<br/>is an ownership problem, not a discipline problem</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">Pattern 05 - Brand drift<br/>is an ownership problem, not a discipline problem</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Signal: "The brand is drifting over time. Each project looks a little different."
       </p>
@@ -2229,7 +2229,7 @@ auto_load: true
         Reality: nobody owns brand consistency. Marketing director thinks it's the brand manager. Brand manager thinks it's the design lead. Design lead thinks it's "everyone's job". Everyone thinks someone else is watching. Nobody is.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Brand consistency needs <span class="text-white">one custodian</span> — a person with an explicit mandate "this is my job". Without that, every individual decision drifts, compounds over 18 months, and the brand looks like it went through a rebrand that never happened.
+        Brand consistency needs <span class="text-white">one custodian</span> - a person with an explicit mandate "this is my job". Without that, every individual decision drifts, compounds over 18 months, and the brand looks like it went through a rebrand that never happened.
       </p>
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">What changes when you fix this</h2>
@@ -2251,10 +2251,10 @@ auto_load: true
         <div class="absolute top-0 right-0 p-4 opacity-10 font-display text-9xl leading-none text-[#D4FF00] pointer-events-none select-none">SYSTEM</div>
         <h3 class="relative z-10 font-display text-white text-2xl uppercase tracking-widest mb-8">We do this through an 8-step framework</h3>
         <p class="relative z-10 text-neutral-400 text-base mb-4">
-          At r352 we codified these 5 patterns into a sequential framework — we call it r3loop. Nothing radical, each of the 8 steps addresses a specific operational trap in the right order.
+          At r352 we codified these 5 patterns into a sequential framework - we call it r3loop. Nothing radical, each of the 8 steps addresses a specific operational trap in the right order.
         </p>
         <p class="relative z-10 text-neutral-400 text-base">
-          If you're curious about the detail — full breakdown at <a href="/process" class="text-[#D4FF00] hover:text-white transition-colors border-b border-[#D4FF00]/40">/process</a>. But more important than the framework is the fact that these 5 patterns exist in 90% of multi-location organizations. Recognize them first. Then decide how to solve them.
+          If you're curious about the detail - full breakdown at <a href="/process" class="text-[#D4FF00] hover:text-white transition-colors border-b border-[#D4FF00]/40">/process</a>. But more important than the framework is the fact that these 5 patterns exist in 90% of multi-location organizations. Recognize them first. Then decide how to solve them.
         </p>
       </div>
 
@@ -2263,12 +2263,12 @@ auto_load: true
         Simpler than an audit:
       </p>
       <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Does swapping the designer solve the problem? If yes — design problem. If not — system problem.</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Does the problem repeat across different projects? If yes — it's systemic, not individual.</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Do "good" projects happen because of one person's heroics? If yes — you have heroics, not a system.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Does swapping the designer solve the problem? If yes - design problem. If not - system problem.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Does the problem repeat across different projects? If yes - it's systemic, not individual.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Do "good" projects happen because of one person's heroics? If yes - you have heroics, not a system.</span></li>
       </ul>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        90% of "design problems" in multi-location organizations are operations problems. That's good news — operations problems are solvable. Design talent gaps are hard to close. Workflow gaps can be closed in 6-12 weeks.
+        90% of "design problems" in multi-location organizations are operations problems. That's good news - operations problems are solvable. Design talent gaps are hard to close. Workflow gaps can be closed in 6-12 weeks.
       </p>
 
       <p class="font-display text-white text-2xl uppercase tracking-wider my-8">
@@ -2279,7 +2279,7 @@ auto_load: true
 
       <div class="bg-neutral-900 border border-white/5 p-8 md:p-12 text-center">
          <p class="text-lg text-neutral-400 max-w-2xl mx-auto mb-4">
-            If you recognize any of these 5 patterns in your team — you probably don't need a better designer.
+            If you recognize any of these 5 patterns in your team - you probably don't need a better designer.
          </p>
          <p class="font-display text-[#D4FF00] text-4xl md:text-5xl uppercase tracking-tighter leading-none">
             You need a better<br/>system.
@@ -2299,29 +2299,29 @@ auto_load: true
         Większość agencji designerskich definiuje się przez to, co potrafi zrobić. <span class="text-white font-medium">My definiujemy się przez to, czego nie zrobimy.</span>
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Standard nie jest cechą wykonania. Standard jest filtrem — granicą oddzielającą pracę, którą warto wypuścić, od pracy, która istnieje tylko po to, żeby ktoś zaznaczył zadanie jako "done". Im więcej rzeczy odrzucisz, tym mocniejszy jest output.
+        Standard nie jest cechą wykonania. Standard jest filtrem - granicą oddzielającą pracę, którą warto wypuścić, od pracy, która istnieje tylko po to, żeby ktoś zaznaczył zadanie jako "done". Im więcej rzeczy odrzucisz, tym mocniejszy jest output.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Po piętnastu latach pracy z markami wielo-lokalizacyjnymi mamy własną listę. Sześć rzeczy, których po prostu <span class="text-white border-b border-[#D4FF00]/50">nie dostarczamy</span>, bez względu na presję, deadline ani prośbę klienta. Każda odmowa ma swój powód operacyjny.
       </p>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">01 — Briefów bez ownership decyzji</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">01 - Briefów bez ownership decyzji</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Sygnał: "Mamy 5 osób zaangażowanych w ten projekt. Wszystkie muszą zaakceptować."
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Brief bez jasnego decision-owner-a to nie brief — to negocjacja. Pięć osób z prawem veta to gwarancja pięciu rund, każda z innym kierunkiem. Wynik: produkcja staje, czas idzie do tyłu, marka tracker drift'uje.
+        Brief bez jasnego decision-owner-a to nie brief - to negocjacja. Pięć osób z prawem veta to gwarancja pięciu rund, każda z innym kierunkiem. Wynik: produkcja staje, czas idzie do tyłu, marka tracker drift'uje.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Przed startem każdego workstreamu wymagamy jednej rzeczy: <span class="text-white">imię i nazwisko osoby, która powie tak/nie</span>. Reszta — input, nie veto. Bez tego nie zaczynamy. Klient czasem walczy. Po pierwszej dostawie zawsze rozumie.
+        Przed startem każdego workstreamu wymagamy jednej rzeczy: <span class="text-white">imię i nazwisko osoby, która powie tak/nie</span>. Reszta - input, nie veto. Bez tego nie zaczynamy. Klient czasem walczy. Po pierwszej dostawie zawsze rozumie.
       </p>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">02 — Estetyki bez kontekstu operacyjnego</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">02 - Estetyki bez kontekstu operacyjnego</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Sygnał: "Zróbcie nam coś świeżego, oryginalnego, takiego wow."
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Brief skupiony tylko na efekcie wizualnym, bez konkretu o kanale, lokalizacji, integracji z systemem brandu, kapitale produkcyjnym — to recepta na "ładne ale nieużyteczne". Designer może zrobić piękny layout, który załamuje się przy pierwszym tłumaczeniu na inny format.
+        Brief skupiony tylko na efekcie wizualnym, bez konkretu o kanale, lokalizacji, integracji z systemem brandu, kapitale produkcyjnym - to recepta na "ładne ale nieużyteczne". Designer może zrobić piękny layout, który załamuje się przy pierwszym tłumaczeniu na inny format.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Każdy projekt zaczyna się od kontekstu: kanał, audience, ograniczenia, integracja z istniejącym systemem. <span class="text-white">Estetyka to ostatnia warstwa</span>, nie pierwsza.
@@ -2332,15 +2332,15 @@ auto_load: true
         <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Integration: jakie templates istnieją, czego nie wolno ruszać.</span></li>
       </ul>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">03 — Dostaw bez QA</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">03 - Dostaw bez QA</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Sygnał: "Pilne, możecie wysłać dziś o 16?"
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Praca bez kontroli jakości to nie praca — to nadzieja. Każdy plik, który wychodzi, przechodzi przez 5-7 punktową checklistę: spec compliance, brand consistency, copywriting, technical export, accessibility, naming convention, version control.
+        Praca bez kontroli jakości to nie praca - to nadzieja. Każdy plik, który wychodzi, przechodzi przez 5-7 punktową checklistę: spec compliance, brand consistency, copywriting, technical export, accessibility, naming convention, version control.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Jeśli QA pokazuje issue — wracamy do produkcji. Zawsze. <span class="text-white">"Wyślemy i poprawimy później"</span> to słowa, które kosztowały już zbyt wiele marek. Nie poprawisz później. Wersja, która zostaje w obiegu, zostaje na dobre.
+        Jeśli QA pokazuje issue - wracamy do produkcji. Zawsze. <span class="text-white">"Wyślemy i poprawimy później"</span> to słowa, które kosztowały już zbyt wiele marek. Nie poprawisz później. Wersja, która zostaje w obiegu, zostaje na dobre.
       </p>
 
       <div class="my-16 border-l-2 border-[#D4FF00] pl-6 md:pl-8">
@@ -2349,7 +2349,7 @@ auto_load: true
         </h3>
       </div>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">04 — Rewizji "tylko trochę"</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">04 - Rewizji "tylko trochę"</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Sygnał: "Możecie zmienić to jedno małe drobiazgu? Tylko ten kolor."
       </p>
@@ -2357,7 +2357,7 @@ auto_load: true
         Małe rewizje nie istnieją. Każda zmiana po sign-off oznacza: reopen pliku, reload context, nowy QA pass, nowy export, nowy version control, nowa dystrybucja. Sumarycznie 40-90 minut roboty per "drobiazg".
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Mamy zasadę: po sign-off zmiany kosztują. Nie żeby zarabiać — żeby <span class="text-white">cena była sygnałem</span>. Klient zaczyna myśleć przed prośbą. Liczba post-sign-off rewizji spada o 80% w pierwszych trzech miesiącach współpracy.
+        Mamy zasadę: po sign-off zmiany kosztują. Nie żeby zarabiać - żeby <span class="text-white">cena była sygnałem</span>. Klient zaczyna myśleć przed prośbą. Liczba post-sign-off rewizji spada o 80% w pierwszych trzech miesiącach współpracy.
       </p>
       <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
         <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Sign-off jest finalny. Co się zmienia po nim, idzie do nowego scope.</span></li>
@@ -2365,7 +2365,7 @@ auto_load: true
         <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Każda zmiana ma owner-a, deadline i dokumentowane uzasadnienie.</span></li>
       </ul>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">05 — Pracy bez integracji z systemem</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">05 - Pracy bez integracji z systemem</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Sygnał: "Zróbcie nam jeden materiał, jednorazowy event, nie wiążemy z marką."
       </p>
@@ -2376,15 +2376,15 @@ auto_load: true
         Pracujemy tylko nad rzeczami, które integrują się z systemem brand-u klienta. Albo wzmacniamy istniejący system, albo rozszerzamy go o nową gałąź (kanał, format, sub-brand). Nigdy nie robimy <span class="text-white">orphan-assets</span>.
       </p>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">06 — Pracy w urgency mode jako defaultu</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">06 - Pracy w urgency mode jako defaultu</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Sygnał: "Wszystko jest pilne. Brak czasu na planowanie."
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Pilne jako default jest nieprzejrzysty sygnał: znak, że organizacja działa w trybie reaktywnym, nie proaktywnym. Pracujemy w stałej tygodniowej kadencji — briefy planowane 2 tygodnie z góry, output w piątek, retro w poniedziałek.
+        Pilne jako default jest nieprzejrzysty sygnał: znak, że organizacja działa w trybie reaktywnym, nie proaktywnym. Pracujemy w stałej tygodniowej kadencji - briefy planowane 2 tygodnie z góry, output w piątek, retro w poniedziałek.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Jeden "pilny" sprint na kwartał akceptujemy — wymaga uzasadnienia i zgody na <span class="text-white">deprioritize innego workstreamu</span>. Cztery pilnych w kwartał — odmawiamy. Co znaczy: być może klient nie jest dla nas, albo my dla niego. Lepiej rozpoznać to wcześnie niż później.
+        Jeden "pilny" sprint na kwartał akceptujemy - wymaga uzasadnienia i zgody na <span class="text-white">deprioritize innego workstreamu</span>. Cztery pilnych w kwartał - odmawiamy. Co znaczy: być może klient nie jest dla nas, albo my dla niego. Lepiej rozpoznać to wcześnie niż później.
       </p>
 
       <div class="my-16 p-8 md:p-12 bg-white/[0.025] dark:bg-white/[0.025]">
@@ -2392,16 +2392,16 @@ auto_load: true
           Połączenie z r3loop
         </span>
         <p class="text-lg md:text-xl text-neutral-300 leading-relaxed">
-          Każda z tych odmów ma swoje miejsce w naszej 8-krokowej metodologii r3loop. Standards nie są opinią — są częścią governance layer (krok 6), brief layer (krok 1) i QA layer (krok 7). Klient, który chce z nami pracować, kupuje system, który te standardy egzekwuje.
+          Każda z tych odmów ma swoje miejsce w naszej 8-krokowej metodologii r3loop. Standards nie są opinią - są częścią governance layer (krok 6), brief layer (krok 1) i QA layer (krok 7). Klient, który chce z nami pracować, kupuje system, który te standardy egzekwuje.
         </p>
       </div>
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Co odrzucenie kupuje</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Każda "nie" buduje "tak". Im wyraźniej definiujemy granicę, tym łatwiej klientowi zrozumieć, czego mu dostarczamy. Standards nie zmniejszają zakresu — zwiększają wartość pracy w obrębie granic.
+        Każda "nie" buduje "tak". Im wyraźniej definiujemy granicę, tym łatwiej klientowi zrozumieć, czego mu dostarczamy. Standards nie zmniejszają zakresu - zwiększają wartość pracy w obrębie granic.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Klient, który zaakceptuje te sześć odmów, dostaje partnera. Klient, który ich nie zaakceptuje, dostaje <span class="text-white">trafniejszą agencję dla swojego stylu pracy</span> — i nie traci kwartału na konflikt operacyjny.
+        Klient, który zaakceptuje te sześć odmów, dostaje partnera. Klient, który ich nie zaakceptuje, dostaje <span class="text-white">trafniejszą agencję dla swojego stylu pracy</span> - i nie traci kwartału na konflikt operacyjny.
       </p>
 
       <hr class="my-16 border-white/10" />
@@ -2411,7 +2411,7 @@ auto_load: true
           Standards bronią<br/>jakości.<br/>"Tak" wszystkiemu<br/>jej nie buduje.
         </h3>
         <p class="text-lg font-medium max-w-2xl opacity-80">
-          Jeśli pracujesz w multi-location organizacji, gdzie chaos operacyjny zżera energię — system, który mówi "nie" w odpowiednich momentach, kosztuje mniej niż wieczna fala rewizji.
+          Jeśli pracujesz w multi-location organizacji, gdzie chaos operacyjny zżera energię - system, który mówi "nie" w odpowiednich momentach, kosztuje mniej niż wieczna fala rewizji.
         </p>
       </div>
     `,
@@ -2420,29 +2420,29 @@ auto_load: true
         Most design agencies define themselves by what they can do. <span class="text-white font-medium">We define ourselves by what we won't.</span>
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Standards aren't a feature of execution. They're a filter — the boundary between work worth shipping and work that exists only to mark a task as "done." The more you refuse, the stronger the output.
+        Standards aren't a feature of execution. They're a filter - the boundary between work worth shipping and work that exists only to mark a task as "done." The more you refuse, the stronger the output.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         After fifteen years of working with multi-location brands, we have our own list. Six things we simply <span class="text-white border-b border-[#D4FF00]/50">don't deliver</span>, regardless of pressure, deadline, or client request. Each refusal has an operational reason.
       </p>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">01 — Briefs without decision ownership</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">01 - Briefs without decision ownership</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Signal: "We have 5 people involved in this project. All must approve."
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        A brief without a clear decision-owner isn't a brief — it's a negotiation. Five people with veto rights guarantees five rounds, each pulling in a different direction. Result: production stalls, time slips, brand tracker drifts.
+        A brief without a clear decision-owner isn't a brief - it's a negotiation. Five people with veto rights guarantees five rounds, each pulling in a different direction. Result: production stalls, time slips, brand tracker drifts.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Before starting any workstream, we require one thing: <span class="text-white">the name of the person who says yes or no</span>. Everyone else — input, not veto. Without it, we don't start. Clients sometimes push back. After the first delivery, they always understand.
+        Before starting any workstream, we require one thing: <span class="text-white">the name of the person who says yes or no</span>. Everyone else - input, not veto. Without it, we don't start. Clients sometimes push back. After the first delivery, they always understand.
       </p>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">02 — Aesthetics without operational context</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">02 - Aesthetics without operational context</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Signal: "Make us something fresh, original, with wow factor."
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        A brief focused only on visual effect, without specifics about channel, location, brand system integration, or production capital — is a recipe for "beautiful but useless." A designer can make a stunning layout that breaks the first time it's translated to another format.
+        A brief focused only on visual effect, without specifics about channel, location, brand system integration, or production capital - is a recipe for "beautiful but useless." A designer can make a stunning layout that breaks the first time it's translated to another format.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Every project starts with context: channel, audience, constraints, integration with the existing system. <span class="text-white">Aesthetics are the last layer</span>, not the first.
@@ -2453,15 +2453,15 @@ auto_load: true
         <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Integration: what templates exist, what cannot be touched.</span></li>
       </ul>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">03 — Deliveries without QA</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">03 - Deliveries without QA</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Signal: "Urgent, can you send it today at 4pm?"
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Work without quality control isn't work — it's hope. Every file that leaves goes through a 5-7 point checklist: spec compliance, brand consistency, copywriting, technical export, accessibility, naming convention, version control.
+        Work without quality control isn't work - it's hope. Every file that leaves goes through a 5-7 point checklist: spec compliance, brand consistency, copywriting, technical export, accessibility, naming convention, version control.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        If QA shows an issue — we return to production. Always. <span class="text-white">"We'll ship and fix later"</span> are words that have cost too many brands. You won't fix it later. The version that goes into circulation stays for good.
+        If QA shows an issue - we return to production. Always. <span class="text-white">"We'll ship and fix later"</span> are words that have cost too many brands. You won't fix it later. The version that goes into circulation stays for good.
       </p>
 
       <div class="my-16 border-l-2 border-[#D4FF00] pl-6 md:pl-8">
@@ -2470,7 +2470,7 @@ auto_load: true
         </h3>
       </div>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">04 — Revisions "just a little"</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">04 - Revisions "just a little"</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Signal: "Can you change just one tiny detail? Just this color."
       </p>
@@ -2478,7 +2478,7 @@ auto_load: true
         Small revisions don't exist. Every change after sign-off means: reopen file, reload context, new QA pass, new export, new version control, new distribution. Aggregate 40-90 minutes per "tiny thing."
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        We have a rule: after sign-off, changes cost. Not to earn — to make <span class="text-white">price a signal</span>. Client starts thinking before requesting. The number of post-sign-off revisions drops 80% in the first three months of partnership.
+        We have a rule: after sign-off, changes cost. Not to earn - to make <span class="text-white">price a signal</span>. Client starts thinking before requesting. The number of post-sign-off revisions drops 80% in the first three months of partnership.
       </p>
       <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
         <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Sign-off is final. What changes after goes into new scope.</span></li>
@@ -2486,7 +2486,7 @@ auto_load: true
         <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Every change has an owner, deadline, and documented rationale.</span></li>
       </ul>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">05 — Work without system integration</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">05 - Work without system integration</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Signal: "Just make us one piece, one-off event, not tied to the brand."
       </p>
@@ -2497,15 +2497,15 @@ auto_load: true
         We only work on things that integrate with the client's brand system. Either we strengthen the existing system or expand it with a new branch (channel, format, sub-brand). We never make <span class="text-white">orphan assets</span>.
       </p>
 
-      <h2 class="text-3xl font-bold text-white mt-16 mb-6">06 — Work in urgency mode as default</h2>
+      <h2 class="text-3xl font-bold text-white mt-16 mb-6">06 - Work in urgency mode as default</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Signal: "Everything is urgent. No time for planning."
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Urgent as default is a transparent signal: the sign of an organization operating in reactive, not proactive mode. We work in a steady weekly cadence — briefs planned 2 weeks ahead, output on Friday, retro on Monday.
+        Urgent as default is a transparent signal: the sign of an organization operating in reactive, not proactive mode. We work in a steady weekly cadence - briefs planned 2 weeks ahead, output on Friday, retro on Monday.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        One "urgent" sprint per quarter we accept — requires justification and agreement to <span class="text-white">deprioritize another workstream</span>. Four urgent ones per quarter — we refuse. Which means: maybe the client isn't right for us, or we for them. Better to recognize that early than later.
+        One "urgent" sprint per quarter we accept - requires justification and agreement to <span class="text-white">deprioritize another workstream</span>. Four urgent ones per quarter - we refuse. Which means: maybe the client isn't right for us, or we for them. Better to recognize that early than later.
       </p>
 
       <div class="my-16 p-8 md:p-12 bg-white/[0.025] dark:bg-white/[0.025]">
@@ -2513,16 +2513,16 @@ auto_load: true
           Connection to r3loop
         </span>
         <p class="text-lg md:text-xl text-neutral-300 leading-relaxed">
-          Each of these refusals has its place in our 8-step methodology r3loop. Standards aren't opinion — they're part of the governance layer (step 6), brief layer (step 1), and QA layer (step 7). The client who wants to work with us is buying the system that enforces these standards.
+          Each of these refusals has its place in our 8-step methodology r3loop. Standards aren't opinion - they're part of the governance layer (step 6), brief layer (step 1), and QA layer (step 7). The client who wants to work with us is buying the system that enforces these standards.
         </p>
       </div>
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">What refusal buys</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Every "no" builds a "yes." The more clearly we define the boundary, the easier it is for the client to understand what we deliver. Standards don't reduce scope — they increase the value of work within the boundary.
+        Every "no" builds a "yes." The more clearly we define the boundary, the easier it is for the client to understand what we deliver. Standards don't reduce scope - they increase the value of work within the boundary.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        A client who accepts these six refusals gets a partner. A client who doesn't accept them gets <span class="text-white">a more suitable agency for their work style</span> — and doesn't lose a quarter to operational conflict.
+        A client who accepts these six refusals gets a partner. A client who doesn't accept them gets <span class="text-white">a more suitable agency for their work style</span> - and doesn't lose a quarter to operational conflict.
       </p>
 
       <hr class="my-16 border-white/10" />
@@ -2532,7 +2532,7 @@ auto_load: true
           Standards defend<br/>quality.<br/>Saying "yes" to everything<br/>doesn't build it.
         </h3>
         <p class="text-lg font-medium max-w-2xl opacity-80">
-          If you work in a multi-location organization where operational chaos eats energy — a system that says "no" at the right moments costs less than an endless wave of revisions.
+          If you work in a multi-location organization where operational chaos eats energy - a system that says "no" at the right moments costs less than an endless wave of revisions.
         </p>
       </div>
     `
@@ -3304,11 +3304,11 @@ auto_load: true
         Po dekadzie pracy z multi-location markami widzimy te same wzorce. Drift wchodzi przez pięć drzwi:
       </p>
       <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Kolor</span> — profil monitora w lokacji A vs druk w lokacji B vs filtr Instagram social media-manager-a w lokacji C.</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Typografia</span> — local team nie ma dostępu do font-a, używa "najbliższego" zamiast tego.</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Layout</span> — brak template'u, marketing-manager improvizuje pod konkretną kampanię.</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Tone</span> — copy pisane lokalnie bez sprawdzania pod brand voice.</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Logo</span> — resized, rekolorowane, re-positioned "tylko ten jeden raz."</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Kolor</span> - profil monitora w lokacji A vs druk w lokacji B vs filtr Instagram social media-manager-a w lokacji C.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Typografia</span> - local team nie ma dostępu do font-a, używa "najbliższego" zamiast tego.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Layout</span> - brak template'u, marketing-manager improvizuje pod konkretną kampanię.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Tone</span> - copy pisane lokalnie bez sprawdzania pod brand voice.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Logo</span> - resized, rekolorowane, re-positioned "tylko ten jeden raz."</span></li>
       </ul>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Każda z tych decyzji jest mała. Łącznie tworzą podstawową siłę erozji, która rozkłada markę przez kwartały.
@@ -3322,7 +3322,7 @@ auto_load: true
         Brand book to dokumentacja. Multi-location organizacja potrzebuje <span class="text-white">operatywnego systemu</span>. PDF mówi "nasz kolor to #D4FF00". Local marketing-manager pyta: "OK, ale jak zrobić ad pod ten lokalny event w 1080×1080 dla Instagrama?". PDF nie odpowiada. PDF zostaje zamknięty. Lokalna improwizacja zaczyna się.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Brand book opisuje, co marka jest. System operacyjny robi, żeby marka <span class="text-white">była egzekwowana w każdej decyzji codziennie</span> — bez pytania, bez interpretacji, bez energii kreatywnej local-team-a.
+        Brand book opisuje, co marka jest. System operacyjny robi, żeby marka <span class="text-white">była egzekwowana w każdej decyzji codziennie</span> - bez pytania, bez interpretacji, bez energii kreatywnej local-team-a.
       </p>
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Architektura: 3 warstwy</h2>
@@ -3330,27 +3330,27 @@ auto_load: true
         Brand operations w 250-lokacyjnej organizacji wymaga trzech zazębionych warstw. Każda nakłada różne ograniczenia. Razem dają system, który skaluje się bez drift-u.
       </p>
 
-      <h3 class="text-2xl font-medium text-white mt-12 mb-4">Warstwa 1 — Strategy: 3-5 nienegocjowalnych decyzji</h3>
+      <h3 class="text-2xl font-medium text-white mt-12 mb-4">Warstwa 1 - Strategy: 3-5 nienegocjowalnych decyzji</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Większość brand books ma 60 stron. Local team przeczyta 5. Z tych 5 zapamięta 2. Z tych 2 zastosuje 1 dla pewności.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Strategy layer musi się zredukować do <span class="text-white">3-5 absolutnych nienegocjowalnych</span> — decyzji, które są ważniejsze niż każde indywidualne kreatywne preferowanie:
+        Strategy layer musi się zredukować do <span class="text-white">3-5 absolutnych nienegocjowalnych</span> - decyzji, które są ważniejsze niż każde indywidualne kreatywne preferowanie:
       </p>
       <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Tone of voice — jedna linijka, którą każdy może zacytować.</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Color boundary — 3 kolory bazowe (nie 30 wariacji).</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Logo placement absolute — jedna konkretna zasada (np. "logo zawsze w lewym górnym narożniku, minimum 32px wolne miejsce wokół").</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Photography direction — jeden test do zastosowania (np. "naturalne światło, ludzie w ruchu, no studio").</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Tagline pattern — formuła, którą lokalny team może wypełnić, nie wymyślić.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Tone of voice - jedna linijka, którą każdy może zacytować.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Color boundary - 3 kolory bazowe (nie 30 wariacji).</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Logo placement absolute - jedna konkretna zasada (np. "logo zawsze w lewym górnym narożniku, minimum 32px wolne miejsce wokół").</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Photography direction - jeden test do zastosowania (np. "naturalne światło, ludzie w ruchu, no studio").</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Tagline pattern - formuła, którą lokalny team może wypełnić, nie wymyślić.</span></li>
       </ul>
 
-      <h3 class="text-2xl font-medium text-white mt-12 mb-4">Warstwa 2 — Templates: zero blank canvas</h3>
+      <h3 class="text-2xl font-medium text-white mt-12 mb-4">Warstwa 2 - Templates: zero blank canvas</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Local marketing-manager nigdy nie powinien zaczynać od pustej strony. Każdy format, którego organizacja używa, musi mieć template — gotowy, zatwierdzony, blokujący zmiany strukturalne.
+        Local marketing-manager nigdy nie powinien zaczynać od pustej strony. Każdy format, którego organizacja używa, musi mieć template - gotowy, zatwierdzony, blokujący zmiany strukturalne.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Template to nie "inspiracja". Template to <span class="text-white">decyzje zaszyte w pliku</span>. Designer widzi w Figma library: "ad-social-1080×1080-v3". Otwiera, podmienia tekst, eksportuje. Czas od briefu do publikacji — 12 minut zamiast 90.
+        Template to nie "inspiracja". Template to <span class="text-white">decyzje zaszyte w pliku</span>. Designer widzi w Figma library: "ad-social-1080×1080-v3". Otwiera, podmienia tekst, eksportuje. Czas od briefu do publikacji - 12 minut zamiast 90.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Kluczowe templates dla multi-location:
@@ -3360,21 +3360,21 @@ auto_load: true
         <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Print (poster + flyer + outdoor banner).</span></li>
         <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Digital ad (display + video + email).</span></li>
         <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>In-location signage (window + interior + counter).</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Internal — schedule, certificate, employee comms.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Internal - schedule, certificate, employee comms.</span></li>
       </ul>
 
-      <h3 class="text-2xl font-medium text-white mt-12 mb-4">Warstwa 3 — Governance: jeden custodian</h3>
+      <h3 class="text-2xl font-medium text-white mt-12 mb-4">Warstwa 3 - Governance: jeden custodian</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Brand bez ownera dryfuje. Komitet z 5 osób — to ten sam stan. Trzeba <span class="text-white">jednej osoby z explicit mandate</span>: "to jest moja praca, mam veto nad brand decisions, raportuję bezpośrednio do CEO."
+        Brand bez ownera dryfuje. Komitet z 5 osób - to ten sam stan. Trzeba <span class="text-white">jednej osoby z explicit mandate</span>: "to jest moja praca, mam veto nad brand decisions, raportuję bezpośrednio do CEO."
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Tej osoby zadania:
       </p>
       <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Quarterly audit — sampling 5% lokacji, ocena compliance.</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Approval cadence — sprint review co 2 tygodnie, nie ad-hoc.</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Drift KPI — measurable metric, raportowany do board.</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Exception protocol — gdy local-team chce "wyjątku", jest jasna ścieżka.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Quarterly audit - sampling 5% lokacji, ocena compliance.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Approval cadence - sprint review co 2 tygodnie, nie ad-hoc.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Drift KPI - measurable metric, raportowany do board.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Exception protocol - gdy local-team chce "wyjątku", jest jasna ścieżka.</span></li>
       </ul>
 
       <div class="my-16 border-l-2 border-[#D4FF00] pl-6 md:pl-8">
@@ -3388,9 +3388,9 @@ auto_load: true
         Co mierzyć, to się dzieje. Bez metryki brand consistency to wishful thinking. Trzy KPI, które warto trackować w multi-location organizacji:
       </p>
       <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Visual compliance score</span> — audit per lokacja, ocena 1-10 vs brand guidelines.</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Template adoption rate</span> — % materiałów wyprodukowanych z templates vs ad-hoc.</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Time-to-publish</span> per lokacja — proxy dla operacyjnej efektywności brand-systemu.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Visual compliance score</span> - audit per lokacja, ocena 1-10 vs brand guidelines.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Template adoption rate</span> - % materiałów wyprodukowanych z templates vs ad-hoc.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Time-to-publish</span> per lokacja - proxy dla operacyjnej efektywności brand-systemu.</span></li>
       </ul>
 
       <div class="my-16 p-8 md:p-12 bg-white/[0.025] dark:bg-white/[0.025]">
@@ -3404,7 +3404,7 @@ auto_load: true
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Sieć fitness, sieć hearing-care, sieć retail</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Pracujemy z markami wielo-lokalizacyjnymi przez lata. Wzorzec się powtarza, niezależnie od branży. Sport, wellness, hearing-care, retail real-estate — każda z tych marek miała ten sam moment, w którym brand wymagał operacjonalizacji, nie kolejnego refreshu.
+        Pracujemy z markami wielo-lokalizacyjnymi przez lata. Wzorzec się powtarza, niezależnie od branży. Sport, wellness, hearing-care, retail real-estate - każda z tych marek miała ten sam moment, w którym brand wymagał operacjonalizacji, nie kolejnego refreshu.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Marka, która chce skalować przez 250 lokacji, potrzebuje od <span class="text-white">początku</span> myśleć jak operacja, nie jak studio kreatywne. Im wcześniej system jest na miejscu, tym mniej drift trzeba później naprawiać.
@@ -3417,7 +3417,7 @@ auto_load: true
           Brand at scale<br/>isn't aesthetics.<br/>It's operations.
         </h3>
         <p class="text-lg font-medium max-w-2xl opacity-80">
-          Jeśli marka skaluje się przez kilkanaście lokacji albo setki — i czujesz, że drift zżera spójność — operacyjny system jest tańszy niż coroczny rebrand.
+          Jeśli marka skaluje się przez kilkanaście lokacji albo setki - i czujesz, że drift zżera spójność - operacyjny system jest tańszy niż coroczny rebrand.
         </p>
       </div>
     `,
@@ -3437,11 +3437,11 @@ auto_load: true
         After a decade of working with multi-location brands, we see the same patterns. Drift enters through five doors:
       </p>
       <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Color</span> — monitor profile at location A vs print at location B vs Instagram filter from the social manager at location C.</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Typography</span> — local team lacks access to the font, uses "the closest one" instead.</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Layout</span> — no template, marketing manager improvises for a specific campaign.</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Tone</span> — copy written locally without checking against brand voice.</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Logo</span> — resized, recolored, repositioned "just this once."</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Color</span> - monitor profile at location A vs print at location B vs Instagram filter from the social manager at location C.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Typography</span> - local team lacks access to the font, uses "the closest one" instead.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Layout</span> - no template, marketing manager improvises for a specific campaign.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Tone</span> - copy written locally without checking against brand voice.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Logo</span> - resized, recolored, repositioned "just this once."</span></li>
       </ul>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Each of these decisions is small. Together they form a baseline erosion force that decomposes the brand over quarters.
@@ -3455,7 +3455,7 @@ auto_load: true
         A brand book is documentation. A multi-location organization needs an <span class="text-white">operational system</span>. The PDF says "our color is #D4FF00." The local marketing manager asks: "OK, but how do I make an ad for this local event in 1080×1080 for Instagram?" The PDF doesn't answer. The PDF gets closed. Local improvisation begins.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        A brand book describes what the brand is. An operational system makes the brand <span class="text-white">enforced in every decision, daily</span> — without asking, without interpreting, without burning the local team's creative energy.
+        A brand book describes what the brand is. An operational system makes the brand <span class="text-white">enforced in every decision, daily</span> - without asking, without interpreting, without burning the local team's creative energy.
       </p>
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">The architecture: 3 layers</h2>
@@ -3463,27 +3463,27 @@ auto_load: true
         Brand operations in a 250-location organization requires three interlocking layers. Each imposes different constraints. Together they form a system that scales without drift.
       </p>
 
-      <h3 class="text-2xl font-medium text-white mt-12 mb-4">Layer 1 — Strategy: 3-5 non-negotiables</h3>
+      <h3 class="text-2xl font-medium text-white mt-12 mb-4">Layer 1 - Strategy: 3-5 non-negotiables</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Most brand books are 60 pages. The local team reads 5. Of those 5, they remember 2. Of those 2, they apply 1 for safety.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        The strategy layer must reduce to <span class="text-white">3-5 absolute non-negotiables</span> — decisions more important than any individual creative preference:
+        The strategy layer must reduce to <span class="text-white">3-5 absolute non-negotiables</span> - decisions more important than any individual creative preference:
       </p>
       <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Tone of voice — one line everyone can quote.</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Color boundary — 3 base colors (not 30 variations).</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Logo placement absolute — one specific rule (e.g. "logo always top-left, minimum 32px clearspace").</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Photography direction — one test to apply (e.g. "natural light, people in motion, no studio").</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Tagline pattern — a formula the local team can fill, not invent.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Tone of voice - one line everyone can quote.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Color boundary - 3 base colors (not 30 variations).</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Logo placement absolute - one specific rule (e.g. "logo always top-left, minimum 32px clearspace").</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Photography direction - one test to apply (e.g. "natural light, people in motion, no studio").</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Tagline pattern - a formula the local team can fill, not invent.</span></li>
       </ul>
 
-      <h3 class="text-2xl font-medium text-white mt-12 mb-4">Layer 2 — Templates: zero blank canvas</h3>
+      <h3 class="text-2xl font-medium text-white mt-12 mb-4">Layer 2 - Templates: zero blank canvas</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        A local marketing manager should never start from a blank page. Every format the organization uses must have a template — ready, approved, blocking structural changes.
+        A local marketing manager should never start from a blank page. Every format the organization uses must have a template - ready, approved, blocking structural changes.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        A template isn't "inspiration." A template is <span class="text-white">decisions baked into the file</span>. Designer sees in the Figma library: "ad-social-1080×1080-v3." Opens it, swaps text, exports. Time from brief to publication — 12 minutes instead of 90.
+        A template isn't "inspiration." A template is <span class="text-white">decisions baked into the file</span>. Designer sees in the Figma library: "ad-social-1080×1080-v3." Opens it, swaps text, exports. Time from brief to publication - 12 minutes instead of 90.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Critical templates for multi-location:
@@ -3493,21 +3493,21 @@ auto_load: true
         <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Print (poster + flyer + outdoor banner).</span></li>
         <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Digital ad (display + video + email).</span></li>
         <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>In-location signage (window + interior + counter).</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Internal — schedule, certificate, employee comms.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Internal - schedule, certificate, employee comms.</span></li>
       </ul>
 
-      <h3 class="text-2xl font-medium text-white mt-12 mb-4">Layer 3 — Governance: one custodian</h3>
+      <h3 class="text-2xl font-medium text-white mt-12 mb-4">Layer 3 - Governance: one custodian</h3>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        A brand without an owner drifts. A 5-person committee — same state. You need <span class="text-white">one person with an explicit mandate</span>: "this is my job, I have veto over brand decisions, I report directly to the CEO."
+        A brand without an owner drifts. A 5-person committee - same state. You need <span class="text-white">one person with an explicit mandate</span>: "this is my job, I have veto over brand decisions, I report directly to the CEO."
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         That person's tasks:
       </p>
       <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Quarterly audit — sampling 5% of locations, compliance scoring.</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Approval cadence — sprint review every 2 weeks, not ad-hoc.</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Drift KPI — measurable metric, reported to the board.</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Exception protocol — when local teams want an "exception," there's a clear path.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Quarterly audit - sampling 5% of locations, compliance scoring.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Approval cadence - sprint review every 2 weeks, not ad-hoc.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Drift KPI - measurable metric, reported to the board.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span>Exception protocol - when local teams want an "exception," there's a clear path.</span></li>
       </ul>
 
       <div class="my-16 border-l-2 border-[#D4FF00] pl-6 md:pl-8">
@@ -3521,9 +3521,9 @@ auto_load: true
         What you measure, happens. Without a metric, brand consistency is wishful thinking. Three KPIs worth tracking in a multi-location organization:
       </p>
       <ul class="list-none mb-10 space-y-3 text-neutral-400 text-lg">
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Visual compliance score</span> — audit per location, 1-10 rating vs brand guidelines.</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Template adoption rate</span> — % of materials produced from templates vs ad-hoc.</span></li>
-        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Time-to-publish</span> per location — proxy for operational efficiency of the brand system.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Visual compliance score</span> - audit per location, 1-10 rating vs brand guidelines.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Template adoption rate</span> - % of materials produced from templates vs ad-hoc.</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#D4FF00] mt-1.5 text-xs">●</span> <span><span class="text-white">Time-to-publish</span> per location - proxy for operational efficiency of the brand system.</span></li>
       </ul>
 
       <div class="my-16 p-8 md:p-12 bg-white/[0.025] dark:bg-white/[0.025]">
@@ -3537,7 +3537,7 @@ auto_load: true
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Fitness network, hearing-care network, retail network</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        We've worked with multi-location brands for years. The pattern repeats, regardless of industry. Sport, wellness, hearing-care, retail real-estate — each of these brands had the same moment when the brand required operationalization, not another refresh.
+        We've worked with multi-location brands for years. The pattern repeats, regardless of industry. Sport, wellness, hearing-care, retail real-estate - each of these brands had the same moment when the brand required operationalization, not another refresh.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         A brand that wants to scale to 250 locations needs to think like an operation from the <span class="text-white">beginning</span>, not like a creative studio. The earlier the system is in place, the less drift to fix later.
@@ -3550,7 +3550,7 @@ auto_load: true
           Brand at scale<br/>isn't aesthetics.<br/>It's operations.
         </h3>
         <p class="text-lg font-medium max-w-2xl opacity-80">
-          If your brand is scaling across a dozen locations or hundreds — and you feel drift eating consistency — an operational system costs less than an annual rebrand.
+          If your brand is scaling across a dozen locations or hundreds - and you feel drift eating consistency - an operational system costs less than an annual rebrand.
         </p>
       </div>
     `
@@ -3570,7 +3570,7 @@ auto_load: true
         Nie "rusza" w sensie, że ludzie są zajęci. Rusza w sensie: decyzje się zapadają, wnioski stają się jasne, wyjście jest spójne i rzeczy trafiają na rynek bez dramatów. To jest luka między klasyczną agencją a tym, co ja faktycznie robię.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Agencja sprzedaje wykonanie. Partner operacyjny instaluje system dostaw — i potem go używa, aby wysyłać prace wysokiej jakości szybko.
+        Agencja sprzedaje wykonanie. Partner operacyjny instaluje system dostaw - i potem go używa, aby wysyłać prace wysokiej jakości szybko.
       </p>
 
       <div class="my-16 border-l-2 border-[#D4FF00] pl-6 md:pl-8">
@@ -3600,14 +3600,14 @@ auto_load: true
         Brief to nie formalność. To dane wejściowe, które determinują prędkość dostarczenia, jakość wyjścia i wyrównanie.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Słabe dane wejściowe tworzą słabe wyjście — i kosztowne iteracje. Mocne dane wejściowe czynią jakość i prędkość przewidywalne. Dlatego pierwszą rzeczą, którą optymalizuję, są nie wizualizacje. To sposób, w jaki praca wchodzi do systemu.
+        Słabe dane wejściowe tworzą słabe wyjście - i kosztowne iteracje. Mocne dane wejściowe czynią jakość i prędkość przewidywalne. Dlatego pierwszą rzeczą, którą optymalizuję, są nie wizualizacje. To sposób, w jaki praca wchodzi do systemu.
       </p>
 
       <div class="my-16 bg-neutral-900/50 p-8 md:p-12 border border-white/5 relative overflow-hidden">
         <div class="absolute top-0 right-0 p-4 opacity-10 font-display text-9xl leading-none text-[#D4FF00] pointer-events-none select-none">OS</div>
         <h3 class="relative z-10 font-display text-white text-2xl uppercase tracking-widest mb-4">Co mam na myśli przez "Delivery OS"</h3>
         <p class="relative z-10 mb-6 text-lg leading-relaxed text-neutral-400">
-           Delivery OS to nie oprogramowanie. To model operacyjny — powtarzalny zestaw reguł, który zamienia wnioski w wyjście gotowe do publikacji.
+           Delivery OS to nie oprogramowanie. To model operacyjny - powtarzalny zestaw reguł, który zamienia wnioski w wyjście gotowe do publikacji.
         </p>
         <ol class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-4 text-neutral-400 text-lg">
           <li class="bg-black/20 p-4 border border-white/5"><strong class="text-[#D4FF00] block text-xs font-display uppercase tracking-widest mb-1">01. Intake</strong> co wchodzi, jak to wchodzi</li>
@@ -3621,7 +3621,7 @@ auto_load: true
 
       <div class="my-12">
          <h3 class="font-display text-[#D4FF00] text-2xl md:text-4xl uppercase tracking-tighter leading-tight text-center">
-            Najwyższa jakość i szybkie dostarczenie to nie przeciwieństwa — jeśli systematyzujesz wykonanie.
+            Najwyższa jakość i szybkie dostarczenie to nie przeciwieństwa - jeśli systematyzujesz wykonanie.
          </h3>
       </div>
 
@@ -3638,12 +3638,12 @@ auto_load: true
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">Co się zmienia w epoce AI</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Oczywista historia to: AI robi wykonanie szybciej. Prawda — ale to nie główny punkt. Rzeczywista zmiana polega na tym, że produkcja staje się tańsza, podczas gdy decydowanie pozostaje drogie.
+        Oczywista historia to: AI robi wykonanie szybciej. Prawda - ale to nie główny punkt. Rzeczywista zmiana polega na tym, że produkcja staje się tańsza, podczas gdy decydowanie pozostaje drogie.
       </p>
 
       <div class="my-10 pl-6 border-l border-neutral-700">
         <p class="text-xl text-white italic">
-          "Bez systemu AI nie tworzy prędkości — tworzy chaos szybciej."
+          "Bez systemu AI nie tworzy prędkości - tworzy chaos szybciej."
         </p>
       </div>
 
@@ -3679,7 +3679,7 @@ auto_load: true
         Not “move” as in people are busy. Move as in: decisions get made, requests become clear, output is consistent, and things ship without drama. That’s the gap between a classic agency and what I actually do.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        An agency sells execution. An operating partner installs a delivery system — and then uses it to ship high-quality work fast.
+        An agency sells execution. An operating partner installs a delivery system - and then uses it to ship high-quality work fast.
       </p>
 
       <div class="my-16 border-l-2 border-[#D4FF00] pl-6 md:pl-8">
@@ -3709,14 +3709,14 @@ auto_load: true
         A brief isn’t a formality. It’s the input that determines speed of delivery, quality of output, and alignment.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        Weak input creates weak output — and expensive iteration. Strong input makes quality and speed predictable. That’s why the first thing I optimize is not visuals. It’s the way work enters the system.
+        Weak input creates weak output - and expensive iteration. Strong input makes quality and speed predictable. That’s why the first thing I optimize is not visuals. It’s the way work enters the system.
       </p>
 
       <div class="my-16 bg-neutral-900/50 p-8 md:p-12 border border-white/5 relative overflow-hidden">
         <div class="absolute top-0 right-0 p-4 opacity-10 font-display text-9xl leading-none text-[#D4FF00] pointer-events-none select-none">OS</div>
         <h3 class="relative z-10 font-display text-white text-2xl uppercase tracking-widest mb-4">What I mean by “Delivery OS”</h3>
         <p class="relative z-10 mb-6 text-lg leading-relaxed text-neutral-400">
-           A Delivery OS is not software. It’s an operating model — a repeatable set of rules that turns requests into publish-ready output.
+           A Delivery OS is not software. It’s an operating model - a repeatable set of rules that turns requests into publish-ready output.
         </p>
         <ol class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-4 text-neutral-400 text-lg">
           <li class="bg-black/20 p-4 border border-white/5"><strong class="text-[#D4FF00] block text-xs font-display uppercase tracking-widest mb-1">01. Intake</strong> what enters, how it enters</li>
@@ -3730,7 +3730,7 @@ auto_load: true
 
       <div class="my-12">
          <h3 class="font-display text-[#D4FF00] text-2xl md:text-4xl uppercase tracking-tighter leading-tight text-center">
-            Premium quality and fast delivery are not opposites — if you systemize execution.
+            Premium quality and fast delivery are not opposites - if you systemize execution.
          </h3>
       </div>
 
@@ -3747,12 +3747,12 @@ auto_load: true
 
       <h2 class="text-3xl font-bold text-white mt-16 mb-6">What changes in the AI era</h2>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        The obvious story is: AI makes execution faster. True — but not the main point. The real shift is that making gets cheaper, while deciding stays expensive.
+        The obvious story is: AI makes execution faster. True - but not the main point. The real shift is that making gets cheaper, while deciding stays expensive.
       </p>
       
       <div class="my-10 pl-6 border-l border-neutral-700">
         <p class="text-xl text-white italic">
-          "Without a system, AI doesn’t create speed — it creates chaos faster."
+          "Without a system, AI doesn’t create speed - it creates chaos faster."
         </p>
       </div>
 

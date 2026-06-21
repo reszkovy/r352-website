@@ -8,19 +8,19 @@ import { industries, type IndustryContent } from "@/app/data/industries";
 import { ArrowRight } from "lucide-react";
 
 /**
- * IndustryDetail — shared template for every /industries/:slug page.
+ * IndustryDetail - shared template for every /industries/:slug page.
  *
  * One file, four routes. Content lives in `src/app/data/industries.ts`.
  * Adding a fifth segment is a data edit, not a component change.
  *
  * Page sections (top → bottom):
- *  1. Hero          — eyebrow + h1 + subcopy + dual CTA
- *  2. Symptoms      — "Common symptoms" / "Typowe symptomy"
- *  3. r352 Approach — 8-step r3loop, tightly summarized
- *  4. Proof         — client, context, outcome stat, link to case study
- *  5. What you get  — Diagnostic deliverables for this segment
- *  6. FAQ           — operator questions per vertical + FAQPage JSON-LD
- *  7. CTA           — large repeat of primary CTA + softer fallbacks
+ *  1. Hero          - eyebrow + h1 + subcopy + dual CTA
+ *  2. Symptoms      - "Common symptoms" / "Typowe symptomy"
+ *  3. r352 Approach - 8-step r3loop, tightly summarized
+ *  4. Proof         - client, context, outcome stat, link to case study
+ *  5. What you get  - Diagnostic deliverables for this segment
+ *  6. FAQ           - operator questions per vertical + FAQPage JSON-LD
+ *  7. CTA           - large repeat of primary CTA + softer fallbacks
  */
 
 // ─── r3loop step content (shared across all industries) ──────────────
@@ -31,8 +31,8 @@ const R3LOOP_STEPS: { num: string; key: string; en: { title: string; body: strin
   {
     num: "01",
     key: "diagnose",
-    en: { title: "Diagnose", body: "Audit the current state — workflow, briefs, approvals, capacity. Name what's broken before fixing anything." },
-    pl: { title: "Diagnose", body: "Audyt obecnego stanu — workflow, briefy, akceptacje, capacity. Nazwij co nie działa, zanim cokolwiek naprawisz." },
+    en: { title: "Diagnose", body: "Audit the current state - workflow, briefs, approvals, capacity. Name what's broken before fixing anything." },
+    pl: { title: "Diagnose", body: "Audyt obecnego stanu - workflow, briefy, akceptacje, capacity. Nazwij co nie działa, zanim cokolwiek naprawisz." },
   },
   {
     num: "02",
@@ -55,8 +55,8 @@ const R3LOOP_STEPS: { num: string; key: string; en: { title: string; body: strin
   {
     num: "05",
     key: "govern",
-    en: { title: "Govern", body: "Install approval gates — Master / Variant / Pre-production. Each gate has a named owner and a defined SLA." },
-    pl: { title: "Govern", body: "Wprowadź bramki akceptacji — Master / Variant / Pre-production. Każda bramka ma imiennego ownera i zdefiniowane SLA." },
+    en: { title: "Govern", body: "Install approval gates - Master / Variant / Pre-production. Each gate has a named owner and a defined SLA." },
+    pl: { title: "Govern", body: "Wprowadź bramki akceptacji - Master / Variant / Pre-production. Każda bramka ma imiennego ownera i zdefiniowane SLA." },
   },
   {
     num: "06",
@@ -95,8 +95,8 @@ function IndustryNotFound() {
           </h1>
           <p className="text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed mb-10">
             {language === "pl"
-              ? "Wróć do listy branż lub napisz na hello@r352.com — pewnie i tak rozmawialiśmy o czymś podobnym."
-              : "Head back to the industries list or write hello@r352.com — chances are we've worked with something close."}
+              ? "Wróć do listy branż lub napisz na hello@r352.com - pewnie i tak rozmawialiśmy o czymś podobnym."
+              : "Head back to the industries list or write hello@r352.com - chances are we've worked with something close."}
           </p>
           <Link
             href="/industries"
@@ -126,7 +126,7 @@ export function IndustryDetail() {
   const [openFaq, setOpenFaq] = useState<Record<number, boolean>>({});
 
   // The component stays mounted when navigating between industry slugs
-  // (same route pattern), but the <details> elements re-create closed —
+  // (same route pattern), but the <details> elements re-create closed -
   // reset the aria mirror so it can't go stale across slugs.
   useEffect(() => {
     setOpenFaq({});
@@ -134,9 +134,9 @@ export function IndustryDetail() {
 
   if (!content) return <IndustryNotFound />;
 
-  // FAQPage JSON-LD for this segment — mirrors the on-page FAQ section below
+  // FAQPage JSON-LD for this segment - mirrors the on-page FAQ section below
   // (schema/content parity, Google FAQ policy). Built from the active language.
-  // NOTE: react-helmet-async does not render <script> inside fragments — the
+  // NOTE: react-helmet-async does not render <script> inside fragments - the
   // <script> must be a direct child of <Helmet> (same pattern as Process.tsx).
   const faqSchema = {
     "@context": "https://schema.org",
@@ -151,7 +151,7 @@ export function IndustryDetail() {
     })),
   };
 
-  // Convenience accessors — language picker repeated all over the JSX otherwise.
+  // Convenience accessors - language picker repeated all over the JSX otherwise.
   const eyebrow = content.eyebrow[language];
   const h1 = content.h1[language];
   const subcopy = content.subcopy[language];
@@ -181,7 +181,7 @@ export function IndustryDetail() {
             {subcopy}
           </p>
 
-          {/* Dual CTA — primary (lime/black) + secondary (outlined). */}
+          {/* Dual CTA - primary (lime/black) + secondary (outlined). */}
           <div className="flex flex-col sm:flex-row gap-4 sm:items-center">
             <Link
               href={content.ctaHref}
@@ -217,7 +217,7 @@ export function IndustryDetail() {
             </div>
             <p className="col-span-12 md:col-span-8 md:pt-2 text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
               {language === "pl"
-                ? "Jeśli kiwasz głową przy więcej niż dwóch — to nie problem talentu. To problem systemu."
+                ? "Jeśli kiwasz głową przy więcej niż dwóch - to nie problem talentu. To problem systemu."
                 : "If you're nodding at more than two of these, it's not a talent problem. It's a system problem."}
             </p>
           </div>
@@ -250,8 +250,8 @@ export function IndustryDetail() {
             </div>
             <p className="col-span-12 md:col-span-8 md:pt-2 text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
               {language === "pl"
-                ? "r3loop — nasza 8-stopniowa metodologia. Ta sama sekwencja dla każdego klienta, głębokość kroków skalowana do wielkości engagementu."
-                : "r3loop — our 8-step methodology. Same sequence for every client, depth of each step scales with the engagement."}
+                ? "r3loop - nasza 8-stopniowa metodologia. Ta sama sekwencja dla każdego klienta, głębokość kroków skalowana do wielkości engagementu."
+                : "r3loop - our 8-step methodology. Same sequence for every client, depth of each step scales with the engagement."}
             </p>
           </div>
 
@@ -303,7 +303,7 @@ export function IndustryDetail() {
             {language === "pl" ? "Zrobione w praktyce" : "Done in practice"}
           </h2>
 
-          {/* Proof card — same line-only treatment as Industries listing.
+          {/* Proof card - same line-only treatment as Industries listing.
               Removed bg-neutral-50/50 dark:bg-white/[0.02] tint per 2026-06 directive
               ("brzydkie tła których mieliśmy unikać"). Border alone carries the
               container affordance, matches the no-chrome aesthetic used across
@@ -357,8 +357,8 @@ export function IndustryDetail() {
             </div>
             <p className="col-span-12 md:col-span-8 md:pt-2 text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
               {language === "pl"
-                ? "5-dniowy fixed-scope audyt operacyjny — €2k, jednostronicowa diagnoza, 60-day money-back guarantee jeśli rekomendacje nie są actionable."
-                : "5-day fixed-scope operational audit — €2k, one-page written diagnosis, 60-day money-back guarantee if recommendations aren't actionable."}
+                ? "5-dniowy fixed-scope audyt operacyjny - €2k, jednostronicowa diagnoza, 60-day money-back guarantee jeśli rekomendacje nie są actionable."
+                : "5-day fixed-scope operational audit - €2k, one-page written diagnosis, 60-day money-back guarantee if recommendations aren't actionable."}
             </p>
           </div>
 
@@ -394,8 +394,8 @@ export function IndustryDetail() {
             </div>
             <p className="col-span-12 md:col-span-8 md:pt-2 text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
               {language === "pl"
-                ? "Pytania, które słyszymy od COO i dyrektorów sieci w tym verticalu — odpowiedzi krótkie, konkretne, z faktów."
-                : "The questions we hear from COOs and network directors in this vertical — short, specific answers, facts only."}
+                ? "Pytania, które słyszymy od COO i dyrektorów sieci w tym verticalu - odpowiedzi krótkie, konkretne, z faktów."
+                : "The questions we hear from COOs and network directors in this vertical - short, specific answers, facts only."}
             </p>
           </div>
 

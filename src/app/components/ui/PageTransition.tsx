@@ -19,11 +19,11 @@ interface PageTransitionProps {
 
 // ─── Transition sound (singleton, reused across mounts) ──────────────
 // Browsers block autoplay before any user gesture, so the very first
-// page load is silent — every subsequent navigation (which IS a gesture)
+// page load is silent - every subsequent navigation (which IS a gesture)
 // triggers the sound. .catch() swallows the autoplay-policy rejection.
 let transitionAudio: HTMLAudioElement | null = null;
 if (typeof window !== "undefined") {
-  // MP3 (48KB VBR) replaces the original 928KB WAV — eagerly preloaded on first
+  // MP3 (48KB VBR) replaces the original 928KB WAV - eagerly preloaded on first
   // paint, so the lossless PCM was a heavy, pointless cost for a 5s whoosh played
   // at volume 0.4. Perceptually identical, 95% smaller. (QA 2026-06-21)
   transitionAudio = new Audio("/sounds/transition-ltr.mp3");
@@ -98,7 +98,7 @@ export function PageTransition({ children, className }: PageTransitionProps) {
   // (horizontal tilts on Y feel via lateral travel), a vertical motion-blur
   // smear (gaussian blur + anisotropic scaleY stretch), and parallax between
   // the exiting and entering layer (exit drifts 28px WITH the sweep flow,
-  // entry arrives from 44px against it — outgoing moves slower than incoming,
+  // entry arrives from 44px against it - outgoing moves slower than incoming,
   // reading as depth). Timing/easing identical to horizontal so the compass
   // cycle feels like one system.
   const isVertical =
@@ -194,11 +194,11 @@ export function PageTransition({ children, className }: PageTransitionProps) {
 
   return (
     <>
-      {/* Depth scrim — directional shadow on the OUTGOING page (vertical only).
+      {/* Depth scrim - directional shadow on the OUTGOING page (vertical only).
           Sits just below the sweeps; deepens toward the edge the sweep enters
           from, so the sweep reads as a physical layer sliding OVER the page.
           Fades in during exit, and the incoming page mounts WITH it visible,
-          fading out as the sweep peels away — exit and enter interlock, no gap. */}
+          fading out as the sweep peels away - exit and enter interlock, no gap. */}
       {isVertical && (
         <motion.div
           aria-hidden
@@ -248,7 +248,7 @@ export function PageTransition({ children, className }: PageTransitionProps) {
         }}
       />
 
-      {/* Static branding — stays perfectly still, revealed/concealed by sweep via clipPath */}
+      {/* Static branding - stays perfectly still, revealed/concealed by sweep via clipPath */}
       <motion.div
         className="fixed inset-0 z-[10000] pointer-events-none flex items-center justify-center"
         initial={{ clipPath: branding.initial }}

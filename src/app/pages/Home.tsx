@@ -39,7 +39,7 @@ export function Home() {
 
       <Marquee />
 
-      {/* ─── Operating Model teaser — compressed proof of anti-hourly thesis.
+      {/* ─── Operating Model teaser - compressed proof of anti-hourly thesis.
           3-row condensed view of /process Operating Model graph. Plants the
           "system not hours" POV BEFORE buyer reaches services. Links to full
           graph on /process for buyers who want the depth. */}
@@ -110,7 +110,7 @@ export function Home() {
 
       <HomePrinciples />
 
-      {/* ─── Brief CTA — 12-col 7+5 asymmetric ─── */}
+      {/* ─── Brief CTA - 12-col 7+5 asymmetric ─── */}
       <section className="py-24 md:py-32 border-t border-white/10">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
           <Reveal>
@@ -128,8 +128,8 @@ export function Home() {
               <div className="col-span-12 md:col-span-5 md:justify-self-end max-w-md space-y-6">
                 <p className="text-base md:text-lg text-neutral-400 leading-relaxed">
                   {language === "pl"
-                    ? "8 sekcji, ~26 pytań, ~10 minut. Pierwsza odpowiedź w 48 godzin — model współpracy, kierunek zakresu, następny krok."
-                    : "8 sections, ~26 questions, ~10 minutes. First response within 48 hours — engagement model, scope direction, next step."}
+                    ? "8 sekcji, ~26 pytań, ~10 minut. Pierwsza odpowiedź w 48 godzin - model współpracy, kierunek zakresu, następny krok."
+                    : "8 sections, ~26 questions, ~10 minutes. First response within 48 hours - engagement model, scope direction, next step."}
                 </p>
                 <MagneticButton
                   onClick={() => setLocation("/brief")}

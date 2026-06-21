@@ -13,7 +13,7 @@ interface SectionWatermarkProps {
 }
 
 /**
- * Editorial watermark — giant Tanker number sitting behind a section,
+ * Editorial watermark - giant Tanker number sitting behind a section,
  * scroll-linked to the section's viewport progress. Provides typographic
  * signature without adding decoration noise.
  *
@@ -21,7 +21,7 @@ interface SectionWatermarkProps {
  * GSAP + ScrollTrigger approach which had initial-paint timing bugs (number
  * sometimes wasn't visible until first scroll/click triggered ScrollTrigger
  * recalc). useScroll subscribes natively to scroll progress via the React
- * lifecycle — value is computed on first render, no refresh dance needed.
+ * lifecycle - value is computed on first render, no refresh dance needed.
  *
  *  - Number translates downward as the section scrolls (-10% → +30%).
  *  - Number rotates subtly (-4° → +6°) for kinetic depth.
@@ -56,18 +56,18 @@ export function SectionWatermark({
 
   return (
     // `isolate` is load-bearing: it makes this wrapper its own stacking
-    // context, so the watermark's -z-10 resolves HERE — above the page
+    // context, so the watermark's -z-10 resolves HERE - above the page
     // background, below the section content. Without it, the negative
     // z-index resolves against the root stacking context and the number
     // paints BEHIND the app's bg-background div (App.tsx) → invisible.
     // This used to "work" only while PageTransition's wrapper kept an
     // inline transform/filter (accidental stacking context), which it now
-    // clears in onAnimationComplete to fix position:sticky — leaving the
+    // clears in onAnimationComplete to fix position:sticky - leaving the
     // watermark hidden on fresh load until a re-render re-applied styles.
     // isolation:isolate does NOT create a containing block, so it is safe
     // for sticky/fixed descendants.
     <div ref={sectionRef} className={`relative isolate ${className}`}>
-      {/* Watermark — sits behind content, never receives pointer events */}
+      {/* Watermark - sits behind content, never receives pointer events */}
       <div
         aria-hidden
         className={`pointer-events-none absolute top-0 ${alignClass} -z-10 hidden md:block select-none overflow-hidden`}

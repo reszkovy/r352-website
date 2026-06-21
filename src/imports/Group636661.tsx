@@ -7,7 +7,7 @@ import img110 from "figma:asset/23fa00f7824aa041c745cd0a2128c70bb7554f79.png";
 function Frame() {
   return (
     <div className="absolute content-stretch flex flex-col items-start left-0 p-[10px] top-0 w-[2109px]">
-      <div className="aspect-[2920/1648] relative shrink-0 w-full" data-name="6 – 2 1">
+      <div className="aspect-[2920/1648] relative shrink-0 w-full" data-name="6 - 2 1">
         <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={img621} />
       </div>
     </div>

@@ -4,20 +4,20 @@ import { useAudio } from "@/app/context/AudioContext";
 import { useReducedMotion } from "@/app/hooks/useReducedMotion";
 
 /**
- * SoundWaveWidget — premium 4-bar audio visualizer + click-to-toggle in the
+ * SoundWaveWidget - premium 4-bar audio visualizer + click-to-toggle in the
  * top-right of the AgencyHeader. Replaces the previous AudioToggle (the
  * "szum" / UI sound 3-bar equalizer) per client direction 2026-06-10.
  *
  * States:
  *   - idle (paused) → soft outline speaker icon with rounded sound waves
- *                     (warm vector style per client direction 2026-06-10 —
+ *                     (warm vector style per client direction 2026-06-10 -
  *                     the resting bars read as a collapsed menu). Waves
  *                     "breathe" gently on hover.
  *   - playing       → bars EQ-bounce in staggered loop (unchanged)
  *   - idle ↔ playing → crossfade + scale, ease cubic-bezier(0.22, 1, 0.36, 1)
  *
  * Tooltip motion is hand-rolled from the ChipTooltip pattern (AgencyHero.tsx)
- * — fade + slide(6px) + scale(0.97) + blur, ease cubic-bezier(0.22, 1, 0.36, 1).
+ * - fade + slide(6px) + scale(0.97) + blur, ease cubic-bezier(0.22, 1, 0.36, 1).
  * The ChipTooltip COMPONENT itself is not reused (it's tuned for chip layout
  * with arrow pointer + max-width); we replicate only the motion language.
  *
@@ -75,9 +75,9 @@ export function SoundWaveWidget({ className = "" }: { className?: string }) {
           className="relative block w-[20px] h-[20px]"
           aria-hidden="true"
         >
-          {/* IDLE — universal outline PLAY (client direction 2026-06-10):
+          {/* IDLE - universal outline PLAY (client direction 2026-06-10):
               same visual language as the ThemeToggle sun (lucide-style
-              1.75 stroke outline) — instantly readable as "play", no
+              1.75 stroke outline) - instantly readable as "play", no
               ambiguity with a collapsed menu. Subtle scale-breathe on hover. */}
           <span
             className="absolute inset-0 flex items-center justify-center"
@@ -105,12 +105,12 @@ export function SoundWaveWidget({ className = "" }: { className?: string }) {
                 transformOrigin: "center",
               }}
             >
-              {/* Play triangle — rounded joins, friendly outline */}
+              {/* Play triangle - rounded joins, friendly outline */}
               <path d="M8.5 6.8c0-1 1.1-1.6 2-1.1l8 4.7c.9.5.9 1.7 0 2.2l-8 4.7c-.9.5-2-.1-2-1.1V6.8Z" />
             </svg>
           </span>
 
-          {/* PLAYING — 4-bar EQ (unchanged animation) */}
+          {/* PLAYING - 4-bar EQ (unchanged animation) */}
           <span
             className="absolute inset-0 flex items-end justify-center gap-[3px] py-[2px]"
             style={{
@@ -148,7 +148,7 @@ export function SoundWaveWidget({ className = "" }: { className?: string }) {
         `}</style>
       </button>
 
-      {/* Hover tooltip — same motion language as ChipTooltip, lighter chrome.
+      {/* Hover tooltip - same motion language as ChipTooltip, lighter chrome.
           Positioned BELOW the widget (top-full) since the widget lives at the
           very top of the page and there's no headroom above. */}
       <motion.span
@@ -181,7 +181,7 @@ export function SoundWaveWidget({ className = "" }: { className?: string }) {
             className="absolute top-0 left-3 right-3 h-px bg-gradient-to-r from-transparent via-[#D4FF00]/50 to-transparent"
           />
           <span className="block text-[10px] leading-snug text-neutral-100 normal-case tracking-normal font-sans text-center whitespace-nowrap">
-            {isPlaying ? "Now playing — click to pause" : "Click to play music"}
+            {isPlaying ? "Now playing - click to pause" : "Click to play music"}
           </span>
         </span>
       </motion.span>

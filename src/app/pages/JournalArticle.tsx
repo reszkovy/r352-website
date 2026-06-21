@@ -27,7 +27,7 @@ function toISODate(display: string, explicit?: string): string {
 export function JournalArticle({ params }: { params?: { id: string } }) {
   const { language } = useLanguage();
   const id = params?.id ? parseInt(params.id) : null;
-  // Only published articles are routable — unpublished (published: false) return "Article Not Found"
+  // Only published articles are routable - unpublished (published: false) return "Article Not Found"
   const publishedArticles = journalArticles.filter(a => a.published !== false);
   const articleIndex = publishedArticles.findIndex((a) => a.id === id);
   const article = publishedArticles[articleIndex];
@@ -56,7 +56,7 @@ export function JournalArticle({ params }: { params?: { id: string } }) {
     );
   }
 
-  // Article JSON-LD — built from the same data fields the page renders
+  // Article JSON-LD - built from the same data fields the page renders
   // (headline, datePublished, author Person). Complements the BlogPosting
   // schema injected by SEO.tsx with an explicit named-author entity.
   const articleSchema = {

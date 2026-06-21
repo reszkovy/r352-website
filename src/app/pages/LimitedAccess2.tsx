@@ -65,7 +65,7 @@ const pricingItems = [
   { name: "Social Media Pack", desc: "Zestaw grafik na feed, stories i/lub karuzele", price: "od 3 500 PLN" },
   { name: "Display / Programmatic", desc: "Zestaw banerów digital w ustalonych formatach", price: "od 1 000 PLN" },
   { name: "Prezentacja sprzedażowa", desc: "Plik Figma, do 15-25 slajdów, edytowalny szablon", price: "od 3 500 PLN" },
-  { name: "Materiały drukowane / BTL", desc: "Ulotka, plakat, rollup — pliki print-ready", price: "od 3 000 PLN" },
+  { name: "Materiały drukowane / BTL", desc: "Ulotka, plakat, rollup - pliki print-ready", price: "od 3 000 PLN" },
   { name: "Newsletter / E-mail marketing", desc: "Szablon HTML responsive, Mailchimp / Emarsys", price: "od 1 500 PLN" },
 ];
 
@@ -121,20 +121,20 @@ const assetPackages = [
 
 const processSteps = [
   { step: "Brief", desc: "Ustalamy cele, grupy docelowe i zakres materiałów." },
-  { step: "Koncept", desc: "Tworzymy Key Visual — główny motyw graficzny całej kampanii." },
+  { step: "Koncept", desc: "Tworzymy Key Visual - główny motyw graficzny całej kampanii." },
   { step: "Produkcja", desc: "Na bazie zaakceptowanego KV realizujemy wszystkie materiały (do 2 rund poprawek na każdy)." },
-  { step: "Dostarczenie", desc: "Przekazujemy gotowe pliki w ustalonych formatach — gotowe do publikacji i druku." },
+  { step: "Dostarczenie", desc: "Przekazujemy gotowe pliki w ustalonych formatach - gotowe do publikacji i druku." },
 ];
 
 // ─── Client-friendly glossary ────────────────────────────────────────────────
 
 const glossary: Record<string, string> = {
-  "Key Visual (KV)": "Główna grafika kampanii — motyw wizualny, z którego powstają wszystkie pozostałe materiały.",
+  "Key Visual (KV)": "Główna grafika kampanii - motyw wizualny, z którego powstają wszystkie pozostałe materiały.",
   "Landing Page (LP)": "Dedykowana strona internetowa kampanii, na którą kierowany jest ruch z reklam.",
   "Social Media Pack": "Gotowe grafiki i wideo do publikacji na kanałach społecznościowych.",
   "Display / Programmatic": "Banery reklamowe wyświetlane w sieci reklamowej (Google Display, DV360 itp.).",
   "Prezentacja sprzedażowa": "Edytowalny szablon prezentacji dla zespołu sprzedaży Klienta.",
-  "Materiały drukowane / BTL": "Materiały fizyczne: ulotki, plakaty, rollupy — pliki gotowe do druku.",
+  "Materiały drukowane / BTL": "Materiały fizyczne: ulotki, plakaty, rollupy - pliki gotowe do druku.",
   "Newsletter / E-mail marketing": "Szablony mailingowe responsywne, gotowe do wysyłki przez Mailchimp lub SAP Emarsys.",
 };
 
@@ -145,11 +145,11 @@ const faqItems = [
   },
   {
     q: "Kto dostarcza zdjęcia i fonty?",
-    a: "Zdjęcia stockowe dobieramy i kupujemy my — są wliczone w cenę. Licencje na fonty (np. firmowy krój Pyszne.pl) pozostają po stronie Klienta.",
+    a: "Zdjęcia stockowe dobieramy i kupujemy my - są wliczone w cenę. Licencje na fonty (np. firmowy krój Pyszne.pl) pozostają po stronie Klienta.",
   },
   {
     q: "Co oznacza \"do 2 rund poprawek\"?",
-    a: "Po każdym etapie Klient ma dwie okazje do zgłoszenia uwag, które realizujemy w cenie. Trzecia i kolejne rundy są wyceniane osobno — żeby motywować obie strony do precyzyjnego feedbacku.",
+    a: "Po każdym etapie Klient ma dwie okazje do zgłoszenia uwag, które realizujemy w cenie. Trzecia i kolejne rundy są wyceniane osobno - żeby motywować obie strony do precyzyjnego feedbacku.",
   },
   {
     q: "Dlaczego prezentacje w Figmie, a nie w PowerPoint?",
@@ -258,7 +258,7 @@ function generatePitchPdf() {
     pdf.addImage(canvas.toDataURL("image/jpeg", 0.95), "JPEG", 0, 0, SW, SH);
   };
 
-  // 1 — Cover
+  // 1 - Cover
   addSlide(() => {
     ctx.fillStyle = "rgba(255,255,255,0.015)"; ctx.font = "bold 600px Arial, sans-serif"; ctx.fillText("r", SW - 600, 700);
     ctx.strokeStyle = L + "30"; ctx.lineWidth = 1;
@@ -278,7 +278,7 @@ function generatePitchPdf() {
     ctx.fillText("R352 AGENCY", PAD + 30, 780); ctx.letterSpacing = "0px";
   }, 1);
 
-  // 2 — Comparison
+  // 2 - Comparison
   addSlide(() => {
     slideHeader(ctx, "01", "Co otrzymujesz", "Por\u00F3wnanie wariant\u00F3w A i B");
     const tY = 200, nameW = 380, colW = (CONTENT_W - nameW) / 2, colAx = PAD + nameW, colBx = PAD + nameW + colW;
@@ -326,7 +326,7 @@ function generatePitchPdf() {
     ctx.fillText("Ceny netto + 23% VAT  \u00b7  Materia\u0142y stock w cenie  \u00b7  Do 2 rund poprawek", PAD, SH - 80);
   }, 2);
 
-  // 3 — Cennik
+  // 3 - Cennik
   addSlide(() => {
     slideHeader(ctx, "02", "Cennik pojedynczych us\u0142ug", "Ceny za materia\u0142y zamawiane niezale\u017Cnie od pakietu");
     const tY = 210;
@@ -362,7 +362,7 @@ function generatePitchPdf() {
     });
   }, 3);
 
-  // 4 — Pakiety adaptacji
+  // 4 - Pakiety adaptacji
   addSlide(() => {
     slideHeader(ctx, "03", "Adaptacje formatowe", "Dodatkowe rozmiary i formaty na bazie Key Visual");
     const cW = (CONTENT_W - 60) / 3, cH = 360, cY = 210;
@@ -385,7 +385,7 @@ function generatePitchPdf() {
     ctx.fillText("Przyk\u0142ad: KV kampanijny \u2192 5 baner\u00F3w display + 3 formaty social = Pakiet M (2 700 PLN)", PAD, SH - 80);
   }, 4);
 
-  // 5 — Proces
+  // 5 - Proces
   addSlide(() => {
     slideHeader(ctx, "04", "Jak wygl\u0105da wsp\u00F3\u0142praca", "Od briefu do gotowych materia\u0142\u00F3w w 3\u20136 tygodni");
     const cW = (CONTENT_W - 90) / 4, cH = 380, cY = 220;
@@ -407,7 +407,7 @@ function generatePitchPdf() {
     ctx.fillText("Do 2 rund poprawek w cenie  \u00b7  Dedykowany project manager  \u00b7  Komunikacja: Slack / e-mail", PAD, SH - 80);
   }, 5);
 
-  // 6 — Warunki
+  // 6 - Warunki
   addSlide(() => {
     slideHeader(ctx, "05", "Warunki p\u0142atno\u015Bci", "Rozliczenie etapowe 30 / 30 / 40");
     const tW = (CONTENT_W - 60) / 3;
@@ -436,7 +436,7 @@ function generatePitchPdf() {
     });
   }, 6);
 
-  // 7 — CTA
+  // 7 - CTA
   addSlide(() => {
     const g2 = ctx.createRadialGradient(SW / 2, SH / 2, 0, SW / 2, SH / 2, 600);
     g2.addColorStop(0, "rgba(212,255,0,0.04)"); g2.addColorStop(1, "rgba(0,0,0,0)");
@@ -586,7 +586,7 @@ export function LimitedAccess2() {
               </div>
               <p className="text-base md:text-lg text-white/50 mt-6 max-w-2xl leading-relaxed">
                 Przygotowaliśmy kompletny zestaw materiałów kreatywnych dla Pyszne Pay
-                — od głównej grafiki kampanii, przez social media i banery display, po szablony mailingowe i prezentację sprzedażową.
+                - od głównej grafiki kampanii, przez social media i banery display, po szablony mailingowe i prezentację sprzedażową.
               </p>
               <p className="text-sm text-white/30 mt-3 max-w-2xl leading-relaxed">
                 Poniżej przedstawiamy dwa warianty do wyboru, cennik na wypadek domawiania pojedynczych materiałów oraz odpowiedzi na najczęstsze pytania.
@@ -601,7 +601,7 @@ export function LimitedAccess2() {
             </div>
           </Reveal>
 
-          {/* ═══════════════════ W SKRÓCIE — A vs B ═══════════════════ */}
+          {/* ═══════════════════ W SKRÓCIE - A vs B ═══════════════════ */}
           <Reveal delay={0.03}>
             <div className="mb-24 grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Wariant A */}
@@ -615,7 +615,7 @@ export function LimitedAccess2() {
                   Solidna baza kampanijna: główna grafika (KV), social media, banery display, prezentacja sprzedażowa i 1 szablon mailingu.
                 </p>
                 <div className="mt-4 pt-4 border-t border-white/[0.06] space-y-1.5">
-                  {["Key Visual — 1 motyw", "8 grafik social media", "5 formatów display", "Prezentacja do 15 slajdów", "1 szablon newsletter"].map((item, i) => (
+                  {["Key Visual - 1 motyw", "8 grafik social media", "5 formatów display", "Prezentacja do 15 slajdów", "1 szablon newsletter"].map((item, i) => (
                     <div key={i} className="flex items-center gap-2">
                       <Check className="w-3 h-3 text-white/25 shrink-0" />
                       <span className="text-xs text-white/40">{item}</span>
@@ -641,7 +641,7 @@ export function LimitedAccess2() {
                 </p>
                 <div className="mt-4 pt-4 border-t border-[#D4FF00]/10 space-y-1.5">
                   {[
-                    "Key Visual — 1 motyw + 2 adaptacje",
+                    "Key Visual - 1 motyw + 2 adaptacje",
                     "15 grafik social media",
                     "10 formatów display",
                     "Prezentacja do 25 slajdów",
@@ -675,7 +675,7 @@ export function LimitedAccess2() {
                   </div>
                   <div>
                     <span className="text-sm text-white/70 block">Zdjęcia stockowe</span>
-                    <span className="text-[11px] text-white/30">Dobieramy i kupujemy — są w cenie</span>
+                    <span className="text-[11px] text-white/30">Dobieramy i kupujemy - są w cenie</span>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -692,7 +692,7 @@ export function LimitedAccess2() {
                     <Minus className="w-4 h-4 text-white/25" />
                   </div>
                   <div>
-                    <span className="text-sm text-white/50 block">Fonty — po stronie Klienta</span>
+                    <span className="text-sm text-white/50 block">Fonty - po stronie Klienta</span>
                     <span className="text-[11px] text-white/25">Licencje na krój firmowy Pyszne.pl</span>
                   </div>
                 </div>
@@ -700,7 +700,7 @@ export function LimitedAccess2() {
             </div>
           </Reveal>
 
-          {/* ═══════════════════ 01 — SZCZEGÓŁOWE PORÓWNANIE ═══════════════════ */}
+          {/* ═══════════════════ 01 - SZCZEGÓŁOWE PORÓWNANIE ═══════════════════ */}
           <Reveal delay={0.05}>
             <section className="mb-24">
               <div className="mb-10">
@@ -755,7 +755,7 @@ export function LimitedAccess2() {
                 <div className="grid grid-cols-[1fr_1fr_1fr] border-t border-white/[0.06]">
                   <div className="px-5 py-3.5">
                     <span className="text-sm text-white/60">Adaptacje formatowe</span>
-                    <span className="block text-[11px] text-white/20 mt-0.5">Dodatkowe rozmiary z jednego KV — osobna wycena</span>
+                    <span className="block text-[11px] text-white/20 mt-0.5">Dodatkowe rozmiary z jednego KV - osobna wycena</span>
                   </div>
                   <div className="px-5 py-3.5 border-l border-white/[0.06] flex items-center justify-center text-xs text-white/25">
                     opcja
@@ -782,12 +782,12 @@ export function LimitedAccess2() {
               </div>
 
               <p className="text-[11px] text-white/20 mt-3 text-center">
-                Wszystkie ceny netto PLN + 23% VAT. Pakiety adaptacji formatowych (S/M/L) wyceniane osobno — szczegóły w sekcji 04.
+                Wszystkie ceny netto PLN + 23% VAT. Pakiety adaptacji formatowych (S/M/L) wyceniane osobno - szczegóły w sekcji 04.
               </p>
             </section>
           </Reveal>
 
-          {/* ═══════════════════ 02 — CENNIK JEDNOSTKOWY ═══════════════════ */}
+          {/* ═══════════════════ 02 - CENNIK JEDNOSTKOWY ═══════════════════ */}
           <Reveal delay={0.05}>
             <section className="mb-24">
               <SectionLabel number="02" />
@@ -796,7 +796,7 @@ export function LimitedAccess2() {
               </h2>
               <p className="text-sm text-white/40 mt-2 mb-8 max-w-2xl leading-relaxed">
                 Dodatkowy materiał poza wybranym wariantem? Poniżej ceny startowe
-                za pojedyncze elementy — można je domówić w dowolnym momencie.
+                za pojedyncze elementy - można je domówić w dowolnym momencie.
               </p>
 
               <div className="space-y-0 border border-white/[0.06]">
@@ -820,7 +820,7 @@ export function LimitedAccess2() {
             </section>
           </Reveal>
 
-          {/* ═══════════════════ 03 — OPCJONALNE USŁUGI DODATKOWE ═══════════════════ */}
+          {/* ═══════════════════ 03 - OPCJONALNE USŁUGI DODATKOWE ═══════════════════ */}
           <Reveal delay={0.05}>
             <section className="mb-24">
               <SectionLabel number="03" />
@@ -828,7 +828,7 @@ export function LimitedAccess2() {
                 Usługi dodatkowe
               </h2>
               <p className="text-sm text-white/40 mt-2 mb-8 max-w-2xl leading-relaxed">
-                Można je dodać do dowolnego wariantu — są wyceniane niezależnie
+                Można je dodać do dowolnego wariantu - są wyceniane niezależnie
                 i realizowane równolegle lub po zakończeniu głównego projektu.
               </p>
 
@@ -858,7 +858,7 @@ export function LimitedAccess2() {
             </section>
           </Reveal>
 
-          {/* ═══════════════════ 04 — PAKIETY ADAPTACJI ═══════════════════ */}
+          {/* ═══════════════════ 04 - PAKIETY ADAPTACJI ═══════════════════ */}
           <Reveal delay={0.05}>
             <section className="mb-24">
               <SectionLabel number="04" />
@@ -867,7 +867,7 @@ export function LimitedAccess2() {
               </h2>
               <p className="text-sm text-white/40 mt-2 mb-3 max-w-2xl leading-relaxed">
                 Po stworzeniu głównej grafiki (Key Visual) możemy ją zaadaptować do dodatkowych
-                rozmiarów i formatów — np. dodatkowe banery display, formaty social media, nagłówki e-mail itp.
+                rozmiarów i formatów - np. dodatkowe banery display, formaty social media, nagłówki e-mail itp.
               </p>
               <p className="text-xs text-white/25 mb-8 max-w-2xl leading-relaxed">
                 Przykład: Key Visual kampanijny Klienta &rarr; 5 dodatkowych banerów display + 3 nowe formaty social = Pakiet M.
@@ -889,7 +889,7 @@ export function LimitedAccess2() {
             </section>
           </Reveal>
 
-          {/* ═══════════════════ 05 — JAK PRACUJEMY ═══════════════════ */}
+          {/* ═══════════════════ 05 - JAK PRACUJEMY ═══════════════════ */}
           <Reveal delay={0.05}>
             <section className="mb-24">
               <SectionLabel number="05" />
@@ -897,7 +897,7 @@ export function LimitedAccess2() {
                 Jak wygląda współpraca
               </h2>
               <p className="text-sm text-white/40 mt-2 mb-8 max-w-2xl leading-relaxed">
-                Cztery etapy — od ustalenia zakresu po dostarczenie gotowych plików.
+                Cztery etapy - od ustalenia zakresu po dostarczenie gotowych plików.
                 Całość trwa 3-6 tygodni od akceptacji briefu.
               </p>
 
@@ -918,7 +918,7 @@ export function LimitedAccess2() {
             </section>
           </Reveal>
 
-          {/* ═══════════════════ 06 — WARUNKI PŁATNOŚCI ═══════════════════ */}
+          {/* ═══════════════════ 06 - WARUNKI PŁATNOŚCI ═══════════════════ */}
           <Reveal delay={0.05}>
             <section className="mb-24">
               <SectionLabel number="06" />
@@ -946,11 +946,11 @@ export function LimitedAccess2() {
                 {[
                   "Wszystkie ceny netto PLN + 23% VAT.",
                   "Do 2 rund poprawek na każdy materiał w cenie. Kolejne rundy wyceniane osobno.",
-                  "Zdjęcia stockowe (fotografie, grafiki) dobieramy i kupujemy — są w cenie.",
+                  "Zdjęcia stockowe (fotografie, grafiki) dobieramy i kupujemy - są w cenie.",
                   "Licencje na fonty (np. krój firmowy Pyszne.pl) po stronie Klienta.",
-                  "Prezentacje w formacie Figma — zespół Klienta może edytować treści samodzielnie.",
-                  "Czas realizacji: 3–6 tygodni od momentu zatwierdzenia briefu.",
-                  "Zakres można skorygować między etapami — każda zmiana jest transparentnie wyceniana.",
+                  "Prezentacje w formacie Figma - zespół Klienta może edytować treści samodzielnie.",
+                  "Czas realizacji: 3-6 tygodni od momentu zatwierdzenia briefu.",
+                  "Zakres można skorygować między etapami - każda zmiana jest transparentnie wyceniana.",
                 ].map((note, i) => (
                   <div key={i} className={`px-5 py-3 ${i > 0 ? "border-t border-white/[0.04]" : ""} flex items-start gap-3`}>
                     <span className="text-white/15 text-xs mt-0.5 shrink-0">{String(i + 1).padStart(2, "0")}</span>
@@ -986,7 +986,7 @@ export function LimitedAccess2() {
                 Porozmawiajmy o Pyszne Pay
               </h3>
               <p className="text-white/40 text-sm mb-8 max-w-lg mx-auto leading-relaxed">
-                Prosimy o wybór preferowanego wariantu — lub umówmy rozmowę,
+                Prosimy o wybór preferowanego wariantu - lub umówmy rozmowę,
                 żeby doprecyzować zakres i odpowiedzieć na dodatkowe pytania.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -1010,7 +1010,7 @@ export function LimitedAccess2() {
                 <span className="flex items-center gap-1.5"><Mail className="w-3 h-3" /> hello@r352.agency</span>
               </div>
               <p className="text-white/10 text-xs mt-8">
-                Dokument poufny — przygotowany wyłącznie dla Pyszne Pay  |  r352 agency 2026
+                Dokument poufny - przygotowany wyłącznie dla Pyszne Pay  |  r352 agency 2026
               </p>
             </div>
           </Reveal>

@@ -4,15 +4,15 @@ import portraitUrl from "@/assets/reszek-glass-portrait-cutout.webp";
 import depthUrl from "@/assets/reszek-glass-portrait-depth.webp";
 
 /**
- * GlassHero v2 — full-bleed cinematic WebGL "liquid glass" hero.
+ * GlassHero v2 - full-bleed cinematic WebGL "liquid glass" hero.
  *
  * No longer a decorated image in a corner: a single full-viewport canvas
  * renders three parallax layers around the brand glass-humanoid portrait:
  *
- *   BACK   — volumetric lime aurora/fog (domain-warped fbm, near-black,
+ *   BACK   - volumetric lime aurora/fog (domain-warped fbm, near-black,
  *            barely-there, slow drift) massed behind the figure
- *   MID    — the figure itself, now a PSEUDO-3D OBJECT: a build-time depth
- *            map (scripts/generate-depth.mjs — silhouette "balloon"
+ *   MID    - the figure itself, now a PSEUDO-3D OBJECT: a build-time depth
+ *            map (scripts/generate-depth.mjs - silhouette "balloon"
  *            inflation + luminance relief) drives per-pixel parallax
  *            reprojection so the head TURNS to follow the cursor (spring-
  *            smoothed yaw/pitch, shoulders lag behind the head at 60%
@@ -20,10 +20,10 @@ import depthUrl from "@/assets/reszek-glass-portrait-depth.webp";
  *            cursor-anchored lime key light (speculars travel across the
  *            glass), a fixed cool fill, and a fresnel rim. On top of that
  *            the existing liquid stack: refraction flow + cursor push +
- *            a PERSISTENT displacement field (ping-pong FBO — moving the
+ *            a PERSISTENT displacement field (ping-pong FBO - moving the
  *            mouse leaves a slowly-decaying liquid trail, like touching
  *            water) + click ripples + chromatic aberration
- *   FRONT  — procedural micro-dust catching lime light, strongest parallax
+ *   FRONT  - procedural micro-dust catching lime light, strongest parallax
  *
  * Layers track the cursor at different rates (true depth), and the camera
  * drifts/breathes continuously even without input. Cinematic finish: lime
@@ -64,10 +64,10 @@ void main() {
 }`;
 
 // ---------------------------------------------------------------------------
-// PASS 1 — trail field update (ping-pong accumulation buffer).
+// PASS 1 - trail field update (ping-pong accumulation buffer).
 // RG = displacement vector (0.5-centered), B = disturbance intensity.
 // The buffer slowly decays + diffuses: cursor motion writes velocity splats
-// that persist for ~2 s — the "touched water" memory the main pass refracts
+// that persist for ~2 s - the "touched water" memory the main pass refracts
 // through.
 // ---------------------------------------------------------------------------
 const TRAIL_FRAG = `#version 300 es
@@ -101,7 +101,7 @@ void main() {
 }`;
 
 // ---------------------------------------------------------------------------
-// PASS 2 — composite. Aurora / figure / dust, lit, graded, grained.
+// PASS 2 - composite. Aurora / figure / dust, lit, graded, grained.
 // ---------------------------------------------------------------------------
 const FRAG = `#version 300 es
 precision highp float;
@@ -163,7 +163,7 @@ float fbm(vec2 q) {
   return a;
 }
 
-// procedural dust layer — sparse glints on a jittered grid
+// procedural dust layer - sparse glints on a jittered grid
 float dust(vec2 uvp, float scale, float t, float seed) {
   vec2 g = uvp * scale;
   vec2 id = floor(g);
@@ -192,7 +192,7 @@ void main() {
   float introA = smoothstep(0.0, 0.30, uIntro);
 
   // ======================================================================
-  // BACK LAYER — volumetric lime aurora, massed behind the figure
+  // BACK LAYER - volumetric lime aurora, massed behind the figure
   // ======================================================================
   vec2 uvB = vUv + mc * 0.018 + drift * 0.6;
   vec2 q = uvB * vec2(uAspect, 1.0) * 1.05 + vec2(t * 0.012, -t * 0.008);
@@ -207,12 +207,12 @@ void main() {
   float aurA = aur * mix(0.40, 0.12, uLight) * (0.85 + 0.15 * breath);
 
   // ======================================================================
-  // MID LAYER — the glass figure
+  // MID LAYER - the glass figure
   // ======================================================================
   vec2 uvF = vUv + mc * 0.045 + drift;
   vec2 fuv = (uvF - uFig.xy) / uFig.zw;       // figure-local 0..1
 
-  // ---- PSEUDO-3D GAZE — depth-map parallax reprojection -----------------
+  // ---- PSEUDO-3D GAZE - depth-map parallax reprojection -----------------
   // Head turns toward the cursor; shoulders follow at lower amplitude with
   // a delay (uGaze.zw is the JS-lagged copy). HEADC = head optical center
   // (incl. cap, measured from the alpha centroid), H0 = depth pivot plane.
@@ -222,7 +222,7 @@ void main() {
   float headW = exp(-dot(hdv, hdv) * 5.0);        // 1 on head -> 0 on body
   vec2 gz = mix(uGaze.zw, uGaze.xy, headW);
 
-  // the silhouette itself leans into the turn — sells actual rotation,
+  // the silhouette itself leans into the turn - sells actual rotation,
   // not just an interior warp
   vec2 lean = gz * (0.42 * headW + 0.10);
   vec2 guv = fuv - lean;
@@ -240,7 +240,7 @@ void main() {
   vec2 trailD = (tr.rg - 0.5);
   float trailK = tr.b;
 
-  // click ripples — expanding rings, analytic
+  // click ripples - expanding rings, analytic
   vec2 rippleD = vec2(0.0);
   float rippleGlow = 0.0;
   for (int i = 0; i < 4; i++) {
@@ -296,7 +296,7 @@ void main() {
   vec3 col = vec3(cR.r, cG.g, cB.b);
   float a = cG.a * inFig;
 
-  // ---- RELIGHT — normals from depth (central differences), cursor key ----
+  // ---- RELIGHT - normals from depth (central differences), cursor key ----
   vec2 dpx = 1.5 / vec2(textureSize(uDepth, 0));
   float hL = texture(uDepth, clamp(suv - vec2(dpx.x, 0.0), 0.0, 1.0)).r;
   float hR = texture(uDepth, clamp(suv + vec2(dpx.x, 0.0), 0.0, 1.0)).r;
@@ -325,7 +325,7 @@ void main() {
   float fres = pow(1.0 - abs(nrm.z), 2.4);
 
   // material mask: glass (bright) is glossy, the fabric cap (dark) stays
-  // matte — keeps the black-cap brand identity instead of lime-flooding it
+  // matte - keeps the black-cap brand identity instead of lime-flooding it
   float gloss = 0.18 + 0.82 * smoothstep(0.28, 0.62, dot(cG.rgb, vec3(0.299, 0.587, 0.114)));
 
   col *= 0.74 + 0.42 * diff * att + 0.20 * diffF;
@@ -333,7 +333,7 @@ void main() {
   col += coolC * specF * gloss * 0.20;
   col += mix(uLime, vec3(1.0), 0.35) * fres * (0.35 + 0.65 * gloss) * (0.10 + 0.30 * att) * mix(1.0, 0.5, uLight);
 
-  // bottom dissolve (replaces the old CSS mask — shirt crop melts away)
+  // bottom dissolve (replaces the old CSS mask - shirt crop melts away)
   float bottomFade = 1.0 - smoothstep(0.58, 0.96, fuv.y);
   a *= bottomFade;
 
@@ -346,7 +346,7 @@ void main() {
   float prox = exp(-r2 * 5.5);
   float limeAmt = rim * (0.10 + 0.70 * prox + 0.6 * uEnergy * prox + 0.5 * trailK + rippleGlow * 1.4);
 
-  // intro rim sweep — one diagonal pass of light during materialize
+  // intro rim sweep - one diagonal pass of light during materialize
   float sweepPos = mix(-0.35, 1.45, introE);
   float sweep = exp(-pow((fuv.y + 0.30 * fuv.x - sweepPos) * 3.6, 2.0))
               * (1.0 - smoothstep(0.82, 1.0, uIntro));
@@ -367,7 +367,7 @@ void main() {
   }
   halo *= 0.12 * inFig * bottomFade;
 
-  // ---- anamorphic flare hint — horizontal streak from strongest speculars
+  // ---- anamorphic flare hint - horizontal streak from strongest speculars
   float streak = 0.0;
   for (int i = 1; i <= 3; i++) {
     float ox = float(i) * 0.030;
@@ -380,7 +380,7 @@ void main() {
   streak *= 0.10 * inFig * bottomFade * (0.55 + 0.45 * breath);
 
   // ======================================================================
-  // FRONT LAYER — micro-dust catching lime light (strongest parallax)
+  // FRONT LAYER - micro-dust catching lime light (strongest parallax)
   // ======================================================================
   vec2 pScr = vUv * vec2(uAspect, 1.0);
   float dustNear = exp(-pow((vUv.x - figCX) * 1.6, 2.0));      // denser near figure
@@ -390,12 +390,12 @@ void main() {
   float dustA = (dBack * 0.09 + dFront * 0.16) * dustNear * dustLit * mix(1.0, 0.45, uLight);
 
   // ======================================================================
-  // PRESENCE — client direction (2026-06-10): the figure should sit DARK,
+  // PRESENCE - client direction (2026-06-10): the figure should sit DARK,
   // subtly emerging from the background, not dominate the ATF. One knob:
   // 1.0 = previous hero-dominant look, lower = quieter. Gaze/3D unaffected.
   // ======================================================================
   const float PRESENCE = 0.22;
-  col      *= 0.30 + 0.42 * PRESENCE;   // deep exposure cut — silhouette emerges, not poses
+  col      *= 0.30 + 0.42 * PRESENCE;   // deep exposure cut - silhouette emerges, not poses
   a        *= 0.82 + 0.18 * PRESENCE;   // breath of background through the glass
   limeAmt  *= PRESENCE;
   limeSpec *= 0.35 + 0.65 * PRESENCE;
@@ -410,9 +410,9 @@ void main() {
   float limeScale = mix(1.0, 0.55, uLight);
   vec3 lime = uLime;
 
-  // text scrim — keeps the headline zone readable where it overlaps the scene.
+  // text scrim - keeps the headline zone readable where it overlaps the scene.
   // Dark theme: darken the figure locally. Light theme: FADE the figure
-  // (dark text over the black cap would vanish — let the white page through).
+  // (dark text over the black cap would vanish - let the white page through).
   float scrim = smoothstep(0.84, 0.34, vUv.x) * smoothstep(0.24, 0.52, vUv.y);
   aurA *= 1.0 - 0.85 * scrim;
   dustA *= 1.0 - 0.9 * scrim;
@@ -430,7 +430,7 @@ void main() {
   rgb += mix(lime, vec3(1.0), 0.55) * dustA;
   rgb += lime * rippleGlow * 0.05;
 
-  // vignette — darkens page edges (premultiplied black = pure alpha)
+  // vignette - darkens page edges (premultiplied black = pure alpha)
   float vig = smoothstep(0.62, 1.18, length((vUv - vec2(0.5, 0.46)) * vec2(1.15, 1.0)));
   float vigA = vig * mix(0.34, 0.10, uLight);
   rgb *= 1.0 - vig * 0.35;
@@ -450,7 +450,7 @@ function compile(gl: WebGL2RenderingContext, type: number, src: string) {
   gl.shaderSource(sh, src);
   gl.compileShader(sh);
   if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) {
-    // Fail silently in prod — static image remains. Log for dev.
+    // Fail silently in prod - static image remains. Log for dev.
     console.warn("GlassHero shader:", gl.getShaderInfoLog(sh));
     gl.deleteShader(sh);
     return null;
@@ -516,7 +516,7 @@ export function GlassHero({ className, alt }: GlassHeroProps) {
       seen: false,
     };
 
-    // click ripples — ring buffer of 4 (xy uv, start time, live flag)
+    // click ripples - ring buffer of 4 (xy uv, start time, live flag)
     const ripples = new Float32Array(16);
     let rippleIdx = 0;
     let nowS = 0;
@@ -567,7 +567,7 @@ export function GlassHero({ className, alt }: GlassHeroProps) {
       if (!gl) return;
       const cw = Math.max(canvas.clientWidth, 1);
       const ch = Math.max(canvas.clientHeight, 1);
-      // DPR cap 1.5 + total-pixel cap — full-bleed safety on 4k / weak iGPUs
+      // DPR cap 1.5 + total-pixel cap - full-bleed safety on 4k / weak iGPUs
       const dpr = Math.min(window.devicePixelRatio || 1, 1.5, Math.sqrt(BUDGETS[qIdx] / (cw * ch)));
       const w = Math.max(1, Math.round(cw * dpr));
       const h = Math.max(1, Math.round(ch * dpr));
@@ -643,7 +643,7 @@ export function GlassHero({ className, alt }: GlassHeroProps) {
       gaze.sx += (gaze.hx * 0.6 - gaze.sx) * se;
       gaze.sy += (gaze.hy * 0.6 - gaze.sy) * se;
 
-      // ================= PASS 1 — trail field (ping-pong, tiny) ==========
+      // ================= PASS 1 - trail field (ping-pong, tiny) ==========
       const src = trailFlip ? trailTexB : trailTexA;
       const dst = trailFlip ? trailFbA : trailFbB;
       gl.bindFramebuffer(gl.FRAMEBUFFER, dst);
@@ -658,7 +658,7 @@ export function GlassHero({ className, alt }: GlassHeroProps) {
       gl.uniform1f(trailU.uAspect, aspect);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
 
-      // ================= PASS 2 — composite ==============================
+      // ================= PASS 2 - composite ==============================
       gl.bindFramebuffer(gl.FRAMEBUFFER, null);
       gl.viewport(0, 0, canvas.width, canvas.height);
       gl.useProgram(mainProg);
@@ -683,7 +683,7 @@ export function GlassHero({ className, alt }: GlassHeroProps) {
       gl.uniform1f(mainU.uIntro, Math.min(Math.max((t - introT) / 1.2, 0), 1));
       gl.uniform4f(mainU.uFig, figX, figY, figW, figH);
       // gaze in figure-uv shift per unit depth: ±0.075 ≈ ±10° yaw equivalent,
-      // ±0.046 ≈ ±6° pitch — hard ceiling before single-view reprojection breaks
+      // ±0.046 ≈ ±6° pitch - hard ceiling before single-view reprojection breaks
       gl.uniform4f(mainU.uGaze, gaze.hx * 0.075, gaze.hy * 0.046, gaze.sx * 0.075, gaze.sy * 0.046);
       gl.uniform4fv(mainU.uRipple, ripples);
 
@@ -777,7 +777,7 @@ export function GlassHero({ className, alt }: GlassHeroProps) {
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
         gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, dimg);
 
-        // trail ping-pong targets (tiny, RGBA8 — universally renderable)
+        // trail ping-pong targets (tiny, RGBA8 - universally renderable)
         const ta = makeTrailTarget(gl);
         const tb = makeTrailTarget(gl);
         trailTexA = ta.tex; trailFbA = ta.fb;
@@ -861,9 +861,9 @@ export function GlassHero({ className, alt }: GlassHeroProps) {
       ref={wrapRef}
       className={`pointer-events-none select-none ${className ?? ""}`}
     >
-      {/* Static portrait — ALWAYS in the DOM (prerender/SEO/no-GL fallback).
+      {/* Static portrait - ALWAYS in the DOM (prerender/SEO/no-GL fallback).
           Positioned to mirror the GL figure placement (right-anchored,
-          ~88% height on desktop). Bottom fade mask hides the shirt crop —
+          ~88% height on desktop). Bottom fade mask hides the shirt crop -
           the shader reproduces the same dissolve once GL takes over. */}
       <img
         src={portraitUrl}

@@ -2,7 +2,7 @@ import { Reveal } from "@/app/components/ui/Reveal";
 import { useLanguage } from "@/app/context/LanguageContext";
 
 /**
- * WhyBreaksNow — educational hook that plants the category problem.
+ * WhyBreaksNow - educational hook that plants the category problem.
  *
  * Most multi-location operators don't know "design ops as a system" is a
  * category. They know they have chaos at scale but don't connect it to a
@@ -23,7 +23,7 @@ export function WhyBreaksNow() {
       scale: language === "pl" ? "5 lokalizacji" : "5 locations",
       sub: language === "pl" ? "Smak + wysiłek" : "Taste + effort",
       body: language === "pl"
-        ? "Pojedyncza osoba może utrzymać jakość. Wszystko żyje w jej głowie — briefy, decyzje, standardy. Działa bo skala jest mała."
+        ? "Pojedyncza osoba może utrzymać jakość. Wszystko żyje w jej głowie - briefy, decyzje, standardy. Działa bo skala jest mała."
         : "One person can hold quality. Briefs, decisions, standards all live in their head. It works because scale is small.",
     },
     {
@@ -37,8 +37,8 @@ export function WhyBreaksNow() {
       scale: language === "pl" ? "300+ lokalizacji" : "300+ locations",
       sub: language === "pl" ? "Operating system" : "Operating system",
       body: language === "pl"
-        ? "Standardy bez systemu się rozjeżdżają. Potrzebny jest formal intake, ownership per asset type, bramki akceptacji i pomiar. To nie jest większa agencja — to operating system."
-        : "Standards without a system drift. You need formal intake, ownership per asset type, approval gates, and measurement. That's not a bigger agency — that's an operating system.",
+        ? "Standardy bez systemu się rozjeżdżają. Potrzebny jest formal intake, ownership per asset type, bramki akceptacji i pomiar. To nie jest większa agencja - to operating system."
+        : "Standards without a system drift. You need formal intake, ownership per asset type, approval gates, and measurement. That's not a bigger agency - that's an operating system.",
     },
   ];
 
@@ -68,7 +68,7 @@ export function WhyBreaksNow() {
         </div>
       </Reveal>
 
-      {/* 3 tiers — progressive scale breakdown */}
+      {/* 3 tiers - progressive scale breakdown */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 border-t border-neutral-200 dark:border-white/10 pt-12">
         {tiers.map((tier, i) => (
           <Reveal key={i} delay={i * 0.08}>
@@ -90,19 +90,19 @@ export function WhyBreaksNow() {
         ))}
       </div>
 
-      {/* Bottom anchor — softly explains where r352 lives */}
+      {/* Bottom anchor - softly explains where r352 lives */}
       <Reveal delay={0.3}>
         <div className="mt-16 md:mt-20 pt-10 border-t border-neutral-200 dark:border-white/10 max-w-3xl">
           <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
             {language === "pl" ? (
               <>
-                r352 zaczyna pracę dokładnie w tym przejściu — gdy organizacja przekracza próg,
+                r352 zaczyna pracę dokładnie w tym przejściu - gdy organizacja przekracza próg,
                 w którym <strong className="text-neutral-900 dark:text-white">smak i wysiłek już nie wystarczają</strong>,
                 a brak systemu zaczyna kosztować przewidywalnie więcej niż jego budowa.
               </>
             ) : (
               <>
-                r352 starts work exactly at that transition — when an organization crosses
+                r352 starts work exactly at that transition - when an organization crosses
                 the threshold where <strong className="text-neutral-900 dark:text-white">taste and effort no longer scale</strong>,
                 and the absence of a system starts costing predictably more than building one.
               </>

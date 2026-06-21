@@ -2,7 +2,7 @@ import { useLanguage } from "@/app/context/LanguageContext";
 import { Reveal } from "@/app/components/ui/Reveal";
 import { ChipTooltip } from "@/app/components/ui/ChipTooltip";
 
-// Chip + tooltip pattern is shared with the home hero ATF chips — see
+// Chip + tooltip pattern is shared with the home hero ATF chips - see
 // ui/ChipTooltip.tsx. It compresses long bullet lists into scannable
 // label-chips (~70% visible-text reduction per card); hover/focus reveals
 // the full sentence as a cinematic tooltip. The full text remains in the
@@ -16,8 +16,8 @@ export function EngagementModels() {
     {
       number: "01",
       title: language === "pl" ? "Sprint" : "Sprint",
-      // Canonical pricing — same ranges as published in FAQ/glossary. Ranges, not quotes.
-      // priceFrom removed — see strategic note below pricing block
+      // Canonical pricing - same ranges as published in FAQ/glossary. Ranges, not quotes.
+      // priceFrom removed - see strategic note below pricing block
       promise: language === "pl"
         ? "W 4-6 tygodni budujemy jeden działający fragment Twojego design operating system."
         : "In 4-6 weeks, we build one working part of your design operating system.",
@@ -26,12 +26,12 @@ export function EngagementModels() {
         : "A focused engagement with a clear start, scope, and finish.",
       howItWorks: language === "pl" ? [
         "Definiujemy problem i oczekiwane rezultaty z góry",
-        "Stały zakres, stały harmonogram — bez otwartych umów",
+        "Stały zakres, stały harmonogram - bez otwartych umów",
         "Otrzymujecie gotowy produkt na końcu, a nie prezentację",
         "Przekazanie obejmuje wszystko, czego wasz zespół potrzebuje do dalszego działania"
       ] : [
         "We define the problem and deliverables upfront",
-        "Fixed scope, fixed timeline — no open-ended retainers",
+        "Fixed scope, fixed timeline - no open-ended retainers",
         "You get a complete deliverable at the end, not a pitch deck",
         "Handoff includes everything your team needs to run it forward"
       ],
@@ -64,7 +64,7 @@ export function EngagementModels() {
     {
       number: "02",
       title: language === "pl" ? "Abonament" : "Retainer",
-      // priceFrom removed — pricing in scoping call only
+      // priceFrom removed - pricing in scoping call only
       promise: language === "pl"
         ? "Miesięczny rytm utrzymujący kampanie, lokalne zapotrzebowania i jakość pod kontrolą."
         : "A monthly rhythm for keeping campaigns, local requests and design quality under control.",
@@ -111,13 +111,13 @@ export function EngagementModels() {
     {
       number: "03",
       title: language === "pl" ? "Diagnostyka" : "Diagnostic",
-      // priceFrom removed — pricing in scoping call only
+      // priceFrom removed - pricing in scoping call only
       promise: language === "pl"
         ? "W 5 dni roboczych pokazujemy gdzie wasza operacja kreatywna traci czas, jakość i ownership."
         : "In 5 working days, we show where your creative operation leaks time, quality and ownership.",
       positioning: language === "pl"
-        ? "Krótki, ustrukturyzowany audyt, który pokazuje dokładnie, gdzie zawodzi proces — zanim zaangażujecie się w budowanie czegokolwiek. Pełen zwrot kosztów, jeśli rekomendacje nie są wdrażalne w ciągu 60 dni."
-        : "A short, structured audit that shows you exactly where delivery breaks down — before you commit to building anything. Money back if the recommendations are not actionable within 60 days.",
+        ? "Krótki, ustrukturyzowany audyt, który pokazuje dokładnie, gdzie zawodzi proces - zanim zaangażujecie się w budowanie czegokolwiek. Pełen zwrot kosztów, jeśli rekomendacje nie są wdrażalne w ciągu 60 dni."
+        : "A short, structured audit that shows you exactly where delivery breaks down - before you commit to building anything. Money back if the recommendations are not actionable within 60 days.",
       howItWorks: language === "pl" ? [
         "Mapujemy obecny proces dostarczania od początku do końca: brief → akceptacja → produkcja → publikacja",
         "Identyfikujemy wąskie gardła, niejasne kompetencje, braki w kontroli jakości i zbędne iteracje",
@@ -152,8 +152,8 @@ export function EngagementModels() {
         ? "60-minutowe spotkanie inicjujące, podczas którego przeprowadzamy wywiady z kluczowymi osobami i prosimy o dostęp do waszych narzędzi."
         : "A 60-minute kickoff where we interview key stakeholders and request access to your current workflows.",
       deliverable: language === "pl"
-        ? "Audyt procesu dostarczania — mapa wąskich gardeł, analiza przyczyn i priorytetowe rekomendacje."
-        : "Delivery Workflow Audit — bottleneck map, root cause analysis, and prioritized recommendations."
+        ? "Audyt procesu dostarczania - mapa wąskich gardeł, analiza przyczyn i priorytetowe rekomendacje."
+        : "Delivery Workflow Audit - bottleneck map, root cause analysis, and prioritized recommendations."
     }
   ];
 
@@ -161,13 +161,13 @@ export function EngagementModels() {
     {
       number: "04",
       title: language === "pl" ? "Wdrożenie Enterprise" : "Enterprise Sprint",
-      // priceFrom removed — pricing in scoping call only
+      // priceFrom removed - pricing in scoping call only
       promise: language === "pl"
         ? "W 12-16 tygodni dostarczamy multi-location rollout system, który obsługuje 300+ lokalizacji bez rozjazdów."
         : "In 12-16 weeks, we ship a multi-location rollout system that handles 300+ branches without breaking.",
       positioning: language === "pl"
-        ? "Pełne wdrożenie Creative Operating System dla organizacji wielolokalizacyjnej — od diagnozy po działający system z wytrenowanym zespołem."
-        : "Full Creative Operating System implementation for a multi-location organization — from diagnosis to a running system with a trained team.",
+        ? "Pełne wdrożenie Creative Operating System dla organizacji wielolokalizacyjnej - od diagnozy po działający system z wytrenowanym zespołem."
+        : "Full Creative Operating System implementation for a multi-location organization - from diagnosis to a running system with a trained team.",
       howItWorks: language === "pl" ? [
         "Pełny cykl: diagnoza, mapa popytu, standardy, ownership decyzji, budowa systemu, miary i rytm review",
         "Founder + sieć seniorów osadzeni w organizacji przez 12-16 tygodni",
@@ -186,11 +186,11 @@ export function EngagementModels() {
       idealWhen: language === "pl" ? [
         "Wielolokalizacyjna organizacja (5+ lokalizacji lub marek) potrzebująca pełnej transformacji operacyjnej",
         "Wewnętrzny zespół designu/marketingu jest przeciążony, ale budżet i ambicja są na transformację, nie patch",
-        "Leadership rozumie, że system jest aktywem długoterminowym — i jest gotowy go finansować",
+        "Leadership rozumie, że system jest aktywem długoterminowym - i jest gotowy go finansować",
       ] : [
         "A multi-location organization (5+ locations or brands) needing full operational transformation",
         "Internal design/marketing team is overloaded but budget and ambition are for transformation, not a patch",
-        "Leadership understands the system is a long-term asset — and is willing to fund it accordingly",
+        "Leadership understands the system is a long-term asset - and is willing to fund it accordingly",
       ],
       idealWhenLabels: language === "pl"
         ? ["5+ lokalizacji / marek", "Transformacja, nie patch", "Long-term budget"]
@@ -208,34 +208,34 @@ export function EngagementModels() {
     {
       number: "05",
       title: language === "pl" ? "Partner Operacyjny" : "Operating Partner",
-      // priceFrom removed — pricing in scoping call only
+      // priceFrom removed - pricing in scoping call only
       promise: language === "pl"
-        ? "Wchodzimy jako Wasz fractional head of design ops — prowadzimy system, hiring, governance, vendor selection."
-        : "We embed as your fractional head of design ops — running the system, hiring, governance, vendor selection.",
+        ? "Wchodzimy jako Wasz fractional head of design ops - prowadzimy system, hiring, governance, vendor selection."
+        : "We embed as your fractional head of design ops - running the system, hiring, governance, vendor selection.",
       positioning: language === "pl"
-        ? "Strategiczna rola partnera operacyjnego — opiekun ewolucji systemu, doradca przy strategicznych decyzjach designu i komunikacji, obecność przy stole leadership."
-        : "Strategic operating partner role — custodian of system evolution, advisor on strategic design and communication decisions, present at the leadership table.",
+        ? "Strategiczna rola partnera operacyjnego - opiekun ewolucji systemu, doradca przy strategicznych decyzjach designu i komunikacji, obecność przy stole leadership."
+        : "Strategic operating partner role - custodian of system evolution, advisor on strategic design and communication decisions, present at the leadership table.",
       howItWorks: language === "pl" ? [
-        "Miesięczny executive review z leadership — kondycja systemu, trendy, decyzje strategiczne",
+        "Miesięczny executive review z leadership - kondycja systemu, trendy, decyzje strategiczne",
         "Kwartalne planowanie strategiczne + roadmapa ewolucji systemu",
         "Continuous coaching wewnętrznych zespołów + on-call dla kluczowych decyzji",
-        "Rozszerzenia systemu (nowe lokalizacje, marki, kanały) — projektowane razem",
+        "Rozszerzenia systemu (nowe lokalizacje, marki, kanały) - projektowane razem",
       ] : [
-        "Monthly executive review with leadership — system health, trends, strategic decisions",
+        "Monthly executive review with leadership - system health, trends, strategic decisions",
         "Quarterly strategic planning + roadmap for system evolution",
         "Continuous coaching for internal teams + on-call for major decisions",
-        "System extensions (new locations, brands, channels) — designed together",
+        "System extensions (new locations, brands, channels) - designed together",
       ],
       howItWorksLabels: language === "pl"
         ? ["Monthly exec review", "Kwartalne planowanie", "On-call decyzji", "Rozszerzenia systemu"]
         : ["Monthly exec review", "Quarterly planning", "On-call decisions", "System extensions"],
       timeline: language === "pl" ? "Kontrakt roczny, rytm miesięczny" : "Annual contract, monthly cadence",
       idealWhen: language === "pl" ? [
-        "System jest zbudowany — potrzebuje opiekuna, który go rozwija i broni przed degradacją",
+        "System jest zbudowany - potrzebuje opiekuna, który go rozwija i broni przed degradacją",
         "C-suite chce mieć strategicznego partnera designu przy stole decyzyjnym",
         "Horyzont transformacji jest wieloletni i obejmuje ekspansję organizacji",
       ] : [
-        "The system is built — it needs a custodian to evolve it and protect it from decay",
+        "The system is built - it needs a custodian to evolve it and protect it from decay",
         "C-suite wants a strategic design partner at the decision table",
         "Multi-year transformation horizon, including organizational expansion",
       ],
@@ -266,13 +266,13 @@ export function EngagementModels() {
           </h2>
           <p className="text-[15px] text-neutral-600 dark:text-[#888888] max-w-[600px] leading-relaxed">
             {language === "pl"
-              ? "Pięć modeli — od krótkiej diagnozy po wieloletnie partnerstwo operacyjne. Wybierz w zależności od dojrzałości problemu i ambicji transformacji."
-              : "Five models — from a short diagnosis to a multi-year operating partnership. Choose based on the maturity of the problem and the ambition of the transformation."}
+              ? "Pięć modeli - od krótkiej diagnozy po wieloletnie partnerstwo operacyjne. Wybierz w zależności od dojrzałości problemu i ambicji transformacji."
+              : "Five models - from a short diagnosis to a multi-year operating partnership. Choose based on the maturity of the problem and the ambition of the transformation."}
           </p>
         </Reveal>
       </div>
 
-      {/* Cards Grid — divider-only layout, no boxy frames */}
+      {/* Cards Grid - divider-only layout, no boxy frames */}
       <div className="grid grid-cols-1 lg:grid-cols-3 border-t border-b border-neutral-200 dark:border-white/10 mb-16">
         {models.map((model, i) => (
           <Reveal key={i} delay={i * 0.1}>
@@ -298,7 +298,7 @@ export function EngagementModels() {
                     </p>
                   </div>
                 )}
-                {/* Promise — sharp 1-sentence promise per engagement model.
+                {/* Promise - sharp 1-sentence promise per engagement model.
                     Surfaces what the buyer concretely gets, in plain language.
                     Visually weightier than the descriptive positioning below. */}
                 {(model as any).promise && (
@@ -311,9 +311,9 @@ export function EngagementModels() {
                 </p>
               </div>
 
-              {/* How it works — dual rendering:
+              {/* How it works - dual rendering:
                   - Desktop (md+): chip-tooltip pattern (compressed, hover reveals full text)
-                  - Mobile: full bullets (no hover on touch — render text directly so info
+                  - Mobile: full bullets (no hover on touch - render text directly so info
                     isn't trapped behind interaction that doesn't fire) */}
               <div className="mb-6 flex-1">
                 <h4 className="text-[11px] uppercase tracking-[1px] text-neutral-500 dark:text-[#D4FF00] mb-3">
@@ -329,7 +329,7 @@ export function EngagementModels() {
                     />
                   ))}
                 </div>
-                {/* Mobile bullets — full text visible since hover doesn't fire on touch */}
+                {/* Mobile bullets - full text visible since hover doesn't fire on touch */}
                 <ul className="md:hidden space-y-3">
                   {model.howItWorks.map((item, idx) => (
                     <li key={idx} className="text-[14px] text-neutral-700 dark:text-[#e5e5e5] flex items-start gap-3">
@@ -369,7 +369,7 @@ export function EngagementModels() {
                   <ul className="md:hidden space-y-2">
                     {model.idealWhen.slice(0, 3).map((item, idx) => (
                       <li key={idx} className="text-[13px] text-neutral-500 dark:text-[#888888] flex items-start gap-2">
-                        <span className="text-neutral-400 dark:text-neutral-600 mt-[-1px]">—</span>
+                        <span className="text-neutral-400 dark:text-neutral-600 mt-[-1px]">-</span>
                         <span className="leading-snug">{item}</span>
                       </li>
                     ))}
@@ -384,9 +384,9 @@ export function EngagementModels() {
                     {i === 2 && (language === "pl" ? '"Profesjonalizm i świetna energia. Rozumieją kontekst biznesowy i dostarczają rozwiązania, które realnie wpływają na wyniki."' : '"Professionalism and great energy. They understand the business context and deliver work that actually moves the needle."')}
                   </p>
                   <p className="text-[12px] text-neutral-600 dark:text-[#666666]">
-                    {i === 0 && <>— Alina Sztoch, <span className="text-neutral-500 dark:text-[#888888]">CEO, Kubota Store</span></>}
-                    {i === 1 && <>— Lidia Kołucka, <span className="text-neutral-500 dark:text-[#888888]">Marketing Director, Orlen / ex. Pelion</span></>}
-                    {i === 2 && <>— Filip Mazurkiewicz, <span className="text-neutral-500 dark:text-[#888888]">Marketing Manager, Sonova Group</span></>}
+                    {i === 0 && <>- Alina Sztoch, <span className="text-neutral-500 dark:text-[#888888]">CEO, Kubota Store</span></>}
+                    {i === 1 && <>- Lidia Kołucka, <span className="text-neutral-500 dark:text-[#888888]">Marketing Director, Orlen / ex. Pelion</span></>}
+                    {i === 2 && <>- Filip Mazurkiewicz, <span className="text-neutral-500 dark:text-[#888888]">Marketing Manager, Sonova Group</span></>}
                   </p>
                 </div>
               </div>
@@ -443,7 +443,7 @@ export function EngagementModels() {
         </div>
       </Reveal>
 
-      {/* ─── Enterprise tier — for multi-location organizations ─── */}
+      {/* ─── Enterprise tier - for multi-location organizations ─── */}
       <div className="mt-24 md:mt-32">
         <Reveal>
           <div className="border-t border-neutral-200 dark:border-white/10 pt-16 mb-12">
@@ -457,8 +457,8 @@ export function EngagementModels() {
             </h3>
             <p className="text-[15px] text-neutral-600 dark:text-[#888888] max-w-[640px] leading-relaxed">
               {language === "pl"
-                ? "Gdy budżet i ambicja są na pełną transformację operacyjną — a nie kosmetyczny patch. Pełne wdrożenie systemu lub strategiczne partnerstwo na lata."
-                : "When budget and ambition are for full operational transformation — not a cosmetic patch. Full system implementation or multi-year strategic partnership."}
+                ? "Gdy budżet i ambicja są na pełną transformację operacyjną - a nie kosmetyczny patch. Pełne wdrożenie systemu lub strategiczne partnerstwo na lata."
+                : "When budget and ambition are for full operational transformation - not a cosmetic patch. Full system implementation or multi-year strategic partnership."}
             </p>
           </div>
         </Reveal>
@@ -488,7 +488,7 @@ export function EngagementModels() {
                       </p>
                     </div>
                   )}
-                  {/* Promise — sharp 1-sentence promise per enterprise engagement.
+                  {/* Promise - sharp 1-sentence promise per enterprise engagement.
                       Larger size + brighter color than positioning for visual weight. */}
                   {(model as any).promise && (
                     <p className="text-[16px] md:text-[17px] text-neutral-900 dark:text-white font-medium leading-snug mb-4 [text-wrap:pretty]">
@@ -500,7 +500,7 @@ export function EngagementModels() {
                   </p>
                 </div>
 
-                {/* How it works — dual rendering (chips desktop, bullets mobile) */}
+                {/* How it works - dual rendering (chips desktop, bullets mobile) */}
                 <div className="mb-6 flex-1">
                   <h4 className="text-[11px] uppercase tracking-[1px] text-neutral-500 dark:text-[#D4FF00] mb-3">
                     {language === "pl" ? "Jak to działa" : "How it works"}
@@ -551,7 +551,7 @@ export function EngagementModels() {
                     <ul className="md:hidden space-y-2">
                       {model.idealWhen.slice(0, 3).map((item, idx) => (
                         <li key={idx} className="text-[13px] text-neutral-500 dark:text-[#888888] flex items-start gap-2">
-                          <span className="text-neutral-400 dark:text-neutral-600 mt-[-1px]">—</span>
+                          <span className="text-neutral-400 dark:text-neutral-600 mt-[-1px]">-</span>
                           <span className="leading-snug">{item}</span>
                         </li>
                       ))}
@@ -566,10 +566,10 @@ export function EngagementModels() {
 
       {/* ─── Pricing block removed per strategic decision (2026-06):
           per-market pricing optionality between PL clients (current) and
-          international markets (ambition) — visible €-anchors locked the
+          international markets (ambition) - visible €-anchors locked the
           ceiling. Pricing discussed in /brief or scoping call, not posted. */}
 
-      {/* ─── Pairing Matrix — engagement model ↔ buying scenario ──────────
+      {/* ─── Pairing Matrix - engagement model ↔ buying scenario ──────────
           Resolves decision fatigue: rows = the 5 engagement models, columns =
           best-for scenarios, dot marks = fit strength. A buyer self-matches
           in under 30 seconds instead of re-reading five card descriptions.
@@ -589,8 +589,8 @@ export function EngagementModels() {
             </h3>
             <p className="text-[15px] text-neutral-600 dark:text-[#888888] max-w-[640px] leading-relaxed">
               {language === "pl"
-                ? "Znajdź swój scenariusz w kolumnach, zjedź do wypełnionej kropki — to twój punkt startu. Jeśli pasuje kilka, zacznij od najmniejszego zaangażowania."
-                : "Find your scenario in the columns, scan down to the filled dot — that's your starting point. If several match, start with the smallest engagement."}
+                ? "Znajdź swój scenariusz w kolumnach, zjedź do wypełnionej kropki - to twój punkt startu. Jeśli pasuje kilka, zacznij od najmniejszego zaangażowania."
+                : "Find your scenario in the columns, scan down to the filled dot - that's your starting point. If several match, start with the smallest engagement."}
             </p>
           </div>
 
@@ -666,7 +666,7 @@ export function EngagementModels() {
                       <div className="text-[10px] uppercase tracking-[0.15em] text-neutral-500 dark:text-[#666666] font-display mt-1 whitespace-nowrap">
                         {row.meta}
                       </div>
-                      {/* Full product-pairing copy — visually hidden, kept in DOM
+                      {/* Full product-pairing copy - visually hidden, kept in DOM
                           for crawlers / prerendered evidence */}
                       <span className="sr-only">
                         {language === "pl" ? "Najczęściej dla: " : "Most often for: "}
@@ -680,7 +680,7 @@ export function EngagementModels() {
                         ) : mark === 1 ? (
                           <span aria-hidden="true" className="inline-block w-2.5 h-2.5 rounded-full border border-neutral-400 dark:border-neutral-500" />
                         ) : (
-                          <span aria-hidden="true" className="text-neutral-300 dark:text-neutral-700 text-[13px] leading-none">—</span>
+                          <span aria-hidden="true" className="text-neutral-300 dark:text-neutral-700 text-[13px] leading-none">-</span>
                         )}
                         <span className="sr-only">
                           {mark === 2
@@ -708,20 +708,20 @@ export function EngagementModels() {
               {language === "pl" ? "Możliwy fit" : "Workable fit"}
             </span>
             <span className="inline-flex items-center gap-2">
-              <span aria-hidden="true" className="text-neutral-400 dark:text-neutral-600">—</span>
+              <span aria-hidden="true" className="text-neutral-400 dark:text-neutral-600">-</span>
               {language === "pl" ? "Nie pasuje" : "Not a match"}
             </span>
           </div>
         </div>
       </Reveal>
 
-      {/* CTA — flat, divider-only */}
+      {/* CTA - flat, divider-only */}
       <Reveal>
         <div className="mt-16 flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-neutral-200 dark:border-white/10 pt-12">
           <p className="text-lg md:text-xl text-neutral-900 dark:text-white font-medium tracking-tight text-center sm:text-left m-0 max-w-2xl">
             {language === "pl"
-              ? "Nie jesteście pewni, który model pasuje? Zacznijcie od rozmowy — pomożemy wam to ustalić."
-              : "Not sure which model fits? Start with a conversation — we'll help you figure it out."}
+              ? "Nie jesteście pewni, który model pasuje? Zacznijcie od rozmowy - pomożemy wam to ustalić."
+              : "Not sure which model fits? Start with a conversation - we'll help you figure it out."}
           </p>
           <a
             href="mailto:hello@r352.com"

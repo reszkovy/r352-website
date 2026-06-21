@@ -14,7 +14,7 @@ export function AgencyHero() {
   const [, setLocation] = useLocation();
   const { theme } = useTheme();
 
-  // Theme-aware text colors — fixes white-on-white in light mode.
+  // Theme-aware text colors - fixes white-on-white in light mode.
   // useTransform inside CinematicText binds [baseColor, glowColor] at mount,
   // so we key the component on theme to force re-bind when toggling.
   const baseColor = theme === "light" ? "#0A0A0A" : "#ffffff";
@@ -29,10 +29,10 @@ export function AgencyHero() {
 
       {/* Content Container - Centered and Max Width.
           Tightened pb-32 → pb-20 and mb-16/24 → mb-8/12 to lift the subtitle + CTAs
-          higher in viewport — guarantees they're visible above-the-fold on 1366×768 and up. */}
+          higher in viewport - guarantees they're visible above-the-fold on 1366×768 and up. */}
       <div className="flex-grow flex flex-col justify-end w-full max-w-[1800px] mx-auto px-8 md:px-12 pb-20 md:pb-24 pt-40 relative z-10 pointer-events-none">
         <div className="pointer-events-auto">
-          {/* Hero headline size — back up after 'design ops' shortened the headline.
+          {/* Hero headline size - back up after 'design ops' shortened the headline.
               5xl/7xl/8xl (48/72/96px) gives monumental feel without pushing CTAs below fold
               (2-line desktop layout uses only ~192px vs the previous 3-line ~290px). */}
           <div className="hidden md:block">
@@ -68,13 +68,13 @@ export function AgencyHero() {
 
           <Reveal delay={0.6}>
             {/* Hero content restructure:
-                — Subtitle + CTAs + "write directly" link sit ABOVE the ElasticLine divider
-                — Divider sits below the action block as a separator
-                — Micro lines (proof points) sit BELOW divider on LEFT in ONE row
+                - Subtitle + CTAs + "write directly" link sit ABOVE the ElasticLine divider
+                - Divider sits below the action block as a separator
+                - Micro lines (proof points) sit BELOW divider on LEFT in ONE row
                 This pushes subtitle + CTAs higher in viewport (ATF) and uses divider as a logical
                 separator between "decide → act" zone and "proof signals" zone. */}
 
-            {/* Audience qualifier chips — shared ChipTooltip component (ui/ChipTooltip).
+            {/* Audience qualifier chips - shared ChipTooltip component (ui/ChipTooltip).
                 Two semantic groups separated by a vertical divider:
                   Group 1 (neutral chips): WHO we serve
                   Group 2 (lime accent):   WHAT we do (capability anchor)
@@ -82,21 +82,21 @@ export function AgencyHero() {
                 prerendered HTML carries the full qualifier text. Triggers are keyboard-
                 focusable with aria-describedby. Chips wrap + shrink below 640px. */}
             <div className="mb-8 md:mb-10 flex flex-wrap gap-2 md:gap-3 items-center">
-              {/* Group 1 — audience/maturity filters with premium tooltips.
-                  Tooltip strings use React fragments + &nbsp; before the last 1-2 words —
+              {/* Group 1 - audience/maturity filters with premium tooltips.
+                  Tooltip strings use React fragments + &nbsp; before the last 1-2 words -
                   a typography safety net preventing orphan words on the final line. */}
-              {/* TODO(reszek): próg ICP ujednolicony do 30–300+ (był 5–300+, podczas gdy
-                  FAQ/Glossary/SEO mówią 30–300+). Process.tsx nadal ma 5–300+ — poza
+              {/* TODO(reszek): próg ICP ujednolicony do 30-300+ (był 5-300+, podczas gdy
+                  FAQ/Glossary/SEO mówią 30-300+). Process.tsx nadal ma 5-300+ - poza
                   zakresem tej zmiany, do wyrównania osobno. */}
               {(language === "pl" ? [
-                { label: "Multi-location", tooltip: <>30–300+ fizycznych punktów, jedna&nbsp;marka</> },
+                { label: "Multi-location", tooltip: <>30-300+ fizycznych punktów, jedna&nbsp;marka</> },
                 { label: "Multi-product", tooltip: <>Wiele linii produktów pod jedną&nbsp;marką</> },
                 { label: "Multi-brand", tooltip: <>Wiele marek pod jednym operating&nbsp;systemem</> },
                 { label: "SaaS", tooltip: <>Produkty software&apos;owe od pomysłu do operating&nbsp;systemu</> },
                 { label: "Brand launch", tooltip: <>Pre-launch tożsamość, wejście na rynek od&nbsp;zera</> },
                 { label: "Post-PMF & scaling", tooltip: <>Po product-market fit, poza founder-led&nbsp;execution</> },
               ] : [
-                { label: "Multi-location", tooltip: <>30–300+ physical branches under a single&nbsp;brand</> },
+                { label: "Multi-location", tooltip: <>30-300+ physical branches under a single&nbsp;brand</> },
                 { label: "Multi-product", tooltip: <>Multiple product lines under one&nbsp;brand</> },
                 { label: "Multi-brand", tooltip: <>Multiple brands sharing one operating&nbsp;system</> },
                 { label: "SaaS", tooltip: <>Software products from foggy idea to operating&nbsp;system</> },
@@ -106,10 +106,10 @@ export function AgencyHero() {
                 <ChipTooltip key={i} label={chip.label} tooltip={chip.tooltip} tooltipClassName="max-w-[220px]" />
               ))}
 
-              {/* Divider — signals category shift from "who" to "how" */}
+              {/* Divider - signals category shift from "who" to "how" */}
               <span aria-hidden="true" className="hidden sm:inline-block w-px h-4 bg-white/15 mx-1" />
 
-              {/* Group 2 — capability anchor (lime accent, distinct visual register) */}
+              {/* Group 2 - capability anchor (lime accent, distinct visual register) */}
               <ChipTooltip
                 variant="lime"
                 label={
@@ -120,8 +120,8 @@ export function AgencyHero() {
                 }
                 tooltip={
                   language === "pl"
-                    ? <>AI jako warstwa w governance i delivery — nie jako&nbsp;feature</>
-                    : <>AI as a layer in governance and delivery — not as a&nbsp;feature</>
+                    ? <>AI jako warstwa w governance i delivery - nie jako&nbsp;feature</>
+                    : <>AI as a layer in governance and delivery - not as a&nbsp;feature</>
                 }
               />
             </div>
@@ -135,7 +135,7 @@ export function AgencyHero() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-6 shrink-0">
-                {/* PRIMARY CTA — Brief */}
+                {/* PRIMARY CTA - Brief */}
                 <MagneticButton
                   onClick={() => setLocation("/brief")}
                   className="bg-[#D4FF00] text-black border-none hover:bg-[#D4FF00]/90 rounded-none"
@@ -147,7 +147,7 @@ export function AgencyHero() {
                   </span>
                 </MagneticButton>
 
-                {/* SECONDARY CTA — direct Calendly book (no extra hop via /contact) */}
+                {/* SECONDARY CTA - direct Calendly book (no extra hop via /contact) */}
                 <MagneticButton
                   onClick={() => {
                     try { (window as any).plausible?.("calendly_clicked", { props: { source: "hero" } }); } catch { /* noop */ }
@@ -163,8 +163,8 @@ export function AgencyHero() {
             </div>
 
             {/* Divider + below-the-line zone:
-                LEFT — proof points (micro lines, kept on left for scan-readability)
-                RIGHT — mailto link (warm-lead path, sits opposite proof signals, below divider) */}
+                LEFT - proof points (micro lines, kept on left for scan-readability)
+                RIGHT - mailto link (warm-lead path, sits opposite proof signals, below divider) */}
             <div className="relative w-full pt-10 md:pt-14 mt-10 md:mt-12">
               <ElasticLine className="absolute -top-[30px] left-0 w-full h-[60px]" />
 
@@ -175,9 +175,9 @@ export function AgencyHero() {
                   <p>{t("hero.micro_3")}</p>
                 </div>
 
-                {/* Direct mail link — moved below the divider, opposite proof points */}
+                {/* Direct mail link - moved below the divider, opposite proof points */}
                 <a
-                  href="mailto:hello@r352.com?subject=r352%20—%20hello"
+                  href="mailto:hello@r352.com?subject=r352%20-%20hello"
                   onClick={() => {
                     try { (window as any).plausible?.("mail_clicked", { props: { source: "hero" } }); } catch { /* noop */ }
                   }}
@@ -189,12 +189,12 @@ export function AgencyHero() {
                 </a>
               </div>
 
-              {/* Brand signature line — "Move fast, steady cadence" demoted from headline to mantra position.
+              {/* Brand signature line - "Move fast, steady cadence" demoted from headline to mantra position.
                   Sits at the very bottom of the hero as a closing brand sign-off. Sentence-case lowercase
                   for editorial feel, em-dash prefix as author signature convention, Tanker display font
                   scaled down to ~24-32px so it reads as tagline rather than title. */}
               <p className="mt-10 md:mt-14 font-display text-2xl md:text-4xl tracking-tight text-[#D4FF00]">
-                <span className="text-neutral-600 mr-3">—</span>
+                <span className="text-neutral-600 mr-3">-</span>
                 {t("hero.signature")}
               </p>
             </div>

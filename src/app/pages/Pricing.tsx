@@ -12,41 +12,41 @@ import { useLenis } from "lenis/react";
 const baseRates = [
   { id: 1, type: "Master still (dostosowanie master KV do reformatów bazowych)", min: 100, std: 125, max: 150, desc: "Pełna kreacja: koncept, layout, typografia, zdjęcia, 1 runda poprawek." },
   { id: 2, type: "Reformat still (adaptacja)", min: 30, std: 45, max: 60, desc: "Adaptacja mastera: zmiana rozmiaru lub brandu. Praca mechaniczna." },
-  { id: 3, type: "Motion / Video — master (za sztukę)", min: 240, std: 300, max: 360, desc: "Video 15s/6s — dostosowanie master KV do reformatów bazowych." },
-  { id: 4, type: "Motion / Video — adaptacja (za sztukę)", min: 120, std: 180, max: 240, desc: "Podmiana brandu w video." },
+  { id: 3, type: "Motion / Video - master (za sztukę)", min: 240, std: 300, max: 360, desc: "Video 15s/6s - dostosowanie master KV do reformatów bazowych." },
+  { id: 4, type: "Motion / Video - adaptacja (za sztukę)", min: 120, std: 180, max: 240, desc: "Podmiana brandu w video." },
 ];
 
 const phase1Items = [
-  { id: 1, format: "Paid Social — feed 1080×1080", qty: 1, rate: "100–150", type: "still", channel: "Paid Social" },
-  { id: 2, format: "Paid Social — stories 1080×1920", qty: 1, rate: "100–150", type: "still", channel: "Paid Social" },
-  { id: 3, format: "SEM — wiodący rozmiar", qty: 1, rate: "100–150", type: "still", channel: "SEM" },
-  { id: 4, format: "Programmatic — wiodący rozmiar", qty: 1, rate: "100–150", type: "still", channel: "Programmatic" },
-  { id: 5, format: "Criteo — wiodący rozmiar", qty: 1, rate: "100–150", type: "still", channel: "Criteo" },
-  { id: 6, format: "Wizytówka GBP (1200×900)", qty: 1, rate: "100–150", type: "still", channel: "GBP" },
-  { id: 7, format: "Video 15s", qty: 1, rate: "240–360", type: "motion master", channel: "Video" },
-  { id: 8, format: "Video 6s (bumper)", qty: 1, rate: "240–360", type: "motion master", channel: "Video" },
+  { id: 1, format: "Paid Social - feed 1080×1080", qty: 1, rate: "100-150", type: "still", channel: "Paid Social" },
+  { id: 2, format: "Paid Social - stories 1080×1920", qty: 1, rate: "100-150", type: "still", channel: "Paid Social" },
+  { id: 3, format: "SEM - wiodący rozmiar", qty: 1, rate: "100-150", type: "still", channel: "SEM" },
+  { id: 4, format: "Programmatic - wiodący rozmiar", qty: 1, rate: "100-150", type: "still", channel: "Programmatic" },
+  { id: 5, format: "Criteo - wiodący rozmiar", qty: 1, rate: "100-150", type: "still", channel: "Criteo" },
+  { id: 6, format: "Wizytówka GBP (1200×900)", qty: 1, rate: "100-150", type: "still", channel: "GBP" },
+  { id: 7, format: "Video 15s", qty: 1, rate: "240-360", type: "motion master", channel: "Video" },
+  { id: 8, format: "Video 6s (bumper)", qty: 1, rate: "240-360", type: "motion master", channel: "Video" },
 ];
 
 const phase2Extra = [
-  { id: 1, format: "SEM — 3 dodatkowe rozmiary", qty: 3, rate: "30–60", type: "still", channel: "SEM" },
-  { id: 2, format: "Programmatic — 4 dodatkowe rozmiary", qty: 4, rate: "30–60", type: "still", channel: "Programmatic" },
-  { id: 3, format: "Criteo — 3 dodatkowe rozmiary", qty: 3, rate: "30–60", type: "still", channel: "Criteo" },
+  { id: 1, format: "SEM - 3 dodatkowe rozmiary", qty: 3, rate: "30-60", type: "still", channel: "SEM" },
+  { id: 2, format: "Programmatic - 4 dodatkowe rozmiary", qty: 4, rate: "30-60", type: "still", channel: "Programmatic" },
+  { id: 3, format: "Criteo - 3 dodatkowe rozmiary", qty: 3, rate: "30-60", type: "still", channel: "Criteo" },
 ];
 
 const phase2Brands = [
-  { id: 4, format: "Paid Social (feed + stories) × 5 brandów", qty: 10, rate: "30–60", type: "still", channel: "Paid Social" },
-  { id: 5, format: "SEM (4 rozm.) × 5 brandów", qty: 20, rate: "30–60", type: "still", channel: "SEM" },
-  { id: 6, format: "Programmatic (5 rozm.) × 5 brandów", qty: 25, rate: "30–60", type: "still", channel: "Programmatic" },
-  { id: 7, format: "Wizytówka GBP × 5 brandów", qty: 5, rate: "30–60", type: "still", channel: "GBP" },
-  { id: 8, format: "Video 15s × 5 brandów", qty: 5, rate: "120–240", type: "motion adapt.", channel: "Video" },
-  { id: 9, format: "Video 6s × 5 brandów", qty: 5, rate: "120–240", type: "motion adapt.", channel: "Video" },
+  { id: 4, format: "Paid Social (feed + stories) × 5 brandów", qty: 10, rate: "30-60", type: "still", channel: "Paid Social" },
+  { id: 5, format: "SEM (4 rozm.) × 5 brandów", qty: 20, rate: "30-60", type: "still", channel: "SEM" },
+  { id: 6, format: "Programmatic (5 rozm.) × 5 brandów", qty: 25, rate: "30-60", type: "still", channel: "Programmatic" },
+  { id: 7, format: "Wizytówka GBP × 5 brandów", qty: 5, rate: "30-60", type: "still", channel: "GBP" },
+  { id: 8, format: "Video 15s × 5 brandów", qty: 5, rate: "120-240", type: "motion adapt.", channel: "Video" },
+  { id: 9, format: "Video 6s × 5 brandów", qty: 5, rate: "120-240", type: "motion adapt.", channel: "Video" },
 ];
 
 const quantitySummary = [
   { label: "Still masters (Faza 1)", qty: 6 },
   { label: "Motion masters (Faza 1)", qty: 2 },
-  { label: "Still reformaty — dod. rozmiary 1. brand", qty: 10 },
-  { label: "Still reformaty — adaptacje ×5 brandów", qty: 60 },
+  { label: "Still reformaty - dod. rozmiary 1. brand", qty: 10 },
+  { label: "Still reformaty - adaptacje ×5 brandów", qty: 60 },
   { label: "Motion adaptacje ×5 brandów", qty: 10 },
 ];
 
@@ -236,7 +236,7 @@ export function Pricing() {
             </div>
           </Reveal>
 
-          {/* ─── Widełki cenowe — prominent summary ──────────────── */}
+          {/* ─── Widełki cenowe - prominent summary ──────────────── */}
           <Reveal delay={0.1}>
             <div className="max-w-[900px] mx-auto mb-20">
               <div className="border border-white/10 bg-white/[0.02] backdrop-blur-sm p-8 md:p-12">
@@ -291,7 +291,7 @@ export function Pricing() {
                   <p>Stawka efektywna per plik przy STD: <span className="text-white/60 font-medium">~81 PLN</span></p>
                   <p className="flex items-center gap-1.5">
                     <Clock className="w-3.5 h-3.5 text-[#D4FF00]/50" />
-                    Czas dostarczenia: <span className="text-[#D4FF00]/80 font-medium">3–5 dni roboczych</span>
+                    Czas dostarczenia: <span className="text-[#D4FF00]/80 font-medium">3-5 dni roboczych</span>
                   </p>
                 </div>
 
@@ -454,7 +454,7 @@ export function Pricing() {
                   <div className="flex items-start justify-between">
                     <div>
                       <h2 className="text-base sm:text-lg font-bold tracking-tight text-neutral-900 uppercase">
-                        Cennik — Kreacje Performance Marketing
+                        Cennik - Kreacje Performance Marketing
                       </h2>
                       <p className="text-[10px] sm:text-xs text-neutral-400 mt-1 italic">
                         Model 2-fazowy: MASTERY (kreacja) → REFORMATY (adaptacje po akceptacji) | Ceny netto PLN
@@ -497,7 +497,7 @@ export function Pricing() {
                 </div>
 
                 {/* ── Faza 1 ───────────────────────────────────── */}
-                <SectionLabel icon="phase1">Faza 1 — Mastery (dostosowanie master KV do reformatów bazowych)</SectionLabel>
+                <SectionLabel icon="phase1">Faza 1 - Mastery (dostosowanie master KV do reformatów bazowych)</SectionLabel>
                 <p className="text-[8px] sm:text-[9px] text-neutral-400 italic mb-2 -mt-1">
                   Zawiera: dostosowanie master KV per format. Dostawa: 1 master per kanał/rozmiar (1 brand).
                 </p>
@@ -532,7 +532,7 @@ export function Pricing() {
                 </p>
 
                 {/* ── Faza 2 ────────────────────────────────────── */}
-                <SectionLabel icon="phase2">Faza 2 — Reformaty (po akceptacji masterów)</SectionLabel>
+                <SectionLabel icon="phase2">Faza 2 - Reformaty (po akceptacji masterów)</SectionLabel>
                 <p className="text-[8px] sm:text-[9px] text-neutral-400 italic mb-2 -mt-1">
                   Adaptacja masterów na dodatkowe rozmiary i brandy. Praca mechaniczna.
                 </p>
@@ -552,7 +552,7 @@ export function Pricing() {
                       {/* Sub-header: Dodatkowe rozmiary */}
                       <tr className="bg-neutral-200/50">
                         <td colSpan={6} className="px-2 py-1.5 font-bold text-[9px] sm:text-[10px] uppercase tracking-wider text-neutral-700">
-                          Dodatkowe rozmiary — 1. brand
+                          Dodatkowe rozmiary - 1. brand
                         </td>
                       </tr>
                       {phase2Extra.map((row, i) => (
@@ -646,7 +646,7 @@ export function Pricing() {
                   <p>Stawka efektywna per plik przy STD: <span className="font-semibold text-neutral-600">~81 PLN</span></p>
                   <p className="flex items-center gap-1">
                     <Clock className="w-2.5 h-2.5" />
-                    Czas dostarczenia: <span className="font-semibold text-neutral-600">3–5 dni roboczych</span>
+                    Czas dostarczenia: <span className="font-semibold text-neutral-600">3-5 dni roboczych</span>
                   </p>
                 </div>
 

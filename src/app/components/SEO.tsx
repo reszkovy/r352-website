@@ -10,8 +10,8 @@ interface SEOProps {
 }
 
 export function SEO({
-  title = "r352 — Strategic design partner for growing brands.",
-  description = "Design, systems & AI — strategic design partner for multi-location organizations. Loop architecture for design ops, from strategy to rollout-ready delivery, powered by the r3loop methodology. Predictable quality and speed at scale.",
+  title = "r352 - Strategic design partner for growing brands.",
+  description = "Design, systems & AI - strategic design partner for multi-location organizations. Loop architecture for design ops, from strategy to rollout-ready delivery, powered by the r3loop methodology. Predictable quality and speed at scale.",
   path = "/",
   ogImage = "https://www.r352.com/og-image.png",
   article
@@ -28,7 +28,7 @@ export function SEO({
 
   const isHomepage = path === "/";
 
-  // Person schema — anchors Reszek as the named expert behind r352.
+  // Person schema - anchors Reszek as the named expert behind r352.
   // Critical for LLM entity recognition ("who is Reszek", "who founded r352").
   const personSchema = {
     "@context": "https://schema.org",
@@ -58,7 +58,7 @@ export function SEO({
       "Design Governance"
     ],
     "sameAs": [
-      // TODO(reszek): dodać GitHub/X/inne profile dla grafu encji (entity graph) —
+      // TODO(reszek): dodać GitHub/X/inne profile dla grafu encji (entity graph) -
       // każdy dodatkowy zweryfikowany profil wzmacnia rozpoznanie Person w LLM/Knowledge Graph.
       "https://www.linkedin.com/in/przemyslawreszka/"
     ]
@@ -70,7 +70,7 @@ export function SEO({
     "name": "r352",
     "url": "https://www.r352.com",
     "logo": "https://www.r352.com/logo.svg",
-    "description": "Strategic design partner for multi-location organizations. Loop architecture for design ops — we build the operating system behind great design, from strategy to rollout-ready delivery, powered by the r3loop methodology.",
+    "description": "Strategic design partner for multi-location organizations. Loop architecture for design ops - we build the operating system behind great design, from strategy to rollout-ready delivery, powered by the r3loop methodology.",
     "email": "hello@r352.com",
     "founder": {
       "@type": "Person",
@@ -94,7 +94,7 @@ export function SEO({
     "@type": "WebSite",
     "name": "r352",
     "url": "https://www.r352.com",
-    "description": "Strategic design partner for multi-location brands. Loop architecture for design ops — the operating system behind great design.",
+    "description": "Strategic design partner for multi-location brands. Loop architecture for design ops - the operating system behind great design.",
     "publisher": {
       "@type": "Organization",
       "name": "r352",
@@ -103,7 +103,7 @@ export function SEO({
     "inLanguage": ["en"]
   };
 
-  // FAQ schema — high-yield for LLM citations and Google's PAA / rich snippets.
+  // FAQ schema - high-yield for LLM citations and Google's PAA / rich snippets.
   // Each Q maps to a real question a multi-location operator would ask.
   const faqSchema = {
     "@context": "https://schema.org",
@@ -114,7 +114,7 @@ export function SEO({
         "name": "What is r3loop?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "r3loop is r352's 8-step operating methodology: Diagnose, Map, Standardize, Build, Govern, Ship, Measure, Iterate. Every engagement runs through this loop. Depth of each step scales with engagement size, but sequence stays constant — that's what makes the work predictable across 47 locations or 470."
+          "text": "r3loop is r352's 8-step operating methodology: Diagnose, Map, Standardize, Build, Govern, Ship, Measure, Iterate. Every engagement runs through this loop. Depth of each step scales with engagement size, but sequence stays constant - that's what makes the work predictable across 47 locations or 470."
         }
       },
       {
@@ -122,7 +122,7 @@ export function SEO({
         "name": "Who does r352 work with?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Multi-location brands and scaling operators — typically 30–300+ location complexity. Fitness, wellness, health, retail, real estate. Past clients include Sonova (Geers), Benefit Systems (300+ wellness clubs), Archicom (multi-investment real estate), Kubota, DiscoBowl, UNIQA, and FIFA."
+          "text": "Multi-location brands and scaling operators - typically 30-300+ location complexity. Fitness, wellness, health, retail, real estate. Past clients include Sonova (Geers), Benefit Systems (300+ wellness clubs), Archicom (multi-investment real estate), Kubota, DiscoBowl, UNIQA, and FIFA."
         }
       },
       {
@@ -130,7 +130,7 @@ export function SEO({
         "name": "How is r352 different from a creative agency?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "r352 is positioned as an operator, not an agency. Agencies sell creative deliverables billed by the hour. r352 builds operational systems — design ops infrastructure, brief standardization, governance gates, AI-native production pipelines — sold as productized engagements with fixed scope and predictable outcomes. The deliverables are working tools your team uses after we're gone, not pitch decks."
+          "text": "r352 is positioned as an operator, not an agency. Agencies sell creative deliverables billed by the hour. r352 builds operational systems - design ops infrastructure, brief standardization, governance gates, AI-native production pipelines - sold as productized engagements with fixed scope and predictable outcomes. The deliverables are working tools your team uses after we're gone, not pitch decks."
         }
       },
       {
@@ -138,7 +138,7 @@ export function SEO({
         "name": "What are r352's engagement models?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Five productized models. Diagnostic: 5-day operational audit, €2k fixed, 60-day money-back guarantee. Sprint: 4–6 week fixed-scope build, from €15k. Retainer: monthly engagement from €7k/mo with 30-day notice. Enterprise Sprint: 12–16 week multi-location rollout from €55k. Operating Partner: embedded role from €9.5k/mo with 12-month minimum."
+          "text": "Five productized models. Diagnostic: 5-day operational audit, €2k fixed, 60-day money-back guarantee. Sprint: 4-6 week fixed-scope build, from €15k. Retainer: monthly engagement from €7k/mo with 30-day notice. Enterprise Sprint: 12-16 week multi-location rollout from €55k. Operating Partner: embedded role from €9.5k/mo with 12-month minimum."
         }
       },
       {
@@ -146,7 +146,7 @@ export function SEO({
         "name": "Who is Reszek?",
         "acceptedAnswer": {
           "@type": "Answer",
-          // TODO(reszek): potwierdź listę miast w bio — na razie ogólne "six years across European markets".
+          // TODO(reszek): potwierdź listę miast w bio - na razie ogólne "six years across European markets".
           // MUST stay byte-identical with FAQ_EN in src/app/pages/FAQ.tsx (schema/content parity).
           "text": "Przemyslaw Reszka (Reszek) is the founder of r352. Designer-operator with 15+ years of experience: started in UX at Deloitte, then spent six years across European markets building design operations for multi-location brands. Created the r3loop methodology. EU-based, remote-first."
         }
@@ -159,7 +159,7 @@ export function SEO({
     "@type": "ProfessionalService",
     "name": "r352",
     "url": "https://www.r352.com",
-    "description": "Strategic design + operations consulting for multi-location organizations. We build operating systems behind great design — brand strategy, workflow architecture, QA standards, AI-first execution. Delivered through the r3loop methodology (8-step framework).",
+    "description": "Strategic design + operations consulting for multi-location organizations. We build operating systems behind great design - brand strategy, workflow architecture, QA standards, AI-first execution. Delivered through the r3loop methodology (8-step framework).",
     "priceRange": "€€€",
     "areaServed": "Worldwide",
     "serviceType": [
@@ -224,13 +224,13 @@ export function SEO({
       {
         "@type": "Review",
         "author": { "@type": "Person", "name": "Michalina Piątkowska" },
-        "reviewBody": "Consistent quality across every investment we launch. Communication is precise, deadlines hold — exactly what real estate campaigns need.",
+        "reviewBody": "Consistent quality across every investment we launch. Communication is precise, deadlines hold - exactly what real estate campaigns need.",
         "reviewRating": { "@type": "Rating", "ratingValue": "5" }
       }
     ]
   };
 
-  // Service schema — /services route only. Names the offering as a service
+  // Service schema - /services route only. Names the offering as a service
   // entity (provider r352, serviceType "Design operations consulting") so
   // search engines + LLMs classify the page as a service catalog, not prose.
   const isServicesPage = path === "/services";
@@ -238,9 +238,9 @@ export function SEO({
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "r352 — Strategic design partner",
+    "name": "r352 - Strategic design partner",
     "serviceType": "Design operations consulting",
-    "description": "Loop architecture for design ops. Strategy, operating system, design & production, and build & optimize — delivered through the r3loop methodology as productized engagements (Diagnostic, Sprint, Retainer, Enterprise Sprint, Operating Partner).",
+    "description": "Loop architecture for design ops. Strategy, operating system, design & production, and build & optimize - delivered through the r3loop methodology as productized engagements (Diagnostic, Sprint, Retainer, Enterprise Sprint, Operating Partner).",
     "url": "https://www.r352.com/services",
     "provider": {
       "@type": "Organization",
@@ -304,7 +304,7 @@ export function SEO({
       <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
       <link rel="canonical" href={canonicalUrl} />
 
-      {/* Hreflang — only EN for now. PL is a state-based i18n toggle, not a
+      {/* Hreflang - only EN for now. PL is a state-based i18n toggle, not a
           separate URL set. Re-add hreflang="pl" once we ship real /pl routes. */}
       <link rel="alternate" hrefLang="en" href={canonicalUrl} />
       <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />
@@ -327,8 +327,8 @@ export function SEO({
       <meta name="twitter:image" content={ogImage} />
 
       {/* Structured Data */}
-      {/* Person + WebSite render on every page — anchors brand entity across the site.
-          NOTE: react-helmet-async does NOT render children nested inside fragments —
+      {/* Person + WebSite render on every page - anchors brand entity across the site.
+          NOTE: react-helmet-async does NOT render children nested inside fragments -
           every <script> below must be a DIRECT child expression of <Helmet>. */}
       <script type="application/ld+json">
         {JSON.stringify(personSchema)}

@@ -1,14 +1,14 @@
 /**
- * R3LoopBadge — brand mark for the R3LOOP methodology.
+ * R3LoopBadge - brand mark for the R3LOOP methodology.
  * Rounded pill with lime outline + Tanker (font-display) typography.
  * Used as a logo / wordmark across surfaces: footer, /process hero, sub-product references.
  *
  * Usage:
- *   <R3LoopBadge />           — default medium size
- *   <R3LoopBadge size="sm" /> — small (inline / footer)
- *   <R3LoopBadge size="lg" /> — large (hero / standalone)
- *   <R3LoopBadge tm />        — add TM symbol (opt-in, hidden by default)
- *   <R3LoopBadge variant="solid" /> — filled lime version (invert contexts)
+ *   <R3LoopBadge />           - default medium size
+ *   <R3LoopBadge size="sm" /> - small (inline / footer)
+ *   <R3LoopBadge size="lg" /> - large (hero / standalone)
+ *   <R3LoopBadge tm />        - add TM symbol (opt-in, hidden by default)
+ *   <R3LoopBadge variant="solid" /> - filled lime version (invert contexts)
  */
 
 interface R3LoopBadgeProps {
@@ -30,7 +30,7 @@ export function R3LoopBadge({
     lg: "px-5 py-2 text-base gap-1",
   };
 
-  // border-2 (2px) — visually matches Tanker glyph stroke weight better than 1px
+  // border-2 (2px) - visually matches Tanker glyph stroke weight better than 1px
   const variantClasses = {
     outline:
       "border-2 border-[#D4FF00] text-[#D4FF00] bg-transparent hover:bg-[#D4FF00]/10",

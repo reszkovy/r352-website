@@ -1,14 +1,14 @@
 /**
- * Static film-grain overlay — sits ABOVE page content (below the custom
+ * Static film-grain overlay - sits ABOVE page content (below the custom
  * cursor at z-[9999]) and unifies every section under one subtle texture.
  *
  * Implementation: tiny SVG feTurbulence tile inlined as a data URI and
- * repeated. Fully static (no animation, no canvas, no rAF) — zero GPU/CPU
+ * repeated. Fully static (no animation, no canvas, no rAF) - zero GPU/CPU
  * cost beyond one composited layer. The WebGL hero carries its own animated
  * grain; this layer deliberately does not compete with it.
  *
  * mix-blend-overlay + 3.5% opacity reads correctly on both the dark (#0A0A0A)
- * and light themes — overlay blending brightens dark pixels and darkens light
+ * and light themes - overlay blending brightens dark pixels and darkens light
  * ones symmetrically.
  */
 

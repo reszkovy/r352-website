@@ -69,7 +69,7 @@ export function CinematicText({
             // Character-by-character animation, GROUPED PER WORD.
             // Each word's char spans live inside an inline-flex whitespace-nowrap
             // wrapper, so the flex-wrap line container can only break BETWEEN
-            // words — never mid-word. Fixes broken words at 375px viewports
+            // words - never mid-word. Fixes broken words at 375px viewports
             // (previously every char was an independent flex item, so lines
             // could wrap in the middle of a word). charIndex stays globally
             // sequential across the line so the stagger cadence is unchanged.

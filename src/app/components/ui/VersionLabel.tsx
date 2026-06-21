@@ -4,7 +4,7 @@ declare const __BUILD_COMMIT__: string;
 declare const __BUILD_ENV__: string;
 
 /**
- * Microscopic version label — fixed bottom-left, low opacity.
+ * Microscopic version label - fixed bottom-left, low opacity.
  * Format: YYYY-MM-DD HH:mm · commit · env
  * Use to verify which build is currently live.
  */

@@ -5,9 +5,9 @@ import { useScrollStarted } from "@/app/hooks/useScrollStarted";
 import { ArrowRight } from "lucide-react";
 
 /**
- * FloatingBriefCTA — persistent frosted-glass pill linking to /brief.
+ * FloatingBriefCTA - persistent frosted-glass pill linking to /brief.
  * Position: fixed bottom-right.
- *  - Mobile: bottom-6 right-6 (alone — chat icon is hidden on mobile).
+ *  - Mobile: bottom-6 right-6 (alone - chat icon is hidden on mobile).
  *  - Desktop: ABOVE the chat icon at bottom-[88px] right-6 (vertical stack, right-aligned).
  * Style: translucent dark glass with backdrop-blur (premium Linear/Stripe pattern), no heavy fill.
  * Hides itself on /brief and conflicting full-screen routes.
@@ -15,7 +15,7 @@ import { ArrowRight } from "lucide-react";
 export function FloatingBriefCTA() {
   const [location, setLocation] = useLocation();
   const { language } = useLanguage();
-  // Gate visibility on scroll — CTA stays hidden at top of page, slides up from
+  // Gate visibility on scroll - CTA stays hidden at top of page, slides up from
   // bottom once visitor commits to scrolling. Removes the "popup" feel.
   const scrollStarted = useScrollStarted();
 
@@ -34,7 +34,7 @@ export function FloatingBriefCTA() {
     <AnimatePresence>
       {!shouldHide && scrollStarted && (
         <motion.button
-          // Staggered entrance — Chatbot icon enters FIRST (no delay), this
+          // Staggered entrance - Chatbot icon enters FIRST (no delay), this
           // Brief CTA enters SECOND with 0.25s delay so they appear "one then
           // the other", chat first, brief second. Softer easing + longer duration
           // for the "settling in" feel. Exit has no delay (both leave together).

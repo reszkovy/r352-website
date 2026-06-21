@@ -5,7 +5,7 @@ import { useLanguage } from "@/app/context/LanguageContext";
 import deloitteLogo from "figma:asset/58f9891995f72756719a6583adb94e90f0590ad3.png";
 import benefitLogo from "figma:asset/e9e0c20de4346f961fc2e9469ef295e4b015b901.png";
 import dawidLogo from "figma:asset/ba749ac924400bb32e1a42b8f18e7464907fccd8.png";
-// Kubota logo refreshed 2026-06-11 — client-supplied new brandmark (SVG, 4.9KB).
+// Kubota logo refreshed 2026-06-11 - client-supplied new brandmark (SVG, 4.9KB).
 // Replaces the previous figma:asset PNG. figmaAssetResolver passes the filename
 // straight through to src/assets/, so SVG resolves identically to PNG path.
 // Vector = crisper at all sizes, smaller payload, future-proof for high-DPI.
@@ -33,7 +33,7 @@ export function ClientLogos() {
         <div className="max-w-[1800px] mx-auto px-8 md:px-12 flex flex-col md:flex-row items-center gap-8 md:gap-12">
           {/* Label */}
           <div className="w-full md:w-auto flex-shrink-0">
-             {/* Was hardcoded "We worked with" — calque + EN-only. Now i18n: "Selected clients" / "Wybrani klienci". */}
+             {/* Was hardcoded "We worked with" - calque + EN-only. Now i18n: "Selected clients" / "Wybrani klienci". */}
              <h3 className="text-[#D4FF00] font-display font-normal uppercase tracking-widest text-sm md:text-base whitespace-nowrap text-left">
                {t("clients.label")}
              </h3>

@@ -43,7 +43,7 @@ export function Work() {
 
       {/* Projects Grid */}
       <div className="px-8 md:px-12 py-24 md:py-32 max-w-[1800px] mx-auto">
-        {/* ─── REGULAR CASE STUDIES — classic agency design work.
+        {/* ─── REGULAR CASE STUDIES - classic agency design work.
              Filters: not NDA + not Product. Caterelo + regional.fit moved to Products & Systems below. ─── */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {projects.filter((p: any) => !p.isNDA && !p.isProduct).map((project, index) => (
@@ -82,7 +82,7 @@ export function Work() {
           ))}
         </div>
 
-        {/* ─── PRODUCTS & SYSTEMS — operator-built tools, frameworks, self-shipped products.
+        {/* ─── PRODUCTS & SYSTEMS - operator-built tools, frameworks, self-shipped products.
              Differentiates "agency design work" from "operator-level systems work". ─── */}
         {projects.some((p: any) => p.isProduct) && (
           <div className="mt-32">
@@ -102,8 +102,8 @@ export function Work() {
                 </div>
                 <p className="col-span-12 md:col-span-5 md:justify-self-end text-sm md:text-base text-neutral-500 leading-relaxed max-w-md">
                   {language === 'pl'
-                    ? 'Operator-led, AI-native, end-to-end. To samo r3loop, które prowadzimy u klientów — zastosowane do naszych własnych produktów najpierw.'
-                    : 'Operator-led, AI-native, end-to-end. Same r3loop we run for clients — applied to our own products first.'}
+                    ? 'Operator-led, AI-native, end-to-end. To samo r3loop, które prowadzimy u klientów - zastosowane do naszych własnych produktów najpierw.'
+                    : 'Operator-led, AI-native, end-to-end. Same r3loop we run for clients - applied to our own products first.'}
                 </p>
               </div>
             </Reveal>
@@ -151,7 +151,7 @@ export function Work() {
           </div>
         )}
 
-        {/* NDA projects — 2 columns, smaller */}
+        {/* NDA projects - 2 columns, smaller */}
         {projects.some((p: any) => p.isNDA) && (
           <div className="mt-32">
             <Reveal>
@@ -175,7 +175,7 @@ export function Work() {
                       ) : (
                         <div className="w-full h-full bg-gradient-to-br from-neutral-800 to-neutral-900" />
                       )}
-                      {/* NDA overlay — lock pinned to bottom */}
+                      {/* NDA overlay - lock pinned to bottom */}
                       <div className="absolute inset-0 z-20 flex flex-col items-center justify-end pb-6 md:pb-8 gap-2 bg-transparent">
                         <div className="text-white/30 group-hover:text-white/50 transition-colors duration-500">
                           <LockIcon />

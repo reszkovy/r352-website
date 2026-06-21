@@ -30,8 +30,8 @@ const SERVICES_FAQ: { q: { en: string; pl: string }; a: { en: string; pl: string
       pl: "Czym różni się pięć modeli współpracy?",
     },
     a: {
-      en: "They map to problem maturity. Diagnostic (5 working days) finds the problem. Sprint (4–6 weeks, fixed scope) ships one working part of the system. Retainer (30-day notice) covers ongoing production. Enterprise Sprint (12–16 weeks) implements a full Creative Operating System for multi-location organizations. Operating Partner (12-month minimum) is an embedded strategic role. If several fit, start with the smallest engagement.",
-      pl: "Mapują się na dojrzałość problemu. Diagnostic (5 dni roboczych) znajduje problem. Sprint (4–6 tygodni, fixed scope) dostarcza jedną działającą część systemu. Retainer (30-day notice) pokrywa bieżącą produkcję. Enterprise Sprint (12–16 tygodni) wdraża pełny Creative Operating System dla organizacji multi-location. Operating Partner (12-miesięczne minimum) to embedded rola strategiczna. Jeśli pasuje kilka — zacznij od najmniejszego engagementu.",
+      en: "They map to problem maturity. Diagnostic (5 working days) finds the problem. Sprint (4-6 weeks, fixed scope) ships one working part of the system. Retainer (30-day notice) covers ongoing production. Enterprise Sprint (12-16 weeks) implements a full Creative Operating System for multi-location organizations. Operating Partner (12-month minimum) is an embedded strategic role. If several fit, start with the smallest engagement.",
+      pl: "Mapują się na dojrzałość problemu. Diagnostic (5 dni roboczych) znajduje problem. Sprint (4-6 tygodni, fixed scope) dostarcza jedną działającą część systemu. Retainer (30-day notice) pokrywa bieżącą produkcję. Enterprise Sprint (12-16 tygodni) wdraża pełny Creative Operating System dla organizacji multi-location. Operating Partner (12-miesięczne minimum) to embedded rola strategiczna. Jeśli pasuje kilka - zacznij od najmniejszego engagementu.",
     },
   },
   {
@@ -40,8 +40,8 @@ const SERVICES_FAQ: { q: { en: string; pl: string }; a: { en: string; pl: string
       pl: "Co jeśli Diagnostic u nas nie zadziała?",
     },
     a: {
-      en: "The Diagnostic carries a 60-day money-back guarantee: if the recommendations are not actionable within 60 days, you get your money back. There's also no commitment to build — you receive a written report with root causes and a prioritized action plan, and you can run the fixes yourself or engage us for the next phase.",
-      pl: "Diagnostic ma 60-day money-back guarantee: jeśli rekomendacje nie są actionable w ciągu 60 dni, dostajesz zwrot pieniędzy. Nie ma też zobowiązania do budowy — dostajesz pisemny raport z root causes i spriorytetyzowanym action planem, a fixy możesz wdrożyć samodzielnie albo zaangażować nas do kolejnej fazy.",
+      en: "The Diagnostic carries a 60-day money-back guarantee: if the recommendations are not actionable within 60 days, you get your money back. There's also no commitment to build - you receive a written report with root causes and a prioritized action plan, and you can run the fixes yourself or engage us for the next phase.",
+      pl: "Diagnostic ma 60-day money-back guarantee: jeśli rekomendacje nie są actionable w ciągu 60 dni, dostajesz zwrot pieniędzy. Nie ma też zobowiązania do budowy - dostajesz pisemny raport z root causes i spriorytetyzowanym action planem, a fixy możesz wdrożyć samodzielnie albo zaangażować nas do kolejnej fazy.",
     },
   },
   {
@@ -50,8 +50,8 @@ const SERVICES_FAQ: { q: { en: string; pl: string }; a: { en: string; pl: string
       pl: "Jak szybko możemy wystartować?",
     },
     a: {
-      en: "The Diagnostic starts with a 60-minute kickoff, scheduled within 1–2 weeks, and runs 5 working days. A Sprint starts from a scoping call and delivers in 4–6 weeks — versus a typical 12–16 weeks in-house. Every engagement is scoped upfront, so the timeline is fixed before kickoff, not discovered along the way.",
-      pl: "Diagnostic zaczyna się od 60-minutowego kickoffu, planowanego w 1–2 tygodnie, i trwa 5 dni roboczych. Sprint startuje od scoping callu i dostarcza w 4–6 tygodni — versus typowe 12–16 tygodni in-house. Każdy engagement jest scope'owany z góry, więc timeline jest ustalony przed kickoffem, nie odkrywany po drodze.",
+      en: "The Diagnostic starts with a 60-minute kickoff, scheduled within 1-2 weeks, and runs 5 working days. A Sprint starts from a scoping call and delivers in 4-6 weeks - versus a typical 12-16 weeks in-house. Every engagement is scoped upfront, so the timeline is fixed before kickoff, not discovered along the way.",
+      pl: "Diagnostic zaczyna się od 60-minutowego kickoffu, planowanego w 1-2 tygodnie, i trwa 5 dni roboczych. Sprint startuje od scoping callu i dostarcza w 4-6 tygodni - versus typowe 12-16 tygodni in-house. Każdy engagement jest scope'owany z góry, więc timeline jest ustalony przed kickoffem, nie odkrywany po drodze.",
     },
   },
   {
@@ -60,8 +60,8 @@ const SERVICES_FAQ: { q: { en: string; pl: string }; a: { en: string; pl: string
       pl: "Jak ustalana jest cena?",
     },
     a: {
-      en: "Pricing is set in the scoping call, individually per engagement. Final scope, location count, and implementation depth determine where you land — set before kickoff, not discovered along the way. The Diagnostic carries a 60-day money-back guarantee if the recommendations aren't actionable.",
-      pl: "Cena jest ustalana w scoping callu, indywidualnie per engagement. Finalny scope, liczba lokalizacji i głębokość wdrożenia decydują gdzie wylądujesz — ustalane przed kickoffem, nie odkrywane po drodze. Diagnostic ma 60-day money-back guarantee jeśli rekomendacje nie są actionable.",
+      en: "Pricing is set in the scoping call, individually per engagement. Final scope, location count, and implementation depth determine where you land - set before kickoff, not discovered along the way. The Diagnostic carries a 60-day money-back guarantee if the recommendations aren't actionable.",
+      pl: "Cena jest ustalana w scoping callu, indywidualnie per engagement. Finalny scope, liczba lokalizacji i głębokość wdrożenia decydują gdzie wylądujesz - ustalane przed kickoffem, nie odkrywane po drodze. Diagnostic ma 60-day money-back guarantee jeśli rekomendacje nie są actionable.",
     },
   },
   {
@@ -70,8 +70,8 @@ const SERVICES_FAQ: { q: { en: string; pl: string }; a: { en: string; pl: string
       pl: "Co faktycznie zostaje u nas po zakończeniu współpracy?",
     },
     a: {
-      en: "A complete deliverable, not a pitch deck. Sprint handoff includes everything your team needs to run the system forward. Enterprise Sprint adds complete system documentation, team training, and a 90-day transition plan. The deliverables are working tools your team uses after we're gone — you buy the system, not the hours.",
-      pl: "Kompletny deliverable, nie pitch deck. Handoff Sprintu zawiera wszystko, czego Wasz zespół potrzebuje, żeby prowadzić system dalej. Enterprise Sprint dodaje pełną dokumentację systemu, szkolenie zespołu i 90-dniowy plan przejściowy. Deliverables to działające narzędzia, których zespół używa po naszym wyjściu — kupujecie system, nie godziny.",
+      en: "A complete deliverable, not a pitch deck. Sprint handoff includes everything your team needs to run the system forward. Enterprise Sprint adds complete system documentation, team training, and a 90-day transition plan. The deliverables are working tools your team uses after we're gone - you buy the system, not the hours.",
+      pl: "Kompletny deliverable, nie pitch deck. Handoff Sprintu zawiera wszystko, czego Wasz zespół potrzebuje, żeby prowadzić system dalej. Enterprise Sprint dodaje pełną dokumentację systemu, szkolenie zespołu i 90-dniowy plan przejściowy. Deliverables to działające narzędzia, których zespół używa po naszym wyjściu - kupujecie system, nie godziny.",
     },
   },
 ];
@@ -79,13 +79,13 @@ const SERVICES_FAQ: { q: { en: string; pl: string }; a: { en: string; pl: string
 export function Services() {
   const { t, language } = useLanguage();
 
-  // SectionWatermark now uses framer-motion's native useScroll (no GSAP) —
+  // SectionWatermark now uses framer-motion's native useScroll (no GSAP) -
   // useLenisGsap bridge no longer needed for the watermark parallax.
 
   // Cast to specific types to avoid TS errors
   const cards = (t('services_page.cards') || []) as ServiceCard[];
 
-  // Active state for the accordion — null = all collapsed by default
+  // Active state for the accordion - null = all collapsed by default
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   // Explicit expanded-state mirror for aria-expanded on the FAQ <details>
@@ -95,9 +95,9 @@ export function Services() {
   // If cards are not loaded yet, don't crash
   if (!cards.length) return null;
 
-  // FAQPage JSON-LD — mirrors the on-page pre-purchase FAQ section below
+  // FAQPage JSON-LD - mirrors the on-page pre-purchase FAQ section below
   // (schema/content parity). react-helmet-async does not render <script>
-  // inside fragments — it must be a direct child of <Helmet> (see Process.tsx).
+  // inside fragments - it must be a direct child of <Helmet> (see Process.tsx).
   const servicesFaqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -131,7 +131,7 @@ export function Services() {
         </script>
       </Helmet>
 
-      {/* ─── Strategy — editorial opener, sets the WHY before WHAT ─── */}
+      {/* ─── Strategy - editorial opener, sets the WHY before WHAT ─── */}
       <SectionWatermark number="01" align="right">
       <section className="pt-32 md:pt-40 mb-32 md:mb-40">
         <Reveal>
@@ -139,7 +139,7 @@ export function Services() {
             <span className="text-[11px] uppercase tracking-[2px] text-neutral-500 dark:text-[#D4FF00] font-display mb-4 block">
               {language === "pl" ? "01 · Strategia" : "01 · Strategy"}
             </span>
-            {/* Hero — matches Process/Journal master copy: bold + tracking-tighter + 2-line break. */}
+            {/* Hero - matches Process/Journal master copy: bold + tracking-tighter + 2-line break. */}
             <h2 className="text-5xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-white mb-8 leading-[0.95]">
               {language === "pl" ? (
                 <>
@@ -156,13 +156,13 @@ export function Services() {
             <p className="text-xl md:text-2xl text-neutral-700 dark:text-neutral-300 tracking-tight font-normal max-w-3xl leading-snug">
               {language === "pl" ? (
                 <>
-                  Zanim cokolwiek zbudujemy — ustalamy CO ma być zbudowane i CZEMU.
+                  Zanim cokolwiek zbudujemy - ustalamy CO ma być zbudowane i CZEMU.
                   <br />
                   Każda współpraca zaczyna się od trzech decyzji.
                 </>
               ) : (
                 <>
-                  Before we build anything — we settle WHAT to build and WHY.
+                  Before we build anything - we settle WHAT to build and WHY.
                   <br />
                   Every engagement starts with three decisions.
                 </>
@@ -171,7 +171,7 @@ export function Services() {
           </div>
         </Reveal>
 
-        {/* 3 strategic areas — 12-col 4+4+4 */}
+        {/* 3 strategic areas - 12-col 4+4+4 */}
         <div className="grid grid-cols-12 gap-6 md:gap-8 border-t border-neutral-200 dark:border-white/10 pt-12 md:pt-16">
           <Reveal delay={0.05} className="col-span-12 md:col-span-4">
             <div>
@@ -181,8 +181,8 @@ export function Services() {
               </h3>
               <p className="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
                 {language === "pl"
-                  ? "Pozycjonowanie, narrative i audience — co was odróżnia, kogo obsługujecie i jak chcecie być zapamiętani. Zanim zacznie się jakakolwiek praca wizualna."
-                  : "Positioning, narrative and audience — what sets you apart, who you serve, how you want to be remembered. Before any visual work begins."}
+                  ? "Pozycjonowanie, narrative i audience - co was odróżnia, kogo obsługujecie i jak chcecie być zapamiętani. Zanim zacznie się jakakolwiek praca wizualna."
+                  : "Positioning, narrative and audience - what sets you apart, who you serve, how you want to be remembered. Before any visual work begins."}
               </p>
             </div>
           </Reveal>
@@ -209,20 +209,20 @@ export function Services() {
               </h3>
               <p className="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
                 {language === "pl"
-                  ? "AI brief assistant, automatyczne QA checks, decision velocity dashboard, generowanie wariantów per lokalizacja. Konkret zamiast hype'u — gdzie AI realnie przyspiesza Wasz pipeline."
-                  : "AI brief assistant, automated QA checks, decision velocity dashboard, variant generation per location. Concrete instead of hype — where AI actually speeds up your pipeline."}
+                  ? "AI brief assistant, automatyczne QA checks, decision velocity dashboard, generowanie wariantów per lokalizacja. Konkret zamiast hype'u - gdzie AI realnie przyspiesza Wasz pipeline."
+                  : "AI brief assistant, automated QA checks, decision velocity dashboard, variant generation per location. Concrete instead of hype - where AI actually speeds up your pipeline."}
               </p>
             </div>
           </Reveal>
         </div>
 
-        {/* Strategy closer — 12-col 7+5 (caption left, CTA right) */}
+        {/* Strategy closer - 12-col 7+5 (caption left, CTA right) */}
         <Reveal delay={0.3}>
           <div className="mt-16 md:mt-20 pt-10 border-t border-neutral-200 dark:border-white/10 grid grid-cols-12 gap-6 md:gap-8 items-center">
             <p className="col-span-12 md:col-span-7 text-sm text-neutral-500 dark:text-neutral-500 leading-relaxed">
               {language === "pl"
-                ? "Strategia łączy się z każdym produktem niżej i jest dostarczana przez r3loop — naszą 8-krokową metodologię. Bez fundamentu wszystko poniżej to tylko ładne assety."
-                : "Strategy connects to every product below, delivered through r3loop — our 8-step methodology. Without the foundation, everything below is just nice-looking assets."}
+                ? "Strategia łączy się z każdym produktem niżej i jest dostarczana przez r3loop - naszą 8-krokową metodologię. Bez fundamentu wszystko poniżej to tylko ładne assety."
+                : "Strategy connects to every product below, delivered through r3loop - our 8-step methodology. Without the foundation, everything below is just nice-looking assets."}
             </p>
             <Link
               href="/brief"
@@ -236,7 +236,7 @@ export function Services() {
       </section>
       </SectionWatermark>
 
-      {/* ─── Products — execution layer ─── */}
+      {/* ─── Products - execution layer ─── */}
       <SectionWatermark number="02" align="left">
       <section className="mb-40 min-h-[600px]">
         <Reveal>
@@ -260,7 +260,7 @@ export function Services() {
                    transition-colors duration-500 ease-out
                    ${isActive ? 'bg-neutral-50 dark:bg-white/[0.025]' : ''}
                  `}>
-                   {/* Lime accent bar — slides in when active */}
+                   {/* Lime accent bar - slides in when active */}
                    <AnimatePresence>
                      {isActive && (
                        <motion.div
@@ -284,7 +284,7 @@ export function Services() {
                    >
                      <div className="flex items-baseline gap-6 md:gap-10 px-4 sm:px-8 md:px-10">
 
-                        {/* Tanker number — small editorial accent */}
+                        {/* Tanker number - small editorial accent */}
                         <span
                           className={`
                             font-display text-base md:text-lg lg:text-xl shrink-0 leading-none
@@ -346,7 +346,7 @@ export function Services() {
                          className="overflow-hidden"
                        >
                          <div className="pb-20 pt-6 md:pt-10 px-4 sm:px-8 md:px-10 ml-0 md:ml-[40px] lg:ml-[50px]">
-                           {/* Description — supporting context, lighter weight, smaller scale */}
+                           {/* Description - supporting context, lighter weight, smaller scale */}
                            <motion.p
                              initial={{ opacity: 0, y: 12 }}
                              animate={{ opacity: 1, y: 0 }}
@@ -356,7 +356,7 @@ export function Services() {
                              {card.description}
                            </motion.p>
 
-                           {/* Includes — main deliverables list, brought in from /deliverables substance.
+                           {/* Includes - main deliverables list, brought in from /deliverables substance.
                                Lime bullet markers + neutral text, 2-col layout for compactness on wider screens. */}
                            {card.includes && card.includes.length > 0 && (
                              <motion.div
@@ -379,7 +379,7 @@ export function Services() {
                              </motion.div>
                            )}
 
-                           {/* Output — the headline. Larger + heavier than description = clear hierarchy */}
+                           {/* Output - the headline. Larger + heavier than description = clear hierarchy */}
                            <motion.div
                              initial={{ opacity: 0, y: 12 }}
                              animate={{ opacity: 1, y: 0 }}
@@ -394,7 +394,7 @@ export function Services() {
                              </p>
                            </motion.div>
 
-                           {/* Best for — short audience filter line, hair-line divider above */}
+                           {/* Best for - short audience filter line, hair-line divider above */}
                            {card.best_for && (
                              <motion.div
                                initial={{ opacity: 0, y: 12 }}
@@ -411,7 +411,7 @@ export function Services() {
                              </motion.div>
                            )}
 
-                           {/* Deep-link to /deliverables anchor — for prospects who want full
+                           {/* Deep-link to /deliverables anchor - for prospects who want full
                                whats_inside detail (kept on /deliverables as deep-dive page).
                                Anchor matches /deliverables's id={title.toLowerCase().replace(/\s+/g, '-')}. */}
                            <motion.div
@@ -441,7 +441,7 @@ export function Services() {
       </section>
       </SectionWatermark>
 
-      {/* ─── Who does the work — founder-led reality, framed as the advantage.
+      {/* ─── Who does the work - founder-led reality, framed as the advantage.
           Placed directly before engagement models & pricing so the buyer knows
           who delivers before reading what it costs. Resolves the "senior team"
           vs solo-founder ambiguity flagged in the content audit. ─── */}
@@ -463,8 +463,8 @@ export function Services() {
             <div className="col-span-12 md:col-span-8 md:max-w-3xl flex flex-col gap-6">
               <p className="text-lg md:text-xl text-neutral-700 dark:text-neutral-300 leading-relaxed [text-wrap:pretty]">
                 {language === "pl"
-                  ? "r352 jest founder-led. Każda bramka decyzyjna ma jednego właściciela — Reszka. Wolumen fazy build przechodzi przez imienną sieć seniorów i AI-native linie produkcyjne, nie przez juniorów."
-                  : "r352 is founder-led. Every decision gate is owned by one person — Reszek. Build-phase volume runs through a named senior network and AI-native production lines, not juniors."}
+                  ? "r352 jest founder-led. Każda bramka decyzyjna ma jednego właściciela - Reszka. Wolumen fazy build przechodzi przez imienną sieć seniorów i AI-native linie produkcyjne, nie przez juniorów."
+                  : "r352 is founder-led. Every decision gate is owned by one person - Reszek. Build-phase volume runs through a named senior network and AI-native production lines, not juniors."}
               </p>
               <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
                 {language === "pl"
@@ -489,7 +489,7 @@ export function Services() {
         <EngagementModels />
       </SectionWatermark>
 
-      {/* ─── Pre-purchase FAQ — buyer questions before committing.
+      {/* ─── Pre-purchase FAQ - buyer questions before committing.
           Placed directly after engagement models & pricing so objections
           (guarantee, start speed, fixed pricing, handoff) are answered at
           the exact moment they form. Native <details>/<summary> in the
@@ -512,8 +512,8 @@ export function Services() {
             </div>
             <p className="col-span-12 md:col-span-8 md:pt-2 text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty] max-w-3xl">
               {language === "pl"
-                ? "Pięć pytań, które kupujący zadają przed wyborem modelu — różnice, gwarancja, start, ceny i co zostaje po zakończeniu."
-                : "The five questions buyers ask before choosing a model — differences, guarantee, start speed, pricing, and what you keep when it ends."}
+                ? "Pięć pytań, które kupujący zadają przed wyborem modelu - różnice, gwarancja, start, ceny i co zostaje po zakończeniu."
+                : "The five questions buyers ask before choosing a model - differences, guarantee, start speed, pricing, and what you keep when it ends."}
             </p>
           </div>
 
@@ -559,7 +559,7 @@ export function Services() {
         </Reveal>
       </section>
 
-      {/* For agencies — contextual cross-link to the white-label track. Discreet
+      {/* For agencies - contextual cross-link to the white-label track. Discreet
           band (not a top-nav item) so it reaches agency buyers without competing
           with the brand-direct narrative above. */}
       <section className="mt-32 relative z-50 pointer-events-auto">

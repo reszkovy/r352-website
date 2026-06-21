@@ -2,7 +2,7 @@ import { useTheme } from "@/app/context/ThemeContext";
 import { Sun, Moon } from "lucide-react";
 
 /**
- * Small inline theme toggle — designed to sit in nav header next to the language switcher.
+ * Small inline theme toggle - designed to sit in nav header next to the language switcher.
  * Matches the visual weight of the lang toggle (EN/PL): small, low-contrast in resting state, hover lime accent.
  */
 export function ThemeToggle() {

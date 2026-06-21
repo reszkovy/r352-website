@@ -14,8 +14,8 @@ export function Contact() {
 
   return (
     <PageTransition>
-      {/* ─── Compact header — no hero, contact options above the fold ───
-          (2026-06-10: full hero removed on request — h1 kept compact for
+      {/* ─── Compact header - no hero, contact options above the fold ───
+          (2026-06-10: full hero removed on request - h1 kept compact for
           SEO/a11y, intro/subline dropped so all 3 contact paths are visible
           without scrolling) */}
       <section className="pt-28 md:pt-32 px-8 md:px-12">
@@ -31,12 +31,12 @@ export function Contact() {
         </div>
       </section>
 
-      {/* ─── 3-Path Choice — Brief (primary) | Mail + Call (secondary) ─── */}
+      {/* ─── 3-Path Choice - Brief (primary) | Mail + Call (secondary) ─── */}
       <section className="pt-10 md:pt-12 pb-20 md:pb-28">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-20">
 
-            {/* PATH A — PRIMARY: Brief */}
+            {/* PATH A - PRIMARY: Brief */}
             <Reveal>
               <div className="lg:pr-12 lg:border-r border-neutral-200 dark:border-white/10">
                 <span className="inline-block text-[10px] font-display uppercase tracking-[0.25em] text-[#D4FF00] bg-[#D4FF00]/10 dark:bg-[#D4FF00]/10 border border-[#D4FF00]/40 rounded-full px-3 py-1.5 mb-6">
@@ -69,10 +69,10 @@ export function Contact() {
               </div>
             </Reveal>
 
-            {/* RIGHT col — Mail + Call stacked */}
+            {/* RIGHT col - Mail + Call stacked */}
             <div className="flex flex-col gap-16">
 
-              {/* PATH B — SECONDARY: Direct mail */}
+              {/* PATH B - SECONDARY: Direct mail */}
               <Reveal delay={0.1}>
                 <div>
                   <span className="inline-block text-[10px] font-display uppercase tracking-[0.25em] text-neutral-500 dark:text-neutral-500 border border-neutral-300 dark:border-white/20 rounded-full px-3 py-1.5 mb-6">
@@ -85,7 +85,7 @@ export function Contact() {
                     {copy.pathB.body}
                   </p>
                   <a
-                    href="mailto:hello@r352.com?subject=r352%20—%20hello"
+                    href="mailto:hello@r352.com?subject=r352%20-%20hello"
                     onClick={() => {
                       try { (window as any).plausible?.("mail_clicked", { props: { source: "contact_path_b" } }); } catch { /* noop */ }
                     }}
@@ -97,7 +97,7 @@ export function Contact() {
                 </div>
               </Reveal>
 
-              {/* PATH C — TERTIARY: Schedule a call (Calendly) */}
+              {/* PATH C - TERTIARY: Schedule a call (Calendly) */}
               <Reveal delay={0.2}>
                 <div className="border-t border-neutral-200 dark:border-white/10 pt-10">
                   <span className="inline-block text-[10px] font-display uppercase tracking-[0.25em] text-neutral-500 dark:text-neutral-500 border border-neutral-300 dark:border-white/20 rounded-full px-3 py-1.5 mb-6">
@@ -142,16 +142,16 @@ const COPY_EN = {
     intro:
       "Two ways to start: a structured brief if you want depth, or a direct line if you already know us.",
     subline:
-      "Whichever you choose, we respond within 48 hours. Every conversation starts with understanding — not pitching.",
+      "Whichever you choose, we respond within 48 hours. Every conversation starts with understanding - not pitching.",
   },
   pathA: {
-    badge: "Primary · 5–18 min",
+    badge: "Primary · 5-18 min",
     title: "Start a structured brief.",
-    body: "The brief adapts to your engagement type — from a 5-min diagnostic prompt to an 18-min strategic onboarding. You answer only the questions that fit your case.",
+    body: "The brief adapts to your engagement type - from a 5-min diagnostic prompt to an 18-min strategic onboarding. You answer only the questions that fit your case.",
     bullets: [
-      "Structured context — we arrive at the call already understanding your situation",
+      "Structured context - we arrive at the call already understanding your situation",
       "48-hour written response with positioning, scope direction, and next step",
-      "Free, no commitment — refer-out to network if we're not the right fit",
+      "Free, no commitment - refer-out to network if we're not the right fit",
     ],
     cta: "Start a brief",
   },
@@ -159,7 +159,7 @@ const COPY_EN = {
     badge: "Secondary · 30 sec",
     title: "Or write directly.",
     body: "For warm referrals, quick chats, or if you'd rather start with a sentence than a form. We read every email within 24 hours.",
-    steer: "If you want a precise scope read from us, the brief gives us 10× more context than email — and you'll get a more meaningful first response.",
+    steer: "If you want a precise scope read from us, the brief gives us 10× more context than email - and you'll get a more meaningful first response.",
   },
   pathC: {
     badge: "Tertiary · 30 min slot",
@@ -176,16 +176,16 @@ const COPY_PL = {
     intro:
       "Dwie drogi startu: ustrukturyzowany brief jeśli chcesz głębi, albo bezpośredni kontakt jeśli już nas znasz.",
     subline:
-      "Niezależnie od wyboru — odpowiadamy w 48 godzin. Każda rozmowa zaczyna się od zrozumienia, nie od pitcha.",
+      "Niezależnie od wyboru - odpowiadamy w 48 godzin. Każda rozmowa zaczyna się od zrozumienia, nie od pitcha.",
   },
   pathA: {
-    badge: "Główna · 5–18 min",
+    badge: "Główna · 5-18 min",
     title: "Wypełnij ustrukturyzowany brief.",
-    body: "Brief dopasowuje się do typu współpracy — od 5-minutowej diagnozy po 18-minutowe strategiczne onboarding. Odpowiadasz tylko na pytania pasujące do Twojego case'u.",
+    body: "Brief dopasowuje się do typu współpracy - od 5-minutowej diagnozy po 18-minutowe strategiczne onboarding. Odpowiadasz tylko na pytania pasujące do Twojego case'u.",
     bullets: [
-      "Ustrukturyzowany kontekst — wchodzimy na rozmowę już rozumiejąc Twoją sytuację",
+      "Ustrukturyzowany kontekst - wchodzimy na rozmowę już rozumiejąc Twoją sytuację",
       "Pisemna odpowiedź w 48h: pozycjonowanie, kierunek zakresu, następny krok",
-      "Bezpłatnie, bez zobowiązań — polecimy kogoś z sieci jeśli nie pasujemy",
+      "Bezpłatnie, bez zobowiązań - polecimy kogoś z sieci jeśli nie pasujemy",
     ],
     cta: "Wypełnij brief",
   },
@@ -193,7 +193,7 @@ const COPY_PL = {
     badge: "Alternatywna · 30 sek",
     title: "Albo napisz bezpośrednio.",
     body: "Dla relacji warm, poleconych, quick chat'u, albo gdy wolisz zacząć od jednego zdania niż od formularza. Czytamy każdy mail w ciągu 24 godzin.",
-    steer: "Jeśli chcesz precyzyjnej odpowiedzi co do zakresu — brief daje nam 10× więcej kontekstu niż mail, a Ty dostaniesz dużo bardziej trafny first response.",
+    steer: "Jeśli chcesz precyzyjnej odpowiedzi co do zakresu - brief daje nam 10× więcej kontekstu niż mail, a Ty dostaniesz dużo bardziej trafny first response.",
   },
   pathC: {
     badge: "Trzecia opcja · 30 min slot",

@@ -62,7 +62,7 @@ function Frame() {
       <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[49.28%_39.08%_47.51%_8%] leading-[13px] not-italic text-[#6e6e73] text-[11.4px] tracking-[-0.1113px] whitespace-nowrap">Wstepne obserwacje, otwarte pytania i obszary do wspolnej weryfikacji.</p>
       <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[63.76%_49.5%_33.77%_8%] leading-[10px] not-italic text-[#aeaeb2] text-[8.8px] tracking-[0.1031px] whitespace-nowrap">17 marca 2026 | Etap: discovery / alignment | Format: rozmowa robocza</p>
       <Group />
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[90.59%_77.55%_7.19%_11.75%] leading-[9px] not-italic text-[#aeaeb2] text-[8.6px] tracking-[-0.4031px] whitespace-nowrap">— Materialy robocze</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[90.59%_77.55%_7.19%_11.75%] leading-[9px] not-italic text-[#aeaeb2] text-[8.6px] tracking-[-0.4031px] whitespace-nowrap">- Materialy robocze</p>
     </div>
   );
 }
@@ -486,7 +486,7 @@ function Frame2() {
       <Group10 />
       <p className="absolute font-['Georgia:Bold',sans-serif] inset-[26.71%_24.83%_68.84%_11%] leading-[18px] not-italic text-[#1d1d1f] text-[15px] whitespace-nowrap">Klient widzi dzis kilka osobnych bytow, nie jeden ekosystem</p>
       <div className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[33.52%_14.69%_60.06%_11%] leading-[0] not-italic text-[#6e6e73] text-[0px] text-[9.7px] tracking-[-0.1137px] whitespace-nowrap">
-        <p className="leading-[11px] mb-0">BetterWorkplace, DailyFruits i Mala Palarnia funkcjonuja na osobnych stronach, z osobna komunikacja — z perspektywy</p>
+        <p className="leading-[11px] mb-0">BetterWorkplace, DailyFruits i Mala Palarnia funkcjonuja na osobnych stronach, z osobna komunikacja - z perspektywy</p>
         <p className="leading-[13.2px]">klienta nie buduja jednego obrazu oferty.</p>
       </div>
       <Group11 />
@@ -496,7 +496,7 @@ function Frame2() {
       <Group12 />
       <p className="absolute font-['Georgia:Bold',sans-serif] inset-[66.72%_35.8%_28.83%_11%] leading-[18px] not-italic text-[#1d1d1f] text-[15px] whitespace-nowrap">DailyFruits realnie oferuje wiecej niz komunikuje</p>
       <div className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[73.53%_13.86%_20.05%_11%] leading-[0] not-italic text-[#6e6e73] text-[0px] text-[9.7px] tracking-[-0.0853px] whitespace-nowrap">
-        <p className="leading-[11px] mb-0">Oferta obejmuje kanapki, programy wellbeing, wydarzenia i edukacje — komunikacja nadal sprowadza marke glownie do</p>
+        <p className="leading-[11px] mb-0">Oferta obejmuje kanapki, programy wellbeing, wydarzenia i edukacje - komunikacja nadal sprowadza marke glownie do</p>
         <p className="leading-[13.2px]">kategorii owocow do biura.</p>
       </div>
       <Group13 />
@@ -628,7 +628,7 @@ function Frame3() {
         <p className="leading-[13.2px]">produktowa i kategoriowa.</p>
       </div>
       <Group16 />
-      <p className="absolute font-['Inter:Bold',sans-serif] font-bold inset-[45.38%_31.17%_51.91%_47.02%] leading-[11px] not-italic text-[#0071e3] text-[10.5px] tracking-[-0.6152px] whitespace-nowrap">— jezyk problemow czy kategorii?</p>
+      <p className="absolute font-['Inter:Bold',sans-serif] font-bold inset-[45.38%_31.17%_51.91%_47.02%] leading-[11px] not-italic text-[#0071e3] text-[10.5px] tracking-[-0.6152px] whitespace-nowrap">- jezyk problemow czy kategorii?</p>
       <div className="absolute flex inset-[62.22%_8%_11.11%_8%] items-center justify-center">
         <div className="-scale-y-100 flex-none h-[108px] w-[604.8px]">
           <Group17 />
@@ -644,7 +644,7 @@ function Frame3() {
         <p>
           <span className="font-['Inter:Regular',sans-serif] font-normal leading-[13.2px] not-italic text-[#aeaeb2]">To sa obszary do wspolnej weryfikacji</span>
           <span className="leading-[13.2px]">{` `}</span>
-          <span className="font-['Inter:Regular',sans-serif] font-normal leading-[13.2px] not-italic text-[#aeaeb2]">—</span>
+          <span className="font-['Inter:Regular',sans-serif] font-normal leading-[13.2px] not-italic text-[#aeaeb2]">-</span>
           <span className="leading-[13.2px]">{` `}</span>
           <span className="font-['Inter:Regular',sans-serif] font-normal leading-[13.2px] not-italic text-[#aeaeb2]">nie wnioski.</span>
         </p>
@@ -1047,7 +1047,7 @@ function Frame5() {
       </div>
       <Group25 />
       <p className="absolute font-['Georgia:Bold',sans-serif] inset-[7.26%_33.21%_86.56%_12.2%] leading-[25px] not-italic text-[#1d1d1f] text-[21.9px] tracking-[0.0428px] whitespace-nowrap">Mozliwe napiecia architektoniczne</p>
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[16.03%_49.78%_81.25%_8%] leading-[11px] not-italic text-[#6e6e73] text-[9.7px] tracking-[-0.1231px] whitespace-nowrap">To nie sa wnioski — to obszary, ktore warto wspolnie zweryfikowac.</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[16.03%_49.78%_81.25%_8%] leading-[11px] not-italic text-[#6e6e73] text-[9.7px] tracking-[-0.1231px] whitespace-nowrap">To nie sa wnioski - to obszary, ktore warto wspolnie zweryfikowac.</p>
       <div className="absolute inset-[21.07%_51.42%_47.6%_6.95%]" data-name="Rectangle">
         <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgRectangle11} />
       </div>
@@ -1057,7 +1057,7 @@ function Frame5() {
         <p className="leading-[14.04px]">marke kawowa</p>
       </div>
       <div className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[40.5%_56.25%_53.82%_10%] leading-[0] not-italic text-[#6e6e73] text-[0px] text-[8.8px] tracking-[-0.1031px] whitespace-nowrap">
-        <p className="leading-[10px] mb-0">W praktyce funkcjonuje szerzej — komunikacja zamyka ja w</p>
+        <p className="leading-[10px] mb-0">W praktyce funkcjonuje szerzej - komunikacja zamyka ja w</p>
         <p className="leading-[12px]">kategorii kawy. Warto zweryfikowac, czy to celowe.</p>
       </div>
       <div className="absolute inset-[21.07%_9.42%_47.6%_48.95%]" data-name="Rectangle">
@@ -1066,7 +1066,7 @@ function Frame5() {
       <Group27 />
       <p className="absolute font-['Georgia:Bold',sans-serif] inset-[30.95%_19.1%_65.6%_52.01%] leading-[14px] not-italic text-[#1d1d1f] text-[12px] whitespace-nowrap">Dwie sciezki klienta, jedna strona</p>
       <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[40.5%_12.44%_57.03%_52.01%] leading-[10px] not-italic text-[#6e6e73] text-[8.8px] tracking-[-0.1375px] whitespace-nowrap">HR szuka benefitow, Office Manager szuka zaopatrzenia kuchni</p>
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[43.46%_25.08%_54.07%_52.01%] leading-[10px] not-italic text-[#6e6e73] text-[9.4px] tracking-[-0.3855px] whitespace-nowrap">— obie persony trafiaja w jedno miejsce.</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[43.46%_25.08%_54.07%_52.01%] leading-[10px] not-italic text-[#6e6e73] text-[9.4px] tracking-[-0.3855px] whitespace-nowrap">- obie persony trafiaja w jedno miejsce.</p>
       <div className="absolute inset-[52.18%_51.42%_16.49%_6.95%]" data-name="Rectangle">
         <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgRectangle11} />
       </div>
@@ -1216,7 +1216,7 @@ function Frame6() {
         <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgRectangle13} />
       </div>
       <p className="absolute font-['Georgia:Bold',sans-serif] inset-[27.77%_53.86%_68.28%_16%] leading-[16px] not-italic text-[#1d1d1f] text-[14px] whitespace-nowrap">Konsolidacja pod jedna logika</p>
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[35.6%_29.14%_61.69%_16%] leading-[11px] not-italic text-[#6e6e73] text-[9.7px] tracking-[-0.1326px] whitespace-nowrap">Crafty, garten — przejscie od wielu osobnych uslug do jednego parasola i jednej narracji.</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[35.6%_29.14%_61.69%_16%] leading-[11px] not-italic text-[#6e6e73] text-[9.7px] tracking-[-0.1326px] whitespace-nowrap">Crafty, garten - przejscie od wielu osobnych uslug do jednego parasola i jednej narracji.</p>
       <div className="absolute inset-[45.07%_7.42%_34.27%_6.95%]" data-name="Rectangle">
         <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgRectangle12} />
       </div>
@@ -1227,7 +1227,7 @@ function Frame6() {
       </div>
       <ClipPathFrame8 />
       <p className="absolute font-['Georgia:Bold',sans-serif] inset-[49.1%_52.19%_46.95%_16%] leading-[16px] not-italic text-[#1d1d1f] text-[14px] whitespace-nowrap">Z food do workplace experience</p>
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[56.94%_26.08%_40.35%_16%] leading-[11px] not-italic text-[#6e6e73] text-[9.7px] tracking-[-0.1705px] whitespace-nowrap">Dostawcy owocow i kawy przechodza w szersza kategorie — wellbeing, zaopatrzenie, eventy.</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[56.94%_26.08%_40.35%_16%] leading-[11px] not-italic text-[#6e6e73] text-[9.7px] tracking-[-0.1705px] whitespace-nowrap">Dostawcy owocow i kawy przechodza w szersza kategorie - wellbeing, zaopatrzenie, eventy.</p>
       <div className="absolute inset-[66.4%_7.42%_12.93%_6.95%]" data-name="Rectangle">
         <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgRectangle12} />
       </div>
@@ -1473,7 +1473,7 @@ function Frame7() {
       </div>
       <Group35 />
       <p className="absolute font-['Georgia:Bold',sans-serif] inset-[7.26%_45.3%_86.56%_12.2%] leading-[25px] not-italic text-[#1d1d1f] text-[21.9px] tracking-[0.0428px] whitespace-nowrap">Dwa modele do weryfikacji</p>
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[16.03%_39.64%_81.25%_8%] leading-[11px] not-italic text-[#6e6e73] text-[9.7px] tracking-[-0.0758px] whitespace-nowrap">Widzimy dwa mozliwe kierunki. Oba maja swoja logike — oba wymagaja weryfikacji.</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[16.03%_39.64%_81.25%_8%] leading-[11px] not-italic text-[#6e6e73] text-[9.7px] tracking-[-0.0758px] whitespace-nowrap">Widzimy dwa mozliwe kierunki. Oba maja swoja logike - oba wymagaja weryfikacji.</p>
       <div className="absolute inset-[21.07%_51.42%_19.16%_6.95%]" data-name="Rectangle">
         <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgRectangle16} />
       </div>
@@ -1525,7 +1525,7 @@ function Frame7() {
         <p className="font-['Inter:Regular',sans-serif] leading-[9.63px] not-italic">budzetowe</p>
       </div>
       <Group40 />
-      <p className="absolute font-['Inter:Bold',sans-serif] font-bold inset-[85.83%_28.3%_11.45%_46.14%] leading-[11px] not-italic text-[#0071e3] text-[10.5px] tracking-[-0.5742px] whitespace-nowrap">— ktory model jest blizszy Waszej wizji?</p>
+      <p className="absolute font-['Inter:Bold',sans-serif] font-bold inset-[85.83%_28.3%_11.45%_46.14%] leading-[11px] not-italic text-[#0071e3] text-[10.5px] tracking-[-0.5742px] whitespace-nowrap">- ktory model jest blizszy Waszej wizji?</p>
     </div>
   );
 }
@@ -1908,14 +1908,14 @@ function Frame8() {
       <p className="absolute font-['Inter:Bold',sans-serif] font-bold inset-[20.79%_51.6%_76.75%_37.01%] leading-[10px] not-italic text-[8.8px] text-white tracking-[-0.1031px] whitespace-nowrap">Model A: integracja</p>
       <p className="absolute font-['Inter:Bold',sans-serif] font-bold inset-[20.79%_22.07%_76.75%_65.01%] leading-[10px] not-italic text-[8.8px] text-white tracking-[-0.2063px] whitespace-nowrap">Model B: niezaleznosc</p>
       <p className="absolute font-['Inter:Bold',sans-serif] font-bold inset-[27.89%_76.56%_69.4%_9%] leading-[11px] not-italic text-[#1d1d1f] text-[9.8px] tracking-[-0.2297px] whitespace-nowrap">Klarownosc dla klienta</p>
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[27.89%_47.72%_69.4%_37.01%] leading-[11px] not-italic text-[#6e6e73] text-[9.7px] tracking-[-0.1516px] whitespace-nowrap">Wyzsza — jedna historia</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[27.89%_47.72%_69.4%_37.01%] leading-[11px] not-italic text-[#6e6e73] text-[9.7px] tracking-[-0.1516px] whitespace-nowrap">Wyzsza - jedna historia</p>
       <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[27.89%_22.07%_69.4%_65.01%] leading-[11px] not-italic text-[#6e6e73] text-[9.7px] tracking-[-0.2273px] whitespace-nowrap">Zalezy od wykonania</p>
       <p className="absolute font-['Inter:Bold',sans-serif] font-bold inset-[36.78%_79.47%_60.5%_9%] leading-[11px] not-italic text-[#1d1d1f] text-[9.8px] tracking-[-0.3063px] whitespace-nowrap">Koszt komunikacji</p>
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[36.78%_50.08%_60.5%_37.01%] leading-[11px] not-italic text-[#6e6e73] text-[9.7px] tracking-[-0.2652px] whitespace-nowrap">Nizszy — jeden jezyk</p>
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[36.78%_19.85%_60.5%_65.01%] leading-[11px] not-italic text-[#6e6e73] text-[9.7px] tracking-[-0.1137px] whitespace-nowrap">Wyzszy — wiele narracji</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[36.78%_50.08%_60.5%_37.01%] leading-[11px] not-italic text-[#6e6e73] text-[9.7px] tracking-[-0.2652px] whitespace-nowrap">Nizszy - jeden jezyk</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[36.78%_19.85%_60.5%_65.01%] leading-[11px] not-italic text-[#6e6e73] text-[9.7px] tracking-[-0.1137px] whitespace-nowrap">Wyzszy - wiele narracji</p>
       <p className="absolute font-['Inter:Bold',sans-serif] font-bold inset-[45.67%_76.97%_51.61%_9%] leading-[11px] not-italic text-[#1d1d1f] text-[9.8px] tracking-[-0.3828px] whitespace-nowrap">Elastycznosc kategorii</p>
       <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[45.67%_46.6%_51.61%_37.01%] leading-[11px] not-italic text-[#6e6e73] text-[9.7px] tracking-[-0.1895px] whitespace-nowrap">Ograniczona przez parasol</p>
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[45.67%_19.57%_51.61%_65.01%] leading-[11px] not-italic text-[#6e6e73] text-[9.7px] tracking-[-0.1516px] whitespace-nowrap">Wysoka — osobne marki</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[45.67%_19.57%_51.61%_65.01%] leading-[11px] not-italic text-[#6e6e73] text-[9.7px] tracking-[-0.1516px] whitespace-nowrap">Wysoka - osobne marki</p>
       <p className="absolute font-['Inter:Bold',sans-serif] font-bold inset-[54.57%_75.72%_42.72%_9%] leading-[11px] not-italic text-[#1d1d1f] text-[9.8px] tracking-[-0.4594px] whitespace-nowrap">Skalowalnosc sprzedazy</p>
       <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[54.57%_50.49%_42.72%_37.01%] leading-[11px] not-italic text-[#6e6e73] text-[9.7px] tracking-[-0.3031px] whitespace-nowrap">Latwiejszy cross-sell</p>
       <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[54.57%_21.8%_42.72%_65.01%] leading-[11px] not-italic text-[#6e6e73] text-[9.7px] tracking-[-0.0379px] whitespace-nowrap">Wymaga koordynacji</p>

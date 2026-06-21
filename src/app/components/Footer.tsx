@@ -39,7 +39,7 @@ export function Footer() {
     { label: t("nav.contact") || "Kontakt", href: "/contact" },
   ];
 
-  // Resources group — de-orphans /faq, /industries, /deliverables, /glossary
+  // Resources group - de-orphans /faq, /industries, /deliverables, /glossary
   // (audit: pages existed at direct URLs only, zero internal links → invisible to
   // users and crawlers). Rendered as a discreet secondary list under Sitemap.
   const resourceLinks = [
@@ -47,13 +47,13 @@ export function Footer() {
     { label: t("footer.link_industries"), href: "/industries" },
     { label: t("footer.link_deliverables"), href: "/deliverables" },
     { label: t("footer.link_glossary"), href: "/glossary" },
-    // For Agencies — white-label / project-consultant track. Footer-only entry by
+    // For Agencies - white-label / project-consultant track. Footer-only entry by
     // design (kept out of top-nav so it doesn't compete with the primary
     // brand-direct narrative). Surfaced contextually from /services too.
     { label: t("footer.link_agencies"), href: "/for-agencies" },
   ];
 
-  // Channel focus — LinkedIn + email only. Instagram/YouTube removed (dormant
+  // Channel focus - LinkedIn + email only. Instagram/YouTube removed (dormant
   // channels dilute the channel-focus signal; re-add only when actively maintained).
   const socialLinks = [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/przemyslawreszka/" },
@@ -95,8 +95,8 @@ export function Footer() {
                          </span>
                    </Link>
 
-                   {/* Schedule a call — secondary CTA. Hover lifts bg subtly + text turns lime
-                       (matches the rest of the site's hover language — lime is the brand accent,
+                   {/* Schedule a call - secondary CTA. Hover lifts bg subtly + text turns lime
+                       (matches the rest of the site's hover language - lime is the brand accent,
                        white-on-black hover felt generic + clashed with the primary lime button). */}
                    <a href="https://calendly.com/p-reszkovy/30min" target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center justify-center px-12 py-4 bg-black/[0.05] dark:bg-white/[0.06] text-white transition-all duration-500 ease-out cursor-pointer overflow-hidden whitespace-nowrap w-full sm:w-auto hover:bg-white/[0.10] hover:text-[#D4FF00]">
                          <span className="flex items-center justify-center relative">
@@ -111,14 +111,14 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Lower: Links & Info — darker background */}
+      {/* Lower: Links & Info - darker background */}
       <div className="bg-[#0a0a0a] px-8 md:px-12 pt-16 pb-12">
         <div className="max-w-[1800px] mx-auto">
-          {/* Footer compaction (2026-06-11) — 4 cols → 3 cols.
+          {/* Footer compaction (2026-06-11) - 4 cols → 3 cols.
               - Resources sub-list folded INTO Sitemap column as an internal 2-up grid
-                (Sitemap | Resources side-by-side) — same width, half the height vs.
+                (Sitemap | Resources side-by-side) - same width, half the height vs.
                 the previous stacked-below treatment.
-              - Social column dissolved — LinkedIn + Email migrated under Local Time
+              - Social column dissolved - LinkedIn + Email migrated under Local Time
                 in the rightmost column. Right column now reads as a tight "ways to
                 connect / where we are" block instead of three thin stubs.
               Net effect: vertical height shrunk ~40%, less wasted whitespace, the
@@ -134,12 +134,12 @@ export function Footer() {
                  remote / distributed
                </p>
                <a
-                 href="mailto:hello@r352.com?subject=r352%20—%20hello"
+                 href="mailto:hello@r352.com?subject=r352%20-%20hello"
                  className="block text-lg text-neutral-300 mt-6 hover:text-[#D4FF00] transition-colors duration-500 w-fit"
                >
                  hello@r352.com
                </a>
-               {/* Verbal identity — one category line, sitewide. Matches header
+               {/* Verbal identity - one category line, sitewide. Matches header
                    tagline ("Strategic design partner") + the methodology category. */}
                <p className="text-xs text-neutral-500 mt-6 leading-relaxed max-w-[240px]">
                  Strategic design partner.<br />
@@ -148,7 +148,7 @@ export function Footer() {
             </div>
 
             {/* Column 2: Sitemap + Resources as internal 2-up grid. Both lists get
-                eyebrow-equal styling — Resources is no longer rendered as a smaller
+                eyebrow-equal styling - Resources is no longer rendered as a smaller
                 "secondary" list, because the side-by-side placement already
                 communicates the relative weight without typographic dimming. */}
             <div className="md:col-span-1">
@@ -182,8 +182,8 @@ export function Footer() {
                      </ul>
                   </div>
 
-                  {/* Sub-col B: Resources. Same interactive treatment as Sitemap —
-                      shift+letter-spacing on hover — so users perceive both lists as
+                  {/* Sub-col B: Resources. Same interactive treatment as Sitemap -
+                      shift+letter-spacing on hover - so users perceive both lists as
                       equal-priority navigation, not main + footnote. */}
                   <div>
                      <span className="block text-xs font-display uppercase tracking-widest text-neutral-500 mb-6">{t("footer.resources")}</span>
@@ -222,8 +222,8 @@ export function Footer() {
             {/* Column 3: Time + Connect (LinkedIn/Email) + Founded by Reszek + Rotating R-mark.
                 R-mark is ABSOLUTELY positioned so it doesn't stretch the column height
                 (which previously created a huge empty gap under the shorter Sitemap / Social
-                columns). It's allowed to overflow downward — past the divider, off-screen
-                if needed — because pointer-events-none + z-0 keep it inert and behind
+                columns). It's allowed to overflow downward - past the divider, off-screen
+                if needed - because pointer-events-none + z-0 keep it inert and behind
                 everything important. */}
             <div className="md:col-span-1 flex flex-col gap-8 items-start relative">
                <div>
@@ -233,7 +233,7 @@ export function Footer() {
                   </p>
                </div>
 
-               {/* CONNECT — folded in from the dissolved Social column.
+               {/* CONNECT - folded in from the dissolved Social column.
                    LinkedIn + Email rendered with the same hover treatment as the
                    Sitemap/Resources lists so the right column reads as a coherent
                    "where + how to reach us" block instead of a thin time-stub. */}
@@ -257,7 +257,7 @@ export function Footer() {
                   </ul>
                </div>
 
-               {/* Personal brand line — pairs with the R-mark watermark.
+               {/* Personal brand line - pairs with the R-mark watermark.
                    "Founded by Reszek · LinkedIn" reads as a personal signature beside the mark. */}
                <a
                  href="https://www.linkedin.com/in/przemyslawreszka/"
@@ -269,26 +269,26 @@ export function Footer() {
                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">↗</span>
                </a>
 
-               {/* Wegobold sister-brand cross-link REMOVED 2026-06 — portfolio + business
+               {/* Wegobold sister-brand cross-link REMOVED 2026-06 - portfolio + business
                    model mismatch z r352 (enterprise consulting vs performance lead-gen)
                    creates brand confusion vs trust transfer. Revisit po 6-12 mies. kiedy
                    wegobold ma własną pozycję AS execution arm (jeśli ten kierunek wybrany).
                    See chat strategy analysis 2026-06 dla full reasoning. */}
 
-               {/* Rotating R-mark — animated brand signature.
+               {/* Rotating R-mark - animated brand signature.
                    Container scaled 70% larger (was 160/192px → 272/326px) so the
                    rotating wokolo ornament reads as the dominant motif. R in center
                    stays the same absolute size by dropping its relative fraction from
                    1/6 to 10%, keeping the visual hierarchy: big quiet rotation around
-                   a small stable letter. Both SVGs use native fill #151515 — ledwo
+                   a small stable letter. Both SVGs use native fill #151515 - ledwo
                    widoczne darker shape on #0a0a0a lower-section bg. */}
                {/* top-64 md:top-72 → restored after wegobold cross-link removed.
                    Anchored below Time + Connect (LinkedIn/Email) + Founded by Reszek line.
-                   Can overflow downward — pointer-events-none + z-0 keep it inert. */}
+                   Can overflow downward - pointer-events-none + z-0 keep it inert. */}
                {/* SVGs have hardcoded fill #151515 (works on dark mode as darker-shape-on-dark).
                    On LIGHT mode we invert + slightly darken via filter so it renders as a
                    very-light-gray watermark (~#ECECEC), then knock to 30% opacity so it
-                   reads as truly ambient — no fight with the foreground. Dark mode keeps
+                   reads as truly ambient - no fight with the foreground. Dark mode keeps
                    native dark fill at full opacity (it's already subtle by color match). */}
                <div className="pointer-events-none absolute top-64 md:top-72 left-0 w-[20.5rem] h-[20.5rem] md:w-[24.5rem] md:h-[24.5rem] z-0">
                   <img
@@ -307,8 +307,8 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Footer Bottom — all elements aligned LEFT so they don't collide with floating Brief CTA + chat (which live bottom-right).
-              No divider above — pt-12 alone gives enough breathing room, and the divider was redundant with the one above the 4-col grid. */}
+          {/* Footer Bottom - all elements aligned LEFT so they don't collide with floating Brief CTA + chat (which live bottom-right).
+              No divider above - pt-12 alone gives enough breathing room, and the divider was redundant with the one above the 4-col grid. */}
           <div className="flex flex-wrap items-center gap-6 md:gap-8 pt-12 pb-4">
             <div className="flex items-center gap-4">
               <R352Symbol className="w-8 h-8 opacity-50" />
@@ -327,7 +327,7 @@ export function Footer() {
               {t("footer.back_to_top")}
             </button>
 
-            {/* Legal strip — privacy + cookies pages + a quick reset for the consent banner.
+            {/* Legal strip - privacy + cookies pages + a quick reset for the consent banner.
                 Kept inline with copyright row so it doesn't compete with primary nav above. */}
             <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-display uppercase tracking-widest">
               <Link

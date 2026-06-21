@@ -12,7 +12,7 @@ import { projects } from "@/app/data/projects";
 
 // Non-lazy (always needed)
 // NoiseBackground (animated full-screen canvas, per-frame ImageData) replaced by
-// GrainOverlay — static SVG-noise tile, zero per-frame cost, sits above content.
+// GrainOverlay - static SVG-noise tile, zero per-frame cost, sits above content.
 import { PersistentBackground } from "@/app/components/ui/PersistentBackground";
 
 // Lazy-loaded pages (code splitting)
@@ -67,7 +67,7 @@ function ScrollToTop() {
 
 /**
  * Focus the <main> element after each route change. Critical for keyboard
- * and screen-reader users — without this, focus stays on the link they
+ * and screen-reader users - without this, focus stays on the link they
  * clicked (now off-screen on the old page) and they have no idea the page
  * has changed. Coupled with #main tabIndex=-1 to make it programmatically
  * focusable without entering the tab order.
@@ -136,7 +136,7 @@ function AppContent() {
   useTransitionRoll(); // advances deterministic sweep direction on every navigation
   useCTAHoverMusicTrigger(); // first CTA hover triggers ambient Mompou playback
 
-  // Prerender signal — Puppeteer-based prerender script (scripts/prerender.mjs)
+  // Prerender signal - Puppeteer-based prerender script (scripts/prerender.mjs)
   // waits for window.__PRERENDER_READY__ before snapshotting the route's HTML.
   // We set it 1.5s after mount so initial animations / Suspense fallbacks
   // resolve before capture. Timeout fallback in the prerender script catches
@@ -157,7 +157,7 @@ function AppContent() {
 
   const getPageSEO = (path: string): { title: string; description: string; ogImage?: string; article?: { title: string; date: string; category: string } } => {
     if (path === "/work") return {
-      title: "Work — r352 | Selected projects & case studies",
+      title: "Work - r352 | Selected projects & case studies",
       description: "See how we help multi-location brands like Sonova, Benefit Systems, and Kubota ship faster with scalable design systems and delivery workflows.",
       ogImage: "https://www.r352.com/og/work.png"
     };
@@ -165,92 +165,92 @@ function AppContent() {
       const projectId = path.replace("/work/", "");
       const project = projects.find(p => p.id === projectId);
       if (project) return {
-        title: `${project.client}: ${project.title} — r352 Case Study`,
+        title: `${project.client}: ${project.title} - r352 Case Study`,
         description: project.description?.en?.substring(0, 155) || `How r352 helped ${project.client} build scalable design systems and delivery workflows.`,
         ogImage: `https://www.r352.com/og/case-${projectId}.png`
       };
       return {
-        title: "Case Study — r352 | Project Details",
+        title: "Case Study - r352 | Project Details",
         description: "Deep dive into how r352 solved delivery bottlenecks and built scalable brand systems for this client."
       };
     }
     if (path === "/services") return {
-      title: "Services — r352 | Strategy, Operating System, Design & Build",
+      title: "Services - r352 | Strategy, Operating System, Design & Build",
       description: "Five engagement models, from a €2k five-day diagnostic to an embedded operating partner. Strategy to delivery, run through the r3loop methodology.",
       ogImage: "https://www.r352.com/og/services.png"
     };
     if (path === "/services/operating-system") return {
-      title: "Operating System — r352 | Brand Standards & Delivery Infrastructure",
+      title: "Operating System - r352 | Brand Standards & Delivery Infrastructure",
       description: "We audit your delivery workflow, define brand standards, and build intake processes that eliminate chaos and scale across locations."
     };
     if (path === "/services/design-production") return {
-      title: "Design Production — r352 | Campaign Toolkits & Assets at Scale",
+      title: "Design Production - r352 | Campaign Toolkits & Assets at Scale",
       description: "Scalable campaign toolkits, templates, and production workflows that maintain brand consistency across every touchpoint."
     };
     if (path === "/services/build-optimize") return {
-      title: "Build & Optimize — r352 | UX/UI & Digital Products",
-      description: "We design and build digital products, landing pages, and interfaces that convert — grounded in data and user research."
+      title: "Build & Optimize - r352 | UX/UI & Digital Products",
+      description: "We design and build digital products, landing pages, and interfaces that convert - grounded in data and user research."
     };
     if (path === "/process") return {
-      title: "r3loop — r352 | The 8-step design ops methodology",
+      title: "r3loop - r352 | The 8-step design ops methodology",
       description: "r3loop is r352's 8-step methodology: Diagnose, Map, Standardize, Build, Govern, Ship, Measure, Iterate. Same sequence every project, scaled in depth.",
       ogImage: "https://www.r352.com/og/process.png"
     };
     if (path === "/glossary") return {
-      title: "Glossary — r352 | Design ops terminology defined",
-      description: "Design ops terminology defined: r3loop, master/variant gates, brief volume, decision velocity, operator vs agency — the vocabulary r352 operates with.",
+      title: "Glossary - r352 | Design ops terminology defined",
+      description: "Design ops terminology defined: r3loop, master/variant gates, brief volume, decision velocity, operator vs agency - the vocabulary r352 operates with.",
       ogImage: "https://www.r352.com/og/glossary.png"
     };
-    // /framework SEO entry removed — page deleted, route 301-redirected to /process
+    // /framework SEO entry removed - page deleted, route 301-redirected to /process
     // via vercel.json. r3loop on /process is now the single methodology page.
     if (path === "/faq") return {
-      title: "FAQ — r352 | Common questions answered",
-      description: "What is r3loop? Who does r352 work with? How is r352 different from a creative agency? Engagement models, founder background — answered.",
+      title: "FAQ - r352 | Common questions answered",
+      description: "What is r3loop? Who does r352 work with? How is r352 different from a creative agency? Engagement models, founder background - answered.",
       ogImage: "https://www.r352.com/og/faq.png"
     };
     if (path === "/privacy") return {
-      title: "Privacy Policy — r352 | How we handle your data",
-      description: "How r352 handles your data — GDPR + LOPDGDD compliant, strict opt-in analytics, no third-party advertisers, your rights and how to exercise them."
+      title: "Privacy Policy - r352 | How we handle your data",
+      description: "How r352 handles your data - GDPR + LOPDGDD compliant, strict opt-in analytics, no third-party advertisers, your rights and how to exercise them."
     };
     if (path === "/cookies") return {
-      title: "Cookie Preferences — r352 | Manage your consent",
+      title: "Cookie Preferences - r352 | Manage your consent",
       description: "Manage which cookies r352 uses. Necessary cookies always on; analytics and marketing fully under your control. Strict opt-in by default."
     };
     if (path === "/industries") return {
-      title: "Industries — r352 | Multi-location brand operations",
+      title: "Industries - r352 | Multi-location brand operations",
       description: "Operating systems behind brand and design delivery for fitness networks, real estate developers, retail franchises, and health service networks.",
       ogImage: "https://www.r352.com/og/industries.png"
     };
     if (path === "/industries/fitness-wellness") return {
-      title: "Fitness & Wellness — r352 | Design ops for club networks",
+      title: "Fitness & Wellness - r352 | Design ops for club networks",
       description: "r352 helps fitness and wellness networks turn campaign production into a repeatable operating system. Central brand standards, local execution speed.",
       ogImage: "https://www.r352.com/og/industry-fitness-wellness.png"
     };
     if (path === "/industries/real-estate") return {
-      title: "Real Estate — r352 | Campaign systems for developers",
+      title: "Real Estate - r352 | Campaign systems for developers",
       description: "r352 helps real estate teams turn investment launch campaigns into a repeatable operating system. Templates, QA gates, rollout-ready delivery.",
       ogImage: "https://www.r352.com/og/industry-real-estate.png"
     };
     if (path === "/industries/retail-franchise") return {
-      title: "Retail & Franchise — r352 | Brand consistency at scale",
+      title: "Retail & Franchise - r352 | Brand consistency at scale",
       description: "r352 helps retail chains and franchise networks balance central brand governance with local execution. Templates, approval gates, governance system.",
       ogImage: "https://www.r352.com/og/industry-retail-franchise.png"
     };
     if (path === "/industries/health-service-networks") return {
-      title: "Health & Service Networks — r352 | Brand delivery systems",
+      title: "Health & Service Networks - r352 | Brand delivery systems",
       description: "r352 helps health and service networks deliver consistent customer-facing communication across local markets. Standards, templates, scale.",
       ogImage: "https://www.r352.com/og/industry-health-service-networks.png"
     };
     if (path === "/philosophy") return {
-      title: "Philosophy — r352 | Operator, not agency",
-      description: "Operator, not agency. Why r352 builds working systems instead of selling billable hours — process over aesthetics, systems over one-offs."
+      title: "Philosophy - r352 | Operator, not agency",
+      description: "Operator, not agency. Why r352 builds working systems instead of selling billable hours - process over aesthetics, systems over one-offs."
     };
     if (path === "/deliverables") return {
-      title: "Deliverables — r352 | What you actually get",
-      description: "Brand guidelines, campaign toolkits, QA checklists, production templates — concrete deliverables that your team can use from day one."
+      title: "Deliverables - r352 | What you actually get",
+      description: "Brand guidelines, campaign toolkits, QA checklists, production templates - concrete deliverables that your team can use from day one."
     };
     if (path === "/journal") return {
-      title: "Journal — r352 | Insights on design operations & delivery",
+      title: "Journal - r352 | Insights on design operations & delivery",
       description: "Articles on design operations, delivery workflows, brand systems, and how multi-location organizations can scale their creative output.",
       ogImage: "https://www.r352.com/og/journal.png"
     };
@@ -260,34 +260,34 @@ function AppContent() {
       if (article) {
         const cleanTitle = article.title.replace(/<br\s*\/?>/g, ' ');
         return {
-          title: `${cleanTitle} — r352 Journal`,
+          title: `${cleanTitle} - r352 Journal`,
           description: `r352 Journal: ${cleanTitle}. Insights on design operations, delivery systems, and scaling creative output for multi-location organizations.`,
           ogImage: `https://www.r352.com/og/article-${article.id}.png`,
           article: { title: article.title, date: article.date, category: article.category }
         };
       }
       return {
-        title: "Article — r352 Journal",
+        title: "Article - r352 Journal",
         description: "Read this article on design operations, delivery systems, and scaling creative output for multi-location organizations."
       };
     }
     if (path === "/contact") return {
-      title: "Contact — r352 | Brief, call, or write directly",
+      title: "Contact - r352 | Brief, call, or write directly",
       description: "Start with a structured brief (48h response), book a 30-minute call, or write to hello@r352.com. For teams ready to systemize their design operations.",
       ogImage: "https://www.r352.com/og/contact.png"
     };
-    // /brief — previously fell through to the default site-wide description.
+    // /brief - previously fell through to the default site-wide description.
     if (path === "/brief") return {
-      title: "Brief — r352 | Structured project intake",
+      title: "Brief - r352 | Structured project intake",
       description: "Start your project with a structured brief: 8 sections, ~26 questions, about 10 minutes. First response with engagement model and scope within 48 hours."
     };
     if (path === "/for-agencies") return {
-      title: "For Agencies — r352 | White-label, end-to-end consulting",
-      description: "A white-label, end-to-end consultant for agencies. Strategy, creative and execution in one place — we embed on your client as one integrated team, under your name. You lead the relationship and keep the credit; we do what we do best."
+      title: "For Agencies - r352 | White-label, end-to-end consulting",
+      description: "A white-label, end-to-end consultant for agencies. Strategy, creative and execution in one place - we embed on your client as one integrated team, under your name. You lead the relationship and keep the credit; we do what we do best."
     };
     return {
-      title: "r352 — Strategic design partner for growing brands.",
-      description: "Strategic design partner for multi-location organizations. From strategy to rollout-ready delivery, powered by the r3loop methodology — predictable quality and speed at scale.",
+      title: "r352 - Strategic design partner for growing brands.",
+      description: "Strategic design partner for multi-location organizations. From strategy to rollout-ready delivery, powered by the r3loop methodology - predictable quality and speed at scale.",
       ogImage: "https://www.r352.com/og/home.png"
     };
   };
@@ -305,7 +305,7 @@ function AppContent() {
       {(() => { const seo = getPageSEO(location); return <SEO path={location} title={seo.title} description={seo.description} ogImage={seo.ogImage} article={seo.article} />; })()}
       <SmoothScroll>
       {/* overflow-x-clip (NOT -hidden): overflow-x-hidden makes this div a scroll
-          container, which becomes the sticky scrollport for every descendant —
+          container, which becomes the sticky scrollport for every descendant -
           position:sticky binds to this non-scrolling div and never pins (the
           KineticManifesto/LoopPath scenes scrolled away leaving blank viewports).
           clip clips horizontal overflow identically without creating a scroller. */}
@@ -317,7 +317,7 @@ function AppContent() {
       <ScrollToTop />
       <FocusMainOnRouteChange />
 
-      {/* Skip-to-content link — first focusable element. Hidden until focused
+      {/* Skip-to-content link - first focusable element. Hidden until focused
           via keyboard (Tab). Lets keyboard / screen-reader users bypass the
           header navigation and jump straight to the page content. */}
       <a

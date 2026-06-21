@@ -15,7 +15,7 @@ export function ServiceDetail({ params }: { params?: { slug: string } }) {
       id: "01",
       key: "operating_system",
       title: "Operating System",
-      description: "We structure intake, roles, and feedback so work moves fast with minimal friction — and standards stay high.",
+      description: "We structure intake, roles, and feedback so work moves fast with minimal friction - and standards stay high.",
       subServices: [
         {
           title: "Briefing & Intake Structure",
@@ -47,7 +47,7 @@ export function ServiceDetail({ params }: { params?: { slug: string } }) {
       id: "02",
       key: "design_production",
       title: "Design & Production",
-      description: "Senior-level craft across UX/UI and communication assets — designed to perform, built to stay consistent.",
+      description: "Senior-level craft across UX/UI and communication assets - designed to perform, built to stay consistent.",
       subServices: [
         {
           title: "Product UX/UI",
@@ -79,7 +79,7 @@ export function ServiceDetail({ params }: { params?: { slug: string } }) {
       id: "03",
       key: "build_optimize",
       title: "Build & Optimize",
-      description: "When needed, we ship the work — or manage shipping — with clean implementation and measurable performance.",
+      description: "When needed, we ship the work - or manage shipping - with clean implementation and measurable performance.",
       subServices: [
         {
           title: "Implementation",
@@ -170,7 +170,7 @@ export function ServiceDetail({ params }: { params?: { slug: string } }) {
               <div className="mb-24">
                  <Reveal key={`header-${currentSlug}`}>
                    <span className="text-xs font-display uppercase tracking-widest text-[#D4FF00] mb-6 block lg:hidden">
-                     {activeService.id} — {activeService.title}
+                     {activeService.id} - {activeService.title}
                    </span>
                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white leading-[0.9] mb-8">
                      {activeService.title}

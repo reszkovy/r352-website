@@ -12,22 +12,22 @@ import { useLanguage } from "@/app/context/LanguageContext";
 import { Reveal } from "@/app/components/ui/Reveal";
 
 /**
- * KineticManifesto — scroll-driven kinetic typography scene for the home-page
+ * KineticManifesto - scroll-driven kinetic typography scene for the home-page
  * philosophy manifesto ("Beautiful work is the baseline. The system behind it
  * is the advantage.").
  *
  * Mechanics (desktop, motion allowed):
  *   - 240vh section, inner frame sticky at top-0 / h-screen.
  *   - Single useScroll scrubbed from "section enters viewport" to "pin
- *     release" (offset ["start end","end end"]): Acts 1–2 compose during the
+ *     release" (offset ["start end","end end"]): Acts 1-2 compose during the
  *     100vh approach, so the frame is already composed the moment it pins
- *     (~p 0.42) — no lone floating fragment, no dead black viewports.
+ *     (~p 0.42) - no lone floating fragment, no dead black viewports.
  *   - Every element is a useTransform of that one progress value
  *     (position-driven, never timed).
- *   - Act 1: "Beautiful work" — large, serene, scales in slowly.
- *   - Act 2: "is the baseline." — small, mono, snaps in matter-of-factly.
- *   - Act 3: "The system behind it" — builds word by word, bold.
- *   - Act 4: "is the advantage." — lands in lime with letter-level stagger.
+ *   - Act 1: "Beautiful work" - large, serene, scales in slowly.
+ *   - Act 2: "is the baseline." - small, mono, snaps in matter-of-factly.
+ *   - Act 3: "The system behind it" - builds word by word, bold.
+ *   - Act 4: "is the advantage." - lands in lime with letter-level stagger.
  *   - Caption + CTA fade in for the final beat.
  *
  * Fallbacks (hard constraints):
@@ -35,13 +35,13 @@ import { Reveal } from "@/app/components/ui/Reveal";
  *     prerender/SEO sees complete content. The kinetic scene is opted into
  *     after mount, and only when: no prefers-reduced-motion, no
  *     navigator.webdriver, and viewport >= 768px. Below 768px the static
- *     layout stays — no sticky scroll-jacking on touch.
+ *     layout stays - no sticky scroll-jacking on touch.
  *   - transform/opacity only; will-change hints on animated spans.
  */
 
 const EASE = cubicBezier(0.22, 1, 0.36, 1);
 
-/* ── Copy — line splits per language (mirrors philosophy.teaser.title) ── */
+/* ── Copy - line splits per language (mirrors philosophy.teaser.title) ── */
 const LINES = {
   en: {
     l1: "Beautiful work",
@@ -104,7 +104,7 @@ function ScrubLetter({
   );
 }
 
-/* ── Static layout — identical to the original philosophy teaser.
+/* ── Static layout - identical to the original philosophy teaser.
       Used for prerender/bots, reduced motion and < 768px. ── */
 function StaticManifesto() {
   const { t } = useLanguage();
@@ -145,7 +145,7 @@ function StaticManifesto() {
   );
 }
 
-/* ── Kinetic scene — title-sequence treatment, scrubbed to scroll ── */
+/* ── Kinetic scene - title-sequence treatment, scrubbed to scroll ── */
 function KineticScene() {
   const { t, language } = useLanguage();
   const [, setLocation] = useLocation();
@@ -164,32 +164,32 @@ function KineticScene() {
 
   /* Keyframes are budgeted against the measured progress window: with Lenis
      in the loop the scene's progress reaches ~0.29 at pin and ~0.71 at pin
-     release — so the whole composition completes by ~0.67, never leaving a
+     release - so the whole composition completes by ~0.67, never leaving a
      pinned-but-frozen viewport. */
 
-  /* Act 1 — "Beautiful work": builds while the section rises into view. */
+  /* Act 1 - "Beautiful work": builds while the section rises into view. */
   const l1Opacity = useTransform(p, [0.13, 0.25], [0, 1], { ease: EASE });
   const l1Scale = useTransform(p, [0.13, 0.28], [1.06, 1], { ease: EASE });
   // Composition drifts up as the later acts stack beneath it.
   const stackY = useTransform(p, [0.27, 0.52], ["6vh", "0vh"], { ease: EASE });
 
-  /* Act 2 — "is the baseline.": snaps in right as the frame pins.
-     Rendered through ScrubWord (same mechanism as Act 3) — a bare motion.span
+  /* Act 2 - "is the baseline.": snaps in right as the frame pins.
+     Rendered through ScrubWord (same mechanism as Act 3) - a bare motion.span
      with a [0,1] opacity transform was getting stuck at its initial 0. */
   const l2Range: [number, number] = [0.27, 0.32];
 
-  /* Act 3 — word ranges (computed per word count so PL/EN both stagger). */
+  /* Act 3 - word ranges (computed per word count so PL/EN both stagger). */
   const l3Words = copy.l3.split(" ");
   const l3Start = 0.35;
   const l3Step = 0.15 / l3Words.length;
 
-  /* Act 4 — letter ranges across the lime line. */
+  /* Act 4 - letter ranges across the lime line. */
   const l4Words = copy.l4.split(" ");
   const l4Letters = copy.l4.replace(/\s/g, "").length;
   const l4Start = 0.5;
   const l4Span = 0.12;
 
-  /* Final beat — caption + CTA. */
+  /* Final beat - caption + CTA. */
   const endOpacity = useTransform(p, [0.6, 0.67], [0, 1], { ease: EASE });
   const endY = useTransform(p, [0.6, 0.67], ["1.5em", "0em"], { ease: EASE });
 
@@ -214,7 +214,7 @@ function KineticScene() {
               style={{ opacity: l1Opacity, scale: l1Scale, transformOrigin: "left center" }}
             >
               {copy.l1}
-              {/* Act 2 — full sentence stays one heading for semantics */}
+              {/* Act 2 - full sentence stays one heading for semantics */}
               <span className="block mt-4 md:mt-6">
                 <ScrubWord
                   p={p}
@@ -240,7 +240,7 @@ function KineticScene() {
                 ))}
               </span>
 
-              {/* Act 4 — lime, letter-level stagger */}
+              {/* Act 4 - lime, letter-level stagger */}
               <span className="block mt-2 md:mt-4 font-bold tracking-tighter leading-[0.95] text-[#D4FF00] text-[clamp(3rem,12vw,13rem)]">
                 {l4Words.map((word, wi) => (
                   <span key={wi} className="inline-block whitespace-nowrap">
@@ -259,7 +259,7 @@ function KineticScene() {
               </span>
             </motion.h2>
 
-            {/* Final beat — caption + CTA */}
+            {/* Final beat - caption + CTA */}
             <motion.div
               className="mt-10 md:mt-14 flex flex-col md:flex-row md:items-end gap-6 md:gap-16 will-change-[transform,opacity]"
               style={{ opacity: endOpacity, y: endY }}

@@ -1,11 +1,11 @@
 import { FormEvent, useState } from "react";
 
 /**
- * QualificationForm — accessibility notes (WCAG 2.1 AA):
+ * QualificationForm - accessibility notes (WCAG 2.1 AA):
  *
  * - Radio groups use <fieldset>/<legend> so screen readers announce the
  *   question together with each option (1.3.1 Info and Relationships).
- * - Radio inputs are visually hidden with `sr-only` — NOT `hidden`
+ * - Radio inputs are visually hidden with `sr-only` - NOT `hidden`
  *   (display:none removed them from the tab order and the a11y tree
  *   entirely). Keyboard focus paints a lime ring on the styled label via
  *   peer-focus-visible (2.1.1 Keyboard / 2.4.7 Focus Visible).
@@ -21,7 +21,7 @@ export function QualificationForm() {
     e.preventDefault();
     const trimmed = email.trim();
     if (!trimmed) {
-      setEmailError("Email is required — enter your direct professional email.");
+      setEmailError("Email is required - enter your direct professional email.");
       return;
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
@@ -31,7 +31,7 @@ export function QualificationForm() {
     setEmailError(null);
   };
 
-  // Shared option-card classes — peer-focus-visible mirrors the global lime
+  // Shared option-card classes - peer-focus-visible mirrors the global lime
   // focus ring (the sr-only input holds focus; the visible label shows it).
   const optionFocusClasses =
     "peer-focus-visible:outline-2 peer-focus-visible:outline-solid peer-focus-visible:outline-[#D4FF00] peer-focus-visible:outline-offset-3";
@@ -147,7 +147,7 @@ export function QualificationForm() {
               <div className="absolute inset-0 bg-gradient-to-tr from-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
               <span className="flex items-center justify-center relative z-10">
-                {/* Sizing ghost — visibility:hidden, already excluded from the
+                {/* Sizing ghost - visibility:hidden, already excluded from the
                     a11y tree; the absolute span below provides the accessible name. */}
                 <span className="invisible tracking-widest">Initiate Briefing Call</span>
                 <span className="absolute tracking-widest group-hover:tracking-normal transition-all duration-500 ease-out">Initiate Briefing Call</span>

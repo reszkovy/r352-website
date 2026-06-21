@@ -1,5 +1,5 @@
 /**
- * Page transition direction state — shared between exit (leaving page) and
+ * Page transition direction state - shared between exit (leaving page) and
  * entry (incoming page) so a single navigation feels like one continuous sweep.
  *
  * Direction follows a DETERMINISTIC clockwise cycle (no randomness):
@@ -12,7 +12,7 @@
  *
  * Each PageTransition lazily reads the current direction on mount via
  * `getCurrentDirection()`. The direction advances on every wouter location
- * change via `useTransitionRoll()` mounted in App.tsx — useLayoutEffect fires
+ * change via `useTransitionRoll()` mounted in App.tsx - useLayoutEffect fires
  * synchronously after DOM commit, so the outgoing PageTransition's exit
  * animation captures the new direction in time.
  *
@@ -36,7 +36,7 @@ export function getCurrentDirection(): TransitionDirection {
 }
 
 /**
- * Desktop pairing — each direction has a fixed next direction. Together they
+ * Desktop pairing - each direction has a fixed next direction. Together they
  * form a clockwise compass cycle:
  *
  *   L→R then T→B then R→L then B→T then back to L→R
@@ -49,7 +49,7 @@ const nextDesktop: Record<TransitionDirection, TransitionDirection> = {
 };
 
 /**
- * Mobile pairing — pure vertical alternation, no horizontal sweeps.
+ * Mobile pairing - pure vertical alternation, no horizontal sweeps.
  */
 const nextMobile: Record<TransitionDirection, TransitionDirection> = {
   "top-to-bottom": "bottom-to-top",
@@ -120,7 +120,7 @@ export function getSweepProps(direction: TransitionDirection): {
 
 /**
  * Static branding layer (logo + tagline) uses clipPath to be revealed and
- * concealed in sync with the sweep — never moves, only clips. clipPath axis
+ * concealed in sync with the sweep - never moves, only clips. clipPath axis
  * must match sweep axis to feel cohesive.
  */
 export function getBrandingClipPath(direction: TransitionDirection): {
@@ -157,7 +157,7 @@ export function getBrandingClipPath(direction: TransitionDirection): {
 }
 
 /**
- * Depth scrim gradient for the OUTGOING page — a soft directional shadow that
+ * Depth scrim gradient for the OUTGOING page - a soft directional shadow that
  * deepens toward the edge the sweep enters from, selling the illusion that the
  * incoming sweep is a physical layer sliding OVER the exiting page. Fades in
  * during exit, fades out during entry (so the handoff stays seamless).

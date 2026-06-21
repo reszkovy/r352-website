@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 interface ScrollSequenceProps {
   /** Number of frames in the sequence */
   frameCount?: number;
-  /** Path pattern — appended with `-{padded-idx}.webp` (e.g. "/scroll-frames/frame") */
+  /** Path pattern - appended with `-{padded-idx}.webp` (e.g. "/scroll-frames/frame") */
   framePath?: string;
   /** Zero-pad width for frame index (e.g. 3 → frame-000 ... frame-119) */
   padDigits?: number;
@@ -17,7 +17,7 @@ interface ScrollSequenceProps {
   backgroundColor?: string;
   /** Optional children rendered as overlay (text manifest, captions, etc.) on top of canvas */
   children?: React.ReactNode;
-  /** Fade children out over scroll progress range — [startProgress, endProgress] in 0..1. */
+  /** Fade children out over scroll progress range - [startProgress, endProgress] in 0..1. */
   fadeChildrenAt?: [number, number];
   /** Optional className for the overlay wrapper inside the fixed canvas layer */
   overlayClassName?: string;
@@ -29,7 +29,7 @@ interface ScrollSequenceProps {
       - "slide" (default): canvas slides up off-screen (philosophy behavior).
       - "fade": canvas stays roughly in place with a slow parallax drift and
         fades its opacity to 0, so the next section (which sits behind the
-        portal) is revealed through it as it scrolls up — a parallax cross-fade.
+        portal) is revealed through it as it scrolls up - a parallax cross-fade.
         Pair with a negative top margin on the following content so it's already
         risen behind the canvas when the fade begins. */
   exitMode?: "slide" | "fade";
@@ -41,7 +41,7 @@ interface ScrollSequenceProps {
 }
 
 /**
- * ScrollSequence — Apple-style scroll-driven frame sequence with separated
+ * ScrollSequence - Apple-style scroll-driven frame sequence with separated
  * entry animations for image vs typography.
  *
  * ENTRY ANIMATION LAYERS (on /philosophy navigation):
@@ -49,7 +49,7 @@ interface ScrollSequenceProps {
  *      first frame loads. Smooth editorial reveal of the scene.
  *
  *   2. OVERLAY (typography): Framer Motion animation matching PageTransition
- *      timing exactly — opacity + translateY(30→0) + filter blur(24→0),
+ *      timing exactly - opacity + translateY(30→0) + filter blur(24→0),
  *      delay 0.3s + duration 0.9s. Typography appears IDENTICALLY to other
  *      subpages, synced with PageTransition for the rest of the page content.
  *
@@ -137,11 +137,11 @@ export function ScrollSequence({
       const exitDistance = Math.max(1, triggerHeight - playDistance);
 
       if (scrolled < 0) {
-        // BEFORE trigger entered viewport — canvas at top, frame 0
+        // BEFORE trigger entered viewport - canvas at top, frame 0
         canvasTopPx = 0;
         progress = 0;
       } else if (scrolled < playDistance) {
-        // PLAY — canvas pinned at viewport top, frames advance
+        // PLAY - canvas pinned at viewport top, frames advance
         canvasTopPx = 0;
         progress = scrolled / playDistance;
       } else if (scrolled < triggerHeight) {
@@ -152,7 +152,7 @@ export function ScrollSequence({
           // the next section (behind the portal) as it scrolls up over it.
           // Fade is strongly front-loaded (completes over the first ~30% of the
           // exit) so the frame clears fast and the incoming copy is revealed
-          // early and legibly — it reads as coming OVER the dissolving frame.
+          // early and legibly - it reads as coming OVER the dissolving frame.
           canvasTopPx = -(scrolled - playDistance) * 0.22;
           wrapperOpacity = Math.max(0, 1 - (scrolled - playDistance) / (exitDistance * 0.22));
         } else {
@@ -170,9 +170,9 @@ export function ScrollSequence({
         }
       }
 
-      // Apply translate (synced to scroll, no easing — must be instant per frame)
+      // Apply translate (synced to scroll, no easing - must be instant per frame)
       wrapper.style.transform = `translate3d(0, ${canvasTopPx}px, 0)`;
-      // Fade-exit opacity (no-op in slide mode — stays fully opaque)
+      // Fade-exit opacity (no-op in slide mode - stays fully opaque)
       if (exitMode === "fade") {
         wrapper.style.opacity = `${wrapperOpacity}`;
       }
@@ -237,7 +237,7 @@ export function ScrollSequence({
 
   return (
     <>
-      {/* Scroll trigger spacer — invisible, adds scrollable height to page */}
+      {/* Scroll trigger spacer - invisible, adds scrollable height to page */}
       <div
         ref={triggerRef}
         className={`relative ${className}`}
@@ -245,7 +245,7 @@ export function ScrollSequence({
         aria-hidden="true"
       />
 
-      {/* Portal layer — canvas + overlay rendered to body to escape ancestor styles */}
+      {/* Portal layer - canvas + overlay rendered to body to escape ancestor styles */}
       {mounted &&
         createPortal(
           <div
@@ -258,7 +258,7 @@ export function ScrollSequence({
             }}
             aria-hidden="true"
           >
-            {/* CANVAS LAYER — smooth fade-in once first frame loads (900ms cubic decel).
+            {/* CANVAS LAYER - smooth fade-in once first frame loads (900ms cubic decel).
                 Mobile: 100vw × 100vw square at top of viewport (object-cover object-right
                 keeps the character subject in frame since they're in right third of source).
                 Desktop md+: fills viewport (inset-0 + cover + center, unchanged). */}
@@ -271,7 +271,7 @@ export function ScrollSequence({
               }}
             />
 
-            {/* Loading state — visible only until first frame ready */}
+            {/* Loading state - visible only until first frame ready */}
             {!firstFrameReady && (
               <div className="absolute inset-0 flex items-center justify-center">
                 <span className="text-xs font-display uppercase tracking-[0.25em] text-white/40">
@@ -280,10 +280,10 @@ export function ScrollSequence({
               </div>
             )}
 
-            {/* OVERLAY LAYER — Framer Motion entry matching PageTransition timing.
+            {/* OVERLAY LAYER - Framer Motion entry matching PageTransition timing.
                 Typography (children) animates with opacity + translateY for an
                 editorial "fade-in + rise" feel, synced to PageTransition timing.
-                NOTE: filter: blur removed (kept opacity + y only) — blur filter
+                NOTE: filter: blur removed (kept opacity + y only) - blur filter
                 is GPU-expensive on mobile and was causing jank during the
                 concurrent scroll-driven wrapper translate. Net visual difference
                 is subtle; perf benefit is significant on mid-tier phones. */}
@@ -302,7 +302,7 @@ export function ScrollSequence({
                   },
                 }}
                 onAnimationComplete={() => {
-                  // Clear inline transform after entry — prevents stale
+                  // Clear inline transform after entry - prevents stale
                   // containing block from y transform sticking around.
                   const el = overlayRef.current;
                   if (el) {

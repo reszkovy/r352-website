@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 import { Link } from "wouter";
 import { journalArticles } from "@/app/data/journalArticles";
 
-// Header motion preset — gentle slide + fade + blur on mount (bypasses useInView
+// Header motion preset - gentle slide + fade + blur on mount (bypasses useInView
 // because header sits in top 10% of viewport which is OUTSIDE Reveal's trigger zone).
 const headerMotion = {
   initial: { opacity: 0, y: 30, filter: "blur(10px)" },
@@ -19,10 +19,10 @@ export function Journal() {
   return (
     <PageTransition className="pt-20 min-h-screen bg-background">
       
-      {/* Header — exceptionally compact for /journal: one-line title + tight padding,
+      {/* Header - exceptionally compact for /journal: one-line title + tight padding,
           so article tiles surface ABOVE THE FOLD (different from other pages where header is full-height).
           Motion: direct motion.div with mount-triggered animation because the header sits in top 10%
-          of viewport — OUTSIDE Reveal's useInView trigger zone (margin: "-10% 0px -10% 0px").
+          of viewport - OUTSIDE Reveal's useInView trigger zone (margin: "-10% 0px -10% 0px").
           Without this, the blur+y entrance was silently failing. */}
       <div className="pt-12 pb-8 md:pt-16 md:pb-10 px-8 md:px-12 border-b border-white/10">
         <div className="max-w-[1800px] mx-auto">

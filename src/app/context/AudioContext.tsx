@@ -1,13 +1,13 @@
 /**
- * AudioContext — site-wide immersive music layer.
+ * AudioContext - site-wide immersive music layer.
  *
- * Plays one looped track (Mompou's Música Callada I, No. 1 — Angelico,
+ * Plays one looped track (Mompou's Música Callada I, No. 1 - Angelico,
  * Stephen Hough piano) as ambient backdrop. Triggered by the first CTA
  * hover anywhere on the site (see useCTAHoverMusicTrigger). Manual control
  * via the SoundWaveWidget in the header.
  *
  * Design principles:
- * - NO autoplay on page load — browser will reject it and we want intent
+ * - NO autoplay on page load - browser will reject it and we want intent
  * - Volume default 0.4 (background, not foreground)
  * - 600ms fade-in / fade-out so transitions never jar
  * - sessionStorage persists "playing" state across navigation
@@ -29,7 +29,7 @@ import {
 } from "react";
 
 const TRACK = {
-  title: "Música Callada I, No. 1 — Angelico",
+  title: "Música Callada I, No. 1 - Angelico",
   composer: "Federico Mompou",
   piece: "Stephen Hough piano",
 } as const;
@@ -69,7 +69,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
 
     const el = new Audio(AUDIO_SRC);
     el.loop = true;
-    el.preload = "none"; // lazy — don't fetch until user shows intent
+    el.preload = "none"; // lazy - don't fetch until user shows intent
     el.volume = 0;
     audioRef.current = el;
 
@@ -79,23 +79,23 @@ export function AudioProvider({ children }: { children: ReactNode }) {
         setExplicitlyPaused(true);
       }
     } catch {
-      /* private mode — ignore */
+      /* private mode - ignore */
     }
 
-    // Restore "was playing" state — but only attempt resume if NOT explicitly paused
+    // Restore "was playing" state - but only attempt resume if NOT explicitly paused
     // and only if a user gesture already unlocked audio on this origin.
     try {
       const wasPlaying = sessionStorage.getItem(SESSION_KEY) === "1";
       const wasPaused = sessionStorage.getItem(PAUSED_KEY) === "1";
       if (wasPlaying && !wasPaused) {
-        // Try to resume — if browser blocks, silently fail.
+        // Try to resume - if browser blocks, silently fail.
         el.play()
           .then(() => {
             fadeTo(el, TARGET_VOLUME);
             setIsPlaying(true);
           })
           .catch(() => {
-            /* autoplay blocked — wait for next CTA hover */
+            /* autoplay blocked - wait for next CTA hover */
           });
       }
     } catch {
@@ -128,7 +128,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
 
     const step = (now: number) => {
       const t = Math.min(1, (now - startedAt) / FADE_MS);
-      // ease-out cubic — matches the site easing language
+      // ease-out cubic - matches the site easing language
       const eased = 1 - Math.pow(1 - t, 3);
       el.volume = Math.max(0, Math.min(1, start + delta * eased));
       if (t < 1) {
@@ -151,7 +151,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   const play = useCallback(() => {
     const el = audioRef.current;
     if (!el) return;
-    // Clear the explicit-pause flag — playing means user wants sound.
+    // Clear the explicit-pause flag - playing means user wants sound.
     setExplicitlyPaused(false);
     try {
       sessionStorage.removeItem(PAUSED_KEY);
@@ -175,7 +175,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
           }
         })
         .catch(() => {
-          // Autoplay rejected (iOS Safari without user gesture). Silently fail —
+          // Autoplay rejected (iOS Safari without user gesture). Silently fail -
           // the SoundWaveWidget click still works because it IS a user gesture.
           setIsPlaying(false);
         });

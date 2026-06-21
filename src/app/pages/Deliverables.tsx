@@ -71,11 +71,11 @@ export function Deliverables() {
                       </p>
                     </div>
                     
-                    {/* Delivery Steps Container — shade-based elevation, no outer border.
+                    {/* Delivery Steps Container - shade-based elevation, no outer border.
                         Light: subtle neutral wash. Dark: faint lift over the page bg. */}
                     <div className="bg-neutral-50 dark:bg-white/[0.025] p-8 md:p-12 transition-colors relative z-0 rounded-none">
 
-                       {/* Step 1 & 2: Includes + Assets accordion — clean editorial labels, no number boxes */}
+                       {/* Step 1 & 2: Includes + Assets accordion - clean editorial labels, no number boxes */}
                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
                           {/* Left: Includes */}
                           <div>
@@ -92,7 +92,7 @@ export function Deliverables() {
                              </ul>
                           </div>
 
-                          {/* Right: Assets accordion — borderless button, lime-tinted hover */}
+                          {/* Right: Assets accordion - borderless button, lime-tinted hover */}
                           <div>
                              <span className="block text-[11px] font-display uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-500 mb-6">
                                 {language === 'pl' ? "Zasoby" : "Assets"}
@@ -137,10 +137,10 @@ export function Deliverables() {
                           </div>
                        </div>
 
-                       {/* Hair-line divider before Output — no chip, no arrow, just rest of separation */}
+                       {/* Hair-line divider before Output - no chip, no arrow, just rest of separation */}
                        <div className="w-full h-px bg-neutral-200 dark:bg-white/10 mt-12 mb-10" />
 
-                       {/* Output — defined by left lime accent strip + bold typography, no border box */}
+                       {/* Output - defined by left lime accent strip + bold typography, no border box */}
                        <div className="relative pl-6 md:pl-8 border-l-2 border-[#D4FF00]">
                            <span className="block text-[11px] font-display uppercase tracking-[0.2em] text-[#D4FF00] mb-4">
                               {t("services_page.deliverables.output_label")}
@@ -150,7 +150,7 @@ export function Deliverables() {
                            </p>
                        </div>
 
-                       {/* Best For — inline minimal, hair-line divider top */}
+                       {/* Best For - inline minimal, hair-line divider top */}
                        <div className="mt-10 flex flex-col sm:flex-row gap-3 sm:items-baseline border-t border-neutral-200 dark:border-white/10 pt-6">
                            <span className="text-[11px] font-display uppercase tracking-[0.2em] text-neutral-400 dark:text-neutral-500 shrink-0">
                               {language === 'pl' ? "Dla kogo" : "Best for"}

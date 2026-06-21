@@ -3,11 +3,11 @@ import { useLocation } from "wouter";
 import { useReducedMotion } from "@/app/hooks/useReducedMotion";
 
 /**
- * Opt-in UI sound layer — Web Audio API, zero dependencies.
+ * Opt-in UI sound layer - Web Audio API, zero dependencies.
  *
  * Consent-first: OFF by default, preference persisted in localStorage.
  * The AudioContext is only ever created inside a user gesture (the toggle
- * click, or — when restoring a saved "on" preference — the first
+ * click, or - when restoring a saved "on" preference - the first
  * pointerdown/keydown of the session). No autoplay, ever.
  *
  * Sounds (very quiet, master gain ≤ 0.15):
@@ -18,7 +18,7 @@ import { useReducedMotion } from "@/app/hooks/useReducedMotion";
  * desktop nav and the mobile overlay, and both instances must share one
  * AudioContext, one enabled flag, and fire each sound exactly once.
  *
- * Icon: 3-bar equalizer — flat/static when off, animated when on
+ * Icon: 3-bar equalizer - flat/static when off, animated when on
  * (animation suppressed under prefers-reduced-motion).
  */
 
@@ -85,7 +85,7 @@ function ensureContext() {
           buffers[name] = buf;
         })
         .catch(() => {
-          /* sound asset missing — stay silent */
+          /* sound asset missing - stay silent */
         });
     });
   }
@@ -132,7 +132,7 @@ function attachHoverListener() {
   );
 }
 
-/** Restore persisted "on" preference — context still waits for a gesture. */
+/** Restore persisted "on" preference - context still waits for a gesture. */
 function restorePreferenceOnce() {
   if (restoredFromStorage || typeof window === "undefined") return;
   restoredFromStorage = true;
@@ -140,7 +140,7 @@ function restorePreferenceOnce() {
   try {
     saved = localStorage.getItem(STORAGE_KEY);
   } catch {
-    /* private mode — ignore */
+    /* private mode - ignore */
   }
   if (saved !== "on") return;
   audioEnabled = true;
@@ -167,7 +167,7 @@ function toggleAudio() {
     /* ignore */
   }
   if (audioEnabled) {
-    // We are inside a click — the one place a context may be created.
+    // We are inside a click - the one place a context may be created.
     ensureContext();
     attachHoverListener();
     // Confirmation tick so the user hears that sound is now live
@@ -192,7 +192,7 @@ export function AudioToggle({ className = "" }: { className?: string }) {
   // idempotent across the two mounted instances (desktop nav + mobile menu).
   useEffect(() => {
     if (lastWhooshLocation === null) {
-      lastWhooshLocation = location; // first mount — no sound on initial load
+      lastWhooshLocation = location; // first mount - no sound on initial load
       return;
     }
     if (lastWhooshLocation === location) return;
@@ -212,7 +212,7 @@ export function AudioToggle({ className = "" }: { className?: string }) {
         enabled ? "text-[#D4FF00]" : "text-neutral-500 hover:text-[#D4FF00]"
       } ${className}`}
     >
-      {/* 3-bar equalizer — bars rest flat, bounce when audio is on */}
+      {/* 3-bar equalizer - bars rest flat, bounce when audio is on */}
       <span className="flex items-end gap-[3px] h-[14px]" aria-hidden="true">
         {[0, 1, 2].map((i) => (
           <span

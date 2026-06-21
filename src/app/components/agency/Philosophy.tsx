@@ -7,12 +7,12 @@ import { motion } from "motion/react";
 import { PhilosophyVisuals } from "./PhilosophyVisuals";
 import { ScrollSequence } from "@/app/components/ui/ScrollSequence";
 import { ArrowRight } from "lucide-react";
-// Transparent-glass humanoid portrait — Midjourney render aligned to the "no face"
+// Transparent-glass humanoid portrait - Midjourney render aligned to the "no face"
 // brand position ("The work speaks. I don't have to."). Lives in src/assets/ and is
 // resolved via the figma:asset/ vite plugin (prefers .webp if generated later).
 import reszekPortrait from "figma:asset/reszek-glass-portrait.webp"; // 1.7MB PNG -> 88KB webp q80 (8.4)
 
-// Hero motion preset — gentle slide + fade + blur on enter AND exit.
+// Hero motion preset - gentle slide + fade + blur on enter AND exit.
 // Bypasses Reveal because hero copy is overlay'd on ScrollSequence (no in-view trigger fires).
 // Exit added because ScrollSequence portals content outside PageTransition wrapper, so PageTransition's
 // own exit blur doesn't reach this overlay. Exit timing syncs with PageTransition sweep (0.8s + sharp easing).
@@ -56,23 +56,23 @@ export function Philosophy() {
   const contrasts = (t("philosophy_page.contrasts") || []) as Contrast[];
   const nonneg = (t("philosophy_page.nonneg") || []) as NonNeg[];
 
-  // Theme-aware scroll sequence — dark frames for dark mode, light frames for light mode
+  // Theme-aware scroll sequence - dark frames for dark mode, light frames for light mode
   const isDark = theme === "dark";
   const framePath = isDark ? "/scroll-frames/frame" : "/scroll-frames-light/frame";
   const sequenceBg = isDark ? "#0a0a0a" : "#FFFFFF";
 
   return (
     <section ref={containerRef} className="relative overflow-x-hidden">
-      {/* NOTE: overflow-x-hidden (not overflow-hidden) — overflow:hidden breaks
+      {/* NOTE: overflow-x-hidden (not overflow-hidden) - overflow:hidden breaks
           position: sticky on the ScrollSequence inner div, causing a 100vh gap
           below the video. overflow-x-hidden preserves horizontal clipping
           (safety against animation overshoot) without breaking vertical sticky. */}
 
-      {/* Hero + Scroll-driven sequence — header overlaid on R3 video.
+      {/* Hero + Scroll-driven sequence - header overlaid on R3 video.
           Theme-aware: dark frames (#0a0a0a bg) for dark mode, light frames (white bg) for light mode.
           key={theme} forces re-mount so canvas + image cache rebind cleanly on toggle.
           pinHeight 300vh: 200vh PLAY (frames advance) + 100vh EXIT (slide-out for smooth handoff).
-          No fadeChildrenAt — header copy stays visible through entire sequence, slides up with canvas. */}
+          No fadeChildrenAt - header copy stays visible through entire sequence, slides up with canvas. */}
       <div className="border-b border-neutral-200 dark:border-white/10 relative">
         <ScrollSequence
           key={theme}
@@ -88,8 +88,8 @@ export function Philosophy() {
               Desktop md+: overlaid at top of viewport like before (top-0, pt-40).
               All children align on the same left edge. */}
           <div className="absolute inset-x-0 top-[100vw] bottom-0 md:top-0 md:bottom-auto px-6 md:px-12 pt-8 md:pt-40 text-left flex flex-col justify-center md:block">
-            {/* Motion wrapper — applies entrance animation (fade + slide + blur) matching other subpages.
-                Direct motion.div used (not Reveal) because hero sits as overlay on ScrollSequence —
+            {/* Motion wrapper - applies entrance animation (fade + slide + blur) matching other subpages.
+                Direct motion.div used (not Reveal) because hero sits as overlay on ScrollSequence -
                 Reveal's useInView margin "-10% 0px -10% 0px" doesn't fire reliably for overlay elements. */}
             <motion.div {...heroMotion} className="max-w-[1800px] mx-auto w-full">
               <span className="block text-[10px] md:text-xs font-display uppercase tracking-[0.2em] text-[#D4FF00] mb-5 md:mb-8">
@@ -107,12 +107,12 @@ export function Philosophy() {
         </ScrollSequence>
       </div>
 
-      {/* Static visuals strip — kept as fallback/secondary editorial element (hidden by default) */}
+      {/* Static visuals strip - kept as fallback/secondary editorial element (hidden by default) */}
       <div className="border-b border-neutral-200 dark:border-white/10 bg-[#D0DBE1] md:bg-transparent hidden">
         <PhilosophyVisuals />
       </div>
 
-      {/* Beliefs Grid — 6 beliefs, 2 cols — tighter transition from scroll-sequence above */}
+      {/* Beliefs Grid - 6 beliefs, 2 cols - tighter transition from scroll-sequence above */}
       <div className="max-w-[1800px] mx-auto border-b border-neutral-200 dark:border-white/10 relative">
         <div className="px-8 md:px-12 pt-12 md:pt-16 pb-8">
           <Reveal>
@@ -150,9 +150,9 @@ export function Philosophy() {
         </div>
       </div>
 
-      {/* ─── Behind r352 — short personal note ──────────────────
+      {/* ─── Behind r352 - short personal note ──────────────────
           Tight 4-paragraph personal note (Reszek's voice). Reads as a sidebar
-          note + lime portrait — same lime-silhouette avatar used by the Chatbot,
+          note + lime portrait - same lime-silhouette avatar used by the Chatbot,
           here at much larger size as the human-trust signal for retainer prospects. */}
       <div className="max-w-[1800px] mx-auto px-8 md:px-12 py-24 md:py-32 border-b border-neutral-200 dark:border-white/10">
         <Reveal>
@@ -162,18 +162,18 @@ export function Philosophy() {
         </Reveal>
         <div className="grid grid-cols-1 md:grid-cols-[420px_1fr] gap-10 md:gap-16 items-start max-w-5xl">
           <Reveal>
-            {/* Lime portrait — no-face brand statement block. Glass-humanoid
+            {/* Lime portrait - no-face brand statement block. Glass-humanoid
                 portrait sits on a solid lime (#D4FF00) backdrop and is blended
                 via mix-blend-luminosity, so the figure reads as a lime-toned
-                silhouette — the chatbot's lime+silhouette identity at full size. */}
+                silhouette - the chatbot's lime+silhouette identity at full size. */}
             <div className="relative aspect-square overflow-hidden bg-[#D4FF00]">
               <img
                 src={reszekPortrait}
-                alt={language === 'pl' ? 'Reszek — portrait' : 'Reszek — portrait'}
+                alt={language === 'pl' ? 'Reszek - portrait' : 'Reszek - portrait'}
                 className="w-full h-full object-cover mix-blend-luminosity"
                 loading="lazy"
               />
-              {/* POV statement overlay — explicit "no face" brand position.
+              {/* POV statement overlay - explicit "no face" brand position.
                   Reframes the silhouette portrait from accidental/missing-photo to
                   intentional anti-influencer signal. Two-line stack: POV statement
                   prominent, signature line small underneath. Light-on-dark colors
@@ -195,7 +195,7 @@ export function Philosophy() {
                   ? 'Projektuję od piętnastu lat i większości tego co wiem nauczyłem się patrząc, jak piękna praca jest zabijana przez słabe operacje.'
                   : "I've been designing for fifteen years and most of what I learned came from watching beautiful work get killed by bad operations."}
               </p>
-              {/* TODO(reszek): potwierdź listę miast — bio mówiło "Lisbon, Barcelona", a FAQ/SEO
+              {/* TODO(reszek): potwierdź listę miast - bio mówiło "Lisbon, Barcelona", a FAQ/SEO
                   wymieniają London, Porto, Barcelona, Athens, Marseille (bez Lizbony). Do czasu
                   potwierdzenia wersja bezmiastowa, spójna z liczbami z FAQ (6 lat, 5 miast). */}
               <p>
@@ -210,8 +210,8 @@ export function Philosophy() {
               </p>
               <p>
                 {language === 'pl'
-                  ? 'EU-based, remote-first. Pracuję z 5–10 markami naraz na retainer, plus dwa własne SaaS w boku (Caterelo, regional.fit). Metodologia, którą sprzedajesz, musi przetrwać twoje własne użycie.'
-                  : "EU-based, remote-first. Working with 5–10 brands at a time on retainer, plus running two of my own SaaS products on the side (Caterelo, regional.fit). Methodology you sell needs to survive your own use of it."}
+                  ? 'EU-based, remote-first. Pracuję z 5-10 markami naraz na retainer, plus dwa własne SaaS w boku (Caterelo, regional.fit). Metodologia, którą sprzedajesz, musi przetrwać twoje własne użycie.'
+                  : "EU-based, remote-first. Working with 5-10 brands at a time on retainer, plus running two of my own SaaS products on the side (Caterelo, regional.fit). Methodology you sell needs to survive your own use of it."}
               </p>
               <p className="text-[13px] text-neutral-500 dark:text-neutral-500 pt-2">
                 {language === 'pl' ? 'Piszę okazjonalnie o tym co skaluje i co nie. Kontakt: ' : 'I write occasionally about what scales and what doesn’t. Reach out: '}
@@ -227,7 +227,7 @@ export function Philosophy() {
         </div>
       </div>
 
-      {/* Soundtrack section REMOVED 2026-06-10 (client decision) — the Spotify
+      {/* Soundtrack section REMOVED 2026-06-10 (client decision) - the Spotify
           album embed 404'd ("We can't seem to find the page"). The Mompou
           ambient lives on in the site-wide audio system (AudioContext). */}
 
@@ -297,7 +297,7 @@ export function Philosophy() {
         </div>
       </div>
 
-      {/* Personal Note — shade-based elevation, no border outline */}
+      {/* Personal Note - shade-based elevation, no border outline */}
       <div className="py-32 px-8 md:px-12 bg-neutral-50/40 dark:bg-[#0a0a0a]">
         <div className="max-w-4xl mx-auto">
           <Reveal>

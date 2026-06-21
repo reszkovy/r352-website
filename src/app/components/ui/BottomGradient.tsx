@@ -1,5 +1,5 @@
 /**
- * Subtle bottom gradient — grounds floating CTAs (Brief CTA + chat icon).
+ * Subtle bottom gradient - grounds floating CTAs (Brief CTA + chat icon).
  * Creates a "shelf" feeling at viewport bottom, similar to nav shadow that appears under header on scroll.
  * Pointer-events-none so it doesn't intercept clicks.
  */

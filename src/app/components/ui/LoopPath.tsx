@@ -8,26 +8,26 @@ import {
 } from "motion/react";
 
 /**
- * LoopPath — scroll-driven "the r3loop draws itself" scene.
+ * LoopPath - scroll-driven "the r3loop draws itself" scene.
  *
  * A single straight SVG line draws left→right along one horizontal baseline
  * through the 8 step nodes (Diagnose … Iterate). The loop closure is a small
- * ↻ glyph after the last node — Iterate feeds back into 01 — not a full
+ * ↻ glyph after the last node - Iterate feeds back into 01 - not a full
  * return path across the layout (the old wavy zigzag + bottom sweep read as
  * broken geometry).
  *
  * Mechanics:
  *   - 220vh wrapper, sticky h-screen frame; one useScroll per scene.
  *   - pathLength={1} + strokeDasharray 1; strokeDashoffset is a useTransform
- *     of scroll progress (scrubbed, position-driven — never timed).
+ *     of scroll progress (scrubbed, position-driven - never timed).
  *   - Each node carries a lime overlay circle + lime label overlay whose
  *     opacity scrubs in at the path-length fraction where the line passes it.
  *   - Loop-back glyph + closing caption fade in as the line completes.
  *   - Step numbers (above the line) and labels (below the line) are real SVG
- *     <text> — always visible, always in the DOM. transform/opacity-only
+ *     <text> - always visible, always in the DOM. transform/opacity-only
  *     animation on top.
  *
- * This component is only mounted in kinetic mode — the parent renders the
+ * This component is only mounted in kinetic mode - the parent renders the
  * plain HTML step grid for prerender/bots/reduced-motion/mobile.
  */
 
@@ -39,7 +39,7 @@ export interface LoopStep {
   label: string;
 }
 
-/* ── Geometry — one horizontal baseline, all 8 nodes on it ─────────────── */
+/* ── Geometry - one horizontal baseline, all 8 nodes on it ─────────────── */
 const VB_W = 1600;
 const VB_H = 300;
 const X0 = 90;
@@ -52,7 +52,7 @@ const ys = xs.map(() => BASE_Y);
 /* The connecting path is a clean straight line, left → right. */
 const PATH_D = `M ${X0} ${BASE_Y} L ${X1} ${BASE_Y}`;
 
-/* Path-length fraction at which the line reaches node i — straight line,
+/* Path-length fraction at which the line reaches node i - straight line,
    so exactly i/7 (node 0 lights as soon as the draw starts). */
 const nodeFraction = (i: number) => (i === 0 ? 0.01 : i / 7);
 /* Scroll progress window in which the path actually draws. */
@@ -116,7 +116,7 @@ function Node({
       {/* lit node */}
       <motion.circle cx={x} cy={y} r={7} fill={LIME} style={{ opacity: active }} />
 
-      {/* step number — always in DOM */}
+      {/* step number - always in DOM */}
       <text
         x={x}
         y={numY}
@@ -128,7 +128,7 @@ function Node({
         {step.num}
       </text>
 
-      {/* label — always visible white, lime overlay scrubs in */}
+      {/* label - always visible white, lime overlay scrubs in */}
       <text
         x={x}
         y={labelY}
@@ -176,7 +176,7 @@ export function LoopPath({ steps, closingLabel, children }: LoopPathProps) {
 
   // The line draws itself: 1 → 0 dashoffset across the scrub window.
   const dashOffset = useTransform(p, DRAW, [1, 0]);
-  // Loop-closing accents — glyph + caption land as the line completes.
+  // Loop-closing accents - glyph + caption land as the line completes.
   const arrowOpacity = useTransform(p, [0.8, 0.88], [0, 1], { ease: EASE });
   // opacity-only: on SVG elements motion's `y` maps to the y attribute,
   // which would fight the text's absolute position.
@@ -193,7 +193,7 @@ export function LoopPath({ steps, closingLabel, children }: LoopPathProps) {
           role="img"
           aria-label={steps.map((s) => s.label).join(" → ")}
         >
-          {/* ghost route — the full loop, faint, always visible */}
+          {/* ghost route - the full loop, faint, always visible */}
           <path
             d={PATH_D}
             fill="none"
@@ -231,7 +231,7 @@ export function LoopPath({ steps, closingLabel, children }: LoopPathProps) {
             <Node key={step.num} p={p} i={i} step={step} />
           ))}
 
-          {/* loop-back glyph ↻ — Iterate feeds back into 01 Diagnose */}
+          {/* loop-back glyph ↻ - Iterate feeds back into 01 Diagnose */}
           <motion.g style={{ opacity: arrowOpacity }}>
             <path
               d={GLYPH_ARC}

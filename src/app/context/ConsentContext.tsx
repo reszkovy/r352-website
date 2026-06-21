@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode, useCallback } from 'react';
 
 /**
- * ConsentContext — strict opt-in consent management for r352.com.
+ * ConsentContext - strict opt-in consent management for r352.com.
  *
  * EU jurisdiction (Mallorca, Spain) → GDPR + LOPDGDD apply.
  * Default state = "pending" → banner shows, GTM does NOT load.
@@ -38,7 +38,7 @@ function readStoredStatus(): ConsentStatus {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     if (raw === 'accepted' || raw === 'denied') return raw;
   } catch {
-    // localStorage may be unavailable (Safari private mode, etc.) — fall through
+    // localStorage may be unavailable (Safari private mode, etc.) - fall through
   }
   return 'pending';
 }
@@ -52,7 +52,7 @@ function persistStatus(status: ConsentStatus): void {
       window.localStorage.setItem(STORAGE_KEY, status);
     }
   } catch {
-    // Silently swallow — consent will simply not persist across sessions.
+    // Silently swallow - consent will simply not persist across sessions.
   }
 }
 

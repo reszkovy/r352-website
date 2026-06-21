@@ -5,7 +5,7 @@ import { useConsent } from '@/app/context/ConsentContext';
 import { useLanguage } from '@/app/context/LanguageContext';
 
 /**
- * ConsentBanner — bottom-fixed strict opt-in cookie banner.
+ * ConsentBanner - bottom-fixed strict opt-in cookie banner.
  *
  * Renders only when consent status is "pending". Two explicit choices:
  *   - "Accept all"   → enables GTM and any future analytics tags
@@ -13,7 +13,7 @@ import { useLanguage } from '@/app/context/LanguageContext';
  *
  * Links to /privacy and /cookies for full disclosure + granular control.
  *
- * z-index sits at 9999 — above page content but below PageTransition
+ * z-index sits at 9999 - above page content but below PageTransition
  * overlays (10000+) so route changes don't paint over the banner mid-sweep.
  *
  * Reduced motion: skip slide-up animation entirely.
@@ -28,22 +28,22 @@ export function ConsentBanner() {
   const { t, language } = useLanguage();
 
   // Mobile-only condensed copy (<768px). The full translations live in
-  // i18n/translations.ts — but this file is the only one we own, so the
+  // i18n/translations.ts - but this file is the only one we own, so the
   // short variant is inlined here. Single sentence + privacy link keeps
   // the banner under ~30% of a 375x667 viewport instead of covering the
   // hero on first visit. Desktop keeps the full t('consent.banner.body').
   const shortBody =
     language === 'pl'
-      ? 'Cookies i analityka — strict opt-in. Nic się nie ładuje bez Twojej zgody.'
-      : 'Cookies & analytics — strict opt-in. Nothing loads until you say yes.';
+      ? 'Cookies i analityka - strict opt-in. Nic się nie ładuje bez Twojej zgody.'
+      : 'Cookies & analytics - strict opt-in. Nothing loads until you say yes.';
 
-  // Desktop condensed body — single line so the banner stays one tidy row
+  // Desktop condensed body - single line so the banner stays one tidy row
   // (py-4) instead of the previous ~150px three-row block that ate the first
   // viewport on every page. Slightly fuller than the mobile one-liner.
   const desktopBody =
     language === 'pl'
-      ? 'Cookies i analityka — strict opt-in. Nic się nie ładuje, dopóki nie wyrazisz zgody.'
-      : 'Cookies & analytics — strict opt-in. Nothing loads until you say yes.';
+      ? 'Cookies i analityka - strict opt-in. Nic się nie ładuje, dopóki nie wyrazisz zgody.'
+      : 'Cookies & analytics - strict opt-in. Nothing loads until you say yes.';
   const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -60,10 +60,10 @@ export function ConsentBanner() {
     return () => mq.removeListener(update);
   }, []);
 
-  // Slide motion config — different physics for enter vs exit:
+  // Slide motion config - different physics for enter vs exit:
   //  - Enter: spring with slight overshoot for premium "settling" feel
   //    (stiffness 80 + damping 16 = ~700ms with subtle bounce at end)
-  //  - Exit: clean tween, no spring, slightly faster — feels responsive
+  //  - Exit: clean tween, no spring, slightly faster - feels responsive
   //    to user action (button click → banner gets out of the way)
   // Reduced motion: instant snap, no animation at all.
   const motionInitial = reducedMotion
@@ -92,12 +92,12 @@ export function ConsentBanner() {
 
   // Critical: AnimatePresence must wrap the CONDITIONAL render, not the other
   // way around. If we exit before AnimatePresence (return null pre-AP), exit
-  // animation never plays — the parent just unmounts instantly. This pattern
+  // animation never plays - the parent just unmounts instantly. This pattern
   // keeps AP mounted always; banner mounts/unmounts inside it.
   return (
     <AnimatePresence mode="wait">
       {status === 'pending' && (
-        // role="region" (not "dialog") — the banner never traps or moves
+        // role="region" (not "dialog") - the banner never traps or moves
         // focus, so dialog semantics would be misleading to AT users. A
         // labelled region is discoverable via landmark navigation instead.
         <motion.div

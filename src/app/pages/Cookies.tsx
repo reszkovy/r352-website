@@ -16,7 +16,7 @@ import { useConsent } from "@/app/context/ConsentContext";
  * "Save" button commits the analytics toggle to ConsentContext.
  * "Reset" wipes the stored choice → banner reappears on next load.
  *
- * Copy is DRAFT — same legal-review caveat as /privacy.
+ * Copy is DRAFT - same legal-review caveat as /privacy.
  */
 export function Cookies() {
   const { t } = useLanguage();

@@ -24,9 +24,9 @@ interface Product {
   year: string;
   url: string;
   description: { en: string; pl: string };
-  // Concrete proof — the numbers a buyer needs to believe this is real production work
+  // Concrete proof - the numbers a buyer needs to believe this is real production work
   kpis: KPI[];
-  // The headline transformation — research months → seconds, the kind of impact buyers want for themselves
+  // The headline transformation - research months → seconds, the kind of impact buyers want for themselves
   impact: { en: string; pl: string };
   r3loop: R3LoopStep[];
 }
@@ -41,7 +41,7 @@ const PRODUCTS: Product[] = [
     url: "https://caterelo.com",
     description: {
       en: "A decision engine for Southern Europe. 90 regions scored across 13 data signals and 7 decision dimensions. AI advisor trained on the full dataset. Free + Pro tier shipping today.",
-      pl: "Decision engine dla Europy Południowej. 90 regionów ocenionych przez 13 sygnałów danych i 7 wymiarów decyzyjnych. AI advisor wytrenowany na pełnym datasecie. Free + Pro tier — live.",
+      pl: "Decision engine dla Europy Południowej. 90 regionów ocenionych przez 13 sygnałów danych i 7 wymiarów decyzyjnych. AI advisor wytrenowany na pełnym datasecie. Free + Pro tier - live.",
     },
     impact: {
       en: "40 hours of cross-referencing INE, ISTAT, INSEE data in 5 languages → 30 seconds, side-by-side.",
@@ -75,8 +75,8 @@ const PRODUCTS: Product[] = [
         num: "03",
         label: { en: "Standardize", pl: "Standaryzacja" },
         impl: {
-          en: "LifeTrend™ composite score 30–90, min-max normalized",
-          pl: "LifeTrend™ — kompozytowy wynik 30–90, znormalizowany",
+          en: "LifeTrend™ composite score 30-90, min-max normalized",
+          pl: "LifeTrend™ - kompozytowy wynik 30-90, znormalizowany",
         },
       },
       {
@@ -131,9 +131,9 @@ export function Products() {
     <section className="py-32 md:py-40 border-t border-black/10 dark:border-white/5">
       <div className="max-w-[1800px] mx-auto px-8 md:px-12">
 
-        {/* ─── FRAMING LINE — dual-track positioning lock-in (Phase 1.1).
+        {/* ─── FRAMING LINE - dual-track positioning lock-in (Phase 1.1).
              Sits above the section header to neutralize "why is caterelo here?"
-             in 0.5 seconds — signals operator-mindset benefits BOTH tracks. ─── */}
+             in 0.5 seconds - signals operator-mindset benefits BOTH tracks. ─── */}
         <Reveal>
           <p className="text-sm md:text-base font-mono text-neutral-500 dark:text-neutral-500 leading-relaxed mb-10 md:mb-12 max-w-2xl">
             {lang === "pl" ? (
@@ -144,7 +144,7 @@ export function Products() {
           </p>
         </Reveal>
 
-        {/* ─── HEADER — 12-col 7+5 asymmetric (matches Brief CTA / Process pattern).
+        {/* ─── HEADER - 12-col 7+5 asymmetric (matches Brief CTA / Process pattern).
              This is a SALES SECTION: the hook is "want me to do this for you? here's the proof I can." ─── */}
         <div className="grid grid-cols-12 gap-6 md:gap-8 items-end mb-20 md:mb-24">
           <Reveal className="col-span-12 lg:col-span-7">
@@ -165,8 +165,8 @@ export function Products() {
           <Reveal delay={0.1} className="col-span-12 lg:col-span-5 lg:justify-self-end max-w-xl space-y-4">
             <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
               {lang === "pl"
-                ? "r3loop nie jest teorią — jest stosowanym frameworkiem. Każdy produkt poniżej został zbudowany dokładnie tą samą metodologią, którą stosujemy u klientów."
-                : "r3loop isn't theory — it's an applied framework. Every product below was built with the exact same methodology we run for clients."}
+                ? "r3loop nie jest teorią - jest stosowanym frameworkiem. Każdy produkt poniżej został zbudowany dokładnie tą samą metodologią, którą stosujemy u klientów."
+                : "r3loop isn't theory - it's an applied framework. Every product below was built with the exact same methodology we run for clients."}
             </p>
             <p className="text-sm text-neutral-500 dark:text-neutral-500 font-mono leading-relaxed">
               {lang === "pl"
@@ -182,7 +182,7 @@ export function Products() {
             <Reveal key={p.id} delay={i * 0.1}>
               <article className="border-t border-black/10 dark:border-white/10 pt-12 md:pt-16">
 
-                {/* Product head — 12-col 8+4 (title left, status/year right) */}
+                {/* Product head - 12-col 8+4 (title left, status/year right) */}
                 <div className="grid grid-cols-12 gap-6 md:gap-8 mb-10 md:mb-12">
                   <div className="col-span-12 md:col-span-8">
                     <div className="flex items-baseline gap-4 mb-4">
@@ -209,7 +209,7 @@ export function Products() {
                       {p.description[lang]}
                     </p>
 
-                    {/* IMPACT CALLOUT — the headline transformation, makes the buyer feel the value */}
+                    {/* IMPACT CALLOUT - the headline transformation, makes the buyer feel the value */}
                     <div className="mt-8 md:mt-10 border-l-2 border-[#D4FF00] pl-6 max-w-2xl">
                       <span className="block text-[10px] font-display uppercase tracking-[0.25em] text-[#D4FF00] mb-2">
                         {lang === "pl" ? "Impact" : "Impact"}
@@ -238,7 +238,7 @@ export function Products() {
                   </div>
                 </div>
 
-                {/* KPI BAR — concrete numbers that make "real production" believable.
+                {/* KPI BAR - concrete numbers that make "real production" believable.
                     Sits between description and r3loop mapping as the proof transition. */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-black/[0.06] dark:bg-white/[0.06] mb-10 md:mb-12">
                   {p.kpis.map((kpi) => (
@@ -256,7 +256,7 @@ export function Products() {
                   ))}
                 </div>
 
-                {/* r3loop applied — 4-col grid of 8 steps */}
+                {/* r3loop applied - 4-col grid of 8 steps */}
                 <div className="border-t border-black/5 dark:border-white/5 pt-10 md:pt-12">
                   <div className="flex items-baseline justify-between mb-8">
                     <span className="text-[11px] uppercase tracking-[2px] text-neutral-500 font-display">
@@ -289,7 +289,7 @@ export function Products() {
           ))}
         </div>
 
-        {/* ─── SALES CLOSER — turn the proof into a pitch.
+        {/* ─── SALES CLOSER - turn the proof into a pitch.
              The question this section was built to answer: "can you actually deliver this for me?"
              The answer the visitor just saw: "yes, here are the 8 steps applied to a live product."
              The next step: convert. ─── */}

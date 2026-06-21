@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useConsent } from '@/app/context/ConsentContext';
 
 /**
- * GTM — strict opt-in gated container.
+ * GTM - strict opt-in gated container.
  *
  * Google Consent Mode v2:
  *   - On mount, emit consent defaults set to "denied" BEFORE GTM loads.
@@ -43,7 +43,7 @@ function ensureGtag(): (...args: unknown[]) => void {
 export const GTM = () => {
   const { status } = useConsent();
 
-  // 1. Consent Mode v2 defaults — emit as early as possible, regardless of status.
+  // 1. Consent Mode v2 defaults - emit as early as possible, regardless of status.
   //    Must run BEFORE any GTM/gtag tag is injected to take effect.
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -59,7 +59,7 @@ export const GTM = () => {
     });
   }, []);
 
-  // 2. React to status changes — inject GTM on accept, revoke on deny.
+  // 2. React to status changes - inject GTM on accept, revoke on deny.
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const gtag = ensureGtag();
@@ -86,7 +86,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     // status === "denied" or "pending"
     // If GTM was previously injected (user accepted then revoked in same session),
     // signal denial to Consent-Mode-aware tags. Container itself stays loaded
-    // for the rest of the session — Consent Mode is the supported revocation path.
+    // for the rest of the session - Consent Mode is the supported revocation path.
     if (document.getElementById('gtm-script')) {
       gtag('consent', 'update', {
         analytics_storage: 'denied',

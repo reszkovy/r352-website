@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useAudio } from "@/app/context/AudioContext";
 
 /**
- * Global delegated pointerover listener — fires AudioContext.play() the FIRST
+ * Global delegated pointerover listener - fires AudioContext.play() the FIRST
  * time a user hovers any element tagged with `.js-music-trigger`. Once playing
  * (or once explicitly paused by the user), the listener self-removes.
  *
@@ -11,7 +11,7 @@ import { useAudio } from "@/app/context/AudioContext";
  * - Survives lazy-loaded routes (handlers attach at App level)
  * - Easy to scope to only the CTAs we want (no header nav, no theme toggle)
  *
- * Skipped entirely on touch devices — hover is meaningless there, the
+ * Skipped entirely on touch devices - hover is meaningless there, the
  * SoundWaveWidget acts as tap-to-play instead.
  */
 export function useCTAHoverMusicTrigger() {
@@ -19,7 +19,7 @@ export function useCTAHoverMusicTrigger() {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    // Touch detection — coarse pointer means no real hover
+    // Touch detection - coarse pointer means no real hover
     const isTouch =
       window.matchMedia?.("(hover: none), (pointer: coarse)")?.matches ?? false;
     if (isTouch) return;

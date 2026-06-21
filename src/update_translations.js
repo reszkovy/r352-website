@@ -19,11 +19,11 @@ const enCards = `[
           ],
           whats_inside: [
             "Brand Guidelines Document (PDF)",
-            "Logo package — all versions, all formats (SVG, PNG, EPS)",
+            "Logo package - all versions, all formats (SVG, PNG, EPS)",
             "Typography hierarchy per medium (web, print, social)",
             "Color palette with HEX, RGB, CMYK, Pantone codes",
             "Layout grid system per format",
-            "Template files — social posts, stories, covers, ads, deck, email header",
+            "Template files - social posts, stories, covers, ads, deck, email header",
             "Photography mood & direction guide",
             "Do's & don'ts reference sheet"
           ],
@@ -44,12 +44,12 @@ const enCards = `[
           whats_inside: [
             "Key Visual in master resolution + adaptation guide",
             "Modular layout templates for self-assembly",
-            "Social media variants — posts, stories, reels covers (FB, IG, LinkedIn, TikTok)",
-            "Performance ad formats — GDN, Meta, LinkedIn sizes",
-            "Motion assets — 15s, 30s, GIF loops",
-            "CMYK print files — posters, flyers, rollups, POS materials",
+            "Social media variants - posts, stories, reels covers (FB, IG, LinkedIn, TikTok)",
+            "Performance ad formats - GDN, Meta, LinkedIn sizes",
+            "Motion assets - 15s, 30s, GIF loops",
+            "CMYK print files - posters, flyers, rollups, POS materials",
             "Headline/subhead/CTA variants per segment",
-            "Campaign asset checklist — full format inventory"
+            "Campaign asset checklist - full format inventory"
           ],
           best_for: "Marketing teams running multi-channel campaigns with tight deadlines and high volume."
         },
@@ -69,8 +69,8 @@ const enCards = `[
             "Reusable content templates per format (post, story, newsletter, blog)",
             "Production queue with statuses and deadlines",
             "QA report before every publish cycle",
-            "Iteration log — what changed, why",
-            "Performance notes — what worked, what to adjust next",
+            "Iteration log - what changed, why",
+            "Performance notes - what worked, what to adjust next",
             "Monthly/weekly drops on schedule, no delays"
           ],
           best_for: "Teams that need steady content output but don't have the bandwidth to manage production in-house."
@@ -88,16 +88,16 @@ const enCards = `[
           ],
           whats_inside: [
             "Sitemap + information architecture",
-            "Wireframes — per page type",
-            "UI design — pixel-perfect per breakpoint (desktop, tablet, mobile)",
+            "Wireframes - per page type",
+            "UI design - pixel-perfect per breakpoint (desktop, tablet, mobile)",
             "Component library in Figma",
             "Interactive prototype of key flows",
             "Frontend build (Next.js / Webflow / custom CMS)",
             "CMS with editable content fields",
-            "SEO setup — meta, OG images, sitemap.xml, robots.txt",
-            "Performance audit — Lighthouse, Core Web Vitals",
-            "Launch checklist — redirects, analytics, tracking, forms",
-            "Handoff documentation — how your team edits content independently"
+            "SEO setup - meta, OG images, sitemap.xml, robots.txt",
+            "Performance audit - Lighthouse, Core Web Vitals",
+            "Launch checklist - redirects, analytics, tracking, forms",
+            "Handoff documentation - how your team edits content independently"
           ],
           best_for: "Companies that need a website that performs, converts, and doesn't require a developer for every content update."
         },
@@ -113,12 +113,12 @@ const enCards = `[
             "User research synthesis"
           ],
           whats_inside: [
-            "User research synthesis — personas, journey map, pain points",
+            "User research synthesis - personas, journey map, pain points",
             "Information architecture + flow diagrams",
-            "Wireframes (low & mid fidelity) — key screens and flows",
-            "UI design system — components, tokens, spacing, color, type",
+            "Wireframes (low & mid fidelity) - key screens and flows",
+            "UI design system - components, tokens, spacing, color, type",
             "High-fidelity clickable prototype in Figma",
-            "Dev-ready specs — redlines, spacing, all states (hover, active, disabled, error, loading)",
+            "Dev-ready specs - redlines, spacing, all states (hover, active, disabled, error, loading)",
             "Asset export + component documentation",
             "QA checklist per screen"
           ],
@@ -136,14 +136,14 @@ const enCards = `[
             "Quality control protocol"
           ],
           whats_inside: [
-            "Central vs. local rules document — what's locked, what's editable",
+            "Central vs. local rules document - what's locked, what's editable",
             "Master template set with editable zones per format",
-            "Location variant guide — how locals adapt (photos, copy, prices, addresses)",
-            "Asset request flow — form, approval path, timeline",
+            "Location variant guide - how locals adapt (photos, copy, prices, addresses)",
+            "Asset request flow - form, approval path, timeline",
             "Self-service template library (Canva / Figma / custom tool)",
-            "Quality control protocol — how HQ monitors local output",
-            "Rollout pack per location — starter kit for every new site",
-            "Training materials — video/PDF on how to use the template system"
+            "Quality control protocol - how HQ monitors local output",
+            "Rollout pack per location - starter kit for every new site",
+            "Training materials - video/PDF on how to use the template system"
           ],
           best_for: "Franchise networks, retail chains, and multi-location brands that need consistency at scale without a central bottleneck."
         }
@@ -164,11 +164,11 @@ const plCards = `[
           ],
           whats_inside: [
             "Brand Book (PDF)",
-            "Paczka logo — wszystkie wersje i formaty (SVG, PNG, EPS)",
+            "Paczka logo - wszystkie wersje i formaty (SVG, PNG, EPS)",
             "Hierarchia typografii dla mediów (web, print, social)",
             "Paleta kolorów z kodami HEX, RGB, CMYK, Pantone",
             "System siatek dla różnych formatów",
-            "Pliki szablonów — posty, stories, okładki, reklamy, prezentacje, nagłówki email",
+            "Pliki szablonów - posty, stories, okładki, reklamy, prezentacje, nagłówki email",
             "Przewodnik po stylu zdjęć (moodboard & kierunek)",
             "Arkusz referencyjny Do's & don'ts"
           ],
@@ -189,12 +189,12 @@ const plCards = `[
           whats_inside: [
             "Key Visual w najwyższej rozdzielczości + przewodnik adaptacji",
             "Modułowe szablony układów do samodzielnego montażu",
-            "Warianty social media — posty, stories, okładki reels (FB, IG, LinkedIn, TikTok)",
-            "Formaty reklam performance — GDN, Meta, LinkedIn",
-            "Zasoby motion — 15s, 30s, zapętlone GIFy",
-            "Pliki do druku CMYK — plakaty, ulotki, rollupy, POS",
+            "Warianty social media - posty, stories, okładki reels (FB, IG, LinkedIn, TikTok)",
+            "Formaty reklam performance - GDN, Meta, LinkedIn",
+            "Zasoby motion - 15s, 30s, zapętlone GIFy",
+            "Pliki do druku CMYK - plakaty, ulotki, rollupy, POS",
             "Warianty nagłówków/podtytułów/CTA dla segmentów",
-            "Checklista zasobów kampanii — pełna inwentaryzacja"
+            "Checklista zasobów kampanii - pełna inwentaryzacja"
           ],
           best_for: "Zespoły marketingowe prowadzące wielokanałowe kampanie z krótkimi terminami i dużym wolumenem."
         },
@@ -214,8 +214,8 @@ const plCards = `[
             "Szablony wielokrotnego użytku dla formatów (post, story, newsletter, blog)",
             "Kolejka produkcji ze statusem i terminami",
             "Raport QA przed każdym cyklem publikacji",
-            "Dziennik iteracji — co się zmieniło i dlaczego",
-            "Notatki z wyników — co zadziałało, co poprawić",
+            "Dziennik iteracji - co się zmieniło i dlaczego",
+            "Notatki z wyników - co zadziałało, co poprawić",
             "Miesięczne/tygodniowe paczki na czas, bez opóźnień"
           ],
           best_for: "Zespoły potrzebujące stałego dopływu treści, nie mające jednak mocy przerobowych na zarządzanie produkcją in-house."
@@ -234,15 +234,15 @@ const plCards = `[
           whats_inside: [
             "Sitemap + architektura informacji",
             "Makiety (wireframes) dla poszczególnych podstron",
-            "Projekt UI — dopracowany dla każdego punktu (desktop, tablet, mobile)",
+            "Projekt UI - dopracowany dla każdego punktu (desktop, tablet, mobile)",
             "Biblioteka komponentów w Figma",
             "Interaktywny prototyp kluczowych ścieżek",
             "Budowa frontendu (Next.js / Webflow / dedykowany CMS)",
             "CMS z edytowalnymi polami treści",
-            "Konfiguracja SEO — meta, OG, sitemap.xml, robots.txt",
-            "Audyt wydajności — Lighthouse, Core Web Vitals",
-            "Checklista wdrożeniowa — przekierowania, analityka, trackowanie, formularze",
-            "Dokumentacja wdrożeniowa — jak zespół samodzielnie zarządza treścią"
+            "Konfiguracja SEO - meta, OG, sitemap.xml, robots.txt",
+            "Audyt wydajności - Lighthouse, Core Web Vitals",
+            "Checklista wdrożeniowa - przekierowania, analityka, trackowanie, formularze",
+            "Dokumentacja wdrożeniowa - jak zespół samodzielnie zarządza treścią"
           ],
           best_for: "Firmy, które potrzebują wydajnej, konwertującej strony niewymagającej developera przy każdej zmianie tekstu."
         },
@@ -258,12 +258,12 @@ const plCards = `[
             "Synteza badań z użytkownikami"
           ],
           whats_inside: [
-            "Synteza badań — persony, mapy podróży, pain points",
+            "Synteza badań - persony, mapy podróży, pain points",
             "Architektura informacji + diagramy flow",
-            "Makiety (low/mid-fi) — kluczowe ekrany",
-            "Design system UI — komponenty, tokeny, odstępy, kolor, typografia",
+            "Makiety (low/mid-fi) - kluczowe ekrany",
+            "Design system UI - komponenty, tokeny, odstępy, kolor, typografia",
             "Klikalny prototyp hi-fi w Figmie",
-            "Specyfikacja dla programistów — redlines, stany (hover, aktywne, błędy)",
+            "Specyfikacja dla programistów - redlines, stany (hover, aktywne, błędy)",
             "Eksport zasobów + dokumentacja komponentów",
             "Checklista QA dla każdego ekranu"
           ],
@@ -281,14 +281,14 @@ const plCards = `[
             "Protokół kontroli jakości"
           ],
           whats_inside: [
-            "Dokument z zasadami centrala/lokalne — co edytowalne",
+            "Dokument z zasadami centrala/lokalne - co edytowalne",
             "Główny zestaw szablonów ze strefami do edycji",
             "Przewodnik wariantów lokalnych (zdjęcia, teksty, ceny, adresy)",
-            "Flow zamawiania — formularz, ścieżka akceptacji",
+            "Flow zamawiania - formularz, ścieżka akceptacji",
             "Samoobsługowa biblioteka szablonów (Canva / Figma)",
-            "Protokół kontroli jakości — jak centrala monitoruje materiały",
-            "Paczka wdrożeniowa — zestaw startowy dla nowych punktów",
-            "Materiały szkoleniowe — wideo/PDF jak używać systemu"
+            "Protokół kontroli jakości - jak centrala monitoruje materiały",
+            "Paczka wdrożeniowa - zestaw startowy dla nowych punktów",
+            "Materiały szkoleniowe - wideo/PDF jak używać systemu"
           ],
           best_for: "Sieci franczyzowe, retail i organizacje, które muszą skalować komunikację bez tworzenia centralnego wąskiego gardła."
         }

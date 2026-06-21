@@ -7,7 +7,7 @@ import { useLenis } from "lenis/react";
  * Bridges Lenis smooth scroll with GSAP ScrollTrigger.
  *
  * Without this, ScrollTrigger reads the native window scroll position which is
- * decoupled from what Lenis is actually rendering — animations stutter or fire
+ * decoupled from what Lenis is actually rendering - animations stutter or fire
  * at the wrong moment. We tell ScrollTrigger to re-check on every Lenis tick
  * and we delegate gsap.ticker to drive Lenis so frame budgets line up.
  *

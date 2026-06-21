@@ -48,7 +48,7 @@ export function HowWeWork() {
          </div>
 
          <p className="text-sm font-display text-neutral-500 pt-8 uppercase tracking-widest">
-           Projects are shaped around real needs — not predefined packages.
+           Projects are shaped around real needs - not predefined packages.
          </p>
        </div>
     </section>

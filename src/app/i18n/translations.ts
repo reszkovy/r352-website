@@ -2,7 +2,7 @@ export const translations = {
   en: {
     nav: {
       work: "Work",
-      // nav.framework removed — page deleted, r3loop on /process is single methodology
+      // nav.framework removed - page deleted, r3loop on /process is single methodology
       philosophy: "Philosophy",
       services: "Services",
       contact: "Contact",
@@ -14,24 +14,24 @@ export const translations = {
       tagline: "DESIGN · SYSTEMS · PRODUCTS · AI"
     },
     hero: {
-      // Hero — two crisp claims in parallel. Tagline + audience qualifier; engagement
+      // Hero - two crisp claims in parallel. Tagline + audience qualifier; engagement
       // model (retainer) lives in the body copy and on Services rather than in the H1.
-      //   1. "Strategic design partner"  — WHO (identity)
-      //   2. "For growing brands"        — WHO it's for (audience qualifier;
+      //   1. "Strategic design partner"  - WHO (identity)
+      //   2. "For growing brands"        - WHO it's for (audience qualifier;
       //                                    differentiation carried by header tagline + chips)
       title: "Strategic design partner.<br/>For growing brands.",
       // Mobile breaks: explicit 4-line stack prevents browser from word-breaking
       // "growing" into "growin / g brands." at 48px on 375px viewport.
       title_mobile: "Strategic<br/>design partner.<br/>For growing<br/>brands.",
-      // "Move fast, steady cadence" demoted from headline to signature line below the divider —
+      // "Move fast, steady cadence" demoted from headline to signature line below the divider -
       // becomes brand mantra / closing thought rather than primary explanatory copy.
       signature: "Move fast, steady cadence.",
-      description_title: "For brands operating at scale — across locations, products, or campaigns.",
-      description_body: "Retainer for the steady. Project for the sharp. Same r3loop methodology — applied to both, and to our own products in production.",
+      description_title: "For brands operating at scale - across locations, products, or campaigns.",
+      description_body: "Retainer for the steady. Project for the sharp. Same r3loop methodology - applied to both, and to our own products in production.",
       quote: "Design begins with a decision, not a tool.",
-      // Attribution added — audit flagged hero metrics as unverifiable claims.
-      micro_1: "80%+ briefs ready first round — Geers, 2 quarters.",
-      micro_2: "Approval cycles cut 3× — measured, not promised.",
+      // Attribution added - audit flagged hero metrics as unverifiable claims.
+      micro_1: "80%+ briefs ready first round - Geers, 2 quarters.",
+      micro_2: "Approval cycles cut 3× - measured, not promised.",
       micro_3: "Weekly shipping cadence.",
       cta_start: "Start a brief",
       cta_work: "Book a call"
@@ -71,7 +71,7 @@ export const translations = {
           company: "Orlen / ex. Pelion"
         },
         {
-          quote: "Consistent quality across every investment we launch. Communication is precise, deadlines hold — exactly what real estate campaigns need.",
+          quote: "Consistent quality across every investment we launch. Communication is precise, deadlines hold - exactly what real estate campaigns need.",
           author: "Michalina Piątkowska",
           role: "Marketing Coordinator",
           company: "Archicom"
@@ -79,7 +79,7 @@ export const translations = {
       ]
     },
     clients: {
-      // Was hardcoded "We worked with" in ClientLogos — calque, audit-flagged.
+      // Was hardcoded "We worked with" in ClientLogos - calque, audit-flagged.
       label: "Selected clients"
     },
     services: {
@@ -106,7 +106,7 @@ export const translations = {
       narrative_process: "Backed by structured processes",
       narrative_ai: "Elevated by AI-powered execution",
       note_title: "Approach",
-      note_body: "We build a delivery system that makes quality and speed predictable — then use it to ship product UX and communication assets.",
+      note_body: "We build a delivery system that makes quality and speed predictable - then use it to ship product UX and communication assets.",
       items: {
         "01": { 
           title: "Operating System", 
@@ -133,10 +133,10 @@ export const translations = {
         includes_label: "Includes",
         output_label: "Output"
       },
-      intro: "We turn messy requests into ready-to-publish output — through a repeatable delivery system and a senior quality bar.\nEnd-to-end: alignment → design → production → handoff.",
+      intro: "We turn messy requests into ready-to-publish output - through a repeatable delivery system and a senior quality bar.\nEnd-to-end: alignment → design → production → handoff.",
       micro: "",
       hero_title: "What we ship",
-      hero_subtitle: "Brand, campaigns, and web — delivered with a quality bar, QA, and a steady cadence.",
+      hero_subtitle: "Brand, campaigns, and web - delivered with a quality bar, QA, and a steady cadence.",
       cards: [
         {
           title: "Brand System",
@@ -153,11 +153,11 @@ export const translations = {
           ],
           whats_inside: [
             "Brand Guidelines Document (PDF)",
-            "Logo package — all versions, all formats (SVG, PNG, EPS)",
+            "Logo package - all versions, all formats (SVG, PNG, EPS)",
             "Typography hierarchy per medium (web, print, social)",
             "Color palette with HEX, RGB, CMYK, Pantone codes",
             "Layout grid system per format",
-            "Template files — social posts, stories, covers, ads, deck, email header",
+            "Template files - social posts, stories, covers, ads, deck, email header",
             "Photography mood & direction guide",
             "Do's & don'ts reference sheet"
           ]
@@ -178,12 +178,12 @@ export const translations = {
           whats_inside: [
             "Key Visual in master resolution + adaptation guide",
             "Modular layout templates for self-assembly",
-            "Social media variants — posts, stories, reels covers (FB, IG, LinkedIn, TikTok)",
-            "Performance ad formats — GDN, Meta, LinkedIn sizes",
-            "Motion assets — 15s, 30s, GIF loops",
-            "CMYK print files — posters, flyers, rollups, POS materials",
+            "Social media variants - posts, stories, reels covers (FB, IG, LinkedIn, TikTok)",
+            "Performance ad formats - GDN, Meta, LinkedIn sizes",
+            "Motion assets - 15s, 30s, GIF loops",
+            "CMYK print files - posters, flyers, rollups, POS materials",
             "Headline/subhead/CTA variants per segment",
-            "Campaign asset checklist — full format inventory"
+            "Campaign asset checklist - full format inventory"
           ]
         },
         {
@@ -203,8 +203,8 @@ export const translations = {
             "Reusable content templates per format (post, story, newsletter, blog)",
             "Production queue with statuses and deadlines",
             "QA report before every publish cycle",
-            "Iteration log — what changed, why",
-            "Performance notes — what worked, what to adjust next",
+            "Iteration log - what changed, why",
+            "Performance notes - what worked, what to adjust next",
             "Monthly/weekly drops on schedule, no delays"
           ]
         },
@@ -222,16 +222,16 @@ export const translations = {
           ],
           whats_inside: [
             "Sitemap + information architecture",
-            "Wireframes — per page type",
-            "UI design — pixel-perfect per breakpoint (desktop, tablet, mobile)",
+            "Wireframes - per page type",
+            "UI design - pixel-perfect per breakpoint (desktop, tablet, mobile)",
             "Component library in Figma",
             "Interactive prototype of key flows",
             "Frontend build (Next.js / Webflow / custom CMS)",
             "CMS with editable content fields",
-            "SEO setup — meta, OG images, sitemap.xml, robots.txt",
-            "Performance audit — Lighthouse, Core Web Vitals",
-            "Launch checklist — redirects, analytics, tracking, forms",
-            "Handoff documentation — how your team edits content independently"
+            "SEO setup - meta, OG images, sitemap.xml, robots.txt",
+            "Performance audit - Lighthouse, Core Web Vitals",
+            "Launch checklist - redirects, analytics, tracking, forms",
+            "Handoff documentation - how your team edits content independently"
           ]
         },
         {
@@ -247,21 +247,21 @@ export const translations = {
             "User research synthesis"
           ],
           whats_inside: [
-            "User research synthesis — personas, journey map, pain points",
+            "User research synthesis - personas, journey map, pain points",
             "Information architecture + flow diagrams",
-            "Wireframes (low & mid fidelity) — key screens and flows",
-            "UI design system — components, tokens, spacing, color, type",
+            "Wireframes (low & mid fidelity) - key screens and flows",
+            "UI design system - components, tokens, spacing, color, type",
             "High-fidelity clickable prototype in Figma",
-            "Dev-ready specs — redlines, spacing, all states (hover, active, disabled, error, loading)",
+            "Dev-ready specs - redlines, spacing, all states (hover, active, disabled, error, loading)",
             "Asset export + component documentation",
             "QA checklist per screen"
           ]
         },
         {
           title: "AI Development & Automation",
-          description: "We take the system we've built and operationalize it — wired into your existing tools, accelerated by AI workflows.",
-          output: "Brief intake, scoring, quality review and asset routing running as a live system — not a deck. Your team briefs, we triage, AI accelerates, output ships.",
-          best_for: "Teams that already have standards but execution still depends on heroics — intake by email, manual scoring, QA in DMs. Ready to ship the operating layer that turns standards into automated workflow.",
+          description: "We take the system we've built and operationalize it - wired into your existing tools, accelerated by AI workflows.",
+          output: "Brief intake, scoring, quality review and asset routing running as a live system - not a deck. Your team briefs, we triage, AI accelerates, output ships.",
+          best_for: "Teams that already have standards but execution still depends on heroics - intake by email, manual scoring, QA in DMs. Ready to ship the operating layer that turns standards into automated workflow.",
           includes: [
             "AI brief assistant tailored to your standards",
             "Workflow integration (Asana / Notion / Figma / Slack)",
@@ -270,23 +270,23 @@ export const translations = {
             "Operating dashboards + monthly review rhythm"
           ],
           whats_inside: [
-            "AI brief assistant — custom prompts trained on your readiness checklist and brand voice",
-            "Tool integrations — intake, scoring and routing wired into your existing stack (Asana, Notion, Figma, Slack, email)",
-            "Quality review automation — checklists run automatically per asset type, surfacing exceptions to humans",
-            "Approval ownership engine — who decides what, escalation paths, conflict resolution rules in the system, not in DMs",
-            "Workflow performance dashboard — cycle time, revision rates, brief quality, recurring bottlenecks",
-            "Monthly review rhythm — operating cadence with the team, not just a one-off launch",
-            "Team coaching — how to operate the system, when to override, when to trust automation",
+            "AI brief assistant - custom prompts trained on your readiness checklist and brand voice",
+            "Tool integrations - intake, scoring and routing wired into your existing stack (Asana, Notion, Figma, Slack, email)",
+            "Quality review automation - checklists run automatically per asset type, surfacing exceptions to humans",
+            "Approval ownership engine - who decides what, escalation paths, conflict resolution rules in the system, not in DMs",
+            "Workflow performance dashboard - cycle time, revision rates, brief quality, recurring bottlenecks",
+            "Monthly review rhythm - operating cadence with the team, not just a one-off launch",
+            "Team coaching - how to operate the system, when to override, when to trust automation",
             "90-day adoption plan with checkpoint reviews"
           ]
         }
       ],
       delivery_os: {
         title: "Your Delivery Operating System",
-        subtitle: "Every engagement follows the same proven structure — so quality, speed, and sanity scale together.",
+        subtitle: "Every engagement follows the same proven structure - so quality, speed, and sanity scale together.",
         phases: [
           {
-            label: "01 — Diagnose",
+            label: "01 - Diagnose",
             title: "Diagnose",
             docs: [
               { name: "Diagnostic Report", desc: "We map your current delivery flow, find bottlenecks, and define what to fix first." },
@@ -294,7 +294,7 @@ export const translations = {
             ]
           },
           {
-            label: "02 — Deliver",
+            label: "02 - Deliver",
             title: "Deliver",
             docs: [
               { name: "Brief Template", desc: "Standardized format: goal, audience, constraints, examples, done criteria. One path. Always." },
@@ -303,10 +303,10 @@ export const translations = {
             ]
           },
           {
-            label: "03 — Scale",
+            label: "03 - Scale",
             title: "Scale",
             docs: [
-              { name: "System Documentation", desc: "Templates, components, checklists, QA gates, naming rules — everything your team needs to run without us." },
+              { name: "System Documentation", desc: "Templates, components, checklists, QA gates, naming rules - everything your team needs to run without us." },
               { name: "Impact Summary", desc: "Before vs after: what changed, what improved, what's next. Your case for continuing or scaling." }
             ]
           }
@@ -323,7 +323,7 @@ export const translations = {
       engagement: {
         label: "Engagement",
         heading: "How we work",
-        cta: "Let's build your delivery system — and ship.",
+        cta: "Let's build your delivery system - and ship.",
         models: {
           sprint: {
             type: "Fixed scope",
@@ -333,7 +333,7 @@ export const translations = {
           retainer: {
             type: "Ongoing",
             title: "Operating Partner",
-            desc: "Systemized, senior-level delivery with a predictable cadence — responsive, consistent, always launch-ready."
+            desc: "Systemized, senior-level delivery with a predictable cadence - responsive, consistent, always launch-ready."
           },
           embedded: {
             type: "Embedded",
@@ -357,7 +357,7 @@ export const translations = {
       next: "Next project",
       back_to_work: "Back to Work",
       cta_work: "See selected work",
-      // Case study narrative section labels — were rendering as raw keys (e.g. "WORK.OUTCOME")
+      // Case study narrative section labels - were rendering as raw keys (e.g. "WORK.OUTCOME")
       // because they didn't exist in the namespace. Added here so eyebrows show proper copy.
       context: "Context",
       tension: "Tension",
@@ -389,36 +389,36 @@ export const translations = {
       beliefs: {
         "01": {
           title: "Craft is the foundation.\nSystem is the multiplier.",
-          description: "We obsess over every pixel — that's non-negotiable. But pixels alone don't scale. We build operating systems for design delivery — intake paths, brief standards, feedback protocols, packaging rules, shipping cadence — so that premium quality repeats itself without heroics."
+          description: "We obsess over every pixel - that's non-negotiable. But pixels alone don't scale. We build operating systems for design delivery - intake paths, brief standards, feedback protocols, packaging rules, shipping cadence - so that premium quality repeats itself without heroics."
         },
         "02": {
           title: "Cadence beats urgency.\nEvery time.",
-          description: "\"ASAP\" is a signal there's no system. We replace fire drills with weekly rhythm — predictable load, predictable output, predictable quality. When there's cadence, \"urgent\" goes back to being an exception."
+          description: "\"ASAP\" is a signal there's no system. We replace fire drills with weekly rhythm - predictable load, predictable output, predictable quality. When there's cadence, \"urgent\" goes back to being an exception."
         },
         "03": {
           title: "Premium is a standard,\nnot a personality trait.",
-          description: "Quality doesn't drop because people lack skill. It drops because everything becomes ad hoc. We build the templates, checklists, components, and handoff packs that make premium repeatable — across every team, every project."
+          description: "Quality doesn't drop because people lack skill. It drops because everything becomes ad hoc. We build the templates, checklists, components, and handoff packs that make premium repeatable - across every team, every project."
         },
         "04": {
           title: "Calm execution is\nthe real competitive advantage.",
-          description: "Teams don't want \"fast\". They want fast without chaos — where approvals don't turn into drama, standards stay consistent, and nothing depends on panic and heroics. Calm is engineered, not wished for."
+          description: "Teams don't want \"fast\". They want fast without chaos - where approvals don't turn into drama, standards stay consistent, and nothing depends on panic and heroics. Calm is engineered, not wished for."
         },
         "05": {
           title: "Close loops. Early.\nEvery time.",
-          description: "Open loops are the hidden tax of modern work: briefs without success criteria, feedback that's just a feeling, \"final\" that never becomes final. Speed without burnout comes from closing loops — on purpose, every time."
+          description: "Open loops are the hidden tax of modern work: briefs without success criteria, feedback that's just a feeling, \"final\" that never becomes final. Speed without burnout comes from closing loops - on purpose, every time."
         },
         "06": {
           title: "Structure creates freedom.\nNot the other way around.",
-          description: "Remote work isn't the problem. Lack of structure is. When intake, decisions, feedback, and shipping have clear rules, creative energy goes into the work — not into coordination overhead."
+          description: "Remote work isn't the problem. Lack of structure is. When intake, decisions, feedback, and shipping have clear rules, creative energy goes into the work - not into coordination overhead."
         }
       },
       contrasts: [
-        { old: "We'll make it look good this time.", new: "We'll build the system that makes it look good every time — across every team, every launch." },
+        { old: "We'll make it look good this time.", new: "We'll build the system that makes it look good every time - across every team, every launch." },
         { old: "Send me the brief whenever.", new: "One intake path. One brief format. One decision owner. Always." },
         { old: "We're flexible and available.", new: "We ship every week. Feedback has windows. Cadence is non-negotiable." },
         { old: "We'll handle whatever you need.", new: "We diagnose your delivery bottleneck first, then build the system that removes it." },
         { old: "We move fast and break things.", new: "We move at a sustainable rhythm and ship things that hold." },
-        { old: "Here's a beautiful deck. Good luck scaling it.", new: "Here's the design and the operating system — so it scales itself." }
+        { old: "Here's a beautiful deck. Good luck scaling it.", new: "Here's the design and the operating system - so it scales itself." }
       ],
       nonneg_label: "Non-Negotiables",
       nonneg: [
@@ -426,10 +426,10 @@ export const translations = {
         { title: "One decision owner per workstream.", desc: "If nobody can say yes or no, feedback never ends. We require clarity before we start." },
         { title: "Weekly shipping cadence.", desc: "Every week, something real goes out. Not \"progress\". Output. Publish-ready, packaged, named, spec'd." },
         { title: "Feedback has structure.", desc: "Feedback happens in windows, with criteria, in a format. Not as a constant stream of feelings across DMs." },
-        { title: "We build systems, not dependencies.", desc: "When we leave, the operating model stays. Templates, components, checklists, quality rules — all yours." },
+        { title: "We build systems, not dependencies.", desc: "When we leave, the operating model stays. Templates, components, checklists, quality rules - all yours." },
         { title: "Responsiveness ≠ availability.", desc: "We clarify fast, align decisions fast, deliver the next usable step fast. We don't sit online 12 hours." }
       ],
-      promise: "Your design pipeline should run like infrastructure — not depend on heroics.",
+      promise: "Your design pipeline should run like infrastructure - not depend on heroics.",
       promise_sub: "We work with organizations that need design delivery which scales without losing quality, speed, or sanity.",
       note: {
         title: "A note on craft",
@@ -438,7 +438,7 @@ export const translations = {
         p3: "Systems create structure.\nCraft protects standards."
       },
       cta: {
-        title: "Let's build your delivery system — and ship.",
+        title: "Let's build your delivery system - and ship.",
         body: "Not just a campaign.\nNot just a redesign.\nA repeatable way to produce high-quality work at scale.",
         start: "Start a project",
         explore: "Schedule a call"
@@ -507,19 +507,19 @@ export const translations = {
         project: {
           subtitle: "FIND THE BOTTLENECK",
           title: "DIAGNOSE",
-          description: "We look at how your team briefs, approves, and ships — then show you exactly where the time and quality get lost.",
+          description: "We look at how your team briefs, approves, and ships - then show you exactly where the time and quality get lost.",
           features: ["Delivery workflow audit", "Bottleneck map with root causes", "Actionable plan in under 2 weeks"]
         },
         retainer: {
           subtitle: "BUILD THE SYSTEM",
           title: "BUILD",
-          description: "We design the standards, templates, and delivery process your team needs — so output stays consistent no matter who's executing.",
+          description: "We design the standards, templates, and delivery process your team needs - so output stays consistent no matter who's executing.",
           features: ["Brand standard templates", "Intake process and QA checkpoints", "Delivery cadence that ships"]
         },
         augmentation: {
           subtitle: "MAKE IT STICK",
           title: "SCALE",
-          description: "We hand off everything your team needs to run the system on their own — with guardrails that keep quality consistent.",
+          description: "We hand off everything your team needs to run the system on their own - with guardrails that keep quality consistent.",
           features: ["Full handoff with team training", "Built-in guardrails that flag drift", "Scales quality without adding headcount"]
         }
       }
@@ -533,8 +533,8 @@ export const translations = {
       cta_work: "Schedule a call"
     },
     footer: {
-      idea: "Let's build your delivery system — and ship.",
-      // Was "Bold ideas / shaped with care." — pure agency-speak, contradicted the
+      idea: "Let's build your delivery system - and ship.",
+      // Was "Bold ideas / shaped with care." - pure agency-speak, contradicted the
       // "operator, not agency" POV. Replaced with the system claim.
       bold_ideas: "We build the system",
       shaped: "behind great design.",
@@ -558,7 +558,7 @@ export const translations = {
     consent: {
       banner: {
         title: "Cookies & privacy",
-        body: "We use cookies and analytics to understand how the site performs. Strict opt-in — nothing loads until you say yes. You can change your choice anytime.",
+        body: "We use cookies and analytics to understand how the site performs. Strict opt-in - nothing loads until you say yes. You can change your choice anytime.",
         accept: "Accept all",
         deny: "Necessary only",
         preferences: "Cookie preferences",
@@ -569,7 +569,7 @@ export const translations = {
       label: "Legal",
       title: "Privacy Policy",
       lastUpdated: "Last updated: 2026-06-05",
-      draftBanner: "[DRAFT — needs legal review before publication]",
+      draftBanner: "[DRAFT - needs legal review before publication]",
       intro: "This policy explains what data we collect, why we collect it, how long we keep it, and what rights you have. r352 is operated from Mallorca, Spain, which means GDPR and the Spanish LOPDGDD apply to everything we do.",
       footerNote: "Questions about this policy or your data?",
       sections: {
@@ -579,11 +579,11 @@ export const translations = {
         },
         whatWeCollect: {
           title: "What data we collect",
-          body: "Analytics (only with your consent): aggregated usage data via Google Tag Manager and Google Analytics — pages visited, approximate location (country/city), device type, referrer. Tags only load if you accept on the consent banner.\n\nContact forms and briefs: the information you choose to submit — typically name, email, company, project context, budget range, timeline. We never collect more than you give us.\n\nStrictly necessary storage: a small local entry that remembers your consent choice itself (key: r352-consent-v1). This cannot be disabled — without it, we'd ask you again on every page.\n\nServer logs: standard request logs kept by our hosting provider (Vercel) for security and operations."
+          body: "Analytics (only with your consent): aggregated usage data via Google Tag Manager and Google Analytics - pages visited, approximate location (country/city), device type, referrer. Tags only load if you accept on the consent banner.\n\nContact forms and briefs: the information you choose to submit - typically name, email, company, project context, budget range, timeline. We never collect more than you give us.\n\nStrictly necessary storage: a small local entry that remembers your consent choice itself (key: r352-consent-v1). This cannot be disabled - without it, we'd ask you again on every page.\n\nServer logs: standard request logs kept by our hosting provider (Vercel) for security and operations."
         },
         whyWeCollect: {
           title: "Why we collect it",
-          body: "Analytics: to understand which pages help, which fail, and where to invest. Legal basis: your consent (Art. 6(1)(a) GDPR).\n\nContact form data: to respond to your inquiry, qualify the fit, and — if we engage — deliver the project. Legal basis: pre-contractual steps at your request and our legitimate interest in running the business (Art. 6(1)(b) and 6(1)(f) GDPR).\n\nServer logs: to keep the site available and to defend against abuse. Legal basis: legitimate interest (Art. 6(1)(f) GDPR)."
+          body: "Analytics: to understand which pages help, which fail, and where to invest. Legal basis: your consent (Art. 6(1)(a) GDPR).\n\nContact form data: to respond to your inquiry, qualify the fit, and - if we engage - deliver the project. Legal basis: pre-contractual steps at your request and our legitimate interest in running the business (Art. 6(1)(b) and 6(1)(f) GDPR).\n\nServer logs: to keep the site available and to defend against abuse. Legal basis: legitimate interest (Art. 6(1)(f) GDPR)."
         },
         retention: {
           title: "How long we keep it",
@@ -591,15 +591,15 @@ export const translations = {
         },
         sharing: {
           title: "Who we share it with",
-          body: "Hosting and infrastructure: Vercel Inc. (United States) — site delivery and edge logs, under Standard Contractual Clauses.\n\nAnalytics: Google Ireland Ltd. / Google LLC, when (and only when) you have accepted analytics cookies.\n\nEmail: standard email providers we use to reply to your message (e.g. Google Workspace).\n\nWe do not sell your data. We do not share it with advertising networks. We do not run remarketing or programmatic ads."
+          body: "Hosting and infrastructure: Vercel Inc. (United States) - site delivery and edge logs, under Standard Contractual Clauses.\n\nAnalytics: Google Ireland Ltd. / Google LLC, when (and only when) you have accepted analytics cookies.\n\nEmail: standard email providers we use to reply to your message (e.g. Google Workspace).\n\nWe do not sell your data. We do not share it with advertising networks. We do not run remarketing or programmatic ads."
         },
         rights: {
           title: "Your rights",
-          body: "Under GDPR and the Spanish LOPDGDD you have the right to: access your data, correct it, delete it, restrict processing, object to processing, receive a portable copy, and withdraw consent at any time (without affecting the legality of processing before withdrawal).\n\nTo exercise any of these rights, email hello@r352.com from the address you used to contact us. We will respond within 30 days.\n\nYou also have the right to file a complaint with the Spanish supervisory authority, AEPD (Agencia Española de Protección de Datos) — www.aepd.es."
+          body: "Under GDPR and the Spanish LOPDGDD you have the right to: access your data, correct it, delete it, restrict processing, object to processing, receive a portable copy, and withdraw consent at any time (without affecting the legality of processing before withdrawal).\n\nTo exercise any of these rights, email hello@r352.com from the address you used to contact us. We will respond within 30 days.\n\nYou also have the right to file a complaint with the Spanish supervisory authority, AEPD (Agencia Española de Protección de Datos) - www.aepd.es."
         },
         contact: {
           title: "How to contact us",
-          body: "Email: hello@r352.com\nLocation: Santa Catalina, Mallorca, Baleares, Spain (remote-first studio)\n\nFor data-specific requests, please use the subject line \"r352 — privacy request\" so we can route it correctly."
+          body: "Email: hello@r352.com\nLocation: Santa Catalina, Mallorca, Baleares, Spain (remote-first studio)\n\nFor data-specific requests, please use the subject line \"r352 - privacy request\" so we can route it correctly."
         },
         changes: {
           title: "Changes to this policy",
@@ -611,7 +611,7 @@ export const translations = {
       label: "Legal",
       title: "Cookie Preferences",
       lastUpdated: "Last updated: 2026-06-05",
-      draftBanner: "[DRAFT — needs legal review before publication]",
+      draftBanner: "[DRAFT - needs legal review before publication]",
       intro: "We default to strict opt-in. Analytics and marketing cookies stay off until you explicitly turn them on here or accept on the banner. You can change or revoke your choice at any time.",
       alwaysOn: "Always on",
       save: "Save preferences",
@@ -621,7 +621,7 @@ export const translations = {
       categories: {
         necessary: {
           title: "Necessary",
-          body: "Required for the site to function — session continuity and remembering your consent decision itself. Cannot be disabled."
+          body: "Required for the site to function - session continuity and remembering your consent decision itself. Cannot be disabled."
         },
         analytics: {
           title: "Analytics",
@@ -641,7 +641,7 @@ export const translations = {
   pl: {
     nav: {
       work: "Prace",
-      // nav.framework usunięty — strona skasowana, r3loop na /process to jedyna metodologia
+      // nav.framework usunięty - strona skasowana, r3loop na /process to jedyna metodologia
       philosophy: "Filozofia",
       services: "Usługi",
       contact: "Kontakt",
@@ -653,29 +653,29 @@ export const translations = {
       tagline: "DESIGN · SYSTEMS · PRODUCTS · AI"
     },
     hero: {
-      // Hero — dwa claim'y w parze. Tagline + audience qualifier; model współpracy
+      // Hero - dwa claim'y w parze. Tagline + audience qualifier; model współpracy
       // (retainer) żyje w body copy i na Services, nie w H1.
-      //   1. "Strategiczny partner designowy" — KIM jesteś (echo z tagline w headerze)
-      //   2. "Dla rosnących marek"            — DLA KOGO (skalujące się marki — produkt,
+      //   1. "Strategiczny partner designowy" - KIM jesteś (echo z tagline w headerze)
+      //   2. "Dla rosnących marek"            - DLA KOGO (skalujące się marki - produkt,
       //                                         lokalizacje, kampanie)
-      // Desktop: explicit 3-line stack — "Strategiczny partner designowy." (31 chars)
+      // Desktop: explicit 3-line stack - "Strategiczny partner designowy." (31 chars)
       // overflował viewport przy text-8xl na średnich desktopach, a text-balance
       // mieszany z per-character CinematicText animation produkował word-break chaos
       // ("Strategicz" + gap + "part" / "desi" / "Dla rosnącyc" + gap + "marek").
-      // Trzy explicit linie eliminują wrap ambiguity — text renderuje przewidywalnie
+      // Trzy explicit linie eliminują wrap ambiguity - text renderuje przewidywalnie
       // na każdej szerokości >=md.
       title: "Strategiczny partner<br/>designowy.<br/>Dla rosnących marek.",
-      // Mobile breaks: explicit 4-line stack — "Strategiczny" + "partner designowy."
+      // Mobile breaks: explicit 4-line stack - "Strategiczny" + "partner designowy."
       // razem są za szerokie na 375px przy 48px foncie, wymuszamy clean stack.
       title_mobile: "Strategiczny<br/>partner designowy.<br/>Dla rosnących<br/>marek.",
-      // "Tempo bez chaosu" demoted from headline to signature line — brand mantra position.
+      // "Tempo bez chaosu" demoted from headline to signature line - brand mantra position.
       signature: "Tempo bez chaosu.",
-      description_title: "Dla marek operujących w skali — przez lokalizacje, produkty lub kampanie.",
-      description_body: "Retainer dla stabilnych. Projekt dla ostrych. Ta sama metodologia r3loop — zastosowana do obu, i do naszych własnych produktów w produkcji.",
+      description_title: "Dla marek operujących w skali - przez lokalizacje, produkty lub kampanie.",
+      description_body: "Retainer dla stabilnych. Projekt dla ostrych. Ta sama metodologia r3loop - zastosowana do obu, i do naszych własnych produktów w produkcji.",
       quote: "Projektowanie zaczyna się od decyzji, nie od narzędzia.",
-      // Atrybucja dodana — audyt flagował metryki hero jako nieweryfikowalne.
-      micro_1: "80%+ briefów gotowych za pierwszym razem — Geers, 2 kwartały.",
-      micro_2: "Cykle akceptacji 3× szybsze — zmierzone, nie obiecane.",
+      // Atrybucja dodana - audyt flagował metryki hero jako nieweryfikowalne.
+      micro_1: "80%+ briefów gotowych za pierwszym razem - Geers, 2 kwartały.",
+      micro_2: "Cykle akceptacji 3× szybsze - zmierzone, nie obiecane.",
       micro_3: "Tygodniowy rytm dostaw.",
       cta_start: "Wypełnij brief",
       cta_work: "Umów rozmowę"
@@ -715,7 +715,7 @@ export const translations = {
           company: "Orlen / ex. Pelion"
         },
         {
-          quote: "Spójna jakość przy każdej inwestycji, którą uruchamiamy. Komunikacja precyzyjna, deadliny dotrzymywane — dokładnie tego potrzebują kampanie w real estate.",
+          quote: "Spójna jakość przy każdej inwestycji, którą uruchamiamy. Komunikacja precyzyjna, deadliny dotrzymywane - dokładnie tego potrzebują kampanie w real estate.",
           author: "Michalina Piątkowska",
           role: "Marketing Coordinator",
           company: "Archicom"
@@ -723,7 +723,7 @@ export const translations = {
       ]
     },
     clients: {
-      // Było hardcoded "We worked with" w ClientLogos — kalka, flagowana w audycie.
+      // Było hardcoded "We worked with" w ClientLogos - kalka, flagowana w audycie.
       label: "Wybrani klienci"
     },
     services: {
@@ -750,7 +750,7 @@ export const translations = {
       narrative_process: "Ustrukturyzowane procesy",
       narrative_ai: "Egzekucja wzmocniona AI",
       note_title: "Podejście",
-      note_body: "Budujemy system dostarczania, który sprawia, że jakość i szybkość są przewidywalne — następnie używamy go do dostarczania UX produktu i zasobów komunikacyjnych.",
+      note_body: "Budujemy system dostarczania, który sprawia, że jakość i szybkość są przewidywalne - następnie używamy go do dostarczania UX produktu i zasobów komunikacyjnych.",
       items: {
         "01": { 
           title: "System Operacyjny", 
@@ -777,10 +777,10 @@ export const translations = {
         includes_label: "Zawiera",
         output_label: "Wynik"
       },
-      intro: "Zamieniamy chaotyczne zlecenia w gotowe do publikacji efekty — dzięki powtarzalnemu systemowi dostarczania i wysokim standardom jakości.\nOd początku do końca: wdrożenie → projekt → produkcja → przekazanie.",
+      intro: "Zamieniamy chaotyczne zlecenia w gotowe do publikacji efekty - dzięki powtarzalnemu systemowi dostarczania i wysokim standardom jakości.\nOd początku do końca: wdrożenie → projekt → produkcja → przekazanie.",
       micro: "",
       hero_title: "Co dostarczamy",
-      hero_subtitle: "Branding, kampanie i strony www — dostarczane z jakością, QA i stałym rytmem.",
+      hero_subtitle: "Branding, kampanie i strony www - dostarczane z jakością, QA i stałym rytmem.",
       cards: [
         {
           title: "System Marki",
@@ -797,11 +797,11 @@ export const translations = {
           ],
           whats_inside: [
             "Brand Book (PDF)",
-            "Paczka logo — wszystkie wersje i formaty (SVG, PNG, EPS)",
+            "Paczka logo - wszystkie wersje i formaty (SVG, PNG, EPS)",
             "Hierarchia typografii dla mediów (web, print, social)",
             "Paleta kolorów z kodami HEX, RGB, CMYK, Pantone",
             "System siatek dla różnych formatów",
-            "Pliki szablonów — posty, stories, okładki, reklamy, prezentacje, nagłówki email",
+            "Pliki szablonów - posty, stories, okładki, reklamy, prezentacje, nagłówki email",
             "Przewodnik po stylu zdjęć (moodboard & kierunek)",
             "Arkusz referencyjny Do's & don'ts"
           ]
@@ -822,12 +822,12 @@ export const translations = {
           whats_inside: [
             "Key Visual w najwyższej rozdzielczości + przewodnik adaptacji",
             "Modułowe szablony układów do samodzielnego montażu",
-            "Warianty social media — posty, stories, okładki reels (FB, IG, LinkedIn, TikTok)",
-            "Formaty reklam performance — GDN, Meta, LinkedIn",
-            "Zasoby motion — 15s, 30s, zapętlone GIFy",
-            "Pliki do druku CMYK — plakaty, ulotki, rollupy, POS",
+            "Warianty social media - posty, stories, okładki reels (FB, IG, LinkedIn, TikTok)",
+            "Formaty reklam performance - GDN, Meta, LinkedIn",
+            "Zasoby motion - 15s, 30s, zapętlone GIFy",
+            "Pliki do druku CMYK - plakaty, ulotki, rollupy, POS",
             "Warianty nagłówków/podtytułów/CTA dla segmentów",
-            "Checklista zasobów kampanii — pełna inwentaryzacja"
+            "Checklista zasobów kampanii - pełna inwentaryzacja"
           ]
         },
         {
@@ -847,8 +847,8 @@ export const translations = {
             "Szablony wielokrotnego użytku dla formatów (post, story, newsletter, blog)",
             "Kolejka produkcji ze statusem i terminami",
             "Raport QA przed każdym cyklem publikacji",
-            "Dziennik iteracji — co się zmieniło i dlaczego",
-            "Notatki z wyników — co zadziałało, co poprawić",
+            "Dziennik iteracji - co się zmieniło i dlaczego",
+            "Notatki z wyników - co zadziałało, co poprawić",
             "Miesięczne/tygodniowe paczki na czas, bez opóźnień"
           ]
         },
@@ -867,15 +867,15 @@ export const translations = {
           whats_inside: [
             "Sitemap + architektura informacji",
             "Makiety (wireframes) dla poszczególnych podstron",
-            "Projekt UI — dopracowany dla każdego punktu (desktop, tablet, mobile)",
+            "Projekt UI - dopracowany dla każdego punktu (desktop, tablet, mobile)",
             "Biblioteka komponentów w Figma",
             "Interaktywny prototyp kluczowych ścieżek",
             "Budowa frontendu (Next.js / Webflow / dedykowany CMS)",
             "CMS z edytowalnymi polami treści",
-            "Konfiguracja SEO — meta, OG, sitemap.xml, robots.txt",
-            "Audyt wydajności — Lighthouse, Core Web Vitals",
-            "Checklista wdrożeniowa — przekierowania, analityka, trackowanie, formularze",
-            "Dokumentacja wdrożeniowa — jak zespół samodzielnie zarządza treścią"
+            "Konfiguracja SEO - meta, OG, sitemap.xml, robots.txt",
+            "Audyt wydajności - Lighthouse, Core Web Vitals",
+            "Checklista wdrożeniowa - przekierowania, analityka, trackowanie, formularze",
+            "Dokumentacja wdrożeniowa - jak zespół samodzielnie zarządza treścią"
           ]
         },
         {
@@ -891,21 +891,21 @@ export const translations = {
             "Synteza badań z użytkownikami"
           ],
           whats_inside: [
-            "Synteza badań — persony, mapy podróży, pain points",
+            "Synteza badań - persony, mapy podróży, pain points",
             "Architektura informacji + diagramy flow",
-            "Makiety (low/mid-fi) — kluczowe ekrany",
-            "Design system UI — komponenty, tokeny, odstępy, kolor, typografia",
+            "Makiety (low/mid-fi) - kluczowe ekrany",
+            "Design system UI - komponenty, tokeny, odstępy, kolor, typografia",
             "Klikalny prototyp hi-fi w Figmie",
-            "Specyfikacja dla programistów — redlines, stany (hover, aktywne, błędy)",
+            "Specyfikacja dla programistów - redlines, stany (hover, aktywne, błędy)",
             "Eksport zasobów + dokumentacja komponentów",
             "Checklista QA dla każdego ekranu"
           ]
         },
         {
           title: "AI Development & Automation",
-          description: "Bierzemy system który zbudowaliśmy i operacjonalizujemy go — wpięty w Wasze istniejące narzędzia, przyspieszony przez workflow AI.",
-          output: "Brief intake, scoring, quality review i routing assetów działają jako żywy system — nie deck. Zespół briefuje, my triagujemy, AI przyspiesza, output idzie.",
-          best_for: "Zespoły które mają już standardy ale egzekucja wciąż zależy od heroizmu — intake przez email, manualny scoring, QA w DM-ach. Gotowe wdrożyć warstwę operacyjną, która zamienia standardy w zautomatyzowany workflow.",
+          description: "Bierzemy system który zbudowaliśmy i operacjonalizujemy go - wpięty w Wasze istniejące narzędzia, przyspieszony przez workflow AI.",
+          output: "Brief intake, scoring, quality review i routing assetów działają jako żywy system - nie deck. Zespół briefuje, my triagujemy, AI przyspiesza, output idzie.",
+          best_for: "Zespoły które mają już standardy ale egzekucja wciąż zależy od heroizmu - intake przez email, manualny scoring, QA w DM-ach. Gotowe wdrożyć warstwę operacyjną, która zamienia standardy w zautomatyzowany workflow.",
           includes: [
             "AI brief assistant dopasowany do Waszych standardów",
             "Integracja workflow (Asana / Notion / Figma / Slack)",
@@ -914,23 +914,23 @@ export const translations = {
             "Dashboardy operacyjne + miesięczny rytm review"
           ],
           whats_inside: [
-            "AI brief assistant — custom prompty trenowane na Waszej liście gotowości i tone of voice",
-            "Integracje narzędziowe — intake, scoring i routing wpięte w istniejący stack (Asana, Notion, Figma, Slack, email)",
-            "Automatyzacja quality review — checklisty uruchamiają się automatycznie per typ assetu, eskalując wyjątki do ludzi",
-            "Engine ownership akceptacji — kto decyduje o czym, ścieżki eskalacji, zasady rozwiązywania konfliktów w systemie, nie w DM-ach",
-            "Workflow performance dashboard — cycle time, wskaźniki poprawek, jakość briefów, powtarzające się wąskie gardła",
-            "Miesięczny rytm review — kadencja operacyjna z zespołem, nie jednorazowy launch",
-            "Coaching zespołu — jak operować systemem, kiedy nadpisać, kiedy zaufać automatyzacji",
+            "AI brief assistant - custom prompty trenowane na Waszej liście gotowości i tone of voice",
+            "Integracje narzędziowe - intake, scoring i routing wpięte w istniejący stack (Asana, Notion, Figma, Slack, email)",
+            "Automatyzacja quality review - checklisty uruchamiają się automatycznie per typ assetu, eskalując wyjątki do ludzi",
+            "Engine ownership akceptacji - kto decyduje o czym, ścieżki eskalacji, zasady rozwiązywania konfliktów w systemie, nie w DM-ach",
+            "Workflow performance dashboard - cycle time, wskaźniki poprawek, jakość briefów, powtarzające się wąskie gardła",
+            "Miesięczny rytm review - kadencja operacyjna z zespołem, nie jednorazowy launch",
+            "Coaching zespołu - jak operować systemem, kiedy nadpisać, kiedy zaufać automatyzacji",
             "90-dniowy plan adopcji z checkpoint reviews"
           ]
         }
       ],
       delivery_os: {
         title: "Twój System Operacyjny Dostarczania",
-        subtitle: "Każdy engagement przebiega według tej samej sprawdzonej struktury — tak, by jakość, szybkość i zdrowie psychiczne skalowały się razem.",
+        subtitle: "Każdy engagement przebiega według tej samej sprawdzonej struktury - tak, by jakość, szybkość i zdrowie psychiczne skalowały się razem.",
         phases: [
           {
-            label: "01 — Diagnoza",
+            label: "01 - Diagnoza",
             title: "Diagnoza",
             docs: [
               { name: "Raport Diagnostyczny", desc: "Mapujemy obecny flow dostarczania, znajdujemy bottlenecki i definiujemy co naprawić najpierw." },
@@ -938,7 +938,7 @@ export const translations = {
             ]
           },
           {
-            label: "02 — Dostarczanie",
+            label: "02 - Dostarczanie",
             title: "Dostarczanie",
             docs: [
               { name: "Szablon Briefu", desc: "Standaryzowany format: cel, audience, ograniczenia, przykłady, kryteria done. Jedna ścieżka. Zawsze." },
@@ -947,10 +947,10 @@ export const translations = {
             ]
           },
           {
-            label: "03 — Skala",
+            label: "03 - Skala",
             title: "Skala",
             docs: [
-              { name: "Dokumentacja Systemu", desc: "Szablony, komponenty, checklisty, bramki QA, reguły nazewnictwa — wszystko, czego Twój zespół potrzebuje, by działać bez nas." },
+              { name: "Dokumentacja Systemu", desc: "Szablony, komponenty, checklisty, bramki QA, reguły nazewnictwa - wszystko, czego Twój zespół potrzebuje, by działać bez nas." },
               { name: "Podsumowanie Wpływu", desc: "Przed vs po: co się zmieniło, co się poprawiło, co dalej. Twój argument za kontynuacją lub skalowaniem." }
             ]
           }
@@ -967,7 +967,7 @@ export const translations = {
       engagement: {
         label: "Współpraca",
         heading: "Modele współpracy",
-        cta: "Zbudujmy Twój system dostarczania — i zacznijmy wysyłać.",
+        cta: "Zbudujmy Twój system dostarczania - i zacznijmy wysyłać.",
         models: {
           sprint: {
             type: "Stały zakres",
@@ -977,7 +977,7 @@ export const translations = {
           retainer: {
             type: "Ciągły",
             title: "Partner Operacyjny",
-            desc: "Systemowe dostarczanie na poziomie senior z przewidywalnym rytmem — responsywne, spójne, zawsze gotowe do publikacji."
+            desc: "Systemowe dostarczanie na poziomie senior z przewidywalnym rytmem - responsywne, spójne, zawsze gotowe do publikacji."
           },
           embedded: {
             type: "Embedded",
@@ -1001,7 +1001,7 @@ export const translations = {
       next: "Następny projekt",
       back_to_work: "Powrót do prac",
       cta_work: "Zobacz wybrane prace",
-      // PL case study narrative section labels — paired with EN keys above.
+      // PL case study narrative section labels - paired with EN keys above.
       context: "Kontekst",
       tension: "Napięcie",
       decisions: "Decyzje",
@@ -1020,16 +1020,16 @@ export const translations = {
       title_line1: "Piękna praca",
       title_line2: "to baseline.",
       subtitle: "System za nią to przewaga.",
-      intro_col1: "Tworzymy premium design. Ale sam craft się nie skaluje. System dostarczania — tak.",
+      intro_col1: "Tworzymy premium design. Ale sam craft się nie skaluje. System dostarczania - tak.",
       intro_col2: "To jest to, w co wierzymy, jak działamy i dlaczego to ma znaczenie dla każdego zespołu, z którym pracujemy.",
       beliefs: {
         "01": {
           title: "Craft to fundament.\nSystem to mnożnik.",
-          description: "Dbamy o każdy piksel — to nienegocjowalne. Ale piksele same się nie skalują. Budujemy systemy operacyjne dostarczania designu — ścieżki intake, standardy briefów, protokoły feedbacku, reguły pakowania, kadencja wysyłki — tak, by premium jakość powtarzała się bez heroizmu."
+          description: "Dbamy o każdy piksel - to nienegocjowalne. Ale piksele same się nie skalują. Budujemy systemy operacyjne dostarczania designu - ścieżki intake, standardy briefów, protokoły feedbacku, reguły pakowania, kadencja wysyłki - tak, by premium jakość powtarzała się bez heroizmu."
         },
         "02": {
           title: "Kadencja bije pilność.\nZa każdym razem.",
-          description: "\"ASAP\" to sygnał, że nie ma systemu. Zastępujemy gaszenie pożarów cotygodniowym rytmem — przewidywalne obciążenie, przewidywalny output, przewidywalna jakość."
+          description: "\"ASAP\" to sygnał, że nie ma systemu. Zastępujemy gaszenie pożarów cotygodniowym rytmem - przewidywalne obciążenie, przewidywalny output, przewidywalna jakość."
         },
         "03": {
           title: "Premium to standard,\nnie cecha osobowości.",
@@ -1037,7 +1037,7 @@ export const translations = {
         },
         "04": {
           title: "Spokojna realizacja to\nprawdziwa przewaga.",
-          description: "Zespoły nie chcą tylko \"szybko\". Chcą szybko bez chaosu — gdzie zatwierdzenia nie zamieniają się w dramat, standardy pozostają spójne, i nic nie zależy od paniki i heroizmu."
+          description: "Zespoły nie chcą tylko \"szybko\". Chcą szybko bez chaosu - gdzie zatwierdzenia nie zamieniają się w dramat, standardy pozostają spójne, i nic nie zależy od paniki i heroizmu."
         },
         "05": {
           title: "Zamykaj pętle. Wcześnie.\nZa każdym razem.",
@@ -1045,16 +1045,16 @@ export const translations = {
         },
         "06": {
           title: "Struktura tworzy wolność.\nNie odwrotnie.",
-          description: "Praca zdalna nie jest problemem. Brak struktury jest. Gdy intake, decyzje, feedback i wysyłka mają jasne reguły, energia kreatywna idzie w pracę — nie w koordynację."
+          description: "Praca zdalna nie jest problemem. Brak struktury jest. Gdy intake, decyzje, feedback i wysyłka mają jasne reguły, energia kreatywna idzie w pracę - nie w koordynację."
         }
       },
       contrasts: [
-        { old: "Zrobimy, żeby ładnie wyglądało tym razem.", new: "Zbudujemy system, w którym wygląda ładnie za każdym razem — w każdym zespole, przy każdym launchu." },
+        { old: "Zrobimy, żeby ładnie wyglądało tym razem.", new: "Zbudujemy system, w którym wygląda ładnie za każdym razem - w każdym zespole, przy każdym launchu." },
         { old: "Przyślij brief kiedy chcesz.", new: "Jedna ścieżka intake. Jeden format briefu. Jeden decydent. Zawsze." },
         { old: "Jesteśmy elastyczni i dostępni.", new: "Wysyłamy co tydzień. Feedback ma okna. Kadencja jest nienegocjowalna." },
         { old: "Zajmiemy się czymkolwiek potrzebujesz.", new: "Najpierw diagnozujemy bottleneck, potem budujemy system, który go usuwa." },
         { old: "Działamy szybko i łamiemy rzeczy.", new: "Działamy w zrównoważonym rytmie i wysyłamy rzeczy, które się trzymają." },
-        { old: "Oto piękny deck. Powodzenia w skalowaniu.", new: "Oto design i system operacyjny — żeby skalował się sam." }
+        { old: "Oto piękny deck. Powodzenia w skalowaniu.", new: "Oto design i system operacyjny - żeby skalował się sam." }
       ],
       nonneg_label: "Nienegocjowalne",
       nonneg: [
@@ -1062,10 +1062,10 @@ export const translations = {
         { title: "Jeden decydent na workstream.", desc: "Jeśli nikt nie może powiedzieć tak lub nie, feedback nigdy się nie kończy. Wymagamy jasności przed startem." },
         { title: "Cotygodniowa kadencja wysyłki.", desc: "Co tydzień wychodzi coś rzeczywistego. Nie \"postęp\". Output. Gotowy do publikacji, spakowany, nazwany, wyspecyfikowany." },
         { title: "Feedback ma strukturę.", desc: "Feedback dzieje się w oknach, z kryteriami, w formacie. Nie jako ciągły strumień odczuć na DM-ach." },
-        { title: "Budujemy systemy, nie zależności.", desc: "Gdy odchodzimy, model operacyjny zostaje. Szablony, komponenty, checklisty, reguły jakości — wszystko Twoje." },
+        { title: "Budujemy systemy, nie zależności.", desc: "Gdy odchodzimy, model operacyjny zostaje. Szablony, komponenty, checklisty, reguły jakości - wszystko Twoje." },
         { title: "Responsywność ≠ dostępność.", desc: "Wyjaśniamy szybko, wyrównujemy decyzje szybko, dostarczamy następny krok szybko. Nie siedzimy online 12 godzin." }
       ],
-      promise: "Twój pipeline designu powinien działać jak infrastruktura — nie zależeć od heroizmu.",
+      promise: "Twój pipeline designu powinien działać jak infrastruktura - nie zależeć od heroizmu.",
       promise_sub: "Pracujemy z organizacjami, które potrzebują dostarczania designu skalującego się bez utraty jakości, szybkości i zdrowia psychicznego.",
       note: {
         title: "Notatka o rzemiośle",
@@ -1074,7 +1074,7 @@ export const translations = {
         p3: "Systemy tworzą strukturę.\nRzemiosło chroni standardy."
       },
       cta: {
-        title: "Zbudujmy Twój system dostarczania — i zacznijmy wysyłać.",
+        title: "Zbudujmy Twój system dostarczania - i zacznijmy wysyłać.",
         body: "Nie tylko kampania.\nNie tylko redesign.\nPowtarzalny sposób na wysoką jakość na skalę.",
         start: "Rozpocznij projekt",
         explore: "Umów rozmowę"
@@ -1086,7 +1086,7 @@ export const translations = {
       label: "Kontakt",
       title_line1: "Zdiagnozujmy,",
       title_line2: "co Cię spowalnia.",
-      intro: "Opowiedz nam o obecnym etapie projektu i tym, co budujesz. Niezależnie od tego, czy potrzebujesz jasnego kierunku, skalowalnego systemu designu, czy stałego partnerstwa – pomożemy Ci obrać właściwą ścieżkę.",
+      intro: "Opowiedz nam o obecnym etapie projektu i tym, co budujesz. Niezależnie od tego, czy potrzebujesz jasnego kierunku, skalowalnego systemu designu, czy stałego partnerstwa - pomożemy Ci obrać właściwą ścieżkę.",
       sidebar: {
         email_label: "Napisz do nas",
         text: "Odpowiadamy na wszystkie zapytania w ciągu 24 godzin."
@@ -1143,19 +1143,19 @@ export const translations = {
         project: {
           subtitle: "ZNAJDŹ WĄSKIE GARDŁO",
           title: "DIAGNOZA",
-          description: "Sprawdzamy, jak wasz zespół tworzy wytyczne, akceptuje i wdraża projekty — następnie pokazujemy wam dokładnie, gdzie ucieka czas i jakość.",
+          description: "Sprawdzamy, jak wasz zespół tworzy wytyczne, akceptuje i wdraża projekty - następnie pokazujemy wam dokładnie, gdzie ucieka czas i jakość.",
           features: ["Audyt procesu dostarczania", "Mapa wąskich gardeł z ich przyczynami", "Plan działania w niespełna 2 tygodnie"]
         },
         retainer: {
           subtitle: "ZBUDUJ SYSTEM",
           title: "BUDOWA",
-          description: "Projektujemy standardy, szablony i proces dostarczania, jakich potrzebuje wasz zespół — aby efekty były spójne, niezależnie od tego, kto je realizuje.",
+          description: "Projektujemy standardy, szablony i proces dostarczania, jakich potrzebuje wasz zespół - aby efekty były spójne, niezależnie od tego, kto je realizuje.",
           features: ["Szablony standardów marki", "Proces przyjmowania zleceń i kontrola jakości", "Rytm pracy z dostarczaniem"]
         },
         augmentation: {
           subtitle: "UTRWAL EFEKTY",
           title: "SKALOWANIE",
-          description: "Przekazujemy wam wszystko, czego wasz zespół potrzebuje, by samodzielnie prowadzić system — wraz z zabezpieczeniami, które utrzymują stałą jakość.",
+          description: "Przekazujemy wam wszystko, czego wasz zespół potrzebuje, by samodzielnie prowadzić system - wraz z zabezpieczeniami, które utrzymują stałą jakość.",
           features: ["Pełne przekazanie systemu ze szkoleniem zespołu", "Wbudowane zabezpieczenia wykrywające odchylenia", "Skalowanie jakości"]
         }
       }
@@ -1169,8 +1169,8 @@ export const translations = {
       cta_work: "Zobacz prace"
     },
     footer: {
-      idea: "Zbudujmy Twój system dostarczania — i zacznijmy wysyłać.",
-      // Było "Odważne pomysły / z precyzją i troską." — agency-speak, sprzeczny
+      idea: "Zbudujmy Twój system dostarczania - i zacznijmy wysyłać.",
+      // Było "Odważne pomysły / z precyzją i troską." - agency-speak, sprzeczny
       // z POV "operator, nie agencja". Zamienione na claim systemowy.
       bold_ideas: "Budujemy system,",
       shaped: "który stoi za dobrym designem.",
@@ -1194,7 +1194,7 @@ export const translations = {
     consent: {
       banner: {
         title: "Cookies i prywatność",
-        body: "Używamy cookies i analityki, żeby rozumieć jak działa strona. Strict opt-in — nic się nie ładuje, dopóki nie zgodzisz się świadomie. Decyzję możesz zmienić w każdej chwili.",
+        body: "Używamy cookies i analityki, żeby rozumieć jak działa strona. Strict opt-in - nic się nie ładuje, dopóki nie zgodzisz się świadomie. Decyzję możesz zmienić w każdej chwili.",
         accept: "Akceptuję wszystko",
         deny: "Tylko niezbędne",
         preferences: "Ustawienia cookies",
@@ -1205,7 +1205,7 @@ export const translations = {
       label: "Prawne",
       title: "Polityka prywatności",
       lastUpdated: "Ostatnia aktualizacja: 2026-06-05",
-      draftBanner: "[WERSJA ROBOCZA — wymaga weryfikacji prawnej przed publikacją]",
+      draftBanner: "[WERSJA ROBOCZA - wymaga weryfikacji prawnej przed publikacją]",
       intro: "Ta polityka opisuje jakie dane zbieramy, po co, jak długo je przechowujemy i jakie masz prawa. r352 działa z Mallorki (Hiszpania), co oznacza że obowiązuje RODO oraz hiszpańska LOPDGDD.",
       footerNote: "Pytania dotyczące tej polityki lub Twoich danych?",
       sections: {
@@ -1215,27 +1215,27 @@ export const translations = {
         },
         whatWeCollect: {
           title: "Jakie dane zbieramy",
-          body: "Analityka (tylko za Twoją zgodą): zagregowane dane o ruchu przez Google Tag Manager i Google Analytics — odwiedzane podstrony, przybliżona lokalizacja (kraj/miasto), typ urządzenia, źródło wejścia. Tagi ładują się tylko jeśli zaakceptujesz na bannerze zgody.\n\nFormularze kontaktowe i briefy: dane, które sam zdecydujesz się przekazać — zwykle imię, email, firma, kontekst projektu, budżet, harmonogram. Nigdy nie zbieramy więcej niż nam dasz.\n\nNiezbędne przechowywanie lokalne: drobny zapis w przeglądarce pamiętający Twoją decyzję o zgodzie (klucz: r352-consent-v1). Tego nie da się wyłączyć — bez tego pytalibyśmy Cię o zgodę na każdej podstronie.\n\nLogi serwera: standardowe logi requestów utrzymywane przez naszego hostingodawcę (Vercel) w celach bezpieczeństwa i utrzymania."
+          body: "Analityka (tylko za Twoją zgodą): zagregowane dane o ruchu przez Google Tag Manager i Google Analytics - odwiedzane podstrony, przybliżona lokalizacja (kraj/miasto), typ urządzenia, źródło wejścia. Tagi ładują się tylko jeśli zaakceptujesz na bannerze zgody.\n\nFormularze kontaktowe i briefy: dane, które sam zdecydujesz się przekazać - zwykle imię, email, firma, kontekst projektu, budżet, harmonogram. Nigdy nie zbieramy więcej niż nam dasz.\n\nNiezbędne przechowywanie lokalne: drobny zapis w przeglądarce pamiętający Twoją decyzję o zgodzie (klucz: r352-consent-v1). Tego nie da się wyłączyć - bez tego pytalibyśmy Cię o zgodę na każdej podstronie.\n\nLogi serwera: standardowe logi requestów utrzymywane przez naszego hostingodawcę (Vercel) w celach bezpieczeństwa i utrzymania."
         },
         whyWeCollect: {
           title: "Po co je zbieramy",
-          body: "Analityka: żeby rozumieć, które podstrony działają, które zawodzą i gdzie inwestować czas. Podstawa prawna: Twoja zgoda (art. 6 ust. 1 lit. a RODO).\n\nDane z formularzy: żeby odpowiedzieć na Twoje zapytanie, zweryfikować dopasowanie i — jeśli ruszymy ze współpracą — dostarczyć projekt. Podstawa prawna: czynności przedumowne na Twoje żądanie oraz nasz prawnie uzasadniony interes prowadzenia działalności (art. 6 ust. 1 lit. b i lit. f RODO).\n\nLogi serwera: utrzymanie dostępności strony i ochrona przed nadużyciami. Podstawa prawna: prawnie uzasadniony interes (art. 6 ust. 1 lit. f RODO)."
+          body: "Analityka: żeby rozumieć, które podstrony działają, które zawodzą i gdzie inwestować czas. Podstawa prawna: Twoja zgoda (art. 6 ust. 1 lit. a RODO).\n\nDane z formularzy: żeby odpowiedzieć na Twoje zapytanie, zweryfikować dopasowanie i - jeśli ruszymy ze współpracą - dostarczyć projekt. Podstawa prawna: czynności przedumowne na Twoje żądanie oraz nasz prawnie uzasadniony interes prowadzenia działalności (art. 6 ust. 1 lit. b i lit. f RODO).\n\nLogi serwera: utrzymanie dostępności strony i ochrona przed nadużyciami. Podstawa prawna: prawnie uzasadniony interes (art. 6 ust. 1 lit. f RODO)."
         },
         retention: {
           title: "Jak długo przechowujemy",
-          body: "Zdarzenia analityczne: do 26 miesięcy w Google Analytics, potem automatyczne czyszczenie.\n\nFormularze kontaktowe i briefy: do 5 lat — zgodnie z wymogami podatkowymi i kontraktowymi w prawie hiszpańskim, potem usuwane, chyba że aktywna współpraca wymaga dłuższego okresu.\n\nStan zgody (r352-consent-v1): w Twojej przeglądarce, dopóki nie zresetujesz go na podstronie Ustawienia cookies lub nie wyczyścisz danych witryny ręcznie.\n\nLogi serwera: ruchome okno 30 dni, chyba że incydent wymaga dłuższego przechowywania."
+          body: "Zdarzenia analityczne: do 26 miesięcy w Google Analytics, potem automatyczne czyszczenie.\n\nFormularze kontaktowe i briefy: do 5 lat - zgodnie z wymogami podatkowymi i kontraktowymi w prawie hiszpańskim, potem usuwane, chyba że aktywna współpraca wymaga dłuższego okresu.\n\nStan zgody (r352-consent-v1): w Twojej przeglądarce, dopóki nie zresetujesz go na podstronie Ustawienia cookies lub nie wyczyścisz danych witryny ręcznie.\n\nLogi serwera: ruchome okno 30 dni, chyba że incydent wymaga dłuższego przechowywania."
         },
         sharing: {
           title: "Komu udostępniamy",
-          body: "Hosting i infrastruktura: Vercel Inc. (Stany Zjednoczone) — dostarczanie strony i logi edge, na podstawie Standardowych Klauzul Umownych.\n\nAnalityka: Google Ireland Ltd. / Google LLC, ale tylko (i wyłącznie) gdy zaakceptujesz cookies analityczne.\n\nEmail: standardowe usługi pocztowe używane do odpowiedzi (np. Google Workspace).\n\nNie sprzedajemy Twoich danych. Nie udostępniamy ich sieciom reklamowym. Nie prowadzimy remarketingu ani reklam programatycznych."
+          body: "Hosting i infrastruktura: Vercel Inc. (Stany Zjednoczone) - dostarczanie strony i logi edge, na podstawie Standardowych Klauzul Umownych.\n\nAnalityka: Google Ireland Ltd. / Google LLC, ale tylko (i wyłącznie) gdy zaakceptujesz cookies analityczne.\n\nEmail: standardowe usługi pocztowe używane do odpowiedzi (np. Google Workspace).\n\nNie sprzedajemy Twoich danych. Nie udostępniamy ich sieciom reklamowym. Nie prowadzimy remarketingu ani reklam programatycznych."
         },
         rights: {
           title: "Twoje prawa",
-          body: "Na mocy RODO i hiszpańskiej LOPDGDD masz prawo do: dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, sprzeciwu wobec przetwarzania, otrzymania kopii w formacie umożliwiającym przenoszenie oraz wycofania zgody w dowolnym momencie (bez wpływu na zgodność z prawem przetwarzania przed wycofaniem).\n\nŻeby skorzystać z któregokolwiek z tych praw, napisz na hello@r352.com z adresu, którego użyłeś do kontaktu. Odpowiemy w ciągu 30 dni.\n\nMasz też prawo wnieść skargę do hiszpańskiego organu nadzorczego, AEPD (Agencia Española de Protección de Datos) — www.aepd.es. Jeśli mieszkasz w Polsce, skargę możesz wnieść również do PUODO."
+          body: "Na mocy RODO i hiszpańskiej LOPDGDD masz prawo do: dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, sprzeciwu wobec przetwarzania, otrzymania kopii w formacie umożliwiającym przenoszenie oraz wycofania zgody w dowolnym momencie (bez wpływu na zgodność z prawem przetwarzania przed wycofaniem).\n\nŻeby skorzystać z któregokolwiek z tych praw, napisz na hello@r352.com z adresu, którego użyłeś do kontaktu. Odpowiemy w ciągu 30 dni.\n\nMasz też prawo wnieść skargę do hiszpańskiego organu nadzorczego, AEPD (Agencia Española de Protección de Datos) - www.aepd.es. Jeśli mieszkasz w Polsce, skargę możesz wnieść również do PUODO."
         },
         contact: {
           title: "Jak się z nami skontaktować",
-          body: "Email: hello@r352.com\nLokalizacja: Santa Catalina, Mallorca, Baleary, Hiszpania (studio remote-first)\n\nW sprawach dotyczących danych prosimy o temat \"r352 — privacy request\" — pozwala to skierować zapytanie we właściwe miejsce."
+          body: "Email: hello@r352.com\nLokalizacja: Santa Catalina, Mallorca, Baleary, Hiszpania (studio remote-first)\n\nW sprawach dotyczących danych prosimy o temat \"r352 - privacy request\" - pozwala to skierować zapytanie we właściwe miejsce."
         },
         changes: {
           title: "Zmiany w tej polityce",
@@ -1247,17 +1247,17 @@ export const translations = {
       label: "Prawne",
       title: "Ustawienia cookies",
       lastUpdated: "Ostatnia aktualizacja: 2026-06-05",
-      draftBanner: "[WERSJA ROBOCZA — wymaga weryfikacji prawnej przed publikacją]",
+      draftBanner: "[WERSJA ROBOCZA - wymaga weryfikacji prawnej przed publikacją]",
       intro: "Domyślnie wszystko jest wyłączone (strict opt-in). Cookies analityczne i marketingowe pozostają nieaktywne, dopóki świadomie nie włączysz ich tutaj lub nie zaakceptujesz na bannerze. Możesz zmienić lub cofnąć decyzję w dowolnym momencie.",
       alwaysOn: "Zawsze włączone",
       save: "Zapisz ustawienia",
       reset: "Zresetuj wybór",
       savedConfirm: "Zapisano",
-      footerNote: "Reset usuwa Twój zapisany wybór i przywraca banner zgody przy następnej wizycie. W pozostałych sprawach — zobacz Politykę prywatności.",
+      footerNote: "Reset usuwa Twój zapisany wybór i przywraca banner zgody przy następnej wizycie. W pozostałych sprawach - zobacz Politykę prywatności.",
       categories: {
         necessary: {
           title: "Niezbędne",
-          body: "Wymagane do działania strony — ciągłość sesji oraz zapamiętanie samej Twojej decyzji o zgodzie. Nie da się ich wyłączyć."
+          body: "Wymagane do działania strony - ciągłość sesji oraz zapamiętanie samej Twojej decyzji o zgodzie. Nie da się ich wyłączyć."
         },
         analytics: {
           title: "Analityka",
@@ -1273,7 +1273,7 @@ export const translations = {
     philosophy: {
       teaser: {
         title: "Piękna praca to baseline.<br />System za nią to przewaga.",
-        description: "Tworzymy premium design. Ale sam craft się nie skaluje.\nSystem dostarczania — tak.",
+        description: "Tworzymy premium design. Ale sam craft się nie skaluje.\nSystem dostarczania - tak.",
         cta: "Poznaj naszą filozofię"
       }
     },

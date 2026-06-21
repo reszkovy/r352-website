@@ -7,7 +7,7 @@ import { R3LoopBadge } from "@/app/components/ui/R3LoopBadge";
 import { LoopPath } from "@/app/components/ui/LoopPath";
 
 /**
- * ServicesList — unified system section on Home.
+ * ServicesList - unified system section on Home.
  * Combines: 4-layer architecture (Strategy → Operating System → Design & Production → Build & Optimize)
  *           with an 8-step process preview that bridges to /process for the deep dive.
  * Two CTAs at the bottom: /process (deep dive) + /services (catalog).
@@ -35,8 +35,8 @@ const PILLARS: Pillar[] = [
     title: { en: "Strategy", pl: "Strategia" },
     scope: { en: "Brand · Operating · AI", pl: "Marka · Operacje · AI" },
     sub: {
-      en: "Decide what to ship — before building anything.",
-      pl: "Decydujemy co dostarczyć — zanim cokolwiek zaczniemy budować.",
+      en: "Decide what to ship - before building anything.",
+      pl: "Decydujemy co dostarczyć - zanim cokolwiek zaczniemy budować.",
     },
   },
   {
@@ -44,8 +44,8 @@ const PILLARS: Pillar[] = [
     title: { en: "Operating System", pl: "Operating System" },
     scope: { en: "Intake · QA · Governance · Workflow", pl: "Intake · QA · Governance · Workflow" },
     sub: {
-      en: "Make quality and speed predictable — at any scale.",
-      pl: "Jakość i szybkość przewidywalne — w każdej skali.",
+      en: "Make quality and speed predictable - at any scale.",
+      pl: "Jakość i szybkość przewidywalne - w każdej skali.",
     },
   },
   {
@@ -53,8 +53,8 @@ const PILLARS: Pillar[] = [
     title: { en: "Design & Production", pl: "Design & Production" },
     scope: { en: "Product UX · Campaigns · Motion · AD", pl: "Product UX · Kampanie · Motion · AD" },
     sub: {
-      en: "Ship the assets that move the business — without rework loops.",
-      pl: "Dostarczamy assety, które ruszają biznes — bez pętli poprawek.",
+      en: "Ship the assets that move the business - without rework loops.",
+      pl: "Dostarczamy assety, które ruszają biznes - bez pętli poprawek.",
     },
   },
   {
@@ -62,8 +62,8 @@ const PILLARS: Pillar[] = [
     title: { en: "Build & Optimize", pl: "Build & Optimize" },
     scope: { en: "Implementation · CMS · Performance · Handoff", pl: "Wdrożenia · CMS · Performance · Handoff" },
     sub: {
-      en: "Optional engineering layer — where it moves the metric.",
-      pl: "Opcjonalna warstwa engineeringu — tam gdzie rusza metrykę.",
+      en: "Optional engineering layer - where it moves the metric.",
+      pl: "Opcjonalna warstwa engineeringu - tam gdzie rusza metrykę.",
     },
     optional: true,
   },
@@ -84,7 +84,7 @@ export function ServicesList() {
   const { language } = useLanguage();
   const lang = language as Lang;
 
-  // Scene 2 — "the r3loop draws itself". Starts static (full step grid in the
+  // Scene 2 - "the r3loop draws itself". Starts static (full step grid in the
   // initial DOM for prerender/SEO); upgrades to the scroll-scrubbed loop only
   // after mount, on wide viewports, with motion allowed and no webdriver.
   const [kineticLoop, setKineticLoop] = useState(false);
@@ -114,7 +114,7 @@ export function ServicesList() {
     <section className="py-32 md:py-40 border-t border-white/5">
       <div className="max-w-[1800px] mx-auto px-8 md:px-12">
 
-        {/* ─── HEADER — 12-col 5+7 asymmetric (title left, copy right). col-span on Reveal (direct grid child) ─── */}
+        {/* ─── HEADER - 12-col 5+7 asymmetric (title left, copy right). col-span on Reveal (direct grid child) ─── */}
         <div className="grid grid-cols-12 gap-6 md:gap-8 mb-20 md:mb-24">
           <Reveal className="col-span-12 lg:col-span-5">
             <div>
@@ -140,14 +140,14 @@ export function ServicesList() {
               </p>
               <p className="text-sm text-neutral-500 font-mono leading-relaxed">
                 {lang === "pl"
-                  ? "Wspierane przez r3loop — 8-krokową metodologię operacyjną. Wzmocnione AI-first egzekucją."
-                  : "Powered by r3loop — our 8-step operating methodology. Elevated by AI-first execution."}
+                  ? "Wspierane przez r3loop - 8-krokową metodologię operacyjną. Wzmocnione AI-first egzekucją."
+                  : "Powered by r3loop - our 8-step operating methodology. Elevated by AI-first execution."}
               </p>
             </div>
           </Reveal>
         </div>
 
-        {/* ─── 4 PILLARS GRID — 12-col, each col-span-3 on lg+ (3+3+3+3); gap-px creates hair-line dividers ─── */}
+        {/* ─── 4 PILLARS GRID - 12-col, each col-span-3 on lg+ (3+3+3+3); gap-px creates hair-line dividers ─── */}
         <div className="grid grid-cols-12 gap-px bg-white/[0.06] mb-24 md:mb-28">
           {PILLARS.map((p, i) => (
             <Reveal key={p.num} delay={i * 0.08} className="col-span-12 md:col-span-6 lg:col-span-3">
@@ -166,15 +166,15 @@ export function ServicesList() {
                 <p className="text-sm text-neutral-400 font-mono tracking-tight leading-relaxed">
                   {p.scope[lang]}
                 </p>
-                {/* Sub-copy — em-dash always drops to new line so every card ends in 2 lines */}
+                {/* Sub-copy - em-dash always drops to new line so every card ends in 2 lines */}
                 {(() => {
                   const raw = p.sub[lang];
-                  const [lead, ...rest] = raw.split(" — ");
-                  const tail = rest.join(" — ");
+                  const [lead, ...rest] = raw.split(" - ");
+                  const tail = rest.join(" - ");
                   return (
                     <p className="text-sm text-neutral-500 leading-snug mt-auto pt-4">
                       <span className="block">{lead}</span>
-                      {tail && <span className="block">— {tail}</span>}
+                      {tail && <span className="block">- {tail}</span>}
                     </p>
                   );
                 })()}
@@ -183,11 +183,11 @@ export function ServicesList() {
           ))}
         </div>
 
-        {/* ─── 8-STEP PROCESS STRIP — Scene 2: the r3loop draws itself.
+        {/* ─── 8-STEP PROCESS STRIP - Scene 2: the r3loop draws itself.
             Kinetic (lg+, motion allowed): sticky scene where a continuous SVG
             path scrubs through all 8 nodes and closes the loop back into 01.
             Static (initial render / bots / reduced motion / <1024px): the
-            original 8-step grid — full step names always in the DOM. ─── */}
+            original 8-step grid - full step names always in the DOM. ─── */}
         {(() => {
           const stripHeader = (
             <div className="grid grid-cols-12 gap-6 md:gap-8 items-end mb-12">
@@ -203,13 +203,13 @@ export function ServicesList() {
                     <>
                       Jak system przepływa w praktyce
                       <br className="hidden md:inline" />
-                      {" "}— od diagnozy po iterację.
+                      {" "}- od diagnozy po iterację.
                     </>
                   ) : (
                     <>
                       How the system flows in practice
                       <br className="hidden md:inline" />
-                      {" "}— from diagnosis to iteration.
+                      {" "}- from diagnosis to iteration.
                     </>
                   )}
                 </h3>
@@ -219,13 +219,13 @@ export function ServicesList() {
                   <>
                     Każdy krok ma cel, deliverable i metrykę.
                     <br className="hidden md:inline" />
-                    {" "}Nie pętle poprawek — checkpointy.
+                    {" "}Nie pętle poprawek - checkpointy.
                   </>
                 ) : (
                   <>
                     Each step has a goal, a deliverable and a metric.
                     <br className="hidden md:inline" />
-                    {" "}Not revision loops — checkpoints.
+                    {" "}Not revision loops - checkpoints.
                   </>
                 )}
               </p>
@@ -239,8 +239,8 @@ export function ServicesList() {
                   steps={PROCESS_STEPS.map((s) => ({ num: s.num, label: s[lang] }))}
                   closingLabel={
                     lang === "pl"
-                      ? "pętla się domyka — Iterate wraca do 01 Diagnose"
-                      : "the loop closes — Iterate feeds back into 01 Diagnose"
+                      ? "pętla się domyka - Iterate wraca do 01 Diagnose"
+                      : "the loop closes - Iterate feeds back into 01 Diagnose"
                   }
                 >
                   {stripHeader}

@@ -6,7 +6,7 @@ import { industries } from "@/app/data/industries";
 import { ArrowRight } from "lucide-react";
 
 /**
- * Industries — index page listing every vertical r352 serves.
+ * Industries - index page listing every vertical r352 serves.
  *
  * One card per industry, each linking to /industries/:slug (rendered by
  * IndustryDetail). Cards are data-driven from src/app/data/industries.ts.
@@ -15,7 +15,7 @@ import { ArrowRight } from "lucide-react";
  *  - Direct lead-gen entry point for prospects who arrive by segment
  *    (fitness operator, real estate marketing lead, retail brand owner,
  *    multi-market health network).
- *  - Helps GEO/SEO surface — a hub page that ties the four detail pages
+ *  - Helps GEO/SEO surface - a hub page that ties the four detail pages
  *    together with internal links.
  */
 
@@ -39,8 +39,8 @@ export function Industries() {
           </h1>
           <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
             {language === "pl"
-              ? "Wąska specjalizacja: multi-location brand operations. Fitness i wellness, deweloperka nieruchomości, retail i franczyzy, sieci zdrowia i usług. Wszystkie dzielą ten sam problem — kreatywna dostawa na skalę bez wycieków spójności."
-              : "Narrow specialty: multi-location brand operations. Fitness and wellness networks, real estate developers, retail and franchise operators, health and service networks. All share the same problem — creative delivery at scale without consistency leaks."}
+              ? "Wąska specjalizacja: multi-location brand operations. Fitness i wellness, deweloperka nieruchomości, retail i franczyzy, sieci zdrowia i usług. Wszystkie dzielą ten sam problem - kreatywna dostawa na skalę bez wycieków spójności."
+              : "Narrow specialty: multi-location brand operations. Fitness and wellness networks, real estate developers, retail and franchise operators, health and service networks. All share the same problem - creative delivery at scale without consistency leaks."}
           </p>
         </Reveal>
       </section>
@@ -50,7 +50,7 @@ export function Industries() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {industries.map((industry, i) => (
             <Reveal key={industry.slug} delay={i * 0.06}>
-              {/* Card surface — line-only treatment. Previous bg tint
+              {/* Card surface - line-only treatment. Previous bg tint
                   (bg-neutral-50/40 dark:bg-white/[0.015]) rendered as a faint
                   grey/white box against #0a0a0a, which collided with the no-card
                   aesthetic the rest of the site uses (sections separated by hairlines,
@@ -76,12 +76,12 @@ export function Industries() {
                   {industry.title[language]}
                 </h2>
 
-                {/* Teaser — use h1 as the promise-line */}
+                {/* Teaser - use h1 as the promise-line */}
                 <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty] mb-10">
                   {industry.h1[language]}
                 </p>
 
-                {/* Footer — explore link with arrow */}
+                {/* Footer - explore link with arrow */}
                 <div className="flex items-center gap-3 text-xs font-display uppercase tracking-[0.2em] text-neutral-700 dark:text-neutral-300 group-hover:text-[#D4FF00] transition-colors duration-300">
                   <span className="w-6 h-px bg-neutral-400 dark:bg-neutral-600 group-hover:bg-[#D4FF00] group-hover:w-10 transition-all duration-500" />
                   <span>{language === "pl" ? "Zobacz branżę" : "Explore"}</span>
@@ -98,8 +98,8 @@ export function Industries() {
         <section className="mt-20 md:mt-28 max-w-2xl mx-auto text-center">
           <p className="text-sm text-neutral-500 dark:text-neutral-500 leading-relaxed">
             {language === "pl"
-              ? "Twoja branża tu nie pasuje? Napisz na hello@r352.com — pewnie i tak rozmawialiśmy o czymś podobnym."
-              : "Your industry not listed? Email hello@r352.com — chances are we've worked with something close."}
+              ? "Twoja branża tu nie pasuje? Napisz na hello@r352.com - pewnie i tak rozmawialiśmy o czymś podobnym."
+              : "Your industry not listed? Email hello@r352.com - chances are we've worked with something close."}
           </p>
         </section>
       </Reveal>

@@ -26,13 +26,13 @@ export function EngagementModels() {
                 </span>
                 <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-white whitespace-normal md:whitespace-pre-line" dangerouslySetInnerHTML={{ __html: t("engagement.title") }}>
                 </h2>
-                {/* Framework bridge — DIAGNOSE/BUILD/SCALE is r3loop compressed,
+                {/* Framework bridge - DIAGNOSE/BUILD/SCALE is r3loop compressed,
                     not a second methodology. Keeps the visual brand, kills the
                     "two frameworks" read flagged in the content audit. */}
                 <p className="mt-4 text-sm text-neutral-500 max-w-xl leading-relaxed">
                   {language === "pl"
-                    ? "Trzy fazy — r3loop w kompresji: kroki 01–02 to diagnoza, 03–06 budowa, 07–08 skalowanie."
-                    : "Three phases — r3loop compressed: steps 01–02 diagnose, 03–06 build, 07–08 scale."}
+                    ? "Trzy fazy - r3loop w kompresji: kroki 01-02 to diagnoza, 03-06 budowa, 07-08 skalowanie."
+                    : "Three phases - r3loop compressed: steps 01-02 diagnose, 03-06 build, 07-08 scale."}
                 </p>
               </div>
             </div>
@@ -49,7 +49,7 @@ export function EngagementModels() {
           {models.map((model, index) => (
             <Reveal key={model.key} delay={index * 0.1} className="h-full">
               <div className="engagement-card bg-[#050505] h-full hover:bg-[#0a0a0a] transition-all duration-500 group flex flex-col relative overflow-hidden">
-                {/* Lime top accent bar — always visible, expands on hover */}
+                {/* Lime top accent bar - always visible, expands on hover */}
                 <div className="lime-accent-bg h-1 bg-[#D4FF00] w-full transition-all duration-700 ease-out" />
                 
                 <div className="p-10 flex flex-col h-full">

@@ -1,13 +1,13 @@
 import { useState } from "react";
 
 /**
- * YouTubeEmbed — premium click-to-play YouTube embed.
+ * YouTubeEmbed - premium click-to-play YouTube embed.
  *
  * Shows hi-res YouTube thumbnail with custom lime play button overlay.
  * On click: loads youtube-nocookie iframe with autoplay + modestbranding + rel=0.
  *
  * Why: default YouTube embed shows "Watch on YouTube" button, related videos
- * overlay, and YouTube logo prominently — looks like an ad placement.
+ * overlay, and YouTube logo prominently - looks like an ad placement.
  * This component renders editorial-grade poster + play affordance, loads
  * iframe only on click (faster initial page load), and uses youtube-nocookie
  * domain with cleaner player UI once playing.
@@ -16,7 +16,7 @@ import { useState } from "react";
 interface YouTubeEmbedProps {
   url: string;
   title?: string;
-  /** Optional custom poster image — overrides YouTube auto-thumbnail */
+  /** Optional custom poster image - overrides YouTube auto-thumbnail */
   poster?: string;
 }
 
@@ -60,7 +60,7 @@ export function YouTubeEmbed({ url, title = "Video", poster }: YouTubeEmbedProps
         focus-visible:ring-2 focus-visible:ring-[#D4FF00] focus-visible:ring-offset-2 focus-visible:ring-offset-black
       "
     >
-      {/* Hi-res thumbnail (fallback to hqdefault if maxres unavailable — handled via onError) */}
+      {/* Hi-res thumbnail (fallback to hqdefault if maxres unavailable - handled via onError) */}
       <img
         src={thumbnailUrl}
         alt={title}
@@ -75,13 +75,13 @@ export function YouTubeEmbed({ url, title = "Video", poster }: YouTubeEmbedProps
         }}
       />
 
-      {/* Dark overlay — softens on hover */}
+      {/* Dark overlay - softens on hover */}
       <div className="absolute inset-0 bg-black/40 group-hover:bg-black/25 transition-colors duration-500 pointer-events-none" />
 
       {/* Subtle gradient at bottom for depth */}
       <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
 
-      {/* Centered play button — lime accent, scale on hover */}
+      {/* Centered play button - lime accent, scale on hover */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="
           relative

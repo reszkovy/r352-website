@@ -81,7 +81,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
               }}
             />
 
-            {/* Static branding — revealed/concealed by sweep via clipPath */}
+            {/* Static branding - revealed/concealed by sweep via clipPath */}
             <motion.div
               className="fixed inset-0 z-[100000] pointer-events-none flex items-center justify-center"
               initial={{ clipPath: "inset(100% 0 0 0)" }}

@@ -8,7 +8,7 @@ import { useLanguage } from "@/app/context/LanguageContext";
 // When a user clicks "Start a brief" from /industries/{slug} we propagate
 // the segment via ?segment= so we can (a) show a subtle provenance pill
 // at the top of the brief and (b) push an analytics event for funnel
-// attribution. Display labels are bilingual — Polish copy lands when
+// attribution. Display labels are bilingual - Polish copy lands when
 // the user has selected PL.
 const SEGMENT_LABELS_EN: Record<string, string> = {
   "fitness-wellness": "Fitness & Wellness Networks",
@@ -41,11 +41,11 @@ function parseSegmentFromSearch(search: string): string | null {
 }
 
 // ─── Briefly intake config ───────────────────────────────────────────
-// API endpoint (Briefly backend) — leave on briefly-five-plum.vercel.app
+// API endpoint (Briefly backend) - leave on briefly-five-plum.vercel.app
 const BRIEFLY_BASE_URL = "https://briefly-five-plum.vercel.app";
 const BRIEFLY_INTAKE_URL = `${BRIEFLY_BASE_URL}/api/public/intake`;
 
-// Wizard landing — r3loop.app is the productized brand surface where users complete the brief
+// Wizard landing - r3loop.app is the productized brand surface where users complete the brief
 const WIZARD_BASE_URL = "https://r3loop.app";
 
 const INTAKE_BRANDING = {
@@ -55,7 +55,7 @@ const INTAKE_BRANDING = {
   font_family: "Inter",
 };
 
-// Defaults sent to API — real routing values are captured inside the wizard
+// Defaults sent to API - real routing values are captured inside the wizard
 const ROUTING_DEFAULTS = {
   vertical: "other" as const,
   scale: "1" as const,
@@ -150,17 +150,17 @@ export function Brief() {
     };
 
     try {
-      // First attempt — full payload
+      // First attempt - full payload
       let result = await attemptIntake(payload);
 
-      // Fallback retry — drop intake_branding (in case logo_url 404 trips validation)
+      // Fallback retry - drop intake_branding (in case logo_url 404 trips validation)
       if (!result.ok) {
         console.warn("[brief] First attempt failed, retrying without intake_branding", result);
         const { intake_branding: _drop, ...minimal } = payload;
         result = await attemptIntake(minimal);
       }
 
-      // Second fallback — drop context too
+      // Second fallback - drop context too
       if (!result.ok) {
         console.warn("[brief] Second attempt failed, retrying minimal", result);
         const minimal = {
@@ -175,7 +175,7 @@ export function Brief() {
       }
 
       if (!result.ok) {
-        // All retries failed — surface actual API error to user + console
+        // All retries failed - surface actual API error to user + console
         console.error("[brief] All intake attempts failed", result);
         const apiErr = result.data?.error || result.data?.message || result.raw?.slice(0, 200) || `HTTP ${result.status}`;
         throw new Error(`API ${result.status}: ${apiErr}`);
@@ -188,10 +188,10 @@ export function Brief() {
       }
 
       // Defensive: Briefly API may return relative path OR absolute URL on either briefly-vercel or r3loop.app.
-      // Always rewrite host to r3loop.app — that's the productized wizard landing for end users.
+      // Always rewrite host to r3loop.app - that's the productized wizard landing for end users.
       let finalUrl: string;
       if (/^https?:\/\//i.test(wizardUrl)) {
-        // Absolute URL — replace host with r3loop.app, preserve path/query/hash
+        // Absolute URL - replace host with r3loop.app, preserve path/query/hash
         try {
           const parsed = new URL(wizardUrl);
           finalUrl = `${WIZARD_BASE_URL}${parsed.pathname}${parsed.search}${parsed.hash}`;
@@ -199,7 +199,7 @@ export function Brief() {
           finalUrl = wizardUrl; // fallback if URL parsing fails
         }
       } else {
-        // Relative path — prefix with r3loop.app
+        // Relative path - prefix with r3loop.app
         finalUrl = `${WIZARD_BASE_URL}${wizardUrl.startsWith("/") ? "" : "/"}${wizardUrl}`;
       }
 
@@ -213,7 +213,7 @@ export function Brief() {
     } catch (err: any) {
       console.error("[brief] Submit error:", err);
       setSubmitting(false);
-      // Show actual error message to user — they can screenshot and send
+      // Show actual error message to user - they can screenshot and send
       const userMsg =
         lang === "pl"
           ? `Błąd: ${err?.message || "nieznany"}. Spróbuj jeszcze raz lub napisz na hello@r352.com`
@@ -226,7 +226,7 @@ export function Brief() {
 
   return (
     <PageTransition>
-      {/* ─── Hero with inline form — above-the-fold action ─── */}
+      {/* ─── Hero with inline form - above-the-fold action ─── */}
       <section className="pt-32 pb-20 md:pt-40 md:pb-28 px-8 md:px-12">
         <div className="max-w-[1800px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-12 lg:gap-20 items-start">
@@ -234,7 +234,7 @@ export function Brief() {
             {/* LEFT: positioning + intro + warm lead microcopy */}
             <Reveal>
               <div className="lg:sticky lg:top-32">
-                {/* Industry provenance pill — only renders when arriving from
+                {/* Industry provenance pill - only renders when arriving from
                     /industries/{slug}. Subtle: small lime-bordered chip above
                     the page eyebrow so the user knows context was preserved
                     without dominating the hero. */}
@@ -265,14 +265,14 @@ export function Brief() {
                 <p className="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mb-8 max-w-xl">
                   {copy.hero.subline}
                 </p>
-                {/* Warm-lead microcopy — steers referrals */}
+                {/* Warm-lead microcopy - steers referrals */}
                 <p className="text-sm text-neutral-500 dark:text-neutral-500 leading-relaxed italic border-l-2 border-[#D4FF00]/40 pl-4 max-w-xl">
                   {copy.form.warmLead}
                 </p>
               </div>
             </Reveal>
 
-            {/* RIGHT: form — above the fold, no scroll needed */}
+            {/* RIGHT: form - above the fold, no scroll needed */}
             <Reveal delay={0.15}>
               <div className="lg:pl-8 lg:border-l border-neutral-200 dark:border-white/10">
                 <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-4">
@@ -346,9 +346,9 @@ export function Brief() {
         </div>
       </section>
 
-      {/* ─── Selection Criteria — Phase 1.2.
+      {/* ─── Selection Criteria - Phase 1.2.
            Filter toxic leads + signal premium selectivity. Paradoxically raises conversion.
-           "I take projects that..." — sets the bar publicly. ─── */}
+           "I take projects that..." - sets the bar publicly. ─── */}
       <section className="py-24 md:py-32 border-t border-neutral-200 dark:border-white/10">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-16 md:gap-24">
@@ -366,8 +366,8 @@ export function Brief() {
                 </h2>
                 <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-md">
                   {lang === "pl"
-                    ? "Premium pricing wymaga premium ścieżki. Cztery filtry — dla tych, którzy chcą wiedzieć z góry, czy to dopasowanie."
-                    : "Premium pricing requires a premium fit. Four filters — for those who want to know up-front whether this is a match."}
+                    ? "Premium pricing wymaga premium ścieżki. Cztery filtry - dla tych, którzy chcą wiedzieć z góry, czy to dopasowanie."
+                    : "Premium pricing requires a premium fit. Four filters - for those who want to know up-front whether this is a match."}
                 </p>
               </div>
             </Reveal>
@@ -376,8 +376,8 @@ export function Brief() {
                 {[
                   {
                     num: "01",
-                    en: { title: "Are systemic, not aesthetic-only.", desc: "If the brief reads \"make it look nicer\" with no metric or system thinking behind it — we're the wrong fit." },
-                    pl: { title: "Są systemowe, nie tylko wizualne.", desc: "Jeśli brief brzmi „zróbmy żeby ładniej wyglądało\" bez metryki i myślenia systemowego — to nie nasza działka." },
+                    en: { title: "Are systemic, not aesthetic-only.", desc: "If the brief reads \"make it look nicer\" with no metric or system thinking behind it - we're the wrong fit." },
+                    pl: { title: "Są systemowe, nie tylko wizualne.", desc: "Jeśli brief brzmi „zróbmy żeby ładniej wyglądało\" bez metryki i myślenia systemowego - to nie nasza działka." },
                   },
                   {
                     num: "02",
@@ -391,8 +391,8 @@ export function Brief() {
                   },
                   {
                     num: "04",
-                    en: { title: "Are interesting enough to take at half-price.", desc: "Energy currency matters. If the work is dull, our best work isn't in it — and you'd feel it. Better we don't start." },
-                    pl: { title: "Są interesujące na tyle, żeby wziąć je za pół ceny.", desc: "Waluta energii też się liczy. Jeśli praca jest nudna, nasze najlepsze rzeczy nie wpadną — i to widać. Lepiej żebyśmy nie zaczynali." },
+                    en: { title: "Are interesting enough to take at half-price.", desc: "Energy currency matters. If the work is dull, our best work isn't in it - and you'd feel it. Better we don't start." },
+                    pl: { title: "Są interesujące na tyle, żeby wziąć je za pół ceny.", desc: "Waluta energii też się liczy. Jeśli praca jest nudna, nasze najlepsze rzeczy nie wpadną - i to widać. Lepiej żebyśmy nie zaczynali." },
                   },
                 ].map((c, i) => (
                   <li key={c.num} className="flex items-baseline gap-5 py-5 group/item">
@@ -415,7 +415,7 @@ export function Brief() {
         </div>
       </section>
 
-      {/* ─── What you'll cover — 8 brief sections preview ─── */}
+      {/* ─── What you'll cover - 8 brief sections preview ─── */}
       <section className="py-24 md:py-32 border-t border-neutral-200 dark:border-white/10">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-16 md:gap-24">
@@ -424,7 +424,7 @@ export function Brief() {
                 <span className="block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-4">
                   {copy.preview.label}
                 </span>
-                {/* Explicit 3-line break on the brief preview title — typographic rhythm */}
+                {/* Explicit 3-line break on the brief preview title - typographic rhythm */}
                 <h2 className="text-4xl md:text-5xl font-normal tracking-tight text-neutral-900 dark:text-white leading-[1.05] mb-6">
                   {lang === "pl" ? (
                     <>
@@ -483,7 +483,7 @@ export function Brief() {
               )}
             </h2>
           </Reveal>
-          {/* 3 steps — gap-px on a lighter parent creates hair-line dividers without chunky borders */}
+          {/* 3 steps - gap-px on a lighter parent creates hair-line dividers without chunky borders */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-neutral-200 dark:bg-white/[0.06]">
             {copy.howItWorks.steps.map((step, i) => (
               <Reveal key={i} delay={i * 0.08}>
@@ -583,7 +583,7 @@ const COPY_EN = {
     label: "Briefing tool",
     title: "Brief us. Structured starting point.",
     intro:
-      "Every project with r352 starts with a structured brief. Eight sections, around ten minutes, one clean response from us — whatever the scope.",
+      "Every project with r352 starts with a structured brief. Eight sections, around ten minutes, one clean response from us - whatever the scope.",
     subline:
       "Whether you need a campaign toolkit or a full operating system implementation, this is the entry. We route every brief to the right engagement model.",
   },
@@ -591,7 +591,7 @@ const COPY_EN = {
     label: "What you'll cover",
     title: "8 sections. ~26 questions. ~10 minutes.",
     subtitle:
-      "The briefing wizard guides you through structured sections — covering everything we need to give you a meaningful first response within 48 hours.",
+      "The briefing wizard guides you through structured sections - covering everything we need to give you a meaningful first response within 48 hours.",
     sections: [
       { title: "Project overview", desc: "Tell us the essentials: what, scope, when." },
       { title: "Brand & visual identity", desc: "Show us your brand identity." },
@@ -613,11 +613,11 @@ const COPY_EN = {
       },
       {
         title: "We respond",
-        desc: "Initial read within 48 hours by email — engagement model, scope direction, next step.",
+        desc: "Initial read within 48 hours by email - engagement model, scope direction, next step.",
       },
       {
         title: "We decide together",
-        desc: "If we're a fit — discovery call to scope. If not — we'll refer you in our network.",
+        desc: "If we're a fit - discovery call to scope. If not - we'll refer you in our network.",
       },
     ],
   },
@@ -627,14 +627,14 @@ const COPY_EN = {
     subtitle:
       "We only need contact and one line of context here. The structured wizard that follows is where the real conversation happens.",
     warmLead:
-      "Were you referred by someone? Mention them in the 'What's bringing you here?' field below — we'll fast-track your read.",
+      "Were you referred by someone? Mention them in the 'What's bringing you here?' field below - we'll fast-track your read.",
     fields: {
       name: "Your name",
       company: "Company",
       email: "Work email",
       context: "What's bringing you here? (optional)",
     },
-    contextPlaceholder: "One line — campaign, brand system, audit, full transformation…",
+    contextPlaceholder: "One line - campaign, brand system, audit, full transformation…",
     cta: "Begin the brief",
     submitting: "Submitting…",
     privacy:
@@ -647,15 +647,15 @@ const COPY_PL = {
     label: "Narzędzie briefingowe",
     title: "Zacznij od briefu. Ustrukturyzowany punkt startu.",
     intro:
-      "Każdy projekt z r352 zaczyna się od ustrukturyzowanego briefu. Osiem sekcji, około dziesięciu minut, jedna czysta odpowiedź od nas — niezależnie od zakresu.",
+      "Każdy projekt z r352 zaczyna się od ustrukturyzowanego briefu. Osiem sekcji, około dziesięciu minut, jedna czysta odpowiedź od nas - niezależnie od zakresu.",
     subline:
-      "Czy potrzebujesz pakietu kampanijnego, czy pełnego wdrożenia operating systemu — to jest punkt wejścia. Każdy brief routujemy do właściwego modelu współpracy.",
+      "Czy potrzebujesz pakietu kampanijnego, czy pełnego wdrożenia operating systemu - to jest punkt wejścia. Każdy brief routujemy do właściwego modelu współpracy.",
   },
   preview: {
     label: "Co przejdziesz",
     title: "8 sekcji. ~26 pytań. ~10 minut.",
     subtitle:
-      "Wizard prowadzi Cię przez ustrukturyzowane sekcje — obejmuje wszystko czego potrzebujemy, żeby dać Ci sensowną pierwszą odpowiedź w 48 godzin.",
+      "Wizard prowadzi Cię przez ustrukturyzowane sekcje - obejmuje wszystko czego potrzebujemy, żeby dać Ci sensowną pierwszą odpowiedź w 48 godzin.",
     sections: [
       { title: "Przegląd projektu", desc: "Powiedz nam najważniejsze: co, jaki zakres, kiedy." },
       { title: "Brand i tożsamość wizualna", desc: "Pokaż nam swoją tożsamość brandową." },
@@ -677,11 +677,11 @@ const COPY_PL = {
       },
       {
         title: "Odpowiadamy",
-        desc: "Pierwsza odpowiedź mailem w 48 godzin — model współpracy, kierunek zakresu, następny krok.",
+        desc: "Pierwsza odpowiedź mailem w 48 godzin - model współpracy, kierunek zakresu, następny krok.",
       },
       {
         title: "Decydujemy razem",
-        desc: "Jeśli pasujemy — discovery call do doprecyzowania zakresu. Jeśli nie — polecimy kogoś z naszej sieci.",
+        desc: "Jeśli pasujemy - discovery call do doprecyzowania zakresu. Jeśli nie - polecimy kogoś z naszej sieci.",
       },
     ],
   },
@@ -691,14 +691,14 @@ const COPY_PL = {
     subtitle:
       "Potrzebujemy tylko kontaktu i jednej linijki kontekstu. Ustrukturyzowany wizard, który zaczyna się po wysłaniu, to miejsce prawdziwej rozmowy.",
     warmLead:
-      "Polecił Cię ktoś? Wpisz to w polu 'Z czym przychodzisz?' poniżej — przyspieszymy Twój feedback.",
+      "Polecił Cię ktoś? Wpisz to w polu 'Z czym przychodzisz?' poniżej - przyspieszymy Twój feedback.",
     fields: {
       name: "Imię i nazwisko",
       company: "Firma",
       email: "Email służbowy",
       context: "Z czym przychodzisz? (opcjonalnie)",
     },
-    contextPlaceholder: "Jedna linijka — kampania, system marki, audyt, pełna transformacja…",
+    contextPlaceholder: "Jedna linijka - kampania, system marki, audyt, pełna transformacja…",
     cta: "Rozpocznij brief",
     submitting: "Wysyłam…",
     privacy:

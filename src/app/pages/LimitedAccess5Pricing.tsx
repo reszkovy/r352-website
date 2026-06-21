@@ -127,32 +127,32 @@ export function LimitedAccess5Pricing() {
             
             <div className="p-8 border border-white/10 bg-white/[0.02] rounded-sm space-y-6">
               <div>
-                <h3 className="text-3xl font-bold text-white mb-2">BetterWorkplace – Plan współpracy 2026</h3>
+                <h3 className="text-3xl font-bold text-white mb-2">BetterWorkplace - Plan współpracy 2026</h3>
                 <p className="text-sm text-white/50 tracking-wide">
-                  Marzec – Grudzień 2026 · delivery gotowe przed sezonem · wysoki sezon = wrzesień–grudzień
+                  Marzec - Grudzień 2026 · delivery gotowe przed sezonem · wysoki sezon = wrzesień-grudzień
                 </p>
               </div>
               <p className="text-lg text-white/80 leading-relaxed">
-                W grudniu 2026 BetterWorkplace wchodzi w nowy rok z gotowym ekosystemem marek — spójną strategią, brandingami, playbookami i zespołem, który potrafi z nich korzystać samodzielnie. To nie jest projekt agencji zakończony PDF-em. To dziewięć miesięcy partnerstwa, w którym strategia, produkcja i operacje budowane są razem w czasie rzeczywistym.
+                W grudniu 2026 BetterWorkplace wchodzi w nowy rok z gotowym ekosystemem marek - spójną strategią, brandingami, playbookami i zespołem, który potrafi z nich korzystać samodzielnie. To nie jest projekt agencji zakończony PDF-em. To dziewięć miesięcy partnerstwa, w którym strategia, produkcja i operacje budowane są razem w czasie rzeczywistym.
               </p>
               <div className="p-6 bg-white/[0.03] border border-white/10 rounded-sm">
                 <p className="text-sm text-white/90 font-medium mb-4">Nasza współpraca dzieli się na 4 ściśle połączone obszary:</p>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">
                     <span className="text-[#D4FF00] mt-0.5">•</span>
-                    <p className="text-sm text-white/70"><strong className="text-white">Strategia</strong> — wyznaczenie kierunku, architektury i przekazu dla całego ekosystemu.</p>
+                    <p className="text-sm text-white/70"><strong className="text-white">Strategia</strong> - wyznaczenie kierunku, architektury i przekazu dla całego ekosystemu.</p>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-[#9b51e0] mt-0.5">•</span>
-                    <p className="text-sm text-white/70"><strong className="text-white">Budowa materiałów (delivery)</strong> — tworzenie brandingów, playbooków i narzędzi na podstawie wypracowanej strategii.</p>
+                    <p className="text-sm text-white/70"><strong className="text-white">Budowa materiałów (delivery)</strong> - tworzenie brandingów, playbooków i narzędzi na podstawie wypracowanej strategii.</p>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-[#f39c12] mt-0.5">•</span>
-                    <p className="text-sm text-white/70"><strong className="text-white">Ongoingowe wsparcie</strong> — zabezpieczenie bieżących kampanii w trakcie trwania wdrażania zmian, aby biznes działał płynnie.</p>
+                    <p className="text-sm text-white/70"><strong className="text-white">Ongoingowe wsparcie</strong> - zabezpieczenie bieżących kampanii w trakcie trwania wdrażania zmian, aby biznes działał płynnie.</p>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-[#e67e22] mt-0.5">•</span>
-                    <p className="text-sm text-white/70"><strong className="text-white">Wsparcie operacyjne</strong> — partnerstwo na start sezonu po wdrożeniu zmian, zapewniające spójność w krytycznym dla was momencie (Q4).</p>
+                    <p className="text-sm text-white/70"><strong className="text-white">Wsparcie operacyjne</strong> - partnerstwo na start sezonu po wdrożeniu zmian, zapewniające spójność w krytycznym dla was momencie (Q4).</p>
                   </li>
                 </ul>
               </div>
@@ -168,37 +168,37 @@ export function LimitedAccess5Pricing() {
               <div className="grid md:grid-cols-2 gap-4 mb-6">
                  <div className="p-6 bg-white/[0.02] border border-[#D4FF00]/10 rounded-sm">
                     <p className="text-[10px] font-display uppercase tracking-widest text-[#D4FF00]/80 mb-2">STRATEGIA • FAZA 1</p>
-                    <p className="text-3xl font-bold text-white mb-2">20 – 24k</p>
-                    <p className="text-sm text-white/50">2 miesiące • marzec–kwiecień</p>
+                    <p className="text-3xl font-bold text-white mb-2">20 - 24k</p>
+                    <p className="text-sm text-white/50">2 miesiące • marzec-kwiecień</p>
                  </div>
                  <div className="p-6 bg-[#9b51e0]/5 border border-[#9b51e0]/20 rounded-sm">
                     <p className="text-[10px] font-display uppercase tracking-widest text-[#9b51e0]/80 mb-2">DELIVERY • FAZA 2.1</p>
-                    <p className="text-3xl font-bold text-[#9b51e0] mb-2">30 – 46k</p>
-                    <p className="text-sm text-white/50">5 miesięcy • kwiecień–sierpień</p>
+                    <p className="text-3xl font-bold text-[#9b51e0] mb-2">30 - 46k</p>
+                    <p className="text-sm text-white/50">5 miesięcy • kwiecień-sierpień</p>
                  </div>
                  <div className="p-6 bg-[#f39c12]/5 border border-[#f39c12]/20 rounded-sm">
                     <p className="text-[10px] font-display uppercase tracking-widest text-[#f39c12]/80 mb-2">WSPARCIE W TRAKCIE DELIVERY • FAZA 2.2</p>
-                    <p className="text-3xl font-bold text-[#f39c12] mb-2">15 – 25k</p>
-                    <p className="text-sm text-white/50">5 miesięcy • kwiecień–sierpień • ~3–5k / mc</p>
+                    <p className="text-3xl font-bold text-[#f39c12] mb-2">15 - 25k</p>
+                    <p className="text-sm text-white/50">5 miesięcy • kwiecień-sierpień • ~3-5k / mc</p>
                  </div>
                  <div className="p-6 bg-[#D4FF00]/10 border border-[#D4FF00]/30 rounded-sm">
                     <p className="text-[10px] font-display uppercase tracking-widest text-[#D4FF00] mb-2">WSPARCIE OPERACYJNE • FAZA 3</p>
-                    <p className="text-3xl font-bold text-[#D4FF00] mb-2">27 – 42k</p>
-                    <p className="text-sm text-[#D4FF00]/70">4 miesiące • wrzesień–grudzień • ~6.7–10.5k / mc</p>
+                    <p className="text-3xl font-bold text-[#D4FF00] mb-2">27 - 42k</p>
+                    <p className="text-sm text-[#D4FF00]/70">4 miesiące • wrzesień-grudzień • ~6.7-10.5k / mc</p>
                  </div>
               </div>
 
               <div className="p-10 bg-[#050505] border border-white/10 rounded-sm flex flex-col md:flex-row justify-between md:items-center mb-8 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.02] to-white/[0.05] pointer-events-none"></div>
                 <div className="relative z-10">
-                  <p className="text-sm text-white/60 mb-2">BetterWorkplace • marzec — grudzień 2026 • 10 miesięcy współpracy</p>
+                  <p className="text-sm text-white/60 mb-2">BetterWorkplace • marzec - grudzień 2026 • 10 miesięcy współpracy</p>
                   <p className="text-2xl font-bold text-white">Łącznie</p>
                 </div>
                 <div className="text-left md:text-right relative z-10 mt-6 md:mt-0">
-                  <p className="text-5xl font-bold text-white tracking-tight mb-2">92 — 137k</p>
+                  <p className="text-5xl font-bold text-white tracking-tight mb-2">92 - 137k</p>
                   <p className="text-xs font-display uppercase tracking-widest text-white/40 mb-3">PLN netto</p>
                   <div className="inline-flex items-center px-4 py-1.5 bg-white/5 border border-white/10 rounded-full whitespace-nowrap">
-                    <p className="text-xs font-display uppercase tracking-widest text-[#D4FF00]">Średni koszt miesięczny: ~9.2 — 13.7k</p>
+                    <p className="text-xs font-display uppercase tracking-widest text-[#D4FF00]">Średni koszt miesięczny: ~9.2 - 13.7k</p>
                   </div>
                 </div>
               </div>
@@ -206,11 +206,11 @@ export function LimitedAccess5Pricing() {
               <div className="grid md:grid-cols-2 gap-4 mb-4">
                 <div className="p-6 border border-white/10 bg-white/[0.02] rounded-sm">
                    <p className="text-[10px] font-display uppercase tracking-widest text-white/60 mb-3 font-bold">ZAKRES A WYCENA</p>
-                   <p className="text-sm text-white/60 leading-relaxed">Podane widełki dotyczą standardowego zakresu miesięcznego. Jeśli w danym miesiącu pojawi się znacząco większa liczba zadań – np. potrzeby związane z produktem TeamBudget lub intensywna kampania – wycena jest ustalana indywidualnie.</p>
+                   <p className="text-sm text-white/60 leading-relaxed">Podane widełki dotyczą standardowego zakresu miesięcznego. Jeśli w danym miesiącu pojawi się znacząco większa liczba zadań - np. potrzeby związane z produktem TeamBudget lub intensywna kampania - wycena jest ustalana indywidualnie.</p>
                 </div>
                 <div className="p-6 border border-white/10 bg-white/[0.02] rounded-sm">
                    <p className="text-[10px] font-display uppercase tracking-widest text-white/60 mb-3 font-bold">PODEJŚCIE PARTNERSKIE</p>
-                   <p className="text-sm text-white/60 leading-relaxed">Współpraca opiera się na elastyczności. Jeśli w jednym miesiącu zakres jest mniejszy, niewykorzystany potencjał można przesunąć na kolejny okres – bez utraty wartości i bez sztywnego rozliczania każdej godziny.</p>
+                   <p className="text-sm text-white/60 leading-relaxed">Współpraca opiera się na elastyczności. Jeśli w jednym miesiącu zakres jest mniejszy, niewykorzystany potencjał można przesunąć na kolejny okres - bez utraty wartości i bez sztywnego rozliczania każdej godziny.</p>
                 </div>
               </div>
               <div className="p-6 border border-white/10 bg-white/[0.02] rounded-sm">
@@ -225,7 +225,7 @@ export function LimitedAccess5Pricing() {
           <motion.div key="F0" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.4 }} className="space-y-6">
             <div className="p-6 bg-[#D4FF00]/5 border-l-[3px] border-[#D4FF00] rounded-sm mb-10">
                <p className="text-sm text-white/80 leading-relaxed">
-                 <strong className="text-white">Ważna informacja dotycząca zakresu Fazy 2 i ongoing.</strong> Przedstawiony plan delivery stanowi wstępną hipotezę roboczą opartą na aktualnym rozumieniu potrzeb. Wiążący zakres działań produkcyjnych zostanie ustalony dopiero po wypracowaniu i zatwierdzeniu finalnej strategii w Fazie 1. Szczegóły, priorytety i podział pracy pomiędzy miesiącami zapewne ulegną zmianie – to naturalny efekt procesu strategicznego.
+                 <strong className="text-white">Ważna informacja dotycząca zakresu Fazy 2 i ongoing.</strong> Przedstawiony plan delivery stanowi wstępną hipotezę roboczą opartą na aktualnym rozumieniu potrzeb. Wiążący zakres działań produkcyjnych zostanie ustalony dopiero po wypracowaniu i zatwierdzeniu finalnej strategii w Fazie 1. Szczegóły, priorytety i podział pracy pomiędzy miesiącami zapewne ulegną zmianie - to naturalny efekt procesu strategicznego.
                </p>
             </div>
 
@@ -241,7 +241,7 @@ export function LimitedAccess5Pricing() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white mb-2">Kickoff & audit</h3>
-                    <p className="text-sm text-white/50">Marzec 2026 – pierwsze 2 tygodnie</p>
+                    <p className="text-sm text-white/50">Marzec 2026 - pierwsze 2 tygodnie</p>
                   </div>
                 </div>
                 <div className="text-right">
@@ -256,7 +256,7 @@ export function LimitedAccess5Pricing() {
                    <div className="h-px flex-1 bg-white/10"></div>
                  </div>
                  <div className="flex flex-wrap gap-2">
-                   {["Kick-off projektu", "Audit ekosystemu marek", "Mapa usług – stan dziś", "Diagnoza napięć architektonicznych", "Analiza komunikacji vs. oferty"].map((item, i) => (
+                   {["Kick-off projektu", "Audit ekosystemu marek", "Mapa usług - stan dziś", "Diagnoza napięć architektonicznych", "Analiza komunikacji vs. oferty"].map((item, i) => (
                      <span key={i} className="px-3 py-1.5 bg-white/[0.05] rounded-md text-sm text-white/80">{item}</span>
                    ))}
                  </div>
@@ -283,14 +283,14 @@ export function LimitedAccess5Pricing() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-2xl font-bold text-[#D4FF00]">10 – 12k</p>
+                  <p className="text-2xl font-bold text-[#D4FF00]">10 - 12k</p>
                   <p className="text-xs text-white/40 uppercase tracking-widest font-display mt-1">PLN netto</p>
                 </div>
               </div>
               
               <div className="border-t border-white/5 pt-6">
                  <div className="flex items-center gap-4 mb-4">
-                   <p className="text-[10px] font-display uppercase tracking-widest text-[#D4FF00]/80 font-bold whitespace-nowrap">STRATEGIA – DELIVERABLES</p>
+                   <p className="text-[10px] font-display uppercase tracking-widest text-[#D4FF00]/80 font-bold whitespace-nowrap">STRATEGIA - DELIVERABLES</p>
                    <div className="h-px flex-1 bg-white/10"></div>
                  </div>
                  <div className="flex flex-wrap gap-2 mb-3">
@@ -301,7 +301,7 @@ export function LimitedAccess5Pricing() {
                  <div className="flex flex-col gap-2 mt-4">
                    <div className="flex items-start gap-4 p-4 border border-[#D4FF00]/10 border-l-[3px] border-l-[#D4FF00] rounded-sm bg-[#D4FF00]/[0.02]">
                      <span className="px-2 py-1 bg-[#D4FF00] text-[#0A0A0A] text-[9px] font-bold tracking-widest uppercase rounded-sm mt-0.5 shrink-0">Współpraca</span>
-                     <p className="text-sm text-white/70">Konsultacje i analiza wniosków zespołu – dopracowanie strategii względem oczekiwań stakeholderów</p>
+                     <p className="text-sm text-white/70">Konsultacje i analiza wniosków zespołu - dopracowanie strategii względem oczekiwań stakeholderów</p>
                    </div>
                  </div>
               </div>
@@ -319,14 +319,14 @@ export function LimitedAccess5Pricing() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-2xl font-bold text-[#D4FF00]">10 – 12k</p>
+                  <p className="text-2xl font-bold text-[#D4FF00]">10 - 12k</p>
                   <p className="text-xs text-white/40 uppercase tracking-widest font-display mt-1">PLN netto</p>
                 </div>
               </div>
               
               <div className="border-t border-white/5 pt-6">
                  <div className="flex items-center gap-4 mb-4">
-                   <p className="text-[10px] font-display uppercase tracking-widest text-[#D4FF00]/80 font-bold whitespace-nowrap">STRATEGIA – DELIVERABLES</p>
+                   <p className="text-[10px] font-display uppercase tracking-widest text-[#D4FF00]/80 font-bold whitespace-nowrap">STRATEGIA - DELIVERABLES</p>
                    <div className="h-px flex-1 bg-white/10"></div>
                  </div>
                  <div className="flex flex-wrap gap-2 mb-3">
@@ -345,7 +345,7 @@ export function LimitedAccess5Pricing() {
 
             <div className="flex items-center justify-center gap-4 pt-4 before:h-px before:flex-1 before:bg-white/10 after:h-px after:flex-1 after:bg-white/10">
               <span className="inline-flex items-center gap-2 px-6 py-2 bg-[#D4FF00] text-[#0A0A0A] text-[10px] font-bold font-display uppercase tracking-widest rounded-full">
-                <span>✓</span> STRATEGIA ZAMKNIĘTA – KONIEC KWIETNIA
+                <span>✓</span> STRATEGIA ZAMKNIĘTA - KONIEC KWIETNIA
               </span>
             </div>
           </motion.div>
@@ -372,19 +372,19 @@ export function LimitedAccess5Pricing() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white mb-2">Bieżąca produkcja i kampanie</h3>
-                    <p className="text-sm text-white/50">Kwiecień – Sierpień 2026 (5 miesięcy)</p>
+                    <p className="text-sm text-white/50">Kwiecień - Sierpień 2026 (5 miesięcy)</p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-2xl font-bold text-[#f39c12]">15 – 25k</p>
+                  <p className="text-2xl font-bold text-[#f39c12]">15 - 25k</p>
                   <p className="text-xs text-white/40 uppercase tracking-widest font-display mt-1">Łącznie (PLN netto)</p>
-                  <p className="text-xs text-[#f39c12]/80 mt-1">~3 – 5k / mc</p>
+                  <p className="text-xs text-[#f39c12]/80 mt-1">~3 - 5k / mc</p>
                 </div>
               </div>
               
               <div className="border-t border-white/5 pt-6">
                  <div className="flex items-center gap-4 mb-4">
-                   <p className="text-[10px] font-display uppercase tracking-widest text-[#f39c12]/80 font-bold whitespace-nowrap">WSPARCIE RÓWNOLEGŁE – ZAKRES</p>
+                   <p className="text-[10px] font-display uppercase tracking-widest text-[#f39c12]/80 font-bold whitespace-nowrap">WSPARCIE RÓWNOLEGŁE - ZAKRES</p>
                    <div className="h-px flex-1 bg-white/10"></div>
                  </div>
                  <div className="flex flex-wrap gap-2">
@@ -423,7 +423,7 @@ export function LimitedAccess5Pricing() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-2xl font-bold text-[#9b51e0]">12 – 18k</p>
+                  <p className="text-2xl font-bold text-[#9b51e0]">12 - 18k</p>
                   <p className="text-xs text-white/40 uppercase tracking-widest font-display mt-1">PLN netto</p>
                 </div>
               </div>
@@ -434,7 +434,7 @@ export function LimitedAccess5Pricing() {
                    <div className="h-px flex-1 bg-white/10"></div>
                  </div>
                  <div className="flex flex-wrap gap-2 mb-4">
-                   {["Tone of Voice guidelines per marka", "Visual identity system (logo, kolory, typografia)", "Brand playbook – zasady stosowania", "Naming & messaging architecture", "Przykłady komunikacji (do/nie do)", "+ ostateczny backlog po strategii"].map((item, i) => (
+                   {["Tone of Voice guidelines per marka", "Visual identity system (logo, kolory, typografia)", "Brand playbook - zasady stosowania", "Naming & messaging architecture", "Przykłady komunikacji (do/nie do)", "+ ostateczny backlog po strategii"].map((item, i) => (
                      <span key={i} className={`px-3 py-1.5 rounded-md text-sm ${item.startsWith('+') ? 'bg-white/[0.05] text-white/70 border border-white/10' : 'bg-[#9b51e0]/20 text-[#d8b4fe]'}`}>{item}</span>
                    ))}
                  </div>
@@ -442,7 +442,7 @@ export function LimitedAccess5Pricing() {
                    <p className="text-xs text-white/60"><strong className="text-white/80">Marki:</strong> BetterWorkplace · DailyFruits · TeamBudget · BetterOffice</p>
                  </div>
                  <div className="p-4 border border-dashed border-[#9b51e0]/30 rounded-sm bg-[#9b51e0]/[0.02]">
-                   <p className="text-xs text-white/60 leading-relaxed"><strong className="text-[#9b51e0]/80">Uwaga dot. wyceny:</strong> widełki zależą od stanu zasobów każdej marki. Marka z istniejącą identyfikacją wymaga systematyzacji i playbooka. Marka budowana od zera to pełen zakres identity — wycena ustalana indywidualnie po Fazie 2.1.</p>
+                   <p className="text-xs text-white/60 leading-relaxed"><strong className="text-[#9b51e0]/80">Uwaga dot. wyceny:</strong> widełki zależą od stanu zasobów każdej marki. Marka z istniejącą identyfikacją wymaga systematyzacji i playbooka. Marka budowana od zera to pełen zakres identity - wycena ustalana indywidualnie po Fazie 2.1.</p>
                  </div>
               </div>
             </div>
@@ -456,11 +456,11 @@ export function LimitedAccess5Pricing() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white mb-2">Materiały digital</h3>
-                    <p className="text-sm text-white/50">Maj – Czerwiec 2026</p>
+                    <p className="text-sm text-white/50">Maj - Czerwiec 2026</p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-2xl font-bold text-[#9b51e0]">10 – 14k</p>
+                  <p className="text-2xl font-bold text-[#9b51e0]">10 - 14k</p>
                   <p className="text-xs text-white/40 uppercase tracking-widest font-display mt-1">PLN netto</p>
                 </div>
               </div>
@@ -471,7 +471,7 @@ export function LimitedAccess5Pricing() {
                    <div className="h-px flex-1 bg-white/10"></div>
                  </div>
                  <div className="flex flex-wrap gap-2 mb-4">
-                   {["Content templates (social, email, prezentacje)", "Brief standaryzacja + workflow contentu", "Social media kit + szablony formatów", "Asset library – struktura i pliki źródłowe", "Materiały digital per priorytetowa marka", "+ ostateczny backlog po strategii"].map((item, i) => (
+                   {["Content templates (social, email, prezentacje)", "Brief standaryzacja + workflow contentu", "Social media kit + szablony formatów", "Asset library - struktura i pliki źródłowe", "Materiały digital per priorytetowa marka", "+ ostateczny backlog po strategii"].map((item, i) => (
                      <span key={i} className={`px-3 py-1.5 rounded-md text-sm ${item.startsWith('+') ? 'bg-white/[0.05] text-white/70 border border-white/10' : 'bg-[#9b51e0]/20 text-[#d8b4fe]'}`}>{item}</span>
                    ))}
                  </div>
@@ -490,11 +490,11 @@ export function LimitedAccess5Pricing() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white mb-2">Materiały sprzedażowe</h3>
-                    <p className="text-sm text-white/50">Lipiec – Sierpień 2026</p>
+                    <p className="text-sm text-white/50">Lipiec - Sierpień 2026</p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-2xl font-bold text-[#9b51e0]">8 – 14k</p>
+                  <p className="text-2xl font-bold text-[#9b51e0]">8 - 14k</p>
                   <p className="text-xs text-white/40 uppercase tracking-widest font-display mt-1">PLN netto</p>
                 </div>
               </div>
@@ -505,7 +505,7 @@ export function LimitedAccess5Pricing() {
                    <div className="h-px flex-1 bg-white/10"></div>
                  </div>
                  <div className="flex flex-wrap gap-2 mb-4">
-                   {["Pitch deck (nowy) + one-pagery per marka", "Praktyczny playbook pracy dla zespołu", "QA przegląd – wersje finalne wszystkich materiałów", "Sesja handoff + przekazanie narzędzi", "Onboarding pack – jak to stosować na co dzień", "+ ostateczny backlog po strategii"].map((item, i) => (
+                   {["Pitch deck (nowy) + one-pagery per marka", "Praktyczny playbook pracy dla zespołu", "QA przegląd - wersje finalne wszystkich materiałów", "Sesja handoff + przekazanie narzędzi", "Onboarding pack - jak to stosować na co dzień", "+ ostateczny backlog po strategii"].map((item, i) => (
                      <span key={i} className={`px-3 py-1.5 rounded-md text-sm ${item.startsWith('+') ? 'bg-white/[0.05] text-white/70 border border-white/10' : 'bg-[#9b51e0]/20 text-[#d8b4fe]'}`}>{item}</span>
                    ))}
                  </div>
@@ -520,12 +520,12 @@ export function LimitedAccess5Pricing() {
         return (
           <motion.div key="F3" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.4 }} className="space-y-6">
             <div className="flex items-center justify-center gap-4 mb-8 before:h-px before:flex-1 before:bg-white/10 after:h-px after:flex-1 after:bg-white/10">
-              <span className="inline-block px-5 py-2 bg-[#e67e22] text-[#0A0A0A] text-[10px] font-bold font-display uppercase tracking-widest rounded-full">FAZA 3 - WSPARCIE OPERACYJNE (WRZESIEŃ–GRUDZIEŃ)</span>
+              <span className="inline-block px-5 py-2 bg-[#e67e22] text-[#0A0A0A] text-[10px] font-bold font-display uppercase tracking-widest rounded-full">FAZA 3 - WSPARCIE OPERACYJNE (WRZESIEŃ-GRUDZIEŃ)</span>
             </div>
 
             <div className="p-6 bg-[#e67e22]/10 border-l-[3px] border-[#e67e22] rounded-sm mb-10">
                <p className="text-sm text-white/80 leading-relaxed">
-                 Cały branding, playbooki i materiały gotowe przed sezonem. Faza 2 przechodzi w tryb <strong className="text-[#e67e22]">partnera operacyjnego</strong> – dbamy o spójność ekosystemu, reagujemy na potrzeby i zapewniamy, że wysoki sezon przebiega zgodnie z wypracowaną strategią.
+                 Cały branding, playbooki i materiały gotowe przed sezonem. Faza 2 przechodzi w tryb <strong className="text-[#e67e22]">partnera operacyjnego</strong> - dbamy o spójność ekosystemu, reagujemy na potrzeby i zapewniamy, że wysoki sezon przebiega zgodnie z wypracowaną strategią.
                </p>
             </div>
 
@@ -537,12 +537,12 @@ export function LimitedAccess5Pricing() {
                     <span className="text-lg font-bold text-[#0A0A0A]">6</span>
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white mb-2">Wsparcie operacyjne – start sezonu</h3>
+                    <h3 className="text-xl font-bold text-white mb-2">Wsparcie operacyjne - start sezonu</h3>
                     <p className="text-sm text-white/50">Wrzesień 2026</p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-2xl font-bold text-[#10b981]">6 – 10k</p>
+                  <p className="text-2xl font-bold text-[#10b981]">6 - 10k</p>
                   <p className="text-xs text-white/40 uppercase tracking-widest font-display mt-1">PLN netto</p>
                 </div>
               </div>
@@ -576,7 +576,7 @@ export function LimitedAccess5Pricing() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-2xl font-bold text-[#10b981]">6 – 10k</p>
+                  <p className="text-2xl font-bold text-[#10b981]">6 - 10k</p>
                   <p className="text-xs text-white/40 uppercase tracking-widest font-display mt-1">PLN netto</p>
                 </div>
               </div>
@@ -610,7 +610,7 @@ export function LimitedAccess5Pricing() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-2xl font-bold text-[#10b981]">9 – 12k</p>
+                  <p className="text-2xl font-bold text-[#10b981]">9 - 12k</p>
                   <p className="text-xs text-white/40 uppercase tracking-widest font-display mt-1">PLN netto</p>
                 </div>
               </div>
@@ -621,7 +621,7 @@ export function LimitedAccess5Pricing() {
                    <div className="h-px flex-1 bg-white/10"></div>
                  </div>
                  <div className="flex flex-wrap gap-2 mb-4">
-                   {["Identyfikacja i materiały paczek świątecznych", "Kampania Q4 – kreacje i formaty", "Wsparcie przy komunikacji sezonowej", "Brand consistency review"].map((item, i) => (
+                   {["Identyfikacja i materiały paczek świątecznych", "Kampania Q4 - kreacje i formaty", "Wsparcie przy komunikacji sezonowej", "Brand consistency review"].map((item, i) => (
                      <span key={i} className="px-3 py-1.5 bg-[#10b981]/20 rounded-md text-sm text-[#10b981]">{item}</span>
                    ))}
                  </div>
@@ -644,7 +644,7 @@ export function LimitedAccess5Pricing() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-2xl font-bold text-[#10b981]">6 – 10k</p>
+                  <p className="text-2xl font-bold text-[#10b981]">6 - 10k</p>
                   <p className="text-xs text-white/40 uppercase tracking-widest font-display mt-1">PLN netto</p>
                 </div>
               </div>
@@ -655,7 +655,7 @@ export function LimitedAccess5Pricing() {
                    <div className="h-px flex-1 bg-white/10"></div>
                  </div>
                  <div className="flex flex-wrap gap-2 mb-4">
-                   {["Podsumowanie roku – brand audit", "Co działało, co wymaga korekty", "Rekomendacje na 2027", "Rozmowa o przedłużeniu współpracy"].map((item, i) => (
+                   {["Podsumowanie roku - brand audit", "Co działało, co wymaga korekty", "Rekomendacje na 2027", "Rozmowa o przedłużeniu współpracy"].map((item, i) => (
                      <span key={i} className="px-3 py-1.5 bg-[#10b981]/20 rounded-md text-sm text-[#10b981]">{item}</span>
                    ))}
                  </div>

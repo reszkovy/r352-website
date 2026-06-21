@@ -56,9 +56,9 @@ function Frame() {
         <p className="leading-[44px] mb-0">{`Brand Architecture &`}</p>
         <p className="leading-[45.62px]">Communication Framework</p>
       </div>
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[63.28%_54.64%_32.77%_8%] leading-[16px] not-italic text-[#999] text-[14.1px] tracking-[-0.1928px] whitespace-nowrap">{`Phase 1 — Scope & Deliverables Proposal`}</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[63.28%_54.64%_32.77%_8%] leading-[16px] not-italic text-[#999] text-[14.1px] tracking-[-0.1928px] whitespace-nowrap">{`Phase 1 - Scope & Deliverables Proposal`}</p>
       <Group />
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[82.36%_62.66%_14.67%_24%] leading-[12px] not-italic text-[#666] text-[10.4px] tracking-[-0.0812px] whitespace-nowrap">— Strategic Partner</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[82.36%_62.66%_14.67%_24%] leading-[12px] not-italic text-[#666] text-[10.4px] tracking-[-0.0812px] whitespace-nowrap">- Strategic Partner</p>
     </div>
   );
 }
@@ -137,7 +137,7 @@ function Frame1() {
       <ClipPathFrame2 />
       <p className="absolute font-['Georgia:Bold',sans-serif] inset-[58.88%_82.36%_37.17%_15%] leading-[16px] not-italic text-[#ff6b35] text-[14px] whitespace-nowrap">03</p>
       <p className="absolute font-['Inter:Bold',sans-serif] font-bold inset-[57.41%_66.36%_38.89%_21%] leading-[15px] not-italic text-[#151515] text-[13.4px] tracking-[-0.3141px] whitespace-nowrap">Harmonogram</p>
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[62%_55.25%_35.28%_21%] leading-[11px] not-italic text-[#666] text-[9.5px] tracking-[0.0371px] whitespace-nowrap">Tydzień po tygodniu — 11.03 → 02.04</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[62%_55.25%_35.28%_21%] leading-[11px] not-italic text-[#666] text-[9.5px] tracking-[0.0371px] whitespace-nowrap">Tydzień po tygodniu - 11.03 → 02.04</p>
       <ClipPathFrame3 />
       <p className="absolute font-['Georgia:Bold',sans-serif] inset-[71.33%_82.22%_24.72%_15%] leading-[16px] not-italic text-[#ff6b35] text-[14px] tracking-[0.875px] whitespace-nowrap">04</p>
       <p className="absolute font-['Inter:Bold',sans-serif] font-bold inset-[69.86%_70.25%_26.43%_21%] leading-[15px] not-italic text-[#151515] text-[13.4px] tracking-[-0.4187px] whitespace-nowrap">Spotkania</p>
@@ -369,7 +369,7 @@ function Frame2() {
         <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgRectangle} />
       </div>
       <Group2 />
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[31.69%_10.75%_65.35%_59.53%] leading-[12px] not-italic text-[#999] text-[10.4px] tracking-[-0.0609px] whitespace-nowrap">— ale komunikacja nie nadąża za wzrostem.</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[31.69%_10.75%_65.35%_59.53%] leading-[12px] not-italic text-[#999] text-[10.4px] tracking-[-0.0609px] whitespace-nowrap">- ale komunikacja nie nadąża za wzrostem.</p>
       <div className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[35.24%_10.39%_57.84%_11%] leading-[0] not-italic text-[#999] text-[0px] text-[10.6px] tracking-[-0.176px] whitespace-nowrap">
         <p className="leading-[12px] mb-0">Na stronach funkcjonuje 6-8 różnych nazw bez jasnej hierarchii. Kluczowe pytanie: co jest marką, co produktem, a co</p>
         <p className="leading-[14.4px]">usługą?</p>
@@ -598,7 +598,7 @@ function Frame3() {
       <Group9 />
       <p className="absolute font-['Inter:Bold',sans-serif] font-bold inset-[30.08%_67.44%_66.71%_14.5%] leading-[13px] not-italic text-[#151515] text-[11.5px] tracking-[-0.2246px] whitespace-nowrap">Brand Architecture Map</p>
       <div className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[36.94%_56.89%_57.38%_14.5%] leading-[0] not-italic text-[#666] text-[0px] text-[8.8px] tracking-[-0.0688px] whitespace-nowrap">
-        <p className="leading-[10px] mb-0">Wizualna hierarchia ekosystemu — kto jest marką,</p>
+        <p className="leading-[10px] mb-0">Wizualna hierarchia ekosystemu - kto jest marką,</p>
         <p className="leading-[12px]">produktem, usługą. Relacje i endorsement logic.</p>
       </div>
       <div className="absolute inset-[25.98%_4.67%_52.47%_52.22%]" data-name="Rectangle">
@@ -873,7 +873,7 @@ function Frame4() {
         <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgRectangle3} />
       </div>
       <Group16 />
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[47.38%_85.83%_50.4%_7.5%] leading-[9px] not-italic text-[#666] text-[8px] tracking-[0.25px] whitespace-nowrap">11–17 marca</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[47.38%_85.83%_50.4%_7.5%] leading-[9px] not-italic text-[#666] text-[8px] tracking-[0.25px] whitespace-nowrap">11-17 marca</p>
       <p className="absolute font-['Inter:Bold',sans-serif] font-bold inset-[53.28%_78.89%_43.51%_7.5%] leading-[13px] not-italic text-[11.5px] text-white tracking-[-0.1797px] whitespace-nowrap">{`Discovery & Audit`}</p>
       <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[61.25%_75.69%_36.53%_7.5%] leading-[9px] not-italic text-[#999] text-[7.8px] whitespace-nowrap">Desk research stron i materiałów</p>
       <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[67.47%_77.64%_30.3%_7.5%] leading-[9px] not-italic text-[#999] text-[7.8px] tracking-[0.0305px] whitespace-nowrap">Audit komunikacji i spójności</p>
@@ -884,10 +884,10 @@ function Frame4() {
         <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgRectangle3} />
       </div>
       <Group18 />
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[47.38%_62.33%_50.4%_31%] leading-[9px] not-italic text-[#666] text-[8px] tracking-[-0.0625px] whitespace-nowrap">18–24 marca</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[47.38%_62.33%_50.4%_31%] leading-[9px] not-italic text-[#666] text-[8px] tracking-[-0.0625px] whitespace-nowrap">18-24 marca</p>
       <p className="absolute font-['Inter:Bold',sans-serif] font-bold inset-[53.28%_53.44%_43.51%_31%] leading-[13px] not-italic text-[11.5px] text-white tracking-[-0.1797px] whitespace-nowrap">{`Architecture & Roles`}</p>
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[61.25%_52.47%_36.53%_31%] leading-[9px] not-italic text-[#999] text-[8px] tracking-[-0.0625px] whitespace-nowrap">Brand Architecture Map — draft</p>
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[67.47%_53.02%_30.3%_31%] leading-[9px] not-italic text-[#999] text-[8px] tracking-[-0.25px] whitespace-nowrap">Ecosystem Role Cards — 4 byty</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[61.25%_52.47%_36.53%_31%] leading-[9px] not-italic text-[#999] text-[8px] tracking-[-0.0625px] whitespace-nowrap">Brand Architecture Map - draft</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[67.47%_53.02%_30.3%_31%] leading-[9px] not-italic text-[#999] text-[8px] tracking-[-0.25px] whitespace-nowrap">Ecosystem Role Cards - 4 byty</p>
       <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[73.7%_53.72%_24.08%_31%] leading-[9px] not-italic text-[#999] text-[8px] tracking-[-0.1875px] whitespace-nowrap">Strategic Decisions Document</p>
       <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[79.92%_53.44%_17.85%_31%] leading-[9px] not-italic text-[#999] text-[8px] tracking-[-0.2188px] whitespace-nowrap">Quick check z klientem (async)</p>
       <Group19 />
@@ -895,7 +895,7 @@ function Frame4() {
         <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgRectangle3} />
       </div>
       <Group20 />
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[47.38%_38.83%_50.4%_54.51%] leading-[9px] not-italic text-[#666] text-[8px] tracking-[-0.0625px] whitespace-nowrap">25–31 marca</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[47.38%_38.83%_50.4%_54.51%] leading-[9px] not-italic text-[#666] text-[8px] tracking-[-0.0625px] whitespace-nowrap">25-31 marca</p>
       <p className="absolute font-['Inter:Bold',sans-serif] font-bold inset-[53.28%_31.19%_43.51%_54.51%] leading-[13px] not-italic text-[11.5px] text-white tracking-[-0.1797px] whitespace-nowrap">{`Matrix & Assembly`}</p>
       <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[61.25%_33.69%_36.53%_54.51%] leading-[9px] not-italic text-[#999] text-[8px] whitespace-nowrap">Communication Matrix</p>
       <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[67.47%_35.08%_30.3%_54.51%] leading-[9px] not-italic text-[#999] text-[8px] tracking-[-0.25px] whitespace-nowrap">Cross-sell Logic Map</p>
@@ -909,7 +909,7 @@ function Frame4() {
         <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgRectangle3} />
       </div>
       <Group22 />
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[47.38%_15.46%_50.4%_78.01%] leading-[9px] not-italic text-[#666] text-[8px] whitespace-nowrap">1–2 kwietnia</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[47.38%_15.46%_50.4%_78.01%] leading-[9px] not-italic text-[#666] text-[8px] whitespace-nowrap">1-2 kwietnia</p>
       <p className="absolute font-['Inter:Bold',sans-serif] font-bold inset-[53.28%_5.04%_43.51%_78.01%] leading-[13px] not-italic text-[11.5px] text-white tracking-[-0.2695px] whitespace-nowrap">{`Feedback & Finalizacja`}</p>
       <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[61.25%_10.32%_36.53%_78.01%] leading-[9px] not-italic text-[#999] text-[8px] tracking-[-0.125px] whitespace-nowrap">Poprawki po spotkaniu</p>
       <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[67.47%_10.6%_30.3%_78.01%] leading-[9px] not-italic text-[#999] text-[8px] tracking-[-0.125px] whitespace-nowrap">Finalizacja dokumentu</p>
@@ -1060,14 +1060,14 @@ function Frame5() {
       <Group25 />
       <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[52.2%_68.66%_45.33%_18%] leading-[10px] not-italic text-[#666] text-[8.6px] tracking-[0.1344px] whitespace-nowrap">Tydzień 2 • ~24 marca</p>
       <p className="absolute font-['Inter:Bold',sans-serif] font-bold inset-[56.61%_51.58%_39.44%_18%] leading-[16px] not-italic text-[#151515] text-[14.2px] tracking-[-0.4437px] whitespace-nowrap">Checkpoint (async lub krótki call)</p>
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[61.98%_49.64%_35.55%_18%] leading-[10px] not-italic text-[#999] text-[8.8px] tracking-[0.0688px] whitespace-nowrap">15–30 min | Weryfikacja kierunku przed finalną budową</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[61.98%_49.64%_35.55%_18%] leading-[10px] not-italic text-[#999] text-[8.8px] tracking-[0.0688px] whitespace-nowrap">15-30 min | Weryfikacja kierunku przed finalną budową</p>
       <p className="absolute font-['Arial:Bold',sans-serif] inset-[52.79%_28.32%_44.5%_65.01%] leading-[11px] not-italic text-[#3b82f6] text-[9px] tracking-[-0.1406px] whitespace-nowrap">O U T P U T</p>
       <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[61.09%_14.85%_36.44%_65.01%] leading-[10px] not-italic text-[#666] text-[8.8px] tracking-[-0.1375px] whitespace-nowrap">Go/no-go na finalizację deliverables</p>
       <div className="absolute inset-[72.21%_7.67%_5.36%_7.22%]" data-name="Rectangle">
         <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgRectangle4} />
       </div>
       <Group26 />
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[75.32%_66.58%_22.21%_18%] leading-[10px] not-italic text-[#666] text-[8.6px] tracking-[0.168px] whitespace-nowrap">Tydzień 3 • ~30–31 marca</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[75.32%_66.58%_22.21%_18%] leading-[10px] not-italic text-[#666] text-[8.6px] tracking-[0.168px] whitespace-nowrap">Tydzień 3 • ~30-31 marca</p>
       <p className="absolute font-['Inter:Bold',sans-serif] font-bold inset-[79.73%_63.66%_16.32%_18%] leading-[16px] not-italic text-[#151515] text-[14.2px] tracking-[-0.3883px] whitespace-nowrap">Prezentacja Phase 1</p>
       <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[85.1%_54.5%_12.43%_18%] leading-[10px] not-italic text-[#999] text-[8.8px] tracking-[0.0859px] whitespace-nowrap">90 min | Prezentacja kompletnego frameworku</p>
       <p className="absolute font-['Arial:Bold',sans-serif] inset-[75.91%_28.32%_21.38%_65.01%] leading-[11px] not-italic text-[#10b981] text-[9px] tracking-[-0.1406px] whitespace-nowrap">O U T P U T</p>
@@ -1250,7 +1250,7 @@ function Frame6() {
       </div>
       <Group28 />
       <p className="absolute font-['Inter:Bold',sans-serif] font-bold inset-[42.79%_63.55%_54%_22%] leading-[13px] not-italic text-[11.5px] text-white tracking-[-0.4492px] whitespace-nowrap">Status TeamBudget</p>
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[47.84%_13.55%_49.69%_22%] leading-[10px] not-italic text-[#666] text-[8.8px] tracking-[-0.1031px] whitespace-nowrap">Co to jest, na jakim etapie, mockup/MVP, model monetyzacji. Bez tego — karta strategiczna oparta na hipotezach.</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[47.84%_13.55%_49.69%_22%] leading-[10px] not-italic text-[#666] text-[8.8px] tracking-[-0.1031px] whitespace-nowrap">Co to jest, na jakim etapie, mockup/MVP, model monetyzacji. Bez tego - karta strategiczna oparta na hipotezach.</p>
       <div className="absolute inset-[53.72%_7.67%_32.74%_7.22%]" data-name="Rectangle">
         <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgRectangle5} />
       </div>
@@ -1262,13 +1262,13 @@ function Frame6() {
       </div>
       <Group30 />
       <p className="absolute font-['Inter:Bold',sans-serif] font-bold inset-[70.53%_52.03%_26.26%_22%] leading-[13px] not-italic text-[11.1px] text-white whitespace-nowrap">Istniejące materiały marketingowe</p>
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[75.59%_28.69%_21.94%_22%] leading-[10px] not-italic text-[#666] text-[8.6px] tracking-[-0.0504px] whitespace-nowrap">Decki sprzedażowe, oferty, case studies, materiały do audytu — co macie dziś w użyciu.</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[75.59%_28.69%_21.94%_22%] leading-[10px] not-italic text-[#666] text-[8.6px] tracking-[-0.0504px] whitespace-nowrap">Decki sprzedażowe, oferty, case studies, materiały do audytu - co macie dziś w użyciu.</p>
       <div className="absolute inset-[81.45%_7.67%_5.01%_7.22%]" data-name="Rectangle">
         <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgRectangle5} />
       </div>
       <Group31 />
       <p className="absolute font-['Inter:Bold',sans-serif] font-bold inset-[84.4%_61.89%_12.39%_22%] leading-[13px] not-italic text-[11.5px] text-white tracking-[-0.3594px] whitespace-nowrap">Termin Discovery Call</p>
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[89.46%_25.64%_8.08%_22%] leading-[10px] not-italic text-[#666] text-[8.8px] tracking-[-0.0172px] whitespace-nowrap">60 min w tygodniu 11–17 marca. Im szybciej, tym lepiej — warunkuje resztę harmonogramu.</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal inset-[89.46%_25.64%_8.08%_22%] leading-[10px] not-italic text-[#666] text-[8.8px] tracking-[-0.0172px] whitespace-nowrap">60 min w tygodniu 11-17 marca. Im szybciej, tym lepiej - warunkuje resztę harmonogramu.</p>
     </div>
   );
 }

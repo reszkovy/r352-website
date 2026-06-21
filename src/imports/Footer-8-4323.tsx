@@ -83,10 +83,10 @@ function Frame2() {
   return (
     <div className="absolute bottom-[51.93%] content-stretch flex flex-col gap-[8px] items-start left-[calc(62.5%+4px)] top-[40.06%] translate-x-[-50%]">
       <p className="css-ew64yg font-['Bricolage_Grotesque:Medium',sans-serif] font-medium leading-[1.3] relative shrink-0 text-[#3c403c] text-[12px]" style={{ fontVariationSettings: "'opsz' 14, 'wdth' 100" }}>
-        Mo—Fr
+        Mo-Fr
       </p>
       <p className="css-ew64yg font-['Bricolage_Grotesque:Regular',sans-serif] font-normal leading-[1.2] relative shrink-0 text-[#adb3ab] text-[28px]" style={{ fontVariationSettings: "'opsz' 14, 'wdth' 100" }}>
-        9am—6pm
+        9am-6pm
       </p>
     </div>
   );
@@ -206,7 +206,7 @@ export default function Footer() {
       <Frame1 />
       <Frame />
       <p className="absolute css-ew64yg font-['Bricolage_Grotesque:Medium',sans-serif] font-medium inset-[70.17%_34.24%_27.62%_58.06%] leading-[1.3] text-[#3c403c] text-[12px]" style={{ fontVariationSettings: "'opsz' 14, 'wdth' 100" }}>
-        © 2023 — Copyright
+        © 2023 - Copyright
       </p>
       <p className="absolute css-ew64yg font-['Bricolage_Grotesque:Medium',sans-serif] font-medium inset-[8.84%_37.71%_88.95%_58.06%] leading-[1.3] text-[#3c403c] text-[12px]" style={{ fontVariationSettings: "'opsz' 14, 'wdth' 100" }}>
         Contact Us

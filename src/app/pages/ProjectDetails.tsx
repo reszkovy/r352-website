@@ -49,29 +49,29 @@ function NdaGate({ project, language, onUnlock }: { project: any; language: stri
       <div className="w-full max-w-lg mx-auto">
         <Reveal>
           <div className="flex flex-col items-center gap-8 md:gap-10 w-full text-center">
-            {/* Lime label — same pattern as Philosophy / Process / Brief section headers */}
+            {/* Lime label - same pattern as Philosophy / Process / Brief section headers */}
             <span className="block text-xs font-display uppercase tracking-[0.25em] text-[#D4FF00]">
               {language === 'pl' ? 'Pod NDA' : 'Under NDA'}
             </span>
 
-            {/* Client name as hero — editorial scale matching site h1 pattern */}
+            {/* Client name as hero - editorial scale matching site h1 pattern */}
             <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[0.95]">
               {project.client}
             </h1>
 
-            {/* Lock icon — smaller, subtle, between title and copy */}
+            {/* Lock icon - smaller, subtle, between title and copy */}
             <div className="text-neutral-400 dark:text-neutral-600 opacity-60">
               <LockIcon size={28} />
             </div>
 
-            {/* Description — editorial body weight, lighter color */}
+            {/* Description - editorial body weight, lighter color */}
             <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal max-w-md mx-auto">
               {language === 'pl'
                 ? 'To case study jest objęte umową NDA. Skontaktuj się z nami, aby uzyskać hasło dostępu.'
                 : 'This case study is under NDA. Contact us to get the access password.'}
             </p>
 
-            {/* Password input + submit — shade-based elevation, no cheap border */}
+            {/* Password input + submit - shade-based elevation, no cheap border */}
             <form onSubmit={handleSubmit} className="w-full max-w-sm mx-auto">
               <div className={`relative ${shaking ? 'animate-shake' : ''}`}>
                 <input
@@ -101,9 +101,9 @@ function NdaGate({ project, language, onUnlock }: { project: any; language: stri
               )}
             </form>
 
-            {/* CTA stack — two arrow-links, stacked, centered */}
+            {/* CTA stack - two arrow-links, stacked, centered */}
             <div className="flex flex-col items-center gap-4 mt-2">
-              {/* Primary — Contact for access */}
+              {/* Primary - Contact for access */}
               <Link
                 href="/contact"
                 className="group inline-flex items-center gap-2 text-xs font-display uppercase tracking-[0.2em] text-[#D4FF00] hover:text-neutral-900 dark:hover:text-white transition-colors duration-300"
@@ -112,7 +112,7 @@ function NdaGate({ project, language, onUnlock }: { project: any; language: stri
                 <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.5} />
               </Link>
 
-              {/* Secondary — Continue exploring (back to /work) */}
+              {/* Secondary - Continue exploring (back to /work) */}
               <Link
                 href="/work"
                 className="group inline-flex items-center gap-2 text-xs font-display uppercase tracking-[0.2em] text-neutral-500 hover:text-[#D4FF00] transition-colors duration-300"
@@ -158,12 +158,12 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
 
   if (!project) return null;
 
-  // ── CreativeWork JSON-LD — per-case structured data for /work/:slug ──
+  // ── CreativeWork JSON-LD - per-case structured data for /work/:slug ──
   // Same local-Helmet pattern as the HowTo schema in Process.tsx. Headline +
   // client as Organization (about) + r352 as Organization author + canonical
   // URL per slug. Dates derived from the project's `year` field (year-only is
   // a valid schema.org Date); "current" engagements get dateModified = build year.
-  // Metrics (project.stats) deliberately stay OUT of schema claims — numbers
+  // Metrics (project.stats) deliberately stay OUT of schema claims - numbers
   // appear only inside the prose description, never as standalone assertions.
   const baseUrl = "https://www.r352.com";
   const caseUrl = `${baseUrl}/work/${project.id}`;
@@ -188,7 +188,7 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
       "name": "r352",
       "url": baseUrl
     },
-    // @ts-ignore — description is { en, pl } on every project
+    // @ts-ignore - description is { en, pl } on every project
     "description": project.description?.en,
     ...(project.category?.en ? { "genre": project.category.en } : {}),
     ...(firstYear ? { "datePublished": firstYear } : {}),
@@ -286,8 +286,8 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
           </ImageHover>
         </Reveal>
 
-        {/* Inline animation — auto-playing kinetic teaser right after the hero.
-            Optional field per project. Full-width 16:9, muted+loop+playsinline. No controls — feels editorial. */}
+        {/* Inline animation - auto-playing kinetic teaser right after the hero.
+            Optional field per project. Full-width 16:9, muted+loop+playsinline. No controls - feels editorial. */}
         {(project as any).inlineAnimation && (
           <Reveal width="100%" className="mb-32 -mt-16 md:-mt-24">
             <div className="w-full aspect-[16/9] md:aspect-[21/9] bg-neutral-900 rounded-sm overflow-hidden">
@@ -428,7 +428,7 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                 </blockquote>
              </Reveal>
 
-             {/* 5. Outcome — editorial pattern (no box, no border, hair-line divider above).
+             {/* 5. Outcome - editorial pattern (no box, no border, hair-line divider above).
                   Bigger type than other sections, signals "this is the resolution of the story".
                   Replaces the previous bg-neutral-900/50 framed container that read as generic. */}
              <Reveal delay={0.3}>
@@ -441,8 +441,8 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                 </div>
              </Reveal>
 
-             {/* 6. Reflection — quiet strategic afterthought (italic serif, subtle left border).
-                  Different visual register from Outcome above and Testimonial below — gives the
+             {/* 6. Reflection - quiet strategic afterthought (italic serif, subtle left border).
+                  Different visual register from Outcome above and Testimonial below - gives the
                   page a rhythm of LOUD outcome → SOFT reflection → CLIENT VOICE closing. */}
              {/* @ts-ignore */}
              {project.reflection && (
@@ -457,7 +457,7 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                 </Reveal>
              )}
 
-             {/* 7. Testimonial — moved to BOTTOM as the closing emotional moment of the case.
+             {/* 7. Testimonial - moved to BOTTOM as the closing emotional moment of the case.
                   Client voice validates everything above. Full-width editorial treatment with
                   oversized lime cudzysłów + author + role. Last thing visitor reads before CTA. */}
              {/* @ts-ignore */}
@@ -488,13 +488,13 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
           </div>
         </div>
 
-        {/* Video Section — premium click-to-play YouTube embed (if project has videoUrl) */}
+        {/* Video Section - premium click-to-play YouTube embed (if project has videoUrl) */}
         {(project as any).videoUrl && (
           <section className="mb-40">
             <Reveal>
               <YouTubeEmbed
                 url={(project as any).videoUrl}
-                title={`${project.client} — case study video`}
+                title={`${project.client} - case study video`}
               />
             </Reveal>
           </section>
@@ -518,15 +518,15 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
 
            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-y-24">
              {project.images.map((image, i) => {
-               // Per-project layout override — uniform large (full-width 16:9 slabs) for these projects
+               // Per-project layout override - uniform large (full-width 16:9 slabs) for these projects
                const useUniformLarge = ["kubota", "archicom", "discobowl"].includes(project.id);
 
-               // Caterelo — bespoke rhythm: maps stay monumental, single-metric screens go half-width staggered.
+               // Caterelo - bespoke rhythm: maps stay monumental, single-metric screens go half-width staggered.
                // Layout: 2 full-width maps, then 2 staggered pairs of half-width detail shots.
                const useCathereloRhythm = project.id === "caterelo";
 
-               // regional.fit (formerly Opening Engine) — bespoke rhythm: master dashboards full-width,
-               // detail/form/map as varied pairs. Mix of wide horizontal (2.4–2.66 ratio), 4:3 map, portrait form,
+               // regional.fit (formerly Opening Engine) - bespoke rhythm: master dashboards full-width,
+               // detail/form/map as varied pairs. Mix of wide horizontal (2.4-2.66 ratio), 4:3 map, portrait form,
                // near-square detail → needs custom layout. Keep until dedicated regional.fit assets replace placeholders.
                const useOpeningEngineRhythm = project.id === "regional-fit";
 
@@ -536,7 +536,7 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                const isRight = i % 4 === 2;
                const isCentered = i % 4 === 3;
 
-               // Caterelo per-image mapping: indices 0–1 = maps (full 16:9), 2–5 = detail (half-width pairs)
+               // Caterelo per-image mapping: indices 0-1 = maps (full 16:9), 2-5 = detail (half-width pairs)
                // 2 left, 3 right + offset, 4 left, 5 right + offset
                const isCathereloFull = useCathereloRhythm && (i === 0 || i === 1);
                const isCathereloLeft = useCathereloRhythm && (i === 2 || i === 4);
@@ -553,9 +553,9 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                const isOpeningEngineMobileRight = useOpeningEngineRhythm && i === 2;
                const isOpeningEngineSquareCenter = useOpeningEngineRhythm && i === 3;
                const isOpeningEngineWide2to1 = useOpeningEngineRhythm && i === 4;
-               const isOpeningEngineHeroFull = false; // no 16:9 hero in gallery — marketing splash lives on cover
+               const isOpeningEngineHeroFull = false; // no 16:9 hero in gallery - marketing splash lives on cover
 
-               // Legacy aliases — kept for downstream conditions below
+               // Legacy aliases - kept for downstream conditions below
                const isOpeningEngineFull = isOpeningEnginePanoramic || isOpeningEngineWide2to1;
                const isOpeningEngineLeft = isOpeningEngineMapLeft;
                const isOpeningEngineRight = isOpeningEngineMobileRight;
@@ -574,13 +574,13 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                  // All full-width frames: hero (0), panoramic process flow (1), 2:1 users table (5)
                  gridClass = "md:col-span-12";
                } else if (isOpeningEngineLeft) {
-                 // Poland map (4:3) — half-width LEFT, paired with mobile portrait on right
+                 // Poland map (4:3) - half-width LEFT, paired with mobile portrait on right
                  gridClass = "md:col-span-6 md:col-start-1";
                } else if (isOpeningEngineRight) {
-                 // Mobile demo (3:4 portrait) — narrow column on RIGHT, offset down for editorial rhythm
+                 // Mobile demo (3:4 portrait) - narrow column on RIGHT, offset down for editorial rhythm
                  gridClass = "md:col-span-4 md:col-start-8 md:mt-16";
                } else if (isOpeningEngineCentered) {
-                 // Square brief detail — centered editorial moment, narrower so content stays readable
+                 // Square brief detail - centered editorial moment, narrower so content stays readable
                  gridClass = "md:col-span-8 md:col-start-3";
                } else if (isLeft) {
                  gridClass = "md:col-span-5 md:col-start-1";
@@ -609,7 +609,7 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                            <div className="absolute -inset-4 bg-gradient-to-r from-[#D4FF00]/20 to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                         )}
 
-                        {/* Aspect ratio routing — regional.fit gets per-frame ratios matching source content;
+                        {/* Aspect ratio routing - regional.fit gets per-frame ratios matching source content;
                             others fall through to the default useLargeAspect / portrait / 4:3 ladder. */}
                         <ImageHover
                            className={`
@@ -657,14 +657,14 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
         </section>
         )}
 
-        {/* Contact CTA — editorial pattern matching AgencyHero ATF.
+        {/* Contact CTA - editorial pattern matching AgencyHero ATF.
             No box, no border, no background fill. Just a hair-line divider above,
             asymmetric layout (eyebrow + editorial headline LEFT / dual MagneticButton CTAs + mailto RIGHT),
             generous breathing room. Consistent with hero CTA stack across the site. */}
         <Reveal>
           <div className="mb-24 pt-24 md:pt-32 pb-12 border-t border-white/10 relative z-50 pointer-events-auto">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 md:gap-16">
-              {/* LEFT — eyebrow + headline */}
+              {/* LEFT - eyebrow + headline */}
               <div className="max-w-2xl">
                 <span className="block text-xs font-display uppercase tracking-[0.25em] text-neutral-500 mb-6">
                   {language === 'pl' ? "Potrzebujesz podobnych rezultatów?" : "Need results like these?"}
@@ -674,10 +674,10 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                 </h2>
               </div>
 
-              {/* RIGHT — dual CTAs + mailto, mirrors hero AgencyHero pattern */}
+              {/* RIGHT - dual CTAs + mailto, mirrors hero AgencyHero pattern */}
               <div className="flex flex-col gap-6 md:items-end shrink-0">
                 <div className="flex flex-col sm:flex-row gap-6">
-                  {/* PRIMARY — Brief funnel */}
+                  {/* PRIMARY - Brief funnel */}
                   <MagneticButton
                     onClick={() => setLocation("/brief")}
                     className="bg-[#D4FF00] text-black border-none hover:bg-[#D4FF00]/90 rounded-none"
@@ -689,7 +689,7 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                     </span>
                   </MagneticButton>
 
-                  {/* SECONDARY — Calendly direct */}
+                  {/* SECONDARY - Calendly direct */}
                   <MagneticButton
                     onClick={() => {
                       try { (window as any).plausible?.("calendly_clicked", { props: { source: `case-${project.id}` } }); } catch { /* noop */ }
@@ -705,9 +705,9 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                   </MagneticButton>
                 </div>
 
-                {/* Tertiary — direct mail for warm leads */}
+                {/* Tertiary - direct mail for warm leads */}
                 <a
-                  href="mailto:hello@r352.com?subject=r352%20—%20hello"
+                  href="mailto:hello@r352.com?subject=r352%20-%20hello"
                   onClick={() => {
                     try { (window as any).plausible?.("mail_clicked", { props: { source: `case-${project.id}` } }); } catch { /* noop */ }
                   }}
