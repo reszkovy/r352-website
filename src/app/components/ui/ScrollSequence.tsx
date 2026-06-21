@@ -25,6 +25,14 @@ interface ScrollSequenceProps {
       object-cover treatment used by /philosophy. Pass e.g. an object-contain
       variant for portrait sources that shouldn't be cropped. */
   canvasClassName?: string;
+  /** Exit treatment after the scrub completes:
+      - "slide" (default): canvas slides up off-screen (philosophy behavior).
+      - "fade": canvas stays roughly in place with a slow parallax drift and
+        fades its opacity to 0, so the next section (which sits behind the
+        portal) is revealed through it as it scrolls up — a parallax cross-fade.
+        Pair with a negative top margin on the following content so it's already
+        risen behind the canvas when the fade begins. */
+  exitMode?: "slide" | "fade";
 }
 
 /**
@@ -60,6 +68,7 @@ export function ScrollSequence({
   fadeChildrenAt,
   overlayClassName = "",
   canvasClassName,
+  exitMode = "slide",
 }: ScrollSequenceProps) {
   const triggerRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -115,6 +124,8 @@ export function ScrollSequence({
 
       let canvasTopPx = 0;
       let progress = 0;
+      let wrapperOpacity = 1;
+      const exitDistance = Math.max(1, triggerHeight - playDistance);
 
       if (scrolled < 0) {
         // BEFORE trigger entered viewport — canvas at top, frame 0
@@ -125,17 +136,34 @@ export function ScrollSequence({
         canvasTopPx = 0;
         progress = scrolled / playDistance;
       } else if (scrolled < triggerHeight) {
-        // EXIT — canvas anchored, slides up as scroll continues
-        canvasTopPx = -(scrolled - playDistance);
+        // EXIT
         progress = 1;
+        if (exitMode === "fade") {
+          // Canvas holds with a slow parallax drift and fades out, revealing
+          // the next section (behind the portal) as it scrolls up over it.
+          canvasTopPx = -(scrolled - playDistance) * 0.22;
+          wrapperOpacity = Math.max(0, 1 - (scrolled - playDistance) / exitDistance);
+        } else {
+          // Slide up off-screen (default).
+          canvasTopPx = -(scrolled - playDistance);
+        }
       } else {
-        // AFTER — canvas off-screen above viewport
-        canvasTopPx = -vh;
+        // AFTER
         progress = 1;
+        if (exitMode === "fade") {
+          canvasTopPx = -exitDistance * 0.22;
+          wrapperOpacity = 0;
+        } else {
+          canvasTopPx = -vh;
+        }
       }
 
       // Apply translate (synced to scroll, no easing — must be instant per frame)
       wrapper.style.transform = `translate3d(0, ${canvasTopPx}px, 0)`;
+      // Fade-exit opacity (no-op in slide mode — stays fully opaque)
+      if (exitMode === "fade") {
+        wrapper.style.opacity = `${wrapperOpacity}`;
+      }
 
       // Optional overlay scroll-tied fade (separate from entry animation)
       if (overlayRef.current && fadeChildrenAt) {
