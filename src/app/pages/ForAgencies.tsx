@@ -122,7 +122,7 @@ export function ForAgencies() {
         pinHeight="180vh"
         backgroundColor="#0a0a0a"
         fadeChildrenAt={[0.12, 0.32]}
-        canvasClassName="absolute inset-0 w-full h-full object-contain object-top md:object-center mix-blend-screen"
+        canvasClassName="absolute inset-0 w-full h-full object-contain object-top md:object-right mix-blend-screen md:scale-[1.3] md:origin-right"
         overlayClassName="flex items-end md:items-center px-6 md:px-12 pb-20 md:pb-0"
       >
         {/* Mobile-only bottom scrim — hands sit top (object-top), copy sits
