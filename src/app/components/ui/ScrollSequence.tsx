@@ -33,6 +33,11 @@ interface ScrollSequenceProps {
         Pair with a negative top margin on the following content so it's already
         risen behind the canvas when the fade begins. */
   exitMode?: "slide" | "fade";
+  /** Length of the exit/fade zone in vh units (default 100 = one viewport, the
+      original behavior). Smaller = a tighter, snappier exit so the next section
+      arrives sooner. Only meaningful alongside the pin math; it reallocates the
+      trigger between PLAY (scrub) and EXIT. */
+  exitVh?: number;
 }
 
 /**
@@ -69,6 +74,7 @@ export function ScrollSequence({
   overlayClassName = "",
   canvasClassName,
   exitMode = "slide",
+  exitVh,
 }: ScrollSequenceProps) {
   const triggerRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -119,7 +125,10 @@ export function ScrollSequence({
       const triggerRect = trigger.getBoundingClientRect();
       const vh = window.innerHeight;
       const triggerHeight = triggerRect.height;
-      const playDistance = Math.max(1, triggerHeight - vh);
+      // Exit zone length: vh by default (slide mode / philosophy), or a custom
+      // vh-fraction via exitVh. The remainder of the trigger is the PLAY scrub.
+      const exitPx = exitVh != null ? (exitVh / 100) * vh : vh;
+      const playDistance = Math.max(1, triggerHeight - exitPx);
       const scrolled = -triggerRect.top;
 
       let canvasTopPx = 0;
@@ -141,11 +150,11 @@ export function ScrollSequence({
         if (exitMode === "fade") {
           // Canvas holds with a slow parallax drift and fades out, revealing
           // the next section (behind the portal) as it scrolls up over it.
-          // Fade is front-loaded (completes over the first ~45% of the exit)
-          // so the frame clears fast and never lingers opaque over the
-          // incoming copy — the section reads as coming OVER the dissolving frame.
+          // Fade is strongly front-loaded (completes over the first ~30% of the
+          // exit) so the frame clears fast and the incoming copy is revealed
+          // early and legibly — it reads as coming OVER the dissolving frame.
           canvasTopPx = -(scrolled - playDistance) * 0.22;
-          wrapperOpacity = Math.max(0, 1 - (scrolled - playDistance) / (exitDistance * 0.45));
+          wrapperOpacity = Math.max(0, 1 - (scrolled - playDistance) / (exitDistance * 0.22));
         } else {
           // Slide up off-screen (default).
           canvasTopPx = -(scrolled - playDistance);

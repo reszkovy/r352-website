@@ -119,10 +119,11 @@ export function ForAgencies() {
         frameCount={125}
         framePath="/agency-frames/frame"
         padDigits={3}
-        pinHeight="200vh"
+        pinHeight="180vh"
         backgroundColor="#0a0a0a"
         fadeChildrenAt={[0.12, 0.3]}
         exitMode="fade"
+        exitVh={80}
         canvasClassName="absolute inset-0 w-full h-full object-contain object-top md:object-right mix-blend-screen md:scale-[1.3] md:origin-right"
         overlayClassName="flex items-end md:items-center px-6 md:px-12 pb-20 md:pb-0"
       >
@@ -172,7 +173,7 @@ export function ForAgencies() {
           top) so it's already risen, hidden behind the opaque last frame, when
           the fade-exit begins — then it's revealed through the fading hands as
           they cross-fade out. relative + z-0 keeps a clean stacking context. */}
-      <div className="relative z-0 -mt-[100vh] px-6 md:px-12 max-w-[1600px] mx-auto pt-24 md:pt-32">
+      <div className="relative z-0 -mt-[80vh] px-6 md:px-12 max-w-[1600px] mx-auto pt-24 md:pt-32">
 
       {/* ── Proof line — quiet credibility band. CONFIRM/ADJUST WORDING with the
             client before relying on it publicly (currently a true but unnamed claim). ── */}
