@@ -162,6 +162,13 @@ export function ForAgencies() {
               ? "Już to robimy — embedded w jednej z większych polskich agencji, na żywej pracy klienckiej."
               : "We already run this — embedded with one of Poland's larger agencies, on live client work."}
           </p>
+          {/* NDA note — turns the unnamed claim into a feature: discretion IS the
+              white-label product. Also why this page shows no logos/case detail. */}
+          <p className="text-sm md:text-base text-neutral-500 leading-relaxed max-w-2xl mt-4">
+            {pl
+              ? "Bez nazw, bez szczegółów — każda współpraca działa pod NDA. Ta dyskrecja to część usługi: white-label znaczy, że Twój klient nigdy nas nie widzi, a Twoja przewaga zostaje Twoja."
+              : "No names, no details — every engagement runs under NDA. The discretion is the product: white-label means your client never sees us, and your edge stays yours."}
+          </p>
         </div>
       </Reveal>
 
