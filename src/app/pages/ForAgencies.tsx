@@ -87,6 +87,26 @@ export function ForAgencies() {
     },
   ];
 
+  // ── The retainer — fixed monthly capacity, deliberately non-invasive process ──
+  const retainerSteps = [
+    {
+      en: { t: "One way in", d: "A single point of contact, in the tools you already use — Slack, Notion, email. Nothing new for your team to learn." },
+      pl: { t: "Jedno wejście", d: "Jeden punkt kontaktu, w narzędziach, których już używasz — Slack, Notion, mail. Twój zespół nie uczy się niczego nowego." },
+    },
+    {
+      en: { t: "Fixed monthly scope", d: "A set capacity each month at a flat fee. Predictable cost, predictable output — no surprise invoices, no re-scoping every task." },
+      pl: { t: "Stały miesięczny zakres", d: "Ustalona moc co miesiąc w stałej stawce. Przewidywalny koszt i output — bez niespodzianek na fakturze, bez wyceniania każdego zadania." },
+    },
+    {
+      en: { t: "Your rhythm, not ours", d: "We slot into your cadence, briefs and approvals. We adapt to how your team works — we don't make you adopt our process." },
+      pl: { t: "Twój rytm, nie nasz", d: "Wchodzimy w Twój rytm, briefy i akceptacje. To my dopasowujemy się do Twojego zespołu — nie odwrotnie." },
+    },
+    {
+      en: { t: "Quiet by default", d: "Async-first, light reporting. We surface only what needs a decision — no standing meetings, no overhead added to your week." },
+      pl: { t: "Cicho z domysłu", d: "Async-first, lekki reporting. Pokazujemy tylko to, co wymaga decyzji — bez stałych spotkań, bez dociążania Twojego tygodnia." },
+    },
+  ];
+
   return (
     <PageTransition className="min-h-screen pt-32 pb-24 px-6 md:px-12 max-w-[1600px] mx-auto">
       {/* ── Hero ── */}
@@ -282,6 +302,45 @@ export function ForAgencies() {
               </Reveal>
             );
           })}
+        </div>
+      </section>
+
+      {/* ── The retainer — fixed capacity, non-invasive process ── */}
+      <section className="mb-32 md:mb-40 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+        <div className="lg:col-span-5">
+          <Reveal>
+            <span className="text-xs font-display uppercase tracking-widest text-[#D4FF00] mb-6 block">
+              {pl ? "Stały retainer" : "Fixed retainer"}
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white leading-[1.05] mb-6">
+              {pl ? "Stała moc. Zero zamieszania." : "Fixed capacity. Zero disruption."}
+            </h2>
+            <p className="text-lg text-neutral-400 leading-relaxed max-w-md">
+              {pl
+                ? "Stały miesięczny retainer, który działa po cichu wewnątrz Twojego procesu — przewidywalny koszt, bez narzucania narzędzi, spotkań i biurokracji."
+                : "A fixed monthly retainer that runs quietly inside your existing flow — predictable cost, no imposed tools, meetings or process."}
+            </p>
+          </Reveal>
+        </div>
+        <div className="lg:col-span-7">
+          <div className="flex flex-col">
+            {retainerSteps.map((step, i) => {
+              const c = pl ? step.pl : step.en;
+              return (
+                <Reveal key={i} delay={0.1 + i * 0.08} width="100%">
+                  <div className="flex gap-6 md:gap-8 py-6 border-t border-white/10 last:border-b">
+                    <span className="font-display text-sm text-[#D4FF00] pt-1 shrink-0 w-8">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <h3 className="text-xl md:text-2xl font-bold text-white mb-2">{c.t}</h3>
+                      <p className="text-base text-neutral-400 leading-relaxed max-w-xl">{c.d}</p>
+                    </div>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
         </div>
       </section>
 
