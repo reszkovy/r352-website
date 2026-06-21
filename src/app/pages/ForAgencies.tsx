@@ -3,11 +3,7 @@ import { Reveal } from "@/app/components/ui/Reveal";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { PageTransition } from "@/app/components/ui/PageTransition";
 import { ArrowRight } from "lucide-react";
-import { motion } from "motion/react";
-// Glass hands offering a cut crystal — the white-label handoff metaphor: the
-// agency hands off the work, we hand it back finished, they keep it. Black bg
-// blends straight into the page, no cutout needed. (Source PNG → WebP, 49KB.)
-import handsImg from "@/assets/for-agencies-hands.webp";
+import { ScrollSequence } from "@/app/components/ui/ScrollSequence";
 
 /**
  * ForAgencies — the white-label / project-consultant track.
@@ -113,34 +109,43 @@ export function ForAgencies() {
   ];
 
   return (
-    <PageTransition className="min-h-screen pt-32 pb-24 px-6 md:px-12 max-w-[1600px] mx-auto">
-      {/* ── Hero ── */}
-      <section className="mb-32 md:mb-48 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-        {/* Text column */}
-        <div className="lg:col-span-7">
-          <Reveal>
-            <span className="text-xs font-display uppercase tracking-widest text-[#D4FF00] mb-8 block">
+    <PageTransition className="min-h-screen pb-24">
+      {/* ── Hero — full-bleed scroll-scrubbed glass-hands sequence (philosophy-style).
+          The handoff metaphor, now in motion: scrubbing the scroll plays the hands
+          presenting the finished crystal. Copy is overlaid and fades out as you
+          scroll; object-contain keeps the portrait uncropped and the black source
+          bg blends into the page, so the hands read as floating full-height. ── */}
+      <ScrollSequence
+        frameCount={125}
+        framePath="/agency-frames/frame"
+        padDigits={3}
+        pinHeight="280vh"
+        backgroundColor="#0a0a0a"
+        fadeChildrenAt={[0.22, 0.5]}
+        canvasClassName="absolute inset-0 w-full h-full object-contain object-top md:object-right mix-blend-screen"
+        overlayClassName="flex items-end md:items-center px-6 md:px-12 pb-20 md:pb-0"
+      >
+        {/* Mobile-only bottom scrim — hands sit top (object-top), copy sits
+            bottom; this gradient keeps the copy legible over the glow. */}
+        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent md:hidden pointer-events-none" />
+        <div className="max-w-[1600px] mx-auto w-full relative">
+          <div className="max-w-xl">
+            <span className="text-xs font-display uppercase tracking-widest text-[#D4FF00] mb-6 md:mb-8 block">
               {pl ? "Dla agencji" : "For Agencies"}
             </span>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white leading-[0.92] mb-10">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white leading-[0.92] mb-8 dark:drop-shadow-[0_2px_24px_rgba(0,0,0,0.65)]">
               {pl ? (
                 <>Wygrywasz pitch.<br />My dostarczamy.</>
               ) : (
                 <>Win the pitch.<br />We run the delivery.</>
               )}
             </h1>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <p className="text-xl md:text-2xl text-neutral-400 leading-relaxed max-w-2xl mb-12">
+            <p className="text-lg md:text-2xl text-neutral-200 leading-relaxed mb-10 dark:drop-shadow-[0_2px_12px_rgba(0,0,0,0.65)]">
               {pl
-                ? "White-label, end-to-end konsultant dla agencji. Strategia, kreacja i egzekucja w jednym miejscu — wchodzimy na Twojego klienta jako zintegrowany zespół, pod Twoją marką. Ty prowadzisz relację, my robimy to, co umiemy najlepiej."
-                : "A white-label, end-to-end consultant for agencies. Strategy, creative and execution in one place — we embed on your client as one integrated team, under your name. You lead the relationship, we do what we do best."}
+                ? "White-label, end-to-end konsultant dla agencji. Strategia, kreacja i egzekucja w jednym miejscu — pod Twoją marką. Ty prowadzisz relację, my robimy to, co umiemy najlepiej."
+                : "A white-label, end-to-end consultant for agencies. Strategy, creative and execution in one place — under your name. You lead the relationship, we do what we do best."}
             </p>
-          </Reveal>
-          <Reveal delay={0.3}>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 pointer-events-auto">
               <Link
                 href="/brief"
                 className="group inline-flex items-center justify-center gap-3 px-10 py-4 bg-[#D4FF00] text-black font-display uppercase tracking-widest text-sm hover:bg-white transition-colors duration-300"
@@ -152,38 +157,17 @@ export function ForAgencies() {
                 href="https://calendly.com/p-reszkovy/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-10 py-4 border border-white/20 text-white font-display uppercase tracking-widest text-sm hover:border-white/60 hover:text-[#D4FF00] transition-colors duration-300"
+                className="inline-flex items-center justify-center px-10 py-4 border border-white/30 text-white font-display uppercase tracking-widest text-sm hover:border-white/60 hover:text-[#D4FF00] transition-colors duration-300 backdrop-blur-sm"
               >
                 {pl ? "Umów rozmowę" : "Book a call"}
               </a>
             </div>
-          </Reveal>
+          </div>
         </div>
+      </ScrollSequence>
 
-        {/* Image column — glass hands handing off the finished work. Gentle
-            infinite float so it feels alive; black bg blends into the page.
-            On mobile it sits below the CTAs, capped so it never dominates. */}
-        <div className="lg:col-span-5 flex justify-center lg:justify-end">
-          <motion.img
-            src={handsImg}
-            alt={pl
-              ? "Szklane dłonie podające oszlifowany kryształ — metafora przekazania gotowej pracy"
-              : "Glass hands passing a cut crystal — the handoff of finished work"}
-            width={960}
-            height={1200}
-            loading="eager"
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1, y: [0, -16, 0] }}
-            transition={{
-              opacity: { duration: 1.1, ease: [0.22, 1, 0.36, 1] },
-              scale: { duration: 1.1, ease: [0.22, 1, 0.36, 1] },
-              y: { duration: 7, repeat: Infinity, ease: "easeInOut" },
-            }}
-            className="w-full max-w-xs sm:max-w-sm lg:max-w-none h-auto select-none pointer-events-none dark:mix-blend-screen"
-            draggable={false}
-          />
-        </div>
-      </section>
+      {/* Contained content below the full-bleed scroll hero */}
+      <div className="px-6 md:px-12 max-w-[1600px] mx-auto pt-24 md:pt-32">
 
       {/* ── Proof line — quiet credibility band. CONFIRM/ADJUST WORDING with the
             client before relying on it publicly (currently a true but unnamed claim). ── */}
@@ -401,6 +385,7 @@ export function ForAgencies() {
           </p>
         </div>
       </Reveal>
+      </div>{/* /contained content */}
     </PageTransition>
   );
 }

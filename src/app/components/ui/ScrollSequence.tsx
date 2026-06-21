@@ -21,6 +21,10 @@ interface ScrollSequenceProps {
   fadeChildrenAt?: [number, number];
   /** Optional className for the overlay wrapper inside the fixed canvas layer */
   overlayClassName?: string;
+  /** Optional override for the <canvas> className. Defaults to the full-bleed
+      object-cover treatment used by /philosophy. Pass e.g. an object-contain
+      variant for portrait sources that shouldn't be cropped. */
+  canvasClassName?: string;
 }
 
 /**
@@ -55,6 +59,7 @@ export function ScrollSequence({
   children,
   fadeChildrenAt,
   overlayClassName = "",
+  canvasClassName,
 }: ScrollSequenceProps) {
   const triggerRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -219,7 +224,7 @@ export function ScrollSequence({
                 Desktop md+: fills viewport (inset-0 + cover + center, unchanged). */}
             <canvas
               ref={canvasRef}
-              className="absolute left-0 right-0 top-0 w-screen aspect-square md:inset-0 md:w-full md:h-full md:aspect-auto object-cover object-right md:object-center"
+              className={canvasClassName || "absolute left-0 right-0 top-0 w-screen aspect-square md:inset-0 md:w-full md:h-full md:aspect-auto object-cover object-right md:object-center"}
               style={{
                 opacity: firstFrameReady ? 1 : 0,
                 transition: "opacity 900ms cubic-bezier(0.22, 1, 0.36, 1)",
