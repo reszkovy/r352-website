@@ -34,3 +34,6 @@ src/assets/sonov_1.png
 src/assets/*.mp4
 
 dist-*
+
+# For Agencies hero source (shipped as .webp)
+src/assets/for-agencies-hands.png

@@ -3,6 +3,11 @@ import { Reveal } from "@/app/components/ui/Reveal";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { PageTransition } from "@/app/components/ui/PageTransition";
 import { ArrowRight } from "lucide-react";
+import { motion } from "motion/react";
+// Glass hands offering a cut crystal — the white-label handoff metaphor: the
+// agency hands off the work, we hand it back finished, they keep it. Black bg
+// blends straight into the page, no cutout needed. (Source PNG → WebP, 49KB.)
+import handsImg from "@/assets/for-agencies-hands.webp";
 
 /**
  * ForAgencies — the white-label / project-consultant track.
@@ -110,47 +115,74 @@ export function ForAgencies() {
   return (
     <PageTransition className="min-h-screen pt-32 pb-24 px-6 md:px-12 max-w-[1600px] mx-auto">
       {/* ── Hero ── */}
-      <section className="mb-32 md:mb-48">
-        <Reveal>
-          <span className="text-xs font-display uppercase tracking-widest text-[#D4FF00] mb-8 block">
-            {pl ? "Dla agencji" : "For Agencies"}
-          </span>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white leading-[0.92] mb-10 max-w-5xl">
-            {pl ? (
-              <>Wygrywasz pitch.<br />My dostarczamy.</>
-            ) : (
-              <>Win the pitch.<br />We run the delivery.</>
-            )}
-          </h1>
-        </Reveal>
-        <Reveal delay={0.2}>
-          <p className="text-xl md:text-2xl text-neutral-400 leading-relaxed max-w-3xl mb-12">
-            {pl
-              ? "White-label, end-to-end konsultant dla agencji. Strategia, kreacja i egzekucja w jednym miejscu — wchodzimy na Twojego klienta jako zintegrowany zespół, pod Twoją marką. Ty prowadzisz relację, my robimy to, co umiemy najlepiej."
-              : "A white-label, end-to-end consultant for agencies. Strategy, creative and execution in one place — we embed on your client as one integrated team, under your name. You lead the relationship, we do what we do best."}
-          </p>
-        </Reveal>
-        <Reveal delay={0.3}>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link
-              href="/brief"
-              className="group inline-flex items-center justify-center gap-3 px-10 py-4 bg-[#D4FF00] text-black font-display uppercase tracking-widest text-sm hover:bg-white transition-colors duration-300"
-            >
-              {pl ? "Złóż brief" : "Start a brief"}
-              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
-            <a
-              href="https://calendly.com/p-reszkovy/30min"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-10 py-4 border border-white/20 text-white font-display uppercase tracking-widest text-sm hover:border-white/60 hover:text-[#D4FF00] transition-colors duration-300"
-            >
-              {pl ? "Umów rozmowę" : "Book a call"}
-            </a>
-          </div>
-        </Reveal>
+      <section className="mb-32 md:mb-48 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        {/* Text column */}
+        <div className="lg:col-span-7">
+          <Reveal>
+            <span className="text-xs font-display uppercase tracking-widest text-[#D4FF00] mb-8 block">
+              {pl ? "Dla agencji" : "For Agencies"}
+            </span>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white leading-[0.92] mb-10">
+              {pl ? (
+                <>Wygrywasz pitch.<br />My dostarczamy.</>
+              ) : (
+                <>Win the pitch.<br />We run the delivery.</>
+              )}
+            </h1>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <p className="text-xl md:text-2xl text-neutral-400 leading-relaxed max-w-2xl mb-12">
+              {pl
+                ? "White-label, end-to-end konsultant dla agencji. Strategia, kreacja i egzekucja w jednym miejscu — wchodzimy na Twojego klienta jako zintegrowany zespół, pod Twoją marką. Ty prowadzisz relację, my robimy to, co umiemy najlepiej."
+                : "A white-label, end-to-end consultant for agencies. Strategy, creative and execution in one place — we embed on your client as one integrated team, under your name. You lead the relationship, we do what we do best."}
+            </p>
+          </Reveal>
+          <Reveal delay={0.3}>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link
+                href="/brief"
+                className="group inline-flex items-center justify-center gap-3 px-10 py-4 bg-[#D4FF00] text-black font-display uppercase tracking-widest text-sm hover:bg-white transition-colors duration-300"
+              >
+                {pl ? "Złóż brief" : "Start a brief"}
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+              <a
+                href="https://calendly.com/p-reszkovy/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-10 py-4 border border-white/20 text-white font-display uppercase tracking-widest text-sm hover:border-white/60 hover:text-[#D4FF00] transition-colors duration-300"
+              >
+                {pl ? "Umów rozmowę" : "Book a call"}
+              </a>
+            </div>
+          </Reveal>
+        </div>
+
+        {/* Image column — glass hands handing off the finished work. Gentle
+            infinite float so it feels alive; black bg blends into the page.
+            On mobile it sits below the CTAs, capped so it never dominates. */}
+        <div className="lg:col-span-5 flex justify-center lg:justify-end">
+          <motion.img
+            src={handsImg}
+            alt={pl
+              ? "Szklane dłonie podające oszlifowany kryształ — metafora przekazania gotowej pracy"
+              : "Glass hands passing a cut crystal — the handoff of finished work"}
+            width={960}
+            height={1200}
+            loading="eager"
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1, y: [0, -16, 0] }}
+            transition={{
+              opacity: { duration: 1.1, ease: [0.22, 1, 0.36, 1] },
+              scale: { duration: 1.1, ease: [0.22, 1, 0.36, 1] },
+              y: { duration: 7, repeat: Infinity, ease: "easeInOut" },
+            }}
+            className="w-full max-w-xs sm:max-w-sm lg:max-w-none h-auto select-none pointer-events-none dark:mix-blend-screen"
+            draggable={false}
+          />
+        </div>
       </section>
 
       {/* ── Proof line — quiet credibility band. CONFIRM/ADJUST WORDING with the
