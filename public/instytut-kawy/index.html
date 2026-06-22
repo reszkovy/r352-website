@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karta produktowa — Instytut Kawy (redesign)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap" rel="stylesheet">
+<style>
+/* =====================================================================
+   INSTYTUT KAWY — DESIGN SYSTEM (wyekstrahowany z instytutkawy.pl)
+   Headings: Oswald 700 / plum #73334D
+   Body/UI:  Avenir → fallback Nunito Sans
+   Accent:   sage green #7CAE8E (linki), CTA: czerń #1A1A1A
+   Tinty kategorii smaku: gold/clay/brick/moss/plum
+   ===================================================================== */
+:root{
+  /* kolory marki */
+  --plum:#73334D;          /* nagłówki */
+  --plum-700:#5C2A3E;
+  --green:#7CAE8E;         /* akcent / linki */
+  --green-600:#5E9072;     /* hover */
+  --green-700:#4C7A5F;
+  --ink:#1A1A1A;           /* tekst / CTA */
+  --ink-soft:#6B655F;      /* tekst drugorzędny */
+  --line:#E8E2D9;          /* obrysy */
+  --bg:#FFFFFF;
+  --cream:#FAF6EF;         /* ciepłe panele */
+  --cream-2:#F4EEE3;
+  /* tinty smakowo-kategoryjne */
+  --gold:#DFC33E; --clay:#B4665B; --brick:#C44A3D; --moss:#6B7A59; --slate:#929290; --orange:#D9662C;
+  /* skala — marka kanciasta, bez zaokrągleń */
+  --r-sm:0px; --r-md:0px; --r-lg:0px; --r-pill:0px;
+  --sp:8px;
+  --shadow-sm:0 1px 2px rgba(26,18,10,.06), 0 1px 3px rgba(26,18,10,.05);
+  --shadow-md:0 4px 14px rgba(26,18,10,.08);
+  --shadow-lg:0 12px 40px rgba(26,18,10,.12);
+  --maxw:1180px;
+  --font-head:"Oswald", system-ui, sans-serif;
+  --font-body:"Avenir Next","Avenir","Nunito Sans", system-ui, -apple-system, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;font-family:var(--font-body);color:var(--ink);background:#fff;
+  font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:var(--font-head);color:var(--plum);font-weight:700;line-height:1.08;margin:0;letter-spacing:.2px}
+a{color:var(--green-700);text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%;display:block}
+button{font-family:var(--font-body);cursor:pointer}
+
+/* ---------- top promo + nav (uproszczone, w stylu marki) ---------- */
+.promo{background:#000;color:#fff;text-align:center;font-size:14px;font-weight:700;padding:10px 16px;letter-spacing:.2px}
+.nav{background:#fff;position:relative;z-index:40}
+.nav.scrolled{box-shadow:0 6px 24px rgba(26,18,10,.07)}
+#mainImg{will-change:transform,opacity}
+/* pre-hide tylko gdy animacje aktywne (klasa zdejmowana, gdy brak GSAP).
+   Packshot (.gallery) celowo POMINIĘTY — zawsze widoczny. */
+html.ganim .buy>*, html.ganim .section>*{opacity:0}
+[id]{scroll-margin-top:96px}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+/* header 1:1 jak instytutkawy.pl */
+.nav-util{border-bottom:1px solid var(--line)}
+.nav-util-in{max-width:var(--maxw);margin:0 auto;padding:16px 20px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px}
+.util-left,.util-right{display:flex;align-items:center;gap:22px}
+.util-right{justify-content:flex-end}
+.nav-util a{color:var(--green-700);font-size:14.5px;font-weight:600;transition:color .15s}
+.nav-util a:hover{color:var(--green-600)}
+.brand{justify-self:center;display:block}
+.brand img{height:42px;width:auto;display:block}
+.nav-ico{display:flex;align-items:center;gap:16px;color:var(--ink);margin-left:8px}
+.nav-ico a{color:var(--ink);display:inline-flex}
+.nav-ico svg{width:23px;height:23px}
+.nav-cart{position:relative}
+.cart-dot{position:absolute;top:-2px;right:-3px;width:9px;height:9px;border-radius:50%;background:#7CC243;border:2px solid #fff}
+.nav-main{position:relative;border-bottom:1px solid var(--line);background:#EEEDEA}
+.nav-main-in{max-width:var(--maxw);margin:0 auto;padding:0;display:flex;align-items:stretch;justify-content:flex-start;position:relative}
+.nav-item{position:static;flex:1;display:flex;align-items:stretch;border-left:1px solid #fff}
+.nav-item:first-child{border-left:0}
+.nav-item>a{display:flex;align-items:center;justify-content:center;width:100%;color:var(--ink);font-size:15.5px;font-weight:500;letter-spacing:.3px;padding:15px 12px;border-bottom:3px solid transparent;transition:background .15s, border-color .15s;white-space:nowrap}
+.nav-item:hover,.nav-item:focus-within,.nav-item.is-active{background:#fff}
+.nav-item:hover>a,.nav-item:focus-within>a,.nav-item.is-active>a{color:var(--ink);border-bottom-color:var(--orange);text-decoration:none}
+.mega{position:absolute;left:0;right:0;top:100%;background:#fff;box-shadow:0 20px 44px rgba(26,18,10,.12);border-top:1px solid var(--line);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s ease, transform .2s ease, visibility .2s;z-index:48}
+.nav-item:hover .mega,.nav-item:focus-within .mega{opacity:1;visibility:visible;transform:none}
+.mega-in{max-width:var(--maxw);margin:0 auto;padding:30px 20px 34px;display:flex;gap:54px;flex-wrap:wrap}
+.mega-col{display:flex;flex-direction:column;gap:11px;min-width:166px}
+.mega-col h4{font-family:var(--font-head);font-weight:500;font-size:12.5px;text-transform:uppercase;letter-spacing:.7px;color:var(--ink-soft);margin-bottom:5px}
+.mega-col a{color:var(--ink);font-size:14.5px;font-weight:400;padding:0}
+.mega-col a:hover{color:var(--green-700);text-decoration:none}
+.nav-tools{display:flex;align-items:center;gap:17px;color:var(--ink);flex:none;border-left:1px solid #fff;padding:0 22px}
+.nav-tools a{color:var(--ink);display:inline-flex;align-items:center;padding:8px}
+.nav-tools svg{width:22px;height:22px;transition:transform .2s, color .2s}
+.nav-tools a:hover svg{transform:translateY(-2px);color:var(--plum)}
+.nav-tools .nav-cart{position:relative;gap:7px;font-weight:600;font-size:15px}
+.nav-tools .nav-cart .cart-dot{position:absolute;top:-3px;left:14px;width:9px;height:9px;border-radius:50%;background:#7CC243;border:2px solid #fff}
+
+/* ---------- layout ---------- */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+.breadcrumb{font-size:13px;color:var(--ink-soft);padding:18px 0 6px;display:flex;gap:8px;flex-wrap:wrap}
+.breadcrumb a{color:var(--ink-soft)}
+.breadcrumb span{color:var(--plum);font-weight:600}
+
+/* TOP GRID: zdjęcie po lewej / blok zakupowy po prawej */
+.top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,460px);gap:48px;padding:8px 0 40px;align-items:stretch}
+
+/* galeria */
+.gallery{display:flex;flex-direction:column;gap:16px}
+.gal-main{flex:1;background:var(--cream);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:44px;min-height:520px}
+.gal-main img{margin:0;mix-blend-mode:multiply;max-width:100%;max-height:560px;object-fit:contain}
+.gal-badges{position:absolute;top:20px;left:20px;z-index:2;display:flex;flex-direction:row;gap:8px;align-items:flex-start}
+.gal-rating{position:absolute;top:20px;right:20px;z-index:2;display:flex;align-items:center;gap:7px;color:var(--ink);background:rgba(255,255,255,.92);padding:5px 10px}
+.gal-rating .stars{display:inline-flex}
+.gal-rating .stars svg{width:15px;height:15px}
+.gal-rating strong{font-weight:700;font-size:14px}
+.gal-rating a{color:var(--ink);font-size:12px;text-decoration:underline;text-underline-offset:2px}
+.flag{background:#fff;color:var(--ink);font-family:var(--font-head);font-weight:600;font-size:12px;letter-spacing:.6px;text-transform:uppercase;padding:7px 13px;border-radius:0;text-align:center}
+.flag.fresh{background:#fff;color:var(--ink)}
+.thumbs{position:absolute;left:18px;bottom:18px;z-index:2;display:flex;flex-direction:row;gap:8px;margin:0}
+.thumb{width:54px;height:54px;padding:6px;background:#fff;cursor:pointer;border:0;position:relative;transition:transform .15s}
+.thumb::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--ink);transform:scaleX(0);transition:transform .2s}
+.thumb.active::after{transform:scaleX(1)}
+.thumb:hover{transform:translateY(-1px)}
+.thumb img{height:100%;width:100%;object-fit:contain;mix-blend-mode:multiply}
+
+/* blok zakupowy */
+.buy{display:flex;flex-direction:column;gap:18px}
+.eyebrow{font-family:var(--font-head);font-weight:600;letter-spacing:1.4px;text-transform:uppercase;font-size:12.5px;color:var(--ink-soft)}
+.title{font-size:38px;text-transform:uppercase;margin-top:4px;color:var(--ink)}
+.rating{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink-soft)}
+.stars{display:inline-flex;gap:1px}
+.stars svg{width:18px;height:18px}
+.rating a{color:var(--ink);text-decoration:underline;text-underline-offset:2px}
+.price-row{display:flex;align-items:baseline;gap:12px}
+.price{font-family:var(--font-head);font-weight:700;font-size:32px;color:var(--ink)}
+.price small{font-size:15px;color:var(--ink-soft);font-weight:400;font-family:var(--font-body)}
+.price del{font-size:18px;color:var(--ink-soft);font-weight:500}
+.buy-modes{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pmode{position:relative;text-align:left;border:0;background:var(--cream);padding:14px 17px;display:flex;flex-direction:column;gap:3px;cursor:pointer;transition:box-shadow .15s, background .15s}
+.pmode:hover{background:var(--cream-2)}
+.pmode.is-on{background:var(--ink)}
+.pmode.is-on .pm-t,.pmode.is-on .pm-p,.pmode.is-on .pm-chk{color:#fff}
+.pm-t{font-size:14px;font-weight:700;color:var(--ink)}
+.pm-p{font-family:var(--font-head);font-weight:700;font-size:23px;color:var(--ink);line-height:1.05}
+.pm-chk{position:absolute;top:10px;right:10px;opacity:0;color:var(--ink);display:inline-flex}
+.pm-chk svg{width:15px;height:15px}
+.pmode.is-on .pm-chk{opacity:1}
+.per100-note{font-size:13px;color:var(--ink-soft);font-weight:600;margin-top:2px}
+
+/* tabelka kluczowych parametrów (zostaje przy cenie też na mobile) */
+.keyspec{background:var(--cream);padding:6px 16px}
+.keyspec .kr{display:grid;grid-template-columns:130px 1fr;gap:10px;padding:11px 0;font-size:14.5px}
+.keyspec .kr+.kr{box-shadow:inset 0 1px 0 rgba(115,51,77,.08)}
+.keyspec .kl{color:var(--ink-soft);font-weight:600}
+.keyspec .kv{font-weight:600;color:var(--ink)}
+.keyspec .kv a:not(.tag){color:var(--ink);text-decoration:none;font-weight:600;border-bottom:1px solid var(--ink)}
+.keyspec .kv a:not(.tag):hover{color:var(--ink);border-bottom-color:transparent}
+.tagrow{display:flex;flex-wrap:wrap;gap:6px}
+.tag{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;padding:7px 15px;background:#fff;color:var(--ink);border-radius:999px;box-shadow:0 1px 2px rgba(26,18,10,.05);transition:transform .14s ease, box-shadow .18s ease}
+.tag:hover{text-decoration:none;transform:translateY(-1.5px);box-shadow:0 5px 14px rgba(26,18,10,.12)}
+.tag .dot{width:9px;height:9px;border-radius:50%}
+
+/* ikony: profil smakowy + metoda */
+.iconset{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.iconset h4{font-family:var(--font-body);font-size:12px;letter-spacing:.6px;text-transform:uppercase;color:var(--ink-soft);font-weight:700;margin-bottom:10px}
+.icons{display:flex;gap:6px;flex-wrap:nowrap}
+/* pełnoszerokościowy pasek ikon */
+.icon-strip .iconset{max-width:760px;margin:0 auto;gap:70px}
+.icon-strip .iconset h4{text-align:center;margin-bottom:16px}
+.icon-strip .icons{justify-content:center;gap:18px}
+.ic{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;min-width:0;text-align:center}
+.ic .icb{width:38px;height:38px;display:flex;align-items:center;justify-content:center;transition:.15s}
+.ic:hover .icb{transform:translateY(-2px)}
+.ic svg{width:31px;height:31px;color:var(--plum);stroke-width:1.4;transition:color .15s}
+.ic:hover svg{color:var(--green-700)}
+.ic span{font-size:11px;font-weight:600;color:var(--ink);line-height:1.15}
+
+/* warianty */
+.variants{display:flex;flex-direction:column;gap:8px;position:relative;z-index:1}
+.variants .grind-label{margin-top:8px}
+.vlabel{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:7px;letter-spacing:.2px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:0;background:var(--cream);padding:11px 24px;font-size:14px;font-weight:600;color:var(--ink);border-radius:999px;transition:.15s}
+.chip[aria-pressed="true"]{background:var(--ink);color:#fff;box-shadow:0 4px 12px rgba(26,18,10,.16)}
+.chip:hover{background:var(--cream-2)}
+.chip[aria-pressed="true"]:hover{background:var(--ink)}
+/* własny dropdown (zamiast natywnego selecta) */
+.dropdown{position:relative}
+.dd-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 18px;border:0;background:var(--cream);color:var(--ink);font-family:var(--font-body);font-size:14.5px;font-weight:600;cursor:pointer;transition:background .15s}
+.dd-trigger:hover,.dropdown.open .dd-trigger{background:var(--cream-2)}
+.dd-chev{width:16px;height:16px;color:var(--ink);transition:transform .22s ease;flex:none}
+.dropdown.open .dd-chev{transform:rotate(180deg)}
+.dd-menu{position:absolute;top:calc(100% + 6px);left:0;right:0;z-index:80;list-style:none;margin:0;padding:6px;background:#fff;box-shadow:0 20px 54px rgba(26,18,10,.20);opacity:0;visibility:hidden;transform:translateY(-8px) scale(.98);transform-origin:top center;transition:opacity .2s ease, transform .2s ease, visibility .2s}
+.dropdown.open .dd-menu{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
+.dd-opt{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 16px;font-size:14.5px;font-weight:600;color:var(--ink);cursor:pointer;transition:background .12s}
+/* ikony w tabelce (zamiast powtórzonych pills) */
+.kv-icons{display:flex;gap:18px;flex-wrap:wrap}
+.ic-mini{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--ink)}
+.ic-mini svg{width:26px;height:26px;color:var(--ink);stroke-width:1.5}
+.ic-mini span{font-size:11px;font-weight:600;color:var(--ink)}
+.ic-mini:hover{text-decoration:none}
+.ic-mini:hover svg{color:var(--green-700)}
+/* kolejność w bloku zakupowym: tabelka → waga/mielenie → CTA → dostawa */
+.buy .variants{order:6}
+.buy .cart-row{order:7}
+.buy .ship{order:8}
+.buy .trust{order:9}
+.dd-opt:hover{background:var(--cream)}
+.dd-opt.is-sel{color:var(--green-700)}
+.dd-opt .ck{width:16px;height:16px;color:var(--green-700);opacity:0;flex:none}
+.dd-opt.is-sel .ck{opacity:1}
+
+/* qty + CTA */
+.cart-row{display:flex;gap:12px;align-items:stretch;min-height:62px}
+.qty{display:flex;align-items:center;background:var(--cream);overflow:hidden}
+.qty button{width:46px;border:0;background:transparent;font-size:20px;color:var(--ink);line-height:1}
+.qty button:hover{background:var(--cream-2)}
+.qty input{width:44px;text-align:center;border:0;background:transparent;font-size:16px;font-weight:700;font-family:var(--font-body);color:var(--ink)}
+.cta{flex:1;min-height:62px;background:var(--ink);color:#fff;border:0;border-radius:var(--r-sm);font-family:var(--font-head);font-weight:700;font-size:19px;letter-spacing:.8px;text-transform:uppercase;padding:0 22px;display:flex;align-items:center;justify-content:center;gap:12px;box-shadow:0 6px 18px rgba(26,18,10,.18);transition:background .15s, box-shadow .2s, transform .12s}
+.cta:hover{background:var(--plum);box-shadow:0 10px 26px rgba(115,51,77,.28)}
+.cta:active{transform:translateY(1px)}
+.cta svg{width:23px;height:23px}
+
+/* wysyłka / zaufanie */
+.ship{display:flex;align-items:center;gap:11px;background:var(--cream);border-left:3px solid var(--green-600);padding:13px 16px;font-size:14px}
+.ship svg{width:22px;height:22px;color:var(--green-700);flex:none}
+.ship b{color:var(--green-700)}
+.trust{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;font-size:13.5px;color:var(--ink-soft)}
+.trust div{display:flex;align-items:center;gap:8px}
+.trust svg{width:17px;height:17px;color:var(--green-600);flex:none}
+
+/* ====== SEKCJE PONIŻEJ ====== */
+.section{padding:34px 0;border-top:1px solid var(--line)}
+.section h2{font-size:25px;font-weight:500;color:var(--ink);text-transform:capitalize;letter-spacing:0;margin-bottom:16px}
+/* cross-sell „Skompletuj zestaw" */
+.bundle-row{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;background:var(--cream);padding:26px}
+.bundle-items{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.bi{display:flex;flex-direction:column;align-items:center;gap:6px;width:124px;text-align:center}
+.bi-img{width:98px;height:98px;background:#fff;display:flex;align-items:center;justify-content:center;padding:12px}
+.bi-img img{max-width:100%;max-height:100%;object-fit:contain;mix-blend-mode:multiply}
+.bi b{font-size:12.5px;color:var(--ink);line-height:1.2}
+.bi small{font-size:12px;color:var(--ink-soft);font-weight:600}
+.bplus{font-size:22px;color:var(--ink-soft);font-weight:300}
+.bundle-buy{min-width:230px;text-align:right}
+.bt-was{font-size:14px;color:var(--ink-soft)}
+.bt-now{font-family:var(--font-head);font-weight:700;font-size:30px;color:var(--ink);line-height:1.05}
+.bundle-buy .cta{margin-top:12px;width:100%}
+.bundle-save{display:inline-block;margin-top:10px;background:var(--green-600);color:#fff;font-size:12px;font-weight:700;padding:4px 13px;border-radius:999px}
+.lead{max-width:820px}
+.lead p{margin:0 0 14px;color:#2a2622}
+
+/* paski intensywności */
+.intensity{display:flex;flex-direction:column;gap:20px;max-width:540px;margin-top:30px}
+.int{display:grid;grid-template-columns:170px 1fr auto;align-items:center;gap:24px}
+.int-meta{display:flex;flex-direction:column;gap:2px}
+.int-meta b{font-size:11.5px;text-transform:uppercase;letter-spacing:.9px;color:var(--ink);font-weight:700}
+.int-meta small{font-size:12.5px;color:var(--ink-soft)}
+.int-track{position:relative;height:4px;background:#E7E1D7}
+.int-fill{position:absolute;left:0;top:0;bottom:0;background:var(--ink);transform-origin:left center}
+.int-val{font-family:var(--font-head);font-weight:600;font-size:14px;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+/* opinia roastera */
+.roaster{display:flex;gap:24px;background:var(--cream);padding:30px 34px;max-width:900px}
+.roaster-mark{font-family:var(--font-head);font-weight:700;font-size:64px;line-height:.7;color:var(--green-600);flex:none}
+.roaster-label{font-family:var(--font-head);font-weight:600;text-transform:uppercase;letter-spacing:1.2px;font-size:12.5px;color:var(--green-700);margin-bottom:12px}
+.roaster-quote{font-size:17px;line-height:1.65;color:#2a2622;margin:0}
+.roaster-by{margin-top:14px;font-size:13.5px;font-weight:600;color:var(--ink-soft)}
+.opis-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:44px;align-items:stretch}
+.opis-left{display:flex;flex-direction:column;gap:18px}
+.opis-grid .intensity{margin-top:8px;max-width:none}
+.opis-grid .roaster{max-width:none;align-items:flex-start}
+@media(max-width:560px){.roaster{flex-direction:column;gap:8px;padding:24px}.roaster-mark{font-size:48px}}
+
+/* accordion */
+.acc-row{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.acc-title{font-family:var(--font-head);font-weight:500;font-size:20px;color:var(--ink);margin-bottom:12px}
+.acc-block .acc-body{padding:0}
+.acc{overflow:hidden;margin-top:12px}
+.acc summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:16px 18px;font-family:var(--font-head);font-weight:500;font-size:18px;color:var(--ink);background:var(--cream);text-transform:capitalize;letter-spacing:0;transition:background .15s}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary .chev{transition:transform .2s;color:var(--green-700)}
+.acc[open] summary .chev{transform:rotate(180deg)}
+.acc summary:hover{background:var(--cream-2)}
+.acc .acc-body{padding:18px}
+
+/* tabela pełnej specyfikacji */
+.spec{width:100%;border-collapse:collapse;font-size:14.5px}
+.spec tr{border-top:1px solid var(--line)}
+.spec tr:first-child{border-top:0}
+.spec th{text-align:left;color:var(--ink-soft);font-weight:600;padding:11px 12px 11px 0;width:190px;vertical-align:top}
+.spec td{padding:11px 0;font-weight:600}
+.blend{margin-top:14px}
+.blend-bar{height:16px;overflow:hidden;display:flex}
+.blend-bar i{display:block}
+.blend-leg{display:flex;gap:18px;margin-top:8px;font-size:13px;color:var(--ink-soft);font-weight:600}
+.blend-leg span{display:inline-flex;align-items:center;gap:7px}
+.blend-leg .sw{width:11px;height:11px;border-radius:0}
+
+/* przepis parzenia (taby) */
+.recipe{background:var(--cream);padding:22px;margin-top:6px}
+.rtabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
+.rtab{border:0;background:transparent;padding:9px 16px;font-weight:700;font-size:14px;color:var(--ink-soft);display:flex;align-items:center;gap:8px;transition:.15s}
+.rtab svg{width:18px;height:18px}
+.rtab:hover{color:var(--ink)}
+.rtab[aria-selected="true"]{background:var(--ink);color:#fff}
+.recipe-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;text-align:center;background:rgba(115,51,77,.08)}
+.rcell{background:var(--cream);padding:18px 8px}
+.rcell .rl{font-size:11.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--ink-soft);font-weight:700}
+.rcell .rv{font-family:var(--font-head);font-weight:700;font-size:24px;color:var(--plum);margin-top:4px}
+.recipe .rhint{font-size:13px;color:var(--ink-soft);margin-top:14px;text-align:center}
+
+/* origin */
+.origin{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.origin img{height:100%;object-fit:cover}
+/* pełnoekranowy ciemny pas „Kawa z kraju" */
+.band{background:#EEEDEA;color:var(--ink);border-top:0;padding:60px 0;margin:0}
+.band-inner{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+.band .origin{gap:48px;align-items:center}
+.band h2{color:var(--ink);font-weight:500;font-size:30px;margin:6px 0 14px;text-transform:none}
+.band .eyebrow{color:var(--green-700)}
+.band .lead p{color:#3A352F}
+.band .lead strong{color:var(--ink)}
+.band .origin img{aspect-ratio:4/3;width:100%}
+
+/* reviews */
+/* recenzje — lekki, przewiewny styl Apple/Google: bez awatarów, bez wypełnionych plakietek */
+.rev-top{display:grid;grid-template-columns:auto 1fr;gap:56px;align-items:center;padding:8px 0 30px;margin-bottom:0}
+.rev-score{text-align:center}
+.rev-score .big{font-family:var(--font-head);font-weight:700;font-size:62px;color:var(--ink);line-height:1;letter-spacing:-1px}
+.rev-score .stars{justify-content:center;margin:10px 0 6px}
+.rev-score small{color:var(--ink-soft);font-size:13px}
+.rev-dist{display:flex;flex-direction:column;gap:10px;max-width:540px}
+.rev-bar{display:flex;align-items:center;gap:13px;font-size:13px;color:var(--ink-soft)}
+.rev-bar .lab{width:30px;font-weight:600;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.rev-bar .track{flex:1;height:6px;background:#EDE7DD;border-radius:99px;overflow:hidden}
+.rev-bar .fill{height:100%;background:var(--gold);border-radius:99px}
+.rev-bar>span:last-child{width:24px;text-align:right;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.review{border-top:1px solid var(--line);padding:24px 0}
+.review:first-of-type{border-top:0}
+.rev-h{display:flex;align-items:center;gap:13px;flex-wrap:wrap;margin-bottom:2px}
+.rev-h b{font-size:15.5px;font-weight:700;color:var(--ink)}
+.verified{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;color:var(--green-700)}
+.verified svg{width:14px;height:14px}
+.rev-h .d{margin-left:auto;font-size:13px;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.review p{margin:9px 0 0;font-size:15px;color:#3A352F;line-height:1.6;max-width:780px}
+
+/* blog cards */
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{overflow:hidden;background:var(--cream);transition:.18s;display:flex;flex-direction:column}
+.card:hover{box-shadow:var(--shadow-md);transform:translateY(-4px);text-decoration:none}
+.card .cimg{aspect-ratio:16/10;background:var(--cream-2);display:flex;align-items:center;justify-content:center;color:var(--green-700);overflow:hidden}
+.card .cimg svg{width:40px;height:40px}
+.card .cimg img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.card:hover .cimg img{transform:scale(1.05)}
+.card .cbody{padding:13px 14px}
+.card .ctag{font-size:11px;text-transform:uppercase;letter-spacing:.6px;color:var(--green-700);font-weight:700}
+.card h4{font-family:var(--font-body);font-size:15px;color:var(--ink);margin-top:6px;line-height:1.3}
+
+/* accessories */
+.acc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+/* karty produktów — UI jak na instytutkawy.pl: pastelowe kafle, serce, wyśrodkowane */
+.prod{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:20px 18px 24px;background:var(--cream);transition:transform .18s, box-shadow .18s}
+.prod:hover{box-shadow:var(--shadow-md);transform:translateY(-4px);text-decoration:none}
+.prod.tint-mint{background:#E9F1EC}
+.prod.tint-cream{background:#F5EFE4}
+.prod.tint-blush{background:#F7E9E6}
+.prod.tint-rose{background:#F3ECEF}
+.prod .wish{position:absolute;top:14px;right:14px;width:23px;height:23px;color:var(--ink);opacity:.55;transition:.15s}
+.prod:hover .wish{opacity:1;color:var(--plum)}
+.prod .pimg{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;padding:14px 14px 8px;overflow:hidden}
+.prod .pimg svg{width:64px;height:64px;color:var(--plum)}
+.prod .pimg img{max-width:100%;max-height:100%;object-fit:contain;mix-blend-mode:multiply;transition:transform .4s ease}
+.prod:hover .pimg img{transform:scale(1.05)}
+.prod h4{font-family:var(--font-body);font-size:16px;font-weight:800;color:var(--ink);margin:6px 0 5px;line-height:1.25;letter-spacing:.2px}
+.prod .pcat{font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.prod .pprice{font-family:var(--font-head);font-weight:700;color:var(--ink);font-size:18px;margin-top:12px}
+.prod .pcta{margin-top:16px;font-weight:700;font-size:14px;color:var(--ink);letter-spacing:.3px}
+.prod:hover .pcta{color:var(--green-700)}
+
+/* mobile sticky add bar */
+.buybar{position:fixed;left:0;right:0;bottom:0;z-index:90;background:#fff;border-top:1px solid var(--line);box-shadow:0 -8px 30px rgba(26,18,10,.10);transform:translateY(110%);transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.buybar.show{transform:translateY(0)}
+.buybar-in{max-width:var(--maxw);margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:20px}
+.bb-info{display:flex;flex-direction:column;gap:1px;min-width:0}
+.bb-info strong{font-size:15px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bb-info span{font-size:13px;color:var(--ink-soft)}
+.bb-actions{margin-left:auto;display:flex;align-items:center;gap:12px}
+.bb-weights{display:flex;gap:6px}
+.bb-w{border:0;background:var(--cream);padding:10px 16px;font-weight:600;font-size:14px;color:var(--ink);cursor:pointer;transition:.13s}
+.bb-w:hover{background:var(--cream-2)}
+.bb-w.is-on{background:var(--ink);color:#fff}
+.bb-cta{min-height:48px;padding:0 26px;flex:none;font-size:15px}
+
+/* footer */
+/* stopka 1:1 jak instytutkawy.pl — biała, czarny tekst, lekkie Oswald */
+.foot{background:#fff;color:var(--ink);margin-top:40px;padding:54px 0 28px;font-size:15px;border-top:1px solid var(--line)}
+.foot h3{font-family:var(--font-head);font-weight:400;font-size:28px;color:var(--ink);margin-bottom:10px}
+.foot-top{display:grid;grid-template-columns:1fr 1fr;gap:48px;padding-bottom:34px;margin-bottom:34px;border-bottom:1px solid var(--line)}
+.f-contact p{margin:5px 0;color:var(--ink-soft)}
+.f-contact a{color:var(--ink)}
+.f-news-form{display:flex;gap:10px;margin:16px 0 10px;max-width:440px}
+.f-news-form input{flex:1;padding:13px 18px;border:0;background:var(--cream);border-radius:999px;font-size:14px;font-family:var(--font-body)}
+.f-news-form button{padding:13px 24px;border:0;background:var(--ink);color:#fff;font-family:var(--font-head);font-weight:600;letter-spacing:.6px;text-transform:uppercase;font-size:14px;cursor:pointer;transition:background .15s}
+.f-news-form button:hover{background:var(--plum)}
+.f-newsletter small{color:var(--ink-soft);font-size:12px;line-height:1.5;display:block}
+.f-newsletter small a{color:var(--green-700)}
+.foot-cols{display:grid;grid-template-columns:auto 1fr 1fr 1.2fr;gap:36px;align-items:start;padding-bottom:30px}
+.f-logo{height:48px;width:auto}
+.f-col{display:flex;flex-direction:column;gap:10px}
+.f-col a{color:var(--ink);font-size:14.5px;transition:color .15s}
+.f-col a:hover{color:var(--green-700)}
+.foot-bottom{border-top:1px solid var(--line);padding-top:20px;font-size:13px;color:var(--ink-soft)}
+.foot-bottom a{color:var(--ink-soft);text-decoration:underline}
+
+/* toast */
+.toast{position:fixed;top:74px;left:50%;transform:translateX(-50%) translateY(-20px);background:var(--green-700);color:#fff;padding:12px 22px;border-radius:var(--r-pill);font-weight:700;font-size:14.5px;box-shadow:var(--shadow-lg);opacity:0;pointer-events:none;transition:.25s;z-index:80;display:flex;align-items:center;gap:9px}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast svg{width:18px;height:18px}
+
+/* ---------- mikrointerakcje (immersyjnie, bez chaosu) ---------- */
+/* dolne kafle — delikatna zmiana koloru po najechaniu */
+.prod.tint-mint:hover{background:#DCEBE0}
+.prod.tint-cream:hover{background:#EFE5D3}
+.prod.tint-blush:hover{background:#F3DBD5}
+.prod.tint-rose:hover{background:#EADEE3}
+.card{transition:transform .2s ease, box-shadow .2s ease, background .2s ease}
+.card:hover{background:var(--cream-2)}
+.card:hover h4{color:var(--plum)}
+.card .ctag{transition:color .2s}
+.card:hover .ctag{color:var(--green-600)}
+/* press / tap feedback */
+.chip:active,.tag:active{transform:scale(.96)}
+.qty button:active{transform:scale(.86)}
+.dd-opt:active{transform:scale(.99)}
+.rtab{transition:background .15s, color .15s, transform .15s}
+.rtab:active{transform:scale(.95)}
+/* CTA — strzał ikony koszyka w prawo */
+.cta svg{transition:transform .25s ease}
+.cta:hover svg{transform:translateX(4px)}
+/* serce — pop + wypełnienie po kliknięciu */
+.wish{cursor:pointer;transition:transform .15s ease, color .15s ease, opacity .15s ease}
+.wish:hover{transform:scale(1.18)}
+.wish.liked{fill:var(--brick);color:var(--brick);opacity:1}
+/* expand — miękkie odsłonięcie treści */
+.acc[open] .acc-body{animation:accReveal .34s ease}
+@keyframes accReveal{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+/* ikony w nagłówku */
+.nav-ico svg{transition:transform .2s ease, color .2s ease;cursor:pointer}
+.nav-ico svg:hover{transform:translateY(-2px);color:var(--plum)}
+/* dostępność — widoczny focus dla nawigacji klawiaturą */
+.skip-link{position:absolute;left:-9999px;top:0;z-index:200;background:var(--ink);color:#fff;padding:10px 16px;font-weight:700;font-size:14px}
+.skip-link:focus{left:8px;top:8px}
+:focus-visible{outline:2px solid var(--green-600);outline-offset:2px}
+.cta:focus-visible,.dd-trigger:focus-visible,.chip:focus-visible,.rtab:focus-visible{outline:2px solid var(--plum);outline-offset:3px}
+.dd-opt:focus-visible{outline:2px solid var(--green-600);outline-offset:-2px;background:var(--cream)}
+.tag:focus-visible,.ic:focus-visible{outline:2px solid var(--plum);outline-offset:2px}
+
+/* ========== RESPONSIVE ========== */
+@media(max-width:920px){
+  .nav-links{display:none}
+  .top{grid-template-columns:1fr;gap:24px}
+  .title{font-size:30px}
+  .gal-main{padding:24px;min-height:340px}
+  .icon-strip .iconset{gap:24px}
+  .origin{grid-template-columns:1fr}
+  .rev-top{grid-template-columns:1fr;gap:18px;text-align:center}
+  .rev-dist{max-width:420px;margin:0 auto;width:100%}
+  .recipe-grid{grid-template-columns:repeat(2,1fr)}
+  .acc-row{grid-template-columns:1fr;gap:0}
+  .opis-grid{grid-template-columns:1fr;gap:24px}
+  .band{padding:44px 0;margin:0}
+  .band h2{font-size:25px}
+  .bundle-row{grid-template-columns:1fr;gap:20px}
+  .bundle-buy{text-align:left}
+  .foot-top{grid-template-columns:1fr;gap:28px}
+  .foot-cols{grid-template-columns:1fr 1fr;gap:28px}
+  .f-logo{grid-column:1/-1}
+  .nav-main-in{gap:18px}
+  .nav-main a{font-size:14px;padding:12px 0}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .acc-grid{grid-template-columns:repeat(2,1fr)}
+  .buybar-in{padding:10px 16px;gap:12px}
+  .bb-weights{display:none}
+  .bb-cta{flex:1}
+  /* tabelka kluczowa ZOSTAJE przy cenie (jest w bloku zakupowym) — OK na mobile */
+}
+@media(max-width:560px){
+  .recipe-grid{grid-template-columns:repeat(2,1fr)}
+  .cards,.acc-grid{grid-template-columns:1fr 1fr}
+  .keyspec .kr{grid-template-columns:108px 1fr;font-size:13.5px}
+  .int{grid-template-columns:120px 1fr auto;gap:14px}
+  .title{font-size:26px}
+  .section h2{font-size:22px}
+  .variants{grid-template-columns:1fr}
+}
+@media(max-width:680px){
+  .util-left{display:none}
+  .util-right>a{display:none}
+  .nav-util-in{grid-template-columns:1fr auto 1fr;padding:12px 16px}
+  .nav-main{overflow-x:auto}
+  .nav-main-in{justify-content:flex-start;flex-wrap:nowrap;white-space:nowrap;padding:0}
+  .nav-item{flex:none}
+  .nav-tools{display:none}
+  .mega{display:none}
+  .foot-cols{grid-template-columns:1fr}
+  .f-news-form{flex-direction:column}
+}
+</style>
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('ganim');</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Przejdź do treści</a>
+
+<!-- HEADER 1:1 -->
+<header class="nav">
+  <div class="nav-util">
+    <div class="nav-util-in">
+      <nav class="util-left">
+        <a href="https://instytutkawy.pl/sklep/">Sklep</a>
+        <a href="https://instytutkawy.pl/kawa-dla-firm/">Kawa dla firm</a>
+        <a href="https://instytutkawy.pl/serwis/">Serwis</a>
+      </nav>
+      <a class="brand" href="https://instytutkawy.pl" aria-label="Instytut Kawy — strona główna">
+        <img src="/instytut-kawy/instytut-kawy-logo-horizontal.svg" alt="Instytut Kawy">
+      </a>
+      <nav class="util-right">
+        <a href="https://instytutkawy.pl/blog/">Blog</a>
+        <a href="https://instytutkawy.pl/o-nas/">O nas</a>
+        <a href="https://instytutkawy.pl/kontakt/">Kontakt</a>
+      </nav>
+    </div>
+  </div>
+  <div class="nav-main">
+    <nav class="nav-main-in">
+      <div class="nav-item has-mega is-active">
+        <a href="https://instytutkawy.pl/kategoria-produktu/kawa/" aria-current="page">Kawa</a>
+        <div class="mega"><div class="mega-in">
+          <div class="mega-col"><h4>Metody zaparzania</h4>
+            <a href="https://instytutkawy.pl/tag-produktu/ekspres-kolbowy/">Ekspres kolbowy</a>
+            <a href="https://instytutkawy.pl/tag-produktu/ekspres-automatyczny/">Ekspres automatyczny</a>
+            <a href="https://instytutkawy.pl/tag-produktu/ekspres-przelewowy/">Ekspres przelewowy</a>
+            <a href="https://instytutkawy.pl/tag-produktu/kawiarka/">Kawiarka</a>
+            <a href="https://instytutkawy.pl/tag-produktu/drip/">Drip</a>
+            <a href="https://instytutkawy.pl/tag-produktu/chemex/">Chemex</a>
+            <a href="https://instytutkawy.pl/tag-produktu/aeropres/">Aeropres</a>
+            <a href="https://instytutkawy.pl/tag-produktu/cold-brew/">Cold brew</a>
+          </div>
+          <div class="mega-col"><h4>Stopień palenia</h4>
+            <a href="https://instytutkawy.pl/tag-produktu/jasny/">Jasny</a>
+            <a href="https://instytutkawy.pl/tag-produktu/ciemny/">Ciemny</a>
+          </div>
+          <div class="mega-col"><h4>Nuty smakowe</h4>
+            <a href="https://instytutkawy.pl/tag-produktu/czekolada/">Czekolada</a>
+            <a href="https://instytutkawy.pl/tag-produktu/kakao/">Kakao</a>
+            <a href="https://instytutkawy.pl/tag-produktu/orzech/">Orzech</a>
+            <a href="https://instytutkawy.pl/tag-produktu/karmel/">Karmel</a>
+            <a href="https://instytutkawy.pl/tag-produktu/cytrusy/">Cytrusy</a>
+            <a href="https://instytutkawy.pl/tag-produktu/slodkie-owoce/">Słodkie owoce</a>
+          </div>
+          <div class="mega-col"><h4>Rodzaj</h4>
+            <a href="https://instytutkawy.pl/tag-produktu/100-arabika/">100% arabika</a>
+            <a href="https://instytutkawy.pl/tag-produktu/mieszanki/">Mieszanki</a>
+            <a href="https://instytutkawy.pl/tag-produktu/kawa-bezkofeinowa/">Kawa bezkofeinowa</a>
+            <a href="https://instytutkawy.pl/tag-produktu/zestawy-kaw/">Zestawy kaw</a>
+            <a href="https://instytutkawy.pl/tag-produktu/drip-bag/">Drip bag</a>
+          </div>
+        </div></div>
+      </div>
+      <div class="nav-item has-mega">
+        <a href="https://instytutkawy.pl/kategoria-produktu/herbata/">Herbata</a>
+        <div class="mega"><div class="mega-in">
+          <div class="mega-col"><h4>Herbaty liściaste</h4>
+            <a href="https://instytutkawy.pl/tag-produktu/herbata-czarna-lisciasta/">Czarna liściasta</a>
+            <a href="https://instytutkawy.pl/tag-produktu/herbata-zielona-lisciasta/">Zielona liściasta</a>
+            <a href="https://instytutkawy.pl/tag-produktu/herbata-biala-lisciasta/">Biała liściasta</a>
+            <a href="https://instytutkawy.pl/tag-produktu/herbata-owocowa-lisciasta/">Owocowa liściasta</a>
+          </div>
+          <div class="mega-col"><h4>Pozostałe</h4>
+            <a href="https://instytutkawy.pl/tag-produktu/herbaty-owocowe/">Herbaty owocowe</a>
+            <a href="https://instytutkawy.pl/tag-produktu/matcha/">Matcha</a>
+            <a href="https://instytutkawy.pl/tag-produktu/herbata-rooibos/">Rooibos</a>
+            <a href="https://instytutkawy.pl/tag-produktu/zestawy-herbat/">Zestawy herbat</a>
+          </div>
+        </div></div>
+      </div>
+      <div class="nav-item has-mega">
+        <a href="https://instytutkawy.pl/kategoria-produktu/ekspresy-do-kawy/">Ekspresy i młynki</a>
+        <div class="mega"><div class="mega-in">
+          <div class="mega-col">
+            <a href="https://instytutkawy.pl/tag-produktu/ekspresy-do-kawy-do-domu/">Ekspresy do kawy do domu</a>
+            <a href="https://instytutkawy.pl/tag-produktu/ekspresy-do-kawy-do-biura/">Ekspresy do kawy do biura</a>
+            <a href="https://instytutkawy.pl/tag-produktu/automatyczne-ekspresy-do-kawy/">Automatyczne ekspresy do kawy</a>
+          </div>
+          <div class="mega-col">
+            <a href="https://instytutkawy.pl/tag-produktu/kolbowe-ekspresy-do-kawy/">Kolbowe ekspresy do kawy</a>
+            <a href="https://instytutkawy.pl/tag-produktu/mlynki-do-kawy-do-domu/">Młynki do kawy do domu</a>
+            <a href="https://instytutkawy.pl/tag-produktu/mlynki-do-kawy-do-gastronomii/">Młynki do kawy do gastronomii</a>
+          </div>
+          <div class="mega-col">
+            <a href="https://instytutkawy.pl/tag-produktu/mlynki-do-kawy-automatyczne/">Młynki do kawy automatyczne</a>
+            <a href="https://instytutkawy.pl/tag-produktu/mlynki-do-kawy-reczne/">Młynki do kawy ręczne</a>
+          </div>
+        </div></div>
+      </div>
+      <div class="nav-item has-mega">
+        <a href="https://instytutkawy.pl/kategoria-produktu/sprzet-i-akcesoria/">Akcesoria</a>
+        <div class="mega"><div class="mega-in">
+          <div class="mega-col">
+            <a href="https://instytutkawy.pl/tag-produktu/filtry-do-kawy/">Filtry do kawy</a>
+            <a href="https://instytutkawy.pl/tag-produktu/zaparzacze-do-kawy/">Zaparzacze do kawy</a>
+            <a href="https://instytutkawy.pl/tag-produktu/mlynki-reczne-do-kawy/">Młynki ręczne do kawy</a>
+            <a href="https://instytutkawy.pl/tag-produktu/kawiarki/">Kawiarki</a>
+          </div>
+          <div class="mega-col">
+            <a href="https://instytutkawy.pl/tag-produktu/dzbanki-do-mleka/">Dzbanki do mleka</a>
+            <a href="https://instytutkawy.pl/tag-produktu/akcesoria-baristy/">Akcesoria baristy</a>
+            <a href="https://instytutkawy.pl/tag-produktu/zaparzacze-do-herbaty/">Zaparzacze do herbaty</a>
+          </div>
+        </div></div>
+      </div>
+      <div class="nav-item">
+        <a href="https://instytutkawy.pl/kategoria-produktu/chemia-do-czyszczenia/">Chemia</a>
+      </div>
+      <div class="nav-item has-mega">
+        <a href="https://instytutkawy.pl/kategoria-produktu/filtry/">Filtry</a>
+        <div class="mega"><div class="mega-in">
+          <div class="mega-col">
+            <a href="https://instytutkawy.pl/tag-produktu/filtry-do-ekspresu-kolbowego/">Filtry do ekspresu kolbowego</a>
+            <a href="https://instytutkawy.pl/tag-produktu/filtry-do-ekspresu-automatycznego/">Filtry do ekspresu automatycznego</a>
+            <a href="https://instytutkawy.pl/tag-produktu/filtry-do-wody-pitnej/">Filtry do wody pitnej</a>
+          </div>
+        </div></div>
+      </div>
+      <div class="nav-item">
+        <a href="https://instytutkawy.pl/kategoria-produktu/na-prezent/">Na prezent</a>
+      </div>
+      <div class="nav-item has-mega">
+        <a href="https://instytutkawy.pl/kategoria-produktu/dodatki/">Dodatki</a>
+        <div class="mega"><div class="mega-in">
+          <div class="mega-col">
+            <a href="https://instytutkawy.pl/tag-produktu/czekolady-do-picia/">Czekolady do picia</a>
+            <a href="https://instytutkawy.pl/tag-produktu/moda/">Moda</a>
+            <a href="https://instytutkawy.pl/tag-produktu/napoje-roslinne-do-kawy/">Napoje roślinne do kawy</a>
+            <a href="https://instytutkawy.pl/tag-produktu/cukier/">Cukier</a>
+          </div>
+        </div></div>
+      </div>
+      <div class="nav-tools">
+        <a href="https://instytutkawy.pl/szukaj/" aria-label="Szukaj"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></a>
+        <a href="https://instytutkawy.pl/moje-konto/" aria-label="Moje konto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></a>
+        <a href="https://instytutkawy.pl/koszyk/" class="nav-cart" aria-label="Koszyk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/><path d="M2 3h3l2.5 13h11l2-9H6.5"/></svg><span>0</span><span class="cart-dot"></span></a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+  <div class="breadcrumb">
+    <a href="https://instytutkawy.pl">Instytut Kawy</a> /
+    <a href="https://instytutkawy.pl/kategoria-produktu/kawa/">Kawa ziarnista</a> /
+    <a href="https://instytutkawy.pl/tag-produktu/jasny/">Jasno palona</a> /
+    <span>Kostaryka Tarrazú</span>
+  </div>
+
+  <!-- ===== TOP: zdjęcie lewo / blok zakupowy prawo ===== -->
+  <section class="top">
+    <!-- LEWA KOLUMNA: galeria + dostawa + zaufanie (równa wysokość z prawą) -->
+    <div class="gallery">
+      <div class="gal-main">
+        <div class="gal-badges">
+          <span class="flag">Jasno palona</span>
+          <span class="flag fresh">Świeży wypał</span>
+        </div>
+        <div class="gal-rating">
+          <span class="stars" data-stars="5" data-color="#1A1A1A"></span>
+          <strong>4,8</strong>
+          <a href="#opinie">(12)</a>
+        </div>
+        <img id="mainImg" src="https://instytutkawy.pl/wp-content/uploads/2023/12/Kostaryka-1200x1200.webp" alt="Kawa Kostaryka Tarrazú — opakowanie" width="520" height="520">
+        <div class="thumbs">
+          <button class="thumb active" aria-label="Pokaż zdjęcie 1: opakowanie 250 g" onclick="swapImg(this,'https://instytutkawy.pl/wp-content/uploads/2023/12/Kostaryka-1200x1200.webp')"><img src="https://instytutkawy.pl/wp-content/uploads/2023/12/Kostaryka-1200x1200.webp" alt="" aria-hidden="true"></button>
+          <button class="thumb" aria-label="Pokaż zdjęcie 2: opakowanie 1000 g" onclick="swapImg(this,'https://instytutkawy.pl/wp-content/uploads/2021/06/instytut_kawy_mockup_1000g_KOSTARYKA-1200x1200.webp')"><img src="https://instytutkawy.pl/wp-content/uploads/2021/06/instytut_kawy_mockup_1000g_KOSTARYKA-1200x1200.webp" alt="" aria-hidden="true"></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- BLOK ZAKUPOWY -->
+    <div class="buy">
+      <div>
+        <div class="eyebrow">Kostaryka · Tarrazú</div>
+        <h1 class="title">Kawa Kostaryka Tarrazú</h1>
+      </div>
+
+      <!-- WAGA (dwa boxy z ceną) + MIELENIE -->
+      <div class="variants">
+        <div class="vlabel">Waga · wybierz gramaturę</div>
+        <div class="buy-modes" role="radiogroup" aria-label="Waga">
+          <button type="button" class="pmode is-on" data-base="46" data-g="250" data-label="250 g" role="radio" aria-checked="true" onclick="pickWeight(this)">
+            <span class="pm-chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <span class="pm-t">250 g</span>
+            <span class="pm-p">46,00 zł</span>
+          </button>
+          <button type="button" class="pmode" data-base="149" data-g="1000" data-label="1000 g" role="radio" aria-checked="false" onclick="pickWeight(this)">
+            <span class="pm-chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <span class="pm-t">1000 g</span>
+            <span class="pm-p">149,00 zł</span>
+          </button>
+        </div>
+        <div class="per100-note" id="per100">od 18,40 zł / 100 g</div>
+        <div class="vlabel grind-label">Mielenie</div>
+        <div class="dropdown">
+          <button type="button" class="dd-trigger" aria-haspopup="listbox" aria-expanded="false" onclick="ddToggle(this)">
+            <span class="dd-val">NIE — ziarna</span>
+            <svg class="dd-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="dd-menu" role="listbox" aria-label="Mielenie">
+            <li role="option" class="dd-opt is-sel" onclick="ddPick(this)"><span class="lbl">NIE — ziarna</span><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></li>
+            <li role="option" class="dd-opt" onclick="ddPick(this)"><span class="lbl">TAK — espresso</span><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></li>
+            <li role="option" class="dd-opt" onclick="ddPick(this)"><span class="lbl">TAK — kawiarka</span><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></li>
+            <li role="option" class="dd-opt" onclick="ddPick(this)"><span class="lbl">TAK — metody przelewowe</span><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></li>
+            <li role="option" class="dd-opt" onclick="ddPick(this)"><span class="lbl">TAK — turecka</span><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- TABELKA KLUCZOWA przy cenie (zostaje też na mobile) -->
+      <div class="keyspec" aria-label="Najważniejsze parametry">
+        <div class="kr">
+          <span class="kl">Profil smakowy</span>
+          <span class="kv kv-icons">
+            <a class="ic-mini" href="https://instytutkawy.pl/tag-produktu/slodkie-owoce/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 7c0-3 2-4 4-4 0 2-1 4-4 4z"/><path d="M12 7c-1.5 0-5 1-5 6.5C7 18 9.2 21 12 21s5-3 5-7.5C17 8 13.5 7 12 7z"/></svg><span>wiśnia</span></a>
+            <a class="ic-mini" href="https://instytutkawy.pl/tag-produktu/karmel/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="9" width="16" height="9" rx="2"/><path d="M4 13h16M9 9V6M15 9V6"/></svg><span>karmel</span></a>
+            <a class="ic-mini" href="https://instytutkawy.pl/tag-produktu/czekolada/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="4" width="14" height="16" rx="1.5"/><path d="M5 9h14M5 14h14M12 4v16"/></svg><span>czekolada</span></a>
+          </span>
+        </div>
+        <div class="kr">
+          <span class="kl">Sposób parzenia</span>
+          <span class="kv kv-icons">
+            <a class="ic-mini" href="https://instytutkawy.pl/tag-produktu/ekspres-kolbowy/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16v4H4zM6 9l1.5 5h9L18 9M9 18h6M12 14v4"/></svg><span>kolba</span></a>
+            <a class="ic-mini" href="https://instytutkawy.pl/tag-produktu/kawiarka/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 4h7l-1 6H8zM6 10h10l1 9a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1zM16 7h3v4h-3"/></svg><span>kawiarka</span></a>
+            <a class="ic-mini" href="https://instytutkawy.pl/tag-produktu/ekspres-automatyczny/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M9 12h6l-1 4h-4z"/></svg><span>automat</span></a>
+          </span>
+        </div>
+        <div class="kr">
+          <span class="kl">Stopień palenia</span>
+          <span class="kv"><a href="https://instytutkawy.pl/tag-produktu/jasny/">Jasny</a> · w stylu filtra / espresso</span>
+        </div>
+        <div class="kr">
+          <span class="kl">Kraj i region</span>
+          <span class="kv">Kostaryka · Tarrazú</span>
+        </div>
+        <div class="kr">
+          <span class="kl">Rodzaj</span>
+          <span class="kv"><a href="https://instytutkawy.pl/tag-produktu/100-arabika/">100% Arabika</a></span>
+        </div>
+      </div>
+
+      <!-- QTY + CTA -->
+      <div class="cart-row">
+        <div class="qty">
+          <button onclick="qstep(-1)" aria-label="mniej">−</button>
+          <input id="qty" value="1" inputmode="numeric" aria-label="ilość">
+          <button onclick="qstep(1)" aria-label="więcej">+</button>
+        </div>
+        <button class="cta" onclick="addToCart()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/><path d="M2 3h3l2.5 13h11l2-9H6.5"/></svg>
+          Dodaj do koszyka
+        </button>
+      </div>
+
+      <!-- WYSYŁKA + ZAUFANIE (pod CTA) -->
+      <div class="ship">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7M5.5 18a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM17.5 18a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg>
+        <div>Zamów do <b>13:00</b> — wyślemy <b>jeszcze dziś</b>. Dostawa <b>od 0&nbsp;zł</b> (paczkomat od 229&nbsp;zł).</div>
+      </div>
+      <div class="trust">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg> Palone na świeżo, codziennie</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12a9 9 0 1 0 9-9M3 4v5h5"/></svg> Łatwy zwrot do 14 dni</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg> Bezpieczne płatności</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg> Wentyl odgazowujący one-way</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OPIS (raz, zgodny z tabelką) ===== -->
+  <section class="section" id="opis">
+    <div class="opis-grid">
+      <div class="opis-left">
+        <h2>Opis kawy</h2>
+        <div class="lead">
+          <p>Kostaryka Tarrazú to elegancka, jasno palona arabika z prestiżowego regionu <strong>Tarrazú</strong>, gdzie ziarna dojrzewają powoli na wysokości <strong>1200–1800 m n.p.m.</strong>, na żyznych glebach wulkanicznych. Chłodny, górski klimat wydobywa z owoców kawowca pełnię aromatu i klarowną, czystą słodycz.</p>
+          <p>Mieszanka odmian <strong>Caturra i Catuai</strong> poddawana jest tradycyjnej obróbce mokrej (<em>washed</em>). W filiżance znajdziesz subtelną słodycz <strong>karmelu i czekolady</strong> przeplataną soczystą nutą <strong>wiśni</strong>. <strong>Średnia, owocowa kwasowość</strong> nadaje naparowi świeżości, nie dominując aksamitnego body — kawa pozostaje harmonijna i wszechstronna.</p>
+        </div>
+        <div class="intensity">
+          <div class="int">
+            <div class="int-meta"><b>Kwasowość</b><small>średnia, owocowa</small></div>
+            <div class="int-track"><i class="int-fill" style="width:60%"></i></div>
+            <span class="int-val">3/5</span>
+          </div>
+          <div class="int">
+            <div class="int-meta"><b>Słodycz</b><small>karmel, czekolada</small></div>
+            <div class="int-track"><i class="int-fill" style="width:80%"></i></div>
+            <span class="int-val">4/5</span>
+          </div>
+          <div class="int">
+            <div class="int-meta"><b>Gorycz</b><small>niska, łagodna</small></div>
+            <div class="int-track"><i class="int-fill" style="width:40%"></i></div>
+            <span class="int-val">2/5</span>
+          </div>
+        </div>
+      </div>
+      <div class="roaster">
+        <div class="roaster-mark">“</div>
+        <div class="roaster-body">
+          <div class="roaster-label">Opinia Roaster'a</div>
+          <p class="roaster-quote">Kibingo to klasyczny burundyjski honey o słodkim, ustrukturyzowanym i bardzo przystępnym profilu. Słodkie cytrusy i karmel wnoszą ciepło i jasność, podczas gdy czarna herbata nadaje strukturę i czysty, długi finisz. Filiżanka jest gładka, zbalansowana i łatwa do odczytania, a naturalna słodycz spaja całość. Ekspresyjne, ale spokojne i bardzo pijalne — świetna kawa na co dzień.</p>
+          <div class="roaster-by">— Roaster, Instytut Kawy</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SPECYFIKACJA + PRZECHOWYWANIE (obok siebie) ===== -->
+  <section class="section">
+    <div class="acc-row">
+      <div class="acc-block">
+        <h3 class="acc-title">Pełna specyfikacja</h3>
+        <div class="acc-body">
+          <table class="spec">
+            <tr><th>Kraj</th><td>Kostaryka</td></tr>
+            <tr><th>Region</th><td>Tarrazú</td></tr>
+            <tr><th>Odmiana</th><td>Caturra, Catuai</td></tr>
+            <tr><th>Wysokość upraw</th><td>1200–1800 m n.p.m.</td></tr>
+            <tr><th>Obróbka</th><td>washed (mokra)</td></tr>
+            <tr><th>Nuty smakowe</th><td>wiśnia, karmel, czekolada</td></tr>
+            <tr><th>Kwasowość</th><td>średnia, owocowa</td></tr>
+            <tr><th>Stopień palenia</th><td>jasny</td></tr>
+            <tr><th>Rodzaj</th><td>100% Arabika</td></tr>
+            <tr><th>Forma</th><td>ziarna / mielona (do wyboru)</td></tr>
+            <tr><th>Dostępne gramatury</th><td>250 g · 1000 g</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="acc-block">
+        <h3 class="acc-title">Przechowywanie i świeżość</h3>
+        <div class="acc-body lead">
+          <p><strong>Data palenia.</strong> Kawę wypalamy codziennie — dzięki temu zawsze jest świeża. Data palenia znajduje się na każdym opakowaniu.</p>
+          <p><strong>Dlaczego kawa musi odpocząć?</strong> Po wyjściu z pieca ziarna odgazowują. W opakowaniu znajduje się wentyl „one-way", przez który nadmiar CO₂ ucieka na zewnątrz. Proces może trwać do 2 tygodni.</p>
+          <p><strong>Data przydatności.</strong> Rekomendujemy spożyć kawę po 7. dniu od wypału i przed upływem 6 miesięcy. Najlepszy smak uzyskasz między 2. tygodniem a 3. miesiącem od palenia.</p>
+          <p><strong>Przechowywanie.</strong> Po otwarciu najlepiej trzymać w oryginalnym opakowaniu. Zabobony o lodówce proponujemy włożyć między bajki 🙂</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRZEPIS PARZENIA (nice to have) ===== -->
+  <section class="section">
+    <h2>Przepis parzenia</h2>
+    <p class="lead" style="color:var(--ink-soft);margin-bottom:6px">Gotowa receptura dopasowana do metody i stopnia palenia (jasny).</p>
+    <div class="recipe">
+      <div class="rtabs" role="tablist">
+        <button class="rtab" role="tab" aria-selected="true" onclick="pickRecipe(this,'kolba')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16v4H4zM6 9l1.5 5h9L18 9M9 18h6"/></svg>Ekspres kolbowy</button>
+        <button class="rtab" role="tab" aria-selected="false" onclick="pickRecipe(this,'kawiarka')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 4h7l-1 6H8zM6 10h10l1 9H7z"/></svg>Kawiarka</button>
+        <button class="rtab" role="tab" aria-selected="false" onclick="pickRecipe(this,'przelew')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 4h12l-3 6H9zM9 10v4a3 3 0 0 0 6 0v-4M11 18h2v2"/></svg>Przelew / drip</button>
+        <button class="rtab" role="tab" aria-selected="false" onclick="pickRecipe(this,'automat')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M9 12h6l-1 4h-4z"/></svg>Automat</button>
+      </div>
+      <div class="recipe-grid" id="recipeGrid"></div>
+      <p class="rhint">Eksperymentuj z gramaturą i grubością mielenia, aby uzyskać idealny balans smaku.</p>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- ===== KAWA Z KRAJU — pełnoekranowy ciemny pas ===== -->
+  <section class="section band">
+    <div class="band-inner">
+      <div class="origin">
+        <div class="lead">
+          <div class="eyebrow">Pochodzenie</div>
+          <h2>Kawa z Kostaryki</h2>
+          <p>Kawa w Kostaryce zaczęła rosnąć w 1779 r., a swój niepowtarzalny smak zawdzięcza wulkanicznym glebom i wpływom Pacyfiku. <strong>Tarrazú</strong> leży około 70 km na południe od stolicy San José, w dziewiczej okolicy otoczonej górami.</p>
+          <p>Uprawa i przetwórstwo kawy to dla tutejszych ludzi główne źródło utrzymania — poświęca się im wielką uwagę. Wpływy ze sprzedaży kawy sfinansowały m.in. budowę pierwszej kolei łączącej wybrzeże Atlantyku oraz Teatru Narodowego w San José.</p>
+        </div>
+        <img src="https://instytutkawy.pl/wp-content/uploads/2021/06/kawa-zbieranie-scaled.jpg" alt="Zbiór kawy w Kostaryce" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <main class="wrap">
+
+  <!-- ===== OCENY I OPINIE (nowe) ===== -->
+  <section class="section" id="opinie">
+    <h2>Oceny i opinie klientów</h2>
+    <div class="rev-top">
+      <div class="rev-score">
+        <div class="big">4,8</div>
+        <div class="stars" data-stars="5"></div>
+        <small>na podstawie 12 opinii</small>
+      </div>
+      <div class="rev-dist">
+        <div class="rev-bar"><span class="lab">5★</span><span class="track"><span class="fill" style="width:83%"></span></span><span>10</span></div>
+        <div class="rev-bar"><span class="lab">4★</span><span class="track"><span class="fill" style="width:17%"></span></span><span>2</span></div>
+        <div class="rev-bar"><span class="lab">3★</span><span class="track"><span class="fill" style="width:0%"></span></span><span>0</span></div>
+        <div class="rev-bar"><span class="lab">2★</span><span class="track"><span class="fill" style="width:0%"></span></span><span>0</span></div>
+        <div class="rev-bar"><span class="lab">1★</span><span class="track"><span class="fill" style="width:0%"></span></span><span>0</span></div>
+      </div>
+    </div>
+
+    <div class="review">
+      <div class="rev-h"><b>Marta K.</b><span class="verified"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Zakup potwierdzony</span><span class="stars" data-stars="5"></span><span class="d">12.05.2026</span></div>
+      <p>Najlepsza Kostaryka jaką piłam — karmelowa słodycz i delikatna wiśnia. W kawiarce wychodzi rewelacyjnie.</p>
+    </div>
+    <div class="review">
+      <div class="rev-h"><b>Paweł T.</b><span class="verified"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Zakup potwierdzony</span><span class="stars" data-stars="5"></span><span class="d">28.04.2026</span></div>
+      <p>Świeży wypał czuć od pierwszego otwarcia. Łagodna, nie gorzka, idealna do espresso z mlekiem.</p>
+    </div>
+    <div class="review">
+      <div class="rev-h"><b>Anna W.</b><span class="verified"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Zakup potwierdzony</span><span class="stars" data-stars="4"></span><span class="d">14.04.2026</span></div>
+      <p>Bardzo dobra kawa na co dzień. Dla mnie mogłaby mieć ciut więcej kwasowości, ale to kwestia gustu.</p>
+    </div>
+  </section>
+
+  <!-- ===== DO POCZYTANIA (linki do bloga) ===== -->
+  <section class="section">
+    <h2>Do poczytania przy kawie</h2>
+    <div class="cards">
+      <a class="card" href="https://instytutkawy.pl/kawiarka-vs-ekspres-do-kawy-co-wybrac-do-domu/">
+        <div class="cimg"><img src="https://instytutkawy.pl/wp-content/uploads/2026/05/kawiarka-vs-ekspres-do-kawy-co-wybrac-do-domu.jpg" alt="Kawiarka vs ekspres do kawy" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="cbody"><div class="ctag">Poradnik</div><h4>Kawiarka vs ekspres do kawy — co wybrać do domu?</h4></div>
+      </a>
+      <a class="card" href="https://instytutkawy.pl/espresso-a-kawa-przelewowa-jak-powstaja-i-czym-sie-roznia/">
+        <div class="cimg"><img src="https://instytutkawy.pl/wp-content/uploads/2026/05/espresso-a-kawa-przelewowa-jak-powstaja-i-czym-sie-roznia.jpg" alt="Espresso a kawa przelewowa" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="cbody"><div class="ctag">Poradnik</div><h4>Espresso a kawa przelewowa — czym się różnią?</h4></div>
+      </a>
+      <a class="card" href="https://instytutkawy.pl/cortado-co-to-jest-i-jak-zrobic-w-domu/">
+        <div class="cimg"><img src="https://instytutkawy.pl/wp-content/uploads/2026/05/cortado-co-to-jest-i-jak-zrobic-w-domu.jpg" alt="Cortado — jak zrobić w domu" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="cbody"><div class="ctag">Przepis</div><h4>Cortado — co to jest i jak zrobić w domu?</h4></div>
+      </a>
+      <a class="card" href="https://instytutkawy.pl/ristretto-co-to-jest-czym-rozni-sie-od-espresso-i-jak-je-zaparzyc/">
+        <div class="cimg"><img src="https://instytutkawy.pl/wp-content/uploads/2026/05/ristretto-co-to-jest-czym-rozni-sie-od-espresso-i-jak-je-zaparzyc.jpg" alt="Ristretto" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="cbody"><div class="ctag">Poradnik</div><h4>Ristretto — czym różni się od espresso?</h4></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== POLECANE AKCESORIA (jedna sekcja) ===== -->
+  <section class="section">
+    <h2>Polecane akcesoria do tej kawy</h2>
+    <div class="acc-grid">
+      <a class="prod tint-mint" href="https://instytutkawy.pl/produkt/kawiarka-bialetti-moka-express-3tz-joyful-christmas-czerwona/">
+        <svg class="wish" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <div class="pimg"><img src="https://instytutkawy.pl/wp-content/uploads/2025/12/twoje-logo-14-depositphotos-bgremover-1.png" alt="Kawiarka Bialetti Moka Express 3tz" loading="lazy" onerror="this.style.display='none'"></div>
+        <h4>Kawiarka Bialetti Moka Express 3 tz</h4>
+        <div class="pcat">Akcesoria</div>
+        <div class="pprice">179,00 zł</div>
+        <span class="pcta">Dowiedz się więcej</span>
+      </a>
+      <a class="prod tint-cream" href="https://instytutkawy.pl/produkt/zestaw-kawosza-espresso-mlynek-reczny-timemore-c3-esp-pro-kawa/">
+        <svg class="wish" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <div class="pimg"><img src="https://instytutkawy.pl/wp-content/uploads/2025/12/3x7a9206.png" alt="Młynek ręczny Timemore C3 ESP Pro" loading="lazy" onerror="this.style.display='none'"></div>
+        <h4>Młynek ręczny Timemore C3 ESP Pro</h4>
+        <div class="pcat">Akcesoria</div>
+        <div class="pprice">375,00 zł</div>
+        <span class="pcta">Dowiedz się więcej</span>
+      </a>
+      <a class="prod tint-blush" href="https://instytutkawy.pl/produkt/dripper-hario-v60/">
+        <svg class="wish" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <div class="pimg"><img src="https://instytutkawy.pl/wp-content/uploads/2024/05/DRIPER-PLASTIKOWY-depositphotos-bgremover.png" alt="Dripper Hario V60" loading="lazy" onerror="this.style.display='none'"></div>
+        <h4>Dripper Hario V60</h4>
+        <div class="pcat">Akcesoria</div>
+        <div class="pprice">od 17,00 zł</div>
+        <span class="pcta">Wybierz opcje</span>
+      </a>
+      <a class="prod tint-rose" href="https://instytutkawy.pl/produkt/dzbanek-do-mleka-rhinowares-barista-milk-pitcher-classic-360ml/">
+        <svg class="wish" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <div class="pimg"><img src="https://instytutkawy.pl/wp-content/uploads/2024/05/b1fc3bd45ad5c7c9981519e85d6f4b2f-depositphotos-bgremover.png" alt="Dzbanek do mleka Rhinowares 360 ml" loading="lazy" onerror="this.style.display='none'"></div>
+        <h4>Dzbanek do mleka Rhinowares 360 ml</h4>
+        <div class="pcat">Akcesoria</div>
+        <div class="pprice">59,00 zł</div>
+        <span class="pcta">Dowiedz się więcej</span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<!-- STICKY BELKA ZAKUPOWA (wyjeżdża po minięciu CTA) -->
+<div class="buybar" id="buybar">
+  <div class="buybar-in">
+    <div class="bb-info">
+      <strong>Kawa Kostaryka Tarrazú</strong>
+      <span id="bbWeight">250 g · 46,00 zł</span>
+    </div>
+    <div class="bb-actions">
+      <div class="bb-weights" role="radiogroup" aria-label="Waga">
+        <button class="bb-w is-on" data-base="46" data-g="250" data-label="250 g" onclick="setWeight(46,250,'250 g')">250 g</button>
+        <button class="bb-w" data-base="149" data-g="1000" data-label="1000 g" onclick="setWeight(149,1000,'1000 g')">1000 g</button>
+      </div>
+      <button class="cta bb-cta" onclick="addToCart()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/><path d="M2 3h3l2.5 13h11l2-9H6.5"/></svg>
+        Dodaj do koszyka
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Dodano do koszyka</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="f-contact">
+        <h3>Masz pytania?</h3>
+        <p>Skontaktuj się z nami!</p>
+        <p>Palarnia <a href="tel:+48530000979">+48 530 000 979</a></p>
+        <p>Serwis <a href="tel:+48530000910">+48 530 000 910</a></p>
+        <p><a href="mailto:kontakt@instytutkawy.pl">kontakt@instytutkawy.pl</a></p>
+      </div>
+      <div class="f-newsletter">
+        <h3>Newsletter</h3>
+        <p>Bądź na bieżąco, zapisz się na newsletter i zgarnij 10% zniżki na pierwsze zamówienie!</p>
+        <form class="f-news-form" onsubmit="return false">
+          <input type="email" placeholder="Twój adres e-mail" aria-label="Adres e-mail">
+          <button type="submit">Zapisz się</button>
+        </form>
+        <small>Zapisując się na newsletter, wyrażasz zgodę na przetwarzanie swoich danych zgodnie z <a href="https://instytutkawy.pl/polityka-prywatnosci/">Polityką prywatności</a>.</small>
+      </div>
+    </div>
+    <div class="foot-cols">
+      <img class="f-logo" src="/instytut-kawy/instytut-kawy-logo-horizontal.svg" alt="Instytut Kawy">
+      <nav class="f-col">
+        <a href="https://instytutkawy.pl/sklep/">Sklep</a>
+        <a href="https://instytutkawy.pl/kategoria-produktu/kawa/">Kawa</a>
+        <a href="https://instytutkawy.pl/kategoria-produktu/herbata/">Herbaty liściaste</a>
+        <a href="https://instytutkawy.pl/kategoria-produktu/dodatki/">Dodatki</a>
+        <a href="https://instytutkawy.pl/kategoria-produktu/sprzet-i-akcesoria/">Akcesoria do kawy i ekspresu</a>
+        <a href="https://instytutkawy.pl/kategoria-produktu/promocje/">Promocje</a>
+      </nav>
+      <nav class="f-col">
+        <a href="https://instytutkawy.pl/kawa-dla-firm/">Kawa dla firm</a>
+        <a href="https://instytutkawy.pl/serwis/">Serwis</a>
+        <a href="https://instytutkawy.pl/o-nas/">O nas</a>
+        <a href="https://instytutkawy.pl/blog/">Blog</a>
+        <a href="https://instytutkawy.pl/kontakt/">Kontakt</a>
+      </nav>
+      <nav class="f-col">
+        <a href="https://instytutkawy.pl/faq/">FAQ</a>
+        <a href="https://instytutkawy.pl/dostawy/">Dostawy</a>
+        <a href="https://instytutkawy.pl/zwroty/">Zwroty</a>
+        <a href="https://instytutkawy.pl/platnosci/">Płatności</a>
+        <a href="https://instytutkawy.pl/regulamin/">Regulamin</a>
+        <a href="https://instytutkawy.pl/polityka-cookies/">Polityka cookies</a>
+        <a href="https://instytutkawy.pl/polityka-prywatnosci/">Polityka prywatności</a>
+      </nav>
+    </div>
+    <div class="foot-bottom">© All rights reserved by Instytut Kawy 2024. projekt serwisu i wdrożenie <a href="https://letsgobold.com">letsgobold.com</a></div>
+  </div>
+</footer>
+
+<!-- ===== SEO: dane strukturalne (JSON-LD) ===== -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org/",
+  "@type":"Product",
+  "name":"Kawa Kostaryka Tarrazú",
+  "image":["https://instytutkawy.pl/wp-content/uploads/2023/12/Kostaryka-1200x1200.webp"],
+  "description":"Elegancka, jasno palona arabika z regionu Tarrazú (1200–1800 m n.p.m.). Nuty wiśni, karmelu i czekolady, średnia owocowa kwasowość. 100% Arabika.",
+  "brand":{"@type":"Brand","name":"Instytut Kawy"},
+  "sku":"IK-KOSTARYKA-TARRAZU",
+  "category":"Kawa ziarnista",
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"12","bestRating":"5"},
+  "offers":{"@type":"Offer","priceCurrency":"PLN","price":"46.00","availability":"https://schema.org/InStock","url":"https://instytutkawy.pl/produkt/kawa-costa-rica-san-rafael-tarrazu-shb/"},
+  "review":[
+    {"@type":"Review","author":{"@type":"Person","name":"Marta K."},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"Najlepsza Kostaryka jaką piłam — karmelowa słodycz i delikatna wiśnia."},
+    {"@type":"Review","author":{"@type":"Person","name":"Paweł T."},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"Świeży wypał czuć od pierwszego otwarcia. Łagodna, nie gorzka."}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org/",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Instytut Kawy","item":"https://instytutkawy.pl"},
+    {"@type":"ListItem","position":2,"name":"Kawa ziarnista","item":"https://instytutkawy.pl/kategoria-produktu/kawa/"},
+    {"@type":"ListItem","position":3,"name":"Jasno palona","item":"https://instytutkawy.pl/tag-produktu/jasny/"},
+    {"@type":"ListItem","position":4,"name":"Kostaryka Tarrazú"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org/",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Kiedy wypalana jest kawa?","acceptedAnswer":{"@type":"Answer","text":"Kawę wypalamy codziennie — data palenia znajduje się na każdym opakowaniu."}},
+    {"@type":"Question","name":"Dlaczego kawa musi odpocząć po wypale?","acceptedAnswer":{"@type":"Answer","text":"Po wyjściu z pieca ziarna odgazowują. W opakowaniu jest wentyl one-way odprowadzający CO₂. Proces trwa do 2 tygodni."}},
+    {"@type":"Question","name":"Jak przechowywać kawę?","acceptedAnswer":{"@type":"Answer","text":"Najlepiej w oryginalnym, szczelnym opakowaniu, z dala od światła i wilgoci. Nie w lodówce."}}
+  ]
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+// gwiazdki
+document.querySelectorAll('.stars').forEach(el=>{
+  const n=+el.dataset.stars||5;const c=el.dataset.color||'#DFC33E';let s='';
+  for(let i=0;i<5;i++){const f=i<n;s+=`<svg viewBox="0 0 24 24" fill="${f?c:'none'}" stroke="${f?c:'#cdc6bc'}" stroke-width="1.5"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7-6.3-3.4L5.7 21 7 14.2 2 9.4l7-.9z"/></svg>`;}
+  el.innerHTML=s;
+});
+// galeria — crossfade GSAP
+function swapImg(btn,src){
+  document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active'));btn.classList.add('active');
+  const img=document.getElementById('mainImg');
+  if(window.gsap){
+    gsap.to(img,{opacity:0,scale:.97,duration:.18,ease:'power2.in',onComplete(){
+      img.src=src;gsap.fromTo(img,{opacity:0,scale:.97},{opacity:1,scale:1,duration:.4,ease:'power3.out'});
+    }});
+  }else{img.src=src;}
+}
+// cena zależna od wagi — synchronizacja kafelków i sticky belki
+const buyState={base:46,grams:250,label:'250 g'};
+function fmtPLN(v){return v.toFixed(2).replace('.',',')+' zł';}
+function renderPrice(){
+  const per=buyState.base/(buyState.grams/100);
+  const p=document.getElementById('per100');if(p)p.textContent='od '+fmtPLN(per)+' / 100 g';
+  const bw=document.getElementById('bbWeight');if(bw)bw.textContent=buyState.label+' · '+fmtPLN(buyState.base);
+}
+function setWeight(base,grams,label){
+  buyState.base=+base;buyState.grams=+grams;buyState.label=label;
+  document.querySelectorAll('.variants .pmode').forEach(p=>{const on=+p.dataset.base===buyState.base;p.classList.toggle('is-on',on);p.setAttribute('aria-checked',on);});
+  document.querySelectorAll('.bb-w').forEach(b=>b.classList.toggle('is-on',+b.dataset.base===buyState.base));
+  renderPrice();
+}
+function pickWeight(btn){
+  setWeight(btn.dataset.base,btn.dataset.g,btn.dataset.label);
+  if(window.gsap)gsap.fromTo(btn,{scale:.96},{scale:1,duration:.35,ease:'back.out(2)'});
+}
+renderPrice();
+// sticky belka zakupowa — wyjeżdża po minięciu sekcji CTA, chowa się gdy CTA znów widoczne
+(function(){
+  const cart=document.querySelector('.cart-row'), bar=document.getElementById('buybar');
+  if(!cart||!bar)return;
+  const io=new IntersectionObserver(([e])=>{
+    bar.classList.toggle('show', !e.isIntersecting && e.boundingClientRect.top<0);
+  },{threshold:0});
+  io.observe(cart);
+})();
+// qty
+function qstep(d){const i=document.getElementById('qty');i.value=Math.max(1,(+i.value||1)+d);}
+// własny dropdown
+function ddSync(){document.querySelectorAll('.variants').forEach(v=>{v.style.zIndex=v.querySelector('.dropdown.open')?'60':'';});}
+function ddToggle(btn){const d=btn.closest('.dropdown');const open=d.classList.toggle('open');btn.setAttribute('aria-expanded',open);ddSync();}
+function ddPick(li){const d=li.closest('.dropdown');d.querySelectorAll('.dd-opt').forEach(o=>{o.classList.remove('is-sel');o.setAttribute('aria-selected','false');});li.classList.add('is-sel');li.setAttribute('aria-selected','true');d.querySelector('.dd-val').textContent=li.querySelector('.lbl').textContent;d.classList.remove('open');d.querySelector('.dd-trigger').setAttribute('aria-expanded','false');ddSync();}
+// ── dostępność: obsługa klawiatury dropdowna ──
+document.querySelectorAll('.dropdown').forEach(d=>{
+  const trig=d.querySelector('.dd-trigger'), opts=[...d.querySelectorAll('.dd-opt')];
+  opts.forEach(o=>{o.tabIndex=-1;o.setAttribute('aria-selected',o.classList.contains('is-sel'));});
+  function open(){d.classList.add('open');trig.setAttribute('aria-expanded','true');ddSync();(d.querySelector('.dd-opt.is-sel')||opts[0]).focus();}
+  function close(){d.classList.remove('open');trig.setAttribute('aria-expanded','false');ddSync();}
+  trig.addEventListener('keydown',e=>{if(['ArrowDown','ArrowUp','Enter',' '].includes(e.key)){e.preventDefault();open();}});
+  d.addEventListener('keydown',e=>{
+    if(!d.classList.contains('open'))return;
+    const i=opts.indexOf(document.activeElement);
+    if(e.key==='ArrowDown'){e.preventDefault();opts[Math.min(opts.length-1,i+1)].focus();}
+    else if(e.key==='ArrowUp'){e.preventDefault();opts[Math.max(0,i-1)].focus();}
+    else if(e.key==='Home'){e.preventDefault();opts[0].focus();}
+    else if(e.key==='End'){e.preventDefault();opts[opts.length-1].focus();}
+    else if(e.key==='Enter'||e.key===' '){e.preventDefault();if(i>=0){ddPick(opts[i]);trig.focus();}}
+    else if(e.key==='Escape'){e.preventDefault();close();trig.focus();}
+  });
+});
+// ── dostępność: strzałki na tabach przepisu (roving tabindex) ──
+(function(){const rt=[...document.querySelectorAll('.rtab')];if(!rt.length)return;
+  rt.forEach((t,idx)=>{t.tabIndex=t.getAttribute('aria-selected')==='true'?0:-1;
+    t.addEventListener('keydown',e=>{let n;if(e.key==='ArrowRight')n=rt[(idx+1)%rt.length];else if(e.key==='ArrowLeft')n=rt[(idx-1+rt.length)%rt.length];
+      if(n){e.preventDefault();rt.forEach(x=>x.tabIndex=-1);n.tabIndex=0;n.focus();n.click();}});
+  });
+})();
+document.addEventListener('click',e=>{document.querySelectorAll('.dropdown.open').forEach(d=>{if(!d.contains(e.target)){d.classList.remove('open');d.querySelector('.dd-trigger').setAttribute('aria-expanded','false');}});ddSync();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelectorAll('.dropdown.open').forEach(d=>d.classList.remove('open'));ddSync();}});
+// recipe
+const recipes={
+  kolba:[['Dawka','18 g'],['Wynik','36 g'],['Temperatura','93°C'],['Czas','27 s']],
+  kawiarka:[['Dawka','17 g'],['Woda','200 g'],['Temperatura','96°C'],['Mielenie','średnie']],
+  przelew:[['Dawka','18 g'],['Woda','300 g'],['Temperatura','94°C'],['Mielenie','22 klik']],
+  automat:[['Dawka','11 g'],['Woda','110 ml'],['Temperatura','92°C'],['Mielenie','5/10']]
+};
+function renderRecipe(key){
+  document.getElementById('recipeGrid').innerHTML=recipes[key].map(([l,v])=>`<div class="rcell"><div class="rl">${l}</div><div class="rv">${v}</div></div>`).join('');
+}
+function pickRecipe(btn,key){document.querySelectorAll('.rtab').forEach(t=>t.setAttribute('aria-selected','false'));btn.setAttribute('aria-selected','true');renderRecipe(key);const g=document.getElementById('recipeGrid');if(window.gsap)gsap.fromTo(g.children,{opacity:0,y:10},{opacity:1,y:0,duration:.35,stagger:.05,ease:'power2.out'});}
+// serce w kartach — przełącz polubienie bez przechodzenia do linku
+document.querySelectorAll('.wish').forEach(h=>h.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();h.classList.toggle('liked');if(window.gsap)gsap.fromTo(h,{scale:.5},{scale:1,duration:.5,ease:'back.out(3)',clearProps:'transform'});}));
+renderRecipe('kolba');
+// cart toast + micro-interakcja
+function addToCart(){
+  const t=document.getElementById('toast');
+  t.classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(()=>t.classList.remove('show'),1800);
+  if(window.gsap){
+    gsap.fromTo(t,{y:-14,scale:.9},{y:0,scale:1,duration:.45,ease:'back.out(2)'});
+    document.querySelectorAll('.cta').forEach(b=>gsap.fromTo(b,{scale:.96},{scale:1,duration:.4,ease:'elastic.out(1,.5)'}));
+  }
+}
+
+/* ───────────────── ANIMACJE (GSAP + ScrollTrigger) ─────────────────
+   Poziom „Framer", spójny z DailyFruits: reveal ze staggerem, split-heading,
+   liczniki, animowane paski, magnetyczne CTA — na NATYWNYM scrollu (bez Lenisa).
+   Wszystko pod guardem: bez GSAP karta działa normalnie (treść widoczna).
+   Respektuje prefers-reduced-motion.                                           */
+(function(){
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root=document.documentElement;
+  if(typeof gsap==='undefined' || reduce){root.classList.remove('ganim');return;}
+  gsap.registerPlugin(ScrollTrigger);
+  root.classList.remove('ganim'); // od teraz stanami steruje GSAP
+  // Natywny scroll (bez hijackingu) — ScrollTrigger działa na natywnym przewijaniu.
+
+  // — split-heading: owijanie słów (jak w DailyFruits) —
+  function splitWords(el){
+    const words=el.textContent.trim().split(/\s+/);
+    el.innerHTML=words.map(w=>`<span class="w" style="display:inline-block">${w}</span>`).join(' ');
+    return el.querySelectorAll('.w');
+  }
+
+  // — HERO: wejście —
+  const tl=gsap.timeline({defaults:{ease:'power3.out'}});
+  const titleWords=splitWords(document.querySelector('.title'));
+  tl.from('.gallery',{scale:.97,y:22,duration:.9,clearProps:'transform'}) /* packshot: tylko transform, nigdy opacity */
+    .from('.eyebrow',{opacity:0,y:16,duration:.5},'-=.5')
+    .from(titleWords,{opacity:0,y:28,rotateX:40,stagger:.06,duration:.6,transformOrigin:'0 100%'},'-=.25')
+    .from('.keyspec .kr',{opacity:0,x:-18,stagger:.06,duration:.45},'-=.3')
+    .from('.variants, .cart-row',{opacity:0,y:16,stagger:.1,duration:.45},'-=.3')
+    .from('.buy .ship, .buy .trust > div',{opacity:0,y:16,stagger:.05,duration:.45},'-=.35');
+
+  // — Reveal sekcji ze staggerem dzieci —
+  gsap.utils.toArray('.section').forEach(sec=>{
+    gsap.from(sec.children,{opacity:0,y:40,duration:.75,stagger:.1,ease:'power3.out',
+      scrollTrigger:{trigger:sec,start:'top 82%'}});
+  });
+
+  // — Paski intensywności: rozjazd szerokości —
+  gsap.utils.toArray('.intensity').forEach(g=>{
+    gsap.from(g.querySelectorAll('.int-fill'),{scaleX:0,transformOrigin:'left center',
+      stagger:.08,duration:.7,ease:'power3.out',
+      scrollTrigger:{trigger:g,start:'top 85%'}});
+  });
+  // — Rozkład ocen + skład mieszanki —
+  gsap.utils.toArray('.rev-dist .fill, .blend-bar i').forEach(el=>{
+    gsap.from(el,{scaleX:0,transformOrigin:'left center',duration:.9,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 90%'}});
+  });
+
+  // — Licznik oceny 0 → 4,8 —
+  const big=document.querySelector('.rev-score .big');
+  if(big){
+    const obj={v:0};
+    gsap.to(obj,{v:4.8,duration:1.4,ease:'power2.out',
+      scrollTrigger:{trigger:big,start:'top 88%'},
+      onUpdate(){big.textContent=obj.v.toFixed(1).replace('.',',');}});
+  }
+
+  // — Cień nagłówka + magnetyczne CTA —
+  const nav=document.querySelector('.nav');
+  ScrollTrigger.create({start:'top -20',onUpdate:s=>nav.classList.toggle('scrolled',s.scroll()>20)});
+
+  // — anchor scroll: natywny smooth (CSS scroll-behavior + scroll-margin-top) —
+  ScrollTrigger.refresh();
+})();
+</script>
+</body>
+</html>
