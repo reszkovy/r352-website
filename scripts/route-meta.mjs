@@ -128,6 +128,12 @@ export const ROUTE_META = {
       "A white-label, end-to-end consultant for agencies. Strategy, creative and execution in one place - we embed on your client as one integrated team, under your name. You lead the relationship and keep the credit; we do what we do best.",
     ogImage: OG("for-agencies"),
   },
+  "/ai-runners": {
+    title: "Same scene, ten AI models - r352",
+    description:
+      "One running scene rendered by ten different AI image and video models. Same prompt, very different results - an interactive side-by-side gallery.",
+    ogImage: OG("ai-runners"),
+  },
 };
 
 export { DEFAULT_OG };

@@ -42,6 +42,7 @@ const Industries = lazy(() => import("@/app/pages/Industries").then(m => ({ defa
 const IndustryDetail = lazy(() => import("@/app/pages/IndustryDetail").then(m => ({ default: m.IndustryDetail })));
 const Brief = lazy(() => import("@/app/pages/Diagnostic").then(m => ({ default: m.Brief })));
 const ForAgencies = lazy(() => import("@/app/pages/ForAgencies").then(m => ({ default: m.ForAgencies })));
+const AiRunners = lazy(() => import("@/app/pages/AiRunners").then(m => ({ default: m.AiRunners })));
 import { useLenis } from "lenis/react";
 
 function ScrollToTop() {
@@ -285,6 +286,11 @@ function AppContent() {
       title: "For Agencies - r352 | White-label, end-to-end consulting",
       description: "A white-label, end-to-end consultant for agencies. Strategy, creative and execution in one place - we embed on your client as one integrated team, under your name. You lead the relationship and keep the credit; we do what we do best."
     };
+    if (path === "/ai-runners") return {
+      title: "Same scene, ten AI models - r352",
+      description: "One running scene rendered by ten different AI image and video models. Same prompt, very different results - an interactive side-by-side gallery.",
+      ogImage: "https://www.r352.com/og/ai-runners.png"
+    };
     return {
       title: "r352 - Strategic design partner for growing brands.",
       description: "Strategic design partner for multi-location organizations. From strategy to rollout-ready delivery, powered by the r3loop methodology - predictable quality and speed at scale.",
@@ -348,6 +354,7 @@ function AppContent() {
               <Route path="/industries/:slug" component={IndustryDetail} />
               <Route path="/brief" component={Brief} />
               <Route path="/for-agencies" component={ForAgencies} />
+              <Route path="/ai-runners" component={AiRunners} />
               <Route path="/deliverables" component={Deliverables} />
               <Route path="/journal" component={Journal} />
               <Route path="/journal/:id" component={JournalArticle} />
