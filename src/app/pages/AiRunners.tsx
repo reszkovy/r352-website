@@ -78,13 +78,13 @@ export function AiRunners() {
               type="button"
               onClick={() => setOpen(i)}
               aria-label={pl ? `Otwórz zdjęcie ${i + 1}` : `Open image ${i + 1}`}
-              className="group relative block w-full aspect-square overflow-hidden bg-[#0A0A0A] cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#D4FF00]"
+              className="group relative block w-full overflow-hidden bg-[#0A0A0A] cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#D4FF00]"
             >
               <img
                 src={src}
                 alt={pl ? `Biegaczka - model AI ${i + 1}` : `Runner - AI model ${i + 1}`}
                 loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
+                className="block w-full h-auto transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
               />
               {/* subtle darken + lime index on hover */}
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-500" />
