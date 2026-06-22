@@ -437,6 +437,35 @@ export function Services() {
                </Reveal>
              );
           })}
+
+          {/* White-label delivery - not an accordion product; it's the separate
+              agency track. Same row styling, but a Link out to /for-agencies
+              (arrow instead of the +/× expander). */}
+          <Reveal delay={cards.length * 0.05}>
+            <Link
+              href="/for-agencies"
+              className="group relative flex flex-col border-b border-neutral-200 dark:border-white/10 cursor-pointer py-10 md:py-12 outline-none hover:bg-neutral-50 dark:hover:bg-white/[0.02] focus-visible:bg-neutral-50 dark:focus-visible:bg-white/[0.02] transition-colors duration-500 ease-out"
+            >
+              <div className="flex items-baseline gap-6 md:gap-10 px-4 sm:px-8 md:px-10">
+                <span className="font-display text-base md:text-lg lg:text-xl shrink-0 leading-none self-start mt-3 md:mt-4 text-neutral-400 dark:text-neutral-600 group-hover:text-[#D4FF00] transition-colors duration-500">
+                  {String(cards.length + 1).padStart(2, '0')}
+                </span>
+                <div className="flex-1 flex items-baseline justify-between gap-6 md:gap-8">
+                  <div>
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter leading-[1.05] text-neutral-700 dark:text-neutral-300 group-hover:text-neutral-900 dark:group-hover:text-white transition-all duration-500 ease-out">
+                      {language === 'pl' ? "Delivery white-label" : "White-label delivery"}
+                    </h2>
+                    <p className="mt-4 text-sm md:text-base text-neutral-500 dark:text-neutral-400 max-w-xl leading-relaxed">
+                      {language === 'pl'
+                        ? "Dla agencji - wchodzimy na Twojego klienta jako zintegrowany zespół, pod Twoją marką."
+                        : "For agencies - we embed on your client as one integrated team, under your name."}
+                    </p>
+                  </div>
+                  <ArrowRight className="w-8 h-8 md:w-10 md:h-10 shrink-0 self-start mt-2 text-neutral-400 dark:text-neutral-600 group-hover:text-[#D4FF00] group-hover:translate-x-1 transition-all duration-500" strokeWidth={1.5} aria-hidden="true" />
+                </div>
+              </div>
+            </Link>
+          </Reveal>
         </div>
       </section>
       </SectionWatermark>
@@ -556,35 +585,6 @@ export function Services() {
               </Reveal>
             ))}
           </div>
-        </Reveal>
-      </section>
-
-      {/* For agencies - contextual cross-link to the white-label track. Discreet
-          band (not a top-nav item) so it reaches agency buyers without competing
-          with the brand-direct narrative above. */}
-      <section className="mt-32 relative z-50 pointer-events-auto">
-        <Reveal>
-          <Link
-            href="/for-agencies"
-            className="group block border border-neutral-200 dark:border-white/10 hover:border-[#D4FF00] dark:hover:border-[#D4FF00] transition-colors duration-300 p-8 md:p-12"
-          >
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-              <div>
-                <span className="text-xs font-display uppercase tracking-widest text-[#D4FF00] mb-3 block">
-                  {language === 'pl' ? "Dla agencji" : "For agencies"}
-                </span>
-                <p className="text-2xl md:text-3xl font-bold tracking-tight text-black dark:text-white leading-snug max-w-2xl">
-                  {language === 'pl'
-                    ? "Jesteś agencją? Dostarczamy pod Twoją marką."
-                    : "Run an agency? We run delivery under your name."}
-                </p>
-              </div>
-              <span className="inline-flex items-center gap-3 font-display uppercase tracking-widest text-sm text-black dark:text-white group-hover:text-[#D4FF00] transition-colors duration-300 shrink-0">
-                White-label
-                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.5} />
-              </span>
-            </div>
-          </Link>
         </Reveal>
       </section>
 
