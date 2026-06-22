@@ -95,7 +95,6 @@ const ROUTES = [
   "/work/benefit-systems",
   "/work/caterelo",
   "/work/dawid-podsiadlo",
-  "/work/discobowl",
   "/work/fifa",
   "/work/kubota",
   "/work/regional-fit",

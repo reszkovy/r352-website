@@ -77,18 +77,6 @@ import cathereloShot4 from "../../imports/caterelo/04-region-detail.webp";
 import cathereloShot5 from "../../imports/caterelo/05-price-chart.webp";
 import cathereloShot6 from "../../imports/caterelo/06-renovation-calc.webp";
 
-// DiscoBowl Project Assets (20 UK venues + booking system)
-// Migrated PNG → WebP (quality 85, ~85% size reduction, visually equivalent).
-// Originals preserved in src/imports/.backups-pre-compress/.
-import discobowlCover from "../../imports/discobowl/27.webp"; // Panoramic cover - /work thumbnail + hero
-import discobowlPanorama from "../../imports/discobowl/1 9.webp"; // Originally cover, moved to gallery
-import discobowlAsset1 from "../../imports/discobowl/2 2.webp";
-import discobowlAsset2 from "../../imports/discobowl/3 2.webp";
-import discobowlAsset3 from "../../imports/discobowl/4 2.webp";
-import discobowlAsset4 from "../../imports/discobowl/5 2.webp";
-import discobowlAsset5 from "../../imports/discobowl/6 2.webp";
-import discobowlFrame from "../../imports/discobowl/Frame 636509 2.webp";
-import discobowlGroup from "../../imports/discobowl/Group 636667.webp";
 
 // Internal placeholder cover - typographic block for case studies awaiting final assets.
 // Used while the real cover image is being prepared. On-brand: dark void + lime + grey grain.
@@ -502,66 +490,6 @@ export const projects = [
         pl: "Brand & Marketing · Kubota"
       }
     }
-  },
-  {
-    id: "discobowl",
-    client: "DiscoBowl",
-    title: "Multi-venue booking system",
-    category: {
-      en: "Entertainment / Booking Product",
-      pl: "Entertainment / Produkt Rezerwacyjny"
-    },
-    year: "2024",
-    image: discobowlCover,      // 27.png - panoramic cover for /work list thumbnail
-    coverImage: discobowlCover, // same for project detail hero
-    hoverVideo: "/videos/discobowl-hover.mp4",
-    images: [
-      discobowlFrame,     // Frame composition (likely brand+system showcase)
-      discobowlPanorama,  // 1 9.png - moved here from cover slot
-      discobowlAsset1,
-      discobowlAsset2,
-      discobowlAsset3,
-      discobowlAsset4,
-      discobowlAsset5,
-      discobowlGroup,     // Group composition
-    ],
-    isInternal: false,
-    description: {
-      en: "DiscoBowl operates 20+ bowling venues across the UK, each running its own schedule, capacity and local marketing. We designed the UX and built the booking system - two coordinated sites + reservation platform - that handles cross-venue consistency while letting each venue express local personality.",
-      pl: "DiscoBowl prowadzi 20+ kręgielni w UK, każda z własnym harmonogramem, pojemnością i lokalnym marketingiem. Zaprojektowaliśmy UX i zbudowaliśmy system rezerwacyjny - dwie skoordynowane strony + platformę rezerwacji - która obsługuje cross-venue consistency, pozwalając każdej kręgielni na lokalny charakter."
-    },
-    services: {
-      en: ["UX Design", "Product Design", "Multi-site Architecture", "Booking System UX", "Brand Consistency"],
-      pl: ["UX Design", "Product Design", "Architektura Multi-site", "UX Systemu Rezerwacji", "Brand Consistency"]
-    },
-    challenge: {
-      en: "Twenty venues, each booking-active 7 days a week. Each venue has its own schedule, pricing tiers, league nights, kid party slots and corporate events. The booking system needs to feel like one DiscoBowl brand but adapt to each venue's reality - without manual override per location.",
-      pl: "Dwadzieścia kręgielni, każda aktywna z rezerwacjami 7 dni w tygodniu. Każda ma własny harmonogram, cenniki, ligi, eventy dla dzieci, eventy firmowe. System rezerwacji musi czuć się jak jeden DiscoBowl brand, ale adaptować się do realiów każdej kręgielni - bez manualnych override'ów per lokalizacja."
-    },
-    decisions: {
-      en: "We treated the booking system as a product, not a feature. UX-first: every flow tested against real audience patterns - family weekends, league regulars, corporate events. Architecture: one shared component system feeding two coordinated sites - main brand site for awareness, dedicated reservations site for conversion - with venue-specific data layers underneath.",
-      pl: "Potraktowaliśmy system rezerwacji jako produkt, nie feature. UX-first: każdy flow testowany przeciw realnym wzorcom audience - rodzinne weekendy, regularni ligowicze, eventy firmowe. Architektura: jeden shared component system zasilający dwie skoordynowane strony - main brand dla awareness, dedicated reservations dla konwersji - z venue-specific data layers pod spodem."
-    },
-    approach: {
-      en: "Multi-step booking flow that minimizes drop-off: venue selection → date/time → group size → extras → checkout. Every step optimized for mobile (where most leisure bookings happen). Brand consistency through a shared design system across both sites and 20 venue subpages.",
-      pl: "Multi-step booking flow minimalizujący drop-off: wybór kręgielni → data/czas → liczba osób → dodatki → checkout. Każdy krok zoptymalizowany pod mobile (gdzie większość leisure bookings się dzieje). Brand consistency przez wspólny design system, obie strony i 20 venue subpages."
-    },
-    quote: {
-      en: "Booking is the moment of truth. Twenty venues, one flow, zero friction.",
-      pl: "Booking to moment prawdy. Dwadzieścia kręgielni, jeden flow, zero friction."
-    },
-    outcome: {
-      en: "Two coordinated sites + booking system live across 20 UK venues. Brand consistency preserved while each venue retains local personality. Mobile-first booking flow that family customers, league regulars and corporate planners all complete in under 2 minutes.",
-      pl: "Dwie skoordynowane strony + system rezerwacji live w 20 kręgielniach UK. Brand consistency zachowana przy lokalnym charakterze każdej kręgielni. Mobile-first booking flow, który rodzinni klienci, regularni ligowicze i korporacyjni planiści kończą w mniej niż 2 minuty."
-    },
-    reflection: {
-      en: "Leisure booking is high-frequency, low-margin per transaction. The system must work flawlessly thousands of times per week or revenue disappears in friction. UX precision becomes operational margin.",
-      pl: "Leisure booking to high-frequency, low-margin per transaction. System musi działać bezbłędnie tysiące razy w tygodniu albo przychód znika we friction. Precyzja UX staje się marginem operacyjnym."
-    },
-    stats: [
-      { value: "20", label: { en: "UK Venues Served", pl: "Kręgielni UK" } },
-      { value: "2+", label: { en: "Sites + Booking System", pl: "Strony + System Rezerwacji" } }
-    ]
   },
   // ─────────────────────────────────────────────────────────────────────────
   // regional.fit - our own product. Demand management system for distributed
