@@ -240,9 +240,24 @@ export function AgencyHeader() {
                       for currentColor). This works in dark, light, and lime themes alike. */}
                   <div className="hidden lg:flex items-center ml-5 gap-5">
                     <span aria-hidden="true" className="block w-px h-4 bg-current opacity-30" />
-                    <span className="font-display text-current text-[11px] tracking-[0.2em] whitespace-nowrap leading-none uppercase">
-                      {tagline}
-                    </span>
+                    {/* Tagline z clay accent na ostatnim segmencie (AI) jako TEST nowego
+                        secondary brand color. Dynamic split po " · " — działa niezależnie
+                        od języka (i18n-safe). Clay `#D97757` = warm warm tone vs lime cool
+                        accent. Pierwsze test placement w wysokiej widoczności (sitewide
+                        nav) z minimum visual disruption (1 słowo z 4). Revisit po 2 tyg
+                        jeśli buyer/audience reakcja czytelna. */}
+                    {(() => {
+                      const segments = tagline.split(" · ");
+                      const last = segments[segments.length - 1];
+                      const rest = segments.slice(0, -1).join(" · ");
+                      return (
+                        <span className="font-display text-current text-[11px] tracking-[0.2em] whitespace-nowrap leading-none uppercase">
+                          {rest}
+                          <span className="opacity-50 mx-[0.3em]">·</span>
+                          <span className="text-[#D97757]">{last}</span>
+                        </span>
+                      );
+                    })()}
                   </div>
                 </motion.div>
               )}

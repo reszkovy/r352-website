@@ -588,6 +588,49 @@ export function Services() {
         </Reveal>
       </section>
 
+      {/* For Agencies promo - mirrors the for-agencies hero language (glass hands +
+          headline) and links straight there. Image uses dark:mix-blend-screen so the
+          hands float seamlessly on the dark theme (the default). */}
+      <section className="mt-32 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center relative z-50 pointer-events-auto">
+        <div className="lg:col-span-7 order-2 lg:order-1">
+          <Reveal>
+            <span className="text-[11px] uppercase tracking-[2px] text-neutral-500 dark:text-[#D4FF00] font-display mb-5 block">
+              {language === 'pl' ? "Dla agencji" : "For agencies"}
+            </span>
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[0.95] mb-6">
+              {language === 'pl' ? (
+                <>Wygrywasz pitch.<br />My dostarczamy.</>
+              ) : (
+                <>Win the pitch.<br />We run the delivery.</>
+              )}
+            </h2>
+            <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-xl mb-9">
+              {language === 'pl'
+                ? "White-label, end-to-end. Wchodzimy na Twojego klienta jako zintegrowany zespół, pod Twoją marką. Ty prowadzisz relację, my dostarczamy."
+                : "White-label, end-to-end. We embed on your client as one integrated team, under your name. You lead the relationship, we deliver."}
+            </p>
+            <Link
+              href="/for-agencies"
+              className="group inline-flex items-center justify-center gap-3 px-10 py-4 bg-[#D4FF00] text-black font-display uppercase tracking-widest text-sm hover:bg-neutral-900 hover:text-white dark:hover:bg-white transition-colors duration-300"
+            >
+              {language === 'pl' ? "Zobacz tor agencyjny" : "Explore the agency track"}
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.5} />
+            </Link>
+          </Reveal>
+        </div>
+        <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end">
+          <Reveal width="100%">
+            <img
+              src="/agency-frames/frame-000.webp"
+              alt={language === 'pl' ? "Szklane dłonie podające kryształ - white-label delivery dla agencji" : "Glass hands offering a crystal - white-label delivery for agencies"}
+              loading="lazy"
+              className="w-full max-w-xs sm:max-w-sm lg:max-w-none h-auto select-none pointer-events-none dark:mix-blend-screen"
+              draggable={false}
+            />
+          </Reveal>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="mt-32 border-t border-neutral-200 dark:border-white/10 pt-24 pb-32 relative z-50 pointer-events-auto">
         <Reveal>
