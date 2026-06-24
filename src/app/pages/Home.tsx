@@ -43,8 +43,19 @@ export function Home() {
           3-row condensed view of /process Operating Model graph. Plants the
           "system not hours" POV BEFORE buyer reaches services. Links to full
           graph on /process for buyers who want the depth. */}
-      <section className="py-24 md:py-32 border-t border-white/10">
-        <div className="max-w-[1800px] mx-auto px-8 md:px-12">
+      {/* Graphite "lifted" band. Full-bleed graphite-gray bg with feathered
+          top/bottom gradients (from the page #0A0A0A into transparent) so the
+          gray emerges and recedes smoothly as you scroll - no rigid section edge.
+          Kept dark (white text + lime) so the fixed nav stays legible when it
+          passes over the band; a light-inverted version washed the nav out. */}
+      <section className="relative isolate">
+        {/* Graphite fill */}
+        <div className="absolute inset-0 -z-10 bg-[#363636]" aria-hidden="true" />
+        {/* Feathered edges - blend the graphite into the dark page above & below */}
+        <div className="absolute inset-x-0 top-0 -z-10 h-32 md:h-48 bg-gradient-to-b from-[#0A0A0A] to-transparent" aria-hidden="true" />
+        <div className="absolute inset-x-0 bottom-0 -z-10 h-32 md:h-48 bg-gradient-to-t from-[#0A0A0A] to-transparent" aria-hidden="true" />
+
+        <div className="max-w-[1800px] mx-auto px-8 md:px-12 py-40 md:py-56">
           <Reveal>
             <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-12 md:gap-20 items-start">
               <div>
@@ -56,7 +67,7 @@ export function Home() {
                     ? "Moja obecność maleje z każdym krokiem."
                     : "My presence decreases with each step."}
                 </h2>
-                <p className="text-base md:text-lg text-neutral-400 leading-relaxed [text-wrap:pretty] mb-6">
+                <p className="text-base md:text-lg text-neutral-300 leading-relaxed [text-wrap:pretty] mb-6">
                   {language === "pl"
                     ? "Klient kupuje system, który po wdrożeniu działa coraz mniej z moją obecnością. To dowód, że to system, nie godziny."
                     : "Clients buy a system that runs increasingly without my presence. Proof it's a system, not hours."}
@@ -69,12 +80,12 @@ export function Home() {
                   }}
                   className="group inline-flex items-center gap-3 text-xs font-display uppercase tracking-[0.2em] text-neutral-400 hover:text-[#D4FF00] transition-colors duration-500 cursor-pointer"
                 >
-                  <span className="w-6 h-px bg-neutral-600 group-hover:bg-[#D4FF00] group-hover:w-10 transition-all duration-500" />
+                  <span className="w-6 h-px bg-neutral-500 group-hover:bg-[#D4FF00] group-hover:w-10 transition-all duration-500" />
                   <span>{language === "pl" ? "Pełny model na /process" : "Full model on /process"}</span>
                   <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.5} />
                 </a>
               </div>
-              <div className="border-t border-white/10">
+              <div className="border-t border-white/15">
                 {[
                   { step: "01", name: language === "pl" ? "Diagnoza" : "Diagnose", presence: "90%", role: language === "pl" ? "Architekt i decydent" : "Architect & decision-maker" },
                   { step: "04", name: language === "pl" ? "Budowa" : "Build", presence: "45%", role: language === "pl" ? "Kierunkowy i kontroler jakości" : "Director & quality controller" },
@@ -82,14 +93,14 @@ export function Home() {
                 ].map((row, i) => (
                   <div
                     key={i}
-                    className="grid grid-cols-[auto_1fr_auto] gap-4 md:gap-8 items-center py-5 border-b border-white/10"
+                    className="grid grid-cols-[auto_1fr_auto] gap-4 md:gap-8 items-center py-5 border-b border-white/15"
                   >
                     <div className="text-sm">
                       <span className="font-display text-[#D4FF00] mr-3">{row.step}</span>
                       <span className="text-white font-medium">{row.name}</span>
                     </div>
                     <div className="flex items-center gap-3 min-w-0">
-                      <div className="w-full max-w-[120px] h-2 bg-white/10 relative">
+                      <div className="w-full max-w-[120px] h-2 bg-white/15 relative">
                         <div
                           className="absolute left-0 top-0 h-full bg-[#D4FF00]"
                           style={{ width: row.presence }}
