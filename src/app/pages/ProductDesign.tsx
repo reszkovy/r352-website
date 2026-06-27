@@ -14,6 +14,12 @@ const ITEMS = [
   "DiscoBowl",
   "Dawid Podsiadło",
   "Geers",
+  "Zdrofit",
+  "BetterWorkplace",
+  "TeamBudget",
+  "DailyFruits",
+  "Polski Rycerz",
+  "Atak Smaku",
 ];
 
 export function ProductDesign() {
