@@ -51,6 +51,8 @@ export function Footer() {
     // design (kept out of top-nav so it doesn't compete with the primary
     // brand-direct narrative). Surfaced contextually from /services too.
     { label: t("footer.link_agencies"), href: "/for-agencies" },
+    // Product Design - curated digital-product / UX work (the product side of r352).
+    { label: t("footer.link_product_design"), href: "/product-design" },
   ];
 
   // Channel focus - LinkedIn + email only. Instagram/YouTube removed (dormant

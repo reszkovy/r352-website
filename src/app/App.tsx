@@ -43,6 +43,7 @@ const IndustryDetail = lazy(() => import("@/app/pages/IndustryDetail").then(m =>
 const Brief = lazy(() => import("@/app/pages/Diagnostic").then(m => ({ default: m.Brief })));
 const ForAgencies = lazy(() => import("@/app/pages/ForAgencies").then(m => ({ default: m.ForAgencies })));
 const AiRunners = lazy(() => import("@/app/pages/AiRunners").then(m => ({ default: m.AiRunners })));
+const ProductDesign = lazy(() => import("@/app/pages/ProductDesign").then(m => ({ default: m.ProductDesign })));
 import { useLenis } from "lenis/react";
 
 function ScrollToTop() {
@@ -291,6 +292,10 @@ function AppContent() {
       description: "One running scene rendered by ten different AI image and video models. Same prompt, very different results - an interactive side-by-side gallery.",
       ogImage: "https://www.r352.com/og/ai-runners.png"
     };
+    if (path === "/product-design") return {
+      title: "Product Design - r352 | Digital products, end to end",
+      description: "Digital product design at r352: SaaS, AI platforms and e-commerce - from research through UX/UI to scalable component systems. Selected product work, own products and clients."
+    };
     return {
       title: "r352 - Strategic design partner for growing brands.",
       description: "Strategic design partner for multi-location organizations. From strategy to rollout-ready delivery, powered by the r3loop methodology - predictable quality and speed at scale.",
@@ -355,6 +360,7 @@ function AppContent() {
               <Route path="/brief" component={Brief} />
               <Route path="/for-agencies" component={ForAgencies} />
               <Route path="/ai-runners" component={AiRunners} />
+              <Route path="/product-design" component={ProductDesign} />
               <Route path="/deliverables" component={Deliverables} />
               <Route path="/journal" component={Journal} />
               <Route path="/journal/:id" component={JournalArticle} />

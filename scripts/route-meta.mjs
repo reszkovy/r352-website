@@ -134,6 +134,11 @@ export const ROUTE_META = {
       "One running scene rendered by ten different AI image and video models. Same prompt, very different results - an interactive side-by-side gallery.",
     ogImage: OG("ai-runners"),
   },
+  "/product-design": {
+    title: "Product Design - r352 | Digital products, end to end",
+    description:
+      "Digital product design at r352: SaaS, AI platforms and e-commerce - from research through UX/UI to scalable component systems. Selected product work, own products and clients.",
+  },
 };
 
 export { DEFAULT_OG };
