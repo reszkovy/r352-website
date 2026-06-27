@@ -135,9 +135,9 @@ export const ROUTE_META = {
     ogImage: OG("ai-runners"),
   },
   "/product-design": {
-    title: "Product Design - r352 | Digital products, end to end",
+    title: "Product Design - r352 | CX, UX, UI",
     description:
-      "Digital product design at r352: SaaS, AI platforms and e-commerce - from research through UX/UI to scalable component systems. Selected product work, own products and clients.",
+      "Product design at r352 - CX, UX, UI and the component systems behind them. SaaS, AI platforms and e-commerce, for our own products and for clients.",
   },
 };
 

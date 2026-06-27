@@ -293,8 +293,8 @@ function AppContent() {
       ogImage: "https://www.r352.com/og/ai-runners.png"
     };
     if (path === "/product-design") return {
-      title: "Product Design - r352 | Digital products, end to end",
-      description: "Digital product design at r352: SaaS, AI platforms and e-commerce - from research through UX/UI to scalable component systems. Selected product work, own products and clients."
+      title: "Product Design - r352 | CX, UX, UI",
+      description: "Product design at r352 - CX, UX, UI and the component systems behind them. SaaS, AI platforms and e-commerce, for our own products and for clients."
     };
     return {
       title: "r352 - Strategic design partner for growing brands.",

@@ -32,20 +32,19 @@ export function ProductDesign() {
           <Reveal>
             <div className="max-w-4xl">
               <span className="block text-xs font-display uppercase tracking-[0.2em] text-[#D4FF00] mb-8">
-                Product Design
+                {language === "pl" ? "Wybrane realizacje" : "Selected work"}
               </span>
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-black dark:text-white mb-12 leading-[0.9]">
-                {language === "pl" ? (
-                  <>Produkty cyfrowe,<br />end to end.</>
-                ) : (
-                  <>Digital products,<br />end to end.</>
-                )}
+              <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-black dark:text-white mb-5 leading-[0.9]">
+                Product design.
               </h1>
+              <p className="font-display text-2xl md:text-4xl tracking-tight text-[#D4FF00] mb-12">
+                CX · UX · UI
+              </p>
               <div className="text-xl md:text-2xl text-neutral-400 leading-relaxed max-w-2xl">
                 <p>
                   {language === "pl"
-                    ? "Od researchu, przez UX/UI, po skalowalny system komponentów - dla własnych produktów i klientów. SaaS, platformy AI, e-commerce."
-                    : "From research through UX/UI to a scalable component system - for our own products and clients. SaaS, AI platforms, e-commerce."}
+                    ? "Customer experience, user experience, interfejs - i systemy komponentów, które za nimi stoją. Dla własnych produktów i dla klientów: SaaS, platformy AI, e-commerce."
+                    : "Customer experience, user experience, interface - and the component systems behind them. For our own products and for clients: SaaS, AI platforms, e-commerce."}
                 </p>
               </div>
             </div>
