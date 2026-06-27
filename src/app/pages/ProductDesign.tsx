@@ -39,8 +39,8 @@ export function ProductDesign() {
               <div className="text-xl md:text-2xl text-neutral-400 leading-relaxed max-w-2xl">
                 <p>
                   {pl
-                    ? "Customer experience, user experience, interfejs - i systemy komponentów, które za nimi stoją. Dla własnych produktów i dla klientów: SaaS, platformy AI, e-commerce."
-                    : "Customer experience, user experience, interface - and the component systems behind them. For our own products and for clients: SaaS, AI platforms, e-commerce."}
+                    ? "Produkty, które ludzie rozumieją od pierwszego spojrzenia, używają bez tarcia i do których wracają. Od pierwszego kontaktu klienta, przez interfejs, po systemy komponentów pod spodem - design, który napędza adopcję i wytrzymuje skalowanie."
+                    : "Products people understand at first glance, use without friction, and come back to. From the first customer touch to the interface and the component systems underneath - design that drives adoption and holds up as it scales."}
                 </p>
               </div>
             </div>

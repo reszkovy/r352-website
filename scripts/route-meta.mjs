@@ -137,7 +137,7 @@ export const ROUTE_META = {
   "/product-design": {
     title: "Product Design - r352 | Brand, CX, UI, UX",
     description:
-      "Product design at r352 - Brand, CX, UI, UX and the component systems behind them. SaaS, AI platforms and e-commerce, for our own products and for clients.",
+      "Product design at r352 - Brand, CX, UI, UX. Products people understand, use, and come back to, with the component systems that let them scale and hold up.",
   },
 };
 
