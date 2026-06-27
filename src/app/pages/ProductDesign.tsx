@@ -12,6 +12,8 @@ const ITEMS = [
   "Dimedical",
   "Europa Property",
   "DiscoBowl",
+  "Dawid Podsiadło",
+  "Geers",
 ];
 
 export function ProductDesign() {
