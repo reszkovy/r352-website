@@ -62,11 +62,8 @@ export function ProductDesign() {
           {ITEMS.map((name, i) => (
             <Reveal key={name} delay={(i % 3) * 0.08} width="100%">
               <div className="group relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-neutral-900 to-black flex flex-col items-center justify-center text-center px-6 select-none transition-opacity duration-500 opacity-90 hover:opacity-100">
-                <span className="text-2xl md:text-3xl font-bold tracking-tighter text-white/90 mb-3">
+                <span className="text-2xl md:text-3xl font-bold tracking-tighter text-white/90 mb-4">
                   {name}
-                </span>
-                <span className="text-[10px] font-display uppercase tracking-[0.25em] text-neutral-500 mb-4">
-                  Brand · CX · UI · UX
                 </span>
                 <span className="inline-flex items-center gap-2 text-[10px] font-display uppercase tracking-[0.25em] text-[#D4FF00]">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#D4FF00] animate-pulse" />
