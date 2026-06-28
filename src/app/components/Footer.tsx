@@ -276,7 +276,7 @@ export function Footer() {
                    it reads "r 3 5 2"; on hover the digits light up and "R E S Z" fades in
                    aligned beneath, letting the curious decode it themselves. */}
                <div
-                 className="group/cipher mt-4 w-fit cursor-default select-none"
+                 className="group/cipher relative z-10 mt-4 w-fit cursor-default select-none"
                  aria-label="r352"
                  title="r352"
                >
