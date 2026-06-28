@@ -271,24 +271,31 @@ export function Footer() {
                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">↗</span>
                </a>
 
-               {/* Name cipher - r352 decodes to RESZ (r, 3→E, 5→S, 2→Z). Founder's
-                   signature hidden in the brand. No text explanation by design: at rest
-                   it reads "r 3 5 2"; on hover the digits light up and "R E S Z" fades in
-                   aligned beneath, letting the curious decode it themselves. */}
+               {/* Name cipher - R352EK decodes to RESZEK (3→E, 5→S, 2→Z; R, E, K literal).
+                   Founder's full surname hidden in the brand. At rest it reads "R 3 5 2 E K"
+                   with only 352 lit; on hover "R E S Z E K" fades in aligned beneath with
+                   only ESZ lit, so the corresponding pairs (352 ↔ ESZ) line up. The literal
+                   R/E/K stay muted. No text explanation by design. */}
                <div
                  className="group/cipher relative z-10 mt-4 w-fit cursor-default select-none"
-                 aria-label="r352"
-                 title="r352"
+                 aria-label="R352EK"
+                 title="R352EK"
                >
-                 <div className="grid grid-cols-4 gap-x-2 text-center font-display text-sm tracking-[0.2em]">
-                   <span className="text-neutral-500">r</span>
-                   <span className="text-neutral-500 transition-colors duration-300 group-hover/cipher:text-[#D4FF00]">3</span>
-                   <span className="text-neutral-500 transition-colors duration-300 group-hover/cipher:text-[#D4FF00]">5</span>
-                   <span className="text-neutral-500 transition-colors duration-300 group-hover/cipher:text-[#D4FF00]">2</span>
-                   <span className="mt-1 text-neutral-600 opacity-0 transition-opacity duration-500 delay-75 group-hover/cipher:opacity-100">R</span>
-                   <span className="mt-1 text-[#D4FF00] opacity-0 transition-opacity duration-500 delay-100 group-hover/cipher:opacity-100">E</span>
-                   <span className="mt-1 text-[#D4FF00] opacity-0 transition-opacity duration-500 delay-150 group-hover/cipher:opacity-100">S</span>
-                   <span className="mt-1 text-[#D4FF00] opacity-0 transition-opacity duration-500 delay-200 group-hover/cipher:opacity-100">Z</span>
+                 <div className="grid grid-cols-6 gap-x-2 text-center font-display text-sm tracking-[0.2em]">
+                   {/* Row 1: R 3 5 2 E K - only 352 highlighted */}
+                   <span className="text-neutral-500">R</span>
+                   <span className="text-[#D4FF00]">3</span>
+                   <span className="text-[#D4FF00]">5</span>
+                   <span className="text-[#D4FF00]">2</span>
+                   <span className="text-neutral-500">E</span>
+                   <span className="text-neutral-500">K</span>
+                   {/* Row 2: R E S Z E K - only ESZ highlighted, fades in on hover */}
+                   <span className="mt-1 text-neutral-600 opacity-0 transition-opacity duration-500 group-hover/cipher:opacity-100">R</span>
+                   <span className="mt-1 text-[#D4FF00] opacity-0 transition-opacity duration-500 delay-75 group-hover/cipher:opacity-100">E</span>
+                   <span className="mt-1 text-[#D4FF00] opacity-0 transition-opacity duration-500 delay-100 group-hover/cipher:opacity-100">S</span>
+                   <span className="mt-1 text-[#D4FF00] opacity-0 transition-opacity duration-500 delay-150 group-hover/cipher:opacity-100">Z</span>
+                   <span className="mt-1 text-neutral-600 opacity-0 transition-opacity duration-500 delay-200 group-hover/cipher:opacity-100">E</span>
+                   <span className="mt-1 text-neutral-600 opacity-0 transition-opacity duration-500 delay-200 group-hover/cipher:opacity-100">K</span>
                  </div>
                </div>
 
