@@ -271,6 +271,27 @@ export function Footer() {
                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">↗</span>
                </a>
 
+               {/* Name cipher - r352 decodes to RESZ (r, 3→E, 5→S, 2→Z). Founder's
+                   signature hidden in the brand. No text explanation by design: at rest
+                   it reads "r 3 5 2"; on hover the digits light up and "R E S Z" fades in
+                   aligned beneath, letting the curious decode it themselves. */}
+               <div
+                 className="group/cipher mt-4 w-fit cursor-default select-none"
+                 aria-label="r352"
+                 title="r352"
+               >
+                 <div className="grid grid-cols-4 gap-x-2 text-center font-display text-sm tracking-[0.2em]">
+                   <span className="text-neutral-500">r</span>
+                   <span className="text-neutral-500 transition-colors duration-300 group-hover/cipher:text-[#D4FF00]">3</span>
+                   <span className="text-neutral-500 transition-colors duration-300 group-hover/cipher:text-[#D4FF00]">5</span>
+                   <span className="text-neutral-500 transition-colors duration-300 group-hover/cipher:text-[#D4FF00]">2</span>
+                   <span className="mt-1 text-neutral-600 opacity-0 transition-opacity duration-500 delay-75 group-hover/cipher:opacity-100">R</span>
+                   <span className="mt-1 text-[#D4FF00] opacity-0 transition-opacity duration-500 delay-100 group-hover/cipher:opacity-100">E</span>
+                   <span className="mt-1 text-[#D4FF00] opacity-0 transition-opacity duration-500 delay-150 group-hover/cipher:opacity-100">S</span>
+                   <span className="mt-1 text-[#D4FF00] opacity-0 transition-opacity duration-500 delay-200 group-hover/cipher:opacity-100">Z</span>
+                 </div>
+               </div>
+
                {/* Wegobold sister-brand cross-link REMOVED 2026-06 - portfolio + business
                    model mismatch z r352 (enterprise consulting vs performance lead-gen)
                    creates brand confusion vs trust transfer. Revisit po 6-12 mies. kiedy
