@@ -622,10 +622,10 @@ export function Services() {
         <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end">
           <Reveal width="100%">
             <img
-              src="/agency-frames/frame-000.webp"
+              src="/agency-frames/frame-000-cut.webp"
               alt={language === 'pl' ? "Szklane dłonie podające kryształ - white-label delivery dla agencji" : "Glass hands offering a crystal - white-label delivery for agencies"}
               loading="lazy"
-              className="w-full max-w-xs sm:max-w-sm lg:max-w-none h-auto select-none pointer-events-none dark:mix-blend-screen"
+              className="w-full max-w-xs sm:max-w-sm lg:max-w-none h-auto select-none pointer-events-none"
               draggable={false}
             />
           </Reveal>
