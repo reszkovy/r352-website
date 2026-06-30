@@ -42,8 +42,8 @@ export function ForAgencies() {
     },
     {
       id: "03",
-      en: { t: "We deliver, white-labeled", d: "Senior craft and AI-accelerated production ship under your name. We stay invisible to the client unless you want us in the room." },
-      pl: { t: "Dowozimy, white-label", d: "Senioralny warsztat i produkcja przyspieszona AI wychodzą pod Twoją marką. Dla klienta jesteśmy niewidzialni - chyba że chcesz nas przy stole." },
+      en: { t: "We deliver as one team", d: "Senior craft and AI-accelerated production - white-label under your name, or named on the work. Your call on how visible we are." },
+      pl: { t: "Dowozimy jako jeden zespół", d: "Senioralny warsztat i produkcja przyspieszona AI - white-label pod Twoją marką albo pod naszą nazwą. Ty decydujesz, jak bardzo jesteśmy widoczni." },
     },
     {
       id: "04",
@@ -173,8 +173,8 @@ export function ForAgencies() {
             </h1>
             <p className="text-base md:text-xl text-neutral-200 leading-relaxed mb-8 max-w-lg dark:drop-shadow-[0_2px_12px_rgba(0,0,0,0.65)]">
               {pl
-                ? "White-label, end-to-end konsultant dla agencji. Strategia, kreacja i egzekucja w jednym miejscu - pod Twoją marką. Ty prowadzisz relację, my robimy to, co umiemy najlepiej."
-                : "A white-label, end-to-end consultant for agencies. Strategy, creative and execution in one place - under your name. You lead the relationship, we do what we do best."}
+                ? "End-to-end partner dla agencji. Strategia, kreacja i egzekucja w jednym miejscu - white-label za Twoją marką albo pod naszą nazwą. Ty decydujesz, jak bardzo jesteśmy widoczni."
+                : "An end-to-end partner for agencies. Strategy, creative and execution in one place - white-label behind your brand, or named on the work. You decide how visible we are."}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pointer-events-auto">
               <Link
@@ -277,6 +277,58 @@ export function ForAgencies() {
             )}
           </p>
         </Reveal>
+      </section>
+
+      {/* ── Two tracks - how agencies bring us in. Resolves the white-label-only
+          narrative: we also work named/direct on a defined brief. ── */}
+      <section className="mb-32 md:mb-48">
+        <Reveal>
+          <span className="text-xs font-display uppercase tracking-widest text-[#D4FF00] mb-12 block">
+            {pl ? "Dwa tory" : "Two ways in"}
+          </span>
+        </Reveal>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-0">
+          <Reveal delay={0.1} width="100%">
+            <div className="md:pr-12 lg:pr-20">
+              <span className="text-xs font-display uppercase tracking-[0.2em] text-neutral-500 mb-5 block">
+                {pl ? "Tor 01 · Za Twoją marką" : "Track 01 · Behind your brand"}
+              </span>
+              <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-6">
+                <MaskReveal>White-label</MaskReveal>
+              </h3>
+              <p className="text-lg md:text-xl text-neutral-300 leading-relaxed max-w-md">
+                {pl
+                  ? "Prowadzimy strategię, design i dostawę pod Twoją marką. Pitch, relacja z klientem i zasługi zostają Twoje - jesteśmy niewidzialni, chyba że chcesz nas przy stole."
+                  : "We run strategy, design and delivery under your name. You keep the pitch, the client relationship and the credit - we stay invisible unless you want us in the room."}
+              </p>
+              <p className="text-sm text-neutral-500 leading-relaxed max-w-md mt-6">
+                {pl
+                  ? "Najlepsze, gdy: wygrałeś pracę ponad moc zespołu, albo chcesz stałą moc bez rekrutacji."
+                  : "Best for: work you've won above your team's capacity, or standing capacity without hiring."}
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={0.2} width="100%">
+            <div className="md:pl-12 lg:pl-20 md:border-l border-white/10">
+              <span className="text-xs font-display uppercase tracking-[0.2em] text-[#D4FF00] mb-5 block">
+                {pl ? "Tor 02 · Pod naszą nazwą" : "Track 02 · Named on the work"}
+              </span>
+              <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-6">
+                <MaskReveal>{pl ? "Bezpośrednio" : "Direct"}</MaskReveal>
+              </h3>
+              <p className="text-lg md:text-xl text-neutral-300 leading-relaxed max-w-md">
+                {pl
+                  ? "Wnosisz nas pod naszą nazwą do konkretnego briefu - strategia komunikacji, brand, kampania, egzekucja end to end. Senioralny partner na projekcie, jawnie, ramię w ramię z Twoim zespołem."
+                  : "You bring us in by name for a defined brief - communication strategy, brand, a campaign, execution end to end. A senior partner on the work, openly, alongside your team."}
+              </p>
+              <p className="text-sm text-neutral-500 leading-relaxed max-w-md mt-6">
+                {pl
+                  ? "Najlepsze, gdy: konkretny projekt, w którym chcesz nasze myślenie i egzekucję jako znanego partnera."
+                  : "Best for: a specific project where you want our thinking and execution as a known partner."}
+              </p>
+            </div>
+          </Reveal>
+        </div>
       </section>
 
       {/* ── How it works - pinned immersive set-piece (sticky panel + scroll-driven
