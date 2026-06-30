@@ -7,6 +7,7 @@ import { ScrollSequence } from "@/app/components/ui/ScrollSequence";
 import { OfferMarquee } from "@/app/components/agency/OfferMarquee";
 import { HoverNote } from "@/app/components/ui/HoverNote";
 import { MaskReveal } from "@/app/components/ui/MaskReveal";
+import { PinnedHowItWorks } from "@/app/components/agency/PinnedHowItWorks";
 
 /**
  * ForAgencies - the white-label / project-consultant track.
@@ -276,37 +277,11 @@ export function ForAgencies() {
         </Reveal>
       </section>
 
-      {/* ── How it works - Motto-editorial: oversized index, big statement, asymmetric
-          3/9 grid, generous whitespace, hairline rows. Radical scale contrast. ── */}
-      <section className="mb-32 md:mb-48">
-        <Reveal>
-          <span className="text-xs font-display uppercase tracking-widest text-[#D4FF00] mb-4 md:mb-8 block">
-            {pl ? "Jak to działa" : "How it works"}
-          </span>
-        </Reveal>
-        <div>
-          {steps.map((step, i) => {
-            const c = pl ? step.pl : step.en;
-            return (
-              <Reveal key={step.id} delay={0.1 + i * 0.06} width="100%">
-                <div className="group grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-10 items-start border-t border-white/10 py-12 md:py-20">
-                  <div className="md:col-span-3">
-                    <span className="font-display text-6xl md:text-8xl font-bold leading-none tabular-nums text-white/[0.07] group-hover:text-[#D4FF00]/25 transition-colors duration-500">
-                      {step.id}
-                    </span>
-                  </div>
-                  <div className="md:col-span-9">
-                    <h3 className="text-3xl md:text-5xl font-bold tracking-tight text-white leading-[1.02] mb-5 group-hover:text-[#D4FF00] transition-colors duration-500">
-                      <MaskReveal>{c.t}</MaskReveal>
-                    </h3>
-                    <p className="text-lg md:text-xl text-neutral-400 leading-relaxed max-w-2xl">{c.d}</p>
-                  </div>
-                </div>
-              </Reveal>
-            );
-          })}
-        </div>
-      </section>
+      {/* ── How it works - pinned immersive set-piece (sticky panel + scroll-driven
+          step progression, giant ghost number, progress rail). The showpiece. ── */}
+      <div className="mb-32 md:mb-48">
+        <PinnedHowItWorks steps={steps} pl={pl} label={pl ? "Jak to działa" : "How it works"} />
+      </div>
 
       {/* ── What one team covers - auto-scrolling breadth band (the "offer") ── */}
       <section className="mb-32 md:mb-48">
