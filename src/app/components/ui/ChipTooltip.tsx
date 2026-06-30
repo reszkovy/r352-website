@@ -34,8 +34,8 @@ interface ChipTooltipProps {
   label: ReactNode;
   /** Full qualifier sentence revealed on hover/focus - always in DOM. */
   tooltip: ReactNode;
-  /** "neutral" = grey chip (lime on hover) · "lime" = lime accent chip. */
-  variant?: "neutral" | "lime";
+  /** "neutral" = grey chip (lime on hover) · "lime" = lime accent chip · "clay" = clay/AI accent (#D97757, nod to Claude). */
+  variant?: "neutral" | "lime" | "clay";
   /** "md" = hero scale · "sm" = dense card scale. */
   size?: "sm" | "md";
   /** Extra classes for the outer wrapper. */
@@ -69,6 +69,7 @@ export function ChipTooltip({
   }, [open]);
 
   const isLime = variant === "lime";
+  const isClay = variant === "clay";
 
   // Mobile-safe sizing - chips shrink below 640px (text-[10px]) and wrap
   // naturally inside any flex-wrap parent.
@@ -80,10 +81,14 @@ export function ChipTooltip({
   // Resting vs open chip colors - CSS transition handles the crossfade,
   // motion handles the floating tooltip. dark: variants keep this usable
   // on light-surface pages (Services) and dark-surface pages (Home hero).
-  const restClasses = isLime
+  const restClasses = isClay
+    ? "text-[#D97757] border-[#D97757]/40"
+    : isLime
     ? "text-[#D4FF00] border-[#D4FF00]/40"
     : "text-neutral-500 dark:text-neutral-400 border-neutral-400/40 dark:border-white/15";
-  const openClasses = isLime
+  const openClasses = isClay
+    ? "text-[#D97757] border-[#D97757] bg-[#D97757]/[0.06]"
+    : isLime
     ? "text-[#D4FF00] border-[#D4FF00] bg-[#D4FF00]/[0.06]"
     : "text-[#6B8F00] dark:text-[#D4FF00] border-[#D4FF00]";
 

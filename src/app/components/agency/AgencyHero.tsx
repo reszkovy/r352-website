@@ -109,7 +109,7 @@ export function AgencyHero() {
 
               {/* Group 2 - capability anchor (lime accent, distinct visual register) */}
               <ChipTooltip
-                variant="lime"
+                variant="clay"
                 label={
                   <>
                     <span aria-hidden="true" className="text-[8px] opacity-70">+</span>
