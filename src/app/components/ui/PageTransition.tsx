@@ -264,7 +264,7 @@ export function PageTransition({ children, className }: PageTransitionProps) {
         <div className="flex flex-col items-center gap-5">
           <R352Symbol className="w-7 h-7 md:w-9 md:h-9" color="#D4FF00" />
           <span className="text-[11px] md:text-sm font-display uppercase tracking-[0.3em] text-[#D4FF00]/80">
-            design operations
+            Move fast, steady cadence.
           </span>
         </div>
       </motion.div>
