@@ -224,20 +224,20 @@ export function ForAgencies() {
           gets a small lg top nudge so its first line sits on the headline's
           first line instead of floating above it. ── */}
       <section className="mb-32 md:mb-48">
-        <Reveal>
+        <Reveal width="100%">
           <span className="text-xs font-display uppercase tracking-widest text-neutral-500 mb-8 block">
             {pl ? "Napięcie" : "The tension"}
           </span>
         </Reveal>
-        <Reveal>
-          <h2 className="text-4xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white leading-[0.92] max-w-5xl mb-10 md:mb-16">
+        <Reveal width="100%">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-white leading-[0.98] max-w-2xl mb-8 md:mb-10">
             {pl
               ? "Wygrywasz na kreacji. Wycieka na realizacji."
               : "You win on creative. It leaks on delivery."}
           </h2>
         </Reveal>
-        <Reveal delay={0.15}>
-          <p className="text-lg md:text-2xl text-neutral-400 leading-relaxed max-w-2xl md:ml-auto md:text-right">
+        <Reveal delay={0.15} width="100%">
+          <p className="text-lg md:text-xl text-neutral-400 leading-relaxed max-w-xl">
             {pl
               ? "Pitch zamknięty, klient na pokładzie - a potem trzy rundy poprawek, niejasna odpowiedzialność i rwany rytm zjadają marżę i reputację."
               : "Pitch closed, client onboarded - then three revision rounds, unclear ownership, and a broken cadence eat the margin and the reputation."}
