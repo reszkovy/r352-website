@@ -392,29 +392,18 @@
     scrollbar-width: none;
   }
 
-  /* Global Scrollbar Styling */
+  /* Native scrollbar hidden globally - the lime ScrollThread (left + right edges)
+     is the scroll-progress indicator; Lenis drives the actual scroll. Wheel,
+     trackpad, keyboard and touch all still work. */
   ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 0;
+    height: 0;
+    display: none;
   }
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.4);
-  }
-  
-  body.global-light-mode ::-webkit-scrollbar-thumb,
-  body.lime-theme ::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.2);
-  }
-  body.global-light-mode ::-webkit-scrollbar-thumb:hover,
-  body.lime-theme ::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.4);
+  html,
+  body {
+    scrollbar-width: none;       /* Firefox */
+    -ms-overflow-style: none;    /* legacy Edge/IE */
   }
 }
 
