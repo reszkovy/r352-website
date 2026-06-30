@@ -228,26 +228,20 @@ export function ForAgencies() {
             {pl ? "Napięcie" : "The tension"}
           </span>
         </Reveal>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
-          <div className="lg:col-span-5">
-            <Reveal>
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white leading-[1.05]">
-                {pl
-                  ? "Wygrywasz na kreacji. Wycieka na realizacji."
-                  : "You win on creative. It leaks on delivery."}
-              </h2>
-            </Reveal>
-          </div>
-          <div className="lg:col-span-7">
-            <Reveal delay={0.15}>
-              <p className="text-lg md:text-xl text-neutral-400 leading-relaxed max-w-2xl lg:pt-2">
-                {pl
-                  ? "Pitch zamknięty, klient na pokładzie - a potem trzy rundy poprawek, niejasna odpowiedzialność i rwany rytm zjadają marżę i reputację."
-                  : "Pitch closed, client onboarded - then three revision rounds, unclear ownership, and a broken cadence eat the margin and the reputation."}
-              </p>
-            </Reveal>
-          </div>
-        </div>
+        <Reveal>
+          <h2 className="text-4xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white leading-[0.92] max-w-5xl mb-10 md:mb-16">
+            {pl
+              ? "Wygrywasz na kreacji. Wycieka na realizacji."
+              : "You win on creative. It leaks on delivery."}
+          </h2>
+        </Reveal>
+        <Reveal delay={0.15}>
+          <p className="text-lg md:text-2xl text-neutral-400 leading-relaxed max-w-2xl md:ml-auto md:text-right">
+            {pl
+              ? "Pitch zamknięty, klient na pokładzie - a potem trzy rundy poprawek, niejasna odpowiedzialność i rwany rytm zjadają marżę i reputację."
+              : "Pitch closed, client onboarded - then three revision rounds, unclear ownership, and a broken cadence eat the margin and the reputation."}
+          </p>
+        </Reveal>
       </section>
 
       {/* ── The usual fixes don't hold - three failing answers, then the resolution.
@@ -336,31 +330,31 @@ export function ForAgencies() {
             {pl ? "Kto co trzyma" : "Who owns what"}
           </span>
         </Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
-          <Reveal delay={0.1}>
-            <div>
-              <h3 className="text-xs font-display uppercase tracking-[0.2em] text-[#D4FF00] mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-0">
+          <Reveal delay={0.1} width="100%">
+            <div className="md:pr-12 lg:pr-20">
+              <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-[#D4FF00] mb-8 md:mb-10">
                 {pl ? "My ogarniamy" : "We handle"}
               </h3>
-              <ul className="space-y-5">
+              <ul className="space-y-4">
                 {weHandle.map((item) => (
-                  <li key={item} className="flex items-start gap-4 text-lg text-neutral-300 leading-snug">
-                    <span className="text-[#D4FF00] mt-1.5 shrink-0">-</span>
+                  <li key={item} className="flex items-start gap-4 text-lg md:text-xl text-neutral-200 leading-snug">
+                    <span className="text-[#D4FF00] mt-2 shrink-0 text-sm">-</span>
                     {item}
                   </li>
                 ))}
               </ul>
             </div>
           </Reveal>
-          <Reveal delay={0.2}>
-            <div>
-              <h3 className="text-xs font-display uppercase tracking-[0.2em] text-white mb-8">
+          <Reveal delay={0.2} width="100%">
+            <div className="md:pl-12 lg:pl-20 md:border-l border-white/10">
+              <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-8 md:mb-10">
                 {pl ? "Ty zatrzymujesz" : "You keep"}
               </h3>
-              <ul className="space-y-5">
+              <ul className="space-y-4">
                 {youKeep.map((item) => (
-                  <li key={item} className="flex items-start gap-4 text-lg text-neutral-300 leading-snug">
-                    <span className="text-white mt-1.5 shrink-0">-</span>
+                  <li key={item} className="flex items-start gap-4 text-lg md:text-xl text-neutral-400 leading-snug">
+                    <span className="text-neutral-600 mt-2 shrink-0 text-sm">-</span>
                     {item}
                   </li>
                 ))}
