@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 import { ScrollSequence } from "@/app/components/ui/ScrollSequence";
 import { OfferMarquee } from "@/app/components/agency/OfferMarquee";
 import { HoverNote } from "@/app/components/ui/HoverNote";
+import { MaskReveal } from "@/app/components/ui/MaskReveal";
 
 /**
  * ForAgencies - the white-label / project-consultant track.
@@ -230,13 +231,10 @@ export function ForAgencies() {
             {pl ? "Napięcie" : "The tension"}
           </span>
         </Reveal>
-        <Reveal width="100%">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-white leading-[0.98] max-w-2xl mb-8 md:mb-10">
-            {pl
-              ? "Wygrywasz na kreacji. Wycieka na realizacji."
-              : "You win on creative. It leaks on delivery."}
-          </h2>
-        </Reveal>
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-white leading-[0.98] max-w-2xl mb-8 md:mb-10">
+          <MaskReveal>{pl ? "Wygrywasz na kreacji." : "You win on creative."}</MaskReveal>
+          <MaskReveal delay={0.1}>{pl ? "Wycieka na realizacji." : "It leaks on delivery."}</MaskReveal>
+        </h2>
         <Reveal delay={0.15} width="100%">
           <p className="text-lg md:text-xl text-neutral-400 leading-relaxed max-w-xl">
             {pl
@@ -299,7 +297,7 @@ export function ForAgencies() {
                   </div>
                   <div className="md:col-span-9">
                     <h3 className="text-3xl md:text-5xl font-bold tracking-tight text-white leading-[1.02] mb-5 group-hover:text-[#D4FF00] transition-colors duration-500">
-                      {c.t}
+                      <MaskReveal>{c.t}</MaskReveal>
                     </h3>
                     <p className="text-lg md:text-xl text-neutral-400 leading-relaxed max-w-2xl">{c.d}</p>
                   </div>
@@ -336,7 +334,7 @@ export function ForAgencies() {
           <Reveal delay={0.1} width="100%">
             <div className="md:pr-12 lg:pr-20">
               <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-[#D4FF00] mb-8 md:mb-10">
-                {pl ? "My ogarniamy" : "We handle"}
+                <MaskReveal>{pl ? "My ogarniamy" : "We handle"}</MaskReveal>
               </h3>
               <ul className="space-y-4">
                 {weHandle.map((item) => (
@@ -351,7 +349,7 @@ export function ForAgencies() {
           <Reveal delay={0.2} width="100%">
             <div className="md:pl-12 lg:pl-20 md:border-l border-white/10">
               <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-8 md:mb-10">
-                {pl ? "Ty zatrzymujesz" : "You keep"}
+                <MaskReveal>{pl ? "Ty zatrzymujesz" : "You keep"}</MaskReveal>
               </h3>
               <ul className="space-y-4">
                 {youKeep.map((item) => (
