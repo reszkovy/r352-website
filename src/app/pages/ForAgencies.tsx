@@ -72,6 +72,37 @@ export function ForAgencies() {
     },
   ];
 
+  // ── The usual fixes don't hold - crystallises why the obvious answers fail,
+  //     setting up r352 as the one that doesn't. Senior positioning, not a price race. ──
+  const usualFixes = [
+    {
+      en: { t: "A chain of freelancers", d: "You become the project manager - briefing three people, stitching mismatched work, chasing the deadline yourself. Cheap on paper, expensive in your time and your name." },
+      pl: { t: "Łańcuch freelancerów", d: "Zostajesz project managerem - briefujesz trzy osoby, zszywasz niedopasowaną pracę, sam gonisz deadline. Tanio na papierze, drogo w Twoim czasie i Twoim nazwisku." },
+    },
+    {
+      en: { t: "A new senior hire", d: "Months to find, expensive to keep, idle between projects. A fixed cost for work that comes in waves - and a hard reverse if the pipeline dips." },
+      pl: { t: "Nowy etat seniora", d: "Miesiące szukania, drogo w utrzymaniu, przestój między projektami. Stały koszt na pracę, która przychodzi falami - i trudny odwrót, gdy pipeline siada." },
+    },
+    {
+      en: { t: "A production subscription", d: "Juniors and templates at volume. Speed, yes - but no strategy, and not the standard you pitched to win the work." },
+      pl: { t: "Subskrypcja produkcji", d: "Juniorzy i szablony na ilość. Tempo - owszem, ale bez strategii i nie na poziomie, którym wygrałeś projekt." },
+    },
+  ];
+
+  // ── Not a fit - honest disqualifier paired with "who it's for". Reinforces the
+  //     premium/senior stance: we're not the cheap-volume option, by design. ──
+  const notFits = pl
+    ? [
+        "Szukasz najtańszych rąk na rynku - jesteśmy senioralni, nie ścigamy się stawką.",
+        "Chcesz briefować i mikrozarządzać każdym taskiem - prowadzimy dostawę, nie kolejkę zadań.",
+        "To jednorazówka, której nie powtórzysz - jesteśmy do partnerstwa, nie do jednego ratunku.",
+      ]
+    : [
+        "You want the cheapest hands on the market - we're senior, not a rate-card race.",
+        "You want to brief and micromanage every task - we run the delivery, not a task queue.",
+        "It's a one-off you'll never repeat - we're built for partnership, not a single rescue.",
+      ];
+
   // ── How we engage - three shapes, all priced from a brief (premium, no rate card) ──
   const engage = [
     {
@@ -226,6 +257,38 @@ export function ForAgencies() {
         </div>
       </section>
 
+      {/* ── The usual fixes don't hold - three failing answers, then the resolution.
+          Extends the tension into "why the obvious moves break". ── */}
+      <section className="mb-32 md:mb-48">
+        <Reveal>
+          <span className="text-xs font-display uppercase tracking-widest text-neutral-500 mb-12 block">
+            {pl ? "Zwykłe łatki nie trzymają" : "The usual fixes don't hold"}
+          </span>
+        </Reveal>
+        <div className="grid grid-cols-1 md:grid-cols-3">
+          {usualFixes.map((fix, i) => {
+            const c = pl ? fix.pl : fix.en;
+            return (
+              <Reveal key={i} delay={0.1 + i * 0.08} width="100%">
+                <div className={`group h-full py-8 md:py-10 border-t border-white/10 ${i !== 0 ? "md:pl-10 md:border-l md:border-white/10" : ""} ${i !== usualFixes.length - 1 ? "md:pr-10" : ""}`}>
+                  <h3 className="text-xl md:text-2xl font-bold text-neutral-400 mb-4 leading-snug">{c.t}</h3>
+                  <p className="text-base text-neutral-500 leading-relaxed">{c.d}</p>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
+        <Reveal delay={0.2}>
+          <p className="text-2xl md:text-4xl font-bold tracking-tight text-white leading-[1.1] max-w-4xl mt-14 md:mt-16">
+            {pl ? (
+              <>r352 to żadne z tych. Jeden odpowiedzialny senioralny zespół, który <span className="text-[#D4FF00]">wymyśla i dowozi</span> - Twój standard, pod Twoją marką.</>
+            ) : (
+              <>r352 is none of these. One accountable senior team that <span className="text-[#D4FF00]">thinks it and ships it</span> - your standard, under your name.</>
+            )}
+          </p>
+        </Reveal>
+      </section>
+
       {/* ── How it works ── */}
       <section className="mb-32 md:mb-48">
         <Reveal>
@@ -313,6 +376,24 @@ export function ForAgencies() {
             );
           })}
         </div>
+
+        {/* Not a fit - honest disqualifier, muted register. Reinforces senior/premium
+            stance (we're not the cheap-volume option) the way an honest "no" does. */}
+        <Reveal delay={0.25}>
+          <div className="mt-16 md:mt-20 border-t border-white/10 pt-8 opacity-75 hover:opacity-100 transition-opacity duration-500">
+            <span className="text-xs font-display uppercase tracking-widest text-neutral-600 mb-6 block">
+              {pl ? "To nie dla Ciebie, jeśli" : "Not a fit if"}
+            </span>
+            <ul className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-4">
+              {notFits.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-base text-neutral-500 leading-snug">
+                  <span className="text-neutral-600 mt-1 shrink-0">-</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
       </section>
 
       {/* ── How we engage ── */}
