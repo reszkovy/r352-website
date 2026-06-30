@@ -96,6 +96,7 @@ function FocusMainOnRouteChange() {
 import { CursorGlow } from "@/app/components/ui/CursorGlow";
 import { VersionLabel } from "@/app/components/ui/VersionLabel";
 import { FloatingBriefCTA } from "@/app/components/ui/FloatingBriefCTA";
+import { ScrollThread } from "@/app/components/ui/ScrollThread";
 import { BottomGradient } from "@/app/components/ui/BottomGradient";
 import { LanguageProvider } from "@/app/context/LanguageContext";
 import { ThemeProvider, useTheme } from "@/app/context/ThemeContext";
@@ -419,6 +420,7 @@ export default function App() {
           <ThemeProvider>
             <AudioProvider>
               <AppContent />
+              <ScrollThread />
               <BottomGradient />
               <FloatingBriefCTA />
               <VersionLabel />
