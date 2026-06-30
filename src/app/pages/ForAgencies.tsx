@@ -5,6 +5,7 @@ import { PageTransition } from "@/app/components/ui/PageTransition";
 import { ArrowRight } from "lucide-react";
 import { ScrollSequence } from "@/app/components/ui/ScrollSequence";
 import { OfferMarquee } from "@/app/components/agency/OfferMarquee";
+import { HoverNote } from "@/app/components/ui/HoverNote";
 
 /**
  * ForAgencies - the white-label / project-consultant track.
@@ -421,9 +422,10 @@ export function ForAgencies() {
             const c = pl ? m.pl : m.en;
             return (
               <Reveal key={i} delay={0.1 + i * 0.08} width="100%">
-                <div className={`group h-full py-8 md:py-10 border-t border-white/10 ${i !== 0 ? "md:pl-10 md:border-l md:border-white/10" : ""} ${i !== engage.length - 1 ? "md:pr-10" : ""}`}>
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-4 group-hover:text-[#D4FF00] transition-colors">{c.t}</h3>
-                  <p className="text-base text-neutral-400 leading-relaxed">{c.d}</p>
+                <div className={`h-full py-8 md:py-12 border-t border-white/10 ${i !== 0 ? "md:pl-10 md:border-l md:border-white/10" : ""} ${i !== engage.length - 1 ? "md:pr-10" : ""}`}>
+                  <HoverNote note={c.d}>
+                    <h3 className="text-2xl md:text-3xl font-bold tracking-tight leading-tight">{c.t}</h3>
+                  </HoverNote>
                 </div>
               </Reveal>
             );
@@ -454,14 +456,13 @@ export function ForAgencies() {
               const c = pl ? step.pl : step.en;
               return (
                 <Reveal key={i} delay={0.1 + i * 0.08} width="100%">
-                  <div className="flex gap-6 md:gap-8 py-6 border-t border-white/10 last:border-b">
-                    <span className="font-display text-sm text-[#D4FF00] pt-1 shrink-0 w-8">
+                  <div className="flex items-start gap-6 md:gap-8 py-7 md:py-9 border-t border-white/10 last:border-b">
+                    <span className="font-display text-sm text-[#D4FF00] pt-2 shrink-0 w-8">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <div>
-                      <h3 className="text-xl md:text-2xl font-bold text-white mb-2">{c.t}</h3>
-                      <p className="text-base text-neutral-400 leading-relaxed max-w-xl">{c.d}</p>
-                    </div>
+                    <HoverNote note={c.d}>
+                      <h3 className="text-2xl md:text-3xl font-bold tracking-tight leading-tight">{c.t}</h3>
+                    </HoverNote>
                   </div>
                 </Reveal>
               );
