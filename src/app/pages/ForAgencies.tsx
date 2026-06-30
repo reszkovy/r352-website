@@ -4,6 +4,7 @@ import { useLanguage } from "@/app/context/LanguageContext";
 import { PageTransition } from "@/app/components/ui/PageTransition";
 import { ArrowRight } from "lucide-react";
 import { ScrollSequence } from "@/app/components/ui/ScrollSequence";
+import { OfferMarquee } from "@/app/components/agency/OfferMarquee";
 
 /**
  * ForAgencies - the white-label / project-consultant track.
@@ -305,6 +306,21 @@ export function ForAgencies() {
             );
           })}
         </div>
+      </section>
+
+      {/* ── What one team covers - auto-scrolling breadth band (the "offer") ── */}
+      <section className="mb-32 md:mb-48">
+        <Reveal>
+          <span className="text-xs font-display uppercase tracking-widest text-[#D4FF00] mb-3 block">
+            {pl ? "Co pokrywa jeden zespół" : "What one team covers"}
+          </span>
+          <p className="text-base md:text-lg text-neutral-500 leading-relaxed max-w-xl mb-10">
+            {pl
+              ? "Strategia po produkcję - pod jednym dachem, pod Twoją marką. Bez zszywania trzech wykonawców."
+              : "Strategy through production - under one roof, under your name. No stitching three vendors together."}
+          </p>
+        </Reveal>
+        <OfferMarquee />
       </section>
 
       {/* ── Ownership split: We handle / You keep ── */}
