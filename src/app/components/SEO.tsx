@@ -10,8 +10,8 @@ interface SEOProps {
 }
 
 export function SEO({
-  title = "r352 - Design operations for high-volume marketing teams.",
-  description = "Design operations for high-volume marketing teams and agencies. From strategy to rollout-ready delivery, powered by the r3loop methodology - predictable quality and speed at scale.",
+  title = "r352 - Design operations for brands and agencies.",
+  description = "Design operations for brands and agencies delivering at scale. From strategy to rollout-ready delivery, powered by the r3loop methodology - predictable quality and speed at scale.",
   path = "/",
   ogImage = "https://www.r352.com/og-image.png",
   article
@@ -70,7 +70,7 @@ export function SEO({
     "name": "r352",
     "url": "https://www.r352.com",
     "logo": "https://www.r352.com/logo.svg",
-    "description": "Design operations for high-volume marketing teams. Loop architecture for design ops - we build the operating system behind great design, from strategy to rollout-ready delivery, powered by the r3loop methodology.",
+    "description": "Design operations for brands and agencies. Loop architecture for design ops - we build the operating system behind great design, from strategy to rollout-ready delivery, powered by the r3loop methodology.",
     "email": "hello@r352.com",
     "founder": {
       "@type": "Person",
@@ -94,7 +94,7 @@ export function SEO({
     "@type": "WebSite",
     "name": "r352",
     "url": "https://www.r352.com",
-    "description": "Design operations for high-volume marketing teams. Loop architecture for design ops - the operating system behind great design.",
+    "description": "Design operations for brands and agencies. Loop architecture for design ops - the operating system behind great design.",
     "publisher": {
       "@type": "Organization",
       "name": "r352",
@@ -159,7 +159,7 @@ export function SEO({
     "@type": "ProfessionalService",
     "name": "r352",
     "url": "https://www.r352.com",
-    "description": "Design operations for high-volume marketing teams and agencies. We build the operating system behind great design - strategy, UX/UI, AI development, brand systems, creative production. Delivered through the r3loop methodology (8-step framework).",
+    "description": "Design operations for brands and agencies delivering at scale. We build the operating system behind great design - strategy, UX/UI, AI workflows, brand systems, creative production. Delivered through the r3loop methodology (8-step framework).",
     "priceRange": "€€€",
     "areaServed": "Worldwide",
     "serviceType": [
