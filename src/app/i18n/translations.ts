@@ -18,12 +18,13 @@ export const translations = {
       // (high-volume marketing teams). Replaces the vaguer "Strategic design partner /
       // For growing brands" which read as a generic agency. Product track lives on its
       // own page (/product-design), so the H1 sells the core service clearly.
-      //   1. "Design ops partner" - WHAT/WHO (category, not generic "design")
+      //   1. "Design operations" - WHAT (category, lead on it directly; no "partner"
+      //      which read as a solo studio - r352 is a team, not one person)
       //   2. "for high-volume marketing teams and agencies" - WHO it's for (volume = the
       //      real value; agencies included, tying to the /for-agencies white-label track)
-      title: "Design ops partner<br/>for high-volume marketing<br/>teams and agencies.",
+      title: "Design operations<br/>for high-volume marketing<br/>teams and agencies.",
       // Mobile breaks: explicit stack prevents awkward browser word-breaks at small sizes.
-      title_mobile: "Design ops partner<br/>for high-volume<br/>marketing teams<br/>and agencies.",
+      title_mobile: "Design operations<br/>for high-volume<br/>marketing teams<br/>and agencies.",
       // "Move fast, steady cadence" demoted from headline to signature line below the divider -
       // becomes brand mantra / closing thought rather than primary explanatory copy.
       signature: "Move fast, steady cadence.",
@@ -657,16 +658,17 @@ export const translations = {
     hero: {
       // Hero - dwa claim'y w parze. Tagline + audience qualifier; model współpracy
       // (retainer) żyje w body copy i na Services, nie w H1.
-      //   1. "Design ops partner" - kategoria (nie ogólny "design")
+      //   1. "Design operations" - kategoria (lead wprost; bez "partner", które czytało
+      //      się jak solo studio - r352 to zespół, nie jedna osoba)
       //   2. "dla marketingu i agencji o dużym wolumenie" - DLA KOGO (wolumen = wartość;
       //      agencje też - spina się z torem white-label /for-agencies)
       // Zastępuje mgliste "Strategiczny partner designowy / Dla rosnących marek", które
       // czytało się jak zwykła agencja. Tor produktowy żyje na /product-design, więc H1
-      // sprzedaje główną usługę wprost. "Design ops" zostaje po angielsku (termin
+      // sprzedaje główną usługę wprost. "Design operations" zostaje po angielsku (termin
       // kategorii, spójny z tagline w headerze).
-      title: "Design ops partner<br/>dla marketingu i agencji<br/>o dużym wolumenie.",
+      title: "Design operations<br/>dla marketingu i agencji<br/>o dużym wolumenie.",
       // Mobile breaks: explicit stack - czytelny układ na 375px.
-      title_mobile: "Design ops<br/>partner dla<br/>marketingu i agencji<br/>o dużym wolumenie.",
+      title_mobile: "Design operations<br/>dla marketingu<br/>i agencji<br/>o dużym wolumenie.",
       // "Tempo bez chaosu" demoted from headline to signature line - brand mantra position.
       signature: "Tempo bez chaosu.",
       description_title: "Strategia, UX/UI, rozwój AI, systemy brandowe i produkcja kreatywna<br/>- prowadzone jako jeden operating system, więc jakość i tempo trzymają poziom przy dużym wolumenie.",

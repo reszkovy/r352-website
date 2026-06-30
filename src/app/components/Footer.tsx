@@ -144,7 +144,7 @@ export function Footer() {
                {/* Verbal identity - one category line, sitewide. Matches the hero H1
                    (design operations) + the methodology category. */}
                <p className="text-xs text-neutral-500 mt-6 leading-relaxed max-w-[240px]">
-                 Design operations partner.<br />
+                 Design operations.<br />
                  Loop architecture for design ops.
                </p>
             </div>

@@ -10,8 +10,8 @@ interface SEOProps {
 }
 
 export function SEO({
-  title = "r352 - Design operations partner for high-volume marketing teams.",
-  description = "Design, systems & AI - design operations partner for high-volume marketing teams. Loop architecture for design ops, from strategy to rollout-ready delivery, powered by the r3loop methodology. Predictable quality and speed at scale.",
+  title = "r352 - Design operations for high-volume marketing teams.",
+  description = "Design, systems & AI - design operations for high-volume marketing teams. Loop architecture for design ops, from strategy to rollout-ready delivery, powered by the r3loop methodology. Predictable quality and speed at scale.",
   path = "/",
   ogImage = "https://www.r352.com/og-image.png",
   article
@@ -37,7 +37,7 @@ export function SEO({
     "alternateName": "Reszek",
     "url": "https://www.r352.com",
     "image": "https://www.r352.com/og-image.png",
-    "jobTitle": "Founder, Design Operations Partner",
+    "jobTitle": "Founder, Design Operations",
     "description": "Designer-operator with 15+ years of experience across UX, brand operations, and AI-native production systems. Founder of r352 and creator of the r3loop methodology for multi-location brand operations.",
     "worksFor": {
       "@type": "Organization",
@@ -70,7 +70,7 @@ export function SEO({
     "name": "r352",
     "url": "https://www.r352.com",
     "logo": "https://www.r352.com/logo.svg",
-    "description": "Design operations partner for high-volume marketing teams. Loop architecture for design ops - we build the operating system behind great design, from strategy to rollout-ready delivery, powered by the r3loop methodology.",
+    "description": "Design operations for high-volume marketing teams. Loop architecture for design ops - we build the operating system behind great design, from strategy to rollout-ready delivery, powered by the r3loop methodology.",
     "email": "hello@r352.com",
     "founder": {
       "@type": "Person",
@@ -94,7 +94,7 @@ export function SEO({
     "@type": "WebSite",
     "name": "r352",
     "url": "https://www.r352.com",
-    "description": "Design operations partner for high-volume marketing teams. Loop architecture for design ops - the operating system behind great design.",
+    "description": "Design operations for high-volume marketing teams. Loop architecture for design ops - the operating system behind great design.",
     "publisher": {
       "@type": "Organization",
       "name": "r352",
@@ -238,7 +238,7 @@ export function SEO({
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "r352 - Design operations partner",
+    "name": "r352 - Design operations",
     "serviceType": "Design operations consulting",
     "description": "Loop architecture for design ops. Strategy, operating system, design & production, and build & optimize - delivered through the r3loop methodology as productized engagements (Diagnostic, Sprint, Retainer, Enterprise Sprint, Operating Partner).",
     "url": "https://www.r352.com/services",

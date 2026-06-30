@@ -20,9 +20,9 @@ const DEFAULT_OG = `${SITE}/og-image.png`;
 
 export const ROUTE_META = {
   "/": {
-    title: "r352 - Design operations partner for high-volume marketing teams.",
+    title: "r352 - Design operations for high-volume marketing teams.",
     description:
-      "Design operations partner for high-volume marketing teams. From strategy to rollout-ready delivery, powered by the r3loop methodology - predictable quality and speed at scale.",
+      "Design operations for high-volume marketing teams. From strategy to rollout-ready delivery, powered by the r3loop methodology - predictable quality and speed at scale.",
     ogImage: OG("home"),
   },
   "/work": {

@@ -297,8 +297,8 @@ function AppContent() {
       description: "Product design at r352 - Brand, CX, UI, UX. Products people understand, use, and come back to, with the component systems that let them scale and hold up."
     };
     return {
-      title: "r352 - Design operations partner for high-volume marketing teams.",
-      description: "Design operations partner for high-volume marketing teams. From strategy to rollout-ready delivery, powered by the r3loop methodology - predictable quality and speed at scale.",
+      title: "r352 - Design operations for high-volume marketing teams.",
+      description: "Design operations for high-volume marketing teams. From strategy to rollout-ready delivery, powered by the r3loop methodology - predictable quality and speed at scale.",
       ogImage: "https://www.r352.com/og/home.png"
     };
   };
