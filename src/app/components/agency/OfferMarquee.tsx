@@ -26,17 +26,24 @@ export function OfferMarquee() {
   const row = [...DISCIPLINES, ...DISCIPLINES];
 
   return (
-    <div className="group relative w-full overflow-hidden py-1">
+    <div
+      className="group relative w-full overflow-hidden py-1"
+      style={{
+        // Fade the content itself to transparent at the edges (CSS mask) instead of
+        // painting a bg-coloured gradient on top - so it blends on ANY background
+        // (grain/theme) with no visible cut.
+        maskImage:
+          "linear-gradient(to right, transparent 0, black 64px, black calc(100% - 64px), transparent 100%)",
+        WebkitMaskImage:
+          "linear-gradient(to right, transparent 0, black 64px, black calc(100% - 64px), transparent 100%)",
+      }}
+    >
       <style>{`
         @keyframes r352OfferScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
         .r352-offer-track { animation: r352OfferScroll 48s linear infinite; will-change: transform; }
         .r352-offer-track:hover { animation-play-state: paused; }
         @media (prefers-reduced-motion: reduce) { .r352-offer-track { animation: none; } }
       `}</style>
-
-      {/* Edge fades into the page */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-16 md:w-32 z-10 bg-gradient-to-r from-[#0a0a0a] to-transparent" aria-hidden="true" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-16 md:w-32 z-10 bg-gradient-to-l from-[#0a0a0a] to-transparent" aria-hidden="true" />
 
       <div className="r352-offer-track flex w-max gap-3 md:gap-4">
         {row.map((d, i) => (
