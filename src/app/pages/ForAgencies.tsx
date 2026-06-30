@@ -8,6 +8,7 @@ import { OfferMarquee } from "@/app/components/agency/OfferMarquee";
 import { HoverNote } from "@/app/components/ui/HoverNote";
 import { MaskReveal } from "@/app/components/ui/MaskReveal";
 import { PinnedHowItWorks } from "@/app/components/agency/PinnedHowItWorks";
+import { ScrollThread } from "@/app/components/ui/ScrollThread";
 
 /**
  * ForAgencies - the white-label / project-consultant track.
@@ -137,6 +138,7 @@ export function ForAgencies() {
 
   return (
     <PageTransition className="min-h-screen pb-24">
+      <ScrollThread />
       {/* ── Hero - full-bleed scroll-scrubbed glass-hands sequence (philosophy-style).
           The handoff metaphor, now in motion: scrubbing the scroll plays the hands
           presenting the finished crystal. Copy is overlaid and fades out as you

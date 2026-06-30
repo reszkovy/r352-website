@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   motion,
   AnimatePresence,
@@ -6,18 +6,19 @@ import {
   useMotionValueEvent,
   useTransform,
 } from "motion/react";
+import { useReducedMotion } from "@/app/hooks/useReducedMotion";
 
 type Step = { id: string; en: { t: string; d: string }; pl: { t: string; d: string } };
 
 /**
  * PinnedHowItWorks - the immersive set-piece. A sticky panel pins to the viewport
  * while a tall outer track scrolls; scroll progress drives which step is active.
- * Each step crossfades/slides in, a giant ghost number morphs behind it, a bottom
- * progress bar fills, and a left rail of ticks marks position. Same easing language
- * as the hero, so the page reads as one designed system.
+ * Giant ghost number parallax-drifts + crossfades, the statement slides per step,
+ * a left tick rail + bottom progress bar mark position. Same easing as the hero.
  *
- * Relies on position: sticky working (PageTransition clears its inline transform
- * after entry specifically to keep sticky viewport-bound).
+ * Falls back to a clean stacked editorial list on mobile or prefers-reduced-motion
+ * (the 350vh pin would be tedious / unwanted there). Relies on position: sticky
+ * working - PageTransition clears its inline transform after entry for exactly this.
  */
 export function PinnedHowItWorks({
   steps,
@@ -29,38 +30,92 @@ export function PinnedHowItWorks({
   label: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return;
+    const mq = window.matchMedia("(min-width: 768px)");
+    setIsDesktop(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
   const [active, setActive] = useState(0);
   const n = steps.length;
+  const ease = [0.22, 1, 0.36, 1] as const;
 
   useMotionValueEvent(scrollYProgress, "change", (v) => {
-    const idx = Math.min(n - 1, Math.max(0, Math.floor(v * n)));
-    setActive(idx);
+    setActive(Math.min(n - 1, Math.max(0, Math.floor(v * n))));
   });
 
   const barWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const numX = useTransform(scrollYProgress, [0, 1], ["3vw", "-7vw"]);
+
+  const pinned = isDesktop && !reduced;
+
+  // ── Fallback: clean stacked editorial list (mobile / reduced-motion) ──
+  if (!pinned) {
+    return (
+      <section>
+        <span className="text-xs font-display uppercase tracking-widest text-[#D4FF00] mb-4 md:mb-8 block">
+          {label}
+        </span>
+        <div>
+          {steps.map((step) => {
+            const c = pl ? step.pl : step.en;
+            return (
+              <div
+                key={step.id}
+                className="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-10 items-start border-t border-white/10 py-10 md:py-16"
+              >
+                <div className="md:col-span-3">
+                  <span className="font-display text-5xl md:text-7xl font-bold leading-none tabular-nums text-white/[0.08]">
+                    {step.id}
+                  </span>
+                </div>
+                <div className="md:col-span-9">
+                  <h3 className="text-2xl md:text-4xl font-bold tracking-tight text-white leading-[1.04] mb-4">
+                    {c.t}
+                  </h3>
+                  <p className="text-base md:text-lg text-neutral-400 leading-relaxed max-w-2xl">{c.d}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+    );
+  }
+
+  // ── Pinned set-piece ──
   const c = pl ? steps[active].pl : steps[active].en;
   const id = steps[active].id;
-  const ease = [0.22, 1, 0.36, 1] as const;
 
   return (
     <section ref={ref} className="relative" style={{ height: `${n * 88}vh` }}>
       <div className="sticky top-0 h-screen overflow-hidden flex items-center">
-        {/* Giant ghost number behind */}
-        <AnimatePresence mode="popLayout">
-          <motion.span
-            key={`n-${active}`}
-            aria-hidden="true"
-            className="pointer-events-none select-none absolute right-0 md:right-4 top-1/2 font-display font-bold leading-none tabular-nums text-white/[0.05] text-[44vw] md:text-[34vw]"
-            style={{ translateY: "-50%" }}
-            initial={{ opacity: 0, y: "-42%", filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: "-50%", filter: "blur(0px)" }}
-            exit={{ opacity: 0, y: "-58%", filter: "blur(8px)" }}
-            transition={{ duration: 0.7, ease }}
-          >
-            {id}
-          </motion.span>
-        </AnimatePresence>
+        {/* Giant ghost number - parallax drift + crossfade per step */}
+        <motion.div
+          aria-hidden="true"
+          className="pointer-events-none select-none absolute right-0 md:right-2 top-1/2 -translate-y-1/2"
+          style={{ x: numX }}
+        >
+          <AnimatePresence mode="popLayout">
+            <motion.span
+              key={`n-${active}`}
+              className="block font-display font-bold leading-none tabular-nums text-white/[0.05] text-[40vw] md:text-[32vw]"
+              initial={{ opacity: 0, y: "10%", filter: "blur(10px)" }}
+              animate={{ opacity: 1, y: "0%", filter: "blur(0px)" }}
+              exit={{ opacity: 0, y: "-12%", filter: "blur(10px)" }}
+              transition={{ duration: 0.7, ease }}
+            >
+              {id}
+            </motion.span>
+          </AnimatePresence>
+        </motion.div>
 
         {/* Top labels: eyebrow + counter (pushed below the fixed nav) */}
         <div className="absolute top-24 md:top-28 left-0 right-0 flex items-center justify-between px-1">
