@@ -9,9 +9,10 @@ export const translations = {
       schedule: "Schedule a call",
       process: "Process",
       journal: "Journal",
+      agencies: "For Agencies",
       detailed_brief: "Detailed Brief",
       pricing: "Limited Access",
-      tagline: "DESIGN · SYSTEMS · PRODUCTS · AI"
+      tagline: "DESIGN · SYSTEMS · AI"
     },
     hero: {
       // Hero - names the category (design operations) + a sharp, self-selecting ICP
@@ -36,7 +37,7 @@ export const translations = {
       micro_1: "Approval cycles cut 3×.",
       micro_2: "Lower cost per asset at volume.",
       micro_3: "Weekly shipping cadence.",
-      cta_start: "Start a brief",
+      cta_start: "Start a project",
       cta_work: "Book a call"
     },
     references: {
@@ -652,9 +653,10 @@ export const translations = {
       schedule: "Umów rozmowę",
       process: "Proces",
       journal: "Dziennik",
+      agencies: "Dla agencji",
       detailed_brief: "Szczegółowy Brief",
       pricing: "Dostęp ograniczony",
-      tagline: "DESIGN · SYSTEMS · PRODUCTS · AI"
+      tagline: "DESIGN · SYSTEMS · AI"
     },
     hero: {
       // Hero - dwa claim'y w parze. Tagline + audience qualifier; model współpracy
@@ -679,7 +681,7 @@ export const translations = {
       micro_1: "Cykle akceptacji krótsze 3×.",
       micro_2: "Niższy koszt na asset przy wolumenie.",
       micro_3: "Tygodniowy rytm dostaw.",
-      cta_start: "Wypełnij brief",
+      cta_start: "Rozpocznij projekt",
       cta_work: "Umów rozmowę"
     },
     references: {

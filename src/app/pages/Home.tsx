@@ -117,6 +117,23 @@ export function Home() {
         </div>
       </section>
 
+      {/* Agency callout - hero invites agencies; this surfaces the white-label track. */}
+      <div className="border-t border-white/10">
+        <div className="max-w-[1800px] mx-auto px-8 md:px-12 py-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center text-sm">
+          <span className="text-neutral-500">
+            {language === "pl" ? "Jesteś agencją?" : "Are you an agency?"}
+          </span>
+          <a
+            href="/for-agencies"
+            onClick={(e) => { e.preventDefault(); setLocation("/for-agencies"); }}
+            className="group inline-flex items-center gap-2 text-neutral-300 hover:text-[#D4FF00] transition-colors duration-300 cursor-pointer"
+          >
+            <span>{language === "pl" ? "Dostarczamy white-label, pod Twoją marką" : "We deliver white-label, under your name"}</span>
+            <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.5} />
+          </a>
+        </div>
+      </div>
+
       <ServicesList />
 
       <HomePrinciples />
@@ -148,7 +165,7 @@ export function Home() {
                   glowColor="rgba(212, 255, 0, 0.3)"
                 >
                   <span className="text-sm font-display uppercase tracking-widest">
-                    {language === "pl" ? "Zacznij brief" : "Start a brief"}
+                    {language === "pl" ? "Rozpocznij projekt" : "Start a project"}
                   </span>
                   <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.5} />
                 </MagneticButton>

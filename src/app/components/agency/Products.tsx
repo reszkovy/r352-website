@@ -318,7 +318,7 @@ export function Products() {
                   href="/brief"
                   className="group inline-flex items-center gap-2 text-base md:text-lg font-bold tracking-tight text-neutral-900 dark:text-white hover:text-[#D4FF00] transition-colors duration-300"
                 >
-                  <span>{lang === "pl" ? "Zacznij brief" : "Start a brief"}</span>
+                  <span>{lang === "pl" ? "Rozpocznij projekt" : "Start a project"}</span>
                   <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.5} />
                 </Link>
               </div>

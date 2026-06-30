@@ -683,9 +683,9 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                     className="bg-[#D4FF00] text-black border-none hover:bg-[#D4FF00]/90 rounded-none"
                     glowColor="rgba(0, 0, 0, 0.15)"
                   >
-                    <span className="invisible text-lg font-display uppercase tracking-widest absolute">Start a brief</span>
+                    <span className="invisible text-lg font-display uppercase tracking-widest absolute">Start a project</span>
                     <span className="text-lg font-display uppercase tracking-widest group-hover:tracking-normal transition-all duration-500 ease-out">
-                      {language === "pl" ? "Wypełnij brief" : "Start a brief"}
+                      {language === "pl" ? "Rozpocznij projekt" : "Start a project"}
                     </span>
                   </MagneticButton>
 

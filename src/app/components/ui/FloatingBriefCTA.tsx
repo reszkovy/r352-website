@@ -28,7 +28,7 @@ export function FloatingBriefCTA() {
   ];
   const shouldHide = hiddenOn.some((r) => location === r || location.startsWith(`${r}/`));
 
-  const label = language === "pl" ? "Wypełnij brief" : "Start a brief";
+  const label = language === "pl" ? "Rozpocznij projekt" : "Start a project";
 
   return (
     <AnimatePresence>

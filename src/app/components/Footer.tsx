@@ -35,7 +35,7 @@ export function Footer() {
     { label: t("nav.philosophy"), href: "/philosophy" },
     { label: t("nav.services"), href: "/services" },
     { label: t("nav.journal"), href: "/journal" },
-    { label: "Start a brief", href: "/brief" },
+    { label: "Start a project", href: "/brief" },
     { label: t("nav.contact") || "Kontakt", href: "/contact" },
   ];
 

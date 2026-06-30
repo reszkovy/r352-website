@@ -5,7 +5,7 @@ import { Reveal } from "@/app/components/ui/Reveal";
 import { useLanguage } from "@/app/context/LanguageContext";
 
 // ─── Industry segment provenance ─────────────────────────────────────
-// When a user clicks "Start a brief" from /industries/{slug} we propagate
+// When a user clicks "Start a project" from /industries/{slug} we propagate
 // the segment via ?segment= so we can (a) show a subtle provenance pill
 // at the top of the brief and (b) push an analytics event for funnel
 // attribution. Display labels are bilingual - Polish copy lands when
@@ -622,7 +622,7 @@ const COPY_EN = {
     ],
   },
   form: {
-    label: "Start a brief",
+    label: "Start a project",
     title: "Four fields. ~30 seconds.",
     subtitle:
       "We only need contact and one line of context here. The structured wizard that follows is where the real conversation happens.",
@@ -672,7 +672,7 @@ const COPY_PL = {
     title: "Trzy kroki. Uczciwe zakończenie.",
     steps: [
       {
-        title: "Wypełnij brief",
+        title: "Rozpocznij projekt",
         desc: "Cztery pola na start, potem ~10 minut przez wizard. Strategiczny kontekst, nie spec techniczny.",
       },
       {
@@ -686,7 +686,7 @@ const COPY_PL = {
     ],
   },
   form: {
-    label: "Zacznij brief",
+    label: "Rozpocznij projekt",
     title: "Cztery pola. ~30 sekund.",
     subtitle:
       "Potrzebujemy tylko kontaktu i jednej linijki kontekstu. Ustrukturyzowany wizard, który zaczyna się po wysłaniu, to miejsce prawdziwej rozmowy.",

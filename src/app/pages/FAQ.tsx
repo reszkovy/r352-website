@@ -46,6 +46,10 @@ const FAQ_EN: FaqItem[] = [
     a: "r352 is positioned as an operator, not an agency. Agencies sell creative deliverables billed by the hour. r352 builds operational systems - design ops infrastructure, brief standardization, governance gates, AI-native production pipelines - sold as productized engagements with fixed scope and predictable outcomes. The deliverables are working tools your team uses after we're gone, not pitch decks.",
   },
   {
+    q: "Do you work with agencies?",
+    a: "Yes - white-label. You keep the pitch, the client relationship and the brand; we run strategy, design, production and QA under your name. Three shapes: per project, retained capacity, or embedded for a launch - all priced from a brief. See the For Agencies page for how it works.",
+  },
+  {
     q: "What are r352's engagement models?",
     a: "Five productized models. Diagnostic: 5-day operational audit, €2k fixed, 60-day money-back guarantee. Sprint: 4-6 week fixed-scope build, from €15k. Retainer: monthly engagement from €7k/mo with 30-day notice. Enterprise Sprint: 12-16 week multi-location rollout from €55k. Operating Partner: embedded role from €9.5k/mo with 12-month minimum.",
   },
@@ -69,6 +73,10 @@ const FAQ_PL: FaqItem[] = [
   {
     q: "Czym r352 różni się od agencji kreatywnej?",
     a: "r352 jest pozycjonowane jako operator, nie agencja. Agencje sprzedają kreatywne deliverables billing'owane godzinowo. r352 buduje systemy operacyjne - design ops infrastructure, brief standardization, governance gates, AI-native production pipelines - sprzedawane jako produktyzowane engagementy z fixed scope i przewidywalnym outcome'em. Deliverables to działające narzędzia, których Twój zespół używa po naszym wyjściu, a nie pitch decki.",
+  },
+  {
+    q: "Czy pracujecie z agencjami?",
+    a: "Tak - white-label. Ty trzymasz pitch, relację z klientem i markę; my prowadzimy strategię, design, produkcję i QA pod Twoją marką. Trzy formy: per projekt, retainer albo embedded na launch - wycena z briefu. Jak to działa: zobacz stronę Dla agencji.",
   },
   {
     q: "Jakie są modele współpracy r352?",

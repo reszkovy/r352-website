@@ -153,7 +153,7 @@ const COPY_EN = {
       "48-hour written response with positioning, scope direction, and next step",
       "Free, no commitment - refer-out to network if we're not the right fit",
     ],
-    cta: "Start a brief",
+    cta: "Start a project",
   },
   pathB: {
     badge: "Secondary · 30 sec",
@@ -187,7 +187,7 @@ const COPY_PL = {
       "Pisemna odpowiedź w 48h: pozycjonowanie, kierunek zakresu, następny krok",
       "Bezpłatnie, bez zobowiązań - polecimy kogoś z sieci jeśli nie pasujemy",
     ],
-    cta: "Wypełnij brief",
+    cta: "Rozpocznij projekt",
   },
   pathB: {
     badge: "Alternatywna · 30 sek",
