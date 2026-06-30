@@ -31,9 +31,10 @@ export const translations = {
       description_title: "Strategy, UX/UI, AI development, brand systems and creative production<br/>- run as one operating system, so quality and speed hold at volume.",
       description_body: "Retainer for the steady. Project for the sharp. Same r3loop methodology - applied to both, and to our own products in production.",
       quote: "Design begins with a decision, not a tool.",
-      // Attribution added - audit flagged hero metrics as unverifiable claims.
-      micro_1: "80%+ briefs ready first round - Geers, 2 quarters.",
-      micro_2: "Approval cycles cut 3× - measured, not promised.",
+      // Three proof signals on one axis: execution + cost + speed. Replaces the
+      // earlier cryptic metrics ("Geers, 2 quarters", "measured, not promised").
+      micro_1: "Approval cycles cut 3×.",
+      micro_2: "Lower cost per asset at volume.",
       micro_3: "Weekly shipping cadence.",
       cta_start: "Start a brief",
       cta_work: "Book a call"
@@ -674,9 +675,9 @@ export const translations = {
       description_title: "Strategia, UX/UI, rozwój AI, systemy brandowe i produkcja kreatywna<br/>- prowadzone jako jeden operating system, więc jakość i tempo trzymają poziom przy dużym wolumenie.",
       description_body: "Retainer dla stabilnych. Projekt dla ostrych. Ta sama metodologia r3loop - zastosowana do obu, i do naszych własnych produktów w produkcji.",
       quote: "Projektowanie zaczyna się od decyzji, nie od narzędzia.",
-      // Atrybucja dodana - audyt flagował metryki hero jako nieweryfikowalne.
-      micro_1: "80%+ briefów gotowych za pierwszym razem - Geers, 2 kwartały.",
-      micro_2: "Cykle akceptacji 3× szybsze - zmierzone, nie obiecane.",
+      // Trzy proof-signale na jednej osi: egzekucja + koszt + tempo.
+      micro_1: "Cykle akceptacji krótsze 3×.",
+      micro_2: "Niższy koszt na asset przy wolumenie.",
       micro_3: "Tygodniowy rytm dostaw.",
       cta_start: "Wypełnij brief",
       cta_work: "Umów rozmowę"
