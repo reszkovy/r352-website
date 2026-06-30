@@ -282,25 +282,31 @@ export function ForAgencies() {
         </Reveal>
       </section>
 
-      {/* ── How it works ── */}
+      {/* ── How it works - Motto-editorial: oversized index, big statement, asymmetric
+          3/9 grid, generous whitespace, hairline rows. Radical scale contrast. ── */}
       <section className="mb-32 md:mb-48">
         <Reveal>
-          <span className="text-xs font-display uppercase tracking-widest text-[#D4FF00] mb-12 block">
+          <span className="text-xs font-display uppercase tracking-widest text-[#D4FF00] mb-4 md:mb-8 block">
             {pl ? "Jak to działa" : "How it works"}
           </span>
         </Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-2">
+        <div>
           {steps.map((step, i) => {
             const c = pl ? step.pl : step.en;
-            const isLeft = i % 2 === 0;
             return (
-              <Reveal key={step.id} delay={0.1 + i * 0.08} width="100%">
-                <div className={`group h-full py-10 md:py-14 border-t border-white/10 ${isLeft ? "md:pr-14 md:border-r md:border-white/10" : "md:pl-14"}`}>
-                  <span className="font-display text-sm text-[#D4FF00] block mb-6">{step.id}</span>
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-[#D4FF00] transition-colors">
-                    {c.t}
-                  </h3>
-                  <p className="text-lg text-neutral-400 leading-relaxed">{c.d}</p>
+              <Reveal key={step.id} delay={0.1 + i * 0.06} width="100%">
+                <div className="group grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-10 items-start border-t border-white/10 py-12 md:py-20">
+                  <div className="md:col-span-3">
+                    <span className="font-display text-6xl md:text-8xl font-bold leading-none tabular-nums text-white/[0.07] group-hover:text-[#D4FF00]/25 transition-colors duration-500">
+                      {step.id}
+                    </span>
+                  </div>
+                  <div className="md:col-span-9">
+                    <h3 className="text-3xl md:text-5xl font-bold tracking-tight text-white leading-[1.02] mb-5 group-hover:text-[#D4FF00] transition-colors duration-500">
+                      {c.t}
+                    </h3>
+                    <p className="text-lg md:text-xl text-neutral-400 leading-relaxed max-w-2xl">{c.d}</p>
+                  </div>
                 </div>
               </Reveal>
             );
