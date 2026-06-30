@@ -194,11 +194,12 @@ export function ForAgencies() {
       </ScrollSequence>
 
       {/* Contained content below the full-bleed scroll hero.
-          -mt-[100vh] pulls it up behind the fixed canvas portal (which paints on
-          top) so it's already risen, hidden behind the opaque last frame, when
-          the fade-exit begins - then it's revealed through the fading hands as
-          they cross-fade out. relative + z-0 keeps a clean stacking context. */}
-      <div className="relative z-0 -mt-[80vh] px-6 md:px-12 max-w-[1600px] mx-auto pt-24 md:pt-32">
+          Pulled up to overlap the tail of the hero pin, but only PAST the point
+          where the hands have fully faded (fade completes ~65% through the pin),
+          so proof + tension land on clean black instead of under the still-opaque
+          hand. (-mt-[80vh] put content into the fade zone -> the big tension
+          headline collided with the center-right hand.) z-0 = clean stacking. */}
+      <div className="relative z-0 -mt-[40vh] px-6 md:px-12 max-w-[1600px] mx-auto pt-24 md:pt-32">
 
       {/* ── Proof line - quiet credibility band. CONFIRM/ADJUST WORDING with the
             client before relying on it publicly (currently a true but unnamed claim). ── */}
