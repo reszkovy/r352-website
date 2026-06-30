@@ -18,15 +18,16 @@ export const translations = {
       // (high-volume marketing teams). Replaces the vaguer "Strategic design partner /
       // For growing brands" which read as a generic agency. Product track lives on its
       // own page (/product-design), so the H1 sells the core service clearly.
-      //   1. "Design operations partner" - WHAT/WHO (category, not generic "design")
-      //   2. "for high-volume marketing teams" - WHO it's for (volume = the real value)
-      title: "Design operations partner<br/>for high-volume<br/>marketing teams.",
+      //   1. "Design ops partner" - WHAT/WHO (category, not generic "design")
+      //   2. "for high-volume marketing teams and agencies" - WHO it's for (volume = the
+      //      real value; agencies included, tying to the /for-agencies white-label track)
+      title: "Design ops partner<br/>for high-volume marketing<br/>teams and agencies.",
       // Mobile breaks: explicit stack prevents awkward browser word-breaks at small sizes.
-      title_mobile: "Design<br/>operations partner<br/>for high-volume<br/>marketing teams.",
+      title_mobile: "Design ops partner<br/>for high-volume<br/>marketing teams<br/>and agencies.",
       // "Move fast, steady cadence" demoted from headline to signature line below the divider -
       // becomes brand mantra / closing thought rather than primary explanatory copy.
       signature: "Move fast, steady cadence.",
-      description_title: "For brands operating at scale - across locations, products, or campaigns.",
+      description_title: "We combine strategy, UX/UI, brand systems and creative production to help teams deliver better design at scale.",
       description_body: "Retainer for the steady. Project for the sharp. Same r3loop methodology - applied to both, and to our own products in production.",
       quote: "Design begins with a decision, not a tool.",
       // Attribution added - audit flagged hero metrics as unverifiable claims.
@@ -656,18 +657,19 @@ export const translations = {
     hero: {
       // Hero - dwa claim'y w parze. Tagline + audience qualifier; model współpracy
       // (retainer) żyje w body copy i na Services, nie w H1.
-      //   1. "Design operations partner" - kategoria (nie ogólny "design")
-      //   2. "dla zespołów marketingu o dużym wolumenie" - DLA KOGO (wolumen = wartość)
+      //   1. "Design ops partner" - kategoria (nie ogólny "design")
+      //   2. "dla marketingu i agencji o dużym wolumenie" - DLA KOGO (wolumen = wartość;
+      //      agencje też - spina się z torem white-label /for-agencies)
       // Zastępuje mgliste "Strategiczny partner designowy / Dla rosnących marek", które
       // czytało się jak zwykła agencja. Tor produktowy żyje na /product-design, więc H1
-      // sprzedaje główną usługę wprost. "Design operations" zostaje po angielsku (termin
+      // sprzedaje główną usługę wprost. "Design ops" zostaje po angielsku (termin
       // kategorii, spójny z tagline w headerze).
-      title: "Design operations partner<br/>dla zespołów marketingu<br/>o dużym wolumenie.",
+      title: "Design ops partner<br/>dla marketingu i agencji<br/>o dużym wolumenie.",
       // Mobile breaks: explicit stack - czytelny układ na 375px.
-      title_mobile: "Design<br/>operations partner<br/>dla marketingu<br/>o dużym wolumenie.",
+      title_mobile: "Design ops<br/>partner dla<br/>marketingu i agencji<br/>o dużym wolumenie.",
       // "Tempo bez chaosu" demoted from headline to signature line - brand mantra position.
       signature: "Tempo bez chaosu.",
-      description_title: "Dla marek operujących w skali - przez lokalizacje, produkty lub kampanie.",
+      description_title: "Łączymy strategię, UX/UI, systemy brandowe i produkcję kreatywną, aby pomóc zespołom dostarczać lepszy design na dużą skalę.",
       description_body: "Retainer dla stabilnych. Projekt dla ostrych. Ta sama metodologia r3loop - zastosowana do obu, i do naszych własnych produktów w produkcji.",
       quote: "Projektowanie zaczyna się od decyzji, nie od narzędzia.",
       // Atrybucja dodana - audyt flagował metryki hero jako nieweryfikowalne.
