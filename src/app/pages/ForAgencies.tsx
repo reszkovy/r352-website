@@ -76,16 +76,16 @@ export function ForAgencies() {
   //     setting up r352 as the one that doesn't. Senior positioning, not a price race. ──
   const usualFixes = [
     {
-      en: { t: "A chain of freelancers", d: "You become the project manager - briefing three people, stitching mismatched work, chasing the deadline yourself. Cheap on paper, expensive in your time and your name." },
-      pl: { t: "Łańcuch freelancerów", d: "Zostajesz project managerem - briefujesz trzy osoby, zszywasz niedopasowaną pracę, sam gonisz deadline. Tanio na papierze, drogo w Twoim czasie i Twoim nazwisku." },
+      en: { t: "A chain of freelancers", d: "You become the PM - briefing three people, stitching the work, chasing the deadline yourself." },
+      pl: { t: "Łańcuch freelancerów", d: "Zostajesz PM-em - briefujesz trzy osoby, zszywasz pracę, sam gonisz deadline." },
     },
     {
-      en: { t: "A new senior hire", d: "Months to find, expensive to keep, idle between projects. A fixed cost for work that comes in waves - and a hard reverse if the pipeline dips." },
-      pl: { t: "Nowy etat seniora", d: "Miesiące szukania, drogo w utrzymaniu, przestój między projektami. Stały koszt na pracę, która przychodzi falami - i trudny odwrót, gdy pipeline siada." },
+      en: { t: "A new senior hire", d: "Months to find, expensive to keep, idle between projects. A fixed cost for work that comes in waves." },
+      pl: { t: "Nowy etat seniora", d: "Miesiące szukania, drogo w utrzymaniu, przestój między projektami. Stały koszt na falującą pracę." },
     },
     {
-      en: { t: "A production subscription", d: "Juniors and templates at volume. Speed, yes - but no strategy, and not the standard you pitched to win the work." },
-      pl: { t: "Subskrypcja produkcji", d: "Juniorzy i szablony na ilość. Tempo - owszem, ale bez strategii i nie na poziomie, którym wygrałeś projekt." },
+      en: { t: "A production subscription", d: "Juniors and templates at volume. Speed, but no strategy - not the standard you pitched." },
+      pl: { t: "Subskrypcja produkcji", d: "Juniorzy i szablony na ilość. Tempo, ale bez strategii - nie na poziomie, którym wygrałeś." },
     },
   ];
 
@@ -122,20 +122,12 @@ export function ForAgencies() {
   // ── The retainer - fixed monthly capacity, deliberately non-invasive process ──
   const retainerSteps = [
     {
-      en: { t: "One way in", d: "A single point of contact, in the tools you already use - Slack, Notion, email. Nothing new for your team to learn." },
-      pl: { t: "Jedno wejście", d: "Jeden punkt kontaktu, w narzędziach, których już używasz - Slack, Notion, mail. Twój zespół nie uczy się niczego nowego." },
-    },
-    {
       en: { t: "Fixed monthly scope", d: "A set capacity each month at a flat fee. Predictable cost, predictable output - no surprise invoices, no re-scoping every task." },
       pl: { t: "Stały miesięczny zakres", d: "Ustalona moc co miesiąc w stałej stawce. Przewidywalny koszt i output - bez niespodzianek na fakturze, bez wyceniania każdego zadania." },
     },
     {
       en: { t: "Your rhythm, not ours", d: "We slot into your cadence, briefs and approvals. We adapt to how your team works - we don't make you adopt our process." },
       pl: { t: "Twój rytm, nie nasz", d: "Wchodzimy w Twój rytm, briefy i akceptacje. To my dopasowujemy się do Twojego zespołu - nie odwrotnie." },
-    },
-    {
-      en: { t: "Quiet by default", d: "Async-first, light reporting. We surface only what needs a decision - no standing meetings, no overhead added to your week." },
-      pl: { t: "Cicho z domysłu", d: "Async-first, lekki reporting. Pokazujemy tylko to, co wymaga decyzji - bez stałych spotkań, bez dociążania Twojego tygodnia." },
     },
   ];
 
@@ -249,8 +241,8 @@ export function ForAgencies() {
             <Reveal delay={0.15}>
               <p className="text-lg md:text-xl text-neutral-400 leading-relaxed max-w-2xl lg:pt-2">
                 {pl
-                  ? "Pitch zamknięty, klient na pokładzie - a potem trzy rundy poprawek, niejasna odpowiedzialność i rwany rytm zjadają marżę i reputację. Nie potrzebujesz kolejnych rąk. Potrzebujesz systemu, który dowozi przewidywalnie - i specjalisty, który nim steruje."
-                  : "Pitch closed, client onboarded - then three revision rounds, unclear ownership, and a broken cadence eat the margin and the reputation. You don't need more hands. You need a system that ships predictably - and a specialist who runs it."}
+                  ? "Pitch zamknięty, klient na pokładzie - a potem trzy rundy poprawek, niejasna odpowiedzialność i rwany rytm zjadają marżę i reputację."
+                  : "Pitch closed, client onboarded - then three revision rounds, unclear ownership, and a broken cadence eat the margin and the reputation."}
               </p>
             </Reveal>
           </div>
