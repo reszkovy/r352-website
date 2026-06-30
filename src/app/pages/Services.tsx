@@ -8,7 +8,6 @@ import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 import { Helmet } from "react-helmet-async";
-import { highlightAI } from "@/app/utils/highlightAI";
 
 interface ServiceCard {
   title: string;
@@ -311,7 +310,7 @@ export function Services() {
                               }
                             `}
                           >
-                            {highlightAI(card.title)}
+                            {card.title}
                           </h2>
 
                           {/* Plus → cross indicator */}

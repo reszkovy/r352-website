@@ -29,7 +29,7 @@ export const translations = {
       // "Move fast, steady cadence" demoted from headline to signature line below the divider -
       // becomes brand mantra / closing thought rather than primary explanatory copy.
       signature: "Move fast, steady cadence.",
-      description_title: "Strategy, UX/UI, <span style=\"color:#D97757\">AI</span> development, brand systems and creative production<br/>- run as one operating system, so quality and speed hold at volume.",
+      description_title: "Strategy, UX/UI, AI development, brand systems and creative production<br/>- run as one operating system, so quality and speed hold at volume.",
       description_body: "Retainer for the steady. Project for the sharp. Same r3loop methodology - applied to both, and to our own products in production.",
       quote: "Design begins with a decision, not a tool.",
       // Three proof signals on one axis: execution + cost + speed. Replaces the
@@ -674,7 +674,7 @@ export const translations = {
       title_mobile: "Design operations<br/>dla marketingu<br/>i agencji<br/>o dużym wolumenie.",
       // "Tempo bez chaosu" demoted from headline to signature line - brand mantra position.
       signature: "Tempo bez chaosu.",
-      description_title: "Strategia, UX/UI, rozwój <span style=\"color:#D97757\">AI</span>, systemy brandowe i produkcja kreatywna<br/>- prowadzone jako jeden operating system, więc jakość i tempo trzymają poziom przy dużym wolumenie.",
+      description_title: "Strategia, UX/UI, rozwój AI, systemy brandowe i produkcja kreatywna<br/>- prowadzone jako jeden operating system, więc jakość i tempo trzymają poziom przy dużym wolumenie.",
       description_body: "Retainer dla stabilnych. Projekt dla ostrych. Ta sama metodologia r3loop - zastosowana do obu, i do naszych własnych produktów w produkcji.",
       quote: "Projektowanie zaczyna się od decyzji, nie od narzędzia.",
       // Trzy proof-signale na jednej osi: egzekucja + koszt + tempo.
