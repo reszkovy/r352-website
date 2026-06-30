@@ -14,15 +14,15 @@ export const translations = {
       tagline: "DESIGN · SYSTEMS · PRODUCTS · AI"
     },
     hero: {
-      // Hero - two crisp claims in parallel. Tagline + audience qualifier; engagement
-      // model (retainer) lives in the body copy and on Services rather than in the H1.
-      //   1. "Strategic design partner"  - WHO (identity)
-      //   2. "For growing brands"        - WHO it's for (audience qualifier;
-      //                                    differentiation carried by header tagline + chips)
-      title: "Strategic design partner.<br/>For growing brands.",
-      // Mobile breaks: explicit 4-line stack prevents browser from word-breaking
-      // "growing" into "growin / g brands." at 48px on 375px viewport.
-      title_mobile: "Strategic<br/>design partner.<br/>For growing<br/>brands.",
+      // Hero - names the category (design operations) + a sharp, self-selecting ICP
+      // (high-volume marketing teams). Replaces the vaguer "Strategic design partner /
+      // For growing brands" which read as a generic agency. Product track lives on its
+      // own page (/product-design), so the H1 sells the core service clearly.
+      //   1. "Design operations partner" - WHAT/WHO (category, not generic "design")
+      //   2. "for high-volume marketing teams" - WHO it's for (volume = the real value)
+      title: "Design operations partner<br/>for high-volume<br/>marketing teams.",
+      // Mobile breaks: explicit stack prevents awkward browser word-breaks at small sizes.
+      title_mobile: "Design<br/>operations partner<br/>for high-volume<br/>marketing teams.",
       // "Move fast, steady cadence" demoted from headline to signature line below the divider -
       // becomes brand mantra / closing thought rather than primary explanatory copy.
       signature: "Move fast, steady cadence.",
@@ -656,19 +656,15 @@ export const translations = {
     hero: {
       // Hero - dwa claim'y w parze. Tagline + audience qualifier; model współpracy
       // (retainer) żyje w body copy i na Services, nie w H1.
-      //   1. "Strategiczny partner designowy" - KIM jesteś (echo z tagline w headerze)
-      //   2. "Dla rosnących marek"            - DLA KOGO (skalujące się marki - produkt,
-      //                                         lokalizacje, kampanie)
-      // Desktop: explicit 3-line stack - "Strategiczny partner designowy." (31 chars)
-      // overflował viewport przy text-8xl na średnich desktopach, a text-balance
-      // mieszany z per-character CinematicText animation produkował word-break chaos
-      // ("Strategicz" + gap + "part" / "desi" / "Dla rosnącyc" + gap + "marek").
-      // Trzy explicit linie eliminują wrap ambiguity - text renderuje przewidywalnie
-      // na każdej szerokości >=md.
-      title: "Strategiczny partner<br/>designowy.<br/>Dla rosnących marek.",
-      // Mobile breaks: explicit 4-line stack - "Strategiczny" + "partner designowy."
-      // razem są za szerokie na 375px przy 48px foncie, wymuszamy clean stack.
-      title_mobile: "Strategiczny<br/>partner designowy.<br/>Dla rosnących<br/>marek.",
+      //   1. "Design operations partner" - kategoria (nie ogólny "design")
+      //   2. "dla zespołów marketingu o dużym wolumenie" - DLA KOGO (wolumen = wartość)
+      // Zastępuje mgliste "Strategiczny partner designowy / Dla rosnących marek", które
+      // czytało się jak zwykła agencja. Tor produktowy żyje na /product-design, więc H1
+      // sprzedaje główną usługę wprost. "Design operations" zostaje po angielsku (termin
+      // kategorii, spójny z tagline w headerze).
+      title: "Design operations partner<br/>dla zespołów marketingu<br/>o dużym wolumenie.",
+      // Mobile breaks: explicit stack - czytelny układ na 375px.
+      title_mobile: "Design<br/>operations partner<br/>dla marketingu<br/>o dużym wolumenie.",
       // "Tempo bez chaosu" demoted from headline to signature line - brand mantra position.
       signature: "Tempo bez chaosu.",
       description_title: "Dla marek operujących w skali - przez lokalizacje, produkty lub kampanie.",

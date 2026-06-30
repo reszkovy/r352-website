@@ -141,10 +141,10 @@ export function Footer() {
                >
                  hello@r352.com
                </a>
-               {/* Verbal identity - one category line, sitewide. Matches header
-                   tagline ("Strategic design partner") + the methodology category. */}
+               {/* Verbal identity - one category line, sitewide. Matches the hero H1
+                   (design operations) + the methodology category. */}
                <p className="text-xs text-neutral-500 mt-6 leading-relaxed max-w-[240px]">
-                 Strategic design partner.<br />
+                 Design operations partner.<br />
                  Loop architecture for design ops.
                </p>
             </div>
