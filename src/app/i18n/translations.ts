@@ -468,7 +468,7 @@ export const translations = {
         context_label: "Tell us about your project",
         context_placeholder: "Project goals, challenges, timeline...",
         stage_label: "Project Stage",
-        support_label: "How can we help?",
+        support_label: "Where's the bottleneck?",
         support_hint: "Select up to 3",
         budget_label: "Budget Range (EUR)",
         timeline_label: "Timeline",
@@ -499,7 +499,7 @@ export const translations = {
       detailed_brief: {
         label: "Detailed Brief",
         title: "Know exactly what you need?",
-        description: "Skip the intro call and provide us with structured project details directly.",
+        description: "Go straight to a structured brief - no intro call required.",
         cta: "I want to fill detailed brief"
       }
     },
@@ -1103,7 +1103,7 @@ export const translations = {
         context_label: "Opowiedz nam o projekcie",
         context_placeholder: "Cele projektu, wyzwania, harmonogram...",
         stage_label: "Etap Projektu",
-        support_label: "W czym możemy pomóc?",
+        support_label: "Gdzie jest wąskie gardło?",
         support_hint: "Wybierz max 3",
         budget_label: "Budżet (EUR)",
         timeline_label: "Harmonogram",
@@ -1134,7 +1134,7 @@ export const translations = {
       detailed_brief: {
         label: "Szczegółowy Brief",
         title: "Wiesz dokładnie czego szukasz?",
-        description: "Pomiń wstępną rozmowę i przekaż nam ustrukturyzowane szczegóły projektu.",
+        description: "Od razu ustrukturyzowany brief - bez wstępnej rozmowy.",
         cta: "Chcę wypełnić szczegółowy brief"
       }
     },
@@ -1163,12 +1163,12 @@ export const translations = {
       }
     },
     closing: {
-      title1: "Design begins with a decision,",
-      title2: "not a tool.",
+      title1: "Projektowanie zaczyna się od decyzji,",
+      title2: "nie od narzędzia.",
       body1: "",
       body2: "",
-      cta_start: "Rozpocznij rozmowę",
-      cta_work: "Zobacz prace"
+      cta_start: "Rozpocznij projekt",
+      cta_work: "Umów rozmowę"
     },
     footer: {
       idea: "Zbudujmy Twój system dostarczania - i zacznijmy wysyłać.",

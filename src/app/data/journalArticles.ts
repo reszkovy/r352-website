@@ -228,7 +228,7 @@ export const journalArticles: Article[] = [
           </svg>
         </div>
         <figcaption class="mt-4 text-sm text-neutral-500 text-center italic">
-          Fig 3 &middot; PDF brand book vs Knowledge Hub &mdash; dwa rozne paradygmaty operacyjne.
+          Fig 3 &middot; PDF brand book vs Knowledge Hub - dwa rozne paradygmaty operacyjne.
         </figcaption>
       </figure>
 
@@ -268,7 +268,7 @@ export const journalArticles: Article[] = [
               <rect width="600" height="90" rx="12" fill="#262626" stroke="#404040" stroke-width="1"/>
               <text x="24" y="32" fill="#D4FF00" font-size="13" font-weight="700" letter-spacing="2">03</text>
               <text x="24" y="58" fill="#FFFFFF" font-size="20" font-weight="600">QA</text>
-              <text x="24" y="78" fill="#737373" font-size="13">drop asset &rarr; score 0&ndash;100 + lista fixow w 3 sekundy</text>
+              <text x="24" y="78" fill="#737373" font-size="13">drop asset &rarr; score 0-100 + lista fixow w 3 sekundy</text>
             </g>
             <g transform="translate(395, 365)" fill="none" stroke="#D4FF00" stroke-width="2">
               <line x1="5" y1="0" x2="5" y2="20"/>
@@ -284,7 +284,7 @@ export const journalArticles: Article[] = [
           </svg>
         </div>
         <figcaption class="mt-4 text-sm text-neutral-500 text-center italic">
-          Fig 1 &middot; 4-warstwowa architektura &mdash; kazda warstwa karmi nastepna.
+          Fig 1 &middot; 4-warstwowa architektura - kazda warstwa karmi nastepna.
         </figcaption>
       </figure>
 
@@ -307,7 +307,7 @@ export const journalArticles: Article[] = [
       <figure class="my-12">
         <div class="bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-sm">
           <svg viewBox="0 0 800 360" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto" role="img" aria-labelledby="fig2-pl-title" style="font-family: system-ui, sans-serif;">
-            <title id="fig2-pl-title">23 moduly w 5 bucketach &mdash; system map</title>
+            <title id="fig2-pl-title">23 moduly w 5 bucketach - system map</title>
             <g>
               <line x1="160" y1="50" x2="160" y2="280" stroke="#262626" stroke-width="1"/>
               <line x1="300" y1="50" x2="300" y2="280" stroke="#262626" stroke-width="1"/>
@@ -373,7 +373,7 @@ export const journalArticles: Article[] = [
           </svg>
         </div>
         <figcaption class="mt-4 text-sm text-neutral-500 text-center italic">
-          Fig 2 &middot; 23 moduly rozlozone na 5 bucketow &mdash; mapa systemu wiedzy.
+          Fig 2 &middot; 23 moduly rozlozone na 5 bucketow - mapa systemu wiedzy.
         </figcaption>
       </figure>
 
@@ -582,7 +582,7 @@ export const journalArticles: Article[] = [
       <figure class="my-12">
         <div class="bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-sm">
           <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto" role="img" aria-labelledby="fig4-pl-title" style="font-family: system-ui, sans-serif;">
-            <title id="fig4-pl-title">QA Score &mdash; ring i lista fixow</title>
+            <title id="fig4-pl-title">QA Score - ring i lista fixow</title>
             <g transform="translate(180, 150)">
               <circle cx="0" cy="0" r="80" fill="none" stroke="#262626" stroke-width="16"/>
               <circle cx="0" cy="0" r="80" fill="none" stroke="#D4FF00" stroke-width="16" stroke-linecap="round" stroke-dasharray="372 503" transform="rotate(-90)"/>
@@ -605,13 +605,13 @@ export const journalArticles: Article[] = [
               <rect width="400" height="58" rx="6" fill="#262626" stroke="#404040" stroke-width="1"/>
               <circle cx="20" cy="29" r="5" fill="#FFB020"/>
               <text x="36" y="26" fill="#FFFFFF" font-size="13" font-weight="600">Visual &middot; Foto</text>
-              <text x="36" y="44" fill="#737373" font-size="12">Stock photo wykryte &mdash; uzyj custom shotu</text>
+              <text x="36" y="44" fill="#737373" font-size="12">Stock photo wykryte - uzyj custom shotu</text>
             </g>
             <text x="400" y="300" text-anchor="middle" fill="#737373" font-size="12" letter-spacing="1.5">DROP ASSET &rarr; SCORE + LISTA FIXOW W 3 SEKUNDY</text>
           </svg>
         </div>
         <figcaption class="mt-4 text-sm text-neutral-500 text-center italic">
-          Fig 4 &middot; QA scoring &mdash; obiektywny score 0&ndash;100 zamiast subiektywnej dyskusji &quot;czy to on-brand&quot;.
+          Fig 4 &middot; QA scoring - obiektywny score 0-100 zamiast subiektywnej dyskusji &quot;czy to on-brand&quot;.
         </figcaption>
       </figure>
 
@@ -862,7 +862,7 @@ auto_load: true
       <figure class="my-12">
         <div class="bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-sm">
           <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto" role="img" aria-labelledby="fig5-pl-title" style="font-family: system-ui, sans-serif;">
-            <title id="fig5-pl-title">Compounding moat &mdash; krzywa wartosci w czasie</title>
+            <title id="fig5-pl-title">Compounding moat - krzywa wartosci w czasie</title>
             <g stroke="#262626" stroke-width="1">
               <line x1="80" y1="240" x2="760" y2="240"/>
               <line x1="80" y1="40" x2="80" y2="240"/>
@@ -1042,7 +1042,7 @@ auto_load: true
       <figure class="my-12">
         <div class="bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-sm">
           <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto" role="img" aria-labelledby="fig3-en-title" style="font-family: system-ui, sans-serif;">
-            <title id="fig3-en-title">PDF brand book vs Knowledge Hub &mdash; comparison</title>
+            <title id="fig3-en-title">PDF brand book vs Knowledge Hub - comparison</title>
             <g>
               <rect x="20" y="20" width="370" height="280" rx="8" fill="#262626" stroke="#404040" stroke-width="1"/>
               <text x="40" y="52" fill="#737373" font-size="11" letter-spacing="2" font-weight="600">YESTERDAY</text>
@@ -1089,7 +1089,7 @@ auto_load: true
           </svg>
         </div>
         <figcaption class="mt-4 text-sm text-neutral-500 text-center italic">
-          Fig 3 &middot; PDF brand book vs Knowledge Hub &mdash; two operational paradigms.
+          Fig 3 &middot; PDF brand book vs Knowledge Hub - two operational paradigms.
         </figcaption>
       </figure>
 
@@ -1126,7 +1126,7 @@ auto_load: true
               <rect width="600" height="90" rx="12" fill="#262626" stroke="#404040" stroke-width="1"/>
               <text x="24" y="32" fill="#D4FF00" font-size="13" font-weight="700" letter-spacing="2">03</text>
               <text x="24" y="58" fill="#FFFFFF" font-size="20" font-weight="600">QA</text>
-              <text x="24" y="78" fill="#737373" font-size="13">drop asset &rarr; score 0&ndash;100 + fix list in 3 seconds</text>
+              <text x="24" y="78" fill="#737373" font-size="13">drop asset &rarr; score 0-100 + fix list in 3 seconds</text>
             </g>
             <g transform="translate(395, 365)" fill="none" stroke="#D4FF00" stroke-width="2">
               <line x1="5" y1="0" x2="5" y2="20"/>
@@ -1142,7 +1142,7 @@ auto_load: true
           </svg>
         </div>
         <figcaption class="mt-4 text-sm text-neutral-500 text-center italic">
-          Fig 1 &middot; 4-layer architecture &mdash; each layer feeds the next.
+          Fig 1 &middot; 4-layer architecture - each layer feeds the next.
         </figcaption>
       </figure>
 
@@ -1164,7 +1164,7 @@ auto_load: true
       <figure class="my-12">
         <div class="bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-sm">
           <svg viewBox="0 0 800 360" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto" role="img" aria-labelledby="fig2-en-title" style="font-family: system-ui, sans-serif;">
-            <title id="fig2-en-title">23 modules across 5 buckets &mdash; system map</title>
+            <title id="fig2-en-title">23 modules across 5 buckets - system map</title>
             <g>
               <line x1="160" y1="50" x2="160" y2="280" stroke="#262626" stroke-width="1"/>
               <line x1="300" y1="50" x2="300" y2="280" stroke="#262626" stroke-width="1"/>
@@ -1230,7 +1230,7 @@ auto_load: true
           </svg>
         </div>
         <figcaption class="mt-4 text-sm text-neutral-500 text-center italic">
-          Fig 2 &middot; 23 modules across 5 buckets &mdash; the system map.
+          Fig 2 &middot; 23 modules across 5 buckets - the system map.
         </figcaption>
       </figure>
 
@@ -1383,7 +1383,7 @@ auto_load: true
       <figure class="my-12">
         <div class="bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-sm">
           <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto" role="img" aria-labelledby="fig4-en-title" style="font-family: system-ui, sans-serif;">
-            <title id="fig4-en-title">QA Score &mdash; ring and fix list</title>
+            <title id="fig4-en-title">QA Score - ring and fix list</title>
             <g transform="translate(180, 150)">
               <circle cx="0" cy="0" r="80" fill="none" stroke="#262626" stroke-width="16"/>
               <circle cx="0" cy="0" r="80" fill="none" stroke="#D4FF00" stroke-width="16" stroke-linecap="round" stroke-dasharray="372 503" transform="rotate(-90)"/>
@@ -1406,13 +1406,13 @@ auto_load: true
               <rect width="400" height="58" rx="6" fill="#262626" stroke="#404040" stroke-width="1"/>
               <circle cx="20" cy="29" r="5" fill="#FFB020"/>
               <text x="36" y="26" fill="#FFFFFF" font-size="13" font-weight="600">Visual &middot; Photo</text>
-              <text x="36" y="44" fill="#737373" font-size="12">Stock photo detected &mdash; use custom shot</text>
+              <text x="36" y="44" fill="#737373" font-size="12">Stock photo detected - use custom shot</text>
             </g>
             <text x="400" y="300" text-anchor="middle" fill="#737373" font-size="12" letter-spacing="1.5">DROP ASSET &rarr; SCORE + FIX LIST IN 3 SECONDS</text>
           </svg>
         </div>
         <figcaption class="mt-4 text-sm text-neutral-500 text-center italic">
-          Fig 4 &middot; QA scoring &mdash; objective 0&ndash;100 score replaces subjective &quot;is this on-brand&quot; debate.
+          Fig 4 &middot; QA scoring - objective 0-100 score replaces subjective &quot;is this on-brand&quot; debate.
         </figcaption>
       </figure>
 
@@ -1590,7 +1590,7 @@ auto_load: true
       <figure class="my-12">
         <div class="bg-white/[0.02] border border-white/10 p-8 md:p-12 rounded-sm">
           <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto" role="img" aria-labelledby="fig5-en-title" style="font-family: system-ui, sans-serif;">
-            <title id="fig5-en-title">Compounding moat &mdash; value curve over time</title>
+            <title id="fig5-en-title">Compounding moat - value curve over time</title>
             <g stroke="#262626" stroke-width="1">
               <line x1="80" y1="240" x2="760" y2="240"/>
               <line x1="80" y1="40" x2="80" y2="240"/>

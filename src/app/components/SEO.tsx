@@ -11,7 +11,7 @@ interface SEOProps {
 
 export function SEO({
   title = "r352 - Design operations for high-volume marketing teams.",
-  description = "Design, systems & AI - design operations for high-volume marketing teams. Loop architecture for design ops, from strategy to rollout-ready delivery, powered by the r3loop methodology. Predictable quality and speed at scale.",
+  description = "Design operations for high-volume marketing teams and agencies. From strategy to rollout-ready delivery, powered by the r3loop methodology - predictable quality and speed at scale.",
   path = "/",
   ogImage = "https://www.r352.com/og-image.png",
   article

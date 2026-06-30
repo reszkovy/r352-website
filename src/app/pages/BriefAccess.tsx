@@ -76,7 +76,7 @@ export function BriefAccess() {
           </form>
           
           <p className="mt-8 text-center text-neutral-500 text-sm">
-            This document is protected. Please enter the password provided by the agency.
+            This document is protected. Please enter the password you received from us.
           </p>
         </div>
       </Reveal>

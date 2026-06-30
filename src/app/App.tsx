@@ -160,7 +160,7 @@ function AppContent() {
   const getPageSEO = (path: string): { title: string; description: string; ogImage?: string; article?: { title: string; date: string; category: string } } => {
     if (path === "/work") return {
       title: "Work - r352 | Selected projects & case studies",
-      description: "See how we help multi-location brands like Sonova, Benefit Systems, and Kubota ship faster with scalable design systems and delivery workflows.",
+      description: "See how marketing teams and agencies ship faster with scalable design systems and delivery workflows. Case studies: Sonova, Benefit Systems, Kubota.",
       ogImage: "https://www.r352.com/og/work.png"
     };
     if (path.startsWith("/work/")) {
@@ -177,7 +177,7 @@ function AppContent() {
       };
     }
     if (path === "/services") return {
-      title: "Services - r352 | Strategy, Operating System, Design & Build",
+      title: "Services - r352 | Strategy, design and delivery",
       description: "Five engagement models, from a €2k five-day diagnostic to an embedded operating partner. Strategy to delivery, run through the r3loop methodology.",
       ogImage: "https://www.r352.com/og/services.png"
     };
@@ -253,7 +253,7 @@ function AppContent() {
     };
     if (path === "/journal") return {
       title: "Journal - r352 | Insights on design operations & delivery",
-      description: "Articles on design operations, delivery workflows, brand systems, and how multi-location organizations can scale their creative output.",
+      description: "Articles on design operations, delivery workflows and brand systems - how marketing teams and agencies scale their creative output predictably.",
       ogImage: "https://www.r352.com/og/journal.png"
     };
     if (path.startsWith("/journal/")) {
@@ -284,8 +284,8 @@ function AppContent() {
       description: "Start your project with a structured brief: 8 sections, ~26 questions, about 10 minutes. First response with engagement model and scope within 48 hours."
     };
     if (path === "/for-agencies") return {
-      title: "For Agencies - r352 | White-label, end-to-end consulting",
-      description: "A white-label, end-to-end consultant for agencies. Strategy, creative and execution in one place - we embed on your client as one integrated team, under your name. You lead the relationship and keep the credit; we do what we do best."
+      title: "For Agencies - r352 | White-label, end-to-end delivery",
+      description: "White-label, end-to-end delivery for agencies. Strategy, creative and execution as one team under your name - you lead the relationship and keep the credit."
     };
     if (path === "/ai-runners") return {
       title: "Same scene, ten AI models - r352",
@@ -298,7 +298,7 @@ function AppContent() {
     };
     return {
       title: "r352 - Design operations for high-volume marketing teams.",
-      description: "Design operations for high-volume marketing teams. From strategy to rollout-ready delivery, powered by the r3loop methodology - predictable quality and speed at scale.",
+      description: "Design operations for high-volume marketing teams and agencies. From strategy to rollout-ready delivery, powered by the r3loop methodology - predictable quality and speed at scale.",
       ogImage: "https://www.r352.com/og/home.png"
     };
   };

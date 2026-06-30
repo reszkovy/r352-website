@@ -22,17 +22,17 @@ export const ROUTE_META = {
   "/": {
     title: "r352 - Design operations for high-volume marketing teams.",
     description:
-      "Design operations for high-volume marketing teams. From strategy to rollout-ready delivery, powered by the r3loop methodology - predictable quality and speed at scale.",
+      "Design operations for high-volume marketing teams and agencies. From strategy to rollout-ready delivery, powered by the r3loop methodology - predictable quality and speed at scale.",
     ogImage: OG("home"),
   },
   "/work": {
     title: "Work - r352 | Selected projects & case studies",
     description:
-      "See how we help multi-location brands like Sonova, Benefit Systems, and Kubota ship faster with scalable design systems and delivery workflows.",
+      "See how marketing teams and agencies ship faster with scalable design systems and delivery workflows. Case studies: Sonova, Benefit Systems, Kubota.",
     ogImage: OG("work"),
   },
   "/services": {
-    title: "Services - r352 | Strategy, Operating System, Design & Build",
+    title: "Services - r352 | Strategy, design and delivery",
     description:
       "Five engagement models, from a €2k five-day diagnostic to an embedded operating partner. Strategy to delivery, run through the r3loop methodology.",
     ogImage: OG("services"),
@@ -108,7 +108,7 @@ export const ROUTE_META = {
   "/journal": {
     title: "Journal - r352 | Insights on design operations & delivery",
     description:
-      "Articles on design operations, delivery workflows, brand systems, and how multi-location organizations can scale their creative output.",
+      "Articles on design operations, delivery workflows and brand systems - how marketing teams and agencies scale their creative output predictably.",
     ogImage: OG("journal"),
   },
   "/contact": {
@@ -123,9 +123,9 @@ export const ROUTE_META = {
       "Start your project with a structured brief: 8 sections, ~26 questions, about 10 minutes. First response with engagement model and scope within 48 hours.",
   },
   "/for-agencies": {
-    title: "For Agencies - r352 | White-label, end-to-end consulting",
+    title: "For Agencies - r352 | White-label, end-to-end delivery",
     description:
-      "A white-label, end-to-end consultant for agencies. Strategy, creative and execution in one place - we embed on your client as one integrated team, under your name. You lead the relationship and keep the credit; we do what we do best.",
+      "White-label, end-to-end delivery for agencies. Strategy, creative and execution as one team under your name - you lead the relationship and keep the credit.",
     ogImage: OG("for-agencies"),
   },
   "/ai-runners": {

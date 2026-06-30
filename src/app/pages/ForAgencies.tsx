@@ -37,8 +37,8 @@ export function ForAgencies() {
     },
     {
       id: "03",
-      en: { t: "We deliver, white-labeled", d: "Senior craft and AI-elevated production ship under your name. We stay invisible to the client unless you want us in the room." },
-      pl: { t: "Dowozimy, white-label", d: "Senioralny warsztat i produkcja wzmocniona AI wychodzą pod Twoją marką. Dla klienta jesteśmy niewidzialni - chyba że chcesz nas przy stole." },
+      en: { t: "We deliver, white-labeled", d: "Senior craft and AI-accelerated production ship under your name. We stay invisible to the client unless you want us in the room." },
+      pl: { t: "Dowozimy, white-label", d: "Senioralny warsztat i produkcja przyspieszona AI wychodzą pod Twoją marką. Dla klienta jesteśmy niewidzialni - chyba że chcesz nas przy stole." },
     },
     {
       id: "04",
@@ -49,8 +49,8 @@ export function ForAgencies() {
 
   // ── Clear split of ownership - removes the "are they replacing us?" fear ──
   const weHandle = pl
-    ? ["Strategię i kierunek kreatywny", "Senioralny design i produkcję", "Egzekucję end-to-end - jeden zespół", "Produkcję wzmocnioną AI", "Jakość i przewidywalny rytm dostaw"]
-    : ["Strategy & creative direction", "Senior design & production craft", "End-to-end execution - one team", "AI-elevated production", "Quality & a predictable shipping cadence"];
+    ? ["Strategię i kierunek kreatywny", "Senioralny design i produkcję", "Egzekucję end-to-end - jeden zespół", "Produkcję przyspieszoną AI", "Jakość i przewidywalny rytm dostaw"]
+    : ["Strategy & creative direction", "Senior design & production craft", "End-to-end execution - one team", "AI-accelerated production", "Quality & a predictable shipping cadence"];
 
   const youKeep = pl
     ? ["Prowadzenie klienta i relację", "Markę na deckach i w komunikacji", "Pitch i relację handlową", "Case study i odnowienia", "Marżę - bez etatów na pokładzie"]

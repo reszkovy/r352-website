@@ -1035,7 +1035,7 @@ function CellValue({ value, variant }: { value: false | { qty: string; details: 
   if (value === false) {
     return (
       <div className="flex items-center justify-center h-full min-h-[40px]">
-        <span className="text-white/12 text-lg">&mdash;</span>
+        <span className="text-white/12 text-lg">-</span>
       </div>
     );
   }

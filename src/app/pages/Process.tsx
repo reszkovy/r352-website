@@ -488,12 +488,12 @@ export function Process() {
                 {lang === "pl" ? "Operating Model" : "Operating Model"}
               </span>
               <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[1.05] mb-6">
-                {lang === "pl" ? "Obecność foundera maleje z każdym krokiem." : "Founder presence decreases with each step."}
+                {lang === "pl" ? "Nasza obecność maleje z każdym krokiem." : "Our presence decreases with each step."}
               </h2>
               <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed [text-wrap:pretty]">
                 {lang === "pl"
-                  ? "Średnia po stabilizacji: ~40%. Docelowy podział 80/20 - strategia vs operacje. Klient kupuje system, który po wdrożeniu działa coraz bardziej bez obecności foundera. To dowód, że to system, nie godziny."
-                  : "Average after stabilization: ~40%. Target 80/20 split - strategy vs operations. The client buys a system that runs increasingly without founder presence. Proof it's a system, not hours."}
+                  ? "Średnia po stabilizacji: ~40%. Docelowy podział 80/20 - strategia vs operacje. Klient kupuje system, który po wdrożeniu działa coraz bardziej bez nas. To dowód, że to system, nie godziny."
+                  : "Average after stabilization: ~40%. Target 80/20 split - strategy vs operations. The client buys a system that runs increasingly without us. Proof it's a system, not hours."}
               </p>
             </div>
           </Reveal>
@@ -507,7 +507,7 @@ export function Process() {
                       {lang === "pl" ? "Krok" : "Step"}
                     </th>
                     <th className="text-left py-3 px-4 md:px-6 text-[10px] font-display uppercase tracking-[0.25em] text-neutral-500">
-                      {lang === "pl" ? "Obecność foundera" : "Founder presence"}
+                      {lang === "pl" ? "Nasza obecność" : "Our presence"}
                     </th>
                     <th className="text-left py-3 px-4 md:px-6 text-[10px] font-display uppercase tracking-[0.25em] text-neutral-500 hidden md:table-cell">
                       {lang === "pl" ? "Rola" : "Role"}
@@ -701,7 +701,7 @@ export function Process() {
                       15%
                     </div>
                     <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-snug">
-                      {lang === "pl" ? "obecność foundera po stabilizacji" : "founder presence after stabilization"}
+                      {lang === "pl" ? "nasza obecność po stabilizacji" : "our presence after stabilization"}
                     </p>
                   </div>
                 </div>
