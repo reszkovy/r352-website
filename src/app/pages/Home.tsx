@@ -64,13 +64,13 @@ export function Home() {
                 </span>
                 <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-white leading-[1.05] mb-6">
                   {language === "pl"
-                    ? "Moja obecność maleje z każdym krokiem."
-                    : "My presence decreases with each step."}
+                    ? "Nasza obecność maleje z każdym krokiem."
+                    : "Our presence decreases with each step."}
                 </h2>
                 <p className="text-base md:text-lg text-neutral-300 leading-relaxed [text-wrap:pretty] mb-6">
                   {language === "pl"
-                    ? "Klient kupuje system, który po wdrożeniu działa coraz mniej z moją obecnością. To dowód, że to system, nie godziny."
-                    : "Clients buy a system that runs increasingly without my presence. Proof it's a system, not hours."}
+                    ? "Klient kupuje system, który po wdrożeniu działa coraz mniej z naszą obecnością. To dowód, że to system, nie godziny."
+                    : "Clients buy a system that runs increasingly without us. Proof it's a system, not hours."}
                 </p>
                 <a
                   href="/process#operating-model"

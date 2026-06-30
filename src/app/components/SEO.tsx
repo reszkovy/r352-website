@@ -159,11 +159,11 @@ export function SEO({
     "@type": "ProfessionalService",
     "name": "r352",
     "url": "https://www.r352.com",
-    "description": "Strategic design + operations consulting for multi-location organizations. We build operating systems behind great design - brand strategy, workflow architecture, QA standards, AI-first execution. Delivered through the r3loop methodology (8-step framework).",
+    "description": "Design operations for high-volume marketing teams and agencies. We build the operating system behind great design - strategy, UX/UI, AI development, brand systems, creative production. Delivered through the r3loop methodology (8-step framework).",
     "priceRange": "€€€",
     "areaServed": "Worldwide",
     "serviceType": [
-      "Strategic Design Consulting",
+      "Design Operations",
       "Brand Strategy",
       "Creative Operating System",
       "Workflow Architecture",

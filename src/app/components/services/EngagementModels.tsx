@@ -232,11 +232,11 @@ export function EngagementModels() {
       timeline: language === "pl" ? "Kontrakt roczny, rytm miesięczny" : "Annual contract, monthly cadence",
       idealWhen: language === "pl" ? [
         "System jest zbudowany - potrzebuje opiekuna, który go rozwija i broni przed degradacją",
-        "C-suite chce mieć strategicznego partnera designu przy stole decyzyjnym",
+        "C-suite chce mieć partnera operacyjnego przy stole decyzyjnym",
         "Horyzont transformacji jest wieloletni i obejmuje ekspansję organizacji",
       ] : [
         "The system is built - it needs a custodian to evolve it and protect it from decay",
-        "C-suite wants a strategic design partner at the decision table",
+        "C-suite wants an operating partner at the decision table",
         "Multi-year transformation horizon, including organizational expansion",
       ],
       idealWhenLabels: language === "pl"

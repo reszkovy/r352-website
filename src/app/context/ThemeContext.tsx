@@ -97,7 +97,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
               <div className="flex flex-col items-center gap-5">
                 <R352Symbol className="w-7 h-7 md:w-9 md:h-9" color="#D4FF00" />
                 <span className={`text-[11px] md:text-sm font-display uppercase tracking-[0.3em] ${targetTheme === 'dark' ? 'text-[#D4FF00]/80' : 'text-[#000000]/50'}`}>
-                  your design partner
+                  design operations
                 </span>
               </div>
             </motion.div>
