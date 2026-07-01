@@ -291,9 +291,11 @@ export function EngagementModels() {
                   </span>
                 )}
                 {(model as any).successMetric && (
-                  <div className="flex items-start gap-3 mb-4 pt-1">
-                    <span className="w-6 h-px bg-[#D4FF00] mt-[10px] shrink-0" />
-                    <p className="text-[13px] text-neutral-900 dark:text-white font-medium leading-snug">
+                  <div className="mb-5 pt-2 border-l-2 border-[#D4FF00] pl-3">
+                    <span className="block text-[10px] font-display uppercase tracking-[0.2em] text-neutral-500 dark:text-[#D4FF00] mb-1">
+                      {language === "pl" ? "Wynik" : "Outcome"}
+                    </span>
+                    <p className="text-[14px] md:text-[15px] text-neutral-900 dark:text-white font-semibold leading-snug [text-wrap:pretty]">
                       {(model as any).successMetric}
                     </p>
                   </div>
