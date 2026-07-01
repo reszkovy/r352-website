@@ -106,9 +106,9 @@ export const translations = {
     },
     services_list: {
       heading: "How we deliver",
-      narrative: "Backed by structured processes. Elevated by AI tools.",
+      narrative: "Backed by structured processes. AI governed, not just used.",
       narrative_process: "Backed by structured processes",
-      narrative_ai: "Elevated by AI-powered execution",
+      narrative_ai: "AI governed, not just used",
       note_title: "Approach",
       note_body: "We build a delivery system that makes quality and speed predictable - then use it to ship product UX and communication assets.",
       items: {
@@ -263,7 +263,7 @@ export const translations = {
         },
         {
           title: "AI Development & Automation",
-          description: "We take the system we've built and operationalize it - wired into your existing tools, accelerated by AI workflows.",
+          description: "We take the system we've built and operationalize it - wired into your existing tools, with AI governed to hold quality and brand at scale.",
           output: "Brief intake, scoring, quality review and asset routing running as a live system - not a deck. Your team briefs, we triage, AI accelerates, output ships.",
           best_for: "Teams that already have standards but execution still depends on heroics - intake by email, manual scoring, QA in DMs. Ready to ship the operating layer that turns standards into automated workflow.",
           includes: [
@@ -750,9 +750,9 @@ export const translations = {
     },
     services_list: {
       heading: "Jak dostarczamy",
-      narrative: "Wspierane ustrukturyzowanymi procesami. Wzmocnione narzędziami AI.",
+      narrative: "Wspierane ustrukturyzowanymi procesami. AI okiełznane, nie tylko używane.",
       narrative_process: "Ustrukturyzowane procesy",
-      narrative_ai: "Egzekucja wzmocniona AI",
+      narrative_ai: "AI okiełznane, nie tylko używane",
       note_title: "Podejście",
       note_body: "Budujemy system dostarczania, który sprawia, że jakość i szybkość są przewidywalne - następnie używamy go do dostarczania UX produktu i zasobów komunikacyjnych.",
       items: {
@@ -907,7 +907,7 @@ export const translations = {
         },
         {
           title: "AI Development & Automation",
-          description: "Bierzemy system który zbudowaliśmy i operacjonalizujemy go - wpięty w Wasze istniejące narzędzia, przyspieszony przez workflow AI.",
+          description: "Bierzemy system który zbudowaliśmy i operacjonalizujemy go - wpięty w Wasze istniejące narzędzia, z AI okiełznanym tak, by trzymać jakość i brand przy skali.",
           output: "Brief intake, scoring, quality review i routing assetów działają jako żywy system - nie deck. Zespół briefuje, my triagujemy, AI przyspiesza, output idzie.",
           best_for: "Zespoły które mają już standardy ale egzekucja wciąż zależy od heroizmu - intake przez email, manualny scoring, QA w DM-ach. Gotowe wdrożyć warstwę operacyjną, która zamienia standardy w zautomatyzowany workflow.",
           includes: [

@@ -140,8 +140,8 @@ export function ServicesList() {
               </p>
               <p className="text-sm text-neutral-500 font-mono leading-relaxed">
                 {lang === "pl"
-                  ? "Wspierane przez r3loop - 8-krokową metodologię operacyjną. Wzmocnione AI-first egzekucją."
-                  : "Powered by r3loop - our 8-step operating methodology. Elevated by AI-first execution."}
+                  ? "Wspierane przez r3loop - 8-krokową metodologię operacyjną. AI okiełznane w spójny output przy skali, nie doklejone."
+                  : "Powered by r3loop - our 8-step operating methodology. AI governed into consistent output at scale, not just bolted on."}
               </p>
             </div>
           </Reveal>

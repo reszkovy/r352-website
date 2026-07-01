@@ -266,8 +266,8 @@ export function EngagementModels() {
           </h2>
           <p className="text-[15px] text-neutral-600 dark:text-[#888888] max-w-[600px] leading-relaxed">
             {language === "pl"
-              ? "Pięć modeli - od krótkiej diagnozy po wieloletnie partnerstwo operacyjne. Wybierz w zależności od dojrzałości problemu i ambicji transformacji."
-              : "Five models - from a short diagnosis to a multi-year operating partnership. Choose based on the maturity of the problem and the ambition of the transformation."}
+              ? "Pięć modeli - od €2k diagnostyki po wieloletnie partnerstwo operacyjne. Wybierz w zależności od dojrzałości problemu i ambicji transformacji."
+              : "Five models - from a €2k diagnostic to a multi-year operating partnership. Choose based on the maturity of the problem and the ambition of the transformation."}
           </p>
         </Reveal>
       </div>
