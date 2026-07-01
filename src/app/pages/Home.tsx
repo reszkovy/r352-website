@@ -37,23 +37,23 @@ export function Home() {
 
       {/* Proof strip - scale numbers + bench/price anchor. Answers "can they handle
           my scale?" for large buyers and pre-qualifies budget. Real figures only. */}
-      <section className="border-t border-b border-white/10 py-12 md:py-16">
+      <section className="border-t border-white/10 py-7 md:py-9">
         <div className="max-w-[1800px] mx-auto px-8 md:px-12">
           <Reveal>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-6 md:gap-x-10">
+            <div className="flex flex-wrap items-baseline gap-x-8 gap-y-4 md:gap-x-14">
               {[
                 { v: "300+", l: language === "pl" ? "klubów na jednym systemie" : "clubs on one system" },
                 { v: "250+", l: language === "pl" ? "obsługiwanych lokalizacji" : "locations served" },
                 { v: "3×", l: language === "pl" ? "szybsze cykle akceptacji" : "faster approval cycles" },
                 { v: "500+", l: language === "pl" ? "assetów rocznie" : "assets shipped / year" },
               ].map((s, i) => (
-                <div key={i}>
-                  <div className="text-3xl md:text-5xl font-bold tracking-tighter text-white leading-none">{s.v}</div>
-                  <div className="text-xs md:text-sm text-neutral-500 mt-2 leading-snug">{s.l}</div>
+                <div key={i} className="flex items-baseline gap-2">
+                  <span className="text-base md:text-lg font-semibold tracking-tight text-white leading-none tabular-nums">{s.v}</span>
+                  <span className="text-[11px] md:text-xs text-neutral-500 leading-snug">{s.l}</span>
                 </div>
               ))}
             </div>
-            <p className="mt-8 md:mt-12 text-sm md:text-base text-neutral-400 leading-relaxed max-w-3xl">
+            <p className="mt-5 md:mt-6 text-[12px] md:text-[13px] text-neutral-500 leading-relaxed max-w-3xl">
               {language === "pl"
                 ? "Jeden odpowiedzialny partner, z senioralną siecią specjalistów dobieraną do skali - realne zaplecze, nie solo. Współpraca od €2k do wieloletnich partnerstw operacyjnych."
                 : "One accountable partner, backed by a curated senior network scaled to the work - real bench depth, not a solo shop. Engagements from €2k to multi-year operating partnerships."}
