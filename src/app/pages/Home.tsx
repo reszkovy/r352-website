@@ -35,30 +35,28 @@ export function Home() {
       <ClientLogos />
       {/* KineticManifesto DISABLED 2026-06-10 on client decision */}
 
-      {/* Proof strip - scale numbers + bench/price anchor. Answers "can they handle
-          my scale?" for large buyers and pre-qualifies budget. Real figures only. */}
-      <section className="border-t border-white/10 py-7 md:py-9">
-        <div className="max-w-[1800px] mx-auto px-8 md:px-12">
-          <Reveal>
-            <div className="flex flex-wrap items-baseline gap-x-8 gap-y-4 md:gap-x-14">
-              {[
-                { v: "300+", l: language === "pl" ? "klubów na jednym systemie" : "clubs on one system" },
-                { v: "250+", l: language === "pl" ? "obsługiwanych lokalizacji" : "locations served" },
-                { v: "3×", l: language === "pl" ? "szybsze cykle akceptacji" : "faster approval cycles" },
-                { v: "500+", l: language === "pl" ? "assetów rocznie" : "assets shipped / year" },
-              ].map((s, i) => (
-                <div key={i} className="flex items-baseline gap-2">
-                  <span className="text-base md:text-lg font-semibold tracking-tight text-white leading-none tabular-nums">{s.v}</span>
-                  <span className="text-[11px] md:text-xs text-neutral-500 leading-snug">{s.l}</span>
-                </div>
-              ))}
-            </div>
-            <p className="mt-5 md:mt-6 text-[12px] md:text-[13px] text-neutral-500 leading-relaxed max-w-3xl">
-              {language === "pl"
-                ? "Jeden odpowiedzialny partner, z senioralną siecią specjalistów dobieraną do skali - realne zaplecze, nie solo. Współpraca od €2k do wieloletnich partnerstw operacyjnych."
-                : "One accountable partner, backed by a curated senior network scaled to the work - real bench depth, not a solo shop. Engagements from €2k to multi-year operating partnerships."}
-            </p>
-          </Reveal>
+      {/* Proof strip - scale numbers, styled as a twin of the client-logos band
+          (label left + row spread, same #151515 surface). Real figures only. */}
+      <section className="py-12 border-b border-white/5 bg-[#151515] overflow-hidden">
+        <div className="max-w-[1800px] mx-auto px-8 md:px-12 flex flex-col md:flex-row items-center gap-8 md:gap-12">
+          <div className="w-full md:w-auto flex-shrink-0">
+            <h3 className="text-[#D4FF00] font-display font-normal uppercase tracking-widest text-sm md:text-base whitespace-nowrap text-left">
+              {language === "pl" ? "W skali" : "At scale"}
+            </h3>
+          </div>
+          <div className="w-full flex flex-nowrap items-baseline justify-between gap-6 md:gap-12 overflow-x-auto md:overflow-visible scrollbar-hide">
+            {[
+              { v: "300+", l: language === "pl" ? "klubów / jeden system" : "clubs / one system" },
+              { v: "250+", l: language === "pl" ? "lokalizacji" : "locations served" },
+              { v: "3×", l: language === "pl" ? "szybsze akceptacje" : "faster approvals" },
+              { v: "500+", l: language === "pl" ? "assetów / rok" : "assets / year" },
+            ].map((s, i) => (
+              <div key={i} className="flex-shrink-0 flex items-baseline gap-2 whitespace-nowrap">
+                <span className="text-lg md:text-2xl font-semibold tracking-tight text-white tabular-nums leading-none">{s.v}</span>
+                <span className="text-[11px] md:text-xs text-neutral-500">{s.l}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
