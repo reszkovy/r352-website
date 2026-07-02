@@ -226,6 +226,12 @@ let sparticuzArgs = null;
 let chromium = null;
 if (IS_VERCEL_OR_CI && process.platform === "linux") {
   try {
+    // sparticuz only extracts its bundled shared libs (libnss3 & co.) and
+    // sets LD_LIBRARY_PATH when it detects an AWS Lambda runtime — pure env
+    // sniffing, evaluated at import time. Vercel's build container is the
+    // same Amazon Linux 2023 but has none of those vars, so without this
+    // the binary extracts and then dies on missing libnss3.so.
+    process.env.AWS_LAMBDA_JS_RUNTIME ??= "nodejs20.x";
     const { default: sparticuz } = await import("@sparticuz/chromium");
     const execPath = await sparticuz.executablePath();
     if (execPath && existsSync(execPath)) {
