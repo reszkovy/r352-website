@@ -142,7 +142,6 @@ export function AgencyHeader() {
     { href: "/process", label: t("nav.process") },
     { href: "/philosophy", label: t("nav.philosophy") },
     { href: "/services", label: t("nav.services") },
-    { href: "/for-agencies", label: t("nav.agencies") },
     { href: "/journal", label: t("nav.journal") },
   ];
 
