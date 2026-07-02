@@ -23,13 +23,13 @@ export const translations = {
       //      which read as a solo studio - r352 is a team, not one person)
       //   2. "for high-volume marketing teams and agencies" - WHO it's for (volume = the
       //      real value; agencies included, tying to the /for-agencies white-label track)
-      title: "Design operations<br/>for brands and agencies<br/>delivering at scale.",
+      title: "Design operations<br/>for brands<br/>delivering at scale.",
       // Mobile breaks: explicit stack prevents awkward browser word-breaks at small sizes.
-      title_mobile: "Design operations<br/>for brands<br/>and agencies<br/>delivering at scale.",
+      title_mobile: "Design operations<br/>for brands<br/>delivering at scale.",
       // "Move fast, steady cadence" demoted from headline to signature line below the divider -
       // becomes brand mantra / closing thought rather than primary explanatory copy.
       signature: "Move fast, steady cadence.",
-      description_title: "Strategy, UX/UI, AI workflows, brand systems and creative production<br/>- connected into one operating system, so quality and speed hold at scale.",
+      description_title: "Strategy, UX/UI, AI workflows, brand systems and creative production.",
       description_body: "Retainer for the steady. Project for the sharp. Same r3loop methodology - applied to both, and to our own products in production.",
       quote: "Design begins with a decision, not a tool.",
       // Three proof signals on one axis: execution + cost + speed. Replaces the
@@ -669,12 +669,12 @@ export const translations = {
       // czytało się jak zwykła agencja. Tor produktowy żyje na /product-design, więc H1
       // sprzedaje główną usługę wprost. "Design operations" zostaje po angielsku (termin
       // kategorii, spójny z tagline w headerze).
-      title: "Design operations<br/>dla marek i agencji<br/>działających w skali.",
+      title: "Design operations<br/>dla marek<br/>działających w skali.",
       // Mobile breaks: explicit stack - czytelny układ na 375px.
-      title_mobile: "Design operations<br/>dla marek<br/>i agencji<br/>działających w skali.",
+      title_mobile: "Design operations<br/>dla marek<br/>działających w skali.",
       // "Tempo bez chaosu" demoted from headline to signature line - brand mantra position.
       signature: "Tempo bez chaosu.",
-      description_title: "Strategia, UX/UI, workflowy AI, systemy brandowe i produkcja kreatywna<br/>- połączone w jeden operating system, więc jakość i tempo trzymają poziom w skali.",
+      description_title: "Strategia, UX/UI, workflowy AI, systemy brandowe i produkcja kreatywna.",
       description_body: "Retainer dla stabilnych. Projekt dla ostrych. Ta sama metodologia r3loop - zastosowana do obu, i do naszych własnych produktów w produkcji.",
       quote: "Projektowanie zaczyna się od decyzji, nie od narzędzia.",
       // Trzy proof-signale na jednej osi: egzekucja + koszt + tempo.
