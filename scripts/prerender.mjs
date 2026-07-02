@@ -33,7 +33,7 @@
  * into ~/.cache/ms-playwright). See "Chromium resolution" section below.
  */
 
-import { spawn } from "node:child_process";
+import { spawn, execSync } from "node:child_process";
 import { mkdir, writeFile, access } from "node:fs/promises";
 import { existsSync, readdirSync, constants } from "node:fs";
 import { join, dirname } from "node:path";
@@ -171,6 +171,32 @@ function findPlaywrightChromium() {
   return null;
 }
 
+// In-project puppeteer cache — lives inside node_modules so Vercel's build
+// cache persists the downloaded browser across deployments (the global
+// ~/.cache/* dirs are NOT restored, which is why the playwright postinstall
+// approach silently lost its Chromium on every cached build).
+const LOCAL_PUPPETEER_CACHE = join(PROJECT_ROOT, "node_modules", ".cache", "puppeteer");
+
+function findPuppeteerCacheChrome() {
+  // Layout: <cache>/chrome/<platform-version>/chrome-<platform>/chrome
+  const chromeRoot = join(LOCAL_PUPPETEER_CACHE, "chrome");
+  if (!existsSync(chromeRoot)) return null;
+  let entries;
+  try { entries = readdirSync(chromeRoot); } catch { return null; }
+  for (const rev of entries.sort().reverse()) {
+    const candidates = [
+      join(chromeRoot, rev, "chrome-linux64", "chrome"),
+      join(chromeRoot, rev, "chrome-mac-arm64", "Google Chrome for Testing.app", "Contents", "MacOS", "Google Chrome for Testing"),
+      join(chromeRoot, rev, "chrome-mac-x64", "Google Chrome for Testing.app", "Contents", "MacOS", "Google Chrome for Testing"),
+      join(chromeRoot, rev, "chrome-win64", "chrome.exe"),
+    ];
+    for (const candidate of candidates) {
+      if (existsSync(candidate)) return candidate;
+    }
+  }
+  return null;
+}
+
 function resolveChromiumExecutable() {
   // 1. Explicit override
   const envPath = process.env.PUPPETEER_EXECUTABLE_PATH;
@@ -183,13 +209,31 @@ function resolveChromiumExecutable() {
     const pptrPath = puppeteer.executablePath();
     if (pptrPath && existsSync(pptrPath)) return { path: pptrPath, source: "puppeteer cache" };
   } catch { /* no puppeteer-managed browser — fall through */ }
-  // 3. Playwright browsers cache (@playwright/browser-chromium postinstall)
+  // 3. In-project puppeteer cache (survives Vercel build cache)
+  const localPath = findPuppeteerCacheChrome();
+  if (localPath) return { path: localPath, source: "node_modules/.cache/puppeteer" };
+  // 4. Playwright browsers cache (@playwright/browser-chromium postinstall)
   const pwPath = findPlaywrightChromium();
   if (pwPath) return { path: pwPath, source: "playwright cache" };
   return null;
 }
 
-const chromium = resolveChromiumExecutable();
+let chromium = resolveChromiumExecutable();
+if (!chromium) {
+  // Self-heal: download Chrome into node_modules/.cache/puppeteer. On Vercel
+  // this runs once per cold cache (~1 min); warm builds find it in step 3.
+  log.warn("No Chromium found — downloading Chrome into node_modules/.cache/puppeteer...");
+  try {
+    execSync("npx puppeteer browsers install chrome", {
+      cwd: PROJECT_ROOT,
+      stdio: "inherit",
+      env: { ...process.env, PUPPETEER_CACHE_DIR: LOCAL_PUPPETEER_CACHE },
+    });
+  } catch (err) {
+    log.warn(`Chrome download failed: ${err.message}`);
+  }
+  chromium = resolveChromiumExecutable();
+}
 if (!chromium) {
   if (IS_VERCEL_OR_CI) {
     log.warn("No Chromium found (PUPPETEER_EXECUTABLE_PATH / puppeteer cache / playwright cache all empty).");
