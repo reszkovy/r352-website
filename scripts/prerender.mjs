@@ -218,7 +218,25 @@ function resolveChromiumExecutable() {
   return null;
 }
 
-let chromium = resolveChromiumExecutable();
+// On Vercel/CI Linux, prefer @sparticuz/chromium — statically linked build
+// made for serverless images. The Google Chrome binaries need system libs
+// (libnss3.so etc.) that Vercel's build image doesn't ship, so they download
+// fine but die on launch.
+let sparticuzArgs = null;
+let chromium = null;
+if (IS_VERCEL_OR_CI && process.platform === "linux") {
+  try {
+    const { default: sparticuz } = await import("@sparticuz/chromium");
+    const execPath = await sparticuz.executablePath();
+    if (execPath && existsSync(execPath)) {
+      chromium = { path: execPath, source: "@sparticuz/chromium" };
+      sparticuzArgs = sparticuz.args;
+    }
+  } catch (err) {
+    log.warn(`@sparticuz/chromium unavailable (${err.message}) — falling back to system resolution.`);
+  }
+}
+if (!chromium) chromium = resolveChromiumExecutable();
 if (!chromium) {
   // Self-heal: download Chrome into node_modules/.cache/puppeteer. On Vercel
   // this runs once per cold cache (~1 min); warm builds find it in step 3.
@@ -345,6 +363,7 @@ try {
     headless: "new",
     executablePath: chromium.path,
     args: [
+      ...(sparticuzArgs ?? []),
       "--no-sandbox",
       "--disable-setuid-sandbox",
       "--disable-dev-shm-usage",
