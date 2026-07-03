@@ -213,7 +213,18 @@ export function AnimeGrid() {
     // z-0 keeps it behind the hero content (z-10), but on mobile we ALSO push
     // opacity to 50% so it visually sits as a backdrop pattern, not a layer
     // competing with the CTAs. Desktop keeps full opacity for full design impact.
-    <div ref={containerRef} className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-50 md:opacity-100">
+    // Radial mask = vignette fade: glyphs drawn partially outside the canvas
+    // used to get guillotined at the container edge (a hard "step" cut - most
+    // visible above the fold on mobile where a single glyph is huge). Fading
+    // alpha to 0 before every edge makes a hard cut geometrically impossible.
+    <div
+      ref={containerRef}
+      className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-50 md:opacity-100"
+      style={{
+        maskImage: "radial-gradient(100% 100% at 50% 50%, black 65%, transparent 98%)",
+        WebkitMaskImage: "radial-gradient(100% 100% at 50% 50%, black 65%, transparent 98%)",
+      }}
+    >
       <canvas
         ref={canvasRef}
         className="block w-full h-full"
