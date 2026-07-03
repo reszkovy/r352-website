@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from "react";
+import { Link } from "wouter";
 import { motion, useAnimationFrame, useMotionValue, useSpring, useTransform } from "motion/react";
 import { cn } from "@/app/components/ui/utils";
 import { useLanguage } from "@/app/context/LanguageContext";
@@ -135,10 +136,32 @@ export function Marquee() {
       {/* Framework bridge - DIAGNOSE·BUILD·SCALE is r3loop compressed into
           three phases, not a second methodology. One sentence so the buyer
           never reads it as a competing framework. */}
+      {/* "r3loop" links to /process - first encounter of the term on Home
+          gets an immediate "what is this?" escape hatch for new visitors. */}
       <p className="relative z-10 mt-10 md:mt-14 px-8 text-center font-mono text-[11px] md:text-xs tracking-wide text-neutral-500">
-        {language === "pl"
-          ? "Trzy fazy - r3loop w kompresji: kroki 01-02 to diagnoza, 03-06 budowa, 07-08 skalowanie."
-          : "Three phases - r3loop compressed: steps 01-02 diagnose, 03-06 build, 07-08 scale."}
+        {language === "pl" ? (
+          <>
+            Trzy fazy -{" "}
+            <Link
+              href="/process"
+              className="text-neutral-400 underline underline-offset-4 decoration-neutral-600 hover:text-[#D4FF00] hover:decoration-[#D4FF00] transition-colors duration-300"
+            >
+              r3loop
+            </Link>{" "}
+            (nasza 8-krokowa metodyka) w kompresji: kroki 01-02 to diagnoza, 03-06 budowa, 07-08 skalowanie.
+          </>
+        ) : (
+          <>
+            Three phases -{" "}
+            <Link
+              href="/process"
+              className="text-neutral-400 underline underline-offset-4 decoration-neutral-600 hover:text-[#D4FF00] hover:decoration-[#D4FF00] transition-colors duration-300"
+            >
+              r3loop
+            </Link>{" "}
+            (our 8-step method) compressed: steps 01-02 diagnose, 03-06 build, 07-08 scale.
+          </>
+        )}
       </p>
     </div>
   );

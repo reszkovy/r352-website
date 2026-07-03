@@ -123,6 +123,15 @@ export function Brief() {
       return;
     }
 
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
+      setError(
+        lang === "pl"
+          ? "Sprawdź adres email - powinien mieć format: imie@firma.com"
+          : "Check the email address - it should look like: name@company.com"
+      );
+      return;
+    }
+
     setSubmitting(true);
 
     const payload = {
@@ -137,16 +146,25 @@ export function Brief() {
     };
 
     // Helper: attempt POST with given payload, return parsed result
+    // 15s timeout per attempt - without it a hanging intake API leaves the
+    // button on "Submitting…" forever with no way out for the user.
     const attemptIntake = async (body: object): Promise<{ ok: boolean; status: number; data: any; raw: string }> => {
-      const res = await fetch(BRIEFLY_INTAKE_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
-      const raw = await res.text();
-      let data: any = null;
-      try { data = JSON.parse(raw); } catch { /* not JSON */ }
-      return { ok: res.ok, status: res.status, data, raw };
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 15_000);
+      try {
+        const res = await fetch(BRIEFLY_INTAKE_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+          signal: controller.signal,
+        });
+        const raw = await res.text();
+        let data: any = null;
+        try { data = JSON.parse(raw); } catch { /* not JSON */ }
+        return { ok: res.ok, status: res.status, data, raw };
+      } finally {
+        clearTimeout(timeout);
+      }
     };
 
     try {
@@ -214,8 +232,12 @@ export function Brief() {
       console.error("[brief] Submit error:", err);
       setSubmitting(false);
       // Show actual error message to user - they can screenshot and send
-      const userMsg =
-        lang === "pl"
+      const isTimeout = err?.name === "AbortError";
+      const userMsg = isTimeout
+        ? lang === "pl"
+          ? "Serwer nie odpowiada. Spróbuj za chwilę lub napisz na hello@r352.com - odpowiemy tak samo szybko."
+          : "The server is not responding. Try again in a moment or email hello@r352.com - we'll reply just as fast."
+        : lang === "pl"
           ? `Błąd: ${err?.message || "nieznany"}. Spróbuj jeszcze raz lub napisz na hello@r352.com`
           : `Error: ${err?.message || "unknown"}. Try again or email hello@r352.com`;
       setError(userMsg);

@@ -259,7 +259,8 @@ function AppContent() {
     };
     if (path.startsWith("/journal/")) {
       const articleId = parseInt(path.replace("/journal/", ""));
-      const article = journalArticles.find(a => a.id === articleId);
+      // Match JournalArticle's guard: never emit article SEO meta for unpublished ids
+      const article = journalArticles.find(a => a.id === articleId && a.published !== false);
       if (article) {
         const cleanTitle = article.title.replace(/<br\s*\/?>/g, ' ');
         return {

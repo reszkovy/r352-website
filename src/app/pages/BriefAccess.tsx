@@ -48,9 +48,11 @@ export function BriefAccess() {
                 className={`w-full bg-white/5 border ${error ? 'border-red-500' : 'border-white/10'} p-4 text-white focus:outline-none focus:border-[#D4FF00] transition-colors`}
                 placeholder="Enter password"
                 autoFocus
+                aria-invalid={error ? true : undefined}
+                aria-describedby={error ? "password-error" : undefined}
               />
               {error && (
-                <p className="text-red-500 text-sm mt-2">
+                <p id="password-error" role="alert" className="text-red-500 text-sm mt-2">
                   Incorrect password. Please try again.
                 </p>
               )}

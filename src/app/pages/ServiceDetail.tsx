@@ -105,7 +105,32 @@ export function ServiceDetail({ params }: { params?: { slug: string } }) {
     }
   };
 
-  const activeService = servicesData[currentSlug as keyof typeof servicesData] || servicesData["operating-system"];
+  // Unknown slug → honest not-found state instead of silently rendering
+  // "operating-system" under a wrong URL (confusing + duplicate content).
+  if (!(currentSlug in servicesData)) {
+    return (
+      <PageTransition className="min-h-screen pt-32 pb-24 px-6 md:px-12 max-w-[1800px] mx-auto">
+        <div className="min-h-[50vh] flex flex-col items-center justify-center text-center gap-8">
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-white leading-none">
+            {language === 'pl' ? 'Nie ma takiej usługi' : 'Service not found'}
+          </h1>
+          <p className="text-xl text-neutral-400 max-w-md">
+            {language === 'pl'
+              ? 'Ten adres nie odpowiada żadnej z naszych usług.'
+              : "This address doesn't match any of our services."}
+          </p>
+          <Link
+            href="/services"
+            className="inline-flex items-center justify-center px-8 py-4 bg-[#D4FF00] text-black font-display uppercase tracking-widest text-sm hover:bg-white transition-colors duration-300"
+          >
+            {language === 'pl' ? 'Zobacz wszystkie usługi' : 'See all services'}
+          </Link>
+        </div>
+      </PageTransition>
+    );
+  }
+
+  const activeService = servicesData[currentSlug as keyof typeof servicesData];
 
   const navItems = [
     { slug: "operating-system", label: servicesData["operating-system"].title, id: "01" },

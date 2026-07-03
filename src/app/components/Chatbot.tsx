@@ -184,10 +184,13 @@ export function Chatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
+            role="dialog"
+            aria-label={language === 'pl' ? "Asystent r352" : "r352 assistant"}
             className="absolute bottom-20 right-0 w-[320px] sm:w-[420px] md:w-[560px] bg-[#111111] border border-[#222222] rounded-none shadow-2xl flex flex-col overflow-hidden max-h-[85vh]"
           >
-            {/* Chat Area - no top header, close button moved next to FAQ label below */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 min-h-[300px] max-h-[480px] scrollbar-thin">
+            {/* Chat Area - no top header, close button moved next to FAQ label below.
+                aria-live announces bot replies to screen readers as they arrive. */}
+            <div aria-live="polite" className="flex-1 overflow-y-auto p-4 space-y-4 min-h-[300px] max-h-[480px] scrollbar-thin">
               {messages.map((msg) => (
                 <div
                   key={msg.id}

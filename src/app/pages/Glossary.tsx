@@ -1,3 +1,4 @@
+import { Link } from "wouter";
 import { PageTransition } from "@/app/components/ui/PageTransition";
 import { Reveal } from "@/app/components/ui/Reveal";
 import { useLanguage } from "@/app/context/LanguageContext";
@@ -384,6 +385,22 @@ export function Glossary() {
               ? "Brakuje terminu? Napisz na hello@r352.com - dodamy do następnej wersji słownika."
               : "Missing a term? Email hello@r352.com - we'll add it to the next revision."}
           </p>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 text-xs font-display uppercase tracking-[0.2em] text-neutral-500 hover:text-[#D4FF00] transition-colors duration-300"
+            >
+              <span>→</span>
+              <span>{language === "pl" ? "Zobacz usługi" : "See the services"}</span>
+            </Link>
+            <Link
+              href="/brief"
+              className="inline-flex items-center gap-2 text-xs font-display uppercase tracking-[0.2em] text-neutral-500 hover:text-[#D4FF00] transition-colors duration-300"
+            >
+              <span>→</span>
+              <span>{language === "pl" ? "Zacznij od briefu" : "Start with a brief"}</span>
+            </Link>
+          </div>
         </section>
       </Reveal>
     </PageTransition>

@@ -47,7 +47,9 @@ export function AgencyHero() {
               glowColor={glowColor}
             />
           </div>
-          <div className="block md:hidden" aria-hidden="true">
+          {/* Mobile block renders the page's h1 (desktop h1 is display:none below md,
+              so exactly one h1 is exposed to assistive tech per breakpoint). */}
+          <div className="block md:hidden">
             {/* Mobile hero typography:
                   - Font reduced 48px → 40px (text-[40px]) so "design partner." and
                     "partner designowy." fit on a single line at ~375-393px viewports.
@@ -57,7 +59,7 @@ export function AgencyHero() {
             <CinematicText
               key={`hero-title-mobile-${theme}`}
               text={t("hero.title_mobile")}
-              as="div"
+              as="h1"
               className="type-h1 !text-[40px] mb-6 max-w-[95%] cursor-default leading-[0.76]"
               delay={0.1}
               glowEffect={true}
@@ -133,30 +135,42 @@ export function AgencyHero() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-6 shrink-0">
-                {/* PRIMARY CTA - Brief */}
-                <MagneticButton
-                  onClick={() => setLocation("/brief")}
-                  className="bg-[#D4FF00] text-black border-none hover:bg-[#D4FF00]/90 rounded-none"
-                  glowColor="rgba(0, 0, 0, 0.15)"
-                >
-                  <span className="invisible text-lg font-display uppercase tracking-widest absolute">Start a project</span>
-                  <span className="text-lg font-display uppercase tracking-widest group-hover:tracking-normal transition-all duration-500 ease-out">
-                    {language === "pl" ? "Rozpocznij projekt" : "Start a project"}
+                {/* PRIMARY CTA - Brief. Microcopy under each button answers
+                    "which path is for me?" (async form vs live call) without
+                    forcing a detour through /contact to find out. */}
+                <div className="flex flex-col gap-2">
+                  <MagneticButton
+                    onClick={() => setLocation("/brief")}
+                    className="bg-[#D4FF00] text-black border-none hover:bg-[#D4FF00]/90 rounded-none"
+                    glowColor="rgba(0, 0, 0, 0.15)"
+                  >
+                    <span className="invisible text-lg font-display uppercase tracking-widest absolute">Start a project</span>
+                    <span className="text-lg font-display uppercase tracking-widest group-hover:tracking-normal transition-all duration-500 ease-out">
+                      {language === "pl" ? "Rozpocznij projekt" : "Start a project"}
+                    </span>
+                  </MagneticButton>
+                  <span className="text-[11px] font-mono tracking-tight text-neutral-500 text-center">
+                    {language === "pl" ? "~10 min briefu · odpowiedź w 48h" : "~10 min brief · reply within 48h"}
                   </span>
-                </MagneticButton>
+                </div>
 
                 {/* SECONDARY CTA - direct Calendly book (no extra hop via /contact) */}
-                <MagneticButton
-                  onClick={() => {
-                    try { (window as any).plausible?.("calendly_clicked", { props: { source: "hero" } }); } catch { /* noop */ }
-                    window.open("https://calendly.com/p-reszkovy/30min", "_blank", "noopener,noreferrer");
-                  }}
-                  className="explore-work-btn bg-white/[0.04] text-white border-transparent hover:bg-white/[0.08] rounded-none"
-                  glowColor="rgba(212, 255, 0, 0.2)"
-                >
-                  <span className="invisible text-lg font-display uppercase tracking-[0.25em] absolute">{t("hero.cta_work")}</span>
-                  <span className="text-lg font-display uppercase tracking-wide group-hover:tracking-[0.25em] transition-all duration-500 ease-out">{t("hero.cta_work")}</span>
-                </MagneticButton>
+                <div className="flex flex-col gap-2">
+                  <MagneticButton
+                    onClick={() => {
+                      try { (window as any).plausible?.("calendly_clicked", { props: { source: "hero" } }); } catch { /* noop */ }
+                      window.open("https://calendly.com/p-reszkovy/30min", "_blank", "noopener,noreferrer");
+                    }}
+                    className="explore-work-btn bg-white/[0.04] text-white border-transparent hover:bg-white/[0.08] rounded-none"
+                    glowColor="rgba(212, 255, 0, 0.2)"
+                  >
+                    <span className="invisible text-lg font-display uppercase tracking-[0.25em] absolute">{t("hero.cta_work")}</span>
+                    <span className="text-lg font-display uppercase tracking-wide group-hover:tracking-[0.25em] transition-all duration-500 ease-out">{t("hero.cta_work")}</span>
+                  </MagneticButton>
+                  <span className="text-[11px] font-mono tracking-tight text-neutral-500 text-center">
+                    {language === "pl" ? "30 min na żywo · wybierz termin" : "30 min live · pick a slot"}
+                  </span>
+                </div>
               </div>
             </div>
 

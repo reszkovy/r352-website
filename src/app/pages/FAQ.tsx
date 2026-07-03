@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "wouter";
 import { PageTransition } from "@/app/components/ui/PageTransition";
 import { Reveal } from "@/app/components/ui/Reveal";
 import { useLanguage } from "@/app/context/LanguageContext";
@@ -191,14 +192,24 @@ export function FAQ() {
               ? "Masz inne pytania?"
               : "Still have questions?"}
           </p>
-          <a
-            href="mailto:hello@r352.com"
-            className="inline-flex items-center gap-2 text-sm font-display uppercase tracking-[0.2em] text-[#D4FF00] hover:text-white transition-colors duration-300 border-b border-[#D4FF00]/40 hover:border-white pb-1"
-          >
-            {language === "pl"
-              ? "Napisz na hello@r352.com"
-              : "Write to hello@r352.com"}
-          </a>
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+            <a
+              href="mailto:hello@r352.com"
+              className="inline-flex items-center gap-2 text-sm font-display uppercase tracking-[0.2em] text-[#D4FF00] hover:text-white transition-colors duration-300 border-b border-[#D4FF00]/40 hover:border-white pb-1"
+            >
+              {language === "pl"
+                ? "Napisz na hello@r352.com"
+                : "Write to hello@r352.com"}
+            </a>
+            <Link
+              href="/brief"
+              className="inline-flex items-center gap-2 text-sm font-display uppercase tracking-[0.2em] text-neutral-500 hover:text-[#D4FF00] transition-colors duration-300 border-b border-transparent hover:border-[#D4FF00]/40 pb-1"
+            >
+              {language === "pl"
+                ? "Albo zacznij od briefu →"
+                : "Or start with a brief →"}
+            </Link>
+          </div>
         </section>
       </Reveal>
     </PageTransition>

@@ -11,6 +11,8 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
+const STORAGE_KEY = 'r352-language-v1';
+
 // Simple nested object access for translations
 function getNestedValue(obj: any, path: string): any {
   if (!obj) return path;
@@ -19,9 +21,37 @@ function getNestedValue(obj: any, path: string): any {
   }, obj) || path;
 }
 
+// Persisted language choice - same storage pattern as ConsentContext.
+// Prerender (Puppeteer) has no stored value, so captured HTML stays EN.
+function readStoredLanguage(): Language {
+  if (typeof window === 'undefined') return 'en';
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    if (raw === 'en' || raw === 'pl') return raw;
+  } catch {
+    // localStorage unavailable (private mode etc.) - fall through
+  }
+  return 'en';
+}
+
+function persistLanguage(lang: Language): void {
+  if (typeof window === 'undefined') return;
+  try {
+    window.localStorage.setItem(STORAGE_KEY, lang);
+  } catch {
+    // Silently swallow - choice simply won't persist across sessions.
+  }
+}
+
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  // Default to English
-  const [language, setLanguage] = useState<Language>('en');
+  // Lazy initializer: returning PL users get PL on first client render,
+  // without a visible EN→PL flash after mount.
+  const [language, setLanguageState] = useState<Language>(readStoredLanguage);
+
+  const setLanguage = (lang: Language) => {
+    setLanguageState(lang);
+    persistLanguage(lang);
+  };
 
   const t = (path: string): any => {
     const value = getNestedValue(translations[language], path);

@@ -118,7 +118,7 @@ export function ConsentBanner() {
             {shortBody}{' '}
             <Link
               href="/privacy"
-              className="text-neutral-400 hover:text-[#D4FF00] underline underline-offset-4 decoration-white/20 hover:decoration-[#D4FF00] transition-colors duration-300 whitespace-nowrap"
+              className="text-neutral-400 hover:text-[#D4FF00] underline underline-offset-4 decoration-white/50 hover:decoration-[#D4FF00] transition-colors duration-300 whitespace-nowrap"
             >
               {t('consent.banner.privacy')}
             </Link>
@@ -161,13 +161,13 @@ export function ConsentBanner() {
             <span className="flex items-center gap-x-4 shrink-0">
               <Link
                 href="/cookies"
-                className="text-neutral-400 hover:text-[#D4FF00] underline underline-offset-4 decoration-white/20 hover:decoration-[#D4FF00] transition-colors duration-300"
+                className="text-neutral-400 hover:text-[#D4FF00] underline underline-offset-4 decoration-white/50 hover:decoration-[#D4FF00] transition-colors duration-300"
               >
                 {t('consent.banner.preferences')}
               </Link>
               <Link
                 href="/privacy"
-                className="text-neutral-400 hover:text-[#D4FF00] underline underline-offset-4 decoration-white/20 hover:decoration-[#D4FF00] transition-colors duration-300"
+                className="text-neutral-400 hover:text-[#D4FF00] underline underline-offset-4 decoration-white/50 hover:decoration-[#D4FF00] transition-colors duration-300"
               >
                 {t('consent.banner.privacy')}
               </Link>
