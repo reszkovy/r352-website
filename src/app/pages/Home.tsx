@@ -49,7 +49,7 @@ export function Home() {
               { v: "300+", l: language === "pl" ? "klubów / jeden system" : "clubs / one system" },
               { v: "250+", l: language === "pl" ? "lokalizacji" : "locations served" },
               { v: "3×", l: language === "pl" ? "szybsze akceptacje" : "faster approvals" },
-              { v: "500+", l: language === "pl" ? "assetów / rok" : "assets / year" },
+              { v: "10k+", l: language === "pl" ? "assetów / rok" : "assets / year" },
             ].map((s, i) => (
               <div key={i} className="flex-shrink-0 flex items-baseline gap-2 whitespace-nowrap">
                 <span className="text-lg md:text-2xl font-semibold tracking-tight text-white tabular-nums leading-none">{s.v}</span>
