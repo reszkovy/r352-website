@@ -17,14 +17,16 @@ import sonovaLogo from "figma:asset/b14b67ba2d6df576bef8431f5353f2a1244c4815.png
 
 export function ClientLogos() {
   const { t } = useLanguage();
+  // Order: international recognition first, Polish consumer brands
+  // (Dawid Podsiadło, Kubota) close the row.
   const uniqueClients = [
     { name: "Deloitte Digital", logo: deloitteLogo, url: "https://www.deloittedigital.com" },
     { name: "Sonova", logo: sonovaLogo, url: "https://www.sonova.com" },
     { name: "Benefit Systems", logo: benefitLogo, url: "https://www.benefitsystems.pl" },
-    { name: "Dawid Podsiadło", logo: dawidLogo, url: "https://dawidpodsiadlo.pl" },
-    { name: "Kubota", logo: kubotaLogo, url: "https://kubotastore.pl" },
     { name: "UNIQA", logo: uniqaLogo, url: "https://www.uniqa.pl" },
     { name: "FIFA", logo: fifaLogo, url: "https://www.fifa.com" },
+    { name: "Dawid Podsiadło", logo: dawidLogo, url: "https://dawidpodsiadlo.pl" },
+    { name: "Kubota", logo: kubotaLogo, url: "https://kubotastore.pl" },
   ];
 
   return (
