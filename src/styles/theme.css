@@ -877,22 +877,3 @@ body:is(.lime-theme, .global-light-mode) a.text-white:hover {
     animation: none !important;
   }
 }
-/* Brand-hero chat launcher - gentle idle bob for the peeking robot. */
-@keyframes r352bob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .r352-bob { animation: none !important; }
-}
-
-/* Large brand-hero (R080) on /philosophy - slow float + gentle sway, and a
-   breathing lime glow behind it. */
-@keyframes r352float {
-  0%, 100% { transform: translateY(0) rotate(-1deg); }
-  50% { transform: translateY(-16px) rotate(1.5deg); }
-}
-@keyframes r352glow {
-  0%, 100% { opacity: 0.08; }
-  50% { opacity: 0.16; }
-}

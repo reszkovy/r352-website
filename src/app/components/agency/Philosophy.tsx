@@ -227,34 +227,8 @@ export function Philosophy() {
         </div>
       </div>
 
-      {/* Brand-hero moment - R080, the operator's sidekick. A large floating robot
-          fills the gap left by the retired soundtrack block. Transparent cutout so
-          it sits on both themes; CSS float/sway + a breathing lime glow behind. */}
-      <div className="max-w-[1800px] mx-auto px-8 md:px-12 py-24 md:py-36 border-b border-neutral-200 dark:border-white/10">
-        <Reveal>
-          <div className="relative flex flex-col items-center text-center">
-            <div
-              className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(62vw,540px)] aspect-square rounded-full bg-[#D4FF00] blur-[80px] motion-safe:[animation:r352glow_5s_ease-in-out_infinite]"
-              style={{ opacity: 0.12 }}
-              aria-hidden="true"
-            />
-            <span className="relative block text-xs font-display uppercase tracking-[0.2em] text-neutral-800 dark:text-[#D4FF00] mb-8">
-              {language === 'pl' ? 'Poznaj R080' : 'Meet R080'}
-            </span>
-            <img
-              src="/brand-hero/robot.png"
-              alt="R080 - the r352 brand hero"
-              draggable={false}
-              className="relative w-[clamp(220px,32vw,360px)] h-auto origin-bottom motion-safe:[animation:r352float_5s_ease-in-out_infinite] drop-shadow-[0_30px_60px_rgba(0,0,0,0.45)]"
-            />
-            <p className="relative mt-10 max-w-md text-[15px] md:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              {language === 'pl'
-                ? 'System, który dostał twarz - ta sama dyscyplina, cieplej.'
-                : 'The system, with a face - same discipline, warmer.'}
-            </p>
-          </div>
-        </Reveal>
-      </div>
+      {/* Soundtrack section REMOVED 2026-06-10 (client decision). Brand-hero robot
+          lives only in the chat/FAQ launcher (client decision 2026-07-06). */}
 
       {/* Contrasts: Not This → This */}
       <div className="max-w-[1800px] mx-auto px-8 md:px-12 py-24 md:py-32 border-b border-neutral-200 dark:border-white/10">
