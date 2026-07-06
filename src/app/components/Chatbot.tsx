@@ -300,7 +300,15 @@ export function Chatbot() {
                 transition={{ duration: 0.2, ease: "easeInOut" }}
                 className="flex items-center justify-center w-full h-full rounded-full overflow-hidden"
               >
-                <img src={botAvatar} alt="Asystent r352" className="w-full h-full object-cover" />
+                <video
+                  src="/brand-hero/hero.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  aria-label="Asystent r352"
+                  className="w-full h-full object-cover"
+                />
               </motion.div>
             )}
           </AnimatePresence>
