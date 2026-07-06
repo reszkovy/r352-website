@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X } from "lucide-react";
+import { X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { useLocation } from "wouter";
@@ -170,7 +170,7 @@ export function Chatbot() {
     <AnimatePresence>
       {scrollStarted && (
         <motion.div
-          className="hidden md:block fixed bottom-6 right-6 z-[1001]"
+          className="hidden md:block fixed bottom-0 right-8 z-[1001]"
           data-no-cursor-fx="true"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -186,7 +186,7 @@ export function Chatbot() {
             transition={{ duration: 0.2 }}
             role="dialog"
             aria-label={language === 'pl' ? "Asystent r352" : "r352 assistant"}
-            className="absolute bottom-20 right-0 w-[320px] sm:w-[420px] md:w-[560px] bg-[#111111] border border-[#222222] rounded-none shadow-2xl flex flex-col overflow-hidden max-h-[85vh]"
+            className="absolute bottom-32 right-0 w-[320px] sm:w-[420px] md:w-[560px] bg-[#111111] border border-[#222222] rounded-none shadow-2xl flex flex-col overflow-hidden max-h-[85vh]"
           >
             {/* Chat Area - no top header, close button moved next to FAQ label below.
                 aria-live announces bot replies to screen readers as they arrive. */}
@@ -255,65 +255,31 @@ export function Chatbot() {
         )}
       </AnimatePresence>
 
-      <div className="relative">
-        {/* Subdued fade pulse effect when closed */}
-        {!isOpen && (
-          <motion.div
-            animate={{
-              opacity: [0.1, 0.4, 0.1],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="absolute inset-[-6px] bg-[#D4FF00] rounded-full z-0 blur-[8px] pointer-events-none"
+      {/* Peeking brand-hero launcher - the robot leans up from the bottom edge of
+          the screen (no circle). Hovering rises it a touch and reveals a "FAQ"
+          label; clicking toggles the panel. */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        aria-label={language === 'pl' ? "Otwórz FAQ" : "Open FAQ"}
+        className="group relative block cursor-pointer bg-transparent border-none p-0"
+      >
+        {/* FAQ label - fades in above the robot on hover/focus */}
+        <span className="pointer-events-none absolute -top-2 left-1/2 -translate-x-1/2 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 group-focus-visible:opacity-100 group-focus-visible:translate-y-0 transition-all duration-300 text-[#D4FF00] font-display uppercase tracking-[0.25em] text-xs whitespace-nowrap [text-shadow:0_0_14px_rgba(0,0,0,0.7)]">
+          FAQ
+        </span>
+        {/* soft lime glow behind the head */}
+        <span className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 w-24 h-16 bg-[#D4FF00] opacity-[0.18] blur-2xl rounded-full" />
+        {/* hover-rise layer (transform) wraps the idle-bob img (transform) so they compose */}
+        <span className="relative block translate-y-[24%] group-hover:translate-y-[4%] group-focus-visible:translate-y-[4%] transition-transform duration-300 ease-out">
+          <img
+            src="/brand-hero/robot.png"
+            alt=""
+            aria-hidden="true"
+            draggable={false}
+            className="r352-bob block w-[112px] h-auto origin-bottom drop-shadow-[0_10px_24px_rgba(0,0,0,0.55)] motion-safe:[animation:r352bob_4s_ease-in-out_infinite]"
           />
-        )}
-
-        <motion.button
-          whileHover={{ 
-            scale: 1.05,
-            boxShadow: "0 0 25px rgba(212,255,0,0.4)"
-          }}
-          whileTap={{ scale: 0.95 }}
-          onClick={() => setIsOpen(!isOpen)}
-          className="relative z-10 w-14 h-14 bg-[#D4FF00] rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(212,255,0,0.2)] text-black hover:bg-[#bce600] transition-colors duration-300"
-        >
-          <AnimatePresence mode="wait">
-            {isOpen ? (
-              <motion.div
-                key="close"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.2, ease: "easeInOut" }}
-              >
-                <X className="w-6 h-6" />
-              </motion.div>
-            ) : (
-              <motion.div
-                key="chat"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.2, ease: "easeInOut" }}
-                className="flex items-center justify-center w-full h-full rounded-full overflow-hidden"
-              >
-                <video
-                  src="/brand-hero/hero.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  aria-label="Asystent r352"
-                  className="w-full h-full object-cover"
-                />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.button>
-      </div>
+        </span>
+      </button>
         </motion.div>
       )}
     </AnimatePresence>
