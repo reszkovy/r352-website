@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Music, X } from "lucide-react";
+import { useTheme } from "@/app/context/ThemeContext";
 
 /**
  * SpotifyPlayer - a tucked, collapsible Spotify embed (official iframe widget)
@@ -15,6 +16,8 @@ const EMBED_SRC = `https://open.spotify.com/embed/track/${TRACK_ID}?utm_source=g
 
 export function SpotifyPlayer() {
   const [open, setOpen] = useState(false);
+  const { theme } = useTheme();
+  const isLight = theme === "light";
 
   return (
     <div className="hidden md:block fixed bottom-6 left-6 z-[1000]">
@@ -25,7 +28,9 @@ export function SpotifyPlayer() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 12, scale: 0.98 }}
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-3 w-[320px] overflow-hidden rounded-xl border border-white/10 shadow-2xl"
+            className={`mb-3 w-[320px] overflow-hidden rounded-xl border shadow-2xl ${
+              isLight ? "border-black/10" : "border-white/10"
+            }`}
           >
             <iframe
               title="r352 - now playing"
@@ -44,7 +49,11 @@ export function SpotifyPlayer() {
       <button
         onClick={() => setOpen((o) => !o)}
         aria-label={open ? "Hide music player" : "Show music player"}
-        className="group flex items-center gap-2.5 rounded-full border border-white/12 bg-[#0A0A0A]/80 backdrop-blur px-4 py-2.5 text-[#D4FF00] hover:border-[#D4FF00]/50 transition-colors duration-300"
+        className={`group flex items-center gap-2.5 rounded-full border backdrop-blur px-4 py-2.5 transition-colors duration-300 ${
+          isLight
+            ? "bg-white/85 border-black/10 text-[#151515] hover:border-[#151515]/40"
+            : "bg-[#0A0A0A]/80 border-white/12 text-[#D4FF00] hover:border-[#D4FF00]/50"
+        }`}
       >
         {open ? (
           <X className="w-4 h-4" strokeWidth={1.5} />
