@@ -7,8 +7,6 @@ import { useLanguage } from "@/app/context/LanguageContext";
 import { useLenis } from "lenis/react";
 import { useTheme } from "@/app/context/ThemeContext";
 import { ThemeToggle } from "@/app/components/ui/ThemeToggle";
-import { SoundWaveWidget } from "@/app/components/ui/SoundWaveWidget";
-import { NowPlayingIndicator } from "@/app/components/ui/NowPlayingIndicator";
 
 export function AgencyHeader() {
   const [location] = useLocation();
@@ -159,9 +157,6 @@ export function AgencyHeader() {
 
   return (
     <>
-      {/* Right-aligned "now playing" strip - slides in below the nav row
-          whenever ambient music is playing. Quiet annotation, no layout shift. */}
-      <NowPlayingIndicator />
       <header className={cn(
         "fixed top-0 w-full z-[999] transition-all duration-700",
         isScrolled ? "pointer-events-auto is-scrolled" : "pointer-events-none",
@@ -334,11 +329,6 @@ export function AgencyHeader() {
           {/* Theme Switcher - moved from floating bottom-right corner */}
           <ThemeToggle />
 
-          {/* Background music toggle - Mompou's "Música Callada I, No. 1" loops as
-              ambient backdrop. First CTA hover anywhere on the site triggers playback
-              (see useCTAHoverMusicTrigger). Replaces the previous AudioToggle (UI
-              sounds / "szum") per client direction 2026-06-10. */}
-          <SoundWaveWidget className="ml-1" />
         </nav>
         
         {/* Mobile Hamburger */}
@@ -472,8 +462,6 @@ export function AgencyHeader() {
                         <span className={cn(theme === 'dark' && "text-[#D4FF00]")}>DARK</span>
                       </button>
 
-                      {/* Background music toggle - same control as desktop nav */}
-                      <SoundWaveWidget />
                 </motion.div>
             </motion.div>
         )}

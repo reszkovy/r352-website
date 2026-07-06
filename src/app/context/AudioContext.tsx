@@ -82,22 +82,11 @@ export function AudioProvider({ children }: { children: ReactNode }) {
       /* private mode - ignore */
     }
 
-    // Restore "was playing" state - but only attempt resume if NOT explicitly paused
-    // and only if a user gesture already unlocked audio on this origin.
+    // Old ambient track (Mompou) retired in favour of the Spotify player - never
+    // auto-resume, and clear any lingering "was playing" flag from earlier sessions
+    // so returning visitors don't hear the old song again.
     try {
-      const wasPlaying = sessionStorage.getItem(SESSION_KEY) === "1";
-      const wasPaused = sessionStorage.getItem(PAUSED_KEY) === "1";
-      if (wasPlaying && !wasPaused) {
-        // Try to resume - if browser blocks, silently fail.
-        el.play()
-          .then(() => {
-            fadeTo(el, TARGET_VOLUME);
-            setIsPlaying(true);
-          })
-          .catch(() => {
-            /* autoplay blocked - wait for next CTA hover */
-          });
-      }
+      sessionStorage.removeItem(SESSION_KEY);
     } catch {
       /* ignore */
     }
