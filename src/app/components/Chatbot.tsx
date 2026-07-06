@@ -26,63 +26,63 @@ const faqs: FAQ[] = [
       en: "What exactly do you sell?",
     },
     answer: {
-      pl: "Nie sprzedajemy plików designu. Sprzedajemy operating systems - workflow briefingu, standardy jakości, mapę ownership decyzji i dashboardy performance - wszystko, co zamienia chaos operacyjny w powtarzalny system. Plus seniorską egzekucję samej pracy (UX/UI, brand, kampanie, AI workflows). Ale rzemiosło bez struktury łamie się przy dostawie - dlatego budujemy oba.",
-      en: "We don't sell design files. We sell operating systems - briefing workflows, quality standards, decision ownership maps and performance dashboards - everything that turns operational chaos into a repeatable system. Plus senior execution on the work itself (UX/UI, brand, campaigns, AI workflows). But craft without structure breaks at delivery - so we build both.",
+      pl: "Design operations - system plus seniorska egzekucja całego stacku (strategia, UX/UI, brand, kampanie, produkcja, workflow AI). Nie pojedyncze pliki, tylko powtarzalny system: workflow briefingu, standardy jakości, ownership decyzji i dashboardy - a na nim dowożona praca. 10k+ assetów rocznie, 300+ lokalizacji w jednym systemie. Rzemiosło bez struktury łamie się przy dostawie - budujemy oba.",
+      en: "Design operations - a system plus senior execution across the whole stack (strategy, UX/UI, brand, campaigns, production, AI workflows). Not one-off files, but a repeatable system: briefing workflow, quality standards, decision ownership and dashboards - with the work delivered on top of it. 10k+ assets a year, 300+ locations on one system. Craft without structure breaks at delivery - so we build both.",
     },
   },
   {
     id: "q2",
     question: {
-      pl: "Czym jest r3loop?",
-      en: "What is r3loop?",
+      pl: "Czym różnicie się od agencji?",
+      en: "How are you different from an agency?",
     },
     answer: {
-      pl: "r3loop to nasza 8-krokowa metodologia operacyjna - ten sam framework dla każdego projektu, modyfikujemy głębokość, nie strukturę: 01 Diagnose → 02 Map → 03 Standardize → 04 Build → 05 Govern → 06 Ship → 07 Measure → 08 Iterate. Każdy krok ma własne deliverables i mierzalne KPI (np. „% briefów ready przy pierwszym złożeniu - cel 80%+”). Diagnose to entry point - 3-5 dni dla fokusowanych projektów, 1-2 tygodnie dla organizacji. Pełen interaktywny breakdown z timeline'em per step na /process.",
-      en: "r3loop is our 8-step operating methodology - same framework for every project, we modify depth not structure: 01 Diagnose → 02 Map → 03 Standardize → 04 Build → 05 Govern → 06 Ship → 07 Measure → 08 Iterate. Each step has its own deliverables and measurable KPI (e.g. '% of briefs meeting readiness checklist on first submission - target 80%+'). Diagnose is the entry point - 3-5 days for focused projects, 1-2 weeks for organization-wide engagements. Full interactive breakdown with per-step timeline on /process.",
+      pl: "Jesteśmy operatorem, nie agencją. Agencja pyta „co ma ładnie wyglądać”. My zaczynamy od diagnozy - co realnie zawodzi w workflow - zanim cokolwiek zaprojektujemy. Nie zostawiamy decka rekomendacji, tylko działający system i zespół, który go używa. Efekt: akceptacje szybsze 3×, jakość i tempo trzymają poziom w skali. Pełen manifest na /philosophy.",
+      en: "We're an operator, not an agency. An agency asks 'what should look good?'. We start with diagnosis - what's actually breaking in your workflow - before we design anything. We don't leave a deck of recommendations, we leave a working system and a team that runs it. Result: 3× faster approvals, quality and speed holding at scale. Full manifesto on /philosophy.",
     },
   },
   {
     id: "q3",
     question: {
-      pl: "Jakie modele współpracy mam do wyboru?",
-      en: "What engagement models can I choose from?",
+      pl: "Pracujecie z agencjami?",
+      en: "Do you work with agencies?",
     },
     answer: {
-      pl: "Pięć modeli - wybierasz w zależności od dojrzałości problemu: 1) Diagnostic - audyt workflow + plan działania (1-2 tyg, entry tier, money-back jeśli rekomendacje nie są wdrażalne w 60 dni). 2) Sprint - focusowany projekt z jasnym zakresem (2-6 tyg). 3) Retainer - ciągła współpraca z systemem (od 3 mies). 4) Enterprise Sprint - pełna transformacja Creative Operating System (12-16 tyg + 90-day handover). 5) Operating Partner - strategiczna rola, opieka nad systemem (kontrakt roczny, monthly cadence). Pełne porównanie + comparison table na /services.",
-      en: "Five models - pick by problem maturity: 1) Diagnostic - workflow audit + action plan (1-2 weeks, entry tier, money-back if recommendations aren't actionable within 60 days). 2) Sprint - focused project with clear scope (2-6 weeks). 3) Retainer - ongoing partnership with a system (from 3 months). 4) Enterprise Sprint - full Creative Operating System transformation (12-16 weeks + 90-day handover). 5) Operating Partner - strategic role, custodian of the system (annual contract, monthly cadence). Full comparison + table on /services.",
+      pl: "Tak, dwoma torami. White-label - dostarczamy pod Twoją marką, jako Twój zespół produkcyjno-strategiczny, niewidoczni dla klienta. Direct - wchodzimy jako operator przy przetargach i realizacjach, które potrzebują strategii plus egzekucji w skali. Jeden akountowalny zespół zamiast żonglerki freelancerami. Szczegóły na /for-agencies.",
+      en: "Yes, two ways. White-label - we deliver under your name, as your production and strategy team, invisible to your client. Direct - we come in as an operator on pitches and rollouts that need strategy plus execution at scale. One accountable team instead of juggling freelancers. Details on /for-agencies.",
     },
   },
   {
     id: "q4",
     question: {
-      pl: "Co to jest AI Development & Automation?",
-      en: "What is AI Development & Automation?",
+      pl: "Jak wykorzystujecie AI?",
+      en: "How do you use AI?",
     },
     answer: {
-      pl: "To produkt consultingowy - bierzemy system który zbudowaliśmy w fazie Standardize/Govern i operacjonalizujemy go: AI brief assistant trenowany na Waszych standardach, integracje workflow z Asana/Notion/Figma/Slack, automatyzacja quality review per typ assetu, engine routingu i ownership decyzji, workflow performance dashboard. Dla zespołów, które MAJĄ już standardy, ale egzekucja wciąż zależy od heroizmu - gotowe wdrożyć warstwę operacyjną, która zamienia standardy w automatyczny workflow. 90-day adoption plan z checkpoint reviews. Pełen breakdown na /services (karta 06).",
-      en: "It's a consulting product - we take the system we've built in the Standardize/Govern phase and operationalize it: AI brief assistant trained on your standards, workflow integrations with Asana/Notion/Figma/Slack, quality review automation per asset type, decision ownership & routing engine, workflow performance dashboard. For teams that already HAVE standards but execution still depends on heroics - ready to ship the operating layer that turns standards into automated workflow. 90-day adoption plan with checkpoint reviews. Full breakdown on /services (card 06).",
+      pl: "AI okiełznane w spójny output przy skali, nie doklejone. Governance zamiast „używamy AI”: asystent briefów trenowany na Waszych standardach, automatyzacja quality review, integracje workflow (Asana/Notion/Figma/Slack), routing i ownership decyzji. Cel to przewidywalny output, nie loteria. To warstwa operacyjna nad standardami, nie gadżet. Więcej na /services.",
+      en: "AI governed into consistent output at scale, not just bolted on. Governance over 'we use AI': a brief assistant trained on your standards, quality-review automation, workflow integrations (Asana/Notion/Figma/Slack), decision routing and ownership. The point is predictable output, not a gamble. It's an operating layer over your standards, not a gadget. More on /services.",
     },
   },
   {
     id: "q5",
     question: {
-      pl: "Czym jest AI Brief Assistant?",
-      en: "What is the AI Brief Assistant?",
+      pl: "Jakie modele współpracy?",
+      en: "What engagement models?",
     },
     answer: {
-      pl: "Nasz SaaS - produkt subskrypcyjny. Zamienia niejasne requesty w gotowe briefy w 5 minut. Trenowany na 500+ realnych briefach z naszych projektów. Co robi: zadaje właściwe pytania, generuje strukturalne briefy (zgodne z Definition of Ready), ocenia jakość briefa 0-100 przed wysyłką, integruje się ze Slack/Notion/Asana, uczy się Twojej organizacji. Dostępny w early access - by invitation. Działa standalone albo jako warstwa nad Retainerem / Operating Partner. Pełne info na /services (sekcja „Product · SaaS”).",
-      en: "It's our SaaS - subscription product. Turns unclear requests into ready briefs in 5 minutes. Trained on 500+ real briefs from our projects. What it does: asks the right questions, generates structured briefs (against the Definition of Ready), scores brief quality 0-100 before submission, integrates with Slack/Notion/Asana, learns your organization. Available in early access - by invitation. Works standalone or as a layer on top of Retainer / Operating Partner. Full info on /services ('Product · SaaS' section).",
+      pl: "Pięć modeli, wybierasz wg dojrzałości problemu - od diagnostyki za ~€2k po wieloletnie partnerstwo operacyjne: 1) Diagnostic (audyt + plan, 1-2 tyg, money-back). 2) Sprint (fokusowany projekt, 2-6 tyg). 3) Retainer (ciągły system, od 3 mies). 4) Enterprise Sprint (pełna transformacja, 12-16 tyg). 5) Operating Partner (rola strategiczna, kontrakt roczny). Pełne porównanie na /services.",
+      en: "Five models, pick by problem maturity - from a ~€2k diagnostic to a multi-year operating partnership: 1) Diagnostic (audit + plan, 1-2 wks, money-back). 2) Sprint (focused project, 2-6 wks). 3) Retainer (ongoing system, from 3 mos). 4) Enterprise Sprint (full transformation, 12-16 wks). 5) Operating Partner (strategic role, annual). Full comparison on /services.",
     },
   },
   {
     id: "q6",
     question: {
-      pl: "Czym się różnicie od typowej agencji?",
-      en: "How are you different from a typical agency?",
+      pl: "Czym jest r3loop?",
+      en: "What is r3loop?",
     },
     answer: {
-      pl: "Większość problemów z designem to nie problemy z designem. To problemy z niejasnymi briefami, rozproszonymi requestami, wolnymi decyzjami i brakującymi standardami jakości. Typowa agencja zaczyna od pytania „co ma ładnie wyglądać”. My zaczynamy od diagnozy - co realnie zawodzi w Waszym workflow - zanim cokolwiek zaprojektujemy. Nie zostawiamy decka z rekomendacjami - zostawiamy działający system + zespół, który go używa. Pełen manifest na /philosophy (6 beliefs + 6 non-negotiables).",
-      en: "Most design problems are not design problems. They're problems of unclear briefs, scattered requests, slow decisions and missing quality standards. A typical agency starts with 'what should look pretty?'. We start with diagnosis - what's actually breaking in your workflow - before we design anything. We don't leave a deck of recommendations - we leave a working system + a team that uses it. Full manifesto on /philosophy (6 beliefs + 6 non-negotiables).",
+      pl: "Nasza 8-krokowa metodologia operacyjna - ten sam framework dla każdego projektu, zmieniamy głębokość, nie strukturę: Diagnose → Map → Standardize → Build → Govern → Ship → Measure → Iterate. Każdy krok ma deliverables i mierzalny KPI. Wejście to Diagnose (3-5 dni / 1-2 tyg). Pełen breakdown na /process.",
+      en: "Our 8-step operating methodology - same framework for every project, we change depth not structure: Diagnose → Map → Standardize → Build → Govern → Ship → Measure → Iterate. Each step has deliverables and a measurable KPI. Entry point is Diagnose (3-5 days / 1-2 weeks). Full breakdown on /process.",
     },
   },
   {
@@ -92,19 +92,19 @@ const faqs: FAQ[] = [
       en: "Who is this for - and who is it NOT for?",
     },
     answer: {
-      pl: "TAK: marki wielolokalizacyjne (3+ lokalizacji), organizacje w fitness/wellness/health/retail, marketing teams z powtarzającymi się requestami, zespoły utknięte w niejasnych pętlach feedbacku, gdzie jakość/szybkość/ownership trzeba zsystemizować. NIE: jednorazowy baner, pojedynczy landing page, generic visual refresh bez powtarzającego się workflow. Jeśli nie pasujemy - powiemy to w feedbacku i polecimy kogoś z naszej sieci, kto pasuje lepiej. Bez upsell pressure.",
-      en: "YES: multi-location brands (3+ locations), organizations in fitness/wellness/health/retail, marketing teams with recurring asset requests, teams stuck in unclear feedback loops, where quality/speed/ownership need to be systemized. NO: one-off banners, single landing pages, generic visual refreshes with no recurring workflow. If we don't fit - we'll tell you in the feedback and refer you to someone in our network who fits better. No upsell pressure.",
+      pl: "TAK: marki wielolokalizacyjne (3+ lokalizacji), zespoły marketingu z powtarzalnymi requestami, organizacje gdzie jakość/tempo/ownership trzeba zsystemizować, agencje potrzebujące zaplecza. NIE: jednorazowy baner czy pojedynczy landing bez powtarzalnego workflow. Jeśli nie pasujemy - powiemy to i polecimy kogoś, kto pasuje lepiej. Bez presji.",
+      en: "YES: multi-location brands (3+ locations), marketing teams with recurring requests, organizations where quality/speed/ownership need systemizing, agencies needing a delivery bench. NO: a one-off banner or single landing with no recurring workflow. If we don't fit - we'll say so and refer someone who fits better. No pressure.",
     },
   },
   {
     id: "q8",
     question: {
-      pl: "Jak zacząć współpracę?",
+      pl: "Jak zacząć?",
       en: "How do I start?",
     },
     answer: {
-      pl: "Trzy ścieżki - w zależności od commitment'u: 1) Wypełnij brief (5-18 min, ustrukturyzowany, dopasowuje się do typu projektu) - pisemna odpowiedź w 48h. 2) Napisz bezpośrednio na hello@r352.com - dla warm referrals i quick chat. 3) Zarezerwuj 30-min call na Calendly. Każda opcja prowadzi do tego samego: discovery call z pełnym kontekstem. Diagnostic ma money-back - bez ryzyka po Twojej stronie.",
-      en: "Three paths - by commitment level: 1) Fill the brief (5-18 min, structured, adapts to project type) - written response within 48h. 2) Write directly to hello@r352.com - for warm referrals and quick chat. 3) Book a 30-min call on Calendly. Each option leads to the same outcome: a discovery call with full context. Diagnostic has money-back - zero risk on your side.",
+      pl: "Trzy ścieżki: 1) Wypełnij brief (~10 min, dopasowuje się do projektu) - pisemna odpowiedź w 48h. 2) Napisz na hello@r352.com. 3) Zarezerwuj 30-min call. Każda prowadzi do tego samego: rozmowy z pełnym kontekstem. Diagnostic ma money-back - zero ryzyka po Twojej stronie.",
+      en: "Three paths: 1) Fill the brief (~10 min, adapts to your project) - written response within 48h. 2) Write to hello@r352.com. 3) Book a 30-min call. Each leads to the same: a call with full context. Diagnostic has money-back - zero risk on your side.",
     },
   },
 ];
@@ -125,8 +125,8 @@ export function Chatbot() {
       {
         id: "welcome",
         text: language === 'pl'
-          ? "Cześć - tu asystent r352. Mogę krótko opowiedzieć co sprzedajemy, jak działa nasz 8-step proces, jakie modele współpracy mamy i jak zacząć. Wybierz pytanie albo zacznij od briefa."
-          : "Hi - r352 assistant here. I can briefly cover what we sell, how our 8-step process works, our engagement models, and how to start. Pick a question or jump straight into the brief.",
+          ? "Cześć, jestem R080 - robot-asystent r352. Powiem krótko co robimy, jak działa nasz 8-krokowy proces, jakie mamy modele współpracy i jak zacząć. Wybierz pytanie albo od razu wypełnij brief."
+          : "Hi, I'm R080 - r352's robot assistant. I can quickly cover what we do, how our 8-step process works, our engagement models, and how to start. Pick a question or jump straight into the brief.",
         sender: "bot",
       }
     ]);
@@ -170,7 +170,7 @@ export function Chatbot() {
     <AnimatePresence>
       {scrollStarted && (
         <motion.div
-          className="hidden md:block fixed bottom-0 right-8 z-[1001]"
+          className="hidden md:block fixed bottom-6 right-6 z-[1001]"
           data-no-cursor-fx="true"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -186,7 +186,7 @@ export function Chatbot() {
             transition={{ duration: 0.2 }}
             role="dialog"
             aria-label={language === 'pl' ? "Asystent r352" : "r352 assistant"}
-            className="absolute bottom-32 right-0 w-[320px] sm:w-[420px] md:w-[560px] bg-[#111111] border border-[#222222] rounded-none shadow-2xl flex flex-col overflow-hidden max-h-[85vh]"
+            className="absolute bottom-20 right-0 w-[320px] sm:w-[420px] md:w-[560px] bg-[#111111] border border-[#222222] rounded-none shadow-2xl flex flex-col overflow-hidden max-h-[85vh]"
           >
             {/* Chat Area - no top header, close button moved next to FAQ label below.
                 aria-live announces bot replies to screen readers as they arrive. */}
@@ -255,31 +255,63 @@ export function Chatbot() {
         )}
       </AnimatePresence>
 
-      {/* Peeking brand-hero launcher - the robot leans up from the bottom edge of
-          the screen (no circle). Hovering rises it a touch and reveals a "FAQ"
-          label; clicking toggles the panel. */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        aria-label={language === 'pl' ? "Otwórz FAQ" : "Open FAQ"}
-        className="group relative block cursor-pointer bg-transparent border-none p-0"
-      >
-        {/* FAQ label - fades in above the robot on hover/focus */}
-        <span className="pointer-events-none absolute -top-2 left-1/2 -translate-x-1/2 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 group-focus-visible:opacity-100 group-focus-visible:translate-y-0 transition-all duration-300 text-[#D4FF00] font-display uppercase tracking-[0.25em] text-xs whitespace-nowrap [text-shadow:0_0_14px_rgba(0,0,0,0.7)]">
+      {/* Brand-hero launcher - looping robot video (R080) in a circle. Hover
+          reveals a "FAQ" label above it; click toggles the panel. */}
+      <div className="relative group">
+        {/* Subdued fade pulse when closed */}
+        {!isOpen && (
+          <motion.div
+            animate={{ opacity: [0.1, 0.4, 0.1] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute inset-[-6px] bg-[#D4FF00] rounded-full z-0 blur-[8px] pointer-events-none"
+          />
+        )}
+        {/* FAQ label - fades in above the circle on hover/focus */}
+        <span className="pointer-events-none absolute -top-7 left-1/2 -translate-x-1/2 opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:translate-y-0 transition-all duration-300 text-[#D4FF00] font-display uppercase tracking-[0.25em] text-xs whitespace-nowrap [text-shadow:0_0_14px_rgba(0,0,0,0.7)]">
           FAQ
         </span>
-        {/* soft lime glow behind the head */}
-        <span className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 w-24 h-16 bg-[#D4FF00] opacity-[0.18] blur-2xl rounded-full" />
-        {/* hover-rise layer (transform) wraps the idle-bob img (transform) so they compose */}
-        <span className="relative block translate-y-[24%] group-hover:translate-y-[4%] group-focus-visible:translate-y-[4%] transition-transform duration-300 ease-out">
-          <img
-            src="/brand-hero/robot.png"
-            alt=""
-            aria-hidden="true"
-            draggable={false}
-            className="r352-bob block w-[112px] h-auto origin-bottom drop-shadow-[0_10px_24px_rgba(0,0,0,0.55)] motion-safe:[animation:r352bob_4s_ease-in-out_infinite]"
-          />
-        </span>
-      </button>
+
+        <motion.button
+          whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(212,255,0,0.4)" }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label={language === 'pl' ? "Otwórz FAQ" : "Open FAQ"}
+          className="relative z-10 w-16 h-16 bg-[#D4FF00] rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(212,255,0,0.2)] text-black hover:bg-[#bce600] transition-colors duration-300 overflow-hidden"
+        >
+          <AnimatePresence mode="wait">
+            {isOpen ? (
+              <motion.div
+                key="close"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.2, ease: "easeInOut" }}
+              >
+                <X className="w-6 h-6" />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="bot"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.2, ease: "easeInOut" }}
+                className="w-full h-full rounded-full overflow-hidden"
+              >
+                <video
+                  src="/brand-hero/hero.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  aria-label="R080"
+                  className="w-full h-full object-cover [object-position:center_22%]"
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.button>
+      </div>
         </motion.div>
       )}
     </AnimatePresence>
