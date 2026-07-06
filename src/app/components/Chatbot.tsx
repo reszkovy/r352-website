@@ -188,9 +188,17 @@ export function Chatbot() {
             aria-label={language === 'pl' ? "Asystent r352" : "r352 assistant"}
             className="absolute bottom-20 right-0 w-[320px] sm:w-[420px] md:w-[560px] bg-[#111111] border border-[#222222] rounded-none shadow-2xl flex flex-col overflow-hidden max-h-[85vh]"
           >
-            {/* Chat Area - no top header, close button moved next to FAQ label below.
-                aria-live announces bot replies to screen readers as they arrive. */}
-            <div aria-live="polite" className="flex-1 overflow-y-auto p-4 space-y-4 min-h-[300px] max-h-[480px] scrollbar-thin">
+            {/* Close - top-right, the conventional position users reach for. */}
+            <button
+              onClick={() => setIsOpen(false)}
+              aria-label={language === 'pl' ? "Zamknij" : "Close"}
+              className="absolute top-3 right-3 z-20 p-1.5 rounded-full bg-[#111111]/80 backdrop-blur text-zinc-400 hover:text-white hover:bg-[#222222] transition-colors"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            {/* Chat Area. aria-live announces bot replies to screen readers as they arrive. */}
+            <div aria-live="polite" className="flex-1 overflow-y-auto p-4 pt-11 space-y-4 min-h-[300px] max-h-[480px] scrollbar-thin">
               {messages.map((msg) => (
                 <div
                   key={msg.id}
@@ -215,17 +223,10 @@ export function Chatbot() {
 
             {/* Options */}
             <div className="p-4 bg-[#0A0A0A] border-t border-[#222222]">
-              <div className="flex items-center justify-between mb-3 px-1">
+              <div className="mb-3 px-1">
                 <p className="text-[11px] uppercase tracking-wider text-zinc-600">
                   {language === 'pl' ? "Wybierz pytanie" : "Choose a question"}
                 </p>
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="text-zinc-500 hover:text-white transition-colors -mr-1 p-1"
-                  aria-label={language === 'pl' ? "Zamknij" : "Close"}
-                >
-                  <X className="w-4 h-4" />
-                </button>
               </div>
               {/* 2-col grid on md+ - saves vertical space so chat answer stays readable */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
@@ -305,7 +306,7 @@ export function Chatbot() {
                   muted
                   playsInline
                   aria-label="R080"
-                  className="w-full h-full object-cover [object-position:center_22%]"
+                  className="w-full h-full object-cover [transform:translateY(10px)_scale(1.3)]"
                 />
               </motion.div>
             )}
