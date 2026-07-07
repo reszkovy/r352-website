@@ -28,6 +28,10 @@ function readStoredLanguage(): Language {
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     if (raw === 'en' || raw === 'pl') return raw;
+    // No explicit choice yet: default to Polish for Polish-locale browsers, so PL
+    // visitors land on the PL version instead of English. Everyone else -> EN.
+    const nav = (navigator.language || (navigator.languages && navigator.languages[0]) || '').toLowerCase();
+    if (nav.startsWith('pl')) return 'pl';
   } catch {
     // localStorage unavailable (private mode etc.) - fall through
   }
