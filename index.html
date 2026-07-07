@@ -82,31 +82,33 @@
 
   <body>
     <!-- First-load splash. Static (no framework) so it covers the page from the
-         very first paint - zero content flash. Wordmark assembles letter by letter,
-         then curtains up to reveal the site. Shows once per session; respects
-         reduced-motion; self-removes. -->
+         very first paint - zero content flash. The r352 logo (sygnet + "352") builds
+         in, then the curtain lifts to reveal the site. Once per session; respects
+         reduced-motion; skipped under headless prerender so its end-state is never baked. -->
     <div id="r352-splash" aria-hidden="true">
-      <span class="r352-splash-word"><span>r</span><span>3</span><span>5</span><span>2</span></span>
+      <div class="r352-splash-logo">
+        <svg class="r352-splash-sym" viewBox="0 0 658 676" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 337.632C0 136.127 154.934 0 328.676 0C502.418 0 657.352 136.127 657.352 337.632C657.352 539.136 502.418 675.264 328.676 675.264C154.934 675.264 0 539.136 0 337.632ZM78.8106 337.632C78.8106 492.566 189.862 601.827 328.676 601.827C465.699 601.827 578.541 492.566 578.541 337.632C578.541 182.697 465.699 73.4372 328.676 73.4372C189.862 73.4372 78.8106 182.697 78.8106 337.632Z" fill="#DAFF45"/><path d="M468.492 402.837C474.353 406.798 478.709 412.183 481.56 418.994C484.411 425.806 485.282 432.617 484.174 439.428C483.065 446.239 480.055 452.496 475.145 458.199C470.393 463.743 464.769 467.544 458.275 469.604C455.424 470.237 452.414 470.633 449.246 470.792C446.078 470.95 441.88 470.792 436.653 470.316C431.584 469.841 428.575 469.445 427.624 469.128C412.418 468.495 396.499 465.089 379.866 458.912C363.393 452.734 349.137 445.843 337.098 438.24C325.06 430.479 313.338 422.004 301.933 412.817C290.687 403.63 282.45 396.422 277.222 391.195C271.995 385.968 268.114 381.77 265.58 378.602L260.59 373.137L261.066 395.472C261.382 422.4 261.699 440.141 262.016 448.695C262.333 460.416 259.323 469.92 252.987 477.207C246.176 484.969 237.543 489.404 227.088 490.513C216 491.463 206.417 488.533 198.339 481.721C189.627 474.276 185.112 465.644 184.795 455.823C184.795 447.111 184.479 429.132 183.845 401.887C183.528 372.741 183.211 353.258 182.895 343.437C181.944 314.291 180.598 282.69 178.855 248.634C178.222 237.229 181.311 227.646 188.122 219.884C194.616 212.439 202.932 208.083 213.07 206.816H214.02L214.496 206.341C219.089 203.49 225.267 200.559 233.029 197.55C272.312 181.709 311.199 173.393 349.691 172.601C362.363 172.285 372.738 174.74 380.817 179.967C390.479 186.145 397.132 195.886 400.775 209.192C407.587 235.803 401.251 262.256 381.767 288.551C377.807 293.778 371.63 301.223 363.234 310.886C358.324 316.746 354.601 321.102 352.067 323.954C349.849 327.122 349.374 330.211 350.641 333.22C355.552 342.566 361.809 351.04 369.412 358.644C377.015 366.088 384.539 371.791 391.984 375.751C399.429 379.553 406.636 382.879 413.606 385.73C420.576 388.423 426.199 390.086 430.476 390.72L436.891 392.145C443.702 393.413 448.85 394.521 452.335 395.472C458.829 397.531 464.215 399.986 468.492 402.837ZM309.299 262.652C310.883 255.524 308.586 250.535 302.408 247.684C298.765 246.1 293.934 246.1 287.915 247.684C283.321 248.951 274.688 251.881 262.016 256.475C258.848 257.425 257.422 259.484 257.739 262.652L259.64 307.084C259.64 309.935 261.066 311.836 263.917 312.786C266.926 313.737 269.382 313.103 271.282 310.886C279.994 299.798 286.172 292.511 289.815 289.026C295.359 282.849 299.399 278.334 301.933 275.483C306.21 270.573 308.665 266.296 309.299 262.652Z" fill="#DAFF45"/></svg>
+        <svg class="r352-splash-txt" viewBox="0 0 460 373" fill="none" xmlns="http://www.w3.org/2000/svg"><g transform="translate(0 93.61)"><path class="l1" d="M74.5273 0C117.523 8.22167e-05 142.279 19.2833 142.279 49.7715C142.279 55.4679 141.279 60.5718 139.472 65.0879C135.791 74.2831 136.951 101.811 141.291 110.714C144.098 116.471 145.667 123.46 145.667 131.855C145.667 163.647 118.045 185.536 73.2245 185.536C31.7576 185.536 4.62142 167.016 0.537033 132.409C-0.0728369 127.242 4.21835 122.996 9.4218 122.996H36.4384C41.54 122.996 45.5161 127.145 46.9628 132.037C50.6834 144.618 61.5844 150.617 75.3085 150.617C88.3377 150.617 99.0214 143.061 99.0214 128.989C99.0214 117.263 90.9438 109.706 74.0058 109.706H63.8837C58.6803 109.706 54.4618 105.488 54.4618 100.284V83.167C54.4618 77.9636 58.6803 73.7451 63.8837 73.7451H71.4003C87.8168 73.745 96.1551 65.6672 96.1552 53.4199C96.1552 40.6513 85.7318 34.918 73.4843 34.918C61.8026 34.9181 52.8614 40.7211 49.1952 50.4248C47.4242 55.1124 43.4982 59.1523 38.4872 59.1523H12.4277C7.17002 59.1523 2.84452 54.8198 3.73235 49.6377C8.89026 19.533 36.4501 0 74.5273 0Z" fill="#DAFF45"/><path class="l2" d="M284.428 1.56348C289.631 1.56364 293.849 5.78201 293.849 10.9854V29.9268C293.848 35.13 289.631 39.3485 284.428 39.3486H218.976C213.926 39.3486 209.774 43.329 209.561 48.374L209.535 49.0186C209.192 57.1999 219.48 62.6203 227.393 60.5127C231.901 59.3118 236.98 58.6319 242.774 58.6318C279.777 58.6318 304.794 83.9079 304.794 121.692C304.794 164.428 272.481 185.536 232.872 185.536C193.784 185.536 167.675 163.62 162.045 134.016C161.046 128.766 165.393 124.299 170.736 124.299H198.274C203.009 124.299 206.846 127.896 208.535 132.319C212.32 142.236 220.695 149.054 233.393 149.054C246.162 149.054 258.67 139.933 258.67 121.692C258.67 105.276 248.507 93.8105 232.872 93.8105C224.761 93.8106 216.651 96.9457 210.867 104.922C208.754 107.835 205.574 109.967 201.976 109.967H173.135C167.771 109.967 163.49 105.496 163.722 100.138L167.597 10.5781C167.815 5.53781 171.965 1.56349 177.01 1.56348H284.428Z" fill="#DAFF45"/><path class="l3" d="M384.68 0C429.239 1.34289e-05 452.953 24.2341 452.953 58.8916C452.953 85.4712 439.662 101.368 416.21 119.869L404.17 129.37C397.153 134.907 401.068 146.188 410.006 146.188H444.312C449.516 146.188 453.734 150.406 453.734 155.609V174.551C453.734 179.754 449.516 183.973 444.312 183.973H324.786C319.583 183.973 315.364 179.754 315.364 174.551V153.824C315.364 150.973 316.655 148.275 318.876 146.486L383.638 94.3311C399.012 82.0838 406.568 72.7026 406.568 60.7158C406.568 45.6021 396.927 38.0449 384.419 38.0449C370.347 38.045 360.185 48.2084 360.185 64.8857C360.184 66.3247 359.018 67.4911 357.579 67.4912H319.013C316.134 67.4912 313.801 65.1576 313.801 62.2793C313.801 27.6218 340.641 0 384.68 0Z" fill="#DAFF45"/></g></svg>
+      </div>
     </div>
     <style>
       #r352-splash{position:fixed;inset:0;z-index:100000;background:#0A0A0A;display:flex;align-items:center;justify-content:center;will-change:transform}
       #r352-splash.r352-splash-hide{transform:translateY(-100%);transition:transform .75s cubic-bezier(.76,0,.24,1)}
-      .r352-splash-word{display:flex;gap:.01em;overflow:hidden;font-family:"Tanker","Plus Jakarta Sans",system-ui,-apple-system,sans-serif;font-size:clamp(56px,11vw,128px);line-height:1;letter-spacing:-.02em;color:#fff}
-      .r352-splash-word > span{display:inline-block;transform:translateY(115%);opacity:0;animation:r352SplashUp .62s cubic-bezier(.22,1,.36,1) forwards}
-      .r352-splash-word > span:nth-child(1){animation-delay:.15s}
-      .r352-splash-word > span:nth-child(2){animation-delay:.24s}
-      .r352-splash-word > span:nth-child(3){animation-delay:.33s}
-      .r352-splash-word > span:nth-child(4){animation-delay:.42s;color:#D4FF00}
-      @keyframes r352SplashUp{to{transform:translateY(0);opacity:1}}
-      @media (prefers-reduced-motion: reduce){.r352-splash-word > span{animation:none;transform:none;opacity:1}}
+      .r352-splash-logo{display:flex;align-items:center;gap:clamp(12px,1.8vw,26px)}
+      .r352-splash-sym{height:clamp(64px,11vw,120px);width:auto;transform-box:fill-box;transform-origin:center;opacity:0;animation:r352SymPop .62s cubic-bezier(.22,1,.36,1) .1s forwards}
+      .r352-splash-txt{height:clamp(58px,9.9vw,108px);width:auto}
+      .r352-splash-txt path{transform-box:fill-box;transform-origin:center;opacity:0;transform:translateY(26px);animation:r352LetIn .5s cubic-bezier(.22,1,.36,1) forwards}
+      .r352-splash-txt path.l1{animation-delay:.52s}
+      .r352-splash-txt path.l2{animation-delay:.64s}
+      .r352-splash-txt path.l3{animation-delay:.76s}
+      @keyframes r352SymPop{from{opacity:0;transform:scale(.55) rotate(-22deg)}to{opacity:1;transform:scale(1) rotate(0)}}
+      @keyframes r352LetIn{to{opacity:1;transform:translateY(0)}}
+      @media (prefers-reduced-motion: reduce){.r352-splash-sym,.r352-splash-txt path{animation:none;opacity:1;transform:none}}
     </style>
     <script>
       (function () {
         var s = document.getElementById("r352-splash");
         if (!s) return;
-        // During prerender/headless capture, do nothing - leave the splash in its
-        // pristine initial (visible) state so the "hidden" end-state is never baked
-        // into the prerendered static HTML (otherwise real visitors never see it).
         if (navigator.webdriver) return;
         try {
           if (sessionStorage.getItem("r352-splash") === "1") {
@@ -114,10 +116,10 @@
             return;
           }
           sessionStorage.setItem("r352-splash", "1");
-        } catch (e) { /* private mode - just show it */ }
+        } catch (e) {}
         var reduce = false;
         try { reduce = matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
-        var hold = reduce ? 300 : 1450;
+        var hold = reduce ? 350 : 1650;
         setTimeout(function () {
           s.classList.add("r352-splash-hide");
           setTimeout(function () { s.parentNode && s.parentNode.removeChild(s); }, 800);
