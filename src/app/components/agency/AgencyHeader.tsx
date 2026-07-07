@@ -7,8 +7,7 @@ import { useLanguage } from "@/app/context/LanguageContext";
 import { useLenis } from "lenis/react";
 import { useTheme } from "@/app/context/ThemeContext";
 import { ThemeToggle } from "@/app/components/ui/ThemeToggle";
-import { SoundWaveWidget } from "@/app/components/ui/SoundWaveWidget";
-import { NowPlayingIndicator } from "@/app/components/ui/NowPlayingIndicator";
+import { useAudio } from "@/app/context/AudioContext";
 
 export function AgencyHeader() {
   const [location] = useLocation();
@@ -17,6 +16,7 @@ export function AgencyHeader() {
   const [isLimeTheme, setIsLimeTheme] = useState(false);
   const { language, setLanguage, t } = useLanguage();
   const { theme, toggleTheme } = useTheme();
+  const { isPlaying, toggle: toggleMusic } = useAudio();
   const lenis = useLenis();
 
   // Refs for mobile menu focus management (Escape close + focus trap)
@@ -159,9 +159,6 @@ export function AgencyHeader() {
 
   return (
     <>
-      {/* Right-aligned "now playing" strip - slides in below the nav row
-          whenever ambient music is playing. Quiet annotation, no layout shift. */}
-      <NowPlayingIndicator />
       <header className={cn(
         "fixed top-0 w-full z-[999] transition-all duration-700",
         isScrolled ? "pointer-events-auto is-scrolled" : "pointer-events-none",
@@ -334,9 +331,16 @@ export function AgencyHeader() {
           {/* Theme Switcher - moved from floating bottom-right corner */}
           <ThemeToggle />
 
-          {/* Background music toggle - Planet Rock (Instrumental) loops as ambient
-              backdrop at ~50% volume. First CTA hover anywhere triggers playback. */}
-          <SoundWaveWidget className="ml-1" />
+          {/* Music toggle - plain text control (Planet Rock ambient, ~50% vol). */}
+          <button
+            onClick={toggleMusic}
+            aria-label={isPlaying ? (language === 'pl' ? "Wyłącz muzykę" : "Turn off music") : (language === 'pl' ? "Włącz muzykę" : "Turn on music")}
+            className="ml-4 text-sm font-display uppercase tracking-widest text-neutral-500 hover:text-white transition-colors whitespace-nowrap"
+          >
+            {isPlaying
+              ? (language === 'pl' ? "Wyłącz muzykę" : "Turn off music")
+              : (language === 'pl' ? "Włącz muzykę" : "Turn on music")}
+          </button>
         </nav>
         
         {/* Mobile Hamburger */}
@@ -470,8 +474,15 @@ export function AgencyHeader() {
                         <span className={cn(theme === 'dark' && "text-[#D4FF00]")}>DARK</span>
                       </button>
 
-                      {/* Background music toggle - same control as desktop nav */}
-                      <SoundWaveWidget />
+                      {/* Music toggle - same text control as desktop nav */}
+                      <button
+                        onClick={toggleMusic}
+                        className="text-sm font-display uppercase tracking-widest text-neutral-400 hover:text-[#D4FF00] transition-colors"
+                      >
+                        {isPlaying
+                          ? (language === 'pl' ? "Wyłącz muzykę" : "Turn off music")
+                          : (language === 'pl' ? "Włącz muzykę" : "Turn on music")}
+                      </button>
                 </motion.div>
             </motion.div>
         )}
