@@ -410,7 +410,7 @@
 /* Base Light Mode - White */
 body.global-light-mode,
 body.global-light-mode .dark {
-  --background: #FFFFFF;
+  --background: #F1F6FA;
   --foreground: #000000;
   --primary: #000000;
   --primary-foreground: #FFFFFF;
@@ -430,10 +430,10 @@ body.global-light-mode .dark {
 /* Lime Theme - Grey */
 body.lime-theme,
 body.lime-theme .dark {
-  --background: #D0DBE1;
+  --background: #F1F6FA;
   --foreground: #000000;
   --primary: #000000;
-  --primary-foreground: #D0DBE1;
+  --primary-foreground: #F1F6FA;
   --card: #FFFFFF;
   --card-foreground: #000000;
   --secondary: #b8c8d0;
@@ -532,18 +532,18 @@ body.lime-theme .bg-\[\#080808\],
 body.lime-theme .bg-\[\#0A0A0A\],
 body.lime-theme .bg-\[\#0a0a0a\],
 body.lime-theme .bg-\[\#151515\] {
-  background-color: #D0DBE1 !important;
+  background-color: #F1F6FA !important;
 }
 
 body.global-light-mode:not(.lime-theme) .bg-\[\#080808\],
 body.global-light-mode:not(.lime-theme) .bg-\[\#0A0A0A\],
 body.global-light-mode:not(.lime-theme) .bg-\[\#0a0a0a\],
 body.global-light-mode:not(.lime-theme) .bg-\[\#151515\] {
-  background-color: #FFFFFF !important;
+  background-color: #F1F6FA !important;
 }
 
 body:is(.lime-theme, .global-light-mode) .bg-\[\#050505\] {
-  background-color: #FFFFFF !important;
+  background-color: #F1F6FA !important;
   color: #000000 !important;
 }
 
@@ -666,7 +666,7 @@ body:is(.lime-theme, .global-light-mode) .bg-black\/20 {
 }
 
 body.lime-theme .from-\[\#151515\] {
-  --tw-gradient-from: #D0DBE1 !important;
+  --tw-gradient-from: #F1F6FA !important;
 }
 
 body.global-light-mode:not(.lime-theme) .from-\[\#151515\] {
@@ -684,13 +684,13 @@ body.global-light-mode:not(.lime-theme) .bg-gradient-to-r {
 }
 
 body.lime-theme .bg-gradient-to-b {
-  --tw-gradient-from: #D0DBE1 !important;
-  --tw-gradient-to: #D0DBE1 !important;
+  --tw-gradient-from: #F1F6FA !important;
+  --tw-gradient-to: #F1F6FA !important;
 }
 
 body.lime-theme .bg-gradient-to-r {
-  --tw-gradient-from: #D0DBE1 !important;
-  --tw-gradient-to: #D0DBE1 !important;
+  --tw-gradient-from: #F1F6FA !important;
+  --tw-gradient-to: #F1F6FA !important;
 }
 
 body:is(.lime-theme, .global-light-mode) ::selection {

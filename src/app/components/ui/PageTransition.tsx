@@ -236,7 +236,7 @@ export function PageTransition({ children, className }: PageTransitionProps) {
 
       {/* Cinematic Transition Overlay - Main Black Sweep */}
       <motion.div
-        className={`fixed top-0 left-0 w-[100vw] h-[100vh] ${theme === 'dark' ? 'bg-[#0A0A0A]/90' : 'bg-[#D0DBE1]/90'} backdrop-blur-3xl z-[9999] pointer-events-none`}
+        className={`fixed top-0 left-0 w-[100vw] h-[100vh] ${theme === 'dark' ? 'bg-[#0A0A0A]/90' : 'bg-[#F1F6FA]/90'} backdrop-blur-3xl z-[9999] pointer-events-none`}
         initial={sweep.initial}
         animate={{
           ...sweep.animate,

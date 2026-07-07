@@ -69,7 +69,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
             
             {/* Cinematic Transition Overlay - Main Background Sweep */}
             <motion.div
-              className={`fixed top-0 left-0 w-full h-[100vh] ${targetTheme === 'dark' ? 'bg-[#0A0A0A]/90' : 'bg-[#D0DBE1]/90'} backdrop-blur-3xl z-[99999] pointer-events-none`}
+              className={`fixed top-0 left-0 w-full h-[100vh] ${targetTheme === 'dark' ? 'bg-[#0A0A0A]/90' : 'bg-[#F1F6FA]/90'} backdrop-blur-3xl z-[99999] pointer-events-none`}
               initial={{ y: "100%" }}
               animate={{
                 y: "0%",

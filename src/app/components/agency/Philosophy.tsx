@@ -108,7 +108,7 @@ export function Philosophy() {
       </div>
 
       {/* Static visuals strip - kept as fallback/secondary editorial element (hidden by default) */}
-      <div className="border-b border-neutral-200 dark:border-white/10 bg-[#D0DBE1] md:bg-transparent hidden">
+      <div className="border-b border-neutral-200 dark:border-white/10 bg-[#F1F6FA] md:bg-transparent hidden">
         <PhilosophyVisuals />
       </div>
 
