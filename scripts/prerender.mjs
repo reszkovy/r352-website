@@ -423,6 +423,25 @@ try {
         log.warn(`${route} — __PRERENDER_READY__ not set within ${ROUTE_TIMEOUT_MS}ms, capturing anyway`);
       }
 
+      // Reset the first-load splash to its pristine initial state before capture.
+      // The inline splash script is guarded against headless (navigator.webdriver),
+      // so it shouldn't have mutated - but if any env spoofs that flag, this makes
+      // sure the "hidden" end-state is never baked into the static HTML.
+      await page.evaluate(() => {
+        var s = document.getElementById("r352-splash");
+        if (s) {
+          s.classList.remove("r352-splash-hide");
+        } else {
+          var d = document.createElement("div");
+          d.id = "r352-splash";
+          d.setAttribute("aria-hidden", "true");
+          d.innerHTML =
+            '<span class="r352-splash-word"><span>r</span><span>3</span><span>5</span><span>2</span></span>';
+          document.body.insertBefore(d, document.body.firstChild);
+        }
+        try { sessionStorage.removeItem("r352-splash"); } catch (e) {}
+      });
+
       // Capture full final HTML
       let html = await page.evaluate(() => `<!DOCTYPE html>${document.documentElement.outerHTML}`);
 

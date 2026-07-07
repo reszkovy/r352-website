@@ -104,6 +104,10 @@
       (function () {
         var s = document.getElementById("r352-splash");
         if (!s) return;
+        // During prerender/headless capture, do nothing - leave the splash in its
+        // pristine initial (visible) state so the "hidden" end-state is never baked
+        // into the prerendered static HTML (otherwise real visitors never see it).
+        if (navigator.webdriver) return;
         try {
           if (sessionStorage.getItem("r352-splash") === "1") {
             s.parentNode && s.parentNode.removeChild(s);
