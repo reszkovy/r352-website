@@ -36,7 +36,11 @@ export function CinematicText({
     if (isInView) {
       controls.start("visible");
     }
-  }, [isInView, controls]);
+    // `text` is a dependency so that when the copy changes (e.g. a language
+    // switch) the freshly-mounted char motion.divs get re-driven to "visible".
+    // Without it, chars landing on new positions stay stuck at the hidden initial
+    // (opacity 0) - which was dropping the "d" in the PL "działających".
+  }, [isInView, controls, text]);
 
   useEffect(() => {
     if (!glowEffect) return;
