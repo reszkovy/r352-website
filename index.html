@@ -81,6 +81,45 @@
   </head>
 
   <body>
+    <!-- First-load splash. Static (no framework) so it covers the page from the
+         very first paint - zero content flash. Wordmark assembles letter by letter,
+         then curtains up to reveal the site. Shows once per session; respects
+         reduced-motion; self-removes. -->
+    <div id="r352-splash" aria-hidden="true">
+      <span class="r352-splash-word"><span>r</span><span>3</span><span>5</span><span>2</span></span>
+    </div>
+    <style>
+      #r352-splash{position:fixed;inset:0;z-index:100000;background:#0A0A0A;display:flex;align-items:center;justify-content:center;will-change:transform}
+      #r352-splash.r352-splash-hide{transform:translateY(-100%);transition:transform .75s cubic-bezier(.76,0,.24,1)}
+      .r352-splash-word{display:flex;gap:.01em;overflow:hidden;font-family:"Tanker","Plus Jakarta Sans",system-ui,-apple-system,sans-serif;font-size:clamp(56px,11vw,128px);line-height:1;letter-spacing:-.02em;color:#fff}
+      .r352-splash-word > span{display:inline-block;transform:translateY(115%);opacity:0;animation:r352SplashUp .62s cubic-bezier(.22,1,.36,1) forwards}
+      .r352-splash-word > span:nth-child(1){animation-delay:.15s}
+      .r352-splash-word > span:nth-child(2){animation-delay:.24s}
+      .r352-splash-word > span:nth-child(3){animation-delay:.33s}
+      .r352-splash-word > span:nth-child(4){animation-delay:.42s;color:#D4FF00}
+      @keyframes r352SplashUp{to{transform:translateY(0);opacity:1}}
+      @media (prefers-reduced-motion: reduce){.r352-splash-word > span{animation:none;transform:none;opacity:1}}
+    </style>
+    <script>
+      (function () {
+        var s = document.getElementById("r352-splash");
+        if (!s) return;
+        try {
+          if (sessionStorage.getItem("r352-splash") === "1") {
+            s.parentNode && s.parentNode.removeChild(s);
+            return;
+          }
+          sessionStorage.setItem("r352-splash", "1");
+        } catch (e) { /* private mode - just show it */ }
+        var reduce = false;
+        try { reduce = matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
+        var hold = reduce ? 300 : 1450;
+        setTimeout(function () {
+          s.classList.add("r352-splash-hide");
+          setTimeout(function () { s.parentNode && s.parentNode.removeChild(s); }, 800);
+        }, hold);
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
