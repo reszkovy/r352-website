@@ -29,13 +29,13 @@ import {
 } from "react";
 
 const TRACK = {
-  title: "Música Callada I, No. 1 - Angelico",
-  composer: "Federico Mompou",
-  piece: "Stephen Hough piano",
+  title: "Planet Rock",
+  composer: "Afrika Bambaataa",
+  piece: "Instrumental",
 } as const;
 
-const AUDIO_SRC = "/audio/mompou-cuaderno-1-no-1-angelico.mp3";
-const TARGET_VOLUME = 0.4;
+const AUDIO_SRC = "/audio/planet-rock-instrumental.mp3";
+const TARGET_VOLUME = 0.5;
 const FADE_MS = 600;
 const SESSION_KEY = "r352-music-playing";
 const PAUSED_KEY = "r352-music-paused";
@@ -82,11 +82,21 @@ export function AudioProvider({ children }: { children: ReactNode }) {
       /* private mode - ignore */
     }
 
-    // Old ambient track (Mompou) retired in favour of the Spotify player - never
-    // auto-resume, and clear any lingering "was playing" flag from earlier sessions
-    // so returning visitors don't hear the old song again.
+    // Restore "was playing" state - but only attempt resume if NOT explicitly paused
+    // and only if a user gesture already unlocked audio on this origin.
     try {
-      sessionStorage.removeItem(SESSION_KEY);
+      const wasPlaying = sessionStorage.getItem(SESSION_KEY) === "1";
+      const wasPaused = sessionStorage.getItem(PAUSED_KEY) === "1";
+      if (wasPlaying && !wasPaused) {
+        el.play()
+          .then(() => {
+            fadeTo(el, TARGET_VOLUME);
+            setIsPlaying(true);
+          })
+          .catch(() => {
+            /* autoplay blocked - wait for next CTA hover */
+          });
+      }
     } catch {
       /* ignore */
     }

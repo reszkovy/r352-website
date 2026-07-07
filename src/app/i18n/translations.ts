@@ -23,7 +23,7 @@ export const translations = {
       //      which read as a solo studio - r352 is a team, not one person)
       //   2. "for high-volume marketing teams and agencies" - WHO it's for (volume = the
       //      real value; agencies included, tying to the /for-agencies white-label track)
-      title: "Design operations<br/>for brands<br/>delivering at scale.",
+      title: "Design operations<br/>for brands delivering at scale.",
       // Mobile breaks: explicit stack prevents awkward browser word-breaks at small sizes.
       title_mobile: "Design operations<br/>for brands<br/>delivering at scale.",
       // "Move fast, steady cadence" demoted from headline to signature line below the divider -
@@ -669,7 +669,7 @@ export const translations = {
       // czytało się jak zwykła agencja. Tor produktowy żyje na /product-design, więc H1
       // sprzedaje główną usługę wprost. "Design operations" zostaje po angielsku (termin
       // kategorii, spójny z tagline w headerze).
-      title: "Design operations<br/>dla marek<br/>działających w skali.",
+      title: "Design operations<br/>dla marek działających w skali.",
       // Mobile breaks: explicit stack - czytelny układ na 375px.
       title_mobile: "Design operations<br/>dla marek<br/>działających w skali.",
       // "Tempo bez chaosu" demoted from headline to signature line - brand mantra position.

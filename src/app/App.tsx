@@ -96,7 +96,6 @@ function FocusMainOnRouteChange() {
 import { CursorGlow } from "@/app/components/ui/CursorGlow";
 import { VersionLabel } from "@/app/components/ui/VersionLabel";
 import { FloatingBriefCTA } from "@/app/components/ui/FloatingBriefCTA";
-import { SpotifyPlayer } from "@/app/components/ui/SpotifyPlayer";
 import { ScrollThread } from "@/app/components/ui/ScrollThread";
 import { BottomGradient } from "@/app/components/ui/BottomGradient";
 import { LanguageProvider } from "@/app/context/LanguageContext";
@@ -108,7 +107,7 @@ import { useTransitionRoll } from "@/app/utils/transitionDirection";
 import { ConsentProvider } from "@/app/context/ConsentContext";
 import { ConsentBanner } from "@/app/components/ConsentBanner";
 import { AudioProvider } from "@/app/context/AudioContext";
-// import { useCTAHoverMusicTrigger } from "@/app/hooks/useCTAHoverMusicTrigger"; // disabled - see below
+import { useCTAHoverMusicTrigger } from "@/app/hooks/useCTAHoverMusicTrigger";
 
 // ─── Dynamic Favicon ──────────────────────
 function useFavicon() {
@@ -138,7 +137,7 @@ function AppContent() {
   const { theme } = useTheme();
   useFavicon();
   useTransitionRoll(); // advances deterministic sweep direction on every navigation
-  // useCTAHoverMusicTrigger(); // DISABLED - ambient Mompou would clash with the Spotify player (Planet Rock)
+  useCTAHoverMusicTrigger(); // first CTA hover triggers ambient Planet Rock (Instrumental) playback
 
   // Prerender signal - Puppeteer-based prerender script (scripts/prerender.mjs)
   // waits for window.__PRERENDER_READY__ before snapshotting the route's HTML.
@@ -425,7 +424,6 @@ export default function App() {
               <ScrollThread />
               <BottomGradient />
               <FloatingBriefCTA />
-              <SpotifyPlayer />
               <VersionLabel />
               <ConsentBanner />
             </AudioProvider>

@@ -11,6 +11,7 @@ import dawidLogo from "figma:asset/ba749ac924400bb32e1a42b8f18e7464907fccd8.png"
 // Vector = crisper at all sizes, smaller payload, future-proof for high-DPI.
 import kubotaLogo from "figma:asset/kubota-logo-white.svg";
 import archicomLogo from "figma:asset/archicom-logo.svg";
+import uniqaLogo from "figma:asset/590f188d1475875fa3221bb4f86c99f935f70cbe.png";
 import fifaLogo from "figma:asset/51e11441d7c02bfa2791df691e15dbf208a105e4.png";
 // Keeping existing Sonova asset as no new one was provided
 import sonovaLogo from "figma:asset/b14b67ba2d6df576bef8431f5353f2a1244c4815.png";
@@ -24,6 +25,7 @@ export function ClientLogos() {
     { name: "Sonova", logo: sonovaLogo, url: "https://www.sonova.com" },
     { name: "Benefit Systems", logo: benefitLogo, url: "https://www.benefitsystems.pl" },
     { name: "Archicom", logo: archicomLogo, url: "https://archicom.pl" },
+    { name: "UNIQA", logo: uniqaLogo, url: "https://www.uniqa.pl" },
     { name: "FIFA", logo: fifaLogo, url: "https://www.fifa.com" },
     { name: "Dawid Podsiadło", logo: dawidLogo, url: "https://dawidpodsiadlo.pl" },
     { name: "Kubota", logo: kubotaLogo, url: "https://kubotastore.pl" },
@@ -56,8 +58,9 @@ export function ClientLogos() {
                   client.name === "Deloitte Digital" ? "h-6 md:h-10" : 
                   client.name === "Kubota" ? "h-10 md:h-16" :
                   client.name === "Benefit Systems" ? "h-5 md:h-9" :
-                  client.name === "Archicom" ? "h-4 md:h-6" :
-                  client.name === "FIFA" ? "h-6 md:h-10" : 
+                  client.name === "Archicom" ? "h-3 md:h-4" :
+                  client.name === "UNIQA" ? "h-8 md:h-12" :
+                  client.name === "FIFA" ? "h-6 md:h-10" :
                   client.name === "Sonova" ? "h-4 md:h-7" : 
                   "h-6 md:h-10"
                 )}

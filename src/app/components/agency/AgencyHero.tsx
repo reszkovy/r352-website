@@ -40,7 +40,7 @@ export function AgencyHero() {
               key={`hero-title-${theme}`}
               text={t("hero.title")}
               as="h1"
-              className="type-h1 !text-5xl md:!text-7xl lg:!text-8xl mb-6 md:mb-10 max-w-[95%] cursor-default leading-[0.95]"
+              className="type-h1 !text-[clamp(2.75rem,5.8vw,7.25rem)] mb-6 md:mb-10 max-w-[95%] cursor-default leading-[0.95]"
               delay={0.1}
               glowEffect={true}
               baseColor={baseColor}
