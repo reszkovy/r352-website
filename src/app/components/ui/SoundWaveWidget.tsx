@@ -181,7 +181,7 @@ export function SoundWaveWidget({ className = "" }: { className?: string }) {
             className="absolute top-0 left-3 right-3 h-px bg-gradient-to-r from-transparent via-[#D4FF00]/50 to-transparent"
           />
           <span className="block text-[10px] leading-snug text-neutral-100 normal-case tracking-normal font-sans text-center whitespace-nowrap">
-            {isPlaying ? "Now playing - click to pause" : "Click to play music"}
+            {isPlaying ? "Turn off music" : "Play music"}
           </span>
         </span>
       </motion.span>

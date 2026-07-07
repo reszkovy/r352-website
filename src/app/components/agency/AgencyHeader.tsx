@@ -7,7 +7,7 @@ import { useLanguage } from "@/app/context/LanguageContext";
 import { useLenis } from "lenis/react";
 import { useTheme } from "@/app/context/ThemeContext";
 import { ThemeToggle } from "@/app/components/ui/ThemeToggle";
-import { useAudio } from "@/app/context/AudioContext";
+import { SoundWaveWidget } from "@/app/components/ui/SoundWaveWidget";
 
 export function AgencyHeader() {
   const [location] = useLocation();
@@ -16,7 +16,6 @@ export function AgencyHeader() {
   const [isLimeTheme, setIsLimeTheme] = useState(false);
   const { language, setLanguage, t } = useLanguage();
   const { theme, toggleTheme } = useTheme();
-  const { isPlaying, toggle: toggleMusic } = useAudio();
   const lenis = useLenis();
 
   // Refs for mobile menu focus management (Escape close + focus trap)
@@ -321,7 +320,7 @@ export function AgencyHeader() {
           <button
             onClick={toggleLanguage}
             aria-label={language === 'en' ? 'Switch to Polish' : 'Przełącz na angielski'}
-            className="ml-4 text-sm font-display uppercase tracking-widest text-neutral-500 hover:text-white transition-colors"
+            className="ml-3 text-sm font-display uppercase tracking-widest text-neutral-500 hover:text-white transition-colors"
           >
             <span className={cn(language === 'en' && "text-[#D4FF00]")}>EN</span>
             <span className="mx-2">/</span>
@@ -331,16 +330,9 @@ export function AgencyHeader() {
           {/* Theme Switcher - moved from floating bottom-right corner */}
           <ThemeToggle />
 
-          {/* Music toggle - plain text control (Planet Rock ambient, ~50% vol). */}
-          <button
-            onClick={toggleMusic}
-            aria-label={isPlaying ? (language === 'pl' ? "Wyłącz muzykę" : "Turn off music") : (language === 'pl' ? "Włącz muzykę" : "Turn on music")}
-            className="ml-4 text-sm font-display uppercase tracking-widest text-neutral-500 hover:text-white transition-colors whitespace-nowrap"
-          >
-            {isPlaying
-              ? (language === 'pl' ? "Wyłącz muzykę" : "Turn off music")
-              : (language === 'pl' ? "Włącz muzykę" : "Turn on music")}
-          </button>
+          {/* Background music - animated sound-wave toggle (Planet Rock ambient,
+              ~50% vol). Its play/turn-off label appears in a tooltip below. */}
+          <SoundWaveWidget className="ml-3" />
         </nav>
         
         {/* Mobile Hamburger */}
@@ -474,15 +466,8 @@ export function AgencyHeader() {
                         <span className={cn(theme === 'dark' && "text-[#D4FF00]")}>DARK</span>
                       </button>
 
-                      {/* Music toggle - same text control as desktop nav */}
-                      <button
-                        onClick={toggleMusic}
-                        className="text-sm font-display uppercase tracking-widest text-neutral-400 hover:text-[#D4FF00] transition-colors"
-                      >
-                        {isPlaying
-                          ? (language === 'pl' ? "Wyłącz muzykę" : "Turn off music")
-                          : (language === 'pl' ? "Włącz muzykę" : "Turn on music")}
-                      </button>
+                      {/* Background music - same sound-wave toggle as desktop nav */}
+                      <SoundWaveWidget />
                 </motion.div>
             </motion.div>
         )}
