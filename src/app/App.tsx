@@ -45,6 +45,7 @@ const ForAgencies = lazy(() => import("@/app/pages/ForAgencies").then(m => ({ de
 const AiRunners = lazy(() => import("@/app/pages/AiRunners").then(m => ({ default: m.AiRunners })));
 const ProductDesign = lazy(() => import("@/app/pages/ProductDesign").then(m => ({ default: m.ProductDesign })));
 const WebGLExperiment = lazy(() => import("@/app/pages/WebGLExperiment").then(m => ({ default: m.WebGLExperiment })));
+const Estymacja907 = lazy(() => import("@/app/pages/Estymacja907").then(m => ({ default: m.Estymacja907 })));
 import { useLenis } from "lenis/react";
 
 function ScrollToTop() {
@@ -349,6 +350,7 @@ function AppContent() {
             <Switch location={location} key={getPageKey(location)}>
               <Route path="/" component={Home} />
               <Route path="/webgl" component={WebGLExperiment} />
+              <Route path="/estymacja907" component={Estymacja907} />
               <Route path="/work" component={Work} />
               <Route path="/work/:id" component={ProjectDetails} />
               <Route path="/philosophy" component={Philosophy} />

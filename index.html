@@ -109,6 +109,11 @@
       (function () {
         var s = document.getElementById("r352-splash");
         if (!s) return;
+        // Standalone client pages (own brand) must never flash the r352 splash.
+        if (location.pathname.indexOf("/estymacja907") === 0) {
+          s.parentNode && s.parentNode.removeChild(s);
+          return;
+        }
         if (navigator.webdriver) return;
         try {
           if (sessionStorage.getItem("r352-splash") === "1") {
