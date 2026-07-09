@@ -44,6 +44,7 @@ const Brief = lazy(() => import("@/app/pages/Diagnostic").then(m => ({ default: 
 const ForAgencies = lazy(() => import("@/app/pages/ForAgencies").then(m => ({ default: m.ForAgencies })));
 const AiRunners = lazy(() => import("@/app/pages/AiRunners").then(m => ({ default: m.AiRunners })));
 const ProductDesign = lazy(() => import("@/app/pages/ProductDesign").then(m => ({ default: m.ProductDesign })));
+const WebGLExperiment = lazy(() => import("@/app/pages/WebGLExperiment").then(m => ({ default: m.WebGLExperiment })));
 import { useLenis } from "lenis/react";
 
 function ScrollToTop() {
@@ -347,6 +348,7 @@ function AppContent() {
           <AnimatePresence mode="wait">
             <Switch location={location} key={getPageKey(location)}>
               <Route path="/" component={Home} />
+              <Route path="/webgl" component={WebGLExperiment} />
               <Route path="/work" component={Work} />
               <Route path="/work/:id" component={ProjectDetails} />
               <Route path="/philosophy" component={Philosophy} />
