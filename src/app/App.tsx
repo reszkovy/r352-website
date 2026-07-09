@@ -303,7 +303,7 @@ function AppContent() {
     return {
       title: "r352 - Design operations for brands and agencies.",
       description: "Design operations for brands and agencies delivering at scale. From strategy to rollout-ready delivery, powered by the r3loop methodology - predictable quality and speed at scale.",
-      ogImage: "https://www.r352.com/og/home.png"
+      ogImage: "https://www.r352.com/og/home.png?v=2"
     };
   };
 
