@@ -13,7 +13,7 @@ import { ArrowRight } from "lucide-react";
 // TRIAL: living WebGL background behind the home hero (dark theme only). Flip to
 // false to revert to the original background (bg-background + AnimeGrid). See the
 // "home-hero-webgl-trial" memory.
-const HERO_WEBGL = true;
+const HERO_WEBGL = false;
 
 export function AgencyHero() {
   const { t, language } = useLanguage();
