@@ -77,56 +77,42 @@ void main(){
   gl_FragColor=vec4(col,1.0);
 }`;
 
-// 3 — Liquid: raymarched merging metaballs with lime rim-light + a volumetric halo.
-// Real depth + glossy organic surface - the dimensional, "wow" one.
-const LIQUID = `
-float smin(float a,float b,float k){ float h=clamp(0.5+0.5*(b-a)/k,0.0,1.0); return mix(b,a,h)-k*h*(1.0-h); }
-float map(vec3 q){
-  float t=u_time*0.5;
-  float d=1e5;
-  d=smin(d, length(q-vec3(sin(t*0.7)*1.2, cos(t*0.9)*0.8, sin(t*0.5)*0.5))-0.72, 0.85);
-  d=smin(d, length(q-vec3(cos(t*0.8)*1.05, sin(t*0.6)*1.05, cos(t*0.7)*0.5))-0.62, 0.85);
-  d=smin(d, length(q-vec3(sin(t*0.5+2.0)*0.95, cos(t*0.4+1.0)*0.9, sin(t*0.8)*0.6))-0.66, 0.85);
-  return d;
-}
-vec3 nrm(vec3 q){ vec2 e=vec2(0.001,0.0);
-  return normalize(vec3(map(q+e.xyy)-map(q-e.xyy), map(q+e.yxy)-map(q-e.yxy), map(q+e.yyx)-map(q-e.yyx))); }
+// 3 — Pixels: a field of drifting, twinkling lime pixels (one floating square per
+// grid cell, varied size + brightness, a few warm ones). Reacts to the pointer.
+const PIXELS = `
 void main(){
   vec2 uv=(gl_FragCoord.xy-0.5*u_res)/u_res.y;
-  vec2 mo=(u_mouse/u_res-0.5); mo.x*=u_res.x/u_res.y;
-  vec3 ro=vec3(0.0,0.0,4.3);
-  vec3 rd=normalize(vec3(uv+mo*0.28, -1.7));
-  float t=0.0, glow=0.0; bool hit=false; vec3 q=ro;
-  for(int i=0;i<84;i++){
-    q=ro+rd*t; float d=map(q);
-    glow += 0.015/(0.02+d*d*8.0);
-    if(d<0.001){ hit=true; break; }
-    if(t>9.0) break;
-    t += max(d,0.016);
-  }
+  vec2 m=(u_mouse/u_res-0.5); m.x*=u_res.x/u_res.y;
+  float t=u_time;
+  float scale=20.0;
+  vec2 gv=uv*scale;
+  vec2 id=floor(gv);
   vec3 lime=vec3(0.831,1.0,0.0), clay=vec3(0.851,0.463,0.341);
-  vec3 col=vec3(0.02);
-  if(hit){
-    vec3 n=nrm(q);
-    vec3 ld=normalize(vec3(0.5,0.7,0.6));
-    float diff=max(dot(n,ld),0.0);
-    float rim=pow(1.0-max(dot(n,-rd),0.0),2.4);
-    col=vec3(0.028);
-    col += clay*0.22*diff;
-    col += lime*rim*1.15;
-    vec3 hh=normalize(ld-rd);
-    col += lime*pow(max(dot(n,hh),0.0),44.0)*0.7;
+  vec3 col=vec3(0.016);
+  float near = exp(-length(uv-m)*2.6) * (0.5 + 0.9*u_mdown);
+  for(int y=-1;y<=1;y++) for(int x=-1;x<=1;x++){
+    vec2 cell=id+vec2(float(x),float(y));
+    vec2 rnd=hash2(cell);
+    float on=step(0.40, rnd.x);                 // ~60% of cells host a pixel
+    vec2 drift=0.34*vec2(sin(t*(0.35+rnd.x*0.6)+rnd.y*6.283),
+                         cos(t*(0.30+rnd.y*0.6)+rnd.x*6.283));
+    vec2 pos=cell+0.5+drift;
+    vec2 d=gv-pos;
+    float sz=0.06+rnd.y*0.10;                    // varied pixel size
+    float sq=step(max(abs(d.x),abs(d.y)), sz);
+    float tw=0.30+0.70*(0.5+0.5*sin(t*(0.8+rnd.x*1.6)+rnd.y*10.0)); // twinkle
+    tw += near*1.6;                              // brighten near the pointer
+    vec3 tint=mix(lime, clay, step(0.90,rnd.y)*0.6); // a few warm pixels
+    col += tint*sq*tw*on*0.8;
   }
-  col += lime*glow*0.06;
-  float md=length(uv-mo); col += lime*exp(-md*3.5)*0.22*u_mdown;
-  float v=length(uv); col*=1.0-0.26*v*v;
+  float v=length(uv); col*=1.0-0.28*v*v;
   gl_FragColor=vec4(col,1.0);
 }`;
 
 const PRESETS = [
   { id: "flow", name: "Flow", frag: PRELUDE + FLOW },
   { id: "aurora", name: "Aurora", frag: PRELUDE + AURORA },
-  { id: "liquid", name: "Liquid", frag: PRELUDE + LIQUID },
+  { id: "pixels", name: "Pixels", frag: PRELUDE + PIXELS },
 ];
 
 function compile(gl: WebGLRenderingContext, type: number, src: string) {
