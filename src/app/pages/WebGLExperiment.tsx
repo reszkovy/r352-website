@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Link } from "wouter";
 import { Helmet } from "react-helmet-async";
 import { useLanguage } from "@/app/context/LanguageContext";
 
@@ -80,7 +81,7 @@ function compile(gl: WebGLRenderingContext, type: number, src: string) {
 }
 
 export function WebGLExperiment() {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -172,19 +173,37 @@ export function WebGLExperiment() {
       <div className="fixed inset-0 bg-[#0A0A0A]">
         <canvas ref={canvasRef} className="block w-full h-full" />
 
-        {/* Minimal overlay, bottom-left so it clears the global header logo. */}
-        <div className="pointer-events-none absolute bottom-8 left-8 md:bottom-12 md:left-12 max-w-md">
-          <div className="flex items-center gap-3 mb-3">
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#D4FF00] animate-pulse" />
-            <span className="font-display uppercase tracking-[0.25em] text-[11px] text-white/70">
+        {/* Scrim - darkens the left where the copy sits, keeps the top-right glow punchy. */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[#0A0A0A]/92 via-[#0A0A0A]/45 to-transparent" />
+
+        {/* Home hero, living on the WebGL background (the real r352 header sits on top). */}
+        <div className="pointer-events-none absolute inset-0 flex items-center">
+          <div className="w-full max-w-[1800px] mx-auto px-8 md:px-14">
+            <span className="block font-display uppercase tracking-[0.25em] text-[11px] text-[#D4FF00] mb-5">
               {pl ? "WebGL · eksperyment" : "WebGL · experiment"}
             </span>
+            <h1
+              className="font-display font-normal text-white !text-[clamp(2.5rem,5.6vw,7rem)] leading-[0.98] tracking-tight [text-shadow:0_2px_44px_rgba(0,0,0,0.65)]"
+              dangerouslySetInnerHTML={{ __html: t("hero.title") }}
+            />
+            <p className="mt-7 max-w-2xl text-base md:text-2xl text-white/80 leading-snug [text-shadow:0_1px_22px_rgba(0,0,0,0.65)]">
+              {t("hero.description_title")}
+            </p>
+            <Link
+              href="/brief"
+              className="pointer-events-auto mt-10 inline-flex items-center gap-3 bg-[#D4FF00] text-black font-display uppercase tracking-widest text-sm px-7 py-4 rounded-none hover:bg-white transition-colors duration-300"
+            >
+              {pl ? "Rozpocznij projekt" : "Start a project"}
+            </Link>
           </div>
-          <p className="text-sm text-white/45 leading-relaxed [text-wrap:pretty] [text-shadow:0_1px_10px_rgba(0,0,0,0.5)]">
-            {pl
-              ? "Piaskownica shaderów. Rusz kursorem, kliknij i przytrzymaj."
-              : "Shader sandbox. Move the cursor, click and hold."}
-          </p>
+        </div>
+
+        {/* interaction hint, bottom-right */}
+        <div className="pointer-events-none absolute bottom-6 right-8 flex items-center gap-2">
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#D4FF00] animate-pulse" />
+          <span className="font-display uppercase tracking-[0.2em] text-[10px] text-white/50">
+            {pl ? "rusz kursorem · kliknij" : "move cursor · click"}
+          </span>
         </div>
       </div>
     </>
