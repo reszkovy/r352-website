@@ -71,7 +71,37 @@ export function Estymacja907() {
         />
       </Helmet>
 
+      {/* Print styles: pull this overlay into normal flow so it paginates, hide the
+          r352 chrome and the download button, and keep the brand colours in the PDF. */}
+      <style>{`
+        @media print {
+          html, body { background: #F0ECE4 !important; }
+          body > * { visibility: hidden !important; }
+          #estymacja-root, #estymacja-root * { visibility: visible !important; }
+          #estymacja-root {
+            position: absolute !important; inset: 0 auto auto 0 !important;
+            width: 100% !important; height: auto !important; overflow: visible !important;
+            z-index: 0 !important;
+          }
+          .no-print { display: none !important; }
+          * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+          @page { margin: 14mm; }
+        }
+      `}</style>
+
+      <button
+        onClick={() => window.print()}
+        className="no-print fixed top-5 right-5 z-[100001] inline-flex items-center gap-2 rounded-[4px] border border-[#B87333]/50 bg-[#F0ECE4]/90 px-4 py-2.5 text-[11px] font-semibold uppercase tracking-widest text-[#95602c] shadow-sm backdrop-blur transition-colors hover:bg-[#B87333] hover:text-[#F0ECE4]"
+        style={{ fontFamily: '"Work Sans", system-ui, sans-serif' }}
+        aria-label="Pobierz jako PDF"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Pobierz PDF
+      </button>
+
       <div
+        id="estymacja-root"
+        data-lenis-prevent
         className="fixed inset-0 z-[100000] overflow-y-auto bg-[#F0ECE4] text-[#2B2B2B] antialiased"
         style={{ fontFamily: '"Work Sans", system-ui, sans-serif' }}
       >
