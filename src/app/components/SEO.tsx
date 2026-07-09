@@ -13,7 +13,7 @@ export function SEO({
   title = "r352 - Design operations for brands and agencies.",
   description = "Design operations for brands and agencies delivering at scale. From strategy to rollout-ready delivery, powered by the r3loop methodology - predictable quality and speed at scale.",
   path = "/",
-  ogImage = "https://www.r352.com/og-image.png",
+  ogImage = "https://www.r352.com/og-image.png?v=2",
   article
 }: SEOProps) {
   const baseUrl = "https://www.r352.com";

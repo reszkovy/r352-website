@@ -15,8 +15,9 @@
  */
 
 export const SITE = "https://www.r352.com";
-const OG = (name) => `${SITE}/og/${name}.png`;
-const DEFAULT_OG = `${SITE}/og-image.png`;
+// ?v=2 busts social scrapers' cached thumbnails after the OG images were fixed.
+const OG = (name) => `${SITE}/og/${name}.png?v=2`;
+const DEFAULT_OG = `${SITE}/og-image.png?v=2`;
 
 export const ROUTE_META = {
   "/": {
