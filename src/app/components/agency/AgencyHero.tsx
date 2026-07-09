@@ -4,10 +4,16 @@ import { useLocation } from "wouter";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { useTheme } from "@/app/context/ThemeContext";
 import { AnimeGrid } from "@/app/components/ui/AnimeGrid";
+import { HeroWebGLBackground } from "@/app/components/agency/HeroWebGLBackground";
 import { MagneticButton } from "@/app/components/ui/MagneticButton";
 import { ElasticLine } from "@/app/components/ui/ElasticLine";
 import { ChipTooltip } from "@/app/components/ui/ChipTooltip";
 import { ArrowRight } from "lucide-react";
+
+// TRIAL: living WebGL background behind the home hero (dark theme only). Flip to
+// false to revert to the original background (bg-background + AnimeGrid). See the
+// "home-hero-webgl-trial" memory.
+const HERO_WEBGL = true;
 
 export function AgencyHero() {
   const { t, language } = useLanguage();
@@ -22,6 +28,9 @@ export function AgencyHero() {
 
   return (
     <section className="relative w-full min-h-screen flex flex-col overflow-hidden bg-background">
+      {/* TRIAL WebGL background (dark theme only) - sits behind AnimeGrid + content. */}
+      {HERO_WEBGL && theme === "dark" && <HeroWebGLBackground />}
+
       {/* Background Elements - Full Width */}
       <AnimeGrid />
 
