@@ -42,66 +42,91 @@ void main(){
   gl_FragColor=vec4(col,1.0);
 }`;
 
-// 2 — Grid: a warped engineered grid, ripples under the pointer
-const GRID = `
+// 2 — Aurora: flowing bands of light (wave-displaced gradient, opposing flows).
+// The "premium gradient" technique - layered noise displaces soft ribbons; nothing
+// rigid. Dark -> clay field with two flowing lime light ribbons.
+const AURORA = `
 void main(){
-  vec2 uv=(gl_FragCoord.xy-0.5*u_res)/u_res.y;
-  vec2 m=(u_mouse-0.5*u_res)/u_res.y;
-  float t=u_time*0.08;
-  vec2 g=uv + 0.10*vec2(fbm(uv*1.8+t), fbm(uv*1.8+vec2(4.0,2.0)-t));
-  float md=length(uv-m);
-  g += (uv-m)*exp(-md*4.5)*0.18*(0.6+u_mdown);
-  float scale=8.0;
-  vec2 f=abs(fract(g*scale)-0.5);
-  float line=smoothstep(0.44,0.5,max(f.x,f.y));
-  float dots=smoothstep(0.11,0.0,length(fract(g*scale)-0.5));
+  vec2 res=u_res;
+  vec2 p=gl_FragCoord.xy/res;
+  float ar=res.x/res.y;
+  float x=(p.x-0.5)*ar, y=p.y;
+  vec2 mo=(u_mouse/res-0.5); mo.x*=ar;
+  float t=u_time;
+  float w = noise(vec2(x*0.9 + t*0.05, t*0.04))*0.85
+          + noise(vec2(x*1.3 - t*0.045, t*0.05))*0.55
+          + noise(vec2(x*0.5 + t*0.03, 1.7))*0.5;
+  w /= 1.9;
+  vec3 dark=vec3(0.028,0.03,0.028);
+  vec3 clay=vec3(0.42,0.22,0.16);
   vec3 lime=vec3(0.831,1.0,0.0);
-  vec3 col=vec3(0.017);
-  col+=lime*line*0.32;
-  col+=lime*dots*0.5;
-  col+=lime*exp(-md*3.0)*0.30*(0.6+u_mdown);
-  float v=length(uv); col*=1.0-0.30*v*v;
-  col+=(hash(gl_FragCoord.xy+u_time)-0.5)*0.02;
+  vec3 col = mix(dark, clay, smoothstep(0.12,0.9, y + w*0.35 - 0.12));
+  // ribbon 1 (soft gaussian, flows + follows pointer y)
+  float wl = 0.50 + w*0.42 + mo.y*0.22;
+  float th = 0.085 + 0.05*noise(vec2(x, t*0.12));
+  col += lime * exp(-pow((y-wl)/th, 2.0)) * 0.95;
+  // ribbon 2 (fainter, higher, opposing flow)
+  float w2 = (noise(vec2(x*0.8 - t*0.05, 4.0))*0.9 + noise(vec2(x*1.4 + t*0.04, 2.0))*0.5)/1.4;
+  float wl2 = 0.72 + w2*0.30;
+  col += lime * exp(-pow((y-wl2)/0.13, 2.0)) * 0.35;
+  vec2 c = vec2((p.x-0.5)*ar, p.y-0.5);
+  float md = length(c - mo);
+  col += lime*exp(-md*3.2)*0.30*(0.5+u_mdown);
+  col *= 1.0 - 0.28*dot(c,c);
+  col += (hash(gl_FragCoord.xy+u_time)-0.5)*0.016;
   gl_FragColor=vec4(col,1.0);
 }`;
 
-// 3 — Cells: an animated Voronoi network with lit edges
-const CELLS = `
+// 3 — Liquid: raymarched merging metaballs with lime rim-light + a volumetric halo.
+// Real depth + glossy organic surface - the dimensional, "wow" one.
+const LIQUID = `
+float smin(float a,float b,float k){ float h=clamp(0.5+0.5*(b-a)/k,0.0,1.0); return mix(b,a,h)-k*h*(1.0-h); }
+float map(vec3 q){
+  float t=u_time*0.5;
+  float d=1e5;
+  d=smin(d, length(q-vec3(sin(t*0.7)*1.2, cos(t*0.9)*0.8, sin(t*0.5)*0.5))-0.72, 0.85);
+  d=smin(d, length(q-vec3(cos(t*0.8)*1.05, sin(t*0.6)*1.05, cos(t*0.7)*0.5))-0.62, 0.85);
+  d=smin(d, length(q-vec3(sin(t*0.5+2.0)*0.95, cos(t*0.4+1.0)*0.9, sin(t*0.8)*0.6))-0.66, 0.85);
+  return d;
+}
+vec3 nrm(vec3 q){ vec2 e=vec2(0.001,0.0);
+  return normalize(vec3(map(q+e.xyy)-map(q-e.xyy), map(q+e.yxy)-map(q-e.yxy), map(q+e.yyx)-map(q-e.yyx))); }
 void main(){
   vec2 uv=(gl_FragCoord.xy-0.5*u_res)/u_res.y;
-  vec2 m=(u_mouse-0.5*u_res)/u_res.y;
-  float scale=3.5;
-  vec2 x=uv*scale + vec2(u_time*0.05,0.0);
-  vec2 n=floor(x), fp=fract(x);
-  float md=8.0; vec2 mr=vec2(0.0);
-  for(int j=-1;j<=1;j++) for(int i=-1;i<=1;i++){
-    vec2 gg=vec2(float(i),float(j));
-    vec2 o=hash2(n+gg); o=0.5+0.45*sin(u_time*0.6+6.2831*o);
-    vec2 rr=gg+o-fp; float d=dot(rr,rr);
-    if(d<md){ md=d; mr=rr; }
-  }
-  float edge=8.0;
-  for(int j=-2;j<=2;j++) for(int i=-2;i<=2;i++){
-    vec2 gg=vec2(float(i),float(j));
-    vec2 o=hash2(n+gg); o=0.5+0.45*sin(u_time*0.6+6.2831*o);
-    vec2 rr=gg+o-fp; vec2 diff=rr-mr;
-    if(dot(diff,diff)>0.00001){ edge=min(edge, dot(0.5*(mr+rr), normalize(diff))); }
+  vec2 mo=(u_mouse/u_res-0.5); mo.x*=u_res.x/u_res.y;
+  vec3 ro=vec3(0.0,0.0,4.3);
+  vec3 rd=normalize(vec3(uv+mo*0.28, -1.7));
+  float t=0.0, glow=0.0; bool hit=false; vec3 q=ro;
+  for(int i=0;i<84;i++){
+    q=ro+rd*t; float d=map(q);
+    glow += 0.015/(0.02+d*d*8.0);
+    if(d<0.001){ hit=true; break; }
+    if(t>9.0) break;
+    t += max(d,0.016);
   }
   vec3 lime=vec3(0.831,1.0,0.0), clay=vec3(0.851,0.463,0.341);
   vec3 col=vec3(0.02);
-  col+=clay*0.06*(1.0-clamp(md,0.0,1.0));
-  float e=1.0-smoothstep(0.0,0.05,edge);
-  col+=lime*e*0.55;
-  float mdist=length(uv-m);
-  col+=lime*exp(-mdist*3.5)*0.35*(0.6+u_mdown);
-  float v=length(uv); col*=1.0-0.28*v*v;
+  if(hit){
+    vec3 n=nrm(q);
+    vec3 ld=normalize(vec3(0.5,0.7,0.6));
+    float diff=max(dot(n,ld),0.0);
+    float rim=pow(1.0-max(dot(n,-rd),0.0),2.4);
+    col=vec3(0.028);
+    col += clay*0.22*diff;
+    col += lime*rim*1.15;
+    vec3 hh=normalize(ld-rd);
+    col += lime*pow(max(dot(n,hh),0.0),44.0)*0.7;
+  }
+  col += lime*glow*0.06;
+  float md=length(uv-mo); col += lime*exp(-md*3.5)*0.22*u_mdown;
+  float v=length(uv); col*=1.0-0.26*v*v;
   gl_FragColor=vec4(col,1.0);
 }`;
 
 const PRESETS = [
   { id: "flow", name: "Flow", frag: PRELUDE + FLOW },
-  { id: "grid", name: "Grid", frag: PRELUDE + GRID },
-  { id: "cells", name: "Cells", frag: PRELUDE + CELLS },
+  { id: "aurora", name: "Aurora", frag: PRELUDE + AURORA },
+  { id: "liquid", name: "Liquid", frag: PRELUDE + LIQUID },
 ];
 
 function compile(gl: WebGLRenderingContext, type: number, src: string) {
