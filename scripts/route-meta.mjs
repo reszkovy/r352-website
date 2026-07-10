@@ -129,6 +129,12 @@ export const ROUTE_META = {
       "White-label, end-to-end delivery for agencies. Strategy, creative and execution as one team under your name - you lead the relationship and keep the credit.",
     ogImage: OG("for-agencies"),
   },
+  "/careers": {
+    title: "Careers - r352 | Join the design operations team",
+    description:
+      "Open roles at r352 - senior product designers, design operations leads and brand designers. Remote-first, EU-anchored, senior-only. Build the operating system behind great design.",
+    ogImage: DEFAULT_OG,
+  },
   "/ai-runners": {
     title: "Same scene, ten AI models - r352",
     description:

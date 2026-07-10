@@ -71,6 +71,7 @@ const ROUTES = [
   "/contact",
   "/brief",
   "/for-agencies",
+  "/careers",
   "/philosophy",
   "/deliverables",
   "/faq",

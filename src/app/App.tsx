@@ -46,6 +46,7 @@ const AiRunners = lazy(() => import("@/app/pages/AiRunners").then(m => ({ defaul
 const ProductDesign = lazy(() => import("@/app/pages/ProductDesign").then(m => ({ default: m.ProductDesign })));
 const WebGLExperiment = lazy(() => import("@/app/pages/WebGLExperiment").then(m => ({ default: m.WebGLExperiment })));
 const Estymacja907 = lazy(() => import("@/app/pages/Estymacja907").then(m => ({ default: m.Estymacja907 })));
+const Careers = lazy(() => import("@/app/pages/Careers").then(m => ({ default: m.Careers })));
 import { useLenis } from "lenis/react";
 
 function ScrollToTop() {
@@ -213,6 +214,11 @@ function AppContent() {
       description: "What is r3loop? Who does r352 work with? How is r352 different from a creative agency? Engagement models, founder background - answered.",
       ogImage: "https://www.r352.com/og/faq.png"
     };
+    if (path === "/careers") return {
+      title: "Careers - r352 | Join the design operations team",
+      description: "Open roles at r352 - senior product designers, design operations leads and brand designers. Remote-first, EU-anchored, senior-only. Build the operating system behind great design.",
+      ogImage: "https://www.r352.com/og-image.png?v=2"
+    };
     if (path === "/privacy") return {
       title: "Privacy Policy - r352 | How we handle your data",
       description: "How r352 handles your data - GDPR + LOPDGDD compliant, strict opt-in analytics, no third-party advertisers, your rights and how to exercise them."
@@ -351,6 +357,7 @@ function AppContent() {
               <Route path="/" component={Home} />
               <Route path="/webgl" component={WebGLExperiment} />
               <Route path="/estymacja907" component={Estymacja907} />
+              <Route path="/careers" component={Careers} />
               <Route path="/work" component={Work} />
               <Route path="/work/:id" component={ProjectDetails} />
               <Route path="/philosophy" component={Philosophy} />

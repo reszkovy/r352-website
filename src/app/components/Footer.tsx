@@ -53,6 +53,7 @@ export function Footer() {
     { label: t("footer.link_agencies"), href: "/for-agencies" },
     // Product Design - curated digital-product / UX work (the product side of r352).
     { label: t("footer.link_product_design"), href: "/product-design" },
+    { label: t("footer.link_careers"), href: "/careers" },
   ];
 
   // Channel focus - LinkedIn + email only. Instagram/YouTube removed (dormant
