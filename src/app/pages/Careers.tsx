@@ -47,6 +47,16 @@ const ROLES: Role[] = [
       pl: "Tworzysz systemy brandowe i kampanie, które trzymają się w wielu lokalizacjach i formatach - od key visuali po pełne pakiety assetów, dostarczane w stałym rytmie produkcji, bez dryfowania od marki.",
     },
   },
+  {
+    id: "mid-digital-designer",
+    title: "Mid Digital Designer",
+    type: { en: "Remote · EU hours · Rolling", pl: "Zdalnie · strefa EU · nabór ciągły" },
+    tags: ["Web / Landing", "Social", "Production"],
+    desc: {
+      en: "You produce digital design across web, landing pages, social and campaign - fast, on-brand, to spec. You work inside clear standards and the r3loop system, turning briefs into production-ready assets at a steady pace, and grow toward owning your own area.",
+      pl: "Produkujesz digital design - web, landing page, social, kampanie - szybko, on-brand, zgodnie ze specyfikacją. Pracujesz w jasnych standardach i systemie r3loop, zamieniając briefy w gotowe do produkcji assety w stałym tempie, i rośniesz w stronę własnego obszaru.",
+    },
+  },
 ];
 
 export function Careers() {
