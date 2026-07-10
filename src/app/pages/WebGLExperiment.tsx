@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "wouter";
 import { Helmet } from "react-helmet-async";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { useAudio } from "@/app/context/AudioContext";
@@ -121,38 +120,94 @@ void main(){
   gl_FragColor=vec4(col,1.0);
 }`;
 
-// 3 — Pixels: a field of drifting, twinkling lime pixels (one floating square per
-// grid cell, varied size + brightness, a few warm ones). Reacts to the pointer.
-// AUDIO-REACTIVE: highs drive the twinkle, the kick knocks a subset off orbit.
-const PIXELS = `
+// 2b — Aurora: flowing bands of light (wave-displaced gradient, opposing
+// flows) - the "premium gradient" wave. AUDIO-REACTIVE: the main ribbon
+// breathes and thickens with the bass, the second rides the mids, highs
+// sprinkle sparkle along the crest.
+const AURORA = `
 void main(){
-  vec2 uv=(gl_FragCoord.xy-0.5*u_res)/u_res.y;
-  vec2 m=(u_mouse/u_res-0.5); m.x*=u_res.x/u_res.y;
+  vec2 res=u_res;
+  vec2 p=gl_FragCoord.xy/res;
+  float ar=res.x/res.y;
+  float x=(p.x-0.5)*ar, y=p.y;
+  vec2 mo=(u_mouse/res-0.5); mo.x*=ar;
   float t=u_time;
-  float scale=20.0;
-  vec2 gv=uv*scale;
-  vec2 id=floor(gv);
+  float w = noise(vec2(x*0.9 + t*0.05, t*0.04))*0.85
+          + noise(vec2(x*1.3 - t*0.045, t*0.05))*0.55
+          + noise(vec2(x*0.5 + t*0.03, 1.7))*0.5;
+  w /= 1.9;
+  vec3 dark=vec3(0.028,0.03,0.028);
+  vec3 clayD=vec3(0.42,0.22,0.16);
+  vec3 lime=vec3(0.831,1.0,0.0);
+  vec3 col = mix(dark, clayD, smoothstep(0.12,0.9, y + w*0.35 - 0.12));
+  // ribbon 1 (soft gaussian, flows + follows pointer y; breathes with the bass)
+  float wl = 0.50 + w*0.42 + mo.y*0.22;
+  float th = 0.085 + 0.05*noise(vec2(x, t*0.12)) + 0.035*u_bass;
+  col += lime * exp(-pow((y-wl)/th, 2.0)) * (0.72+0.40*u_bass);
+  // ribbon 2 (fainter, higher, opposing flow; rides the mids)
+  float w2 = (noise(vec2(x*0.8 - t*0.05, 4.0))*0.9 + noise(vec2(x*1.4 + t*0.04, 2.0))*0.5)/1.4;
+  float wl2 = 0.72 + w2*0.30;
+  col += lime * exp(-pow((y-wl2)/0.13, 2.0)) * (0.24+0.30*u_mid);
+  // highs sprinkle a faint sparkle along the main ribbon
+  col += lime * exp(-pow((y-wl)/(th*0.5), 2.0)) * noise(vec2(x*22.0, t*2.5)) * u_high * 0.22;
+  vec2 c = vec2((p.x-0.5)*ar, p.y-0.5);
+  float md = length(c - mo);
+  col += lime*exp(-md*3.2)*0.30*(0.5+u_mdown);
+  col *= 1.0 - 0.28*dot(c,c);
+  col += (hash(gl_FragCoord.xy+u_time)-0.5)*0.016;
+  gl_FragColor=vec4(col,1.0);
+}`;
+
+// 3 — Warp: a spaceship jump through a pixel starfield. Stars streak radially
+// from a vanishing point that drifts toward the pointer; the STREAK LENGTH
+// (motion blur) rides the music - bass stretches pixels into light-speed
+// lines, quiet music lets them settle back into drifting squares. Log-polar
+// grid = real perspective; three depth layers for parallax; highs twinkle.
+const WARP = `
+void main(){
+  vec2 res=u_res;
+  vec2 uv=(gl_FragCoord.xy-0.5*res)/res.y;
+  vec2 m=(u_mouse-0.5*res)/res.y;
+  vec2 o=uv-m*0.18;                     // vanishing point leans toward the pointer
+  float r=max(length(o),0.02);
+  float th=atan(o.y,o.x);
+  float t=u_time;
+
+  // how far the pixels smear into streaks - the music sets the warp factor
+  float stretch=0.10+1.5*u_bass+0.35*u_mid;
+
   vec3 lime=vec3(0.831,1.0,0.0), clay=vec3(0.851,0.463,0.341);
-  vec3 col=vec3(0.016);
-  float near = exp(-length(uv-m)*2.6) * (0.5 + 0.9*u_mdown);
-  for(int y=-1;y<=1;y++) for(int x=-1;x<=1;x++){
-    vec2 cell=id+vec2(float(x),float(y));
-    vec2 rnd=hash2(cell);
-    float on=step(0.40, rnd.x);                 // ~60% of cells host a pixel
-    vec2 drift=0.34*vec2(sin(t*(0.35+rnd.x*0.6)+rnd.y*6.283),
-                         cos(t*(0.30+rnd.y*0.6)+rnd.x*6.283));
-    drift*=1.0+1.1*u_bass*step(0.82,rnd.x);     // the kick knocks some pixels off orbit
-    vec2 pos=cell+0.5+drift;
-    vec2 d=gv-pos;
-    float sz=0.06+rnd.y*0.10;                    // varied pixel size
-    float sq=step(max(abs(d.x),abs(d.y)), sz);
-    float tw=0.30+0.70*(0.5+0.5*sin(t*(0.8+rnd.x*1.6)+rnd.y*10.0)); // twinkle
-    tw *= 0.65+0.55*u_high;                      // highs drive the shimmer
-    tw += near*1.6;                              // brighten near the pointer
-    vec3 tint=mix(lime, clay, step(0.90,rnd.y)*0.6); // a few warm pixels
-    col += tint*sq*tw*on*0.8;
+  vec3 col=vec3(0.012);
+
+  for(int L=0;L<3;L++){
+    float fl=float(L);
+    float rows=18.0+fl*8.0;
+    float speed=0.55+fl*0.35;
+    vec2 pc=vec2(th/6.2831853*rows, log(r)*3.0 - t*speed + fl*7.3);
+    vec2 id=floor(pc);
+    // streaks can span cells - scan the radial neighbourhood
+    for(int jy=-2;jy<=2;jy++){
+      vec2 cid=vec2(id.x, id.y+float(jy));
+      vec2 rnd=hash2(cid+fl*31.7);
+      float on=step(0.55,rnd.x);
+      vec2 sp=(rnd-0.5)*0.5;
+      vec2 d=pc-(cid+0.5)-sp;
+      float len=0.06+stretch*(0.3+0.7*rnd.y);
+      float wdt=0.030+0.025*rnd.y;
+      float inX=smoothstep(wdt,wdt*0.35,abs(d.x));
+      float ry=(d.y+len)/(2.0*len+1e-4);          // 0 = tail .. 1 = head
+      float inY=step(0.0,ry)*step(ry,1.0);
+      float grad=pow(clamp(ry,0.0,1.0),2.0);      // bright head, fading tail
+      float tw=0.55+0.45*sin(t*(1.0+rnd.x*2.0)+rnd.y*9.0);
+      tw*=0.70+0.50*u_high;
+      vec3 tint=mix(lime,clay,step(0.90,rnd.y)*0.7);
+      col+=tint*inX*inY*grad*on*tw*(0.50-fl*0.11)*smoothstep(0.03,0.25,r);
+    }
   }
-  float v=length(uv); col*=1.0-0.28*v*v;
+  // faint engine glow at the vanishing point
+  col+=lime*exp(-r*6.0)*0.05*(0.4+0.6*u_bass);
+  float v=length(uv); col*=1.0-0.30*v*v;
+  col+=(hash(gl_FragCoord.xy+u_time)-0.5)*0.018;
   gl_FragColor=vec4(col,1.0);
 }`;
 
@@ -293,8 +348,9 @@ void main(){
 
 const PRESETS = [
   { id: "flow", name: "Flow", frag: PRELUDE + FLOW },
+  { id: "aurora", name: "Aurora", frag: PRELUDE + AURORA },
   { id: "scope", name: "Scope", frag: PRELUDE + SCOPE },
-  { id: "pixels", name: "Pixels", frag: PRELUDE + PIXELS },
+  { id: "warp", name: "Warp", frag: PRELUDE + WARP },
   { id: "808", name: "808", frag: PRELUDE + EIGHT08 },
   { id: "cymatics", name: "Cymatics", frag: PRELUDE + CYMATICS },
 ];
@@ -308,7 +364,7 @@ function compile(gl: WebGLRenderingContext, type: number, src: string) {
 }
 
 export function WebGLExperiment() {
-  const { language, t } = useLanguage();
+  const { language } = useLanguage();
   const pl = language === "pl";
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [active, setActive] = useState(0);
@@ -495,25 +551,18 @@ export function WebGLExperiment() {
         {/* legibility scrim */}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[#0A0A0A]/92 via-[#0A0A0A]/45 to-transparent" />
 
-        {/* home hero, living on the WebGL background */}
-        <div className="pointer-events-none absolute inset-0 flex items-center">
-          <div className="w-full max-w-[1800px] mx-auto px-8 md:px-14">
-            <span className="block font-display uppercase tracking-[0.25em] text-[11px] text-[#D4FF00] mb-5">
-              {(pl ? "WebGL · eksperyment" : "WebGL · experiment") + " · " + PRESETS[active].name}
+        {/* gallery title: the effect name, huge, centered on the canvas */}
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+          <div className="text-center px-8">
+            <span className="block font-display uppercase tracking-[0.3em] text-[11px] text-[#D4FF00] mb-5">
+              {pl ? "WebGL · eksperyment" : "WebGL · experiment"}
             </span>
             <h1
-              className="font-display font-normal text-white !text-[clamp(2.5rem,5.6vw,7rem)] leading-[0.98] tracking-tight [text-shadow:0_2px_44px_rgba(0,0,0,0.65)]"
-              dangerouslySetInnerHTML={{ __html: t("hero.title") }}
-            />
-            <p className="mt-7 max-w-2xl text-base md:text-2xl text-white/80 leading-snug [text-shadow:0_1px_22px_rgba(0,0,0,0.65)]">
-              {t("hero.description_title")}
-            </p>
-            <Link
-              href="/brief"
-              className="pointer-events-auto mt-10 inline-flex items-center gap-3 bg-[#D4FF00] text-black font-display uppercase tracking-widest text-sm px-7 py-4 rounded-none hover:bg-white transition-colors duration-300"
+              key={PRESETS[active].id}
+              className="font-display font-normal uppercase text-white !text-[clamp(3.5rem,11vw,12rem)] leading-none tracking-tight [text-shadow:0_2px_60px_rgba(0,0,0,0.7)] mix-blend-screen"
             >
-              {pl ? "Rozpocznij projekt" : "Start a project"}
-            </Link>
+              {PRESETS[active].name}
+            </h1>
           </div>
         </div>
 
