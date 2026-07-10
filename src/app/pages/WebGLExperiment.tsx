@@ -121,10 +121,11 @@ void main(){
   gl_FragColor=vec4(col,1.0);
 }`;
 
-// 2b — Aurora: flowing bands of light (wave-displaced gradient, opposing
-// flows) - the "premium gradient" wave. AUDIO-REACTIVE: the main ribbon
-// breathes and thickens with the bass, the second rides the mids, highs
-// sprinkle sparkle along the crest.
+// 2b — Aurora: a living gradient wave, now a real aurora. Above the flowing
+// crest rise striated LIGHT CURTAINS (the borealis signature) whose height
+// breathes with the mids; a bright SURGE travels along the crest on every
+// beat (its strength = the actual hit); light dust drifts upward twinkling
+// with the highs; track energy sets how alive the whole sky is.
 const AURORA = `
 void main(){
   vec2 res=u_res;
@@ -133,27 +134,59 @@ void main(){
   float x=(p.x-0.5)*ar, y=p.y;
   vec2 mo=(u_mouse/res-0.5); mo.x*=ar;
   float t=u_time;
+
   float w = noise(vec2(x*0.9 + t*0.05, t*0.04))*0.85
           + noise(vec2(x*1.3 - t*0.045, t*0.05))*0.55
           + noise(vec2(x*0.5 + t*0.03, 1.7))*0.5;
   w /= 1.9;
+
   vec3 dark=vec3(0.028,0.03,0.028);
   vec3 clayD=vec3(0.42,0.22,0.16);
   vec3 lime=vec3(0.831,1.0,0.0);
   vec3 col = mix(dark, clayD, smoothstep(0.12,0.9, y + w*0.35 - 0.12));
-  // ribbon 1 (soft gaussian, flows + follows pointer y; breathes with the bass)
+
+  // a surge travels the crest left-to-right once per beat; its power is the hit
+  float beatT=t*129.0/60.0;
+  float sx=(fract(beatT)*2.4-1.2)*ar;
+  float surge=exp(-pow((x-sx)/0.22,2.0))*u_kick;
+
+  // main ribbon - breathes with the bass, snaps wider under the surge
   float wl = 0.50 + w*0.42 + mo.y*0.22;
-  float th = 0.085 + 0.05*noise(vec2(x, t*0.12)) + 0.02*u_bass + 0.035*u_kick;
-  col += lime * exp(-pow((y-wl)/th, 2.0)) * (0.55+0.25*u_bass+0.30*u_kick)*(0.8+0.35*u_energy);
-  // ribbon 2 (fainter, higher, opposing flow; rides the mids)
+  float th = 0.070 + 0.04*noise(vec2(x, t*0.12)) + 0.012*u_bass + 0.018*u_kick + 0.030*surge;
+  float rib = exp(-pow((y-wl)/th, 2.0));
+  col += lime * rib * (0.34+0.12*u_bass+0.16*u_kick+0.35*surge)*(0.8+0.30*u_energy);
+  // crisp bright core along the crest - the signature line
+  col += lime * exp(-pow((y-wl)/(th*0.32), 2.0)) * (0.30+0.20*u_kick+0.35*surge);
+
+  // LIGHT CURTAINS: striated rays rising from the crest, bending with the wave;
+  // mids raise the curtain, energy keeps the sky alive
+  float str = noise(vec2(x*6.0 + w*2.2, t*0.33))
+            * (0.55+0.45*noise(vec2(x*14.0 - t*0.22, 2.2)));
+  float above = y - wl;
+  float curt = smoothstep(0.0,0.05,above) * exp(-above*(4.6-1.9*u_mid)) * str;
+  col += lime * curt * (0.20+0.28*u_energy+0.25*u_high+0.35*surge*exp(-above*2.0));
+
+  // second ribbon (fainter, higher, opposing flow; rides the mids)
   float w2 = (noise(vec2(x*0.8 - t*0.05, 4.0))*0.9 + noise(vec2(x*1.4 + t*0.04, 2.0))*0.5)/1.4;
   float wl2 = 0.72 + w2*0.30;
-  col += lime * exp(-pow((y-wl2)/0.13, 2.0)) * (0.24+0.30*u_mid);
-  // highs sprinkle a faint sparkle along the main ribbon
+  col += lime * exp(-pow((y-wl2)/0.13, 2.0)) * (0.20+0.28*u_mid);
+
+  // light dust: sparse sparks drifting upward, twinkling with the highs
+  vec2 gp=vec2(x*9.0, (y-0.045*t)*9.0);
+  vec2 idp=floor(gp);
+  vec2 rp=hash2(idp);
+  vec2 fp=fract(gp)-0.5;
+  float spark=step(0.90,rp.x)*smoothstep(0.10+0.05*rp.y,0.0,length(fp-(rp-0.5)*0.55));
+  float twk=0.5+0.5*sin(t*(1.5+rp.y*3.0)+rp.x*12.0);
+  col += lime * spark * twk * (0.10+0.40*u_high) * smoothstep(-0.05,0.35,y-wl+0.15);
+
+  // highs sprinkle a fine sparkle along the crest itself
   col += lime * exp(-pow((y-wl)/(th*0.5), 2.0)) * noise(vec2(x*22.0, t*2.5)) * u_high * 0.22;
+
   vec2 c = vec2((p.x-0.5)*ar, p.y-0.5);
   float md = length(c - mo);
   col += lime*exp(-md*3.2)*0.30*(0.5+u_mdown);
+  col=col/(1.0+0.40*col);                       // soft knee - layers survive the peaks
   col *= 1.0 - 0.28*dot(c,c);
   col += (hash(gl_FragCoord.xy+u_time)-0.5)*0.016;
   gl_FragColor=vec4(col,1.0);
