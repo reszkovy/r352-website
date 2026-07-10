@@ -20,7 +20,7 @@ const FRAG = `
 precision highp float;
 uniform vec2 u_res; uniform float u_time; uniform vec2 u_mouse; uniform float u_mdown;
 uniform float u_bass; uniform float u_mid; uniform float u_high;
-uniform float u_cols; uniform float u_scroll;
+uniform float u_cols; uniform float u_scroll; uniform float u_live;
 uniform sampler2D u_glyphs;
 float hash(vec2 p){ p=fract(p*vec2(123.34,456.21)); p+=dot(p,p+45.32); return fract(p.x*p.y); }
 vec2 hash2(vec2 p){ p=vec2(dot(p,vec2(127.1,311.7)),dot(p,vec2(269.5,183.3))); return fract(sin(p)*43758.5453); }
@@ -72,11 +72,17 @@ void main(){
     float mask=texture2D(u_glyphs,vec2((clamp(lf.x,0.0,1.0)+gi)*0.25,clamp(lf.y,0.0,1.0))).r*inQ;
 
     vec3 tint=mix(lime,clay,step(0.93,hash(cell*1.7+3.3)));
-    col+=lime*mask*0.036;                          // idle field
-    col+=tint*mask*on*(0.03+env*0.51*amp+near*0.33);
+    // silent = as visible as it used to be WITH music; music = full /webgl energy
+    float lvl=mix(1.35,1.9,u_live);
+    col+=lime*mask*0.036*mix(1.2,1.35,u_live);     // idle field
+    col+=tint*mask*on*(0.03+env*0.51*amp+near*0.33)*lvl;
   }
 
-  col*=1.0+u_bass*0.10;                            // faint breath on the kick
+  // the sequencer playhead sweeps the field only while the music plays
+  float xph=fract(s16/16.0)*COLS;
+  col+=lime*exp(-pow(g.x-xph,2.0)*1.4)*0.05*u_live;
+
+  col*=1.0+u_bass*(0.10+0.06*u_live);              // breath deepens with sound
   float v=length(uv); col*=1.0-0.30*v*v;
   col+=(hash(gl_FragCoord.xy+u_time)-0.5)*0.014;
   col*=0.85;                                       // ambient behind the interface
@@ -98,7 +104,7 @@ export function HeroWebGLBackground() {
   const playingRef = useRef(isPlaying);
   const analyserRef = useRef<AnalyserNode | null>(null);
   const freqRef = useRef<Uint8Array | null>(null);
-  const levelRef = useRef({ bass: 0, mid: 0, high: 0 });
+  const levelRef = useRef({ bass: 0, mid: 0, high: 0, live: 0 });
   useEffect(() => {
     playingRef.current = isPlaying;
     if (isPlaying && !analyserRef.current) analyserRef.current = getAnalyser();
@@ -135,6 +141,7 @@ export function HeroWebGLBackground() {
     const uHigh = gl.getUniformLocation(prog, "u_high");
     const uCols = gl.getUniformLocation(prog, "u_cols");
     const uScroll = gl.getUniformLocation(prog, "u_scroll");
+    const uLive = gl.getUniformLocation(prog, "u_live");
 
     const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;
     const mouse = { x: 0, y: 0, down: 0 };
@@ -193,7 +200,8 @@ export function HeroWebGLBackground() {
 
       let bass: number, mid: number, high: number;
       const an = analyserRef.current;
-      if (an && playingRef.current && an.context.state === "running") {
+      const isLive = !!(an && playingRef.current && an.context.state === "running");
+      if (isLive) {
         const bins =
           freqRef.current && freqRef.current.length === an.frequencyBinCount
             ? freqRef.current
@@ -221,6 +229,7 @@ export function HeroWebGLBackground() {
       lastFrame = now;
       const fr = dt * 60;
       const lv = levelRef.current;
+      lv.live += ((isLive ? 1 : 0) - lv.live) * Math.min(1, dt * 2.0);
       lv.bass = Math.max(bass, lv.bass * Math.pow(0.9, fr));
       lv.mid = Math.max(mid, lv.mid * Math.pow(0.88, fr));
       lv.high = Math.max(high, lv.high * Math.pow(0.85, fr));
@@ -234,6 +243,7 @@ export function HeroWebGLBackground() {
       gl.uniform1f(uHigh, lv.high);
       gl.uniform1f(uCols, cols);
       gl.uniform1f(uScroll, scrollY * dpr * 0.35); // parallax: field at 0.35x page speed
+      gl.uniform1f(uLive, lv.live);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
       raf = reduced || !visible ? 0 : requestAnimationFrame(render);
     };
