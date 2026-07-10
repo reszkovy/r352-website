@@ -26,9 +26,9 @@ float noise(vec2 p){ vec2 i=floor(p),f=fract(p); f=f*f*(3.0-2.0*f);
 float fbm(vec2 p){ float v=0.0,a=0.5; for(int i=0;i<6;i++){ v+=a*noise(p); p*=2.02; a*=0.5; } return v; }
 `;
 
-// 1 — Flow: domain-warped energy field. AUDIO-REACTIVE: the bass makes the
-// lime energy bloom through the field (kick = surge), mids warm up the clay
-// underlayer, highs light up the contour lines. 129 BPM clock when silent.
+// 1 — Flow: domain-warped energy field. AUDIO-REACTIVE, structurally: the kick
+// deepens the domain warp itself (the shapes churn), mids warm the clay
+// underlayer, highs light the contour lines. 129 BPM clock when silent.
 const FLOW = `
 void main(){
   vec2 uv=(gl_FragCoord.xy-0.5*u_res)/u_res.y;
@@ -36,9 +36,9 @@ void main(){
   float t=u_time*0.06;
   vec2 q=vec2(fbm(uv*1.4+t), fbm(uv*1.4+vec2(5.2,1.3)-t));
   vec2 r=vec2(fbm(uv*1.4+3.6*q+vec2(1.7,9.2)+t*0.5), fbm(uv*1.4+3.6*q+vec2(8.3,2.8)-t*0.5));
-  float f=fbm(uv*1.4+3.6*r);
+  float f=fbm(uv*1.4+(3.6+1.1*u_bass)*r);                    // kick churns the warp itself
   float md=length(uv-m); float glow=exp(-md*3.2)*(0.6+0.5*u_mdown); f+=glow*0.35;
-  f+=u_bass*0.08;                                            // kick surges the field
+  f+=u_bass*0.05;
   vec3 lime=vec3(0.831,1.0,0.0), clay=vec3(0.851,0.463,0.341);
   vec3 col=vec3(0.021);
   col=mix(col,clay*0.55,smoothstep(0.34,0.62,f)*(0.24+0.22*u_mid));
@@ -50,47 +50,70 @@ void main(){
   gl_FragColor=vec4(col,1.0);
 }`;
 
-// 2 — Aurora: flowing bands of light (wave-displaced gradient, opposing flows).
-// The "premium gradient" technique - layered noise displaces soft ribbons; nothing
-// rigid. Dark -> clay field with two flowing lime light ribbons. AUDIO-REACTIVE:
-// the main ribbon breathes and thickens with the bass, the second rides the mids.
-const AURORA = `
+// 2 — Scope: a phosphor vector display (oscilloscope in XY mode) drawing a
+// Lissajous figure. STRUCTURALLY audio-reactive: bass bends the frequency
+// ratio (the SHAPE changes, not just brightness), mids twist the phase, highs
+// add signal jitter to the beam. A beam head sweeps the trace like a real CRT,
+// a faint clay ghost figure runs offset underneath. Faint graticule + grain.
+const SCOPE = `
 void main(){
   vec2 res=u_res;
-  vec2 p=gl_FragCoord.xy/res;
-  float ar=res.x/res.y;
-  float x=(p.x-0.5)*ar, y=p.y;
-  vec2 mo=(u_mouse/res-0.5); mo.x*=ar;
+  vec2 uv=(gl_FragCoord.xy-0.5*res)/res.y;
+  vec2 m=(u_mouse-0.5*res)/res.y;
   float t=u_time;
-  float w = noise(vec2(x*0.9 + t*0.05, t*0.04))*0.85
-          + noise(vec2(x*1.3 - t*0.045, t*0.05))*0.55
-          + noise(vec2(x*0.5 + t*0.03, 1.7))*0.5;
-  w /= 1.9;
-  vec3 dark=vec3(0.028,0.03,0.028);
-  vec3 clay=vec3(0.42,0.22,0.16);
-  vec3 lime=vec3(0.831,1.0,0.0);
-  vec3 col = mix(dark, clay, smoothstep(0.12,0.9, y + w*0.35 - 0.12));
-  // ribbon 1 (soft gaussian, flows + follows pointer y; breathes with the bass)
-  float wl = 0.50 + w*0.42 + mo.y*0.22;
-  float th = 0.085 + 0.05*noise(vec2(x, t*0.12)) + 0.035*u_bass;
-  col += lime * exp(-pow((y-wl)/th, 2.0)) * (0.72+0.40*u_bass);
-  // ribbon 2 (fainter, higher, opposing flow; rides the mids)
-  float w2 = (noise(vec2(x*0.8 - t*0.05, 4.0))*0.9 + noise(vec2(x*1.4 + t*0.04, 2.0))*0.5)/1.4;
-  float wl2 = 0.72 + w2*0.30;
-  col += lime * exp(-pow((y-wl2)/0.13, 2.0)) * (0.24+0.30*u_mid);
-  // highs sprinkle a faint sparkle along the main ribbon
-  col += lime * exp(-pow((y-wl)/(th*0.5), 2.0)) * noise(vec2(x*22.0, t*2.5)) * u_high * 0.22;
-  vec2 c = vec2((p.x-0.5)*ar, p.y-0.5);
-  float md = length(c - mo);
-  col += lime*exp(-md*3.2)*0.30*(0.5+u_mdown);
-  col *= 1.0 - 0.28*dot(c,c);
-  col += (hash(gl_FragCoord.xy+u_time)-0.5)*0.016;
+
+  // figure morphs slowly; audio bends it
+  float fa=2.0+1.0*sin(t*0.11)+1.6*u_bass;
+  float fb=3.0+1.0*sin(t*0.073+1.7)+1.1*u_mid;
+  float ph=t*0.30;
+  vec2 c=m*0.14;                       // figure drifts gently toward the pointer
+  float R=0.46+0.06*u_bass+0.05*u_mdown;
+  float jit=u_high*0.012;
+
+  vec3 lime=vec3(0.831,1.0,0.0), clay=vec3(0.851,0.463,0.341);
+  vec3 col=vec3(0.010);
+
+  // faint graticule
+  vec2 gq=abs(fract(uv*2.5+0.5)-0.5);
+  col+=lime*smoothstep(0.012,0.0,min(gq.x,gq.y))*0.028;
+
+  float beam=0.0, halo=0.0, headGlow=0.0, ghost=0.0;
+  float head=t*1.7;
+  vec2 prev=c+R*vec2(sin(ph), 0.0);
+  vec2 prevG=c+R*0.92*vec2(sin(ph*0.7), 0.0);
+  for(int i=1;i<=96;i++){
+    float s0=6.2831853*float(i)/96.0;
+    vec2 pt=c+R*vec2(sin(fa*s0+ph), sin(fb*s0));
+    pt+=jit*vec2(hash(vec2(s0,t))-0.5, hash(vec2(t,s0))-0.5);
+    // distance to the segment prev->pt = continuous phosphor trace
+    vec2 pa=uv-prev, ba=pt-prev;
+    float h=clamp(dot(pa,ba)/max(dot(ba,ba),1e-6),0.0,1.0);
+    float d=length(pa-ba*h);
+    beam+=exp(-d*110.0);
+    halo+=exp(-d*10.0);
+    // the sweeping beam head burns brighter, like a real CRT
+    float hd=abs(mod(s0-head+3.14159,6.2831853)-3.14159);
+    headGlow+=exp(-d*90.0)*exp(-hd*3.0);
+    prev=pt;
+    // clay ghost figure, offset ratio
+    vec2 pg=c+R*0.92*vec2(sin((fa+1.0)*s0+ph*0.7), sin((fb-1.0)*s0));
+    vec2 paG=uv-prevG, baG=pg-prevG;
+    float hG=clamp(dot(paG,baG)/max(dot(baG,baG),1e-6),0.0,1.0);
+    ghost+=exp(-length(paG-baG*hG)*90.0);
+    prevG=pg;
+  }
+  col+=lime*(beam*0.10+halo*0.0045+headGlow*0.55);
+  col+=clay*ghost*0.030;
+
+  col*=0.97+0.03*sin(gl_FragCoord.y*1.57);   // CRT scanlines
+  float v=length(uv); col*=1.0-0.32*v*v;
+  col+=(hash(gl_FragCoord.xy+u_time)-0.5)*0.02;
   gl_FragColor=vec4(col,1.0);
 }`;
 
 // 3 — Pixels: a field of drifting, twinkling lime pixels (one floating square per
 // grid cell, varied size + brightness, a few warm ones). Reacts to the pointer.
-// AUDIO-REACTIVE: highs drive the twinkle, a scattered subset flashes on the kick.
+// AUDIO-REACTIVE: highs drive the twinkle, the kick knocks a subset off orbit.
 const PIXELS = `
 void main(){
   vec2 uv=(gl_FragCoord.xy-0.5*u_res)/u_res.y;
@@ -108,13 +131,13 @@ void main(){
     float on=step(0.40, rnd.x);                 // ~60% of cells host a pixel
     vec2 drift=0.34*vec2(sin(t*(0.35+rnd.x*0.6)+rnd.y*6.283),
                          cos(t*(0.30+rnd.y*0.6)+rnd.x*6.283));
+    drift*=1.0+1.1*u_bass*step(0.82,rnd.x);     // the kick knocks some pixels off orbit
     vec2 pos=cell+0.5+drift;
     vec2 d=gv-pos;
     float sz=0.06+rnd.y*0.10;                    // varied pixel size
     float sq=step(max(abs(d.x),abs(d.y)), sz);
     float tw=0.30+0.70*(0.5+0.5*sin(t*(0.8+rnd.x*1.6)+rnd.y*10.0)); // twinkle
     tw *= 0.65+0.55*u_high;                      // highs drive the shimmer
-    tw += u_bass*1.3*step(0.82,rnd.x);           // scattered pixels flash on the kick
     tw += near*1.6;                              // brighten near the pointer
     vec3 tint=mix(lime, clay, step(0.90,rnd.y)*0.6); // a few warm pixels
     col += tint*sq*tw*on*0.8;
@@ -246,7 +269,7 @@ void main(){
 
 const PRESETS = [
   { id: "flow", name: "Flow", frag: PRELUDE + FLOW },
-  { id: "aurora", name: "Aurora", frag: PRELUDE + AURORA },
+  { id: "scope", name: "Scope", frag: PRELUDE + SCOPE },
   { id: "pixels", name: "Pixels", frag: PRELUDE + PIXELS },
   { id: "808", name: "808", frag: PRELUDE + EIGHT08 },
   { id: "cymatics", name: "Cymatics", frag: PRELUDE + CYMATICS },
@@ -486,8 +509,7 @@ export function WebGLExperiment() {
         </div>
 
         <div className="pointer-events-none absolute bottom-8 right-8 hidden md:flex flex-col items-end gap-2.5">
-          {PRESETS[active].id === "808" &&
-            (isPlaying ? (
+          {(isPlaying ? (
               <span className="flex items-center gap-2 font-display uppercase tracking-[0.2em] text-[10px] text-[#D4FF00]/80">
                 <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#D4FF00] animate-pulse" />
                 {pl ? "sync: audio na żywo" : "sync: live audio"}
