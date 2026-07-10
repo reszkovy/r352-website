@@ -26,7 +26,9 @@ float noise(vec2 p){ vec2 i=floor(p),f=fract(p); f=f*f*(3.0-2.0*f);
 float fbm(vec2 p){ float v=0.0,a=0.5; for(int i=0;i<6;i++){ v+=a*noise(p); p*=2.02; a*=0.5; } return v; }
 `;
 
-// 1 — Flow: domain-warped energy field
+// 1 — Flow: domain-warped energy field. AUDIO-REACTIVE: the bass makes the
+// lime energy bloom through the field (kick = surge), mids warm up the clay
+// underlayer, highs light up the contour lines. 129 BPM clock when silent.
 const FLOW = `
 void main(){
   vec2 uv=(gl_FragCoord.xy-0.5*u_res)/u_res.y;
@@ -36,12 +38,14 @@ void main(){
   vec2 r=vec2(fbm(uv*1.4+3.6*q+vec2(1.7,9.2)+t*0.5), fbm(uv*1.4+3.6*q+vec2(8.3,2.8)-t*0.5));
   float f=fbm(uv*1.4+3.6*r);
   float md=length(uv-m); float glow=exp(-md*3.2)*(0.6+0.5*u_mdown); f+=glow*0.35;
+  f+=u_bass*0.08;                                            // kick surges the field
   vec3 lime=vec3(0.831,1.0,0.0), clay=vec3(0.851,0.463,0.341);
   vec3 col=vec3(0.021);
-  col=mix(col,clay*0.55,smoothstep(0.34,0.62,f)*0.30);
+  col=mix(col,clay*0.55,smoothstep(0.34,0.62,f)*(0.24+0.22*u_mid));
   col=mix(col,lime,smoothstep(0.58,0.98,f));
-  col+=lime*glow*0.55;
-  float edge=smoothstep(0.02,0.0,abs(fract(f*6.0)-0.5)-0.46); col+=lime*edge*0.20;
+  col+=lime*glow*(0.45+0.30*u_bass);
+  float edge=smoothstep(0.02,0.0,abs(fract(f*6.0)-0.5)-0.46);
+  col+=lime*edge*(0.12+0.26*u_high);                         // highs light the contours
   float v=length(uv); col*=1.0-0.28*v*v; col+=(hash(gl_FragCoord.xy+u_time)-0.5)*0.022;
   gl_FragColor=vec4(col,1.0);
 }`;
