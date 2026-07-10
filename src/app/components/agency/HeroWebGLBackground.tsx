@@ -149,7 +149,7 @@ export function HeroWebGLBackground() {
     const resize = () => {
       dpr = Math.min(window.devicePixelRatio || 1, 1.75);
       const cssW = canvas.clientWidth;
-      cols = cssW < 640 ? 7 : cssW < 1024 ? 10 : 15;
+      cols = cssW < 640 ? 5 : cssW < 1024 ? 8 : 15;
       const w = Math.floor(canvas.clientWidth * dpr);
       const h = Math.floor(canvas.clientHeight * dpr);
       if (w > 0 && h > 0 && (canvas.width !== w || canvas.height !== h)) {
