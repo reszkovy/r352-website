@@ -51,6 +51,13 @@ export interface AudioContextValue {
    * trigger to AVOID re-triggering playback after a manual pause.
    */
   explicitlyPaused: boolean;
+  /**
+   * Lazily builds (once) a Web Audio analyser tapped into the site track,
+   * for audio-reactive visuals (/webgl "808"). Routing stays element →
+   * analyser → speakers, so playback/volume behave exactly as before.
+   * Returns null before mount or if Web Audio is unavailable.
+   */
+  getAnalyser: () => AnalyserNode | null;
 }
 
 const Ctx = createContext<AudioContextValue | null>(null);
@@ -58,6 +65,9 @@ const Ctx = createContext<AudioContextValue | null>(null);
 export function AudioProvider({ children }: { children: ReactNode }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const fadeRafRef = useRef<number | null>(null);
+  // Web Audio tap for audio-reactive visuals. Created at most ONCE per audio
+  // element (createMediaElementSource throws on a second call for the same el).
+  const audioGraphRef = useRef<{ ctx: AudioContext; analyser: AnalyserNode } | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [explicitlyPaused, setExplicitlyPaused] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -150,6 +160,9 @@ export function AudioProvider({ children }: { children: ReactNode }) {
   const play = useCallback(() => {
     const el = audioRef.current;
     if (!el) return;
+    // play() runs inside a user gesture - the one place a suspended analyser
+    // context is guaranteed to be allowed to resume.
+    audioGraphRef.current?.ctx.resume?.().catch(() => {});
     // Clear the explicit-pause flag - playing means user wants sound.
     setExplicitlyPaused(false);
     try {
@@ -204,6 +217,60 @@ export function AudioProvider({ children }: { children: ReactNode }) {
     else play();
   }, [isPlaying, pause, play]);
 
+  const getAnalyser = useCallback((): AnalyserNode | null => {
+    const existing = audioGraphRef.current;
+    if (existing) {
+      // Context may be suspended (created pre-gesture) - resuming is cheap.
+      existing.ctx.resume?.().catch(() => {});
+      return existing.analyser;
+    }
+    const el = audioRef.current;
+    if (!el || typeof window === "undefined") return null;
+    try {
+      const Ctor: typeof AudioContext | undefined =
+        window.AudioContext ||
+        (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+      if (!Ctor) return null;
+      const ctx = new Ctor();
+      const analyser = ctx.createAnalyser();
+      analyser.fftSize = 512;
+      analyser.smoothingTimeConstant = 0.55;
+      // Capturing the element (createMediaElementSource) is IRREVERSIBLE and
+      // reroutes its sound through this context - on a suspended context that
+      // would mute the site track. So wire the element only once the context
+      // is actually running; until then the analyser just reads silence and
+      // the visuals fall back to their BPM clock.
+      let wired = false;
+      const wire = () => {
+        if (wired) return;
+        wired = true;
+        try {
+          const source = ctx.createMediaElementSource(el);
+          source.connect(analyser);
+          analyser.connect(ctx.destination);
+        } catch {
+          /* element already captured elsewhere - leave routing untouched */
+        }
+      };
+      ctx.onstatechange = () => {
+        if (ctx.state === "running") wire();
+      };
+      if (ctx.state === "running") {
+        wire();
+      } else {
+        const tryResume = () => ctx.resume().then(wire).catch(() => {});
+        tryResume();
+        // Retry from a real user gesture (WebKit won't resume outside one).
+        window.addEventListener("pointerdown", tryResume, { once: true });
+        window.addEventListener("keydown", tryResume, { once: true });
+      }
+      audioGraphRef.current = { ctx, analyser };
+      return analyser;
+    } catch {
+      return null;
+    }
+  }, []);
+
   const value = useMemo<AudioContextValue>(
     () => ({
       isPlaying,
@@ -212,8 +279,9 @@ export function AudioProvider({ children }: { children: ReactNode }) {
       pause,
       toggle,
       explicitlyPaused,
+      getAnalyser,
     }),
-    [isPlaying, mounted, play, pause, toggle, explicitlyPaused]
+    [isPlaying, mounted, play, pause, toggle, explicitlyPaused, getAnalyser]
   );
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
@@ -230,6 +298,7 @@ export function useAudio(): AudioContextValue {
       pause: () => {},
       toggle: () => {},
       explicitlyPaused: false,
+      getAnalyser: () => null,
     };
   }
   return v;

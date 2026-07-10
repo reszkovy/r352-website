@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 import { Helmet } from "react-helmet-async";
 import { useLanguage } from "@/app/context/LanguageContext";
+import { useAudio } from "@/app/context/AudioContext";
 
 /**
  * WebGLExperiment - /webgl sandbox, now a small LIBRARY of on-brand fragment-shader
@@ -14,6 +15,7 @@ const VERT = `attribute vec2 a_pos; void main(){ gl_Position = vec4(a_pos, 0.0, 
 const PRELUDE = `
 precision highp float;
 uniform vec2 u_res; uniform float u_time; uniform vec2 u_mouse; uniform float u_mdown;
+uniform float u_bass; uniform float u_mid; uniform float u_high;
 float hash(vec2 p){ p=fract(p*vec2(123.34,456.21)); p+=dot(p,p+45.32); return fract(p.x*p.y); }
 vec2 hash2(vec2 p){ p=vec2(dot(p,vec2(127.1,311.7)),dot(p,vec2(269.5,183.3))); return fract(sin(p)*43758.5453); }
 float noise(vec2 p){ vec2 i=floor(p),f=fract(p); f=f*f*(3.0-2.0*f);
@@ -112,7 +114,10 @@ void main(){
 // 4 — 808: a step-sequencer grid running at Planet Rock tempo (~129 BPM).
 // 16 columns of pads; bottom lane = kick on quarters, lane 2 = snare on 2+4,
 // the rest is a random pattern reshuffled every 2 bars. A playhead sweeps the
-// grid, hit pads flash and decay, the whole frame breathes on every kick.
+// grid and hit pads flash and decay. AUDIO-REACTIVE: u_bass/u_mid/u_high come
+// from a live analyser on the site track when music plays (kick lane follows
+// bass, snare lane mids, the rest highs) - or from a 129 BPM clock when silent.
+// Pads are gently MAGNETIC: they lean toward and swell near the pointer.
 const EIGHT08 = `
 void main(){
   vec2 res=u_res;
@@ -124,37 +129,57 @@ void main(){
   float BPM=129.0;                        // Planet Rock
   float beat=u_time*BPM/60.0;
   float s16=beat*4.0;                     // 16th-note clock
-  float kick=exp(-fract(beat)*5.0);       // four-on-the-floor body pulse
 
   float COLS=16.0;
   vec2 g=vec2(p.x*COLS, p.y*COLS/ar);     // square pads, 16 steps wide
   vec2 id=floor(g);
-  vec2 f=fract(g)-0.5;
-
-  // pattern: kick lane on quarters, snare lane on 2+4, rest random (reseed / 2 bars)
+  vec2 mg=vec2((u_mouse.x/res.x)*COLS, (u_mouse.y/res.y)*COLS/ar);
   float seed=floor(beat/8.0);
-  float on;
-  if(id.y<0.5)      on=1.0-step(0.5,mod(id.x,4.0));
-  else if(id.y<1.5) on=1.0-step(0.5,abs(mod(id.x,8.0)-4.0));
-  else              on=step(0.62,hash(id+seed*13.71));
-
-  float tS=mod(s16-id.x,16.0);            // 16th-notes since this column was hit
-  float env=exp(-tS*1.35);                // flash + decay
-
-  float dmax=max(abs(f.x),abs(f.y));
-  float pad=smoothstep(0.44,0.40,dmax);   // pad footprint
-  float core=smoothstep(0.34,0.28,dmax);  // lit core
 
   float near=exp(-length(uv-m)*2.8)*(0.6+0.9*u_mdown);
-
   vec3 lime=vec3(0.831,1.0,0.0), clay=vec3(0.851,0.463,0.341);
-  vec3 tint=mix(lime,clay,step(0.92,hash(id*1.7+3.3)));  // a few warm pads
   vec3 col=vec3(0.014);
-  col+=lime*pad*0.028;                                    // idle grid
-  col+=tint*core*on*(0.06+env*0.95+near*0.35);
+
+  // 3x3 neighbourhood so magnet-displaced pads can cross cell borders
+  // without getting clipped at the edges of their own cell
+  for(int yy=-1;yy<=1;yy++) for(int xx=-1;xx<=1;xx++){
+    vec2 cell=id+vec2(float(xx),float(yy));
+
+    // magnetic pull: pads lean toward the pointer and swell slightly near it;
+    // smoothstep ramps the pull to zero at the cursor so the field is continuous
+    vec2 dv=mg-(cell+0.5);
+    float dl=max(length(dv),0.0001);
+    vec2 pull=(dv/dl)*exp(-dl*0.34)*0.24*(1.0+0.5*u_mdown)*smoothstep(0.0,0.5,dl);
+    float swell=1.0+0.20*exp(-dl*0.5);
+
+    // pattern: kick lane on quarters, snare lane on 2+4, rest random (reseed / 2 bars)
+    float on;
+    if(cell.y<0.5)      on=1.0-step(0.5,mod(cell.x,4.0));
+    else if(cell.y<1.5) on=1.0-step(0.5,abs(mod(cell.x,8.0)-4.0));
+    else                on=step(0.62,hash(cell+seed*13.71));
+
+    float tS=mod(s16-cell.x,16.0);          // 16th-notes since this column was hit
+    float env=exp(-tS*1.35);                // flash + decay
+
+    // audio-reactive lane gain: kick lane rides the bass, snare lane the mids,
+    // free pads shimmer with the highs (per-pad sensitivity varies)
+    float laneAmp;
+    if(cell.y<0.5)      laneAmp=0.35+1.30*u_bass;
+    else if(cell.y<1.5) laneAmp=0.35+1.15*u_mid;
+    else                laneAmp=0.30+0.50*u_mid+0.85*u_high*(0.4+0.6*hash(cell+11.13));
+
+    vec2 f=g-(cell+0.5)-pull;
+    float dmax=max(abs(f.x),abs(f.y));
+    float pad=smoothstep(0.44*swell,0.40*swell,dmax);   // pad footprint
+    float core=smoothstep(0.34*swell,0.28*swell,dmax);  // lit core
+
+    vec3 tint=mix(lime,clay,step(0.92,hash(cell*1.7+3.3)));  // a few warm pads
+    col+=lime*pad*0.028;                                      // idle grid
+    col+=tint*core*on*(0.05+env*0.85*laneAmp+near*0.35);
+  }
   float xph=mod(s16,16.0);
   col+=lime*exp(-pow(g.x-xph,2.0)*1.4)*0.045;             // playhead band
-  col*=1.0+kick*0.12+u_mdown*0.06;
+  col*=1.0+u_bass*0.16+u_mdown*0.06;                      // frame breathes on the kick
   col*=0.97+0.03*sin(gl_FragCoord.y*1.57);                // faint scanlines
   float v=length(uv); col*=1.0-0.28*v*v;
   col+=(hash(gl_FragCoord.xy+u_time)-0.5)*0.018;
@@ -189,7 +214,21 @@ export function WebGLExperiment() {
     time: WebGLUniformLocation | null;
     mouse: WebGLUniformLocation | null;
     down: WebGLUniformLocation | null;
+    bass: WebGLUniformLocation | null;
+    mid: WebGLUniformLocation | null;
+    high: WebGLUniformLocation | null;
   } | null>(null);
+
+  // ── live audio tap (808 sync) - falls back to a 129 BPM clock when silent ──
+  const { isPlaying, play, getAnalyser } = useAudio();
+  const playingRef = useRef(isPlaying);
+  const analyserRef = useRef<AnalyserNode | null>(null);
+  const freqRef = useRef<Uint8Array | null>(null);
+  const levelRef = useRef({ bass: 0, mid: 0, high: 0 });
+  useEffect(() => {
+    playingRef.current = isPlaying;
+    if (isPlaying && !analyserRef.current) analyserRef.current = getAnalyser();
+  }, [isPlaying, getAnalyser]);
 
   // ── one-time GL init + render loop ──
   useEffect(() => {
@@ -235,16 +274,59 @@ export function WebGLExperiment() {
 
     let raf = 0;
     const start = performance.now();
+    let lastFrame = start;
     const render = (now: number) => {
       const prog = progRef.current;
       const u = uniRef.current;
       if (prog && u) {
         const tsec = reduced ? 8 : (now - start) / 1000;
+
+        // audio levels: live FFT when the site track plays, 129 BPM clock otherwise
+        let bass: number, mid: number, high: number;
+        const an = analyserRef.current;
+        if (an && playingRef.current && an.context.state === "running") {
+          const bins =
+            freqRef.current && freqRef.current.length === an.frequencyBinCount
+              ? freqRef.current
+              : (freqRef.current = new Uint8Array(an.frequencyBinCount));
+          an.getByteFrequencyData(bins);
+          const avg = (a: number, b: number) => {
+            let s = 0;
+            const to = Math.min(b, bins.length);
+            for (let i = a; i < to; i++) s += bins[i];
+            return s / (Math.max(1, to - a) * 255);
+          };
+          // band edges derived from the real sample rate (44.1k vs 48k devices)
+          const hzPerBin = an.context.sampleRate / an.fftSize;
+          const bin = (hz: number) =>
+            Math.max(1, Math.min(an.frequencyBinCount, Math.round(hz / hzPerBin)));
+          bass = Math.min(1, avg(0, bin(345)) * 2.4);
+          mid = Math.min(1, avg(bin(345), bin(4130)) * 3.0);
+          high = Math.min(1, avg(bin(4130), bin(12050)) * 3.8);
+        } else {
+          const beat = (tsec * 129) / 60;
+          bass = Math.exp(-(beat % 1) * 5);            // kick on quarters
+          mid = Math.exp(-((beat + 1) % 2) * 4.5) * 0.9; // snare on 2 + 4
+          high = 0.22 + 0.12 * Math.sin(tsec * 7.3);
+        }
+        // fast attack, slow release - time-based so decay looks the same at
+        // any display refresh rate (tuned against a 60fps baseline)
+        const dt = Math.min(0.1, (now - lastFrame) / 1000);
+        lastFrame = now;
+        const fr = dt * 60;
+        const lv = levelRef.current;
+        lv.bass = Math.max(bass, lv.bass * Math.pow(0.88, fr));
+        lv.mid = Math.max(mid, lv.mid * Math.pow(0.86, fr));
+        lv.high = Math.max(high, lv.high * Math.pow(0.82, fr));
+
         gl.useProgram(prog);
         gl.uniform2f(u.res, canvas.width, canvas.height);
         gl.uniform1f(u.time, tsec);
         gl.uniform2f(u.mouse, mouse.x, mouse.y);
         gl.uniform1f(u.down, mouse.down);
+        gl.uniform1f(u.bass, lv.bass);
+        gl.uniform1f(u.mid, lv.mid);
+        gl.uniform1f(u.high, lv.high);
         gl.drawArrays(gl.TRIANGLES, 0, 3);
       }
       raf = reduced ? 0 : requestAnimationFrame(render);
@@ -282,6 +364,10 @@ export function WebGLExperiment() {
       time: gl.getUniformLocation(prog, "u_time"),
       mouse: gl.getUniformLocation(prog, "u_mouse"),
       down: gl.getUniformLocation(prog, "u_mdown"),
+      // null in presets that don't read audio - uniform1f(null, x) is a no-op
+      bass: gl.getUniformLocation(prog, "u_bass"),
+      mid: gl.getUniformLocation(prog, "u_mid"),
+      high: gl.getUniformLocation(prog, "u_high"),
     };
     if (prev) gl.deleteProgram(prev);
   }, [active]);
@@ -335,9 +421,24 @@ export function WebGLExperiment() {
           ))}
         </div>
 
-        <div className="pointer-events-none absolute bottom-8 right-8 hidden md:flex items-center gap-2">
-          <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#D4FF00] animate-pulse" />
-          <span className="font-display uppercase tracking-[0.2em] text-[10px] text-white/45">
+        <div className="pointer-events-none absolute bottom-8 right-8 hidden md:flex flex-col items-end gap-2.5">
+          {PRESETS[active].id === "808" &&
+            (isPlaying ? (
+              <span className="flex items-center gap-2 font-display uppercase tracking-[0.2em] text-[10px] text-[#D4FF00]/80">
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#D4FF00] animate-pulse" />
+                {pl ? "sync: audio na żywo" : "sync: live audio"}
+              </span>
+            ) : (
+              <button
+                onClick={play}
+                className="pointer-events-auto flex items-center gap-2 font-display uppercase tracking-[0.2em] text-[10px] text-white/45 hover:text-[#D4FF00] transition-colors duration-300"
+              >
+                <span className="inline-block w-0 h-0 border-y-[4px] border-y-transparent border-l-[6px] border-l-current" />
+                {pl ? "włącz muzykę · sync na żywo" : "play music · live sync"}
+              </button>
+            ))}
+          <span className="flex items-center gap-2 font-display uppercase tracking-[0.2em] text-[10px] text-white/45">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#D4FF00] animate-pulse" />
             {pl ? "rusz kursorem · kliknij" : "move cursor · click"}
           </span>
         </div>
