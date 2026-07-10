@@ -136,7 +136,7 @@ void main(){
   vec2 g=vec2(p.x*COLS, p.y*COLS/ar);     // square pads, 16 steps wide
   vec2 id=floor(g);
   vec2 mg=vec2((u_mouse.x/res.x)*COLS, (u_mouse.y/res.y)*COLS/ar);
-  float seed=floor(beat/8.0);
+  float seed=floor(s16/16.0);             // reshuffle on every left-to-right sweep
 
   float near=exp(-length(uv-m)*2.8)*(0.6+0.9*u_mdown);
   vec3 lime=vec3(0.831,1.0,0.0), clay=vec3(0.851,0.463,0.341);
@@ -154,7 +154,7 @@ void main(){
     vec2 pull=(dv/dl)*exp(-dl*0.34)*0.24*(1.0+0.5*u_mdown)*smoothstep(0.0,0.5,dl);
     float swell=1.0+0.20*exp(-dl*0.5);
 
-    // pattern: kick lane on quarters, snare lane on 2+4, rest random (reseed / 2 bars)
+    // pattern: kick lane on quarters, snare lane on 2+4, rest random (reseed per sweep)
     float on;
     if(cell.y<0.5)      on=1.0-step(0.5,mod(cell.x,4.0));
     else if(cell.y<1.5) on=1.0-step(0.5,abs(mod(cell.x,8.0)-4.0));

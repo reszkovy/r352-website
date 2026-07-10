@@ -20,6 +20,7 @@ const FRAG = `
 precision highp float;
 uniform vec2 u_res; uniform float u_time; uniform vec2 u_mouse; uniform float u_mdown;
 uniform float u_bass; uniform float u_mid; uniform float u_high;
+uniform float u_cols; uniform float u_scroll;
 uniform sampler2D u_glyphs;
 float hash(vec2 p){ p=fract(p*vec2(123.34,456.21)); p+=dot(p,p+45.32); return fract(p.x*p.y); }
 vec2 hash2(vec2 p){ p=vec2(dot(p,vec2(127.1,311.7)),dot(p,vec2(269.5,183.3))); return fract(sin(p)*43758.5453); }
@@ -33,12 +34,14 @@ void main(){
   float BPM=129.0;
   float beat=u_time*BPM/60.0;
   float s16=beat*4.0;
-  float seed=floor(beat/16.0);            // reshuffle every 4 bars (calmer)
+  float seed=floor(s16/16.0);             // reshuffle on every left-to-right sweep
 
-  float COLS=15.0;
-  vec2 g=vec2(p.x*COLS, p.y*COLS/ar);
+  float COLS=u_cols;                      // fewer columns on mobile = bigger glyphs
+  // scroll parallax: the field drifts slower than the page (u_scroll in canvas px)
+  float sc=u_scroll*COLS/res.x;
+  vec2 g=vec2(p.x*COLS, p.y*COLS/ar - sc);
   vec2 id=floor(g);
-  vec2 mg=vec2((u_mouse.x/res.x)*COLS, (u_mouse.y/res.y)*COLS/ar);
+  vec2 mg=vec2((u_mouse.x/res.x)*COLS, (u_mouse.y/res.y)*COLS/ar - sc);
 
   float near=exp(-length(uv-m)*2.6)*(0.35+0.5*u_mdown);
   vec3 lime=vec3(0.831,1.0,0.0), clay=vec3(0.851,0.463,0.341);
@@ -130,13 +133,23 @@ export function HeroWebGLBackground() {
     const uBass = gl.getUniformLocation(prog, "u_bass");
     const uMid = gl.getUniformLocation(prog, "u_mid");
     const uHigh = gl.getUniformLocation(prog, "u_high");
+    const uCols = gl.getUniformLocation(prog, "u_cols");
+    const uScroll = gl.getUniformLocation(prog, "u_scroll");
 
     const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;
     const mouse = { x: 0, y: 0, down: 0 };
     let dpr = Math.min(window.devicePixelRatio || 1, 1.75);
+    // fewer grid columns on small screens = bigger glyphs that hold their own
+    // next to the typography, without raising brightness
+    let cols = 15;
+    let scrollY = window.scrollY || 0;
+    const onScroll = () => (scrollY = window.scrollY || 0);
+    window.addEventListener("scroll", onScroll, { passive: true });
 
     const resize = () => {
       dpr = Math.min(window.devicePixelRatio || 1, 1.75);
+      const cssW = canvas.clientWidth;
+      cols = cssW < 640 ? 7 : cssW < 1024 ? 10 : 15;
       const w = Math.floor(canvas.clientWidth * dpr);
       const h = Math.floor(canvas.clientHeight * dpr);
       if (w > 0 && h > 0 && (canvas.width !== w || canvas.height !== h)) {
@@ -219,6 +232,8 @@ export function HeroWebGLBackground() {
       gl.uniform1f(uBass, lv.bass);
       gl.uniform1f(uMid, lv.mid);
       gl.uniform1f(uHigh, lv.high);
+      gl.uniform1f(uCols, cols);
+      gl.uniform1f(uScroll, scrollY * dpr * 0.35); // parallax: field at 0.35x page speed
       gl.drawArrays(gl.TRIANGLES, 0, 3);
       raf = reduced || !visible ? 0 : requestAnimationFrame(render);
     };
@@ -227,6 +242,7 @@ export function HeroWebGLBackground() {
     return () => {
       cancelAnimationFrame(raf);
       io.disconnect();
+      window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", resize);
       window.removeEventListener("pointermove", onMove);
       window.removeEventListener("pointerdown", onDown);
