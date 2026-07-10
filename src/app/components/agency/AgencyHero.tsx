@@ -5,6 +5,7 @@ import { useLanguage } from "@/app/context/LanguageContext";
 import { useTheme } from "@/app/context/ThemeContext";
 import { AnimeGrid } from "@/app/components/ui/AnimeGrid";
 import { HeroWebGLBackground } from "@/app/components/agency/HeroWebGLBackground";
+import { MusicNudge } from "@/app/components/ui/MusicNudge";
 import { MagneticButton } from "@/app/components/ui/MagneticButton";
 import { ElasticLine } from "@/app/components/ui/ElasticLine";
 import { ChipTooltip } from "@/app/components/ui/ChipTooltip";
@@ -33,6 +34,9 @@ export function AgencyHero() {
 
       {/* Background Elements - Full Width (hidden while the WebGL trial runs in dark) */}
       {!(HERO_WEBGL && theme === "dark") && <AnimeGrid />}
+
+      {/* One-time "this site has a soundtrack" nudge - the glyph field pays off with sound */}
+      {theme === "dark" && <MusicNudge />}
 
       {/* GlassHero (WebGL figure) DISABLED 2026-06-10 on client decision -- ATF restored to the type-led layout. Component kept in src/app/components/ui/GlassHero.tsx if revisited. */}
 
