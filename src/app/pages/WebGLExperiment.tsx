@@ -52,7 +52,8 @@ void main(){
 
 // 2 — Aurora: flowing bands of light (wave-displaced gradient, opposing flows).
 // The "premium gradient" technique - layered noise displaces soft ribbons; nothing
-// rigid. Dark -> clay field with two flowing lime light ribbons.
+// rigid. Dark -> clay field with two flowing lime light ribbons. AUDIO-REACTIVE:
+// the main ribbon breathes and thickens with the bass, the second rides the mids.
 const AURORA = `
 void main(){
   vec2 res=u_res;
@@ -69,14 +70,16 @@ void main(){
   vec3 clay=vec3(0.42,0.22,0.16);
   vec3 lime=vec3(0.831,1.0,0.0);
   vec3 col = mix(dark, clay, smoothstep(0.12,0.9, y + w*0.35 - 0.12));
-  // ribbon 1 (soft gaussian, flows + follows pointer y)
+  // ribbon 1 (soft gaussian, flows + follows pointer y; breathes with the bass)
   float wl = 0.50 + w*0.42 + mo.y*0.22;
-  float th = 0.085 + 0.05*noise(vec2(x, t*0.12));
-  col += lime * exp(-pow((y-wl)/th, 2.0)) * 0.95;
-  // ribbon 2 (fainter, higher, opposing flow)
+  float th = 0.085 + 0.05*noise(vec2(x, t*0.12)) + 0.035*u_bass;
+  col += lime * exp(-pow((y-wl)/th, 2.0)) * (0.72+0.40*u_bass);
+  // ribbon 2 (fainter, higher, opposing flow; rides the mids)
   float w2 = (noise(vec2(x*0.8 - t*0.05, 4.0))*0.9 + noise(vec2(x*1.4 + t*0.04, 2.0))*0.5)/1.4;
   float wl2 = 0.72 + w2*0.30;
-  col += lime * exp(-pow((y-wl2)/0.13, 2.0)) * 0.35;
+  col += lime * exp(-pow((y-wl2)/0.13, 2.0)) * (0.24+0.30*u_mid);
+  // highs sprinkle a faint sparkle along the main ribbon
+  col += lime * exp(-pow((y-wl)/(th*0.5), 2.0)) * noise(vec2(x*22.0, t*2.5)) * u_high * 0.22;
   vec2 c = vec2((p.x-0.5)*ar, p.y-0.5);
   float md = length(c - mo);
   col += lime*exp(-md*3.2)*0.30*(0.5+u_mdown);
@@ -87,6 +90,7 @@ void main(){
 
 // 3 — Pixels: a field of drifting, twinkling lime pixels (one floating square per
 // grid cell, varied size + brightness, a few warm ones). Reacts to the pointer.
+// AUDIO-REACTIVE: highs drive the twinkle, a scattered subset flashes on the kick.
 const PIXELS = `
 void main(){
   vec2 uv=(gl_FragCoord.xy-0.5*u_res)/u_res.y;
@@ -109,6 +113,8 @@ void main(){
     float sz=0.06+rnd.y*0.10;                    // varied pixel size
     float sq=step(max(abs(d.x),abs(d.y)), sz);
     float tw=0.30+0.70*(0.5+0.5*sin(t*(0.8+rnd.x*1.6)+rnd.y*10.0)); // twinkle
+    tw *= 0.65+0.55*u_high;                      // highs drive the shimmer
+    tw += u_bass*1.3*step(0.82,rnd.x);           // scattered pixels flash on the kick
     tw += near*1.6;                              // brighten near the pointer
     vec3 tint=mix(lime, clay, step(0.90,rnd.y)*0.6); // a few warm pixels
     col += tint*sq*tw*on*0.8;
