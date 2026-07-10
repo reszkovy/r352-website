@@ -10,10 +10,10 @@ import { ElasticLine } from "@/app/components/ui/ElasticLine";
 import { ChipTooltip } from "@/app/components/ui/ChipTooltip";
 import { ArrowRight } from "lucide-react";
 
-// TRIAL: living WebGL background behind the home hero (dark theme only). Flip to
-// false to revert to the original background (bg-background + AnimeGrid). See the
-// "home-hero-webgl-trial" memory.
-const HERO_WEBGL = false;
+// TRIAL: living WebGL background behind the home hero (dark theme only) - the
+// ambient "808" logo-glyph field. Flip to false to revert to the original
+// background (bg-background + AnimeGrid). See the "home-hero-webgl-trial" memory.
+const HERO_WEBGL = true;
 
 export function AgencyHero() {
   const { t, language } = useLanguage();
@@ -28,11 +28,11 @@ export function AgencyHero() {
 
   return (
     <section className="relative w-full min-h-screen flex flex-col overflow-hidden bg-background">
-      {/* TRIAL WebGL background (dark theme only) - sits behind AnimeGrid + content. */}
+      {/* TRIAL WebGL background (dark theme only) - replaces AnimeGrid while active. */}
       {HERO_WEBGL && theme === "dark" && <HeroWebGLBackground />}
 
-      {/* Background Elements - Full Width */}
-      <AnimeGrid />
+      {/* Background Elements - Full Width (hidden while the WebGL trial runs in dark) */}
+      {!(HERO_WEBGL && theme === "dark") && <AnimeGrid />}
 
       {/* GlassHero (WebGL figure) DISABLED 2026-06-10 on client decision -- ATF restored to the type-led layout. Component kept in src/app/components/ui/GlassHero.tsx if revisited. */}
 
