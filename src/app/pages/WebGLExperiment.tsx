@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { Helmet } from "react-helmet-async";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { useAudio } from "@/app/context/AudioContext";
@@ -54,8 +55,8 @@ void main(){
 // the trace is a ring displaced radially by the audio bands (bass = slow wide
 // waves, mids = mid ripple, highs = fine ripple), and a bright beam head
 // orbits the ring once per bar (129 BPM) with a phosphor comet tail decaying
-// behind it. A slow counter-rotating clay ghost ring adds depth. Concentric
-// graticule + CRT scanlines + grain.
+// behind it. A slow counter-rotating clay ghost ring adds depth. CRT
+// scanlines + grain, no chrome - just the signal.
 const SCOPE = `
 void main(){
   vec2 res=u_res;
@@ -72,14 +73,6 @@ void main(){
 
   vec3 lime=vec3(0.831,1.0,0.0), clay=vec3(0.851,0.463,0.341);
   vec3 col=vec3(0.010);
-
-  // circular graticule: concentric reference rings
-  float rr=length(uv-c);
-  float ring=smoothstep(0.0035,0.0,abs(rr-0.34*fit))
-            +smoothstep(0.003,0.0,abs(rr-0.55*fit))*0.7
-            +smoothstep(0.003,0.0,abs(rr-0.16*fit))*0.6
-            +smoothstep(0.003,0.0,abs(rr-0.80*fit))*0.5;
-  col+=lime*ring*0.10;
 
   // the signal walks the circle: a ring displaced radially by the audio bands,
   // traced as segments; the phosphor trail decays behind the orbiting head
@@ -419,6 +412,24 @@ export function WebGLExperiment() {
     energy: WebGLUniformLocation | null;
   } | null>(null);
 
+  // ── cursor-reactive title: springy 3D tilt + drift toward the pointer ──
+  const mx = useMotionValue(0.5);
+  const my = useMotionValue(0.5);
+  useEffect(() => {
+    const onMove = (e: PointerEvent) => {
+      mx.set(e.clientX / Math.max(1, window.innerWidth));
+      my.set(e.clientY / Math.max(1, window.innerHeight));
+    };
+    window.addEventListener("pointermove", onMove, { passive: true });
+    return () => window.removeEventListener("pointermove", onMove);
+  }, [mx, my]);
+  const smx = useSpring(mx, { stiffness: 55, damping: 14 });
+  const smy = useSpring(my, { stiffness: 55, damping: 14 });
+  const rotY = useTransform(smx, [0, 1], [-8, 8]);
+  const rotX = useTransform(smy, [0, 1], [6, -6]);
+  const tX = useTransform(smx, [0, 1], [-16, 16]);
+  const tY = useTransform(smy, [0, 1], [-10, 10]);
+
   // ── live audio tap (808 sync) - falls back to a 129 BPM clock when silent ──
   const { isPlaying, play, getAnalyser } = useAudio();
   const playingRef = useRef(isPlaying);
@@ -607,12 +618,16 @@ export function WebGLExperiment() {
             <span className="block font-display uppercase tracking-[0.3em] text-[11px] text-[#D4FF00] mb-5">
               {pl ? "WebGL · eksperyment" : "WebGL · experiment"}
             </span>
-            <h1
+            <motion.h1
               key={PRESETS[active].id}
-              className="font-display font-normal uppercase text-white !text-[clamp(3.5rem,11vw,12rem)] leading-none tracking-tight [text-shadow:0_2px_60px_rgba(0,0,0,0.7)] mix-blend-screen"
+              initial={{ opacity: 0, y: 26, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              style={{ rotateX: rotX, rotateY: rotY, x: tX, y: tY, transformPerspective: 900 }}
+              className="font-display font-normal uppercase text-white !text-[clamp(3.5rem,11vw,12rem)] leading-none tracking-tight [text-shadow:0_2px_60px_rgba(0,0,0,0.7)] mix-blend-screen will-change-transform"
             >
               {PRESETS[active].name}
-            </h1>
+            </motion.h1>
           </div>
         </div>
 
