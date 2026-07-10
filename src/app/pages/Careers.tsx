@@ -28,13 +28,23 @@ const ROLES: Role[] = [
     },
   },
   {
-    id: "design-operations-lead",
-    title: "Design Operations Lead",
-    type: { en: "Remote · EU hours · Rolling", pl: "Zdalnie · strefa EU · nabór ciągły" },
-    tags: ["Operations", "Workflow", "AI governance"],
+    id: "freelance-cmo",
+    title: "Freelance CMO",
+    type: { en: "Partnership · Remote · EU hours", pl: "Partnerstwo · zdalnie · strefa EU" },
+    tags: ["Strategy", "Growth", "Partnership"],
     desc: {
-      en: "You build and run the operating layer - briefing workflows, quality standards, decision ownership, AI-assisted QA - that makes premium creative predictable at scale. You turn chaos into a repeatable system.",
-      pl: "Budujesz i prowadzisz warstwę operacyjną - workflow briefingu, standardy jakości, ownership decyzji, QA wspierane AI - która czyni premium kreację przewidywalną w skali. Zamieniasz chaos w powtarzalny system.",
+      en: "This is a partnership, not a hire. You are a fractional CMO with your own clients and point of view - we plug r352 in as your design and delivery engine, you plug in as the strategic marketing layer on ours. Shared engagements, shared upside.",
+      pl: "To partnerstwo, nie rekrutacja. Jesteś fractional CMO z własnymi klientami i własnym zdaniem - my podpinamy r352 jako Twój silnik designu i delivery, Ty wchodzisz jako warstwa strategii marketingowej w naszych projektach. Wspólne wdrożenia, wspólny upside.",
+    },
+  },
+  {
+    id: "marketing-performance-manager",
+    title: "Marketing & Performance Manager",
+    type: { en: "Remote · EU hours · Rolling", pl: "Zdalnie · strefa EU · nabór ciągły" },
+    tags: ["Performance", "Paid media", "Analytics"],
+    desc: {
+      en: "You run the performance layer on top of our creative output - paid campaigns, funnels, tracking, reporting. You close the loop between what we ship and what it earns, and feed the numbers back into the creative system.",
+      pl: "Prowadzisz warstwę performance nad naszą kreacją - kampanie paid, funnele, tracking, raportowanie. Domykasz pętlę między tym, co dowozimy, a tym, co to zarabia, i oddajesz liczby z powrotem do systemu kreatywnego.",
     },
   },
   {

@@ -132,7 +132,7 @@ export const ROUTE_META = {
   "/careers": {
     title: "Careers - r352 | Join the design operations team",
     description:
-      "Open roles at r352 - senior product designers, design operations leads and brand designers. Remote-first, EU-anchored, senior-only. Build the operating system behind great design.",
+      "Open roles at r352 - product, brand and digital designers, marketing and performance, plus a fractional CMO partnership. Remote-first, EU-anchored. Build the operating system behind great design.",
     ogImage: DEFAULT_OG,
   },
   "/ai-runners": {
