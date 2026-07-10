@@ -69,11 +69,11 @@ void main(){
     float mask=texture2D(u_glyphs,vec2((clamp(lf.x,0.0,1.0)+gi)*0.25,clamp(lf.y,0.0,1.0))).r*inQ;
 
     vec3 tint=mix(lime,clay,step(0.93,hash(cell*1.7+3.3)));
-    col+=lime*mask*0.024;                          // idle field
-    col+=tint*mask*on*(0.02+env*0.34*amp+near*0.22);
+    col+=lime*mask*0.036;                          // idle field
+    col+=tint*mask*on*(0.03+env*0.51*amp+near*0.33);
   }
 
-  col*=1.0+u_bass*0.08;                            // faint breath on the kick
+  col*=1.0+u_bass*0.10;                            // faint breath on the kick
   float v=length(uv); col*=1.0-0.30*v*v;
   col+=(hash(gl_FragCoord.xy+u_time)-0.5)*0.014;
   col*=0.85;                                       // ambient behind the interface

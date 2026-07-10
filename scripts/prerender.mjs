@@ -444,6 +444,24 @@ try {
         try { sessionStorage.removeItem("r352-splash"); } catch (e) {}
       });
 
+      // Strip React portals from the capture. Components like ScrollSequence
+      // createPortal() fixed full-viewport layers directly onto <body>; the
+      // outerHTML capture serializes them into the static file, but main.tsx
+      // boots with createRoot(#root) which never touches those body children -
+      // so the serialized portal survives as a permanent opaque overlay on any
+      // direct load of the prerendered route (it covered /for-agencies with a
+      // frozen hero layer). Runtime recreates every portal it needs, so the
+      // static copy is pure garbage: keep only #root, the splash, and
+      // non-visual nodes (script/style/link/meta).
+      await page.evaluate(() => {
+        var keepTags = { SCRIPT: 1, STYLE: 1, LINK: 1, META: 1, NOSCRIPT: 1, TEMPLATE: 1 };
+        Array.prototype.slice.call(document.body.children).forEach(function (el) {
+          if (el.id === "root" || el.id === "r352-splash") return;
+          if (keepTags[el.tagName]) return;
+          el.parentNode.removeChild(el);
+        });
+      });
+
       // Capture full final HTML
       let html = await page.evaluate(() => `<!DOCTYPE html>${document.documentElement.outerHTML}`);
 
