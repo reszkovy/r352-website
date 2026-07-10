@@ -50,63 +50,73 @@ void main(){
   gl_FragColor=vec4(col,1.0);
 }`;
 
-// 2 — Scope: a phosphor vector display (oscilloscope in XY mode) drawing a
-// Lissajous figure. STRUCTURALLY audio-reactive: bass bends the frequency
-// ratio (the SHAPE changes, not just brightness), mids twist the phase, highs
-// add signal jitter to the beam. A beam head sweeps the trace like a real CRT,
-// a faint clay ghost figure runs offset underneath. Faint graticule + grain.
+// 2 — Scope: a circular phosphor vector display. The SOUND WALKS THE CIRCLE:
+// the trace is a ring displaced radially by the audio bands (bass = slow wide
+// waves, mids = mid ripple, highs = fine ripple), and a bright beam head
+// orbits the ring once per bar (129 BPM) with a phosphor comet tail decaying
+// behind it. A slow counter-rotating clay ghost ring adds depth. Concentric
+// graticule + CRT scanlines + grain.
 const SCOPE = `
 void main(){
   vec2 res=u_res;
   vec2 uv=(gl_FragCoord.xy-0.5*res)/res.y;
   vec2 m=(u_mouse-0.5*res)/res.y;
   float t=u_time;
+  float beat=t*129.0/60.0;
+  // the beam head orbits once per bar (4 beats), clockwise from 12 o'clock
+  float headA=1.5708-6.2831853*fract(beat/4.0);
 
-  // figure morphs slowly; audio bends it
-  float fa=2.0+1.0*sin(t*0.11)+1.6*u_bass;
-  float fb=3.0+1.0*sin(t*0.073+1.7)+1.1*u_mid;
-  float ph=t*0.30;
-  vec2 c=m*0.14;                       // figure drifts gently toward the pointer
-  float R=0.46+0.06*u_bass+0.05*u_mdown;
-  float jit=u_high*0.012;
+  vec2 c=m*0.10;                        // the whole instrument drifts to the pointer
+  float fit=min(1.0,(res.x/res.y)*0.92);   // aspect-safe: shrink the instrument on portrait
+  float R=(0.34+0.02*sin(t*0.4)+0.05*u_bass)*fit;
 
   vec3 lime=vec3(0.831,1.0,0.0), clay=vec3(0.851,0.463,0.341);
   vec3 col=vec3(0.010);
 
-  // faint graticule
-  vec2 gq=abs(fract(uv*2.5+0.5)-0.5);
-  col+=lime*smoothstep(0.012,0.0,min(gq.x,gq.y))*0.028;
+  // circular graticule: concentric reference rings
+  float rr=length(uv-c);
+  float ring=smoothstep(0.0035,0.0,abs(rr-0.34*fit))
+            +smoothstep(0.003,0.0,abs(rr-0.55*fit))*0.7
+            +smoothstep(0.003,0.0,abs(rr-0.16*fit))*0.6
+            +smoothstep(0.003,0.0,abs(rr-0.80*fit))*0.5;
+  col+=lime*ring*0.10;
 
+  // the signal walks the circle: a ring displaced radially by the audio bands,
+  // traced as segments; the phosphor trail decays behind the orbiting head
   float beam=0.0, halo=0.0, headGlow=0.0, ghost=0.0;
-  float head=t*1.7;
-  vec2 prev=c+R*vec2(sin(ph), 0.0);
-  vec2 prevG=c+R*0.92*vec2(sin(ph*0.7), 0.0);
-  for(int i=1;i<=96;i++){
-    float s0=6.2831853*float(i)/96.0;
-    vec2 pt=c+R*vec2(sin(fa*s0+ph), sin(fb*s0));
-    pt+=jit*vec2(hash(vec2(s0,t))-0.5, hash(vec2(t,s0))-0.5);
-    // distance to the segment prev->pt = continuous phosphor trace
-    vec2 pa=uv-prev, ba=pt-prev;
-    float h=clamp(dot(pa,ba)/max(dot(ba,ba),1e-6),0.0,1.0);
-    float d=length(pa-ba*h);
-    beam+=exp(-d*110.0);
-    halo+=exp(-d*10.0);
-    // the sweeping beam head burns brighter, like a real CRT
-    float hd=abs(mod(s0-head+3.14159,6.2831853)-3.14159);
-    headGlow+=exp(-d*90.0)*exp(-hd*3.0);
+  vec2 prev=vec2(0.0); vec2 prevG=vec2(0.0);
+  for(int i=0;i<=160;i++){
+    float th=6.2831853*float(i)/160.0;
+    float w=fit*(0.085*u_bass*sin(5.0*th - t*1.8)
+           +0.050*u_mid*sin(11.0*th + t*2.4)
+           +0.020*u_high*sin(17.0*th - t*4.0)
+           +0.020*(noise(vec2(th*1.2, t*0.5))-0.5));
+    vec2 pt=c+(R+w)*vec2(cos(th), sin(th));
+    if(i>0){
+      vec2 pa=uv-prev, ba=pt-prev;
+      float h=clamp(dot(pa,ba)/max(dot(ba,ba),1e-6),0.0,1.0);
+      float d=length(pa-ba*h);
+      beam+=exp(-d*110.0);
+      halo+=exp(-d*10.0);
+      float back=mod(th-headA,6.2831853);        // angular distance behind the head
+      headGlow+=exp(-d*90.0)*exp(-back*1.1);     // comet tail around the ring
+    }
     prev=pt;
-    // clay ghost figure, offset ratio
-    vec2 pg=c+R*0.92*vec2(sin((fa+1.0)*s0+ph*0.7), sin((fb-1.0)*s0));
-    vec2 paG=uv-prevG, baG=pg-prevG;
-    float hG=clamp(dot(paG,baG)/max(dot(baG,baG),1e-6),0.0,1.0);
-    ghost+=exp(-length(paG-baG*hG)*90.0);
+    // ghost: slow counter-rotating inner ring in clay
+    float w2=fit*(0.05*u_mid*sin(7.0*th + t*1.2)+0.02*(noise(vec2(th*0.9, t*0.4+3.0))-0.5));
+    vec2 pg=c+(R*0.62+w2)*vec2(cos(t*0.1-th), sin(t*0.1-th));
+    if(i>0){
+      vec2 paG=uv-prevG, baG=pg-prevG;
+      float hG=clamp(dot(paG,baG)/max(dot(baG,baG),1e-6),0.0,1.0);
+      ghost+=exp(-length(paG-baG*hG)*90.0);
+    }
     prevG=pg;
   }
-  col+=lime*(beam*0.10+halo*0.0045+headGlow*0.55);
-  col+=clay*ghost*0.030;
+  col+=lime*(beam*0.05+halo*0.004+headGlow*0.70);
+  col+=clay*ghost*0.042;
 
   col*=0.97+0.03*sin(gl_FragCoord.y*1.57);   // CRT scanlines
-  float v=length(uv); col*=1.0-0.32*v*v;
+  float v=length(uv); col*=1.0-0.20*v*v;
   col+=(hash(gl_FragCoord.xy+u_time)-0.5)*0.02;
   gl_FragColor=vec4(col,1.0);
 }`;
@@ -227,11 +237,12 @@ void main(){
   gl_FragColor=vec4(col,1.0);
 }`;
 
-// 5 — Cymatics: sound made visible. Chladni standing-wave nodal lines of a
-// vibrating plate, morphing continuously; the bass retunes the plate to higher
-// modes, mids detune the cross-axis, highs make the lines shimmer. A second,
-// fainter clay plate runs offset modes underneath for depth. The pointer bends
-// the plate locally. Abstract on purpose - physics of the site's soundtrack.
+// 5 — Cymatics: sound made visible, IMMERSIVE. Chladni standing-wave nodal
+// lines of a vibrating plate; you sit inside it: breathing zoom (bass pushes
+// in), pointer parallax, a warm "sand" wash collecting between the lines, and
+// a micro-scale plate woven within for depth. Bass retunes the modes, mids
+// detune the cross-axis + warm the wash, highs shimmer the micro layer. The
+// pointer bends the plate locally. Physics of the site's soundtrack.
 const CYMATICS = `
 void main(){
   vec2 res=u_res;
@@ -239,29 +250,42 @@ void main(){
   vec2 m=(u_mouse-0.5*res)/res.y;
   float t=u_time*0.12;
 
-  // slowly morphing (non-integer) mode numbers; audio retunes the plate
-  float a=3.0+2.0*sin(t*0.70)+2.2*u_bass;
-  float b=4.0+2.0*sin(t*0.53+2.1)+1.6*u_mid;
+  // you are INSIDE the plate: breathing zoom (bass pushes in) + pointer parallax
+  float zoom=1.0+0.07*sin(u_time*0.05)+0.10*u_bass;
+  vec2 look=uv/zoom+m*0.07;
 
-  // gentle domain warp keeps it organic; the pointer bends the plate
-  vec2 p=uv*3.14159;
-  p+=0.5*vec2(noise(uv*1.6+t)-0.5, noise(uv*1.6-t+7.3)-0.5);
+  float a=3.0+2.0*sin(t*0.70)+2.2*u_bass;
+  float b=a+1.5+0.8*sin(t*0.53+2.1)+1.6*u_mid;   // derived from a: modes can never collide
+
+  vec2 p=look*3.14159;
+  p+=0.5*vec2(noise(look*1.6+t)-0.5, noise(look*1.6-t+7.3)-0.5);
   float md=length(uv-m);
-  p+=(uv-m)/max(md,0.001)*exp(-md*3.0)*0.35*(0.5+u_mdown);
+  p+=(uv-m)*exp(-md*3.0)*1.2*(0.5+u_mdown);
 
   float f=cos(a*p.x)*cos(b*p.y)-cos(b*p.x)*cos(a*p.y);
-  float lines=smoothstep(0.16,0.0,abs(f));
+  float lines=smoothstep(0.10,0.0,abs(f));
   float glow=smoothstep(0.55,0.0,abs(f));
+
+  // sand wash: energy collects between the nodal lines and fills the frame
+  float sand=pow(1.0-clamp(abs(f)*0.85,0.0,1.0),3.0);
+
+  // micro plate woven inside the macro one - second scale of depth
+  vec2 p2=look*8.2+vec2(1.7,4.2);
+  float f2=cos((a*0.7+1.0)*p2.x)*cos(b*0.6*p2.y)-cos(b*0.6*p2.x)*cos((a*0.7+1.0)*p2.y);
+  float micro=smoothstep(0.10,0.0,abs(f2));
 
   vec3 lime=vec3(0.831,1.0,0.0), clay=vec3(0.851,0.463,0.341);
   vec3 col=vec3(0.012);
-  col+=lime*(lines*0.95+glow*0.16)*(0.5+0.5*u_bass+0.25*u_high);
+  col+=clay*sand*(1.0-glow)*(0.07+0.09*u_mid);            // warm wash, gated off the lime zone
+  col+=lime*micro*sand*(0.05+0.10*u_high);                // micro shimmer inside the wash
+  col+=lime*(lines*1.0+glow*0.08)*(0.55+0.28*u_bass+0.18*u_high);
 
   // second plate, offset modes, clay - depth layer
-  float f2=cos((b+1.0)*p.y)*cos((a-1.0)*p.x)-cos((a-1.0)*p.y)*cos((b+1.0)*p.x);
-  col+=clay*smoothstep(0.12,0.0,abs(f2))*0.20;
+  float f3=cos((b+1.0)*p.y)*cos((a-1.0)*p.x)-cos((a-1.0)*p.y)*cos((b+1.0)*p.x);
+  col+=clay*smoothstep(0.12,0.0,abs(f3))*0.20;
 
   col+=lime*exp(-md*3.2)*0.18*(0.5+u_mdown);
+  col=col/(1.0+0.45*col);                                 // soft knee - depth survives the peaks
   float v=length(uv); col*=1.0-0.30*v*v;
   col+=(hash(gl_FragCoord.xy+u_time)-0.5)*0.02;
   gl_FragColor=vec4(col,1.0);
