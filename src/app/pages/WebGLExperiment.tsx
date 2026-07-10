@@ -109,10 +109,63 @@ void main(){
   gl_FragColor=vec4(col,1.0);
 }`;
 
+// 4 — 808: a step-sequencer grid running at Planet Rock tempo (~129 BPM).
+// 16 columns of pads; bottom lane = kick on quarters, lane 2 = snare on 2+4,
+// the rest is a random pattern reshuffled every 2 bars. A playhead sweeps the
+// grid, hit pads flash and decay, the whole frame breathes on every kick.
+const EIGHT08 = `
+void main(){
+  vec2 res=u_res;
+  vec2 uv=(gl_FragCoord.xy-0.5*res)/res.y;
+  vec2 m=(u_mouse-0.5*res)/res.y;
+  float ar=res.x/res.y;
+  vec2 p=gl_FragCoord.xy/res;
+
+  float BPM=129.0;                        // Planet Rock
+  float beat=u_time*BPM/60.0;
+  float s16=beat*4.0;                     // 16th-note clock
+  float kick=exp(-fract(beat)*5.0);       // four-on-the-floor body pulse
+
+  float COLS=16.0;
+  vec2 g=vec2(p.x*COLS, p.y*COLS/ar);     // square pads, 16 steps wide
+  vec2 id=floor(g);
+  vec2 f=fract(g)-0.5;
+
+  // pattern: kick lane on quarters, snare lane on 2+4, rest random (reseed / 2 bars)
+  float seed=floor(beat/8.0);
+  float on;
+  if(id.y<0.5)      on=1.0-step(0.5,mod(id.x,4.0));
+  else if(id.y<1.5) on=1.0-step(0.5,abs(mod(id.x,8.0)-4.0));
+  else              on=step(0.62,hash(id+seed*13.71));
+
+  float tS=mod(s16-id.x,16.0);            // 16th-notes since this column was hit
+  float env=exp(-tS*1.35);                // flash + decay
+
+  float dmax=max(abs(f.x),abs(f.y));
+  float pad=smoothstep(0.44,0.40,dmax);   // pad footprint
+  float core=smoothstep(0.34,0.28,dmax);  // lit core
+
+  float near=exp(-length(uv-m)*2.8)*(0.6+0.9*u_mdown);
+
+  vec3 lime=vec3(0.831,1.0,0.0), clay=vec3(0.851,0.463,0.341);
+  vec3 tint=mix(lime,clay,step(0.92,hash(id*1.7+3.3)));  // a few warm pads
+  vec3 col=vec3(0.014);
+  col+=lime*pad*0.028;                                    // idle grid
+  col+=tint*core*on*(0.06+env*0.95+near*0.35);
+  float xph=mod(s16,16.0);
+  col+=lime*exp(-pow(g.x-xph,2.0)*1.4)*0.045;             // playhead band
+  col*=1.0+kick*0.12+u_mdown*0.06;
+  col*=0.97+0.03*sin(gl_FragCoord.y*1.57);                // faint scanlines
+  float v=length(uv); col*=1.0-0.28*v*v;
+  col+=(hash(gl_FragCoord.xy+u_time)-0.5)*0.018;
+  gl_FragColor=vec4(col,1.0);
+}`;
+
 const PRESETS = [
   { id: "flow", name: "Flow", frag: PRELUDE + FLOW },
   { id: "aurora", name: "Aurora", frag: PRELUDE + AURORA },
   { id: "pixels", name: "Pixels", frag: PRELUDE + PIXELS },
+  { id: "808", name: "808", frag: PRELUDE + EIGHT08 },
 ];
 
 function compile(gl: WebGLRenderingContext, type: number, src: string) {
@@ -249,7 +302,7 @@ export function WebGLExperiment() {
         <div className="pointer-events-none absolute inset-0 flex items-center">
           <div className="w-full max-w-[1800px] mx-auto px-8 md:px-14">
             <span className="block font-display uppercase tracking-[0.25em] text-[11px] text-[#D4FF00] mb-5">
-              {(pl ? "WebGL · eksperyment" : "WebGL · experiment") + " — " + PRESETS[active].name}
+              {(pl ? "WebGL · eksperyment" : "WebGL · experiment") + " · " + PRESETS[active].name}
             </span>
             <h1
               className="font-display font-normal text-white !text-[clamp(2.5rem,5.6vw,7rem)] leading-[0.98] tracking-tight [text-shadow:0_2px_44px_rgba(0,0,0,0.65)]"
