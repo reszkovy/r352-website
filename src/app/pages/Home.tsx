@@ -73,7 +73,7 @@ export function Home() {
           gray emerges and recedes smoothly as you scroll - no rigid section edge.
           Kept dark (white text + lime) so the fixed nav stays legible when it
           passes over the band; a light-inverted version washed the nav out. */}
-      <section className="relative isolate">
+      <section className="relative isolate stay-dark">
         {/* Graphite fill */}
         <div className="absolute inset-0 -z-10 bg-[#363636]" aria-hidden="true" />
         {/* Feathered edges - blend the graphite into the dark page above & below */}

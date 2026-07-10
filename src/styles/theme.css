@@ -564,6 +564,7 @@ body:is(.lime-theme, .global-light-mode) .bg-\[\#111\] {
 }
 
 body:is(.lime-theme, .global-light-mode) .hover\:bg-\[\#0a0a0a\]:hover,
+body:is(.lime-theme, .global-light-mode) .hover\:bg-\[\#0f0f0f\]:hover,
 body:is(.lime-theme, .global-light-mode) .hover\:bg-\[\#222\]:hover {
   background-color: #EEEEEE !important;
 }
@@ -597,6 +598,10 @@ body:is(.lime-theme, .global-light-mode) .border-white\/10,
 body:is(.lime-theme, .global-light-mode) .border-white\/20,
 body:is(.lime-theme, .global-light-mode) .border-white\/5 {
   border-color: rgba(0,0,0,0.1) !important;
+}
+
+body:is(.lime-theme, .global-light-mode) .border-white\/30 {
+  border-color: rgba(0,0,0,0.3) !important;
 }
 
 body:is(.lime-theme, .global-light-mode) header {
@@ -820,6 +825,47 @@ body:is(.lime-theme, .global-light-mode) a.text-white:visited {
 
 body:is(.lime-theme, .global-light-mode) a.text-white:hover {
   color: #6B8F00 !important;
+}
+
+/* ─── Stay-dark bands ───────────────────────────────────────────────────
+   Sections marked .stay-dark are designed as dark bands in BOTH themes
+   (e.g. the Operating Model graphite band on Home - kept dark so the fixed
+   nav stays legible when passing over it). The global light-mode overrides
+   above flip text tokens to dark ink, which makes them invisible on these
+   bands - these higher-specificity exceptions pin the text back to light. */
+body:is(.lime-theme, .global-light-mode) .stay-dark .text-white {
+  color: #FFFFFF !important;
+}
+
+body:is(.lime-theme, .global-light-mode) .stay-dark .text-neutral-200 {
+  color: #E5E5E5 !important;
+}
+
+body:is(.lime-theme, .global-light-mode) .stay-dark .text-neutral-300 {
+  color: #D4D4D4 !important;
+}
+
+body:is(.lime-theme, .global-light-mode) .stay-dark .text-neutral-400 {
+  color: #A3A3A3 !important;
+}
+
+body:is(.lime-theme, .global-light-mode) .stay-dark .text-neutral-500 {
+  color: #737373 !important;
+}
+
+body:is(.lime-theme, .global-light-mode) .stay-dark .text-\[\#D4FF00\],
+body:is(.lime-theme, .global-light-mode) .stay-dark .text-\[\#DAFF45\] {
+  color: #D4FF00 !important;
+}
+
+/* Feathered edge gradients inside a stay-dark band blend the band into the
+   PAGE background - in light mode the page is #F1F6FA, so the feathers must
+   fade from #F1F6FA into transparent (the global light-mode gradient
+   override would otherwise turn them into solid white strips). */
+body:is(.lime-theme, .global-light-mode) .stay-dark .bg-gradient-to-b,
+body:is(.lime-theme, .global-light-mode) .stay-dark .bg-gradient-to-t {
+  --tw-gradient-from: #F1F6FA !important;
+  --tw-gradient-to: transparent !important;
 }
 
 @theme {

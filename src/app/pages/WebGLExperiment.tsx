@@ -194,11 +194,52 @@ void main(){
   gl_FragColor=vec4(col,1.0);
 }`;
 
+// 5 — Cymatics: sound made visible. Chladni standing-wave nodal lines of a
+// vibrating plate, morphing continuously; the bass retunes the plate to higher
+// modes, mids detune the cross-axis, highs make the lines shimmer. A second,
+// fainter clay plate runs offset modes underneath for depth. The pointer bends
+// the plate locally. Abstract on purpose - physics of the site's soundtrack.
+const CYMATICS = `
+void main(){
+  vec2 res=u_res;
+  vec2 uv=(gl_FragCoord.xy-0.5*res)/res.y;
+  vec2 m=(u_mouse-0.5*res)/res.y;
+  float t=u_time*0.12;
+
+  // slowly morphing (non-integer) mode numbers; audio retunes the plate
+  float a=3.0+2.0*sin(t*0.70)+2.2*u_bass;
+  float b=4.0+2.0*sin(t*0.53+2.1)+1.6*u_mid;
+
+  // gentle domain warp keeps it organic; the pointer bends the plate
+  vec2 p=uv*3.14159;
+  p+=0.5*vec2(noise(uv*1.6+t)-0.5, noise(uv*1.6-t+7.3)-0.5);
+  float md=length(uv-m);
+  p+=(uv-m)/max(md,0.001)*exp(-md*3.0)*0.35*(0.5+u_mdown);
+
+  float f=cos(a*p.x)*cos(b*p.y)-cos(b*p.x)*cos(a*p.y);
+  float lines=smoothstep(0.16,0.0,abs(f));
+  float glow=smoothstep(0.55,0.0,abs(f));
+
+  vec3 lime=vec3(0.831,1.0,0.0), clay=vec3(0.851,0.463,0.341);
+  vec3 col=vec3(0.012);
+  col+=lime*(lines*0.95+glow*0.16)*(0.5+0.5*u_bass+0.25*u_high);
+
+  // second plate, offset modes, clay - depth layer
+  float f2=cos((b+1.0)*p.y)*cos((a-1.0)*p.x)-cos((a-1.0)*p.y)*cos((b+1.0)*p.x);
+  col+=clay*smoothstep(0.12,0.0,abs(f2))*0.20;
+
+  col+=lime*exp(-md*3.2)*0.18*(0.5+u_mdown);
+  float v=length(uv); col*=1.0-0.30*v*v;
+  col+=(hash(gl_FragCoord.xy+u_time)-0.5)*0.02;
+  gl_FragColor=vec4(col,1.0);
+}`;
+
 const PRESETS = [
   { id: "flow", name: "Flow", frag: PRELUDE + FLOW },
   { id: "aurora", name: "Aurora", frag: PRELUDE + AURORA },
   { id: "pixels", name: "Pixels", frag: PRELUDE + PIXELS },
   { id: "808", name: "808", frag: PRELUDE + EIGHT08 },
+  { id: "cymatics", name: "Cymatics", frag: PRELUDE + CYMATICS },
 ];
 
 function compile(gl: WebGLRenderingContext, type: number, src: string) {

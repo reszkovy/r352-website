@@ -8,6 +8,7 @@ import { OfferMarquee } from "@/app/components/agency/OfferMarquee";
 import { HoverNote } from "@/app/components/ui/HoverNote";
 import { MaskReveal } from "@/app/components/ui/MaskReveal";
 import { PinnedHowItWorks } from "@/app/components/agency/PinnedHowItWorks";
+import { useTheme } from "@/app/context/ThemeContext";
 
 /**
  * ForAgencies - the white-label / project-consultant track.
@@ -26,6 +27,8 @@ import { PinnedHowItWorks } from "@/app/components/agency/PinnedHowItWorks";
 export function ForAgencies() {
   const { language } = useLanguage();
   const pl = language === "pl";
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
 
   // ── How it works - four steps, agency keeps the front, r352 runs the system ──
   const steps = [
@@ -142,12 +145,18 @@ export function ForAgencies() {
           presenting the finished crystal. Copy is overlaid and fades out as you
           scroll; object-contain keeps the portrait uncropped and the black source
           bg blends into the page, so the hands read as floating full-height. ── */}
+      {/* Theme-aware background (matches /philosophy handling): the portal wrapper
+          bg is an inline style, so the global light-mode CSS overrides can't flip
+          it - without this the hero stays near-black in light theme while the
+          text tokens flip to dark ink (invisible copy). key={theme} re-mounts
+          the canvas cleanly on toggle. */}
       <ScrollSequence
+        key={theme}
         frameCount={125}
         framePath="/agency-frames/frame"
         padDigits={3}
         pinHeight="180vh"
-        backgroundColor="#0a0a0a"
+        backgroundColor={isDark ? "#0a0a0a" : "#F1F6FA"}
         fadeChildrenAt={[0.12, 0.3]}
         exitMode="fade"
         exitVh={80}
@@ -156,7 +165,7 @@ export function ForAgencies() {
       >
         {/* Mobile-only bottom scrim - hands sit top (object-top), copy sits
             bottom; this gradient keeps the copy legible over the glow. */}
-        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent md:hidden pointer-events-none" />
+        <div className={`absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t ${isDark ? "from-[#0a0a0a] via-[#0a0a0a]/80" : "from-[#F1F6FA] via-[#F1F6FA]/80"} to-transparent md:hidden pointer-events-none`} />
         <div className="max-w-[1600px] mx-auto w-full relative">
           <div className="max-w-2xl">
             <span className="text-xs font-display uppercase tracking-widest text-[#D4FF00] mb-5 md:mb-6 block">

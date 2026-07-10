@@ -6,6 +6,7 @@ import {
   cubicBezier,
   MotionValue,
 } from "motion/react";
+import { useTheme } from "@/app/context/ThemeContext";
 
 /**
  * LoopPath - scroll-driven "the r3loop draws itself" scene.
@@ -33,6 +34,34 @@ import {
 
 const EASE = cubicBezier(0.22, 1, 0.36, 1);
 const LIME = "#D4FF00";
+
+/* Theme-aware SVG palette. SVG fills are attributes, not utility classes, so
+   the global light-mode CSS overrides can't flip them - resolved here instead.
+   Light accent #9abb00 mirrors the text-[#9abb00] dark:text-[#D4FF00] pattern
+   used on /process (raw lime is unreadable on the light background). */
+interface LoopPalette {
+  accent: string;
+  ink: string;
+  nodeFill: string;
+  nodeRing: string;
+  ghost: string;
+}
+
+const DARK_PALETTE: LoopPalette = {
+  accent: LIME,
+  ink: "#ffffff",
+  nodeFill: "#0a0a0a",
+  nodeRing: "rgba(255,255,255,0.3)",
+  ghost: "rgba(255,255,255,0.08)",
+};
+
+const LIGHT_PALETTE: LoopPalette = {
+  accent: "#9abb00",
+  ink: "#111111",
+  nodeFill: "#F1F6FA",
+  nodeRing: "rgba(0,0,0,0.3)",
+  ghost: "rgba(0,0,0,0.1)",
+};
 
 export interface LoopStep {
   num: string;
@@ -77,10 +106,12 @@ function Node({
   p,
   i,
   step,
+  palette,
 }: {
   p: MotionValue<number>;
   i: number;
   step: LoopStep;
+  palette: LoopPalette;
 }) {
   const at = fractionToProgress(nodeFraction(i));
   const active = useTransform(p, [at - 0.012, at + 0.012], [0, 1], {
@@ -100,7 +131,7 @@ function Node({
         cy={y}
         r={17}
         fill="none"
-        stroke={LIME}
+        stroke={palette.accent}
         strokeWidth={1}
         style={{ opacity: halo }}
       />
@@ -109,12 +140,12 @@ function Node({
         cx={x}
         cy={y}
         r={7}
-        fill="#0a0a0a"
-        stroke="rgba(255,255,255,0.3)"
+        fill={palette.nodeFill}
+        stroke={palette.nodeRing}
         strokeWidth={1.5}
       />
       {/* lit node */}
-      <motion.circle cx={x} cy={y} r={7} fill={LIME} style={{ opacity: active }} />
+      <motion.circle cx={x} cy={y} r={7} fill={palette.accent} style={{ opacity: active }} />
 
       {/* step number - always in DOM */}
       <text
@@ -123,19 +154,19 @@ function Node({
         textAnchor="middle"
         fontSize="13"
         className="font-display"
-        fill={LIME}
+        fill={palette.accent}
       >
         {step.num}
       </text>
 
-      {/* label - always visible white, lime overlay scrubs in */}
+      {/* label - always visible in ink color, accent overlay scrubs in */}
       <text
         x={x}
         y={labelY}
         textAnchor="middle"
         fontSize="21"
         fontWeight="700"
-        fill="#ffffff"
+        fill={palette.ink}
         letterSpacing="-0.02em"
       >
         {step.label}
@@ -147,7 +178,7 @@ function Node({
         textAnchor="middle"
         fontSize="21"
         fontWeight="700"
-        fill={LIME}
+        fill={palette.accent}
         letterSpacing="-0.02em"
         style={{ opacity: active }}
       >
@@ -167,6 +198,8 @@ interface LoopPathProps {
 
 export function LoopPath({ steps, closingLabel, children }: LoopPathProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const { theme } = useTheme();
+  const palette = theme === "dark" ? DARK_PALETTE : LIGHT_PALETTE;
 
   // Single useScroll for the whole scene (perf constraint).
   const { scrollYProgress: p } = useScroll({
@@ -197,7 +230,7 @@ export function LoopPath({ steps, closingLabel, children }: LoopPathProps) {
           <path
             d={PATH_D}
             fill="none"
-            stroke="rgba(255,255,255,0.08)"
+            stroke={palette.ghost}
             strokeWidth={1.5}
           />
 
@@ -205,7 +238,7 @@ export function LoopPath({ steps, closingLabel, children }: LoopPathProps) {
           <motion.path
             d={PATH_D}
             fill="none"
-            stroke={LIME}
+            stroke={palette.accent}
             strokeWidth={6}
             strokeLinecap="round"
             pathLength={1}
@@ -218,7 +251,7 @@ export function LoopPath({ steps, closingLabel, children }: LoopPathProps) {
           <motion.path
             d={PATH_D}
             fill="none"
-            stroke={LIME}
+            stroke={palette.accent}
             strokeWidth={2}
             strokeLinecap="round"
             pathLength={1}
@@ -228,7 +261,7 @@ export function LoopPath({ steps, closingLabel, children }: LoopPathProps) {
 
           {/* nodes + labels */}
           {steps.map((step, i) => (
-            <Node key={step.num} p={p} i={i} step={step} />
+            <Node key={step.num} p={p} i={i} step={step} palette={palette} />
           ))}
 
           {/* loop-back glyph ↻ - Iterate feeds back into 01 Diagnose */}
@@ -236,14 +269,14 @@ export function LoopPath({ steps, closingLabel, children }: LoopPathProps) {
             <path
               d={GLYPH_ARC}
               fill="none"
-              stroke={LIME}
+              stroke={palette.accent}
               strokeWidth={2}
               strokeLinecap="round"
             />
             <path
               d={GLYPH_HEAD}
               fill="none"
-              stroke={LIME}
+              stroke={palette.accent}
               strokeWidth={2}
               strokeLinecap="round"
               strokeLinejoin="round"
