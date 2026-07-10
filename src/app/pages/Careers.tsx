@@ -18,16 +18,6 @@ type Role = {
 
 const ROLES: Role[] = [
   {
-    id: "senior-product-designer",
-    title: "Senior Product Designer",
-    type: { en: "Remote · EU hours · Rolling", pl: "Zdalnie · strefa EU · nabór ciągły" },
-    tags: ["UX/UI", "Design systems", "Product"],
-    desc: {
-      en: "You lead product design across client engagements - flows, interfaces, design systems - inside the r3loop operating system. Senior, self-directed, systems-minded. You ship polished work on a steady cadence, not one heroic sprint.",
-      pl: "Prowadzisz product design w projektach klientów - flowy, interfejsy, design systemy - wewnątrz operacyjnego systemu r3loop. Senior, samodzielny, myślący systemowo. Dowozisz dopracowaną robotę w stałym rytmie, nie jednym heroicznym zrywem.",
-    },
-  },
-  {
     id: "freelance-cmo",
     title: "Freelance CMO",
     type: { en: "Partnership · Remote · EU hours", pl: "Partnerstwo · zdalnie · strefa EU" },
@@ -55,16 +45,6 @@ const ROLES: Role[] = [
     desc: {
       en: "You shape brand systems and campaign work that hold across many locations and formats - from key visuals to full asset packs, delivered on a steady production rhythm without drifting off-brand.",
       pl: "Tworzysz systemy brandowe i kampanie, które trzymają się w wielu lokalizacjach i formatach - od key visuali po pełne pakiety assetów, dostarczane w stałym rytmie produkcji, bez dryfowania od marki.",
-    },
-  },
-  {
-    id: "mid-digital-designer",
-    title: "Mid Digital Designer",
-    type: { en: "Remote · EU hours · Rolling", pl: "Zdalnie · strefa EU · nabór ciągły" },
-    tags: ["Web / Landing", "Social", "Production"],
-    desc: {
-      en: "You produce digital design across web, landing pages, social and campaign - fast, on-brand, to spec. You work inside clear standards and the r3loop system, turning briefs into production-ready assets at a steady pace, and grow toward owning your own area.",
-      pl: "Produkujesz digital design - web, landing page, social, kampanie - szybko, on-brand, zgodnie ze specyfikacją. Pracujesz w jasnych standardach i systemie r3loop, zamieniając briefy w gotowe do produkcji assety w stałym tempie, i rośniesz w stronę własnego obszaru.",
     },
   },
 ];

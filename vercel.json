@@ -11,11 +11,6 @@
       "permanent": true
     },
     {
-      "source": "/work/discobowl",
-      "destination": "/work",
-      "permanent": true
-    },
-    {
       "source": "/journal/2",
       "destination": "/journal",
       "permanent": true

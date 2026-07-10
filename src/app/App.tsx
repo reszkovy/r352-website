@@ -216,7 +216,7 @@ function AppContent() {
     };
     if (path === "/careers") return {
       title: "Careers - r352 | Join the design operations team",
-      description: "Open roles at r352 - product, brand and digital designers, marketing and performance, plus a fractional CMO partnership. Remote-first, EU-anchored. Build the operating system behind great design.",
+      description: "Open roles at r352 - a fractional CMO partnership, marketing and performance, and brand and creative design. Remote-first, EU-anchored. Build the operating system behind great design.",
       ogImage: "https://www.r352.com/og-image.png?v=2"
     };
     if (path === "/privacy") return {
