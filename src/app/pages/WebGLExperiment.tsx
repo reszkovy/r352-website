@@ -16,6 +16,7 @@ const PRELUDE = `
 precision highp float;
 uniform vec2 u_res; uniform float u_time; uniform vec2 u_mouse; uniform float u_mdown;
 uniform float u_bass; uniform float u_mid; uniform float u_high;
+uniform float u_kick; uniform float u_energy;
 uniform sampler2D u_glyphs;
 float hash(vec2 p){ p=fract(p*vec2(123.34,456.21)); p+=dot(p,p+45.32); return fract(p.x*p.y); }
 vec2 hash2(vec2 p){ p=vec2(dot(p,vec2(127.1,311.7)),dot(p,vec2(269.5,183.3))); return fract(sin(p)*43758.5453); }
@@ -35,14 +36,14 @@ void main(){
   float t=u_time*0.06;
   vec2 q=vec2(fbm(uv*1.4+t), fbm(uv*1.4+vec2(5.2,1.3)-t));
   vec2 r=vec2(fbm(uv*1.4+3.6*q+vec2(1.7,9.2)+t*0.5), fbm(uv*1.4+3.6*q+vec2(8.3,2.8)-t*0.5));
-  float f=fbm(uv*1.4+(3.6+1.1*u_bass)*r);                    // kick churns the warp itself
+  float f=fbm(uv*1.4+(3.4+0.7*u_bass+0.8*u_kick)*r);         // the HIT churns the warp
   float md=length(uv-m); float glow=exp(-md*3.2)*(0.6+0.5*u_mdown); f+=glow*0.35;
   f+=u_bass*0.05;
   vec3 lime=vec3(0.831,1.0,0.0), clay=vec3(0.851,0.463,0.341);
   vec3 col=vec3(0.021);
   col=mix(col,clay*0.55,smoothstep(0.34,0.62,f)*(0.24+0.22*u_mid));
-  col=mix(col,lime,smoothstep(0.58,0.98,f));
-  col+=lime*glow*(0.45+0.30*u_bass);
+  col=mix(col,lime,smoothstep(0.58,0.98,f)*(0.75+0.25*u_energy));
+  col+=lime*glow*(0.35+0.25*u_bass+0.30*u_kick);
   float edge=smoothstep(0.02,0.0,abs(fract(f*6.0)-0.5)-0.46);
   col+=lime*edge*(0.12+0.26*u_high);                         // highs light the contours
   float v=length(uv); col*=1.0-0.28*v*v; col+=(hash(gl_FragCoord.xy+u_time)-0.5)*0.022;
@@ -67,7 +68,7 @@ void main(){
 
   vec2 c=m*0.10;                        // the whole instrument drifts to the pointer
   float fit=min(1.0,(res.x/res.y)*0.92);   // aspect-safe: shrink the instrument on portrait
-  float R=(0.34+0.02*sin(t*0.4)+0.05*u_bass)*fit;
+  float R=(0.34+0.02*sin(t*0.4)+0.03*u_bass+0.045*u_kick)*fit;
 
   vec3 lime=vec3(0.831,1.0,0.0), clay=vec3(0.851,0.463,0.341);
   vec3 col=vec3(0.010);
@@ -111,7 +112,7 @@ void main(){
     }
     prevG=pg;
   }
-  col+=lime*(beam*0.05+halo*0.004+headGlow*0.70);
+  col+=lime*(beam*(0.035+0.03*u_energy)+halo*0.004+headGlow*(0.55+0.35*u_energy+0.3*u_kick));
   col+=clay*ghost*0.042;
 
   col*=0.97+0.03*sin(gl_FragCoord.y*1.57);   // CRT scanlines
@@ -142,8 +143,8 @@ void main(){
   vec3 col = mix(dark, clayD, smoothstep(0.12,0.9, y + w*0.35 - 0.12));
   // ribbon 1 (soft gaussian, flows + follows pointer y; breathes with the bass)
   float wl = 0.50 + w*0.42 + mo.y*0.22;
-  float th = 0.085 + 0.05*noise(vec2(x, t*0.12)) + 0.035*u_bass;
-  col += lime * exp(-pow((y-wl)/th, 2.0)) * (0.72+0.40*u_bass);
+  float th = 0.085 + 0.05*noise(vec2(x, t*0.12)) + 0.02*u_bass + 0.035*u_kick;
+  col += lime * exp(-pow((y-wl)/th, 2.0)) * (0.55+0.25*u_bass+0.30*u_kick)*(0.8+0.35*u_energy);
   // ribbon 2 (fainter, higher, opposing flow; rides the mids)
   float w2 = (noise(vec2(x*0.8 - t*0.05, 4.0))*0.9 + noise(vec2(x*1.4 + t*0.04, 2.0))*0.5)/1.4;
   float wl2 = 0.72 + w2*0.30;
@@ -169,12 +170,14 @@ void main(){
   vec2 uv=(gl_FragCoord.xy-0.5*res)/res.y;
   vec2 m=(u_mouse-0.5*res)/res.y;
   vec2 o=uv-m*0.18;                     // vanishing point leans toward the pointer
+  // the hit shakes the camera - a tiny jolt, gone in a beat
+  o+=0.012*u_kick*vec2(hash(vec2(floor(u_time*31.0),1.0))-0.5, hash(vec2(2.0,floor(u_time*29.0)))-0.5);
   float r=max(length(o),0.02);
   float th=atan(o.y,o.x);
   float t=u_time;
 
   // how far the pixels smear into streaks - the music sets the warp factor
-  float stretch=0.10+1.5*u_bass+0.35*u_mid;
+  float stretch=(0.08+1.0*u_bass+0.3*u_mid)*(0.6+0.7*u_energy)+1.1*u_kick;
 
   vec3 lime=vec3(0.831,1.0,0.0), clay=vec3(0.851,0.463,0.341);
   vec3 col=vec3(0.012);
@@ -205,7 +208,7 @@ void main(){
     }
   }
   // faint engine glow at the vanishing point
-  col+=lime*exp(-r*6.0)*0.05*(0.4+0.6*u_bass);
+  col+=lime*exp(-r*6.0)*(0.03+0.05*u_kick+0.04*u_energy);
   float v=length(uv); col*=1.0-0.30*v*v;
   col+=(hash(gl_FragCoord.xy+u_time)-0.5)*0.018;
   gl_FragColor=vec4(col,1.0);
@@ -285,7 +288,7 @@ void main(){
   }
   float xph=mod(s16,16.0);
   col+=lime*exp(-pow(g.x-xph,2.0)*1.4)*0.045;             // playhead band
-  col*=1.0+u_bass*0.16+u_mdown*0.06;                      // frame breathes on the kick
+  col*=1.0+u_bass*0.08+u_kick*0.14+u_mdown*0.06;          // frame jolts on the true hit
   col*=0.97+0.03*sin(gl_FragCoord.y*1.57);                // faint scanlines
   float v=length(uv); col*=1.0-0.28*v*v;
   col+=(hash(gl_FragCoord.xy+u_time)-0.5)*0.018;
@@ -306,7 +309,7 @@ void main(){
   float t=u_time*0.12;
 
   // you are INSIDE the plate: breathing zoom (bass pushes in) + pointer parallax
-  float zoom=1.0+0.07*sin(u_time*0.05)+0.10*u_bass;
+  float zoom=1.0+0.07*sin(u_time*0.05)+0.05*u_bass+0.09*u_kick;
   vec2 look=uv/zoom+m*0.07;
 
   float a=3.0+2.0*sin(t*0.70)+2.2*u_bass;
@@ -333,7 +336,7 @@ void main(){
   vec3 col=vec3(0.012);
   col+=clay*sand*(1.0-glow)*(0.07+0.09*u_mid);            // warm wash, gated off the lime zone
   col+=lime*micro*sand*(0.05+0.10*u_high);                // micro shimmer inside the wash
-  col+=lime*(lines*1.0+glow*0.08)*(0.55+0.28*u_bass+0.18*u_high);
+  col+=lime*(lines*1.0+glow*0.08)*(0.45+0.18*u_bass+0.30*u_kick+0.15*u_high)*(0.85+0.25*u_energy);
 
   // second plate, offset modes, clay - depth layer
   float f3=cos((b+1.0)*p.y)*cos((a-1.0)*p.x)-cos((a-1.0)*p.y)*cos((b+1.0)*p.x);
@@ -379,6 +382,8 @@ export function WebGLExperiment() {
     bass: WebGLUniformLocation | null;
     mid: WebGLUniformLocation | null;
     high: WebGLUniformLocation | null;
+    kick: WebGLUniformLocation | null;
+    energy: WebGLUniformLocation | null;
   } | null>(null);
 
   // ── live audio tap (808 sync) - falls back to a 129 BPM clock when silent ──
@@ -386,7 +391,7 @@ export function WebGLExperiment() {
   const playingRef = useRef(isPlaying);
   const analyserRef = useRef<AnalyserNode | null>(null);
   const freqRef = useRef<Uint8Array | null>(null);
-  const levelRef = useRef({ bass: 0, mid: 0, high: 0 });
+  const levelRef = useRef({ bass: 0, mid: 0, high: 0, kick: 0, energy: 0.4, lastBass: 0 });
   useEffect(() => {
     playingRef.current = isPlaying;
     if (isPlaying && !analyserRef.current) analyserRef.current = getAnalyser();
@@ -480,6 +485,14 @@ export function WebGLExperiment() {
         lastFrame = now;
         const fr = dt * 60;
         const lv = levelRef.current;
+        // KICK: bass-flux transient detector - fires on the hit itself, not on
+        // sustained low end; sharp attack, ~150ms release. ENERGY: slow follower
+        // of the whole track, so builds and breakdowns reshape the scene.
+        const flux = Math.max(0, bass - lv.lastBass);
+        lv.lastBass = bass;
+        lv.kick = Math.max(Math.min(1, flux * 5.5), lv.kick * Math.pow(0.72, fr));
+        const level = (bass + mid + high) / 3;
+        lv.energy += (level - lv.energy) * Math.min(1, dt * 1.6);
         lv.bass = Math.max(bass, lv.bass * Math.pow(0.88, fr));
         lv.mid = Math.max(mid, lv.mid * Math.pow(0.86, fr));
         lv.high = Math.max(high, lv.high * Math.pow(0.82, fr));
@@ -492,6 +505,8 @@ export function WebGLExperiment() {
         gl.uniform1f(u.bass, lv.bass);
         gl.uniform1f(u.mid, lv.mid);
         gl.uniform1f(u.high, lv.high);
+        gl.uniform1f(u.kick, lv.kick);
+        gl.uniform1f(u.energy, lv.energy);
         gl.drawArrays(gl.TRIANGLES, 0, 3);
       }
       raf = reduced ? 0 : requestAnimationFrame(render);
@@ -533,6 +548,8 @@ export function WebGLExperiment() {
       bass: gl.getUniformLocation(prog, "u_bass"),
       mid: gl.getUniformLocation(prog, "u_mid"),
       high: gl.getUniformLocation(prog, "u_high"),
+      kick: gl.getUniformLocation(prog, "u_kick"),
+      energy: gl.getUniformLocation(prog, "u_energy"),
     };
     // glyph atlas sampler (only the 808 program has it) - texture unit 0
     gl.uniform1i(gl.getUniformLocation(prog, "u_glyphs"), 0);
