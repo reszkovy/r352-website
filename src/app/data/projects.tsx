@@ -224,7 +224,7 @@ export const projects = [
       en: "Digital Products",
       pl: "Produkty Cyfrowe"
     },
-    year: "3+ years of partnership",
+    year: "6+ years of partnership",
     image: dawidImg,
     coverImage: dawidImg,
     hoverVideo: "/videos/dawid-hover.mp4",
@@ -442,7 +442,7 @@ export const projects = [
       pl: "Zintegrowany partner projektowy"
     },
     // TODO(reszek): doprecyzuj zakres lat współpracy (poprzednio stało "2023", co kłóciło się ze statem "3+ Years").
-    year: "3+ years",
+    year: "5+ years",
     image: kubotaImg,
     coverImage: kubotaImg,
     hoverVideo: "/videos/kubota-hover.mp4",
@@ -455,8 +455,8 @@ export const projects = [
     // TODO(reszek): potwierdź rynek i rok debiutu publicznego Kuboty - do potwierdzenia używamy
     // "public-market debut" (nie "IPO" ani "WSE debut", bo to nieścisłe).
     description: {
-      en: "Kubota scaled from cult-brand comeback to retail-volume output. For 3+ years we have run its content production system - 200+ deliverables across digital, social and print - including brand-system support for Kubota's public-market debut. Not a campaign vendor: a standing production layer the marketing team plans against.",
-      pl: "Kubota przeskalowała się z powrotu kultowej marki do produkcji w wolumenie retailowym. Od 3+ lat prowadzimy jej system produkcji treści - 200+ deliverables w digitalu, social mediach i druku - w tym wsparcie brand-systemowe przy debiucie Kuboty na rynku publicznym. Nie vendor od kampanii: stała warstwa produkcyjna, na której zespół marketingu może planować."
+      en: "Kubota scaled from cult-brand comeback to retail-volume output. For 5+ years we have run its content production system - 200+ deliverables across digital, social and print - including brand-system support for Kubota's public-market debut. Not a campaign vendor: a standing production layer the marketing team plans against.",
+      pl: "Kubota przeskalowała się z powrotu kultowej marki do produkcji w wolumenie retailowym. Od 5+ lat prowadzimy jej system produkcji treści - 200+ deliverables w digitalu, social mediach i druku - w tym wsparcie brand-systemowe przy debiucie Kuboty na rynku publicznym. Nie vendor od kampanii: stała warstwa produkcyjna, na której zespół marketingu może planować."
     },
     services: {
       en: ["Always-on content", "Campaign assets", "Modular formats", "Public-debut materials"],
@@ -479,15 +479,15 @@ export const projects = [
       pl: "Systematyzacja dostarczania treści. Utrzymanie spójnej jakości marki podczas wzrostu."
     },
     outcome: {
-      en: "3+ years, 200+ deliverables shipped through one repeatable workflow - fewer iteration rounds per asset, faster releases, and a brand that held coherent through its highest-visibility moment, the public-market debut, without spinning up a separate agency engagement.",
-      pl: "3+ lata, 200+ deliverables dostarczonych przez jeden powtarzalny workflow - mniej rund iteracji per zasób, szybsze premiery i marka, która pozostała spójna w swoim najbardziej widocznym momencie, debiucie na rynku publicznym, bez uruchamiania osobnego engagementu agencyjnego."
+      en: "5+ years, 200+ deliverables shipped through one repeatable workflow - fewer iteration rounds per asset, faster releases, and a brand that held coherent through its highest-visibility moment, the public-market debut, without spinning up a separate agency engagement.",
+      pl: "5+ lat, 200+ deliverables dostarczonych przez jeden powtarzalny workflow - mniej rund iteracji per zasób, szybsze premiery i marka, która pozostała spójna w swoim najbardziej widocznym momencie, debiucie na rynku publicznym, bez uruchamiania osobnego engagementu agencyjnego."
     },
     reflection: {
       en: "Long engagements don't survive on creativity - they survive on predictability. The format library is the reason year three runs faster than year one.",
       pl: "Długie współprace nie przetrwają na kreatywności - przetrwają na przewidywalności. Biblioteka formatów to powód, dla którego trzeci rok działa szybciej niż pierwszy."
     },
     stats: [
-        { value: "3+", label: { en: "Years of Partnership", pl: "Lata Współpracy" } },
+        { value: "5+", label: { en: "Years of Partnership", pl: "Lat Współpracy" } },
         { value: "200+", label: { en: "Deliverables Shipped", pl: "Dostarczonych Materiałów" } }
     ],
     // Testimonial - Kubota. Rola potwierdzona w kanonie: "Brand & Marketing · Kubota". Treść cytatu = słowa klienta, nie zmieniać.

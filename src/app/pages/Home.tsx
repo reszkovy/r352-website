@@ -50,8 +50,8 @@ export function Home() {
               { v: "250+", l: language === "pl" ? "lokalizacji" : "locations served" },
               { v: "3×", l: language === "pl" ? "szybsze akceptacje" : "faster approvals" },
               { v: "10k+", l: language === "pl" ? "assetów / rok" : "assets / year" },
-              // retention: avg across mature accounts (Benefit 2019-, Sonova 2022-,
-              // Kubota 3+ yrs, Podsiadlo ~8 yrs) ≈ 5.5 yrs - "5+" stays bulletproof
+              // retention: avg across mature accounts (Benefit 2019- ~7y, Sonova 2022- ~4y,
+              // Kubota 2019- 5+y, Podsiadlo 2018- 6+y per LinkedIn) ≈ 5.7 - "5+" holds
               { v: "5+", l: language === "pl" ? "lat śr. współpracy" : "yrs avg partnership" },
             ].map((s, i) => (
               <div key={i} className="flex-shrink-0 flex items-baseline gap-2 whitespace-nowrap">
