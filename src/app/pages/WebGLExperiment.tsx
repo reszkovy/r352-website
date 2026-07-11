@@ -3,6 +3,7 @@ import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { Helmet } from "react-helmet-async";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { useAudio } from "@/app/context/AudioContext";
+import { useLenis } from "lenis/react";
 import { uploadGlyphAtlas } from "@/app/lib/logoGlyphAtlas";
 
 /**
@@ -966,7 +967,7 @@ export function WebGLExperiment() {
         gl.uniform1f(u.high, lv.high);
         gl.uniform1f(u.kick, lv.kick);
         gl.uniform1f(u.energy, lv.energy);
-        gl.uniform1f(u.progress, Math.min(6, scrollY / Math.max(1, window.innerHeight)));
+        gl.uniform1f(u.progress, Math.min(6, scrollY / Math.max(1, window.innerHeight * 0.62)));
         gl.drawArrays(gl.TRIANGLES, 0, 3);
       }
       raf = reduced ? 0 : requestAnimationFrame(render);
@@ -985,10 +986,15 @@ export function WebGLExperiment() {
     };
   }, []);
 
-  // entering/leaving R3loop: start the journey at the top
+  // entering/leaving R3loop: start at the top AND tell Lenis the page height
+  // changed (it caches the scroll limit - without resize() the wheel is dead)
+  const lenis = useLenis();
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [active]);
+    lenis?.scrollTo(0, { immediate: true });
+    const raf = requestAnimationFrame(() => lenis?.resize());
+    return () => cancelAnimationFrame(raf);
+  }, [active, lenis]);
 
   // ── (re)build the program when the preset changes ──
   useEffect(() => {
@@ -1098,7 +1104,7 @@ export function WebGLExperiment() {
       </div>
       {/* R3loop scroll track: 1 viewport per scene, 7 scenes - the fixed canvas
           reads window.scrollY (Lenis-smoothed) and morphs along the journey */}
-      {PRESETS[active].id === "r3loop" && <div style={{ height: "700vh" }} aria-hidden="true" />}
+      {PRESETS[active].id === "r3loop" && <div style={{ height: "472vh" }} aria-hidden="true" />}
     </>
   );
 }
