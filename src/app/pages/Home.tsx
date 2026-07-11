@@ -50,6 +50,9 @@ export function Home() {
               { v: "250+", l: language === "pl" ? "lokalizacji" : "locations served" },
               { v: "3×", l: language === "pl" ? "szybsze akceptacje" : "faster approvals" },
               { v: "10k+", l: language === "pl" ? "assetów / rok" : "assets / year" },
+              // retention: avg across mature retainer accounts (Benefit 2019-,
+              // Sonova 2022-, Kubota 3+ yrs) ≈ 4.7 yrs - "4+" keeps it bulletproof
+              { v: "4+", l: language === "pl" ? "lata śr. współpracy" : "yrs avg partnership" },
             ].map((s, i) => (
               <div key={i} className="flex-shrink-0 flex items-baseline gap-2 whitespace-nowrap">
                 <span className="text-lg md:text-2xl font-semibold tracking-tight text-white tabular-nums leading-none">{s.v}</span>
