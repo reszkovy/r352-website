@@ -401,7 +401,9 @@ function AppContent() {
         </Suspense>
       </main>
       
-      <Footer />
+      {/* /webgl is an immersive gallery with a scroll-driven journey (R3loop) -
+          the footer would surface at the end of its scroll track */}
+      {location !== "/webgl" && <Footer />}
       <Chatbot />
     </div>
     <Toaster

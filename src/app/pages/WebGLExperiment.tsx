@@ -18,6 +18,7 @@ precision highp float;
 uniform vec2 u_res; uniform float u_time; uniform vec2 u_mouse; uniform float u_mdown;
 uniform float u_bass; uniform float u_mid; uniform float u_high;
 uniform float u_kick; uniform float u_energy;
+uniform float u_progress;
 uniform sampler2D u_glyphs;
 float hash(vec2 p){ p=fract(p*vec2(123.34,456.21)); p+=dot(p,p+45.32); return fract(p.x*p.y); }
 vec2 hash2(vec2 p){ p=vec2(dot(p,vec2(127.1,311.7)),dot(p,vec2(269.5,183.3))); return fract(sin(p)*43758.5453); }
@@ -759,14 +760,14 @@ void main(){
   vec2 uv=(fc-0.5*u_res)/u_res.y;
   vec3 lime=vec3(0.831,1.0,0.0);
 
-  // the set clock: 129 BPM, 8 bars (32 beats) per scene,
-  // the LAST bar (final 1/8th of the block) is the morph window
-  float beat=u_time*129.0/60.0;
-  float block=beat/32.0;
-  float idx=mod(floor(block),7.0);
+  // SCROLL drives the journey: u_progress in scene units (0..6, Lenis-smoothed
+  // upstream). Time keeps each world alive; scroll decides WHERE you are.
+  // The morph occupies the last 30% of each unit.
+  float block=clamp(u_progress,0.0,6.0);
+  float idx=min(floor(block),6.0);
   float nxt=mod(idx+1.0,7.0);
-  float ph=fract(block);
-  float ease=smoothstep(0.0,1.0,clamp((ph-0.875)*8.0,0.0,1.0));
+  float ph=block-idx;
+  float ease=smoothstep(0.0,1.0,clamp((ph-0.70)/0.30,0.0,1.0));
 
   vec3 col;
   if(ease<=0.0){
@@ -842,6 +843,7 @@ export function WebGLExperiment() {
     high: WebGLUniformLocation | null;
     kick: WebGLUniformLocation | null;
     energy: WebGLUniformLocation | null;
+    progress: WebGLUniformLocation | null;
   } | null>(null);
 
   // ── cursor-reactive title: springy 3D tilt + drift toward the pointer ──
@@ -891,6 +893,10 @@ export function WebGLExperiment() {
     const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;
     const mouse = { x: 0, y: 0, down: 0 };
     let dpr = Math.min(window.devicePixelRatio || 1, 2);
+    // R3loop journey progress: 1 viewport of scroll = 1 scene unit (Lenis smooths it)
+    let scrollY = window.scrollY || 0;
+    const onScroll = () => (scrollY = window.scrollY || 0);
+    window.addEventListener("scroll", onScroll, { passive: true });
 
     const resize = () => {
       dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -983,6 +989,7 @@ export function WebGLExperiment() {
         gl.uniform1f(u.high, lv.high);
         gl.uniform1f(u.kick, lv.kick);
         gl.uniform1f(u.energy, lv.energy);
+        gl.uniform1f(u.progress, Math.min(6, scrollY / Math.max(1, window.innerHeight)));
         gl.drawArrays(gl.TRIANGLES, 0, 3);
       }
       raf = reduced ? 0 : requestAnimationFrame(render);
@@ -991,6 +998,7 @@ export function WebGLExperiment() {
 
     return () => {
       cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", resize);
       window.removeEventListener("pointermove", onMove);
       window.removeEventListener("pointerdown", onDown);
@@ -999,6 +1007,11 @@ export function WebGLExperiment() {
       glRef.current = null;
     };
   }, []);
+
+  // entering/leaving R3loop: start the journey at the top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [active]);
 
   // ── (re)build the program when the preset changes ──
   useEffect(() => {
@@ -1026,6 +1039,7 @@ export function WebGLExperiment() {
       high: gl.getUniformLocation(prog, "u_high"),
       kick: gl.getUniformLocation(prog, "u_kick"),
       energy: gl.getUniformLocation(prog, "u_energy"),
+      progress: gl.getUniformLocation(prog, "u_progress"),
     };
     // glyph atlas sampler (only the 808 program has it) - texture unit 0
     gl.uniform1i(gl.getUniformLocation(prog, "u_glyphs"), 0);
@@ -1079,6 +1093,12 @@ export function WebGLExperiment() {
         </div>
 
         <div className="pointer-events-none absolute bottom-8 right-8 hidden md:flex flex-col items-end gap-2.5">
+          {PRESETS[active].id === "r3loop" && (
+            <span className="flex items-center gap-2 font-display uppercase tracking-[0.2em] text-[10px] text-[#D4FF00]/80">
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#D4FF00] animate-pulse" />
+              {pl ? "scrolluj, aby podróżować" : "scroll to travel"}
+            </span>
+          )}
           {(isPlaying ? (
               <span className="flex items-center gap-2 font-display uppercase tracking-[0.2em] text-[10px] text-[#D4FF00]/80">
                 <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#D4FF00] animate-pulse" />
@@ -1099,6 +1119,9 @@ export function WebGLExperiment() {
           </span>
         </div>
       </div>
+      {/* R3loop scroll track: 1 viewport per scene, 7 scenes - the fixed canvas
+          reads window.scrollY (Lenis-smoothed) and morphs along the journey */}
+      {PRESETS[active].id === "r3loop" && <div style={{ height: "700vh" }} aria-hidden="true" />}
     </>
   );
 }
