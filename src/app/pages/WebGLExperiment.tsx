@@ -449,6 +449,362 @@ void main(){
   gl_FragColor=vec4(col,1.0);
 }`;
 
+// 7 — R3loop: the whole gallery as ONE continuous set. Each of the seven
+// effects lives as a scene function inside a single shader; the set runs at
+// 129 BPM, every scene plays for 8 bars (32 beats), and during the LAST bar
+// the current world morphs into the next one - an fbm-threshold dissolve
+// (the next world eats into this one organically), a zoom pull toward the
+// center (you travel out of one world into the next), and a molten lime seam
+// where the two touch. A kick during the morph shoves the dissolve forward.
+// nk.studio energy: scenes re-form into each other, never cut.
+// Per-scene grain/vignette is stripped from the scene functions and applied
+// ONCE at the end; only the active scene (two during morphs) is evaluated -
+// the branches are uniform-valued (u_time only), so this is cheap.
+const R3LOOP = `
+vec3 sceneFlow(vec2 fc){
+  vec2 uv=(fc-0.5*u_res)/u_res.y;
+  vec2 m=(u_mouse-0.5*u_res)/u_res.y;
+  float t=u_time*0.06;
+  vec2 q=vec2(fbm(uv*1.4+t), fbm(uv*1.4+vec2(5.2,1.3)-t));
+  vec2 r=vec2(fbm(uv*1.4+3.6*q+vec2(1.7,9.2)+t*0.5), fbm(uv*1.4+3.6*q+vec2(8.3,2.8)-t*0.5));
+  float f=fbm(uv*1.4+(3.4+0.7*u_bass+0.8*u_kick)*r);
+  float md=length(uv-m); float glow=exp(-md*3.2)*(0.6+0.5*u_mdown); f+=glow*0.35;
+  f+=u_bass*0.05;
+  vec3 lime=vec3(0.831,1.0,0.0), clay=vec3(0.851,0.463,0.341);
+  vec3 col=vec3(0.021);
+  col=mix(col,clay*0.55,smoothstep(0.34,0.62,f)*(0.24+0.22*u_mid));
+  col=mix(col,lime,smoothstep(0.58,0.98,f)*(0.75+0.25*u_energy));
+  col+=lime*glow*(0.35+0.25*u_bass+0.30*u_kick);
+  float edge=smoothstep(0.02,0.0,abs(fract(f*6.0)-0.5)-0.46);
+  col+=lime*edge*(0.12+0.26*u_high);
+  return col;
+}
+
+vec3 sceneAurora(vec2 fc){
+  vec2 res=u_res;
+  vec2 p=fc/res;
+  float ar=res.x/res.y;
+  float x=(p.x-0.5)*ar, y=p.y;
+  vec2 mo=(u_mouse/res-0.5); mo.x*=ar;
+  float t=u_time;
+  float w = noise(vec2(x*0.9 + t*0.05, t*0.04))*0.85
+          + noise(vec2(x*1.3 - t*0.045, t*0.05))*0.55
+          + noise(vec2(x*0.5 + t*0.03, 1.7))*0.5;
+  w /= 1.9;
+  vec3 dark=vec3(0.028,0.03,0.028);
+  vec3 clayD=vec3(0.42,0.22,0.16);
+  vec3 lime=vec3(0.831,1.0,0.0);
+  vec3 col = mix(dark, clayD, smoothstep(0.12,0.9, y + w*0.35 - 0.12));
+  float beatT=t*129.0/60.0;
+  float sx=(fract(beatT)*2.4-1.2)*ar;
+  float surge=exp(-pow((x-sx)/0.22,2.0))*u_kick;
+  float wl = 0.50 + w*0.42 + mo.y*0.22;
+  float th = 0.070 + 0.04*noise(vec2(x, t*0.12)) + 0.012*u_bass + 0.018*u_kick + 0.030*surge;
+  float rib = exp(-pow((y-wl)/th, 2.0));
+  col += lime * rib * (0.34+0.12*u_bass+0.16*u_kick+0.35*surge)*(0.8+0.30*u_energy);
+  col += lime * exp(-pow((y-wl)/(th*0.32), 2.0)) * (0.30+0.20*u_kick+0.35*surge);
+  float str = noise(vec2(x*6.0 + w*2.2, t*0.33))
+            * (0.55+0.45*noise(vec2(x*14.0 - t*0.22, 2.2)));
+  float above = y - wl;
+  float curt = smoothstep(0.0,0.05,above) * exp(-above*(4.6-1.9*u_mid)) * str;
+  col += lime * curt * (0.20+0.28*u_energy+0.25*u_high+0.35*surge*exp(-above*2.0));
+  float w2 = (noise(vec2(x*0.8 - t*0.05, 4.0))*0.9 + noise(vec2(x*1.4 + t*0.04, 2.0))*0.5)/1.4;
+  float wl2 = 0.72 + w2*0.30;
+  col += lime * exp(-pow((y-wl2)/0.13, 2.0)) * (0.20+0.28*u_mid);
+  vec2 gp=vec2(x*9.0, (y-0.045*t)*9.0);
+  vec2 idp=floor(gp);
+  vec2 rp=hash2(idp);
+  vec2 fp=fract(gp)-0.5;
+  float spark=step(0.90,rp.x)*smoothstep(0.10+0.05*rp.y,0.0,length(fp-(rp-0.5)*0.55));
+  float twk=0.5+0.5*sin(t*(1.5+rp.y*3.0)+rp.x*12.0);
+  col += lime * spark * twk * (0.10+0.40*u_high) * smoothstep(-0.05,0.35,y-wl+0.15);
+  col += lime * exp(-pow((y-wl)/(th*0.5), 2.0)) * noise(vec2(x*22.0, t*2.5)) * u_high * 0.22;
+  vec2 c = vec2((p.x-0.5)*ar, p.y-0.5);
+  float md = length(c - mo);
+  col += lime*exp(-md*3.2)*0.30*(0.5+u_mdown);
+  col=col/(1.0+0.40*col);
+  return col;
+}
+
+vec3 sceneScope(vec2 fc){
+  vec2 res=u_res;
+  vec2 uv=(fc-0.5*res)/res.y;
+  vec2 m=(u_mouse-0.5*res)/res.y;
+  float t=u_time;
+  float beatS=t*129.0/60.0;
+  float headA=1.5708-6.2831853*fract(beatS/4.0);
+  vec2 c=m*0.10;
+  float fit=min(1.0,(res.x/res.y)*0.92);
+  float R=(0.34+0.02*sin(t*0.4)+0.03*u_bass+0.045*u_kick)*fit;
+  vec3 lime=vec3(0.831,1.0,0.0), clay=vec3(0.851,0.463,0.341);
+  vec3 col=vec3(0.010);
+  float beam=0.0, halo=0.0, headGlow=0.0, ghost=0.0;
+  vec2 prev=vec2(0.0); vec2 prevG=vec2(0.0);
+  for(int i=0;i<=96;i++){
+    float th=6.2831853*float(i)/96.0;
+    float w=fit*(0.085*u_bass*sin(5.0*th - t*1.8)
+           +0.050*u_mid*sin(11.0*th + t*2.4)
+           +0.020*u_high*sin(17.0*th - t*4.0)
+           +0.020*(noise(vec2(th*1.2, t*0.5))-0.5));
+    vec2 pt=c+(R+w)*vec2(cos(th), sin(th));
+    if(i>0){
+      vec2 pa=uv-prev, ba=pt-prev;
+      float h=clamp(dot(pa,ba)/max(dot(ba,ba),1e-6),0.0,1.0);
+      float d=length(pa-ba*h);
+      beam+=exp(-d*110.0);
+      halo+=exp(-d*10.0);
+      float back=mod(th-headA,6.2831853);
+      headGlow+=exp(-d*90.0)*exp(-back*1.1);
+    }
+    prev=pt;
+    float w2=fit*(0.05*u_mid*sin(7.0*th + t*1.2)+0.02*(noise(vec2(th*0.9, t*0.4+3.0))-0.5));
+    vec2 pg=c+(R*0.62+w2)*vec2(cos(t*0.1-th), sin(t*0.1-th));
+    if(i>0){
+      vec2 paG=uv-prevG, baG=pg-prevG;
+      float hG=clamp(dot(paG,baG)/max(dot(baG,baG),1e-6),0.0,1.0);
+      ghost+=exp(-length(paG-baG*hG)*90.0);
+    }
+    prevG=pg;
+  }
+  // 96 segments vs the original 160: same signal, ~1.67x the per-segment
+  // energy so the trace keeps its original brightness
+  col+=lime*(beam*1.67*(0.035+0.03*u_energy)+halo*1.67*0.004+headGlow*1.67*(0.55+0.35*u_energy+0.3*u_kick));
+  col+=clay*ghost*1.67*0.042;
+  col*=0.97+0.03*sin(gl_FragCoord.y*1.57);
+  return col;
+}
+
+vec3 sceneWarp(vec2 fc){
+  vec2 res=u_res;
+  vec2 uv=(fc-0.5*res)/res.y;
+  vec2 m=(u_mouse-0.5*res)/res.y;
+  vec2 o=uv-m*0.18;
+  o+=0.012*u_kick*vec2(hash(vec2(floor(u_time*31.0),1.0))-0.5, hash(vec2(2.0,floor(u_time*29.0)))-0.5);
+  float r=max(length(o),0.02);
+  float th=atan(o.y,o.x);
+  float t=u_time;
+  float stretch=(0.22+1.0*u_bass+0.3*u_mid)*(0.6+0.7*u_energy)+1.1*u_kick;
+  vec3 lime=vec3(0.831,1.0,0.0), clay=vec3(0.851,0.463,0.341);
+  vec3 col=vec3(0.012);
+  for(int L=0;L<3;L++){
+    float fl=float(L);
+    float rows=18.0+fl*8.0;
+    float speed=0.55+fl*0.35;
+    vec2 pc=vec2(th/6.2831853*rows, log(r)*3.0 - t*speed + fl*7.3);
+    vec2 id=floor(pc);
+    for(int jy=-2;jy<=2;jy++){
+      vec2 cid=vec2(id.x, id.y+float(jy));
+      vec2 rnd=hash2(cid+fl*31.7);
+      float on=step(0.55,rnd.x);
+      vec2 sp=(rnd-0.5)*0.5;
+      vec2 d=pc-(cid+0.5)-sp;
+      float len=0.06+stretch*(0.3+0.7*rnd.y);
+      float wdt=0.030+0.025*rnd.y;
+      float inX=smoothstep(wdt,wdt*0.35,abs(d.x));
+      float ry=(d.y+len)/(2.0*len+1e-4);
+      float inY=step(0.0,ry)*step(ry,1.0);
+      float grad=pow(clamp(ry,0.0,1.0),2.0);
+      float tw=0.55+0.45*sin(t*(1.0+rnd.x*2.0)+rnd.y*9.0);
+      tw*=0.70+0.50*u_high;
+      vec3 tint=mix(lime,clay,step(0.90,rnd.y)*0.7);
+      col+=tint*inX*inY*grad*on*tw*(0.50-fl*0.11)*smoothstep(0.03,0.25,r);
+    }
+  }
+  col+=lime*exp(-r*6.0)*(0.03+0.05*u_kick+0.04*u_energy);
+  return col;
+}
+
+vec3 sceneEight(vec2 fc){
+  vec2 res=u_res;
+  vec2 uv=(fc-0.5*res)/res.y;
+  vec2 m=(u_mouse-0.5*res)/res.y;
+  float ar=res.x/res.y;
+  vec2 p=fc/res;
+  float BPM=129.0;
+  float beat=u_time*BPM/60.0;
+  float s16=beat*4.0;
+  float COLS=16.0;
+  vec2 g=vec2(p.x*COLS, p.y*COLS/ar);
+  vec2 id=floor(g);
+  vec2 mg=vec2((u_mouse.x/res.x)*COLS, (u_mouse.y/res.y)*COLS/ar);
+  float seed=floor(s16/16.0);
+  float near=exp(-length(uv-m)*2.8)*(0.6+0.9*u_mdown);
+  vec3 lime=vec3(0.831,1.0,0.0), clay=vec3(0.851,0.463,0.341);
+  vec3 col=vec3(0.014);
+  for(int yy=-1;yy<=1;yy++) for(int xx=-1;xx<=1;xx++){
+    vec2 cell=id+vec2(float(xx),float(yy));
+    vec2 dv=mg-(cell+0.5);
+    float dl=max(length(dv),0.0001);
+    vec2 pull=(dv/dl)*exp(-dl*0.34)*0.24*(1.0+0.5*u_mdown)*smoothstep(0.0,0.5,dl);
+    float swell=1.0+0.20*exp(-dl*0.5);
+    float on;
+    if(cell.y<0.5)      on=1.0-step(0.5,mod(cell.x,4.0));
+    else if(cell.y<1.5) on=1.0-step(0.5,abs(mod(cell.x,8.0)-4.0));
+    else                on=step(0.62,hash(cell+seed*13.71));
+    float tS=mod(s16-cell.x,16.0);
+    float env=exp(-tS*1.35);
+    float laneAmp;
+    if(cell.y<0.5)      laneAmp=0.35+1.30*u_bass;
+    else if(cell.y<1.5) laneAmp=0.35+1.15*u_mid;
+    else                laneAmp=0.30+0.50*u_mid+0.85*u_high*(0.4+0.6*hash(cell+11.13));
+    vec2 rnd=hash2(cell);
+    vec2 jit=(rnd-0.5)*0.34;
+    float hs=(0.26+0.16*rnd.y)*swell;
+    vec2 f=g-(cell+0.5)-jit-pull;
+    vec2 lf=f/(2.0*hs)+0.5;
+    float inQ=step(0.0,lf.x)*step(lf.x,1.0)*step(0.0,lf.y)*step(lf.y,1.0);
+    float gi=floor(hash(cell*2.13+7.7)*3.9999);
+    float mask=texture2D(u_glyphs,vec2((clamp(lf.x,0.0,1.0)+gi)*0.25,clamp(lf.y,0.0,1.0))).r*inQ;
+    vec3 tint=mix(lime,clay,step(0.92,hash(cell*1.7+3.3)));
+    col+=lime*mask*0.030;
+    col+=tint*mask*on*(0.05+env*0.85*laneAmp+near*0.35);
+  }
+  float xph=mod(s16,16.0);
+  col+=lime*exp(-pow(g.x-xph,2.0)*1.4)*0.045;
+  col*=1.0+u_bass*0.08+u_kick*0.14+u_mdown*0.06;
+  col*=0.97+0.03*sin(gl_FragCoord.y*1.57);
+  return col;
+}
+
+vec3 sceneCymatics(vec2 fc){
+  vec2 res=u_res;
+  vec2 uv=(fc-0.5*res)/res.y;
+  vec2 m=(u_mouse-0.5*res)/res.y;
+  float t=u_time*0.12;
+  float zoom=1.0+0.07*sin(u_time*0.05)+0.05*u_bass+0.09*u_kick;
+  vec2 look=uv/zoom+m*0.07;
+  float a=3.0+2.0*sin(t*0.70)+2.2*u_bass;
+  float b=a+1.5+0.8*sin(t*0.53+2.1)+1.6*u_mid;
+  vec2 p=look*3.14159;
+  p+=0.5*vec2(noise(look*1.6+t)-0.5, noise(look*1.6-t+7.3)-0.5);
+  float md=length(uv-m);
+  p+=(uv-m)*exp(-md*3.0)*1.2*(0.5+u_mdown);
+  float f=cos(a*p.x)*cos(b*p.y)-cos(b*p.x)*cos(a*p.y);
+  float lines=smoothstep(0.10,0.0,abs(f));
+  float glow=smoothstep(0.55,0.0,abs(f));
+  float sand=pow(1.0-clamp(abs(f)*0.85,0.0,1.0),3.0);
+  vec2 p2=look*8.2+vec2(1.7,4.2);
+  float f2=cos((a*0.7+1.0)*p2.x)*cos(b*0.6*p2.y)-cos(b*0.6*p2.x)*cos((a*0.7+1.0)*p2.y);
+  float micro=smoothstep(0.10,0.0,abs(f2));
+  vec3 lime=vec3(0.831,1.0,0.0), clay=vec3(0.851,0.463,0.341);
+  vec3 col=vec3(0.012);
+  col+=clay*sand*(1.0-glow)*(0.07+0.09*u_mid);
+  col+=lime*micro*sand*(0.05+0.10*u_high);
+  col+=lime*(lines*1.0+glow*0.08)*(0.45+0.18*u_bass+0.30*u_kick+0.15*u_high)*(0.85+0.25*u_energy);
+  float f3=cos((b+1.0)*p.y)*cos((a-1.0)*p.x)-cos((a-1.0)*p.y)*cos((b+1.0)*p.x);
+  col+=clay*smoothstep(0.12,0.0,abs(f3))*0.20;
+  col+=lime*exp(-md*3.2)*0.18*(0.5+u_mdown);
+  col=col/(1.0+0.45*col);
+  return col;
+}
+
+vec3 sceneVinyl(vec2 fc){
+  vec2 res=u_res;
+  vec2 uv=(fc-0.5*res)/res.y;
+  vec2 m=(u_mouse-0.5*res)/res.y;
+  float t=u_time;
+  float fit=min(1.0,(res.x/res.y)*0.92);
+  vec2 c=m*0.06;
+  vec2 q=uv-c;
+  float r=length(q);
+  float th=atan(q.y,q.x);
+  float spin=t*1.35 - 0.55*u_kick;
+  vec3 lime=vec3(0.831,1.0,0.0), clay=vec3(0.851,0.463,0.341);
+  vec3 col=vec3(0.012);
+  float Rd=0.42*fit;
+  float Rl=0.15*fit;
+  float disc=smoothstep(Rd+0.004,Rd,r);
+  float label=smoothstep(Rl,Rl-0.004,r);
+  float rr=r+0.0025*sin(th+spin);
+  float grooves=0.5+0.5*sin(rr*520.0);
+  float body=0.030+0.012*pow(grooves,3.0);
+  body+=0.05*noise(vec2((th+spin)*2.5, rr*90.0))*(0.25+0.5*u_energy);
+  float sheen=pow(abs(cos(th-spin*0.5)),12.0)*0.10*(0.5+0.5*u_energy);
+  col+=vec3(body)*disc*(1.0-label);
+  col+=lime*sheen*disc*(1.0-label);
+  float rNow=mix(Rd*0.94, Rl+0.05, fract(t/120.0));
+  col+=lime*exp(-pow((r-rNow)*140.0,2.0))*disc*(0.22+0.50*u_bass);
+  float thN=1.15;
+  float dAng=abs(mod(th-thN+3.14159,6.2831853)-3.14159);
+  float arm=smoothstep(0.012,0.004,dAng)*smoothstep(rNow-0.01,rNow+0.06,r)*smoothstep(Rd+0.12,Rd+0.02,r);
+  col+=vec3(0.55)*arm;
+  vec2 tip=c+rNow*vec2(cos(thN),sin(thN));
+  col+=lime*exp(-length(uv-tip)*30.0)*(0.25+1.3*u_kick+0.35*u_bass);
+  float ca=cos(-spin), sa=sin(-spin);
+  vec2 lq=mat2(ca,-sa,sa,ca)*q/(1.6*Rl)+0.5;
+  float inL=step(0.0,lq.x)*step(lq.x,1.0)*step(0.0,lq.y)*step(lq.y,1.0);
+  float gl0=texture2D(u_glyphs,vec2(clamp(lq.x,0.0,1.0)*0.25,clamp(lq.y,0.0,1.0))).r*inL;
+  col=mix(col, clay*0.55, label);
+  col+=lime*gl0*label*0.7;
+  vec2 gp=uv*14.0;
+  vec2 rp=hash2(floor(gp));
+  float mote=step(0.93,rp.x)*smoothstep(0.09,0.0,length(fract(gp)-0.5-(rp-0.5)*0.5));
+  col+=lime*mote*(0.05+0.25*u_high)*(1.0-disc);
+  return col;
+}
+
+// only ONE branch runs per call - s is uniform-valued (derived from u_time)
+vec3 scenePick(float s, vec2 fc){
+  if(s<0.5) return sceneFlow(fc);
+  else if(s<1.5) return sceneAurora(fc);
+  else if(s<2.5) return sceneScope(fc);
+  else if(s<3.5) return sceneWarp(fc);
+  else if(s<4.5) return sceneEight(fc);
+  else if(s<5.5) return sceneCymatics(fc);
+  return sceneVinyl(fc);
+}
+
+void main(){
+  vec2 fc=gl_FragCoord.xy;
+  vec2 uv=(fc-0.5*u_res)/u_res.y;
+  vec3 lime=vec3(0.831,1.0,0.0);
+
+  // the set clock: 129 BPM, 8 bars (32 beats) per scene,
+  // the LAST bar (final 1/8th of the block) is the morph window
+  float beat=u_time*129.0/60.0;
+  float block=beat/32.0;
+  float idx=mod(floor(block),7.0);
+  float nxt=mod(idx+1.0,7.0);
+  float ph=fract(block);
+  float ease=smoothstep(0.0,1.0,clamp((ph-0.875)*8.0,0.0,1.0));
+
+  vec3 col;
+  if(ease<=0.0){
+    col=scenePick(idx,fc);                    // steady state: ONE scene only
+  } else if(ease>=1.0){
+    col=scenePick(nxt,fc);
+  } else {
+    // the kick shoves the dissolve forward - strongest mid-morph, zero at ends
+    float e=clamp(ease+0.15*u_kick*ease*(1.0-ease),0.0,1.0);
+    // zoom pull: travel INTO the outgoing world while the next settles in from afar
+    vec2 ctr=0.5*u_res;
+    vec3 a=scenePick(idx, ctr+(fc-ctr)*(1.0-0.18*ease));
+    vec3 b=scenePick(nxt, ctr+(fc-ctr)*(1.0+0.25*(1.0-ease)));
+    // fbm-threshold dissolve: the next world eats into this one organically
+    float n=fbm(uv*2.6+vec2(idx*7.31,idx*3.17)+u_time*0.03);
+    float e2=e*1.7-0.35;                      // sweep covers the whole fbm range
+    float mask=smoothstep(0.0,1.0,(e2-n)/0.13+0.5);
+    col=mix(a,b,mask);
+    // molten seam where the two worlds touch; flares on the kick
+    col+=lime*exp(-abs(e2-n)*22.0)*e*(1.0-e)*(0.7+1.8*u_kick);
+  }
+
+  // now playing: 7 track dots, the lit one hands over during the morph
+  for(int i=0;i<7;i++){
+    float fi=float(i);
+    float lit=0.0;
+    if(abs(fi-idx)<0.5) lit=1.0-ease;
+    else if(abs(fi-nxt)<0.5) lit=ease;
+    float dotm=smoothstep(0.0045,0.0018,length(uv-vec2((fi-3.0)*0.032,-0.355)));
+    col=mix(col,mix(vec3(0.16),lime,lit),dotm*(0.35+0.65*lit));
+  }
+
+  // grain + vignette ONCE, on the stable camera (not the zoomed worlds)
+  float v=length(uv); col*=1.0-0.28*v*v;
+  col+=(hash(fc+u_time)-0.5)*0.02;
+  gl_FragColor=vec4(col,1.0);
+}`;
+
 const PRESETS = [
   { id: "flow", name: "Flow", frag: PRELUDE + FLOW },
   { id: "aurora", name: "Aurora", frag: PRELUDE + AURORA },
@@ -457,6 +813,7 @@ const PRESETS = [
   { id: "808", name: "808", frag: PRELUDE + EIGHT08 },
   { id: "cymatics", name: "Cymatics", frag: PRELUDE + CYMATICS },
   { id: "vinyl", name: "Vinyl", frag: PRELUDE + VINYL },
+  { id: "r3loop", name: "R3loop", frag: PRELUDE + R3LOOP },
 ];
 
 function compile(gl: WebGLRenderingContext, type: number, src: string) {
