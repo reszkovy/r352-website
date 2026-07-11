@@ -377,73 +377,61 @@ void main(){
 }`;
 
 
-// 6 — Vinyl: a turntable platter. The most literal love letter to the brand's
-// culture: grooves with the MUSIC ENGRAVED in them rotating at a steady spin,
-// a needle whose tip flares on the hit, the currently-played groove glowing
-// with the bass - and the KICK SCRATCHES the platter (yanks it back like a
-// DJ's hand, easing forward as the hit decays). Clay label with the rotating
-// R-circle glyph from the logo atlas; dust motes twinkle with the highs.
-const VINYL = `
+// 6 — Peak: a living topographic map. Thin cartographic contour lines drift
+// slowly across black; ONE dominant summit rises from the terrain and
+// breathes with the bass; every kick sends a wave of light rippling outward
+// through the contours from the summit; highs shimmer the minor lines, track
+// energy sets how alive the map is. The pointer tilts the map (parallax).
+// Different from everything else in the gallery: cartography, not physics.
+// And it means something here: pick ONE peak.
+const PEAK = `
+float terrain(vec2 pos, vec2 pk, float b){
+  return fbm(pos)*0.62 + exp(-dot(pos-pk,pos-pk)*0.9)*(0.55+0.10*b);
+}
 void main(){
   vec2 res=u_res;
   vec2 uv=(gl_FragCoord.xy-0.5*res)/res.y;
   vec2 m=(u_mouse-0.5*res)/res.y;
   float t=u_time;
-  float fit=min(1.0,(res.x/res.y)*0.92);
+  float beat=t*129.0/60.0;
 
-  vec2 c=m*0.06;
-  vec2 q=uv-c;
-  float r=length(q);
-  float th=atan(q.y,q.x);
+  // slow cartographic drift + gentle parallax toward the pointer
+  vec2 drift=vec2(t*0.020, t*0.013);
+  vec2 pos=uv*2.6 + drift + m*0.22;
+  // the one summit: wanders very slowly near the frame
+  vec2 pk=drift + vec2(0.55*sin(t*0.026), 0.40*cos(t*0.021));
 
-  // steady spin; the kick scratches the platter backward
-  float spin=t*1.35 - 0.55*u_kick;
+  float h=terrain(pos,pk,u_bass);
+  // gradient (2 taps) so contour width stays constant across slopes
+  float e=0.02;
+  vec2 g=vec2(terrain(pos+vec2(e,0.0),pk,u_bass)-h,
+              terrain(pos+vec2(0.0,e),pk,u_bass)-h)/e;
+  float hpx=max(length(g)*2.6/res.y, 1e-5);   // height change per pixel
+
+  float N=26.0;
+  float dl=abs(fract(h*N)-0.5)/N;             // distance to nearest contour (in h)
+  float line=smoothstep(1.6*hpx,0.5*hpx,dl);
+  float major=1.0-step(0.5,mod(floor(h*N),5.0));  // every 5th line is an index line
 
   vec3 lime=vec3(0.831,1.0,0.0), clay=vec3(0.851,0.463,0.341);
   vec3 col=vec3(0.012);
 
-  float Rd=0.42*fit;                       // disc radius
-  float Rl=0.15*fit;                       // label radius
-  float disc=smoothstep(Rd+0.004,Rd,r);
-  float label=smoothstep(Rl,Rl-0.004,r);
+  // altitude palette: valley lines cool + dim, mid clay, summits lime-hot
+  vec3 tint=mix(lime*0.42, clay*0.9, smoothstep(0.15,0.52,h));
+  tint=mix(tint, lime, smoothstep(0.55,0.95,h));
+  float amp=(0.30+0.55*smoothstep(0.1,1.0,h))*(0.8+0.3*u_energy);
+  col+=tint*line*amp*(0.62+0.38*major)*(0.75+0.25*u_high);
 
-  // vinyl body: near-black with fine groove rings + a pressing wobble
-  float rr=r+0.0025*sin(th+spin);
-  float grooves=0.5+0.5*sin(rr*520.0);
-  float body=0.030+0.012*pow(grooves,3.0);
-  // the music is engraved in the grooves and rotates with the disc
-  body+=0.05*noise(vec2((th+spin)*2.5, rr*90.0))*(0.25+0.5*u_energy);
-  // anisotropic sheen sweeping as the platter turns
-  float sheen=pow(abs(cos(th-spin*0.5)),12.0)*0.10*(0.5+0.5*u_energy);
+  // the kick ripples outward from the summit through the contours
+  float dp=length(pos-pk);
+  float ring=exp(-pow((dp-fract(beat)*1.9)*5.0,2.0))*u_kick;
+  col+=lime*(0.10+line)*ring*0.85;
 
-  col+=vec3(body)*disc*(1.0-label);
-  col+=lime*sheen*disc*(1.0-label);
-
-  // the currently-played groove glows with the bass; the needle crawls inward
-  float rNow=mix(Rd*0.94, Rl+0.05, fract(t/120.0));
-  col+=lime*exp(-pow((r-rNow)*140.0,2.0))*disc*(0.22+0.50*u_bass);
-
-  // tonearm at a fixed angle; its tip flares on the hit
-  float thN=1.15;
-  float dAng=abs(mod(th-thN+3.14159,6.2831853)-3.14159);
-  float arm=smoothstep(0.012,0.004,dAng)*smoothstep(rNow-0.01,rNow+0.06,r)*smoothstep(Rd+0.12,Rd+0.02,r);
-  col+=vec3(0.55)*arm;
-  vec2 tip=c+rNow*vec2(cos(thN),sin(thN));
-  col+=lime*exp(-length(uv-tip)*30.0)*(0.25+1.3*u_kick+0.35*u_bass);
-
-  // clay label with the rotating R-circle logo glyph
-  float ca=cos(-spin), sa=sin(-spin);
-  vec2 lq=mat2(ca,-sa,sa,ca)*q/(1.6*Rl)+0.5;
-  float inL=step(0.0,lq.x)*step(lq.x,1.0)*step(0.0,lq.y)*step(lq.y,1.0);
-  float gl0=texture2D(u_glyphs,vec2(clamp(lq.x,0.0,1.0)*0.25,clamp(lq.y,0.0,1.0))).r*inL;
-  col=mix(col, clay*0.55, label);
-  col+=lime*gl0*label*0.7;
-
-  // dust motes in the dark, twinkling with the highs
-  vec2 gp=uv*14.0;
-  vec2 rp=hash2(floor(gp));
-  float mote=step(0.93,rp.x)*smoothstep(0.09,0.0,length(fract(gp)-0.5-(rp-0.5)*0.5));
-  col+=lime*mote*(0.05+0.25*u_high)*(1.0-disc);
+  // summit beacon (screen-space) - calm pulse, brighter with the bass
+  vec2 sp=(pk-drift-m*0.22)/2.6;
+  float ds=length(uv-sp);
+  col+=lime*exp(-ds*22.0)*(0.30+0.45*u_bass+0.2*sin(t*2.1));
+  col+=lime*exp(-ds*5.0)*0.05;
 
   float v=length(uv); col*=1.0-0.30*v*v;
   col+=(hash(gl_FragCoord.xy+u_time)-0.5)*0.018;
@@ -699,48 +687,37 @@ vec3 sceneCymatics(vec2 fc){
   return col;
 }
 
-vec3 sceneVinyl(vec2 fc){
-  vec2 res=u_res;
-  vec2 uv=(fc-0.5*res)/res.y;
-  vec2 m=(u_mouse-0.5*res)/res.y;
+vec3 scenePeak(vec2 fc){
+  vec2 uv=(fc-0.5*u_res)/u_res.y;
+  vec2 m=(u_mouse-0.5*u_res)/u_res.y;
   float t=u_time;
-  float fit=min(1.0,(res.x/res.y)*0.92);
-  vec2 c=m*0.06;
-  vec2 q=uv-c;
-  float r=length(q);
-  float th=atan(q.y,q.x);
-  float spin=t*1.35 - 0.55*u_kick;
+  float beat=t*129.0/60.0;
+  vec2 drift=vec2(t*0.020, t*0.013);
+  vec2 pos=uv*2.6 + drift + m*0.22;
+  vec2 pk=drift + vec2(0.55*sin(t*0.026), 0.40*cos(t*0.021));
+  float b=u_bass;
+  float h=fbm(pos)*0.62 + exp(-dot(pos-pk,pos-pk)*0.9)*(0.55+0.10*b);
+  float e=0.02;
+  float hx=fbm(pos+vec2(e,0.0))*0.62 + exp(-dot(pos+vec2(e,0.0)-pk,pos+vec2(e,0.0)-pk)*0.9)*(0.55+0.10*b);
+  float hy=fbm(pos+vec2(0.0,e))*0.62 + exp(-dot(pos+vec2(0.0,e)-pk,pos+vec2(0.0,e)-pk)*0.9)*(0.55+0.10*b);
+  float hpx=max(length(vec2(hx-h,hy-h)/e)*2.6/u_res.y, 1e-5);
+  float N=26.0;
+  float dl=abs(fract(h*N)-0.5)/N;
+  float line=smoothstep(1.6*hpx,0.5*hpx,dl);
+  float major=1.0-step(0.5,mod(floor(h*N),5.0));
   vec3 lime=vec3(0.831,1.0,0.0), clay=vec3(0.851,0.463,0.341);
   vec3 col=vec3(0.012);
-  float Rd=0.42*fit;
-  float Rl=0.15*fit;
-  float disc=smoothstep(Rd+0.004,Rd,r);
-  float label=smoothstep(Rl,Rl-0.004,r);
-  float rr=r+0.0025*sin(th+spin);
-  float grooves=0.5+0.5*sin(rr*520.0);
-  float body=0.030+0.012*pow(grooves,3.0);
-  body+=0.05*noise(vec2((th+spin)*2.5, rr*90.0))*(0.25+0.5*u_energy);
-  float sheen=pow(abs(cos(th-spin*0.5)),12.0)*0.10*(0.5+0.5*u_energy);
-  col+=vec3(body)*disc*(1.0-label);
-  col+=lime*sheen*disc*(1.0-label);
-  float rNow=mix(Rd*0.94, Rl+0.05, fract(t/120.0));
-  col+=lime*exp(-pow((r-rNow)*140.0,2.0))*disc*(0.22+0.50*u_bass);
-  float thN=1.15;
-  float dAng=abs(mod(th-thN+3.14159,6.2831853)-3.14159);
-  float arm=smoothstep(0.012,0.004,dAng)*smoothstep(rNow-0.01,rNow+0.06,r)*smoothstep(Rd+0.12,Rd+0.02,r);
-  col+=vec3(0.55)*arm;
-  vec2 tip=c+rNow*vec2(cos(thN),sin(thN));
-  col+=lime*exp(-length(uv-tip)*30.0)*(0.25+1.3*u_kick+0.35*u_bass);
-  float ca=cos(-spin), sa=sin(-spin);
-  vec2 lq=mat2(ca,-sa,sa,ca)*q/(1.6*Rl)+0.5;
-  float inL=step(0.0,lq.x)*step(lq.x,1.0)*step(0.0,lq.y)*step(lq.y,1.0);
-  float gl0=texture2D(u_glyphs,vec2(clamp(lq.x,0.0,1.0)*0.25,clamp(lq.y,0.0,1.0))).r*inL;
-  col=mix(col, clay*0.55, label);
-  col+=lime*gl0*label*0.7;
-  vec2 gp=uv*14.0;
-  vec2 rp=hash2(floor(gp));
-  float mote=step(0.93,rp.x)*smoothstep(0.09,0.0,length(fract(gp)-0.5-(rp-0.5)*0.5));
-  col+=lime*mote*(0.05+0.25*u_high)*(1.0-disc);
+  vec3 tint=mix(lime*0.42, clay*0.9, smoothstep(0.15,0.52,h));
+  tint=mix(tint, lime, smoothstep(0.55,0.95,h));
+  float amp=(0.30+0.55*smoothstep(0.1,1.0,h))*(0.8+0.3*u_energy);
+  col+=tint*line*amp*(0.62+0.38*major)*(0.75+0.25*u_high);
+  float dp=length(pos-pk);
+  float ring=exp(-pow((dp-fract(beat)*1.9)*5.0,2.0))*u_kick;
+  col+=lime*(0.10+line)*ring*0.85;
+  vec2 sp=(pk-drift-m*0.22)/2.6;
+  float ds=length(uv-sp);
+  col+=lime*exp(-ds*22.0)*(0.30+0.45*u_bass+0.2*sin(t*2.1));
+  col+=lime*exp(-ds*5.0)*0.05;
   return col;
 }
 
@@ -752,7 +729,7 @@ vec3 scenePick(float s, vec2 fc){
   else if(s<3.5) return sceneWarp(fc);
   else if(s<4.5) return sceneEight(fc);
   else if(s<5.5) return sceneCymatics(fc);
-  return sceneVinyl(fc);
+  return scenePeak(fc);
 }
 
 void main(){
@@ -813,7 +790,7 @@ const PRESETS = [
   { id: "warp", name: "Warp", frag: PRELUDE + WARP },
   { id: "808", name: "808", frag: PRELUDE + EIGHT08 },
   { id: "cymatics", name: "Cymatics", frag: PRELUDE + CYMATICS },
-  { id: "vinyl", name: "Vinyl", frag: PRELUDE + VINYL },
+  { id: "peak", name: "Peak", frag: PRELUDE + PEAK },
   { id: "r3loop", name: "R3loop", frag: PRELUDE + R3LOOP },
 ];
 
