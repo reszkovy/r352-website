@@ -635,8 +635,8 @@ export const projects = [
       pl: "Przestaliśmy konsultować problem popytu, zaczęliśmy go produktyzować. regional.fit to r3loop zastosowane do najdroższego powtarzającego się chaosu w każdej rozproszonej organizacji - luki między lokalną potrzebą a centralną realizacją."
     },
     outcome: {
-      en: "TBD - MVP live, pilot customers being onboarded. Metrics to be filled: number of organisations deployed, average requests processed per month, time-to-clarity per submission, middle management hours redirected from coordination to decisions.",
-      pl: "TBD - MVP live, pierwsi pilotażowi klienci są onboardowani. Metryki do uzupełnienia: liczba wdrożonych organizacji, średnia liczba requestów miesięcznie, czas-do-jasności per zgłoszenie, godziny middle management przekierowane z koordynacji na decyzje."
+      en: "MVP live, pilot customers being onboarded. The pilot instruments four decision roles on one screen; deployment count, requests processed and hours redirected from coordination to decisions are being measured now and will be published as the pilots mature.",
+      pl: "MVP live, trwa onboarding klientów pilotażowych. Pilot mierzy cztery role decyzyjne na jednym ekranie; liczba wdrożeń, przetworzone zgłoszenia i godziny odzyskane z koordynacji są teraz mierzone i zostaną opublikowane, gdy piloty dojrzeją."
     },
     reflection: {
       en: "Consulting around the same problem repeatedly is a tell. When five clients describe the same chaos with the same words, you're not delivering a service - you're documenting a market. regional.fit exists because the local-demand problem in distributed organisations is universal, structural, and expensive - and nobody is selling the operating layer that solves it.",
@@ -710,15 +710,15 @@ export const projects = [
     },
     approach: {
       en: "Solo-operator AI-first stack. Data layer built on official sources (Eurostat, IPCC, INE, ISTAT, INSEE) with traceable provenance. Scoring engine normalizes 13 raw signals into one LifeTrend™ composite. AI advisor trained on the full dataset - answers user questions in natural language. Live feeds (weather, AQI, currency) keep the model fresh. REST API opens the data layer to other developers.",
-      pl: "Stack AI-first dla solo-operatora. Warstwa danych zbudowana na oficjalnych źródłach (Eurostat, IPCC, INE, ISTAT, INSEE) z traceable provenance. Scoring engine normalizuje 13 surowych sygnałów do jednego kompozytu LifeTrend™. AI advisor wytrenowany na pełnym datasecie - odpowiada na pytania w naturalnym języku. Live feeds (pogoda, AQI, kursy) utrzymują model w aktualności. REST API otwiera warstwę danych dla innych developerów."
+      pl: "Stack AI-first prowadzony w duchu lean, systems-first. Warstwa danych zbudowana na oficjalnych źródłach (Eurostat, IPCC, INE, ISTAT, INSEE) z traceable provenance. Scoring engine normalizuje 13 surowych sygnałów do jednego kompozytu LifeTrend™. AI advisor wytrenowany na pełnym datasecie - odpowiada na pytania w naturalnym języku. Live feeds (pogoda, AQI, kursy) utrzymują model w aktualności. REST API otwiera warstwę danych dla innych developerów."
     },
     quote: {
       en: "We sell methodology. The strongest way to prove it works - apply it to our own work and ship.",
       pl: "Sprzedajemy metodologię. Najmocniejszy sposób udowodnienia że działa - zastosować ją do własnej pracy i wyshippować."
     },
     outcome: {
-      en: "Live product at caterelo.com - free tier + Founding Access €29/3 months. 90 regions scored. 60+ official sources integrated. AI advisor in production. r3loop methodology validated end-to-end under solo-operator constraints.",
-      pl: "Produkt live na caterelo.com - free tier + Founding Access €29/3 miesiące. 90 regionów ocenionych. 60+ oficjalnych źródeł zintegrowanych. AI advisor w produkcji. Metodologia r3loop zwalidowana end-to-end w warunkach solo-operatora."
+      en: "Live product at caterelo.com - free tier + Founding Access €29/3 months. 90 regions scored. 60+ official sources integrated. AI advisor in production. r3loop methodology validated end-to-end under lean, systems-first constraints.",
+      pl: "Produkt live na caterelo.com - free tier + Founding Access €29/3 miesiące. 90 regionów ocenionych. 60+ oficjalnych źródeł zintegrowanych. AI advisor w produkcji. Metodologia r3loop zwalidowana end-to-end w warunkach lean, systems-first."
     },
     reflection: {
       en: "Building your own product changes how you consult. You stop selling promises - you start selling work you've already done on yourself. The credibility shift compounds across every client conversation that follows.",
