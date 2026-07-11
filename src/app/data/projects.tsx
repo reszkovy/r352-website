@@ -224,7 +224,7 @@ export const projects = [
       en: "Digital Products",
       pl: "Produkty Cyfrowe"
     },
-    year: "2024",
+    year: "3+ years of partnership",
     image: dawidImg,
     coverImage: dawidImg,
     hoverVideo: "/videos/dawid-hover.mp4",
