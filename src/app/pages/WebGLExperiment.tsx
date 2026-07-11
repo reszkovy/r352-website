@@ -740,12 +740,13 @@ void main(){
 
   // SCROLL drives the journey: u_progress in scene units (0..6, Lenis-smoothed
   // upstream). Time keeps each world alive; scroll decides WHERE you are.
-  // The morph occupies the last 30% of each unit.
+  // The morph spans ~70% of each unit (soft take-off and landing) so the
+  // journey feels like continuous travel, with a short breath at each world.
   float block=clamp(u_progress,0.0,6.0);
   float idx=min(floor(block),6.0);
   float nxt=mod(idx+1.0,7.0);
   float ph=block-idx;
-  float ease=smoothstep(0.0,1.0,clamp((ph-0.70)/0.30,0.0,1.0));
+  float ease=smoothstep(0.15,0.85,ph);
 
   vec3 col;
   if(ease<=0.0){
@@ -967,7 +968,7 @@ export function WebGLExperiment() {
         gl.uniform1f(u.high, lv.high);
         gl.uniform1f(u.kick, lv.kick);
         gl.uniform1f(u.energy, lv.energy);
-        gl.uniform1f(u.progress, Math.min(6, scrollY / Math.max(1, window.innerHeight * 0.62)));
+        gl.uniform1f(u.progress, Math.min(6, scrollY / Math.max(1, window.innerHeight * 0.85)));
         gl.drawArrays(gl.TRIANGLES, 0, 3);
       }
       raf = reduced ? 0 : requestAnimationFrame(render);
@@ -1104,7 +1105,7 @@ export function WebGLExperiment() {
       </div>
       {/* R3loop scroll track: 1 viewport per scene, 7 scenes - the fixed canvas
           reads window.scrollY (Lenis-smoothed) and morphs along the journey */}
-      {PRESETS[active].id === "r3loop" && <div style={{ height: "472vh" }} aria-hidden="true" />}
+      {PRESETS[active].id === "r3loop" && <div style={{ height: "610vh" }} aria-hidden="true" />}
     </>
   );
 }
