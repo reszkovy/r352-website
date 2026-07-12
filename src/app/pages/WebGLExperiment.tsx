@@ -632,7 +632,7 @@ vec3 sceneEight(vec2 fc){
     else if(cell.y<1.5) on=1.0-step(0.5,abs(mod(cell.x,8.0)-4.0));
     else                on=step(0.62,hash(cell+seed*13.71));
     float tS=mod(s16-cell.x,16.0);
-    float env=exp(-tS*1.35);
+    float env=exp(-tS*1.35)*mix(0.15,1.0,u_live);
     float laneAmp;
     if(cell.y<0.5)      laneAmp=0.35+1.30*u_bass;
     else if(cell.y<1.5) laneAmp=0.35+1.15*u_mid;
