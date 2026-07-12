@@ -195,6 +195,11 @@ export function Philosophy() {
                   ? 'Projektuję od piętnastu lat i większości tego co wiem nauczyłem się patrząc, jak piękna praca jest zabijana przez słabe operacje.'
                   : "I've been designing for fifteen years and most of what I learned came from watching beautiful work get killed by bad operations."}
               </p>
+              <p>
+                {language === 'pl'
+                  ? <>Zanim był design, był breakdance. W okolicach milenium stałem w kole jako b-boy - a battle uczy rzeczy, których nie uczy żadna szkoła projektowania: pokaż, nie gadaj. Freestyle działa tylko na fundamentach przećwiczonych tysiąc razy. Dwadzieścia parę lat później dokładnie tak prowadzę produkcję.</>
+                  : <>Before design, there was breakdance. Around the millennium I stood in the cypher as a b-boy - and battles teach you things no design school does: show, don&apos;t talk. Freestyle only works on top of fundamentals you&apos;ve drilled a thousand times. Twenty-some years later, that&apos;s exactly how I run production.</>}
+              </p>
               {/* TODO(reszek): potwierdź listę miast - bio mówiło "Lisbon, Barcelona", a FAQ/SEO
                   wymieniają London, Porto, Barcelona, Athens, Marseille (bez Lizbony). Do czasu
                   potwierdzenia wersja bezmiastowa, spójna z liczbami z FAQ (6 lat, 5 miast). */}
@@ -205,8 +210,8 @@ export function Philosophy() {
               </p>
               <p>
                 {language === 'pl'
-                  ? <>W końcu przestałem akceptować to jako koszt designu. Zbudowałem r3loop - metodologię, która traktuje design ops jako system operacyjny, nie cechę charakteru. Sonova, Benefit Systems i Archicom byli pierwszymi klientami. Osiem kroków, które zamieniają kreatywny chaos w działający system - stosowane w każdej skali, od pojedynczego brand launch&apos;u po operacje multi-location.</>
-                  : <>Eventually I stopped accepting that as the cost of doing design. I built r3loop - a methodology that treats design ops as an operational system, not a personality trait. Sonova, Benefit Systems and Archicom became the first clients. Eight steps that turn creative chaos into a working system - applied at every scale, from a single brand launch to multi-location operations.</>}
+                  ? <>W końcu przestałem akceptować to jako koszt designu. Zbudowałem r3loop - metodologię, która traktuje design ops jako system operacyjny, nie cechę charakteru. Sonova, Benefit Systems i Archicom byli pierwszymi klientami - i większość współprac, które tu się zaczynają, nie kończy się: średnia to dziś 5+ lat. Osiem kroków, które zamieniają kreatywny chaos w działający system - w każdej skali, od pojedynczego brand launch&apos;u po 250+ lokalizacji.</>
+                  : <>Eventually I stopped accepting that as the cost of doing design. I built r3loop - a methodology that treats design ops as an operational system, not a personality trait. Sonova, Benefit Systems and Archicom became the first clients - and most partnerships that start here don&apos;t end: the average now runs 5+ years. Eight steps that turn creative chaos into a working system - at every scale, from a single brand launch to 250+ locations.</>}
               </p>
               <p>
                 {language === 'pl'
