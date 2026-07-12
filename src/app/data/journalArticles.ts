@@ -933,7 +933,7 @@ auto_load: true
         <span class="text-white font-medium">2. Zacznij od Diagnostic.</span> 5-dniowy fixed-scope audyt operacyjny - mapuje twoją obecną sytuację, identyfikuje 5-7 priorytetowych bottlenecks, daje 30/60/90-day roadmap. 60-day money-back guarantee jeśli rekomendacje nie są actionable. <a href="/brief" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">/brief</a> - krótki formularz, pierwsza odpowiedź w 48 godzin.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        <span class="text-white font-medium">3. Zobacz jak to wygląda w praktyce.</span> Case studies <a href="/work/geers" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">Geers (Sonova PL)</a> i <a href="/work/benefit-systems" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">Benefit Systems</a> pokazują knowledge hub'y w działaniu - multi-location, multi-vendor, multi-market.
+        <span class="text-white font-medium">3. Zobacz jak to wygląda w praktyce.</span> Case studies <a href="/work/sonova" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">Geers (Sonova PL)</a> i <a href="/work/benefit-systems" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">Benefit Systems</a> pokazują knowledge hub'y w działaniu - multi-location, multi-vendor, multi-market.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Albo po prostu <a href="mailto:hello@r352.com" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">napisz</a>. DM też otwarte.
@@ -1646,7 +1646,7 @@ auto_load: true
         <span class="text-white font-medium">2. Start with the Diagnostic.</span> 5-day fixed-scope operational audit - maps your current state, identifies 5-7 priority bottlenecks, gives a 30/60/90-day roadmap. 60-day money-back guarantee if recommendations aren't actionable. <a href="/brief" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">/brief</a> - short form, first response within 48 hours.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
-        <span class="text-white font-medium">3. See it in practice.</span> Case studies <a href="/work/geers" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">Geers (Sonova PL)</a> and <a href="/work/benefit-systems" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">Benefit Systems</a> show knowledge hubs in action - multi-location, multi-vendor, multi-market.
+        <span class="text-white font-medium">3. See it in practice.</span> Case studies <a href="/work/sonova" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">Geers (Sonova PL)</a> and <a href="/work/benefit-systems" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">Benefit Systems</a> show knowledge hubs in action - multi-location, multi-vendor, multi-market.
       </p>
       <p class="mb-6 text-lg leading-relaxed text-neutral-400">
         Or just <a href="mailto:hello@r352.com" class="text-[#D4FF00] border-b border-[#D4FF00]/40 hover:border-[#D4FF00]">write</a>. DMs open.

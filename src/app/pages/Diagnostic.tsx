@@ -41,12 +41,13 @@ function parseSegmentFromSearch(search: string): string | null {
 }
 
 // ─── Briefly intake config ───────────────────────────────────────────
-// API endpoint (Briefly backend) - leave on briefly-five-plum.vercel.app
-const BRIEFLY_BASE_URL = "https://briefly-five-plum.vercel.app";
+// API endpoint — canonical production domain (www, apex 307s on API calls).
+// briefly-five-plum.vercel.app was the pre-r3loop deployment alias.
+const BRIEFLY_BASE_URL = "https://www.r3loop.app";
 const BRIEFLY_INTAKE_URL = `${BRIEFLY_BASE_URL}/api/public/intake`;
 
-// Wizard landing - r3loop.app is the productized brand surface where users complete the brief
-const WIZARD_BASE_URL = "https://r3loop.app";
+// Wizard landing — www to avoid the apex→www redirect hop for end users.
+const WIZARD_BASE_URL = "https://www.r3loop.app";
 
 const INTAKE_BRANDING = {
   logo_url: "https://www.r352.com/logo.svg",
@@ -55,11 +56,13 @@ const INTAKE_BRANDING = {
   font_family: "Inter",
 };
 
-// Defaults sent to API - real routing values are captured inside the wizard
+// Defaults sent to API - real routing values are captured inside the wizard.
+// NO budget_signal default: a fake bracket used to seed every r352 lead with
+// a low budget and skewed the MACS pre-qualification before the client even
+// opened the wizard. The wizard asks for the real amount.
 const ROUTING_DEFAULTS = {
   vertical: "other" as const,
   scale: "1" as const,
-  budget_signal: "under_30k" as const,
 };
 
 interface FormState {
@@ -450,15 +453,15 @@ export function Brief() {
                 <h2 className="text-4xl md:text-5xl font-normal tracking-tight text-neutral-900 dark:text-white leading-[1.05] mb-6">
                   {lang === "pl" ? (
                     <>
-                      8 sekcji.<br />
-                      ~26 pytań.<br />
-                      ~10 minut.
+                      Adaptacyjny wizard.<br />
+                      7-12 sekcji.<br />
+                      10-18 minut.
                     </>
                   ) : (
                     <>
-                      8 sections.<br />
-                      ~26 questions.<br />
-                      ~10 minutes.
+                      Adaptive wizard.<br />
+                      7-12 sections.<br />
+                      10-18 minutes.
                     </>
                   )}
                 </h2>
@@ -605,24 +608,25 @@ const COPY_EN = {
     label: "Briefing tool",
     title: "Brief us. Structured starting point.",
     intro:
-      "Every project with r352 starts with a structured brief. Eight sections, around ten minutes, one clean response from us - whatever the scope.",
+      "Every project with r352 starts with a structured brief. The wizard adapts to your engagement - around ten minutes for a diagnostic, up to twenty for full enterprise scope - and you get one clean response from us within 48 hours.",
     subline:
       "Whether you need a campaign toolkit or a full operating system implementation, this is the entry. We route every brief to the right engagement model.",
   },
   preview: {
     label: "What you'll cover",
-    title: "8 sections. ~26 questions. ~10 minutes.",
+    title: "Adaptive wizard. 7-12 sections. 10-18 minutes.",
     subtitle:
-      "The briefing wizard guides you through structured sections - covering everything we need to give you a meaningful first response within 48 hours.",
+      "The wizard asks only what applies to your engagement model - a diagnostic takes ~8 minutes, a sprint 12-15, a full enterprise transformation ~18. Your answers feed our strategy engine, so the first response you get is substance, not a scheduling email.",
     sections: [
-      { title: "Project overview", desc: "Tell us the essentials: what, scope, when." },
-      { title: "Brand & visual identity", desc: "Show us your brand identity." },
-      { title: "Target audience", desc: "Who are your target users?" },
-      { title: "Format & specifications", desc: "Specific formats, sizes, technical requirements." },
-      { title: "Content & message", desc: "What do you want to say to your users?" },
-      { title: "Technical requirements", desc: "What are the technical conditions?" },
-      { title: "Budget & timeline", desc: "When and how much can you spend?" },
-      { title: "Additional notes", desc: "Anything else we should know?" },
+      { title: "Engagement model", desc: "What are you coming with? The wizard adapts everything below to it." },
+      { title: "Project overview", desc: "Which r352 product, what scope, what goals." },
+      { title: "Strategic context", desc: "Why now, what the status quo costs, what success looks like in 12 months." },
+      { title: "Scope & decision ownership", desc: "Locations, markets, brand architecture - and who says yes." },
+      { title: "Competitive positioning", desc: "Named competitors, brands you admire, what you refuse to be." },
+      { title: "Brand & visual identity", desc: "Existing brand, references, visual character." },
+      { title: "Audience & message", desc: "Who you serve and what they need to hear." },
+      { title: "Technical requirements", desc: "Platforms, integrations, constraints." },
+      { title: "Budget & timeline", desc: "A real number, not a bracket - it drives an honest scope." },
     ],
   },
   howItWorks: {
@@ -631,7 +635,7 @@ const COPY_EN = {
     steps: [
       {
         title: "Fill the brief",
-        desc: "Four fields here to start, then ~10 minutes through the wizard. Strategic context, not technical specs.",
+        desc: "Four fields here to start, then the adaptive wizard - 10-18 minutes depending on scope. Strategic context, not technical specs.",
       },
       {
         title: "We respond",
@@ -669,24 +673,25 @@ const COPY_PL = {
     label: "Narzędzie briefingowe",
     title: "Zacznij od briefu. Ustrukturyzowany punkt startu.",
     intro:
-      "Każdy projekt z r352 zaczyna się od ustrukturyzowanego briefu. Osiem sekcji, około dziesięciu minut, jedna czysta odpowiedź od nas - niezależnie od zakresu.",
+      "Każdy projekt z r352 zaczyna się od ustrukturyzowanego briefu. Wizard dopasowuje się do modelu współpracy - około dziesięciu minut przy diagnostyce, do dwudziestu przy pełnym zakresie enterprise - a od nas dostajesz jedną konkretną odpowiedź w 48 godzin.",
     subline:
       "Czy potrzebujesz pakietu kampanijnego, czy pełnego wdrożenia operating systemu - to jest punkt wejścia. Każdy brief routujemy do właściwego modelu współpracy.",
   },
   preview: {
     label: "Co przejdziesz",
-    title: "8 sekcji. ~26 pytań. ~10 minut.",
+    title: "Adaptacyjny wizard. 7-12 sekcji. 10-18 minut.",
     subtitle:
-      "Wizard prowadzi Cię przez ustrukturyzowane sekcje - obejmuje wszystko czego potrzebujemy, żeby dać Ci sensowną pierwszą odpowiedź w 48 godzin.",
+      "Wizard pyta tylko o to, co dotyczy Twojego modelu współpracy - diagnostyka zajmuje ~8 minut, sprint 12-15, pełna transformacja enterprise ~18. Twoje odpowiedzi zasilają nasz silnik strategiczny, więc pierwsza odpowiedź od nas to konkret, a nie mail z terminem calla.",
     sections: [
-      { title: "Przegląd projektu", desc: "Powiedz nam najważniejsze: co, jaki zakres, kiedy." },
-      { title: "Brand i tożsamość wizualna", desc: "Pokaż nam swoją tożsamość brandową." },
-      { title: "Docelowa publiczność", desc: "Kto to twoi docelowi użytkownicy?" },
-      { title: "Format i specyfikacje", desc: "Konkretne formaty, rozmiary, wymagania techniczne." },
-      { title: "Treść i przesłanie", desc: "Co chcesz powiedzieć swoim użytkownikom?" },
-      { title: "Wymagania techniczne", desc: "Jakie są warunki techniczne?" },
-      { title: "Budżet i harmonogram", desc: "Kiedy i ile możesz wydać?" },
-      { title: "Dodatkowe uwagi", desc: "Czy jest coś jeszcze, co powinniśmy wiedzieć?" },
+      { title: "Model współpracy", desc: "Z czym przychodzisz? Wizard dopasowuje do tego wszystko poniżej." },
+      { title: "Przegląd projektu", desc: "Który produkt r352, jaki zakres, jakie cele." },
+      { title: "Kontekst strategiczny", desc: "Dlaczego teraz, ile kosztuje status quo, jak wygląda sukces za 12 miesięcy." },
+      { title: "Zakres i decyzyjność", desc: "Lokalizacje, rynki, architektura marki - i kto mówi „tak”." },
+      { title: "Pozycjonowanie konkurencyjne", desc: "Konkurenci z nazwy, marki które podziwiasz, czym nie chcesz być." },
+      { title: "Brand i tożsamość wizualna", desc: "Istniejący brand, referencje, charakter wizualny." },
+      { title: "Publiczność i przekaz", desc: "Komu służysz i co ta grupa musi usłyszeć." },
+      { title: "Wymagania techniczne", desc: "Platformy, integracje, ograniczenia." },
+      { title: "Budżet i harmonogram", desc: "Konkretna kwota, nie przedział - to ona napędza uczciwy zakres." },
     ],
   },
   howItWorks: {
@@ -695,7 +700,7 @@ const COPY_PL = {
     steps: [
       {
         title: "Rozpocznij projekt",
-        desc: "Cztery pola na start, potem ~10 minut przez wizard. Strategiczny kontekst, nie spec techniczny.",
+        desc: "Cztery pola na start, potem adaptacyjny wizard - 10-18 minut zależnie od zakresu. Strategiczny kontekst, nie spec techniczny.",
       },
       {
         title: "Odpowiadamy",
