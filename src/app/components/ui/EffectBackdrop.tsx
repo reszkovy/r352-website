@@ -33,13 +33,13 @@ void main(){
   vec2 m=(u_mouse-0.5*res)/res.y;
   float t=u_time;
   vec2 drift=vec2(t*0.016, t*0.010);
-  vec2 pos=uv*2.6 + drift + m*0.16;
+  vec2 pos=uv*1.8 + drift + m*0.16;
   vec2 pk=drift + vec2(0.55*sin(t*0.021), 0.40*cos(t*0.017));
   float h=fbm(pos)*0.62 + exp(-dot(pos-pk,pos-pk)*0.9)*0.57;
   float e=0.02;
   float hx=fbm(pos+vec2(e,0.0))*0.62 + exp(-dot(pos+vec2(e,0.0)-pk,pos+vec2(e,0.0)-pk)*0.9)*0.57;
   float hy=fbm(pos+vec2(0.0,e))*0.62 + exp(-dot(pos+vec2(0.0,e)-pk,pos+vec2(0.0,e)-pk)*0.9)*0.57;
-  float hpx=max(length(vec2(hx-h,hy-h)/e)*2.6/res.y, 1e-5);
+  float hpx=max(length(vec2(hx-h,hy-h)/e)*1.8/res.y, 1e-5);
   float N=26.0;
   float dl=abs(fract(h*N)-0.5)/N;
   float line=smoothstep(1.6*hpx,0.5*hpx,dl);
@@ -48,9 +48,9 @@ void main(){
   vec3 col=vec3(0.010);
   vec3 tint=mix(lime*0.42, clay*0.9, smoothstep(0.15,0.52,h));
   tint=mix(tint, lime, smoothstep(0.55,0.95,h));
-  float amp=(0.30+0.55*smoothstep(0.1,1.0,h))*0.62;
+  float amp=(0.30+0.55*smoothstep(0.1,1.0,h))*0.72;
   col+=tint*line*amp*(0.62+0.38*major);
-  vec2 sp=(pk-drift-m*0.16)/2.6;
+  vec2 sp=(pk-drift-m*0.16)/1.8;
   float ds=length(uv-sp);
   col+=lime*exp(-ds*22.0)*0.28;
   col+=lime*exp(-ds*5.0)*0.035;

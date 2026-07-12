@@ -254,7 +254,7 @@ export function Process() {
         </script>
       </Helmet>
       {/* ─── Intro Hook - 12-col 7+5 (H1 left, supporting right) ─── */}
-      <section className="relative isolate pt-32 pb-16 md:pt-40 md:pb-20 px-8 md:px-12 overflow-hidden">
+      <section className="relative isolate min-h-[82vh] flex flex-col justify-center pt-32 pb-16 md:pt-36 md:pb-20 px-8 md:px-12 overflow-hidden">
         {PROCESS_PEAK && <EffectBackdrop effect="peak" className="-z-10" />}
         <div className="max-w-[1800px] mx-auto">
           <Reveal>
