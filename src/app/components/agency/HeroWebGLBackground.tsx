@@ -59,7 +59,7 @@ void main(){
     // sparser pattern than /webgl - most glyphs stay idle
     float on=step(0.74,hash(cell+seed*13.71));
     float tS=mod(s16-cell.x,16.0);
-    float env=exp(-tS*1.1);
+    float env=exp(-tS*1.1)*mix(0.12,1.0,u_live); // sweep flashes only with music
     float amp=0.30+0.55*u_bass+0.45*u_high*(0.3+0.7*hash(cell+11.13));
 
     vec2 rnd=hash2(cell);
@@ -220,10 +220,11 @@ export function HeroWebGLBackground() {
         mid = Math.min(1, avg(bin(345), bin(4130)) * 3.0);
         high = Math.min(1, avg(bin(4130), bin(12050)) * 3.8);
       } else {
-        const beat = (t * 129) / 60;
-        bass = Math.exp(-(beat % 1) * 5);
-        mid = Math.exp(-((beat + 1) % 2) * 4.5) * 0.9;
-        high = 0.22 + 0.12 * Math.sin(t * 7.3);
+        // silence = stillness: calm constants, no clock pulsing - the field
+        // rests (cursor magnet + scroll parallax only) until the music plays
+        bass = 0.22;
+        mid = 0.22;
+        high = 0.18;
       }
       const dt = Math.min(0.1, (now - lastFrame) / 1000);
       lastFrame = now;

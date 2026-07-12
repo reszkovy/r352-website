@@ -19,7 +19,7 @@ precision highp float;
 uniform vec2 u_res; uniform float u_time; uniform vec2 u_mouse; uniform float u_mdown;
 uniform float u_bass; uniform float u_mid; uniform float u_high;
 uniform float u_kick; uniform float u_energy;
-uniform float u_progress;
+uniform float u_progress; uniform float u_live;
 uniform sampler2D u_glyphs;
 float hash(vec2 p){ p=fract(p*vec2(123.34,456.21)); p+=dot(p,p+45.32); return fract(p.x*p.y); }
 vec2 hash2(vec2 p){ p=vec2(dot(p,vec2(127.1,311.7)),dot(p,vec2(269.5,183.3))); return fract(sin(p)*43758.5453); }
@@ -290,7 +290,7 @@ void main(){
     else                on=step(0.62,hash(cell+seed*13.71));
 
     float tS=mod(s16-cell.x,16.0);          // 16th-notes since this column was hit
-    float env=exp(-tS*1.35);                // flash + decay
+    float env=exp(-tS*1.35)*mix(0.15,1.0,u_live); // sweep flashes only with music
 
     // audio-reactive lane gain: kick lane rides the bass, snare lane the mids,
     // free pads shimmer with the highs (per-pad sensitivity varies)
@@ -431,7 +431,7 @@ void main(){
   // summit beacon (screen-space) - calm pulse, brighter with the bass
   vec2 sp=(pk-drift-m*0.22)/2.6;
   float ds=length(uv-sp);
-  col+=lime*exp(-ds*22.0)*(0.30+0.45*u_bass+0.2*sin(t*2.1));
+  col+=lime*exp(-ds*22.0)*(0.30+0.45*u_bass+0.2*sin(t*2.1)*u_live);
   col+=lime*exp(-ds*5.0)*0.05;
 
   float v=length(uv); col*=1.0-0.30*v*v;
@@ -717,7 +717,7 @@ vec3 scenePeak(vec2 fc){
   col+=lime*(0.10+line)*ring*0.85;
   vec2 sp=(pk-drift-m*0.22)/2.6;
   float ds=length(uv-sp);
-  col+=lime*exp(-ds*22.0)*(0.30+0.45*u_bass+0.2*sin(t*2.1));
+  col+=lime*exp(-ds*22.0)*(0.30+0.45*u_bass+0.2*sin(t*2.1)*u_live);
   col+=lime*exp(-ds*5.0)*0.05;
   return col;
 }
@@ -823,6 +823,7 @@ export function WebGLExperiment() {
     kick: WebGLUniformLocation | null;
     energy: WebGLUniformLocation | null;
     progress: WebGLUniformLocation | null;
+    live: WebGLUniformLocation | null;
   } | null>(null);
 
   // ── cursor-reactive title: springy 3D tilt + drift toward the pointer ──
@@ -848,7 +849,7 @@ export function WebGLExperiment() {
   const playingRef = useRef(isPlaying);
   const analyserRef = useRef<AnalyserNode | null>(null);
   const freqRef = useRef<Uint8Array | null>(null);
-  const levelRef = useRef({ bass: 0, mid: 0, high: 0, kick: 0, energy: 0.4, lastBass: 0 });
+  const levelRef = useRef({ bass: 0, mid: 0, high: 0, kick: 0, energy: 0.4, lastBass: 0, live: 0 });
   useEffect(() => {
     playingRef.current = isPlaying;
     if (isPlaying && !analyserRef.current) analyserRef.current = getAnalyser();
@@ -915,7 +916,8 @@ export function WebGLExperiment() {
         // audio levels: live FFT when the site track plays, 129 BPM clock otherwise
         let bass: number, mid: number, high: number;
         const an = analyserRef.current;
-        if (an && playingRef.current && an.context.state === "running") {
+        const isLive = !!(an && playingRef.current && an.context.state === "running");
+        if (isLive) {
           const bins =
             freqRef.current && freqRef.current.length === an.frequencyBinCount
               ? freqRef.current
@@ -935,10 +937,11 @@ export function WebGLExperiment() {
           mid = Math.min(1, avg(bin(345), bin(4130)) * 3.0);
           high = Math.min(1, avg(bin(4130), bin(12050)) * 3.8);
         } else {
-          const beat = (tsec * 129) / 60;
-          bass = Math.exp(-(beat % 1) * 5);            // kick on quarters
-          mid = Math.exp(-((beat + 1) % 2) * 4.5) * 0.9; // snare on 2 + 4
-          high = 0.22 + 0.12 * Math.sin(tsec * 7.3);
+          // silence = stillness: calm constants, zero pulsing - the scenes rest,
+          // reacting only to the pointer and scroll until the music wakes them
+          bass = 0.22;
+          mid = 0.22;
+          high = 0.18;
         }
         // fast attack, slow release - time-based so decay looks the same at
         // any display refresh rate (tuned against a 60fps baseline)
@@ -946,6 +949,7 @@ export function WebGLExperiment() {
         lastFrame = now;
         const fr = dt * 60;
         const lv = levelRef.current;
+        lv.live += ((isLive ? 1 : 0) - lv.live) * Math.min(1, dt * 2.0);
         // KICK: bass-flux transient detector - fires on the hit itself, not on
         // sustained low end; sharp attack, ~150ms release. ENERGY: slow follower
         // of the whole track, so builds and breakdowns reshape the scene.
@@ -969,6 +973,7 @@ export function WebGLExperiment() {
         gl.uniform1f(u.kick, lv.kick);
         gl.uniform1f(u.energy, lv.energy);
         gl.uniform1f(u.progress, Math.min(6, scrollY / Math.max(1, window.innerHeight * 0.85)));
+        gl.uniform1f(u.live, lv.live);
         gl.drawArrays(gl.TRIANGLES, 0, 3);
       }
       raf = reduced ? 0 : requestAnimationFrame(render);
@@ -1024,6 +1029,7 @@ export function WebGLExperiment() {
       kick: gl.getUniformLocation(prog, "u_kick"),
       energy: gl.getUniformLocation(prog, "u_energy"),
       progress: gl.getUniformLocation(prog, "u_progress"),
+      live: gl.getUniformLocation(prog, "u_live"),
     };
     // glyph atlas sampler (only the 808 program has it) - texture unit 0
     gl.uniform1i(gl.getUniformLocation(prog, "u_glyphs"), 0);
