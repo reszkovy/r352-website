@@ -9,7 +9,8 @@
     "inject-meta": "node scripts/inject-meta.mjs",
     "prerender": "node scripts/prerender.mjs",
     "preview": "vite preview",
-    "dev": "vite"
+    "dev": "vite",
+    "brand:check": "node scripts/brand-check.mjs"
   },
   "dependencies": {
     "@popperjs/core": "2.11.8",
