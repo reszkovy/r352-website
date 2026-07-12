@@ -30,10 +30,9 @@ const PEAK_BG = `
 void main(){
   vec2 res=u_res;
   vec2 uv=(gl_FragCoord.xy-0.5*res)/res.y;
-  vec2 m=(u_mouse-0.5*res)/res.y;
   float t=u_time;
   vec2 drift=vec2(t*0.016, t*0.010);
-  vec2 pos=uv*1.8 + drift + m*0.16;
+  vec2 pos=uv*1.8 + drift;              // static under the cursor - drift only
   vec2 pk=drift + vec2(0.55*sin(t*0.021), 0.40*cos(t*0.017));
   float h=fbm(pos)*0.62 + exp(-dot(pos-pk,pos-pk)*0.9)*0.57;
   float e=0.02;
@@ -50,7 +49,7 @@ void main(){
   tint=mix(tint, lime, smoothstep(0.55,0.95,h));
   float amp=(0.30+0.55*smoothstep(0.1,1.0,h))*0.72;
   col+=tint*line*amp*(0.62+0.38*major);
-  vec2 sp=(pk-drift-m*0.16)/1.8;
+  vec2 sp=(pk-drift)/1.8;
   float ds=length(uv-sp);
   col+=lime*exp(-ds*22.0)*0.28;
   col+=lime*exp(-ds*5.0)*0.035;
