@@ -8,6 +8,11 @@ import { useLanguage } from "@/app/context/LanguageContext";
 import { useLocation, Link } from "wouter";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { R3LoopBadge } from "@/app/components/ui/R3LoopBadge";
+import { EffectBackdrop } from "@/app/components/ui/EffectBackdrop";
+
+// Living topographic map behind the hero - "pick one peak" made visible.
+// EASY REVERT: flip to false to restore the plain hero exactly.
+const PROCESS_PEAK = true;
 
 // ─── 8-step methodology ──────────────────────────────────
 interface Step {
@@ -249,7 +254,8 @@ export function Process() {
         </script>
       </Helmet>
       {/* ─── Intro Hook - 12-col 7+5 (H1 left, supporting right) ─── */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 px-8 md:px-12">
+      <section className="relative isolate pt-32 pb-16 md:pt-40 md:pb-20 px-8 md:px-12 overflow-hidden">
+        {PROCESS_PEAK && <EffectBackdrop effect="peak" className="-z-10" />}
         <div className="max-w-[1800px] mx-auto">
           <Reveal>
             <div className="grid grid-cols-12 gap-6 md:gap-8 items-end">

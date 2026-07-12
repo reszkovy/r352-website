@@ -14,6 +14,10 @@ import { projects } from "@/app/data/projects";
 // NoiseBackground (animated full-screen canvas, per-frame ImageData) replaced by
 // GrainOverlay - static SVG-noise tile, zero per-frame cost, sits above content.
 import { PersistentBackground } from "@/app/components/ui/PersistentBackground";
+import { EffectBackdrop } from "@/app/components/ui/EffectBackdrop";
+
+// 404 = lost in hyperspace (Warp backdrop). EASY REVERT: flip to false.
+const NOTFOUND_WARP = true;
 
 // Lazy-loaded pages (code splitting)
 const Home = lazy(() => import("@/app/pages/Home").then(m => ({ default: m.Home })));
@@ -386,7 +390,8 @@ function AppContent() {
               <Route path="/limitedaccess5/spotkanie" component={LimitedAccess5Meeting} />
               <Route path="/limitedaccess5/wycena" component={LimitedAccess5Pricing} />
               <Route>{() => (
-                <div className="pt-32 min-h-screen flex flex-col items-center justify-center text-center px-6">
+                <div className="relative isolate pt-32 min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+                  {NOTFOUND_WARP && <EffectBackdrop effect="warp" scrim={false} className="-z-10" />}
                   <div className="max-w-xl mx-auto space-y-8">
                     <h1 className="text-8xl md:text-[12rem] font-bold tracking-tighter text-white leading-none">404</h1>
                     <p className="text-xl text-neutral-400">This page doesn't exist.</p>
