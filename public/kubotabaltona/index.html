@@ -64,6 +64,21 @@
       radial-gradient(140% 120% at 50% 50%, transparent 55%, rgba(0,0,0,.42) 100%);
   }
   body.plate .stage::before{display:none}
+  /* jasne tło studyjne (przełącznik „Tło") — pasek z logo zostaje ciemny,
+     bo część KUBOTA w lockupie klienta jest biała */
+  body.light{background:radial-gradient(1200px 850px at 50% 42%, #F4F5F7 0%, #DCDFE5 68%), #DCDFE5}
+  body.light .stage::before{background:
+    radial-gradient(900px 700px at 38% 30%, rgba(255,255,255,.6), transparent 62%),
+    radial-gradient(140% 120% at 50% 50%, transparent 58%, rgba(40,50,70,.16) 100%)}
+  body.light .bar{background:linear-gradient(180deg, rgba(11,13,18,.97), rgba(11,13,18,.85) 60%, transparent);
+    border-bottom-color:rgba(38,87,217,.12)}
+  body.light .spec, body.light .hint{color:#5A6170}
+  body.light .spec b{color:#1C2230}
+  body.light button{color:#2A3040;background:rgba(20,30,60,.05);border-color:rgba(20,30,60,.28);backdrop-filter:none}
+  body.light button:hover{background:rgba(38,87,217,.16);border-color:var(--blue);color:#132D7A}
+  body.light button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+  body.light button.toggle{background:rgba(20,30,60,.10);border-color:rgba(20,30,60,.40)}
+  body.light button.toggle.on{background:#132D7A;border-color:#132D7A;color:#fff}
   .stage:active{cursor:grabbing}
   /* satynowy odblask lakieru na płaskich licach — opacity sterowane światłem w JS */
   .specular{
@@ -112,6 +127,7 @@
   <button data-view="top">Góra</button>
   <button id="dims" class="toggle">Wymiary</button>
   <button id="prods" class="toggle on">Produkty</button>
+  <button id="bg" class="toggle">Tło</button>
 </div>
 
 <div class="stage" id="stage">
@@ -461,12 +477,15 @@ stage.addEventListener('wheel', e => {
 document.querySelectorAll('[data-view]').forEach(b => b.onclick = () => {
   [rx, ry, zoom] = views[b.dataset.view]; apply();
 });
-const dimsBtn = document.getElementById('dims'), prodsBtn = document.getElementById('prods');
+const dimsBtn = document.getElementById('dims'), prodsBtn = document.getElementById('prods'), bgBtn = document.getElementById('bg');
 dimsBtn.onclick  = () => { document.body.classList.toggle('dims-on');      dimsBtn.classList.toggle('on'); };
 prodsBtn.onclick = () => { document.body.classList.toggle('products-off'); prodsBtn.classList.toggle('on'); };
+bgBtn.onclick    = () => { document.body.classList.toggle('light');        bgBtn.classList.toggle('on'); };
 
-/* tryb renderu: ?plate=front|34|side|back|top [&dims=1] [&zoom=…] — czysty kadr bez UI */
+/* tryb renderu: ?plate=front|34|side|back|top [&dims=1] [&zoom=…] — czysty kadr bez UI
+   ?bg=light — start z jasnym tłem (link do udostępniania) */
 const q = new URLSearchParams(location.search);
+if (q.get('bg') === 'light') { document.body.classList.add('light'); bgBtn.classList.add('on'); }
 if (q.has('plate')) {
   document.querySelectorAll('.hud, .bar').forEach(e => e.remove());
   document.body.classList.add('plate');
