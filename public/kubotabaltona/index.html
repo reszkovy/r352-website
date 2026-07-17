@@ -56,7 +56,20 @@
 
   /* ---------- scena ---------- */
   .stage{position:fixed;inset:0;display:grid;place-items:center;perspective:2800px;cursor:grab;touch-action:none}
+  /* miękki spot zza lewego górnego rogu + winieta — tło studyjne */
+  .stage::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(900px 700px at 38% 30%, rgba(120,160,255,.10), transparent 62%),
+      radial-gradient(140% 120% at 50% 50%, transparent 55%, rgba(0,0,0,.42) 100%);
+  }
+  body.plate .stage::before{display:none}
   .stage:active{cursor:grabbing}
+  /* satynowy odblask lakieru na płaskich licach — opacity sterowane światłem w JS */
+  .specular{
+    position:absolute;inset:0;pointer-events:none;opacity:0;
+    background:linear-gradient(115deg, rgba(255,255,255,0) 30%, rgba(255,255,255,.5) 48%, rgba(255,255,255,0) 63%);
+  }
   .rig{transform-style:preserve-3d;transition:transform .7s cubic-bezier(.22,1,.36,1)}
   .rig.drag{transition:none}
   .stand{position:relative;width:0;height:0;transform-style:preserve-3d}
@@ -108,6 +121,11 @@
 <!-- ORYGINALNE DIELINY — źródło brandingu i sylwetek -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
+    <linearGradient id="shg" x1="0" y1="0" x2="1" y2="0.35">
+      <stop offset="0.28" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#fff" stop-opacity="0.45"/>
+      <stop offset="0.72" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
     <g id="dl"><g clip-path="url(#clip0_117_6)">
 <rect width="600" height="185.069" transform="translate(423.926 99.334)" fill="#2657D9"/>
 </g>
@@ -201,8 +219,10 @@ const Y_FLOOR     = 1299.334 / K;   // 129.93 — podłoga
 const Y = yTop => yTop - H / 2;     // cm-od-góry -> współrzędna sceny (origin = środek bryły)
 
 const parts = [];
-function panel({w, h, pos, rot = '', css = '', cls = '', html = ''}){
-  parts.push(`<div class="n ${cls}" style="
+/* n = normalna panelu w układzie bryły (do cieniowania kierunkowego w JS) */
+function panel({w, h, pos, rot = '', css = '', cls = '', html = '', n = null}){
+  const dn = n ? ` data-n="${n.join(',')}"` : '';
+  parts.push(`<div class="n ${cls}"${dn} style="
     width:${cm(w)}px;height:${cm(h)}px;
     transform:translate3d(${cm(pos[0])}px,${cm(pos[1])}px,${cm(pos[2])}px) ${rot} translate(-50%,-50%);
     ${css}">${html}</div>`);
@@ -212,21 +232,24 @@ const tile = (vb, ref) =>
 
 /* ================= tylna ściana niszy: pegboard (front dielinu) ================= */
 const pegH = Y_BASE_TOP - Y_HDR_BOT;                 // 61.49
-panel({w:W, h:pegH, pos:[0, Y(Y_HDR_BOT + pegH/2), -D/2],
+panel({w:W, h:pegH, pos:[0, Y(Y_HDR_BOT + pegH/2), -D/2], n:[0,0,1],
   css:'background:var(--blue-lt)',
   html: tile(`423.822 ${Y_HDR_BOT*K} 600 ${pegH*K}`, '#dl') + `
     <div style="position:absolute;inset:0;
       background:radial-gradient(circle at 50% 50%, rgba(0,0,0,.42) 0 ${cm(.45)}px, transparent ${cm(.7)}px);
       background-size:${cm(2.6)}px ${cm(2.6)}px;background-position:${cm(1.3)}px ${cm(2)}px"></div>
-    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.22),transparent 38%)"></div>`});
+    <div style="position:absolute;inset:0;background:
+      linear-gradient(180deg,rgba(0,0,0,.22),transparent 38%),
+      linear-gradient(90deg,rgba(0,0,0,.26),transparent 10%,transparent 90%,rgba(0,0,0,.26))"></div>`});
 
 /* ================= header (górna część tego samego panelu) ================= */
-panel({w:W, h:Y_HDR_BOT, pos:[0, Y(Y_HDR_BOT/2), -D/2 + .3],
+panel({w:W, h:Y_HDR_BOT, pos:[0, Y(Y_HDR_BOT/2), -D/2 + .3], n:[0,0,1],
   html: tile(`423.926 0 600 ${Y_HDR_BOT*K}`, '#dl')});
 
 /* ================= tył standu: plecy.svg (60×130 cm, 1:1) ================= */
-panel({w:W, h:H, pos:[0, 0, -D/2 - .3], rot:'rotateY(180deg)',
-  css:'backface-visibility:hidden', html: tile('0 0 601 1300', '#tyl')});
+panel({w:W, h:H, pos:[0, 0, -D/2 - .3], rot:'rotateY(180deg)', n:[0,0,-1],
+  css:'backface-visibility:hidden',
+  html: tile('0 0 601 1300', '#tyl') + `<div class="specular" style="top:9%"></div>`});
 
 /* ================= ściany boczne: lewa1 / prawa1 =================
    Panel lewy: rotateY(-90) -> lokalna oś x biegnie ku PRZODOWI standu,
@@ -249,22 +272,29 @@ const silSvg = which => `<svg viewBox="0 0 400 800" preserveAspectRatio="none">
 const NICHE_H = Y_BASE_TOP - Y_WING_TOP;             // 80 — od góry ścianki do blatu
 const nicheY = Y(Y_WING_TOP + NICHE_H/2);
 
-panel({w:D, h:wingH, pos:[-W/2, wingY, 0], rot:'rotateY(-90deg)',
-  css:'backface-visibility:hidden', html: tile('0 0 400 1200', '#wl')});
-panel({w:D, h:NICHE_H, pos:[-W/2 + .3, nicheY, 0], rot:'rotateY(90deg)',
+/* odblask lakieru przycięty do sylwetki ścianki (grupa w SVG, nie prostokąt) */
+const wingSheen = which => `<svg viewBox="0 0 400 1200" preserveAspectRatio="none">
+  <g class="svg-spec" opacity="0" fill="url(#shg)">${SIL[which]}</g></svg>`;
+
+panel({w:D, h:wingH, pos:[-W/2, wingY, 0], rot:'rotateY(-90deg)', n:[-1,0,0],
+  css:'backface-visibility:hidden', html: tile('0 0 400 1200', '#wl') + wingSheen('lewa')});
+panel({w:D, h:NICHE_H, pos:[-W/2 + .3, nicheY, 0], rot:'rotateY(90deg)', n:[1,0,0],
   css:'backface-visibility:hidden', html: silSvg('prawa')});
-panel({w:D, h:wingH, pos:[ W/2, wingY, 0], rot:'rotateY(90deg)',
-  css:'backface-visibility:hidden', html: tile('0 0 400 1200', '#wr')});
-panel({w:D, h:NICHE_H, pos:[ W/2 - .3, nicheY, 0], rot:'rotateY(-90deg)',
+panel({w:D, h:wingH, pos:[ W/2, wingY, 0], rot:'rotateY(90deg)', n:[1,0,0],
+  css:'backface-visibility:hidden', html: tile('0 0 400 1200', '#wr') + wingSheen('prawa')});
+panel({w:D, h:NICHE_H, pos:[ W/2 - .3, nicheY, 0], rot:'rotateY(-90deg)', n:[-1,0,0],
   css:'backface-visibility:hidden', html: silSvg('lewa')});
 
 /* ================= podstawa 60 × 40 × 40 ================= */
 const baseH = Y_FLOOR - Y_BASE_TOP;                  // 40
-panel({w:W, h:baseH, pos:[0, Y(Y_BASE_TOP + baseH/2), D/2], css:'background:var(--blue)',
-  html: tile(`423.453 ${Y_BASE_TOP*K} 600 ${baseH*K}`, '#dl')});
-/* blat podstawy — jasny kobalt, domyka niszę od dołu */
-panel({w:W, h:D, pos:[0, Y(Y_BASE_TOP), 0], rot:'rotateX(90deg)',
-  css:'background:linear-gradient(180deg,#3D6BE0,#2450C8)'});
+panel({w:W, h:baseH, pos:[0, Y(Y_BASE_TOP + baseH/2), D/2], n:[0,0,1], css:'background:var(--blue)',
+  html: tile(`423.453 ${Y_BASE_TOP*K} 600 ${baseH*K}`, '#dl') + `
+    <div class="specular"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.16),transparent 9%,transparent 86%,rgba(0,0,0,.2))"></div>`});
+/* blat podstawy — jasny kobalt, domyka niszę od dołu; AO przy pegboardzie */
+panel({w:W, h:D, pos:[0, Y(Y_BASE_TOP), 0], rot:'rotateX(90deg)', n:[0,-1,0],
+  css:'background:linear-gradient(180deg,#3D6BE0,#2450C8)',
+  html:`<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.3),transparent 26%)"></div>`});
 /* spód standu — kobaltowy prostokąt zamykający bryłę od dołu (bez pustki w środku) */
 panel({w:W, h:D, pos:[0, Y(Y_FLOOR), 0], rot:'rotateX(90deg)',
   css:'background:#2450C8'});
@@ -318,7 +348,7 @@ const SEP = 3.0;
 grid.forEach((row, ri) => {
   row.forEach((name, ci) => {
     const [c, d, lc] = C[name];
-    panel({w:16, h:HANG + SL, pos:[colsX[ci], Y(rowsTop[ri] + (HANG + SL)/2), -D/2 + 4], cls:'hang',
+    panel({w:16, h:HANG + SL, pos:[colsX[ci], Y(rowsTop[ri] + (HANG + SL)/2), -D/2 + 4], cls:'hang', n:[0,0,1],
       css:`filter:drop-shadow(0 ${cm(1)}px ${cm(1.5)}px rgba(0,0,0,.5))`,
       html:`
         <div style="position:absolute;left:50%;top:0;transform:translateX(-50%);z-index:3">${hanger()}</div>
@@ -331,15 +361,18 @@ grid.forEach((row, ri) => {
 ['black','navy','red','orange','pink','mint','beige','white'].forEach((name, i) => {
   const [c, d, lc] = C[name];
   panel({w:SW, h:SL, pos:[-26 + i * 7.45, Y(Y_BASE_TOP - .4), 1],
-    rot:`rotateX(90deg) rotateZ(${180 + (i % 2 ? 3 : -3)}deg)`, cls:'ledge',
+    rot:`rotateX(90deg) rotateZ(${180 + (i % 2 ? 3 : -3)}deg)`, cls:'ledge', n:[0,-1,0],
     css:`filter:drop-shadow(0 2px 3px rgba(0,0,0,.35))`,
     html:slide(c, d, lc)});
 });
 
-/* ================= cień ================= */
-parts.push(`<div class="n" style="width:${cm(W*1.7)}px;height:${cm(D*1.8)}px;
-  transform:translate3d(0,${cm(Y(Y_FLOOR))}px,0) rotateX(90deg) translate(-50%,-50%);
-  background:radial-gradient(ellipse at center, rgba(0,0,0,.85), transparent 66%);filter:blur(11px)"></div>`);
+/* ================= cień — kierunkowy (światło z lewej-góry-przodu) ================= */
+parts.push(`<div class="n" style="width:${cm(W*1.9)}px;height:${cm(D*2.0)}px;
+  transform:translate3d(${cm(5)}px,${cm(Y(Y_FLOOR))}px,${cm(-3)}px) rotateX(90deg) translate(-50%,-50%);
+  background:radial-gradient(ellipse at 42% 46%, rgba(0,0,0,.6), transparent 68%);filter:blur(14px)"></div>`);
+parts.push(`<div class="n" style="width:${cm(W*1.12)}px;height:${cm(D*1.2)}px;
+  transform:translate3d(${cm(2)}px,${cm(Y(Y_FLOOR))}px,${cm(-1)}px) rotateX(90deg) translate(-50%,-50%);
+  background:radial-gradient(ellipse at 46% 48%, rgba(0,0,0,.55), transparent 62%);filter:blur(6px)"></div>`);
 
 /* ================= wymiary (opisy PL) ================= */
 const V = (label, yA, yB, side, tier = 0) => {
@@ -377,11 +410,35 @@ document.getElementById('spec').innerHTML = `
   Suma wysokości <b>130 cm</b> · Wysokość podstawy <b>40 cm</b><br>
   Ściana boczna <b>40 × 120 cm</b> · Haki <b>2 × 4</b> = <b>8 par</b> + <b>8 par</b> na podstawie`;
 
+/* ================= światło i cieniowanie =================
+   kierunek DO światła (lewa-góra-przód, układ świata; y rośnie w dół) */
+const LIGHT = (() => { const v = [-0.5, -0.75, 0.8], m = Math.hypot(...v); return v.map(x => x / m); })();
+const shaded = [...document.querySelectorAll('[data-n]')].map(el => ({
+  el, n: el.dataset.n.split(',').map(Number), base: el.style.filter || '',
+  spec: el.querySelector('.specular') || el.querySelector('.svg-spec'),
+}));
+function shade(rx, ry){
+  const cx = Math.cos(rx*Math.PI/180), sx = Math.sin(rx*Math.PI/180);
+  const cy = Math.cos(ry*Math.PI/180), sy = Math.sin(ry*Math.PI/180);
+  for (const s of shaded){
+    const [x, y, z] = s.n;
+    const x1 = x*cy + z*sy, z1 = -x*sy + z*cy;          // rotateY
+    const y2 = y*cx - z1*sx, z2 = y*sx + z1*cx;         // rotateX
+    const d = Math.max(0, x1*LIGHT[0] + y2*LIGHT[1] + z2*LIGHT[2]);
+    s.el.style.filter = `${s.base} brightness(${(0.78 + 0.34*d).toFixed(3)})`.trim();
+    if (s.spec){
+      const o = (0.24 * Math.pow(d, 5)).toFixed(3);
+      if (s.spec.tagName === 'g') s.spec.setAttribute('opacity', o);
+      else s.spec.style.opacity = o;
+    }
+  }
+}
+
 /* ================= kamera ================= */
 const rig = document.getElementById('rig'), stage = document.getElementById('stage');
 const views = {'34':[-6,-26,.62], front:[0,0,.66], side:[-3,-84,.62], back:[-6,196,.62], top:[-62,-22,.54]};
 let [rx, ry, zoom] = views['34'], drag = null;
-const apply = () => rig.style.transform = `scale(${zoom}) rotateX(${rx}deg) rotateY(${ry}deg)`;
+const apply = () => { rig.style.transform = `scale(${zoom}) rotateX(${rx}deg) rotateY(${ry}deg)`; shade(rx, ry); };
 apply();
 
 stage.addEventListener('pointerdown', e => {
@@ -412,6 +469,7 @@ prodsBtn.onclick = () => { document.body.classList.toggle('products-off'); prods
 const q = new URLSearchParams(location.search);
 if (q.has('plate')) {
   document.querySelectorAll('.hud, .bar').forEach(e => e.remove());
+  document.body.classList.add('plate');
   document.body.style.background = '#EDEFF3';
   if (q.has('dims')) document.body.classList.add('dims-on');
   const v = views[q.get('plate')] || views['34'];
