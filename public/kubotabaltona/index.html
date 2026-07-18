@@ -104,6 +104,16 @@
   }
   .hang,.ledge{transition:opacity .3s}
   .products-off .hang,.products-off .ledge{opacity:0}
+
+  /* sylwetka człowieka do skali (175 cm) — billboard, obraca się do kamery */
+  .figure{color:rgba(233,237,245,.30);transition:opacity .3s}
+  body.light .figure{color:rgba(26,32,48,.30)}
+  body.figure-off .figure{opacity:0}
+  .figure .h-lbl{
+    position:absolute;left:calc(100% + 10px);top:1%;white-space:nowrap;
+    font-size:10.5px;font-weight:700;letter-spacing:.08em;color:var(--muted);
+    border-left:1.5px solid currentColor;padding-left:8px;opacity:.85;
+  }
 </style>
 </head>
 <body>
@@ -126,6 +136,7 @@
   <button data-view="top">Góra</button>
   <button id="dims" class="toggle">Wymiary</button>
   <button id="prods" class="toggle on">Produkty</button>
+  <button id="figbtn" class="toggle on">Skala</button>
   <button id="bg" class="toggle">Tło</button>
 </div>
 
@@ -381,6 +392,18 @@ grid.forEach((row, ri) => {
     html:slide(c, d, lc)});
 });
 
+/* ================= sylwetka do skali (175 cm, billboard w apply) ================= */
+parts.push(`<div class="n figure" id="fig" style="width:${cm(48)}px;height:${cm(177)}px">
+  <svg viewBox="0 0 48 177" style="position:absolute;inset:0;width:100%;height:100%">
+    <ellipse cx="24" cy="173.5" rx="15" ry="2.6" fill="currentColor" opacity=".3"/>
+    <circle cx="24" cy="10" r="9" fill="currentColor"/>
+    <path fill="currentColor" d="M24 21 C33 21 37 26 37 33 L36 90 L34 92 L36 168 Q36 173 31 173
+      L29 173 Q26 173 26 168 L25 116 Q24.5 112 24 116 L23 168 Q23 173 20 173 L18 173
+      Q13 173 13 168 L15 92 L13 90 L12 33 C12 26 15 21 24 21 Z"/>
+  </svg>
+  <div class="h-lbl">175 cm</div>
+</div>`);
+
 /* ================= cień — kierunkowy (światło z lewej-góry-przodu) ================= */
 parts.push(`<div class="n" style="width:${cm(W*1.9)}px;height:${cm(D*2.0)}px;
   transform:translate3d(${cm(5)}px,${cm(Y(Y_FLOOR))}px,${cm(-3)}px) rotateX(90deg) translate(-50%,-50%);
@@ -451,9 +474,16 @@ function shade(rx, ry){
 
 /* ================= kamera ================= */
 const rig = document.getElementById('rig'), stage = document.getElementById('stage');
+const fig = document.getElementById('fig');
 const views = {'34':[-6,-26,.62], front:[0,0,.66], side:[-3,-84,.62], back:[-6,196,.62], top:[-62,-22,.54]};
 let [rx, ry, zoom] = views['34'], drag = null;
-const apply = () => { rig.style.transform = `scale(${zoom}) rotateX(${rx}deg) rotateY(${ry}deg)`; shade(rx, ry); };
+const apply = () => {
+  rig.style.transform = `scale(${zoom}) rotateX(${rx}deg) rotateY(${ry}deg)`;
+  /* billboard: sylwetka stoi na podłodze obok standu i zawsze patrzy w kamerę */
+  if (fig) fig.style.transform =
+    `translate3d(${cm(58)}px, ${cm(Y(Y_FLOOR))}px, 0) rotateY(${-ry}deg) translate(-50%, -100%)`;
+  shade(rx, ry);
+};
 apply();
 
 stage.addEventListener('pointerdown', e => {
@@ -476,10 +506,12 @@ stage.addEventListener('wheel', e => {
 document.querySelectorAll('[data-view]').forEach(b => b.onclick = () => {
   [rx, ry, zoom] = views[b.dataset.view]; apply();
 });
-const dimsBtn = document.getElementById('dims'), prodsBtn = document.getElementById('prods'), bgBtn = document.getElementById('bg');
+const dimsBtn = document.getElementById('dims'), prodsBtn = document.getElementById('prods'),
+      bgBtn = document.getElementById('bg'), figBtn = document.getElementById('figbtn');
 dimsBtn.onclick  = () => { document.body.classList.toggle('dims-on');      dimsBtn.classList.toggle('on'); };
 prodsBtn.onclick = () => { document.body.classList.toggle('products-off'); prodsBtn.classList.toggle('on'); };
 bgBtn.onclick    = () => { document.body.classList.toggle('light');        bgBtn.classList.toggle('on'); };
+figBtn.onclick   = () => { document.body.classList.toggle('figure-off');   figBtn.classList.toggle('on'); };
 
 /* tryb renderu: ?plate=front|34|side|back|top [&dims=1] [&zoom=…] — czysty kadr bez UI
    ?bg=light — start z jasnym tłem (link do udostępniania) */
@@ -489,6 +521,7 @@ if (q.has('plate')) {
   document.querySelectorAll('.hud, .bar').forEach(e => e.remove());
   document.body.classList.add('plate');
   document.body.style.background = '#EDEFF3';
+  if (!q.has('fig') && fig) fig.remove();      // plate'y do renderów bez sylwetki (chyba że &fig=1)
   if (q.has('dims')) document.body.classList.add('dims-on');
   const v = views[q.get('plate')] || views['34'];
   [rx, ry] = v;
