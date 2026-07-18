@@ -141,12 +141,22 @@
   #fallback{position:fixed;inset:0;z-index:70;display:none;align-items:center;justify-content:center;background:var(--navy);color:#fff;font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-align:center;padding:40px}
 
   @media (max-width:640px){
-    #panel{left:12px;right:12px;width:auto;bottom:70px}
-    #ticketform{right:12px;left:auto;width:230px}
+    #panel{left:12px;right:12px;width:auto;bottom:16px}
+    #ticketform{right:12px;left:auto;width:auto;max-width:min(280px,calc(100vw - 24px))}
     #hint{display:none}
     #coords{display:none}
     #hero{padding:5vh 6vw}
     #actions .label{display:none}
+    /* logo + top-right controls collided — drop the tagline, trim the mark */
+    #brand .tag{display:none}
+    #brand .logo9{height:26px !important}
+    #actions{gap:8px}
+    .btn{padding:11px 13px}
+    /* seat-view bar was a wide row spilling off both edges — stack it */
+    #seatchip,#seatchip.show{left:12px;right:12px;transform:none}
+    #seatchip{flex-direction:column;align-items:stretch;gap:8px;bottom:16px}
+    #seatchip .info{text-align:center}
+    #seatchip .btn{justify-content:center;padding:14px}
   }
 </style>
 </head>
@@ -1091,16 +1101,23 @@ function randomSeat(){
 /* ============================== pointer input ============================== */
 let dragging=false, moved=false, px=0, py=0, downX=0, downY=0;
 let pinchD=-1;
+/* track pointers so a 2nd finger (pinch) can't feed the drag math — that was
+   the mobile "camera whips back and forth while zooming" bug */
+const activePointers=new Set(); let primaryId=null;
 canvas.addEventListener("pointerdown",e=>{
   if(mode!=="orbit"&&mode!=="seat") return;
+  activePointers.add(e.pointerId);
+  if(activePointers.size>1){ dragging=false; canvas.classList.remove("grabbing"); return; }
+  primaryId=e.pointerId;
   dragging=true; moved=false;
   px=downX=e.clientX; py=downY=e.clientY;
   autoRotate=false;
   canvas.classList.add("grabbing");
-  canvas.setPointerCapture(e.pointerId);
+  try{canvas.setPointerCapture(e.pointerId);}catch(_){}
 });
 canvas.addEventListener("pointermove",e=>{
-  if(dragging){
+  /* only the single primary pointer drives orbit/look; ignore pinch fingers */
+  if(dragging && e.pointerId===primaryId && activePointers.size===1){
     const dx=e.clientX-px, dy=e.clientY-py;
     px=e.clientX; py=e.clientY;
     if(Math.abs(e.clientX-downX)+Math.abs(e.clientY-downY)>6) moved=true;
@@ -1111,12 +1128,15 @@ canvas.addEventListener("pointermove",e=>{
       seatLook.gYaw=Math.max(-1.2,Math.min(1.2,seatLook.gYaw-dx*0.0035));
       seatLook.gPitch=Math.max(-0.5,Math.min(0.6,seatLook.gPitch+dy*0.0028));
     }
-  }else if(mode==="orbit"){
-    /* hover throttled in animate() */
+  }else if(!dragging && mode==="orbit" && e.pointerType==="mouse"){
+    /* hover throttled in animate() — mouse only, never touch */
     hoverX=e.clientX; hoverY=e.clientY; hoverDirty=true;
   }
 });
 function endPointer(e){
+  activePointers.delete(e.pointerId);
+  if(e.pointerId!==primaryId){ if(activePointers.size===0) pinchD=-1; return; }
+  primaryId=null; pinchD=-1;
   if(!dragging) return;
   dragging=false;
   canvas.classList.remove("grabbing");
