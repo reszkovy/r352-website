@@ -1,4 +1,5 @@
 import { Link, useLocation } from "wouter";
+import { track } from "@/app/lib/track";
 import { Helmet } from "react-helmet-async";
 import { PageTransition } from "@/app/components/ui/PageTransition";
 import { Reveal } from "@/app/components/ui/Reveal";
@@ -692,7 +693,7 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                   {/* SECONDARY - Calendly direct */}
                   <MagneticButton
                     onClick={() => {
-                      try { (window as any).plausible?.("calendly_clicked", { props: { source: `case-${project.id}` } }); } catch { /* noop */ }
+                      track("calendly_clicked", { source: `case-${project.id}` });
                       window.open("https://calendly.com/p-reszkovy/30min", "_blank", "noopener,noreferrer");
                     }}
                     className="bg-white/[0.04] text-white border-transparent hover:bg-white/[0.08] rounded-none"
@@ -709,7 +710,7 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
                 <a
                   href="mailto:hello@r352.com?subject=r352%20-%20hello"
                   onClick={() => {
-                    try { (window as any).plausible?.("mail_clicked", { props: { source: `case-${project.id}` } }); } catch { /* noop */ }
+                    track("mail_clicked", { source: `case-${project.id}` });
                   }}
                   className="self-start md:self-end group inline-flex items-center gap-3 text-xs font-display uppercase tracking-[0.2em] text-neutral-400 hover:text-[#D4FF00] transition-colors duration-500 cursor-pointer"
                 >

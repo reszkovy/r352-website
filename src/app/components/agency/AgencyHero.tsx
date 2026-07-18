@@ -1,4 +1,5 @@
 import { Reveal } from "@/app/components/ui/Reveal";
+import { track } from "@/app/lib/track";
 import { CinematicText } from "@/app/components/ui/CinematicText";
 import { useLocation } from "wouter";
 import { useLanguage } from "@/app/context/LanguageContext";
@@ -171,7 +172,7 @@ export function AgencyHero() {
                 <div className="flex flex-col gap-2">
                   <MagneticButton
                     onClick={() => {
-                      try { (window as any).plausible?.("calendly_clicked", { props: { source: "hero" } }); } catch { /* noop */ }
+                      try { track("calendly_clicked", { source: "hero" }); } catch { /* noop */ }
                       window.open("https://calendly.com/p-reszkovy/30min", "_blank", "noopener,noreferrer");
                     }}
                     className="explore-work-btn bg-white/[0.04] text-white border-transparent hover:bg-white/[0.08] rounded-none"
@@ -204,7 +205,7 @@ export function AgencyHero() {
                 <a
                   href="mailto:hello@r352.com?subject=r352%20-%20hello"
                   onClick={() => {
-                    try { (window as any).plausible?.("mail_clicked", { props: { source: "hero" } }); } catch { /* noop */ }
+                    try { track("mail_clicked", { source: "hero" }); } catch { /* noop */ }
                   }}
                   className="self-start md:self-end group inline-flex items-center gap-3 text-xs font-display uppercase tracking-[0.2em] text-neutral-400 hover:text-[#D4FF00] transition-colors duration-500 cursor-pointer"
                 >

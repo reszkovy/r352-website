@@ -144,10 +144,10 @@ export function JournalArticle({ params }: { params?: { id: string } }) {
              <Reveal delay={0.25}>
                 <div className="mt-[60px] border-t border-black/10 dark:border-white/10 pt-[60px] pb-[40px] flex flex-col items-center justify-center text-center gap-8 relative z-50 pointer-events-auto">
                    <span className="text-xs font-display uppercase tracking-widest text-neutral-500">
-                     {language === 'pl' ? "Gotowy rozpocząć projekt?" : "Ready to start a project?"}
+                     {language === 'pl' ? "Gotowy? Zacznij od diagnostyki 48h" : "Ready? Start with the 48-hour diagnostic"}
                    </span>
-                   <Link 
-                      href="/contact"
+                   <Link
+                      href="/brief"
                       className="group relative inline-block cursor-pointer pointer-events-auto"
                    >
                       <span className="text-4xl md:text-6xl font-bold tracking-tighter text-black dark:text-white transition-colors duration-300 group-hover:text-transparent group-hover:text-stroke-black dark:group-hover:text-stroke-white group-hover:text-stroke-1">

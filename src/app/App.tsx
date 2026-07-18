@@ -398,6 +398,11 @@ function AppContent() {
                     <a href="/" className="inline-flex items-center justify-center px-8 py-4 bg-[#D4FF00] text-black font-display uppercase tracking-widest text-sm hover:bg-white transition-colors duration-300">
                       Back to homepage
                     </a>
+                    <p className="text-xs font-display uppercase tracking-[0.2em] text-neutral-500">
+                      <a href="/brief" className="hover:text-[#D4FF00] transition-colors duration-300">
+                        Or start the 48-hour diagnostic →
+                      </a>
+                    </p>
                   </div>
                 </div>
               )}</Route>

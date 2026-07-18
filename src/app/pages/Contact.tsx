@@ -1,4 +1,5 @@
 import { PageTransition } from "@/app/components/ui/PageTransition";
+import { track } from "@/app/lib/track";
 import { Reveal } from "@/app/components/ui/Reveal";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { useLocation } from "wouter";
@@ -87,7 +88,7 @@ export function Contact() {
                   <a
                     href="mailto:hello@r352.com?subject=r352%20-%20hello"
                     onClick={() => {
-                      try { (window as any).plausible?.("mail_clicked", { props: { source: "contact_path_b" } }); } catch { /* noop */ }
+                      try { track("mail_clicked", { source: "contact_path_b" }); } catch { /* noop */ }
                     }}
                     className="group/link inline-flex items-center gap-2 text-base md:text-lg font-bold tracking-tight text-[#D4FF00] hover:text-white transition-colors duration-300"
                   >
@@ -114,7 +115,7 @@ export function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => {
-                      try { (window as any).plausible?.("calendly_clicked", { props: { source: "contact_path_c" } }); } catch { /* noop */ }
+                      try { track("calendly_clicked", { source: "contact_path_c" }); } catch { /* noop */ }
                     }}
                     className="group/link inline-flex items-center gap-2 text-base md:text-lg font-bold tracking-tight text-[#D4FF00] hover:text-white transition-colors duration-300"
                   >

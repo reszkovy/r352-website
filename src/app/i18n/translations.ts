@@ -35,8 +35,8 @@ export const translations = {
       // Three proof signals on one axis: execution + cost + speed. Replaces the
       // earlier cryptic metrics ("Geers, 2 quarters", "measured, not promised").
       micro_1: "Approval cycles cut 3×.",
-      micro_2: "Lower cost per asset at volume.",
-      micro_3: "Weekly shipping cadence.",
+      micro_2: "250+ locations, one system.",
+      micro_3: "Partnerships running 5+ years.",
       cta_start: "Start a project",
       cta_work: "Book a call"
     },
@@ -680,8 +680,8 @@ export const translations = {
       quote: "Projektowanie zaczyna się od decyzji, nie od narzędzia.",
       // Trzy proof-signale na jednej osi: egzekucja + koszt + tempo.
       micro_1: "Cykle akceptacji krótsze 3×.",
-      micro_2: "Niższy koszt na asset przy wolumenie.",
-      micro_3: "Tygodniowy rytm dostaw.",
+      micro_2: "250+ lokalizacji, jeden system.",
+      micro_3: "Partnerstwa trwające 5+ lat.",
       cta_start: "Rozpocznij projekt",
       cta_work: "Umów rozmowę"
     },

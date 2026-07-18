@@ -1,4 +1,5 @@
 import { useLocation } from "wouter";
+import { track } from "@/app/lib/track";
 import { motion, AnimatePresence } from "motion/react";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { useScrollStarted } from "@/app/hooks/useScrollStarted";
@@ -43,7 +44,7 @@ export function FloatingBriefCTA() {
           exit={{ opacity: 0, y: 40 }}
           transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
           onClick={() => {
-            try { (window as any).plausible?.("brief_cta_clicked", { props: { source: "floating" } }); } catch { /* noop */ }
+            try { track("brief_cta_clicked", { source: "floating" }); } catch { /* noop */ }
             setLocation("/brief");
           }}
           aria-label={label}

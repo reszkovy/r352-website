@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo, FormEvent } from "react";
+import { track } from "@/app/lib/track";
 import { useSearch } from "wouter";
 import { PageTransition } from "@/app/components/ui/PageTransition";
 import { Reveal } from "@/app/components/ui/Reveal";
@@ -112,6 +113,11 @@ export function Brief() {
       /* analytics must never break the page */
     }
   }, [segment]);
+
+  // Funnel: count every /brief landing (the diagnostic is the cold-lead step).
+  useEffect(() => {
+    track("brief_view", { referrer: typeof document !== "undefined" ? document.referrer || "direct" : "ssr" });
+  }, []);
 
   const [form, setForm] = useState<FormState>(initialForm);
   const [submitting, setSubmitting] = useState(false);
@@ -227,7 +233,7 @@ export function Brief() {
       console.log("[brief] Redirecting to wizard:", finalUrl);
 
       try {
-        (window as any).plausible?.("brief_submitted");
+        track("brief_submitted");
       } catch { /* noop */ }
 
       window.location.href = finalUrl;

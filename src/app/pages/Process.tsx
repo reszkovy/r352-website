@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import { track } from "@/app/lib/track";
 import { motion, AnimatePresence } from "motion/react";
 import { Helmet } from "react-helmet-async";
 import { PageTransition } from "@/app/components/ui/PageTransition";
@@ -896,12 +897,7 @@ export function Process() {
                   onSubmit={(e) => {
                     e.preventDefault();
                     if (!waitlistEmail) return;
-                    // Track conversion via Plausible custom event
-                    try {
-                      (window as any).plausible?.("playbook_waitlist_signup", {
-                        props: { source: "process_page", lang },
-                      });
-                    } catch { /* noop */ }
+                    track("playbook_waitlist_signup", { source: "process_page", lang });
                     // Open mail client as fallback storage until ESP is wired
                     const subject = encodeURIComponent("r3loop Playbook - early access waitlist");
                     const body = encodeURIComponent(
