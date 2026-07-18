@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>KUBOTA × Baltona — stand ekspozycyjny 60×40×130 · wizualizacja 3D</title>
 <style>
   :root{
@@ -20,15 +20,15 @@
   /* ---------- pasek marki ---------- */
   .bar{
     position:fixed;top:0;left:0;right:0;z-index:60;
-    display:flex;justify-content:space-between;align-items:center;gap:16px;
+    display:flex;justify-content:center;align-items:center;
     padding:14px 24px;
     background:linear-gradient(180deg, rgba(11,13,18,.92), rgba(11,13,18,.55) 72%, transparent);
     border-bottom:1px solid rgba(38,87,217,.30);
   }
   /* tylko logo, bez apli, wyśrodkowane — plik klienta to gotowy lockup
      Baltona × KUBOTA (część KUBOTA jest biała, widoczna na ciemnym tle) */
-  .logos{display:flex;align-items:center;margin:0 auto}
-  .logos img{height:28px;display:block}
+  .logos{display:flex;align-items:center;justify-content:center;margin:0}
+  .logos img{height:28px;display:block;max-width:calc(100vw - 44px);object-fit:contain}
   @media (max-width:760px){ .sub{display:none} .client small{display:none} }
 
   /* ---------- HUD ---------- */
@@ -43,7 +43,8 @@
   button{
     font:inherit;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;
     color:var(--txt);background:rgba(255,255,255,.05);border:1px solid var(--line);
-    border-radius:999px;padding:8px 14px;cursor:pointer;transition:.18s;backdrop-filter:blur(6px);
+    border-radius:999px;padding:8px 14px;cursor:pointer;transition:.18s;
+    backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
   }
   button:hover{background:rgba(38,87,217,.45);border-color:var(--blue-lt)}
   button.on{background:var(--blue);border-color:var(--blue);color:#fff}
@@ -53,6 +54,20 @@
   }
   button.toggle:hover{background:rgba(255,255,255,.26);border-color:#fff}
   button.toggle.on{background:#fff;border-color:#fff;color:#132D7A}
+
+  /* ---------- mobile (Safari/iPhone): nic nie może wystawać poza ekran ---------- */
+  @media (max-width:760px){
+    .bar{padding:10px 14px}
+    .logos img{height:19px}
+    .br{
+      left:10px;right:10px;transform:none;
+      flex-wrap:wrap;justify-content:center;gap:6px;
+      bottom:calc(10px + env(safe-area-inset-bottom));
+    }
+    button{padding:7px 11px;font-size:9.5px}
+    button.toggle{margin-left:0}
+  }
+  html,body{overscroll-behavior:none}
 
   /* ---------- scena ---------- */
   .stage{position:fixed;inset:0;display:grid;place-items:center;perspective:2800px;cursor:grab;touch-action:none}
@@ -453,7 +468,12 @@ function shade(rx, ry){
 const rig = document.getElementById('rig'), stage = document.getElementById('stage');
 const views = {'34':[-6,-26,.62], front:[0,0,.66], side:[-3,-84,.62], back:[-6,196,.62], top:[-62,-22,.54]};
 let [rx, ry, zoom] = views['34'], drag = null;
-const apply = () => { rig.style.transform = `scale(${zoom}) rotateX(${rx}deg) rotateY(${ry}deg)`; shade(rx, ry); };
+/* na wąskich ekranach bryła skaluje się w dół, żeby zmieściła się w kadrze */
+let resp = 1;
+const updResp = () => { resp = Math.min(1, innerWidth / 640, innerHeight / 760); };
+updResp();
+const apply = () => { rig.style.transform = `scale(${zoom * resp}) rotateX(${rx}deg) rotateY(${ry}deg)`; shade(rx, ry); };
+addEventListener('resize', () => { updResp(); apply(); });
 apply();
 
 stage.addEventListener('pointerdown', e => {
