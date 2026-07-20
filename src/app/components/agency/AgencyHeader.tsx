@@ -210,17 +210,18 @@ export function AgencyHeader() {
             isScrolled && theme === 'dark' && !isLimeTheme ? "opacity-100" : "opacity-0"
           )}
         />
-        {/* Light Mode Version - now a SINGLE clean gradient, mirroring the dark
-            scrim exactly (white instead of black). 2026-07 (Reszek): the old
-            two-layer build read as a solid white BAR that was too big and, with
-            its downward box-shadow, looked shaded the wrong way. This is one
-            smooth top→transparent falloff: no blur (which made it read solid
-            and smeared content below), no shadow, no seam. Strong at the top
-            (white/95) where the nav sits, gone by the bottom. */}
+        {/* Light Mode Version - SHORT, subtle single gradient. Unlike the dark
+            scrim (black, darkens content, needs to be tall for legibility), a
+            white scrim WASHES OUT the content beneath it, so a tall one bleached
+            the top of headings scrolling under the nav (Reszek 2026-07: "2x too
+            big"). The nav text is black and legible over light content anyway;
+            this only needs to back the bar over the occasional dark image area.
+            So: confined to ~header height, fades to nothing well before reaching
+            content. No blur, no shadow. */}
         <div
           className={cn(
-            "absolute inset-x-0 top-0 h-[260%] -z-10 pointer-events-none",
-            "bg-gradient-to-b from-white/95 via-white/55 to-transparent",
+            "absolute inset-x-0 top-0 h-[130%] -z-10 pointer-events-none",
+            "bg-gradient-to-b from-white/85 to-transparent",
             "transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
             isScrolled && (theme === 'light' || isLimeTheme) ? "opacity-100" : "opacity-0"
           )}
