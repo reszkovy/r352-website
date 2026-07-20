@@ -380,7 +380,7 @@ export function AgencyHeader() {
             <button
               onClick={toggleLanguage}
               aria-label={language === 'en' ? 'Switch to Polish' : 'Przełącz na angielski'}
-              className="text-sm font-display uppercase tracking-widest text-neutral-500 hover:text-white transition-colors"
+              className="font-mono text-[10px] tracking-[0.25em] uppercase text-neutral-500 hover:text-white transition-colors"
             >
               <span className={cn(language === 'en' && "text-[#D4FF00]")}>EN</span>
               <span className="mx-2">/</span>
@@ -565,7 +565,7 @@ export function AgencyHeader() {
               <button
                 onClick={toggleLanguage}
                 aria-label={language === 'en' ? 'Switch to Polish' : 'Przełącz na angielski'}
-                className="text-sm font-display uppercase tracking-widest text-neutral-500 hover:text-white transition-colors"
+                className="font-mono text-[10px] tracking-[0.25em] uppercase text-neutral-500 hover:text-white transition-colors"
               >
                 <span className={cn(language === 'en' && "text-[#D4FF00]")}>EN</span>
                 <span className="mx-2">/</span>
@@ -574,7 +574,7 @@ export function AgencyHeader() {
               <button
                 onClick={toggleTheme}
                 aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-                className="text-sm font-display uppercase tracking-widest text-neutral-500 hover:text-white transition-colors"
+                className="font-mono text-[10px] tracking-[0.25em] uppercase text-neutral-500 hover:text-white transition-colors"
               >
                 <span className={cn(theme === 'light' && "text-[#D4FF00]")}>LIGHT</span>
                 <span className="mx-2">/</span>
