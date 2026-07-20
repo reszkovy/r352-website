@@ -499,18 +499,6 @@ export function AgencyHeader() {
                plate reaches the very top and catches the nav bar (cluster +
                burger sit on it), reading as one clean surface. */}
            <div data-lenis-prevent className="flex-1 min-h-0 overflow-y-auto px-8 pt-28 pb-10 md:px-8 md:pb-6 md:pt-24">
-            {/* status row - machine readout. Current-location box sits LEFT,
-                flush with the 01-07 index column, closing the panel's left
-                edge into one clean rail (Reszek: "domknac to w kwadrat"). */}
-            <div className="flex items-center justify-between mb-4">
-              <span className="font-mono text-[10px] tracking-[0.25em] text-neutral-500 uppercase">[ {sectionLabel} ]</span>
-              <DecodeText
-                text="R352 · NAVIGATION"
-                active={isMenuOpen}
-                duration={350}
-                className="font-mono text-[10px] tracking-[0.25em] text-neutral-600 uppercase"
-              />
-            </div>
 
             <nav className="flex flex-col">
               {consoleItems.map((item, i) => (
