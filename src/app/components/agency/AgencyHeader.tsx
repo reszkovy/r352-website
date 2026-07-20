@@ -404,23 +404,32 @@ export function AgencyHeader() {
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu-overlay"
         >
-           <motion.div 
-             className="w-6 h-[3px] rounded-none origin-center"
-             animate={{ 
-               backgroundColor: (theme === 'light' || isLimeTheme) ? "#000000" : "#D4FF00", 
-               rotate: isMenuOpen ? 45 : 0, 
-               y: isMenuOpen ? 4.5 : 0 
+           {/* Symmetric equal-weight lines; a third middle line slides in on hover
+               as an affordance ("there is more here"). Open state morphs to X. */}
+           <motion.div
+             className="w-6 h-[2px] rounded-none origin-center"
+             animate={{
+               backgroundColor: (theme === 'light' || isLimeTheme) ? "#000000" : "#D4FF00",
+               rotate: isMenuOpen ? 45 : 0,
+               y: isMenuOpen ? 8 : 0
              }}
              transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
            />
-           <motion.div 
-             className="w-6 h-[3px] rounded-none origin-center"
-             initial={{ width: 16 }} 
-             animate={{ 
-               backgroundColor: (theme === 'light' || isLimeTheme) ? "#000000" : "#D4FF00", 
-               rotate: isMenuOpen ? -45 : 0, 
-               y: isMenuOpen ? -4.5 : 0,
-               width: isMenuOpen ? 24 : 16
+           <motion.div
+             className={cn(
+               "w-6 h-[2px] rounded-none origin-center transition-[opacity,transform] duration-300 ease-out",
+               (theme === 'light' || isLimeTheme) ? "bg-black" : "bg-[#D4FF00]",
+               isMenuOpen
+                 ? "opacity-0 scale-x-0"
+                 : "opacity-0 scale-x-50 group-hover:opacity-100 group-hover:scale-x-100"
+             )}
+           />
+           <motion.div
+             className="w-6 h-[2px] rounded-none origin-center"
+             animate={{
+               backgroundColor: (theme === 'light' || isLimeTheme) ? "#000000" : "#D4FF00",
+               rotate: isMenuOpen ? -45 : 0,
+               y: isMenuOpen ? -8 : 0
              }}
              transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
            />
@@ -454,7 +463,7 @@ export function AgencyHeader() {
             animate={{ opacity: 1, y: 0, scaleY: 1 }}
             exit={{ opacity: 0, y: -10, scaleY: 0.98 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed z-[996] origin-top inset-x-0 top-0 h-[100dvh] md:h-auto md:inset-x-auto md:right-8 md:top-20 w-full md:w-[440px] bg-[#0A0A0A] md:border md:border-white/10 flex flex-col overflow-hidden md:max-h-[calc(100dvh-7rem)]"
+            className="fixed z-[996] origin-top inset-x-0 top-0 h-[100dvh] md:h-auto md:inset-x-auto md:right-8 md:top-20 w-full md:w-[440px] bg-[#0A0A0A] md:shadow-[0_24px_80px_-12px_rgba(0,0,0,0.7),0_2px_24px_rgba(0,0,0,0.4)] flex flex-col overflow-hidden md:max-h-[calc(100dvh-7rem)]"
           >
            {/* Inner scroller starts BELOW the fixed header zone on mobile (pt-28)
                so link text never slides under the floating logo; desktop panel
@@ -481,17 +490,17 @@ export function AgencyHeader() {
                 >
                   <Link
                     href={item.href}
-                    className="group flex items-baseline gap-4 py-3.5"
+                    className="group flex items-baseline gap-4 py-3.5 outline-none focus-visible:ring-1 focus-visible:ring-[#D4FF00]/60"
                   >
                     <span className="font-mono text-[10px] text-neutral-600 group-hover:text-[#D4FF00] transition-colors duration-300 w-5 shrink-0">
                       0{i + 1}
                     </span>
                     <DecodeText
-                      text={item.label.toUpperCase()}
+                      text={item.label}
                       delay={80 + i * 50}
                       duration={420}
                       className={cn(
-                        "font-display text-2xl md:text-[26px] uppercase tracking-wide transition-colors duration-300",
+                        "font-sans font-normal text-2xl md:text-[26px] lowercase tracking-normal transition-colors duration-300",
                         location === item.href ? "text-[#D4FF00]" : "text-white group-hover:text-[#D4FF00]"
                       )}
                     />
@@ -520,7 +529,7 @@ export function AgencyHeader() {
                 href={scheduleButton.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block border border-white/25 text-white text-center font-display uppercase tracking-widest text-sm px-7 py-[15px] hover:border-[#D4FF00] hover:text-[#D4FF00] transition-colors duration-300"
+                className="block bg-white/[0.06] shadow-[0_8px_28px_-8px_rgba(0,0,0,0.6)] text-white text-center font-display uppercase tracking-widest text-sm px-7 py-4 hover:bg-white/[0.1] hover:text-[#D4FF00] transition-colors duration-300"
               >
                 {scheduleButton.label}
               </a>
@@ -537,7 +546,7 @@ export function AgencyHeader() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.55, duration: 0.5 }}
-              className="mt-8 pt-5 border-t border-white/10 flex items-center justify-between"
+              className="mt-8 pt-5 border-t border-white/10 flex items-center justify-end gap-8"
             >
               <button
                 onClick={toggleLanguage}
