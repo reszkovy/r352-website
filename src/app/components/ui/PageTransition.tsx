@@ -108,7 +108,7 @@ export function PageTransition({ children, className }: PageTransitionProps) {
 
   // Content wrapper: when reduced, start at final state (no blur/tilt/y) and skip transition.
   const wrapperInitial = reduced
-    ? { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }
+    ? { opacity: 1, y: 0, scale: 1 }
     : isVertical
       ? {
           // Incoming page rides IN with the flow: enters from the edge the
@@ -119,15 +119,13 @@ export function PageTransition({ children, className }: PageTransitionProps) {
           scaleY: 1.04,
           scaleX: 0.99,
           transformPerspective: 1200,
-          filter: "blur(24px)",
         }
-      : { opacity: 0, y: 30, scale: 0.98, filter: "blur(24px)" };
+      : { opacity: 0, y: 30, scale: 0.98 };
   const wrapperAnimate = reduced
     ? {
         opacity: 1,
         y: 0,
         scale: 1,
-        filter: "blur(0px)",
         transition: { duration: 0 }
       }
     : isVertical
@@ -138,7 +136,6 @@ export function PageTransition({ children, className }: PageTransitionProps) {
           scaleY: 1,
           scaleX: 1,
           transformPerspective: 1200,
-          filter: "blur(0px)",
           transition: {
             duration: 0.9,
             delay: 0.3,
@@ -149,7 +146,6 @@ export function PageTransition({ children, className }: PageTransitionProps) {
         opacity: 1,
         y: 0,
         scale: 1,
-        filter: "blur(0px)",
         transition: {
           duration: 0.9,
           delay: 0.3,
@@ -161,7 +157,6 @@ export function PageTransition({ children, className }: PageTransitionProps) {
         opacity: 1,
         y: 0,
         scale: 1,
-        filter: "blur(0px)",
         transition: { duration: 0 }
       }
     : isVertical
@@ -175,7 +170,6 @@ export function PageTransition({ children, className }: PageTransitionProps) {
           scaleY: 1.03,
           scaleX: 0.99,
           transformPerspective: 1200,
-          filter: "blur(20px)",
           transition: {
             duration: 0.8,
             ease: [0.76, 0, 0.24, 1] // Synced with sweep
@@ -185,7 +179,6 @@ export function PageTransition({ children, className }: PageTransitionProps) {
         opacity: 0.3,
         y: -20,
         scale: 0.95,
-        filter: "blur(20px)",
         transition: {
           duration: 0.8,
           ease: [0.76, 0, 0.24, 1] // Synced with sweep
@@ -222,7 +215,7 @@ export function PageTransition({ children, className }: PageTransitionProps) {
 
       {/* Cinematic Transition Overlay - Lime Accent */}
       <motion.div
-        className="fixed top-0 left-0 w-[100vw] h-[100vh] bg-[#D4FF00]/90 backdrop-blur-2xl z-[9998] pointer-events-none"
+        className="fixed top-0 left-0 w-[100vw] h-[100vh] bg-[#D4FF00]/90 z-[9998] pointer-events-none will-change-transform"
         initial={sweep.initial}
         animate={{
           ...sweep.animate,
@@ -236,7 +229,7 @@ export function PageTransition({ children, className }: PageTransitionProps) {
 
       {/* Cinematic Transition Overlay - Main Black Sweep */}
       <motion.div
-        className={`fixed top-0 left-0 w-[100vw] h-[100vh] ${theme === 'dark' ? 'bg-[#0A0A0A]/90' : 'bg-[#F1F6FA]/90'} backdrop-blur-3xl z-[9999] pointer-events-none`}
+        className={`fixed top-0 left-0 w-[100vw] h-[100vh] ${theme === 'dark' ? 'bg-[#0A0A0A]/95' : 'bg-[#F1F6FA]/95'} z-[9999] pointer-events-none will-change-transform`}
         initial={sweep.initial}
         animate={{
           ...sweep.animate,
