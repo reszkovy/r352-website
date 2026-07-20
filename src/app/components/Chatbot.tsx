@@ -170,7 +170,7 @@ export function Chatbot() {
     <AnimatePresence>
       {scrollStarted && (
         <motion.div
-          className="hidden md:block fixed bottom-6 right-6 z-[1001]"
+          className="hidden md:block fixed bottom-6 right-6 z-[985]"
           data-no-cursor-fx="true"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
