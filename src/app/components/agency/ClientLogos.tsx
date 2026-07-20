@@ -44,7 +44,7 @@ export function ClientLogos() {
           </div>
 
           {/* Logos Row - Always one line */}
-          <div className="w-full flex flex-nowrap items-center justify-between gap-6 md:gap-12 overflow-x-auto md:overflow-visible scrollbar-hide mask-fade-sides">
+          <div className="w-full flex flex-nowrap items-center justify-between gap-5 md:gap-8 overflow-x-auto md:overflow-visible scrollbar-hide mask-fade-sides">
             {uniqueClients.map((client, i) => (
               <a 
                 key={i} 
@@ -53,16 +53,18 @@ export function ClientLogos() {
                 rel="noopener noreferrer"
                 className={cn(
                   "flex-shrink-0 flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity duration-300",
-                  // Individual sizing adjustments for optical balance
-                  client.name === "Dawid Podsiadło" ? "h-6 md:h-10" : 
-                  client.name === "Deloitte Digital" ? "h-6 md:h-10" : 
-                  client.name === "Kubota" ? "h-10 md:h-16" :
-                  client.name === "Benefit Systems" ? "h-5 md:h-9" :
-                  client.name === "Archicom" ? "h-3 md:h-4" :
-                  client.name === "UNIQA" ? "h-8 md:h-12" :
-                  client.name === "FIFA" ? "h-6 md:h-10" :
-                  client.name === "Sonova" ? "h-4 md:h-7" : 
-                  "h-6 md:h-10"
+                  // Individual sizing adjustments for optical balance.
+                  // Shrunk ~20% on md (2026-07) so the full row fits without the
+                  // widest marks (Kubota) overflowing the section and clipping.
+                  client.name === "Dawid Podsiadło" ? "h-6 md:h-8" :
+                  client.name === "Deloitte Digital" ? "h-6 md:h-8" :
+                  client.name === "Kubota" ? "h-9 md:h-11" :
+                  client.name === "Benefit Systems" ? "h-5 md:h-7" :
+                  client.name === "Archicom" ? "h-3 md:h-3.5" :
+                  client.name === "UNIQA" ? "h-7 md:h-10" :
+                  client.name === "FIFA" ? "h-6 md:h-8" :
+                  client.name === "Sonova" ? "h-4 md:h-6" :
+                  "h-6 md:h-8"
                 )}
                 aria-label={`Visit ${client.name} website`}
               >
