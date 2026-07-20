@@ -92,98 +92,32 @@ export function PageTransition({ children, className }: PageTransitionProps) {
     ? { duration: 0 }
     : { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.1 };
 
-  // ─── Direction-aware content choreography ───────────────────────────
-  // Vertical navigations get a dedicated motion language matching the
-  // horizontal one in class: perspective "page-flip" tilt on the X axis
-  // (horizontal tilts on Y feel via lateral travel), a vertical motion-blur
-  // smear (gaussian blur + anisotropic scaleY stretch), and parallax between
-  // the exiting and entering layer (exit drifts 28px WITH the sweep flow,
-  // entry arrives from 44px against it - outgoing moves slower than incoming,
-  // reading as depth). Timing/easing identical to horizontal so the compass
-  // cycle feels like one system.
+  // isVertical still gates the depth scrim (vertical mobile navigations only).
   const isVertical =
     direction === "top-to-bottom" || direction === "bottom-to-top";
-  // +1 = flow travels downward, -1 = upward (matches sweep travel direction)
-  const flow = direction === "top-to-bottom" ? 1 : -1;
 
-  // Content wrapper: when reduced, start at final state (no blur/tilt/y) and skip transition.
-  const wrapperInitial = reduced
-    ? { opacity: 1, y: 0, scale: 1 }
-    : isVertical
-      ? {
-          // Incoming page rides IN with the flow: enters from the edge the
-          // sweep came from, tilted back in perspective, vertically smeared.
-          opacity: 0,
-          y: -44 * flow,
-          rotateX: 7 * flow,
-          scaleY: 1.04,
-          scaleX: 0.99,
-          transformPerspective: 1200,
-        }
-      : { opacity: 0, y: 30, scale: 0.98 };
+  // ─── Content wrapper: OPACITY ONLY, no transform ────────────────────
+  // The page content used to slide/scale/tilt in via transform. Framer keeps
+  // the final transform inline (e.g. "translateY(0) scale(1)"), which turns
+  // this wrapper into a CSS containing block. Any fixed/sticky descendant
+  // (WebGL hero canvas, Peak/Warp backdrops, pinned case-study video) then
+  // positions against THIS wrapper instead of the viewport. Clearing the
+  // transform on animation-complete snapped those descendants back to
+  // viewport coordinates in a single frame - the "pixel jump" seen on some
+  // pages (the ones with fixed/sticky children) but not others.
+  //
+  // Fading only (no transform) means no containing block is ever created, so
+  // fixed/sticky descendants stay viewport-relative throughout and the whole
+  // failure class is gone. The cinematic sweep + branding reveal carry the
+  // motion; the content simply fades up as the sweep peels away. The
+  // onAnimationComplete transform-clearing hack is no longer needed.
+  const wrapperInitial = reduced ? { opacity: 1 } : { opacity: 0 };
   const wrapperAnimate = reduced
-    ? {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        transition: { duration: 0 }
-      }
-    : isVertical
-      ? {
-          opacity: 1,
-          y: 0,
-          rotateX: 0,
-          scaleY: 1,
-          scaleX: 1,
-          transformPerspective: 1200,
-          transition: {
-            duration: 0.9,
-            delay: 0.3,
-            ease: [0.22, 1, 0.36, 1] // Same Apple-like decel as horizontal
-          }
-        }
-      : {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        transition: {
-          duration: 0.9,
-          delay: 0.3,
-          ease: [0.22, 1, 0.36, 1] // Apple-like smooth decel
-        }
-      };
+    ? { opacity: 1, transition: { duration: 0 } }
+    : { opacity: 1, transition: { duration: 0.6, delay: 0.35, ease: [0.22, 1, 0.36, 1] } };
   const wrapperExit = reduced
-    ? {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        transition: { duration: 0 }
-      }
-    : isVertical
-      ? {
-          // Outgoing page is "flipped away": counter-tilt to the incoming
-          // page's tilt (reads as one continuous rotation through the swap),
-          // slow parallax drift with the flow, vertical smear + blur.
-          opacity: 0.3,
-          y: 28 * flow,
-          rotateX: -7 * flow,
-          scaleY: 1.03,
-          scaleX: 0.99,
-          transformPerspective: 1200,
-          transition: {
-            duration: 0.8,
-            ease: [0.76, 0, 0.24, 1] // Synced with sweep
-          }
-        }
-      : {
-        opacity: 0.3,
-        y: -20,
-        scale: 0.95,
-        transition: {
-          duration: 0.8,
-          ease: [0.76, 0, 0.24, 1] // Synced with sweep
-        }
-      };
+    ? { opacity: 1, transition: { duration: 0 } }
+    : { opacity: 0.3, transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] } };
 
   return (
     <>
@@ -262,26 +196,15 @@ export function PageTransition({ children, className }: PageTransitionProps) {
         </div>
       </motion.div>
 
+      {/* Opacity-only wrapper: no inline transform is ever left behind, so it
+          never becomes a containing block and fixed/sticky descendants stay
+          viewport-relative. The old onAnimationComplete transform-clearing
+          hack (and the jump it caused) is gone with it. */}
       <motion.div
         ref={wrapperRef}
         initial={wrapperInitial}
         animate={wrapperAnimate}
         exit={wrapperExit}
-        onAnimationComplete={(definition) => {
-          // After entry animation completes, clear inline transform/filter from this wrapper.
-          // Framer keeps "transform: scale(1) translateY(0); filter: blur(0px)" applied inline,
-          // which creates a new CSS containing block and BREAKS position: sticky on descendants
-          // (sticky binds to this wrapper instead of viewport → no pin → 100vh gap below video).
-          // Clearing the inline styles restores viewport-relative sticky for descendants.
-          if (typeof definition === "object" && definition !== null && "opacity" in definition && (definition as { opacity?: number }).opacity === 1) {
-            const el = wrapperRef.current;
-            if (el) {
-              el.style.transform = "";
-              el.style.filter = "";
-              el.style.willChange = "";
-            }
-          }
-        }}
         className={className}
       >
         {children}
