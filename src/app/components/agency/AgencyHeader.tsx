@@ -476,7 +476,7 @@ export function AgencyHeader() {
             animate={{ opacity: 1, y: 0, scaleY: 1 }}
             exit={{ opacity: 0, y: -10, scaleY: 0.98 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed z-[996] origin-top inset-x-0 top-0 h-[100dvh] md:h-auto md:inset-x-auto md:right-0 md:top-0 w-full md:w-[440px] bg-[#0A0A0A] md:shadow-[0_24px_80px_-12px_rgba(0,0,0,0.7),0_2px_24px_rgba(0,0,0,0.4)] flex flex-col overflow-hidden md:max-h-[100dvh]"
+            className="fixed z-[996] origin-top inset-x-0 top-0 h-[100dvh] md:h-auto md:inset-x-auto md:right-3 md:top-3 w-full md:w-[440px] bg-[#0A0A0A] md:shadow-[0_24px_80px_-12px_rgba(0,0,0,0.7),0_2px_24px_rgba(0,0,0,0.4)] flex flex-col overflow-hidden md:max-h-[calc(100dvh-1.5rem)]"
           >
            {/* Inner scroller starts BELOW the fixed header zone on mobile (pt-28)
                so link text never slides under the floating logo; desktop panel
@@ -551,12 +551,6 @@ export function AgencyHeader() {
               >
                 {scheduleButton.label}
               </a>
-              <a
-                href="mailto:hello@r352.com"
-                className="mt-1 text-center font-mono text-[11px] tracking-[0.18em] text-neutral-500 hover:text-[#D4FF00] transition-colors duration-300 uppercase"
-              >
-                hello@r352.com
-              </a>
             </motion.div>
 
             {/* utilities + canon line */}
@@ -564,7 +558,7 @@ export function AgencyHeader() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.55, duration: 0.5 }}
-              className="mt-8 pt-5 border-t border-white/10 flex items-center justify-end gap-8"
+              className="md:hidden mt-8 pt-5 border-t border-white/10 flex items-center justify-end gap-8"
             >
               <button
                 onClick={toggleLanguage}
@@ -586,9 +580,6 @@ export function AgencyHeader() {
               </button>
               <SoundWaveWidget />
             </motion.div>
-            <p className="mt-6 font-mono text-[9px] tracking-[0.2em] text-neutral-700 uppercase text-center">
-              250+ locations · 3× approvals · 5+ yrs partnerships
-            </p>
            </div>
           </motion.div>
         )}
