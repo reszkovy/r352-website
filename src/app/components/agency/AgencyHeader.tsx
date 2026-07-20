@@ -406,17 +406,21 @@ export function AgencyHeader() {
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu-overlay"
         >
-           {/* Two symmetric equal-weight lines (6px apart, as before the console
-               experiment); a third middle line lives OUTSIDE the flex flow
-               (absolutely centered) so it never disturbs spacing - it fades in
-               on hover as an affordance. Open state: lines meet at the exact
-               button center (±4px = half of the 8px line pitch) for a clean X. */}
+           {/* Two IDENTICAL lines, both absolutely positioned from the button
+               center with the exact same structure - only the sign of the
+               offset differs. This guarantees identical subpixel rasterization
+               at any DPR/zoom (flex stacking made them land on different pixel
+               fractions, rendering one thinner than the other). Closed: centers
+               at ±4px. Open: both at center, rotated ±45 = clean X. The middle
+               hover-affordance line is equally centered and out of flow. */}
            <motion.div
-             className="w-6 h-[2px] rounded-none origin-center"
+             className="absolute w-6 h-[2px] rounded-none"
+             style={{ left: "50%", top: "50%" }}
              animate={{
                backgroundColor: (theme === 'light' || isLimeTheme) ? "#000000" : "#D4FF00",
-               rotate: isMenuOpen ? 45 : 0,
-               y: isMenuOpen ? 4 : 0
+               x: -12,
+               y: isMenuOpen ? -1 : -5,
+               rotate: isMenuOpen ? 45 : 0
              }}
              transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
            />
@@ -432,11 +436,13 @@ export function AgencyHeader() {
              />
            </span>
            <motion.div
-             className="w-6 h-[2px] rounded-none origin-center"
+             className="absolute w-6 h-[2px] rounded-none"
+             style={{ left: "50%", top: "50%" }}
              animate={{
                backgroundColor: (theme === 'light' || isLimeTheme) ? "#000000" : "#D4FF00",
-               rotate: isMenuOpen ? -45 : 0,
-               y: isMenuOpen ? -4 : 0
+               x: -12,
+               y: isMenuOpen ? -1 : 3,
+               rotate: isMenuOpen ? -45 : 0
              }}
              transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
            />
