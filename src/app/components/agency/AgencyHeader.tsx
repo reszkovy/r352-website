@@ -62,26 +62,16 @@ export function AgencyHeader() {
     setIsMenuOpen(false);
   }, [location]);
 
-  // Lock scroll when menu is open. Defensive on the unlock side: scroll dying
-  // after menu close was reported ("czasem") - a stop/start race across close
-  // paths (route change, backdrop click, Escape) and lenis instance swaps.
-  // Three guarantees now:
-  //   1. cleanup restarts lenis on ANY dep change/unmount while stopped,
-  //   2. a delayed second start() (after the exit animation) is a cheap
-  //      idempotent watchdog against anything re-stopping it mid-transition,
-  //   3. native fallback: window/body overflow never touched, so if lenis is
-  //      absent the page scrolls natively regardless.
+  // Scroll is deliberately NOT locked while the menu is open (Reszek 2026-07):
+  // the page keeps scrolling behind the blurred backdrop - a living-background
+  // effect. Interaction stays menu-only: the backdrop swallows clicks (and
+  // closes the menu), while wheel events bubble past it to Lenis on window.
+  // The panel's own list carries data-lenis-prevent, so scrolling inside the
+  // menu never moves the page. Bonus: no stop()/start() lifecycle means the
+  // whole class of "dead scroll after close" races is structurally gone.
   useEffect(() => {
-    if (!lenis) return;
-    if (isMenuOpen) {
-      lenis.stop();
-      return () => {
-        lenis.start();
-      };
-    }
-    lenis.start();
-    const watchdog = window.setTimeout(() => lenis.start(), 700);
-    return () => window.clearTimeout(watchdog);
+    // Defensive: if any earlier code path left lenis stopped, revive it.
+    lenis?.start();
   }, [isMenuOpen, lenis]);
 
   // Mobile menu a11y: Escape to close, focus trap (Tab loops), auto-focus first link on open,
