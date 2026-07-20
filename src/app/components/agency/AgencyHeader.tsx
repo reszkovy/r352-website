@@ -210,29 +210,17 @@ export function AgencyHeader() {
             isScrolled && theme === 'dark' && !isLimeTheme ? "opacity-100" : "opacity-0"
           )}
         />
-        {/* Light Mode Version - QA fix 2026-06-10: v1 (white/85 → 40 → transparent)
-            was too weak; nav lost legibility over light sections on scroll.
-            Two layers now, still no rigid bar (client wants soft):
-            1) bar - confined to header height with backdrop-blur-sm (blurring
-               the full 210% tail would smear page content right below the nav)
-               + stronger white stops + a ~9% black shadow for gentle edge
-               definition without a hard line;
-            2) tail - blur-free gradient falloff below the bar, picking up where
-               the bar's bottom stop (white/70) ends so the transition stays
-               seamless. Same brand easing + duration as the dark scrim. */}
+        {/* Light Mode Version - now a SINGLE clean gradient, mirroring the dark
+            scrim exactly (white instead of black). 2026-07 (Reszek): the old
+            two-layer build read as a solid white BAR that was too big and, with
+            its downward box-shadow, looked shaded the wrong way. This is one
+            smooth top→transparent falloff: no blur (which made it read solid
+            and smeared content below), no shadow, no seam. Strong at the top
+            (white/95) where the nav sits, gone by the bottom. */}
         <div
           className={cn(
-            "absolute inset-x-0 top-0 h-full -z-10 pointer-events-none",
-            "backdrop-blur-sm bg-gradient-to-b from-white/95 via-white/85 to-white/70",
-            "shadow-[0_10px_28px_-10px_rgba(0,0,0,0.09)]",
-            "transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
-            isScrolled && (theme === 'light' || isLimeTheme) ? "opacity-100" : "opacity-0"
-          )}
-        />
-        <div
-          className={cn(
-            "absolute inset-x-0 top-full h-[110%] -z-10 pointer-events-none",
-            "bg-gradient-to-b from-white/70 to-transparent",
+            "absolute inset-x-0 top-0 h-[260%] -z-10 pointer-events-none",
+            "bg-gradient-to-b from-white/95 via-white/55 to-transparent",
             "transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
             isScrolled && (theme === 'light' || isLimeTheme) ? "opacity-100" : "opacity-0"
           )}
