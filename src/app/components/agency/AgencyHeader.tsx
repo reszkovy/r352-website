@@ -492,13 +492,14 @@ export function AgencyHeader() {
             style={{ pointerEvents: isMenuOpen ? "auto" : "none", visibility: undefined }}
             className="fixed z-[996] origin-top inset-x-0 top-0 h-[100dvh] md:h-auto md:inset-x-auto md:right-3 md:top-3 w-full md:w-[440px] bg-[#0A0A0A] md:shadow-[0_24px_80px_-12px_rgba(0,0,0,0.7),0_2px_24px_rgba(0,0,0,0.4)] flex flex-col overflow-hidden md:max-h-[calc(100dvh-1.5rem)]"
           >
-           {/* Inner scroller starts BELOW the fixed header zone on mobile (pt-28)
-               so link text never slides under the floating logo; desktop panel
-               sits below the bar already, so normal padding applies. */}
-           {/* Top padding clears the fixed header on BOTH breakpoints now - the
-               plate reaches the very top and catches the nav bar (cluster +
-               burger sit on it), reading as one clean surface. */}
-           <div data-lenis-prevent className="flex-1 min-h-0 overflow-y-auto px-8 pt-28 pb-10 md:px-8 md:pb-6 md:pt-24">
+           {/* Three-zone layout so the CTAs are ALWAYS inside the fold, on any
+               viewport height (scaled screens included): fixed top spacing that
+               clears the header, a links zone that is the ONLY thing allowed to
+               shrink/scroll, and a bottom-pinned CTA zone. Link row height and
+               top clearance scale fluidly with viewport height (vh clamps), so
+               on short screens everything compresses before anything scrolls. */}
+           <div className="shrink-0 pt-28 md:pt-[clamp(4.5rem,11vh,6rem)]" />
+           <div data-lenis-prevent className="flex-1 min-h-0 overflow-y-auto px-8">
 
             <nav className="flex flex-col">
               {consoleItems.map((item, i) => (
@@ -511,7 +512,7 @@ export function AgencyHeader() {
                 >
                   <Link
                     href={item.href}
-                    className="group flex items-baseline gap-4 py-3.5 md:py-2.5 outline-none focus-visible:ring-1 focus-visible:ring-[#D4FF00]/60"
+                    className="group flex items-baseline gap-4 py-3.5 md:py-[clamp(0.375rem,1.2vh,0.625rem)] outline-none focus-visible:ring-1 focus-visible:ring-[#D4FF00]/60"
                   >
                     <span className="font-mono text-[10px] text-neutral-600 group-hover:text-[#D4FF00] transition-colors duration-300 w-5 shrink-0">
                       0{i + 1}
@@ -522,7 +523,7 @@ export function AgencyHeader() {
                       delay={80 + i * 50}
                       duration={420}
                       className={cn(
-                        "font-sans font-normal text-2xl md:text-[22px] lowercase tracking-normal transition-colors duration-300",
+                        "font-sans font-normal text-2xl md:text-[clamp(17px,2.6vh,22px)] lowercase tracking-normal transition-colors duration-300",
                         location === item.href ? "text-[#D4FF00]" : "text-white group-hover:text-[#D4FF00]"
                       )}
                     />
@@ -533,13 +534,16 @@ export function AgencyHeader() {
                 </motion.div>
               ))}
             </nav>
+           </div>
 
+           {/* Bottom-pinned zone: CTAs (+ mobile utilities) can never leave the fold */}
+           <div className="shrink-0 px-8 pb-8 md:pb-5">
             {/* CTA tiers - grammar from design-system section 4 */}
             <motion.div
               initial={false}
               animate={{ opacity: isMenuOpen ? 1 : 0 }}
               transition={{ delay: isMenuOpen ? 0.45 : 0, duration: 0.5 }}
-              className="mt-8 md:mt-5 flex flex-col gap-3 md:gap-2.5"
+              className="mt-6 md:mt-4 flex flex-col gap-3 md:gap-2.5"
             >
               <Link
                 href="/brief"
