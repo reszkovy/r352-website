@@ -277,6 +277,14 @@ SmoothScroll (ReactLenis root, :331) wraps AppContent -> CursorGlow + CustomCurs
 
 ### Agency sections and systems (key contracts)
 
+> 2026-07-12, NAV_CONSOLE experiment (AgencyHeader.tsx): desktop inline nav links are
+> behind `NAV_CONSOLE = false`; when true (current), the header shows a mono status
+> readout (`[ SECTION ]`, DecodeText) + utilities + burger, and navigation lives in an
+> anchored dark console panel (all viewports): numbered Tanker links with decode-in,
+> CTA tiers, utilities, canon line. New primitive: ui/DecodeText.tsx (decode-once,
+> reduced-motion safe, never loops - silence = stillness). Flip the flag to restore
+> the classic nav exactly. Update this section fully once the direction is confirmed.
+
 - **AgencyHeader**: `mix-blend-difference` until 80px scroll; dark scrim `from-black/95 via-black/55 to-transparent h-[260%]` - **no blur, client rule "soft shadow, never frosted bar"** (AgencyHeader.tsx:170-175); logo in asset lime #DAFF45 (:217,232); tagline "AI" segment clay #D97757 (:254); hover-swap label pattern - invisible spacer span reserves `font-medium tracking-[0.15em]` width, visible span animates `font-normal tracking-normal -> font-medium tracking-[0.15em]` (:276-287); active-page dot `layoutId="active-dot"` 6px lime spring; contact = two stacked spans translate-y swap lime->white 0.5s `[0.22,1,0.36,1]` (:309-313); mobile overlay `bg-[#050505] z-[995]`, focus trap + Escape, ease `[0.76,0,0.24,1]`.
 - **AgencyHero**: `HERO_WEBGL=true` flag (:17) - dark -> HeroWebGLBackground + MusicNudge, else AnimeGrid; 5 neutral chips + 1 clay chip ("AI Elevated Workflows"); primary MagneticButton `bg-[#D4FF00] text-black border-none hover:bg-[#D4FF00]/90` + secondary `bg-white/[0.04] text-white hover:bg-white/[0.08]`, each with font-mono 11px microcopy; ElasticLine divider; signature line `font-display text-2xl md:text-4xl text-[#D4FF00]` prefixed with plain `-`.
 - **SelectedWork**: 9+3 header, 6+6 + full-width third card; image hover scale 1 -> 1.04 `duration-[1.2s] ease-[cubic-bezier(0.22,1,0.36,1)]` motion-safe only; lime index 01/02/03 always visible on touch via `[@media(hover:hover)]`; title -> `text-[#D4FF00]` + `tracking-[0.02em]`; description via `grid-rows-[0fr]->[1fr]`; tier doc at SelectedWork.tsx:33-35: "primary = lime fill, secondary = frosted dark, tertiary = text link with arrow".

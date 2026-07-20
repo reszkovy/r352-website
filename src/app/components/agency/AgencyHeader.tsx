@@ -8,6 +8,13 @@ import { useLenis } from "lenis/react";
 import { useTheme } from "@/app/context/ThemeContext";
 import { ThemeToggle } from "@/app/components/ui/ThemeToggle";
 import { SoundWaveWidget } from "@/app/components/ui/SoundWaveWidget";
+import { DecodeText } from "@/app/components/ui/DecodeText";
+
+// Console nav (lamalama-inspired, r352 grammar): desktop inline links collapse
+// into a burger + status readout; the menu unfolds as an anchored dark panel
+// with decode-in links, CTA tiers and utilities. EASY REVERT: flip to false to
+// restore the classic inline nav + fullscreen mobile overlay exactly as before.
+const NAV_CONSOLE = true;
 
 export function AgencyHeader() {
   const [location] = useLocation();
@@ -156,6 +163,27 @@ export function AgencyHeader() {
 
   const tagline = t("nav.tagline");
 
+  // Console mode: current-section status readout (machine voice, mono).
+  const sectionLabel = (() => {
+    const map: Array<[string, string]> = [
+      ["/work", "WORK"],
+      ["/process", "PROCESS"],
+      ["/philosophy", "PHILOSOPHY"],
+      ["/services", "SERVICES"],
+      ["/for-agencies", language === "pl" ? "DLA AGENCJI" : "FOR AGENCIES"],
+      ["/journal", "JOURNAL"],
+      ["/contact", "CONTACT"],
+      ["/brief", "BRIEF"],
+      ["/webgl", "GALLERY"],
+    ];
+    for (const [prefix, label] of map) {
+      if (location === prefix || location.startsWith(prefix + "/")) return label;
+    }
+    return "HOME";
+  })();
+
+  const consoleItems = [...navItems, contactButton];
+
   return (
     <>
       <header className={cn(
@@ -264,6 +292,7 @@ export function AgencyHeader() {
             logo lockup, and pt-1 was pushing items below the optical center. Dropped to
             text-sm (14px) matching the Contact button + EN/PL toggle, and removed the
             pt-1 so items center against the logo on the parent's items-center axis. */}
+        {!NAV_CONSOLE && (
         <nav className="pointer-events-auto hidden md:flex gap-4 text-sm font-sans font-medium lowercase tracking-normal items-center">
           {navItems.map((item) => (
             <Link key={item.href} href={item.href} className={cn(
@@ -334,12 +363,39 @@ export function AgencyHeader() {
               ~50% vol). Its play/turn-off label appears in a tooltip below. */}
           <SoundWaveWidget className="ml-3" />
         </nav>
-        
+        )}
+
+        {/* Console mode - right cluster: status readout + utilities; links live in the panel */}
+        {NAV_CONSOLE && (
+          <div className="pointer-events-auto hidden md:flex items-center gap-5">
+            <DecodeText
+              key={sectionLabel}
+              text={`[ ${sectionLabel} ]`}
+              duration={350}
+              className="font-mono text-[10px] tracking-[0.25em] uppercase opacity-60"
+            />
+            <button
+              onClick={toggleLanguage}
+              aria-label={language === 'en' ? 'Switch to Polish' : 'Przełącz na angielski'}
+              className="text-sm font-display uppercase tracking-widest text-neutral-500 hover:text-white transition-colors"
+            >
+              <span className={cn(language === 'en' && "text-[#D4FF00]")}>EN</span>
+              <span className="mx-2">/</span>
+              <span className={cn(language === 'pl' && "text-[#D4FF00]")}>PL</span>
+            </button>
+            <ThemeToggle />
+            <SoundWaveWidget />
+          </div>
+        )}
+
         {/* Mobile Hamburger */}
         <motion.button
             ref={menuTriggerRef}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="pointer-events-auto md:hidden group flex flex-col justify-center items-center w-12 h-12 gap-1.5 cursor-pointer z-[1000] rounded-none backdrop-blur-sm outline-none focus:outline-none"
+            className={cn(
+                "pointer-events-auto group flex flex-col justify-center items-center w-12 h-12 gap-1.5 cursor-pointer z-[1000] rounded-none backdrop-blur-sm outline-none focus:outline-none",
+                !NAV_CONSOLE && "md:hidden"
+            )}
             animate={{
                 backgroundColor: "rgba(212, 255, 0, 0)" // Always transparent
             }}
@@ -372,9 +428,145 @@ export function AgencyHeader() {
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
+      {/* Console panel (NAV_CONSOLE) - anchored dark panel, all viewports */}
       <AnimatePresence>
-        {isMenuOpen && (
+        {isMenuOpen && NAV_CONSOLE && (
+          <motion.div
+            key="console-backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-[990] bg-black/60 backdrop-blur-[6px]"
+            onClick={() => setIsMenuOpen(false)}
+            aria-hidden="true"
+          />
+        )}
+        {isMenuOpen && NAV_CONSOLE && (
+          <motion.div
+            key="console-panel"
+            ref={menuOverlayRef}
+            id="mobile-menu-overlay"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Main navigation"
+            initial={{ opacity: 0, y: -14, scaleY: 0.97 }}
+            animate={{ opacity: 1, y: 0, scaleY: 1 }}
+            exit={{ opacity: 0, y: -10, scaleY: 0.98 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed z-[996] origin-top inset-x-0 top-0 h-[100dvh] md:h-auto md:inset-x-auto md:right-8 md:top-20 w-full md:w-[440px] bg-[#0A0A0A] md:border md:border-white/10 flex flex-col overflow-hidden md:max-h-[calc(100dvh-7rem)]"
+          >
+           {/* Inner scroller starts BELOW the fixed header zone on mobile (pt-28)
+               so link text never slides under the floating logo; desktop panel
+               sits below the bar already, so normal padding applies. */}
+           <div data-lenis-prevent className="flex-1 min-h-0 overflow-y-auto px-8 pt-28 pb-10 md:p-8">
+            {/* status row - machine readout */}
+            <div className="flex items-center justify-between mb-6">
+              <DecodeText
+                text="R352 · NAVIGATION"
+                duration={350}
+                className="font-mono text-[10px] tracking-[0.25em] text-neutral-500 uppercase"
+              />
+              <span className="font-mono text-[10px] tracking-[0.25em] text-neutral-600 uppercase">[ {sectionLabel} ]</span>
+            </div>
+
+            <nav className="flex flex-col">
+              {consoleItems.map((item, i) => (
+                <motion.div
+                  key={item.href}
+                  initial={{ opacity: 0, x: -12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.45, delay: 0.08 + i * 0.05, ease: [0.22, 1, 0.36, 1] }}
+                  className="border-b border-white/5"
+                >
+                  <Link
+                    href={item.href}
+                    className="group flex items-baseline gap-4 py-3.5"
+                  >
+                    <span className="font-mono text-[10px] text-neutral-600 group-hover:text-[#D4FF00] transition-colors duration-300 w-5 shrink-0">
+                      0{i + 1}
+                    </span>
+                    <DecodeText
+                      text={item.label.toUpperCase()}
+                      delay={80 + i * 50}
+                      duration={420}
+                      className={cn(
+                        "font-display text-2xl md:text-[26px] uppercase tracking-wide transition-colors duration-300",
+                        location === item.href ? "text-[#D4FF00]" : "text-white group-hover:text-[#D4FF00]"
+                      )}
+                    />
+                    {location === item.href && (
+                      <span className="w-1.5 h-1.5 bg-[#D4FF00] self-center ml-auto" aria-hidden="true" />
+                    )}
+                  </Link>
+                </motion.div>
+              ))}
+            </nav>
+
+            {/* CTA tiers - grammar from design-system section 4 */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.45, duration: 0.5 }}
+              className="mt-8 flex flex-col gap-3"
+            >
+              <Link
+                href="/brief"
+                className="block bg-[#D4FF00] text-black text-center font-display uppercase tracking-widest text-sm px-7 py-4 hover:bg-white transition-colors duration-300"
+              >
+                {language === 'pl' ? 'Rozpocznij projekt' : 'Start a project'}
+              </Link>
+              <a
+                href={scheduleButton.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block border border-white/25 text-white text-center font-display uppercase tracking-widest text-sm px-7 py-[15px] hover:border-[#D4FF00] hover:text-[#D4FF00] transition-colors duration-300"
+              >
+                {scheduleButton.label}
+              </a>
+              <a
+                href="mailto:hello@r352.com"
+                className="mt-1 text-center font-mono text-[11px] tracking-[0.18em] text-neutral-500 hover:text-[#D4FF00] transition-colors duration-300 uppercase"
+              >
+                hello@r352.com
+              </a>
+            </motion.div>
+
+            {/* utilities + canon line */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.55, duration: 0.5 }}
+              className="mt-8 pt-5 border-t border-white/10 flex items-center justify-between"
+            >
+              <button
+                onClick={toggleLanguage}
+                aria-label={language === 'en' ? 'Switch to Polish' : 'Przełącz na angielski'}
+                className="text-sm font-display uppercase tracking-widest text-neutral-500 hover:text-white transition-colors"
+              >
+                <span className={cn(language === 'en' && "text-[#D4FF00]")}>EN</span>
+                <span className="mx-2">/</span>
+                <span className={cn(language === 'pl' && "text-[#D4FF00]")}>PL</span>
+              </button>
+              <button
+                onClick={toggleTheme}
+                aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+                className="text-sm font-display uppercase tracking-widest text-neutral-500 hover:text-white transition-colors"
+              >
+                <span className={cn(theme === 'light' && "text-[#D4FF00]")}>LIGHT</span>
+                <span className="mx-2">/</span>
+                <span className={cn(theme === 'dark' && "text-[#D4FF00]")}>DARK</span>
+              </button>
+              <SoundWaveWidget />
+            </motion.div>
+            <p className="mt-6 font-mono text-[9px] tracking-[0.2em] text-neutral-700 uppercase text-center">
+              250+ locations · 3× approvals · 5+ yrs partnerships
+            </p>
+           </div>
+          </motion.div>
+        )}
+
+        {isMenuOpen && !NAV_CONSOLE && (
             <motion.div
                 ref={menuOverlayRef}
                 id="mobile-menu-overlay"
