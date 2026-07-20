@@ -476,20 +476,25 @@ export function AgencyHeader() {
             animate={{ opacity: 1, y: 0, scaleY: 1 }}
             exit={{ opacity: 0, y: -10, scaleY: 0.98 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed z-[996] origin-top inset-x-0 top-0 h-[100dvh] md:h-auto md:inset-x-auto md:right-8 md:top-20 w-full md:w-[440px] bg-[#0A0A0A] md:shadow-[0_24px_80px_-12px_rgba(0,0,0,0.7),0_2px_24px_rgba(0,0,0,0.4)] flex flex-col overflow-hidden md:max-h-[calc(100dvh-7rem)]"
+            className="fixed z-[996] origin-top inset-x-0 top-0 h-[100dvh] md:h-auto md:inset-x-auto md:right-0 md:top-0 w-full md:w-[440px] bg-[#0A0A0A] md:shadow-[0_24px_80px_-12px_rgba(0,0,0,0.7),0_2px_24px_rgba(0,0,0,0.4)] flex flex-col overflow-hidden md:max-h-[100dvh]"
           >
            {/* Inner scroller starts BELOW the fixed header zone on mobile (pt-28)
                so link text never slides under the floating logo; desktop panel
                sits below the bar already, so normal padding applies. */}
-           <div data-lenis-prevent className="flex-1 min-h-0 overflow-y-auto px-8 pt-28 pb-10 md:p-8">
-            {/* status row - machine readout */}
+           {/* Top padding clears the fixed header on BOTH breakpoints now - the
+               plate reaches the very top and catches the nav bar (cluster +
+               burger sit on it), reading as one clean surface. */}
+           <div data-lenis-prevent className="flex-1 min-h-0 overflow-y-auto px-8 pt-28 pb-10 md:px-8 md:pb-8 md:pt-28">
+            {/* status row - machine readout. Current-location box sits LEFT,
+                flush with the 01-07 index column, closing the panel's left
+                edge into one clean rail (Reszek: "domknac to w kwadrat"). */}
             <div className="flex items-center justify-between mb-6">
+              <span className="font-mono text-[10px] tracking-[0.25em] text-neutral-500 uppercase">[ {sectionLabel} ]</span>
               <DecodeText
                 text="R352 · NAVIGATION"
                 duration={350}
-                className="font-mono text-[10px] tracking-[0.25em] text-neutral-500 uppercase"
+                className="font-mono text-[10px] tracking-[0.25em] text-neutral-600 uppercase"
               />
-              <span className="font-mono text-[10px] tracking-[0.25em] text-neutral-600 uppercase">[ {sectionLabel} ]</span>
             </div>
 
             <nav className="flex flex-col">
