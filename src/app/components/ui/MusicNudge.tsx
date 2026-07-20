@@ -59,7 +59,7 @@ export function MusicNudge() {
           animate={{ opacity: 1, x: "-50%", y: 0 }}
           exit={{ opacity: 0, x: "-50%", y: -12 }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed top-20 md:top-24 left-1/2 z-[9000] flex items-center gap-2.5 rounded-full border border-white/12 bg-[#0A0A0A]/85 backdrop-blur-md pl-3.5 pr-1.5 py-1.5 shadow-[0_8px_32px_rgba(0,0,0,0.45)]"
+          className="fixed top-[31px] md:top-[39px] left-1/2 z-[9000] flex items-center gap-2.5 rounded-full border border-white/12 bg-[#0A0A0A]/85 backdrop-blur-md pl-3.5 pr-1.5 py-1.5 shadow-[0_8px_32px_rgba(0,0,0,0.45)]"
         >
           {/* tiny equalizer - hints at sound without a word */}
           <span className="flex items-end gap-[3px] h-3.5" aria-hidden="true">
