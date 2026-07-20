@@ -484,11 +484,11 @@ export function AgencyHeader() {
            {/* Top padding clears the fixed header on BOTH breakpoints now - the
                plate reaches the very top and catches the nav bar (cluster +
                burger sit on it), reading as one clean surface. */}
-           <div data-lenis-prevent className="flex-1 min-h-0 overflow-y-auto px-8 pt-28 pb-10 md:px-8 md:pb-8 md:pt-28">
+           <div data-lenis-prevent className="flex-1 min-h-0 overflow-y-auto px-8 pt-28 pb-10 md:px-8 md:pb-6 md:pt-24">
             {/* status row - machine readout. Current-location box sits LEFT,
                 flush with the 01-07 index column, closing the panel's left
                 edge into one clean rail (Reszek: "domknac to w kwadrat"). */}
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center justify-between mb-4">
               <span className="font-mono text-[10px] tracking-[0.25em] text-neutral-500 uppercase">[ {sectionLabel} ]</span>
               <DecodeText
                 text="R352 · NAVIGATION"
@@ -508,7 +508,7 @@ export function AgencyHeader() {
                 >
                   <Link
                     href={item.href}
-                    className="group flex items-baseline gap-4 py-3.5 outline-none focus-visible:ring-1 focus-visible:ring-[#D4FF00]/60"
+                    className="group flex items-baseline gap-4 py-3.5 md:py-2.5 outline-none focus-visible:ring-1 focus-visible:ring-[#D4FF00]/60"
                   >
                     <span className="font-mono text-[10px] text-neutral-600 group-hover:text-[#D4FF00] transition-colors duration-300 w-5 shrink-0">
                       0{i + 1}
@@ -518,7 +518,7 @@ export function AgencyHeader() {
                       delay={80 + i * 50}
                       duration={420}
                       className={cn(
-                        "font-sans font-normal text-2xl md:text-[26px] lowercase tracking-normal transition-colors duration-300",
+                        "font-sans font-normal text-2xl md:text-[22px] lowercase tracking-normal transition-colors duration-300",
                         location === item.href ? "text-[#D4FF00]" : "text-white group-hover:text-[#D4FF00]"
                       )}
                     />
@@ -535,11 +535,11 @@ export function AgencyHeader() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.45, duration: 0.5 }}
-              className="mt-8 flex flex-col gap-3"
+              className="mt-8 md:mt-5 flex flex-col gap-3 md:gap-2.5"
             >
               <Link
                 href="/brief"
-                className="block bg-[#D4FF00] text-black text-center font-display uppercase tracking-widest text-sm px-7 py-4 hover:bg-white transition-colors duration-300"
+                className="block bg-[#D4FF00] text-black text-center font-display uppercase tracking-widest text-sm px-7 py-4 md:py-3.5 hover:bg-white transition-colors duration-300"
               >
                 {language === 'pl' ? 'Rozpocznij projekt' : 'Start a project'}
               </Link>
@@ -547,7 +547,7 @@ export function AgencyHeader() {
                 href={scheduleButton.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block bg-white/[0.06] shadow-[0_8px_28px_-8px_rgba(0,0,0,0.6)] text-white text-center font-display uppercase tracking-widest text-sm px-7 py-4 hover:bg-white/[0.1] hover:text-[#D4FF00] transition-colors duration-300"
+                className="block bg-white/[0.06] shadow-[0_8px_28px_-8px_rgba(0,0,0,0.6)] text-white text-center font-display uppercase tracking-widest text-sm px-7 py-4 md:py-3.5 hover:bg-white/[0.1] hover:text-[#D4FF00] transition-colors duration-300"
               >
                 {scheduleButton.label}
               </a>
