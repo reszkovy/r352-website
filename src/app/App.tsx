@@ -57,14 +57,17 @@ function ScrollToTop() {
   const [pathname] = useLocation();
   const lenis = useLenis();
 
-  // The actual scroll reset now lives in PageTransition's useLayoutEffect
-  // (fires on the incoming page's mount, while the sweep covers the screen -
-  // robust, timing-independent). This component only nudges Lenis to
-  // recalculate its scroll limits after the incoming content has settled
-  // (images/fonts/video that change page height post-mount).
   useEffect(() => {
-    if (!lenis) return;
-    const timer = setTimeout(() => lenis.resize(), 700);
+    const timer = setTimeout(() => {
+      window.scrollTo(0, 0);
+      if (lenis) {
+        lenis.scrollTo(0, { immediate: true });
+        requestAnimationFrame(() => {
+          lenis.resize();
+        });
+      }
+    }, 700);
+
     return () => clearTimeout(timer);
   }, [pathname, lenis]);
 

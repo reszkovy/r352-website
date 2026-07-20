@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { ReactNode, useEffect, useLayoutEffect, useRef } from "react";
+import { ReactNode, useEffect, useRef } from "react";
 import { useLenis } from "lenis/react";
 import { useTheme } from "@/app/context/ThemeContext";
 import { R352Symbol } from "@/app/components/agency/R352Logo";
@@ -47,26 +47,6 @@ export function PageTransition({ children, className }: PageTransitionProps) {
   const direction = directionRef.current;
   const sweep = getSweepProps(direction);
   const branding = getBrandingClipPath(direction);
-
-  // Scroll reset - the ROBUST way. Each navigation mounts a fresh
-  // PageTransition (AnimatePresence mode="wait" keyed by route), and with
-  // mode="wait" the new page mounts only AFTER the old page's exit completes,
-  // i.e. while the sweep is fully covering the screen. Resetting scroll here
-  // in useLayoutEffect (synchronous, before the browser paints this page)
-  // guarantees the incoming page's first paint is already at the top, hidden
-  // behind the cover - device- and timing-independent.
-  //
-  // This replaces the old fragile approach (App.tsx ScrollToTop fired a fixed
-  // 700ms timer meant to coincide with full coverage). On a slow device or a
-  // busy main thread that timer desynced from the compositor-driven sweep, so
-  // the scroll snapped to top AFTER the sweep had started revealing = the
-  // visible "jump" on some transitions. Tying the reset to the actual mount
-  // removes the coincidence entirely.
-  useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-    if (lenis) lenis.scrollTo(0, { immediate: true });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   // Trigger transition sound on every page mount
   useEffect(() => {
