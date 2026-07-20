@@ -55,11 +55,11 @@ export function MusicNudge() {
     <AnimatePresence>
       {show && (
         <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, x: "-50%", y: -18 }}
+          animate={{ opacity: 1, x: "-50%", y: 0 }}
+          exit={{ opacity: 0, x: "-50%", y: -12 }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed bottom-24 md:bottom-28 left-6 z-[9000] flex items-center gap-3 rounded-full border border-white/12 bg-[#0A0A0A]/85 backdrop-blur-md pl-4 pr-2 py-2 shadow-[0_8px_32px_rgba(0,0,0,0.45)]"
+          className="fixed top-20 md:top-24 left-1/2 z-[9000] flex items-center gap-2.5 rounded-full border border-white/12 bg-[#0A0A0A]/85 backdrop-blur-md pl-3.5 pr-1.5 py-1.5 shadow-[0_8px_32px_rgba(0,0,0,0.45)]"
         >
           {/* tiny equalizer - hints at sound without a word */}
           <span className="flex items-end gap-[3px] h-3.5" aria-hidden="true">
@@ -72,12 +72,12 @@ export function MusicNudge() {
               />
             ))}
           </span>
-          <span className="text-[13px] text-white/75 whitespace-nowrap">
+          <span className="text-[11px] text-white/70 whitespace-nowrap">
             {pl ? "Ta strona ma soundtrack." : "This site has a soundtrack."}
           </span>
           <button
             onClick={onPlay}
-            className="rounded-full bg-[#D4FF00] text-black font-display uppercase tracking-[0.14em] text-[11px] px-4 py-1.5 hover:bg-white transition-colors duration-300 whitespace-nowrap"
+            className="rounded-full bg-[#D4FF00] text-black font-display uppercase tracking-[0.14em] text-[10px] px-3 py-1 hover:bg-white transition-colors duration-300 whitespace-nowrap"
           >
             {pl ? "Włącz" : "Play"}
           </button>

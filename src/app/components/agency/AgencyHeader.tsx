@@ -480,7 +480,7 @@ export function AgencyHeader() {
             animate={isMenuOpen ? { opacity: 1, y: 0, scaleY: 1 } : { opacity: 0, y: -14, scaleY: 0.97 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             style={{ pointerEvents: isMenuOpen ? "auto" : "none", visibility: undefined }}
-            className="fixed z-[996] origin-top inset-x-0 top-0 h-[100dvh] md:h-auto md:inset-x-auto md:right-3 md:top-3 w-full md:w-[440px] bg-[#0A0A0A] md:shadow-[0_24px_80px_-12px_rgba(0,0,0,0.7),0_2px_24px_rgba(0,0,0,0.4)] flex flex-col overflow-hidden md:max-h-[calc(100dvh-1.5rem)]"
+            className="fixed z-[996] origin-top inset-x-0 top-0 h-[100dvh] md:h-auto md:inset-x-auto md:right-3 md:top-3 md:bottom-3 w-full md:w-[440px] bg-[#0A0A0A] md:shadow-[0_24px_80px_-12px_rgba(0,0,0,0.7),0_2px_24px_rgba(0,0,0,0.4)] flex flex-col overflow-hidden"
           >
            {/* Three-zone layout so the CTAs are ALWAYS inside the fold, on any
                viewport height (scaled screens included): fixed top spacing that
