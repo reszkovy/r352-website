@@ -29,22 +29,21 @@ export type TransitionDirection =
   | "left-to-right"
   | "right-to-left";
 
-let currentDirection: TransitionDirection = "bottom-to-top"; // matches original sweep
+let currentDirection: TransitionDirection = "left-to-right"; // single fixed direction (Reszek 2026-07: compass cycle read as chaotic)
 
 export function getCurrentDirection(): TransitionDirection {
   return currentDirection;
 }
 
 /**
- * Desktop pairing - each direction has a fixed next direction. Together they
- * form a clockwise compass cycle:
- *
- *   L→R then T→B then R→L then B→T then back to L→R
+ * Desktop pairing - SINGLE FIXED DIRECTION. The original clockwise compass
+ * cycle (L→R, T→B, R→L, B→T) read as chaotic in use (Reszek, 2026-07);
+ * every desktop navigation now sweeps left-to-right, consistently.
  */
 const nextDesktop: Record<TransitionDirection, TransitionDirection> = {
-  "left-to-right": "top-to-bottom",
-  "top-to-bottom": "right-to-left",
-  "right-to-left": "bottom-to-top",
+  "left-to-right": "left-to-right",
+  "top-to-bottom": "left-to-right",
+  "right-to-left": "left-to-right",
   "bottom-to-top": "left-to-right",
 };
 

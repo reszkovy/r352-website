@@ -545,9 +545,12 @@ export function AgencyHeader() {
               transition={{ delay: isMenuOpen ? 0.45 : 0, duration: 0.5 }}
               className="mt-6 md:mt-4 flex flex-col gap-3 md:gap-2.5"
             >
+              {/* Lighter CTA weight per Reszek: one slim lime primary, and the
+                  secondary demoted to a quiet text link - the previous two
+                  full plates outweighed the list above them. */}
               <Link
                 href="/brief"
-                className="block bg-[#D4FF00] text-black text-center font-display uppercase tracking-widest text-sm px-7 py-4 md:py-3.5 hover:bg-white transition-colors duration-300"
+                className="block bg-[#D4FF00] text-black text-center font-display uppercase tracking-[0.18em] text-xs px-7 py-3.5 md:py-2.5 hover:bg-white transition-colors duration-300"
               >
                 {language === 'pl' ? 'Rozpocznij projekt' : 'Start a project'}
               </Link>
@@ -555,9 +558,10 @@ export function AgencyHeader() {
                 href={scheduleButton.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block bg-white/[0.06] shadow-[0_8px_28px_-8px_rgba(0,0,0,0.6)] text-white text-center font-display uppercase tracking-widest text-sm px-7 py-4 md:py-3.5 hover:bg-white/[0.1] hover:text-[#D4FF00] transition-colors duration-300"
+                className="group flex items-center justify-center gap-2 py-2 font-display uppercase tracking-[0.18em] text-xs text-neutral-400 hover:text-[#D4FF00] transition-colors duration-300"
               >
-                {scheduleButton.label}
+                <span>{scheduleButton.label}</span>
+                <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </a>
             </motion.div>
 
