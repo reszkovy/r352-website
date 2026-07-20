@@ -62,15 +62,26 @@ export function AgencyHeader() {
     setIsMenuOpen(false);
   }, [location]);
 
-  // Lock scroll when menu is open
+  // Lock scroll when menu is open. Defensive on the unlock side: scroll dying
+  // after menu close was reported ("czasem") - a stop/start race across close
+  // paths (route change, backdrop click, Escape) and lenis instance swaps.
+  // Three guarantees now:
+  //   1. cleanup restarts lenis on ANY dep change/unmount while stopped,
+  //   2. a delayed second start() (after the exit animation) is a cheap
+  //      idempotent watchdog against anything re-stopping it mid-transition,
+  //   3. native fallback: window/body overflow never touched, so if lenis is
+  //      absent the page scrolls natively regardless.
   useEffect(() => {
-    if (lenis) {
-      if (isMenuOpen) {
-        lenis.stop();
-      } else {
+    if (!lenis) return;
+    if (isMenuOpen) {
+      lenis.stop();
+      return () => {
         lenis.start();
-      }
+      };
     }
+    lenis.start();
+    const watchdog = window.setTimeout(() => lenis.start(), 700);
+    return () => window.clearTimeout(watchdog);
   }, [isMenuOpen, lenis]);
 
   // Mobile menu a11y: Escape to close, focus trap (Tab loops), auto-focus first link on open,
@@ -450,32 +461,35 @@ export function AgencyHeader() {
         </div>
       </header>
 
-      {/* Console panel (NAV_CONSOLE) - anchored dark panel, all viewports */}
-      <AnimatePresence>
-        {isMenuOpen && NAV_CONSOLE && (
+      {/* Console panel (NAV_CONSOLE) - anchored dark panel, all viewports.
+          ALWAYS MOUNTED, state-driven show/hide. AnimatePresence was leaving
+          both the backdrop and the panel in the DOM after exit (opacity 0,
+          pointer-events still active) - an invisible full-screen wall that
+          killed scrolling and clicks after closing the menu. Deterministic
+          animate + pointerEvents + inert removes that entire failure class. */}
+      {NAV_CONSOLE && (
+        <>
           <motion.div
-            key="console-backdrop"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial={false}
+            animate={{ opacity: isMenuOpen ? 1 : 0 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-0 z-[990] bg-black/60 backdrop-blur-[6px]"
+            style={{ pointerEvents: isMenuOpen ? "auto" : "none" }}
             onClick={() => setIsMenuOpen(false)}
             aria-hidden="true"
           />
-        )}
-        {isMenuOpen && NAV_CONSOLE && (
           <motion.div
-            key="console-panel"
             ref={menuOverlayRef}
             id="mobile-menu-overlay"
             role="dialog"
             aria-modal="true"
             aria-label="Main navigation"
-            initial={{ opacity: 0, y: -14, scaleY: 0.97 }}
-            animate={{ opacity: 1, y: 0, scaleY: 1 }}
-            exit={{ opacity: 0, y: -10, scaleY: 0.98 }}
+            aria-hidden={!isMenuOpen}
+            {...(!isMenuOpen ? ({ inert: "" } as Record<string, string>) : {})}
+            initial={false}
+            animate={isMenuOpen ? { opacity: 1, y: 0, scaleY: 1 } : { opacity: 0, y: -14, scaleY: 0.97 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            style={{ pointerEvents: isMenuOpen ? "auto" : "none", visibility: undefined }}
             className="fixed z-[996] origin-top inset-x-0 top-0 h-[100dvh] md:h-auto md:inset-x-auto md:right-3 md:top-3 w-full md:w-[440px] bg-[#0A0A0A] md:shadow-[0_24px_80px_-12px_rgba(0,0,0,0.7),0_2px_24px_rgba(0,0,0,0.4)] flex flex-col overflow-hidden md:max-h-[calc(100dvh-1.5rem)]"
           >
            {/* Inner scroller starts BELOW the fixed header zone on mobile (pt-28)
@@ -492,6 +506,7 @@ export function AgencyHeader() {
               <span className="font-mono text-[10px] tracking-[0.25em] text-neutral-500 uppercase">[ {sectionLabel} ]</span>
               <DecodeText
                 text="R352 · NAVIGATION"
+                active={isMenuOpen}
                 duration={350}
                 className="font-mono text-[10px] tracking-[0.25em] text-neutral-600 uppercase"
               />
@@ -501,9 +516,9 @@ export function AgencyHeader() {
               {consoleItems.map((item, i) => (
                 <motion.div
                   key={item.href}
-                  initial={{ opacity: 0, x: -12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.45, delay: 0.08 + i * 0.05, ease: [0.22, 1, 0.36, 1] }}
+                  initial={false}
+                  animate={isMenuOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: -12 }}
+                  transition={{ duration: 0.45, delay: isMenuOpen ? 0.08 + i * 0.05 : 0, ease: [0.22, 1, 0.36, 1] }}
                   className="border-b border-white/5"
                 >
                   <Link
@@ -515,6 +530,7 @@ export function AgencyHeader() {
                     </span>
                     <DecodeText
                       text={item.label}
+                      active={isMenuOpen}
                       delay={80 + i * 50}
                       duration={420}
                       className={cn(
@@ -532,9 +548,9 @@ export function AgencyHeader() {
 
             {/* CTA tiers - grammar from design-system section 4 */}
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.45, duration: 0.5 }}
+              initial={false}
+              animate={{ opacity: isMenuOpen ? 1 : 0 }}
+              transition={{ delay: isMenuOpen ? 0.45 : 0, duration: 0.5 }}
               className="mt-8 md:mt-5 flex flex-col gap-3 md:gap-2.5"
             >
               <Link
@@ -555,9 +571,9 @@ export function AgencyHeader() {
 
             {/* utilities + canon line */}
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.55, duration: 0.5 }}
+              initial={false}
+              animate={{ opacity: isMenuOpen ? 1 : 0 }}
+              transition={{ delay: isMenuOpen ? 0.55 : 0, duration: 0.5 }}
               className="md:hidden mt-8 pt-5 border-t border-white/10 flex items-center justify-end gap-8"
             >
               <button
@@ -582,8 +598,11 @@ export function AgencyHeader() {
             </motion.div>
            </div>
           </motion.div>
-        )}
+        </>
+      )}
 
+      {/* Classic fullscreen mobile overlay (NAV_CONSOLE = false path) */}
+      <AnimatePresence>
         {isMenuOpen && !NAV_CONSOLE && (
             <motion.div
                 ref={menuOverlayRef}
