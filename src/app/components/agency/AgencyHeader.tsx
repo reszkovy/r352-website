@@ -365,9 +365,11 @@ export function AgencyHeader() {
         </nav>
         )}
 
-        {/* Console mode - right cluster: status readout + utilities; links live in the panel */}
+        {/* Console mode - right cluster: status readout + utilities; links live in the panel.
+            ml-auto glues the cluster to the burger on the right edge so the logo's
+            scroll-collapse never shifts it (justify-between would center it otherwise). */}
         {NAV_CONSOLE && (
-          <div className="pointer-events-auto hidden md:flex items-center gap-5">
+          <div className="pointer-events-auto hidden md:flex items-center gap-5 ml-auto mr-6">
             <DecodeText
               key={sectionLabel}
               text={`[ ${sectionLabel} ]`}
@@ -393,7 +395,7 @@ export function AgencyHeader() {
             ref={menuTriggerRef}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className={cn(
-                "pointer-events-auto group flex flex-col justify-center items-center w-12 h-12 gap-1.5 cursor-pointer z-[1000] rounded-none backdrop-blur-sm outline-none focus:outline-none",
+                "pointer-events-auto group relative flex flex-col justify-center items-center w-12 h-12 gap-1.5 cursor-pointer z-[1000] rounded-none backdrop-blur-sm outline-none focus:outline-none",
                 !NAV_CONSOLE && "md:hidden"
             )}
             animate={{
@@ -404,32 +406,37 @@ export function AgencyHeader() {
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu-overlay"
         >
-           {/* Symmetric equal-weight lines; a third middle line slides in on hover
-               as an affordance ("there is more here"). Open state morphs to X. */}
+           {/* Two symmetric equal-weight lines (6px apart, as before the console
+               experiment); a third middle line lives OUTSIDE the flex flow
+               (absolutely centered) so it never disturbs spacing - it fades in
+               on hover as an affordance. Open state: lines meet at the exact
+               button center (±4px = half of the 8px line pitch) for a clean X. */}
            <motion.div
              className="w-6 h-[2px] rounded-none origin-center"
              animate={{
                backgroundColor: (theme === 'light' || isLimeTheme) ? "#000000" : "#D4FF00",
                rotate: isMenuOpen ? 45 : 0,
-               y: isMenuOpen ? 8 : 0
+               y: isMenuOpen ? 4 : 0
              }}
              transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
            />
-           <motion.div
-             className={cn(
-               "w-6 h-[2px] rounded-none origin-center transition-[opacity,transform] duration-300 ease-out",
-               (theme === 'light' || isLimeTheme) ? "bg-black" : "bg-[#D4FF00]",
-               isMenuOpen
-                 ? "opacity-0 scale-x-0"
-                 : "opacity-0 scale-x-50 group-hover:opacity-100 group-hover:scale-x-100"
-             )}
-           />
+           <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none" aria-hidden="true">
+             <div
+               className={cn(
+                 "w-6 h-[2px] rounded-none transition-[opacity,transform] duration-300 ease-out",
+                 (theme === 'light' || isLimeTheme) ? "bg-black" : "bg-[#D4FF00]",
+                 isMenuOpen
+                   ? "opacity-0 scale-x-0"
+                   : "opacity-0 scale-x-50 group-hover:opacity-100 group-hover:scale-x-100"
+               )}
+             />
+           </span>
            <motion.div
              className="w-6 h-[2px] rounded-none origin-center"
              animate={{
                backgroundColor: (theme === 'light' || isLimeTheme) ? "#000000" : "#D4FF00",
                rotate: isMenuOpen ? -45 : 0,
-               y: isMenuOpen ? -8 : 0
+               y: isMenuOpen ? -4 : 0
              }}
              transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
            />
