@@ -482,16 +482,6 @@ export function AgencyHeader() {
                so link text never slides under the floating logo; desktop panel
                sits below the bar already, so normal padding applies. */}
            <div data-lenis-prevent className="flex-1 min-h-0 overflow-y-auto px-8 pt-28 pb-10 md:p-8">
-            {/* status row - machine readout */}
-            <div className="flex items-center justify-between mb-6">
-              <DecodeText
-                text="R352 · NAVIGATION"
-                duration={350}
-                className="font-mono text-[10px] tracking-[0.25em] text-neutral-500 uppercase"
-              />
-              <span className="font-mono text-[10px] tracking-[0.25em] text-neutral-600 uppercase">[ {sectionLabel} ]</span>
-            </div>
-
             <nav className="flex flex-col">
               {consoleItems.map((item, i) => (
                 <motion.div
@@ -546,20 +536,16 @@ export function AgencyHeader() {
               >
                 {scheduleButton.label}
               </a>
-              <a
-                href="mailto:hello@r352.com"
-                className="mt-1 text-center font-mono text-[11px] tracking-[0.18em] text-neutral-500 hover:text-[#D4FF00] transition-colors duration-300 uppercase"
-              >
-                hello@r352.com
-              </a>
             </motion.div>
 
-            {/* utilities + canon line */}
+            {/* utilities - mobile only: on md+ they already live in the header
+                cluster next to the burger (removing the duplication per Reszek;
+                the panel must not scroll) */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.55, duration: 0.5 }}
-              className="mt-8 pt-5 border-t border-white/10 flex items-center justify-end gap-8"
+              className="md:hidden mt-8 pt-5 border-t border-white/10 flex items-center justify-end gap-8"
             >
               <button
                 onClick={toggleLanguage}
@@ -581,9 +567,6 @@ export function AgencyHeader() {
               </button>
               <SoundWaveWidget />
             </motion.div>
-            <p className="mt-6 font-mono text-[9px] tracking-[0.2em] text-neutral-700 uppercase text-center">
-              250+ locations · 3× approvals · 5+ yrs partnerships
-            </p>
            </div>
           </motion.div>
         )}
