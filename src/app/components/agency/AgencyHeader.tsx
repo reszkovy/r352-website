@@ -190,9 +190,15 @@ export function AgencyHeader() {
       <header className={cn(
         "fixed top-0 w-full z-[999] transition-all duration-700",
         isScrolled ? "pointer-events-auto is-scrolled" : "pointer-events-none",
-        isLimeTheme 
-          ? "text-black py-4 md:py-6" 
-          : cn("text-white transition-all duration-700", isScrolled ? "py-4 md:py-6" : "mix-blend-difference py-6 md:py-8")
+        // Menu open = dark-overlay appearance regardless of page theme: the
+        // console panel + backdrop are dark, so the header contents must be
+        // light. stay-dark keeps neutral text light (defeats the light-theme
+        // flip); no mix-blend-difference (which fights the dark backdrop).
+        isMenuOpen
+          ? "stay-dark text-white py-4 md:py-6"
+          : isLimeTheme
+            ? "text-black py-4 md:py-6"
+            : cn("text-white transition-all duration-700", isScrolled ? "py-4 md:py-6" : "mix-blend-difference py-6 md:py-8")
       )}>
         {/* Dark Mode Version - soft linear scrim, NO rigid bar, NO blur (client
             direction: a shadow that fades top→transparent, never a frosted bar).
@@ -207,7 +213,7 @@ export function AgencyHeader() {
             "absolute inset-x-0 top-0 h-[260%] -z-10 pointer-events-none",
             "bg-gradient-to-b from-black/95 via-black/55 to-transparent",
             "transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
-            isScrolled && theme === 'dark' && !isLimeTheme ? "opacity-100" : "opacity-0"
+            isScrolled && !isMenuOpen && theme === 'dark' && !isLimeTheme ? "opacity-100" : "opacity-0"
           )}
         />
         {/* Light Mode Version - SHORT, subtle single gradient. Unlike the dark
@@ -223,7 +229,7 @@ export function AgencyHeader() {
             "absolute inset-x-0 top-0 h-[130%] -z-10 pointer-events-none",
             "bg-gradient-to-b from-white/85 to-transparent",
             "transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
-            isScrolled && (theme === 'light' || isLimeTheme) ? "opacity-100" : "opacity-0"
+            isScrolled && !isMenuOpen && (theme === 'light' || isLimeTheme) ? "opacity-100" : "opacity-0"
           )}
         />
         <div className="px-8 md:px-12 flex justify-between items-center w-full relative z-10">
@@ -407,7 +413,7 @@ export function AgencyHeader() {
              className="absolute w-6 h-[2px] rounded-none"
              style={{ left: "50%", top: "50%" }}
              animate={{
-               backgroundColor: (theme === 'light' || isLimeTheme) ? "#000000" : "#D4FF00",
+               backgroundColor: (theme === 'light' || isLimeTheme) && !isMenuOpen ? "#000000" : "#D4FF00",
                x: -12,
                y: isMenuOpen ? -1 : -5,
                rotate: isMenuOpen ? 45 : 0
@@ -418,7 +424,7 @@ export function AgencyHeader() {
              <div
                className={cn(
                  "w-6 h-[2px] rounded-none transition-[opacity,transform] duration-300 ease-out",
-                 (theme === 'light' || isLimeTheme) ? "bg-black" : "bg-[#D4FF00]",
+                 (theme === 'light' || isLimeTheme) && !isMenuOpen ? "bg-black" : "bg-[#D4FF00]",
                  isMenuOpen
                    ? "opacity-0 scale-x-0"
                    : "opacity-0 scale-x-50 group-hover:opacity-100 group-hover:scale-x-100"
@@ -429,7 +435,7 @@ export function AgencyHeader() {
              className="absolute w-6 h-[2px] rounded-none"
              style={{ left: "50%", top: "50%" }}
              animate={{
-               backgroundColor: (theme === 'light' || isLimeTheme) ? "#000000" : "#D4FF00",
+               backgroundColor: (theme === 'light' || isLimeTheme) && !isMenuOpen ? "#000000" : "#D4FF00",
                x: -12,
                y: isMenuOpen ? -1 : 3,
                rotate: isMenuOpen ? -45 : 0
@@ -469,7 +475,7 @@ export function AgencyHeader() {
             animate={isMenuOpen ? { opacity: 1, y: 0, scaleY: 1 } : { opacity: 0, y: -14, scaleY: 0.97 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             style={{ pointerEvents: isMenuOpen ? "auto" : "none", visibility: undefined }}
-            className="fixed z-[996] origin-top inset-x-0 top-0 h-[100dvh] md:h-auto md:inset-x-auto md:right-3 md:top-3 md:bottom-3 w-full md:w-[440px] bg-[#0A0A0A] md:shadow-[0_24px_80px_-12px_rgba(0,0,0,0.7),0_2px_24px_rgba(0,0,0,0.4)] flex flex-col overflow-hidden"
+            className="stay-dark fixed z-[996] origin-top inset-x-0 top-0 h-[100dvh] md:h-auto md:inset-x-auto md:right-3 md:top-3 md:bottom-3 w-full md:w-[440px] bg-[#0b0b0b] md:shadow-[0_24px_80px_-12px_rgba(0,0,0,0.7),0_2px_24px_rgba(0,0,0,0.4)] flex flex-col overflow-hidden"
           >
            {/* Three-zone layout so the CTAs are ALWAYS inside the fold, on any
                viewport height (scaled screens included): fixed top spacing that
