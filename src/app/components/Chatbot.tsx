@@ -170,7 +170,12 @@ export function Chatbot() {
     <AnimatePresence>
       {scrollStarted && (
         <motion.div
-          className="hidden md:block fixed bottom-6 right-6 z-[985]"
+          // Closed launcher stays low (z-985) so it tucks under the open nav
+          // menu. But the OPEN chat panel must sit ABOVE the header (z-999) -
+          // otherwise, on shorter viewports the tall panel reaches the top and
+          // the header nav bleeds through the answer, making it unreadable.
+          // Chat and menu are never both open, so the swap is safe.
+          className={`hidden md:block fixed bottom-6 right-6 ${isOpen ? "z-[1002]" : "z-[985]"}`}
           data-no-cursor-fx="true"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -211,7 +216,7 @@ export function Chatbot() {
                     className={`max-w-[80%] px-4 py-2.5 text-[13px] leading-relaxed rounded-none ${
                       msg.sender === "user"
                         ? "bg-[#D4FF00] text-black font-medium"
-                        : "bg-[#222222] text-zinc-300"
+                        : "bg-[#1c1c1c] text-zinc-100"
                     }`}
                   >
                     {msg.text}
