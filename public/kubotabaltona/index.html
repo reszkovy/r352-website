@@ -330,17 +330,35 @@ for (const s of [1, -1]) {
   });
 }
 
-/* klapki na blacie — oparte o płytę centralną (blat ma ~19 cm głębokości na stronę,
-   klapek 25 cm, więc stoi pochylony: stopa na blacie, czubek na płycie)            */
-const TILT = 40;                                     // od pionu; zasięg poziomy 25·sin40 ≈ 16 cm
+/* skarpety leżące płasko na blacie (składana para, ściągacz przy płycie,
+   ~16 cm długości — mieści się na 19 cm blatu bez podpierania) */
+const sock = (c, d) => `<svg viewBox="0 0 90 160" style="display:block;width:${cm(9)}px">
+  <g>
+    <path fill="${c}" d="M20 22 H50 V84 C50 93 53 99 59 104 C68 111 72 122 66 133
+      C59 145 43 148 33 141 C24 135 20 126 20 115 Z"/>
+    <path fill="${d}" d="M59 104 C68 111 72 122 66 133 C62 140 55 144 47 145
+      C52 132 55 118 53 106 C55 105 57 105 59 104 Z"/>
+    <path fill="${d}" d="M20 96 C24 100 28 102 33 103 L33 116 C27 113 22 107 20 103 Z"/>
+    <rect x="16" y="4" width="38" height="20" rx="4" fill="#fff"/>
+    <g fill="${c}" transform="translate(22,9) scale(0.145) translate(-1157.26,-1062.38)">
+      <path d="M1230.39 1064.36L1194.43 1136.28H1157.26L1193.22 1064.36H1230.39Z"/>
+      <path d="M1262.83 1062.38C1280.82 1062.38 1295.79 1075.24 1299.09 1092.27L1299.12 1092.39L1299.21 1092.32C1303.03 1089.75 1307.03 1088.24 1312.58 1088.25C1325.84 1088.28 1336.59 1099.01 1336.59 1112.27C1336.59 1125.53 1325.84 1136.28 1312.58 1136.28H1262.75V1136.29C1242.38 1136.24 1225.88 1119.72 1225.88 1099.33C1225.88 1078.93 1242.42 1062.38 1262.83 1062.38Z"/>
+    </g>
+  </g>
+  <g transform="translate(90,4) scale(-1,1) translate(0,0)" opacity=".92">
+    <path fill="${c}" d="M20 22 H50 V84 C50 93 53 99 59 104 C68 111 72 122 66 133
+      C59 145 43 148 33 141 C24 135 20 126 20 115 Z" transform="scale(0.82) translate(8,14)"/>
+  </g>
+</svg>`;
+
 ['black','navy','red','orange','pink','mint','beige','white'].forEach((name, i) => {
-  const [c, d, lc] = C[name];
+  const [c, d] = C[name];
   for (const s of [1, -1]) {
-    panel({w:SW, h:SL, pos:[s*(-26 + i * 7.45), Y(Y_BASE_TOP - 9.6), s*8.9],
-      rot:`${s === 1 ? '' : 'rotateY(180deg) '}rotateX(${TILT}deg)`, cls:'ledge',
-      n:[0, -0.64, s*0.77],
-      css:`filter:drop-shadow(0 2px 3px rgba(0,0,0,.3))`,
-      html:slide(c, d, lc)});
+    panel({w:9, h:16, pos:[s*(-25.5 + i * 7.3), Y(Y_BASE_TOP) - .15, s*9.2],
+      rot:`${s === 1 ? '' : 'rotateY(180deg) '}rotateX(90deg) rotateZ(${i % 2 ? 4 : -4}deg)`,
+      cls:'ledge', n:[0,-1,0],
+      css:`filter:drop-shadow(2px 2px 2px rgba(0,0,0,.3))`,
+      html:sock(c, d)});
   }
 });
 
@@ -387,7 +405,7 @@ document.getElementById('spec').innerHTML = `
   Szerokość podstawy <b>60 cm</b> · Głębokość podstawy <b>40 cm</b><br>
   Suma wysokości <b>130 cm</b> · Wysokość podstawy <b>40 cm</b><br>
   Płyta centralna <b>60 × 90 cm</b>, dwustronna · Pegboard <b>biały</b><br>
-  Haki <b>2 × 4 × 2 strony</b> = <b>16 par</b> + <b>16 par</b> na podstawie`;
+  Haki <b>2 × 4 × 2 strony</b> = <b>16 par</b> klapek · Skarpety na blacie`;
 
 /* ================= światło i cieniowanie =================
    kierunek DO światła (lewa-góra-przód, układ świata; y rośnie w dół) */
