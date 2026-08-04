@@ -237,12 +237,24 @@ for (const s of [1, -1]) {                            // 1 = przód, -1 = tył
   panel({w:W, h:pegH, pos:[0, Y(Y_HDR_BOT + pegH/2), s*PZ], rot, n:[0,0,s],
     css:'backface-visibility:hidden', html: whiteBoard});
 }
-/* krawędzie boczne płyty — od pasa headera (9,93) do blatu, nie od samej góry */
-const EDGE_TOP = Y_WING_TOP, EDGE_H = Y_BASE_TOP - EDGE_TOP;   // 9.93 → 89.93 (80 cm)
-panel({w:PT, h:EDGE_H, pos:[-W/2 + .01, Y(EDGE_TOP + EDGE_H/2), 0],
-  rot:'rotateY(-90deg)', n:[-1,0,0], css:'background:#E9ECF1'});
-panel({w:PT, h:EDGE_H, pos:[ W/2 - .01, Y(EDGE_TOP + EDGE_H/2), 0],
-  rot:'rotateY(90deg)', n:[1,0,0], css:'background:#E9ECF1'});
+/* BOKI: pionowe panele maskujące krawędź płyty (szkic Bartosza) —
+   18 cm głębokości, od blatu do samej góry, pełny łuk u góry (R 9),
+   niebieskie z pionowym ICONIC POLISH BRAND czytanym od dołu       */
+const SIDE_W = 18;
+const sidePanel = withText => `<svg viewBox="0 0 180 900" preserveAspectRatio="none">
+  <path d="M0 900 V90 A90 90 0 0 1 180 90 V900 Z" fill="#2657D9"/>
+  ${withText ? `<text x="92" y="512" text-anchor="middle" transform="rotate(-90 92 512)"
+    font-family="Helvetica Neue, Arial, sans-serif" font-weight="900" font-size="62"
+    letter-spacing="1" fill="#fff">ICONIC POLISH BRAND</text>` : ''}
+</svg>`;
+panel({w:SIDE_W, h:Y_BASE_TOP, pos:[-W/2, Y(Y_BASE_TOP/2), 0],
+  rot:'rotateY(-90deg)', n:[-1,0,0], css:'backface-visibility:hidden', html: sidePanel(true)});
+panel({w:SIDE_W, h:Y_BASE_TOP, pos:[-W/2 + PT, Y(Y_BASE_TOP/2), 0],
+  rot:'rotateY(90deg)', n:[1,0,0], css:'backface-visibility:hidden', html: sidePanel(false)});
+panel({w:SIDE_W, h:Y_BASE_TOP, pos:[ W/2, Y(Y_BASE_TOP/2), 0],
+  rot:'rotateY(90deg)', n:[1,0,0], css:'backface-visibility:hidden', html: sidePanel(true)});
+panel({w:SIDE_W, h:Y_BASE_TOP, pos:[ W/2 - PT, Y(Y_BASE_TOP/2), 0],
+  rot:'rotateY(-90deg)', n:[-1,0,0], css:'backface-visibility:hidden', html: sidePanel(false)});
 
 /* ================= podstawa 60 × 40 × 40 (bez ścian bocznych powyżej) ================= */
 const baseH = Y_FLOOR - Y_BASE_TOP;                  // 40
