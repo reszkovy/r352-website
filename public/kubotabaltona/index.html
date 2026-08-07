@@ -366,9 +366,9 @@ const colsX = [-21.5, -7.2, 7.2, 21.5];
 const rowsTop = [Y_HDR_BOT + .5, Y_HDR_BOT + 30.5];
 const SEP = 3.0;
 
-/* haki 25 cm (pręt) + 3 pary nawleczone wzdłuż haka — z OBU stron płyty,
-   jeden kolor (SKU) na hak; przednia para ~22 cm od lica                    */
-const HOOK_L = 25;
+/* haki 20 cm (pręt) + 3 pary nawleczone wzdłuż haka — z OBU stron płyty,
+   jeden kolor (SKU) na hak; przednia para ~18 cm od lica — równo z obrysem podstawy                    */
+const HOOK_L = 20;
 for (const s of [1, -1]) {
   const rot = s === 1 ? '' : 'rotateY(180deg) ';
   grid.forEach((row, ri) => {
@@ -379,7 +379,7 @@ for (const s of [1, -1]) {
         rot:'rotateY(90deg)', cls:'hang',
         css:'background:linear-gradient(180deg,#E3E7EE,#9AA2B1);border-radius:2px'});
       /* pary na haku, od tylnej do przedniej */
-      for (const dz of [5, 13, 21]) {
+      for (const dz of [4, 11, 18]) {
         panel({w:16, h:HANG + SL, pos:[s*colsX[ci], Y(rowsTop[ri] + (HANG + SL)/2), s*(PZ + dz)],
           rot, cls:'hang', n:[0,0,s],
           css:`filter:drop-shadow(0 ${cm(.8)}px ${cm(1.2)}px rgba(0,0,0,.45))`,
@@ -473,7 +473,7 @@ parts.push(`<div class="n dim" style="width:0;height:0;
   </div></div>`);
 parts.push(`<div class="n dim" style="width:0;height:0;
   transform:translate3d(${cm(W/2)+30}px,${cm(Y(Y_HDR_BOT + 3.5))}px,0) rotateY(90deg)">
-  <div style="position:absolute;left:${cm(-(0.9 + 25))}px;top:0;width:${cm(25)}px">
+  <div style="position:absolute;left:${cm(-(0.9 + 20))}px;top:0;width:${cm(20)}px">
     <div class="bar-d" style="left:0;top:0;width:100%;height:1.5px"></div>
     <div class="bar-d" style="left:0;top:-6px;width:1.5px;height:14px"></div>
     <div class="bar-d" style="right:0;top:-6px;width:1.5px;height:14px"></div>
@@ -489,12 +489,12 @@ const STR = {
     hint:'Drag to rotate · scroll to zoom',
     d130:'130 cm — total height', d40b:'40 cm — plinth height', d90:'90 cm — centre panel',
     d60:'60 cm — plinth width', d40d:'40 cm — plinth depth',
-    dPyl:'20 cm — side pylon depth', dHook:'25 cm — hook',
+    dPyl:'20 cm — side pylon depth', dHook:'20 cm — hook',
     title:'KUBOTA × Baltona — display stand 60×40×130 · 3D visualization',
     spec:`Plinth width <b>60 cm</b> · Plinth depth <b>40 cm</b><br>
       Total height <b>130 cm</b> · Plinth height <b>40 cm</b><br>
       Centre panel <b>60 × 90 cm</b>, double-sided · White pegboard<br>
-      Side pylons <b>20 cm</b> deep · Hooks <b>25 cm</b> — 3 pairs per hook<br>
+      Side pylons <b>20 cm</b> deep · Hooks <b>20 cm</b> — 3 pairs per hook<br>
       Hooks <b>2 × 4 × 2 sides</b> × 3 pairs = <b>48 pairs</b> · Socks on the plinth top`,
   },
   pl: {
@@ -503,12 +503,12 @@ const STR = {
     hint:'Przeciągnij, aby obrócić · scroll = przybliżenie',
     d130:'130 cm — suma wysokości', d40b:'40 cm — wysokość podstawy', d90:'90 cm — płyta centralna',
     d60:'60 cm — szerokość podstawy', d40d:'40 cm — głębokość podstawy',
-    dPyl:'20 cm — głębokość pylonu', dHook:'25 cm — hak',
+    dPyl:'20 cm — głębokość pylonu', dHook:'20 cm — hak',
     title:'KUBOTA × Baltona — stand ekspozycyjny 60×40×130 · wizualizacja 3D',
     spec:`Szerokość podstawy <b>60 cm</b> · Głębokość podstawy <b>40 cm</b><br>
       Suma wysokości <b>130 cm</b> · Wysokość podstawy <b>40 cm</b><br>
       Płyta centralna <b>60 × 90 cm</b>, dwustronna · Pegboard <b>biały</b><br>
-      Pylony boczne <b>20 cm</b> gł. · Haki <b>25 cm</b> — 3 pary na haku<br>
+      Pylony boczne <b>20 cm</b> gł. · Haki <b>20 cm</b> — 3 pary na haku<br>
       Haki <b>2 × 4 × 2 strony</b> × 3 pary = <b>48 par</b> klapek · Skarpety na blacie`,
   },
 };
