@@ -33,9 +33,22 @@
 
   /* ---------- HUD ---------- */
   .hud{position:fixed;z-index:50}
-  .bl{bottom:24px;left:24px;max-width:34vw}
-  /* przyciski wyśrodkowane, jedna linia */
-  .br{bottom:22px;left:50%;transform:translateX(-50%);display:flex;gap:8px;flex-wrap:nowrap;white-space:nowrap}
+  /* legenda: karta nad pasem przycisków — nie koliduje z rzędem badge'y */
+  .bl{
+    bottom:96px;left:24px;max-width:40vw;
+    background:rgba(11,13,18,.55);border:1px solid rgba(255,255,255,.09);
+    border-radius:12px;padding:14px 18px;
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  }
+  body.light .bl{background:rgba(255,255,255,.65);border-color:rgba(20,30,60,.14)}
+  /* przyciski wyśrodkowane; pełny pas (left:50% zawijał rząd — shrink-to-fit
+     liczy szerokość z połowy viewportu); pas przepuszcza kliknięcia */
+  .br{
+    bottom:22px;left:16px;right:16px;
+    display:flex;gap:8px;flex-wrap:wrap;justify-content:center;
+    pointer-events:none;
+  }
+  .br button{pointer-events:auto}
   @media (max-width:980px){ .bl{display:none} }
   .spec{font-size:11px;color:var(--muted);letter-spacing:.06em;line-height:1.9}
   .spec b{color:var(--txt);font-weight:700}
@@ -59,11 +72,7 @@
   @media (max-width:760px){
     .bar{padding:10px 14px}
     .logos img{height:19px}
-    .br{
-      left:10px;right:10px;transform:none;
-      flex-wrap:wrap;justify-content:center;gap:6px;
-      bottom:calc(10px + env(safe-area-inset-bottom));
-    }
+    .br{gap:6px;bottom:calc(10px + env(safe-area-inset-bottom))}
     button{padding:7px 11px;font-size:9.5px}
     button.toggle{margin-left:0}
   }
