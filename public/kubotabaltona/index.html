@@ -131,17 +131,18 @@
 
 <div class="hud bl">
   <div class="spec" id="spec"></div>
-  <div class="hint">Przeciągnij, aby obrócić · scroll = przybliżenie</div>
+  <div class="hint" data-i="hint"></div>
 </div>
 <div class="hud br">
   <button data-view="34">3/4</button>
-  <button data-view="front">Przód</button>
-  <button data-view="side">Bok</button>
-  <button data-view="back">Tył</button>
-  <button data-view="top">Góra</button>
-  <button id="dims" class="toggle">Wymiary</button>
-  <button id="prods" class="toggle on">Produkty</button>
-  <button id="bg" class="toggle">Tło</button>
+  <button data-view="front" data-i="vFront"></button>
+  <button data-view="side" data-i="vSide"></button>
+  <button data-view="back" data-i="vBack"></button>
+  <button data-view="top" data-i="vTop"></button>
+  <button id="dims" class="toggle" data-i="tDims"></button>
+  <button id="prods" class="toggle on" data-i="tProd"></button>
+  <button id="bg" class="toggle" data-i="tBg"></button>
+  <button id="lang" class="toggle" data-i="tLang"></button>
 </div>
 
 <div class="stage" id="stage">
@@ -277,7 +278,7 @@ for (const s of [1, -1]) {                            // 1 = przód, -1 = tył
    symetryczny łuk u góry, liternictwo jak w logotypie KUBOTA (obrysy),
    napis idzie OD DOŁU DO GÓRY; góra pylonu = płaska krawędź pasa KUBOTA (9,93),
    wyżej wystaje już tylko wycięta chmura headera                                  */
-const SIDE_W = 18;
+const SIDE_W = 20;
 const PYL_TOP = Y_WING_TOP, PYL_H = Y_BASE_TOP - PYL_TOP;      // 9.93 → 89.93 (80 cm)
 /* flip=true dla prawego pylonu: mapowanie rotY(90) odwraca kierunek czytania
    pionowego tekstu — obrót o 180° przywraca czytanie do góry bez lustrzenia glifów */
@@ -365,19 +366,28 @@ const colsX = [-21.5, -7.2, 7.2, 21.5];
 const rowsTop = [Y_HDR_BOT + .5, Y_HDR_BOT + 30.5];
 const SEP = 3.0;
 
-/* pary na wieszakach — z OBU stron płyty centralnej */
+/* haki 25 cm (pręt) + 3 pary nawleczone wzdłuż haka — z OBU stron płyty,
+   jeden kolor (SKU) na hak; przednia para ~22 cm od lica                    */
+const HOOK_L = 25;
 for (const s of [1, -1]) {
   const rot = s === 1 ? '' : 'rotateY(180deg) ';
   grid.forEach((row, ri) => {
     row.forEach((name, ci) => {
       const [c, d, lc] = C[name];
-      panel({w:16, h:HANG + SL, pos:[s*colsX[ci], Y(rowsTop[ri] + (HANG + SL)/2), s*(PZ + 4)],
-        rot, cls:'hang', n:[0,0,s],
-        css:`filter:drop-shadow(0 ${cm(1)}px ${cm(1.5)}px rgba(0,0,0,.5))`,
-        html:`
-          <div style="position:absolute;left:50%;top:0;transform:translateX(-50%);z-index:3">${hanger()}</div>
-          <div style="position:absolute;left:50%;top:${cm(HANG - 1)}px;transform:translateX(calc(-50% - ${cm(SEP)}px)) rotate(-4deg)">${slide(c,d,lc)}</div>
-          <div style="position:absolute;left:50%;top:${cm(HANG - 1)}px;transform:translateX(calc(-50% + ${cm(SEP)}px)) rotate(4deg)">${slide(c,d,lc)}</div>`});
+      /* pręt haka */
+      panel({w:HOOK_L, h:1.1, pos:[s*colsX[ci], Y(rowsTop[ri] + .8), s*(PZ + HOOK_L/2)],
+        rot:'rotateY(90deg)', cls:'hang',
+        css:'background:linear-gradient(180deg,#E3E7EE,#9AA2B1);border-radius:2px'});
+      /* pary na haku, od tylnej do przedniej */
+      for (const dz of [5, 13, 21]) {
+        panel({w:16, h:HANG + SL, pos:[s*colsX[ci], Y(rowsTop[ri] + (HANG + SL)/2), s*(PZ + dz)],
+          rot, cls:'hang', n:[0,0,s],
+          css:`filter:drop-shadow(0 ${cm(.8)}px ${cm(1.2)}px rgba(0,0,0,.45))`,
+          html:`
+            <div style="position:absolute;left:50%;top:0;transform:translateX(-50%);z-index:3">${hanger()}</div>
+            <div style="position:absolute;left:50%;top:${cm(HANG - 1)}px;transform:translateX(calc(-50% - ${cm(SEP)}px)) rotate(-4deg)">${slide(c,d,lc)}</div>
+            <div style="position:absolute;left:50%;top:${cm(HANG - 1)}px;transform:translateX(calc(-50% + ${cm(SEP)}px)) rotate(4deg)">${slide(c,d,lc)}</div>`});
+      }
     });
   });
 }
@@ -431,25 +441,25 @@ const V = (label, yA, yB, side, tier = 0) => {
       <div class="bar-d" style="left:0;top:0;height:100%;width:1.5px"></div>
       <div class="bar-d" style="left:-6px;top:0;height:1.5px;width:14px"></div>
       <div class="bar-d" style="left:-6px;bottom:0;height:1.5px;width:14px"></div>
-      <div class="lbl" style="${anchor};top:50%;transform:translateY(-50%)">${label}</div>
+      <div class="lbl" data-i="${label}" style="${anchor};top:50%;transform:translateY(-50%)"></div>
     </div></div>`;
 };
-parts.push(V('130 cm — suma wysokości', 0, Y_FLOOR, 1));
-parts.push(V('40 cm — wysokość podstawy', Y_BASE_TOP, Y_FLOOR, -1));
-parts.push(V('90 cm — płyta centralna', 0, Y_BASE_TOP, -1, 150));
+parts.push(V('d130', 0, Y_FLOOR, 1));
+parts.push(V('d40b', Y_BASE_TOP, Y_FLOOR, -1));
+parts.push(V('d90', 0, Y_BASE_TOP, -1, 150));
 parts.push(`<div class="n dim" style="width:0;height:0;transform:translate3d(0,0,${cm(D/2)}px)">
   <div style="position:absolute;left:${cm(-W/2)}px;top:${cm(Y(Y_FLOOR))+30}px;width:${cm(W)}px">
     <div class="bar-d" style="left:0;top:0;width:100%;height:1.5px"></div>
     <div class="bar-d" style="left:0;top:-6px;width:1.5px;height:14px"></div>
     <div class="bar-d" style="right:0;top:-6px;width:1.5px;height:14px"></div>
-    <div class="lbl" style="left:50%;top:9px;transform:translateX(-50%)">60 cm — szerokość podstawy</div></div></div>`);
+    <div class="lbl" data-i="d60" style="left:50%;top:9px;transform:translateX(-50%)"></div></div></div>`);
 parts.push(`<div class="n dim" style="width:0;height:0;
   transform:translate3d(${cm(W/2)+30}px,${cm(Y(Y_FLOOR))}px,0) rotateX(90deg)">
   <div style="position:absolute;left:0;top:${cm(-D/2)}px;height:${cm(D)}px">
     <div class="bar-d" style="left:0;top:0;height:100%;width:1.5px"></div>
     <div class="bar-d" style="left:-6px;top:0;height:1.5px;width:14px"></div>
     <div class="bar-d" style="left:-6px;bottom:0;height:1.5px;width:14px"></div>
-    <div class="lbl" style="left:12px;top:50%;transform:translateY(-50%)">40 cm — głębokość podstawy</div>
+    <div class="lbl" data-i="d40d" style="left:12px;top:50%;transform:translateY(-50%)"></div>
   </div></div>`);
 /* wymiary dla klienta: głębokość pylonu (nad jego szczytem) i wysięg haka —
    na płaszczyźnie bocznej, widoczne w rzucie Bok przy włączonych Wymiarach */
@@ -459,24 +469,61 @@ parts.push(`<div class="n dim" style="width:0;height:0;
     <div class="bar-d" style="left:0;top:0;width:100%;height:1.5px"></div>
     <div class="bar-d" style="left:0;top:-6px;width:1.5px;height:14px"></div>
     <div class="bar-d" style="right:0;top:-6px;width:1.5px;height:14px"></div>
-    <div class="lbl" style="left:50%;top:-34px;transform:translateX(-50%);border:1px solid rgba(255,255,255,.7)">18 cm — głębokość pylonu</div>
+    <div class="lbl" data-i="dPyl" style="left:50%;top:-34px;transform:translateX(-50%);border:1px solid rgba(255,255,255,.7)"></div>
   </div></div>`);
 parts.push(`<div class="n dim" style="width:0;height:0;
   transform:translate3d(${cm(W/2)+30}px,${cm(Y(Y_HDR_BOT + 3.5))}px,0) rotateY(90deg)">
-  <div style="position:absolute;left:${cm(-4.9)}px;top:0;width:${cm(4)}px">
+  <div style="position:absolute;left:${cm(-(0.9 + 25))}px;top:0;width:${cm(25)}px">
     <div class="bar-d" style="left:0;top:0;width:100%;height:1.5px"></div>
     <div class="bar-d" style="left:0;top:-6px;width:1.5px;height:14px"></div>
     <div class="bar-d" style="right:0;top:-6px;width:1.5px;height:14px"></div>
-    <div class="lbl" style="left:50%;top:9px;transform:translateX(-50%);border:1px solid rgba(255,255,255,.7)">4 cm — hak</div>
+    <div class="lbl" data-i="dHook" style="left:50%;top:9px;transform:translateX(-50%);border:1px solid rgba(255,255,255,.7)"></div>
   </div></div>`);
 
 document.getElementById('stand').innerHTML = parts.join('');
-document.getElementById('spec').innerHTML = `
-  Szerokość podstawy <b>60 cm</b> · Głębokość podstawy <b>40 cm</b><br>
-  Suma wysokości <b>130 cm</b> · Wysokość podstawy <b>40 cm</b><br>
-  Płyta centralna <b>60 × 90 cm</b>, dwustronna · Pegboard <b>biały</b><br>
-  Pylony boczne <b>18 cm</b> gł. · Hak <b>4 cm</b> — produkty schowane w obrysie pylonu<br>
-  Haki <b>2 × 4 × 2 strony</b> = <b>16 par</b> klapek · Skarpety na blacie`;
+/* ================= i18n: EN domyślnie, przełącznik PL ================= */
+const STR = {
+  en: {
+    vFront:'Front', vSide:'Side', vBack:'Back', vTop:'Top',
+    tDims:'Dimensions', tProd:'Products', tBg:'Background', tLang:'PL',
+    hint:'Drag to rotate · scroll to zoom',
+    d130:'130 cm — total height', d40b:'40 cm — plinth height', d90:'90 cm — centre panel',
+    d60:'60 cm — plinth width', d40d:'40 cm — plinth depth',
+    dPyl:'20 cm — side pylon depth', dHook:'25 cm — hook',
+    title:'KUBOTA × Baltona — display stand 60×40×130 · 3D visualization',
+    spec:`Plinth width <b>60 cm</b> · Plinth depth <b>40 cm</b><br>
+      Total height <b>130 cm</b> · Plinth height <b>40 cm</b><br>
+      Centre panel <b>60 × 90 cm</b>, double-sided · White pegboard<br>
+      Side pylons <b>20 cm</b> deep · Hooks <b>25 cm</b> — 3 pairs per hook<br>
+      Hooks <b>2 × 4 × 2 sides</b> × 3 pairs = <b>48 pairs</b> · Socks on the plinth top`,
+  },
+  pl: {
+    vFront:'Przód', vSide:'Bok', vBack:'Tył', vTop:'Góra',
+    tDims:'Wymiary', tProd:'Produkty', tBg:'Tło', tLang:'EN',
+    hint:'Przeciągnij, aby obrócić · scroll = przybliżenie',
+    d130:'130 cm — suma wysokości', d40b:'40 cm — wysokość podstawy', d90:'90 cm — płyta centralna',
+    d60:'60 cm — szerokość podstawy', d40d:'40 cm — głębokość podstawy',
+    dPyl:'20 cm — głębokość pylonu', dHook:'25 cm — hak',
+    title:'KUBOTA × Baltona — stand ekspozycyjny 60×40×130 · wizualizacja 3D',
+    spec:`Szerokość podstawy <b>60 cm</b> · Głębokość podstawy <b>40 cm</b><br>
+      Suma wysokości <b>130 cm</b> · Wysokość podstawy <b>40 cm</b><br>
+      Płyta centralna <b>60 × 90 cm</b>, dwustronna · Pegboard <b>biały</b><br>
+      Pylony boczne <b>20 cm</b> gł. · Haki <b>25 cm</b> — 3 pary na haku<br>
+      Haki <b>2 × 4 × 2 strony</b> × 3 pary = <b>48 par</b> klapek · Skarpety na blacie`,
+  },
+};
+let lang = 'en';
+function setLang(l){
+  lang = l;
+  const t = STR[l];
+  document.documentElement.lang = l;
+  document.title = t.title;
+  document.querySelectorAll('[data-i]').forEach(el => {
+    if (el.dataset.i === 'spec') return;
+    el.innerHTML = t[el.dataset.i] ?? el.innerHTML;
+  });
+  document.getElementById('spec').innerHTML = t.spec;
+}
 
 /* ================= światło i cieniowanie =================
    kierunek DO światła (lewa-góra-przód, układ świata; y rośnie w dół) */
@@ -538,10 +585,12 @@ const dimsBtn = document.getElementById('dims'), prodsBtn = document.getElementB
 dimsBtn.onclick  = () => { document.body.classList.toggle('dims-on');      dimsBtn.classList.toggle('on'); };
 prodsBtn.onclick = () => { document.body.classList.toggle('products-off'); prodsBtn.classList.toggle('on'); };
 bgBtn.onclick    = () => { document.body.classList.toggle('light');        bgBtn.classList.toggle('on'); };
+document.getElementById('lang').onclick = () => setLang(lang === 'en' ? 'pl' : 'en');
 
 /* tryb renderu: ?plate=front|34|side|back|top [&dims=1] [&zoom=…] — czysty kadr bez UI
    ?bg=light — start z jasnym tłem (link do udostępniania) */
 const q = new URLSearchParams(location.search);
+setLang(q.get('lang') === 'pl' ? 'pl' : 'en');
 if (q.get('bg') === 'light') { document.body.classList.add('light'); bgBtn.classList.add('on'); }
 if (q.has('plate')) {
   document.querySelectorAll('.hud, .bar').forEach(e => e.remove());
