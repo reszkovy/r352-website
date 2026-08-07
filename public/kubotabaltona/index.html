@@ -451,12 +451,31 @@ parts.push(`<div class="n dim" style="width:0;height:0;
     <div class="bar-d" style="left:-6px;bottom:0;height:1.5px;width:14px"></div>
     <div class="lbl" style="left:12px;top:50%;transform:translateY(-50%)">40 cm — głębokość podstawy</div>
   </div></div>`);
+/* wymiary dla klienta: głębokość pylonu (nad jego szczytem) i wysięg haka —
+   na płaszczyźnie bocznej, widoczne w rzucie Bok przy włączonych Wymiarach */
+parts.push(`<div class="n dim" style="width:0;height:0;
+  transform:translate3d(${cm(W/2)+30}px,${cm(Y(PYL_TOP))-26}px,0) rotateY(90deg)">
+  <div style="position:absolute;left:${cm(-9)}px;top:0;width:${cm(SIDE_W)}px">
+    <div class="bar-d" style="left:0;top:0;width:100%;height:1.5px"></div>
+    <div class="bar-d" style="left:0;top:-6px;width:1.5px;height:14px"></div>
+    <div class="bar-d" style="right:0;top:-6px;width:1.5px;height:14px"></div>
+    <div class="lbl" style="left:50%;top:-34px;transform:translateX(-50%);border:1px solid rgba(255,255,255,.7)">18 cm — głębokość pylonu</div>
+  </div></div>`);
+parts.push(`<div class="n dim" style="width:0;height:0;
+  transform:translate3d(${cm(W/2)+30}px,${cm(Y(Y_HDR_BOT + 3.5))}px,0) rotateY(90deg)">
+  <div style="position:absolute;left:${cm(-4.9)}px;top:0;width:${cm(4)}px">
+    <div class="bar-d" style="left:0;top:0;width:100%;height:1.5px"></div>
+    <div class="bar-d" style="left:0;top:-6px;width:1.5px;height:14px"></div>
+    <div class="bar-d" style="right:0;top:-6px;width:1.5px;height:14px"></div>
+    <div class="lbl" style="left:50%;top:9px;transform:translateX(-50%);border:1px solid rgba(255,255,255,.7)">4 cm — hak</div>
+  </div></div>`);
 
 document.getElementById('stand').innerHTML = parts.join('');
 document.getElementById('spec').innerHTML = `
   Szerokość podstawy <b>60 cm</b> · Głębokość podstawy <b>40 cm</b><br>
   Suma wysokości <b>130 cm</b> · Wysokość podstawy <b>40 cm</b><br>
   Płyta centralna <b>60 × 90 cm</b>, dwustronna · Pegboard <b>biały</b><br>
+  Pylony boczne <b>18 cm</b> gł. · Hak <b>4 cm</b> — produkty schowane w obrysie pylonu<br>
   Haki <b>2 × 4 × 2 strony</b> = <b>16 par</b> klapek · Skarpety na blacie`;
 
 /* ================= światło i cieniowanie =================
