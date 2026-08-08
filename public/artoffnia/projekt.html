@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projekt — ARToffNIA</title>
+<meta name="description" content="Szczegóły projektu, obozu lub półkolonii organizowanych przez Fundację Tańca i Sztuki ARToffNIA — program, terminy, ceny i zapisy.">
+<link rel="canonical" href="https://artoffnia.pl/projekt.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ARToffNIA">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:title" content="Projekt — ARToffNIA">
+<meta property="og:description" content="Szczegóły projektu, obozu lub półkolonii organizowanych przez Fundację Tańca i Sztuki ARToffNIA — program, terminy, ceny i zapisy.">
+<meta property="og:url" content="https://artoffnia.pl/projekt.html">
+<meta property="og:image" content="https://artoffnia.pl/foto/gal-alicja.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="sygnet.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,300&display=swap" rel="stylesheet">
+<script src="layout.js?v=169235b8"></script>
+<link rel="stylesheet" href="styles.css?v=93741815">
+<style>
+  .p-hero{aspect-ratio:16/7;background:var(--ph) center/cover;margin-top:1.2rem}
+  .crumb{font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);padding-top:2rem}
+  .crumb a{color:var(--mid);text-decoration:none}
+  .p-key{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));border-top:1px solid var(--ink);border-left:1px solid var(--line);margin-top:2rem}
+  .p-key .k{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.3rem 1.2rem}
+  .p-key .k .v{font-size:1.5rem;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+  .p-key .k .l{font-size:.76rem;color:var(--mid);margin-top:.4rem}
+  .p-cols{display:grid;grid-template-columns:1.15fr .85fr;gap:3rem;margin-top:2.6rem;align-items:start}
+  @media (max-width:860px){.p-cols{grid-template-columns:1fr;gap:1.8rem}}
+  .p-cols p{font-size:.98rem;color:var(--mid);line-height:1.8;margin-bottom:1rem}
+  .p-cols ul{margin:0 0 1.2rem 1.1rem;font-size:.93rem;color:var(--mid);line-height:1.9}
+  .p-cols b{color:var(--ink)}
+  .p-side{border:1px solid var(--ink);padding:1.4rem 1.5rem}
+  .p-side .h{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.9rem}
+  .p-side .rate{display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid var(--line);font-size:.9rem}
+  .p-side .rate:last-of-type{border:none}
+  .p-doc{display:block;font-size:.82rem;color:var(--ink);padding:.45rem 0;border-bottom:1px solid var(--line)}
+  .p-gal{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:2.4rem}
+  .p-gal div{aspect-ratio:4/3;background:var(--ph) center/cover}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#tresc">Przejdź do treści</a>
+
+<div class="wrap">
+  <div data-aff-nav></div>
+  <div id="tresc" tabindex="-1"></div>
+  <div class="crumb"><a href="obozy.html">Obozy i ferie</a> · <span id="p-crumb"></span></div>
+  <header class="page-head" style="padding-bottom:.4rem">
+    <div class="kicker" id="p-kick"></div>
+    <h1 id="p-title" style="font-weight:800"></h1>
+    <p class="lead" id="p-lead"></p>
+  </header>
+  <div class="p-hero" id="p-hero"></div>
+  <div class="p-key" id="p-key"></div>
+  <div class="p-cols">
+    <div id="p-main"></div>
+    <aside>
+      <div class="p-side">
+        <div class="h">Koszt i płatności</div>
+        <div id="p-rates"></div>
+        <div style="margin-top:1.2rem"><a class="btn" style="width:100%;text-align:center" href="zapisy.html">Zapisz się</a></div>
+      </div>
+      <div class="p-side" style="border-top:none">
+        <div class="h">Dokumenty</div>
+        <div id="p-docs"></div>
+      </div>
+      <div class="p-side" style="border-top:none">
+        <div class="h">Pytania?</div>
+        <p style="font-size:.88rem;color:var(--mid);line-height:1.7;margin:0">Biuro fundacji<br><a href="tel:+48604110894" style="color:var(--ink);font-weight:700">604 110 894</a><br><a href="mailto:biuro@artoffnia.pl" style="color:var(--ink);font-weight:700">biuro@artoffnia.pl</a></p>
+      </div>
+    </aside>
+  </div>
+  <div class="p-gal" id="p-gal"></div>
+  <p style="margin-top:2rem"><a class="txtlink" href="obozy.html">← Wszystkie obozy i ferie</a></p>
+  <div data-aff-footer></div>
+</div>
+<script src="projekty.js"></script>
+<script>
+(function(){
+var P={
+ wilimy:{k:"Letni obóz wyjazdowy · lipiec 2026",t:"Wilimy 2026",
+  lead:"Obóz taneczno-artystyczny dla tancerzy z Pryzmatu i spoza zespołu — warsztaty z gośćmi specjalnymi, praca nad repertuarem i wakacje nad jeziorem.",
+  foto:"foto/oboz-wilimy-1.webp", gal:["foto/oboz-wilimy-1.webp","foto/oboz-wilimy-2.webp","foto/oboz-wilimy-3.webp"],
+  key:[["2850 zł","całkowity koszt"],["3 raty","po 950 zł"],["Wilimy","transport w cenie"],["Kuratorium","zgłoszony wypoczynek"]],
+  main:["<b>Grupy ART DANCE</b> dla tancerzy z Pryzmatu oraz spoza zespołu. Zajęcia poprowadzą zaproszeni goście specjalni (m.in. Artur Grabarczyk, Katarzyna Leszek, Katarzyna Skrzyniarz) oraz instruktorzy Pryzmatu i ARToffNI.",
+   "Celem projektu jest wszechstronny rozwój tancerzy i aktorów: warsztaty z klasyki, modern jazzu, tańca współczesnego, street dance'u, warsztaty aktorskie, stretching, trening funkcjonalny i praca nad repertuarem. Zajęcia prowadzone na różnych poziomach zaawansowania, w grupach dostosowanych do wieku.",
+   "Uczestnicy są pod stałą opieką <b>fizjoterapeuty oraz ratownika medycznego</b>.",
+   "<b>W ramach obozu gwarantujemy:</b>",
+   "<ul><li>transport Olsztyn–Wilimy–Olsztyn (w cenie)</li><li>zakwaterowanie w dwupokojowych apartamentach 2-, 4- i 6-osobowych z łazienkami</li><li>pełne wyżywienie (śniadania i kolacje w formie bufetu, obiady serwowane z podwieczorkiem)</li><li>codzienne zajęcia taneczne, ruchowe i aktorskie</li><li>imprezy integracyjne: ognisko, Eurobungee z instruktorem, plażowanie z ratownikiem WOPR, bitwy taneczne, dyskoteka, kino tańca</li><li>koszulki obozowe, opiekę wychowawców, ubezpieczenie NNW</li></ul>",
+   "Obóz spełnia warunki dofinansowania wypoczynku letniego przez zakłady pracy. Istnieje możliwość wykupienia dodatkowego ubezpieczenia od kosztów rezygnacji."],
+  rates:[["Zadatek","950 zł do 10.05"],["II rata","950 zł do 10.06"],["III rata","950 zł do 10.07"],["Razem","2850 zł"]],
+  docs:[["Regulamin obozu Wilimy 2026","dokumenty/regulamin-oboz-wilimy-2026.pdf"],["Karta kwalifikacyjna uczestnika","dokumenty/karta-kwalifikacyjna-wilimy-2026.pdf"]]},
+ ferie:{k:"Ferie zimowe · styczeń 2026",t:"Ferie przez Pryzmat Tańca 2026",
+  lead:"Taneczne półkolonie z warsztatami zaproszonych gości i pokazem na finał — codziennie od 9:00 do 16:00.",
+  foto:"foto/oboz-ferie.webp", gal:["foto/oboz-ferie.webp","foto/oboz-zima.webp","foto/gal-verymerry.webp"],
+  key:[["820 zł","turnus"],["9:00–16:00","opieka"],["31.01","pokaz finałowy"],["Agora","Power Dance"]],
+  main:["Zajęcia taneczne, ruchowe i integracyjne z pedagogami ARToffNI — wszystkie odbywają się w klubie POWER DANCE AGORA (ul. Żołnierska 45a, Olsztyn).",
+   "<b>Warsztaty z zaproszonymi gośćmi:</b> Marta Czyż-Brunka (choreografka „Tańca z Gwiazdami”, sędzia międzynarodowy WADF), Anna Budnicka, Michał Bartkiewicz (dwukrotny zwycięzca „Tańca z Gwiazdami”, „Burn the Floor”), Kinga Łotysz — oraz instruktorzy Fundacji: Maja Gajzmer, Natalia Kostrzewa, Magdalena Ziółkowska, Lidia Zygadło, Hanna Żyznowska.",
+   "<b>W programie:</b>",
+   "<ul><li>opieka w godzinach 9:00–16:00 (możliwość przyprowadzenia dziecka od 8:00)</li><li>kreatywny nocleg w ARToffNI dla chętnych</li><li>pokaz taneczny w ostatnim dniu projektu — 31 stycznia 2026 (sobota)</li><li>możliwość wykupienia obiadu (2 danie) — 24 zł za dzień, dieta ogólna lub wegetariańska</li></ul>",
+   "Zapisy i płatność przez system <b>Active Now</b>, termin płatności: 18 stycznia 2026."],
+  rates:[["Turnus","820 zł"],["Obiad (opcja)","24 zł / dzień"],["Płatność do","18.01.2026"]],
+  docs:[["Regulamin i ważne terminy 2025/26","regulamin-2025-26.pdf"]]},
+ zima:{k:"Ferie zimowe · 19–23 stycznia 2026",t:"Zimowy tydzień w ARToffNI",
+  lead:"Taniec, zabawa i edukacja — codzienne warsztaty i wyjścia po Olsztynie, z pokazem dla rodziców na finał.",
+  foto:"foto/oboz-zima.webp", gal:["foto/oboz-zima.webp","foto/gal-granice.webp","foto/sala-2.webp"],
+  key:[["760 zł","turnus"],["8:00–16:00","opieka"],["19–23.01","termin"],["Zatorze","ARToffNIA"]],
+  main:["Codzienne (od poniedziałku do piątku) zajęcia i animacje prowadzone przez doświadczonych opiekunów i choreografów w ARToffNI na Zatorzu.",
+   "Warsztaty taneczne, ruchowe i artystyczne z różnych form tańca i ruchu. Oprócz warsztatów odwiedzimy różne przestrzenie w mieście: <b>Space Park, kręgielnię, kino Helios, Multicentrum</b>.",
+   "<b>W ramach projektu gwarantujemy:</b>",
+   "<ul><li>opiekę wychowawcy w godzinach 8:00–16:00</li><li>zajęcia taneczne, ruchowe, integracyjne, animacje i konkursy</li><li>wyjścia integracyjne i edukacyjne</li><li>taneczny pokaz końcowy dla rodziców — piątek, godz. 15:30</li><li>obiad mięsny lub wegetariański (drugie danie)</li><li>zdrowe przekąski i napoje</li></ul>",
+   "Liczba miejsc ograniczona — decyduje kolejność zgłoszeń. Zapisy i płatność przez system Active Now."],
+  rates:[["Turnus 19–23.01","760 zł"],["Wyżywienie","w cenie"]],
+  docs:[["Regulamin i ważne terminy 2025/26","regulamin-2025-26.pdf"]]},
+ lato:{k:"Wakacje w mieście · 6–10 lipca 2026",t:"Taneczne LATO w mieście 2026",
+  lead:"Tygodniowe półkolonie taneczne z wyjściami do teatru, kina i parku trampolin.",
+  foto:"foto/oboz-lato.webp", gal:["foto/oboz-lato.webp","foto/gal-alicja.webp","foto/sala-3.webp"],
+  key:[["780 zł","turnus"],["8:00–16:00","opieka"],["6–10.07","termin"],["Zatorze","ARToffNIA"]],
+  main:["Codzienne zajęcia i animacje prowadzone przez doświadczonych opiekunów i choreografów w ARToffNI na Zatorzu.",
+   "Oprócz zajęć odwiedzimy różne przestrzenie w mieście: <b>park trampolin, kręgielnię, kino, Teatr im. Stefana Jaracza, Olsztyński Teatr Lalek</b> i Multicentrum.",
+   "<b>Zapewniamy:</b>",
+   "<ul><li>opiekę wychowawcy 8:00–16:00</li><li>zajęcia taneczne, ruchowe, integracyjne, animacje i konkursy</li><li>wyjścia integracyjne i edukacyjne</li><li>taneczny pokaz końcowy dla rodziców — piątek, 15:30</li><li>1-daniowy obiad (mięsny lub wegetariański), zdrowe przekąski i napoje</li></ul>"],
+  rates:[["Turnus 6–10.07","780 zł"],["Wyżywienie","w cenie"]],
+  docs:[["Regulamin i ważne terminy 2025/26","regulamin-2025-26.pdf"]]},
+ aktorskie:{k:"Wakacje w mieście · 29 czerwca – 3 lipca 2026",t:"Aktorskie LATO w mieście 2026",
+  lead:"Warsztaty aktorskie z pracą przed kamerą — na finał uczestnicy pokazują własną etiudę filmową.",
+  foto:"foto/oboz-aktorskie.webp", gal:["foto/oboz-aktorskie.webp","foto/gal-raj.webp","foto/sala-1.webp"],
+  key:[["940 zł","turnus"],["8:00–16:00","opieka"],["29.06–3.07","termin"],["Etiuda","film na finał"]],
+  main:["Podczas zajęć dzieci i młodzież wezmą udział w warsztatach aktorskich prowadzonych m.in. przez aktorkę <b>Annę Marię Kosik</b>, poznają elementy pracy z kamerą i stworzą krótką etiudę filmową z udziałem profesjonalnego kamerzysty.",
+   "Na zakończenie turnusu uczestnicy zaprezentują efekty swojej pracy w stworzonym materiale filmowym.",
+   "<b>Dodatkowe atrakcje:</b>",
+   "<ul><li>wyjście do kina</li><li>zwiedzanie labiryntów Teatru im. Stefana Jaracza</li><li>wyjście do Multicentrum</li><li>animacje, konkursy i aktywności w plenerze</li></ul>",
+   "<b>Zapewniamy:</b> opiekę wychowawców 8:00–16:00, codzienne zajęcia aktorskie i artystyczne, zdrowe przekąski i napoje, 1-daniowy obiad (mięsny lub wegetariański). Liczba miejsc ograniczona — decyduje kolejność zgłoszeń."],
+  rates:[["Turnus 29.06–3.07","940 zł"],["Wyżywienie","w cenie"]],
+  docs:[["Regulamin i ważne terminy 2025/26","regulamin-2025-26.pdf"]]}
+};
+var id=new URLSearchParams(location.search).get("id"), p=P[id];
+if(!p){
+  var _a=(window.AFF_PROJ||[]).filter(function(x){return x.id===id;})[0];
+  if(_a) p={t:_a.t, k:(_a.typ.charAt(0).toUpperCase()+_a.typ.slice(1))+(_a.rok?" · "+_a.rok:""),
+            lead:_a.lead+"…", foto:_a.foto||"foto/oboz-lato.webp",
+            key:[], main:null, html:_a.tresc, rates:[], docs:[], gal:[]};
+}
+if(!p){ location.replace("obozy.html"); return; }
+AFF_META("projekt.html?id="+id, p.t+" — ARToffNIA", (p.lead||p.t), p.foto);
+document.getElementById("p-crumb").textContent=p.t;
+document.getElementById("p-kick").textContent=p.k;
+document.getElementById("p-title").textContent=p.t;
+document.getElementById("p-lead").textContent=p.lead;
+document.getElementById("p-hero").style.backgroundImage="url("+p.foto+")";
+document.getElementById("p-key").innerHTML=(p.key||[]).map(function(k){return '<div class="k"><div class="v">'+k[0]+'</div><div class="l">'+k[1]+'</div></div>';}).join("");
+if(p.main){ document.getElementById("p-main").innerHTML=p.main.map(function(x){return x.indexOf("<ul")===0?x:"<p>"+x+"</p>";}).join(""); }
+else { var mb=document.getElementById("p-main");
+  mb.innerHTML='<p style="color:var(--mid)">Wczytywanie…</p>';
+  fetch("dane/proj/"+id+".json").then(function(r){return r.json();})
+    .then(function(j){ mb.innerHTML=j.tresc; })
+    .catch(function(){ mb.innerHTML='<p>Nie udało się wczytać treści. <a class="txtlink" href="obozy.html">Wróć do obozów</a></p>'; }); }
+document.getElementById("p-rates").innerHTML=(p.rates||[]).map(function(r){return '<div class="rate"><span>'+r[0]+'</span><b>'+r[1]+'</b></div>';}).join("");
+document.getElementById("p-docs").innerHTML=(p.docs||[]).map(function(d){return '<a class="p-doc" href="'+d[1]+'" target="_blank" rel="noopener">'+d[0]+' ↓</a>';}).join("");
+document.getElementById("p-gal").innerHTML=p.gal.map(function(g){return '<div style="background-image:url('+g+')"></div>';}).join("");
+})();
+</script>
+<script defer src="menu.js?v=1e8a8896"></script>
+</body>
+</html>

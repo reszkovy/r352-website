@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aktualność — ARToffNIA</title>
+<meta name="description" content="Wiadomość z Fundacji Tańca i Sztuki ARToffNIA w Olsztynie — warsztaty, spektakle, zapisy i wydarzenia.">
+<link rel="canonical" href="https://artoffnia.pl/news.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ARToffNIA">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:title" content="Aktualność — ARToffNIA">
+<meta property="og:description" content="Wiadomość z Fundacji Tańca i Sztuki ARToffNIA w Olsztynie — warsztaty, spektakle, zapisy i wydarzenia.">
+<meta property="og:url" content="https://artoffnia.pl/news.html">
+<meta property="og:image" content="https://artoffnia.pl/foto/gal-alicja.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="sygnet.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,300&display=swap" rel="stylesheet">
+<script src="layout.js?v=169235b8"></script>
+<link rel="stylesheet" href="styles.css?v=93741815">
+<style>
+  .n-hero{aspect-ratio:16/7;background:var(--ph) center/cover;margin-top:1.4rem}
+  .n-meta{display:flex;gap:.5rem;flex-wrap:wrap;margin:1.2rem 0}
+  .pillx{background:var(--ph);border-radius:999px;padding:.4rem .95rem;font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+  .n-body p{font-size:1rem;color:var(--mid);line-height:1.8;margin-bottom:1rem;max-width:44rem}
+  .n-body b{color:var(--ink)}
+  .n-body ul{margin:0 0 1.2rem 1.1rem;font-size:.95rem;color:var(--mid);line-height:1.9}
+  .crumb{font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);padding-top:2rem}
+  .crumb a{color:var(--mid);text-decoration:none}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#tresc">Przejdź do treści</a>
+
+<div class="wrap">
+  <div data-aff-nav></div>
+  <div id="tresc" tabindex="-1"></div>
+  <div class="crumb"><a href="aktualnosci.html">Aktualności</a> · <span id="n-crumb"></span></div>
+  <header class="page-head" style="padding-bottom:.4rem">
+    <div class="kicker" id="n-date"></div>
+    <h1 id="n-title" style="font-weight:800"></h1>
+    <div class="n-meta" id="n-tags"></div>
+  </header>
+  <div class="n-hero" id="n-hero"></div>
+  <div class="n-body" id="n-body" style="margin-top:2rem"></div>
+  <div class="callout" id="n-cta" style="display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap"></div>
+  <p style="margin-top:2rem"><a class="txtlink" href="aktualnosci.html">← Wszystkie aktualności</a></p>
+  <div data-aff-footer></div>
+</div>
+<script src="aktualnosci.js"></script>
+<script>
+(function(){
+var N=null;
+var id=new URLSearchParams(location.search).get("id");
+var _w=(window.AFF_NEWS||[]).filter(function(x){return x.id===id;})[0];
+var n=_w ? {d:_w.d, t:_w.t, tags:[], foto:_w.foto, body:null, html:_w.tresc, cta:["Zobacz nasze zajęcia","index.html#zajecia"]} : null;
+if(!n){ location.replace("aktualnosci.html"); return; }
+AFF_META("news.html?id="+id, n.t+" — ARToffNIA", (n.lead||n.t));
+document.getElementById("n-crumb").textContent=n.t;
+document.getElementById("n-date").textContent=n.d;
+document.getElementById("n-title").textContent=n.t;
+document.getElementById("n-tags").innerHTML=n.tags.map(function(t){return '<span class="pillx">'+t+'</span>';}).join("");
+document.getElementById("n-hero").style.backgroundImage="url("+n.foto+")";
+(function(){
+  var box=document.getElementById("n-body");
+  box.innerHTML='<p style="color:var(--mid)">Wczytywanie…</p>';
+  fetch("dane/news/"+id+".json").then(function(r){return r.json();})
+    .then(function(j){ box.innerHTML=j.tresc; })
+    .catch(function(){ box.innerHTML='<p>Nie udało się wczytać treści. <a class="txtlink" href="aktualnosci.html">Wróć do aktualności</a></p>'; });
+})();
+document.getElementById("n-cta").innerHTML='<span><b>Zainteresowało Cię to?</b> Sprawdź, co jeszcze u nas się dzieje.</span><a class="btn" href="'+n.cta[1]+'">'+n.cta[0]+'</a>';
+})();
+</script>
+<script defer src="menu.js?v=1e8a8896"></script>
+</body>
+</html>

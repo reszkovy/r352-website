@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zakres prac — serwis ARToffNIA</title>
+<meta name="description" content="Zakres prac nad serwisem Fundacji Tańca i Sztuki ARToffNIA: architektura adresów, szablony, funkcje, migracja treści i warstwa techniczna.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://artoffnia.pl/mapa.html">
+<meta property="og:title" content="Zakres prac — serwis ARToffNIA">
+<meta property="og:description" content="Architektura adresów, szablony, funkcje, migracja treści i warstwa techniczna.">
+<link rel="icon" type="image/svg+xml" href="sygnet.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,300&display=swap" rel="stylesheet">
+<script src="layout.js?v=169235b8"></script>
+<link rel="stylesheet" href="styles.css?v=93741815">
+<style>
+  .doc{max-width:1080px}
+  .meta-bar{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);padding:1.6rem 0 0}
+  h2{font-size:1.5rem;font-weight:800;letter-spacing:-.02em;margin:3.6rem 0 .3rem}
+  h2 .num{color:var(--faint);font-weight:300;margin-right:.5rem}
+  .h2sub{font-size:.92rem;color:var(--mid);margin-bottom:1.4rem;line-height:1.65;max-width:52rem}
+
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));border-top:1px solid var(--ink);border-left:1px solid var(--line);margin:2.2rem 0 0}
+  .stats .s{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.4rem 1.2rem}
+  .stats .n{font-size:2.2rem;font-weight:800;letter-spacing:-.03em;line-height:1}
+  .stats .l{font-size:.76rem;color:var(--mid);margin-top:.45rem;line-height:1.45}
+
+  .tree{border:1px solid var(--line);border-left:2px solid var(--ink);padding:1.6rem 1.4rem;margin-top:1rem;background:#fff}
+  .node{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:.9rem;padding:.55rem 0;border-bottom:1px solid var(--line);font-size:.94rem}
+  .node:last-child{border-bottom:none}
+  .node .nm{font-weight:700;letter-spacing:-.01em}
+  .node .nm .path{font-weight:400;color:var(--faint);font-size:.82rem;margin-left:.5rem}
+  .node .desc{grid-column:1/-1;font-size:.82rem;color:var(--mid);margin-top:-.1rem;line-height:1.55}
+  .node.lv2{padding-left:1.5rem}
+  .node.lv2 .nm{font-weight:500}
+  .node.lv2 .nm:before{content:"└ ";color:var(--faint)}
+  .cnt{font-size:.76rem;font-weight:700;color:var(--mid);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+  .grp{font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);padding:2.2rem 0 .5rem;border-bottom:1px solid var(--ink)}
+  .item{display:grid;grid-template-columns:auto 1fr;gap:1.1rem;align-items:start;padding:1rem 0;border-bottom:1px solid var(--line)}
+  .item .id{font-size:.72rem;font-weight:800;letter-spacing:.1em;color:var(--faint);padding-top:.15rem;min-width:2.4rem}
+  .item .t{font-size:1rem;font-weight:700;letter-spacing:-.01em}
+  .item .d{font-size:.86rem;color:var(--mid);line-height:1.6;margin-top:.3rem;max-width:48rem}
+
+  table{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:.8rem}
+  th{text-align:left;font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);padding:.6rem .8rem .6rem 0;border-bottom:1px solid var(--ink)}
+  td{padding:.72rem .8rem .72rem 0;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55}
+  td b{font-weight:700}
+  th:last-child,td:last-child{text-align:right;padding-right:0;white-space:nowrap}
+  .note{border-left:3px solid var(--ink);padding:.2rem 0 .2rem 1rem;font-size:.9rem;color:var(--mid);line-height:1.7;margin:1.6rem 0 0;max-width:50rem}
+  .note b{color:var(--ink)}
+  @media print{.nav,.footer,.mm-btn,.fab{display:none!important}body{background:#fff}h2{page-break-after:avoid}.item,.node{page-break-inside:avoid}}
+  @media (max-width:640px){.item{grid-template-columns:1fr}.item .id{display:none}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#tresc">Przejdź do treści</a>
+
+<div class="wrap doc">
+  <div data-aff-nav></div>
+  <div id="tresc" tabindex="-1"></div>
+
+  <div class="meta-bar">
+    <span>Zakres prac</span>
+    <span>Fundacja Tańca i Sztuki ARToffNIA</span>
+  </div>
+
+  <header class="page-head" style="padding-top:1.2rem">
+    <h1>Zakres prac.<br><b>Co obejmuje budowa serwisu.</b></h1>
+    <p class="lead">Dokument opisuje przedmiot zlecenia: architekturę adresów, szablony do zaprojektowania, funkcje do wykonania, treści do przeniesienia oraz warstwę techniczną wdrożenia. Liczby wynikają z inwentaryzacji dotychczasowego serwisu i oferty fundacji.</p>
+  </header>
+
+  <div class="stats">
+    <div class="s"><div class="n">20</div><div class="l">szablonów do zaprojektowania</div></div>
+    <div class="s"><div class="n">201</div><div class="l">adresów docelowych</div></div>
+    <div class="s"><div class="n">163</div><div class="l">rekordy treści do migracji</div></div>
+    <div class="s"><div class="n">12</div><div class="l">funkcji interaktywnych</div></div>
+    <div class="s"><div class="n">197</div><div class="l">przekierowań do zmapowania</div></div>
+  </div>
+
+  <h2><span class="num">A.</span>Architektura adresów</h2>
+  <p class="h2sub">Serwis oparty na szablonach zasilanych jedną bazą danych. Trzy z nich wygenerują 183 z 201 adresów, dzięki czemu podstron nie projektuje się i nie utrzymuje pojedynczo.</p>
+
+  <div class="tree">
+    <div class="node"><span class="nm">Strona główna<span class="path">index.html</span></span><span class="cnt">1</span>
+      <div class="desc">Nagłówek z zapowiedzią oferty, katalog wszystkich zajęć z filtrami, kalendarz tygodnia, wejścia do grup wiekowych</div></div>
+
+    <div class="node"><span class="nm">Landingi grup wiekowych<span class="path">grupa.html?g=</span></span><span class="cnt">4</span>
+      <div class="desc">Dzieci 4–12 · Nastolatki 13–17 · Dorośli 18+ · Seniorzy 60+ — osobne strony docelowe dla kampanii reklamowych</div></div>
+
+    <div class="node"><span class="nm">Landingi zajęć<span class="path">zajecie.html?id=</span></span><span class="cnt">52</span>
+      <div class="desc">Taniec 35 · Ruch 13 · Teatr 4 — opis, terminy, lokalizacja, prowadzący, cena, zdjęcie, rezerwacja miejsca</div></div>
+
+    <div class="node"><span class="nm">Zapisy<span class="path">zapisy.html</span></span><span class="cnt">1</span>
+      <div class="desc">Wybór wielu zajęć naraz, kalkulator rabatu za drugie i kolejne zajęcia, wskazanie kogo dotyczy zgłoszenie</div></div>
+
+    <div class="node"><span class="nm">Cennik<span class="path">cennik.html</span></span><span class="cnt">1</span>
+      <div class="desc">Stawki miesięczne, zasady rabatowe, opłaty dodatkowe</div></div>
+
+    <div class="node"><span class="nm">Aktualności<span class="path">aktualnosci.html</span></span><span class="cnt">1</span>
+      <div class="desc">Lista wpisów z filtrem po roku i doładowywaniem</div></div>
+    <div class="node lv2"><span class="nm">Wpis<span class="path">news.html?id=</span></span><span class="cnt">78</span>
+      <div class="desc">Archiwum 2019–2026: warsztaty, spektakle, turnieje, nabory, komunikaty</div></div>
+
+    <div class="node"><span class="nm">Obozy i ferie<span class="path">obozy.html</span></span><span class="cnt">1</span>
+      <div class="desc">Aktualne edycje oraz archiwum z filtrem typu</div></div>
+    <div class="node lv2"><span class="nm">Projekt, obóz, półkolonia<span class="path">projekt.html?id=</span></span><span class="cnt">32</span>
+      <div class="desc">Lato w mieście 11 · Ferie 10 · Obozy wyjazdowe 8 · Projekty artystyczne 3 — program, terminy, kadra, warunki</div></div>
+
+    <div class="node"><span class="nm">Galeria<span class="path">galeria.html</span></span><span class="cnt">1</span>
+      <div class="desc">Siatka wszystkich fotorelacji z okładkami</div></div>
+    <div class="node lv2"><span class="nm">Album<span class="path">album.html?id=</span></span><span class="cnt">53</span>
+      <div class="desc">874 zdjęcia, powiększanie na pełny ekran, nawigacja klawiaturą, ładowanie na żądanie</div></div>
+
+    <div class="node"><span class="nm">Fundacja<span class="path">fundacja.html</span></span><span class="cnt">1</span>
+      <div class="desc">Misja, liczby, pracownie, skrót kadry, formalności i dokumenty</div></div>
+    <div class="node lv2"><span class="nm">Kadra<span class="path">kadra.html</span></span><span class="cnt">1</span>
+      <div class="desc">Pełne biogramy pedagogów, choreografów i tancerzy</div></div>
+
+    <div class="node"><span class="nm">Kontakt<span class="path">kontakt.html</span></span><span class="cnt">1</span>
+      <div class="desc">Dane biura, dwie lokalizacje z mapami w stylistyce marki, nawigacja dojazdu</div></div>
+
+    <div class="node"><span class="nm">Wynajem sal<span class="path">wynajem.html</span></span><span class="cnt">1</span>
+      <div class="desc">Opis sal, warunki wynajmu, zapytanie</div></div>
+
+    <div class="node"><span class="nm">Dokumenty<span class="path">statut · standardy · wspieraj</span></span><span class="cnt">3</span>
+      <div class="desc">Statut fundacji (7 działów, 29 paragrafów) i Standardy ochrony małoletnich (14 rozdziałów, 49 paragrafów) ze spisem treści i kotwicami; strona mecenatu</div></div>
+
+    <div class="node"><span class="nm">Strona błędu<span class="path">404.html</span></span><span class="cnt">1</span>
+      <div class="desc">Przekierowanie użytkownika do katalogu zajęć</div></div>
+  </div>
+
+  <h2><span class="num">B.</span>Funkcje do wykonania</h2>
+  <p class="h2sub">Elementy interaktywne współdzielone między szablonami. Każdy z nich obsługuje konkretny moment na ścieżce od pytania do zapisu.</p>
+
+  <div class="grp">Wyszukiwanie i wybór zajęć</div>
+
+  <div class="item"><span class="id">B1</span>
+    <div><div class="t">Katalog z filtrami wielokrotnymi</div>
+      <div class="d">Filtrowanie po grupie wiekowej, kategorii, lokalizacji i porze dnia. Filtry łączą się ze sobą, a stan wyboru zapisuje się w adresie strony, dzięki czemu wynik wyszukiwania można wysłać linkiem.</div></div></div>
+
+  <div class="item"><span class="id">B2</span>
+    <div><div class="t">Kalendarz tygodnia</div>
+      <div class="d">Widok grafiku w układzie dni i godzin, z obsługą zajęć nakładających się w czasie. Alternatywa dla listy, przeznaczona dla osób planujących tydzień, a nie szukających konkretnych zajęć.</div></div></div>
+
+  <div class="item"><span class="id">B3</span>
+    <div><div class="t">Wejścia dla grup wiekowych</div>
+      <div class="d">Ścieżka prowadząca od pytania „czego szukam i dla kogo” do listy pasujących zajęć, bez konieczności znajomości nazw zajęć.</div></div></div>
+
+  <div class="grp">Zapisy</div>
+
+  <div class="item"><span class="id">B4</span>
+    <div><div class="t">Zapis na wiele zajęć jednocześnie</div>
+      <div class="d">Wybór dowolnej liczby zajęć z wyszukiwarką, podglądem wybranych pozycji i sumą do zapłaty aktualizowaną na bieżąco.</div></div></div>
+
+  <div class="item"><span class="id">B5</span>
+    <div><div class="t">Kalkulator rabatu</div>
+      <div class="d">Automatyczne naliczanie zniżki za drugie i kolejne zajęcia zgodnie z cennikiem, z pokazaniem kwoty oszczędności. Zajęcia rozliczane bezpośrednio u prowadzącego zostają wyłączone z rabatu.</div></div></div>
+
+  <div class="item"><span class="id">B6</span>
+    <div><div class="t">Rezerwacja z poziomu strony zajęć</div>
+      <div class="d">Formularz na każdej stronie zajęć, dostosowany do trybu naboru: zapis otwarty, zgłoszenie na audycję albo kontakt bezpośrednio do prowadzącego.</div></div></div>
+
+  <div class="item"><span class="id">B7</span>
+    <div><div class="t">Propozycje alternatywne</div>
+      <div class="d">Przy grupach zamkniętych lub prowadzonych przez audycję serwis podpowiada zajęcia z tej samej kategorii, dopasowane wiekiem, żeby ścieżka użytkownika nie kończyła się ślepo.</div></div></div>
+
+  <div class="grp">Nawigacja i kontakt</div>
+
+  <div class="item"><span class="id">B8</span>
+    <div><div class="t">Mega menu</div>
+      <div class="d">Pełna mapa oferty w jednym otwarciu: wszystkie zajęcia pogrupowane kategoriami, wejścia wiekowe, obozy, informacje i dokumenty. Numer telefonu i przycisk zapisu w pasku górnym.</div></div></div>
+
+  <div class="item"><span class="id">B9</span>
+    <div><div class="t">Stały dostęp do kontaktu</div>
+      <div class="d">Pływający numer telefonu oraz przejście do wyszukiwarki zajęć, obecne na każdej podstronie i chowane przy stopce.</div></div></div>
+
+  <div class="item"><span class="id">B10</span>
+    <div><div class="t">Mapy lokalizacji</div>
+      <div class="d">Dwie mapy w kolorystyce marki, oparte na rzeczywistych danych kartograficznych, z pinezką na dokładnych współrzędnych i przejściem do nawigacji.</div></div></div>
+
+  <div class="grp">Treść</div>
+
+  <div class="item"><span class="id">B11</span>
+    <div><div class="t">Archiwum z filtrami</div>
+      <div class="d">Aktualności filtrowane rokiem, projekty typem wydarzenia, galerie w jednej siatce. Treść pojedynczych wpisów ładowana dopiero przy wejściu na podstronę, żeby nie obciążać list.</div></div></div>
+
+  <div class="item"><span class="id">B12</span>
+    <div><div class="t">Przeglądarka zdjęć</div>
+      <div class="d">Powiększanie na pełny ekran, przechodzenie między zdjęciami strzałkami, licznik pozycji, zamykanie klawiszem Escape.</div></div></div>
+
+  <h2><span class="num">C.</span>Migracja treści</h2>
+  <p class="h2sub">Materiał z dotychczasowego serwisu fundacji do przeniesienia bez zmian merytorycznych.</p>
+  <table>
+    <thead><tr><th>Rodzaj</th><th>Zakres</th><th>Rekordów</th></tr></thead>
+    <tbody>
+      <tr><td><b>Opisy zajęć</b></td><td>opis, grupa wiekowa, terminy, lokalizacja, prowadzący, cena, tryb naboru</td><td>52</td></tr>
+      <tr><td><b>Aktualności</b></td><td>archiwum 2019–2026 z zachowaniem formatowania i odnośników</td><td>78</td></tr>
+      <tr><td><b>Fotorelacje</b></td><td>spektakle, turnieje, obozy, wnętrza pracowni</td><td>53</td></tr>
+      <tr><td><b>Projekty, obozy, ferie</b></td><td>programy edycji 2018–2026 wraz z kadrą i warunkami</td><td>32</td></tr>
+      <tr><td><b>Biogramy kadry</b></td><td>pełne noty pedagogów i choreografów</td><td>20</td></tr>
+      <tr><td><b>Dokumenty</b></td><td>statut, standardy ochrony małoletnich, regulamin</td><td>3</td></tr>
+      <tr><td><b>Zdjęcia</b></td><td>selekcja, kadrowanie i optymalizacja materiału z archiwum</td><td>1046</td></tr>
+    </tbody>
+  </table>
+
+  <h2><span class="num">D.</span>Warstwa techniczna</h2>
+  <table>
+    <thead><tr><th>Element</th><th>Zakres</th></tr></thead>
+    <tbody>
+      <tr><td><b>Przekierowania 301</b></td><td>zmapowanie 197 adresów dotychczasowego serwisu na odpowiedniki w nowym, w formacie właściwym dla wybranego hostingu</td></tr>
+      <tr><td><b>Mapa witryny</b></td><td>201 adresów, generowana z bazy danych serwisu</td></tr>
+      <tr><td><b>Metadane</b></td><td>tytuł, opis, adres kanoniczny i podgląd w mediach społecznościowych dla każdego szablonu; szablony parametryczne ustawiają je osobno dla każdej instancji</td></tr>
+      <tr><td><b>Obrazy</b></td><td>konwersja do formatu WebP, wymiary dopasowane do miejsca użycia, ładowanie na żądanie</td></tr>
+      <tr><td><b>Wydajność</b></td><td>docelowo poniżej 100 kB transferu na wejściu, przy dziesięciu zasobach</td></tr>
+      <tr><td><b>Analityka</b></td><td>zdarzenia na całej ścieżce zapisu: wejście na landing grupy, kliknięcie zapisu, wysłanie zgłoszenia, kliknięcie telefonu</td></tr>
+      <tr><td><b>Zapisy</b></td><td>integracja z systemem ActiveNow używanym przez fundację, konfigurowana w jednym miejscu</td></tr>
+      <tr><td><b>Dostępność</b></td><td>kontrasty, opisy elementów sterujących, nawigacja klawiaturą</td></tr>
+      <tr><td><b>Kontrola jakości</b></td><td>skrypt sprawdzający odnośniki, kompletność zdjęć, metadane, składnię i spójność danych</td></tr>
+    </tbody>
+  </table>
+
+  <h2><span class="num">E.</span>Materiały i decyzje po stronie fundacji</h2>
+  <p class="h2sub">Elementy, których nie da się odtworzyć z dotychczasowego serwisu i które warunkują domknięcie zakresu.</p>
+  <table>
+    <thead><tr><th>Element</th><th>Przeznaczenie</th></tr></thead>
+    <tbody>
+      <tr><td><b>Wideo</b></td><td>nagłówek strony głównej</td></tr>
+      <tr><td><b>Portrety kadry</b></td><td>strona kadry i skrót na stronie fundacji</td></tr>
+      <tr><td><b>Grafik na sezon</b></td><td>terminy zajęć w katalogu i kalendarzu</td></tr>
+      <tr><td><b>Dostęp do ActiveNow</b></td><td>uruchomienie zapisów</td></tr>
+      <tr><td><b>Identyfikator analityki</b></td><td>pomiar skuteczności kampanii</td></tr>
+      <tr><td><b>Decyzja o edytowalności</b></td><td>panel do samodzielnej aktualizacji treści albo opieka sezonowa</td></tr>
+      <tr><td><b>Decyzja o zakresie archiwum</b></td><td>ile materiału z lat 2018–2026 trafia do nowego serwisu, a ile pozostaje archiwum</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <b>Zasada redakcyjna.</b> Treści merytoryczne — opisy zajęć, ceny, terminy, biogramy i dokumenty — przenoszone są bez zmian. Teksty tworzone na potrzeby nowego serwisu ograniczają się do nagłówków i elementów nawigacyjnych i prowadzone są w osobnym rejestrze, tak aby w każdej chwili dało się wskazać, co pochodzi od fundacji, a co powstało w projekcie.
+  </div>
+
+  <div data-aff-footer data-extra="Dokumenty|mapa.html:Zakres prac,remanent.html:Remanent zakresu"></div>
+</div>
+<script defer src="menu.js?v=1e8a8896"></script>
+</body>
+</html>

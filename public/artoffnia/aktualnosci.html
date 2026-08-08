@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aktualności — ARToffNIA Olsztyn</title>
+<meta name="description" content="Nowe grupy, otwarte warsztaty, spektakle i turnieje taneczne. Co dzieje się w Fundacji Tańca i Sztuki ARToffNIA.">
+<link rel="canonical" href="https://artoffnia.pl/aktualnosci.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ARToffNIA">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:title" content="Aktualności — ARToffNIA Olsztyn">
+<meta property="og:description" content="Nowe grupy, otwarte warsztaty, spektakle i turnieje taneczne. Co dzieje się w Fundacji Tańca i Sztuki ARToffNIA.">
+<meta property="og:url" content="https://artoffnia.pl/aktualnosci.html">
+<meta property="og:image" content="https://artoffnia.pl/foto/gal-alicja.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="sygnet.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,300&display=swap" rel="stylesheet">
+<script src="layout.js?v=169235b8"></script>
+<link rel="stylesheet" href="styles.css?v=93741815">
+<style>
+  .news{display:grid;grid-template-columns:110px 240px 1fr;gap:1.6rem;padding:1.8rem 0;border-bottom:1px solid var(--line);align-items:start}
+  .news .ph-media{aspect-ratio:4/3}
+  @media (max-width:760px){.news{grid-template-columns:1fr;gap:.6rem}.news .ph-media{max-width:420px}}
+  .news .dt{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);padding-top:.3rem}
+  .news h3{font-size:1.3rem;font-weight:800;letter-spacing:-.015em;line-height:1.25}
+  .news p{font-size:.92rem;color:var(--mid);line-height:1.7;margin-top:.5rem;max-width:46rem}
+  .news .tags{display:flex;gap:.4rem;margin-top:.8rem;flex-wrap:wrap}
+  .pill{background:var(--ph);border-radius:999px;padding:.35rem .8rem;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+  .lata{display:flex;gap:.5rem;flex-wrap:wrap;margin:1.6rem 0 2rem;padding-bottom:1.4rem;border-bottom:1px solid var(--line)}
+  .lata button{background:none;border:none;font-family:inherit;font-size:.78rem;font-weight:700;letter-spacing:.1em;
+    color:var(--mid);cursor:pointer;padding:.5rem 1rem;border-radius:999px;transition:.15s}
+  .lata button:hover{color:var(--ink)}
+  .lata button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+  .pusto{color:var(--mid);font-size:.95rem;padding:2rem 0}
+  .sr-sec{font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--mid);margin:2rem 0 .4rem}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#tresc">Przejdź do treści</a>
+
+<div class="wrap">
+  <div data-aff-nav></div>
+  <div id="tresc" tabindex="-1"></div>
+
+  <header class="page-head">
+    <div class="kicker">Co słychać w ARToffNI</div>
+    <h1>Aktualności.</h1>
+  </header>
+
+  <h2 class="sr-sec">Wpisy</h2>
+  <div class="lata" id="lata"></div>
+  <div id="lista"></div>
+  <p style="margin:2rem 0 3rem"><button class="btn" id="wiecej" type="button">Pokaż starsze wpisy</button></p>
+
+  <div data-aff-footer></div>
+</div>
+<script src="aktualnosci.js"></script>
+<script>
+(function(){
+  "use strict";
+  var W=window.AFF_NEWS||[], rok="wszystkie", widok=0, KROK=12;
+  var lista=document.getElementById("lista"), wiecej=document.getElementById("wiecej");
+  var lata=[].concat.apply([],[]).concat(W.map(function(w){return w.iso.slice(0,4);}))
+             .filter(function(v,i,s){return s.indexOf(v)===i;}).sort().reverse();
+  var box=document.getElementById("lata");
+  ["wszystkie"].concat(lata).forEach(function(r){
+    var b=document.createElement("button"); b.type="button";
+    b.type="button"; b.textContent = r==="wszystkie" ? "Wszystkie" : r;
+    b.setAttribute("aria-pressed", r===rok);
+    b.onclick=function(){ rok=r; widok=0;
+      [].forEach.call(box.children,function(x){x.setAttribute("aria-pressed", x.textContent===(r==="wszystkie"?"Wszystkie":r));});
+      rysuj(); };
+    box.appendChild(b);
+  });
+  function pasuje(w){ return rok==="wszystkie" || w.iso.slice(0,4)===rok; }
+  function rysuj(){
+    var f=W.filter(pasuje), pokaz=f.slice(0, widok+KROK);
+    lista.innerHTML = pokaz.length ? pokaz.map(function(w){
+      return '<article class="news">'+
+        '<div class="dt">'+w.d+'</div>'+
+        (w.foto ? '<div class="ph-media" style="background-image:url('+w.foto+');background-size:cover;background-position:center"></div>'
+                : '<div class="ph-media"></div>')+
+        '<div><h3><a href="news.html?id='+w.id+'" style="color:inherit;text-decoration:none">'+w.t+'</a></h3>'+
+        '<p>'+w.lead+'…</p></div></article>';
+    }).join("") : '<p class="pusto">Brak wpisów z tego roku.</p>';
+    wiecej.style.display = pokaz.length < f.length ? "" : "none";
+    wiecej.textContent = "Pokaż starsze wpisy ("+(f.length-pokaz.length)+")";
+  }
+  wiecej.onclick=function(){ widok+=KROK; rysuj(); };
+  rysuj();
+})();
+</script>
+<script defer src="menu.js?v=1e8a8896"></script>
+</body>
+</html>
