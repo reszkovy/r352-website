@@ -1,7 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /remanent.html
-Disallow: /mapa.html
-Disallow: /materialy-stara-strona/
-
-Sitemap: https://artoffnia.pl/sitemap.xml
