@@ -50,6 +50,7 @@ export function SoundWaveWidget({ className = "" }: { className?: string }) {
   return (
     <span className={`relative inline-block ${className}`}>
       <button
+        data-tap-44
         type="button"
         onClick={toggle}
         onMouseEnter={() => {
@@ -135,6 +136,12 @@ export function SoundWaveWidget({ className = "" }: { className?: string }) {
             ))}
           </span>
         </span>
+      </button>
+      {/* Keyframes live OUTSIDE the button. Inside it, this <style> block
+          became part of the button's textContent, so anything reading text
+          rather than the accessible name (crawlers, extraction tools, some
+          AT fallbacks) saw "@keyframes r352-soundwave { ... }" as the label.
+          aria-label was already correct - this fixes the text layer too. */}
         <style>{`
           @keyframes r352-soundwave {
             0%   { height: 4px; }
@@ -146,7 +153,7 @@ export function SoundWaveWidget({ className = "" }: { className?: string }) {
             50%      { opacity: 1;    transform: scale(1.12); }
           }
         `}</style>
-      </button>
+
 
       {/* Hover tooltip - same motion language as ChipTooltip, lighter chrome.
           Positioned BELOW the widget (top-full) since the widget lives at the

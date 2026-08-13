@@ -139,8 +139,10 @@ export function Services() {
             <span className="text-[11px] uppercase tracking-[2px] text-neutral-500 dark:text-[#D4FF00] font-display mb-4 block">
               {language === "pl" ? "01 · Strategia" : "01 · Strategy"}
             </span>
-            {/* Hero - matches Process/Journal master copy: bold + tracking-tighter + 2-line break. */}
-            <h2 className="text-5xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-white mb-8 leading-[0.95]">
+            {/* Hero - matches Process/Journal master copy: bold + tracking-tighter + 2-line break.
+                Promoted h2 -> h1: this is the page's main heading and /services shipped
+                with NO h1 at all. Classes are unchanged, so the visual is identical. */}
+            <h1 className="text-5xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-white mb-8 leading-[0.95]">
               {language === "pl" ? (
                 <>
                   Strategia. Egzekucja.<br className="hidden md:block" />
@@ -152,7 +154,7 @@ export function Services() {
                   {" "}Operations.
                 </>
               )}
-            </h2>
+            </h1>
             <p className="text-xl md:text-2xl text-neutral-700 dark:text-neutral-300 tracking-tight font-normal max-w-3xl leading-snug">
               {language === "pl" ? (
                 <>
@@ -551,12 +553,13 @@ export function Services() {
               <Reveal key={item.q.en} delay={i * 0.04}>
                 <details
                   className="group border-b border-neutral-200 dark:border-white/10 py-7 md:py-8 [&_summary::-webkit-details-marker]:hidden"
-                  onToggle={(e) =>
-                    setOpenFaq((prev) => ({
-                      ...prev,
-                      [i]: (e.currentTarget as HTMLDetailsElement).open,
-                    }))
-                  }
+                  onToggle={(e) => {
+                    // Read `open` BEFORE the state updater - React nulls out
+                    // `currentTarget` once the handler returns, so reading it
+                    // inside the updater throws and unmounts the page.
+                    const isOpen = (e.currentTarget as HTMLDetailsElement).open;
+                    setOpenFaq((prev) => ({ ...prev, [i]: isOpen }));
+                  }}
                 >
                   <summary
                     className="flex items-start gap-6 cursor-pointer list-none select-none"

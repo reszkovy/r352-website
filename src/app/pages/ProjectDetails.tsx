@@ -501,6 +501,147 @@ export function ProjectDetails({ params }: { params?: { id: string } }) {
           </section>
         )}
 
+        {/* Live prototype embed - interactive card in an iframe. Sits low, before the gallery. Optional per project (embedUrl). */}
+        {(project as any).embedUrl && (
+          <Reveal width="100%" className="mb-40">
+            <div className="flex items-center justify-between mb-6 px-4">
+              <h3 className="text-xs font-display uppercase tracking-[0.25em] text-[#D4FF00]">
+                {language === 'pl' ? 'Prototyp na żywo' : 'Live prototype'}
+              </h3>
+              <a
+                href={(project as any).embedUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-display uppercase tracking-widest text-neutral-400 hover:text-white transition-colors"
+              >
+                {language === 'pl' ? 'Otwórz w nowej karcie ↗' : 'Open in new tab ↗'}
+              </a>
+            </div>
+            <div className="w-full rounded-sm overflow-hidden border border-white/10 bg-neutral-900">
+              <div className="flex items-center gap-2 px-4 h-9 bg-neutral-800/80 border-b border-white/10">
+                <span className="w-3 h-3 rounded-full bg-white/20" />
+                <span className="w-3 h-3 rounded-full bg-white/20" />
+                <span className="w-3 h-3 rounded-full bg-white/20" />
+                <span className="ml-3 text-[11px] text-neutral-400 truncate">{(project as any).embedUrl}</span>
+              </div>
+              <iframe
+                src={(project as any).embedUrl}
+                title={project.title}
+                loading="lazy"
+                className="w-full h-[80vh] min-h-[620px] bg-white"
+              />
+            </div>
+            <p className="mt-3 px-4 text-xs text-neutral-500">
+              {language === 'pl'
+                ? 'Interaktywny prototyp - przewijaj, zmieniaj gramaturę i sposób mielenia wewnątrz ramki.'
+                : 'Interactive prototype - scroll, switch weight and grind inside the frame.'}
+            </p>
+          </Reveal>
+        )}
+
+        {/* Pattern Anatomy - annotated, token-driven components extracted from the
+            prototype. Replaces a plain gallery for cases where full screens would
+            just duplicate the live embed. Light UI chips framed on the dark page. */}
+        {(project as any).anatomy && (project as any).anatomy.length > 0 && (
+          <section className="mb-40">
+            <div className="px-4 mb-14 md:mb-20 max-w-3xl">
+              <Reveal>
+                <span className="block text-xs font-display uppercase tracking-[0.25em] text-[#D4FF00] mb-5">
+                  {language === 'pl' ? 'Anatomia wzorca' : 'Pattern anatomy'}
+                </span>
+                <p className="text-2xl md:text-[2rem] font-medium tracking-tight text-neutral-200 leading-snug">
+                  {language === 'pl'
+                    ? 'Nie jeden ekran - zestaw komponentów sterowanych tokenami. Każdy element renderuje się identycznie na 200+ SKU, z SEO i dostępnością wbudowanymi we wzorzec.'
+                    : 'Not one screen - a kit of token-driven components. Each element renders identically across 200+ SKUs, with SEO and accessibility built into the pattern.'}
+                </p>
+              </Reveal>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-x-8 gap-y-14 md:gap-y-20 items-start px-4">
+              {(project as any).anatomy.map((el: any, i: number) => (
+                <Reveal key={i} className={el.col} delay={i * 0.08} width="100%">
+                  <figure className="group">
+                    <div className="rounded-xl overflow-hidden ring-1 ring-white/10 bg-[#F6F1E7] shadow-[0_24px_70px_-24px_rgba(0,0,0,0.7)] transition-transform duration-500 group-hover:-translate-y-1">
+                      <img
+                        src={el.image}
+                        alt={el.title[language]}
+                        loading="lazy"
+                        className="w-full h-auto block"
+                      />
+                    </div>
+                    <figcaption className="mt-5 flex gap-4">
+                      <span className="text-[11px] font-display tabular-nums text-[#D4FF00] pt-1 shrink-0">
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <div>
+                        <h4 className="text-sm font-display uppercase tracking-wider text-white mb-1.5">
+                          {el.title[language]}
+                        </h4>
+                        <p className="text-sm text-neutral-400 leading-relaxed max-w-md">
+                          {el.note[language]}
+                        </p>
+                      </div>
+                    </figcaption>
+                  </figure>
+                </Reveal>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Native to the store - live storefront the design system was extracted
+            from. Browser-framed captures that scroll the full page on hover. */}
+        {(project as any).sitePages && (project as any).sitePages.length > 0 && (
+          <section className="mb-40">
+            <div className="px-4 mb-14 md:mb-20 max-w-3xl">
+              <Reveal>
+                <span className="block text-xs font-display uppercase tracking-[0.25em] text-[#D4FF00] mb-5">
+                  {language === 'pl' ? 'W natywnym sklepie' : 'Native to the store'}
+                </span>
+                <p className="text-2xl md:text-[2rem] font-medium tracking-tight text-neutral-200 leading-snug">
+                  {language === 'pl'
+                    ? 'Design system odczytaliśmy z żywego sklepu i stokenizowaliśmy - dlatego karta renderuje się tak, jakby zawsze tu należała. Oto sklep, w którym żyje. Najedź, by przewinąć całą stronę.'
+                    : 'We read the design system off the live storefront and tokenized it - so the card renders as if it always belonged. Here is the store it lives in. Hover to scroll a full page.'}
+                </p>
+              </Reveal>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 px-4">
+              {(project as any).sitePages.map((p: any, i: number) => (
+                <Reveal key={i} delay={i * 0.06} width="100%">
+                  <figure className="group">
+                    <div className="rounded-xl overflow-hidden ring-1 ring-white/10 shadow-[0_24px_70px_-24px_rgba(0,0,0,0.7)]">
+                      <div className="flex items-center gap-2 px-4 h-9 bg-neutral-800/90 border-b border-white/10">
+                        <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
+                        <span className="ml-3 text-[11px] text-neutral-400 truncate">{p.url}</span>
+                      </div>
+                      <div className="h-[300px] md:h-[440px] overflow-hidden bg-[#F6F1E7] relative">
+                        <img
+                          src={p.image}
+                          alt={p.label[language]}
+                          loading="lazy"
+                          className="w-full h-auto block will-change-transform transition-transform duration-[7000ms] ease-linear group-hover:-translate-y-[calc(100%-300px)] md:group-hover:-translate-y-[calc(100%-440px)]"
+                        />
+                        <span className="pointer-events-none absolute bottom-3 right-3 text-[10px] font-display uppercase tracking-widest text-black/70 bg-white/70 backdrop-blur px-2 py-1 rounded-sm opacity-100 group-hover:opacity-0 transition-opacity duration-300">
+                          {language === 'pl' ? 'najedź' : 'hover'}
+                        </span>
+                      </div>
+                    </div>
+                    <figcaption className="mt-5 flex gap-4">
+                      <span className="text-[11px] font-display tabular-nums text-[#D4FF00] pt-1 shrink-0">
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <h4 className="text-sm font-display uppercase tracking-wider text-white">
+                        {p.label[language]}
+                      </h4>
+                    </figcaption>
+                  </figure>
+                </Reveal>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* Gallery Section - Editorial Grid (only renders if project has images) */}
         {project.images.length > 0 && (
         <section className="mb-40" ref={containerRef}>

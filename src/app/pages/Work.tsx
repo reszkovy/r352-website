@@ -46,7 +46,7 @@ export function Work() {
         {/* ─── REGULAR CASE STUDIES - classic agency design work.
              Filters: not NDA + not Product. Caterelo + regional.fit moved to Products & Systems below. ─── */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-          {projects.filter((p: any) => !p.isNDA && !p.isProduct).map((project, index) => (
+          {projects.filter((p: any) => !p.isNDA && !p.isProduct && !p.isShadow).map((project, index) => (
             <Reveal
               key={project.id}
               delay={(index % 2) * 0.1}
@@ -108,7 +108,7 @@ export function Work() {
               </div>
             </Reveal>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-              {projects.filter((p: any) => p.isProduct).map((project, index) => (
+              {projects.filter((p: any) => p.isProduct && !p.isShadow).map((project, index) => (
                 <Reveal
                   key={project.id}
                   delay={(index % 2) * 0.1}
@@ -162,7 +162,7 @@ export function Work() {
               </div>
             </Reveal>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-              {projects.filter((p: any) => p.isNDA).map((project, index) => (
+              {projects.filter((p: any) => p.isNDA && !p.isShadow).map((project, index) => (
                 <Reveal key={project.id} delay={index * 0.1} className="group cursor-pointer">
                   <Link href={`/work/${project.id}`} className="block">
                     <div className="w-full aspect-[16/9] bg-neutral-900 overflow-hidden mb-6 relative">

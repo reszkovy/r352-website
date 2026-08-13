@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link, useRoute } from "wouter";
+import { Link, useLocation, useRoute } from "wouter";
+import { enTwinOf, isPlPath } from "@/app/config/plRoutes";
 import { Helmet } from "react-helmet-async";
 import { PageTransition } from "@/app/components/ui/PageTransition";
 import { Reveal } from "@/app/components/ui/Reveal";
@@ -116,7 +117,14 @@ export function IndustryDetail() {
   // wouter binds :slug here. Default to empty so the not-found path triggers
   // cleanly if someone hits /industries/ with no trailing slug.
   const [, params] = useRoute<{ slug: string }>("/industries/:slug");
-  const slug = params?.slug ?? "";
+  const [pathname] = useLocation();
+  // Polish routes (/pl/branze/...) carry no :slug param - they are fixed paths.
+  // Resolve the industry through the route registry instead of duplicating the
+  // template, so PL and EN can never drift to different content.
+  const plSlug = isPlPath(pathname)
+    ? (enTwinOf(pathname) ?? "").replace("/industries/", "")
+    : "";
+  const slug = plSlug || params?.slug || "";
 
   const content: IndustryContent | undefined = industries.find((i) => i.slug === slug);
 
@@ -404,12 +412,13 @@ export function IndustryDetail() {
               <Reveal key={item.q.en} delay={i * 0.04}>
                 <details
                   className="group border-b border-neutral-200 dark:border-white/10 py-7 md:py-8 [&_summary::-webkit-details-marker]:hidden"
-                  onToggle={(e) =>
-                    setOpenFaq((prev) => ({
-                      ...prev,
-                      [i]: (e.currentTarget as HTMLDetailsElement).open,
-                    }))
-                  }
+                  onToggle={(e) => {
+                    // Read `open` BEFORE the state updater - React nulls out
+                    // `currentTarget` once the handler returns, so reading it
+                    // inside the updater throws and unmounts the page.
+                    const isOpen = (e.currentTarget as HTMLDetailsElement).open;
+                    setOpenFaq((prev) => ({ ...prev, [i]: isOpen }));
+                  }}
                 >
                   <summary
                     className="flex items-start gap-6 cursor-pointer list-none select-none"

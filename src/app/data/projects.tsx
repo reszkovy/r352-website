@@ -33,6 +33,10 @@ import benefitAsset1 from "figma:asset/fa2519b057d62b113e618bbc8a4d1444a79ccf8b.
 import benefitAsset2 from "figma:asset/07174841306f7651acc2728ea5690360b2c0896c.png";
 import benefitAsset3 from "figma:asset/352e6d0d08b2645318c6602909418ca9ae456250.png";
 import benefitAsset4 from "figma:asset/4d1f7797ea1d8d7473233f7ab8d2f56fb3186fa4.png";
+// Added 2026-08: two Zdrofit landing pages showing the system's breadth.
+// (Studio Fitness Academy deck removed on client request.)
+import benefitZdrofitPhysio from "../../imports/benefit/zdrofit-zdrowe-miejsce.webp";
+import benefitZdrofitOpening from "../../imports/benefit/zdrofit-opening.webp";
 
 // Kubota Project Assets
 import kubotaAsset1 from "figma:asset/d7d8b655b0c0a00ac55aefb2c11480f6ada173de.png";
@@ -76,6 +80,28 @@ import cathereloShot3 from "../../imports/caterelo/03-compare.webp";
 import cathereloShot4 from "../../imports/caterelo/04-region-detail.webp";
 import cathereloShot5 from "../../imports/caterelo/05-price-chart.webp";
 import cathereloShot6 from "../../imports/caterelo/06-renovation-calc.webp";
+
+// Instytut Kawy - ecommerce product card redesign (product-design case)
+import instytutShot1 from "../../imports/instytut-kawy/01.webp";
+import instytutShot2 from "../../imports/instytut-kawy/02.webp";
+import instytutShot3 from "../../imports/instytut-kawy/03.webp";
+import instytutShot4 from "../../imports/instytut-kawy/04.webp";
+import instytutShot5 from "../../imports/instytut-kawy/05.webp";
+// Twoje Menu - diet-catering brand rebrand + new site (SHADOW case: unlisted, URL-only)
+import tmShot1 from "../../imports/twoje-menu/01.webp";
+import tmShot2 from "../../imports/twoje-menu/02.webp";
+import tmShot3 from "../../imports/twoje-menu/03.webp";
+import tmShot4 from "../../imports/twoje-menu/04.webp";
+import tmShot5 from "../../imports/twoje-menu/05.webp";
+import tmShot6 from "../../imports/twoje-menu/06.webp";
+// Pampelle - aperitif brand site: rebrand + new site (SHADOW case: unlisted, URL-only)
+import pampelleCover from "../../imports/pampelle/cover.webp";
+import pampelleHero from "../../imports/pampelle/gallery/g5.webp";
+import pampelleCollage from "../../imports/pampelle/gallery/g4.webp";
+import pampelleBottle from "../../imports/pampelle/gallery/g3.webp";
+import pampelleMobile from "../../imports/pampelle/gallery/mobile.webp";        // two mobile screens composed side by side
+import pampelleHandCollage from "../../imports/pampelle/gallery/collage-hand.webp"; // grapefruit-spritz collage
+import pampelleBoard from "../../imports/pampelle/gallery/g1.webp";             // full design board / overview (key)
 
 // DiscoBowl Project Assets (20 UK venues + booking system)
 // Migrated PNG → WebP (quality 85, ~85% size reduction, visually equivalent).
@@ -161,7 +187,9 @@ export const projects = [
         benefitAsset1,
         benefitAsset2,
         benefitAsset3,
-        benefitAsset4
+        benefitAsset4,
+        benefitZdrofitPhysio,   // Zdrofit "Zdrowe Miejsce" physio landing
+        benefitZdrofitOpening   // Zdrofit new-club opening landing
     ],
     isInternal: false,
     description: {
@@ -561,6 +589,207 @@ export const projects = [
     stats: [
       { value: "20", label: { en: "UK Venues Served", pl: "Kręgielni UK" } },
       { value: "2+", label: { en: "Sites + Booking System", pl: "Strony + System Rezerwacji" } }
+    ]
+  },
+  // ─────────────────────────────────────────────────────────────────────────
+  // Instytut Kawy - ecommerce product card redesigned as a reusable system.
+  // Client: Łódź specialty coffee roastery on WooCommerce. Brief → design-system
+  // extraction → interactive prototype → productization spec (1 pattern → catalogue).
+  // Live prototype: r352.com/instytut. Factual scope stats only (no fabricated KPI).
+  // ─────────────────────────────────────────────────────────────────────────
+  {
+    id: "instytut-kawy",
+    isShadow: true, // temporarily hidden from /work listing (URL still works)
+    client: "Instytut Kawy",
+    title: "Product card, rebuilt as a system",
+    category: {
+      en: "E-commerce / Product Design",
+      pl: "E-commerce / Design Produktu"
+    },
+    year: "2026",
+    image: instytutShot1,
+    coverImage: instytutShot1,
+    images: [
+      instytutShot2, // Description + Roaster's opinion stacked, intensity indicators
+      instytutShot3, // Specification + storage/freshness, flexible origin block
+      instytutShot4, // Reviews, brewing recipe, accessories in site-native UI
+      instytutShot5, // Sticky buy-bar - weight + price reachable on every scroll
+    ],
+    isInternal: false,
+    // Trailing slash fixes the embed: the prototype is a static file at
+    // /instytut/index.html. Without the slash the SPA router swallows the path
+    // and renders its own 404 inside the iframe. The slash resolves in dev + prod.
+    externalUrl: "https://www.r352.com/instytut/",
+    embedUrl: "/instytut/",
+    description: {
+      en: "Instytut Kawy is a Łódź specialty coffee roastery selling online on WooCommerce. We redesigned their product card - the page that sells every bean - and rebuilt it as a system: one pattern that renders the entire catalogue, not a one-off screen. Starting from a written brief and the live store, we extracted the real design system and shipped an interactive prototype.",
+      pl: "Instytut Kawy to łódzka rzemieślnicza palarnia sprzedająca online na WooCommerce. Przeprojektowaliśmy ich kartę produktową - stronę, która sprzedaje każdą kawę - i zbudowaliśmy ją jako system: jeden wzorzec renderujący cały katalog, a nie pojedynczy ekran. Wychodząc od pisemnego briefu i żywego sklepu, wyekstrahowaliśmy realny design system i dostarczyliśmy interaktywny prototyp."
+    },
+    services: {
+      en: ["Product Design", "Design System", "UX/UI", "Interactive Prototype", "SEO (JSON-LD)", "Accessibility (WCAG AA)"],
+      pl: ["Design Produktu", "Design System", "UX/UI", "Interaktywny Prototyp", "SEO (JSON-LD)", "Dostępność (WCAG AA)"]
+    },
+    challenge: {
+      en: "The original card buried the parameters buyers actually decide on - acidity, processing, flavour profile - below the fold and styled them inconsistently. With 200+ SKUs, every product page was assembled by hand. The task was not to beautify one screen but to make the decisive information legible and turn the card into a repeatable pattern.",
+      pl: "Oryginalna karta chowała parametry, na których kupujący faktycznie się decydują - kwasowość, obróbkę, profil smakowy - pod linią zgięcia i stylowała je niespójnie. Przy 200+ SKU każda strona produktu była składana ręcznie. Zadaniem nie było upiększenie jednego ekranu, lecz uczynienie decydujących informacji czytelnymi i zamiana karty w powtarzalny wzorzec."
+    },
+    decisions: {
+      en: "We surfaced the buying parameters to the top: a two-level flavour profile (pictograms + detailed notes), processing method, and a compact acidity indicator next to the price. Description and the Roaster's opinion were stacked and given a distinct highlight. The country block became a flexible 'origin or processing' module for beans without a regional story. A sticky buy-bar keeps the purchase in reach on every scroll, with four weight tiers and a two-step grind selector.",
+      pl: "Wynieśliśmy parametry zakupowe na górę: dwupoziomowy profil smakowy (piktogramy + szczegółowe nuty), metodę obróbki i kompaktowy wskaźnik kwasowości przy cenie. Opis i Opinię Roastera ustawiliśmy jeden pod drugim i wyróżniliśmy. Blok kraju stał się elastycznym modułem 'pochodzenie albo obróbka' dla kaw bez historii regionu. Sticky belka zakupowa trzyma zakup w zasięgu na każdym scrollu, z czterema gramaturami i dwustopniowym wyborem mielenia."
+    },
+    approach: {
+      en: "We did not invent a look - we extracted the real one. Colours, typography and buttons were read from the live store's computed styles and tokenised in one place, so the whole catalogue changes from a single source. The prototype is a single self-contained file (HTML/CSS/JS with GSAP motion), mapped to WooCommerce fields so one template can render every SKU. A quality layer - JSON-LD structured data and WCAG AA accessibility - is built into the pattern, not bolted onto each page.",
+      pl: "Nie wymyślaliśmy wyglądu - wyekstrahowaliśmy prawdziwy. Kolory, typografię i przyciski odczytaliśmy z computed styles żywego sklepu i stokenizowaliśmy w jednym miejscu, więc cały katalog zmienia się z jednego źródła. Prototyp to pojedynczy samowystarczalny plik (HTML/CSS/JS z animacjami GSAP), zmapowany na pola WooCommerce tak, by jeden szablon renderował każde SKU. Warstwa jakości - dane strukturalne JSON-LD i dostępność WCAG AA - jest wbudowana we wzorzec, nie doklejana do każdej strony."
+    },
+    quote: {
+      en: "We don't redesign a card - we design the pattern that renders the whole catalogue.",
+      pl: "Nie przeprojektowujemy karty - projektujemy wzorzec, który renderuje cały katalog."
+    },
+    outcome: {
+      en: "An interactive prototype validated screen by screen with the client, a documented design system, and a WooCommerce productization spec - one pattern ready to render 200+ SKUs. Six rounds of client feedback shipped. SEO rich-result schema and WCAG AA accessibility baked into the template.",
+      pl: "Interaktywny prototyp walidowany ekran po ekranie z klientem, udokumentowany design system i spec produktyzacji pod WooCommerce - jeden wzorzec gotowy renderować 200+ SKU. Sześć rund feedbacku klienta wdrożonych. Schema SEO rich-results i dostępność WCAG AA wbudowane w szablon."
+    },
+    reflection: {
+      en: "A product card looks like a design task and is really a systems task. The value isn't the pixels on one screen - it's that the next 200 pages inherit legibility, SEO and accessibility for free. That is the difference between selling a redesign and selling an operating pattern.",
+      pl: "Karta produktowa wygląda jak zadanie projektowe, a jest zadaniem systemowym. Wartość to nie piksele na jednym ekranie - to fakt, że kolejne 200 stron dziedziczy czytelność, SEO i dostępność za darmo. To różnica między sprzedażą redesignu a sprzedażą wzorca operacyjnego."
+    },
+    stats: [
+      { value: "200+", label: { en: "SKUs from one pattern", pl: "SKU z jednego wzorca" } },
+      { value: "6", label: { en: "Feedback rounds shipped", pl: "Rund feedbacku wdrożonych" } },
+      { value: "WCAG AA", label: { en: "Accessibility baseline", pl: "Baza dostępności" } },
+      { value: "JSON-LD", label: { en: "Rich-result SEO", pl: "SEO rich-results" } }
+    ]
+  },
+  // ─────────────────────────────────────────────────────────────────────────
+  // Twoje Menu - diet-catering brand: rebrand + new UX/UI site + communication.
+  // SHADOW case (isShadow): reachable at /work/twoje-menu, hidden from all /work
+  // listings until it's ready to publish. Copy is qualitative - no fabricated KPIs.
+  // Scope per client: brand redesign, new site (UX/UI), communication.
+  // ─────────────────────────────────────────────────────────────────────────
+  {
+    id: "twoje-menu",
+    isShadow: true,
+    client: "Twoje Menu",
+    title: "Rebrand and a new site for a diet-catering brand",
+    category: {
+      en: "Rebrand / Web / UX-UI",
+      pl: "Rebranding / Web / UX-UI"
+    },
+    year: "2026",
+    image: tmShot1,
+    coverImage: tmShot1,
+    images: [
+      tmShot2, // Weekly menu with day tabs + macro split
+      tmShot3, // Build-your-own meal picker
+      tmShot5, // Delivery-area checker (map + postcode)
+      tmShot4, // Blog article template (TOC + expert-review byline)
+      tmShot6, // Content hub / blog listing
+    ],
+    isInternal: false,
+    externalUrl: "https://twojemenu.pl",
+    description: {
+      en: "Twoje Menu is a Polish diet-catering brand. We rebranded it and designed a new site from the ground up - identity, UX/UI and communication - turning a price list of diets into a system of interactive tools that help people choose and order the right plan.",
+      pl: "Twoje Menu to polska marka cateringu dietetycznego. Przeprojektowaliśmy markę i zaprojektowaliśmy nową stronę od zera - identyfikację, UX/UI i komunikację - zamieniając cennik diet w system interaktywnych narzędzi, które pomagają wybrać i zamówić właściwy plan."
+    },
+    services: {
+      en: ["Rebrand", "Web Design", "UX/UI", "Design System", "Interactive Configurator", "Content / Communication"],
+      pl: ["Rebranding", "Projekt strony", "UX/UI", "Design System", "Interaktywny Konfigurator", "Treść / Komunikacja"]
+    },
+    challenge: {
+      en: "Diet-catering sites collapse into look-alike price lists: pick a diet, pick a calorie count, hope it's right. The parameters that actually decide a purchase - what's on the plate this week, the macros, whether they even deliver to your street - sit buried or missing. The brand needed to feel trustworthy and modern, and the site had to turn browsing into a confident order.",
+      pl: "Strony cateringów dietetycznych sprowadzają się do bliźniaczych cenników: wybierz dietę, wybierz kaloryczność, licz na to, że trafisz. Parametry, które realnie decydują o zakupie - co jest w menu w tym tygodniu, makro, czy w ogóle dowożą pod Twój adres - są ukryte albo ich brak. Marka musiała budzić zaufanie i być nowoczesna, a strona - zamieniać przeglądanie w pewne zamówienie."
+    },
+    decisions: {
+      en: "We rebuilt the brand first - a confident, appetite-forward identity - then designed the site around the real decision path. Diets became a visual configurator (type, calorie tier, meals, delivery period). A weekly menu with day tabs and a macro split shows exactly what lands on the plate. A meal picker lets people compose their own week. A postcode and map checker answers 'do you deliver to me?' before anyone commits.",
+      pl: "Najpierw przebudowaliśmy markę - pewną siebie, apetyczną identyfikację - a potem zaprojektowaliśmy stronę wokół realnej ścieżki decyzji. Diety stały się wizualnym konfiguratorem (typ, próg kaloryczny, posiłki, okres dostawy). Tygodniowe menu z zakładkami dni i rozkładem makro pokazuje dokładnie, co ląduje na talerzu. Wybór posiłków pozwala samodzielnie ułożyć tydzień. Sprawdzarka po kodzie i mapie odpowiada na 'czy dowozicie do mnie?' zanim ktokolwiek się zdecyduje."
+    },
+    approach: {
+      en: "One design system under everything - type, colour, buttons, the diet-type iconography - so every screen, from configurator to blog, reads as one brand. The interactive pieces (configurator, weekly menu, meal picker, delivery checker) share components and states instead of being one-off pages, so the catalogue of diets stays consistent and cheap to extend. An expert-reviewed content hub carries the communication.",
+      pl: "Jeden design system pod wszystkim - typografia, kolor, przyciski, ikonografia typów diet - tak, że każdy ekran, od konfiguratora po blog, czyta się jako jedna marka. Elementy interaktywne (konfigurator, tygodniowe menu, wybór posiłków, sprawdzarka dostaw) dzielą komponenty i stany, zamiast być pojedynczymi stronami, więc katalog diet zostaje spójny i tani w rozwoju. Hub treści sprawdzany przez dietetyka niesie komunikację."
+    },
+    quote: {
+      en: "We don't redesign a menu - we design the system that lets someone order the right diet with confidence.",
+      pl: "Nie przeprojektowujemy menu - projektujemy system, który pozwala pewnie zamówić właściwą dietę."
+    },
+    outcome: {
+      en: "A rebranded identity and a new site: a diet configurator, a weekly menu with macros, a build-your-own meal picker, a delivery-area checker and an expert-reviewed content hub - one design system rendering the whole catalogue and communication.",
+      pl: "Przebrandowana identyfikacja i nowa strona: konfigurator diet, tygodniowe menu z makro, wybór własnych posiłków, sprawdzarka obszaru dostaw i hub treści sprawdzany przez dietetyka - jeden design system renderujący cały katalog i komunikację."
+    },
+    reflection: {
+      en: "A diet-catering site looks like a catalogue task and is really a decision-support task. The value isn't prettier boxes - it's that someone can see the week, the macros and the delivery reach, and order without a phone call.",
+      pl: "Strona cateringu dietetycznego wygląda jak zadanie katalogowe, a jest zadaniem wspierania decyzji. Wartość to nie ładniejsze pudełka - to fakt, że ktoś widzi tydzień, makro i zasięg dostawy, i zamawia bez telefonu."
+    },
+    stats: [
+      { value: "8", label: { en: "diet programmes", pl: "programów dietetycznych" } },
+      { value: "5", label: { en: "meal slots / day", pl: "posiłków / dzień" } },
+      { value: "1", label: { en: "design system, whole site", pl: "design system, cała strona" } }
+    ]
+  },
+  // ─────────────────────────────────────────────────────────────────────────
+  // Pampelle - French aperitif brand, Polish-market site. Rebrand + new site.
+  // SHADOW case (isShadow): reachable at /work/pampelle, hidden from listings.
+  // Copy is qualitative (no fabricated KPIs); stats are structural facts from the
+  // site. Alcohol brand - keep unlisted until cleared to publish.
+  // ─────────────────────────────────────────────────────────────────────────
+  {
+    id: "pampelle",
+    isShadow: true,
+    client: "Pampelle",
+    title: "Brand site built from repeatable modules",
+    category: {
+      en: "Brand Site / Web Design",
+      pl: "Strona Marki / Web Design"
+    },
+    year: "2026",
+    image: pampelleCover,
+    coverImage: pampelleCover,
+    images: [
+      pampelleBoard,       // 0 full     - full design board / overview (key)
+      pampelleCollage,     // 1 left     - summer beach collage key visual
+      pampelleHandCollage, // 2 right    - grapefruit-spritz collage
+      pampelleMobile,      // 3 centered - responsive: cocktails + where-to-buy on mobile
+      pampelleHero,        // 4 full     - desktop BONJOUR hero (the live site)
+      pampelleBottle,      // 5 left     - product + dragonfly emblem on Riviera teal
+    ],
+    isInternal: false,
+    externalUrl: "https://pampelle.pl",
+    description: {
+      en: "Pampelle is a French aperitif from Corsica - a 15% grapefruit apero built on Ruby Red grapefruit with yuzu, cedrat and bitter orange. For its Polish market, run by distributor Crimston Spirits, the brand needed a site that carried the summer, collage-driven world of the product and still worked as a functional system: a place to learn the drink, find a recipe, and locate the nearest bottle. We treated the site not as a set of pages but as a kit of repeatable modules - navigation, section lockups, cocktail cards and a where-to-buy locator - each one rendering the same way wherever it appears.",
+      pl: "Pampelle to francuski aperitif z Korsyki - 15% apéro na czerwonym grejpfrucie Ruby Red z dodatkiem yuzu, cedratu i gorzkiej pomarańczy. Na rynek polski, prowadzony przez dystrybutora Crimston Spirits, marka potrzebowała strony, która niosłaby letni, kolażowy świat produktu i jednocześnie działała jak sprawny system: miejsca, w którym poznaje się trunek, znajduje przepis i lokalizuje najbliższą butelkę. Potraktowaliśmy stronę nie jako zbiór podstron, lecz jako zestaw powtarzalnych modułów - nawigacji, nagłówków sekcji, kart koktajli i lokalizatora punktów sprzedaży - z których każdy renderuje się tak samo, gdziekolwiek się pojawia."
+    },
+    services: {
+      en: ["Brand Site Design", "Design System", "UX/UI", "Responsive Layout", "Cocktail Recipe Module", "Store Locator"],
+      pl: ["Design Strony Marki", "Design System", "UX/UI", "Responsywny Layout", "Moduł Przepisów", "Lokalizator Punktów Sprzedaży"]
+    },
+    challenge: {
+      en: "An aperitif brand lives on mood - sun, the Riviera, a red-grapefruit spritz in hand. The risk with that kind of brand is a site that is all atmosphere and no structure: beautiful hero, then nowhere to go. Pampelle's Polish site had to hold both. It needed to sell the feeling and answer three practical questions at once - what is this drink, how do I make it, and where do I buy it - without the collage art fighting the utility.",
+      pl: "Marka aperitifu żyje nastrojem - słońcem, Riwierą, spritzem z czerwonego grejpfruta w dłoni. Ryzyko przy takiej marce to strona, która jest samą atmosferą bez struktury: piękny hero i nigdzie dalej. Polska strona Pampelle musiała unieść jedno i drugie. Miała sprzedawać uczucie i jednocześnie odpowiadać na trzy praktyczne pytania - czym jest ten trunek, jak go zrobić i gdzie go kupić - tak, by kolaż nie walczył z użytecznością."
+    },
+    decisions: {
+      en: "We anchored the whole site on one typographic move: an oversized display word paired with a hand-drawn script - BONJOUR, KOKTAJLE, GDZIE KUPIĆ - so every section opens with the same recognisable lockup instead of a new style each time. Cocktails became a single recipe card - ingredients, method and a cut-out glass - that the six drinks share; add a seventh and the pattern already fits it. Where-to-buy was designed as a real tool, not a static list: an interactive voivodeship map with a live count, a three-way filter for shops, venues and clubs, and a directory of results underneath.",
+      pl: "Cała strona opiera się na jednym typograficznym ruchu: wielkim słowie display zestawionym z odręcznym skryptem - BONJOUR, KOKTAJLE, GDZIE KUPIĆ - tak, by każda sekcja otwierała się tym samym rozpoznawalnym lockupem, a nie nowym stylem za każdym razem. Koktajle stały się jedną kartą przepisu - składniki, sposób i wycięty kieliszek - którą dzieli sześć drinków; dodaj siódmy, a wzorzec już go mieści. Gdzie kupić zaprojektowaliśmy jako realne narzędzie, nie statyczną listę: interaktywna mapa województw z licznikiem, trójdzielny filtr na sklepy, gastronomię i kluby oraz katalog wyników pod spodem."
+    },
+    approach: {
+      en: "Everything repeats on purpose. The navigation, the section lockups, the cocktail card and the locator are components, not one-off screens - defined once and reused, so the brand stays consistent from the hero to the footer and the same rules carry straight into the mobile layout. The palette is fixed to the bottle - Pampelle red, Riviera teal and a warm cream ground - and the photographic collage (grapefruit, sea, sun-bleached figures) sits on top of that structure rather than replacing it. The result reads as atmosphere but is built as a system.",
+      pl: "Wszystko powtarza się celowo. Nawigacja, nagłówki sekcji, karta koktajlu i lokalizator to komponenty, nie pojedyncze ekrany - zdefiniowane raz i używane wielokrotnie, dzięki czemu marka pozostaje spójna od hero po stopkę, a te same zasady przechodzą wprost do layoutu mobilnego. Paleta jest przypięta do butelki - czerwień Pampelle, morska turkusowa zieleń i ciepłe kremowe tło - a fotograficzny kolaż (grejpfrut, morze, wyblakłe od słońca postaci) siedzi na tej strukturze, zamiast ją zastępować. Efekt czyta się jako atmosfera, ale zbudowany jest jak system."
+    },
+    quote: {
+      en: "Atmosphere sells the bottle. A system makes the site keep selling it on every screen.",
+      pl: "Atmosfera sprzedaje butelkę. System sprawia, że strona sprzedaje ją dalej - na każdym ekranie."
+    },
+    outcome: {
+      en: "A single Polish-market site that works as the brand's shop window: the aperitif's story, six cocktails from one shared recipe module, and an interactive where-to-buy locator that turns 'available in Poland' into a specific address. The same component kit renders identically across desktop and mobile, and hands off directly to the distributor's online shop for purchase.",
+      pl: "Jedna strona na rynek polski, która działa jak witryna marki: historia aperitifu, sześć koktajli z jednego wspólnego modułu przepisu i interaktywny lokalizator, który zamienia 'dostępne w Polsce' w konkretny adres. Ten sam zestaw komponentów renderuje się identycznie na desktopie i mobile, a zakup przekazuje wprost do sklepu online dystrybutora."
+    },
+    reflection: {
+      en: "A drinks brand is easy to make pretty and hard to make useful. The discipline here was refusing to hand-build each section - so the mood stays high while the structure underneath stays boring, repeatable and cheap to extend. The next cocktail, the next region, the next stockist all inherit the layout for free. That is what keeps a brand site alive after launch instead of frozen at it.",
+      pl: "Markę alkoholu łatwo zrobić ładną, a trudno użyteczną. Dyscyplina polegała tu na odmowie ręcznego budowania każdej sekcji - dzięki temu nastrój pozostaje wysoki, a struktura pod spodem nudna, powtarzalna i tania w rozbudowie. Kolejny koktajl, kolejny region, kolejny punkt sprzedaży dziedziczą layout za darmo. To właśnie utrzymuje stronę marki przy życiu po starcie, zamiast zamrażać ją na starcie."
+    },
+    stats: [
+      { value: "6", label: { en: "Cocktails, one recipe module", pl: "Koktajli z jednego modułu" } },
+      { value: "16", label: { en: "Voivodeships on the locator map", pl: "Województw na mapie lokalizatora" } },
+      { value: "3", label: { en: "Venue-type filters", pl: "Filtry typów punktów" } },
+      { value: "PL", label: { en: "Single-language market build", pl: "Build pod jeden rynek" } }
     ]
   },
   // ─────────────────────────────────────────────────────────────────────────

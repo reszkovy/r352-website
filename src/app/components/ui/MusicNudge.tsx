@@ -75,13 +75,13 @@ export function MusicNudge() {
           <span className="text-[11px] text-white/70 whitespace-nowrap">
             {pl ? "Ta strona ma soundtrack." : "This site has a soundtrack."}
           </span>
-          <button
+          <button data-tap-44
             onClick={onPlay}
             className="rounded-full bg-[#D4FF00] text-black font-display uppercase tracking-[0.14em] text-[10px] px-3 py-1 hover:bg-white transition-colors duration-300 whitespace-nowrap"
           >
             {pl ? "Włącz" : "Play"}
           </button>
-          <button
+          <button data-tap-44
             onClick={dismiss}
             aria-label={pl ? "Zamknij" : "Dismiss"}
             className="p-1.5 text-white/40 hover:text-white transition-colors duration-300"

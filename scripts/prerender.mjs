@@ -98,10 +98,32 @@ const ROUTES = [
   "/work/dawid-podsiadlo",
   "/work/discobowl",
   "/work/fifa",
+  // Shadow cases: unlinked and out of the sitemap, but they must still be
+  // prerendered - otherwise a direct hit serves the SPA shell, whose static
+  // robots tag says "index, follow" and contradicts their noindex.
+  "/work/instytut-kawy",
+  "/work/twoje-menu",
+  "/work/pampelle",
   "/work/kubota",
   "/work/regional-fit",
   "/work/sonova",
   "/work/uniqa",
+  // Bogus route on purpose: the SPA renders its branded 404 screen for it, and
+  // the snapshot is saved as dist/404.html below. Vercel serves that file with a
+  // real 404 status for paths excluded from the SPA rewrite (unpublished journal
+  // articles), so they stop being soft 404s without losing the brand.
+  // Polska warstwa adresowa. Jezyk bierze sie z URL-a (config/plRoutes.ts),
+  // wiec przegladarka prerenderu bez localStorage i tak zlapie polski render -
+  // dokladnie to, czego nie dalo sie osiagnac przy przelaczniku po stronie klienta.
+  "/pl",
+  "/pl/uslugi",
+  "/pl/proces",
+  "/pl/realizacje",
+  "/pl/kontakt",
+  "/pl/brief",
+  "/pl/branze/fitness-wellness",
+  "/pl/branze/nieruchomosci",
+  "/__404",
 ];
 
 // Optional subset run: PRERENDER_ROUTES="/a,/b" node scripts/prerender.mjs
@@ -483,6 +505,11 @@ try {
       };
       for (const [attr, name] of [
         ["name", "description"],
+        // robots MUST be de-duped: the shell ships a static "index, follow" and
+        // helmet adds the per-route directive. Without this the static tag came
+        // first and silently overrode a deliberate "noindex, follow" on the
+        // draft-legal, teaser and NDA routes.
+        ["name", "robots"],
         ["property", "og:type"], ["property", "og:site_name"],
         ["property", "og:title"], ["property", "og:description"],
         ["property", "og:url"], ["property", "og:image"],
@@ -491,6 +518,29 @@ try {
         ["name", "twitter:description"], ["name", "twitter:image"],
       ]) {
         html = dedupeMeta(html, attr, name);
+      }
+
+      // ── De-dupe static <link> vs helmet (data-rh) ────────────────
+      // Same problem as the meta tags above, but for <link>: inject-meta.mjs
+      // writes a static <link rel="canonical"> into every route shell, and
+      // vite preview serves the HOME shell as SPA fallback for routes it does
+      // not resolve to a file - so the snapshot inherited the home canonical
+      // ("https://www.r352.com") on TOP of the correct helmet one. Two
+      // canonicals per page = Google may ignore the signal or take the first
+      // (wrong) one, which pointed 37 subpages at "/". dedupeMeta only ever
+      // matched <meta>, so links were never cleaned. Helmet's canonical is
+      // derived deterministically from the route (SEO.tsx), so it is the one
+      // to keep; the static duplicate goes.
+      const dedupeLink = (h, relValue) => {
+        const rhRe = new RegExp(`<link[^>]*data-rh="true"[^>]*rel="${relValue}"[^>]*>|<link[^>]*rel="${relValue}"[^>]*data-rh="true"[^>]*>`);
+        if (!rhRe.test(h)) return h; // no helmet version - keep the static one
+        return h.replace(
+          new RegExp(`<link(?![^>]*data-rh)[^>]*rel="${relValue}"[^>]*>\\s*`, "g"),
+          ""
+        );
+      };
+      for (const rel of ["canonical", "alternate"]) {
+        html = dedupeLink(html, rel);
       }
 
       // ── Empty-root guard ────────────────────────────────────────
@@ -530,6 +580,20 @@ try {
 
   // ─── Summary ────────────────────────────────────────────────────
   console.log("");
+  // Promote the bogus-route snapshot to dist/404.html and drop the directory,
+  // so it is a real error document rather than a reachable /__404 page.
+  try {
+    const src404 = join(DIST_DIR, "__404", "index.html");
+    if (existsSync(src404)) {
+      const { readFile: rf, rm } = await import("node:fs/promises");
+      await writeFile(join(DIST_DIR, "404.html"), await rf(src404, "utf-8"), "utf-8");
+      await rm(join(DIST_DIR, "__404"), { recursive: true, force: true });
+      log.ok("404.html zapisany (branded, serwowany z prawdziwym statusem 404)");
+    }
+  } catch (e) {
+    log.warn(`404.html - nie udalo sie zapisac: ${e.message}`);
+  }
+
   log.ok(`Prerendered: ${okRoutes.length}/${ROUTES.length}`);
   if (failedRoutes.length > 0) {
     log.warn(`Failed: ${failedRoutes.length}`);

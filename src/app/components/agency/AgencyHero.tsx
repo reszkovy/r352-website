@@ -49,11 +49,23 @@ export function AgencyHero() {
           {/* Hero headline size - back up after 'design ops' shortened the headline.
               5xl/7xl/8xl (48/72/96px) gives monumental feel without pushing CTAs below fold
               (2-line desktop layout uses only ~192px vs the previous 3-line ~290px). */}
-          <div className="hidden md:block">
+          {/* The ONE semantic h1 - and it is the VISIBLE headline, not a hidden copy.
+              History: the two CinematicText blocks were each an <h1> (two h1s, and a
+              per-letter span soup read aloud by screen readers). The first fix moved
+              the heading into an `sr-only` h1, which was correct for AT but left the
+              page's only h1 measuring 1x1 px - a real heading with no visible size.
+              Now the h1 WRAPS the visible headline and carries `aria-label`, so:
+                - there is exactly one h1, at full rendered size,
+                - its accessible name is one clean sentence (not "D e s i g n ..."),
+                - the animated letters stay decorative via aria-hidden.
+              Tailwind preflight resets heading font-size/margin to inherit, so this
+              wrapper is layout-neutral - the visual is byte-identical. */}
+          <h1 aria-label={t("hero.title").replace(/<br\s*\/?>/gi, " ").replace(/\u00A0/g, " ")}>
+          <div className="hidden md:block" aria-hidden="true">
             <CinematicText
               key={`hero-title-${theme}`}
               text={t("hero.title")}
-              as="h1"
+              as="div"
               className="type-h1 !text-[clamp(2.75rem,5.8vw,7.25rem)] mb-6 md:mb-10 max-w-[95%] cursor-default leading-[0.95]"
               delay={0.1}
               glowEffect={true}
@@ -63,7 +75,7 @@ export function AgencyHero() {
           </div>
           {/* Mobile block renders the page's h1 (desktop h1 is display:none below md,
               so exactly one h1 is exposed to assistive tech per breakpoint). */}
-          <div className="block md:hidden">
+          <div className="block md:hidden" aria-hidden="true">
             {/* Mobile hero typography:
                   - Font reduced 48px → 40px (text-[40px]) so "design partner." and
                     "partner designowy." fit on a single line at ~375-393px viewports.
@@ -73,7 +85,7 @@ export function AgencyHero() {
             <CinematicText
               key={`hero-title-mobile-${theme}`}
               text={t("hero.title_mobile")}
-              as="h1"
+              as="div"
               className="type-h1 !text-[40px] mb-6 max-w-[95%] cursor-default leading-[0.76]"
               delay={0.1}
               glowEffect={true}
@@ -81,6 +93,7 @@ export function AgencyHero() {
               glowColor={glowColor}
             />
           </div>
+          </h1>
 
           <Reveal delay={0.6}>
             {/* Hero content restructure:
@@ -164,7 +177,7 @@ export function AgencyHero() {
                     </span>
                   </MagneticButton>
                   <span className="text-[11px] font-mono tracking-tight text-neutral-500 text-center">
-                    {language === "pl" ? "~10 min briefu · odpowiedź w 48h" : "~10 min brief · reply within 48h"}
+                    {language === "pl" ? "~12 min briefu · odpowiedź w 48h" : "~12 min brief · reply within 48h"}
                   </span>
                 </div>
 

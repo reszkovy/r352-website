@@ -116,33 +116,17 @@ import { ConsentBanner } from "@/app/components/ConsentBanner";
 import { AudioProvider } from "@/app/context/AudioContext";
 import { useCTAHoverMusicTrigger } from "@/app/hooks/useCTAHoverMusicTrigger";
 
-// ─── Dynamic Favicon ──────────────────────
-function useFavicon() {
-  useEffect(() => {
-    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 658 676" width="64" height="64">
-      <rect x="-20" y="-20" width="698" height="716" rx="100" fill="#0A0A0A"/>
-      <path d="M0 337.632C0 136.127 154.934 0 328.676 0C502.418 0 657.352 136.127 657.352 337.632C657.352 539.136 502.418 675.264 328.676 675.264C154.934 675.264 0 539.136 0 337.632ZM78.8106 337.632C78.8106 492.566 189.862 601.827 328.676 601.827C465.699 601.827 578.541 492.566 578.541 337.632C578.541 182.697 465.699 73.4372 328.676 73.4372C189.862 73.4372 78.8106 182.697 78.8106 337.632Z" fill="#DAFF45"/>
-      <path d="M468.492 402.837C474.353 406.798 478.709 412.183 481.56 418.994C484.411 425.806 485.282 432.617 484.174 439.428C483.065 446.239 480.055 452.496 475.145 458.199C470.393 463.743 464.769 467.544 458.275 469.604C455.424 470.237 452.414 470.633 449.246 470.792C446.078 470.95 441.88 470.792 436.653 470.316C431.584 469.841 428.575 469.445 427.624 469.128C412.418 468.495 396.499 465.089 379.866 458.912C363.393 452.734 349.137 445.843 337.098 438.24C325.06 430.479 313.338 422.004 301.933 412.817C290.687 403.63 282.45 396.422 277.222 391.195C271.995 385.968 268.114 381.77 265.58 378.602L260.59 373.137L261.066 395.472C261.382 422.4 261.699 440.141 262.016 448.695C262.333 460.416 259.323 469.92 252.987 477.207C246.176 484.969 237.543 489.404 227.088 490.513C216 491.463 206.417 488.533 198.339 481.721C189.627 474.276 185.112 465.644 184.795 455.823C184.795 447.111 184.479 429.132 183.845 401.887C183.528 372.741 183.211 353.258 182.895 343.437C181.944 314.291 180.598 282.69 178.855 248.634C178.222 237.229 181.311 227.646 188.122 219.884C194.616 212.439 202.932 208.083 213.07 206.816H214.02L214.496 206.341C219.089 203.49 225.267 200.559 233.029 197.55C272.312 181.709 311.199 173.393 349.691 172.601C362.363 172.285 372.738 174.74 380.817 179.967C390.479 186.145 397.132 195.886 400.775 209.192C407.587 235.803 401.251 262.256 381.767 288.551C377.807 293.778 371.63 301.223 363.234 310.886C358.324 316.746 354.601 321.102 352.067 323.954C349.849 327.122 349.374 330.211 350.641 333.22C355.552 342.566 361.809 351.04 369.412 358.644C377.015 366.088 384.539 371.791 391.984 375.751C399.429 379.553 406.636 382.879 413.606 385.73C420.576 388.423 426.199 390.086 430.476 390.72L436.891 392.145C443.702 393.413 448.85 394.521 452.335 395.472C458.829 397.531 464.215 399.986 468.492 402.837ZM309.299 262.652C310.883 255.524 308.586 250.535 302.408 247.684C298.765 246.1 293.934 246.1 287.915 247.684C283.321 248.951 274.688 251.881 262.016 256.475C258.848 257.425 257.422 259.484 257.739 262.652L259.64 307.084C259.64 309.935 261.066 311.836 263.917 312.786C266.926 313.737 269.382 313.103 271.282 310.886C279.994 299.798 286.172 292.511 289.815 289.026C295.359 282.849 299.399 278.334 301.933 275.483C306.21 270.573 308.665 266.296 309.299 262.652Z" fill="#DAFF45"/>
-    </svg>`;
-    const blob = new Blob([svg], { type: "image/svg+xml" });
-    const url = URL.createObjectURL(blob);
-    let link = document.querySelector("link[rel~='icon']") as HTMLLinkElement | null;
-    if (!link) {
-      link = document.createElement("link");
-      link.rel = "icon";
-      document.head.appendChild(link);
-    }
-    link.type = "image/svg+xml";
-    link.href = url;
-
-    return () => URL.revokeObjectURL(url);
-  }, []);
-}
+// ─── Favicon ──────────────────────
+// The favicon family is declared statically in index.html and the artwork lives
+// in public/favicon.svg. A runtime hook used to inject an inline data-URI copy
+// of the logo here; it was removed because it (a) duplicated the path data in a
+// second place that silently drifted, and (b) overrode the file on every mount
+// with a version whose ring touched the canvas edge - so Google's circular
+// favicon crop cut the R off in search results.
 
 function AppContent() {
   const [location] = useLocation();
   const { theme } = useTheme();
-  useFavicon();
   useTransitionRoll(); // advances deterministic sweep direction on every navigation
   useCTAHoverMusicTrigger(); // first CTA hover triggers ambient Planet Rock (Instrumental) playback
 
@@ -165,7 +149,68 @@ function AppContent() {
     return path;
   };
 
-  const getPageSEO = (path: string): { title: string; description: string; ogImage?: string; article?: { title: string; date: string; category: string } } => {
+  /**
+   * Trim a generated meta description to <=160 characters on a word boundary.
+   * Titles feed into these strings, so long ones silently produced 170-180 char
+   * descriptions that search engines truncate mid-sentence.
+   */
+  const clampMeta = (text: string, max = 160): string => {
+    if (text.length <= max) return text;
+    const cut = text.slice(0, max - 1);
+    const lastSpace = cut.lastIndexOf(" ");
+    return (lastSpace > max * 0.6 ? cut.slice(0, lastSpace) : cut).replace(/[\s,.;:-]+$/, "") + ".";
+  };
+
+  const getPageSEO = (path: string): { title: string; description: string; ogImage?: string; article?: { title: string; date: string; category: string }; noindex?: boolean; notFound?: boolean } => {
+    // Error document (prerendered to dist/404.html and served for every unknown
+    // URL). Own title, noindex, and no canonical - see SEO.tsx notFound.
+    // ── Polskie adresy ────────────────────────────────────────────────────
+    // Copy pisany pod polska intencje zakupowa, nie tlumaczony z angielskiego.
+    // Nagłówki mowia jezykiem problemu ("spojnosc marki w wielu lokalizacjach"),
+    // a nie nazwa kategorii - "design operations" po polsku praktycznie nie jest
+    // wyszukiwane, wiec tytul zbudowany wokol tej frazy nie ma na czym wylądować.
+    const PL_SEO: Record<string, { title: string; description: string }> = {
+      "/pl": {
+        title: "r352 - system produkcji materiałów dla marek wielolokalizacyjnych",
+        description: "Porządkujemy produkcję materiałów marketingowych w sieciach: mniej wersji, krótsze akceptacje, spójna marka w każdej lokalizacji. Benefit, Archicom, Geers.",
+      },
+      "/pl/uslugi": {
+        title: "Usługi - r352 | Strategia, design i wdrożenie dla sieci",
+        description: "Pięć modeli współpracy z jawną ceną: audyt operacyjny, sprint, retainer, rollout wielolokalizacyjny, partner operacyjny. Wycena przed rozmową.",
+      },
+      "/pl/proces": {
+        title: "Jak pracujemy - r352 | Osiem kroków od briefu do wdrożenia",
+        description: "r3loop: osiem kroków, przez które przechodzi każda współpraca. Ta sama kolejność przy 47 i przy 470 lokalizacjach, więc praca jest przewidywalna.",
+      },
+      "/pl/realizacje": {
+        title: "Realizacje - r352 | Projekty dla sieci i marek",
+        description: "Case studies: Benefit Systems (300+ klubów), Sonova, Archicom, Kubota, UNIQA. Co było problemem, co zbudowaliśmy, co zostało po projekcie.",
+      },
+      "/pl/kontakt": {
+        title: "Kontakt - r352 | Napisz, zadzwoń albo wyślij brief",
+        description: "Porozmawiajmy o produkcji materiałów w Twojej sieci. Mail, rozmowa 30 minut albo ustrukturyzowany brief - wybierz, co szybsze.",
+      },
+      "/pl/brief": {
+        title: "Brief - r352 | Ustrukturyzowane zgłoszenie projektu",
+        description: "Opisz potrzebę, zakres, termin i budżet w jednym formularzu. Odpowiadamy konkretem, nie prezentacją o nas.",
+      },
+      "/pl/branze/fitness-wellness": {
+        title: "Sieci klubów fitness - r352 | Spójna marka w każdym klubie",
+        description: "Materiały dla sieci klubów: jeden system zamiast osobnej produkcji dla każdej lokalizacji. Doświadczenie z Benefit Systems i Zdrofit.",
+      },
+      "/pl/branze/nieruchomosci": {
+        title: "Deweloperzy - r352 | Komunikacja wielu inwestycji naraz",
+        description: "Systemy komunikacji dla deweloperów prowadzących kilka inwestycji jednocześnie: wspólne zasady, osobne charaktery, jedna produkcja. Case: Archicom.",
+      },
+    };
+    if (PL_SEO[path]) return PL_SEO[path];
+
+    if (path === "/__404") return {
+      title: "Page not found - r352",
+      description: "This page does not exist. Browse the work, the r3loop process, or start a project brief.",
+      noindex: true,
+      notFound: true,
+    };
     if (path === "/work") return {
       title: "Work - r352 | Selected projects & case studies",
       description: "See how marketing teams and agencies ship faster with scalable design systems and delivery workflows. Case studies: Sonova, Benefit Systems, Kubota.",
@@ -177,7 +222,15 @@ function AppContent() {
       if (project) return {
         title: `${project.client}: ${project.title} - r352 Case Study`,
         description: project.description?.en?.substring(0, 155) || `How r352 helped ${project.client} build scalable design systems and delivery workflows.`,
-        ogImage: `https://www.r352.com/og/case-${projectId}.png`
+        ogImage: `https://www.r352.com/og/case-${projectId}.png`,
+        // NDA cases (fifa, uniqa) are thin by contract - there is no public detail
+        // to rank. Keep them out of the index but reachable from the portfolio,
+        // and keep `follow` so their outbound links still count.
+        // Shadow cases are deliberately unlinked from every listing. Leaving them
+        // indexable was an inconsistent half-state (hidden from users, visible in
+        // search) - notably wrong for the 18+ alcohol brand. Unlisted => noindex
+        // and out of the sitemap; flip isShadow off to publish.
+        noindex: Boolean((project as any).isNDA || (project as any).isShadow)
       };
       return {
         title: "Case Study - r352 | Project Details",
@@ -220,7 +273,7 @@ function AppContent() {
     };
     if (path === "/careers") return {
       title: "Careers - r352 | Join the design operations team",
-      description: "Open roles at r352 - a fractional CMO partnership, marketing and performance, and brand and creative design. Remote-first, EU-anchored. Build the operating system behind great design.",
+      description: "Open roles at r352: fractional CMO partnership, marketing and performance, brand and creative design. Remote-first, EU-anchored.",
       ogImage: "https://www.r352.com/og-image.png?v=2"
     };
     if (path === "/privacy") return {
@@ -277,7 +330,11 @@ function AppContent() {
         const cleanTitle = article.title.replace(/<br\s*\/?>/g, ' ');
         return {
           title: `${cleanTitle} - r352 Journal`,
-          description: `r352 Journal: ${cleanTitle}. Insights on design operations, delivery systems, and scaling creative output for multi-location organizations.`,
+          // Trimmed to <=160 chars on a word boundary: long article titles pushed
+          // the generated description past the length search engines display.
+          description: clampMeta(
+            `r352 Journal: ${cleanTitle}. Insights on design operations, delivery systems and scaling creative output for multi-location organizations.`
+          ),
           ogImage: `https://www.r352.com/og/article-${article.id}.png`,
           article: { title: article.title, date: article.date, category: article.category }
         };
@@ -295,7 +352,7 @@ function AppContent() {
     // /brief - previously fell through to the default site-wide description.
     if (path === "/brief") return {
       title: "Brief - r352 | Structured project intake",
-      description: "Start your project with a structured brief: 8 sections, ~26 questions, about 10 minutes. First response with engagement model and scope within 48 hours."
+      description: "Start your project with a structured brief: 8 sections, ~26 questions, about 12 minutes. First response with engagement model and scope within 48 hours."
     };
     if (path === "/for-agencies") return {
       title: "For Agencies - r352 | White-label, end-to-end delivery",
@@ -312,7 +369,7 @@ function AppContent() {
     };
     return {
       title: "r352 - Design operations for brands and agencies.",
-      description: "Design operations for brands and agencies delivering at scale. From strategy to rollout-ready delivery, powered by the r3loop methodology - predictable quality and speed at scale.",
+      description: "Design operations for brands and agencies delivering at scale. Strategy to rollout-ready delivery, run through the r3loop methodology.",
       ogImage: "https://www.r352.com/og/home.png?v=2"
     };
   };
@@ -327,7 +384,7 @@ function AppContent() {
   return (
     <>
       <GTM />
-      {(() => { const seo = getPageSEO(location); return <SEO path={location} title={seo.title} description={seo.description} ogImage={seo.ogImage} article={seo.article} />; })()}
+      {(() => { const seo = getPageSEO(location); return <SEO path={location} title={seo.title} description={seo.description} ogImage={seo.ogImage} article={seo.article} noindex={seo.noindex} notFound={seo.notFound} />; })()}
       <SmoothScroll>
       {/* overflow-x-clip (NOT -hidden): overflow-x-hidden makes this div a scroll
           container, which becomes the sticky scrollport for every descendant -
@@ -359,6 +416,18 @@ function AppContent() {
           <AnimatePresence mode="wait">
             <Switch location={location} key={getPageKey(location)}>
               <Route path="/" component={Home} />
+              {/* ── Polska warstwa adresowa (config/plRoutes.ts) ──────────────────
+                  Te same komponenty pod polskimi adresami. Jezyk bierze sie z
+                  URL-a (LanguageContext), wiec nie ma tu zadnej logiki jezykowej -
+                  komponent renderuje po polsku, bo adres zaczyna sie od /pl. */}
+              <Route path="/pl" component={Home} />
+              <Route path="/pl/uslugi" component={Services} />
+              <Route path="/pl/proces" component={Process} />
+              <Route path="/pl/realizacje" component={Work} />
+              <Route path="/pl/kontakt" component={Contact} />
+              <Route path="/pl/brief" component={Brief} />
+              <Route path="/pl/branze/fitness-wellness" component={IndustryDetail} />
+              <Route path="/pl/branze/nieruchomosci" component={IndustryDetail} />
               <Route path="/webgl" component={WebGLExperiment} />
               <Route path="/estymacja907" component={Estymacja907} />
               <Route path="/careers" component={Careers} />

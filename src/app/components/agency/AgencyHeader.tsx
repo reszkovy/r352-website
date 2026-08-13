@@ -210,7 +210,7 @@ export function AgencyHeader() {
             staying purely linear, with no edge anywhere. Brand easing. */}
         <div
           className={cn(
-            "absolute inset-x-0 top-0 h-[260%] -z-10 pointer-events-none",
+            "absolute inset-x-0 top-0 h-[150%] md:h-[260%] -z-10 pointer-events-none",
             "bg-gradient-to-b from-black/95 via-black/55 to-transparent",
             "transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
             isScrolled && !isMenuOpen && theme === 'dark' && !isLimeTheme ? "opacity-100" : "opacity-0"

@@ -103,8 +103,8 @@ const faqs: FAQ[] = [
       en: "How do I start?",
     },
     answer: {
-      pl: "Trzy ścieżki: 1) Wypełnij brief (~10 min, dopasowuje się do projektu) - pisemna odpowiedź w 48h. 2) Napisz na hello@r352.com. 3) Zarezerwuj 30-min call. Każda prowadzi do tego samego: rozmowy z pełnym kontekstem. Diagnostic ma money-back - zero ryzyka po Twojej stronie.",
-      en: "Three paths: 1) Fill the brief (~10 min, adapts to your project) - written response within 48h. 2) Write to hello@r352.com. 3) Book a 30-min call. Each leads to the same: a call with full context. Diagnostic has money-back - zero risk on your side.",
+      pl: "Trzy ścieżki: 1) Wypełnij brief (~12 min, dopasowuje się do projektu) - pisemna odpowiedź w 48h. 2) Napisz na hello@r352.com. 3) Zarezerwuj 30-min call. Każda prowadzi do tego samego: rozmowy z pełnym kontekstem. Diagnostic ma money-back - zero ryzyka po Twojej stronie.",
+      en: "Three paths: 1) Fill the brief (~12 min, adapts to your project) - written response within 48h. 2) Write to hello@r352.com. 3) Book a 30-min call. Each leads to the same: a call with full context. Diagnostic has money-back - zero risk on your side.",
     },
   },
 ];
@@ -185,6 +185,22 @@ export function Chatbot() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            key="chat-backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            // Full-screen dim so the open chat is a focused modal: the header
+            // and page darken behind it (no nav peeking beside the panel). Sits
+            // inside the z-1002 container, so it covers the header (z-999).
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm"
+            onClick={() => setIsOpen(false)}
+            aria-hidden="true"
+          />
+        )}
+        {isOpen && (
+          <motion.div
+            key="chat-panel"
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}

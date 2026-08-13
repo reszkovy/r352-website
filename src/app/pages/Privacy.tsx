@@ -1,6 +1,7 @@
 import { PageTransition } from "@/app/components/ui/PageTransition";
 import { Reveal } from "@/app/components/ui/Reveal";
 import { useLanguage } from "@/app/context/LanguageContext";
+import { LEGAL_APPROVED } from "@/app/config/legal";
 
 /**
  * Privacy Policy page.
@@ -29,12 +30,16 @@ export function Privacy() {
     <PageTransition>
       <div className="min-h-screen bg-[#0A0A0A] text-white pt-32 md:pt-40 pb-24 px-6 md:px-12">
         <div className="max-w-[920px] mx-auto">
-          <Reveal>
-            {/* Draft banner - remove after legal review */}
-            <div className="mb-12 px-5 py-4 border border-[#D4FF00]/40 bg-[#D4FF00]/[0.04] text-[#D4FF00] text-xs md:text-sm font-display uppercase tracking-widest">
-              {t('privacy.draftBanner')}
-            </div>
-          </Reveal>
+          {/* Draft banner - shown ONLY while the copy is unreviewed. Both this
+              banner and the page's `noindex` come from the same flag, so the page
+              can never be silently published as approved. See config/legal.ts. */}
+          {!LEGAL_APPROVED && (
+            <Reveal>
+              <div className="mb-12 px-5 py-4 border border-[#D4FF00]/40 bg-[#D4FF00]/[0.04] text-[#D4FF00] text-xs md:text-sm font-display uppercase tracking-widest">
+                {t('privacy.draftBanner')}
+              </div>
+            </Reveal>
+          )}
 
           <Reveal delay={0.05}>
             <p className="text-xs md:text-sm font-display uppercase tracking-widest text-neutral-500 mb-4">

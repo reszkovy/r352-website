@@ -1,0 +1,15 @@
+{
+  "_comment": "Zamrozony budzet celow dotykowych <44x44 na stronie (WCAG 2.5.8). Reszta to swiadomie zaakceptowane linki inline w tekscie i kropki karuzeli - ich powiekszenie to zmiana visual direction, nie ergonomii. Wzrost = blokada wdrozenia. Spadek = zaktualizuj plik (node scripts/mobile-audit.mjs --update-budget), zeby zamrozic lepszy stan.",
+  "updated": "2026-08-12",
+  "base": "http://localhost:4199",
+  "pages": {
+    "/": 11,
+    "/services": 2,
+    "/work": 1,
+    "/work/sonova": 2,
+    "/industries": 0,
+    "/industries/fitness-wellness": 4,
+    "/brief": 0,
+    "/contact": 2
+  }
+}

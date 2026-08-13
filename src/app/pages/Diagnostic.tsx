@@ -461,13 +461,13 @@ export function Brief() {
                     <>
                       Adaptacyjny wizard.<br />
                       7-12 sekcji.<br />
-                      10-18 minut.
+                      ~12 minut.
                     </>
                   ) : (
                     <>
                       Adaptive wizard.<br />
                       7-12 sections.<br />
-                      10-18 minutes.
+                      ~12 minutes.
                     </>
                   )}
                 </h2>
@@ -620,7 +620,7 @@ const COPY_EN = {
   },
   preview: {
     label: "What you'll cover",
-    title: "Adaptive wizard. 7-12 sections. 10-18 minutes.",
+    title: "Adaptive wizard. 7-12 sections. ~12 minutes.",
     subtitle:
       "The wizard asks only what applies to your engagement model - a diagnostic takes ~8 minutes, a sprint 12-15, a full enterprise transformation ~18. Your answers feed our strategy engine, so the first response you get is substance, not a scheduling email.",
     sections: [
@@ -641,7 +641,7 @@ const COPY_EN = {
     steps: [
       {
         title: "Fill the brief",
-        desc: "Four fields here to start, then the adaptive wizard - 10-18 minutes depending on scope. Strategic context, not technical specs.",
+        desc: "Four fields here to start, then the adaptive wizard - around 12 minutes depending on scope. Strategic context, not technical specs.",
       },
       {
         title: "We respond",
@@ -685,7 +685,7 @@ const COPY_PL = {
   },
   preview: {
     label: "Co przejdziesz",
-    title: "Adaptacyjny wizard. 7-12 sekcji. 10-18 minut.",
+    title: "Adaptacyjny wizard. 7-12 sekcji. ~12 minut.",
     subtitle:
       "Wizard pyta tylko o to, co dotyczy Twojego modelu współpracy - diagnostyka zajmuje ~8 minut, sprint 12-15, pełna transformacja enterprise ~18. Twoje odpowiedzi zasilają nasz silnik strategiczny, więc pierwsza odpowiedź od nas to konkret, a nie mail z terminem calla.",
     sections: [
@@ -706,7 +706,7 @@ const COPY_PL = {
     steps: [
       {
         title: "Rozpocznij projekt",
-        desc: "Cztery pola na start, potem adaptacyjny wizard - 10-18 minut zależnie od zakresu. Strategiczny kontekst, nie spec techniczny.",
+        desc: "Cztery pola na start, potem adaptacyjny wizard - około 12 minut zależnie od zakresu. Strategiczny kontekst, nie spec techniczny.",
       },
       {
         title: "Odpowiadamy",

@@ -11,24 +11,258 @@
       "permanent": true
     },
     {
-      "source": "/journal/2",
-      "destination": "/journal",
-      "permanent": true
-    },
-    {
-      "source": "/journal/3",
-      "destination": "/journal",
-      "permanent": true
-    },
-    {
-      "source": "/journal/10",
-      "destination": "/journal",
+      "source": "/industries/fitness",
+      "destination": "/industries/fitness-wellness",
       "permanent": true
     }
   ],
   "rewrites": [
     {
-      "source": "/((?!api/|.*\\.).*)",
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/ai-runners",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/brief",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/brief-access",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/careers",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/cookies",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/deliverables",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/estymacja907",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/faq",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/for-agencies",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/glossary",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/industries",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/industries/fitness-wellness",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/industries/health-service-networks",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/industries/real-estate",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/industries/retail-franchise",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/journal",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/journal/1",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/journal/11",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/journal/4",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/journal/5",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/journal/6",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/journal/7",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/journal/8",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/limitedaccess",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/limitedaccess2",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/limitedaccess3",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/limitedaccess5",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/limitedaccess5/spotkanie",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/limitedaccess5/wycena",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/philosophy",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/pl",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/pl/branze/fitness-wellness",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/pl/branze/nieruchomosci",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/pl/brief",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/pl/kontakt",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/pl/proces",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/pl/realizacje",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/pl/uslugi",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/process",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/product-design",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/services",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/services/build-optimize",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/services/design-production",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/services/operating-system",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/webgl",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/work",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/work/archicom",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/work/benefit-systems",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/work/caterelo",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/work/dawid-podsiadlo",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/work/discobowl",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/work/fifa",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/work/instytut-kawy",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/work/kubota",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/work/pampelle",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/work/regional-fit",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/work/sonova",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/work/twoje-menu",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/work/uniqa",
       "destination": "/index.html"
     }
   ],

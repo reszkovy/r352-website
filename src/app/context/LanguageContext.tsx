@@ -1,6 +1,8 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { useLocation } from 'wouter';
 import { translations } from '@/app/i18n/translations';
+import { isPlPath, twinOf } from '@/app/config/plRoutes';
 import { R352Symbol } from '@/app/components/agency/R352Logo';
 
 type Language = 'en' | 'pl';
@@ -28,6 +30,12 @@ function getNestedValue(obj: any, path: string): any {
 // Prerender (Puppeteer) has no stored value, so captured HTML stays EN.
 function readStoredLanguage(): Language {
   if (typeof window === 'undefined') return 'en';
+  // THE URL IS AUTHORITATIVE. A /pl/* address is Polish for everyone - crawler,
+  // first-time visitor, or someone who once clicked EN. This is the whole point
+  // of the Polish URL layer: the old behaviour served either language under the
+  // same address depending on localStorage, which is exactly what stopped Google
+  // from indexing the Polish copy at all.
+  if (isPlPath(window.location.pathname)) return 'pl';
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     if (raw === 'en' || raw === 'pl') return raw;
@@ -65,6 +73,26 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>(readStoredLanguage);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [targetLanguage, setTargetLanguage] = useState<Language | null>(null);
+  const [pathname, navigate] = useLocation();
+
+  // Client-side navigation must obey the same rule as a cold load: /pl/* is
+  // Polish, everything else is English. Without this, clicking an in-app link
+  // from /pl/uslugi to /services would keep rendering Polish under an English
+  // URL - reintroducing the duplicate-content problem this layer exists to fix.
+  useEffect(() => {
+    const fromUrl: Language = isPlPath(pathname) ? 'pl' : 'en';
+    setLanguageState((current) => (current === fromUrl ? current : fromUrl));
+  }, [pathname]);
+
+  // Keep <html lang> in sync with the chosen language. index.html ships lang="en"
+  // and nothing ever updated it, so a PL visitor got an English-declared document:
+  // wrong for screen readers (voice/pronunciation rules), wrong for translation
+  // tooling and language detection. Cheap, no visual effect.
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.documentElement.lang = language;
+    }
+  }, [language]);
 
   // Language switch plays a full-screen L->R cinematic sweep (matches the page
   // transition grammar). The actual swap is deferred until the cover is fully
@@ -76,8 +104,17 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     setTargetLanguage(lang);
     setIsTransitioning(true);
 
-    // Apply once the screen is covered.
+    // Apply once the screen is covered. When the current page HAS a twin in the
+    // target language, navigate to it instead of swapping copy in place - the
+    // address has to describe what is on screen, or we are back to two languages
+    // under one URL. Pages without a twin (journal, glossary, ...) still swap in
+    // place: that is a deliberate, documented gap, not an oversight.
     window.setTimeout(() => {
+      const twin = twinOf(pathname);
+      const wantsPl = lang === 'pl';
+      if (twin && isPlPath(twin) === wantsPl) {
+        navigate(twin);
+      }
       setLanguageState(lang);
       persistLanguage(lang);
     }, 700);

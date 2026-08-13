@@ -106,8 +106,8 @@ export function Home() {
               <div className="col-span-12 md:col-span-5 md:justify-self-end max-w-md space-y-6">
                 <p className="text-base md:text-lg text-neutral-400 leading-relaxed">
                   {language === "pl"
-                    ? "8 sekcji, ~26 pytań, ~10 minut. Pierwsza odpowiedź w 48 godzin - model współpracy, kierunek zakresu, następny krok."
-                    : "8 sections, ~26 questions, ~10 minutes. First response within 48 hours - engagement model, scope direction, next step."}
+                    ? "8 sekcji, ~26 pytań, ~12 minut. Pierwsza odpowiedź w 48 godzin - model współpracy, kierunek zakresu, następny krok."
+                    : "8 sections, ~26 questions, ~12 minutes. First response within 48 hours - engagement model, scope direction, next step."}
                 </p>
                 <MagneticButton
                   onClick={() => setLocation("/brief")}

@@ -311,8 +311,8 @@ export function Products() {
               <div className="col-span-12 md:col-span-4 md:justify-self-end flex flex-col gap-4 md:items-end">
                 <p className="text-sm text-neutral-500 leading-relaxed max-w-xs md:text-right">
                   {lang === "pl"
-                    ? "8 sekcji briefu, ~10 minut. Pierwsza odpowiedź w 48h."
-                    : "8 sections, ~10 minutes. First response within 48h."}
+                    ? "8 sekcji briefu, ~12 minut. Pierwsza odpowiedź w 48h."
+                    : "8 sections, ~12 minutes. First response within 48h."}
                 </p>
                 <Link
                   href="/brief"

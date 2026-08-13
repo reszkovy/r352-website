@@ -124,7 +124,7 @@ export function ConsentBanner() {
             </Link>
           </p>
           <div className="flex gap-2 mt-3">
-            <button
+            <button data-tap-44
               type="button"
               onClick={deny}
               className="flex-1 inline-flex items-center justify-center px-3 py-2.5 bg-transparent text-white border border-white/30 hover:border-white/70 hover:bg-white/[0.04] transition-all duration-300 ease-out cursor-pointer"
@@ -133,7 +133,7 @@ export function ConsentBanner() {
                 {t('consent.banner.deny')}
               </span>
             </button>
-            <button
+            <button data-tap-44
               type="button"
               onClick={accept}
               className="flex-1 inline-flex items-center justify-center px-3 py-2.5 bg-[#D4FF00] text-black hover:bg-white transition-all duration-300 ease-out cursor-pointer"
@@ -175,7 +175,7 @@ export function ConsentBanner() {
           </div>
 
           <div className="flex flex-row gap-3 shrink-0">
-            <button
+            <button data-tap-44
               type="button"
               onClick={deny}
               className="group relative inline-flex items-center justify-center px-6 py-2.5 bg-transparent text-white border border-white/30 hover:border-white/70 hover:bg-white/[0.04] transition-all duration-300 ease-out cursor-pointer whitespace-nowrap"
@@ -185,7 +185,7 @@ export function ConsentBanner() {
               </span>
             </button>
 
-            <button
+            <button data-tap-44
               type="button"
               onClick={accept}
               className="group relative inline-flex items-center justify-center px-6 py-2.5 bg-[#D4FF00] text-black hover:bg-white transition-all duration-300 ease-out cursor-pointer whitespace-nowrap"

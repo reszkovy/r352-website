@@ -146,7 +146,7 @@ const COPY_EN = {
       "Whichever you choose, we respond within 48 hours. Every conversation starts with understanding - not pitching.",
   },
   pathA: {
-    badge: "Primary · 5-18 min",
+    badge: "Primary · ~12 min",
     title: "Start a structured brief.",
     body: "The brief adapts to your engagement type - from a 5-min diagnostic prompt to an 18-min strategic onboarding. You answer only the questions that fit your case.",
     bullets: [
@@ -180,7 +180,7 @@ const COPY_PL = {
       "Niezależnie od wyboru - odpowiadamy w 48 godzin. Każda rozmowa zaczyna się od zrozumienia, nie od pitcha.",
   },
   pathA: {
-    badge: "Główna · 5-18 min",
+    badge: "Główna · ~12 min",
     title: "Wypełnij ustrukturyzowany brief.",
     body: "Brief dopasowuje się do typu współpracy - od 5-minutowej diagnozy po 18-minutowe strategiczne onboarding. Odpowiadasz tylko na pytania pasujące do Twojego case'u.",
     bullets: [

@@ -1,5 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { useEffect } from "react";
+import { LEGAL_APPROVED, LEGAL_ROUTES } from "@/app/config/legal";
+import { isPlPath, twinOf, normalizePath } from "@/app/config/plRoutes";
 
 interface SEOProps {
   title?: string;
@@ -7,23 +9,61 @@ interface SEOProps {
   path?: string;
   ogImage?: string;
   article?: { title: string; date: string; category: string };
+  /** Force `noindex, follow` - used for NDA case studies with no public detail. */
+  noindex?: boolean;
+  /** Error document: emit no canonical and no hreflang (it represents no URL). */
+  notFound?: boolean;
 }
 
 export function SEO({
   title = "r352 - Design operations for brands and agencies.",
-  description = "Design operations for brands and agencies delivering at scale. From strategy to rollout-ready delivery, powered by the r3loop methodology - predictable quality and speed at scale.",
+  description = "Design operations for brands and agencies delivering at scale. Strategy to rollout-ready delivery, run through the r3loop methodology.",
   path = "/",
   ogImage = "https://www.r352.com/og-image.png?v=2",
-  article
+  article,
+  noindex = false,
+  notFound = false
 }: SEOProps) {
   const baseUrl = "https://www.r352.com";
-  const canonicalUrl = `${baseUrl}${path === "/" ? "" : path}`;
+  const canonicalUrl = `${baseUrl}${path === "/" ? "" : normalizePath(path)}`;
+
+  // ── Language layer ────────────────────────────────────────────────────────
+  // The URL decides the language of the document, so every language-dependent
+  // tag below is derived from the path, never from React state - a crawler that
+  // does not run our JS must still get a coherent, self-consistent page.
+  const isPl = isPlPath(path);
+  const htmlLang = isPl ? "pl" : "en";
+  const ogLocale = isPl ? "pl_PL" : "en_US";
+  // hreflang is only emitted for a pair that ACTUALLY EXISTS in both languages.
+  // Claiming an alternate that 404s is worse than claiming none: Google drops
+  // the whole annotation set for the page. Most routes are English-only and are
+  // meant to stay that way, so most pages get no pair at all.
+  const twin = notFound ? null : twinOf(path);
+  const twinUrl = twin ? `${baseUrl}${twin === "/" ? "" : twin}` : null;
+  const enUrl = isPl ? twinUrl : canonicalUrl;
+  const plUrl = isPl ? canonicalUrl : twinUrl;
+
+  // ── Indexability, derived from the route (single source of truth) ──────────
+  // Three cases must stay OUT of the index until they carry real public content:
+  //   1. /privacy + /cookies - copy is an unreviewed draft (see config/legal.ts).
+  //   2. /product-design      - every entry is a "Coming soon" teaser, no material.
+  //   3. NDA case studies     - thin pages by design; caller passes noindex.
+  // "follow" is kept everywhere so link equity still flows and the pages stay
+  // reachable from the portfolio.
+  const legalNotApproved = !LEGAL_APPROVED && (LEGAL_ROUTES as readonly string[]).includes(path);
+  const isNoindex = noindex || notFound || legalNotApproved || path === "/product-design";
 
   useEffect(() => {
-    const robotsMeta = document.querySelector('meta[name="robots"]');
-    if (robotsMeta && robotsMeta.getAttribute("content")?.includes("noindex")) {
-      robotsMeta.remove();
-    }
+    // Strip a STATIC noindex left in the HTML shell (e.g. a build-time
+    // placeholder) so it cannot suppress an indexable route.
+    // IMPORTANT: never touch helmet's own tag (data-rh) - since this component
+    // now emits a deliberate `noindex, follow` for draft-legal / teaser /
+    // NDA routes, removing that would silently re-index them.
+    document
+      .querySelectorAll('meta[name="robots"]:not([data-rh])')
+      .forEach((el) => {
+        if (el.getAttribute("content")?.includes("noindex")) el.remove();
+      });
   }, []);
 
   const isHomepage = path === "/";
@@ -100,59 +140,14 @@ export function SEO({
       "name": "r352",
       "url": "https://www.r352.com"
     },
-    "inLanguage": ["en"]
+    "inLanguage": [htmlLang]
   };
 
   // FAQ schema - high-yield for LLM citations and Google's PAA / rich snippets.
   // Each Q maps to a real question a multi-location operator would ask.
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is r3loop?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "r3loop is r352's 8-step operating methodology: Diagnose, Map, Standardize, Build, Govern, Ship, Measure, Iterate. Every engagement runs through this loop. Depth of each step scales with engagement size, but sequence stays constant - that's what makes the work predictable across 47 locations or 470."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Who does r352 work with?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Multi-location brands and scaling operators - typically 30-300+ location complexity. Fitness, wellness, health, retail, real estate. Past clients include Sonova (Geers), Benefit Systems (300+ wellness clubs), Archicom (multi-investment real estate), Kubota, DiscoBowl, UNIQA, and FIFA."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How is r352 different from a creative agency?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "r352 is positioned as an operator, not an agency. Agencies sell creative deliverables billed by the hour. r352 builds operational systems - design ops infrastructure, brief standardization, governance gates, AI-native production pipelines - sold as productized engagements with fixed scope and predictable outcomes. The deliverables are working tools your team uses after we're gone, not pitch decks."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What are r352's engagement models?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Five productized models. Diagnostic: 5-day operational audit, €2k fixed, 60-day money-back guarantee. Sprint: 4-6 week fixed-scope build, from €15k. Retainer: monthly engagement from €7k/mo with 30-day notice. Enterprise Sprint: 12-16 week multi-location rollout from €55k. Operating Partner: embedded role from €9.5k/mo with 12-month minimum."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Who is Reszek?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          // TODO(reszek): potwierdź listę miast w bio - na razie ogólne "six years across European markets".
-          // MUST stay byte-identical with FAQ_EN in src/app/pages/FAQ.tsx (schema/content parity).
-          "text": "Przemyslaw Reszka (Reszek) is the founder of r352. Designer-operator with 15+ years of experience: started in UX at Deloitte, then spent six years across European markets building design operations for multi-location brands. Created the r3loop methodology. EU-based, remote-first."
-        }
-      }
-    ]
-  };
+  // USUNIETE 2026-08: staly faqSchema. FAQPage zniknelo ze strony glownej
+  // (patrz komentarz przy renderze), wiec ta stala byla martwym kodem trzymajacym
+  // nieaktualna kopie odpowiedzi - jedyne zrodlo prawdy to pages/FAQ.tsx.
 
   const professionalServiceSchema = {
     "@context": "https://schema.org",
@@ -298,16 +293,26 @@ export function SEO({
   } : null;
 
   return (
-    <Helmet>
+    <Helmet htmlAttributes={{ lang: htmlLang }}>
       <title>{title}</title>
       <meta name="description" content={description} />
-      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-      <link rel="canonical" href={canonicalUrl} />
+      <meta name="robots" content={isNoindex
+        ? "noindex, follow"
+        : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
+      {/* An error document does not represent a URL, so it gets neither a
+          canonical nor hreflang. Emitting canonical="/" here (the old behaviour)
+          actively told Google that every unknown URL was a duplicate of the
+          homepage. */}
+      {!notFound && <link rel="canonical" href={canonicalUrl} />}
 
-      {/* Hreflang - only EN for now. PL is a state-based i18n toggle, not a
-          separate URL set. Re-add hreflang="pl" once we ship real /pl routes. */}
-      <link rel="alternate" hrefLang="en" href={canonicalUrl} />
-      <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />
+      {/* Hreflang. Reciprocity is mandatory and machine-checked in
+          scripts/audit-crawl.mjs: if /pl/uslugi names /services as its English
+          alternate, /services must name /pl/uslugi back, or Google ignores both.
+          x-default points at English - it is the version for everyone whose
+          language we have not explicitly served. */}
+      {!notFound && enUrl && <link rel="alternate" hrefLang="en" href={enUrl} />}
+      {!notFound && plUrl && <link rel="alternate" hrefLang="pl" href={plUrl} />}
+      {!notFound && enUrl && <link rel="alternate" hrefLang="x-default" href={enUrl} />}
 
       {/* Open Graph */}
       <meta property="og:type" content={isArticle ? "article" : "website"} />
@@ -318,7 +323,7 @@ export function SEO({
       <meta property="og:image" content={ogImage} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:locale" content="en_US" />
+      <meta property="og:locale" content={ogLocale} />
 
       {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -344,16 +349,17 @@ export function SEO({
           {JSON.stringify(professionalServiceSchema)}
         </script>
       ) : null}
-      {isHomepage ? (
-        <script type="application/ld+json">
-          {JSON.stringify(reviewsSchema)}
-        </script>
-      ) : null}
-      {isHomepage ? (
-        <script type="application/ld+json">
-          {JSON.stringify(faqSchema)}
-        </script>
-      ) : null}
+      {/* USUNIETE 2026-08: Organization + aggregateRating 5/5 z wlasnymi opiniami.
+          Google nie kwalifikuje self-serving reviews (opinii o firmie zebranych
+          i publikowanych przez te firme na wlasnej stronie) do rich resultow -
+          to naruszenie zasad structured data, a nie brakujaca funkcja. Same
+          referencje zostaja WIDOCZNE na stronie (prawdziwe osoby, prawdziwe
+          firmy) - znika tylko znacznik roszczacy sobie gwiazdki w wynikach. */}
+      {/* USUNIETE 2026-08: FAQPage na stronie glownej. Structured data musi
+          odpowiadac tresci WIDOCZNEJ na tej stronie, a homepage nie wyswietla
+          tych pytan - one zyja na /faq, ktore ma juz wlasny, poprawny FAQPage
+          (pages/FAQ.tsx). Duplikat na home byl niezgodny z zasadami i mogl
+          uniewaznic ten prawidlowy. */}
       {isArticle && blogPostingSchema ? (
         <script type="application/ld+json">
           {JSON.stringify(blogPostingSchema)}

@@ -7,6 +7,27 @@ import { useLenis } from "lenis/react";
 import { MagnetGrid } from "@/app/components/ui/MagnetGrid";
 import { R3LoopBadge } from "@/app/components/ui/R3LoopBadge";
 
+/**
+ * Correct zone abbreviation for the Palma/Madrid clock in the footer.
+ * The label used to be a hardcoded "CET", which is simply wrong from late March
+ * to late October - Spain is on CEST (UTC+2) then, so the site advertised a time
+ * one hour off its own label for ~7 months a year. `en-GB` + timeZoneName:"short"
+ * resolves to "CEST"/"CET" automatically, including the DST switch.
+ */
+function madridZoneAbbr(): string {
+  try {
+    const part = new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Europe/Madrid",
+      timeZoneName: "short",
+    })
+      .formatToParts(new Date())
+      .find((p) => p.type === "timeZoneName");
+    return part?.value ?? "CET";
+  } catch {
+    return "CET";
+  }
+}
+
 export function Footer() {
   const { t } = useLanguage();
   const { reset } = useConsent();
@@ -51,8 +72,12 @@ export function Footer() {
     // design (kept out of top-nav so it doesn't compete with the primary
     // brand-direct narrative). Surfaced contextually from /services too.
     { label: t("footer.link_agencies"), href: "/for-agencies" },
-    // Product Design - curated digital-product / UX work (the product side of r352).
-    { label: t("footer.link_product_design"), href: "/product-design" },
+    // Product Design - PULLED FROM NAV 2026-08. All 14 entries on that page are
+    // "Coming soon" teasers with no published material, so linking to it from the
+    // footer sent visitors to an empty promise. The route still resolves (direct
+    // links keep working) but it is `noindex` and unlinked until at least 3 real
+    // cases are published - then restore this line and drop it from the noindex
+    // list in components/SEO.tsx.
     { label: t("footer.link_careers"), href: "/careers" },
   ];
 
@@ -232,7 +257,7 @@ export function Footer() {
                <div>
                   <span className="block text-xs font-display uppercase tracking-widest text-neutral-500 mb-6">{t("footer.local_time")}</span>
                   <p className="text-lg text-neutral-300">
-                    {new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Madrid' })} CET
+                    {new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Madrid' })} {madridZoneAbbr()}
                   </p>
                </div>
 

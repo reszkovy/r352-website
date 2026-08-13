@@ -23,7 +23,7 @@ export const ROUTE_META = {
   "/": {
     title: "r352 - Design operations for brands and agencies.",
     description:
-      "Design operations for brands and agencies delivering at scale. From strategy to rollout-ready delivery, powered by the r3loop methodology - predictable quality and speed at scale.",
+      "Design operations for brands and agencies delivering at scale. Strategy to rollout-ready delivery, run through the r3loop methodology.",
     ogImage: OG("home"),
   },
   "/work": {
@@ -132,7 +132,7 @@ export const ROUTE_META = {
   "/careers": {
     title: "Careers - r352 | Join the design operations team",
     description:
-      "Open roles at r352 - a fractional CMO partnership, marketing and performance, and brand and creative design. Remote-first, EU-anchored. Build the operating system behind great design.",
+      "Open roles at r352: fractional CMO partnership, marketing and performance, brand and creative design. Remote-first, EU-anchored.",
     ogImage: DEFAULT_OG,
   },
   "/ai-runners": {
@@ -141,7 +141,9 @@ export const ROUTE_META = {
       "One running scene rendered by ten different AI image and video models. Same prompt, very different results - an interactive side-by-side gallery.",
     ogImage: OG("ai-runners"),
   },
+  // noindex: every entry is a "Coming soon" teaser - see components/SEO.tsx.
   "/product-design": {
+    noindex: true,
     title: "Product Design - r352 | Brand, CX, UI, UX",
     description:
       "Product design at r352 - Brand, CX, UI, UX. Products people understand, use, and come back to, with the component systems that let them scale and hold up.",

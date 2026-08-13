@@ -241,10 +241,12 @@ export function ForAgencies() {
             {pl ? "Napięcie" : "The tension"}
           </span>
         </Reveal>
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-white leading-[0.98] max-w-2xl mb-8 md:mb-10">
+        {/* Promoted h2 -> h1: this is the page's main heading and /for-agencies
+            shipped with no h1 at all. Classes unchanged - identical visual. */}
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-white leading-[0.98] max-w-2xl mb-8 md:mb-10">
           <MaskReveal>{pl ? "Wygrywasz na kreacji." : "You win on creative."}</MaskReveal>
           <MaskReveal delay={0.1}>{pl ? "Wycieka na realizacji." : "It leaks on delivery."}</MaskReveal>
-        </h2>
+        </h1>
         <Reveal delay={0.15} width="100%">
           <p className="text-lg md:text-xl text-neutral-400 leading-relaxed max-w-xl">
             {pl

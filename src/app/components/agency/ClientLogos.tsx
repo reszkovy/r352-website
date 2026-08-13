@@ -46,7 +46,7 @@ export function ClientLogos() {
           {/* Logos Row - Always one line */}
           <div className="w-full flex flex-nowrap items-center justify-between gap-5 md:gap-8 overflow-x-auto md:overflow-visible scrollbar-hide mask-fade-sides">
             {uniqueClients.map((client, i) => (
-              <a 
+              <a data-tap-44 
                 key={i} 
                 href={client.url}
                 target="_blank"

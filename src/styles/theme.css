@@ -923,3 +923,50 @@ body:is(.lime-theme, .global-light-mode) .stay-dark .bg-gradient-to-t {
     animation: none !important;
   }
 }
+
+/* ─── Touch targets (WCAG 2.5.8 Target Size Minimum, AA) ──────────────────
+   Standalone controls in the header, footer and floating widgets were 16-32 px
+   tall on mobile - fine to read, hard to hit. This raises the HIT AREA to 44 px
+   without touching type size, spacing rhythm or the desktop layout:
+
+   - scoped to `pointer: coarse`, so mouse/desktop rendering is byte-identical;
+   - applies to chrome (header / footer / audio / toast controls), NOT to links
+     inside prose - WCAG 2.5.8 explicitly exempts inline links in a sentence,
+     and padding them out would break text flow and create overlapping targets;
+   - `min-height` + inline-flex centering rather than a pseudo-element, because
+     an injected ::after would collide with hover-underline animations.
+
+   Opt in anywhere else with `data-tap-44`. */
+@media (pointer: coarse) {
+  /* Form controls: a 41px input is a real miss on a conversion page, and unlike
+     a carousel dot the fix is invisible - only the height floor changes, layout
+     and box model stay as authored. Buttons keep their own rules below. */
+  input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
+  select,
+  textarea {
+    min-height: 44px;
+  }
+
+  header a,
+  header button,
+  footer a,
+  footer button,
+  [data-tap-44] {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Full-width / block controls must keep their own box model - only the
+     height floor applies, otherwise centering would collapse their layout. */
+  header a.w-full,
+  header button.w-full,
+  footer a.w-full,
+  footer button.w-full,
+  [data-tap-44].w-full {
+    display: flex;
+    min-width: 0;
+  }
+}

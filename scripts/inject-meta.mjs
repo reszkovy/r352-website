@@ -73,6 +73,14 @@ for (const [route, meta] of Object.entries(ROUTE_META)) {
   html = setMetaContent(html, 'name="twitter:description"', meta.description);
   html = setMetaContent(html, 'name="twitter:image"', ogImage);
 
+  // Robots - routes flagged `noindex` in route-meta.mjs must carry the directive
+  // in the STATIC shell too. /product-design and /ai-runners are not prerendered
+  // (no browser snapshot), so helmet's runtime robots tag never reaches the file
+  // a non-JS crawler reads - without this the shell would say "index, follow".
+  if (meta.noindex) {
+    html = setMetaContent(html, 'name="robots"', "noindex, follow");
+  }
+
   // Canonical — the shell ships none (react-helmet adds one client-side at the
   // same URL, so a static one here is a harmless identical duplicate for JS
   // crawlers and the only canonical non-JS crawlers ever see). Insert once.

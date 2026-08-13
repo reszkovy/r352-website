@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { PageTransition } from "@/app/components/ui/PageTransition";
 import { Reveal } from "@/app/components/ui/Reveal";
 import { useLanguage } from "@/app/context/LanguageContext";
+import { LEGAL_APPROVED } from "@/app/config/legal";
 import { useConsent } from "@/app/context/ConsentContext";
 
 /**
@@ -60,11 +61,14 @@ export function Cookies() {
     <PageTransition>
       <div className="min-h-screen bg-[#0A0A0A] text-white pt-32 md:pt-40 pb-24 px-6 md:px-12">
         <div className="max-w-[920px] mx-auto">
-          <Reveal>
-            <div className="mb-12 px-5 py-4 border border-[#D4FF00]/40 bg-[#D4FF00]/[0.04] text-[#D4FF00] text-xs md:text-sm font-display uppercase tracking-widest">
-              {t("cookies.draftBanner")}
-            </div>
-          </Reveal>
+          {/* Draft banner - gated on the same flag as the page's robots directive. */}
+          {!LEGAL_APPROVED && (
+            <Reveal>
+              <div className="mb-12 px-5 py-4 border border-[#D4FF00]/40 bg-[#D4FF00]/[0.04] text-[#D4FF00] text-xs md:text-sm font-display uppercase tracking-widest">
+                {t("cookies.draftBanner")}
+              </div>
+            </Reveal>
+          )}
 
           <Reveal delay={0.05}>
             <p className="text-xs md:text-sm font-display uppercase tracking-widest text-neutral-500 mb-4">
