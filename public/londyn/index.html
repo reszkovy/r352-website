@@ -8,6 +8,7 @@
 <meta name="referrer" content="no-referrer">
 <meta name="description" content="Plan prywatny. Londyn, 20-25 sierpnia 2026.">
 <link rel="icon" href="/favicon.svg">
+<link rel="stylesheet" href="/londyn/vendor/leaflet.css">
 </head>
 <body>
 <style>
@@ -58,18 +59,27 @@ h1{font-size:clamp(2rem,5.5vw,3.1rem);line-height:1.08;margin:.5rem 0 .75rem;let
 .legend span{display:inline-flex;align-items:center;gap:.35rem}
 .legend i{width:9px;height:9px;border-radius:50%;display:block}
 .mapbox{background:var(--land);overflow-x:auto;position:relative}
-#gwrap{display:block}
-#gwrap iframe{display:block;width:100%;height:clamp(340px,52vh,560px);border:0}
-#gwrap.off{display:none}
-#swrap{display:none}
-#swrap.on{display:block}
-.mapswitch{display:flex;gap:.3rem;margin-left:auto}
-.mapswitch button{appearance:none;font:inherit;cursor:pointer;background:transparent;
-  color:var(--quiet);border:1px solid var(--rule);border-radius:2px;padding:.24rem .55rem;
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.66rem;
-  letter-spacing:.09em;text-transform:uppercase}
-.mapswitch button[aria-pressed="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
-.mapswitch button:focus-visible{outline:2px solid var(--art);outline-offset:2px}
+#lmap{width:100%;height:clamp(360px,58vh,620px);background:var(--land);z-index:0}
+.leaflet-container{font:inherit;background:var(--land)}
+.leaflet-popup-content-wrapper{background:var(--surface);color:var(--ink);border-radius:3px}
+.leaflet-popup-tip{background:var(--surface)}
+.leaflet-popup-content{margin:.7rem .85rem;font-size:.88rem;line-height:1.45;max-width:15rem}
+.leaflet-popup-content b{font-family:"Iowan Old Style",Palatino,Georgia,serif;font-size:1rem}
+.leaflet-popup-content .pn{color:var(--quiet);display:block;margin:.25rem 0 .5rem}
+.leaflet-popup-content a{color:var(--art);text-decoration:none;border-bottom:1px solid var(--rule);
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.68rem;
+  letter-spacing:.05em;text-transform:uppercase;margin-right:.6rem;display:inline-block;margin-top:.2rem}
+.leaflet-bar a{background:var(--surface);color:var(--ink);border-bottom-color:var(--rule)}
+.leaflet-bar a:hover{background:var(--ground)}
+.leaflet-control-attribution{background:var(--surface)!important;color:var(--quiet)!important;font-size:10px}
+.leaflet-control-attribution a{color:var(--quiet)!important}
+.mk{display:block;width:15px;height:15px;border-radius:50%;border:2.5px solid var(--surface);
+  box-shadow:0 1px 4px rgba(0,0,0,.4);transition:transform .18s ease}
+.mk.base{border-radius:3px}
+.mkwrap.hot .mk{transform:scale(1.45)}
+.mklabel{position:absolute;left:19px;top:-1px;white-space:nowrap;font-size:11.5px;
+  font-weight:600;color:var(--ink);pointer-events:none;
+  text-shadow:0 0 3px var(--surface),0 0 3px var(--surface),0 0 3px var(--surface),0 0 4px var(--surface)}
 .mapnote{padding:.6rem 1.1rem;border-top:1px solid var(--rule);color:var(--quiet);
   font-size:.8rem}
 svg.map{display:block;width:100%;min-width:700px;height:auto}
@@ -154,16 +164,12 @@ footer{border-top:1px solid var(--rule);margin-top:2.5rem;padding:1.25rem 0 3rem
 <header>
   <span class="eyebrow">20-25 sierpnia 2026 · troje, w tym trzylatek</span>
   <h1>Warwick Road i okolice</h1>
-  <p class="lede">Trzynasty Londyn, więc atrakcje są odhaczone. Baza przy <strong>Residence Inn Kensington, 181-183 Warwick Road</strong> ustawia cały plan: Leighton House osiem minut od drzwi, Holland Park piętnaście, Notting Hill jeden autobus na północ. <strong>Najdalszy punkt tygodnia to Soho</strong> i jest to jedyny przejazd metrem. Na północ sięgamy po kanał, na wschód nie wychodzimy poza Soho. Każdy punkt otwiera się w Google Maps.</p>
+  <p class="lede">Trzynasty Londyn, więc atrakcje są odhaczone. Baza przy <strong>Residence Inn Kensington, 181-183 Warwick Road</strong> ustawia cały plan: Leighton House osiem minut od drzwi, Holland Park piętnaście, Notting Hill jeden autobus na północ. <strong>Najdalszy punkt tygodnia to Soho</strong> i jest to jedyny przejazd metrem. Na północ sięgamy po kanał, na wschód nie wychodzimy poza Soho. Śniadania jecie u siebie, więc przy każdym dniu jest tylko obiad albo kolacja. Każdy punkt otwiera się w Google Maps.</p>
 </header>
 
 <div class="mapcard">
   <div class="maphead">
-    <h2>Mapa</h2>
-    <div class="mapswitch">
-      <button id="btnG" aria-pressed="true">Google</button>
-      <button id="btnS" aria-pressed="false">Schemat</button>
-    </div>
+    <h2>Mapa dnia</h2>
     <div class="legend">
       <span><i style="background:var(--kid)"></i>dziecko</span>
       <span><i style="background:var(--art)"></i>sztuka</span>
@@ -172,32 +178,9 @@ footer{border-top:1px solid var(--rule);margin-top:2.5rem;padding:1.25rem 0 3rem
     </div>
   </div>
   <div class="mapbox">
-    <div id="gwrap"><iframe id="gmap" title="Google Maps" loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-      src="https://maps.google.com/maps?q=Residence%20Inn%20London%20Kensington%2C%20181-183%20Warwick%20Road%2C%20London%20W14%208PU&z=14&hl=pl&output=embed"></iframe></div>
-    <div id="swrap"><svg class="map" viewBox="0 0 1200 865" role="img" aria-label="Schemat Londynu od hotelu przy Warwick Road po Soho">
-      <g>
-        <rect x="371" y="294" width="532" height="231" rx="30" fill="var(--park)"/>
-        <rect x="246" y="469" width="108" height="129" rx="20" fill="var(--park)"/>
-        <rect x="423" y="745" width="40" height="101" rx="12" fill="var(--park)"/>
-        <rect x="891" y="414" width="292" height="138" rx="26" fill="var(--park)"/>
-        <path d="M537 156 L423 129 L286 83 L137 18" fill="none" stroke="var(--water)"
-              stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M480 905 L700 860 L880 819 L1086 764 L1200 735" fill="none" stroke="var(--water)"
-              stroke-width="21" stroke-linecap="round" stroke-linejoin="round"/>
-        <text class="geo" x="760" y="812" transform="rotate(-13 760 812)">Tamiza</text>
-        <text class="geo" x="290" y="68" transform="rotate(-19 290 68)">Grand Union Canal</text>
-        <text class="zonelabel" x="320" y="195">Notting Hill</text>
-        <text class="zonelabel" x="580" y="332">Kensington Gardens</text>
-        <text class="zonelabel" x="246" y="458">Holland Park</text>
-        <text class="zonelabel" x="186" y="706">West Kensington</text>
-        <text class="zonelabel" x="1010" y="203">Soho</text>
-        <text class="zonelabel" x="908" y="486">Green Park</text>
-      </g>
-      <g id="pins"></g>
-    </svg></div>
+    <div id="lmap"></div>
   </div>
-  <p class="mapnote" id="mapnote">Mapa Google pokazuje wybrany punkt. Kliknij pozycję w rozkładzie, żeby ją tu wyśrodkować. Jeśli okno mapy jest puste, przełącz na Schemat.</p>
+  <p class="mapnote" id="mapnote">Mapa pokazuje wszystkie punkty wybranego dnia. Kliknij pinezkę po opis i nawigację, albo najedź na pozycję w rozkładzie, żeby ją tu podświetlić.</p>
 </div>
 
 <div class="rail" role="tablist" aria-label="Dni wyjazdu" id="rail"></div>
@@ -214,6 +197,7 @@ footer{border-top:1px solid var(--rule);margin-top:2.5rem;padding:1.25rem 0 3rem
         <li><strong>Opera Holland Park kończy sezon 22.08</strong> - łapiecie dwa ostatnie wieczory lata w Waszym własnym parku. 20.08 Bernstein i Weill, 22.08 Wesele Figara.</li>
         <li><strong>BBC Proms w Royal Albert Hall</strong> przez cały pobyt. Około tysiąca miejsc stojących po 8 funtów sprzedaje się w dniu koncertu, online od 9:30 albo w kasie przy Door 12.</li>
         <li><strong>Play in the Park, wt 25.08, 12:00-16:00</strong> - darmowe zabawy dla rodzin w Kensington Gardens, bez rezerwacji, motyw karnawałowy.</li>
+        <li><strong>Leighton House ma stulecie</strong> - gra wystawa o Arab Hall, wliczona w bilet. Muzea RBKC prowadzą też darmowe spacery po dzielnicy domów artystów w czwartki i niedziele.</li>
         <li><strong>Notting Hill Carnival to 29-31.08</strong>, tydzień po Was.</li>
       </ul>
     </section>
@@ -250,86 +234,74 @@ footer{border-top:1px solid var(--rule);margin-top:2.5rem;padding:1.25rem 0 3rem
 </footer>
 </div>
 
+<script src="/londyn/vendor/leaflet.js"></script>
 <script>
 const HOTEL="Residence Inn London Kensington, 181-183 Warwick Road, London W14 8PU";
-const P={
-  hotel:{x:291,y:653,l:"Hotel · Warwick Road",s:"r"},
-  tesco:{x:263,y:681,l:"Tesco",s:"l"},
-  leighton:{x:297,y:574,l:"Leighton House",s:"l"},
-  designmus:{x:337,y:565,l:"Design Museum",s:"r"},
-  kyoto:{x:297,y:497,l:"Kyoto Garden",s:"r"},
-  hpplay:{x:269,y:537,l:"Plac zabaw Holland Park",s:"l"},
-  kenhigh:{x:429,y:534,l:"Kensington High Street",s:"r"},
-  brompton:{x:443,y:791,l:"Brompton Cemetery",s:"r"},
-  churchill:{x:400,y:433,l:"Churchill Arms",s:"r"},
-  serpentine:{x:625,y:418,l:"Serpentine North",s:"r"},
-  diana:{x:461,y:388,l:"Plac zabaw Diany",s:"t"},
-  sunken:{x:483,y:445,l:"Sunken Garden",s:"b"},
-  portobello:{x:280,y:249,l:"Portobello Road",s:"l"},
-  golborne:{x:269,y:110,l:"Golborne Road",s:"l"},
-  westbourne:{x:383,y:267,l:"Westbourne Grove",s:"r"},
-  brands:{x:217,y:212,l:"Museum of Brands",s:"l"},
-  meanwhile:{x:309,y:92,l:"Meanwhile Gardens",s:"r"},
-  venice:{x:537,y:156,l:"Little Venice",s:"r"},
-  carnaby:{x:1038,y:318,l:"Carnaby Street",s:"l"},
-  sohosq:{x:1112,y:268,l:"Soho Square",s:"t"},
-  phoenix:{x:1148,y:296,l:"Phoenix Garden",s:"l"}
-};
-const C={kid:"var(--kid)",art:"var(--art)",city:"var(--city)",food:"var(--food)"};
+const PT={"hotel": {"lat": 51.493611, "lon": -0.202208, "l": "Hotel"}, "tesco": {"lat": 51.492809, "lon": -0.201003, "l": "Tesco"}, "leighton": {"lat": 51.498613, "lon": -0.203161, "l": "Leighton House"}, "designmus": {"lat": 51.499915, "lon": -0.200157, "l": "Design Museum"}, "kyoto": {"lat": 51.503079, "lon": -0.204527, "l": "Kyoto Garden"}, "hpplay": {"lat": 51.502246, "lon": -0.206065, "l": "Plac zabaw"}, "kenhigh": {"lat": 51.496819, "lon": -0.205417, "l": "Kensington High St"}, "brompton": {"lat": 51.485139, "lon": -0.19105, "l": "Brompton Cemetery"}, "churchill": {"lat": 51.506878, "lon": -0.194869, "l": "Churchill Arms"}, "serpentine": {"lat": 51.50709, "lon": -0.171259, "l": "Serpentine North"}, "diana": {"lat": 51.509051, "lon": -0.18812, "l": "Plac zabaw Diany"}, "sunken": {"lat": 51.505086, "lon": -0.187628, "l": "Sunken Garden"}, "portobello": {"lat": 51.516086, "lon": -0.205117, "l": "Portobello Road"}, "golborne": {"lat": 51.521834, "lon": -0.208517, "l": "Golborne Road"}, "westbourne": {"lat": 51.513603, "lon": -0.202855, "l": "Westbourne Grove"}, "brands": {"lat": 51.516247, "lon": -0.211173, "l": "Museum of Brands"}, "meanwhile": {"lat": 51.523727, "lon": -0.204736, "l": "Meanwhile Gardens"}, "venice": {"lat": 51.521195, "lon": -0.182404, "l": "Little Venice"}, "carnaby": {"lat": 51.51301, "lon": -0.138669, "l": "Carnaby Street"}, "sohosq": {"lat": 51.514971, "lon": -0.132603, "l": "Soho Square"}, "phoenix": {"lat": 51.514604, "lon": -0.128917, "l": "Phoenix Garden"}, "rah": {"lat": 51.501007, "lon": -0.177406, "l": "Royal Albert Hall"}};
+const C={kid:"#C2521E",art:"#2E6E8E",city:"#6A6F86",food:"#77803D"};
+const CD={kid:"#EE7B4C",art:"#56A3C9",city:"#9AA0BC",food:"#A6B25A"};
 const CN={kid:"dziecko",art:"sztuka",city:"miasto",food:"jedzenie"};
-
+function dark(){return matchMedia("(prefers-color-scheme:dark)").matches}
+function col(k){return (dark()?CD:C)[k]}
 const DAYS=[
  {d:"czw",n:"20",t:"Holland Park",
   title:"Czwartek - dzień przylotu kończy się w parku",
   sub:"Zameldowanie, zakupy w Tesco obok i pierwsze wyjście do parku, który przez cały tydzień będzie Waszym podwórkiem.",
   items:[
    {s:"15:00",k:"food",h:"Tesco Extra",p:"tesco",q:"Tesco Extra, West Cromwell Road, London W14",w:3,
-    n:"Obok hotelu. Apartament ma kuchnię, więc zakupy pierwszego dnia oszczędzają Wam trzech wieczornych wypraw z głodnym dzieckiem."},
+    n:"Obok hotelu. Apartament ma kuchnię, a Wy jecie śniadania u siebie, więc te zakupy obsługują cały tydzień poranków."},
    {s:"16:00",k:"kid",h:"Kyoto Garden",p:"kyoto",q:"Kyoto Garden, Holland Park, London W8 6LU",w:15,
     n:"Japoński ogród z wodospadem i karpiami, a po ścieżkach chodzą pawie. Dla trzylatka pawie biją każde muzeum świata.",
     f:"Park zamyka bramy około pół godziny przed zmierzchem, więc planujcie wyjście przed 19:45."},
    {s:"17:00",k:"kid",h:"Plac zabaw Holland Park",p:"hpplay",q:"Holland Park Adventure Playground, London W8",w:13,
-    n:"Duży, zacieniony, tuż obok ogrodu. Tu się siedzi tak długo, jak trzeba."},
-   {s:"wieczór",k:"art",h:"Opera Holland Park",p:"kyoto",q:"Opera Holland Park, Holland Park, London W8 6LU",w:15,
+    n:"Duży, zacieniony, tuż obok ogrodu.",
+    e:"<b>Ecology Centre stoi przy tym placu</b> i w wakacje prowadzi zajęcia przyrodnicze dla dzieci. Programu na Wasz tydzień nie udało mi się potwierdzić - zapytajcie na miejscu, bo to dwie minuty od huśtawek."},
+   {s:"18:00",k:"food",h:"Kolacja: Holland Park Café",p:"kyoto",q:"Holland Park Cafe, Holland Park, London W8 6LU",w:15,
+    n:"Kawiarnia z tarasem w środku parku, przy placu zabaw. Prosta karta, dużo miejsca na wózek, siedzicie na zewnątrz i mały biega. Zamykają po podwieczorku, więc to jest wczesna kolacja albo nic.",
+    f:"Plan B na dziś, przy deszczu i po locie: kolacja w apartamencie z tego, co kupicie w Tesco. To nie jest porażka, to jest rozsądek."},
+   {s:"opcja",k:"art",h:"Opera Holland Park",p:"kyoto",q:"Opera Holland Park, Holland Park, London W8 6LU",w:15,
     n:"Jeśli lot był wczesny i ktoś ma jeszcze siłę: opera w namiocie w tym samym parku.",
-    e:"<b>Dziś: Trouble in Tahiti i Siedem grzechów głównych</b> - Bernstein i Weill. Godziny sprawdź na operahollandpark.com."}]},
+    e:"<b>Dziś: Trouble in Tahiti i Siedem grzechów głównych</b> - Bernstein i Weill. Godziny na operahollandpark.com."}]},
 
  {d:"pt",n:"21",t:"Osiem minut od drzwi",
   title:"Piątek - najlepsze rzeczy w tej okolicy są pod nosem",
-  sub:"Dzień bez transportu. Dwa muzea, których większość ludzi nie zna, główna ulica Kensington i cmentarz, który jest ciekawszy niż brzmi.",
+  sub:"Dzień bez transportu. Dom malarza ze stuletnią historią, muzeum designu, główna ulica Kensington i cmentarz, który jest ciekawszy niż brzmi.",
   items:[
    {s:"10:00",k:"art",h:"Leighton House",p:"leighton",q:"Leighton House, 12 Holland Park Road, London W14 8LZ",w:8,
     n:"Dom malarza z arabską salą wyłożoną kaflami z Damaszku, fontanną i złotą kopułą. Mały, obchodzi się w 45 minut, prawie pusty.",
-    f:"Realnie: jedno z Was wchodzi, drugie czeka w parku obok. Warto."},
-   {s:"12:00",k:"art",h:"Design Museum",p:"designmus",q:"Design Museum, 224-238 Kensington High Street, London W8 6AG",w:10,
+    e:"<b>Leighton House ma w 2026 stulecie</b> i z tej okazji gra wystawa <i>The Arab Hall: Past and Present</i>, wliczona w bilet. Czyli traficie nie na sam dom, tylko na jego najlepszy rok.",
+    f:"Realnie: jedno z Was wchodzi, drugie czeka w ogrodzie. Warto."},
+   {s:"11:45",k:"food",h:"Lunch: De Morgan Café",p:"leighton",q:"De Morgan Cafe, Leighton House, 12 Holland Park Road, London W14",w:8,
+    n:"Kawiarnia z ogrodem przy samym Leighton House, do której wchodzi się bez biletu do muzeum. Dlatego jest idealna przy tym podziale ról: jedno zwiedza, drugie siedzi z małym w ogrodzie przy kawie, potem zamiana."},
+   {s:"13:30",k:"art",h:"Design Museum",p:"designmus",q:"Design Museum, 224-238 Kensington High Street, London W8 6AG",w:10,
     n:"Stała ekspozycja jest darmowa, a sam budynek z parabolicznym dachem robi robotę."},
-   {s:"13:30",k:"food",h:"Kensington High Street",p:"kenhigh",q:"Kensington High Street, London W8",w:11,
-    n:"Lunch i zakupy. To jest Wasza ulica na cały tydzień, więc warto przejść ją całą."},
    {s:"15:30",k:"city",h:"Brompton Cemetery",p:"brompton",q:"Brompton Cemetery, Old Brompton Road, London SW10",w:16,
     n:"Wiktoriański cmentarz-park: aleje, kolumnada, wiewiórki i całkowita cisza kwadrans od hotelu. Beatrix Potter mieszkała obok i z tutejszych nagrobków wzięła nazwiska dla swoich postaci.",
-    f:"Brzmi dziwnie na wyjazd z trzylatkiem, ale to jest spokojny park z alejkami, po których dobrze jedzie wózek."}]},
+    f:"Brzmi dziwnie na wyjazd z trzylatkiem, ale to jest spokojny park z alejkami, po których dobrze jedzie wózek."},
+   {s:"18:00",k:"food",h:"Kolacja: Kensington High Street",p:"kenhigh",q:"Whole Foods Market, Kensington High Street, London W8",w:11,
+    n:"Whole Foods na Kensington High Street ma piętro z gorącym bufetem i miejscami do siedzenia. Brzmi prozaicznie, ale z trzylatkiem bije każdą restaurację: nakładacie ile chcecie, jecie od razu, nikt nie czeka na kelnera, a resztę bierzecie do apartamentu."}]},
 
  {d:"sob",n:"22",t:"Notting Hill i kanał",
   title:"Sobota - Portobello od złej strony, potem woda",
   sub:"Sobota to pełne Portobello. Sztuczka: wejść od północy, od Golborne, i iść w dół, a po południu zejść na kanał, który zaczyna się pięć minut dalej.",
   items:[
-   {s:"9:30",k:"food",h:"Lisboa Patisserie",p:"golborne",q:"Lisboa Patisserie, 57 Golborne Road, London W10 5NR",w:0,
-    n:"Portugalski róg Notting Hill. Pastel de nata na śniadanie, ludzie z okolicy zamiast turystów.",
+   {s:"9:30",k:"food",h:"Kawa: Lisboa Patisserie",p:"golborne",q:"Lisboa Patisserie, 57 Golborne Road, London W10 5NR",w:0,
+    n:"Skoro śniadanie jecie u siebie, to jest przystanek na kawę i pastel de nata w drodze na targ. Portugalski róg Notting Hill, ludzie z okolicy zamiast turystów.",
     f:"Z Warwick Road jedzie tu autobus w stronę Notting Hill Gate i Ladbroke Grove - sprawdźcie połączenie rano w Citymapper."},
    {s:"10:15",k:"city",h:"Portobello Road",p:"portobello",q:"Portobello Road Market, London W11 1LJ",w:0,
     n:"Od Golborne przez odcinek warzywno-vintage, dalej antyki. Idziecie w kierunku, w którym tłum się rozrzedza."},
    {s:"12:00",k:"art",h:"Museum of Brands",p:"brands",q:"Museum of Brands, 111-117 Lancaster Road, London W11 1QT",w:0,
     n:"Sto pięćdziesiąt lat opakowań, reklam i zabawek ułożonych w tunel czasu. Małe, w środku, ma ogród.",
     f:"Jedyne muzeum w tym planie, które jest tu naprawdę dla Ciebie, a dziecko i tak wytrzyma."},
-   {s:"14:00",k:"kid",h:"Meanwhile Gardens",p:"meanwhile",q:"Meanwhile Gardens, 156-158 Kensal Road, London W10 5BN",w:0,
-    n:"Pięć minut od Golborne, już nad kanałem. Ogrody społecznościowe pod Trellick Tower, z betonowym skateparkiem i placem zabaw. Kontrast brutalistycznej wieży i grządek sam w sobie wart przyjścia."},
-   {s:"15:00",k:"city",h:"Ścieżka wzdłuż kanału",p:"meanwhile",q:"Grand Union Canal towpath, Kensal Road, London W10",w:0,
+   {s:"13:15",k:"food",h:"Lunch: Golborne Road",p:"golborne",q:"Golborne Road, London W10",w:0,
+    n:"Wracacie na Golborne i jecie tam, gdzie je okolica: portugalskie grille z kurczakiem, marokańskie knajpki, wszystko szybkie i tanie. Zero rezerwacji, zero czekania, można wziąć na wynos i zjeść nad kanałem dziesięć minut dalej."},
+   {s:"14:30",k:"kid",h:"Meanwhile Gardens",p:"meanwhile",q:"Meanwhile Gardens, 156-158 Kensal Road, London W10 5BN",w:0,
+    n:"Pięć minut od Golborne, już nad kanałem. Ogrody społecznościowe pod Trellick Tower, ze skateparkiem i placem zabaw. Kontrast brutalistycznej wieży i grządek sam w sobie wart przyjścia."},
+   {s:"15:30",k:"city",h:"Ścieżka wzdłuż kanału",p:"meanwhile",q:"Grand Union Canal towpath, Kensal Road, London W10",w:0,
     n:"Płaska, bez samochodów, więc wózek jedzie sam. Idziecie tyle, ile chcecie, i wychodzicie na ulicę w dowolnym momencie."},
-   {s:"opcja",k:"city",h:"Westbourne Grove",p:"westbourne",q:"Westbourne Grove, London W11",w:0,
-    n:"Jeśli wolicie sklepy od kanału: spokojniej niż na Portobello, zero programu."},
    {s:"wieczór",k:"art",h:"Wesele Figara",p:"kyoto",q:"Opera Holland Park, Holland Park, London W8 6LU",w:15,
     n:"Mozart w namiocie w Waszym parku, kwadrans od hotelu.",
-    e:"<b>Ostatni wieczór sezonu Opera Holland Park.</b> Wild Arts, Wesele Figara. Alternatywa tego wieczoru: Prom z orkiestrą Chineke! i Angel Blue w Royal Albert Hall."}]},
+    e:"<b>Ostatni wieczór sezonu Opera Holland Park.</b> Alternatywa tego wieczoru: Prom z orkiestrą Chineke! i Angel Blue w Royal Albert Hall."}]},
 
  {d:"nd",n:"23",t:"Hockney i piraci",
   title:"Niedziela - jedyny sztywny termin wyjazdu",
@@ -340,27 +312,33 @@ const DAYS=[
     f:"23 sierpnia to naprawdę ostatni dzień. Jutro tego już nie ma."},
    {s:"11:00",k:"kid",h:"Diana Memorial Playground",p:"diana",q:"Diana Memorial Playground, Kensington Gardens, London W2 4RU",w:30,
     n:"Statek piracki, piaskownica, wigwamy. W sierpniu wpuszczają partiami i kolejka rośnie po 11:00 - dlatego Hockney jest przed, a nie po."},
-   {s:"13:00",k:"food",h:"Piknik w Kensington Gardens",p:"diana",q:"Kensington Gardens, London W2",w:30,
-    n:"Kupione po drodze, zjedzone na trawie. Nie szukajcie restauracji w parku, gdy dziecko właśnie się rozbiegało."},
+   {s:"13:00",k:"food",h:"Lunch: piknik w Kensington Gardens",p:"diana",q:"Kensington Gardens, London W2",w:30,
+    n:"Kupione po drodze, zjedzone na trawie. Nie szukajcie restauracji w parku, gdy dziecko właśnie się rozbiegało - stracicie godzinę i dobry nastrój naraz."},
    {s:"15:00",k:"city",h:"Sunken Garden",p:"sunken",q:"Sunken Garden, Kensington Palace, London W8 4PX",w:28,
     n:"Zapadnięty ogród przy Kensington Palace, z sadzawką i szpalerem lip. Pięć minut, ale najładniejsze pięć minut w tym parku."},
-   {s:"opcja",k:"food",h:"Churchill Arms",p:"churchill",q:"The Churchill Arms, 119 Kensington Church Street, London W8 7LN",w:0,
-    n:"Pub obwieszony tysiącem kwiatów, po drodze z parku do domu. Z zewnątrz ciekawszy niż w środku."}]},
+   {s:"18:00",k:"food",h:"Kolacja: Churchill Arms",p:"churchill",q:"The Churchill Arms, 119 Kensington Church Street, London W8 7LN",w:0,
+    n:"Pub obwieszony tysiącem kwiatów, a z tyłu, w oszklonej cieplarni pełnej roślin, działa tajska kuchnia. Tanio, szybko, porcje duże, a dziecko ma się na co gapić. To jest najlepsza kolacja tego wyjazdu w stosunku ceny do wrażenia.",
+    f:"Nie przyjmują rezerwacji na tył i robi się tłoczno po 19:00. Przyjdźcie o 18:00, wtedy wchodzicie od ręki."},
+   {s:"opcja",k:"city",h:"Spacer Artists Houses",p:"leighton",q:"Leighton House, 12 Holland Park Road, London W14 8LZ",w:8,
+    n:"Jeśli wolicie dziś zostać blisko domu zamiast jechać do Hyde Parku.",
+    e:"<b>Darmowe oprowadzanie po dzielnicy domów artystów</b>, prowadzone przez muzea RBKC w niedziele i czwartki. Godziny i zapisy potwierdźcie na rbkc.gov.uk/museums - liczba miejsc bywa ograniczona."}]},
 
  {d:"pon",n:"24",t:"Soho",
   title:"Poniedziałek - najdalszy punkt tygodnia",
   sub:"Jedyny przejazd metrem: Piccadilly line z Earl's Court do Piccadilly Circus, bez przesiadki, kilkanaście minut. Soho z trzylatkiem robi się rano, póki chodniki są jeszcze przejezdne.",
   items:[
    {s:"10:30",k:"city",h:"Carnaby Street",p:"carnaby",q:"Carnaby Street, London W1F",w:0,
-    n:"Deptak, więc wózek jedzie bez walki z krawężnikami. Kingly Court obok to trzy piętra knajp wokół dziedzińca - dobre miejsce na pierwszą kawę."},
+    n:"Deptak, więc wózek jedzie bez walki z krawężnikami."},
    {s:"11:30",k:"city",h:"Berwick Street",p:"carnaby",q:"Berwick Street, London W1F",w:0,
     n:"Resztka starego Soho: stragany, sklepy płytowe, krawcy. Krótka, więc nie zdąży zmęczyć."},
-   {s:"12:30",k:"food",h:"Lunch w Soho",p:"sohosq",q:"Soho Square, London W1D",w:0,
-    n:"Cokolwiek po drodze. Soho Square Gardens obok ma trawnik i drewnianą chatkę na środku, więc mały ma gdzie zejść z wózka."},
+   {s:"12:30",k:"food",h:"Lunch: Kingly Court",p:"carnaby",q:"Kingly Court, Carnaby Street, London W1B 5PW",w:0,
+    n:"Trzy piętra knajp wokół zadaszonego dziedzińca tuż przy Carnaby. Z dzieckiem to jest najbezpieczniejszy wybór w Soho: każdy je co innego, jest zadaszone przy deszczu, jest miejsce na wózek, a jak mały się znudzi, wychodzicie w dziesięć sekund."},
    {s:"14:00",k:"kid",h:"Phoenix Garden",p:"phoenix",q:"The Phoenix Garden, 21 Stacey Street, London WC2H 8DG",w:0,
     n:"Ogród społecznościowy schowany za teatrem Phoenix, z sadzawką i żabami. Wchodzi się z hałasu Soho w ciszę w trzy kroki i to jest zawór bezpieczeństwa całego tego dnia.",
     f:"To jest najlepszy punkt poniedziałku. Jeśli mały się rozsypie wcześniej, idźcie tu od razu i odpuśćcie resztę."},
-   {s:"wieczór",k:"art",h:"Prom w Royal Albert Hall",p:"serpentine",q:"Royal Albert Hall, Kensington Gore, London SW7 2AP",w:25,
+   {s:"18:00",k:"food",h:"Kolacja przy hotelu",p:"kenhigh",q:"Kensington High Street, London W8",w:11,
+    n:"Po dniu w Soho nie szukajcie już nic ambitnego. Wracacie na swoją ulicę, jecie coś prostego i kończycie wcześnie, bo jutro i tak jest lżej."},
+   {s:"opcja",k:"art",h:"Prom w Royal Albert Hall",p:"rah",q:"Royal Albert Hall, Kensington Gore, London SW7 2AP",w:25,
     n:"Opcja dla jednego z Was, jeśli drugie zostaje z małym.",
     e:"<b>Marin Alsop dyryguje amerykańskim programem</b> - Bernstein, Gershwin, Copland. Miejsca stojące po 8 funtów w sprzedaży w dniu koncertu, online od 9:30 albo w kasie przy Door 12."}]},
 
@@ -370,39 +348,63 @@ const DAYS=[
   items:[
    {s:"9:30",k:"kid",h:"Holland Park jeszcze raz",p:"kyoto",q:"Holland Park, Ilchester Place, London W8 6LU",w:15,
     n:"Domknięcie klamrą: to samo, od czego zaczęliście w czwartek. Dzieci lubią wracać, a Wy wiecie już, gdzie co jest."},
-   {s:"11:00",k:"city",h:"Kensington High Street",p:"kenhigh",q:"Kensington High Street, London W8",w:11,
-    n:"Ostatnie sprawunki i kawa. Stąd do hotelu jest kwadrans, więc nie musicie pilnować zegarka."},
    {s:"12:00",k:"kid",h:"Play in the Park",p:"diana",q:"Kensington Gardens, London W2",w:30,
     n:"Tylko jeśli lecicie wieczorem. Wtedy warto zamienić poranek przy hotelu na to.",
-    e:"<b>Darmowe zabawy dla rodzin w Kensington Gardens, 12:00-16:00</b>, bez rezerwacji, motyw karnawałowy. Organizuje Royal Parks z London Play - jedyny event tego tygodnia zrobiony pod dzieci."},
+    e:"<b>Darmowe zabawy dla rodzin w Kensington Gardens, 12:00-16:00</b>, bez rezerwacji, motyw karnawałowy. Royal Parks z London Play - jedyny event tego tygodnia zrobiony pod dzieci."},
+   {s:"13:00",k:"food",h:"Ostatni lunch: Kensington High Street",p:"kenhigh",q:"Kensington High Street, London W8",w:11,
+    n:"Kwadrans od hotelu, więc jecie bez pilnowania zegarka i wracacie po walizki. Jeśli wybraliście Play in the Park, jecie po prostu na miejscu w Kensington Gardens."},
    {s:"opcja",k:"kid",h:"Little Venice",p:"venice",q:"Little Venice, Blomfield Road, London W9 2PF",w:0,
-    n:"Druga opcja na wolne przedpołudnie: basen z mieszkalnymi barkami, mostki, kaczki. Trzylatek ogląda łódki, w których mieszkają ludzie, i to działa lepiej niż cokolwiek biletowanego.",
-    f:"Wybierzcie jedno: Little Venice albo Play in the Park. Oba w jeden ostatni dzień to za dużo."},
-   {s:"13:00",k:"food",h:"Lunch i pakowanie",p:"hotel",q:HOTEL,w:0,
-    n:"Reszta dnia należy do lotniska. Nic nie dokładamy."}]}
+    n:"Druga opcja na wolne przedpołudnie: basen z mieszkalnymi barkami, mostki, kaczki. Trzylatek ogląda łódki, w których mieszkają ludzie.",
+    f:"Wybierzcie jedno: Little Venice albo Play in the Park. Oba w jeden ostatni dzień to za dużo."}]}
 ];
 
-const svgns="http://www.w3.org/2000/svg";
-const pinsG=document.getElementById("pins"), railG=document.getElementById("rail"), pinEls={};
-Object.entries(P).forEach(([id,p])=>{
-  const g=document.createElementNS(svgns,"g");
-  g.setAttribute("class","pin");g.dataset.id=id;
-  const halo=document.createElementNS(svgns,"circle");
-  halo.setAttribute("class","halo");halo.setAttribute("cx",p.x);halo.setAttribute("cy",p.y);halo.setAttribute("r",20);
-  const dot=document.createElementNS(svgns,"circle");
-  dot.setAttribute("class","dot");dot.setAttribute("cx",p.x);dot.setAttribute("cy",p.y);
-  dot.setAttribute("r",id==="hotel"?8:6.5);
-  dot.setAttribute("stroke","var(--surface)");dot.setAttribute("stroke-width",id==="hotel"?3:2);
-  const t=document.createElementNS(svgns,"text");
-  let tx=p.x,ty=p.y,anchor="start";
-  if(p.s==="r"){tx=p.x+13;ty=p.y+5}
-  else if(p.s==="l"){tx=p.x-13;ty=p.y+5;anchor="end"}
-  else if(p.s==="t"){ty=p.y-14;anchor="middle"}
-  else{ty=p.y+24;anchor="middle"}
-  t.setAttribute("x",tx);t.setAttribute("y",ty);t.setAttribute("text-anchor",anchor);t.textContent=p.l;
-  g.append(halo,dot,t);pinsG.append(g);pinEls[id]={g,halo,dot};
+function mapsSearch(q){return"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q)}
+function mapsWalk(q){return"https://www.google.com/maps/dir/?api=1&origin="+encodeURIComponent(HOTEL)+
+  "&destination="+encodeURIComponent(q)+"&travelmode=walking"}
+
+const TILE={light:"https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+            dark:"https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"};
+const map=L.map("lmap",{scrollWheelZoom:false,zoomControl:true})
+           .setView([PT.hotel.lat,PT.hotel.lon],13);
+let tiles=L.tileLayer(TILE[dark()?"dark":"light"],{maxZoom:19,subdomains:"abcd",
+  attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'}).addTo(map);
+matchMedia("(prefers-color-scheme:dark)").addEventListener("change",()=>{
+  map.removeLayer(tiles);
+  tiles=L.tileLayer(TILE[dark()?"dark":"light"],{maxZoom:19,subdomains:"abcd",
+    attribution:'&copy; OpenStreetMap &copy; CARTO'}).addTo(map);
+  redraw();
 });
 
+let layer=L.layerGroup().addTo(map), marks={}, current=0;
+function icon(color,base,label){
+  return L.divIcon({className:"mkwrap",iconSize:[15,15],iconAnchor:[7,7],
+    html:'<span class="mk'+(base?" base":"")+'" style="background:'+color+'"></span>'+
+         '<span class="mklabel">'+label+'</span>'});
+}
+function redraw(){
+  layer.clearLayers(); marks={};
+  const day=DAYS[current], seen={}, pts=[];
+  day.items.forEach(it=>{ if(!seen[it.p]) seen[it.p]={k:it.k,items:[]}; seen[it.p].items.push(it); });
+  Object.entries(seen).forEach(([id,g])=>{
+    const p=PT[id]; if(!p) return;
+    const m=L.marker([p.lat,p.lon],{icon:icon(col(g.k),false,p.l)}).addTo(layer);
+    const it=g.items[0];
+    m.bindPopup('<b>'+g.items.map(x=>x.h).join(" / ")+'</b>'+
+      '<span class="pn">'+it.n+'</span>'+
+      '<a href="'+mapsSearch(it.q)+'" target="_blank" rel="noopener">Google Maps</a>'+
+      '<a href="'+mapsWalk(it.q)+'" target="_blank" rel="noopener">trasa pieszo</a>');
+    marks[id]=m; pts.push([p.lat,p.lon]);
+  });
+  const h=PT.hotel;
+  const hm=L.marker([h.lat,h.lon],{icon:icon(dark()?"#E7EDEF":"#15191B",true,"Hotel")}).addTo(layer);
+  hm.bindPopup('<b>Hotel</b><span class="pn">Residence Inn Kensington, 181-183 Warwick Road</span>'+
+    '<a href="'+mapsSearch(HOTEL)+'" target="_blank" rel="noopener">Google Maps</a>');
+  marks.hotel=hm; pts.push([h.lat,h.lon]);
+  if(pts.length>1) map.fitBounds(L.latLngBounds(pts).pad(0.22));
+  else map.setView(pts[0],15);
+}
+
+const railG=document.getElementById("rail");
 DAYS.forEach((day,i)=>{
   const b=document.createElement("button");
   b.className="day";b.setAttribute("role","tab");b.setAttribute("aria-selected",i===0);
@@ -411,63 +413,36 @@ DAYS.forEach((day,i)=>{
   railG.append(b);
 });
 
-const gmap=document.getElementById("gmap");
-function gEmbed(q){return"https://maps.google.com/maps?q="+encodeURIComponent(q)+"&z=15&hl=pl&output=embed"}
-function showOn(q){if(gmap)gmap.src=gEmbed(q)}
-const gwrap=document.getElementById("gwrap"), swrap=document.getElementById("swrap"),
-      btnG=document.getElementById("btnG"), btnS=document.getElementById("btnS"),
-      mapnote=document.getElementById("mapnote");
-function mode(google){
-  gwrap.classList.toggle("off",!google);
-  swrap.classList.toggle("on",!google);
-  btnG.setAttribute("aria-pressed",google); btnS.setAttribute("aria-pressed",!google);
-  mapnote.textContent=google
-    ? "Mapa Google pokazuje wybrany punkt. Kliknij pozycję w rozkładzie, żeby ją tu wyśrodkować. Jeśli okno mapy jest puste, przełącz na Schemat."
-    : "Schemat pokazuje wszystkie punkty wybranego dnia naraz. Kolor pinezki mówi, czyja to rzecz.";
-}
-btnG.addEventListener("click",()=>mode(true));
-btnS.addEventListener("click",()=>mode(false));
-
-function mapsSearch(q){return"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q)}
-function mapsWalk(q){return"https://www.google.com/maps/dir/?api=1&origin="+encodeURIComponent(HOTEL)+
-  "&destination="+encodeURIComponent(q)+"&travelmode=walking"}
-
 function select(i){
-  const day=DAYS[i];
+  current=i; const day=DAYS[i];
   [...railG.children].forEach((b,j)=>b.setAttribute("aria-selected",j===i));
   document.getElementById("dtitle").textContent=day.title;
   document.getElementById("dsub").textContent=day.sub;
   const ol=document.getElementById("items");ol.innerHTML="";
-  const active=new Set(), colorOf={};
   day.items.forEach(it=>{
-    active.add(it.p); if(!colorOf[it.p])colorOf[it.p]=C[it.k];
     const li=document.createElement("li");li.className="item";
     const dist=it.w>0?'<span class="dist">'+it.w+' min pieszo z hotelu</span>':'';
     const walk=it.w>0?'<a href="'+mapsWalk(it.q)+'" target="_blank" rel="noopener">trasa pieszo</a>':'';
-    const here='<button type="button" class="hereb" data-q="'+encodeURIComponent(it.q)+'">pokaż tu</button>';
     li.innerHTML='<span class="slot">'+it.s+'</span><div class="what">'+
       '<h3><a href="'+mapsSearch(it.q)+'" target="_blank" rel="noopener">'+it.h+'</a></h3>'+
-      '<span class="chip" style="color:'+C[it.k]+'">'+CN[it.k]+'</span>'+
+      '<span class="chip" style="color:'+col(it.k)+'">'+CN[it.k]+'</span>'+
       '<p class="note">'+it.n+'</p>'+(it.f?'<span class="flag">'+it.f+'</span>':'')+
       (it.e?'<span class="evt">'+it.e+'</span>':'')+
-      '<p class="go">'+here+'<a href="'+mapsSearch(it.q)+'" target="_blank" rel="noopener">otwórz w Google</a>'+walk+dist+'</p></div>';
-    li.querySelector(".hereb").addEventListener("click",e=>{
-      mode(true); showOn(decodeURIComponent(e.currentTarget.dataset.q));
+      '<p class="go"><button type="button" class="hereb">pokaż na mapie</button>'+
+      '<a href="'+mapsSearch(it.q)+'" target="_blank" rel="noopener">otwórz w Google</a>'+walk+dist+'</p></div>';
+    li.querySelector(".hereb").addEventListener("click",()=>{
+      const m=marks[it.p]; if(!m) return;
+      map.setView(m.getLatLng(),16,{animate:true}); m.openPopup();
       document.querySelector(".mapcard").scrollIntoView({behavior:"smooth",block:"start"});
     });
-    li.addEventListener("pointerenter",()=>pinEls[it.p]&&pinEls[it.p].g.classList.add("hot"));
-    li.addEventListener("pointerleave",()=>pinEls[it.p]&&pinEls[it.p].g.classList.remove("hot"));
+    li.addEventListener("pointerenter",()=>{const m=marks[it.p];if(m)m._icon&&m._icon.classList.add("hot")});
+    li.addEventListener("pointerleave",()=>{const m=marks[it.p];if(m)m._icon&&m._icon.classList.remove("hot")});
     ol.append(li);
   });
-  showOn(day.items[0].q);
-  Object.entries(pinEls).forEach(([id,el])=>{
-    el.g.classList.toggle("on",active.has(id)||id==="hotel");
-    el.g.classList.remove("hot");
-    const c=id==="hotel"?"var(--ink)":(colorOf[id]||"var(--quiet)");
-    el.dot.setAttribute("fill",c);el.halo.setAttribute("fill",c);
-  });
+  redraw();
 }
 select(0);
+
 </script>
 
 </body>
